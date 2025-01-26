@@ -58,7 +58,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glProgramNamedParameter4fNV(unsigned int id, int len, const GLubyte* name, float x, float y, float z, float w);
+    /// void glProgramNamedParameter4fNV(GLuint id, GLsizei len, const GLubyte* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void ProgramNamedParameter4fNV(int id, int len, MemorySegment name, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4fNV)) throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4fNV");
@@ -67,7 +67,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glProgramNamedParameter4fvNV(unsigned int id, int len, const GLubyte* name, const GLfloat* v);
+    /// void glProgramNamedParameter4fvNV(GLuint id, GLsizei len, const GLubyte* name, const GLfloat* v);
     /// ```
     public void ProgramNamedParameter4fvNV(int id, int len, MemorySegment name, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4fvNV)) throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4fvNV");
@@ -76,7 +76,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glProgramNamedParameter4dNV(unsigned int id, int len, const GLubyte* name, double x, double y, double z, double w);
+    /// void glProgramNamedParameter4dNV(GLuint id, GLsizei len, const GLubyte* name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void ProgramNamedParameter4dNV(int id, int len, MemorySegment name, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4dNV)) throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4dNV");
@@ -85,7 +85,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glProgramNamedParameter4dvNV(unsigned int id, int len, const GLubyte* name, const GLdouble* v);
+    /// void glProgramNamedParameter4dvNV(GLuint id, GLsizei len, const GLubyte* name, const GLdouble* v);
     /// ```
     public void ProgramNamedParameter4dvNV(int id, int len, MemorySegment name, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramNamedParameter4dvNV)) throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4dvNV");
@@ -94,7 +94,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramNamedParameterfvNV(unsigned int id, int len, const GLubyte* name, GLfloat* params);
+    /// void glGetProgramNamedParameterfvNV(GLuint id, GLsizei len, const GLubyte* name, GLfloat* params);
     /// ```
     public void GetProgramNamedParameterfvNV(int id, int len, MemorySegment name, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramNamedParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramNamedParameterfvNV");
@@ -103,7 +103,7 @@ public final class GLNVFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramNamedParameterdvNV(unsigned int id, int len, const GLubyte* name, GLdouble* params);
+    /// void glGetProgramNamedParameterdvNV(GLuint id, GLsizei len, const GLubyte* name, GLdouble* params);
     /// ```
     public void GetProgramNamedParameterdvNV(int id, int len, MemorySegment name, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramNamedParameterdvNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramNamedParameterdvNV");

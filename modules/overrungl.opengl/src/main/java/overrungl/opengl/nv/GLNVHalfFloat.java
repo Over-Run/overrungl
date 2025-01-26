@@ -170,7 +170,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertex2hNV(unsigned short x, unsigned short y);
+    /// void glVertex2hNV(GLhalfNV x, GLhalfNV y);
     /// ```
     public void Vertex2hNV(short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2hNV)) throw new SymbolNotFoundError("Symbol not found: glVertex2hNV");
@@ -188,7 +188,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertex3hNV(unsigned short x, unsigned short y, unsigned short z);
+    /// void glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z);
     /// ```
     public void Vertex3hNV(short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3hNV)) throw new SymbolNotFoundError("Symbol not found: glVertex3hNV");
@@ -206,7 +206,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertex4hNV(unsigned short x, unsigned short y, unsigned short z, unsigned short w);
+    /// void glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
     /// ```
     public void Vertex4hNV(short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4hNV)) throw new SymbolNotFoundError("Symbol not found: glVertex4hNV");
@@ -224,7 +224,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glNormal3hNV(unsigned short nx, unsigned short ny, unsigned short nz);
+    /// void glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
     /// ```
     public void Normal3hNV(short nx, short ny, short nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3hNV)) throw new SymbolNotFoundError("Symbol not found: glNormal3hNV");
@@ -242,7 +242,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glColor3hNV(unsigned short red, unsigned short green, unsigned short blue);
+    /// void glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
     /// ```
     public void Color3hNV(short red, short green, short blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3hNV)) throw new SymbolNotFoundError("Symbol not found: glColor3hNV");
@@ -260,7 +260,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glColor4hNV(unsigned short red, unsigned short green, unsigned short blue, unsigned short alpha);
+    /// void glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
     /// ```
     public void Color4hNV(short red, short green, short blue, short alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4hNV)) throw new SymbolNotFoundError("Symbol not found: glColor4hNV");
@@ -278,7 +278,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glTexCoord1hNV(unsigned short s);
+    /// void glTexCoord1hNV(GLhalfNV s);
     /// ```
     public void TexCoord1hNV(short s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1hNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1hNV");
@@ -296,7 +296,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glTexCoord2hNV(unsigned short s, unsigned short t);
+    /// void glTexCoord2hNV(GLhalfNV s, GLhalfNV t);
     /// ```
     public void TexCoord2hNV(short s, short t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2hNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2hNV");
@@ -314,7 +314,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glTexCoord3hNV(unsigned short s, unsigned short t, unsigned short r);
+    /// void glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r);
     /// ```
     public void TexCoord3hNV(short s, short t, short r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3hNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3hNV");
@@ -332,7 +332,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glTexCoord4hNV(unsigned short s, unsigned short t, unsigned short r, unsigned short q);
+    /// void glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
     /// ```
     public void TexCoord4hNV(short s, short t, short r, short q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4hNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4hNV");
@@ -350,7 +350,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord1hNV(unsigned int target, unsigned short s);
+    /// void glMultiTexCoord1hNV(GLenum target, GLhalfNV s);
     /// ```
     public void MultiTexCoord1hNV(int target, short s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1hNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1hNV");
@@ -359,7 +359,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord1hvNV(unsigned int target, const GLhalfNV* v);
+    /// void glMultiTexCoord1hvNV(GLenum target, const GLhalfNV* v);
     /// ```
     public void MultiTexCoord1hvNV(int target, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1hvNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1hvNV");
@@ -368,7 +368,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord2hNV(unsigned int target, unsigned short s, unsigned short t);
+    /// void glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLhalfNV t);
     /// ```
     public void MultiTexCoord2hNV(int target, short s, short t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2hNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2hNV");
@@ -377,7 +377,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord2hvNV(unsigned int target, const GLhalfNV* v);
+    /// void glMultiTexCoord2hvNV(GLenum target, const GLhalfNV* v);
     /// ```
     public void MultiTexCoord2hvNV(int target, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2hvNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2hvNV");
@@ -386,7 +386,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord3hNV(unsigned int target, unsigned short s, unsigned short t, unsigned short r);
+    /// void glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
     /// ```
     public void MultiTexCoord3hNV(int target, short s, short t, short r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3hNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3hNV");
@@ -395,7 +395,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord3hvNV(unsigned int target, const GLhalfNV* v);
+    /// void glMultiTexCoord3hvNV(GLenum target, const GLhalfNV* v);
     /// ```
     public void MultiTexCoord3hvNV(int target, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3hvNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3hvNV");
@@ -404,7 +404,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord4hNV(unsigned int target, unsigned short s, unsigned short t, unsigned short r, unsigned short q);
+    /// void glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
     /// ```
     public void MultiTexCoord4hNV(int target, short s, short t, short r, short q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4hNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4hNV");
@@ -413,7 +413,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glMultiTexCoord4hvNV(unsigned int target, const GLhalfNV* v);
+    /// void glMultiTexCoord4hvNV(GLenum target, const GLhalfNV* v);
     /// ```
     public void MultiTexCoord4hvNV(int target, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4hvNV)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4hvNV");
@@ -422,7 +422,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib1hNV(unsigned int index, unsigned short x);
+    /// void glVertexAttrib1hNV(GLuint index, GLhalfNV x);
     /// ```
     public void VertexAttrib1hNV(int index, short x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1hNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1hNV");
@@ -431,7 +431,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib1hvNV(unsigned int index, const GLhalfNV* v);
+    /// void glVertexAttrib1hvNV(GLuint index, const GLhalfNV* v);
     /// ```
     public void VertexAttrib1hvNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1hvNV");
@@ -440,7 +440,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib2hNV(unsigned int index, unsigned short x, unsigned short y);
+    /// void glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalfNV y);
     /// ```
     public void VertexAttrib2hNV(int index, short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2hNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2hNV");
@@ -449,7 +449,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib2hvNV(unsigned int index, const GLhalfNV* v);
+    /// void glVertexAttrib2hvNV(GLuint index, const GLhalfNV* v);
     /// ```
     public void VertexAttrib2hvNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2hvNV");
@@ -458,7 +458,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib3hNV(unsigned int index, unsigned short x, unsigned short y, unsigned short z);
+    /// void glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
     /// ```
     public void VertexAttrib3hNV(int index, short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3hNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3hNV");
@@ -467,7 +467,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib3hvNV(unsigned int index, const GLhalfNV* v);
+    /// void glVertexAttrib3hvNV(GLuint index, const GLhalfNV* v);
     /// ```
     public void VertexAttrib3hvNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3hvNV");
@@ -476,7 +476,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib4hNV(unsigned int index, unsigned short x, unsigned short y, unsigned short z, unsigned short w);
+    /// void glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
     /// ```
     public void VertexAttrib4hNV(int index, short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4hNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4hNV");
@@ -485,7 +485,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttrib4hvNV(unsigned int index, const GLhalfNV* v);
+    /// void glVertexAttrib4hvNV(GLuint index, const GLhalfNV* v);
     /// ```
     public void VertexAttrib4hvNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4hvNV");
@@ -494,7 +494,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttribs1hvNV(unsigned int index, int n, const GLhalfNV* v);
+    /// void glVertexAttribs1hvNV(GLuint index, GLsizei n, const GLhalfNV* v);
     /// ```
     public void VertexAttribs1hvNV(int index, int n, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribs1hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribs1hvNV");
@@ -503,7 +503,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttribs2hvNV(unsigned int index, int n, const GLhalfNV* v);
+    /// void glVertexAttribs2hvNV(GLuint index, GLsizei n, const GLhalfNV* v);
     /// ```
     public void VertexAttribs2hvNV(int index, int n, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribs2hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribs2hvNV");
@@ -512,7 +512,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttribs3hvNV(unsigned int index, int n, const GLhalfNV* v);
+    /// void glVertexAttribs3hvNV(GLuint index, GLsizei n, const GLhalfNV* v);
     /// ```
     public void VertexAttribs3hvNV(int index, int n, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribs3hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribs3hvNV");
@@ -521,7 +521,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexAttribs4hvNV(unsigned int index, int n, const GLhalfNV* v);
+    /// void glVertexAttribs4hvNV(GLuint index, GLsizei n, const GLhalfNV* v);
     /// ```
     public void VertexAttribs4hvNV(int index, int n, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribs4hvNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribs4hvNV");
@@ -530,7 +530,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glFogCoordhNV(unsigned short fog);
+    /// void glFogCoordhNV(GLhalfNV fog);
     /// ```
     public void FogCoordhNV(short fog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordhNV)) throw new SymbolNotFoundError("Symbol not found: glFogCoordhNV");
@@ -548,7 +548,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glSecondaryColor3hNV(unsigned short red, unsigned short green, unsigned short blue);
+    /// void glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
     /// ```
     public void SecondaryColor3hNV(short red, short green, short blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3hNV)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3hNV");
@@ -566,7 +566,7 @@ public final class GLNVHalfFloat {
     }
 
     /// ```
-    /// void glVertexWeighthNV(unsigned short weight);
+    /// void glVertexWeighthNV(GLhalfNV weight);
     /// ```
     public void VertexWeighthNV(short weight) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeighthNV)) throw new SymbolNotFoundError("Symbol not found: glVertexWeighthNV");

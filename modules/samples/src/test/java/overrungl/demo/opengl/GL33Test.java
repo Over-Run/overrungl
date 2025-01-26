@@ -21,8 +21,6 @@ import org.overrun.timer.Timer;
 import overrungl.glfw.*;
 import overrungl.joml.Matrixn;
 import overrungl.opengl.*;
-import overrungl.opengl.amd.GLAMDDebugOutput;
-import overrungl.opengl.arb.GLARBDebugOutput;
 import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
@@ -31,6 +29,8 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.demo.util.IntSegmentConsumer.glDelete;
+import static overrungl.demo.util.IntSegmentConsumer.glGen;
 import static overrungl.glfw.GLFW.*;
 import static overrungl.opengl.GL.*;
 
@@ -64,10 +64,10 @@ public class GL33Test {
         loop();
 
         gl.DeleteProgram(program);
-        gl.DeleteVertexArrays(vao);
-        gl.DeleteBuffers(vbo);
-        gl.DeleteBuffers(ebo);
-        gl.DeleteBuffers(mbo);
+        glDelete(vao, gl::DeleteVertexArrays);
+        glDelete(vbo, gl::DeleteBuffers);
+        glDelete(ebo, gl::DeleteBuffers);
+        glDelete(mbo, gl::DeleteBuffers);
 
         glfwDestroyWindow(window);
         windowArena.close();
@@ -122,41 +122,40 @@ public class GL33Test {
         gl = new GL(glLoadFunc);
 
         var flags = new GLFlags(glLoadFunc);
-        debugProc = GLUtil.setupDebugMessageCallback(gl,
-            flags,
-            () -> new GLARBDebugOutput(glLoadFunc),
-            () -> new GLAMDDebugOutput(glLoadFunc));
+        debugProc = GLUtil.setupDebugMessageCallback(gl, flags, glLoadFunc);
         gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.CreateProgram();
         int vsh = gl.CreateShader(GL_VERTEX_SHADER);
         int fsh = gl.CreateShader(GL_FRAGMENT_SHADER);
-        gl.ShaderSource(vsh, """
-            #version 330
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            gl.ShaderSource(vsh, 1, stack.addresses(stack.allocateFrom("""
+                #version 330
 
-            layout (location = 0) in vec3 position;
-            layout (location = 1) in vec3 color;
-            layout (location = 2) in mat4 modelMat;
+                layout (location = 0) in vec3 position;
+                layout (location = 1) in vec3 color;
+                layout (location = 2) in mat4 modelMat;
 
-            out vec3 vertexColor;
+                out vec3 vertexColor;
 
-            uniform mat4 rotationMat;
+                uniform mat4 rotationMat;
 
-            void main() {
-                gl_Position = modelMat * rotationMat * vec4(position, 1.0);
-                vertexColor = color;
-            }
-            """);
-        gl.ShaderSource(fsh, """
-            #version 330
+                void main() {
+                    gl_Position = modelMat * rotationMat * vec4(position, 1.0);
+                    vertexColor = color;
+                }
+                """)), MemorySegment.NULL);
+            gl.ShaderSource(fsh, 1, stack.addresses(stack.allocateFrom("""
+                #version 330
 
-            in vec3 vertexColor;
+                in vec3 vertexColor;
 
-            out vec4 fragColor;
+                out vec4 fragColor;
 
-            void main() {
-                fragColor = vec4(vertexColor, 1.0);
-            }
-            """);
+                void main() {
+                    fragColor = vec4(vertexColor, 1.0);
+                }
+                """)), MemorySegment.NULL);
+        }
         gl.CompileShader(vsh);
         gl.CompileShader(fsh);
         gl.AttachShader(program, vsh);
@@ -166,29 +165,31 @@ public class GL33Test {
         gl.DetachShader(program, fsh);
         gl.DeleteShader(vsh);
         gl.DeleteShader(fsh);
-        rotationMat = gl.GetUniformLocation(program, "rotationMat");
+        rotationMat = gl.GetUniformLocation(program, MemoryUtil.allocString("rotationMat"));
 
-        vao = gl.GenVertexArrays();
+        vao = glGen(gl::GenVertexArrays);
         gl.BindVertexArray(vao);
-        vbo = gl.GenBuffers();
+        vbo = glGen(gl::GenBuffers);
         gl.BindBuffer(GL_ARRAY_BUFFER, vbo);
-        gl.BufferData(GL_ARRAY_BUFFER, arena.allocateFrom(JAVA_FLOAT,
+        MemorySegment segment = arena.allocateFrom(JAVA_FLOAT,
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
-        ), GL_STATIC_DRAW);
-        ebo = gl.GenBuffers();
+        );
+        gl.BufferData(GL_ARRAY_BUFFER, segment.byteSize(), segment, GL_STATIC_DRAW);
+        ebo = glGen(gl::GenBuffers);
         gl.BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, arena.allocateFrom(JAVA_BYTE, new byte[]{
+        MemorySegment segment1 = arena.allocateFrom(JAVA_BYTE, new byte[]{
             0, 1, 2, 2, 3, 0
-        }), GL_STATIC_DRAW);
+        });
+        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, segment1.byteSize(), segment1, GL_STATIC_DRAW);
         gl.EnableVertexAttribArray(0);
         gl.EnableVertexAttribArray(1);
         gl.VertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemorySegment.NULL);
         gl.VertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemorySegment.ofAddress(12));
-        mbo = gl.GenBuffers();
+        mbo = glGen(gl::GenBuffers);
         gl.BindBuffer(GL_ARRAY_BUFFER, mbo);
         var mat = new Matrix4f();
         var iseq = MemoryLayout.sequenceLayout(
@@ -214,7 +215,7 @@ public class GL33Test {
                 i * Matrixn.MAT4F.byteSize(),
                 matrices);
         }
-        gl.BufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
+        gl.BufferData(GL_ARRAY_BUFFER, matrices.byteSize(), matrices, GL_STATIC_DRAW);
         gl.EnableVertexAttribArray(2);
         gl.EnableVertexAttribArray(3);
         gl.EnableVertexAttribArray(4);

@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,19 +34,22 @@ public class VKEXTDepthBiasControl {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetDepthBias2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetDepthBias2EXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetDepthBias2EXT = func.invoke(device, "vkCmdSetDepthBias2EXT");
         }
     }
 
-    public VKEXTDepthBiasControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTDepthBiasControl(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetDepthBias2EXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkDepthBiasInfoEXT *") MemorySegment pDepthBiasInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetDepthBias2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBias2EXT");
+    /// ```
+    /// void vkCmdSetDepthBias2EXT(VkCommandBuffer commandBuffer, const VkDepthBiasInfoEXT* pDepthBiasInfo);
+    /// ```
+    public void CmdSetDepthBias2EXT(MemorySegment commandBuffer, MemorySegment pDepthBiasInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthBias2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBias2EXT");
         try { Handles.MH_vkCmdSetDepthBias2EXT.invokeExact(handles.PFN_vkCmdSetDepthBias2EXT, commandBuffer, pDepthBiasInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthBias2EXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthBias2EXT", e); }
     }
 
 }

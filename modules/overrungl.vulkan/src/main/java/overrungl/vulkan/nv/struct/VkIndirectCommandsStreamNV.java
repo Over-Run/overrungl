@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### buffer
-/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(MemorySegment)]
-/// ### offset
-/// [VarHandle][#VH_offset] - [Getter][#offset()] - [Setter][#offset(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkIndirectCommandsStreamNV {
+/// ```
+/// struct VkIndirectCommandsStreamNV {
 ///     VkBuffer buffer;
 ///     VkDeviceSize offset;
-/// } VkIndirectCommandsStreamNV;
+/// };
 /// ```
-public sealed class VkIndirectCommandsStreamNV extends Struct {
+public sealed class VkIndirectCommandsStreamNV extends GroupType {
     /// The struct layout of `VkIndirectCommandsStreamNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.ADDRESS.withName("buffer"),
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_LONG.withName("buffer"),
         ValueLayout.JAVA_LONG.withName("offset")
     );
+    /// The byte offset of `buffer`.
+    public static final long OFFSET_buffer = LAYOUT.byteOffset(PathElement.groupElement("buffer"));
+    /// The memory layout of `buffer`.
+    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
     /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `offset`.
+    public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
+    /// The memory layout of `offset`.
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
+    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
 
     /// Creates `VkIndirectCommandsStreamNV` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
     /// Creates `VkIndirectCommandsStreamNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsStreamNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsStreamNV(segment); }
-
-    /// Creates `VkIndirectCommandsStreamNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectCommandsStreamNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsStreamNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsStreamNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkIndirectCommandsStreamNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsStreamNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkIndirectCommandsStreamNV` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsStreamNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
     /// @return the allocated `VkIndirectCommandsStreamNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsStreamNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkIndirectCommandsStreamNV`
-    public static VkIndirectCommandsStreamNV allocInit(SegmentAllocator allocator, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset) { return alloc(allocator).buffer(buffer).offset(offset); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment, long index) { return (MemorySegment) VH_buffer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
     /// {@return `buffer`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBuffer") MemorySegment get_buffer(MemorySegment segment) { return VkIndirectCommandsStreamNV.get_buffer(segment, 0L); }
-    /// {@return `buffer`}
-    public @CType("VkBuffer") MemorySegment buffer() { return VkIndirectCommandsStreamNV.get_buffer(this.segment()); }
+    public long buffer() { return buffer(this.segment(), 0L); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
-    /// Sets `buffer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsStreamNV buffer(@CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), value); return this; }
+    public VkIndirectCommandsStreamNV buffer(long value) { buffer(this.segment(), 0L, value); return this; }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
     /// {@return `offset`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkIndirectCommandsStreamNV.get_offset(segment, 0L); }
-    /// {@return `offset`}
-    public @CType("VkDeviceSize") long offset() { return VkIndirectCommandsStreamNV.get_offset(this.segment()); }
+    public long offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkIndirectCommandsStreamNV.set_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsStreamNV offset(@CType("VkDeviceSize") long value) { VkIndirectCommandsStreamNV.set_offset(this.segment(), value); return this; }
+    public VkIndirectCommandsStreamNV offset(long value) { offset(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkIndirectCommandsStreamNV].
     public static final class Buffer extends VkIndirectCommandsStreamNV {
@@ -171,22 +149,22 @@ public sealed class VkIndirectCommandsStreamNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `buffer` at the given index}
-        /// @param index the index
-        public @CType("VkBuffer") MemorySegment bufferAt(long index) { return VkIndirectCommandsStreamNV.get_buffer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long bufferAt(long index) { return buffer(this.segment(), index); }
         /// Sets `buffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferAt(long index, @CType("VkBuffer") MemorySegment value) { VkIndirectCommandsStreamNV.set_buffer(this.segment(), index, value); return this; }
+        public Buffer bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
 
         /// {@return `offset` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long offsetAt(long index) { return VkIndirectCommandsStreamNV.get_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long offsetAt(long index) { return offset(this.segment(), index); }
         /// Sets `offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer offsetAt(long index, @CType("VkDeviceSize") long value) { VkIndirectCommandsStreamNV.set_offset(this.segment(), index, value); return this; }
+        public Buffer offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
 
     }
 }

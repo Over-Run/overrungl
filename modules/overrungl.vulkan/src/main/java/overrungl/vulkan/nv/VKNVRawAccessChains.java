@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVRawAccessChains {
     public static final int VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;

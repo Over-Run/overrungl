@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ```
 /// struct NFDOpenDialogArgs {
 ///     const nfdnfilteritem_t* filterList;
-///     unsigned int filterCount;
+///     nfdfiltersize_t filterCount;
 ///     const nfdnchar_t* defaultPath;
-///     NFDWindowHandle parentWindow;
+///     nfdwindowhandle_t parentWindow;
 /// };
 /// ```
 public sealed class NFDOpenDialogArgs extends GroupType {

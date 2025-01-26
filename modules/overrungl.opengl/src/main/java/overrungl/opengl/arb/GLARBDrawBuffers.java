@@ -54,7 +54,7 @@ public final class GLARBDrawBuffers {
     }
 
     /// ```
-    /// void glDrawBuffersARB(int n, const GLenum* bufs);
+    /// void glDrawBuffersARB(GLsizei n, const GLenum* bufs);
     /// ```
     public void DrawBuffersARB(int n, MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");

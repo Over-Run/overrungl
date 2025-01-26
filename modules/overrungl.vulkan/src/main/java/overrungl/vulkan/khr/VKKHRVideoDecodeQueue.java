@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -54,19 +53,22 @@ public class VKKHRVideoDecodeQueue {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdDecodeVideoKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdDecodeVideoKHR = func.invoke(device, "vkCmdDecodeVideoKHR");
         }
     }
 
-    public VKKHRVideoDecodeQueue(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRVideoDecodeQueue(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdDecodeVideoKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkVideoDecodeInfoKHR *") MemorySegment pDecodeInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDecodeVideoKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
+    /// ```
+    /// void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, const VkVideoDecodeInfoKHR* pDecodeInfo);
+    /// ```
+    public void CmdDecodeVideoKHR(MemorySegment commandBuffer, MemorySegment pDecodeInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDecodeVideoKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
         try { Handles.MH_vkCmdDecodeVideoKHR.invokeExact(handles.PFN_vkCmdDecodeVideoKHR, commandBuffer, pDecodeInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDecodeVideoKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDecodeVideoKHR", e); }
     }
 
 }

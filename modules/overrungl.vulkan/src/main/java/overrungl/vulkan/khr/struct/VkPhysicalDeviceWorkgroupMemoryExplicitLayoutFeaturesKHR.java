@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### workgroupMemoryExplicitLayout
-/// [VarHandle][#VH_workgroupMemoryExplicitLayout] - [Getter][#workgroupMemoryExplicitLayout()] - [Setter][#workgroupMemoryExplicitLayout(int)]
-/// ### workgroupMemoryExplicitLayoutScalarBlockLayout
-/// [VarHandle][#VH_workgroupMemoryExplicitLayoutScalarBlockLayout] - [Getter][#workgroupMemoryExplicitLayoutScalarBlockLayout()] - [Setter][#workgroupMemoryExplicitLayoutScalarBlockLayout(int)]
-/// ### workgroupMemoryExplicitLayout8BitAccess
-/// [VarHandle][#VH_workgroupMemoryExplicitLayout8BitAccess] - [Getter][#workgroupMemoryExplicitLayout8BitAccess()] - [Setter][#workgroupMemoryExplicitLayout8BitAccess(int)]
-/// ### workgroupMemoryExplicitLayout16BitAccess
-/// [VarHandle][#VH_workgroupMemoryExplicitLayout16BitAccess] - [Getter][#workgroupMemoryExplicitLayout16BitAccess()] - [Setter][#workgroupMemoryExplicitLayout16BitAccess(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
+/// ```
+/// struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 workgroupMemoryExplicitLayout;
 ///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
 ///     VkBool32 workgroupMemoryExplicitLayout8BitAccess;
 ///     VkBool32 workgroupMemoryExplicitLayout16BitAccess;
-/// } VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR extends Struct {
+public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
         ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout8BitAccess"),
         ValueLayout.JAVA_INT.withName("workgroupMemoryExplicitLayout16BitAccess")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `workgroupMemoryExplicitLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `workgroupMemoryExplicitLayout`.
+    public static final long OFFSET_workgroupMemoryExplicitLayout = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout"));
+    /// The memory layout of `workgroupMemoryExplicitLayout`.
+    public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout"));
+    /// The [VarHandle] of `workgroupMemoryExplicitLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_workgroupMemoryExplicitLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout"));
-    /// The [VarHandle] of `workgroupMemoryExplicitLayoutScalarBlockLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `workgroupMemoryExplicitLayoutScalarBlockLayout`.
+    public static final long OFFSET_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
+    /// The memory layout of `workgroupMemoryExplicitLayoutScalarBlockLayout`.
+    public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
+    /// The [VarHandle] of `workgroupMemoryExplicitLayoutScalarBlockLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_workgroupMemoryExplicitLayoutScalarBlockLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayoutScalarBlockLayout"));
-    /// The [VarHandle] of `workgroupMemoryExplicitLayout8BitAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `workgroupMemoryExplicitLayout8BitAccess`.
+    public static final long OFFSET_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
+    /// The memory layout of `workgroupMemoryExplicitLayout8BitAccess`.
+    public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
+    /// The [VarHandle] of `workgroupMemoryExplicitLayout8BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_workgroupMemoryExplicitLayout8BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout8BitAccess"));
-    /// The [VarHandle] of `workgroupMemoryExplicitLayout16BitAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `workgroupMemoryExplicitLayout16BitAccess`.
+    public static final long OFFSET_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
+    /// The memory layout of `workgroupMemoryExplicitLayout16BitAccess`.
+    public static final MemoryLayout LAYOUT_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.select(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
+    /// The [VarHandle] of `workgroupMemoryExplicitLayout16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_workgroupMemoryExplicitLayout16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("workgroupMemoryExplicitLayout16BitAccess"));
 
     /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
     /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
     /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int workgroupMemoryExplicitLayout, @CType("VkBool32") int workgroupMemoryExplicitLayoutScalarBlockLayout, @CType("VkBool32") int workgroupMemoryExplicitLayout8BitAccess, @CType("VkBool32") int workgroupMemoryExplicitLayout16BitAccess) { return alloc(allocator).sType(sType).pNext(pNext).workgroupMemoryExplicitLayout(workgroupMemoryExplicitLayout).workgroupMemoryExplicitLayoutScalarBlockLayout(workgroupMemoryExplicitLayoutScalarBlockLayout).workgroupMemoryExplicitLayout8BitAccess(workgroupMemoryExplicitLayout8BitAccess).workgroupMemoryExplicitLayout16BitAccess(workgroupMemoryExplicitLayout16BitAccess); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `workgroupMemoryExplicitLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int workgroupMemoryExplicitLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout.get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout(segment, 0L); }
-    /// {@return `workgroupMemoryExplicitLayout`}
-    public @CType("VkBool32") int workgroupMemoryExplicitLayout() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout(this.segment()); }
+    public int workgroupMemoryExplicitLayout() { return workgroupMemoryExplicitLayout(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_workgroupMemoryExplicitLayout.set(segment, 0L, index, value); }
-    /// Sets `workgroupMemoryExplicitLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void workgroupMemoryExplicitLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout.set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout(@CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout(int value) { workgroupMemoryExplicitLayout(this.segment(), 0L, value); return this; }
 
     /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayoutScalarBlockLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayoutScalarBlockLayout.get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayoutScalarBlockLayout(segment, 0L); }
-    /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout`}
-    public @CType("VkBool32") int workgroupMemoryExplicitLayoutScalarBlockLayout() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment()); }
+    public int workgroupMemoryExplicitLayoutScalarBlockLayout() { return workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_workgroupMemoryExplicitLayoutScalarBlockLayout.set(segment, 0L, index, value); }
-    /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayoutScalarBlockLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void workgroupMemoryExplicitLayoutScalarBlockLayout(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayoutScalarBlockLayout.set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayoutScalarBlockLayout(@CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayoutScalarBlockLayout(int value) { workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), 0L, value); return this; }
 
     /// {@return `workgroupMemoryExplicitLayout8BitAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout8BitAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout8BitAccess.get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout8BitAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout8BitAccess(segment, 0L); }
-    /// {@return `workgroupMemoryExplicitLayout8BitAccess`}
-    public @CType("VkBool32") int workgroupMemoryExplicitLayout8BitAccess() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout8BitAccess(this.segment()); }
+    public int workgroupMemoryExplicitLayout8BitAccess() { return workgroupMemoryExplicitLayout8BitAccess(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_workgroupMemoryExplicitLayout8BitAccess.set(segment, 0L, index, value); }
-    /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout8BitAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void workgroupMemoryExplicitLayout8BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout8BitAccess.set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout8BitAccess(@CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout8BitAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout8BitAccess(int value) { workgroupMemoryExplicitLayout8BitAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `workgroupMemoryExplicitLayout16BitAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout16BitAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index) { return (int) VH_workgroupMemoryExplicitLayout16BitAccess.get(segment, 0L, index); }
     /// {@return `workgroupMemoryExplicitLayout16BitAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout16BitAccess(segment, 0L); }
-    /// {@return `workgroupMemoryExplicitLayout16BitAccess`}
-    public @CType("VkBool32") int workgroupMemoryExplicitLayout16BitAccess() { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout16BitAccess(this.segment()); }
+    public int workgroupMemoryExplicitLayout16BitAccess() { return workgroupMemoryExplicitLayout16BitAccess(this.segment(), 0L); }
     /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_workgroupMemoryExplicitLayout16BitAccess.set(segment, 0L, index, value); }
-    /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout16BitAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void workgroupMemoryExplicitLayout16BitAccess(MemorySegment segment, long index, int value) { VH_workgroupMemoryExplicitLayout16BitAccess.set(segment, 0L, index, value); }
     /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout16BitAccess(@CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout16BitAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR workgroupMemoryExplicitLayout16BitAccess(int value) { workgroupMemoryExplicitLayout16BitAccess(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR].
     public static final class Buffer extends VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR ext
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `workgroupMemoryExplicitLayout` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int workgroupMemoryExplicitLayoutAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int workgroupMemoryExplicitLayoutAt(long index) { return workgroupMemoryExplicitLayout(this.segment(), index); }
         /// Sets `workgroupMemoryExplicitLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer workgroupMemoryExplicitLayoutAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout(this.segment(), index, value); return this; }
+        public Buffer workgroupMemoryExplicitLayoutAt(long index, int value) { workgroupMemoryExplicitLayout(this.segment(), index, value); return this; }
 
         /// {@return `workgroupMemoryExplicitLayoutScalarBlockLayout` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int workgroupMemoryExplicitLayoutScalarBlockLayoutAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int workgroupMemoryExplicitLayoutScalarBlockLayoutAt(long index) { return workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), index); }
         /// Sets `workgroupMemoryExplicitLayoutScalarBlockLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer workgroupMemoryExplicitLayoutScalarBlockLayoutAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), index, value); return this; }
+        public Buffer workgroupMemoryExplicitLayoutScalarBlockLayoutAt(long index, int value) { workgroupMemoryExplicitLayoutScalarBlockLayout(this.segment(), index, value); return this; }
 
         /// {@return `workgroupMemoryExplicitLayout8BitAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int workgroupMemoryExplicitLayout8BitAccessAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout8BitAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int workgroupMemoryExplicitLayout8BitAccessAt(long index) { return workgroupMemoryExplicitLayout8BitAccess(this.segment(), index); }
         /// Sets `workgroupMemoryExplicitLayout8BitAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer workgroupMemoryExplicitLayout8BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout8BitAccess(this.segment(), index, value); return this; }
+        public Buffer workgroupMemoryExplicitLayout8BitAccessAt(long index, int value) { workgroupMemoryExplicitLayout8BitAccess(this.segment(), index, value); return this; }
 
         /// {@return `workgroupMemoryExplicitLayout16BitAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int workgroupMemoryExplicitLayout16BitAccessAt(long index) { return VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.get_workgroupMemoryExplicitLayout16BitAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int workgroupMemoryExplicitLayout16BitAccessAt(long index) { return workgroupMemoryExplicitLayout16BitAccess(this.segment(), index); }
         /// Sets `workgroupMemoryExplicitLayout16BitAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer workgroupMemoryExplicitLayout16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR.set_workgroupMemoryExplicitLayout16BitAccess(this.segment(), index, value); return this; }
+        public Buffer workgroupMemoryExplicitLayout16BitAccessAt(long index, int value) { workgroupMemoryExplicitLayout16BitAccess(this.segment(), index, value); return this; }
 
     }
 }

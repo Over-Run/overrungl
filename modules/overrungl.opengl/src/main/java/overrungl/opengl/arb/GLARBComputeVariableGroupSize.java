@@ -41,7 +41,7 @@ public final class GLARBComputeVariableGroupSize {
     }
 
     /// ```
-    /// void glDispatchComputeGroupSizeARB(unsigned int num_groups_x, unsigned int num_groups_y, unsigned int num_groups_z, unsigned int group_size_x, unsigned int group_size_y, unsigned int group_size_z);
+    /// void glDispatchComputeGroupSizeARB(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
     /// ```
     public void DispatchComputeGroupSizeARB(int num_groups_x, int num_groups_y, int num_groups_z, int group_size_x, int group_size_y, int group_size_z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeGroupSizeARB)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeGroupSizeARB");

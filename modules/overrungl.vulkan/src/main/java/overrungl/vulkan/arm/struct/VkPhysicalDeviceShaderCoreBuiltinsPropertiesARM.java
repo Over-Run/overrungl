@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.arm.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### shaderCoreMask
-/// [VarHandle][#VH_shaderCoreMask] - [Getter][#shaderCoreMask()] - [Setter][#shaderCoreMask(long)]
-/// ### shaderCoreCount
-/// [VarHandle][#VH_shaderCoreCount] - [Getter][#shaderCoreCount()] - [Setter][#shaderCoreCount(int)]
-/// ### shaderWarpsPerCore
-/// [VarHandle][#VH_shaderWarpsPerCore] - [Getter][#shaderWarpsPerCore()] - [Setter][#shaderWarpsPerCore(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
+/// ```
+/// struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     uint64_t shaderCoreMask;
 ///     uint32_t shaderCoreCount;
 ///     uint32_t shaderWarpsPerCore;
-/// } VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Struct {
+public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("shaderCoreMask"),
         ValueLayout.JAVA_INT.withName("shaderCoreCount"),
         ValueLayout.JAVA_INT.withName("shaderWarpsPerCore")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderCoreMask` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `shaderCoreMask`.
+    public static final long OFFSET_shaderCoreMask = LAYOUT.byteOffset(PathElement.groupElement("shaderCoreMask"));
+    /// The memory layout of `shaderCoreMask`.
+    public static final MemoryLayout LAYOUT_shaderCoreMask = LAYOUT.select(PathElement.groupElement("shaderCoreMask"));
+    /// The [VarHandle] of `shaderCoreMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderCoreMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreMask"));
-    /// The [VarHandle] of `shaderCoreCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderCoreCount`.
+    public static final long OFFSET_shaderCoreCount = LAYOUT.byteOffset(PathElement.groupElement("shaderCoreCount"));
+    /// The memory layout of `shaderCoreCount`.
+    public static final MemoryLayout LAYOUT_shaderCoreCount = LAYOUT.select(PathElement.groupElement("shaderCoreCount"));
+    /// The [VarHandle] of `shaderCoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderCoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreCount"));
-    /// The [VarHandle] of `shaderWarpsPerCore` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderWarpsPerCore`.
+    public static final long OFFSET_shaderWarpsPerCore = LAYOUT.byteOffset(PathElement.groupElement("shaderWarpsPerCore"));
+    /// The memory layout of `shaderWarpsPerCore`.
+    public static final MemoryLayout LAYOUT_shaderWarpsPerCore = LAYOUT.select(PathElement.groupElement("shaderWarpsPerCore"));
+    /// The [VarHandle] of `shaderWarpsPerCore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderWarpsPerCore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderWarpsPerCore"));
 
     /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Stru
     /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(segment); }
-
-    /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Stru
     /// @return the allocated `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`
-    public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint64_t") long shaderCoreMask, @CType("uint32_t") int shaderCoreCount, @CType("uint32_t") int shaderWarpsPerCore) { return alloc(allocator).sType(sType).pNext(pNext).shaderCoreMask(shaderCoreMask).shaderCoreCount(shaderCoreCount).shaderWarpsPerCore(shaderWarpsPerCore); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM sType(@CType("VkStructureType") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderCoreMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_shaderCoreMask(MemorySegment segment, long index) { return (long) VH_shaderCoreMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long shaderCoreMask(MemorySegment segment, long index) { return (long) VH_shaderCoreMask.get(segment, 0L, index); }
     /// {@return `shaderCoreMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_shaderCoreMask(MemorySegment segment) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreMask(segment, 0L); }
-    /// {@return `shaderCoreMask`}
-    public @CType("uint64_t") long shaderCoreMask() { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreMask(this.segment()); }
+    public long shaderCoreMask() { return shaderCoreMask(this.segment(), 0L); }
     /// Sets `shaderCoreMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderCoreMask(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_shaderCoreMask.set(segment, 0L, index, value); }
-    /// Sets `shaderCoreMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderCoreMask(MemorySegment segment, @CType("uint64_t") long value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderCoreMask(MemorySegment segment, long index, long value) { VH_shaderCoreMask.set(segment, 0L, index, value); }
     /// Sets `shaderCoreMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreMask(@CType("uint64_t") long value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreMask(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreMask(long value) { shaderCoreMask(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderCoreCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderCoreCount(MemorySegment segment, long index) { return (int) VH_shaderCoreCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderCoreCount(MemorySegment segment, long index) { return (int) VH_shaderCoreCount.get(segment, 0L, index); }
     /// {@return `shaderCoreCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderCoreCount(MemorySegment segment) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreCount(segment, 0L); }
-    /// {@return `shaderCoreCount`}
-    public @CType("uint32_t") int shaderCoreCount() { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreCount(this.segment()); }
+    public int shaderCoreCount() { return shaderCoreCount(this.segment(), 0L); }
     /// Sets `shaderCoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderCoreCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderCoreCount.set(segment, 0L, index, value); }
-    /// Sets `shaderCoreCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderCoreCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderCoreCount(MemorySegment segment, long index, int value) { VH_shaderCoreCount.set(segment, 0L, index, value); }
     /// Sets `shaderCoreCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreCount(@CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderCoreCount(int value) { shaderCoreCount(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderWarpsPerCore` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderWarpsPerCore(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerCore.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderWarpsPerCore(MemorySegment segment, long index) { return (int) VH_shaderWarpsPerCore.get(segment, 0L, index); }
     /// {@return `shaderWarpsPerCore`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderWarpsPerCore(MemorySegment segment) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderWarpsPerCore(segment, 0L); }
-    /// {@return `shaderWarpsPerCore`}
-    public @CType("uint32_t") int shaderWarpsPerCore() { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderWarpsPerCore(this.segment()); }
+    public int shaderWarpsPerCore() { return shaderWarpsPerCore(this.segment(), 0L); }
     /// Sets `shaderWarpsPerCore` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderWarpsPerCore(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderWarpsPerCore.set(segment, 0L, index, value); }
-    /// Sets `shaderWarpsPerCore` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderWarpsPerCore(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderWarpsPerCore(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderWarpsPerCore(MemorySegment segment, long index, int value) { VH_shaderWarpsPerCore.set(segment, 0L, index, value); }
     /// Sets `shaderWarpsPerCore` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderWarpsPerCore(@CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderWarpsPerCore(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM shaderWarpsPerCore(int value) { shaderWarpsPerCore(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM].
     public static final class Buffer extends VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderCoreMask` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long shaderCoreMaskAt(long index) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long shaderCoreMaskAt(long index) { return shaderCoreMask(this.segment(), index); }
         /// Sets `shaderCoreMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderCoreMaskAt(long index, @CType("uint64_t") long value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreMask(this.segment(), index, value); return this; }
+        public Buffer shaderCoreMaskAt(long index, long value) { shaderCoreMask(this.segment(), index, value); return this; }
 
         /// {@return `shaderCoreCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderCoreCountAt(long index) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderCoreCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderCoreCountAt(long index) { return shaderCoreCount(this.segment(), index); }
         /// Sets `shaderCoreCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderCoreCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderCoreCount(this.segment(), index, value); return this; }
+        public Buffer shaderCoreCountAt(long index, int value) { shaderCoreCount(this.segment(), index, value); return this; }
 
         /// {@return `shaderWarpsPerCore` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderWarpsPerCoreAt(long index) { return VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.get_shaderWarpsPerCore(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderWarpsPerCoreAt(long index) { return shaderWarpsPerCore(this.segment(), index); }
         /// Sets `shaderWarpsPerCore` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderWarpsPerCoreAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM.set_shaderWarpsPerCore(this.segment(), index, value); return this; }
+        public Buffer shaderWarpsPerCoreAt(long index, int value) { shaderWarpsPerCore(this.segment(), index, value); return this; }
 
     }
 }

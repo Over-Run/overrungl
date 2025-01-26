@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### imageUsage
-/// [VarHandle][#VH_imageUsage] - [Getter][#imageUsage()] - [Setter][#imageUsage(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceVideoFormatInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkImageUsageFlags imageUsage;
-/// } VkPhysicalDeviceVideoFormatInfoKHR;
 /// ```
-public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
+/// struct VkPhysicalDeviceVideoFormatInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkImageUsageFlags imageUsage;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVideoFormatInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("imageUsage")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `imageUsage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imageUsage`.
+    public static final long OFFSET_imageUsage = LAYOUT.byteOffset(PathElement.groupElement("imageUsage"));
+    /// The memory layout of `imageUsage`.
+    public static final MemoryLayout LAYOUT_imageUsage = LAYOUT.select(PathElement.groupElement("imageUsage"));
+    /// The [VarHandle] of `imageUsage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageUsage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageUsage"));
 
     /// Creates `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
     /// Creates `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVideoFormatInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVideoFormatInfoKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVideoFormatInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVideoFormatInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVideoFormatInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVideoFormatInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceVideoFormatInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVideoFormatInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceVideoFormatInfoKHR`
-    public static VkPhysicalDeviceVideoFormatInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageUsageFlags") int imageUsage) { return alloc(allocator).sType(sType).pNext(pNext).imageUsage(imageUsage); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVideoFormatInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVideoFormatInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVideoFormatInfoKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceVideoFormatInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVideoFormatInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPhysicalDeviceVideoFormatInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPhysicalDeviceVideoFormatInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVideoFormatInfoKHR pNext(@CType("const void *") MemorySegment value) { VkPhysicalDeviceVideoFormatInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVideoFormatInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `imageUsage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageUsageFlags") int get_imageUsage(MemorySegment segment, long index) { return (int) VH_imageUsage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imageUsage(MemorySegment segment, long index) { return (int) VH_imageUsage.get(segment, 0L, index); }
     /// {@return `imageUsage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageUsageFlags") int get_imageUsage(MemorySegment segment) { return VkPhysicalDeviceVideoFormatInfoKHR.get_imageUsage(segment, 0L); }
-    /// {@return `imageUsage`}
-    public @CType("VkImageUsageFlags") int imageUsage() { return VkPhysicalDeviceVideoFormatInfoKHR.get_imageUsage(this.segment()); }
+    public int imageUsage() { return imageUsage(this.segment(), 0L); }
     /// Sets `imageUsage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageUsage(MemorySegment segment, long index, @CType("VkImageUsageFlags") int value) { VH_imageUsage.set(segment, 0L, index, value); }
-    /// Sets `imageUsage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageUsage(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_imageUsage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageUsage(MemorySegment segment, long index, int value) { VH_imageUsage.set(segment, 0L, index, value); }
     /// Sets `imageUsage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(@CType("VkImageUsageFlags") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_imageUsage(this.segment(), value); return this; }
+    public VkPhysicalDeviceVideoFormatInfoKHR imageUsage(int value) { imageUsage(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceVideoFormatInfoKHR].
     public static final class Buffer extends VkPhysicalDeviceVideoFormatInfoKHR {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceVideoFormatInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVideoFormatInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceVideoFormatInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPhysicalDeviceVideoFormatInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageUsage` at the given index}
-        /// @param index the index
-        public @CType("VkImageUsageFlags") int imageUsageAt(long index) { return VkPhysicalDeviceVideoFormatInfoKHR.get_imageUsage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imageUsageAt(long index) { return imageUsage(this.segment(), index); }
         /// Sets `imageUsage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageUsageAt(long index, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceVideoFormatInfoKHR.set_imageUsage(this.segment(), index, value); return this; }
+        public Buffer imageUsageAt(long index, int value) { imageUsage(this.segment(), index, value); return this; }
 
     }
 }

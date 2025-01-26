@@ -40,7 +40,7 @@ public final class GLEXTWin32KeyedMutex {
     }
 
     /// ```
-    /// GLboolean glAcquireKeyedMutexWin32EXT(unsigned int memory, uint64_t key, unsigned int timeout);
+    /// GLboolean glAcquireKeyedMutexWin32EXT(GLuint memory, GLuint64 key, GLuint timeout);
     /// ```
     public boolean AcquireKeyedMutexWin32EXT(int memory, long key, int timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAcquireKeyedMutexWin32EXT)) throw new SymbolNotFoundError("Symbol not found: glAcquireKeyedMutexWin32EXT");
@@ -49,7 +49,7 @@ public final class GLEXTWin32KeyedMutex {
     }
 
     /// ```
-    /// GLboolean glReleaseKeyedMutexWin32EXT(unsigned int memory, uint64_t key);
+    /// GLboolean glReleaseKeyedMutexWin32EXT(GLuint memory, GLuint64 key);
     /// ```
     public boolean ReleaseKeyedMutexWin32EXT(int memory, long key) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReleaseKeyedMutexWin32EXT)) throw new SymbolNotFoundError("Symbol not found: glReleaseKeyedMutexWin32EXT");

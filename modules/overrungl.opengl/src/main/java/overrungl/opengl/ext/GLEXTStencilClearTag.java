@@ -39,7 +39,7 @@ public final class GLEXTStencilClearTag {
     }
 
     /// ```
-    /// void glStencilClearTagEXT(int stencilTagBits, unsigned int stencilClearTag);
+    /// void glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag);
     /// ```
     public void StencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new SymbolNotFoundError("Symbol not found: glStencilClearTagEXT");

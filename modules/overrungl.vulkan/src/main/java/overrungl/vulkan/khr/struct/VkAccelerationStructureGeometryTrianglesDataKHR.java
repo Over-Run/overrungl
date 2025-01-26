@@ -15,40 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### vertexFormat
-/// [VarHandle][#VH_vertexFormat] - [Getter][#vertexFormat()] - [Setter][#vertexFormat(int)]
-/// ### vertexData
-/// [Byte offset][#OFFSET_vertexData] - [Memory layout][#ML_vertexData] - [Getter][#vertexData()] - [Setter][#vertexData(MemorySegment)]
-/// ### vertexStride
-/// [VarHandle][#VH_vertexStride] - [Getter][#vertexStride()] - [Setter][#vertexStride(long)]
-/// ### maxVertex
-/// [VarHandle][#VH_maxVertex] - [Getter][#maxVertex()] - [Setter][#maxVertex(int)]
-/// ### indexType
-/// [VarHandle][#VH_indexType] - [Getter][#indexType()] - [Setter][#indexType(int)]
-/// ### indexData
-/// [Byte offset][#OFFSET_indexData] - [Memory layout][#ML_indexData] - [Getter][#indexData()] - [Setter][#indexData(MemorySegment)]
-/// ### transformData
-/// [Byte offset][#OFFSET_transformData] - [Memory layout][#ML_transformData] - [Getter][#transformData()] - [Setter][#transformData(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkAccelerationStructureGeometryTrianglesDataKHR {
+/// ```
+/// struct VkAccelerationStructureGeometryTrianglesDataKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkFormat vertexFormat;
 ///     VkDeviceOrHostAddressConstKHR vertexData;
 ///     VkDeviceSize vertexStride;
@@ -56,11 +36,11 @@ import overrungl.util.*;
 ///     VkIndexType indexType;
 ///     VkDeviceOrHostAddressConstKHR indexData;
 ///     VkDeviceOrHostAddressConstKHR transformData;
-/// } VkAccelerationStructureGeometryTrianglesDataKHR;
+/// };
 /// ```
-public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Struct {
+public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureGeometryTrianglesDataKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("vertexFormat"),
@@ -71,30 +51,54 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
         overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.LAYOUT.withName("indexData"),
         overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.LAYOUT.withName("transformData")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `vertexFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vertexFormat`.
+    public static final long OFFSET_vertexFormat = LAYOUT.byteOffset(PathElement.groupElement("vertexFormat"));
+    /// The memory layout of `vertexFormat`.
+    public static final MemoryLayout LAYOUT_vertexFormat = LAYOUT.select(PathElement.groupElement("vertexFormat"));
+    /// The [VarHandle] of `vertexFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertexFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexFormat"));
     /// The byte offset of `vertexData`.
     public static final long OFFSET_vertexData = LAYOUT.byteOffset(PathElement.groupElement("vertexData"));
     /// The memory layout of `vertexData`.
-    public static final MemoryLayout ML_vertexData = LAYOUT.select(PathElement.groupElement("vertexData"));
-    /// The [VarHandle] of `vertexStride` of type `(MemorySegment base, long baseOffset, long index)long`.
+    public static final MemoryLayout LAYOUT_vertexData = LAYOUT.select(PathElement.groupElement("vertexData"));
+    /// The byte offset of `vertexStride`.
+    public static final long OFFSET_vertexStride = LAYOUT.byteOffset(PathElement.groupElement("vertexStride"));
+    /// The memory layout of `vertexStride`.
+    public static final MemoryLayout LAYOUT_vertexStride = LAYOUT.select(PathElement.groupElement("vertexStride"));
+    /// The [VarHandle] of `vertexStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertexStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexStride"));
-    /// The [VarHandle] of `maxVertex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxVertex`.
+    public static final long OFFSET_maxVertex = LAYOUT.byteOffset(PathElement.groupElement("maxVertex"));
+    /// The memory layout of `maxVertex`.
+    public static final MemoryLayout LAYOUT_maxVertex = LAYOUT.select(PathElement.groupElement("maxVertex"));
+    /// The [VarHandle] of `maxVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxVertex"));
-    /// The [VarHandle] of `indexType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `indexType`.
+    public static final long OFFSET_indexType = LAYOUT.byteOffset(PathElement.groupElement("indexType"));
+    /// The memory layout of `indexType`.
+    public static final MemoryLayout LAYOUT_indexType = LAYOUT.select(PathElement.groupElement("indexType"));
+    /// The [VarHandle] of `indexType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
     /// The byte offset of `indexData`.
     public static final long OFFSET_indexData = LAYOUT.byteOffset(PathElement.groupElement("indexData"));
     /// The memory layout of `indexData`.
-    public static final MemoryLayout ML_indexData = LAYOUT.select(PathElement.groupElement("indexData"));
+    public static final MemoryLayout LAYOUT_indexData = LAYOUT.select(PathElement.groupElement("indexData"));
     /// The byte offset of `transformData`.
     public static final long OFFSET_transformData = LAYOUT.byteOffset(PathElement.groupElement("transformData"));
     /// The memory layout of `transformData`.
-    public static final MemoryLayout ML_transformData = LAYOUT.select(PathElement.groupElement("transformData"));
+    public static final MemoryLayout LAYOUT_transformData = LAYOUT.select(PathElement.groupElement("transformData"));
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     /// @param segment the memory segment
@@ -103,19 +107,14 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryTrianglesDataKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment); }
-
-    /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryTrianglesDataKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     ///
@@ -123,7 +122,7 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -136,11 +135,6 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
     /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
-    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkFormat") int vertexFormat, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment vertexData, @CType("VkDeviceSize") long vertexStride, @CType("uint32_t") int maxVertex, @CType("VkIndexType") int indexType, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexData, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment transformData) { return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride).maxVertex(maxVertex).indexType(indexType).indexData(indexData).transformData(transformData); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -148,214 +142,151 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR sType(@CType("VkStructureType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_sType(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR pNext(@CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexFormat` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vertexFormat(MemorySegment segment, long index) { return (int) VH_vertexFormat.get(segment, 0L, index); }
     /// {@return `vertexFormat`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_vertexFormat(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexFormat(segment, 0L); }
-    /// {@return `vertexFormat`}
-    public @CType("VkFormat") int vertexFormat() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexFormat(this.segment()); }
+    public int vertexFormat() { return vertexFormat(this.segment(), 0L); }
     /// Sets `vertexFormat` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexFormat(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_vertexFormat.set(segment, 0L, index, value); }
-    /// Sets `vertexFormat` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexFormat(MemorySegment segment, @CType("VkFormat") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexFormat(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexFormat(MemorySegment segment, long index, int value) { VH_vertexFormat.set(segment, 0L, index, value); }
     /// Sets `vertexFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormat(@CType("VkFormat") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexFormat(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormat(int value) { vertexFormat(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_vertexData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_vertexData, index), ML_vertexData); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment vertexData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_vertexData, index), LAYOUT_vertexData); }
     /// {@return `vertexData`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_vertexData(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexData(segment, 0L); }
-    /// {@return `vertexData`}
-    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment vertexData() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexData(this.segment()); }
+    public MemorySegment vertexData() { return vertexData(this.segment(), 0L); }
     /// Sets `vertexData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexData(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_vertexData, index), ML_vertexData.byteSize()); }
-    /// Sets `vertexData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexData(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexData(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_vertexData, index), LAYOUT_vertexData.byteSize()); }
     /// Sets `vertexData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexData(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(MemorySegment value) { vertexData(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexStride` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_vertexStride(MemorySegment segment, long index) { return (long) VH_vertexStride.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long vertexStride(MemorySegment segment, long index) { return (long) VH_vertexStride.get(segment, 0L, index); }
     /// {@return `vertexStride`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_vertexStride(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexStride(segment, 0L); }
-    /// {@return `vertexStride`}
-    public @CType("VkDeviceSize") long vertexStride() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexStride(this.segment()); }
+    public long vertexStride() { return vertexStride(this.segment(), 0L); }
     /// Sets `vertexStride` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexStride(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_vertexStride.set(segment, 0L, index, value); }
-    /// Sets `vertexStride` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexStride(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexStride(MemorySegment segment, long index, long value) { VH_vertexStride.set(segment, 0L, index, value); }
     /// Sets `vertexStride` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR vertexStride(@CType("VkDeviceSize") long value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexStride(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexStride(long value) { vertexStride(this.segment(), 0L, value); return this; }
 
     /// {@return `maxVertex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxVertex(MemorySegment segment, long index) { return (int) VH_maxVertex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxVertex(MemorySegment segment, long index) { return (int) VH_maxVertex.get(segment, 0L, index); }
     /// {@return `maxVertex`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxVertex(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_maxVertex(segment, 0L); }
-    /// {@return `maxVertex`}
-    public @CType("uint32_t") int maxVertex() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_maxVertex(this.segment()); }
+    public int maxVertex() { return maxVertex(this.segment(), 0L); }
     /// Sets `maxVertex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxVertex(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxVertex.set(segment, 0L, index, value); }
-    /// Sets `maxVertex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxVertex(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_maxVertex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxVertex(MemorySegment segment, long index, int value) { VH_maxVertex.set(segment, 0L, index, value); }
     /// Sets `maxVertex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR maxVertex(@CType("uint32_t") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_maxVertex(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR maxVertex(int value) { maxVertex(this.segment(), 0L, value); return this; }
 
     /// {@return `indexType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkIndexType") int get_indexType(MemorySegment segment, long index) { return (int) VH_indexType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int indexType(MemorySegment segment, long index) { return (int) VH_indexType.get(segment, 0L, index); }
     /// {@return `indexType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkIndexType") int get_indexType(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexType(segment, 0L); }
-    /// {@return `indexType`}
-    public @CType("VkIndexType") int indexType() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexType(this.segment()); }
+    public int indexType() { return indexType(this.segment(), 0L); }
     /// Sets `indexType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_indexType(MemorySegment segment, long index, @CType("VkIndexType") int value) { VH_indexType.set(segment, 0L, index, value); }
-    /// Sets `indexType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_indexType(MemorySegment segment, @CType("VkIndexType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void indexType(MemorySegment segment, long index, int value) { VH_indexType.set(segment, 0L, index, value); }
     /// Sets `indexType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR indexType(@CType("VkIndexType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexType(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexType(int value) { indexType(this.segment(), 0L, value); return this; }
 
     /// {@return `indexData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_indexData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_indexData, index), ML_indexData); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment indexData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_indexData, index), LAYOUT_indexData); }
     /// {@return `indexData`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_indexData(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexData(segment, 0L); }
-    /// {@return `indexData`}
-    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexData() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexData(this.segment()); }
+    public MemorySegment indexData() { return indexData(this.segment(), 0L); }
     /// Sets `indexData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_indexData(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_indexData, index), ML_indexData.byteSize()); }
-    /// Sets `indexData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_indexData(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void indexData(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_indexData, index), LAYOUT_indexData.byteSize()); }
     /// Sets `indexData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR indexData(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexData(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexData(MemorySegment value) { indexData(this.segment(), 0L, value); return this; }
 
     /// {@return `transformData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_transformData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_transformData, index), ML_transformData); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment transformData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_transformData, index), LAYOUT_transformData); }
     /// {@return `transformData`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") MemorySegment get_transformData(MemorySegment segment) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_transformData(segment, 0L); }
-    /// {@return `transformData`}
-    public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment transformData() { return VkAccelerationStructureGeometryTrianglesDataKHR.get_transformData(this.segment()); }
+    public MemorySegment transformData() { return transformData(this.segment(), 0L); }
     /// Sets `transformData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_transformData(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_transformData, index), ML_transformData.byteSize()); }
-    /// Sets `transformData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_transformData(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_transformData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void transformData(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_transformData, index), LAYOUT_transformData.byteSize()); }
     /// Sets `transformData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureGeometryTrianglesDataKHR transformData(@CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_transformData(this.segment(), value); return this; }
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformData(MemorySegment value) { transformData(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAccelerationStructureGeometryTrianglesDataKHR].
     public static final class Buffer extends VkAccelerationStructureGeometryTrianglesDataKHR {
@@ -380,85 +311,85 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `vertexFormat` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int vertexFormatAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexFormat(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
         /// Sets `vertexFormat` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexFormatAt(long index, @CType("VkFormat") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexFormat(this.segment(), index, value); return this; }
+        public Buffer vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
 
         /// {@return `vertexData` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment vertexDataAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment vertexDataAt(long index) { return vertexData(this.segment(), index); }
         /// Sets `vertexData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexDataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexData(this.segment(), index, value); return this; }
+        public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
 
         /// {@return `vertexStride` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long vertexStrideAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_vertexStride(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
         /// Sets `vertexStride` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexStrideAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_vertexStride(this.segment(), index, value); return this; }
+        public Buffer vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
 
         /// {@return `maxVertex` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxVertexAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_maxVertex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxVertexAt(long index) { return maxVertex(this.segment(), index); }
         /// Sets `maxVertex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxVertexAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_maxVertex(this.segment(), index, value); return this; }
+        public Buffer maxVertexAt(long index, int value) { maxVertex(this.segment(), index, value); return this; }
 
         /// {@return `indexType` at the given index}
-        /// @param index the index
-        public @CType("VkIndexType") int indexTypeAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
         /// Sets `indexType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer indexTypeAt(long index, @CType("VkIndexType") int value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexType(this.segment(), index, value); return this; }
+        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
         /// {@return `indexData` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment indexDataAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_indexData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment indexDataAt(long index) { return indexData(this.segment(), index); }
         /// Sets `indexData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer indexDataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_indexData(this.segment(), index, value); return this; }
+        public Buffer indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
 
         /// {@return `transformData` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") MemorySegment transformDataAt(long index) { return VkAccelerationStructureGeometryTrianglesDataKHR.get_transformData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment transformDataAt(long index) { return transformData(this.segment(), index); }
         /// Sets `transformData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer transformDataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") MemorySegment value) { VkAccelerationStructureGeometryTrianglesDataKHR.set_transformData(this.segment(), index, value); return this; }
+        public Buffer transformDataAt(long index, MemorySegment value) { transformData(this.segment(), index, value); return this; }
 
     }
 }

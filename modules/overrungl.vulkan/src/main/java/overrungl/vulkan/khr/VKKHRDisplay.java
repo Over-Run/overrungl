@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -38,9 +37,9 @@ public class VKKHRDisplay {
         public static final MethodHandle MH_vkGetPhysicalDeviceDisplayPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceDisplayPlanePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDisplayPlaneSupportedDisplaysKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDisplayModePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCreateDisplayModeKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDisplayPlaneCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDisplayModePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateDisplayModeKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDisplayPlaneCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreateDisplayPlaneSurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceDisplayPropertiesKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR;
@@ -49,7 +48,7 @@ public class VKKHRDisplay {
         public final MemorySegment PFN_vkCreateDisplayModeKHR;
         public final MemorySegment PFN_vkGetDisplayPlaneCapabilitiesKHR;
         public final MemorySegment PFN_vkCreateDisplayPlaneSurfaceKHR;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceDisplayPropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceDisplayPropertiesKHR");
             PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
             PFN_vkGetDisplayPlaneSupportedDisplaysKHR = func.invoke(instance, "vkGetDisplayPlaneSupportedDisplaysKHR");
@@ -60,50 +59,71 @@ public class VKKHRDisplay {
         }
     }
 
-    public VKKHRDisplay(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKKHRDisplay(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceDisplayPropertiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkDisplayPropertiesKHR *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceDisplayPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDisplayPropertiesKHR");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayPropertiesKHR* pProperties);
+    /// ```
+    public int GetPhysicalDeviceDisplayPropertiesKHR(MemorySegment physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceDisplayPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDisplayPropertiesKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceDisplayPropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceDisplayPropertiesKHR, physicalDevice, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceDisplayPropertiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceDisplayPropertiesKHR", e); }
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceDisplayPlanePropertiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkDisplayPlanePropertiesKHR *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayPlanePropertiesKHR* pProperties);
+    /// ```
+    public int GetPhysicalDeviceDisplayPlanePropertiesKHR(MemorySegment physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceDisplayPlanePropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR, physicalDevice, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceDisplayPlanePropertiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceDisplayPlanePropertiesKHR", e); }
     }
 
-    public @CType("VkResult") int GetDisplayPlaneSupportedDisplaysKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t") int planeIndex, @CType("uint32_t *") MemorySegment pDisplayCount, @CType("VkDisplayKHR *") MemorySegment pDisplays) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDisplayPlaneSupportedDisplaysKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayPlaneSupportedDisplaysKHR");
+    /// ```
+    /// VkResult vkGetDisplayPlaneSupportedDisplaysKHR(VkPhysicalDevice physicalDevice, uint32_t planeIndex, uint32_t* pDisplayCount, VkDisplayKHR* pDisplays);
+    /// ```
+    public int GetDisplayPlaneSupportedDisplaysKHR(MemorySegment physicalDevice, int planeIndex, MemorySegment pDisplayCount, MemorySegment pDisplays) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDisplayPlaneSupportedDisplaysKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayPlaneSupportedDisplaysKHR");
         try { return (int) Handles.MH_vkGetDisplayPlaneSupportedDisplaysKHR.invokeExact(handles.PFN_vkGetDisplayPlaneSupportedDisplaysKHR, physicalDevice, planeIndex, pDisplayCount, pDisplays); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDisplayPlaneSupportedDisplaysKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDisplayPlaneSupportedDisplaysKHR", e); }
     }
 
-    public @CType("VkResult") int GetDisplayModePropertiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkDisplayKHR") MemorySegment display, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkDisplayModePropertiesKHR *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDisplayModePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayModePropertiesKHR");
+    /// ```
+    /// VkResult vkGetDisplayModePropertiesKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint32_t* pPropertyCount, VkDisplayModePropertiesKHR* pProperties);
+    /// ```
+    public int GetDisplayModePropertiesKHR(MemorySegment physicalDevice, long display, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDisplayModePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayModePropertiesKHR");
         try { return (int) Handles.MH_vkGetDisplayModePropertiesKHR.invokeExact(handles.PFN_vkGetDisplayModePropertiesKHR, physicalDevice, display, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDisplayModePropertiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDisplayModePropertiesKHR", e); }
     }
 
-    public @CType("VkResult") int CreateDisplayModeKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkDisplayKHR") MemorySegment display, @CType("const VkDisplayModeCreateInfoKHR *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkDisplayModeKHR *") MemorySegment pMode) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDisplayModeKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDisplayModeKHR");
+    /// ```
+    /// VkResult vkCreateDisplayModeKHR(VkPhysicalDevice physicalDevice, VkDisplayKHR display, const VkDisplayModeCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDisplayModeKHR* pMode);
+    /// ```
+    public int CreateDisplayModeKHR(MemorySegment physicalDevice, long display, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pMode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateDisplayModeKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDisplayModeKHR");
         try { return (int) Handles.MH_vkCreateDisplayModeKHR.invokeExact(handles.PFN_vkCreateDisplayModeKHR, physicalDevice, display, pCreateInfo, pAllocator, pMode); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateDisplayModeKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateDisplayModeKHR", e); }
     }
 
-    public @CType("VkResult") int GetDisplayPlaneCapabilitiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkDisplayModeKHR") MemorySegment mode, @CType("uint32_t") int planeIndex, @CType("VkDisplayPlaneCapabilitiesKHR *") MemorySegment pCapabilities) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDisplayPlaneCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayPlaneCapabilitiesKHR");
+    /// ```
+    /// VkResult vkGetDisplayPlaneCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint32_t planeIndex, VkDisplayPlaneCapabilitiesKHR* pCapabilities);
+    /// ```
+    public int GetDisplayPlaneCapabilitiesKHR(MemorySegment physicalDevice, long mode, int planeIndex, MemorySegment pCapabilities) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDisplayPlaneCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDisplayPlaneCapabilitiesKHR");
         try { return (int) Handles.MH_vkGetDisplayPlaneCapabilitiesKHR.invokeExact(handles.PFN_vkGetDisplayPlaneCapabilitiesKHR, physicalDevice, mode, planeIndex, pCapabilities); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDisplayPlaneCapabilitiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDisplayPlaneCapabilitiesKHR", e); }
     }
 
-    public @CType("VkResult") int CreateDisplayPlaneSurfaceKHR(@CType("VkInstance") MemorySegment instance, @CType("const VkDisplaySurfaceCreateInfoKHR *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDisplayPlaneSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDisplayPlaneSurfaceKHR");
+    /// ```
+    /// VkResult vkCreateDisplayPlaneSurfaceKHR(VkInstance instance, const VkDisplaySurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateDisplayPlaneSurfaceKHR(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateDisplayPlaneSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDisplayPlaneSurfaceKHR");
         try { return (int) Handles.MH_vkCreateDisplayPlaneSurfaceKHR.invokeExact(handles.PFN_vkCreateDisplayPlaneSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateDisplayPlaneSurfaceKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateDisplayPlaneSurfaceKHR", e); }
     }
 
 }

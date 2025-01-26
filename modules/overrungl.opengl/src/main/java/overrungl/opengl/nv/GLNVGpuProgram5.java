@@ -48,7 +48,7 @@ public final class GLNVGpuProgram5 {
     }
 
     /// ```
-    /// void glProgramSubroutineParametersuivNV(unsigned int target, int count, const GLuint* params);
+    /// void glProgramSubroutineParametersuivNV(GLenum target, GLsizei count, const GLuint* params);
     /// ```
     public void ProgramSubroutineParametersuivNV(int target, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
@@ -57,7 +57,7 @@ public final class GLNVGpuProgram5 {
     }
 
     /// ```
-    /// void glGetProgramSubroutineParameteruivNV(unsigned int target, unsigned int index, GLuint* param);
+    /// void glGetProgramSubroutineParameteruivNV(GLenum target, GLuint index, GLuint* param);
     /// ```
     public void GetProgramSubroutineParameteruivNV(int target, int index, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");

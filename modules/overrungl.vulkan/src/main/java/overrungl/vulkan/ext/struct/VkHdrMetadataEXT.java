@@ -15,42 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### displayPrimaryRed
-/// [Byte offset][#OFFSET_displayPrimaryRed] - [Memory layout][#ML_displayPrimaryRed] - [Getter][#displayPrimaryRed()] - [Setter][#displayPrimaryRed(MemorySegment)]
-/// ### displayPrimaryGreen
-/// [Byte offset][#OFFSET_displayPrimaryGreen] - [Memory layout][#ML_displayPrimaryGreen] - [Getter][#displayPrimaryGreen()] - [Setter][#displayPrimaryGreen(MemorySegment)]
-/// ### displayPrimaryBlue
-/// [Byte offset][#OFFSET_displayPrimaryBlue] - [Memory layout][#ML_displayPrimaryBlue] - [Getter][#displayPrimaryBlue()] - [Setter][#displayPrimaryBlue(MemorySegment)]
-/// ### whitePoint
-/// [Byte offset][#OFFSET_whitePoint] - [Memory layout][#ML_whitePoint] - [Getter][#whitePoint()] - [Setter][#whitePoint(MemorySegment)]
-/// ### maxLuminance
-/// [VarHandle][#VH_maxLuminance] - [Getter][#maxLuminance()] - [Setter][#maxLuminance(float)]
-/// ### minLuminance
-/// [VarHandle][#VH_minLuminance] - [Getter][#minLuminance()] - [Setter][#minLuminance(float)]
-/// ### maxContentLightLevel
-/// [VarHandle][#VH_maxContentLightLevel] - [Getter][#maxContentLightLevel()] - [Setter][#maxContentLightLevel(float)]
-/// ### maxFrameAverageLightLevel
-/// [VarHandle][#VH_maxFrameAverageLightLevel] - [Getter][#maxFrameAverageLightLevel()] - [Setter][#maxFrameAverageLightLevel(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkHdrMetadataEXT {
+/// ```
+/// struct VkHdrMetadataEXT {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkXYColorEXT displayPrimaryRed;
 ///     VkXYColorEXT displayPrimaryGreen;
 ///     VkXYColorEXT displayPrimaryBlue;
@@ -59,11 +37,11 @@ import overrungl.util.*;
 ///     float minLuminance;
 ///     float maxContentLightLevel;
 ///     float maxFrameAverageLightLevel;
-/// } VkHdrMetadataEXT;
+/// };
 /// ```
-public sealed class VkHdrMetadataEXT extends Struct {
+public sealed class VkHdrMetadataEXT extends GroupType {
     /// The struct layout of `VkHdrMetadataEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.ext.struct.VkXYColorEXT.LAYOUT.withName("displayPrimaryRed"),
@@ -75,33 +53,57 @@ public sealed class VkHdrMetadataEXT extends Struct {
         ValueLayout.JAVA_FLOAT.withName("maxContentLightLevel"),
         ValueLayout.JAVA_FLOAT.withName("maxFrameAverageLightLevel")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `displayPrimaryRed`.
     public static final long OFFSET_displayPrimaryRed = LAYOUT.byteOffset(PathElement.groupElement("displayPrimaryRed"));
     /// The memory layout of `displayPrimaryRed`.
-    public static final MemoryLayout ML_displayPrimaryRed = LAYOUT.select(PathElement.groupElement("displayPrimaryRed"));
+    public static final MemoryLayout LAYOUT_displayPrimaryRed = LAYOUT.select(PathElement.groupElement("displayPrimaryRed"));
     /// The byte offset of `displayPrimaryGreen`.
     public static final long OFFSET_displayPrimaryGreen = LAYOUT.byteOffset(PathElement.groupElement("displayPrimaryGreen"));
     /// The memory layout of `displayPrimaryGreen`.
-    public static final MemoryLayout ML_displayPrimaryGreen = LAYOUT.select(PathElement.groupElement("displayPrimaryGreen"));
+    public static final MemoryLayout LAYOUT_displayPrimaryGreen = LAYOUT.select(PathElement.groupElement("displayPrimaryGreen"));
     /// The byte offset of `displayPrimaryBlue`.
     public static final long OFFSET_displayPrimaryBlue = LAYOUT.byteOffset(PathElement.groupElement("displayPrimaryBlue"));
     /// The memory layout of `displayPrimaryBlue`.
-    public static final MemoryLayout ML_displayPrimaryBlue = LAYOUT.select(PathElement.groupElement("displayPrimaryBlue"));
+    public static final MemoryLayout LAYOUT_displayPrimaryBlue = LAYOUT.select(PathElement.groupElement("displayPrimaryBlue"));
     /// The byte offset of `whitePoint`.
     public static final long OFFSET_whitePoint = LAYOUT.byteOffset(PathElement.groupElement("whitePoint"));
     /// The memory layout of `whitePoint`.
-    public static final MemoryLayout ML_whitePoint = LAYOUT.select(PathElement.groupElement("whitePoint"));
-    /// The [VarHandle] of `maxLuminance` of type `(MemorySegment base, long baseOffset, long index)float`.
+    public static final MemoryLayout LAYOUT_whitePoint = LAYOUT.select(PathElement.groupElement("whitePoint"));
+    /// The byte offset of `maxLuminance`.
+    public static final long OFFSET_maxLuminance = LAYOUT.byteOffset(PathElement.groupElement("maxLuminance"));
+    /// The memory layout of `maxLuminance`.
+    public static final MemoryLayout LAYOUT_maxLuminance = LAYOUT.select(PathElement.groupElement("maxLuminance"));
+    /// The [VarHandle] of `maxLuminance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxLuminance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLuminance"));
-    /// The [VarHandle] of `minLuminance` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `minLuminance`.
+    public static final long OFFSET_minLuminance = LAYOUT.byteOffset(PathElement.groupElement("minLuminance"));
+    /// The memory layout of `minLuminance`.
+    public static final MemoryLayout LAYOUT_minLuminance = LAYOUT.select(PathElement.groupElement("minLuminance"));
+    /// The [VarHandle] of `minLuminance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minLuminance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minLuminance"));
-    /// The [VarHandle] of `maxContentLightLevel` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `maxContentLightLevel`.
+    public static final long OFFSET_maxContentLightLevel = LAYOUT.byteOffset(PathElement.groupElement("maxContentLightLevel"));
+    /// The memory layout of `maxContentLightLevel`.
+    public static final MemoryLayout LAYOUT_maxContentLightLevel = LAYOUT.select(PathElement.groupElement("maxContentLightLevel"));
+    /// The [VarHandle] of `maxContentLightLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxContentLightLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxContentLightLevel"));
-    /// The [VarHandle] of `maxFrameAverageLightLevel` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `maxFrameAverageLightLevel`.
+    public static final long OFFSET_maxFrameAverageLightLevel = LAYOUT.byteOffset(PathElement.groupElement("maxFrameAverageLightLevel"));
+    /// The memory layout of `maxFrameAverageLightLevel`.
+    public static final MemoryLayout LAYOUT_maxFrameAverageLightLevel = LAYOUT.select(PathElement.groupElement("maxFrameAverageLightLevel"));
+    /// The [VarHandle] of `maxFrameAverageLightLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxFrameAverageLightLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameAverageLightLevel"));
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
@@ -111,19 +113,14 @@ public sealed class VkHdrMetadataEXT extends Struct {
     /// Creates `VkHdrMetadataEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkHdrMetadataEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment); }
-
-    /// Creates `VkHdrMetadataEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkHdrMetadataEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkHdrMetadataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     ///
@@ -131,7 +128,7 @@ public sealed class VkHdrMetadataEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkHdrMetadataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -144,11 +141,6 @@ public sealed class VkHdrMetadataEXT extends Struct {
     /// @return the allocated `VkHdrMetadataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkHdrMetadataEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkHdrMetadataEXT`
-    public static VkHdrMetadataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkXYColorEXT") MemorySegment displayPrimaryRed, @CType("VkXYColorEXT") MemorySegment displayPrimaryGreen, @CType("VkXYColorEXT") MemorySegment displayPrimaryBlue, @CType("VkXYColorEXT") MemorySegment whitePoint, @CType("float") float maxLuminance, @CType("float") float minLuminance, @CType("float") float maxContentLightLevel, @CType("float") float maxFrameAverageLightLevel) { return alloc(allocator).sType(sType).pNext(pNext).displayPrimaryRed(displayPrimaryRed).displayPrimaryGreen(displayPrimaryGreen).displayPrimaryBlue(displayPrimaryBlue).whitePoint(whitePoint).maxLuminance(maxLuminance).minLuminance(minLuminance).maxContentLightLevel(maxContentLightLevel).maxFrameAverageLightLevel(maxFrameAverageLightLevel); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -156,237 +148,167 @@ public sealed class VkHdrMetadataEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkHdrMetadataEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkHdrMetadataEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkHdrMetadataEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT sType(@CType("VkStructureType") int value) { VkHdrMetadataEXT.set_sType(this.segment(), value); return this; }
+    public VkHdrMetadataEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkHdrMetadataEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkHdrMetadataEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT pNext(@CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), value); return this; }
+    public VkHdrMetadataEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `displayPrimaryRed` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryRed(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment displayPrimaryRed(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryRed, index), LAYOUT_displayPrimaryRed); }
     /// {@return `displayPrimaryRed`}
-    /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryRed(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryRed(segment, 0L); }
-    /// {@return `displayPrimaryRed`}
-    public @CType("VkXYColorEXT") MemorySegment displayPrimaryRed() { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment()); }
+    public MemorySegment displayPrimaryRed() { return displayPrimaryRed(this.segment(), 0L); }
     /// Sets `displayPrimaryRed` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_displayPrimaryRed(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryRed, index), ML_displayPrimaryRed.byteSize()); }
-    /// Sets `displayPrimaryRed` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_displayPrimaryRed(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void displayPrimaryRed(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryRed, index), LAYOUT_displayPrimaryRed.byteSize()); }
     /// Sets `displayPrimaryRed` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryRed(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryRed(MemorySegment value) { displayPrimaryRed(this.segment(), 0L, value); return this; }
 
     /// {@return `displayPrimaryGreen` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryGreen(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment displayPrimaryGreen(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryGreen, index), LAYOUT_displayPrimaryGreen); }
     /// {@return `displayPrimaryGreen`}
-    /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryGreen(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryGreen(segment, 0L); }
-    /// {@return `displayPrimaryGreen`}
-    public @CType("VkXYColorEXT") MemorySegment displayPrimaryGreen() { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment()); }
+    public MemorySegment displayPrimaryGreen() { return displayPrimaryGreen(this.segment(), 0L); }
     /// Sets `displayPrimaryGreen` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_displayPrimaryGreen(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryGreen, index), ML_displayPrimaryGreen.byteSize()); }
-    /// Sets `displayPrimaryGreen` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_displayPrimaryGreen(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void displayPrimaryGreen(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryGreen, index), LAYOUT_displayPrimaryGreen.byteSize()); }
     /// Sets `displayPrimaryGreen` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryGreen(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryGreen(MemorySegment value) { displayPrimaryGreen(this.segment(), 0L, value); return this; }
 
     /// {@return `displayPrimaryBlue` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryBlue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment displayPrimaryBlue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPrimaryBlue, index), LAYOUT_displayPrimaryBlue); }
     /// {@return `displayPrimaryBlue`}
-    /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") MemorySegment get_displayPrimaryBlue(MemorySegment segment) { return VkHdrMetadataEXT.get_displayPrimaryBlue(segment, 0L); }
-    /// {@return `displayPrimaryBlue`}
-    public @CType("VkXYColorEXT") MemorySegment displayPrimaryBlue() { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment()); }
+    public MemorySegment displayPrimaryBlue() { return displayPrimaryBlue(this.segment(), 0L); }
     /// Sets `displayPrimaryBlue` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_displayPrimaryBlue(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryBlue, index), ML_displayPrimaryBlue.byteSize()); }
-    /// Sets `displayPrimaryBlue` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_displayPrimaryBlue(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void displayPrimaryBlue(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPrimaryBlue, index), LAYOUT_displayPrimaryBlue.byteSize()); }
     /// Sets `displayPrimaryBlue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT displayPrimaryBlue(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), value); return this; }
+    public VkHdrMetadataEXT displayPrimaryBlue(MemorySegment value) { displayPrimaryBlue(this.segment(), 0L, value); return this; }
 
     /// {@return `whitePoint` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkXYColorEXT") MemorySegment get_whitePoint(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment whitePoint(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_whitePoint, index), LAYOUT_whitePoint); }
     /// {@return `whitePoint`}
-    /// @param segment the segment of the struct
-    public static @CType("VkXYColorEXT") MemorySegment get_whitePoint(MemorySegment segment) { return VkHdrMetadataEXT.get_whitePoint(segment, 0L); }
-    /// {@return `whitePoint`}
-    public @CType("VkXYColorEXT") MemorySegment whitePoint() { return VkHdrMetadataEXT.get_whitePoint(this.segment()); }
+    public MemorySegment whitePoint() { return whitePoint(this.segment(), 0L); }
     /// Sets `whitePoint` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_whitePoint(MemorySegment segment, long index, @CType("VkXYColorEXT") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_whitePoint, index), ML_whitePoint.byteSize()); }
-    /// Sets `whitePoint` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_whitePoint(MemorySegment segment, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void whitePoint(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_whitePoint, index), LAYOUT_whitePoint.byteSize()); }
     /// Sets `whitePoint` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT whitePoint(@CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), value); return this; }
+    public VkHdrMetadataEXT whitePoint(MemorySegment value) { whitePoint(this.segment(), 0L, value); return this; }
 
     /// {@return `maxLuminance` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_maxLuminance(MemorySegment segment, long index) { return (float) VH_maxLuminance.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float maxLuminance(MemorySegment segment, long index) { return (float) VH_maxLuminance.get(segment, 0L, index); }
     /// {@return `maxLuminance`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_maxLuminance(MemorySegment segment) { return VkHdrMetadataEXT.get_maxLuminance(segment, 0L); }
-    /// {@return `maxLuminance`}
-    public @CType("float") float maxLuminance() { return VkHdrMetadataEXT.get_maxLuminance(this.segment()); }
+    public float maxLuminance() { return maxLuminance(this.segment(), 0L); }
     /// Sets `maxLuminance` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxLuminance(MemorySegment segment, long index, @CType("float") float value) { VH_maxLuminance.set(segment, 0L, index, value); }
-    /// Sets `maxLuminance` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxLuminance(MemorySegment segment, @CType("float") float value) { VkHdrMetadataEXT.set_maxLuminance(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxLuminance(MemorySegment segment, long index, float value) { VH_maxLuminance.set(segment, 0L, index, value); }
     /// Sets `maxLuminance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT maxLuminance(@CType("float") float value) { VkHdrMetadataEXT.set_maxLuminance(this.segment(), value); return this; }
+    public VkHdrMetadataEXT maxLuminance(float value) { maxLuminance(this.segment(), 0L, value); return this; }
 
     /// {@return `minLuminance` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_minLuminance(MemorySegment segment, long index) { return (float) VH_minLuminance.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float minLuminance(MemorySegment segment, long index) { return (float) VH_minLuminance.get(segment, 0L, index); }
     /// {@return `minLuminance`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_minLuminance(MemorySegment segment) { return VkHdrMetadataEXT.get_minLuminance(segment, 0L); }
-    /// {@return `minLuminance`}
-    public @CType("float") float minLuminance() { return VkHdrMetadataEXT.get_minLuminance(this.segment()); }
+    public float minLuminance() { return minLuminance(this.segment(), 0L); }
     /// Sets `minLuminance` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minLuminance(MemorySegment segment, long index, @CType("float") float value) { VH_minLuminance.set(segment, 0L, index, value); }
-    /// Sets `minLuminance` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minLuminance(MemorySegment segment, @CType("float") float value) { VkHdrMetadataEXT.set_minLuminance(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minLuminance(MemorySegment segment, long index, float value) { VH_minLuminance.set(segment, 0L, index, value); }
     /// Sets `minLuminance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT minLuminance(@CType("float") float value) { VkHdrMetadataEXT.set_minLuminance(this.segment(), value); return this; }
+    public VkHdrMetadataEXT minLuminance(float value) { minLuminance(this.segment(), 0L, value); return this; }
 
     /// {@return `maxContentLightLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_maxContentLightLevel(MemorySegment segment, long index) { return (float) VH_maxContentLightLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float maxContentLightLevel(MemorySegment segment, long index) { return (float) VH_maxContentLightLevel.get(segment, 0L, index); }
     /// {@return `maxContentLightLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_maxContentLightLevel(MemorySegment segment) { return VkHdrMetadataEXT.get_maxContentLightLevel(segment, 0L); }
-    /// {@return `maxContentLightLevel`}
-    public @CType("float") float maxContentLightLevel() { return VkHdrMetadataEXT.get_maxContentLightLevel(this.segment()); }
+    public float maxContentLightLevel() { return maxContentLightLevel(this.segment(), 0L); }
     /// Sets `maxContentLightLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxContentLightLevel(MemorySegment segment, long index, @CType("float") float value) { VH_maxContentLightLevel.set(segment, 0L, index, value); }
-    /// Sets `maxContentLightLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxContentLightLevel(MemorySegment segment, @CType("float") float value) { VkHdrMetadataEXT.set_maxContentLightLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxContentLightLevel(MemorySegment segment, long index, float value) { VH_maxContentLightLevel.set(segment, 0L, index, value); }
     /// Sets `maxContentLightLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT maxContentLightLevel(@CType("float") float value) { VkHdrMetadataEXT.set_maxContentLightLevel(this.segment(), value); return this; }
+    public VkHdrMetadataEXT maxContentLightLevel(float value) { maxContentLightLevel(this.segment(), 0L, value); return this; }
 
     /// {@return `maxFrameAverageLightLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_maxFrameAverageLightLevel(MemorySegment segment, long index) { return (float) VH_maxFrameAverageLightLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float maxFrameAverageLightLevel(MemorySegment segment, long index) { return (float) VH_maxFrameAverageLightLevel.get(segment, 0L, index); }
     /// {@return `maxFrameAverageLightLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_maxFrameAverageLightLevel(MemorySegment segment) { return VkHdrMetadataEXT.get_maxFrameAverageLightLevel(segment, 0L); }
-    /// {@return `maxFrameAverageLightLevel`}
-    public @CType("float") float maxFrameAverageLightLevel() { return VkHdrMetadataEXT.get_maxFrameAverageLightLevel(this.segment()); }
+    public float maxFrameAverageLightLevel() { return maxFrameAverageLightLevel(this.segment(), 0L); }
     /// Sets `maxFrameAverageLightLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxFrameAverageLightLevel(MemorySegment segment, long index, @CType("float") float value) { VH_maxFrameAverageLightLevel.set(segment, 0L, index, value); }
-    /// Sets `maxFrameAverageLightLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxFrameAverageLightLevel(MemorySegment segment, @CType("float") float value) { VkHdrMetadataEXT.set_maxFrameAverageLightLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxFrameAverageLightLevel(MemorySegment segment, long index, float value) { VH_maxFrameAverageLightLevel.set(segment, 0L, index, value); }
     /// Sets `maxFrameAverageLightLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkHdrMetadataEXT maxFrameAverageLightLevel(@CType("float") float value) { VkHdrMetadataEXT.set_maxFrameAverageLightLevel(this.segment(), value); return this; }
+    public VkHdrMetadataEXT maxFrameAverageLightLevel(float value) { maxFrameAverageLightLevel(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkHdrMetadataEXT].
     public static final class Buffer extends VkHdrMetadataEXT {
@@ -411,94 +333,94 @@ public sealed class VkHdrMetadataEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkHdrMetadataEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkHdrMetadataEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkHdrMetadataEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkHdrMetadataEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryRed` at the given index}
-        /// @param index the index
-        public @CType("VkXYColorEXT") MemorySegment displayPrimaryRedAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryRed(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment displayPrimaryRedAt(long index) { return displayPrimaryRed(this.segment(), index); }
         /// Sets `displayPrimaryRed` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryRedAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryRed(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryRedAt(long index, MemorySegment value) { displayPrimaryRed(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryGreen` at the given index}
-        /// @param index the index
-        public @CType("VkXYColorEXT") MemorySegment displayPrimaryGreenAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryGreen(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment displayPrimaryGreenAt(long index) { return displayPrimaryGreen(this.segment(), index); }
         /// Sets `displayPrimaryGreen` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryGreenAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryGreen(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryGreenAt(long index, MemorySegment value) { displayPrimaryGreen(this.segment(), index, value); return this; }
 
         /// {@return `displayPrimaryBlue` at the given index}
-        /// @param index the index
-        public @CType("VkXYColorEXT") MemorySegment displayPrimaryBlueAt(long index) { return VkHdrMetadataEXT.get_displayPrimaryBlue(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment displayPrimaryBlueAt(long index) { return displayPrimaryBlue(this.segment(), index); }
         /// Sets `displayPrimaryBlue` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer displayPrimaryBlueAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_displayPrimaryBlue(this.segment(), index, value); return this; }
+        public Buffer displayPrimaryBlueAt(long index, MemorySegment value) { displayPrimaryBlue(this.segment(), index, value); return this; }
 
         /// {@return `whitePoint` at the given index}
-        /// @param index the index
-        public @CType("VkXYColorEXT") MemorySegment whitePointAt(long index) { return VkHdrMetadataEXT.get_whitePoint(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment whitePointAt(long index) { return whitePoint(this.segment(), index); }
         /// Sets `whitePoint` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer whitePointAt(long index, @CType("VkXYColorEXT") MemorySegment value) { VkHdrMetadataEXT.set_whitePoint(this.segment(), index, value); return this; }
+        public Buffer whitePointAt(long index, MemorySegment value) { whitePoint(this.segment(), index, value); return this; }
 
         /// {@return `maxLuminance` at the given index}
-        /// @param index the index
-        public @CType("float") float maxLuminanceAt(long index) { return VkHdrMetadataEXT.get_maxLuminance(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float maxLuminanceAt(long index) { return maxLuminance(this.segment(), index); }
         /// Sets `maxLuminance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxLuminanceAt(long index, @CType("float") float value) { VkHdrMetadataEXT.set_maxLuminance(this.segment(), index, value); return this; }
+        public Buffer maxLuminanceAt(long index, float value) { maxLuminance(this.segment(), index, value); return this; }
 
         /// {@return `minLuminance` at the given index}
-        /// @param index the index
-        public @CType("float") float minLuminanceAt(long index) { return VkHdrMetadataEXT.get_minLuminance(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float minLuminanceAt(long index) { return minLuminance(this.segment(), index); }
         /// Sets `minLuminance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minLuminanceAt(long index, @CType("float") float value) { VkHdrMetadataEXT.set_minLuminance(this.segment(), index, value); return this; }
+        public Buffer minLuminanceAt(long index, float value) { minLuminance(this.segment(), index, value); return this; }
 
         /// {@return `maxContentLightLevel` at the given index}
-        /// @param index the index
-        public @CType("float") float maxContentLightLevelAt(long index) { return VkHdrMetadataEXT.get_maxContentLightLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float maxContentLightLevelAt(long index) { return maxContentLightLevel(this.segment(), index); }
         /// Sets `maxContentLightLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxContentLightLevelAt(long index, @CType("float") float value) { VkHdrMetadataEXT.set_maxContentLightLevel(this.segment(), index, value); return this; }
+        public Buffer maxContentLightLevelAt(long index, float value) { maxContentLightLevel(this.segment(), index, value); return this; }
 
         /// {@return `maxFrameAverageLightLevel` at the given index}
-        /// @param index the index
-        public @CType("float") float maxFrameAverageLightLevelAt(long index) { return VkHdrMetadataEXT.get_maxFrameAverageLightLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float maxFrameAverageLightLevelAt(long index) { return maxFrameAverageLightLevel(this.segment(), index); }
         /// Sets `maxFrameAverageLightLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxFrameAverageLightLevelAt(long index, @CType("float") float value) { VkHdrMetadataEXT.set_maxFrameAverageLightLevel(this.segment(), index, value); return this; }
+        public Buffer maxFrameAverageLightLevelAt(long index, float value) { maxFrameAverageLightLevel(this.segment(), index, value); return this; }
 
     }
 }

@@ -40,7 +40,7 @@ public final class GLNVClipSpaceWScaling {
     }
 
     /// ```
-    /// void glViewportPositionWScaleNV(unsigned int index, float xcoeff, float ycoeff);
+    /// void glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff);
     /// ```
     public void ViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportPositionWScaleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");

@@ -114,7 +114,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangent3bEXT(signed char tx, signed char ty, signed char tz);
+    /// void glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz);
     /// ```
     public void Tangent3bEXT(byte tx, byte ty, byte tz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangent3bEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3bEXT");
@@ -132,7 +132,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangent3dEXT(double tx, double ty, double tz);
+    /// void glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble tz);
     /// ```
     public void Tangent3dEXT(double tx, double ty, double tz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangent3dEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3dEXT");
@@ -150,7 +150,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangent3fEXT(float tx, float ty, float tz);
+    /// void glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz);
     /// ```
     public void Tangent3fEXT(float tx, float ty, float tz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangent3fEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3fEXT");
@@ -168,7 +168,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangent3iEXT(int tx, int ty, int tz);
+    /// void glTangent3iEXT(GLint tx, GLint ty, GLint tz);
     /// ```
     public void Tangent3iEXT(int tx, int ty, int tz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangent3iEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3iEXT");
@@ -186,7 +186,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangent3sEXT(signed short tx, signed short ty, signed short tz);
+    /// void glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz);
     /// ```
     public void Tangent3sEXT(short tx, short ty, short tz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangent3sEXT)) throw new SymbolNotFoundError("Symbol not found: glTangent3sEXT");
@@ -204,7 +204,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormal3bEXT(signed char bx, signed char by, signed char bz);
+    /// void glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz);
     /// ```
     public void Binormal3bEXT(byte bx, byte by, byte bz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3bEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3bEXT");
@@ -222,7 +222,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormal3dEXT(double bx, double by, double bz);
+    /// void glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble bz);
     /// ```
     public void Binormal3dEXT(double bx, double by, double bz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3dEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3dEXT");
@@ -240,7 +240,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormal3fEXT(float bx, float by, float bz);
+    /// void glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz);
     /// ```
     public void Binormal3fEXT(float bx, float by, float bz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3fEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3fEXT");
@@ -258,7 +258,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormal3iEXT(int bx, int by, int bz);
+    /// void glBinormal3iEXT(GLint bx, GLint by, GLint bz);
     /// ```
     public void Binormal3iEXT(int bx, int by, int bz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3iEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3iEXT");
@@ -276,7 +276,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormal3sEXT(signed short bx, signed short by, signed short bz);
+    /// void glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz);
     /// ```
     public void Binormal3sEXT(short bx, short by, short bz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormal3sEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormal3sEXT");
@@ -294,7 +294,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glTangentPointerEXT(unsigned int type, int stride, const void* pointer);
+    /// void glTangentPointerEXT(GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void TangentPointerEXT(int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTangentPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTangentPointerEXT");
@@ -303,7 +303,7 @@ public final class GLEXTCoordinateFrame {
     }
 
     /// ```
-    /// void glBinormalPointerEXT(unsigned int type, int stride, const void* pointer);
+    /// void glBinormalPointerEXT(GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void BinormalPointerEXT(int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBinormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glBinormalPointerEXT");

@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.google.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### presentID
-/// [VarHandle][#VH_presentID] - [Getter][#presentID()] - [Setter][#presentID(int)]
-/// ### desiredPresentTime
-/// [VarHandle][#VH_desiredPresentTime] - [Getter][#desiredPresentTime()] - [Setter][#desiredPresentTime(long)]
-/// ### actualPresentTime
-/// [VarHandle][#VH_actualPresentTime] - [Getter][#actualPresentTime()] - [Setter][#actualPresentTime(long)]
-/// ### earliestPresentTime
-/// [VarHandle][#VH_earliestPresentTime] - [Getter][#earliestPresentTime()] - [Setter][#earliestPresentTime(long)]
-/// ### presentMargin
-/// [VarHandle][#VH_presentMargin] - [Getter][#presentMargin()] - [Setter][#presentMargin(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPastPresentationTimingGOOGLE {
+/// ```
+/// struct VkPastPresentationTimingGOOGLE {
 ///     uint32_t presentID;
 ///     uint64_t desiredPresentTime;
 ///     uint64_t actualPresentTime;
 ///     uint64_t earliestPresentTime;
 ///     uint64_t presentMargin;
-/// } VkPastPresentationTimingGOOGLE;
+/// };
 /// ```
-public sealed class VkPastPresentationTimingGOOGLE extends Struct {
+public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     /// The struct layout of `VkPastPresentationTimingGOOGLE`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("presentID"),
         ValueLayout.JAVA_LONG.withName("desiredPresentTime"),
         ValueLayout.JAVA_LONG.withName("actualPresentTime"),
         ValueLayout.JAVA_LONG.withName("earliestPresentTime"),
         ValueLayout.JAVA_LONG.withName("presentMargin")
     );
-    /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `presentID`.
+    public static final long OFFSET_presentID = LAYOUT.byteOffset(PathElement.groupElement("presentID"));
+    /// The memory layout of `presentID`.
+    public static final MemoryLayout LAYOUT_presentID = LAYOUT.select(PathElement.groupElement("presentID"));
+    /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID"));
-    /// The [VarHandle] of `desiredPresentTime` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `desiredPresentTime`.
+    public static final long OFFSET_desiredPresentTime = LAYOUT.byteOffset(PathElement.groupElement("desiredPresentTime"));
+    /// The memory layout of `desiredPresentTime`.
+    public static final MemoryLayout LAYOUT_desiredPresentTime = LAYOUT.select(PathElement.groupElement("desiredPresentTime"));
+    /// The [VarHandle] of `desiredPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_desiredPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("desiredPresentTime"));
-    /// The [VarHandle] of `actualPresentTime` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `actualPresentTime`.
+    public static final long OFFSET_actualPresentTime = LAYOUT.byteOffset(PathElement.groupElement("actualPresentTime"));
+    /// The memory layout of `actualPresentTime`.
+    public static final MemoryLayout LAYOUT_actualPresentTime = LAYOUT.select(PathElement.groupElement("actualPresentTime"));
+    /// The [VarHandle] of `actualPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_actualPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("actualPresentTime"));
-    /// The [VarHandle] of `earliestPresentTime` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `earliestPresentTime`.
+    public static final long OFFSET_earliestPresentTime = LAYOUT.byteOffset(PathElement.groupElement("earliestPresentTime"));
+    /// The memory layout of `earliestPresentTime`.
+    public static final MemoryLayout LAYOUT_earliestPresentTime = LAYOUT.select(PathElement.groupElement("earliestPresentTime"));
+    /// The [VarHandle] of `earliestPresentTime` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_earliestPresentTime = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earliestPresentTime"));
-    /// The [VarHandle] of `presentMargin` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `presentMargin`.
+    public static final long OFFSET_presentMargin = LAYOUT.byteOffset(PathElement.groupElement("presentMargin"));
+    /// The memory layout of `presentMargin`.
+    public static final MemoryLayout LAYOUT_presentMargin = LAYOUT.select(PathElement.groupElement("presentMargin"));
+    /// The [VarHandle] of `presentMargin` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentMargin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMargin"));
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPastPresentationTimingGOOGLE extends Struct {
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPastPresentationTimingGOOGLE of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment); }
-
-    /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPastPresentationTimingGOOGLE ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPastPresentationTimingGOOGLE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPastPresentationTimingGOOGLE extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPastPresentationTimingGOOGLE extends Struct {
     /// @return the allocated `VkPastPresentationTimingGOOGLE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPastPresentationTimingGOOGLE`
-    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, @CType("uint32_t") int presentID, @CType("uint64_t") long desiredPresentTime, @CType("uint64_t") long actualPresentTime, @CType("uint64_t") long earliestPresentTime, @CType("uint64_t") long presentMargin) { return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime).actualPresentTime(actualPresentTime).earliestPresentTime(earliestPresentTime).presentMargin(presentMargin); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPastPresentationTimingGOOGLE extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_presentID(MemorySegment segment, long index) { return (int) VH_presentID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int presentID(MemorySegment segment, long index) { return (int) VH_presentID.get(segment, 0L, index); }
     /// {@return `presentID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_presentID(MemorySegment segment) { return VkPastPresentationTimingGOOGLE.get_presentID(segment, 0L); }
-    /// {@return `presentID`}
-    public @CType("uint32_t") int presentID() { return VkPastPresentationTimingGOOGLE.get_presentID(this.segment()); }
+    public int presentID() { return presentID(this.segment(), 0L); }
     /// Sets `presentID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentID(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_presentID.set(segment, 0L, index, value); }
-    /// Sets `presentID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentID(MemorySegment segment, @CType("uint32_t") int value) { VkPastPresentationTimingGOOGLE.set_presentID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentID(MemorySegment segment, long index, int value) { VH_presentID.set(segment, 0L, index, value); }
     /// Sets `presentID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPastPresentationTimingGOOGLE presentID(@CType("uint32_t") int value) { VkPastPresentationTimingGOOGLE.set_presentID(this.segment(), value); return this; }
+    public VkPastPresentationTimingGOOGLE presentID(int value) { presentID(this.segment(), 0L, value); return this; }
 
     /// {@return `desiredPresentTime` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long desiredPresentTime(MemorySegment segment, long index) { return (long) VH_desiredPresentTime.get(segment, 0L, index); }
     /// {@return `desiredPresentTime`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_desiredPresentTime(MemorySegment segment) { return VkPastPresentationTimingGOOGLE.get_desiredPresentTime(segment, 0L); }
-    /// {@return `desiredPresentTime`}
-    public @CType("uint64_t") long desiredPresentTime() { return VkPastPresentationTimingGOOGLE.get_desiredPresentTime(this.segment()); }
+    public long desiredPresentTime() { return desiredPresentTime(this.segment(), 0L); }
     /// Sets `desiredPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_desiredPresentTime(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_desiredPresentTime.set(segment, 0L, index, value); }
-    /// Sets `desiredPresentTime` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_desiredPresentTime(MemorySegment segment, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_desiredPresentTime(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void desiredPresentTime(MemorySegment segment, long index, long value) { VH_desiredPresentTime.set(segment, 0L, index, value); }
     /// Sets `desiredPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPastPresentationTimingGOOGLE desiredPresentTime(@CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_desiredPresentTime(this.segment(), value); return this; }
+    public VkPastPresentationTimingGOOGLE desiredPresentTime(long value) { desiredPresentTime(this.segment(), 0L, value); return this; }
 
     /// {@return `actualPresentTime` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_actualPresentTime(MemorySegment segment, long index) { return (long) VH_actualPresentTime.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long actualPresentTime(MemorySegment segment, long index) { return (long) VH_actualPresentTime.get(segment, 0L, index); }
     /// {@return `actualPresentTime`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_actualPresentTime(MemorySegment segment) { return VkPastPresentationTimingGOOGLE.get_actualPresentTime(segment, 0L); }
-    /// {@return `actualPresentTime`}
-    public @CType("uint64_t") long actualPresentTime() { return VkPastPresentationTimingGOOGLE.get_actualPresentTime(this.segment()); }
+    public long actualPresentTime() { return actualPresentTime(this.segment(), 0L); }
     /// Sets `actualPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_actualPresentTime(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_actualPresentTime.set(segment, 0L, index, value); }
-    /// Sets `actualPresentTime` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_actualPresentTime(MemorySegment segment, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_actualPresentTime(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void actualPresentTime(MemorySegment segment, long index, long value) { VH_actualPresentTime.set(segment, 0L, index, value); }
     /// Sets `actualPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPastPresentationTimingGOOGLE actualPresentTime(@CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_actualPresentTime(this.segment(), value); return this; }
+    public VkPastPresentationTimingGOOGLE actualPresentTime(long value) { actualPresentTime(this.segment(), 0L, value); return this; }
 
     /// {@return `earliestPresentTime` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_earliestPresentTime(MemorySegment segment, long index) { return (long) VH_earliestPresentTime.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long earliestPresentTime(MemorySegment segment, long index) { return (long) VH_earliestPresentTime.get(segment, 0L, index); }
     /// {@return `earliestPresentTime`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_earliestPresentTime(MemorySegment segment) { return VkPastPresentationTimingGOOGLE.get_earliestPresentTime(segment, 0L); }
-    /// {@return `earliestPresentTime`}
-    public @CType("uint64_t") long earliestPresentTime() { return VkPastPresentationTimingGOOGLE.get_earliestPresentTime(this.segment()); }
+    public long earliestPresentTime() { return earliestPresentTime(this.segment(), 0L); }
     /// Sets `earliestPresentTime` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_earliestPresentTime(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_earliestPresentTime.set(segment, 0L, index, value); }
-    /// Sets `earliestPresentTime` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_earliestPresentTime(MemorySegment segment, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_earliestPresentTime(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void earliestPresentTime(MemorySegment segment, long index, long value) { VH_earliestPresentTime.set(segment, 0L, index, value); }
     /// Sets `earliestPresentTime` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPastPresentationTimingGOOGLE earliestPresentTime(@CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_earliestPresentTime(this.segment(), value); return this; }
+    public VkPastPresentationTimingGOOGLE earliestPresentTime(long value) { earliestPresentTime(this.segment(), 0L, value); return this; }
 
     /// {@return `presentMargin` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_presentMargin(MemorySegment segment, long index) { return (long) VH_presentMargin.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long presentMargin(MemorySegment segment, long index) { return (long) VH_presentMargin.get(segment, 0L, index); }
     /// {@return `presentMargin`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_presentMargin(MemorySegment segment) { return VkPastPresentationTimingGOOGLE.get_presentMargin(segment, 0L); }
-    /// {@return `presentMargin`}
-    public @CType("uint64_t") long presentMargin() { return VkPastPresentationTimingGOOGLE.get_presentMargin(this.segment()); }
+    public long presentMargin() { return presentMargin(this.segment(), 0L); }
     /// Sets `presentMargin` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentMargin(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_presentMargin.set(segment, 0L, index, value); }
-    /// Sets `presentMargin` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentMargin(MemorySegment segment, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_presentMargin(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentMargin(MemorySegment segment, long index, long value) { VH_presentMargin.set(segment, 0L, index, value); }
     /// Sets `presentMargin` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPastPresentationTimingGOOGLE presentMargin(@CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_presentMargin(this.segment(), value); return this; }
+    public VkPastPresentationTimingGOOGLE presentMargin(long value) { presentMargin(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPastPresentationTimingGOOGLE].
     public static final class Buffer extends VkPastPresentationTimingGOOGLE {
@@ -258,49 +221,49 @@ public sealed class VkPastPresentationTimingGOOGLE extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `presentID` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int presentIDAt(long index) { return VkPastPresentationTimingGOOGLE.get_presentID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int presentIDAt(long index) { return presentID(this.segment(), index); }
         /// Sets `presentID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentIDAt(long index, @CType("uint32_t") int value) { VkPastPresentationTimingGOOGLE.set_presentID(this.segment(), index, value); return this; }
+        public Buffer presentIDAt(long index, int value) { presentID(this.segment(), index, value); return this; }
 
         /// {@return `desiredPresentTime` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long desiredPresentTimeAt(long index) { return VkPastPresentationTimingGOOGLE.get_desiredPresentTime(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long desiredPresentTimeAt(long index) { return desiredPresentTime(this.segment(), index); }
         /// Sets `desiredPresentTime` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer desiredPresentTimeAt(long index, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_desiredPresentTime(this.segment(), index, value); return this; }
+        public Buffer desiredPresentTimeAt(long index, long value) { desiredPresentTime(this.segment(), index, value); return this; }
 
         /// {@return `actualPresentTime` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long actualPresentTimeAt(long index) { return VkPastPresentationTimingGOOGLE.get_actualPresentTime(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long actualPresentTimeAt(long index) { return actualPresentTime(this.segment(), index); }
         /// Sets `actualPresentTime` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer actualPresentTimeAt(long index, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_actualPresentTime(this.segment(), index, value); return this; }
+        public Buffer actualPresentTimeAt(long index, long value) { actualPresentTime(this.segment(), index, value); return this; }
 
         /// {@return `earliestPresentTime` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long earliestPresentTimeAt(long index) { return VkPastPresentationTimingGOOGLE.get_earliestPresentTime(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long earliestPresentTimeAt(long index) { return earliestPresentTime(this.segment(), index); }
         /// Sets `earliestPresentTime` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer earliestPresentTimeAt(long index, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_earliestPresentTime(this.segment(), index, value); return this; }
+        public Buffer earliestPresentTimeAt(long index, long value) { earliestPresentTime(this.segment(), index, value); return this; }
 
         /// {@return `presentMargin` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long presentMarginAt(long index) { return VkPastPresentationTimingGOOGLE.get_presentMargin(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long presentMarginAt(long index) { return presentMargin(this.segment(), index); }
         /// Sets `presentMargin` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentMarginAt(long index, @CType("uint64_t") long value) { VkPastPresentationTimingGOOGLE.set_presentMargin(this.segment(), index, value); return this; }
+        public Buffer presentMarginAt(long index, long value) { presentMargin(this.segment(), index, value); return this; }
 
     }
 }

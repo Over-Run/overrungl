@@ -15,54 +15,62 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nvx.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### imageView
-/// [VarHandle][#VH_imageView] - [Getter][#imageView()] - [Setter][#imageView(MemorySegment)]
-/// ### descriptorType
-/// [VarHandle][#VH_descriptorType] - [Getter][#descriptorType()] - [Setter][#descriptorType(int)]
-/// ### sampler
-/// [VarHandle][#VH_sampler] - [Getter][#sampler()] - [Setter][#sampler(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkImageViewHandleInfoNVX {
+/// ```
+/// struct VkImageViewHandleInfoNVX {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkImageView imageView;
 ///     VkDescriptorType descriptorType;
 ///     VkSampler sampler;
-/// } VkImageViewHandleInfoNVX;
+/// };
 /// ```
-public sealed class VkImageViewHandleInfoNVX extends Struct {
+public sealed class VkImageViewHandleInfoNVX extends GroupType {
     /// The struct layout of `VkImageViewHandleInfoNVX`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_LONG.withName("imageView"),
         ValueLayout.JAVA_INT.withName("descriptorType"),
-        ValueLayout.ADDRESS.withName("sampler")
+        ValueLayout.JAVA_LONG.withName("sampler")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `imageView`.
+    public static final long OFFSET_imageView = LAYOUT.byteOffset(PathElement.groupElement("imageView"));
+    /// The memory layout of `imageView`.
+    public static final MemoryLayout LAYOUT_imageView = LAYOUT.select(PathElement.groupElement("imageView"));
     /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
-    /// The [VarHandle] of `descriptorType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorType`.
+    public static final long OFFSET_descriptorType = LAYOUT.byteOffset(PathElement.groupElement("descriptorType"));
+    /// The memory layout of `descriptorType`.
+    public static final MemoryLayout LAYOUT_descriptorType = LAYOUT.select(PathElement.groupElement("descriptorType"));
+    /// The [VarHandle] of `descriptorType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorType"));
+    /// The byte offset of `sampler`.
+    public static final long OFFSET_sampler = LAYOUT.byteOffset(PathElement.groupElement("sampler"));
+    /// The memory layout of `sampler`.
+    public static final MemoryLayout LAYOUT_sampler = LAYOUT.select(PathElement.groupElement("sampler"));
     /// The [VarHandle] of `sampler` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sampler = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampler"));
 
@@ -73,19 +81,14 @@ public sealed class VkImageViewHandleInfoNVX extends Struct {
     /// Creates `VkImageViewHandleInfoNVX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewHandleInfoNVX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewHandleInfoNVX(segment); }
-
-    /// Creates `VkImageViewHandleInfoNVX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageViewHandleInfoNVX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewHandleInfoNVX ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewHandleInfoNVX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkImageViewHandleInfoNVX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewHandleInfoNVX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkImageViewHandleInfoNVX` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkImageViewHandleInfoNVX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkImageViewHandleInfoNVX extends Struct {
     /// @return the allocated `VkImageViewHandleInfoNVX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageView") MemorySegment imageView, @CType("VkDescriptorType") int descriptorType, @CType("VkSampler") MemorySegment sampler) { return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).descriptorType(descriptorType).sampler(sampler); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkImageViewHandleInfoNVX extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageViewHandleInfoNVX.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkImageViewHandleInfoNVX.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageViewHandleInfoNVX.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewHandleInfoNVX sType(@CType("VkStructureType") int value) { VkImageViewHandleInfoNVX.set_sType(this.segment(), value); return this; }
+    public VkImageViewHandleInfoNVX sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImageViewHandleInfoNVX.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkImageViewHandleInfoNVX.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImageViewHandleInfoNVX.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewHandleInfoNVX pNext(@CType("const void *") MemorySegment value) { VkImageViewHandleInfoNVX.set_pNext(this.segment(), value); return this; }
+    public VkImageViewHandleInfoNVX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `imageView` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment, long index) { return (MemorySegment) VH_imageView.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long imageView(MemorySegment segment, long index) { return (long) VH_imageView.get(segment, 0L, index); }
     /// {@return `imageView`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment) { return VkImageViewHandleInfoNVX.get_imageView(segment, 0L); }
-    /// {@return `imageView`}
-    public @CType("VkImageView") MemorySegment imageView() { return VkImageViewHandleInfoNVX.get_imageView(this.segment()); }
+    public long imageView() { return imageView(this.segment(), 0L); }
     /// Sets `imageView` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageView(MemorySegment segment, long index, @CType("VkImageView") MemorySegment value) { VH_imageView.set(segment, 0L, index, value); }
-    /// Sets `imageView` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageView(MemorySegment segment, @CType("VkImageView") MemorySegment value) { VkImageViewHandleInfoNVX.set_imageView(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageView(MemorySegment segment, long index, long value) { VH_imageView.set(segment, 0L, index, value); }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewHandleInfoNVX imageView(@CType("VkImageView") MemorySegment value) { VkImageViewHandleInfoNVX.set_imageView(this.segment(), value); return this; }
+    public VkImageViewHandleInfoNVX imageView(long value) { imageView(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDescriptorType") int get_descriptorType(MemorySegment segment, long index) { return (int) VH_descriptorType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorType(MemorySegment segment, long index) { return (int) VH_descriptorType.get(segment, 0L, index); }
     /// {@return `descriptorType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDescriptorType") int get_descriptorType(MemorySegment segment) { return VkImageViewHandleInfoNVX.get_descriptorType(segment, 0L); }
-    /// {@return `descriptorType`}
-    public @CType("VkDescriptorType") int descriptorType() { return VkImageViewHandleInfoNVX.get_descriptorType(this.segment()); }
+    public int descriptorType() { return descriptorType(this.segment(), 0L); }
     /// Sets `descriptorType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorType(MemorySegment segment, long index, @CType("VkDescriptorType") int value) { VH_descriptorType.set(segment, 0L, index, value); }
-    /// Sets `descriptorType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorType(MemorySegment segment, @CType("VkDescriptorType") int value) { VkImageViewHandleInfoNVX.set_descriptorType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorType(MemorySegment segment, long index, int value) { VH_descriptorType.set(segment, 0L, index, value); }
     /// Sets `descriptorType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewHandleInfoNVX descriptorType(@CType("VkDescriptorType") int value) { VkImageViewHandleInfoNVX.set_descriptorType(this.segment(), value); return this; }
+    public VkImageViewHandleInfoNVX descriptorType(int value) { descriptorType(this.segment(), 0L, value); return this; }
 
     /// {@return `sampler` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampler") MemorySegment get_sampler(MemorySegment segment, long index) { return (MemorySegment) VH_sampler.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long sampler(MemorySegment segment, long index) { return (long) VH_sampler.get(segment, 0L, index); }
     /// {@return `sampler`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampler") MemorySegment get_sampler(MemorySegment segment) { return VkImageViewHandleInfoNVX.get_sampler(segment, 0L); }
-    /// {@return `sampler`}
-    public @CType("VkSampler") MemorySegment sampler() { return VkImageViewHandleInfoNVX.get_sampler(this.segment()); }
+    public long sampler() { return sampler(this.segment(), 0L); }
     /// Sets `sampler` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sampler(MemorySegment segment, long index, @CType("VkSampler") MemorySegment value) { VH_sampler.set(segment, 0L, index, value); }
-    /// Sets `sampler` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sampler(MemorySegment segment, @CType("VkSampler") MemorySegment value) { VkImageViewHandleInfoNVX.set_sampler(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sampler(MemorySegment segment, long index, long value) { VH_sampler.set(segment, 0L, index, value); }
     /// Sets `sampler` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewHandleInfoNVX sampler(@CType("VkSampler") MemorySegment value) { VkImageViewHandleInfoNVX.set_sampler(this.segment(), value); return this; }
+    public VkImageViewHandleInfoNVX sampler(long value) { sampler(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkImageViewHandleInfoNVX].
     public static final class Buffer extends VkImageViewHandleInfoNVX {
@@ -258,49 +221,49 @@ public sealed class VkImageViewHandleInfoNVX extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewHandleInfoNVX.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewHandleInfoNVX.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImageViewHandleInfoNVX.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImageViewHandleInfoNVX.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageView` at the given index}
-        /// @param index the index
-        public @CType("VkImageView") MemorySegment imageViewAt(long index) { return VkImageViewHandleInfoNVX.get_imageView(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long imageViewAt(long index) { return imageView(this.segment(), index); }
         /// Sets `imageView` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageViewAt(long index, @CType("VkImageView") MemorySegment value) { VkImageViewHandleInfoNVX.set_imageView(this.segment(), index, value); return this; }
+        public Buffer imageViewAt(long index, long value) { imageView(this.segment(), index, value); return this; }
 
         /// {@return `descriptorType` at the given index}
-        /// @param index the index
-        public @CType("VkDescriptorType") int descriptorTypeAt(long index) { return VkImageViewHandleInfoNVX.get_descriptorType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorTypeAt(long index) { return descriptorType(this.segment(), index); }
         /// Sets `descriptorType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorTypeAt(long index, @CType("VkDescriptorType") int value) { VkImageViewHandleInfoNVX.set_descriptorType(this.segment(), index, value); return this; }
+        public Buffer descriptorTypeAt(long index, int value) { descriptorType(this.segment(), index, value); return this; }
 
         /// {@return `sampler` at the given index}
-        /// @param index the index
-        public @CType("VkSampler") MemorySegment samplerAt(long index) { return VkImageViewHandleInfoNVX.get_sampler(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long samplerAt(long index) { return sampler(this.segment(), index); }
         /// Sets `sampler` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer samplerAt(long index, @CType("VkSampler") MemorySegment value) { VkImageViewHandleInfoNVX.set_sampler(this.segment(), index, value); return this; }
+        public Buffer samplerAt(long index, long value) { sampler(this.segment(), index, value); return this; }
 
     }
 }

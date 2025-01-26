@@ -53,7 +53,7 @@ public final class GLNVExplicitMultisample {
     }
 
     /// ```
-    /// void glGetMultisamplefvNV(unsigned int pname, unsigned int index, GLfloat* val);
+    /// void glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat* val);
     /// ```
     public void GetMultisamplefvNV(int pname, int index, MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
@@ -62,7 +62,7 @@ public final class GLNVExplicitMultisample {
     }
 
     /// ```
-    /// void glSampleMaskIndexedNV(unsigned int index, unsigned int mask);
+    /// void glSampleMaskIndexedNV(GLuint index, GLbitfield mask);
     /// ```
     public void SampleMaskIndexedNV(int index, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
@@ -71,7 +71,7 @@ public final class GLNVExplicitMultisample {
     }
 
     /// ```
-    /// void glTexRenderbufferNV(unsigned int target, unsigned int renderbuffer);
+    /// void glTexRenderbufferNV(GLenum target, GLuint renderbuffer);
     /// ```
     public void TexRenderbufferNV(int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV");

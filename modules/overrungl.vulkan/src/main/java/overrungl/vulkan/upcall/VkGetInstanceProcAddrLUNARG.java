@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.upcall;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef PFN_vkVoidFunction (*VkGetInstanceProcAddrLUNARG)(VkInstance instance, const char* pName);
+/// ```
 @FunctionalInterface
 public interface VkGetInstanceProcAddrLUNARG extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(VkGetInstanceProcAddrLUNARG.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkGetInstanceProcAddrLUNARG.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `VkGetInstanceProcAddrLUNARG`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, VkGetInstanceProcAddrLUNARG func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("PFN_vkVoidFunction") MemorySegment invoke(@CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName);
+    MemorySegment invoke(MemorySegment instance, MemorySegment pName);
+
+    /// The target method of the upcall.
+    default MemorySegment invoke_(MemorySegment instance, MemorySegment pName) {
+        return invoke(instance, pName);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("PFN_vkVoidFunction") MemorySegment invoke(MemorySegment stub, @CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName) {
-        try { return (MemorySegment) HANDLE.invokeExact(stub, instance, pName); }
-        catch (Throwable e) { throw new RuntimeException("error in VkGetInstanceProcAddrLUNARG::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static VkGetInstanceProcAddrLUNARG wrap(MemorySegment stub) {
-        return (instance, pName) ->
-            invoke(stub, instance, pName);
-    }
 }

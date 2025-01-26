@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### minQpDelta
-/// [VarHandle][#VH_minQpDelta] - [Getter][#minQpDelta()] - [Setter][#minQpDelta(int)]
-/// ### maxQpDelta
-/// [VarHandle][#VH_maxQpDelta] - [Getter][#maxQpDelta()] - [Setter][#maxQpDelta(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR {
+/// ```
+/// struct VkVideoEncodeH265QuantizationMapCapabilitiesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     int32_t minQpDelta;
 ///     int32_t maxQpDelta;
-/// } VkVideoEncodeH265QuantizationMapCapabilitiesKHR;
+/// };
 /// ```
-public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Struct {
+public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("minQpDelta"),
         ValueLayout.JAVA_INT.withName("maxQpDelta")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `minQpDelta` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `minQpDelta`.
+    public static final long OFFSET_minQpDelta = LAYOUT.byteOffset(PathElement.groupElement("minQpDelta"));
+    /// The memory layout of `minQpDelta`.
+    public static final MemoryLayout LAYOUT_minQpDelta = LAYOUT.select(PathElement.groupElement("minQpDelta"));
+    /// The [VarHandle] of `minQpDelta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minQpDelta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQpDelta"));
-    /// The [VarHandle] of `maxQpDelta` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxQpDelta`.
+    public static final long OFFSET_maxQpDelta = LAYOUT.byteOffset(PathElement.groupElement("maxQpDelta"));
+    /// The memory layout of `maxQpDelta`.
+    public static final MemoryLayout LAYOUT_maxQpDelta = LAYOUT.select(PathElement.groupElement("maxQpDelta"));
+    /// The [VarHandle] of `maxQpDelta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxQpDelta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQpDelta"));
 
     /// Creates `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Stru
     /// Creates `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265QuantizationMapCapabilitiesKHR(segment); }
-
-    /// Creates `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265QuantizationMapCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH265QuantizationMapCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Stru
     /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("int32_t") int minQpDelta, @CType("int32_t") int maxQpDelta) { return alloc(allocator).sType(sType).pNext(pNext).minQpDelta(minQpDelta).maxQpDelta(maxQpDelta); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `minQpDelta` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int32_t") int get_minQpDelta(MemorySegment segment, long index) { return (int) VH_minQpDelta.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int minQpDelta(MemorySegment segment, long index) { return (int) VH_minQpDelta.get(segment, 0L, index); }
     /// {@return `minQpDelta`}
-    /// @param segment the segment of the struct
-    public static @CType("int32_t") int get_minQpDelta(MemorySegment segment) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_minQpDelta(segment, 0L); }
-    /// {@return `minQpDelta`}
-    public @CType("int32_t") int minQpDelta() { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_minQpDelta(this.segment()); }
+    public int minQpDelta() { return minQpDelta(this.segment(), 0L); }
     /// Sets `minQpDelta` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minQpDelta(MemorySegment segment, long index, @CType("int32_t") int value) { VH_minQpDelta.set(segment, 0L, index, value); }
-    /// Sets `minQpDelta` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minQpDelta(MemorySegment segment, @CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_minQpDelta(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minQpDelta(MemorySegment segment, long index, int value) { VH_minQpDelta.set(segment, 0L, index, value); }
     /// Sets `minQpDelta` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR minQpDelta(@CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_minQpDelta(this.segment(), value); return this; }
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR minQpDelta(int value) { minQpDelta(this.segment(), 0L, value); return this; }
 
     /// {@return `maxQpDelta` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int32_t") int get_maxQpDelta(MemorySegment segment, long index) { return (int) VH_maxQpDelta.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxQpDelta(MemorySegment segment, long index) { return (int) VH_maxQpDelta.get(segment, 0L, index); }
     /// {@return `maxQpDelta`}
-    /// @param segment the segment of the struct
-    public static @CType("int32_t") int get_maxQpDelta(MemorySegment segment) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_maxQpDelta(segment, 0L); }
-    /// {@return `maxQpDelta`}
-    public @CType("int32_t") int maxQpDelta() { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_maxQpDelta(this.segment()); }
+    public int maxQpDelta() { return maxQpDelta(this.segment(), 0L); }
     /// Sets `maxQpDelta` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxQpDelta(MemorySegment segment, long index, @CType("int32_t") int value) { VH_maxQpDelta.set(segment, 0L, index, value); }
-    /// Sets `maxQpDelta` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxQpDelta(MemorySegment segment, @CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_maxQpDelta(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxQpDelta(MemorySegment segment, long index, int value) { VH_maxQpDelta.set(segment, 0L, index, value); }
     /// Sets `maxQpDelta` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR maxQpDelta(@CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_maxQpDelta(this.segment(), value); return this; }
+    public VkVideoEncodeH265QuantizationMapCapabilitiesKHR maxQpDelta(int value) { maxQpDelta(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeH265QuantizationMapCapabilitiesKHR].
     public static final class Buffer extends VkVideoEncodeH265QuantizationMapCapabilitiesKHR {
@@ -229,40 +197,40 @@ public sealed class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `minQpDelta` at the given index}
-        /// @param index the index
-        public @CType("int32_t") int minQpDeltaAt(long index) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_minQpDelta(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int minQpDeltaAt(long index) { return minQpDelta(this.segment(), index); }
         /// Sets `minQpDelta` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minQpDeltaAt(long index, @CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_minQpDelta(this.segment(), index, value); return this; }
+        public Buffer minQpDeltaAt(long index, int value) { minQpDelta(this.segment(), index, value); return this; }
 
         /// {@return `maxQpDelta` at the given index}
-        /// @param index the index
-        public @CType("int32_t") int maxQpDeltaAt(long index) { return VkVideoEncodeH265QuantizationMapCapabilitiesKHR.get_maxQpDelta(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxQpDeltaAt(long index) { return maxQpDelta(this.segment(), index); }
         /// Sets `maxQpDelta` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxQpDeltaAt(long index, @CType("int32_t") int value) { VkVideoEncodeH265QuantizationMapCapabilitiesKHR.set_maxQpDelta(this.segment(), index, value); return this; }
+        public Buffer maxQpDeltaAt(long index, int value) { maxQpDelta(this.segment(), index, value); return this; }
 
     }
 }

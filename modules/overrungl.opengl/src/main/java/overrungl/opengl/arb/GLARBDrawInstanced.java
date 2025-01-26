@@ -40,7 +40,7 @@ public final class GLARBDrawInstanced {
     }
 
     /// ```
-    /// void glDrawArraysInstancedARB(unsigned int mode, int first, int count, int primcount);
+    /// void glDrawArraysInstancedARB(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
     /// ```
     public void DrawArraysInstancedARB(int mode, int first, int count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
@@ -49,7 +49,7 @@ public final class GLARBDrawInstanced {
     }
 
     /// ```
-    /// void glDrawElementsInstancedARB(unsigned int mode, int count, unsigned int type, const void* indices, int primcount);
+    /// void glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount);
     /// ```
     public void DrawElementsInstancedARB(int mode, int count, int type, MemorySegment indices, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");

@@ -183,7 +183,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glDrawArraysInstancedBaseInstance(unsigned int mode, int first, int count, int instancecount, unsigned int baseinstance);
+    /// void glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
     /// ```
     public void DrawArraysInstancedBaseInstance(int mode, int first, int count, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance");
@@ -192,7 +192,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glDrawElementsInstancedBaseInstance(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, unsigned int baseinstance);
+    /// void glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLuint baseinstance);
     /// ```
     public void DrawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
@@ -201,7 +201,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glDrawElementsInstancedBaseVertexBaseInstance(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, int basevertex, unsigned int baseinstance);
+    /// void glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
     /// ```
     public void DrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex, int baseinstance) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
@@ -210,7 +210,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glGetInternalformativ(unsigned int target, unsigned int internalformat, unsigned int pname, int count, GLint* params);
+    /// void glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint* params);
     /// ```
     public void GetInternalformativ(int target, int internalformat, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ");
@@ -219,7 +219,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glGetActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, unsigned int pname, GLint* params);
+    /// void glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint* params);
     /// ```
     public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");
@@ -228,7 +228,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glBindImageTexture(unsigned int unit, unsigned int texture, int level, GLboolean layered, int layer, unsigned int access, unsigned int format);
+    /// void glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
     /// ```
     public void BindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTexture)) throw new SymbolNotFoundError("Symbol not found: glBindImageTexture");
@@ -237,7 +237,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glMemoryBarrier(unsigned int barriers);
+    /// void glMemoryBarrier(GLbitfield barriers);
     /// ```
     public void MemoryBarrier(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrier)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier");
@@ -246,7 +246,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glTexStorage1D(unsigned int target, int levels, unsigned int internalformat, int width);
+    /// void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
     /// ```
     public void TexStorage1D(int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage1D");
@@ -255,7 +255,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glTexStorage2D(unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// void glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void TexStorage2D(int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2D");
@@ -264,7 +264,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glTexStorage3D(unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
     /// ```
     public void TexStorage3D(int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3D");
@@ -273,7 +273,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glDrawTransformFeedbackInstanced(unsigned int mode, unsigned int id, int instancecount);
+    /// void glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount);
     /// ```
     public void DrawTransformFeedbackInstanced(int mode, int id, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced");
@@ -282,7 +282,7 @@ public class GL42 extends GL41 {
     }
 
     /// ```
-    /// void glDrawTransformFeedbackStreamInstanced(unsigned int mode, unsigned int id, unsigned int stream, int instancecount);
+    /// void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
     /// ```
     public void DrawTransformFeedbackStreamInstanced(int mode, int id, int stream, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackStreamInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced");

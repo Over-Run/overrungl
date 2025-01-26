@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -40,19 +39,22 @@ public class VKEXTDeviceFault {
     public static final class Handles {
         public static final MethodHandle MH_vkGetDeviceFaultInfoEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDeviceFaultInfoEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetDeviceFaultInfoEXT = func.invoke(device, "vkGetDeviceFaultInfoEXT");
         }
     }
 
-    public VKEXTDeviceFault(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTDeviceFault(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetDeviceFaultInfoEXT(@CType("VkDevice") MemorySegment device, @CType("VkDeviceFaultCountsEXT *") MemorySegment pFaultCounts, @CType("VkDeviceFaultInfoEXT *") MemorySegment pFaultInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceFaultInfoEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
+    /// ```
+    /// VkResult vkGetDeviceFaultInfoEXT(VkDevice device, VkDeviceFaultCountsEXT* pFaultCounts, VkDeviceFaultInfoEXT* pFaultInfo);
+    /// ```
+    public int GetDeviceFaultInfoEXT(MemorySegment device, MemorySegment pFaultCounts, MemorySegment pFaultInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceFaultInfoEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
         try { return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(handles.PFN_vkGetDeviceFaultInfoEXT, device, pFaultCounts, pFaultInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceFaultInfoEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDeviceFaultInfoEXT", e); }
     }
 
 }

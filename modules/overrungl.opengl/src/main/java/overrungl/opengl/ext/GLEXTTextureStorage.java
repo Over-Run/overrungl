@@ -74,7 +74,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTexStorage1DEXT(unsigned int target, int levels, unsigned int internalformat, int width);
+    /// void glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
     /// ```
     public void TexStorage1DEXT(int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage1DEXT");
@@ -83,7 +83,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTexStorage2DEXT(unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// void glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void TexStorage2DEXT(int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2DEXT");
@@ -92,7 +92,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTexStorage3DEXT(unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// void glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
     /// ```
     public void TexStorage3DEXT(int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3DEXT");
@@ -101,7 +101,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTextureStorage1DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width);
+    /// void glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
     /// ```
     public void TextureStorage1DEXT(int texture, int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1DEXT");
@@ -110,7 +110,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTextureStorage2DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// void glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void TextureStorage2DEXT(int texture, int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DEXT");
@@ -119,7 +119,7 @@ public final class GLEXTTextureStorage {
     }
 
     /// ```
-    /// void glTextureStorage3DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// void glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
     /// ```
     public void TextureStorage3DEXT(int texture, int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DEXT");

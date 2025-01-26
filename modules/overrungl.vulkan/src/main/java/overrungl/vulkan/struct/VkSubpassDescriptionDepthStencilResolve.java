@@ -15,54 +15,62 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### depthResolveMode
-/// [VarHandle][#VH_depthResolveMode] - [Getter][#depthResolveMode()] - [Setter][#depthResolveMode(int)]
-/// ### stencilResolveMode
-/// [VarHandle][#VH_stencilResolveMode] - [Getter][#stencilResolveMode()] - [Setter][#stencilResolveMode(int)]
-/// ### pDepthStencilResolveAttachment
-/// [VarHandle][#VH_pDepthStencilResolveAttachment] - [Getter][#pDepthStencilResolveAttachment()] - [Setter][#pDepthStencilResolveAttachment(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSubpassDescriptionDepthStencilResolve {
+/// ```
+/// struct VkSubpassDescriptionDepthStencilResolve {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkResolveModeFlagBits depthResolveMode;
 ///     VkResolveModeFlagBits stencilResolveMode;
-///     const VkAttachmentReference2 * pDepthStencilResolveAttachment;
-/// } VkSubpassDescriptionDepthStencilResolve;
+///     const VkAttachmentReference2* pDepthStencilResolveAttachment;
+/// };
 /// ```
-public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
+public sealed class VkSubpassDescriptionDepthStencilResolve extends GroupType {
     /// The struct layout of `VkSubpassDescriptionDepthStencilResolve`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("depthResolveMode"),
         ValueLayout.JAVA_INT.withName("stencilResolveMode"),
         ValueLayout.ADDRESS.withName("pDepthStencilResolveAttachment")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `depthResolveMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthResolveMode`.
+    public static final long OFFSET_depthResolveMode = LAYOUT.byteOffset(PathElement.groupElement("depthResolveMode"));
+    /// The memory layout of `depthResolveMode`.
+    public static final MemoryLayout LAYOUT_depthResolveMode = LAYOUT.select(PathElement.groupElement("depthResolveMode"));
+    /// The [VarHandle] of `depthResolveMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthResolveMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthResolveMode"));
-    /// The [VarHandle] of `stencilResolveMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stencilResolveMode`.
+    public static final long OFFSET_stencilResolveMode = LAYOUT.byteOffset(PathElement.groupElement("stencilResolveMode"));
+    /// The memory layout of `stencilResolveMode`.
+    public static final MemoryLayout LAYOUT_stencilResolveMode = LAYOUT.select(PathElement.groupElement("stencilResolveMode"));
+    /// The [VarHandle] of `stencilResolveMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stencilResolveMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilResolveMode"));
+    /// The byte offset of `pDepthStencilResolveAttachment`.
+    public static final long OFFSET_pDepthStencilResolveAttachment = LAYOUT.byteOffset(PathElement.groupElement("pDepthStencilResolveAttachment"));
+    /// The memory layout of `pDepthStencilResolveAttachment`.
+    public static final MemoryLayout LAYOUT_pDepthStencilResolveAttachment = LAYOUT.select(PathElement.groupElement("pDepthStencilResolveAttachment"));
     /// The [VarHandle] of `pDepthStencilResolveAttachment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDepthStencilResolveAttachment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthStencilResolveAttachment"));
 
@@ -73,19 +81,14 @@ public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
     /// Creates `VkSubpassDescriptionDepthStencilResolve` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassDescriptionDepthStencilResolve of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassDescriptionDepthStencilResolve(segment); }
-
-    /// Creates `VkSubpassDescriptionDepthStencilResolve` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSubpassDescriptionDepthStencilResolve` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassDescriptionDepthStencilResolve ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassDescriptionDepthStencilResolve(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSubpassDescriptionDepthStencilResolve ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassDescriptionDepthStencilResolve(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSubpassDescriptionDepthStencilResolve` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
     /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkResolveModeFlagBits") int depthResolveMode, @CType("VkResolveModeFlagBits") int stencilResolveMode, @CType("const VkAttachmentReference2 *") MemorySegment pDepthStencilResolveAttachment) { return alloc(allocator).sType(sType).pNext(pNext).depthResolveMode(depthResolveMode).stencilResolveMode(stencilResolveMode).pDepthStencilResolveAttachment(pDepthStencilResolveAttachment); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSubpassDescriptionDepthStencilResolve.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSubpassDescriptionDepthStencilResolve.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSubpassDescriptionDepthStencilResolve.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassDescriptionDepthStencilResolve sType(@CType("VkStructureType") int value) { VkSubpassDescriptionDepthStencilResolve.set_sType(this.segment(), value); return this; }
+    public VkSubpassDescriptionDepthStencilResolve sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSubpassDescriptionDepthStencilResolve.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkSubpassDescriptionDepthStencilResolve.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassDescriptionDepthStencilResolve pNext(@CType("const void *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pNext(this.segment(), value); return this; }
+    public VkSubpassDescriptionDepthStencilResolve pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `depthResolveMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResolveModeFlagBits") int get_depthResolveMode(MemorySegment segment, long index) { return (int) VH_depthResolveMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthResolveMode(MemorySegment segment, long index) { return (int) VH_depthResolveMode.get(segment, 0L, index); }
     /// {@return `depthResolveMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResolveModeFlagBits") int get_depthResolveMode(MemorySegment segment) { return VkSubpassDescriptionDepthStencilResolve.get_depthResolveMode(segment, 0L); }
-    /// {@return `depthResolveMode`}
-    public @CType("VkResolveModeFlagBits") int depthResolveMode() { return VkSubpassDescriptionDepthStencilResolve.get_depthResolveMode(this.segment()); }
+    public int depthResolveMode() { return depthResolveMode(this.segment(), 0L); }
     /// Sets `depthResolveMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthResolveMode(MemorySegment segment, long index, @CType("VkResolveModeFlagBits") int value) { VH_depthResolveMode.set(segment, 0L, index, value); }
-    /// Sets `depthResolveMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthResolveMode(MemorySegment segment, @CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_depthResolveMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthResolveMode(MemorySegment segment, long index, int value) { VH_depthResolveMode.set(segment, 0L, index, value); }
     /// Sets `depthResolveMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(@CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_depthResolveMode(this.segment(), value); return this; }
+    public VkSubpassDescriptionDepthStencilResolve depthResolveMode(int value) { depthResolveMode(this.segment(), 0L, value); return this; }
 
     /// {@return `stencilResolveMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResolveModeFlagBits") int get_stencilResolveMode(MemorySegment segment, long index) { return (int) VH_stencilResolveMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stencilResolveMode(MemorySegment segment, long index) { return (int) VH_stencilResolveMode.get(segment, 0L, index); }
     /// {@return `stencilResolveMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResolveModeFlagBits") int get_stencilResolveMode(MemorySegment segment) { return VkSubpassDescriptionDepthStencilResolve.get_stencilResolveMode(segment, 0L); }
-    /// {@return `stencilResolveMode`}
-    public @CType("VkResolveModeFlagBits") int stencilResolveMode() { return VkSubpassDescriptionDepthStencilResolve.get_stencilResolveMode(this.segment()); }
+    public int stencilResolveMode() { return stencilResolveMode(this.segment(), 0L); }
     /// Sets `stencilResolveMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stencilResolveMode(MemorySegment segment, long index, @CType("VkResolveModeFlagBits") int value) { VH_stencilResolveMode.set(segment, 0L, index, value); }
-    /// Sets `stencilResolveMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stencilResolveMode(MemorySegment segment, @CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_stencilResolveMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stencilResolveMode(MemorySegment segment, long index, int value) { VH_stencilResolveMode.set(segment, 0L, index, value); }
     /// Sets `stencilResolveMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(@CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_stencilResolveMode(this.segment(), value); return this; }
+    public VkSubpassDescriptionDepthStencilResolve stencilResolveMode(int value) { stencilResolveMode(this.segment(), 0L, value); return this; }
 
     /// {@return `pDepthStencilResolveAttachment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkAttachmentReference2 *") MemorySegment get_pDepthStencilResolveAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthStencilResolveAttachment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pDepthStencilResolveAttachment(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthStencilResolveAttachment.get(segment, 0L, index); }
     /// {@return `pDepthStencilResolveAttachment`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkAttachmentReference2 *") MemorySegment get_pDepthStencilResolveAttachment(MemorySegment segment) { return VkSubpassDescriptionDepthStencilResolve.get_pDepthStencilResolveAttachment(segment, 0L); }
-    /// {@return `pDepthStencilResolveAttachment`}
-    public @CType("const VkAttachmentReference2 *") MemorySegment pDepthStencilResolveAttachment() { return VkSubpassDescriptionDepthStencilResolve.get_pDepthStencilResolveAttachment(this.segment()); }
+    public MemorySegment pDepthStencilResolveAttachment() { return pDepthStencilResolveAttachment(this.segment(), 0L); }
     /// Sets `pDepthStencilResolveAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pDepthStencilResolveAttachment(MemorySegment segment, long index, @CType("const VkAttachmentReference2 *") MemorySegment value) { VH_pDepthStencilResolveAttachment.set(segment, 0L, index, value); }
-    /// Sets `pDepthStencilResolveAttachment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pDepthStencilResolveAttachment(MemorySegment segment, @CType("const VkAttachmentReference2 *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pDepthStencilResolveAttachment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pDepthStencilResolveAttachment(MemorySegment segment, long index, MemorySegment value) { VH_pDepthStencilResolveAttachment.set(segment, 0L, index, value); }
     /// Sets `pDepthStencilResolveAttachment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassDescriptionDepthStencilResolve pDepthStencilResolveAttachment(@CType("const VkAttachmentReference2 *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pDepthStencilResolveAttachment(this.segment(), value); return this; }
+    public VkSubpassDescriptionDepthStencilResolve pDepthStencilResolveAttachment(MemorySegment value) { pDepthStencilResolveAttachment(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSubpassDescriptionDepthStencilResolve].
     public static final class Buffer extends VkSubpassDescriptionDepthStencilResolve {
@@ -258,49 +221,49 @@ public sealed class VkSubpassDescriptionDepthStencilResolve extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSubpassDescriptionDepthStencilResolve.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSubpassDescriptionDepthStencilResolve.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSubpassDescriptionDepthStencilResolve.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `depthResolveMode` at the given index}
-        /// @param index the index
-        public @CType("VkResolveModeFlagBits") int depthResolveModeAt(long index) { return VkSubpassDescriptionDepthStencilResolve.get_depthResolveMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthResolveModeAt(long index) { return depthResolveMode(this.segment(), index); }
         /// Sets `depthResolveMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthResolveModeAt(long index, @CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_depthResolveMode(this.segment(), index, value); return this; }
+        public Buffer depthResolveModeAt(long index, int value) { depthResolveMode(this.segment(), index, value); return this; }
 
         /// {@return `stencilResolveMode` at the given index}
-        /// @param index the index
-        public @CType("VkResolveModeFlagBits") int stencilResolveModeAt(long index) { return VkSubpassDescriptionDepthStencilResolve.get_stencilResolveMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stencilResolveModeAt(long index) { return stencilResolveMode(this.segment(), index); }
         /// Sets `stencilResolveMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stencilResolveModeAt(long index, @CType("VkResolveModeFlagBits") int value) { VkSubpassDescriptionDepthStencilResolve.set_stencilResolveMode(this.segment(), index, value); return this; }
+        public Buffer stencilResolveModeAt(long index, int value) { stencilResolveMode(this.segment(), index, value); return this; }
 
         /// {@return `pDepthStencilResolveAttachment` at the given index}
-        /// @param index the index
-        public @CType("const VkAttachmentReference2 *") MemorySegment pDepthStencilResolveAttachmentAt(long index) { return VkSubpassDescriptionDepthStencilResolve.get_pDepthStencilResolveAttachment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDepthStencilResolveAttachmentAt(long index) { return pDepthStencilResolveAttachment(this.segment(), index); }
         /// Sets `pDepthStencilResolveAttachment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDepthStencilResolveAttachmentAt(long index, @CType("const VkAttachmentReference2 *") MemorySegment value) { VkSubpassDescriptionDepthStencilResolve.set_pDepthStencilResolveAttachment(this.segment(), index, value); return this; }
+        public Buffer pDepthStencilResolveAttachmentAt(long index, MemorySegment value) { pDepthStencilResolveAttachment(this.segment(), index, value); return this; }
 
     }
 }

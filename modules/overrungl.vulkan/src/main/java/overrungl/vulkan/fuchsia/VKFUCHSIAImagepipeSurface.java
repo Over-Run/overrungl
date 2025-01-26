@@ -18,7 +18,6 @@
 package overrungl.vulkan.fuchsia;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKFUCHSIAImagepipeSurface {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateImagePipeSurfaceFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateImagePipeSurfaceFUCHSIA;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateImagePipeSurfaceFUCHSIA = func.invoke(instance, "vkCreateImagePipeSurfaceFUCHSIA");
         }
     }
 
-    public VKFUCHSIAImagepipeSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKFUCHSIAImagepipeSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateImagePipeSurfaceFUCHSIA(@CType("VkInstance") MemorySegment instance, @CType("const VkImagePipeSurfaceCreateInfoFUCHSIA *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateImagePipeSurfaceFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateImagePipeSurfaceFUCHSIA");
+    /// ```
+    /// VkResult vkCreateImagePipeSurfaceFUCHSIA(VkInstance instance, const VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateImagePipeSurfaceFUCHSIA(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateImagePipeSurfaceFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateImagePipeSurfaceFUCHSIA");
         try { return (int) Handles.MH_vkCreateImagePipeSurfaceFUCHSIA.invokeExact(handles.PFN_vkCreateImagePipeSurfaceFUCHSIA, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateImagePipeSurfaceFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateImagePipeSurfaceFUCHSIA", e); }
     }
 
 }

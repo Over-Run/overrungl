@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -33,26 +32,32 @@ public class VKKHRExternalFenceFd {
         public static final MethodHandle MH_vkGetFenceFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkImportFenceFdKHR;
         public final MemorySegment PFN_vkGetFenceFdKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkImportFenceFdKHR = func.invoke(device, "vkImportFenceFdKHR");
             PFN_vkGetFenceFdKHR = func.invoke(device, "vkGetFenceFdKHR");
         }
     }
 
-    public VKKHRExternalFenceFd(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRExternalFenceFd(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int ImportFenceFdKHR(@CType("VkDevice") MemorySegment device, @CType("const VkImportFenceFdInfoKHR *") MemorySegment pImportFenceFdInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkImportFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportFenceFdKHR");
+    /// ```
+    /// VkResult vkImportFenceFdKHR(VkDevice device, const VkImportFenceFdInfoKHR* pImportFenceFdInfo);
+    /// ```
+    public int ImportFenceFdKHR(MemorySegment device, MemorySegment pImportFenceFdInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkImportFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportFenceFdKHR");
         try { return (int) Handles.MH_vkImportFenceFdKHR.invokeExact(handles.PFN_vkImportFenceFdKHR, device, pImportFenceFdInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkImportFenceFdKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportFenceFdKHR", e); }
     }
 
-    public @CType("VkResult") int GetFenceFdKHR(@CType("VkDevice") MemorySegment device, @CType("const VkFenceGetFdInfoKHR *") MemorySegment pGetFdInfo, @CType("int *") MemorySegment pFd) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetFenceFdKHR");
+    /// ```
+    /// VkResult vkGetFenceFdKHR(VkDevice device, const VkFenceGetFdInfoKHR* pGetFdInfo, int* pFd);
+    /// ```
+    public int GetFenceFdKHR(MemorySegment device, MemorySegment pGetFdInfo, MemorySegment pFd) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetFenceFdKHR");
         try { return (int) Handles.MH_vkGetFenceFdKHR.invokeExact(handles.PFN_vkGetFenceFdKHR, device, pGetFdInfo, pFd); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetFenceFdKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFenceFdKHR", e); }
     }
 
 }

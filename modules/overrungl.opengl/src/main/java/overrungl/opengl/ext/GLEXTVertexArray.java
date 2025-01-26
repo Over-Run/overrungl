@@ -93,7 +93,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glArrayElementEXT(int i);
+    /// void glArrayElementEXT(GLint i);
     /// ```
     public void ArrayElementEXT(int i) {
         if (MemoryUtil.isNullPointer(handles.PFN_glArrayElementEXT)) throw new SymbolNotFoundError("Symbol not found: glArrayElementEXT");
@@ -102,7 +102,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glColorPointerEXT(int size, unsigned int type, int stride, int count, const void* pointer);
+    /// void glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void* pointer);
     /// ```
     public void ColorPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glColorPointerEXT");
@@ -111,7 +111,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glDrawArraysEXT(unsigned int mode, int first, int count);
+    /// void glDrawArraysEXT(GLenum mode, GLint first, GLsizei count);
     /// ```
     public void DrawArraysEXT(int mode, int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysEXT");
@@ -120,7 +120,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glEdgeFlagPointerEXT(int stride, int count, const GLboolean* pointer);
+    /// void glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean* pointer);
     /// ```
     public void EdgeFlagPointerEXT(int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEdgeFlagPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagPointerEXT");
@@ -129,7 +129,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glGetPointervEXT(unsigned int pname, void** params);
+    /// void glGetPointervEXT(GLenum pname, void** params);
     /// ```
     public void GetPointervEXT(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPointervEXT");
@@ -138,7 +138,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glIndexPointerEXT(unsigned int type, int stride, int count, const void* pointer);
+    /// void glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void* pointer);
     /// ```
     public void IndexPointerEXT(int type, int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexPointerEXT");
@@ -147,7 +147,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glNormalPointerEXT(unsigned int type, int stride, int count, const void* pointer);
+    /// void glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const void* pointer);
     /// ```
     public void NormalPointerEXT(int type, int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glNormalPointerEXT");
@@ -156,7 +156,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glTexCoordPointerEXT(int size, unsigned int type, int stride, int count, const void* pointer);
+    /// void glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void* pointer);
     /// ```
     public void TexCoordPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTexCoordPointerEXT");
@@ -165,7 +165,7 @@ public final class GLEXTVertexArray {
     }
 
     /// ```
-    /// void glVertexPointerEXT(int size, unsigned int type, int stride, int count, const void* pointer);
+    /// void glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const void* pointer);
     /// ```
     public void VertexPointerEXT(int size, int type, int stride, int count, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexPointerEXT");

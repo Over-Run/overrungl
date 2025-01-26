@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKARMShaderCoreProperties {
     public static final int VK_ARM_SHADER_CORE_PROPERTIES_SPEC_VERSION = 1;

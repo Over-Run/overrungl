@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### scalingBehavior
-/// [VarHandle][#VH_scalingBehavior] - [Getter][#scalingBehavior()] - [Setter][#scalingBehavior(int)]
-/// ### presentGravityX
-/// [VarHandle][#VH_presentGravityX] - [Getter][#presentGravityX()] - [Setter][#presentGravityX(int)]
-/// ### presentGravityY
-/// [VarHandle][#VH_presentGravityY] - [Getter][#presentGravityY()] - [Setter][#presentGravityY(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSwapchainPresentScalingCreateInfoEXT {
+/// ```
+/// struct VkSwapchainPresentScalingCreateInfoEXT {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkPresentScalingFlagsEXT scalingBehavior;
 ///     VkPresentGravityFlagsEXT presentGravityX;
 ///     VkPresentGravityFlagsEXT presentGravityY;
-/// } VkSwapchainPresentScalingCreateInfoEXT;
+/// };
 /// ```
-public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
+public sealed class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// The struct layout of `VkSwapchainPresentScalingCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("scalingBehavior"),
         ValueLayout.JAVA_INT.withName("presentGravityX"),
         ValueLayout.JAVA_INT.withName("presentGravityY")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `scalingBehavior` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `scalingBehavior`.
+    public static final long OFFSET_scalingBehavior = LAYOUT.byteOffset(PathElement.groupElement("scalingBehavior"));
+    /// The memory layout of `scalingBehavior`.
+    public static final MemoryLayout LAYOUT_scalingBehavior = LAYOUT.select(PathElement.groupElement("scalingBehavior"));
+    /// The [VarHandle] of `scalingBehavior` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_scalingBehavior = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scalingBehavior"));
-    /// The [VarHandle] of `presentGravityX` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `presentGravityX`.
+    public static final long OFFSET_presentGravityX = LAYOUT.byteOffset(PathElement.groupElement("presentGravityX"));
+    /// The memory layout of `presentGravityX`.
+    public static final MemoryLayout LAYOUT_presentGravityX = LAYOUT.select(PathElement.groupElement("presentGravityX"));
+    /// The [VarHandle] of `presentGravityX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentGravityX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityX"));
-    /// The [VarHandle] of `presentGravityY` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `presentGravityY`.
+    public static final long OFFSET_presentGravityY = LAYOUT.byteOffset(PathElement.groupElement("presentGravityY"));
+    /// The memory layout of `presentGravityY`.
+    public static final MemoryLayout LAYOUT_presentGravityY = LAYOUT.select(PathElement.groupElement("presentGravityY"));
+    /// The [VarHandle] of `presentGravityY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentGravityY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentGravityY"));
 
     /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
     /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainPresentScalingCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainPresentScalingCreateInfoEXT(segment); }
-
-    /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainPresentScalingCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainPresentScalingCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSwapchainPresentScalingCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentScalingCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSwapchainPresentScalingCreateInfoEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
     /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPresentScalingFlagsEXT") int scalingBehavior, @CType("VkPresentGravityFlagsEXT") int presentGravityX, @CType("VkPresentGravityFlagsEXT") int presentGravityY) { return alloc(allocator).sType(sType).pNext(pNext).scalingBehavior(scalingBehavior).presentGravityX(presentGravityX).presentGravityY(presentGravityY); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSwapchainPresentScalingCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSwapchainPresentScalingCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentScalingCreateInfoEXT sType(@CType("VkStructureType") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkSwapchainPresentScalingCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainPresentScalingCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkSwapchainPresentScalingCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSwapchainPresentScalingCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentScalingCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkSwapchainPresentScalingCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSwapchainPresentScalingCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `scalingBehavior` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentScalingFlagsEXT") int get_scalingBehavior(MemorySegment segment, long index) { return (int) VH_scalingBehavior.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int scalingBehavior(MemorySegment segment, long index) { return (int) VH_scalingBehavior.get(segment, 0L, index); }
     /// {@return `scalingBehavior`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentScalingFlagsEXT") int get_scalingBehavior(MemorySegment segment) { return VkSwapchainPresentScalingCreateInfoEXT.get_scalingBehavior(segment, 0L); }
-    /// {@return `scalingBehavior`}
-    public @CType("VkPresentScalingFlagsEXT") int scalingBehavior() { return VkSwapchainPresentScalingCreateInfoEXT.get_scalingBehavior(this.segment()); }
+    public int scalingBehavior() { return scalingBehavior(this.segment(), 0L); }
     /// Sets `scalingBehavior` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_scalingBehavior(MemorySegment segment, long index, @CType("VkPresentScalingFlagsEXT") int value) { VH_scalingBehavior.set(segment, 0L, index, value); }
-    /// Sets `scalingBehavior` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_scalingBehavior(MemorySegment segment, @CType("VkPresentScalingFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_scalingBehavior(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void scalingBehavior(MemorySegment segment, long index, int value) { VH_scalingBehavior.set(segment, 0L, index, value); }
     /// Sets `scalingBehavior` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(@CType("VkPresentScalingFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_scalingBehavior(this.segment(), value); return this; }
+    public VkSwapchainPresentScalingCreateInfoEXT scalingBehavior(int value) { scalingBehavior(this.segment(), 0L, value); return this; }
 
     /// {@return `presentGravityX` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentGravityFlagsEXT") int get_presentGravityX(MemorySegment segment, long index) { return (int) VH_presentGravityX.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int presentGravityX(MemorySegment segment, long index) { return (int) VH_presentGravityX.get(segment, 0L, index); }
     /// {@return `presentGravityX`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentGravityFlagsEXT") int get_presentGravityX(MemorySegment segment) { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityX(segment, 0L); }
-    /// {@return `presentGravityX`}
-    public @CType("VkPresentGravityFlagsEXT") int presentGravityX() { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityX(this.segment()); }
+    public int presentGravityX() { return presentGravityX(this.segment(), 0L); }
     /// Sets `presentGravityX` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentGravityX(MemorySegment segment, long index, @CType("VkPresentGravityFlagsEXT") int value) { VH_presentGravityX.set(segment, 0L, index, value); }
-    /// Sets `presentGravityX` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentGravityX(MemorySegment segment, @CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityX(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentGravityX(MemorySegment segment, long index, int value) { VH_presentGravityX.set(segment, 0L, index, value); }
     /// Sets `presentGravityX` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(@CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityX(this.segment(), value); return this; }
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityX(int value) { presentGravityX(this.segment(), 0L, value); return this; }
 
     /// {@return `presentGravityY` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentGravityFlagsEXT") int get_presentGravityY(MemorySegment segment, long index) { return (int) VH_presentGravityY.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int presentGravityY(MemorySegment segment, long index) { return (int) VH_presentGravityY.get(segment, 0L, index); }
     /// {@return `presentGravityY`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentGravityFlagsEXT") int get_presentGravityY(MemorySegment segment) { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityY(segment, 0L); }
-    /// {@return `presentGravityY`}
-    public @CType("VkPresentGravityFlagsEXT") int presentGravityY() { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityY(this.segment()); }
+    public int presentGravityY() { return presentGravityY(this.segment(), 0L); }
     /// Sets `presentGravityY` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentGravityY(MemorySegment segment, long index, @CType("VkPresentGravityFlagsEXT") int value) { VH_presentGravityY.set(segment, 0L, index, value); }
-    /// Sets `presentGravityY` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentGravityY(MemorySegment segment, @CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityY(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentGravityY(MemorySegment segment, long index, int value) { VH_presentGravityY.set(segment, 0L, index, value); }
     /// Sets `presentGravityY` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(@CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityY(this.segment(), value); return this; }
+    public VkSwapchainPresentScalingCreateInfoEXT presentGravityY(int value) { presentGravityY(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSwapchainPresentScalingCreateInfoEXT].
     public static final class Buffer extends VkSwapchainPresentScalingCreateInfoEXT {
@@ -258,49 +221,49 @@ public sealed class VkSwapchainPresentScalingCreateInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainPresentScalingCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSwapchainPresentScalingCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSwapchainPresentScalingCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `scalingBehavior` at the given index}
-        /// @param index the index
-        public @CType("VkPresentScalingFlagsEXT") int scalingBehaviorAt(long index) { return VkSwapchainPresentScalingCreateInfoEXT.get_scalingBehavior(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int scalingBehaviorAt(long index) { return scalingBehavior(this.segment(), index); }
         /// Sets `scalingBehavior` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer scalingBehaviorAt(long index, @CType("VkPresentScalingFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_scalingBehavior(this.segment(), index, value); return this; }
+        public Buffer scalingBehaviorAt(long index, int value) { scalingBehavior(this.segment(), index, value); return this; }
 
         /// {@return `presentGravityX` at the given index}
-        /// @param index the index
-        public @CType("VkPresentGravityFlagsEXT") int presentGravityXAt(long index) { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityX(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int presentGravityXAt(long index) { return presentGravityX(this.segment(), index); }
         /// Sets `presentGravityX` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentGravityXAt(long index, @CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityX(this.segment(), index, value); return this; }
+        public Buffer presentGravityXAt(long index, int value) { presentGravityX(this.segment(), index, value); return this; }
 
         /// {@return `presentGravityY` at the given index}
-        /// @param index the index
-        public @CType("VkPresentGravityFlagsEXT") int presentGravityYAt(long index) { return VkSwapchainPresentScalingCreateInfoEXT.get_presentGravityY(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int presentGravityYAt(long index) { return presentGravityY(this.segment(), index); }
         /// Sets `presentGravityY` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentGravityYAt(long index, @CType("VkPresentGravityFlagsEXT") int value) { VkSwapchainPresentScalingCreateInfoEXT.set_presentGravityY(this.segment(), index, value); return this; }
+        public Buffer presentGravityYAt(long index, int value) { presentGravityY(this.segment(), index, value); return this; }
 
     }
 }

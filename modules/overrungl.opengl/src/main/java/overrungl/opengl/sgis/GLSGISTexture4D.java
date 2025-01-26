@@ -50,7 +50,7 @@ public final class GLSGISTexture4D {
     }
 
     /// ```
-    /// void glTexImage4DSGIS(unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int size4d, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexImage4DSGIS(int target, int level, int internalformat, int width, int height, int depth, int size4d, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexImage4DSGIS");
@@ -59,7 +59,7 @@ public final class GLSGISTexture4D {
     }
 
     /// ```
-    /// void glTexSubImage4DSGIS(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexSubImage4DSGIS(int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage4DSGIS");

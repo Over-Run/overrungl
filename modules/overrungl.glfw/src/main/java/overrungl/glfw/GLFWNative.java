@@ -196,7 +196,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetWin32Window(GLFWwindow* window);
+    /// HWND glfwGetWin32Window(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetWin32Window(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWin32Window)) throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Window");
@@ -205,7 +205,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetWGLContext(GLFWwindow* window);
+    /// HGLRC glfwGetWGLContext(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetWGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetWGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetWGLContext");
@@ -214,7 +214,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// uint32_t glfwGetCocoaMonitor(GLFWmonitor* monitor);
+    /// CGDirectDisplayID glfwGetCocoaMonitor(GLFWmonitor* monitor);
     /// ```
     public static int glfwGetCocoaMonitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaMonitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaMonitor");
@@ -223,7 +223,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetCocoaWindow(GLFWwindow* window);
+    /// id glfwGetCocoaWindow(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetCocoaWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaWindow");
@@ -232,7 +232,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetCocoaView(GLFWwindow* window);
+    /// id glfwGetCocoaView(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetCocoaView(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetCocoaView)) throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaView");
@@ -241,7 +241,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetNSGLContext(GLFWwindow* window);
+    /// id glfwGetNSGLContext(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetNSGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetNSGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetNSGLContext");
@@ -259,7 +259,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// unsigned long glfwGetX11Adapter(GLFWmonitor* monitor);
+    /// RRCrtc glfwGetX11Adapter(GLFWmonitor* monitor);
     /// ```
     public static long glfwGetX11Adapter(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Adapter)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Adapter");
@@ -268,7 +268,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// unsigned long glfwGetX11Monitor(GLFWmonitor* monitor);
+    /// RROutput glfwGetX11Monitor(GLFWmonitor* monitor);
     /// ```
     public static long glfwGetX11Monitor(MemorySegment monitor) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Monitor)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Monitor");
@@ -277,7 +277,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// unsigned long glfwGetX11Window(GLFWwindow* window);
+    /// Window glfwGetX11Window(GLFWwindow* window);
     /// ```
     public static long glfwGetX11Window(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetX11Window)) throw new SymbolNotFoundError("Symbol not found: glfwGetX11Window");
@@ -304,7 +304,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// __GLXcontextRec * glfwGetGLXContext(GLFWwindow* window);
+    /// GLXContext glfwGetGLXContext(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetGLXContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXContext");
@@ -313,7 +313,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// unsigned long glfwGetGLXWindow(GLFWwindow* window);
+    /// GLXWindow glfwGetGLXWindow(GLFWwindow* window);
     /// ```
     public static long glfwGetGLXWindow(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetGLXWindow)) throw new SymbolNotFoundError("Symbol not found: glfwGetGLXWindow");
@@ -349,7 +349,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetEGLDisplay();
+    /// EGLDisplay glfwGetEGLDisplay();
     /// ```
     public static MemorySegment glfwGetEGLDisplay() {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLDisplay)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLDisplay");
@@ -358,7 +358,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetEGLContext(GLFWwindow* window);
+    /// EGLContext glfwGetEGLContext(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetEGLContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLContext");
@@ -367,7 +367,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// void* glfwGetEGLSurface(GLFWwindow* window);
+    /// EGLSurface glfwGetEGLSurface(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetEGLSurface(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetEGLSurface)) throw new SymbolNotFoundError("Symbol not found: glfwGetEGLSurface");
@@ -394,7 +394,7 @@ public final class GLFWNative {
     }
 
     /// ```
-    /// OSMesaContext * glfwGetOSMesaContext(GLFWwindow* window);
+    /// OSMesaContext glfwGetOSMesaContext(GLFWwindow* window);
     /// ```
     public static MemorySegment glfwGetOSMesaContext(MemorySegment window) {
         if (MemoryUtil.isNullPointer(Handles.get().PFN_glfwGetOSMesaContext)) throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaContext");

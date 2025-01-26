@@ -41,7 +41,7 @@ public final class GLAMDStencilOperationExtended {
     }
 
     /// ```
-    /// void glStencilOpValueAMD(unsigned int face, unsigned int value);
+    /// void glStencilOpValueAMD(GLenum face, GLuint value);
     /// ```
     public void StencilOpValueAMD(int face, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpValueAMD)) throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD");

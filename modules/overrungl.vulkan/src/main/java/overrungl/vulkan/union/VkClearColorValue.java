@@ -15,50 +15,48 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.union;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### float32
-/// [Byte offset][#OFFSET_float32] - [Memory layout][#ML_float32] - [Getter][#float32()] - [Setter][#float32(MemorySegment)]
-/// ### int32
-/// [Byte offset][#OFFSET_int32] - [Memory layout][#ML_int32] - [Getter][#int32()] - [Setter][#int32(MemorySegment)]
-/// ### uint32
-/// [Byte offset][#OFFSET_uint32] - [Memory layout][#ML_uint32] - [Getter][#uint32()] - [Setter][#uint32(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef union VkClearColorValue {
-///     float[4] float32;
-///     int32_t[4] int32;
-///     uint32_t[4] uint32;
-/// } VkClearColorValue;
 /// ```
-public sealed class VkClearColorValue extends Union {
+/// union VkClearColorValue {
+///     float float32[4];
+///     int32_t int32[4];
+///     uint32_t uint32[4];
+/// };
+/// ```
+public sealed class VkClearColorValue extends GroupType {
     /// The union layout of `VkClearColorValue`.
-    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
-        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
+    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_FLOAT).withName("float32"),
+        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_INT).withName("int32"),
+        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_INT).withName("uint32")
     );
     /// The byte offset of `float32`.
     public static final long OFFSET_float32 = LAYOUT.byteOffset(PathElement.groupElement("float32"));
     /// The memory layout of `float32`.
-    public static final MemoryLayout ML_float32 = LAYOUT.select(PathElement.groupElement("float32"));
+    public static final MemoryLayout LAYOUT_float32 = LAYOUT.select(PathElement.groupElement("float32"));
+    /// The [VarHandle] of `float32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_float32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("float32"), PathElement.sequenceElement());
     /// The byte offset of `int32`.
     public static final long OFFSET_int32 = LAYOUT.byteOffset(PathElement.groupElement("int32"));
     /// The memory layout of `int32`.
-    public static final MemoryLayout ML_int32 = LAYOUT.select(PathElement.groupElement("int32"));
+    public static final MemoryLayout LAYOUT_int32 = LAYOUT.select(PathElement.groupElement("int32"));
+    /// The [VarHandle] of `int32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_int32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("int32"), PathElement.sequenceElement());
     /// The byte offset of `uint32`.
     public static final long OFFSET_uint32 = LAYOUT.byteOffset(PathElement.groupElement("uint32"));
     /// The memory layout of `uint32`.
-    public static final MemoryLayout ML_uint32 = LAYOUT.select(PathElement.groupElement("uint32"));
+    public static final MemoryLayout LAYOUT_uint32 = LAYOUT.select(PathElement.groupElement("uint32"));
+    /// The [VarHandle] of `uint32` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32"), PathElement.sequenceElement());
 
     /// Creates `VkClearColorValue` with the given segment.
     /// @param segment the memory segment
@@ -67,19 +65,14 @@ public sealed class VkClearColorValue extends Union {
     /// Creates `VkClearColorValue` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearColorValue of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkClearColorValue(segment); }
-
-    /// Creates `VkClearColorValue` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClearColorValue` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearColorValue ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkClearColorValue(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkClearColorValue ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearColorValue(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkClearColorValue` with the given segment.
     ///
@@ -87,7 +80,7 @@ public sealed class VkClearColorValue extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkClearColorValue` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,76 +100,112 @@ public sealed class VkClearColorValue extends Union {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `float32` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("float[4]") MemorySegment get_float32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_float32, index), ML_float32); }
-    /// {@return `float32`}
+    /// @param index the index of the union buffer
+    public static MemorySegment float32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_float32, index), LAYOUT_float32); }
+    /// {@return `float32` at the given index}
     /// @param segment the segment of the union
-    public static @CType("float[4]") MemorySegment get_float32(MemorySegment segment) { return VkClearColorValue.get_float32(segment, 0L); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    public static float float32(MemorySegment segment, long index, long index0) { return (float) VH_float32.get(segment, 0L, index, index0); }
     /// {@return `float32`}
-    public @CType("float[4]") MemorySegment float32() { return VkClearColorValue.get_float32(this.segment()); }
+    public MemorySegment float32() { return float32(this.segment(), 0L); }
+    /// {@return `float32`}
+    /// @param index0 the Index 0 of the array
+    public float float32(long index0) { return float32(this.segment(), 0L, index0); }
     /// Sets `float32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_float32(MemorySegment segment, long index, @CType("float[4]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_float32, index), ML_float32.byteSize()); }
-    /// Sets `float32` with the given value.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void float32(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_float32, index), LAYOUT_float32.byteSize()); }
+    /// Sets `float32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_float32(MemorySegment segment, @CType("float[4]") MemorySegment value) { VkClearColorValue.set_float32(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void float32(MemorySegment segment, long index, long index0, float value) { VH_float32.set(segment, 0L, index, index0, value); }
     /// Sets `float32` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkClearColorValue float32(@CType("float[4]") MemorySegment value) { VkClearColorValue.set_float32(this.segment(), value); return this; }
+    public VkClearColorValue float32(MemorySegment value) { float32(this.segment(), 0L, value); return this; }
+    /// Sets `float32` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue float32(long index0, float value) { float32(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `int32` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("int32_t[4]") MemorySegment get_int32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_int32, index), ML_int32); }
-    /// {@return `int32`}
+    /// @param index the index of the union buffer
+    public static MemorySegment int32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_int32, index), LAYOUT_int32); }
+    /// {@return `int32` at the given index}
     /// @param segment the segment of the union
-    public static @CType("int32_t[4]") MemorySegment get_int32(MemorySegment segment) { return VkClearColorValue.get_int32(segment, 0L); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    public static int int32(MemorySegment segment, long index, long index0) { return (int) VH_int32.get(segment, 0L, index, index0); }
     /// {@return `int32`}
-    public @CType("int32_t[4]") MemorySegment int32() { return VkClearColorValue.get_int32(this.segment()); }
+    public MemorySegment int32() { return int32(this.segment(), 0L); }
+    /// {@return `int32`}
+    /// @param index0 the Index 0 of the array
+    public int int32(long index0) { return int32(this.segment(), 0L, index0); }
     /// Sets `int32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_int32(MemorySegment segment, long index, @CType("int32_t[4]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_int32, index), ML_int32.byteSize()); }
-    /// Sets `int32` with the given value.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void int32(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_int32, index), LAYOUT_int32.byteSize()); }
+    /// Sets `int32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_int32(MemorySegment segment, @CType("int32_t[4]") MemorySegment value) { VkClearColorValue.set_int32(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void int32(MemorySegment segment, long index, long index0, int value) { VH_int32.set(segment, 0L, index, index0, value); }
     /// Sets `int32` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkClearColorValue int32(@CType("int32_t[4]") MemorySegment value) { VkClearColorValue.set_int32(this.segment(), value); return this; }
+    public VkClearColorValue int32(MemorySegment value) { int32(this.segment(), 0L, value); return this; }
+    /// Sets `int32` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue int32(long index0, int value) { int32(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `uint32` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("uint32_t[4]") MemorySegment get_uint32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_uint32, index), ML_uint32); }
-    /// {@return `uint32`}
+    /// @param index the index of the union buffer
+    public static MemorySegment uint32(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_uint32, index), LAYOUT_uint32); }
+    /// {@return `uint32` at the given index}
     /// @param segment the segment of the union
-    public static @CType("uint32_t[4]") MemorySegment get_uint32(MemorySegment segment) { return VkClearColorValue.get_uint32(segment, 0L); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    public static int uint32(MemorySegment segment, long index, long index0) { return (int) VH_uint32.get(segment, 0L, index, index0); }
     /// {@return `uint32`}
-    public @CType("uint32_t[4]") MemorySegment uint32() { return VkClearColorValue.get_uint32(this.segment()); }
+    public MemorySegment uint32() { return uint32(this.segment(), 0L); }
+    /// {@return `uint32`}
+    /// @param index0 the Index 0 of the array
+    public int uint32(long index0) { return uint32(this.segment(), 0L, index0); }
     /// Sets `uint32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_uint32(MemorySegment segment, long index, @CType("uint32_t[4]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_uint32, index), ML_uint32.byteSize()); }
-    /// Sets `uint32` with the given value.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void uint32(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_uint32, index), LAYOUT_uint32.byteSize()); }
+    /// Sets `uint32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_uint32(MemorySegment segment, @CType("uint32_t[4]") MemorySegment value) { VkClearColorValue.set_uint32(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void uint32(MemorySegment segment, long index, long index0, int value) { VH_uint32.set(segment, 0L, index, index0, value); }
     /// Sets `uint32` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkClearColorValue uint32(@CType("uint32_t[4]") MemorySegment value) { VkClearColorValue.set_uint32(this.segment(), value); return this; }
+    public VkClearColorValue uint32(MemorySegment value) { uint32(this.segment(), 0L, value); return this; }
+    /// Sets `uint32` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue uint32(long index0, int value) { uint32(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [VkClearColorValue].
     public static final class Buffer extends VkClearColorValue {
@@ -201,31 +230,61 @@ public sealed class VkClearColorValue extends Union {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `float32` at the given index}
-        /// @param index the index
-        public @CType("float[4]") MemorySegment float32At(long index) { return VkClearColorValue.get_float32(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment float32At(long index) { return float32(this.segment(), index); }
+        /// {@return `float32` at the given index}
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        public float float32At(long index, long index0) { return float32(this.segment(), index, index0); }
         /// Sets `float32` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer float32At(long index, @CType("float[4]") MemorySegment value) { VkClearColorValue.set_float32(this.segment(), index, value); return this; }
+        public Buffer float32At(long index, MemorySegment value) { float32(this.segment(), index, value); return this; }
+        /// Sets `float32` with the given value at the given index.
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer float32At(long index, long index0, float value) { float32(this.segment(), index, index0, value); return this; }
 
         /// {@return `int32` at the given index}
-        /// @param index the index
-        public @CType("int32_t[4]") MemorySegment int32At(long index) { return VkClearColorValue.get_int32(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment int32At(long index) { return int32(this.segment(), index); }
+        /// {@return `int32` at the given index}
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        public int int32At(long index, long index0) { return int32(this.segment(), index, index0); }
         /// Sets `int32` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer int32At(long index, @CType("int32_t[4]") MemorySegment value) { VkClearColorValue.set_int32(this.segment(), index, value); return this; }
+        public Buffer int32At(long index, MemorySegment value) { int32(this.segment(), index, value); return this; }
+        /// Sets `int32` with the given value at the given index.
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer int32At(long index, long index0, int value) { int32(this.segment(), index, index0, value); return this; }
 
         /// {@return `uint32` at the given index}
-        /// @param index the index
-        public @CType("uint32_t[4]") MemorySegment uint32At(long index) { return VkClearColorValue.get_uint32(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment uint32At(long index) { return uint32(this.segment(), index); }
+        /// {@return `uint32` at the given index}
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        public int uint32At(long index, long index0) { return uint32(this.segment(), index, index0); }
         /// Sets `uint32` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer uint32At(long index, @CType("uint32_t[4]") MemorySegment value) { VkClearColorValue.set_uint32(this.segment(), index, value); return this; }
+        public Buffer uint32At(long index, MemorySegment value) { uint32(this.segment(), index, value); return this; }
+        /// Sets `uint32` with the given value at the given index.
+        /// @param index the index of the union buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer uint32At(long index, long index0, int value) { uint32(this.segment(), index, index0, value); return this; }
 
     }
 }

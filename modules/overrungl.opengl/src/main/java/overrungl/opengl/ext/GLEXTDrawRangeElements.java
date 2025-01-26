@@ -39,7 +39,7 @@ public final class GLEXTDrawRangeElements {
     }
 
     /// ```
-    /// void glDrawRangeElementsEXT(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices);
+    /// void glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void* indices);
     /// ```
     public void DrawRangeElementsEXT(int mode, int start, int end, int count, int type, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");

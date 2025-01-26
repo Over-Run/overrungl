@@ -15,31 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### data
-/// [VarHandle][#VH_data] - [Getter][#data()] - [Setter][#data(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSetStateFlagsIndirectCommandNV {
-///     uint32_t data;
-/// } VkSetStateFlagsIndirectCommandNV;
 /// ```
-public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
+/// struct VkSetStateFlagsIndirectCommandNV {
+///     uint32_t data;
+/// };
+/// ```
+public sealed class VkSetStateFlagsIndirectCommandNV extends GroupType {
     /// The struct layout of `VkSetStateFlagsIndirectCommandNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("data")
     );
-    /// The [VarHandle] of `data` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `data`.
+    public static final long OFFSET_data = LAYOUT.byteOffset(PathElement.groupElement("data"));
+    /// The memory layout of `data`.
+    public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
+    /// The [VarHandle] of `data` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_data = LAYOUT.arrayElementVarHandle(PathElement.groupElement("data"));
 
     /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
@@ -49,19 +49,14 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
     /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSetStateFlagsIndirectCommandNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSetStateFlagsIndirectCommandNV(segment); }
-
-    /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSetStateFlagsIndirectCommandNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSetStateFlagsIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSetStateFlagsIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSetStateFlagsIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSetStateFlagsIndirectCommandNV` with the given segment.
     ///
@@ -69,7 +64,7 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSetStateFlagsIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -82,11 +77,6 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
     /// @return the allocated `VkSetStateFlagsIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSetStateFlagsIndirectCommandNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSetStateFlagsIndirectCommandNV`
-    public static VkSetStateFlagsIndirectCommandNV allocInit(SegmentAllocator allocator, @CType("uint32_t") int data) { return alloc(allocator).data(data); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -94,30 +84,23 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_data(MemorySegment segment, long index) { return (int) VH_data.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int data(MemorySegment segment, long index) { return (int) VH_data.get(segment, 0L, index); }
     /// {@return `data`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_data(MemorySegment segment) { return VkSetStateFlagsIndirectCommandNV.get_data(segment, 0L); }
-    /// {@return `data`}
-    public @CType("uint32_t") int data() { return VkSetStateFlagsIndirectCommandNV.get_data(this.segment()); }
+    public int data() { return data(this.segment(), 0L); }
     /// Sets `data` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_data(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_data.set(segment, 0L, index, value); }
-    /// Sets `data` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_data(MemorySegment segment, @CType("uint32_t") int value) { VkSetStateFlagsIndirectCommandNV.set_data(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void data(MemorySegment segment, long index, int value) { VH_data.set(segment, 0L, index, value); }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSetStateFlagsIndirectCommandNV data(@CType("uint32_t") int value) { VkSetStateFlagsIndirectCommandNV.set_data(this.segment(), value); return this; }
+    public VkSetStateFlagsIndirectCommandNV data(int value) { data(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSetStateFlagsIndirectCommandNV].
     public static final class Buffer extends VkSetStateFlagsIndirectCommandNV {
@@ -142,13 +125,13 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `data` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int dataAt(long index) { return VkSetStateFlagsIndirectCommandNV.get_data(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dataAt(long index) { return data(this.segment(), index); }
         /// Sets `data` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dataAt(long index, @CType("uint32_t") int value) { VkSetStateFlagsIndirectCommandNV.set_data(this.segment(), index, value); return this; }
+        public Buffer dataAt(long index, int value) { data(this.segment(), index, value); return this; }
 
     }
 }

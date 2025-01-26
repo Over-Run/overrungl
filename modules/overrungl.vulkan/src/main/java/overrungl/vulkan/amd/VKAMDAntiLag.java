@@ -18,7 +18,6 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -37,19 +36,22 @@ public class VKAMDAntiLag {
     public static final class Handles {
         public static final MethodHandle MH_vkAntiLagUpdateAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkAntiLagUpdateAMD;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkAntiLagUpdateAMD = func.invoke(device, "vkAntiLagUpdateAMD");
         }
     }
 
-    public VKAMDAntiLag(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKAMDAntiLag(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void AntiLagUpdateAMD(@CType("VkDevice") MemorySegment device, @CType("const VkAntiLagDataAMD *") MemorySegment pData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkAntiLagUpdateAMD)) throw new SymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
+    /// ```
+    /// void vkAntiLagUpdateAMD(VkDevice device, const VkAntiLagDataAMD* pData);
+    /// ```
+    public void AntiLagUpdateAMD(MemorySegment device, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkAntiLagUpdateAMD)) throw new SymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
         try { Handles.MH_vkAntiLagUpdateAMD.invokeExact(handles.PFN_vkAntiLagUpdateAMD, device, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkAntiLagUpdateAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AntiLagUpdateAMD", e); }
     }
 
 }

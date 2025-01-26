@@ -40,7 +40,7 @@ public final class GLARBES32Compatibility {
     }
 
     /// ```
-    /// void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW);
+    /// void glPrimitiveBoundingBoxARB(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW);
     /// ```
     public void PrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");

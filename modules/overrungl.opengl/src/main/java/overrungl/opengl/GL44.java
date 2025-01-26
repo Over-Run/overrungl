@@ -81,7 +81,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBufferStorage(unsigned int target, signed long long size, const void* data, unsigned int flags);
+    /// void glBufferStorage(GLenum target, GLsizeiptr size, const void* data, GLbitfield flags);
     /// ```
     public void BufferStorage(int target, long size, MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
@@ -90,7 +90,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glClearTexImage(unsigned int texture, int level, unsigned int format, unsigned int type, const void* data);
+    /// void glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearTexImage(int texture, int level, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearTexImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexImage");
@@ -99,7 +99,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glClearTexSubImage(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* data);
+    /// void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexSubImage");
@@ -108,7 +108,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindBuffersBase(unsigned int target, unsigned int first, int count, const GLuint* buffers);
+    /// void glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint* buffers);
     /// ```
     public void BindBuffersBase(int target, int first, int count, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBuffersBase)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersBase");
@@ -117,7 +117,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindBuffersRange(unsigned int target, unsigned int first, int count, const GLuint* buffers, const GLintptr* offsets, const GLsizeiptr* sizes);
+    /// void glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizeiptr* sizes);
     /// ```
     public void BindBuffersRange(int target, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment sizes) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBuffersRange)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersRange");
@@ -126,7 +126,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindTextures(unsigned int first, int count, const GLuint* textures);
+    /// void glBindTextures(GLuint first, GLsizei count, const GLuint* textures);
     /// ```
     public void BindTextures(int first, int count, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTextures)) throw new SymbolNotFoundError("Symbol not found: glBindTextures");
@@ -135,7 +135,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindSamplers(unsigned int first, int count, const GLuint* samplers);
+    /// void glBindSamplers(GLuint first, GLsizei count, const GLuint* samplers);
     /// ```
     public void BindSamplers(int first, int count, MemorySegment samplers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindSamplers)) throw new SymbolNotFoundError("Symbol not found: glBindSamplers");
@@ -144,7 +144,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindImageTextures(unsigned int first, int count, const GLuint* textures);
+    /// void glBindImageTextures(GLuint first, GLsizei count, const GLuint* textures);
     /// ```
     public void BindImageTextures(int first, int count, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTextures)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextures");
@@ -153,7 +153,7 @@ public class GL44 extends GL43 {
     }
 
     /// ```
-    /// void glBindVertexBuffers(unsigned int first, int count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
+    /// void glBindVertexBuffers(GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
     /// ```
     public void BindVertexBuffers(int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexBuffers)) throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffers");

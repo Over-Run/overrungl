@@ -432,7 +432,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_PackBegin(stbtt_pack_context* spc, unsigned char* pixels, int width, int height, int stride_in_bytes, int padding, void* alloc_context);
+    /// STBbool stbtt_PackBegin(stbtt_pack_context* spc, unsigned char* pixels, int width, int height, int stride_in_bytes, int padding, void* alloc_context);
     /// ```
     public static boolean stbtt_PackBegin(MemorySegment spc, MemorySegment pixels, int width, int height, int stride_in_bytes, int padding, MemorySegment alloc_context) {
         try { return (((int) Handles.MH_stbtt_PackBegin.invokeExact(Handles.get().PFN_stbtt_PackBegin, spc, pixels, width, height, stride_in_bytes, padding, alloc_context)) != 0); }
@@ -448,7 +448,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_PackFontRange(stbtt_pack_context* spc, const unsigned char* fontdata, int font_index, float font_size, int first_unicode_char_in_range, int num_chars_in_range, stbtt_packedchar* chardata_for_range);
+    /// STBbool stbtt_PackFontRange(stbtt_pack_context* spc, const unsigned char* fontdata, int font_index, float font_size, int first_unicode_char_in_range, int num_chars_in_range, stbtt_packedchar* chardata_for_range);
     /// ```
     public static boolean stbtt_PackFontRange(MemorySegment spc, MemorySegment fontdata, int font_index, float font_size, int first_unicode_char_in_range, int num_chars_in_range, MemorySegment chardata_for_range) {
         try { return (((int) Handles.MH_stbtt_PackFontRange.invokeExact(Handles.get().PFN_stbtt_PackFontRange, spc, fontdata, font_index, font_size, first_unicode_char_in_range, num_chars_in_range, chardata_for_range)) != 0); }
@@ -528,7 +528,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_InitFont(stbtt_fontinfo* info, const unsigned char* data, int offset);
+    /// STBbool stbtt_InitFont(stbtt_fontinfo* info, const unsigned char* data, int offset);
     /// ```
     public static boolean stbtt_InitFont(MemorySegment info, MemorySegment data, int offset) {
         try { return (((int) Handles.MH_stbtt_InitFont.invokeExact(Handles.get().PFN_stbtt_InitFont, info, data, offset)) != 0); }
@@ -568,7 +568,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_GetFontVMetricsOS2(const stbtt_fontinfo* info, int* typoAscent, int* typoDescent, int* typoLineGap);
+    /// STBbool stbtt_GetFontVMetricsOS2(const stbtt_fontinfo* info, int* typoAscent, int* typoDescent, int* typoLineGap);
     /// ```
     public static boolean stbtt_GetFontVMetricsOS2(MemorySegment info, MemorySegment typoAscent, MemorySegment typoDescent, MemorySegment typoLineGap) {
         try { return (((int) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(Handles.get().PFN_stbtt_GetFontVMetricsOS2, info, typoAscent, typoDescent, typoLineGap)) != 0); }
@@ -648,7 +648,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_IsGlyphEmpty(const stbtt_fontinfo* info, int glyph_index);
+    /// STBbool stbtt_IsGlyphEmpty(const stbtt_fontinfo* info, int glyph_index);
     /// ```
     public static boolean stbtt_IsGlyphEmpty(MemorySegment info, int glyph_index) {
         try { return (((int) Handles.MH_stbtt_IsGlyphEmpty.invokeExact(Handles.get().PFN_stbtt_IsGlyphEmpty, info, glyph_index)) != 0); }
@@ -864,7 +864,7 @@ public final class STBTrueType {
     }
 
     /// ```
-    /// int stbtt_CompareUTF8toUTF16_bigendian(const char* s1, int len1, const char* s2, int len2);
+    /// STBbool stbtt_CompareUTF8toUTF16_bigendian(const char* s1, int len1, const char* s2, int len2);
     /// ```
     public static boolean stbtt_CompareUTF8toUTF16_bigendian(MemorySegment s1, int len1, MemorySegment s2, int len2) {
         try { return (((int) Handles.MH_stbtt_CompareUTF8toUTF16_bigendian.invokeExact(Handles.get().PFN_stbtt_CompareUTF8toUTF16_bigendian, s1, len1, s2, len2)) != 0); }

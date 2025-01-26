@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.upcall;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*VkDeviceMemoryReportCallbackEXT)(const VkDeviceMemoryReportCallbackDataEXT* pCallbackData, void* pUserData);
+/// ```
 @FunctionalInterface
 public interface VkDeviceMemoryReportCallbackEXT extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(VkDeviceMemoryReportCallbackEXT.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkDeviceMemoryReportCallbackEXT.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `VkDeviceMemoryReportCallbackEXT`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, VkDeviceMemoryReportCallbackEXT func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("const VkDeviceMemoryReportCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData);
+    void invoke(MemorySegment pCallbackData, MemorySegment pUserData);
+
+    /// The target method of the upcall.
+    default void invoke_(MemorySegment pCallbackData, MemorySegment pUserData) {
+        invoke(pCallbackData, pUserData);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("const VkDeviceMemoryReportCallbackDataEXT *") MemorySegment pCallbackData, @CType("void *") MemorySegment pUserData) {
-        try { HANDLE.invokeExact(stub, pCallbackData, pUserData); }
-        catch (Throwable e) { throw new RuntimeException("error in VkDeviceMemoryReportCallbackEXT::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static VkDeviceMemoryReportCallbackEXT wrap(MemorySegment stub) {
-        return (pCallbackData, pUserData) ->
-            invoke(stub, pCallbackData, pUserData);
-    }
 }

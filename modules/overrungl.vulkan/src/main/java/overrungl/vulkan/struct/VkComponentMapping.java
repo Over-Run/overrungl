@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### r
-/// [VarHandle][#VH_r] - [Getter][#r()] - [Setter][#r(int)]
-/// ### g
-/// [VarHandle][#VH_g] - [Getter][#g()] - [Setter][#g(int)]
-/// ### b
-/// [VarHandle][#VH_b] - [Getter][#b()] - [Setter][#b(int)]
-/// ### a
-/// [VarHandle][#VH_a] - [Getter][#a()] - [Setter][#a(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkComponentMapping {
+/// ```
+/// struct VkComponentMapping {
 ///     VkComponentSwizzle r;
 ///     VkComponentSwizzle g;
 ///     VkComponentSwizzle b;
 ///     VkComponentSwizzle a;
-/// } VkComponentMapping;
+/// };
 /// ```
-public sealed class VkComponentMapping extends Struct {
+public sealed class VkComponentMapping extends GroupType {
     /// The struct layout of `VkComponentMapping`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("r"),
         ValueLayout.JAVA_INT.withName("g"),
         ValueLayout.JAVA_INT.withName("b"),
         ValueLayout.JAVA_INT.withName("a")
     );
-    /// The [VarHandle] of `r` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `r`.
+    public static final long OFFSET_r = LAYOUT.byteOffset(PathElement.groupElement("r"));
+    /// The memory layout of `r`.
+    public static final MemoryLayout LAYOUT_r = LAYOUT.select(PathElement.groupElement("r"));
+    /// The [VarHandle] of `r` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_r = LAYOUT.arrayElementVarHandle(PathElement.groupElement("r"));
-    /// The [VarHandle] of `g` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `g`.
+    public static final long OFFSET_g = LAYOUT.byteOffset(PathElement.groupElement("g"));
+    /// The memory layout of `g`.
+    public static final MemoryLayout LAYOUT_g = LAYOUT.select(PathElement.groupElement("g"));
+    /// The [VarHandle] of `g` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_g = LAYOUT.arrayElementVarHandle(PathElement.groupElement("g"));
-    /// The [VarHandle] of `b` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `b`.
+    public static final long OFFSET_b = LAYOUT.byteOffset(PathElement.groupElement("b"));
+    /// The memory layout of `b`.
+    public static final MemoryLayout LAYOUT_b = LAYOUT.select(PathElement.groupElement("b"));
+    /// The [VarHandle] of `b` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_b = LAYOUT.arrayElementVarHandle(PathElement.groupElement("b"));
-    /// The [VarHandle] of `a` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `a`.
+    public static final long OFFSET_a = LAYOUT.byteOffset(PathElement.groupElement("a"));
+    /// The memory layout of `a`.
+    public static final MemoryLayout LAYOUT_a = LAYOUT.select(PathElement.groupElement("a"));
+    /// The [VarHandle] of `a` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_a = LAYOUT.arrayElementVarHandle(PathElement.groupElement("a"));
 
     /// Creates `VkComponentMapping` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkComponentMapping extends Struct {
     /// Creates `VkComponentMapping` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkComponentMapping of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkComponentMapping(segment); }
-
-    /// Creates `VkComponentMapping` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkComponentMapping` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkComponentMapping ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkComponentMapping(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkComponentMapping ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComponentMapping(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkComponentMapping` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkComponentMapping extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkComponentMapping` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkComponentMapping extends Struct {
     /// @return the allocated `VkComponentMapping`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkComponentMapping` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping allocInit(SegmentAllocator allocator, @CType("VkComponentSwizzle") int r, @CType("VkComponentSwizzle") int g, @CType("VkComponentSwizzle") int b, @CType("VkComponentSwizzle") int a) { return alloc(allocator).r(r).g(g).b(b).a(a); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkComponentMapping extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `r` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkComponentSwizzle") int get_r(MemorySegment segment, long index) { return (int) VH_r.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int r(MemorySegment segment, long index) { return (int) VH_r.get(segment, 0L, index); }
     /// {@return `r`}
-    /// @param segment the segment of the struct
-    public static @CType("VkComponentSwizzle") int get_r(MemorySegment segment) { return VkComponentMapping.get_r(segment, 0L); }
-    /// {@return `r`}
-    public @CType("VkComponentSwizzle") int r() { return VkComponentMapping.get_r(this.segment()); }
+    public int r() { return r(this.segment(), 0L); }
     /// Sets `r` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_r(MemorySegment segment, long index, @CType("VkComponentSwizzle") int value) { VH_r.set(segment, 0L, index, value); }
-    /// Sets `r` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_r(MemorySegment segment, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_r(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void r(MemorySegment segment, long index, int value) { VH_r.set(segment, 0L, index, value); }
     /// Sets `r` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComponentMapping r(@CType("VkComponentSwizzle") int value) { VkComponentMapping.set_r(this.segment(), value); return this; }
+    public VkComponentMapping r(int value) { r(this.segment(), 0L, value); return this; }
 
     /// {@return `g` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkComponentSwizzle") int get_g(MemorySegment segment, long index) { return (int) VH_g.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int g(MemorySegment segment, long index) { return (int) VH_g.get(segment, 0L, index); }
     /// {@return `g`}
-    /// @param segment the segment of the struct
-    public static @CType("VkComponentSwizzle") int get_g(MemorySegment segment) { return VkComponentMapping.get_g(segment, 0L); }
-    /// {@return `g`}
-    public @CType("VkComponentSwizzle") int g() { return VkComponentMapping.get_g(this.segment()); }
+    public int g() { return g(this.segment(), 0L); }
     /// Sets `g` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_g(MemorySegment segment, long index, @CType("VkComponentSwizzle") int value) { VH_g.set(segment, 0L, index, value); }
-    /// Sets `g` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_g(MemorySegment segment, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_g(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void g(MemorySegment segment, long index, int value) { VH_g.set(segment, 0L, index, value); }
     /// Sets `g` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComponentMapping g(@CType("VkComponentSwizzle") int value) { VkComponentMapping.set_g(this.segment(), value); return this; }
+    public VkComponentMapping g(int value) { g(this.segment(), 0L, value); return this; }
 
     /// {@return `b` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkComponentSwizzle") int get_b(MemorySegment segment, long index) { return (int) VH_b.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int b(MemorySegment segment, long index) { return (int) VH_b.get(segment, 0L, index); }
     /// {@return `b`}
-    /// @param segment the segment of the struct
-    public static @CType("VkComponentSwizzle") int get_b(MemorySegment segment) { return VkComponentMapping.get_b(segment, 0L); }
-    /// {@return `b`}
-    public @CType("VkComponentSwizzle") int b() { return VkComponentMapping.get_b(this.segment()); }
+    public int b() { return b(this.segment(), 0L); }
     /// Sets `b` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_b(MemorySegment segment, long index, @CType("VkComponentSwizzle") int value) { VH_b.set(segment, 0L, index, value); }
-    /// Sets `b` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_b(MemorySegment segment, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_b(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void b(MemorySegment segment, long index, int value) { VH_b.set(segment, 0L, index, value); }
     /// Sets `b` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComponentMapping b(@CType("VkComponentSwizzle") int value) { VkComponentMapping.set_b(this.segment(), value); return this; }
+    public VkComponentMapping b(int value) { b(this.segment(), 0L, value); return this; }
 
     /// {@return `a` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkComponentSwizzle") int get_a(MemorySegment segment, long index) { return (int) VH_a.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int a(MemorySegment segment, long index) { return (int) VH_a.get(segment, 0L, index); }
     /// {@return `a`}
-    /// @param segment the segment of the struct
-    public static @CType("VkComponentSwizzle") int get_a(MemorySegment segment) { return VkComponentMapping.get_a(segment, 0L); }
-    /// {@return `a`}
-    public @CType("VkComponentSwizzle") int a() { return VkComponentMapping.get_a(this.segment()); }
+    public int a() { return a(this.segment(), 0L); }
     /// Sets `a` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_a(MemorySegment segment, long index, @CType("VkComponentSwizzle") int value) { VH_a.set(segment, 0L, index, value); }
-    /// Sets `a` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_a(MemorySegment segment, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_a(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void a(MemorySegment segment, long index, int value) { VH_a.set(segment, 0L, index, value); }
     /// Sets `a` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkComponentMapping a(@CType("VkComponentSwizzle") int value) { VkComponentMapping.set_a(this.segment(), value); return this; }
+    public VkComponentMapping a(int value) { a(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkComponentMapping].
     public static final class Buffer extends VkComponentMapping {
@@ -229,40 +197,40 @@ public sealed class VkComponentMapping extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `r` at the given index}
-        /// @param index the index
-        public @CType("VkComponentSwizzle") int rAt(long index) { return VkComponentMapping.get_r(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int rAt(long index) { return r(this.segment(), index); }
         /// Sets `r` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer rAt(long index, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_r(this.segment(), index, value); return this; }
+        public Buffer rAt(long index, int value) { r(this.segment(), index, value); return this; }
 
         /// {@return `g` at the given index}
-        /// @param index the index
-        public @CType("VkComponentSwizzle") int gAt(long index) { return VkComponentMapping.get_g(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int gAt(long index) { return g(this.segment(), index); }
         /// Sets `g` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer gAt(long index, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_g(this.segment(), index, value); return this; }
+        public Buffer gAt(long index, int value) { g(this.segment(), index, value); return this; }
 
         /// {@return `b` at the given index}
-        /// @param index the index
-        public @CType("VkComponentSwizzle") int bAt(long index) { return VkComponentMapping.get_b(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bAt(long index) { return b(this.segment(), index); }
         /// Sets `b` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bAt(long index, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_b(this.segment(), index, value); return this; }
+        public Buffer bAt(long index, int value) { b(this.segment(), index, value); return this; }
 
         /// {@return `a` at the given index}
-        /// @param index the index
-        public @CType("VkComponentSwizzle") int aAt(long index) { return VkComponentMapping.get_a(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int aAt(long index) { return a(this.segment(), index); }
         /// Sets `a` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer aAt(long index, @CType("VkComponentSwizzle") int value) { VkComponentMapping.set_a(this.segment(), index, value); return this; }
+        public Buffer aAt(long index, int value) { a(this.segment(), index, value); return this; }
 
     }
 }

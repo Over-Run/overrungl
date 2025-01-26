@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -31,19 +30,22 @@ public class VKEXTAttachmentFeedbackLoopDynamicState {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetAttachmentFeedbackLoopEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT = func.invoke(device, "vkCmdSetAttachmentFeedbackLoopEnableEXT");
         }
     }
 
-    public VKEXTAttachmentFeedbackLoopDynamicState(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTAttachmentFeedbackLoopDynamicState(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetAttachmentFeedbackLoopEnableEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkImageAspectFlags") int aspectMask) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");
+    /// ```
+    /// void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, VkImageAspectFlags aspectMask);
+    /// ```
+    public void CmdSetAttachmentFeedbackLoopEnableEXT(MemorySegment commandBuffer, int aspectMask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");
         try { Handles.MH_vkCmdSetAttachmentFeedbackLoopEnableEXT.invokeExact(handles.PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT, commandBuffer, aspectMask); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetAttachmentFeedbackLoopEnableEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetAttachmentFeedbackLoopEnableEXT", e); }
     }
 
 }

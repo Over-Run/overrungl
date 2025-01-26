@@ -49,7 +49,7 @@ public final class GLARBFramebufferNoAttachments {
     }
 
     /// ```
-    /// void glFramebufferParameteri(unsigned int target, unsigned int pname, int param);
+    /// void glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
     /// ```
     public void FramebufferParameteri(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri");
@@ -58,7 +58,7 @@ public final class GLARBFramebufferNoAttachments {
     }
 
     /// ```
-    /// void glGetFramebufferParameteriv(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");

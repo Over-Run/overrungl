@@ -15,112 +15,24 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### pipelineCacheCreateInfoCount
-/// [VarHandle][#VH_pipelineCacheCreateInfoCount] - [Getter][#pipelineCacheCreateInfoCount()] - [Setter][#pipelineCacheCreateInfoCount(int)]
-/// ### pPipelineCacheCreateInfos
-/// [VarHandle][#VH_pPipelineCacheCreateInfos] - [Getter][#pPipelineCacheCreateInfos()] - [Setter][#pPipelineCacheCreateInfos(MemorySegment)]
-/// ### pipelinePoolSizeCount
-/// [VarHandle][#VH_pipelinePoolSizeCount] - [Getter][#pipelinePoolSizeCount()] - [Setter][#pipelinePoolSizeCount(int)]
-/// ### pPipelinePoolSizes
-/// [VarHandle][#VH_pPipelinePoolSizes] - [Getter][#pPipelinePoolSizes()] - [Setter][#pPipelinePoolSizes(MemorySegment)]
-/// ### semaphoreRequestCount
-/// [VarHandle][#VH_semaphoreRequestCount] - [Getter][#semaphoreRequestCount()] - [Setter][#semaphoreRequestCount(int)]
-/// ### commandBufferRequestCount
-/// [VarHandle][#VH_commandBufferRequestCount] - [Getter][#commandBufferRequestCount()] - [Setter][#commandBufferRequestCount(int)]
-/// ### fenceRequestCount
-/// [VarHandle][#VH_fenceRequestCount] - [Getter][#fenceRequestCount()] - [Setter][#fenceRequestCount(int)]
-/// ### deviceMemoryRequestCount
-/// [VarHandle][#VH_deviceMemoryRequestCount] - [Getter][#deviceMemoryRequestCount()] - [Setter][#deviceMemoryRequestCount(int)]
-/// ### bufferRequestCount
-/// [VarHandle][#VH_bufferRequestCount] - [Getter][#bufferRequestCount()] - [Setter][#bufferRequestCount(int)]
-/// ### imageRequestCount
-/// [VarHandle][#VH_imageRequestCount] - [Getter][#imageRequestCount()] - [Setter][#imageRequestCount(int)]
-/// ### eventRequestCount
-/// [VarHandle][#VH_eventRequestCount] - [Getter][#eventRequestCount()] - [Setter][#eventRequestCount(int)]
-/// ### queryPoolRequestCount
-/// [VarHandle][#VH_queryPoolRequestCount] - [Getter][#queryPoolRequestCount()] - [Setter][#queryPoolRequestCount(int)]
-/// ### bufferViewRequestCount
-/// [VarHandle][#VH_bufferViewRequestCount] - [Getter][#bufferViewRequestCount()] - [Setter][#bufferViewRequestCount(int)]
-/// ### imageViewRequestCount
-/// [VarHandle][#VH_imageViewRequestCount] - [Getter][#imageViewRequestCount()] - [Setter][#imageViewRequestCount(int)]
-/// ### layeredImageViewRequestCount
-/// [VarHandle][#VH_layeredImageViewRequestCount] - [Getter][#layeredImageViewRequestCount()] - [Setter][#layeredImageViewRequestCount(int)]
-/// ### pipelineCacheRequestCount
-/// [VarHandle][#VH_pipelineCacheRequestCount] - [Getter][#pipelineCacheRequestCount()] - [Setter][#pipelineCacheRequestCount(int)]
-/// ### pipelineLayoutRequestCount
-/// [VarHandle][#VH_pipelineLayoutRequestCount] - [Getter][#pipelineLayoutRequestCount()] - [Setter][#pipelineLayoutRequestCount(int)]
-/// ### renderPassRequestCount
-/// [VarHandle][#VH_renderPassRequestCount] - [Getter][#renderPassRequestCount()] - [Setter][#renderPassRequestCount(int)]
-/// ### graphicsPipelineRequestCount
-/// [VarHandle][#VH_graphicsPipelineRequestCount] - [Getter][#graphicsPipelineRequestCount()] - [Setter][#graphicsPipelineRequestCount(int)]
-/// ### computePipelineRequestCount
-/// [VarHandle][#VH_computePipelineRequestCount] - [Getter][#computePipelineRequestCount()] - [Setter][#computePipelineRequestCount(int)]
-/// ### descriptorSetLayoutRequestCount
-/// [VarHandle][#VH_descriptorSetLayoutRequestCount] - [Getter][#descriptorSetLayoutRequestCount()] - [Setter][#descriptorSetLayoutRequestCount(int)]
-/// ### samplerRequestCount
-/// [VarHandle][#VH_samplerRequestCount] - [Getter][#samplerRequestCount()] - [Setter][#samplerRequestCount(int)]
-/// ### descriptorPoolRequestCount
-/// [VarHandle][#VH_descriptorPoolRequestCount] - [Getter][#descriptorPoolRequestCount()] - [Setter][#descriptorPoolRequestCount(int)]
-/// ### descriptorSetRequestCount
-/// [VarHandle][#VH_descriptorSetRequestCount] - [Getter][#descriptorSetRequestCount()] - [Setter][#descriptorSetRequestCount(int)]
-/// ### framebufferRequestCount
-/// [VarHandle][#VH_framebufferRequestCount] - [Getter][#framebufferRequestCount()] - [Setter][#framebufferRequestCount(int)]
-/// ### commandPoolRequestCount
-/// [VarHandle][#VH_commandPoolRequestCount] - [Getter][#commandPoolRequestCount()] - [Setter][#commandPoolRequestCount(int)]
-/// ### samplerYcbcrConversionRequestCount
-/// [VarHandle][#VH_samplerYcbcrConversionRequestCount] - [Getter][#samplerYcbcrConversionRequestCount()] - [Setter][#samplerYcbcrConversionRequestCount(int)]
-/// ### surfaceRequestCount
-/// [VarHandle][#VH_surfaceRequestCount] - [Getter][#surfaceRequestCount()] - [Setter][#surfaceRequestCount(int)]
-/// ### swapchainRequestCount
-/// [VarHandle][#VH_swapchainRequestCount] - [Getter][#swapchainRequestCount()] - [Setter][#swapchainRequestCount(int)]
-/// ### displayModeRequestCount
-/// [VarHandle][#VH_displayModeRequestCount] - [Getter][#displayModeRequestCount()] - [Setter][#displayModeRequestCount(int)]
-/// ### subpassDescriptionRequestCount
-/// [VarHandle][#VH_subpassDescriptionRequestCount] - [Getter][#subpassDescriptionRequestCount()] - [Setter][#subpassDescriptionRequestCount(int)]
-/// ### attachmentDescriptionRequestCount
-/// [VarHandle][#VH_attachmentDescriptionRequestCount] - [Getter][#attachmentDescriptionRequestCount()] - [Setter][#attachmentDescriptionRequestCount(int)]
-/// ### descriptorSetLayoutBindingRequestCount
-/// [VarHandle][#VH_descriptorSetLayoutBindingRequestCount] - [Getter][#descriptorSetLayoutBindingRequestCount()] - [Setter][#descriptorSetLayoutBindingRequestCount(int)]
-/// ### descriptorSetLayoutBindingLimit
-/// [VarHandle][#VH_descriptorSetLayoutBindingLimit] - [Getter][#descriptorSetLayoutBindingLimit()] - [Setter][#descriptorSetLayoutBindingLimit(int)]
-/// ### maxImageViewMipLevels
-/// [VarHandle][#VH_maxImageViewMipLevels] - [Getter][#maxImageViewMipLevels()] - [Setter][#maxImageViewMipLevels(int)]
-/// ### maxImageViewArrayLayers
-/// [VarHandle][#VH_maxImageViewArrayLayers] - [Getter][#maxImageViewArrayLayers()] - [Setter][#maxImageViewArrayLayers(int)]
-/// ### maxLayeredImageViewMipLevels
-/// [VarHandle][#VH_maxLayeredImageViewMipLevels] - [Getter][#maxLayeredImageViewMipLevels()] - [Setter][#maxLayeredImageViewMipLevels(int)]
-/// ### maxOcclusionQueriesPerPool
-/// [VarHandle][#VH_maxOcclusionQueriesPerPool] - [Getter][#maxOcclusionQueriesPerPool()] - [Setter][#maxOcclusionQueriesPerPool(int)]
-/// ### maxPipelineStatisticsQueriesPerPool
-/// [VarHandle][#VH_maxPipelineStatisticsQueriesPerPool] - [Getter][#maxPipelineStatisticsQueriesPerPool()] - [Setter][#maxPipelineStatisticsQueriesPerPool(int)]
-/// ### maxTimestampQueriesPerPool
-/// [VarHandle][#VH_maxTimestampQueriesPerPool] - [Getter][#maxTimestampQueriesPerPool()] - [Setter][#maxTimestampQueriesPerPool(int)]
-/// ### maxImmutableSamplersPerDescriptorSetLayout
-/// [VarHandle][#VH_maxImmutableSamplersPerDescriptorSetLayout] - [Getter][#maxImmutableSamplersPerDescriptorSetLayout()] - [Setter][#maxImmutableSamplersPerDescriptorSetLayout(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDeviceObjectReservationCreateInfo {
+/// ```
+/// struct VkDeviceObjectReservationCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     uint32_t pipelineCacheCreateInfoCount;
-///     const VkPipelineCacheCreateInfo * pPipelineCacheCreateInfos;
+///     const VkPipelineCacheCreateInfo* pPipelineCacheCreateInfos;
 ///     uint32_t pipelinePoolSizeCount;
-///     const VkPipelinePoolSize * pPipelinePoolSizes;
+///     const VkPipelinePoolSize* pPipelinePoolSizes;
 ///     uint32_t semaphoreRequestCount;
 ///     uint32_t commandBufferRequestCount;
 ///     uint32_t fenceRequestCount;
@@ -158,11 +70,11 @@ import overrungl.util.*;
 ///     uint32_t maxPipelineStatisticsQueriesPerPool;
 ///     uint32_t maxTimestampQueriesPerPool;
 ///     uint32_t maxImmutableSamplersPerDescriptorSetLayout;
-/// } VkDeviceObjectReservationCreateInfo;
+/// };
 /// ```
-public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
+public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// The struct layout of `VkDeviceObjectReservationCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("pipelineCacheCreateInfoCount"),
@@ -207,91 +119,263 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
         ValueLayout.JAVA_INT.withName("maxTimestampQueriesPerPool"),
         ValueLayout.JAVA_INT.withName("maxImmutableSamplersPerDescriptorSetLayout")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pipelineCacheCreateInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineCacheCreateInfoCount`.
+    public static final long OFFSET_pipelineCacheCreateInfoCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheCreateInfoCount"));
+    /// The memory layout of `pipelineCacheCreateInfoCount`.
+    public static final MemoryLayout LAYOUT_pipelineCacheCreateInfoCount = LAYOUT.select(PathElement.groupElement("pipelineCacheCreateInfoCount"));
+    /// The [VarHandle] of `pipelineCacheCreateInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineCacheCreateInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheCreateInfoCount"));
+    /// The byte offset of `pPipelineCacheCreateInfos`.
+    public static final long OFFSET_pPipelineCacheCreateInfos = LAYOUT.byteOffset(PathElement.groupElement("pPipelineCacheCreateInfos"));
+    /// The memory layout of `pPipelineCacheCreateInfos`.
+    public static final MemoryLayout LAYOUT_pPipelineCacheCreateInfos = LAYOUT.select(PathElement.groupElement("pPipelineCacheCreateInfos"));
     /// The [VarHandle] of `pPipelineCacheCreateInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelineCacheCreateInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineCacheCreateInfos"));
-    /// The [VarHandle] of `pipelinePoolSizeCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelinePoolSizeCount`.
+    public static final long OFFSET_pipelinePoolSizeCount = LAYOUT.byteOffset(PathElement.groupElement("pipelinePoolSizeCount"));
+    /// The memory layout of `pipelinePoolSizeCount`.
+    public static final MemoryLayout LAYOUT_pipelinePoolSizeCount = LAYOUT.select(PathElement.groupElement("pipelinePoolSizeCount"));
+    /// The [VarHandle] of `pipelinePoolSizeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelinePoolSizeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelinePoolSizeCount"));
+    /// The byte offset of `pPipelinePoolSizes`.
+    public static final long OFFSET_pPipelinePoolSizes = LAYOUT.byteOffset(PathElement.groupElement("pPipelinePoolSizes"));
+    /// The memory layout of `pPipelinePoolSizes`.
+    public static final MemoryLayout LAYOUT_pPipelinePoolSizes = LAYOUT.select(PathElement.groupElement("pPipelinePoolSizes"));
     /// The [VarHandle] of `pPipelinePoolSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPipelinePoolSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelinePoolSizes"));
-    /// The [VarHandle] of `semaphoreRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `semaphoreRequestCount`.
+    public static final long OFFSET_semaphoreRequestCount = LAYOUT.byteOffset(PathElement.groupElement("semaphoreRequestCount"));
+    /// The memory layout of `semaphoreRequestCount`.
+    public static final MemoryLayout LAYOUT_semaphoreRequestCount = LAYOUT.select(PathElement.groupElement("semaphoreRequestCount"));
+    /// The [VarHandle] of `semaphoreRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphoreRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreRequestCount"));
-    /// The [VarHandle] of `commandBufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandBufferRequestCount`.
+    public static final long OFFSET_commandBufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("commandBufferRequestCount"));
+    /// The memory layout of `commandBufferRequestCount`.
+    public static final MemoryLayout LAYOUT_commandBufferRequestCount = LAYOUT.select(PathElement.groupElement("commandBufferRequestCount"));
+    /// The [VarHandle] of `commandBufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandBufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferRequestCount"));
-    /// The [VarHandle] of `fenceRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `fenceRequestCount`.
+    public static final long OFFSET_fenceRequestCount = LAYOUT.byteOffset(PathElement.groupElement("fenceRequestCount"));
+    /// The memory layout of `fenceRequestCount`.
+    public static final MemoryLayout LAYOUT_fenceRequestCount = LAYOUT.select(PathElement.groupElement("fenceRequestCount"));
+    /// The [VarHandle] of `fenceRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fenceRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fenceRequestCount"));
-    /// The [VarHandle] of `deviceMemoryRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceMemoryRequestCount`.
+    public static final long OFFSET_deviceMemoryRequestCount = LAYOUT.byteOffset(PathElement.groupElement("deviceMemoryRequestCount"));
+    /// The memory layout of `deviceMemoryRequestCount`.
+    public static final MemoryLayout LAYOUT_deviceMemoryRequestCount = LAYOUT.select(PathElement.groupElement("deviceMemoryRequestCount"));
+    /// The [VarHandle] of `deviceMemoryRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceMemoryRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMemoryRequestCount"));
-    /// The [VarHandle] of `bufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bufferRequestCount`.
+    public static final long OFFSET_bufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("bufferRequestCount"));
+    /// The memory layout of `bufferRequestCount`.
+    public static final MemoryLayout LAYOUT_bufferRequestCount = LAYOUT.select(PathElement.groupElement("bufferRequestCount"));
+    /// The [VarHandle] of `bufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRequestCount"));
-    /// The [VarHandle] of `imageRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imageRequestCount`.
+    public static final long OFFSET_imageRequestCount = LAYOUT.byteOffset(PathElement.groupElement("imageRequestCount"));
+    /// The memory layout of `imageRequestCount`.
+    public static final MemoryLayout LAYOUT_imageRequestCount = LAYOUT.select(PathElement.groupElement("imageRequestCount"));
+    /// The [VarHandle] of `imageRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageRequestCount"));
-    /// The [VarHandle] of `eventRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `eventRequestCount`.
+    public static final long OFFSET_eventRequestCount = LAYOUT.byteOffset(PathElement.groupElement("eventRequestCount"));
+    /// The memory layout of `eventRequestCount`.
+    public static final MemoryLayout LAYOUT_eventRequestCount = LAYOUT.select(PathElement.groupElement("eventRequestCount"));
+    /// The [VarHandle] of `eventRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_eventRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("eventRequestCount"));
-    /// The [VarHandle] of `queryPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `queryPoolRequestCount`.
+    public static final long OFFSET_queryPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("queryPoolRequestCount"));
+    /// The memory layout of `queryPoolRequestCount`.
+    public static final MemoryLayout LAYOUT_queryPoolRequestCount = LAYOUT.select(PathElement.groupElement("queryPoolRequestCount"));
+    /// The [VarHandle] of `queryPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_queryPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queryPoolRequestCount"));
-    /// The [VarHandle] of `bufferViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bufferViewRequestCount`.
+    public static final long OFFSET_bufferViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("bufferViewRequestCount"));
+    /// The memory layout of `bufferViewRequestCount`.
+    public static final MemoryLayout LAYOUT_bufferViewRequestCount = LAYOUT.select(PathElement.groupElement("bufferViewRequestCount"));
+    /// The [VarHandle] of `bufferViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bufferViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferViewRequestCount"));
-    /// The [VarHandle] of `imageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imageViewRequestCount`.
+    public static final long OFFSET_imageViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("imageViewRequestCount"));
+    /// The memory layout of `imageViewRequestCount`.
+    public static final MemoryLayout LAYOUT_imageViewRequestCount = LAYOUT.select(PathElement.groupElement("imageViewRequestCount"));
+    /// The [VarHandle] of `imageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageViewRequestCount"));
-    /// The [VarHandle] of `layeredImageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `layeredImageViewRequestCount`.
+    public static final long OFFSET_layeredImageViewRequestCount = LAYOUT.byteOffset(PathElement.groupElement("layeredImageViewRequestCount"));
+    /// The memory layout of `layeredImageViewRequestCount`.
+    public static final MemoryLayout LAYOUT_layeredImageViewRequestCount = LAYOUT.select(PathElement.groupElement("layeredImageViewRequestCount"));
+    /// The [VarHandle] of `layeredImageViewRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layeredImageViewRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredImageViewRequestCount"));
-    /// The [VarHandle] of `pipelineCacheRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineCacheRequestCount`.
+    public static final long OFFSET_pipelineCacheRequestCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheRequestCount"));
+    /// The memory layout of `pipelineCacheRequestCount`.
+    public static final MemoryLayout LAYOUT_pipelineCacheRequestCount = LAYOUT.select(PathElement.groupElement("pipelineCacheRequestCount"));
+    /// The [VarHandle] of `pipelineCacheRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineCacheRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheRequestCount"));
-    /// The [VarHandle] of `pipelineLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineLayoutRequestCount`.
+    public static final long OFFSET_pipelineLayoutRequestCount = LAYOUT.byteOffset(PathElement.groupElement("pipelineLayoutRequestCount"));
+    /// The memory layout of `pipelineLayoutRequestCount`.
+    public static final MemoryLayout LAYOUT_pipelineLayoutRequestCount = LAYOUT.select(PathElement.groupElement("pipelineLayoutRequestCount"));
+    /// The [VarHandle] of `pipelineLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineLayoutRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineLayoutRequestCount"));
-    /// The [VarHandle] of `renderPassRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `renderPassRequestCount`.
+    public static final long OFFSET_renderPassRequestCount = LAYOUT.byteOffset(PathElement.groupElement("renderPassRequestCount"));
+    /// The memory layout of `renderPassRequestCount`.
+    public static final MemoryLayout LAYOUT_renderPassRequestCount = LAYOUT.select(PathElement.groupElement("renderPassRequestCount"));
+    /// The [VarHandle] of `renderPassRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_renderPassRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderPassRequestCount"));
-    /// The [VarHandle] of `graphicsPipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `graphicsPipelineRequestCount`.
+    public static final long OFFSET_graphicsPipelineRequestCount = LAYOUT.byteOffset(PathElement.groupElement("graphicsPipelineRequestCount"));
+    /// The memory layout of `graphicsPipelineRequestCount`.
+    public static final MemoryLayout LAYOUT_graphicsPipelineRequestCount = LAYOUT.select(PathElement.groupElement("graphicsPipelineRequestCount"));
+    /// The [VarHandle] of `graphicsPipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_graphicsPipelineRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("graphicsPipelineRequestCount"));
-    /// The [VarHandle] of `computePipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `computePipelineRequestCount`.
+    public static final long OFFSET_computePipelineRequestCount = LAYOUT.byteOffset(PathElement.groupElement("computePipelineRequestCount"));
+    /// The memory layout of `computePipelineRequestCount`.
+    public static final MemoryLayout LAYOUT_computePipelineRequestCount = LAYOUT.select(PathElement.groupElement("computePipelineRequestCount"));
+    /// The [VarHandle] of `computePipelineRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_computePipelineRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computePipelineRequestCount"));
-    /// The [VarHandle] of `descriptorSetLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorSetLayoutRequestCount`.
+    public static final long OFFSET_descriptorSetLayoutRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutRequestCount"));
+    /// The memory layout of `descriptorSetLayoutRequestCount`.
+    public static final MemoryLayout LAYOUT_descriptorSetLayoutRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutRequestCount"));
+    /// The [VarHandle] of `descriptorSetLayoutRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorSetLayoutRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutRequestCount"));
-    /// The [VarHandle] of `samplerRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `samplerRequestCount`.
+    public static final long OFFSET_samplerRequestCount = LAYOUT.byteOffset(PathElement.groupElement("samplerRequestCount"));
+    /// The memory layout of `samplerRequestCount`.
+    public static final MemoryLayout LAYOUT_samplerRequestCount = LAYOUT.select(PathElement.groupElement("samplerRequestCount"));
+    /// The [VarHandle] of `samplerRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_samplerRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerRequestCount"));
-    /// The [VarHandle] of `descriptorPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorPoolRequestCount`.
+    public static final long OFFSET_descriptorPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorPoolRequestCount"));
+    /// The memory layout of `descriptorPoolRequestCount`.
+    public static final MemoryLayout LAYOUT_descriptorPoolRequestCount = LAYOUT.select(PathElement.groupElement("descriptorPoolRequestCount"));
+    /// The [VarHandle] of `descriptorPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorPoolRequestCount"));
-    /// The [VarHandle] of `descriptorSetRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorSetRequestCount`.
+    public static final long OFFSET_descriptorSetRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetRequestCount"));
+    /// The memory layout of `descriptorSetRequestCount`.
+    public static final MemoryLayout LAYOUT_descriptorSetRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetRequestCount"));
+    /// The [VarHandle] of `descriptorSetRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorSetRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetRequestCount"));
-    /// The [VarHandle] of `framebufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `framebufferRequestCount`.
+    public static final long OFFSET_framebufferRequestCount = LAYOUT.byteOffset(PathElement.groupElement("framebufferRequestCount"));
+    /// The memory layout of `framebufferRequestCount`.
+    public static final MemoryLayout LAYOUT_framebufferRequestCount = LAYOUT.select(PathElement.groupElement("framebufferRequestCount"));
+    /// The [VarHandle] of `framebufferRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_framebufferRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("framebufferRequestCount"));
-    /// The [VarHandle] of `commandPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandPoolRequestCount`.
+    public static final long OFFSET_commandPoolRequestCount = LAYOUT.byteOffset(PathElement.groupElement("commandPoolRequestCount"));
+    /// The memory layout of `commandPoolRequestCount`.
+    public static final MemoryLayout LAYOUT_commandPoolRequestCount = LAYOUT.select(PathElement.groupElement("commandPoolRequestCount"));
+    /// The [VarHandle] of `commandPoolRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPoolRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolRequestCount"));
-    /// The [VarHandle] of `samplerYcbcrConversionRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `samplerYcbcrConversionRequestCount`.
+    public static final long OFFSET_samplerYcbcrConversionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
+    /// The memory layout of `samplerYcbcrConversionRequestCount`.
+    public static final MemoryLayout LAYOUT_samplerYcbcrConversionRequestCount = LAYOUT.select(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
+    /// The [VarHandle] of `samplerYcbcrConversionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_samplerYcbcrConversionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplerYcbcrConversionRequestCount"));
-    /// The [VarHandle] of `surfaceRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `surfaceRequestCount`.
+    public static final long OFFSET_surfaceRequestCount = LAYOUT.byteOffset(PathElement.groupElement("surfaceRequestCount"));
+    /// The memory layout of `surfaceRequestCount`.
+    public static final MemoryLayout LAYOUT_surfaceRequestCount = LAYOUT.select(PathElement.groupElement("surfaceRequestCount"));
+    /// The [VarHandle] of `surfaceRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_surfaceRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("surfaceRequestCount"));
-    /// The [VarHandle] of `swapchainRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `swapchainRequestCount`.
+    public static final long OFFSET_swapchainRequestCount = LAYOUT.byteOffset(PathElement.groupElement("swapchainRequestCount"));
+    /// The memory layout of `swapchainRequestCount`.
+    public static final MemoryLayout LAYOUT_swapchainRequestCount = LAYOUT.select(PathElement.groupElement("swapchainRequestCount"));
+    /// The [VarHandle] of `swapchainRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapchainRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainRequestCount"));
-    /// The [VarHandle] of `displayModeRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `displayModeRequestCount`.
+    public static final long OFFSET_displayModeRequestCount = LAYOUT.byteOffset(PathElement.groupElement("displayModeRequestCount"));
+    /// The memory layout of `displayModeRequestCount`.
+    public static final MemoryLayout LAYOUT_displayModeRequestCount = LAYOUT.select(PathElement.groupElement("displayModeRequestCount"));
+    /// The [VarHandle] of `displayModeRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_displayModeRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("displayModeRequestCount"));
-    /// The [VarHandle] of `subpassDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subpassDescriptionRequestCount`.
+    public static final long OFFSET_subpassDescriptionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("subpassDescriptionRequestCount"));
+    /// The memory layout of `subpassDescriptionRequestCount`.
+    public static final MemoryLayout LAYOUT_subpassDescriptionRequestCount = LAYOUT.select(PathElement.groupElement("subpassDescriptionRequestCount"));
+    /// The [VarHandle] of `subpassDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subpassDescriptionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpassDescriptionRequestCount"));
-    /// The [VarHandle] of `attachmentDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `attachmentDescriptionRequestCount`.
+    public static final long OFFSET_attachmentDescriptionRequestCount = LAYOUT.byteOffset(PathElement.groupElement("attachmentDescriptionRequestCount"));
+    /// The memory layout of `attachmentDescriptionRequestCount`.
+    public static final MemoryLayout LAYOUT_attachmentDescriptionRequestCount = LAYOUT.select(PathElement.groupElement("attachmentDescriptionRequestCount"));
+    /// The [VarHandle] of `attachmentDescriptionRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_attachmentDescriptionRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentDescriptionRequestCount"));
-    /// The [VarHandle] of `descriptorSetLayoutBindingRequestCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorSetLayoutBindingRequestCount`.
+    public static final long OFFSET_descriptorSetLayoutBindingRequestCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
+    /// The memory layout of `descriptorSetLayoutBindingRequestCount`.
+    public static final MemoryLayout LAYOUT_descriptorSetLayoutBindingRequestCount = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
+    /// The [VarHandle] of `descriptorSetLayoutBindingRequestCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorSetLayoutBindingRequestCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingRequestCount"));
-    /// The [VarHandle] of `descriptorSetLayoutBindingLimit` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorSetLayoutBindingLimit`.
+    public static final long OFFSET_descriptorSetLayoutBindingLimit = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
+    /// The memory layout of `descriptorSetLayoutBindingLimit`.
+    public static final MemoryLayout LAYOUT_descriptorSetLayoutBindingLimit = LAYOUT.select(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
+    /// The [VarHandle] of `descriptorSetLayoutBindingLimit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorSetLayoutBindingLimit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayoutBindingLimit"));
-    /// The [VarHandle] of `maxImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxImageViewMipLevels`.
+    public static final long OFFSET_maxImageViewMipLevels = LAYOUT.byteOffset(PathElement.groupElement("maxImageViewMipLevels"));
+    /// The memory layout of `maxImageViewMipLevels`.
+    public static final MemoryLayout LAYOUT_maxImageViewMipLevels = LAYOUT.select(PathElement.groupElement("maxImageViewMipLevels"));
+    /// The [VarHandle] of `maxImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxImageViewMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewMipLevels"));
-    /// The [VarHandle] of `maxImageViewArrayLayers` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxImageViewArrayLayers`.
+    public static final long OFFSET_maxImageViewArrayLayers = LAYOUT.byteOffset(PathElement.groupElement("maxImageViewArrayLayers"));
+    /// The memory layout of `maxImageViewArrayLayers`.
+    public static final MemoryLayout LAYOUT_maxImageViewArrayLayers = LAYOUT.select(PathElement.groupElement("maxImageViewArrayLayers"));
+    /// The [VarHandle] of `maxImageViewArrayLayers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxImageViewArrayLayers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImageViewArrayLayers"));
-    /// The [VarHandle] of `maxLayeredImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxLayeredImageViewMipLevels`.
+    public static final long OFFSET_maxLayeredImageViewMipLevels = LAYOUT.byteOffset(PathElement.groupElement("maxLayeredImageViewMipLevels"));
+    /// The memory layout of `maxLayeredImageViewMipLevels`.
+    public static final MemoryLayout LAYOUT_maxLayeredImageViewMipLevels = LAYOUT.select(PathElement.groupElement("maxLayeredImageViewMipLevels"));
+    /// The [VarHandle] of `maxLayeredImageViewMipLevels` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxLayeredImageViewMipLevels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLayeredImageViewMipLevels"));
-    /// The [VarHandle] of `maxOcclusionQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxOcclusionQueriesPerPool`.
+    public static final long OFFSET_maxOcclusionQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxOcclusionQueriesPerPool"));
+    /// The memory layout of `maxOcclusionQueriesPerPool`.
+    public static final MemoryLayout LAYOUT_maxOcclusionQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxOcclusionQueriesPerPool"));
+    /// The [VarHandle] of `maxOcclusionQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxOcclusionQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOcclusionQueriesPerPool"));
-    /// The [VarHandle] of `maxPipelineStatisticsQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxPipelineStatisticsQueriesPerPool`.
+    public static final long OFFSET_maxPipelineStatisticsQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
+    /// The memory layout of `maxPipelineStatisticsQueriesPerPool`.
+    public static final MemoryLayout LAYOUT_maxPipelineStatisticsQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
+    /// The [VarHandle] of `maxPipelineStatisticsQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxPipelineStatisticsQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineStatisticsQueriesPerPool"));
-    /// The [VarHandle] of `maxTimestampQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxTimestampQueriesPerPool`.
+    public static final long OFFSET_maxTimestampQueriesPerPool = LAYOUT.byteOffset(PathElement.groupElement("maxTimestampQueriesPerPool"));
+    /// The memory layout of `maxTimestampQueriesPerPool`.
+    public static final MemoryLayout LAYOUT_maxTimestampQueriesPerPool = LAYOUT.select(PathElement.groupElement("maxTimestampQueriesPerPool"));
+    /// The [VarHandle] of `maxTimestampQueriesPerPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxTimestampQueriesPerPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTimestampQueriesPerPool"));
-    /// The [VarHandle] of `maxImmutableSamplersPerDescriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxImmutableSamplersPerDescriptorSetLayout`.
+    public static final long OFFSET_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.byteOffset(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
+    /// The memory layout of `maxImmutableSamplersPerDescriptorSetLayout`.
+    public static final MemoryLayout LAYOUT_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.select(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
+    /// The [VarHandle] of `maxImmutableSamplersPerDescriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
@@ -301,19 +385,14 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceObjectReservationCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment); }
-
-    /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     ///
@@ -321,7 +400,7 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -334,11 +413,6 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @return the allocated `VkDeviceObjectReservationCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDeviceObjectReservationCreateInfo`
-    public static VkDeviceObjectReservationCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int pipelineCacheCreateInfoCount, @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfos, @CType("uint32_t") int pipelinePoolSizeCount, @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizes, @CType("uint32_t") int semaphoreRequestCount, @CType("uint32_t") int commandBufferRequestCount, @CType("uint32_t") int fenceRequestCount, @CType("uint32_t") int deviceMemoryRequestCount, @CType("uint32_t") int bufferRequestCount, @CType("uint32_t") int imageRequestCount, @CType("uint32_t") int eventRequestCount, @CType("uint32_t") int queryPoolRequestCount, @CType("uint32_t") int bufferViewRequestCount, @CType("uint32_t") int imageViewRequestCount, @CType("uint32_t") int layeredImageViewRequestCount, @CType("uint32_t") int pipelineCacheRequestCount, @CType("uint32_t") int pipelineLayoutRequestCount, @CType("uint32_t") int renderPassRequestCount, @CType("uint32_t") int graphicsPipelineRequestCount, @CType("uint32_t") int computePipelineRequestCount, @CType("uint32_t") int descriptorSetLayoutRequestCount, @CType("uint32_t") int samplerRequestCount, @CType("uint32_t") int descriptorPoolRequestCount, @CType("uint32_t") int descriptorSetRequestCount, @CType("uint32_t") int framebufferRequestCount, @CType("uint32_t") int commandPoolRequestCount, @CType("uint32_t") int samplerYcbcrConversionRequestCount, @CType("uint32_t") int surfaceRequestCount, @CType("uint32_t") int swapchainRequestCount, @CType("uint32_t") int displayModeRequestCount, @CType("uint32_t") int subpassDescriptionRequestCount, @CType("uint32_t") int attachmentDescriptionRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingLimit, @CType("uint32_t") int maxImageViewMipLevels, @CType("uint32_t") int maxImageViewArrayLayers, @CType("uint32_t") int maxLayeredImageViewMipLevels, @CType("uint32_t") int maxOcclusionQueriesPerPool, @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool, @CType("uint32_t") int maxTimestampQueriesPerPool, @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout) { return alloc(allocator).sType(sType).pNext(pNext).pipelineCacheCreateInfoCount(pipelineCacheCreateInfoCount).pPipelineCacheCreateInfos(pPipelineCacheCreateInfos).pipelinePoolSizeCount(pipelinePoolSizeCount).pPipelinePoolSizes(pPipelinePoolSizes).semaphoreRequestCount(semaphoreRequestCount).commandBufferRequestCount(commandBufferRequestCount).fenceRequestCount(fenceRequestCount).deviceMemoryRequestCount(deviceMemoryRequestCount).bufferRequestCount(bufferRequestCount).imageRequestCount(imageRequestCount).eventRequestCount(eventRequestCount).queryPoolRequestCount(queryPoolRequestCount).bufferViewRequestCount(bufferViewRequestCount).imageViewRequestCount(imageViewRequestCount).layeredImageViewRequestCount(layeredImageViewRequestCount).pipelineCacheRequestCount(pipelineCacheRequestCount).pipelineLayoutRequestCount(pipelineLayoutRequestCount).renderPassRequestCount(renderPassRequestCount).graphicsPipelineRequestCount(graphicsPipelineRequestCount).computePipelineRequestCount(computePipelineRequestCount).descriptorSetLayoutRequestCount(descriptorSetLayoutRequestCount).samplerRequestCount(samplerRequestCount).descriptorPoolRequestCount(descriptorPoolRequestCount).descriptorSetRequestCount(descriptorSetRequestCount).framebufferRequestCount(framebufferRequestCount).commandPoolRequestCount(commandPoolRequestCount).samplerYcbcrConversionRequestCount(samplerYcbcrConversionRequestCount).surfaceRequestCount(surfaceRequestCount).swapchainRequestCount(swapchainRequestCount).displayModeRequestCount(displayModeRequestCount).subpassDescriptionRequestCount(subpassDescriptionRequestCount).attachmentDescriptionRequestCount(attachmentDescriptionRequestCount).descriptorSetLayoutBindingRequestCount(descriptorSetLayoutBindingRequestCount).descriptorSetLayoutBindingLimit(descriptorSetLayoutBindingLimit).maxImageViewMipLevels(maxImageViewMipLevels).maxImageViewArrayLayers(maxImageViewArrayLayers).maxLayeredImageViewMipLevels(maxLayeredImageViewMipLevels).maxOcclusionQueriesPerPool(maxOcclusionQueriesPerPool).maxPipelineStatisticsQueriesPerPool(maxPipelineStatisticsQueriesPerPool).maxTimestampQueriesPerPool(maxTimestampQueriesPerPool).maxImmutableSamplersPerDescriptorSetLayout(maxImmutableSamplersPerDescriptorSetLayout); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -346,996 +420,695 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDeviceObjectReservationCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo sType(@CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pNext(@CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineCacheCreateInfoCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_pipelineCacheCreateInfoCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheCreateInfoCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineCacheCreateInfoCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheCreateInfoCount.get(segment, 0L, index); }
     /// {@return `pipelineCacheCreateInfoCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_pipelineCacheCreateInfoCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(segment, 0L); }
-    /// {@return `pipelineCacheCreateInfoCount`}
-    public @CType("uint32_t") int pipelineCacheCreateInfoCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(this.segment()); }
+    public int pipelineCacheCreateInfoCount() { return pipelineCacheCreateInfoCount(this.segment(), 0L); }
     /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineCacheCreateInfoCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_pipelineCacheCreateInfoCount.set(segment, 0L, index, value); }
-    /// Sets `pipelineCacheCreateInfoCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineCacheCreateInfoCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineCacheCreateInfoCount(MemorySegment segment, long index, int value) { VH_pipelineCacheCreateInfoCount.set(segment, 0L, index, value); }
     /// Sets `pipelineCacheCreateInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineCacheCreateInfoCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pipelineCacheCreateInfoCount(int value) { pipelineCacheCreateInfoCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pPipelineCacheCreateInfos` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineCacheCreateInfo *") MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCacheCreateInfos.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPipelineCacheCreateInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelineCacheCreateInfos.get(segment, 0L, index); }
     /// {@return `pPipelineCacheCreateInfos`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineCacheCreateInfo *") MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(segment, 0L); }
-    /// {@return `pPipelineCacheCreateInfos`}
-    public @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfos() { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment()); }
+    public MemorySegment pPipelineCacheCreateInfos() { return pPipelineCacheCreateInfos(this.segment(), 0L); }
     /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, long index, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VH_pPipelineCacheCreateInfos.set(segment, 0L, index, value); }
-    /// Sets `pPipelineCacheCreateInfos` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPipelineCacheCreateInfos(MemorySegment segment, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPipelineCacheCreateInfos(MemorySegment segment, long index, MemorySegment value) { VH_pPipelineCacheCreateInfos.set(segment, 0L, index, value); }
     /// Sets `pPipelineCacheCreateInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfos(@CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfos(MemorySegment value) { pPipelineCacheCreateInfos(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelinePoolSizeCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_pipelinePoolSizeCount(MemorySegment segment, long index) { return (int) VH_pipelinePoolSizeCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelinePoolSizeCount(MemorySegment segment, long index) { return (int) VH_pipelinePoolSizeCount.get(segment, 0L, index); }
     /// {@return `pipelinePoolSizeCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_pipelinePoolSizeCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(segment, 0L); }
-    /// {@return `pipelinePoolSizeCount`}
-    public @CType("uint32_t") int pipelinePoolSizeCount() { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(this.segment()); }
+    public int pipelinePoolSizeCount() { return pipelinePoolSizeCount(this.segment(), 0L); }
     /// Sets `pipelinePoolSizeCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelinePoolSizeCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_pipelinePoolSizeCount.set(segment, 0L, index, value); }
-    /// Sets `pipelinePoolSizeCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelinePoolSizeCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelinePoolSizeCount(MemorySegment segment, long index, int value) { VH_pipelinePoolSizeCount.set(segment, 0L, index, value); }
     /// Sets `pipelinePoolSizeCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelinePoolSizeCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pipelinePoolSizeCount(int value) { pipelinePoolSizeCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pPipelinePoolSizes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelinePoolSize *") MemorySegment get_pPipelinePoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelinePoolSizes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPipelinePoolSizes(MemorySegment segment, long index) { return (MemorySegment) VH_pPipelinePoolSizes.get(segment, 0L, index); }
     /// {@return `pPipelinePoolSizes`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelinePoolSize *") MemorySegment get_pPipelinePoolSizes(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(segment, 0L); }
-    /// {@return `pPipelinePoolSizes`}
-    public @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizes() { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment()); }
+    public MemorySegment pPipelinePoolSizes() { return pPipelinePoolSizes(this.segment(), 0L); }
     /// Sets `pPipelinePoolSizes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPipelinePoolSizes(MemorySegment segment, long index, @CType("const VkPipelinePoolSize *") MemorySegment value) { VH_pPipelinePoolSizes.set(segment, 0L, index, value); }
-    /// Sets `pPipelinePoolSizes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPipelinePoolSizes(MemorySegment segment, @CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPipelinePoolSizes(MemorySegment segment, long index, MemorySegment value) { VH_pPipelinePoolSizes.set(segment, 0L, index, value); }
     /// Sets `pPipelinePoolSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizes(@CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizes(MemorySegment value) { pPipelinePoolSizes(this.segment(), 0L, value); return this; }
 
     /// {@return `semaphoreRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_semaphoreRequestCount(MemorySegment segment, long index) { return (int) VH_semaphoreRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int semaphoreRequestCount(MemorySegment segment, long index) { return (int) VH_semaphoreRequestCount.get(segment, 0L, index); }
     /// {@return `semaphoreRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_semaphoreRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(segment, 0L); }
-    /// {@return `semaphoreRequestCount`}
-    public @CType("uint32_t") int semaphoreRequestCount() { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(this.segment()); }
+    public int semaphoreRequestCount() { return semaphoreRequestCount(this.segment(), 0L); }
     /// Sets `semaphoreRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_semaphoreRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_semaphoreRequestCount.set(segment, 0L, index, value); }
-    /// Sets `semaphoreRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_semaphoreRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void semaphoreRequestCount(MemorySegment segment, long index, int value) { VH_semaphoreRequestCount.set(segment, 0L, index, value); }
     /// Sets `semaphoreRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo semaphoreRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo semaphoreRequestCount(int value) { semaphoreRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `commandBufferRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_commandBufferRequestCount(MemorySegment segment, long index) { return (int) VH_commandBufferRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandBufferRequestCount(MemorySegment segment, long index) { return (int) VH_commandBufferRequestCount.get(segment, 0L, index); }
     /// {@return `commandBufferRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_commandBufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(segment, 0L); }
-    /// {@return `commandBufferRequestCount`}
-    public @CType("uint32_t") int commandBufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(this.segment()); }
+    public int commandBufferRequestCount() { return commandBufferRequestCount(this.segment(), 0L); }
     /// Sets `commandBufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandBufferRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_commandBufferRequestCount.set(segment, 0L, index, value); }
-    /// Sets `commandBufferRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandBufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandBufferRequestCount(MemorySegment segment, long index, int value) { VH_commandBufferRequestCount.set(segment, 0L, index, value); }
     /// Sets `commandBufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo commandBufferRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo commandBufferRequestCount(int value) { commandBufferRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `fenceRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_fenceRequestCount(MemorySegment segment, long index) { return (int) VH_fenceRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int fenceRequestCount(MemorySegment segment, long index) { return (int) VH_fenceRequestCount.get(segment, 0L, index); }
     /// {@return `fenceRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_fenceRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(segment, 0L); }
-    /// {@return `fenceRequestCount`}
-    public @CType("uint32_t") int fenceRequestCount() { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(this.segment()); }
+    public int fenceRequestCount() { return fenceRequestCount(this.segment(), 0L); }
     /// Sets `fenceRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fenceRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_fenceRequestCount.set(segment, 0L, index, value); }
-    /// Sets `fenceRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fenceRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fenceRequestCount(MemorySegment segment, long index, int value) { VH_fenceRequestCount.set(segment, 0L, index, value); }
     /// Sets `fenceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo fenceRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo fenceRequestCount(int value) { fenceRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceMemoryRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_deviceMemoryRequestCount(MemorySegment segment, long index) { return (int) VH_deviceMemoryRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceMemoryRequestCount(MemorySegment segment, long index) { return (int) VH_deviceMemoryRequestCount.get(segment, 0L, index); }
     /// {@return `deviceMemoryRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_deviceMemoryRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(segment, 0L); }
-    /// {@return `deviceMemoryRequestCount`}
-    public @CType("uint32_t") int deviceMemoryRequestCount() { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(this.segment()); }
+    public int deviceMemoryRequestCount() { return deviceMemoryRequestCount(this.segment(), 0L); }
     /// Sets `deviceMemoryRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceMemoryRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_deviceMemoryRequestCount.set(segment, 0L, index, value); }
-    /// Sets `deviceMemoryRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceMemoryRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceMemoryRequestCount(MemorySegment segment, long index, int value) { VH_deviceMemoryRequestCount.set(segment, 0L, index, value); }
     /// Sets `deviceMemoryRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo deviceMemoryRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo deviceMemoryRequestCount(int value) { deviceMemoryRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `bufferRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_bufferRequestCount(MemorySegment segment, long index) { return (int) VH_bufferRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bufferRequestCount(MemorySegment segment, long index) { return (int) VH_bufferRequestCount.get(segment, 0L, index); }
     /// {@return `bufferRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_bufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(segment, 0L); }
-    /// {@return `bufferRequestCount`}
-    public @CType("uint32_t") int bufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(this.segment()); }
+    public int bufferRequestCount() { return bufferRequestCount(this.segment(), 0L); }
     /// Sets `bufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bufferRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_bufferRequestCount.set(segment, 0L, index, value); }
-    /// Sets `bufferRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bufferRequestCount(MemorySegment segment, long index, int value) { VH_bufferRequestCount.set(segment, 0L, index, value); }
     /// Sets `bufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo bufferRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo bufferRequestCount(int value) { bufferRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `imageRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_imageRequestCount(MemorySegment segment, long index) { return (int) VH_imageRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imageRequestCount(MemorySegment segment, long index) { return (int) VH_imageRequestCount.get(segment, 0L, index); }
     /// {@return `imageRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_imageRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(segment, 0L); }
-    /// {@return `imageRequestCount`}
-    public @CType("uint32_t") int imageRequestCount() { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(this.segment()); }
+    public int imageRequestCount() { return imageRequestCount(this.segment(), 0L); }
     /// Sets `imageRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_imageRequestCount.set(segment, 0L, index, value); }
-    /// Sets `imageRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageRequestCount(MemorySegment segment, long index, int value) { VH_imageRequestCount.set(segment, 0L, index, value); }
     /// Sets `imageRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo imageRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo imageRequestCount(int value) { imageRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `eventRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_eventRequestCount(MemorySegment segment, long index) { return (int) VH_eventRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int eventRequestCount(MemorySegment segment, long index) { return (int) VH_eventRequestCount.get(segment, 0L, index); }
     /// {@return `eventRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_eventRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(segment, 0L); }
-    /// {@return `eventRequestCount`}
-    public @CType("uint32_t") int eventRequestCount() { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(this.segment()); }
+    public int eventRequestCount() { return eventRequestCount(this.segment(), 0L); }
     /// Sets `eventRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_eventRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_eventRequestCount.set(segment, 0L, index, value); }
-    /// Sets `eventRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_eventRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void eventRequestCount(MemorySegment segment, long index, int value) { VH_eventRequestCount.set(segment, 0L, index, value); }
     /// Sets `eventRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo eventRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo eventRequestCount(int value) { eventRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `queryPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_queryPoolRequestCount(MemorySegment segment, long index) { return (int) VH_queryPoolRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int queryPoolRequestCount(MemorySegment segment, long index) { return (int) VH_queryPoolRequestCount.get(segment, 0L, index); }
     /// {@return `queryPoolRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_queryPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(segment, 0L); }
-    /// {@return `queryPoolRequestCount`}
-    public @CType("uint32_t") int queryPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(this.segment()); }
+    public int queryPoolRequestCount() { return queryPoolRequestCount(this.segment(), 0L); }
     /// Sets `queryPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_queryPoolRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_queryPoolRequestCount.set(segment, 0L, index, value); }
-    /// Sets `queryPoolRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_queryPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void queryPoolRequestCount(MemorySegment segment, long index, int value) { VH_queryPoolRequestCount.set(segment, 0L, index, value); }
     /// Sets `queryPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo queryPoolRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo queryPoolRequestCount(int value) { queryPoolRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `bufferViewRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_bufferViewRequestCount(MemorySegment segment, long index) { return (int) VH_bufferViewRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bufferViewRequestCount(MemorySegment segment, long index) { return (int) VH_bufferViewRequestCount.get(segment, 0L, index); }
     /// {@return `bufferViewRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_bufferViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(segment, 0L); }
-    /// {@return `bufferViewRequestCount`}
-    public @CType("uint32_t") int bufferViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(this.segment()); }
+    public int bufferViewRequestCount() { return bufferViewRequestCount(this.segment(), 0L); }
     /// Sets `bufferViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bufferViewRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_bufferViewRequestCount.set(segment, 0L, index, value); }
-    /// Sets `bufferViewRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bufferViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bufferViewRequestCount(MemorySegment segment, long index, int value) { VH_bufferViewRequestCount.set(segment, 0L, index, value); }
     /// Sets `bufferViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo bufferViewRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo bufferViewRequestCount(int value) { bufferViewRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `imageViewRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_imageViewRequestCount(MemorySegment segment, long index) { return (int) VH_imageViewRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imageViewRequestCount(MemorySegment segment, long index) { return (int) VH_imageViewRequestCount.get(segment, 0L, index); }
     /// {@return `imageViewRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_imageViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(segment, 0L); }
-    /// {@return `imageViewRequestCount`}
-    public @CType("uint32_t") int imageViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(this.segment()); }
+    public int imageViewRequestCount() { return imageViewRequestCount(this.segment(), 0L); }
     /// Sets `imageViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageViewRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_imageViewRequestCount.set(segment, 0L, index, value); }
-    /// Sets `imageViewRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageViewRequestCount(MemorySegment segment, long index, int value) { VH_imageViewRequestCount.set(segment, 0L, index, value); }
     /// Sets `imageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo imageViewRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo imageViewRequestCount(int value) { imageViewRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `layeredImageViewRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_layeredImageViewRequestCount(MemorySegment segment, long index) { return (int) VH_layeredImageViewRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int layeredImageViewRequestCount(MemorySegment segment, long index) { return (int) VH_layeredImageViewRequestCount.get(segment, 0L, index); }
     /// {@return `layeredImageViewRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_layeredImageViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(segment, 0L); }
-    /// {@return `layeredImageViewRequestCount`}
-    public @CType("uint32_t") int layeredImageViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(this.segment()); }
+    public int layeredImageViewRequestCount() { return layeredImageViewRequestCount(this.segment(), 0L); }
     /// Sets `layeredImageViewRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_layeredImageViewRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_layeredImageViewRequestCount.set(segment, 0L, index, value); }
-    /// Sets `layeredImageViewRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_layeredImageViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void layeredImageViewRequestCount(MemorySegment segment, long index, int value) { VH_layeredImageViewRequestCount.set(segment, 0L, index, value); }
     /// Sets `layeredImageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo layeredImageViewRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo layeredImageViewRequestCount(int value) { layeredImageViewRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineCacheRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_pipelineCacheRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineCacheRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineCacheRequestCount.get(segment, 0L, index); }
     /// {@return `pipelineCacheRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_pipelineCacheRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(segment, 0L); }
-    /// {@return `pipelineCacheRequestCount`}
-    public @CType("uint32_t") int pipelineCacheRequestCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(this.segment()); }
+    public int pipelineCacheRequestCount() { return pipelineCacheRequestCount(this.segment(), 0L); }
     /// Sets `pipelineCacheRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineCacheRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_pipelineCacheRequestCount.set(segment, 0L, index, value); }
-    /// Sets `pipelineCacheRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineCacheRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineCacheRequestCount(MemorySegment segment, long index, int value) { VH_pipelineCacheRequestCount.set(segment, 0L, index, value); }
     /// Sets `pipelineCacheRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineCacheRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pipelineCacheRequestCount(int value) { pipelineCacheRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineLayoutRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_pipelineLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineLayoutRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_pipelineLayoutRequestCount.get(segment, 0L, index); }
     /// {@return `pipelineLayoutRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_pipelineLayoutRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(segment, 0L); }
-    /// {@return `pipelineLayoutRequestCount`}
-    public @CType("uint32_t") int pipelineLayoutRequestCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(this.segment()); }
+    public int pipelineLayoutRequestCount() { return pipelineLayoutRequestCount(this.segment(), 0L); }
     /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineLayoutRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_pipelineLayoutRequestCount.set(segment, 0L, index, value); }
-    /// Sets `pipelineLayoutRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineLayoutRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineLayoutRequestCount(MemorySegment segment, long index, int value) { VH_pipelineLayoutRequestCount.set(segment, 0L, index, value); }
     /// Sets `pipelineLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineLayoutRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo pipelineLayoutRequestCount(int value) { pipelineLayoutRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `renderPassRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_renderPassRequestCount(MemorySegment segment, long index) { return (int) VH_renderPassRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int renderPassRequestCount(MemorySegment segment, long index) { return (int) VH_renderPassRequestCount.get(segment, 0L, index); }
     /// {@return `renderPassRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_renderPassRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(segment, 0L); }
-    /// {@return `renderPassRequestCount`}
-    public @CType("uint32_t") int renderPassRequestCount() { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(this.segment()); }
+    public int renderPassRequestCount() { return renderPassRequestCount(this.segment(), 0L); }
     /// Sets `renderPassRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderPassRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_renderPassRequestCount.set(segment, 0L, index, value); }
-    /// Sets `renderPassRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderPassRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderPassRequestCount(MemorySegment segment, long index, int value) { VH_renderPassRequestCount.set(segment, 0L, index, value); }
     /// Sets `renderPassRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo renderPassRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo renderPassRequestCount(int value) { renderPassRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `graphicsPipelineRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_graphicsPipelineRequestCount(MemorySegment segment, long index) { return (int) VH_graphicsPipelineRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int graphicsPipelineRequestCount(MemorySegment segment, long index) { return (int) VH_graphicsPipelineRequestCount.get(segment, 0L, index); }
     /// {@return `graphicsPipelineRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_graphicsPipelineRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(segment, 0L); }
-    /// {@return `graphicsPipelineRequestCount`}
-    public @CType("uint32_t") int graphicsPipelineRequestCount() { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(this.segment()); }
+    public int graphicsPipelineRequestCount() { return graphicsPipelineRequestCount(this.segment(), 0L); }
     /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_graphicsPipelineRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_graphicsPipelineRequestCount.set(segment, 0L, index, value); }
-    /// Sets `graphicsPipelineRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_graphicsPipelineRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void graphicsPipelineRequestCount(MemorySegment segment, long index, int value) { VH_graphicsPipelineRequestCount.set(segment, 0L, index, value); }
     /// Sets `graphicsPipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo graphicsPipelineRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo graphicsPipelineRequestCount(int value) { graphicsPipelineRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `computePipelineRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_computePipelineRequestCount(MemorySegment segment, long index) { return (int) VH_computePipelineRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int computePipelineRequestCount(MemorySegment segment, long index) { return (int) VH_computePipelineRequestCount.get(segment, 0L, index); }
     /// {@return `computePipelineRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_computePipelineRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(segment, 0L); }
-    /// {@return `computePipelineRequestCount`}
-    public @CType("uint32_t") int computePipelineRequestCount() { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(this.segment()); }
+    public int computePipelineRequestCount() { return computePipelineRequestCount(this.segment(), 0L); }
     /// Sets `computePipelineRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_computePipelineRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_computePipelineRequestCount.set(segment, 0L, index, value); }
-    /// Sets `computePipelineRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_computePipelineRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void computePipelineRequestCount(MemorySegment segment, long index, int value) { VH_computePipelineRequestCount.set(segment, 0L, index, value); }
     /// Sets `computePipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo computePipelineRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo computePipelineRequestCount(int value) { computePipelineRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorSetLayoutRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorSetLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorSetLayoutRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutRequestCount.get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorSetLayoutRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(segment, 0L); }
-    /// {@return `descriptorSetLayoutRequestCount`}
-    public @CType("uint32_t") int descriptorSetLayoutRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(this.segment()); }
+    public int descriptorSetLayoutRequestCount() { return descriptorSetLayoutRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorSetLayoutRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorSetLayoutRequestCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetLayoutRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorSetLayoutRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorSetLayoutRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutRequestCount.set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutRequestCount(int value) { descriptorSetLayoutRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `samplerRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_samplerRequestCount(MemorySegment segment, long index) { return (int) VH_samplerRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int samplerRequestCount(MemorySegment segment, long index) { return (int) VH_samplerRequestCount.get(segment, 0L, index); }
     /// {@return `samplerRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_samplerRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(segment, 0L); }
-    /// {@return `samplerRequestCount`}
-    public @CType("uint32_t") int samplerRequestCount() { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(this.segment()); }
+    public int samplerRequestCount() { return samplerRequestCount(this.segment(), 0L); }
     /// Sets `samplerRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_samplerRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_samplerRequestCount.set(segment, 0L, index, value); }
-    /// Sets `samplerRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_samplerRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void samplerRequestCount(MemorySegment segment, long index, int value) { VH_samplerRequestCount.set(segment, 0L, index, value); }
     /// Sets `samplerRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo samplerRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo samplerRequestCount(int value) { samplerRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorPoolRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorPoolRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorPoolRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorPoolRequestCount.get(segment, 0L, index); }
     /// {@return `descriptorPoolRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(segment, 0L); }
-    /// {@return `descriptorPoolRequestCount`}
-    public @CType("uint32_t") int descriptorPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(this.segment()); }
+    public int descriptorPoolRequestCount() { return descriptorPoolRequestCount(this.segment(), 0L); }
     /// Sets `descriptorPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorPoolRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorPoolRequestCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorPoolRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorPoolRequestCount(MemorySegment segment, long index, int value) { VH_descriptorPoolRequestCount.set(segment, 0L, index, value); }
     /// Sets `descriptorPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorPoolRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo descriptorPoolRequestCount(int value) { descriptorPoolRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorSetRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorSetRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorSetRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetRequestCount.get(segment, 0L, index); }
     /// {@return `descriptorSetRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorSetRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(segment, 0L); }
-    /// {@return `descriptorSetRequestCount`}
-    public @CType("uint32_t") int descriptorSetRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(this.segment()); }
+    public int descriptorSetRequestCount() { return descriptorSetRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorSetRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorSetRequestCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorSetRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorSetRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetRequestCount.set(segment, 0L, index, value); }
     /// Sets `descriptorSetRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo descriptorSetRequestCount(int value) { descriptorSetRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `framebufferRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_framebufferRequestCount(MemorySegment segment, long index) { return (int) VH_framebufferRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int framebufferRequestCount(MemorySegment segment, long index) { return (int) VH_framebufferRequestCount.get(segment, 0L, index); }
     /// {@return `framebufferRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_framebufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(segment, 0L); }
-    /// {@return `framebufferRequestCount`}
-    public @CType("uint32_t") int framebufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(this.segment()); }
+    public int framebufferRequestCount() { return framebufferRequestCount(this.segment(), 0L); }
     /// Sets `framebufferRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_framebufferRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_framebufferRequestCount.set(segment, 0L, index, value); }
-    /// Sets `framebufferRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_framebufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void framebufferRequestCount(MemorySegment segment, long index, int value) { VH_framebufferRequestCount.set(segment, 0L, index, value); }
     /// Sets `framebufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo framebufferRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo framebufferRequestCount(int value) { framebufferRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPoolRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_commandPoolRequestCount(MemorySegment segment, long index) { return (int) VH_commandPoolRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandPoolRequestCount(MemorySegment segment, long index) { return (int) VH_commandPoolRequestCount.get(segment, 0L, index); }
     /// {@return `commandPoolRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_commandPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(segment, 0L); }
-    /// {@return `commandPoolRequestCount`}
-    public @CType("uint32_t") int commandPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(this.segment()); }
+    public int commandPoolRequestCount() { return commandPoolRequestCount(this.segment(), 0L); }
     /// Sets `commandPoolRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPoolRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_commandPoolRequestCount.set(segment, 0L, index, value); }
-    /// Sets `commandPoolRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPoolRequestCount(MemorySegment segment, long index, int value) { VH_commandPoolRequestCount.set(segment, 0L, index, value); }
     /// Sets `commandPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo commandPoolRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo commandPoolRequestCount(int value) { commandPoolRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `samplerYcbcrConversionRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_samplerYcbcrConversionRequestCount(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversionRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int samplerYcbcrConversionRequestCount(MemorySegment segment, long index) { return (int) VH_samplerYcbcrConversionRequestCount.get(segment, 0L, index); }
     /// {@return `samplerYcbcrConversionRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_samplerYcbcrConversionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(segment, 0L); }
-    /// {@return `samplerYcbcrConversionRequestCount`}
-    public @CType("uint32_t") int samplerYcbcrConversionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(this.segment()); }
+    public int samplerYcbcrConversionRequestCount() { return samplerYcbcrConversionRequestCount(this.segment(), 0L); }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_samplerYcbcrConversionRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_samplerYcbcrConversionRequestCount.set(segment, 0L, index, value); }
-    /// Sets `samplerYcbcrConversionRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_samplerYcbcrConversionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void samplerYcbcrConversionRequestCount(MemorySegment segment, long index, int value) { VH_samplerYcbcrConversionRequestCount.set(segment, 0L, index, value); }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo samplerYcbcrConversionRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo samplerYcbcrConversionRequestCount(int value) { samplerYcbcrConversionRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `surfaceRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_surfaceRequestCount(MemorySegment segment, long index) { return (int) VH_surfaceRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int surfaceRequestCount(MemorySegment segment, long index) { return (int) VH_surfaceRequestCount.get(segment, 0L, index); }
     /// {@return `surfaceRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_surfaceRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(segment, 0L); }
-    /// {@return `surfaceRequestCount`}
-    public @CType("uint32_t") int surfaceRequestCount() { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(this.segment()); }
+    public int surfaceRequestCount() { return surfaceRequestCount(this.segment(), 0L); }
     /// Sets `surfaceRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_surfaceRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_surfaceRequestCount.set(segment, 0L, index, value); }
-    /// Sets `surfaceRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_surfaceRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void surfaceRequestCount(MemorySegment segment, long index, int value) { VH_surfaceRequestCount.set(segment, 0L, index, value); }
     /// Sets `surfaceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo surfaceRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo surfaceRequestCount(int value) { surfaceRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `swapchainRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_swapchainRequestCount(MemorySegment segment, long index) { return (int) VH_swapchainRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int swapchainRequestCount(MemorySegment segment, long index) { return (int) VH_swapchainRequestCount.get(segment, 0L, index); }
     /// {@return `swapchainRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_swapchainRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(segment, 0L); }
-    /// {@return `swapchainRequestCount`}
-    public @CType("uint32_t") int swapchainRequestCount() { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(this.segment()); }
+    public int swapchainRequestCount() { return swapchainRequestCount(this.segment(), 0L); }
     /// Sets `swapchainRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_swapchainRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_swapchainRequestCount.set(segment, 0L, index, value); }
-    /// Sets `swapchainRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_swapchainRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void swapchainRequestCount(MemorySegment segment, long index, int value) { VH_swapchainRequestCount.set(segment, 0L, index, value); }
     /// Sets `swapchainRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo swapchainRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo swapchainRequestCount(int value) { swapchainRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `displayModeRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_displayModeRequestCount(MemorySegment segment, long index) { return (int) VH_displayModeRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int displayModeRequestCount(MemorySegment segment, long index) { return (int) VH_displayModeRequestCount.get(segment, 0L, index); }
     /// {@return `displayModeRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_displayModeRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(segment, 0L); }
-    /// {@return `displayModeRequestCount`}
-    public @CType("uint32_t") int displayModeRequestCount() { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(this.segment()); }
+    public int displayModeRequestCount() { return displayModeRequestCount(this.segment(), 0L); }
     /// Sets `displayModeRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_displayModeRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_displayModeRequestCount.set(segment, 0L, index, value); }
-    /// Sets `displayModeRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_displayModeRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void displayModeRequestCount(MemorySegment segment, long index, int value) { VH_displayModeRequestCount.set(segment, 0L, index, value); }
     /// Sets `displayModeRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo displayModeRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo displayModeRequestCount(int value) { displayModeRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `subpassDescriptionRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subpassDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_subpassDescriptionRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subpassDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_subpassDescriptionRequestCount.get(segment, 0L, index); }
     /// {@return `subpassDescriptionRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subpassDescriptionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(segment, 0L); }
-    /// {@return `subpassDescriptionRequestCount`}
-    public @CType("uint32_t") int subpassDescriptionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(this.segment()); }
+    public int subpassDescriptionRequestCount() { return subpassDescriptionRequestCount(this.segment(), 0L); }
     /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subpassDescriptionRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subpassDescriptionRequestCount.set(segment, 0L, index, value); }
-    /// Sets `subpassDescriptionRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subpassDescriptionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subpassDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_subpassDescriptionRequestCount.set(segment, 0L, index, value); }
     /// Sets `subpassDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo subpassDescriptionRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo subpassDescriptionRequestCount(int value) { subpassDescriptionRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `attachmentDescriptionRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_attachmentDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_attachmentDescriptionRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int attachmentDescriptionRequestCount(MemorySegment segment, long index) { return (int) VH_attachmentDescriptionRequestCount.get(segment, 0L, index); }
     /// {@return `attachmentDescriptionRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_attachmentDescriptionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(segment, 0L); }
-    /// {@return `attachmentDescriptionRequestCount`}
-    public @CType("uint32_t") int attachmentDescriptionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(this.segment()); }
+    public int attachmentDescriptionRequestCount() { return attachmentDescriptionRequestCount(this.segment(), 0L); }
     /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_attachmentDescriptionRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_attachmentDescriptionRequestCount.set(segment, 0L, index, value); }
-    /// Sets `attachmentDescriptionRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_attachmentDescriptionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void attachmentDescriptionRequestCount(MemorySegment segment, long index, int value) { VH_attachmentDescriptionRequestCount.set(segment, 0L, index, value); }
     /// Sets `attachmentDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo attachmentDescriptionRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo attachmentDescriptionRequestCount(int value) { attachmentDescriptionRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingRequestCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingRequestCount.get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutBindingRequestCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorSetLayoutBindingRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(segment, 0L); }
-    /// {@return `descriptorSetLayoutBindingRequestCount`}
-    public @CType("uint32_t") int descriptorSetLayoutBindingRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(this.segment()); }
+    public int descriptorSetLayoutBindingRequestCount() { return descriptorSetLayoutBindingRequestCount(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorSetLayoutBindingRequestCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetLayoutBindingRequestCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorSetLayoutBindingRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorSetLayoutBindingRequestCount(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingRequestCount.set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingRequestCount(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingRequestCount(int value) { descriptorSetLayoutBindingRequestCount(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorSetLayoutBindingLimit` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorSetLayoutBindingLimit(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingLimit.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorSetLayoutBindingLimit(MemorySegment segment, long index) { return (int) VH_descriptorSetLayoutBindingLimit.get(segment, 0L, index); }
     /// {@return `descriptorSetLayoutBindingLimit`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorSetLayoutBindingLimit(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(segment, 0L); }
-    /// {@return `descriptorSetLayoutBindingLimit`}
-    public @CType("uint32_t") int descriptorSetLayoutBindingLimit() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(this.segment()); }
+    public int descriptorSetLayoutBindingLimit() { return descriptorSetLayoutBindingLimit(this.segment(), 0L); }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorSetLayoutBindingLimit(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorSetLayoutBindingLimit.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetLayoutBindingLimit` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorSetLayoutBindingLimit(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorSetLayoutBindingLimit(MemorySegment segment, long index, int value) { VH_descriptorSetLayoutBindingLimit.set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingLimit(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingLimit(int value) { descriptorSetLayoutBindingLimit(this.segment(), 0L, value); return this; }
 
     /// {@return `maxImageViewMipLevels` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxImageViewMipLevels.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxImageViewMipLevels.get(segment, 0L, index); }
     /// {@return `maxImageViewMipLevels`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxImageViewMipLevels(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(segment, 0L); }
-    /// {@return `maxImageViewMipLevels`}
-    public @CType("uint32_t") int maxImageViewMipLevels() { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(this.segment()); }
+    public int maxImageViewMipLevels() { return maxImageViewMipLevels(this.segment(), 0L); }
     /// Sets `maxImageViewMipLevels` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxImageViewMipLevels(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxImageViewMipLevels.set(segment, 0L, index, value); }
-    /// Sets `maxImageViewMipLevels` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxImageViewMipLevels(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxImageViewMipLevels.set(segment, 0L, index, value); }
     /// Sets `maxImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImageViewMipLevels(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxImageViewMipLevels(int value) { maxImageViewMipLevels(this.segment(), 0L, value); return this; }
 
     /// {@return `maxImageViewArrayLayers` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxImageViewArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageViewArrayLayers.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxImageViewArrayLayers(MemorySegment segment, long index) { return (int) VH_maxImageViewArrayLayers.get(segment, 0L, index); }
     /// {@return `maxImageViewArrayLayers`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxImageViewArrayLayers(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(segment, 0L); }
-    /// {@return `maxImageViewArrayLayers`}
-    public @CType("uint32_t") int maxImageViewArrayLayers() { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(this.segment()); }
+    public int maxImageViewArrayLayers() { return maxImageViewArrayLayers(this.segment(), 0L); }
     /// Sets `maxImageViewArrayLayers` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxImageViewArrayLayers(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxImageViewArrayLayers.set(segment, 0L, index, value); }
-    /// Sets `maxImageViewArrayLayers` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxImageViewArrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxImageViewArrayLayers(MemorySegment segment, long index, int value) { VH_maxImageViewArrayLayers.set(segment, 0L, index, value); }
     /// Sets `maxImageViewArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImageViewArrayLayers(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxImageViewArrayLayers(int value) { maxImageViewArrayLayers(this.segment(), 0L, value); return this; }
 
     /// {@return `maxLayeredImageViewMipLevels` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxLayeredImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxLayeredImageViewMipLevels.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxLayeredImageViewMipLevels(MemorySegment segment, long index) { return (int) VH_maxLayeredImageViewMipLevels.get(segment, 0L, index); }
     /// {@return `maxLayeredImageViewMipLevels`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxLayeredImageViewMipLevels(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(segment, 0L); }
-    /// {@return `maxLayeredImageViewMipLevels`}
-    public @CType("uint32_t") int maxLayeredImageViewMipLevels() { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(this.segment()); }
+    public int maxLayeredImageViewMipLevels() { return maxLayeredImageViewMipLevels(this.segment(), 0L); }
     /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxLayeredImageViewMipLevels(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxLayeredImageViewMipLevels.set(segment, 0L, index, value); }
-    /// Sets `maxLayeredImageViewMipLevels` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxLayeredImageViewMipLevels(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxLayeredImageViewMipLevels(MemorySegment segment, long index, int value) { VH_maxLayeredImageViewMipLevels.set(segment, 0L, index, value); }
     /// Sets `maxLayeredImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxLayeredImageViewMipLevels(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxLayeredImageViewMipLevels(int value) { maxLayeredImageViewMipLevels(this.segment(), 0L, value); return this; }
 
     /// {@return `maxOcclusionQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxOcclusionQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxOcclusionQueriesPerPool.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxOcclusionQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxOcclusionQueriesPerPool.get(segment, 0L, index); }
     /// {@return `maxOcclusionQueriesPerPool`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxOcclusionQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(segment, 0L); }
-    /// {@return `maxOcclusionQueriesPerPool`}
-    public @CType("uint32_t") int maxOcclusionQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(this.segment()); }
+    public int maxOcclusionQueriesPerPool() { return maxOcclusionQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxOcclusionQueriesPerPool(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxOcclusionQueriesPerPool.set(segment, 0L, index, value); }
-    /// Sets `maxOcclusionQueriesPerPool` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxOcclusionQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxOcclusionQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxOcclusionQueriesPerPool.set(segment, 0L, index, value); }
     /// Sets `maxOcclusionQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxOcclusionQueriesPerPool(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxOcclusionQueriesPerPool(int value) { maxOcclusionQueriesPerPool(this.segment(), 0L, value); return this; }
 
     /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxPipelineStatisticsQueriesPerPool.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxPipelineStatisticsQueriesPerPool.get(segment, 0L, index); }
     /// {@return `maxPipelineStatisticsQueriesPerPool`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxPipelineStatisticsQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(segment, 0L); }
-    /// {@return `maxPipelineStatisticsQueriesPerPool`}
-    public @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(this.segment()); }
+    public int maxPipelineStatisticsQueriesPerPool() { return maxPipelineStatisticsQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxPipelineStatisticsQueriesPerPool.set(segment, 0L, index, value); }
-    /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxPipelineStatisticsQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxPipelineStatisticsQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxPipelineStatisticsQueriesPerPool.set(segment, 0L, index, value); }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxPipelineStatisticsQueriesPerPool(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxPipelineStatisticsQueriesPerPool(int value) { maxPipelineStatisticsQueriesPerPool(this.segment(), 0L, value); return this; }
 
     /// {@return `maxTimestampQueriesPerPool` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxTimestampQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxTimestampQueriesPerPool.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxTimestampQueriesPerPool(MemorySegment segment, long index) { return (int) VH_maxTimestampQueriesPerPool.get(segment, 0L, index); }
     /// {@return `maxTimestampQueriesPerPool`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxTimestampQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(segment, 0L); }
-    /// {@return `maxTimestampQueriesPerPool`}
-    public @CType("uint32_t") int maxTimestampQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(this.segment()); }
+    public int maxTimestampQueriesPerPool() { return maxTimestampQueriesPerPool(this.segment(), 0L); }
     /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxTimestampQueriesPerPool(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxTimestampQueriesPerPool.set(segment, 0L, index, value); }
-    /// Sets `maxTimestampQueriesPerPool` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxTimestampQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxTimestampQueriesPerPool(MemorySegment segment, long index, int value) { VH_maxTimestampQueriesPerPool.set(segment, 0L, index, value); }
     /// Sets `maxTimestampQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxTimestampQueriesPerPool(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxTimestampQueriesPerPool(int value) { maxTimestampQueriesPerPool(this.segment(), 0L, value); return this; }
 
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index) { return (int) VH_maxImmutableSamplersPerDescriptorSetLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index) { return (int) VH_maxImmutableSamplersPerDescriptorSetLayout.get(segment, 0L, index); }
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(segment, 0L); }
-    /// {@return `maxImmutableSamplersPerDescriptorSetLayout`}
-    public @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout() { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(this.segment()); }
+    public int maxImmutableSamplersPerDescriptorSetLayout() { return maxImmutableSamplersPerDescriptorSetLayout(this.segment(), 0L); }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxImmutableSamplersPerDescriptorSetLayout.set(segment, 0L, index, value); }
-    /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, long index, int value) { VH_maxImmutableSamplersPerDescriptorSetLayout.set(segment, 0L, index, value); }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayout(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), value); return this; }
+    public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayout(int value) { maxImmutableSamplersPerDescriptorSetLayout(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDeviceObjectReservationCreateInfo].
     public static final class Buffer extends VkDeviceObjectReservationCreateInfo {
@@ -1360,391 +1133,391 @@ public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceObjectReservationCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCacheCreateInfoCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int pipelineCacheCreateInfoCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineCacheCreateInfoCountAt(long index) { return pipelineCacheCreateInfoCount(this.segment(), index); }
         /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineCacheCreateInfoCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
+        public Buffer pipelineCacheCreateInfoCountAt(long index, int value) { pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
 
         /// {@return `pPipelineCacheCreateInfos` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineCacheCreateInfo *") MemorySegment pPipelineCacheCreateInfosAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPipelineCacheCreateInfosAt(long index) { return pPipelineCacheCreateInfos(this.segment(), index); }
         /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelineCacheCreateInfosAt(long index, @CType("const VkPipelineCacheCreateInfo *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
+        public Buffer pPipelineCacheCreateInfosAt(long index, MemorySegment value) { pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
 
         /// {@return `pipelinePoolSizeCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int pipelinePoolSizeCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelinePoolSizeCountAt(long index) { return pipelinePoolSizeCount(this.segment(), index); }
         /// Sets `pipelinePoolSizeCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelinePoolSizeCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(this.segment(), index, value); return this; }
+        public Buffer pipelinePoolSizeCountAt(long index, int value) { pipelinePoolSizeCount(this.segment(), index, value); return this; }
 
         /// {@return `pPipelinePoolSizes` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelinePoolSize *") MemorySegment pPipelinePoolSizesAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPipelinePoolSizesAt(long index) { return pPipelinePoolSizes(this.segment(), index); }
         /// Sets `pPipelinePoolSizes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPipelinePoolSizesAt(long index, @CType("const VkPipelinePoolSize *") MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), index, value); return this; }
+        public Buffer pPipelinePoolSizesAt(long index, MemorySegment value) { pPipelinePoolSizes(this.segment(), index, value); return this; }
 
         /// {@return `semaphoreRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int semaphoreRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int semaphoreRequestCountAt(long index) { return semaphoreRequestCount(this.segment(), index); }
         /// Sets `semaphoreRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(this.segment(), index, value); return this; }
+        public Buffer semaphoreRequestCountAt(long index, int value) { semaphoreRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `commandBufferRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int commandBufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandBufferRequestCountAt(long index) { return commandBufferRequestCount(this.segment(), index); }
         /// Sets `commandBufferRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandBufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(this.segment(), index, value); return this; }
+        public Buffer commandBufferRequestCountAt(long index, int value) { commandBufferRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `fenceRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int fenceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int fenceRequestCountAt(long index) { return fenceRequestCount(this.segment(), index); }
         /// Sets `fenceRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fenceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(this.segment(), index, value); return this; }
+        public Buffer fenceRequestCountAt(long index, int value) { fenceRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `deviceMemoryRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int deviceMemoryRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceMemoryRequestCountAt(long index) { return deviceMemoryRequestCount(this.segment(), index); }
         /// Sets `deviceMemoryRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceMemoryRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(this.segment(), index, value); return this; }
+        public Buffer deviceMemoryRequestCountAt(long index, int value) { deviceMemoryRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `bufferRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bufferRequestCountAt(long index) { return bufferRequestCount(this.segment(), index); }
         /// Sets `bufferRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(this.segment(), index, value); return this; }
+        public Buffer bufferRequestCountAt(long index, int value) { bufferRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `imageRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int imageRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imageRequestCountAt(long index) { return imageRequestCount(this.segment(), index); }
         /// Sets `imageRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(this.segment(), index, value); return this; }
+        public Buffer imageRequestCountAt(long index, int value) { imageRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `eventRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int eventRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int eventRequestCountAt(long index) { return eventRequestCount(this.segment(), index); }
         /// Sets `eventRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer eventRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(this.segment(), index, value); return this; }
+        public Buffer eventRequestCountAt(long index, int value) { eventRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `queryPoolRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int queryPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int queryPoolRequestCountAt(long index) { return queryPoolRequestCount(this.segment(), index); }
         /// Sets `queryPoolRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer queryPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(this.segment(), index, value); return this; }
+        public Buffer queryPoolRequestCountAt(long index, int value) { queryPoolRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `bufferViewRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bufferViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bufferViewRequestCountAt(long index) { return bufferViewRequestCount(this.segment(), index); }
         /// Sets `bufferViewRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(this.segment(), index, value); return this; }
+        public Buffer bufferViewRequestCountAt(long index, int value) { bufferViewRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `imageViewRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int imageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imageViewRequestCountAt(long index) { return imageViewRequestCount(this.segment(), index); }
         /// Sets `imageViewRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(this.segment(), index, value); return this; }
+        public Buffer imageViewRequestCountAt(long index, int value) { imageViewRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `layeredImageViewRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int layeredImageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int layeredImageViewRequestCountAt(long index) { return layeredImageViewRequestCount(this.segment(), index); }
         /// Sets `layeredImageViewRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer layeredImageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(this.segment(), index, value); return this; }
+        public Buffer layeredImageViewRequestCountAt(long index, int value) { layeredImageViewRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCacheRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int pipelineCacheRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineCacheRequestCountAt(long index) { return pipelineCacheRequestCount(this.segment(), index); }
         /// Sets `pipelineCacheRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineCacheRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(this.segment(), index, value); return this; }
+        public Buffer pipelineCacheRequestCountAt(long index, int value) { pipelineCacheRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `pipelineLayoutRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int pipelineLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineLayoutRequestCountAt(long index) { return pipelineLayoutRequestCount(this.segment(), index); }
         /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(this.segment(), index, value); return this; }
+        public Buffer pipelineLayoutRequestCountAt(long index, int value) { pipelineLayoutRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `renderPassRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int renderPassRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int renderPassRequestCountAt(long index) { return renderPassRequestCount(this.segment(), index); }
         /// Sets `renderPassRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderPassRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(this.segment(), index, value); return this; }
+        public Buffer renderPassRequestCountAt(long index, int value) { renderPassRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `graphicsPipelineRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int graphicsPipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int graphicsPipelineRequestCountAt(long index) { return graphicsPipelineRequestCount(this.segment(), index); }
         /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer graphicsPipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(this.segment(), index, value); return this; }
+        public Buffer graphicsPipelineRequestCountAt(long index, int value) { graphicsPipelineRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `computePipelineRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int computePipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int computePipelineRequestCountAt(long index) { return computePipelineRequestCount(this.segment(), index); }
         /// Sets `computePipelineRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer computePipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(this.segment(), index, value); return this; }
+        public Buffer computePipelineRequestCountAt(long index, int value) { computePipelineRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `descriptorSetLayoutRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorSetLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorSetLayoutRequestCountAt(long index) { return descriptorSetLayoutRequestCount(this.segment(), index); }
         /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorSetLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
+        public Buffer descriptorSetLayoutRequestCountAt(long index, int value) { descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `samplerRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int samplerRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int samplerRequestCountAt(long index) { return samplerRequestCount(this.segment(), index); }
         /// Sets `samplerRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer samplerRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(this.segment(), index, value); return this; }
+        public Buffer samplerRequestCountAt(long index, int value) { samplerRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `descriptorPoolRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorPoolRequestCountAt(long index) { return descriptorPoolRequestCount(this.segment(), index); }
         /// Sets `descriptorPoolRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(this.segment(), index, value); return this; }
+        public Buffer descriptorPoolRequestCountAt(long index, int value) { descriptorPoolRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `descriptorSetRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorSetRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorSetRequestCountAt(long index) { return descriptorSetRequestCount(this.segment(), index); }
         /// Sets `descriptorSetRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorSetRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(this.segment(), index, value); return this; }
+        public Buffer descriptorSetRequestCountAt(long index, int value) { descriptorSetRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `framebufferRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int framebufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int framebufferRequestCountAt(long index) { return framebufferRequestCount(this.segment(), index); }
         /// Sets `framebufferRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer framebufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(this.segment(), index, value); return this; }
+        public Buffer framebufferRequestCountAt(long index, int value) { framebufferRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `commandPoolRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int commandPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandPoolRequestCountAt(long index) { return commandPoolRequestCount(this.segment(), index); }
         /// Sets `commandPoolRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(this.segment(), index, value); return this; }
+        public Buffer commandPoolRequestCountAt(long index, int value) { commandPoolRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `samplerYcbcrConversionRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int samplerYcbcrConversionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int samplerYcbcrConversionRequestCountAt(long index) { return samplerYcbcrConversionRequestCount(this.segment(), index); }
         /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer samplerYcbcrConversionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
+        public Buffer samplerYcbcrConversionRequestCountAt(long index, int value) { samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `surfaceRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int surfaceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int surfaceRequestCountAt(long index) { return surfaceRequestCount(this.segment(), index); }
         /// Sets `surfaceRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer surfaceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(this.segment(), index, value); return this; }
+        public Buffer surfaceRequestCountAt(long index, int value) { surfaceRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `swapchainRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int swapchainRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int swapchainRequestCountAt(long index) { return swapchainRequestCount(this.segment(), index); }
         /// Sets `swapchainRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer swapchainRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(this.segment(), index, value); return this; }
+        public Buffer swapchainRequestCountAt(long index, int value) { swapchainRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `displayModeRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int displayModeRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int displayModeRequestCountAt(long index) { return displayModeRequestCount(this.segment(), index); }
         /// Sets `displayModeRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer displayModeRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(this.segment(), index, value); return this; }
+        public Buffer displayModeRequestCountAt(long index, int value) { displayModeRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `subpassDescriptionRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subpassDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subpassDescriptionRequestCountAt(long index) { return subpassDescriptionRequestCount(this.segment(), index); }
         /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subpassDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(this.segment(), index, value); return this; }
+        public Buffer subpassDescriptionRequestCountAt(long index, int value) { subpassDescriptionRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `attachmentDescriptionRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int attachmentDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int attachmentDescriptionRequestCountAt(long index) { return attachmentDescriptionRequestCount(this.segment(), index); }
         /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer attachmentDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
+        public Buffer attachmentDescriptionRequestCountAt(long index, int value) { attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorSetLayoutBindingRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorSetLayoutBindingRequestCountAt(long index) { return descriptorSetLayoutBindingRequestCount(this.segment(), index); }
         /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorSetLayoutBindingRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
+        public Buffer descriptorSetLayoutBindingRequestCountAt(long index, int value) { descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
 
         /// {@return `descriptorSetLayoutBindingLimit` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorSetLayoutBindingLimitAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorSetLayoutBindingLimitAt(long index) { return descriptorSetLayoutBindingLimit(this.segment(), index); }
         /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorSetLayoutBindingLimitAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
+        public Buffer descriptorSetLayoutBindingLimitAt(long index, int value) { descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
 
         /// {@return `maxImageViewMipLevels` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxImageViewMipLevelsAt(long index) { return maxImageViewMipLevels(this.segment(), index); }
         /// Sets `maxImageViewMipLevels` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(this.segment(), index, value); return this; }
+        public Buffer maxImageViewMipLevelsAt(long index, int value) { maxImageViewMipLevels(this.segment(), index, value); return this; }
 
         /// {@return `maxImageViewArrayLayers` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxImageViewArrayLayersAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxImageViewArrayLayersAt(long index) { return maxImageViewArrayLayers(this.segment(), index); }
         /// Sets `maxImageViewArrayLayers` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxImageViewArrayLayersAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(this.segment(), index, value); return this; }
+        public Buffer maxImageViewArrayLayersAt(long index, int value) { maxImageViewArrayLayers(this.segment(), index, value); return this; }
 
         /// {@return `maxLayeredImageViewMipLevels` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxLayeredImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxLayeredImageViewMipLevelsAt(long index) { return maxLayeredImageViewMipLevels(this.segment(), index); }
         /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxLayeredImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
+        public Buffer maxLayeredImageViewMipLevelsAt(long index, int value) { maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
 
         /// {@return `maxOcclusionQueriesPerPool` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxOcclusionQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxOcclusionQueriesPerPoolAt(long index) { return maxOcclusionQueriesPerPool(this.segment(), index); }
         /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxOcclusionQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
+        public Buffer maxOcclusionQueriesPerPoolAt(long index, int value) { maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
 
         /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxPipelineStatisticsQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxPipelineStatisticsQueriesPerPoolAt(long index) { return maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
         /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxPipelineStatisticsQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
+        public Buffer maxPipelineStatisticsQueriesPerPoolAt(long index, int value) { maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
 
         /// {@return `maxTimestampQueriesPerPool` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxTimestampQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxTimestampQueriesPerPoolAt(long index) { return maxTimestampQueriesPerPool(this.segment(), index); }
         /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxTimestampQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
+        public Buffer maxTimestampQueriesPerPoolAt(long index, int value) { maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
 
         /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
         /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxImmutableSamplersPerDescriptorSetLayoutAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
+        public Buffer maxImmutableSamplersPerDescriptorSetLayoutAt(long index, int value) { maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
 
     }
 }

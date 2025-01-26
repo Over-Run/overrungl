@@ -18,7 +18,6 @@
 package overrungl.vulkan.android;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -39,26 +38,32 @@ public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
         public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetAndroidHardwareBufferPropertiesANDROID;
         public final MemorySegment PFN_vkGetMemoryAndroidHardwareBufferANDROID;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetAndroidHardwareBufferPropertiesANDROID = func.invoke(device, "vkGetAndroidHardwareBufferPropertiesANDROID");
             PFN_vkGetMemoryAndroidHardwareBufferANDROID = func.invoke(device, "vkGetMemoryAndroidHardwareBufferANDROID");
         }
     }
 
-    public VKANDROIDExternalMemoryAndroidHardwareBuffer(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKANDROIDExternalMemoryAndroidHardwareBuffer(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetAndroidHardwareBufferPropertiesANDROID(@CType("VkDevice") MemorySegment device, @CType("const struct AHardwareBuffer *") MemorySegment buffer, @CType("VkAndroidHardwareBufferPropertiesANDROID *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
+    /// ```
+    /// VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, const AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
+    /// ```
+    public int GetAndroidHardwareBufferPropertiesANDROID(MemorySegment device, MemorySegment buffer, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
         try { return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(handles.PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device, buffer, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetAndroidHardwareBufferPropertiesANDROID", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetAndroidHardwareBufferPropertiesANDROID", e); }
     }
 
-    public @CType("VkResult") int GetMemoryAndroidHardwareBufferANDROID(@CType("VkDevice") MemorySegment device, @CType("const VkMemoryGetAndroidHardwareBufferInfoANDROID *") MemorySegment pInfo, @CType("struct AHardwareBuffer **") MemorySegment pBuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
+    /// ```
+    /// VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, AHardwareBuffer ** pBuffer);
+    /// ```
+    public int GetMemoryAndroidHardwareBufferANDROID(MemorySegment device, MemorySegment pInfo, MemorySegment pBuffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
         try { return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(handles.PFN_vkGetMemoryAndroidHardwareBufferANDROID, device, pInfo, pBuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryAndroidHardwareBufferANDROID", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryAndroidHardwareBufferANDROID", e); }
     }
 
 }

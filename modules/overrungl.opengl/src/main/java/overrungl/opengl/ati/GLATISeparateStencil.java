@@ -44,7 +44,7 @@ public final class GLATISeparateStencil {
     }
 
     /// ```
-    /// void glStencilOpSeparateATI(unsigned int face, unsigned int sfail, unsigned int dpfail, unsigned int dppass);
+    /// void glStencilOpSeparateATI(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
     /// ```
     public void StencilOpSeparateATI(int face, int sfail, int dpfail, int dppass) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilOpSeparateATI");
@@ -53,7 +53,7 @@ public final class GLATISeparateStencil {
     }
 
     /// ```
-    /// void glStencilFuncSeparateATI(unsigned int frontfunc, unsigned int backfunc, int ref, unsigned int mask);
+    /// void glStencilFuncSeparateATI(GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
     /// ```
     public void StencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilFuncSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilFuncSeparateATI");

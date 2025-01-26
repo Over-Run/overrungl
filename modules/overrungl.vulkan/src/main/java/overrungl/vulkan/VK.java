@@ -16,8 +16,6 @@
 
 package overrungl.vulkan;
 
-import overrungl.annotation.CType;
-
 import java.lang.foreign.MemorySegment;
 
 /**
@@ -31,7 +29,7 @@ public class VK extends VK14 {
     ///
     /// @param instance the `VkInstance`
     /// @param func     the loading function
-    public VK(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VK(MemorySegment instance, VKLoadFunc func) {
         super(instance, func);
     }
 }

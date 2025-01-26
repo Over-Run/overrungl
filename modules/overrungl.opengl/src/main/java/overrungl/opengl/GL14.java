@@ -89,7 +89,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glBlendFuncSeparate(unsigned int sfactorRGB, unsigned int dfactorRGB, unsigned int sfactorAlpha, unsigned int dfactorAlpha);
+    /// void glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
     /// ```
     public void BlendFuncSeparate(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparate)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparate");
@@ -98,7 +98,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glMultiDrawArrays(unsigned int mode, const GLint* first, const GLsizei* count, int drawcount);
+    /// void glMultiDrawArrays(GLenum mode, const GLint* first, const GLsizei* count, GLsizei drawcount);
     /// ```
     public void MultiDrawArrays(int mode, MemorySegment first, MemorySegment count, int drawcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArrays");
@@ -107,7 +107,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glMultiDrawElements(unsigned int mode, const GLsizei* count, unsigned int type, const void* const * indices, int drawcount);
+    /// void glMultiDrawElements(GLenum mode, const GLsizei* count, GLenum type, const void* const * indices, GLsizei drawcount);
     /// ```
     public void MultiDrawElements(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElements)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElements");
@@ -116,7 +116,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glPointParameterf(unsigned int pname, float param);
+    /// void glPointParameterf(GLenum pname, GLfloat param);
     /// ```
     public void PointParameterf(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterf)) throw new SymbolNotFoundError("Symbol not found: glPointParameterf");
@@ -125,7 +125,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glPointParameterfv(unsigned int pname, const GLfloat* params);
+    /// void glPointParameterfv(GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfv(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfv");
@@ -134,7 +134,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glPointParameteri(unsigned int pname, int param);
+    /// void glPointParameteri(GLenum pname, GLint param);
     /// ```
     public void PointParameteri(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteri)) throw new SymbolNotFoundError("Symbol not found: glPointParameteri");
@@ -143,7 +143,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glPointParameteriv(unsigned int pname, const GLint* params);
+    /// void glPointParameteriv(GLenum pname, const GLint* params);
     /// ```
     public void PointParameteriv(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriv)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriv");
@@ -152,7 +152,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glBlendColor(float red, float green, float blue, float alpha);
+    /// void glBlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
     /// ```
     public void BlendColor(float red, float green, float blue, float alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendColor)) throw new SymbolNotFoundError("Symbol not found: glBlendColor");
@@ -161,7 +161,7 @@ public class GL14 extends GL13 {
     }
 
     /// ```
-    /// void glBlendEquation(unsigned int mode);
+    /// void glBlendEquation(GLenum mode);
     /// ```
     public void BlendEquation(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquation)) throw new SymbolNotFoundError("Symbol not found: glBlendEquation");

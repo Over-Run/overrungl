@@ -18,7 +18,6 @@
 package overrungl.vulkan.fuchsia;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -45,16 +44,16 @@ public class VKFUCHSIABufferCollection {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkSetBufferCollectionImageConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkSetBufferCollectionBufferConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetBufferCollectionPropertiesFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetBufferCollectionImageConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetBufferCollectionBufferConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferCollectionPropertiesFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateBufferCollectionFUCHSIA;
         public final MemorySegment PFN_vkSetBufferCollectionImageConstraintsFUCHSIA;
         public final MemorySegment PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA;
         public final MemorySegment PFN_vkDestroyBufferCollectionFUCHSIA;
         public final MemorySegment PFN_vkGetBufferCollectionPropertiesFUCHSIA;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCreateBufferCollectionFUCHSIA = func.invoke(device, "vkCreateBufferCollectionFUCHSIA");
             PFN_vkSetBufferCollectionImageConstraintsFUCHSIA = func.invoke(device, "vkSetBufferCollectionImageConstraintsFUCHSIA");
             PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA = func.invoke(device, "vkSetBufferCollectionBufferConstraintsFUCHSIA");
@@ -63,38 +62,53 @@ public class VKFUCHSIABufferCollection {
         }
     }
 
-    public VKFUCHSIABufferCollection(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKFUCHSIABufferCollection(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int CreateBufferCollectionFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("const VkBufferCollectionCreateInfoFUCHSIA *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkBufferCollectionFUCHSIA *") MemorySegment pCollection) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateBufferCollectionFUCHSIA");
+    /// ```
+    /// VkResult vkCreateBufferCollectionFUCHSIA(VkDevice device, const VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkBufferCollectionFUCHSIA* pCollection);
+    /// ```
+    public int CreateBufferCollectionFUCHSIA(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pCollection) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateBufferCollectionFUCHSIA");
         try { return (int) Handles.MH_vkCreateBufferCollectionFUCHSIA.invokeExact(handles.PFN_vkCreateBufferCollectionFUCHSIA, device, pCreateInfo, pAllocator, pCollection); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateBufferCollectionFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateBufferCollectionFUCHSIA", e); }
     }
 
-    public @CType("VkResult") int SetBufferCollectionImageConstraintsFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("VkBufferCollectionFUCHSIA") MemorySegment collection, @CType("const VkImageConstraintsInfoFUCHSIA *") MemorySegment pImageConstraintsInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionImageConstraintsFUCHSIA");
+    /// ```
+    /// VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo);
+    /// ```
+    public int SetBufferCollectionImageConstraintsFUCHSIA(MemorySegment device, long collection, MemorySegment pImageConstraintsInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionImageConstraintsFUCHSIA");
         try { return (int) Handles.MH_vkSetBufferCollectionImageConstraintsFUCHSIA.invokeExact(handles.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA, device, collection, pImageConstraintsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkSetBufferCollectionImageConstraintsFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SetBufferCollectionImageConstraintsFUCHSIA", e); }
     }
 
-    public @CType("VkResult") int SetBufferCollectionBufferConstraintsFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("VkBufferCollectionFUCHSIA") MemorySegment collection, @CType("const VkBufferConstraintsInfoFUCHSIA *") MemorySegment pBufferConstraintsInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionBufferConstraintsFUCHSIA");
+    /// ```
+    /// VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo);
+    /// ```
+    public int SetBufferCollectionBufferConstraintsFUCHSIA(MemorySegment device, long collection, MemorySegment pBufferConstraintsInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionBufferConstraintsFUCHSIA");
         try { return (int) Handles.MH_vkSetBufferCollectionBufferConstraintsFUCHSIA.invokeExact(handles.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA, device, collection, pBufferConstraintsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkSetBufferCollectionBufferConstraintsFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SetBufferCollectionBufferConstraintsFUCHSIA", e); }
     }
 
-    public void DestroyBufferCollectionFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("VkBufferCollectionFUCHSIA") MemorySegment collection, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkDestroyBufferCollectionFUCHSIA");
+    /// ```
+    /// void vkDestroyBufferCollectionFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public void DestroyBufferCollectionFUCHSIA(MemorySegment device, long collection, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkDestroyBufferCollectionFUCHSIA");
         try { Handles.MH_vkDestroyBufferCollectionFUCHSIA.invokeExact(handles.PFN_vkDestroyBufferCollectionFUCHSIA, device, collection, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDestroyBufferCollectionFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DestroyBufferCollectionFUCHSIA", e); }
     }
 
-    public @CType("VkResult") int GetBufferCollectionPropertiesFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("VkBufferCollectionFUCHSIA") MemorySegment collection, @CType("VkBufferCollectionPropertiesFUCHSIA *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferCollectionPropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferCollectionPropertiesFUCHSIA");
+    /// ```
+    /// VkResult vkGetBufferCollectionPropertiesFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, VkBufferCollectionPropertiesFUCHSIA* pProperties);
+    /// ```
+    public int GetBufferCollectionPropertiesFUCHSIA(MemorySegment device, long collection, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetBufferCollectionPropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferCollectionPropertiesFUCHSIA");
         try { return (int) Handles.MH_vkGetBufferCollectionPropertiesFUCHSIA.invokeExact(handles.PFN_vkGetBufferCollectionPropertiesFUCHSIA, device, collection, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetBufferCollectionPropertiesFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetBufferCollectionPropertiesFUCHSIA", e); }
     }
 
 }

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### provokingVertexLast
-/// [VarHandle][#VH_provokingVertexLast] - [Getter][#provokingVertexLast()] - [Setter][#provokingVertexLast(int)]
-/// ### transformFeedbackPreservesProvokingVertex
-/// [VarHandle][#VH_transformFeedbackPreservesProvokingVertex] - [Getter][#transformFeedbackPreservesProvokingVertex()] - [Setter][#transformFeedbackPreservesProvokingVertex(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceProvokingVertexFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceProvokingVertexFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 provokingVertexLast;
 ///     VkBool32 transformFeedbackPreservesProvokingVertex;
-/// } VkPhysicalDeviceProvokingVertexFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceProvokingVertexFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("provokingVertexLast"),
         ValueLayout.JAVA_INT.withName("transformFeedbackPreservesProvokingVertex")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `provokingVertexLast` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `provokingVertexLast`.
+    public static final long OFFSET_provokingVertexLast = LAYOUT.byteOffset(PathElement.groupElement("provokingVertexLast"));
+    /// The memory layout of `provokingVertexLast`.
+    public static final MemoryLayout LAYOUT_provokingVertexLast = LAYOUT.select(PathElement.groupElement("provokingVertexLast"));
+    /// The [VarHandle] of `provokingVertexLast` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_provokingVertexLast = LAYOUT.arrayElementVarHandle(PathElement.groupElement("provokingVertexLast"));
-    /// The [VarHandle] of `transformFeedbackPreservesProvokingVertex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `transformFeedbackPreservesProvokingVertex`.
+    public static final long OFFSET_transformFeedbackPreservesProvokingVertex = LAYOUT.byteOffset(PathElement.groupElement("transformFeedbackPreservesProvokingVertex"));
+    /// The memory layout of `transformFeedbackPreservesProvokingVertex`.
+    public static final MemoryLayout LAYOUT_transformFeedbackPreservesProvokingVertex = LAYOUT.select(PathElement.groupElement("transformFeedbackPreservesProvokingVertex"));
+    /// The [VarHandle] of `transformFeedbackPreservesProvokingVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_transformFeedbackPreservesProvokingVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformFeedbackPreservesProvokingVertex"));
 
     /// Creates `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceProvokingVertexFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProvokingVertexFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int provokingVertexLast, @CType("VkBool32") int transformFeedbackPreservesProvokingVertex) { return alloc(allocator).sType(sType).pNext(pNext).provokingVertexLast(provokingVertexLast).transformFeedbackPreservesProvokingVertex(transformFeedbackPreservesProvokingVertex); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProvokingVertexFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceProvokingVertexFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProvokingVertexFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceProvokingVertexFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `provokingVertexLast` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_provokingVertexLast(MemorySegment segment, long index) { return (int) VH_provokingVertexLast.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int provokingVertexLast(MemorySegment segment, long index) { return (int) VH_provokingVertexLast.get(segment, 0L, index); }
     /// {@return `provokingVertexLast`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_provokingVertexLast(MemorySegment segment) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_provokingVertexLast(segment, 0L); }
-    /// {@return `provokingVertexLast`}
-    public @CType("VkBool32") int provokingVertexLast() { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_provokingVertexLast(this.segment()); }
+    public int provokingVertexLast() { return provokingVertexLast(this.segment(), 0L); }
     /// Sets `provokingVertexLast` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_provokingVertexLast(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_provokingVertexLast.set(segment, 0L, index, value); }
-    /// Sets `provokingVertexLast` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_provokingVertexLast(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_provokingVertexLast(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void provokingVertexLast(MemorySegment segment, long index, int value) { VH_provokingVertexLast.set(segment, 0L, index, value); }
     /// Sets `provokingVertexLast` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProvokingVertexFeaturesEXT provokingVertexLast(@CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_provokingVertexLast(this.segment(), value); return this; }
+    public VkPhysicalDeviceProvokingVertexFeaturesEXT provokingVertexLast(int value) { provokingVertexLast(this.segment(), 0L, value); return this; }
 
     /// {@return `transformFeedbackPreservesProvokingVertex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_transformFeedbackPreservesProvokingVertex(MemorySegment segment, long index) { return (int) VH_transformFeedbackPreservesProvokingVertex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int transformFeedbackPreservesProvokingVertex(MemorySegment segment, long index) { return (int) VH_transformFeedbackPreservesProvokingVertex.get(segment, 0L, index); }
     /// {@return `transformFeedbackPreservesProvokingVertex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_transformFeedbackPreservesProvokingVertex(MemorySegment segment) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_transformFeedbackPreservesProvokingVertex(segment, 0L); }
-    /// {@return `transformFeedbackPreservesProvokingVertex`}
-    public @CType("VkBool32") int transformFeedbackPreservesProvokingVertex() { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_transformFeedbackPreservesProvokingVertex(this.segment()); }
+    public int transformFeedbackPreservesProvokingVertex() { return transformFeedbackPreservesProvokingVertex(this.segment(), 0L); }
     /// Sets `transformFeedbackPreservesProvokingVertex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_transformFeedbackPreservesProvokingVertex(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_transformFeedbackPreservesProvokingVertex.set(segment, 0L, index, value); }
-    /// Sets `transformFeedbackPreservesProvokingVertex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_transformFeedbackPreservesProvokingVertex(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_transformFeedbackPreservesProvokingVertex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void transformFeedbackPreservesProvokingVertex(MemorySegment segment, long index, int value) { VH_transformFeedbackPreservesProvokingVertex.set(segment, 0L, index, value); }
     /// Sets `transformFeedbackPreservesProvokingVertex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProvokingVertexFeaturesEXT transformFeedbackPreservesProvokingVertex(@CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_transformFeedbackPreservesProvokingVertex(this.segment(), value); return this; }
+    public VkPhysicalDeviceProvokingVertexFeaturesEXT transformFeedbackPreservesProvokingVertex(int value) { transformFeedbackPreservesProvokingVertex(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceProvokingVertexFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceProvokingVertexFeaturesEXT {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceProvokingVertexFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `provokingVertexLast` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int provokingVertexLastAt(long index) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_provokingVertexLast(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int provokingVertexLastAt(long index) { return provokingVertexLast(this.segment(), index); }
         /// Sets `provokingVertexLast` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer provokingVertexLastAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_provokingVertexLast(this.segment(), index, value); return this; }
+        public Buffer provokingVertexLastAt(long index, int value) { provokingVertexLast(this.segment(), index, value); return this; }
 
         /// {@return `transformFeedbackPreservesProvokingVertex` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int transformFeedbackPreservesProvokingVertexAt(long index) { return VkPhysicalDeviceProvokingVertexFeaturesEXT.get_transformFeedbackPreservesProvokingVertex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int transformFeedbackPreservesProvokingVertexAt(long index) { return transformFeedbackPreservesProvokingVertex(this.segment(), index); }
         /// Sets `transformFeedbackPreservesProvokingVertex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer transformFeedbackPreservesProvokingVertexAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceProvokingVertexFeaturesEXT.set_transformFeedbackPreservesProvokingVertex(this.segment(), index, value); return this; }
+        public Buffer transformFeedbackPreservesProvokingVertexAt(long index, int value) { transformFeedbackPreservesProvokingVertex(this.segment(), index, value); return this; }
 
     }
 }

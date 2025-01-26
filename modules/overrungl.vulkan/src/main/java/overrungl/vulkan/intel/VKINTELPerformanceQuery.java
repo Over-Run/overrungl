@@ -18,11 +18,9 @@
 package overrungl.vulkan.intel;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.vulkan.intel.VKINTELPerformanceQuery.*;
 public class VKINTELPerformanceQuery {
     public static final int VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL = 0;
     public static final int VK_QUERY_POOL_SAMPLING_MODE_MANUAL_INTEL = 0;
@@ -38,6 +36,7 @@ public class VKINTELPerformanceQuery {
     public static final int VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION = 2;
     public static final String VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
     public static final int VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL = 1000210000;
+    public static final int VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO_INTEL = 1000210000;
     public static final int VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL = 1000210001;
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_MARKER_INFO_INTEL = 1000210002;
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_STREAM_MARKER_INFO_INTEL = 1000210003;
@@ -45,7 +44,6 @@ public class VKINTELPerformanceQuery {
     public static final int VK_STRUCTURE_TYPE_PERFORMANCE_CONFIGURATION_ACQUIRE_INFO_INTEL = 1000210005;
     public static final int VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL = 1000210000;
     public static final int VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL = 1000210000;
-    public static final int VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO_INTEL = VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkInitializePerformanceApiINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -54,8 +52,8 @@ public class VKINTELPerformanceQuery {
         public static final MethodHandle MH_vkCmdSetPerformanceStreamMarkerINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetPerformanceOverrideINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkAcquirePerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkReleasePerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkQueueSetPerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleasePerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkQueueSetPerformanceConfigurationINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetPerformanceParameterINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkInitializePerformanceApiINTEL;
         public final MemorySegment PFN_vkUninitializePerformanceApiINTEL;
@@ -66,7 +64,7 @@ public class VKINTELPerformanceQuery {
         public final MemorySegment PFN_vkReleasePerformanceConfigurationINTEL;
         public final MemorySegment PFN_vkQueueSetPerformanceConfigurationINTEL;
         public final MemorySegment PFN_vkGetPerformanceParameterINTEL;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkInitializePerformanceApiINTEL = func.invoke(device, "vkInitializePerformanceApiINTEL");
             PFN_vkUninitializePerformanceApiINTEL = func.invoke(device, "vkUninitializePerformanceApiINTEL");
             PFN_vkCmdSetPerformanceMarkerINTEL = func.invoke(device, "vkCmdSetPerformanceMarkerINTEL");
@@ -79,62 +77,89 @@ public class VKINTELPerformanceQuery {
         }
     }
 
-    public VKINTELPerformanceQuery(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKINTELPerformanceQuery(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int InitializePerformanceApiINTEL(@CType("VkDevice") MemorySegment device, @CType("const VkInitializePerformanceApiInfoINTEL *") MemorySegment pInitializeInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkInitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkInitializePerformanceApiINTEL");
+    /// ```
+    /// VkResult vkInitializePerformanceApiINTEL(VkDevice device, const VkInitializePerformanceApiInfoINTEL* pInitializeInfo);
+    /// ```
+    public int InitializePerformanceApiINTEL(MemorySegment device, MemorySegment pInitializeInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkInitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkInitializePerformanceApiINTEL");
         try { return (int) Handles.MH_vkInitializePerformanceApiINTEL.invokeExact(handles.PFN_vkInitializePerformanceApiINTEL, device, pInitializeInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkInitializePerformanceApiINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in InitializePerformanceApiINTEL", e); }
     }
 
-    public void UninitializePerformanceApiINTEL(@CType("VkDevice") MemorySegment device) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkUninitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkUninitializePerformanceApiINTEL");
+    /// ```
+    /// void vkUninitializePerformanceApiINTEL(VkDevice device);
+    /// ```
+    public void UninitializePerformanceApiINTEL(MemorySegment device) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkUninitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkUninitializePerformanceApiINTEL");
         try { Handles.MH_vkUninitializePerformanceApiINTEL.invokeExact(handles.PFN_vkUninitializePerformanceApiINTEL, device); }
-        catch (Throwable e) { throw new RuntimeException("error in vkUninitializePerformanceApiINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in UninitializePerformanceApiINTEL", e); }
     }
 
-    public @CType("VkResult") int CmdSetPerformanceMarkerINTEL(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPerformanceMarkerInfoINTEL *") MemorySegment pMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetPerformanceMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceMarkerINTEL");
+    /// ```
+    /// VkResult vkCmdSetPerformanceMarkerINTEL(VkCommandBuffer commandBuffer, const VkPerformanceMarkerInfoINTEL* pMarkerInfo);
+    /// ```
+    public int CmdSetPerformanceMarkerINTEL(MemorySegment commandBuffer, MemorySegment pMarkerInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPerformanceMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceMarkerINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceMarkerINTEL.invokeExact(handles.PFN_vkCmdSetPerformanceMarkerINTEL, commandBuffer, pMarkerInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceMarkerINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetPerformanceMarkerINTEL", e); }
     }
 
-    public @CType("VkResult") int CmdSetPerformanceStreamMarkerINTEL(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPerformanceStreamMarkerInfoINTEL *") MemorySegment pMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetPerformanceStreamMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceStreamMarkerINTEL");
+    /// ```
+    /// VkResult vkCmdSetPerformanceStreamMarkerINTEL(VkCommandBuffer commandBuffer, const VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo);
+    /// ```
+    public int CmdSetPerformanceStreamMarkerINTEL(MemorySegment commandBuffer, MemorySegment pMarkerInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPerformanceStreamMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceStreamMarkerINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceStreamMarkerINTEL.invokeExact(handles.PFN_vkCmdSetPerformanceStreamMarkerINTEL, commandBuffer, pMarkerInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceStreamMarkerINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetPerformanceStreamMarkerINTEL", e); }
     }
 
-    public @CType("VkResult") int CmdSetPerformanceOverrideINTEL(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPerformanceOverrideInfoINTEL *") MemorySegment pOverrideInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetPerformanceOverrideINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceOverrideINTEL");
+    /// ```
+    /// VkResult vkCmdSetPerformanceOverrideINTEL(VkCommandBuffer commandBuffer, const VkPerformanceOverrideInfoINTEL* pOverrideInfo);
+    /// ```
+    public int CmdSetPerformanceOverrideINTEL(MemorySegment commandBuffer, MemorySegment pOverrideInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPerformanceOverrideINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceOverrideINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceOverrideINTEL.invokeExact(handles.PFN_vkCmdSetPerformanceOverrideINTEL, commandBuffer, pOverrideInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceOverrideINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetPerformanceOverrideINTEL", e); }
     }
 
-    public @CType("VkResult") int AcquirePerformanceConfigurationINTEL(@CType("VkDevice") MemorySegment device, @CType("const VkPerformanceConfigurationAcquireInfoINTEL *") MemorySegment pAcquireInfo, @CType("VkPerformanceConfigurationINTEL *") MemorySegment pConfiguration) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkAcquirePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkAcquirePerformanceConfigurationINTEL");
+    /// ```
+    /// VkResult vkAcquirePerformanceConfigurationINTEL(VkDevice device, const VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo, VkPerformanceConfigurationINTEL* pConfiguration);
+    /// ```
+    public int AcquirePerformanceConfigurationINTEL(MemorySegment device, MemorySegment pAcquireInfo, MemorySegment pConfiguration) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkAcquirePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkAcquirePerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkAcquirePerformanceConfigurationINTEL.invokeExact(handles.PFN_vkAcquirePerformanceConfigurationINTEL, device, pAcquireInfo, pConfiguration); }
-        catch (Throwable e) { throw new RuntimeException("error in vkAcquirePerformanceConfigurationINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AcquirePerformanceConfigurationINTEL", e); }
     }
 
-    public @CType("VkResult") int ReleasePerformanceConfigurationINTEL(@CType("VkDevice") MemorySegment device, @CType("VkPerformanceConfigurationINTEL") MemorySegment configuration) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkReleasePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkReleasePerformanceConfigurationINTEL");
+    /// ```
+    /// VkResult vkReleasePerformanceConfigurationINTEL(VkDevice device, VkPerformanceConfigurationINTEL configuration);
+    /// ```
+    public int ReleasePerformanceConfigurationINTEL(MemorySegment device, long configuration) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkReleasePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkReleasePerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkReleasePerformanceConfigurationINTEL.invokeExact(handles.PFN_vkReleasePerformanceConfigurationINTEL, device, configuration); }
-        catch (Throwable e) { throw new RuntimeException("error in vkReleasePerformanceConfigurationINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReleasePerformanceConfigurationINTEL", e); }
     }
 
-    public @CType("VkResult") int QueueSetPerformanceConfigurationINTEL(@CType("VkQueue") MemorySegment queue, @CType("VkPerformanceConfigurationINTEL") MemorySegment configuration) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkQueueSetPerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkQueueSetPerformanceConfigurationINTEL");
+    /// ```
+    /// VkResult vkQueueSetPerformanceConfigurationINTEL(VkQueue queue, VkPerformanceConfigurationINTEL configuration);
+    /// ```
+    public int QueueSetPerformanceConfigurationINTEL(MemorySegment queue, long configuration) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkQueueSetPerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkQueueSetPerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkQueueSetPerformanceConfigurationINTEL.invokeExact(handles.PFN_vkQueueSetPerformanceConfigurationINTEL, queue, configuration); }
-        catch (Throwable e) { throw new RuntimeException("error in vkQueueSetPerformanceConfigurationINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueueSetPerformanceConfigurationINTEL", e); }
     }
 
-    public @CType("VkResult") int GetPerformanceParameterINTEL(@CType("VkDevice") MemorySegment device, @CType("VkPerformanceParameterTypeINTEL") int parameter, @CType("VkPerformanceValueINTEL *") MemorySegment pValue) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPerformanceParameterINTEL)) throw new SymbolNotFoundError("Symbol not found: vkGetPerformanceParameterINTEL");
+    /// ```
+    /// VkResult vkGetPerformanceParameterINTEL(VkDevice device, VkPerformanceParameterTypeINTEL parameter, VkPerformanceValueINTEL* pValue);
+    /// ```
+    public int GetPerformanceParameterINTEL(MemorySegment device, int parameter, MemorySegment pValue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPerformanceParameterINTEL)) throw new SymbolNotFoundError("Symbol not found: vkGetPerformanceParameterINTEL");
         try { return (int) Handles.MH_vkGetPerformanceParameterINTEL.invokeExact(handles.PFN_vkGetPerformanceParameterINTEL, device, parameter, pValue); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPerformanceParameterINTEL", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPerformanceParameterINTEL", e); }
     }
 
 }

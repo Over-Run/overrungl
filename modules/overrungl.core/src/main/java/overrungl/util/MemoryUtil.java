@@ -495,27 +495,6 @@ public final class MemoryUtil {
         return allocArray(allocator, arr, StandardCharsets.UTF_8);
     }
 
-    private static byte toByteExact(long value) {
-        if ((byte) value != value) {
-            throw new ArithmeticException("byte overflow");
-        }
-        return (byte) value;
-    }
-
-    private static char toCharExact(long value) {
-        if ((char) value != value) {
-            throw new ArithmeticException("char overflow");
-        }
-        return (char) value;
-    }
-
-    private static short toShortExact(long value) {
-        if ((short) value != value) {
-            throw new ArithmeticException("short overflow");
-        }
-        return (short) value;
-    }
-
     /// Converts a `long` to another type whose size might be smaller than `long`. This is usually used by `long` and `size_t`.
     ///
     /// @param layout the actual value layout of the result
@@ -526,10 +505,10 @@ public final class MemoryUtil {
             throw notValueLayout(layout);
         }
         return switch (valueLayout) {
-            case OfByte _ -> toByteExact(value);
-            case OfChar _ -> toCharExact(value);
-            case OfShort _ -> toShortExact(value);
-            case OfInt _ -> Math.toIntExact(value);
+            case OfByte _ -> (byte) value;
+            case OfChar _ -> (char) value;
+            case OfShort _ -> (short) value;
+            case OfInt _ -> (int) value;
             case OfLong _ -> value;
             default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
         };
@@ -545,10 +524,11 @@ public final class MemoryUtil {
             throw notValueLayout(layout);
         }
         return switch (valueLayout) {
-            case OfByte _ -> toByteExact(value);
-            case OfChar _ -> toCharExact(value);
-            case OfShort _ -> toShortExact(value);
-            case OfInt _, OfLong _ -> value;
+            case OfByte _ -> (byte) value;
+            case OfChar _ -> (char) value;
+            case OfShort _ -> (short) value;
+            case OfInt _ -> value;
+            case OfLong _ -> (long) value;
             default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
         };
     }
@@ -610,7 +590,11 @@ public final class MemoryUtil {
             throw notValueLayout(layout);
         }
         return switch (valueLayout) {
-            case OfByte _, OfChar _, OfShort _, OfInt _, OfLong _ -> (long) o;
+            case OfByte _ -> ((Byte) o).longValue();
+            case OfChar _ -> (long) (Character) o;
+            case OfShort _ -> ((Short) o).longValue();
+            case OfInt _ -> ((Integer) o).longValue();
+            case OfLong _ -> (Long) o;
             default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
         };
     }
@@ -625,8 +609,11 @@ public final class MemoryUtil {
             throw notValueLayout(layout);
         }
         return switch (valueLayout) {
-            case OfByte _, OfChar _, OfShort _, OfInt _ -> (int) o;
-            case OfLong _ -> Math.toIntExact((long) o);
+            case OfByte _ -> ((Byte) o).intValue();
+            case OfChar _ -> (int) (Character) o;
+            case OfShort _ -> ((Short) o).intValue();
+            case OfInt _ -> (Integer) o;
+            case OfLong _ -> ((Long) o).intValue();
             default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
         };
     }

@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.huawei.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### clusterShadingRate
-/// [VarHandle][#VH_clusterShadingRate] - [Getter][#clusterShadingRate()] - [Setter][#clusterShadingRate(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 clusterShadingRate;
-/// } VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI;
 /// ```
-public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extends Struct {
+/// struct VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 clusterShadingRate;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extends GroupType {
     /// The struct layout of `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("clusterShadingRate")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `clusterShadingRate` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `clusterShadingRate`.
+    public static final long OFFSET_clusterShadingRate = LAYOUT.byteOffset(PathElement.groupElement("clusterShadingRate"));
+    /// The memory layout of `clusterShadingRate`.
+    public static final MemoryLayout LAYOUT_clusterShadingRate = LAYOUT.select(PathElement.groupElement("clusterShadingRate"));
+    /// The [VarHandle] of `clusterShadingRate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_clusterShadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterShadingRate"));
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extend
     /// Creates `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(segment); }
-
-    /// Creates `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extend
     /// @return the allocated `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int clusterShadingRate) { return alloc(allocator).sType(sType).pNext(pNext).clusterShadingRate(clusterShadingRate); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extend
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI sType(@CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `clusterShadingRate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_clusterShadingRate(MemorySegment segment, long index) { return (int) VH_clusterShadingRate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int clusterShadingRate(MemorySegment segment, long index) { return (int) VH_clusterShadingRate.get(segment, 0L, index); }
     /// {@return `clusterShadingRate`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_clusterShadingRate(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_clusterShadingRate(segment, 0L); }
-    /// {@return `clusterShadingRate`}
-    public @CType("VkBool32") int clusterShadingRate() { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_clusterShadingRate(this.segment()); }
+    public int clusterShadingRate() { return clusterShadingRate(this.segment(), 0L); }
     /// Sets `clusterShadingRate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_clusterShadingRate(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_clusterShadingRate.set(segment, 0L, index, value); }
-    /// Sets `clusterShadingRate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_clusterShadingRate(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_clusterShadingRate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void clusterShadingRate(MemorySegment segment, long index, int value) { VH_clusterShadingRate.set(segment, 0L, index, value); }
     /// Sets `clusterShadingRate` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI clusterShadingRate(@CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_clusterShadingRate(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI clusterShadingRate(int value) { clusterShadingRate(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI].
     public static final class Buffer extends VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI extend
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `clusterShadingRate` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int clusterShadingRateAt(long index) { return VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.get_clusterShadingRate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int clusterShadingRateAt(long index) { return clusterShadingRate(this.segment(), index); }
         /// Sets `clusterShadingRate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer clusterShadingRateAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI.set_clusterShadingRate(this.segment(), index, value); return this; }
+        public Buffer clusterShadingRateAt(long index, int value) { clusterShadingRate(this.segment(), index, value); return this; }
 
     }
 }

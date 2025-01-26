@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### xcoeff
-/// [VarHandle][#VH_xcoeff] - [Getter][#xcoeff()] - [Setter][#xcoeff(float)]
-/// ### ycoeff
-/// [VarHandle][#VH_ycoeff] - [Getter][#ycoeff()] - [Setter][#ycoeff(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkViewportWScalingNV {
+/// ```
+/// struct VkViewportWScalingNV {
 ///     float xcoeff;
 ///     float ycoeff;
-/// } VkViewportWScalingNV;
+/// };
 /// ```
-public sealed class VkViewportWScalingNV extends Struct {
+public sealed class VkViewportWScalingNV extends GroupType {
     /// The struct layout of `VkViewportWScalingNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("xcoeff"),
         ValueLayout.JAVA_FLOAT.withName("ycoeff")
     );
-    /// The [VarHandle] of `xcoeff` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `xcoeff`.
+    public static final long OFFSET_xcoeff = LAYOUT.byteOffset(PathElement.groupElement("xcoeff"));
+    /// The memory layout of `xcoeff`.
+    public static final MemoryLayout LAYOUT_xcoeff = LAYOUT.select(PathElement.groupElement("xcoeff"));
+    /// The [VarHandle] of `xcoeff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_xcoeff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xcoeff"));
-    /// The [VarHandle] of `ycoeff` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `ycoeff`.
+    public static final long OFFSET_ycoeff = LAYOUT.byteOffset(PathElement.groupElement("ycoeff"));
+    /// The memory layout of `ycoeff`.
+    public static final MemoryLayout LAYOUT_ycoeff = LAYOUT.select(PathElement.groupElement("ycoeff"));
+    /// The [VarHandle] of `ycoeff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_ycoeff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ycoeff"));
 
     /// Creates `VkViewportWScalingNV` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkViewportWScalingNV extends Struct {
     /// Creates `VkViewportWScalingNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkViewportWScalingNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkViewportWScalingNV(segment); }
-
-    /// Creates `VkViewportWScalingNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkViewportWScalingNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkViewportWScalingNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkViewportWScalingNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkViewportWScalingNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewportWScalingNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkViewportWScalingNV` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkViewportWScalingNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkViewportWScalingNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkViewportWScalingNV extends Struct {
     /// @return the allocated `VkViewportWScalingNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkViewportWScalingNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkViewportWScalingNV`
-    public static VkViewportWScalingNV allocInit(SegmentAllocator allocator, @CType("float") float xcoeff, @CType("float") float ycoeff) { return alloc(allocator).xcoeff(xcoeff).ycoeff(ycoeff); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkViewportWScalingNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `xcoeff` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_xcoeff(MemorySegment segment, long index) { return (float) VH_xcoeff.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float xcoeff(MemorySegment segment, long index) { return (float) VH_xcoeff.get(segment, 0L, index); }
     /// {@return `xcoeff`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_xcoeff(MemorySegment segment) { return VkViewportWScalingNV.get_xcoeff(segment, 0L); }
-    /// {@return `xcoeff`}
-    public @CType("float") float xcoeff() { return VkViewportWScalingNV.get_xcoeff(this.segment()); }
+    public float xcoeff() { return xcoeff(this.segment(), 0L); }
     /// Sets `xcoeff` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_xcoeff(MemorySegment segment, long index, @CType("float") float value) { VH_xcoeff.set(segment, 0L, index, value); }
-    /// Sets `xcoeff` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_xcoeff(MemorySegment segment, @CType("float") float value) { VkViewportWScalingNV.set_xcoeff(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void xcoeff(MemorySegment segment, long index, float value) { VH_xcoeff.set(segment, 0L, index, value); }
     /// Sets `xcoeff` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkViewportWScalingNV xcoeff(@CType("float") float value) { VkViewportWScalingNV.set_xcoeff(this.segment(), value); return this; }
+    public VkViewportWScalingNV xcoeff(float value) { xcoeff(this.segment(), 0L, value); return this; }
 
     /// {@return `ycoeff` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_ycoeff(MemorySegment segment, long index) { return (float) VH_ycoeff.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float ycoeff(MemorySegment segment, long index) { return (float) VH_ycoeff.get(segment, 0L, index); }
     /// {@return `ycoeff`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_ycoeff(MemorySegment segment) { return VkViewportWScalingNV.get_ycoeff(segment, 0L); }
-    /// {@return `ycoeff`}
-    public @CType("float") float ycoeff() { return VkViewportWScalingNV.get_ycoeff(this.segment()); }
+    public float ycoeff() { return ycoeff(this.segment(), 0L); }
     /// Sets `ycoeff` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_ycoeff(MemorySegment segment, long index, @CType("float") float value) { VH_ycoeff.set(segment, 0L, index, value); }
-    /// Sets `ycoeff` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_ycoeff(MemorySegment segment, @CType("float") float value) { VkViewportWScalingNV.set_ycoeff(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void ycoeff(MemorySegment segment, long index, float value) { VH_ycoeff.set(segment, 0L, index, value); }
     /// Sets `ycoeff` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkViewportWScalingNV ycoeff(@CType("float") float value) { VkViewportWScalingNV.set_ycoeff(this.segment(), value); return this; }
+    public VkViewportWScalingNV ycoeff(float value) { ycoeff(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkViewportWScalingNV].
     public static final class Buffer extends VkViewportWScalingNV {
@@ -171,22 +149,22 @@ public sealed class VkViewportWScalingNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `xcoeff` at the given index}
-        /// @param index the index
-        public @CType("float") float xcoeffAt(long index) { return VkViewportWScalingNV.get_xcoeff(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float xcoeffAt(long index) { return xcoeff(this.segment(), index); }
         /// Sets `xcoeff` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer xcoeffAt(long index, @CType("float") float value) { VkViewportWScalingNV.set_xcoeff(this.segment(), index, value); return this; }
+        public Buffer xcoeffAt(long index, float value) { xcoeff(this.segment(), index, value); return this; }
 
         /// {@return `ycoeff` at the given index}
-        /// @param index the index
-        public @CType("float") float ycoeffAt(long index) { return VkViewportWScalingNV.get_ycoeff(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float ycoeffAt(long index) { return ycoeff(this.segment(), index); }
         /// Sets `ycoeff` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer ycoeffAt(long index, @CType("float") float value) { VkViewportWScalingNV.set_ycoeff(this.segment(), index, value); return this; }
+        public Buffer ycoeffAt(long index, float value) { ycoeff(this.segment(), index, value); return this; }
 
     }
 }

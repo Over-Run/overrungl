@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -37,33 +36,42 @@ public class VKNVDeviceDiagnosticCheckpoints {
         public final MemorySegment PFN_vkCmdSetCheckpointNV;
         public final MemorySegment PFN_vkGetQueueCheckpointDataNV;
         public final MemorySegment PFN_vkGetQueueCheckpointData2NV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetCheckpointNV = func.invoke(device, "vkCmdSetCheckpointNV");
             PFN_vkGetQueueCheckpointDataNV = func.invoke(device, "vkGetQueueCheckpointDataNV");
             PFN_vkGetQueueCheckpointData2NV = func.invoke(device, "vkGetQueueCheckpointData2NV");
         }
     }
 
-    public VKNVDeviceDiagnosticCheckpoints(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVDeviceDiagnosticCheckpoints(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetCheckpointNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const void *") MemorySegment pCheckpointMarker) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetCheckpointNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
+    /// ```
+    /// void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, const void* pCheckpointMarker);
+    /// ```
+    public void CmdSetCheckpointNV(MemorySegment commandBuffer, MemorySegment pCheckpointMarker) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCheckpointNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
         try { Handles.MH_vkCmdSetCheckpointNV.invokeExact(handles.PFN_vkCmdSetCheckpointNV, commandBuffer, pCheckpointMarker); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCheckpointNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetCheckpointNV", e); }
     }
 
-    public void GetQueueCheckpointDataNV(@CType("VkQueue") MemorySegment queue, @CType("uint32_t *") MemorySegment pCheckpointDataCount, @CType("VkCheckpointDataNV *") MemorySegment pCheckpointData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetQueueCheckpointDataNV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
+    /// ```
+    /// void vkGetQueueCheckpointDataNV(VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointDataNV* pCheckpointData);
+    /// ```
+    public void GetQueueCheckpointDataNV(MemorySegment queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetQueueCheckpointDataNV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
         try { Handles.MH_vkGetQueueCheckpointDataNV.invokeExact(handles.PFN_vkGetQueueCheckpointDataNV, queue, pCheckpointDataCount, pCheckpointData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointDataNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueueCheckpointDataNV", e); }
     }
 
-    public void GetQueueCheckpointData2NV(@CType("VkQueue") MemorySegment queue, @CType("uint32_t *") MemorySegment pCheckpointDataCount, @CType("VkCheckpointData2NV *") MemorySegment pCheckpointData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetQueueCheckpointData2NV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");
+    /// ```
+    /// void vkGetQueueCheckpointData2NV(VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointData2NV* pCheckpointData);
+    /// ```
+    public void GetQueueCheckpointData2NV(MemorySegment queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetQueueCheckpointData2NV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");
         try { Handles.MH_vkGetQueueCheckpointData2NV.invokeExact(handles.PFN_vkGetQueueCheckpointData2NV, queue, pCheckpointDataCount, pCheckpointData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointData2NV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueueCheckpointData2NV", e); }
     }
 
 }

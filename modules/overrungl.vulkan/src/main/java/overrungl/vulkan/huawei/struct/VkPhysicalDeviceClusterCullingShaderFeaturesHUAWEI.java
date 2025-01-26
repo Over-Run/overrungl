@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.huawei.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### clustercullingShader
-/// [VarHandle][#VH_clustercullingShader] - [Getter][#clustercullingShader()] - [Setter][#clustercullingShader(int)]
-/// ### multiviewClusterCullingShader
-/// [VarHandle][#VH_multiviewClusterCullingShader] - [Getter][#multiviewClusterCullingShader()] - [Setter][#multiviewClusterCullingShader(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
+/// ```
+/// struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 clustercullingShader;
 ///     VkBool32 multiviewClusterCullingShader;
-/// } VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends Struct {
+public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends GroupType {
     /// The struct layout of `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("clustercullingShader"),
         ValueLayout.JAVA_INT.withName("multiviewClusterCullingShader")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `clustercullingShader` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `clustercullingShader`.
+    public static final long OFFSET_clustercullingShader = LAYOUT.byteOffset(PathElement.groupElement("clustercullingShader"));
+    /// The memory layout of `clustercullingShader`.
+    public static final MemoryLayout LAYOUT_clustercullingShader = LAYOUT.select(PathElement.groupElement("clustercullingShader"));
+    /// The [VarHandle] of `clustercullingShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_clustercullingShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clustercullingShader"));
-    /// The [VarHandle] of `multiviewClusterCullingShader` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `multiviewClusterCullingShader`.
+    public static final long OFFSET_multiviewClusterCullingShader = LAYOUT.byteOffset(PathElement.groupElement("multiviewClusterCullingShader"));
+    /// The memory layout of `multiviewClusterCullingShader`.
+    public static final MemoryLayout LAYOUT_multiviewClusterCullingShader = LAYOUT.select(PathElement.groupElement("multiviewClusterCullingShader"));
+    /// The [VarHandle] of `multiviewClusterCullingShader` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_multiviewClusterCullingShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewClusterCullingShader"));
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends S
     /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(segment); }
-
-    /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends S
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends S
     /// @return the allocated `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int clustercullingShader, @CType("VkBool32") int multiviewClusterCullingShader) { return alloc(allocator).sType(sType).pNext(pNext).clustercullingShader(clustercullingShader).multiviewClusterCullingShader(multiviewClusterCullingShader); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends S
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI sType(@CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `clustercullingShader` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_clustercullingShader(MemorySegment segment, long index) { return (int) VH_clustercullingShader.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int clustercullingShader(MemorySegment segment, long index) { return (int) VH_clustercullingShader.get(segment, 0L, index); }
     /// {@return `clustercullingShader`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_clustercullingShader(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_clustercullingShader(segment, 0L); }
-    /// {@return `clustercullingShader`}
-    public @CType("VkBool32") int clustercullingShader() { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_clustercullingShader(this.segment()); }
+    public int clustercullingShader() { return clustercullingShader(this.segment(), 0L); }
     /// Sets `clustercullingShader` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_clustercullingShader(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_clustercullingShader.set(segment, 0L, index, value); }
-    /// Sets `clustercullingShader` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_clustercullingShader(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_clustercullingShader(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void clustercullingShader(MemorySegment segment, long index, int value) { VH_clustercullingShader.set(segment, 0L, index, value); }
     /// Sets `clustercullingShader` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI clustercullingShader(@CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_clustercullingShader(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI clustercullingShader(int value) { clustercullingShader(this.segment(), 0L, value); return this; }
 
     /// {@return `multiviewClusterCullingShader` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_multiviewClusterCullingShader(MemorySegment segment, long index) { return (int) VH_multiviewClusterCullingShader.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int multiviewClusterCullingShader(MemorySegment segment, long index) { return (int) VH_multiviewClusterCullingShader.get(segment, 0L, index); }
     /// {@return `multiviewClusterCullingShader`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_multiviewClusterCullingShader(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_multiviewClusterCullingShader(segment, 0L); }
-    /// {@return `multiviewClusterCullingShader`}
-    public @CType("VkBool32") int multiviewClusterCullingShader() { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_multiviewClusterCullingShader(this.segment()); }
+    public int multiviewClusterCullingShader() { return multiviewClusterCullingShader(this.segment(), 0L); }
     /// Sets `multiviewClusterCullingShader` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_multiviewClusterCullingShader(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_multiviewClusterCullingShader.set(segment, 0L, index, value); }
-    /// Sets `multiviewClusterCullingShader` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_multiviewClusterCullingShader(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_multiviewClusterCullingShader(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void multiviewClusterCullingShader(MemorySegment segment, long index, int value) { VH_multiviewClusterCullingShader.set(segment, 0L, index, value); }
     /// Sets `multiviewClusterCullingShader` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI multiviewClusterCullingShader(@CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_multiviewClusterCullingShader(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI multiviewClusterCullingShader(int value) { multiviewClusterCullingShader(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI].
     public static final class Buffer extends VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends S
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `clustercullingShader` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int clustercullingShaderAt(long index) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_clustercullingShader(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int clustercullingShaderAt(long index) { return clustercullingShader(this.segment(), index); }
         /// Sets `clustercullingShader` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer clustercullingShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_clustercullingShader(this.segment(), index, value); return this; }
+        public Buffer clustercullingShaderAt(long index, int value) { clustercullingShader(this.segment(), index, value); return this; }
 
         /// {@return `multiviewClusterCullingShader` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int multiviewClusterCullingShaderAt(long index) { return VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.get_multiviewClusterCullingShader(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int multiviewClusterCullingShaderAt(long index) { return multiviewClusterCullingShader(this.segment(), index); }
         /// Sets `multiviewClusterCullingShader` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer multiviewClusterCullingShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI.set_multiviewClusterCullingShader(this.segment(), index, value); return this; }
+        public Buffer multiviewClusterCullingShaderAt(long index, int value) { multiviewClusterCullingShader(this.segment(), index, value); return this; }
 
     }
 }

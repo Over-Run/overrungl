@@ -15,42 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### shaderGroupHandleSize
-/// [VarHandle][#VH_shaderGroupHandleSize] - [Getter][#shaderGroupHandleSize()] - [Setter][#shaderGroupHandleSize(int)]
-/// ### maxRayRecursionDepth
-/// [VarHandle][#VH_maxRayRecursionDepth] - [Getter][#maxRayRecursionDepth()] - [Setter][#maxRayRecursionDepth(int)]
-/// ### maxShaderGroupStride
-/// [VarHandle][#VH_maxShaderGroupStride] - [Getter][#maxShaderGroupStride()] - [Setter][#maxShaderGroupStride(int)]
-/// ### shaderGroupBaseAlignment
-/// [VarHandle][#VH_shaderGroupBaseAlignment] - [Getter][#shaderGroupBaseAlignment()] - [Setter][#shaderGroupBaseAlignment(int)]
-/// ### shaderGroupHandleCaptureReplaySize
-/// [VarHandle][#VH_shaderGroupHandleCaptureReplaySize] - [Getter][#shaderGroupHandleCaptureReplaySize()] - [Setter][#shaderGroupHandleCaptureReplaySize(int)]
-/// ### maxRayDispatchInvocationCount
-/// [VarHandle][#VH_maxRayDispatchInvocationCount] - [Getter][#maxRayDispatchInvocationCount()] - [Setter][#maxRayDispatchInvocationCount(int)]
-/// ### shaderGroupHandleAlignment
-/// [VarHandle][#VH_shaderGroupHandleAlignment] - [Getter][#shaderGroupHandleAlignment()] - [Setter][#shaderGroupHandleAlignment(int)]
-/// ### maxRayHitAttributeSize
-/// [VarHandle][#VH_maxRayHitAttributeSize] - [Getter][#maxRayHitAttributeSize()] - [Setter][#maxRayHitAttributeSize(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR {
+/// ```
+/// struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     uint32_t shaderGroupHandleSize;
 ///     uint32_t maxRayRecursionDepth;
 ///     uint32_t maxShaderGroupStride;
@@ -59,11 +37,11 @@ import overrungl.util.*;
 ///     uint32_t maxRayDispatchInvocationCount;
 ///     uint32_t shaderGroupHandleAlignment;
 ///     uint32_t maxRayHitAttributeSize;
-/// } VkPhysicalDeviceRayTracingPipelinePropertiesKHR;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Struct {
+public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderGroupHandleSize"),
@@ -75,25 +53,65 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
         ValueLayout.JAVA_INT.withName("shaderGroupHandleAlignment"),
         ValueLayout.JAVA_INT.withName("maxRayHitAttributeSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderGroupHandleSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupHandleSize`.
+    public static final long OFFSET_shaderGroupHandleSize = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupHandleSize"));
+    /// The memory layout of `shaderGroupHandleSize`.
+    public static final MemoryLayout LAYOUT_shaderGroupHandleSize = LAYOUT.select(PathElement.groupElement("shaderGroupHandleSize"));
+    /// The [VarHandle] of `shaderGroupHandleSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupHandleSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupHandleSize"));
-    /// The [VarHandle] of `maxRayRecursionDepth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRayRecursionDepth`.
+    public static final long OFFSET_maxRayRecursionDepth = LAYOUT.byteOffset(PathElement.groupElement("maxRayRecursionDepth"));
+    /// The memory layout of `maxRayRecursionDepth`.
+    public static final MemoryLayout LAYOUT_maxRayRecursionDepth = LAYOUT.select(PathElement.groupElement("maxRayRecursionDepth"));
+    /// The [VarHandle] of `maxRayRecursionDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRayRecursionDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRayRecursionDepth"));
-    /// The [VarHandle] of `maxShaderGroupStride` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxShaderGroupStride`.
+    public static final long OFFSET_maxShaderGroupStride = LAYOUT.byteOffset(PathElement.groupElement("maxShaderGroupStride"));
+    /// The memory layout of `maxShaderGroupStride`.
+    public static final MemoryLayout LAYOUT_maxShaderGroupStride = LAYOUT.select(PathElement.groupElement("maxShaderGroupStride"));
+    /// The [VarHandle] of `maxShaderGroupStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxShaderGroupStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxShaderGroupStride"));
-    /// The [VarHandle] of `shaderGroupBaseAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupBaseAlignment`.
+    public static final long OFFSET_shaderGroupBaseAlignment = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupBaseAlignment"));
+    /// The memory layout of `shaderGroupBaseAlignment`.
+    public static final MemoryLayout LAYOUT_shaderGroupBaseAlignment = LAYOUT.select(PathElement.groupElement("shaderGroupBaseAlignment"));
+    /// The [VarHandle] of `shaderGroupBaseAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupBaseAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupBaseAlignment"));
-    /// The [VarHandle] of `shaderGroupHandleCaptureReplaySize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupHandleCaptureReplaySize`.
+    public static final long OFFSET_shaderGroupHandleCaptureReplaySize = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupHandleCaptureReplaySize"));
+    /// The memory layout of `shaderGroupHandleCaptureReplaySize`.
+    public static final MemoryLayout LAYOUT_shaderGroupHandleCaptureReplaySize = LAYOUT.select(PathElement.groupElement("shaderGroupHandleCaptureReplaySize"));
+    /// The [VarHandle] of `shaderGroupHandleCaptureReplaySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupHandleCaptureReplaySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupHandleCaptureReplaySize"));
-    /// The [VarHandle] of `maxRayDispatchInvocationCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRayDispatchInvocationCount`.
+    public static final long OFFSET_maxRayDispatchInvocationCount = LAYOUT.byteOffset(PathElement.groupElement("maxRayDispatchInvocationCount"));
+    /// The memory layout of `maxRayDispatchInvocationCount`.
+    public static final MemoryLayout LAYOUT_maxRayDispatchInvocationCount = LAYOUT.select(PathElement.groupElement("maxRayDispatchInvocationCount"));
+    /// The [VarHandle] of `maxRayDispatchInvocationCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRayDispatchInvocationCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRayDispatchInvocationCount"));
-    /// The [VarHandle] of `shaderGroupHandleAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupHandleAlignment`.
+    public static final long OFFSET_shaderGroupHandleAlignment = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupHandleAlignment"));
+    /// The memory layout of `shaderGroupHandleAlignment`.
+    public static final MemoryLayout LAYOUT_shaderGroupHandleAlignment = LAYOUT.select(PathElement.groupElement("shaderGroupHandleAlignment"));
+    /// The [VarHandle] of `shaderGroupHandleAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupHandleAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupHandleAlignment"));
-    /// The [VarHandle] of `maxRayHitAttributeSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRayHitAttributeSize`.
+    public static final long OFFSET_maxRayHitAttributeSize = LAYOUT.byteOffset(PathElement.groupElement("maxRayHitAttributeSize"));
+    /// The memory layout of `maxRayHitAttributeSize`.
+    public static final MemoryLayout LAYOUT_maxRayHitAttributeSize = LAYOUT.select(PathElement.groupElement("maxRayHitAttributeSize"));
+    /// The [VarHandle] of `maxRayHitAttributeSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRayHitAttributeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRayHitAttributeSize"));
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
@@ -103,19 +121,14 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     ///
@@ -123,7 +136,7 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -136,11 +149,6 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
     /// @return the allocated `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
-    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint32_t") int shaderGroupHandleSize, @CType("uint32_t") int maxRayRecursionDepth, @CType("uint32_t") int maxShaderGroupStride, @CType("uint32_t") int shaderGroupBaseAlignment, @CType("uint32_t") int shaderGroupHandleCaptureReplaySize, @CType("uint32_t") int maxRayDispatchInvocationCount, @CType("uint32_t") int shaderGroupHandleAlignment, @CType("uint32_t") int maxRayHitAttributeSize) { return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRayRecursionDepth(maxRayRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).shaderGroupHandleCaptureReplaySize(shaderGroupHandleCaptureReplaySize).maxRayDispatchInvocationCount(maxRayDispatchInvocationCount).shaderGroupHandleAlignment(shaderGroupHandleAlignment).maxRayHitAttributeSize(maxRayHitAttributeSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -148,237 +156,167 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupHandleSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupHandleSize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupHandleSize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleSize.get(segment, 0L, index); }
     /// {@return `shaderGroupHandleSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupHandleSize(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleSize(segment, 0L); }
-    /// {@return `shaderGroupHandleSize`}
-    public @CType("uint32_t") int shaderGroupHandleSize() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleSize(this.segment()); }
+    public int shaderGroupHandleSize() { return shaderGroupHandleSize(this.segment(), 0L); }
     /// Sets `shaderGroupHandleSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupHandleSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupHandleSize.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupHandleSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupHandleSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupHandleSize(MemorySegment segment, long index, int value) { VH_shaderGroupHandleSize.set(segment, 0L, index, value); }
     /// Sets `shaderGroupHandleSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleSize(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleSize(int value) { shaderGroupHandleSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRayRecursionDepth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRayRecursionDepth(MemorySegment segment, long index) { return (int) VH_maxRayRecursionDepth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRayRecursionDepth(MemorySegment segment, long index) { return (int) VH_maxRayRecursionDepth.get(segment, 0L, index); }
     /// {@return `maxRayRecursionDepth`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRayRecursionDepth(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayRecursionDepth(segment, 0L); }
-    /// {@return `maxRayRecursionDepth`}
-    public @CType("uint32_t") int maxRayRecursionDepth() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayRecursionDepth(this.segment()); }
+    public int maxRayRecursionDepth() { return maxRayRecursionDepth(this.segment(), 0L); }
     /// Sets `maxRayRecursionDepth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRayRecursionDepth(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRayRecursionDepth.set(segment, 0L, index, value); }
-    /// Sets `maxRayRecursionDepth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRayRecursionDepth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayRecursionDepth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRayRecursionDepth(MemorySegment segment, long index, int value) { VH_maxRayRecursionDepth.set(segment, 0L, index, value); }
     /// Sets `maxRayRecursionDepth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayRecursionDepth(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayRecursionDepth(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayRecursionDepth(int value) { maxRayRecursionDepth(this.segment(), 0L, value); return this; }
 
     /// {@return `maxShaderGroupStride` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxShaderGroupStride(MemorySegment segment, long index) { return (int) VH_maxShaderGroupStride.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxShaderGroupStride(MemorySegment segment, long index) { return (int) VH_maxShaderGroupStride.get(segment, 0L, index); }
     /// {@return `maxShaderGroupStride`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxShaderGroupStride(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxShaderGroupStride(segment, 0L); }
-    /// {@return `maxShaderGroupStride`}
-    public @CType("uint32_t") int maxShaderGroupStride() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxShaderGroupStride(this.segment()); }
+    public int maxShaderGroupStride() { return maxShaderGroupStride(this.segment(), 0L); }
     /// Sets `maxShaderGroupStride` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxShaderGroupStride(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxShaderGroupStride.set(segment, 0L, index, value); }
-    /// Sets `maxShaderGroupStride` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxShaderGroupStride(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxShaderGroupStride(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxShaderGroupStride(MemorySegment segment, long index, int value) { VH_maxShaderGroupStride.set(segment, 0L, index, value); }
     /// Sets `maxShaderGroupStride` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxShaderGroupStride(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxShaderGroupStride(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxShaderGroupStride(int value) { maxShaderGroupStride(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupBaseAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupBaseAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupBaseAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupBaseAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupBaseAlignment.get(segment, 0L, index); }
     /// {@return `shaderGroupBaseAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupBaseAlignment(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupBaseAlignment(segment, 0L); }
-    /// {@return `shaderGroupBaseAlignment`}
-    public @CType("uint32_t") int shaderGroupBaseAlignment() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupBaseAlignment(this.segment()); }
+    public int shaderGroupBaseAlignment() { return shaderGroupBaseAlignment(this.segment(), 0L); }
     /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupBaseAlignment(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupBaseAlignment.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupBaseAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupBaseAlignment(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupBaseAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupBaseAlignment(MemorySegment segment, long index, int value) { VH_shaderGroupBaseAlignment.set(segment, 0L, index, value); }
     /// Sets `shaderGroupBaseAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupBaseAlignment(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupBaseAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupBaseAlignment(int value) { shaderGroupBaseAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupHandleCaptureReplaySize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupHandleCaptureReplaySize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleCaptureReplaySize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupHandleCaptureReplaySize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleCaptureReplaySize.get(segment, 0L, index); }
     /// {@return `shaderGroupHandleCaptureReplaySize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupHandleCaptureReplaySize(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleCaptureReplaySize(segment, 0L); }
-    /// {@return `shaderGroupHandleCaptureReplaySize`}
-    public @CType("uint32_t") int shaderGroupHandleCaptureReplaySize() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleCaptureReplaySize(this.segment()); }
+    public int shaderGroupHandleCaptureReplaySize() { return shaderGroupHandleCaptureReplaySize(this.segment(), 0L); }
     /// Sets `shaderGroupHandleCaptureReplaySize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupHandleCaptureReplaySize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupHandleCaptureReplaySize.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupHandleCaptureReplaySize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupHandleCaptureReplaySize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleCaptureReplaySize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupHandleCaptureReplaySize(MemorySegment segment, long index, int value) { VH_shaderGroupHandleCaptureReplaySize.set(segment, 0L, index, value); }
     /// Sets `shaderGroupHandleCaptureReplaySize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleCaptureReplaySize(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleCaptureReplaySize(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleCaptureReplaySize(int value) { shaderGroupHandleCaptureReplaySize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRayDispatchInvocationCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRayDispatchInvocationCount(MemorySegment segment, long index) { return (int) VH_maxRayDispatchInvocationCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRayDispatchInvocationCount(MemorySegment segment, long index) { return (int) VH_maxRayDispatchInvocationCount.get(segment, 0L, index); }
     /// {@return `maxRayDispatchInvocationCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRayDispatchInvocationCount(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayDispatchInvocationCount(segment, 0L); }
-    /// {@return `maxRayDispatchInvocationCount`}
-    public @CType("uint32_t") int maxRayDispatchInvocationCount() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayDispatchInvocationCount(this.segment()); }
+    public int maxRayDispatchInvocationCount() { return maxRayDispatchInvocationCount(this.segment(), 0L); }
     /// Sets `maxRayDispatchInvocationCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRayDispatchInvocationCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRayDispatchInvocationCount.set(segment, 0L, index, value); }
-    /// Sets `maxRayDispatchInvocationCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRayDispatchInvocationCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayDispatchInvocationCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRayDispatchInvocationCount(MemorySegment segment, long index, int value) { VH_maxRayDispatchInvocationCount.set(segment, 0L, index, value); }
     /// Sets `maxRayDispatchInvocationCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayDispatchInvocationCount(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayDispatchInvocationCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayDispatchInvocationCount(int value) { maxRayDispatchInvocationCount(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupHandleAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupHandleAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupHandleAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleAlignment.get(segment, 0L, index); }
     /// {@return `shaderGroupHandleAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupHandleAlignment(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleAlignment(segment, 0L); }
-    /// {@return `shaderGroupHandleAlignment`}
-    public @CType("uint32_t") int shaderGroupHandleAlignment() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleAlignment(this.segment()); }
+    public int shaderGroupHandleAlignment() { return shaderGroupHandleAlignment(this.segment(), 0L); }
     /// Sets `shaderGroupHandleAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupHandleAlignment(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupHandleAlignment.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupHandleAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupHandleAlignment(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupHandleAlignment(MemorySegment segment, long index, int value) { VH_shaderGroupHandleAlignment.set(segment, 0L, index, value); }
     /// Sets `shaderGroupHandleAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleAlignment(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleAlignment(int value) { shaderGroupHandleAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRayHitAttributeSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxRayHitAttributeSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxRayHitAttributeSize.get(segment, 0L, index); }
     /// {@return `maxRayHitAttributeSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRayHitAttributeSize(MemorySegment segment) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayHitAttributeSize(segment, 0L); }
-    /// {@return `maxRayHitAttributeSize`}
-    public @CType("uint32_t") int maxRayHitAttributeSize() { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayHitAttributeSize(this.segment()); }
+    public int maxRayHitAttributeSize() { return maxRayHitAttributeSize(this.segment(), 0L); }
     /// Sets `maxRayHitAttributeSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRayHitAttributeSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRayHitAttributeSize.set(segment, 0L, index, value); }
-    /// Sets `maxRayHitAttributeSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRayHitAttributeSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayHitAttributeSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRayHitAttributeSize(MemorySegment segment, long index, int value) { VH_maxRayHitAttributeSize.set(segment, 0L, index, value); }
     /// Sets `maxRayHitAttributeSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayHitAttributeSize(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayHitAttributeSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayHitAttributeSize(int value) { maxRayHitAttributeSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRayTracingPipelinePropertiesKHR].
     public static final class Buffer extends VkPhysicalDeviceRayTracingPipelinePropertiesKHR {
@@ -403,94 +341,94 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupHandleSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupHandleSizeAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupHandleSizeAt(long index) { return shaderGroupHandleSize(this.segment(), index); }
         /// Sets `shaderGroupHandleSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupHandleSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleSize(this.segment(), index, value); return this; }
+        public Buffer shaderGroupHandleSizeAt(long index, int value) { shaderGroupHandleSize(this.segment(), index, value); return this; }
 
         /// {@return `maxRayRecursionDepth` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRayRecursionDepthAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayRecursionDepth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRayRecursionDepthAt(long index) { return maxRayRecursionDepth(this.segment(), index); }
         /// Sets `maxRayRecursionDepth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRayRecursionDepthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayRecursionDepth(this.segment(), index, value); return this; }
+        public Buffer maxRayRecursionDepthAt(long index, int value) { maxRayRecursionDepth(this.segment(), index, value); return this; }
 
         /// {@return `maxShaderGroupStride` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxShaderGroupStrideAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxShaderGroupStride(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxShaderGroupStrideAt(long index) { return maxShaderGroupStride(this.segment(), index); }
         /// Sets `maxShaderGroupStride` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxShaderGroupStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxShaderGroupStride(this.segment(), index, value); return this; }
+        public Buffer maxShaderGroupStrideAt(long index, int value) { maxShaderGroupStride(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupBaseAlignment` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupBaseAlignmentAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupBaseAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupBaseAlignmentAt(long index) { return shaderGroupBaseAlignment(this.segment(), index); }
         /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupBaseAlignmentAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupBaseAlignment(this.segment(), index, value); return this; }
+        public Buffer shaderGroupBaseAlignmentAt(long index, int value) { shaderGroupBaseAlignment(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupHandleCaptureReplaySize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupHandleCaptureReplaySizeAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleCaptureReplaySize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupHandleCaptureReplaySizeAt(long index) { return shaderGroupHandleCaptureReplaySize(this.segment(), index); }
         /// Sets `shaderGroupHandleCaptureReplaySize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupHandleCaptureReplaySizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleCaptureReplaySize(this.segment(), index, value); return this; }
+        public Buffer shaderGroupHandleCaptureReplaySizeAt(long index, int value) { shaderGroupHandleCaptureReplaySize(this.segment(), index, value); return this; }
 
         /// {@return `maxRayDispatchInvocationCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRayDispatchInvocationCountAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayDispatchInvocationCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRayDispatchInvocationCountAt(long index) { return maxRayDispatchInvocationCount(this.segment(), index); }
         /// Sets `maxRayDispatchInvocationCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRayDispatchInvocationCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayDispatchInvocationCount(this.segment(), index, value); return this; }
+        public Buffer maxRayDispatchInvocationCountAt(long index, int value) { maxRayDispatchInvocationCount(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupHandleAlignment` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupHandleAlignmentAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_shaderGroupHandleAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupHandleAlignmentAt(long index) { return shaderGroupHandleAlignment(this.segment(), index); }
         /// Sets `shaderGroupHandleAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupHandleAlignmentAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_shaderGroupHandleAlignment(this.segment(), index, value); return this; }
+        public Buffer shaderGroupHandleAlignmentAt(long index, int value) { shaderGroupHandleAlignment(this.segment(), index, value); return this; }
 
         /// {@return `maxRayHitAttributeSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRayHitAttributeSizeAt(long index) { return VkPhysicalDeviceRayTracingPipelinePropertiesKHR.get_maxRayHitAttributeSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRayHitAttributeSizeAt(long index) { return maxRayHitAttributeSize(this.segment(), index); }
         /// Sets `maxRayHitAttributeSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRayHitAttributeSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPipelinePropertiesKHR.set_maxRayHitAttributeSize(this.segment(), index, value); return this; }
+        public Buffer maxRayHitAttributeSizeAt(long index, int value) { maxRayHitAttributeSize(this.segment(), index, value); return this; }
 
     }
 }

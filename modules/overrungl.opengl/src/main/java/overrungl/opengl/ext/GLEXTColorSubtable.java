@@ -40,7 +40,7 @@ public final class GLEXTColorSubtable {
     }
 
     /// ```
-    /// void glColorSubTableEXT(unsigned int target, int start, int count, unsigned int format, unsigned int type, const void* data);
+    /// void glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void* data);
     /// ```
     public void ColorSubTableEXT(int target, int start, int count, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorSubTableEXT");
@@ -49,7 +49,7 @@ public final class GLEXTColorSubtable {
     }
 
     /// ```
-    /// void glCopyColorSubTableEXT(unsigned int target, int start, int x, int y, int width);
+    /// void glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
     /// ```
     public void CopyColorSubTableEXT(int target, int start, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");

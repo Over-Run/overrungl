@@ -38,7 +38,7 @@ public final class GLEXTPolygonOffsetClamp {
     }
 
     /// ```
-    /// void glPolygonOffsetClampEXT(float factor, float units, float clamp);
+    /// void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp);
     /// ```
     public void PolygonOffsetClampEXT(float factor, float units, float clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClampEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");

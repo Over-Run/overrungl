@@ -40,7 +40,7 @@ public final class GLNVXConditionalRender {
     }
 
     /// ```
-    /// void glBeginConditionalRenderNVX(unsigned int id);
+    /// void glBeginConditionalRenderNVX(GLuint id);
     /// ```
     public void BeginConditionalRenderNVX(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");

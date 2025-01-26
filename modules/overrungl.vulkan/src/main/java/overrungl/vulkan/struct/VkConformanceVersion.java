@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### major
-/// [VarHandle][#VH_major] - [Getter][#major()] - [Setter][#major(byte)]
-/// ### minor
-/// [VarHandle][#VH_minor] - [Getter][#minor()] - [Setter][#minor(byte)]
-/// ### subminor
-/// [VarHandle][#VH_subminor] - [Getter][#subminor()] - [Setter][#subminor(byte)]
-/// ### patch
-/// [VarHandle][#VH_patch] - [Getter][#patch()] - [Setter][#patch(byte)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkConformanceVersion {
+/// ```
+/// struct VkConformanceVersion {
 ///     uint8_t major;
 ///     uint8_t minor;
 ///     uint8_t subminor;
 ///     uint8_t patch;
-/// } VkConformanceVersion;
+/// };
 /// ```
-public sealed class VkConformanceVersion extends Struct {
+public sealed class VkConformanceVersion extends GroupType {
     /// The struct layout of `VkConformanceVersion`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("major"),
         ValueLayout.JAVA_BYTE.withName("minor"),
         ValueLayout.JAVA_BYTE.withName("subminor"),
         ValueLayout.JAVA_BYTE.withName("patch")
     );
-    /// The [VarHandle] of `major` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `major`.
+    public static final long OFFSET_major = LAYOUT.byteOffset(PathElement.groupElement("major"));
+    /// The memory layout of `major`.
+    public static final MemoryLayout LAYOUT_major = LAYOUT.select(PathElement.groupElement("major"));
+    /// The [VarHandle] of `major` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_major = LAYOUT.arrayElementVarHandle(PathElement.groupElement("major"));
-    /// The [VarHandle] of `minor` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `minor`.
+    public static final long OFFSET_minor = LAYOUT.byteOffset(PathElement.groupElement("minor"));
+    /// The memory layout of `minor`.
+    public static final MemoryLayout LAYOUT_minor = LAYOUT.select(PathElement.groupElement("minor"));
+    /// The [VarHandle] of `minor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minor"));
-    /// The [VarHandle] of `subminor` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `subminor`.
+    public static final long OFFSET_subminor = LAYOUT.byteOffset(PathElement.groupElement("subminor"));
+    /// The memory layout of `subminor`.
+    public static final MemoryLayout LAYOUT_subminor = LAYOUT.select(PathElement.groupElement("subminor"));
+    /// The [VarHandle] of `subminor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subminor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subminor"));
-    /// The [VarHandle] of `patch` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `patch`.
+    public static final long OFFSET_patch = LAYOUT.byteOffset(PathElement.groupElement("patch"));
+    /// The memory layout of `patch`.
+    public static final MemoryLayout LAYOUT_patch = LAYOUT.select(PathElement.groupElement("patch"));
+    /// The [VarHandle] of `patch` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_patch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("patch"));
 
     /// Creates `VkConformanceVersion` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkConformanceVersion extends Struct {
     /// Creates `VkConformanceVersion` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkConformanceVersion of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkConformanceVersion(segment); }
-
-    /// Creates `VkConformanceVersion` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkConformanceVersion` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkConformanceVersion ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkConformanceVersion(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkConformanceVersion ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConformanceVersion(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkConformanceVersion` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkConformanceVersion extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkConformanceVersion` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkConformanceVersion extends Struct {
     /// @return the allocated `VkConformanceVersion`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkConformanceVersion` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkConformanceVersion`
-    public static VkConformanceVersion allocInit(SegmentAllocator allocator, @CType("uint8_t") byte major, @CType("uint8_t") byte minor, @CType("uint8_t") byte subminor, @CType("uint8_t") byte patch) { return alloc(allocator).major(major).minor(minor).subminor(subminor).patch(patch); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkConformanceVersion extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `major` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_major(MemorySegment segment, long index) { return (byte) VH_major.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte major(MemorySegment segment, long index) { return (byte) VH_major.get(segment, 0L, index); }
     /// {@return `major`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_major(MemorySegment segment) { return VkConformanceVersion.get_major(segment, 0L); }
-    /// {@return `major`}
-    public @CType("uint8_t") byte major() { return VkConformanceVersion.get_major(this.segment()); }
+    public byte major() { return major(this.segment(), 0L); }
     /// Sets `major` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_major(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_major.set(segment, 0L, index, value); }
-    /// Sets `major` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_major(MemorySegment segment, @CType("uint8_t") byte value) { VkConformanceVersion.set_major(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void major(MemorySegment segment, long index, byte value) { VH_major.set(segment, 0L, index, value); }
     /// Sets `major` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkConformanceVersion major(@CType("uint8_t") byte value) { VkConformanceVersion.set_major(this.segment(), value); return this; }
+    public VkConformanceVersion major(byte value) { major(this.segment(), 0L, value); return this; }
 
     /// {@return `minor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_minor(MemorySegment segment, long index) { return (byte) VH_minor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte minor(MemorySegment segment, long index) { return (byte) VH_minor.get(segment, 0L, index); }
     /// {@return `minor`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_minor(MemorySegment segment) { return VkConformanceVersion.get_minor(segment, 0L); }
-    /// {@return `minor`}
-    public @CType("uint8_t") byte minor() { return VkConformanceVersion.get_minor(this.segment()); }
+    public byte minor() { return minor(this.segment(), 0L); }
     /// Sets `minor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minor(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_minor.set(segment, 0L, index, value); }
-    /// Sets `minor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minor(MemorySegment segment, @CType("uint8_t") byte value) { VkConformanceVersion.set_minor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minor(MemorySegment segment, long index, byte value) { VH_minor.set(segment, 0L, index, value); }
     /// Sets `minor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkConformanceVersion minor(@CType("uint8_t") byte value) { VkConformanceVersion.set_minor(this.segment(), value); return this; }
+    public VkConformanceVersion minor(byte value) { minor(this.segment(), 0L, value); return this; }
 
     /// {@return `subminor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_subminor(MemorySegment segment, long index) { return (byte) VH_subminor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte subminor(MemorySegment segment, long index) { return (byte) VH_subminor.get(segment, 0L, index); }
     /// {@return `subminor`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_subminor(MemorySegment segment) { return VkConformanceVersion.get_subminor(segment, 0L); }
-    /// {@return `subminor`}
-    public @CType("uint8_t") byte subminor() { return VkConformanceVersion.get_subminor(this.segment()); }
+    public byte subminor() { return subminor(this.segment(), 0L); }
     /// Sets `subminor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subminor(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_subminor.set(segment, 0L, index, value); }
-    /// Sets `subminor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subminor(MemorySegment segment, @CType("uint8_t") byte value) { VkConformanceVersion.set_subminor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subminor(MemorySegment segment, long index, byte value) { VH_subminor.set(segment, 0L, index, value); }
     /// Sets `subminor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkConformanceVersion subminor(@CType("uint8_t") byte value) { VkConformanceVersion.set_subminor(this.segment(), value); return this; }
+    public VkConformanceVersion subminor(byte value) { subminor(this.segment(), 0L, value); return this; }
 
     /// {@return `patch` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_patch(MemorySegment segment, long index) { return (byte) VH_patch.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte patch(MemorySegment segment, long index) { return (byte) VH_patch.get(segment, 0L, index); }
     /// {@return `patch`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_patch(MemorySegment segment) { return VkConformanceVersion.get_patch(segment, 0L); }
-    /// {@return `patch`}
-    public @CType("uint8_t") byte patch() { return VkConformanceVersion.get_patch(this.segment()); }
+    public byte patch() { return patch(this.segment(), 0L); }
     /// Sets `patch` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_patch(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_patch.set(segment, 0L, index, value); }
-    /// Sets `patch` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_patch(MemorySegment segment, @CType("uint8_t") byte value) { VkConformanceVersion.set_patch(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void patch(MemorySegment segment, long index, byte value) { VH_patch.set(segment, 0L, index, value); }
     /// Sets `patch` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkConformanceVersion patch(@CType("uint8_t") byte value) { VkConformanceVersion.set_patch(this.segment(), value); return this; }
+    public VkConformanceVersion patch(byte value) { patch(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkConformanceVersion].
     public static final class Buffer extends VkConformanceVersion {
@@ -229,40 +197,40 @@ public sealed class VkConformanceVersion extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `major` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte majorAt(long index) { return VkConformanceVersion.get_major(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte majorAt(long index) { return major(this.segment(), index); }
         /// Sets `major` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer majorAt(long index, @CType("uint8_t") byte value) { VkConformanceVersion.set_major(this.segment(), index, value); return this; }
+        public Buffer majorAt(long index, byte value) { major(this.segment(), index, value); return this; }
 
         /// {@return `minor` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte minorAt(long index) { return VkConformanceVersion.get_minor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte minorAt(long index) { return minor(this.segment(), index); }
         /// Sets `minor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minorAt(long index, @CType("uint8_t") byte value) { VkConformanceVersion.set_minor(this.segment(), index, value); return this; }
+        public Buffer minorAt(long index, byte value) { minor(this.segment(), index, value); return this; }
 
         /// {@return `subminor` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte subminorAt(long index) { return VkConformanceVersion.get_subminor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte subminorAt(long index) { return subminor(this.segment(), index); }
         /// Sets `subminor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subminorAt(long index, @CType("uint8_t") byte value) { VkConformanceVersion.set_subminor(this.segment(), index, value); return this; }
+        public Buffer subminorAt(long index, byte value) { subminor(this.segment(), index, value); return this; }
 
         /// {@return `patch` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte patchAt(long index) { return VkConformanceVersion.get_patch(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte patchAt(long index) { return patch(this.segment(), index); }
         /// Sets `patch` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer patchAt(long index, @CType("uint8_t") byte value) { VkConformanceVersion.set_patch(this.segment(), index, value); return this; }
+        public Buffer patchAt(long index, byte value) { patch(this.segment(), index, value); return this; }
 
     }
 }

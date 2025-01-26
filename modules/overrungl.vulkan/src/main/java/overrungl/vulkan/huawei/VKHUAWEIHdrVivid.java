@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.huawei;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKHUAWEIHdrVivid {
     public static final int VK_HUAWEI_HDR_VIVID_SPEC_VERSION = 1;

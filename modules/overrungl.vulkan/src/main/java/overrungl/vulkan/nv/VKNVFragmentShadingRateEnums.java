@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -44,21 +43,24 @@ public class VKNVFragmentShadingRateEnums {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV = 1000326002;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetFragmentShadingRateEnumNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdSetFragmentShadingRateEnumNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetFragmentShadingRateEnumNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetFragmentShadingRateEnumNV = func.invoke(device, "vkCmdSetFragmentShadingRateEnumNV");
         }
     }
 
-    public VKNVFragmentShadingRateEnums(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVFragmentShadingRateEnums(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetFragmentShadingRateEnumNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkFragmentShadingRateNV") int shadingRate, @CType("const VkFragmentShadingRateCombinerOpKHR [2]") int combinerOps) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetFragmentShadingRateEnumNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateEnumNV");
+    /// ```
+    /// void vkCmdSetFragmentShadingRateEnumNV(VkCommandBuffer commandBuffer, VkFragmentShadingRateNV shadingRate, VkFragmentShadingRateCombinerOpKHR combinerOps[2]);
+    /// ```
+    public void CmdSetFragmentShadingRateEnumNV(MemorySegment commandBuffer, int shadingRate, MemorySegment combinerOps) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetFragmentShadingRateEnumNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetFragmentShadingRateEnumNV");
         try { Handles.MH_vkCmdSetFragmentShadingRateEnumNV.invokeExact(handles.PFN_vkCmdSetFragmentShadingRateEnumNV, commandBuffer, shadingRate, combinerOps); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetFragmentShadingRateEnumNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetFragmentShadingRateEnumNV", e); }
     }
 
 }

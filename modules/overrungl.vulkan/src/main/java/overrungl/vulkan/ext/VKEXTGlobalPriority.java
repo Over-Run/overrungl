@@ -16,22 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.vulkan.VK14.*;
 public final class VKEXTGlobalPriority {
     public static final int VK_EXT_GLOBAL_PRIORITY_SPEC_VERSION = 2;
     public static final String VK_EXT_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_EXT_global_priority";
-    public static final int VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO;
-    public static final int VK_ERROR_NOT_PERMITTED_EXT = VK_ERROR_NOT_PERMITTED;
-    public static final int VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT = VK_QUEUE_GLOBAL_PRIORITY_LOW;
-    public static final int VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT = VK_QUEUE_GLOBAL_PRIORITY_MEDIUM;
-    public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT = VK_QUEUE_GLOBAL_PRIORITY_HIGH;
-    public static final int VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT = VK_QUEUE_GLOBAL_PRIORITY_REALTIME;
+    public static final int VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = 1000174000;
+    public static final int VK_ERROR_NOT_PERMITTED_EXT = -1000174001;
+    public static final int VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT = 128;
+    public static final int VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT = 256;
+    public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT = 512;
+    public static final int VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT = 1024;
 
     private VKEXTGlobalPriority() { }
 

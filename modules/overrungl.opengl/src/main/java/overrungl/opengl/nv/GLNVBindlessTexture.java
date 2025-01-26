@@ -73,7 +73,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetTextureHandleNV(unsigned int texture);
+    /// GLuint64 glGetTextureHandleNV(GLuint texture);
     /// ```
     public long GetTextureHandleNV(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureHandleNV)) throw new SymbolNotFoundError("Symbol not found: glGetTextureHandleNV");
@@ -82,7 +82,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetTextureSamplerHandleNV(unsigned int texture, unsigned int sampler);
+    /// GLuint64 glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler);
     /// ```
     public long GetTextureSamplerHandleNV(int texture, int sampler) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureSamplerHandleNV)) throw new SymbolNotFoundError("Symbol not found: glGetTextureSamplerHandleNV");
@@ -91,7 +91,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glMakeTextureHandleResidentNV(uint64_t handle);
+    /// void glMakeTextureHandleResidentNV(GLuint64 handle);
     /// ```
     public void MakeTextureHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleResidentNV");
@@ -100,7 +100,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glMakeTextureHandleNonResidentNV(uint64_t handle);
+    /// void glMakeTextureHandleNonResidentNV(GLuint64 handle);
     /// ```
     public void MakeTextureHandleNonResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleNonResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleNonResidentNV");
@@ -109,7 +109,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetImageHandleNV(unsigned int texture, int level, GLboolean layered, int layer, unsigned int format);
+    /// GLuint64 glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
     /// ```
     public long GetImageHandleNV(int texture, int level, boolean layered, int layer, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageHandleNV)) throw new SymbolNotFoundError("Symbol not found: glGetImageHandleNV");
@@ -118,7 +118,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glMakeImageHandleResidentNV(uint64_t handle, unsigned int access);
+    /// void glMakeImageHandleResidentNV(GLuint64 handle, GLenum access);
     /// ```
     public void MakeImageHandleResidentNV(long handle, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleResidentNV");
@@ -127,7 +127,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glMakeImageHandleNonResidentNV(uint64_t handle);
+    /// void glMakeImageHandleNonResidentNV(GLuint64 handle);
     /// ```
     public void MakeImageHandleNonResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleNonResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleNonResidentNV");
@@ -136,7 +136,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glUniformHandleui64NV(int location, uint64_t value);
+    /// void glUniformHandleui64NV(GLint location, GLuint64 value);
     /// ```
     public void UniformHandleui64NV(int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64NV");
@@ -145,7 +145,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glUniformHandleui64vNV(int location, int count, const GLuint64* value);
+    /// void glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64* value);
     /// ```
     public void UniformHandleui64vNV(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vNV");
@@ -154,7 +154,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glProgramUniformHandleui64NV(unsigned int program, int location, uint64_t value);
+    /// void glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value);
     /// ```
     public void ProgramUniformHandleui64NV(int program, int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64NV");
@@ -163,7 +163,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// void glProgramUniformHandleui64vNV(unsigned int program, int location, int count, const GLuint64* values);
+    /// void glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64* values);
     /// ```
     public void ProgramUniformHandleui64vNV(int program, int location, int count, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vNV");
@@ -172,7 +172,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// GLboolean glIsTextureHandleResidentNV(uint64_t handle);
+    /// GLboolean glIsTextureHandleResidentNV(GLuint64 handle);
     /// ```
     public boolean IsTextureHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureHandleResidentNV)) throw new SymbolNotFoundError("Symbol not found: glIsTextureHandleResidentNV");
@@ -181,7 +181,7 @@ public final class GLNVBindlessTexture {
     }
 
     /// ```
-    /// GLboolean glIsImageHandleResidentNV(uint64_t handle);
+    /// GLboolean glIsImageHandleResidentNV(GLuint64 handle);
     /// ```
     public boolean IsImageHandleResidentNV(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsImageHandleResidentNV)) throw new SymbolNotFoundError("Symbol not found: glIsImageHandleResidentNV");

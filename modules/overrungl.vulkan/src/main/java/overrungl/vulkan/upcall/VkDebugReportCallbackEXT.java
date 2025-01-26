@@ -15,39 +15,48 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.upcall;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef VkBool32 (*VkDebugReportCallbackEXT)(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, const char* pLayerPrefix, const char* pMessage, void* pUserData);
+/// ```
 @FunctionalInterface
 public interface VkDebugReportCallbackEXT extends Upcall {
     /// The function descriptor.
-    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, CanonicalTypes.SIZE_T, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(VkDebugReportCallbackEXT.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkDebugReportCallbackEXT.class, RuntimeHelper.upcallTarget("invoke", DESCRIPTOR), DESCRIPTOR);
+
+    /// Allocates `VkDebugReportCallbackEXT`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, VkDebugReportCallbackEXT func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("VkBool32") int invoke(@CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") MemorySegment pLayerPrefix, @CType("const char *") MemorySegment pMessage, @CType("void *") MemorySegment pUserData);
+    int invoke(int flags, int objectType, long object, long location, int messageCode, MemorySegment pLayerPrefix, MemorySegment pMessage, MemorySegment pUserData);
+
+    /// The target method of the upcall. Chosen at runtime.
+    default int invokeIIIJIIPPP(int flags, int objectType, long object, int location, int messageCode, MemorySegment pLayerPrefix, MemorySegment pMessage, MemorySegment pUserData) {
+        return invoke(flags, objectType, object, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, location), messageCode, pLayerPrefix, pMessage, pUserData);
+    }
+
+    /// The target method of the upcall. Chosen at runtime.
+    default int invokeIIIJJIPPP(int flags, int objectType, long object, long location, int messageCode, MemorySegment pLayerPrefix, MemorySegment pMessage, MemorySegment pUserData) {
+        return invoke(flags, objectType, object, MemoryUtil.wideningToLong(CanonicalTypes.SIZE_T, location), messageCode, pLayerPrefix, pMessage, pUserData);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("VkBool32") int invoke(MemorySegment stub, @CType("VkDebugReportFlagsEXT") int flags, @CType("VkDebugReportObjectTypeEXT") int objectType, @CType("uint64_t") long object, @CType("size_t") long location, @CType("int32_t") int messageCode, @CType("const char *") MemorySegment pLayerPrefix, @CType("const char *") MemorySegment pMessage, @CType("void *") MemorySegment pUserData) {
-        try { return (int) HANDLE.invokeExact(stub, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage, pUserData); }
-        catch (Throwable e) { throw new RuntimeException("error in VkDebugReportCallbackEXT::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static VkDebugReportCallbackEXT wrap(MemorySegment stub) {
-        return (flags, objectType, object, location, messageCode, pLayerPrefix, pMessage, pUserData) ->
-            invoke(stub, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage, pUserData);
-    }
 }

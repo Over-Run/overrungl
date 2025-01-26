@@ -15,46 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### viewMask
-/// [VarHandle][#VH_viewMask] - [Getter][#viewMask()] - [Setter][#viewMask(int)]
-/// ### colorAttachmentCount
-/// [VarHandle][#VH_colorAttachmentCount] - [Getter][#colorAttachmentCount()] - [Setter][#colorAttachmentCount(int)]
-/// ### pColorAttachmentFormats
-/// [VarHandle][#VH_pColorAttachmentFormats] - [Getter][#pColorAttachmentFormats()] - [Setter][#pColorAttachmentFormats(MemorySegment)]
-/// ### depthAttachmentFormat
-/// [VarHandle][#VH_depthAttachmentFormat] - [Getter][#depthAttachmentFormat()] - [Setter][#depthAttachmentFormat(int)]
-/// ### stencilAttachmentFormat
-/// [VarHandle][#VH_stencilAttachmentFormat] - [Getter][#stencilAttachmentFormat()] - [Setter][#stencilAttachmentFormat(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineRenderingCreateInfo {
+/// ```
+/// struct VkPipelineRenderingCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     uint32_t viewMask;
 ///     uint32_t colorAttachmentCount;
-///     const VkFormat * pColorAttachmentFormats;
+///     const VkFormat* pColorAttachmentFormats;
 ///     VkFormat depthAttachmentFormat;
 ///     VkFormat stencilAttachmentFormat;
-/// } VkPipelineRenderingCreateInfo;
+/// };
 /// ```
-public sealed class VkPipelineRenderingCreateInfo extends Struct {
+public sealed class VkPipelineRenderingCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineRenderingCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("viewMask"),
@@ -63,19 +47,47 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
         ValueLayout.JAVA_INT.withName("depthAttachmentFormat"),
         ValueLayout.JAVA_INT.withName("stencilAttachmentFormat")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `viewMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `viewMask`.
+    public static final long OFFSET_viewMask = LAYOUT.byteOffset(PathElement.groupElement("viewMask"));
+    /// The memory layout of `viewMask`.
+    public static final MemoryLayout LAYOUT_viewMask = LAYOUT.select(PathElement.groupElement("viewMask"));
+    /// The [VarHandle] of `viewMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_viewMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewMask"));
-    /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `colorAttachmentCount`.
+    public static final long OFFSET_colorAttachmentCount = LAYOUT.byteOffset(PathElement.groupElement("colorAttachmentCount"));
+    /// The memory layout of `colorAttachmentCount`.
+    public static final MemoryLayout LAYOUT_colorAttachmentCount = LAYOUT.select(PathElement.groupElement("colorAttachmentCount"));
+    /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_colorAttachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount"));
+    /// The byte offset of `pColorAttachmentFormats`.
+    public static final long OFFSET_pColorAttachmentFormats = LAYOUT.byteOffset(PathElement.groupElement("pColorAttachmentFormats"));
+    /// The memory layout of `pColorAttachmentFormats`.
+    public static final MemoryLayout LAYOUT_pColorAttachmentFormats = LAYOUT.select(PathElement.groupElement("pColorAttachmentFormats"));
     /// The [VarHandle] of `pColorAttachmentFormats` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorAttachmentFormats = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentFormats"));
-    /// The [VarHandle] of `depthAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthAttachmentFormat`.
+    public static final long OFFSET_depthAttachmentFormat = LAYOUT.byteOffset(PathElement.groupElement("depthAttachmentFormat"));
+    /// The memory layout of `depthAttachmentFormat`.
+    public static final MemoryLayout LAYOUT_depthAttachmentFormat = LAYOUT.select(PathElement.groupElement("depthAttachmentFormat"));
+    /// The [VarHandle] of `depthAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthAttachmentFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthAttachmentFormat"));
-    /// The [VarHandle] of `stencilAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stencilAttachmentFormat`.
+    public static final long OFFSET_stencilAttachmentFormat = LAYOUT.byteOffset(PathElement.groupElement("stencilAttachmentFormat"));
+    /// The memory layout of `stencilAttachmentFormat`.
+    public static final MemoryLayout LAYOUT_stencilAttachmentFormat = LAYOUT.select(PathElement.groupElement("stencilAttachmentFormat"));
+    /// The [VarHandle] of `stencilAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stencilAttachmentFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilAttachmentFormat"));
 
     /// Creates `VkPipelineRenderingCreateInfo` with the given segment.
@@ -85,19 +97,14 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
     /// Creates `VkPipelineRenderingCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRenderingCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineRenderingCreateInfo(segment); }
-
-    /// Creates `VkPipelineRenderingCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRenderingCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRenderingCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineRenderingCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineRenderingCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRenderingCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineRenderingCreateInfo` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
     /// @return the allocated `VkPipelineRenderingCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineRenderingCreateInfo`
-    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int viewMask, @CType("uint32_t") int colorAttachmentCount, @CType("const VkFormat *") MemorySegment pColorAttachmentFormats, @CType("VkFormat") int depthAttachmentFormat, @CType("VkFormat") int stencilAttachmentFormat) { return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachmentFormats(pColorAttachmentFormats).depthAttachmentFormat(depthAttachmentFormat).stencilAttachmentFormat(stencilAttachmentFormat); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineRenderingCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineRenderingCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineRenderingCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPipelineRenderingCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo pNext(@CType("const void *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `viewMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get(segment, 0L, index); }
     /// {@return `viewMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_viewMask(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_viewMask(segment, 0L); }
-    /// {@return `viewMask`}
-    public @CType("uint32_t") int viewMask() { return VkPipelineRenderingCreateInfo.get_viewMask(this.segment()); }
+    public int viewMask() { return viewMask(this.segment(), 0L); }
     /// Sets `viewMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_viewMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_viewMask.set(segment, 0L, index, value); }
-    /// Sets `viewMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_viewMask(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_viewMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void viewMask(MemorySegment segment, long index, int value) { VH_viewMask.set(segment, 0L, index, value); }
     /// Sets `viewMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo viewMask(@CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_viewMask(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo viewMask(int value) { viewMask(this.segment(), 0L, value); return this; }
 
     /// {@return `colorAttachmentCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
     /// {@return `colorAttachmentCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_colorAttachmentCount(segment, 0L); }
-    /// {@return `colorAttachmentCount`}
-    public @CType("uint32_t") int colorAttachmentCount() { return VkPipelineRenderingCreateInfo.get_colorAttachmentCount(this.segment()); }
+    public int colorAttachmentCount() { return colorAttachmentCount(this.segment(), 0L); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_colorAttachmentCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
-    /// Sets `colorAttachmentCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_colorAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_colorAttachmentCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo colorAttachmentCount(@CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_colorAttachmentCount(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo colorAttachmentCount(int value) { colorAttachmentCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pColorAttachmentFormats` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkFormat *") MemorySegment get_pColorAttachmentFormats(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentFormats.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pColorAttachmentFormats(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentFormats.get(segment, 0L, index); }
     /// {@return `pColorAttachmentFormats`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkFormat *") MemorySegment get_pColorAttachmentFormats(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_pColorAttachmentFormats(segment, 0L); }
-    /// {@return `pColorAttachmentFormats`}
-    public @CType("const VkFormat *") MemorySegment pColorAttachmentFormats() { return VkPipelineRenderingCreateInfo.get_pColorAttachmentFormats(this.segment()); }
+    public MemorySegment pColorAttachmentFormats() { return pColorAttachmentFormats(this.segment(), 0L); }
     /// Sets `pColorAttachmentFormats` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pColorAttachmentFormats(MemorySegment segment, long index, @CType("const VkFormat *") MemorySegment value) { VH_pColorAttachmentFormats.set(segment, 0L, index, value); }
-    /// Sets `pColorAttachmentFormats` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pColorAttachmentFormats(MemorySegment segment, @CType("const VkFormat *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pColorAttachmentFormats(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pColorAttachmentFormats(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentFormats.set(segment, 0L, index, value); }
     /// Sets `pColorAttachmentFormats` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo pColorAttachmentFormats(@CType("const VkFormat *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pColorAttachmentFormats(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo pColorAttachmentFormats(MemorySegment value) { pColorAttachmentFormats(this.segment(), 0L, value); return this; }
 
     /// {@return `depthAttachmentFormat` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_depthAttachmentFormat(MemorySegment segment, long index) { return (int) VH_depthAttachmentFormat.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthAttachmentFormat(MemorySegment segment, long index) { return (int) VH_depthAttachmentFormat.get(segment, 0L, index); }
     /// {@return `depthAttachmentFormat`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_depthAttachmentFormat(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_depthAttachmentFormat(segment, 0L); }
-    /// {@return `depthAttachmentFormat`}
-    public @CType("VkFormat") int depthAttachmentFormat() { return VkPipelineRenderingCreateInfo.get_depthAttachmentFormat(this.segment()); }
+    public int depthAttachmentFormat() { return depthAttachmentFormat(this.segment(), 0L); }
     /// Sets `depthAttachmentFormat` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthAttachmentFormat(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_depthAttachmentFormat.set(segment, 0L, index, value); }
-    /// Sets `depthAttachmentFormat` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthAttachmentFormat(MemorySegment segment, @CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_depthAttachmentFormat(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthAttachmentFormat(MemorySegment segment, long index, int value) { VH_depthAttachmentFormat.set(segment, 0L, index, value); }
     /// Sets `depthAttachmentFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo depthAttachmentFormat(@CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_depthAttachmentFormat(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo depthAttachmentFormat(int value) { depthAttachmentFormat(this.segment(), 0L, value); return this; }
 
     /// {@return `stencilAttachmentFormat` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_stencilAttachmentFormat(MemorySegment segment, long index) { return (int) VH_stencilAttachmentFormat.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stencilAttachmentFormat(MemorySegment segment, long index) { return (int) VH_stencilAttachmentFormat.get(segment, 0L, index); }
     /// {@return `stencilAttachmentFormat`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_stencilAttachmentFormat(MemorySegment segment) { return VkPipelineRenderingCreateInfo.get_stencilAttachmentFormat(segment, 0L); }
-    /// {@return `stencilAttachmentFormat`}
-    public @CType("VkFormat") int stencilAttachmentFormat() { return VkPipelineRenderingCreateInfo.get_stencilAttachmentFormat(this.segment()); }
+    public int stencilAttachmentFormat() { return stencilAttachmentFormat(this.segment(), 0L); }
     /// Sets `stencilAttachmentFormat` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stencilAttachmentFormat(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_stencilAttachmentFormat.set(segment, 0L, index, value); }
-    /// Sets `stencilAttachmentFormat` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stencilAttachmentFormat(MemorySegment segment, @CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_stencilAttachmentFormat(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stencilAttachmentFormat(MemorySegment segment, long index, int value) { VH_stencilAttachmentFormat.set(segment, 0L, index, value); }
     /// Sets `stencilAttachmentFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRenderingCreateInfo stencilAttachmentFormat(@CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_stencilAttachmentFormat(this.segment(), value); return this; }
+    public VkPipelineRenderingCreateInfo stencilAttachmentFormat(int value) { stencilAttachmentFormat(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineRenderingCreateInfo].
     public static final class Buffer extends VkPipelineRenderingCreateInfo {
@@ -316,67 +269,67 @@ public sealed class VkPipelineRenderingCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineRenderingCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineRenderingCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineRenderingCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `viewMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int viewMaskAt(long index) { return VkPipelineRenderingCreateInfo.get_viewMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int viewMaskAt(long index) { return viewMask(this.segment(), index); }
         /// Sets `viewMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer viewMaskAt(long index, @CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_viewMask(this.segment(), index, value); return this; }
+        public Buffer viewMaskAt(long index, int value) { viewMask(this.segment(), index, value); return this; }
 
         /// {@return `colorAttachmentCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkPipelineRenderingCreateInfo.get_colorAttachmentCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
         /// Sets `colorAttachmentCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkPipelineRenderingCreateInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
+        public Buffer colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
 
         /// {@return `pColorAttachmentFormats` at the given index}
-        /// @param index the index
-        public @CType("const VkFormat *") MemorySegment pColorAttachmentFormatsAt(long index) { return VkPipelineRenderingCreateInfo.get_pColorAttachmentFormats(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pColorAttachmentFormatsAt(long index) { return pColorAttachmentFormats(this.segment(), index); }
         /// Sets `pColorAttachmentFormats` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pColorAttachmentFormatsAt(long index, @CType("const VkFormat *") MemorySegment value) { VkPipelineRenderingCreateInfo.set_pColorAttachmentFormats(this.segment(), index, value); return this; }
+        public Buffer pColorAttachmentFormatsAt(long index, MemorySegment value) { pColorAttachmentFormats(this.segment(), index, value); return this; }
 
         /// {@return `depthAttachmentFormat` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int depthAttachmentFormatAt(long index) { return VkPipelineRenderingCreateInfo.get_depthAttachmentFormat(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthAttachmentFormatAt(long index) { return depthAttachmentFormat(this.segment(), index); }
         /// Sets `depthAttachmentFormat` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthAttachmentFormatAt(long index, @CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_depthAttachmentFormat(this.segment(), index, value); return this; }
+        public Buffer depthAttachmentFormatAt(long index, int value) { depthAttachmentFormat(this.segment(), index, value); return this; }
 
         /// {@return `stencilAttachmentFormat` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int stencilAttachmentFormatAt(long index) { return VkPipelineRenderingCreateInfo.get_stencilAttachmentFormat(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stencilAttachmentFormatAt(long index) { return stencilAttachmentFormat(this.segment(), index); }
         /// Sets `stencilAttachmentFormat` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stencilAttachmentFormatAt(long index, @CType("VkFormat") int value) { VkPipelineRenderingCreateInfo.set_stencilAttachmentFormat(this.segment(), index, value); return this; }
+        public Buffer stencilAttachmentFormatAt(long index, int value) { stencilAttachmentFormat(this.segment(), index, value); return this; }
 
     }
 }

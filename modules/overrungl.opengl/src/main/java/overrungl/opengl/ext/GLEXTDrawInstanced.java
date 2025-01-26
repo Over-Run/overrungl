@@ -40,7 +40,7 @@ public final class GLEXTDrawInstanced {
     }
 
     /// ```
-    /// void glDrawArraysInstancedEXT(unsigned int mode, int start, int count, int primcount);
+    /// void glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
     /// ```
     public void DrawArraysInstancedEXT(int mode, int start, int count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT");
@@ -49,7 +49,7 @@ public final class GLEXTDrawInstanced {
     }
 
     /// ```
-    /// void glDrawElementsInstancedEXT(unsigned int mode, int count, unsigned int type, const void* indices, int primcount);
+    /// void glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount);
     /// ```
     public void DrawElementsInstancedEXT(int mode, int count, int type, MemorySegment indices, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");

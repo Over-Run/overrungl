@@ -91,7 +91,7 @@ public final class GLNVBlendEquationAdvanced {
     }
 
     /// ```
-    /// void glBlendParameteriNV(unsigned int pname, int value);
+    /// void glBlendParameteriNV(GLenum pname, GLint value);
     /// ```
     public void BlendParameteriNV(int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV");

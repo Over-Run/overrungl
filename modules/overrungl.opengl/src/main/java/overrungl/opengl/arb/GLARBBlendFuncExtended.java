@@ -45,7 +45,7 @@ public final class GLARBBlendFuncExtended {
     }
 
     /// ```
-    /// void glBindFragDataLocationIndexed(unsigned int program, unsigned int colorNumber, unsigned int index, const GLchar* name);
+    /// void glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar* name);
     /// ```
     public void BindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
@@ -54,7 +54,7 @@ public final class GLARBBlendFuncExtended {
     }
 
     /// ```
-    /// int glGetFragDataIndex(unsigned int program, const GLchar* name);
+    /// GLint glGetFragDataIndex(GLuint program, const GLchar* name);
     /// ```
     public int GetFragDataIndex(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");

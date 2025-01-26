@@ -49,8 +49,9 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         }
     }
 
-    private fun compileUpcall(packageName: String, className: String, upcallType: UpcallType) {
-        val path = Path((upcallType.packageName ?: packageName).replace('.', '/'), "$className.java")
+    private fun compileUpcall(fallbackPackageName: String, className: String, upcallType: UpcallType) {
+        val packageName = upcallType.packageName ?: fallbackPackageName
+        val path = Path(packageName.replace('.', '/'), "$className.java")
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -154,7 +155,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         // target methods
         if (hasDynamicValueType) {
             // 1. collect layouts
-            val memoryLayoutList = mutableListOf<DefTypeMemoryLayout>()
+            val memoryLayoutList = LinkedHashSet<DefTypeMemoryLayout>()
             memoryLayoutList.add(upcallType.returnType.memoryLayout)
             upcallType.parameters.forEach { p ->
                 memoryLayoutList.add(p.memoryLayoutWithDimensions)
@@ -238,7 +239,8 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         writeString(path, sb.toString())
     }
 
-    private fun compileGroupClass(packageName: String, className: String, groupClass: GroupLayoutType) {
+    private fun compileGroupClass(fallbackPackageName: String, className: String, groupClass: GroupLayoutType) {
+        val packageName = groupClass.packageName ?: fallbackPackageName
         val path = Path(packageName.replace('.', '/'), "$className.java")
         path.createParentDirectories()
         val sb = StringBuilder()
@@ -258,11 +260,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         )
         sb.appendLine("/// ## Layout")
         sb.appendLine("/// ```")
-        sb.appendLine("/// ${groupClass.kind.typedef} ${groupClass.originalName} {")
+        sb.appendLine("/// ${groupClass.kind.typedef} ${groupClass.name} {")
         groupClass.members.forEach {
             sb.appendLine(
-                "///     ${it.type.originalName} ${it.name}${
-                    if (it.dimensions.isNotEmpty()) it.dimensions.joinToString("") { d -> "[$d]" }
+                "///     ${it.pair.type.originalName} ${it.pair.name}${
+                    if (it.pair.dimensions.isNotEmpty()) it.pair.dimensions.joinToString("") { d -> "[$d]" }
                     else ""
                 };"
             )
@@ -275,7 +277,12 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine("    /// The ${groupClass.kind.typedef} layout of `$className`.")
         sb.appendLine("    public static final GroupLayout LAYOUT = ${groupClass.kind.layoutBuilder}(")
         groupClass.members.forEachIndexed { index, it ->
-            sb.append("""        ${groupMemberLayout(it).memoryLayout}.withName("${it.name}")""")
+            if (it.bits != null) {
+                // TODO
+                sb.append("        MemoryLayout.paddingLayout(${it.bits})")
+            } else {
+                sb.append("""        ${groupMemberLayout(it.pair).memoryLayout}.withName("${it.pair.name}")""")
+            }
             if (index + 1 == groupClass.members.size) {
                 sb.appendLine()
             } else {
@@ -286,18 +293,23 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         // var handles
         groupClass.members.forEach { member ->
-            sb.appendLine("    /// The byte offset of `${member.name}`.")
-            sb.appendLine("""    public static final long OFFSET_${member.name} = LAYOUT.byteOffset(PathElement.groupElement("${member.name}"));""")
-            sb.appendLine("    /// The memory layout of `${member.name}`.")
-            sb.appendLine("""    public static final MemoryLayout LAYOUT_${member.name} = LAYOUT.select(PathElement.groupElement("${member.name}"));""")
-            if (member.type !is GroupLayoutType) {
-                sb.append("    /// The [VarHandle] of `${member.name}` of type `(MemorySegment base, long baseOffset, long index")
-                member.dimensions.forEachIndexed { index, _ ->
+            if (member.bits != null) {
+                //TODO
+                println("warning: skipping $className::${member.pair.name}")
+                return@forEach
+            }
+            sb.appendLine("    /// The byte offset of `${member.pair.name}`.")
+            sb.appendLine("""    public static final long OFFSET_${member.pair.name} = LAYOUT.byteOffset(PathElement.groupElement("${member.pair.name}"));""")
+            sb.appendLine("    /// The memory layout of `${member.pair.name}`.")
+            sb.appendLine("""    public static final MemoryLayout LAYOUT_${member.pair.name} = LAYOUT.select(PathElement.groupElement("${member.pair.name}"));""")
+            if (member.pair.type !is GroupLayoutType) {
+                sb.append("    /// The [VarHandle] of `${member.pair.name}` of type `(MemorySegment base, long baseOffset, long index")
+                member.pair.dimensions.forEachIndexed { index, _ ->
                     sb.append(", long index$index")
                 }
                 sb.appendLine(")MemorySegment`.")
-                sb.append("""    public static final VarHandle VH_${member.name} = LAYOUT.arrayElementVarHandle(PathElement.groupElement("${member.name}")""")
-                member.dimensions.forEach { _ ->
+                sb.append("""    public static final VarHandle VH_${member.pair.name} = LAYOUT.arrayElementVarHandle(PathElement.groupElement("${member.pair.name}")""")
+                member.pair.dimensions.forEach { _ ->
                     sb.append(", PathElement.sequenceElement()")
                 }
                 sb.appendLine(");")
@@ -368,140 +380,152 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         // members
         groupClass.members.forEach { member ->
+            if (member.bits != null) {
+                //TODO
+                println("warning: skipping $className::${member.pair.name}")
+                return@forEach
+            }
+
             // static getters
             sb.appendLine(
                 """
-                    |    /// {@return `${member.name}` at the given index}
+                    |    /// {@return `${member.pair.name}` at the given index}
                     |    /// @param segment the segment of the ${groupClass.kind.typedef}
                     |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                 """.trimMargin()
             )
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("    public static MemorySegment ${member.name}(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_${member.name}, index), LAYOUT_${member.name}); }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("    public static MemorySegment ${member.pair.name}(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_${member.pair.name}, index), LAYOUT_${member.pair.name}); }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |    /// {@return `${member.name}` at the given index}
+                            |    /// {@return `${member.pair.name}` at the given index}
                             |    /// @param segment the segment of the ${groupClass.kind.typedef}
                             |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
-                    member.dimensions.forEachIndexed { index, _ ->
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
-                    sb.append("    public static ${member.type.memoryLayout.carrier(null)} ${member.name}(MemorySegment segment, long index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("    public static ${member.pair.type.memoryLayout.carrier(null)} ${member.pair.name}(MemorySegment segment, long index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(") { return (${member.type.memoryLayout.carrier(null)}) VH_${member.name}.get(segment, 0L, index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(") { return (${member.pair.type.memoryLayout.carrier(null)}) VH_${member.pair.name}.get(segment, 0L, index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine("); }")
                 }
             } else {
-                sb.append("    public static ${member.type.javaType} ${member.name}(MemorySegment segment, long index) { return ")
-                sb.append(member.type.processor.processUpcall(buildString {
-                    if (member.type !is DynamicValueType) {
-                        append("(${member.type.memoryLayout.carrier(null)}) ")
+                sb.append("    public static ${member.pair.type.javaType} ${member.pair.name}(MemorySegment segment, long index) { return ")
+                sb.append(member.pair.type.processor.processUpcall(buildString {
+                    if (member.pair.type !is DynamicValueType) {
+                        append("(${member.pair.type.memoryLayout.carrier(null)}) ")
                     }
-                    append("VH_${member.name}.get(segment, 0L, index)")
+                    append("VH_${member.pair.name}.get(segment, 0L, index)")
                 }))
                 sb.appendLine("; }")
             }
 
             // instance getters
-            sb.appendLine("    /// {@return `${member.name}`}")
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("    public MemorySegment ${member.name}() { return ${member.name}(this.segment(), 0L); }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
-                    sb.appendLine("    /// {@return `${member.name}`}")
-                    member.dimensions.forEachIndexed { index, _ ->
+            sb.appendLine("    /// {@return `${member.pair.name}`}")
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("    public MemorySegment ${member.pair.name}() { return ${member.pair.name}(this.segment(), 0L); }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
+                    sb.appendLine("    /// {@return `${member.pair.name}`}")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
-                    sb.append("    public ${member.type.memoryLayout.carrier(null)} ${member.name}(")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("    public ${member.pair.type.memoryLayout.carrier(null)} ${member.pair.name}(")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         if (index != 0) sb.append(", ")
                         sb.append("long index$index")
                     }
-                    sb.append(") { return ${member.name}(this.segment(), 0L")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(") { return ${member.pair.name}(this.segment(), 0L")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine("    public ${member.type.javaType} ${member.name}() { return ${member.name}(this.segment(), 0L); }")
+                sb.appendLine("    public ${member.pair.type.javaType} ${member.pair.name}() { return ${member.pair.name}(this.segment(), 0L); }")
             }
 
             // static setters
             sb.appendLine(
                 """
-                    |    /// Sets `${member.name}` with the given value at the given index.
+                    |    /// Sets `${member.pair.name}` with the given value at the given index.
                     |    /// @param segment the segment of the ${groupClass.kind.typedef}
                     |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                     |    /// @param value the value
                 """.trimMargin()
             )
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("    public static void ${member.name}(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_${member.name}, index), LAYOUT_${member.name}.byteSize()); }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("    public static void ${member.pair.name}(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_${member.pair.name}, index), LAYOUT_${member.pair.name}.byteSize()); }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |    /// Sets `${member.name}` with the given value at the given index.
+                            |    /// Sets `${member.pair.name}` with the given value at the given index.
                             |    /// @param segment the segment of the ${groupClass.kind.typedef}
                             |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
-                    member.dimensions.forEachIndexed { index, _ ->
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
                     sb.appendLine("    /// @param value the value")
-                    sb.append("    public static void ${member.name}(MemorySegment segment, long index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("    public static void ${member.pair.name}(MemorySegment segment, long index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(", ${member.type.memoryLayout.carrier(null)} value) { VH_${member.name}.set(segment, 0L, index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(", ${member.pair.type.memoryLayout.carrier(null)} value) { VH_${member.pair.name}.set(segment, 0L, index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine(", value); }")
                 }
             } else {
-                sb.append("    public static void ${member.name}(MemorySegment segment, long index, ${member.type.javaType} value) {")
-                sb.appendLine(" VH_${member.name}.set(segment, 0L, index, ${member.type.processor.processDowncall("value")}); }")
+                sb.append("    public static void ${member.pair.name}(MemorySegment segment, long index, ${member.pair.type.javaType} value) {")
+                sb.appendLine(
+                    " VH_${member.pair.name}.set(segment, 0L, index, ${
+                        member.pair.type.processor.processDowncall(
+                            "value"
+                        )
+                    }); }"
+                )
             }
 
             // instance setters
             sb.appendLine(
                 """
-                    |    /// Sets `${member.name}` with the given value.
+                    |    /// Sets `${member.pair.name}` with the given value.
                     |    /// @param value the value
                     |    /// @return `this`
                 """.trimMargin()
             )
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("    public $className ${member.name}(MemorySegment value) { ${member.name}(this.segment(), 0L, value); return this; }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
-                    sb.appendLine("    /// Sets `${member.name}` with the given value.")
-                    member.dimensions.forEachIndexed { index, _ ->
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("    public $className ${member.pair.name}(MemorySegment value) { ${member.pair.name}(this.segment(), 0L, value); return this; }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
+                    sb.appendLine("    /// Sets `${member.pair.name}` with the given value.")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
                     sb.appendLine("    /// @param value the value")
                     sb.appendLine("    /// @return `this`")
-                    sb.append("    public $className ${member.name}(")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("    public $className ${member.pair.name}(")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         if (index != 0) sb.append(", ")
                         sb.append("long index$index")
                     }
-                    sb.append(", ${member.type.memoryLayout.carrier(null)} value) { ${member.name}(this.segment(), 0L")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(", ${member.pair.type.memoryLayout.carrier(null)} value) { ${member.pair.name}(this.segment(), 0L")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine(", value); return this; }")
                 }
             } else {
-                sb.appendLine("    public $className ${member.name}(${member.type.javaType} value) { ${member.name}(this.segment(), 0L, value); return this; }")
+                sb.appendLine("    public $className ${member.pair.name}(${member.pair.type.javaType} value) { ${member.pair.name}(this.segment(), 0L, value); return this; }")
             }
 
             sb.appendLine()
@@ -545,76 +569,82 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine()
 
         groupClass.members.forEach { member ->
+            if (member.bits != null) {
+                // TODO
+                println("warning: skipping $className::Buffer::${member.pair.name}")
+                return@forEach
+            }
+
             // instance getters
             sb.appendLine(
                 """
-                    |        /// {@return `${member.name}` at the given index}
+                    |        /// {@return `${member.pair.name}` at the given index}
                     |        /// @param index the index of the ${groupClass.kind.typedef} buffer
                 """.trimMargin()
             )
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("        public MemorySegment ${member.name}At(long index) { return ${member.name}(this.segment(), index); }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("        public MemorySegment ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |        /// {@return `${member.name}` at the given index}
+                            |        /// {@return `${member.pair.name}` at the given index}
                             |        /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
-                    member.dimensions.forEachIndexed { index, _ ->
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("        /// @param index$index the Index $index of the array")
                     }
-                    sb.append("        public ${member.type.memoryLayout.carrier(null)} ${member.name}At(long index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("        public ${member.pair.type.memoryLayout.carrier(null)} ${member.pair.name}At(long index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(") { return ${member.name}(this.segment(), index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(") { return ${member.pair.name}(this.segment(), index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine("        public ${member.type.javaType} ${member.name}At(long index) { return ${member.name}(this.segment(), index); }")
+                sb.appendLine("        public ${member.pair.type.javaType} ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
             }
 
             // instance setters
             sb.appendLine(
                 """
-                    |        /// Sets `${member.name}` with the given value at the given index.
+                    |        /// Sets `${member.pair.name}` with the given value at the given index.
                     |        /// @param index the index of the ${groupClass.kind.typedef} buffer
                     |        /// @param value the value
                     |        /// @return `this`
                 """.trimMargin()
             )
-            if (member.type is GroupLayoutType || member.dimensions.isNotEmpty()) {
-                sb.appendLine("        public Buffer ${member.name}At(long index, MemorySegment value) { ${member.name}(this.segment(), index, value); return this; }")
-                if (member.type !is GroupLayoutType && member.dimensions.isNotEmpty()) {
+            if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                sb.appendLine("        public Buffer ${member.pair.name}At(long index, MemorySegment value) { ${member.pair.name}(this.segment(), index, value); return this; }")
+                if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |        /// Sets `${member.name}` with the given value at the given index.
+                            |        /// Sets `${member.pair.name}` with the given value at the given index.
                             |        /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
-                    member.dimensions.forEachIndexed { index, _ ->
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.appendLine("        /// @param index$index the Index $index of the array")
                     }
                     sb.appendLine("        /// @param value the value")
                     sb.appendLine("        /// @return `this`")
-                    sb.append("        public Buffer ${member.name}At(long index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append("        public Buffer ${member.pair.name}At(long index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
-                    sb.append(", ${member.type.memoryLayout.carrier(null)} value) { ${member.name}(this.segment(), index")
-                    member.dimensions.forEachIndexed { index, _ ->
+                    sb.append(", ${member.pair.type.memoryLayout.carrier(null)} value) { ${member.pair.name}(this.segment(), index")
+                    member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", index$index")
                     }
                     sb.appendLine(", value); return this; }")
                 }
             } else {
                 sb.appendLine(
-                    "        public Buffer ${member.name}At(long index, ${member.type.javaType} value) {" +
-                        " ${member.name}(this.segment(), index, value); return this; }"
+                    "        public Buffer ${member.pair.name}At(long index, ${member.pair.type.javaType} value) {" +
+                        " ${member.pair.name}(this.segment(), index, value); return this; }"
                 )
             }
 
@@ -647,7 +677,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
 
         // fields
         sb.appendLine("    //region Fields")
-        interpreter.macros.forEach {
+        interpreter.macros.values.forEach {
             sb.appendLine(
                 "    public static final ${it.type} ${it.name} = ${it.value};"
             )
@@ -724,15 +754,17 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
     }
 
     fun compileUpcalls(upcallPackageName: String) {
-        interpreter.upcalls.values.forEach {
-            compileUpcall(upcallPackageName, it.name, it)
+        interpreter.upcalls.forEach {
+            val value = it.value
+            compileUpcall(upcallPackageName, value.name, value)
         }
     }
 
     fun compileStructs(structPackageName: String) {
-        interpreter.structs.values.forEach {
-            if (!it.opaque) {
-                compileGroupClass(structPackageName, it.originalName, it)
+        interpreter.structs.forEach {
+            val value = it.value
+            if (!value.opaque) {
+                compileGroupClass(structPackageName, value.name, value)
             }
         }
     }

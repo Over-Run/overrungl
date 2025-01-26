@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -32,26 +31,32 @@ public class VKKHRXcbSurface {
         public static final MethodHandle MH_vkGetPhysicalDeviceXcbPresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCreateXcbSurfaceKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateXcbSurfaceKHR = func.invoke(instance, "vkCreateXcbSurfaceKHR");
             PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR = func.invoke(instance, "vkGetPhysicalDeviceXcbPresentationSupportKHR");
         }
     }
 
-    public VKKHRXcbSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKKHRXcbSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateXcbSurfaceKHR(@CType("VkInstance") MemorySegment instance, @CType("const VkXcbSurfaceCreateInfoKHR *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateXcbSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
+    /// ```
+    /// VkResult vkCreateXcbSurfaceKHR(VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateXcbSurfaceKHR(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateXcbSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
         try { return (int) Handles.MH_vkCreateXcbSurfaceKHR.invokeExact(handles.PFN_vkCreateXcbSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateXcbSurfaceKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateXcbSurfaceKHR", e); }
     }
 
-    public @CType("VkBool32") int GetPhysicalDeviceXcbPresentationSupportKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t") int queueFamilyIndex, @CType("xcb_connection_t *") MemorySegment connection, @CType("xcb_visualid_t") int visual_id) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
+    /// ```
+    /// VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, xcb_visualid_t visual_id);
+    /// ```
+    public int GetPhysicalDeviceXcbPresentationSupportKHR(MemorySegment physicalDevice, int queueFamilyIndex, MemorySegment connection, int visual_id) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceXcbPresentationSupportKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR, physicalDevice, queueFamilyIndex, connection, visual_id); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceXcbPresentationSupportKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceXcbPresentationSupportKHR", e); }
     }
 
 }

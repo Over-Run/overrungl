@@ -15,56 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### preferredRateControlFlags
-/// [VarHandle][#VH_preferredRateControlFlags] - [Getter][#preferredRateControlFlags()] - [Setter][#preferredRateControlFlags(int)]
-/// ### preferredGopFrameCount
-/// [VarHandle][#VH_preferredGopFrameCount] - [Getter][#preferredGopFrameCount()] - [Setter][#preferredGopFrameCount(int)]
-/// ### preferredKeyFramePeriod
-/// [VarHandle][#VH_preferredKeyFramePeriod] - [Getter][#preferredKeyFramePeriod()] - [Setter][#preferredKeyFramePeriod(int)]
-/// ### preferredConsecutiveBipredictiveFrameCount
-/// [VarHandle][#VH_preferredConsecutiveBipredictiveFrameCount] - [Getter][#preferredConsecutiveBipredictiveFrameCount()] - [Setter][#preferredConsecutiveBipredictiveFrameCount(int)]
-/// ### preferredTemporalLayerCount
-/// [VarHandle][#VH_preferredTemporalLayerCount] - [Getter][#preferredTemporalLayerCount()] - [Setter][#preferredTemporalLayerCount(int)]
-/// ### preferredConstantQIndex
-/// [Byte offset][#OFFSET_preferredConstantQIndex] - [Memory layout][#ML_preferredConstantQIndex] - [Getter][#preferredConstantQIndex()] - [Setter][#preferredConstantQIndex(MemorySegment)]
-/// ### preferredMaxSingleReferenceCount
-/// [VarHandle][#VH_preferredMaxSingleReferenceCount] - [Getter][#preferredMaxSingleReferenceCount()] - [Setter][#preferredMaxSingleReferenceCount(int)]
-/// ### preferredSingleReferenceNameMask
-/// [VarHandle][#VH_preferredSingleReferenceNameMask] - [Getter][#preferredSingleReferenceNameMask()] - [Setter][#preferredSingleReferenceNameMask(int)]
-/// ### preferredMaxUnidirectionalCompoundReferenceCount
-/// [VarHandle][#VH_preferredMaxUnidirectionalCompoundReferenceCount] - [Getter][#preferredMaxUnidirectionalCompoundReferenceCount()] - [Setter][#preferredMaxUnidirectionalCompoundReferenceCount(int)]
-/// ### preferredMaxUnidirectionalCompoundGroup1ReferenceCount
-/// [VarHandle][#VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount] - [Getter][#preferredMaxUnidirectionalCompoundGroup1ReferenceCount()] - [Setter][#preferredMaxUnidirectionalCompoundGroup1ReferenceCount(int)]
-/// ### preferredUnidirectionalCompoundReferenceNameMask
-/// [VarHandle][#VH_preferredUnidirectionalCompoundReferenceNameMask] - [Getter][#preferredUnidirectionalCompoundReferenceNameMask()] - [Setter][#preferredUnidirectionalCompoundReferenceNameMask(int)]
-/// ### preferredMaxBidirectionalCompoundReferenceCount
-/// [VarHandle][#VH_preferredMaxBidirectionalCompoundReferenceCount] - [Getter][#preferredMaxBidirectionalCompoundReferenceCount()] - [Setter][#preferredMaxBidirectionalCompoundReferenceCount(int)]
-/// ### preferredMaxBidirectionalCompoundGroup1ReferenceCount
-/// [VarHandle][#VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount] - [Getter][#preferredMaxBidirectionalCompoundGroup1ReferenceCount()] - [Setter][#preferredMaxBidirectionalCompoundGroup1ReferenceCount(int)]
-/// ### preferredMaxBidirectionalCompoundGroup2ReferenceCount
-/// [VarHandle][#VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount] - [Getter][#preferredMaxBidirectionalCompoundGroup2ReferenceCount()] - [Setter][#preferredMaxBidirectionalCompoundGroup2ReferenceCount(int)]
-/// ### preferredBidirectionalCompoundReferenceNameMask
-/// [VarHandle][#VH_preferredBidirectionalCompoundReferenceNameMask] - [Getter][#preferredBidirectionalCompoundReferenceNameMask()] - [Setter][#preferredBidirectionalCompoundReferenceNameMask(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeAV1QualityLevelPropertiesKHR {
+/// ```
+/// struct VkVideoEncodeAV1QualityLevelPropertiesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
 ///     uint32_t preferredGopFrameCount;
 ///     uint32_t preferredKeyFramePeriod;
@@ -80,11 +44,11 @@ import overrungl.util.*;
 ///     uint32_t preferredMaxBidirectionalCompoundGroup1ReferenceCount;
 ///     uint32_t preferredMaxBidirectionalCompoundGroup2ReferenceCount;
 ///     uint32_t preferredBidirectionalCompoundReferenceNameMask;
-/// } VkVideoEncodeAV1QualityLevelPropertiesKHR;
+/// };
 /// ```
-public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
+public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1QualityLevelPropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("preferredRateControlFlags"),
@@ -103,41 +67,105 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
         ValueLayout.JAVA_INT.withName("preferredMaxBidirectionalCompoundGroup2ReferenceCount"),
         ValueLayout.JAVA_INT.withName("preferredBidirectionalCompoundReferenceNameMask")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `preferredRateControlFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredRateControlFlags`.
+    public static final long OFFSET_preferredRateControlFlags = LAYOUT.byteOffset(PathElement.groupElement("preferredRateControlFlags"));
+    /// The memory layout of `preferredRateControlFlags`.
+    public static final MemoryLayout LAYOUT_preferredRateControlFlags = LAYOUT.select(PathElement.groupElement("preferredRateControlFlags"));
+    /// The [VarHandle] of `preferredRateControlFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredRateControlFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredRateControlFlags"));
-    /// The [VarHandle] of `preferredGopFrameCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredGopFrameCount`.
+    public static final long OFFSET_preferredGopFrameCount = LAYOUT.byteOffset(PathElement.groupElement("preferredGopFrameCount"));
+    /// The memory layout of `preferredGopFrameCount`.
+    public static final MemoryLayout LAYOUT_preferredGopFrameCount = LAYOUT.select(PathElement.groupElement("preferredGopFrameCount"));
+    /// The [VarHandle] of `preferredGopFrameCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredGopFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredGopFrameCount"));
-    /// The [VarHandle] of `preferredKeyFramePeriod` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredKeyFramePeriod`.
+    public static final long OFFSET_preferredKeyFramePeriod = LAYOUT.byteOffset(PathElement.groupElement("preferredKeyFramePeriod"));
+    /// The memory layout of `preferredKeyFramePeriod`.
+    public static final MemoryLayout LAYOUT_preferredKeyFramePeriod = LAYOUT.select(PathElement.groupElement("preferredKeyFramePeriod"));
+    /// The [VarHandle] of `preferredKeyFramePeriod` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredKeyFramePeriod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredKeyFramePeriod"));
-    /// The [VarHandle] of `preferredConsecutiveBipredictiveFrameCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredConsecutiveBipredictiveFrameCount`.
+    public static final long OFFSET_preferredConsecutiveBipredictiveFrameCount = LAYOUT.byteOffset(PathElement.groupElement("preferredConsecutiveBipredictiveFrameCount"));
+    /// The memory layout of `preferredConsecutiveBipredictiveFrameCount`.
+    public static final MemoryLayout LAYOUT_preferredConsecutiveBipredictiveFrameCount = LAYOUT.select(PathElement.groupElement("preferredConsecutiveBipredictiveFrameCount"));
+    /// The [VarHandle] of `preferredConsecutiveBipredictiveFrameCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredConsecutiveBipredictiveFrameCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredConsecutiveBipredictiveFrameCount"));
-    /// The [VarHandle] of `preferredTemporalLayerCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredTemporalLayerCount`.
+    public static final long OFFSET_preferredTemporalLayerCount = LAYOUT.byteOffset(PathElement.groupElement("preferredTemporalLayerCount"));
+    /// The memory layout of `preferredTemporalLayerCount`.
+    public static final MemoryLayout LAYOUT_preferredTemporalLayerCount = LAYOUT.select(PathElement.groupElement("preferredTemporalLayerCount"));
+    /// The [VarHandle] of `preferredTemporalLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredTemporalLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredTemporalLayerCount"));
     /// The byte offset of `preferredConstantQIndex`.
     public static final long OFFSET_preferredConstantQIndex = LAYOUT.byteOffset(PathElement.groupElement("preferredConstantQIndex"));
     /// The memory layout of `preferredConstantQIndex`.
-    public static final MemoryLayout ML_preferredConstantQIndex = LAYOUT.select(PathElement.groupElement("preferredConstantQIndex"));
-    /// The [VarHandle] of `preferredMaxSingleReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_preferredConstantQIndex = LAYOUT.select(PathElement.groupElement("preferredConstantQIndex"));
+    /// The byte offset of `preferredMaxSingleReferenceCount`.
+    public static final long OFFSET_preferredMaxSingleReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxSingleReferenceCount"));
+    /// The memory layout of `preferredMaxSingleReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxSingleReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxSingleReferenceCount"));
+    /// The [VarHandle] of `preferredMaxSingleReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxSingleReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxSingleReferenceCount"));
-    /// The [VarHandle] of `preferredSingleReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredSingleReferenceNameMask`.
+    public static final long OFFSET_preferredSingleReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("preferredSingleReferenceNameMask"));
+    /// The memory layout of `preferredSingleReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_preferredSingleReferenceNameMask = LAYOUT.select(PathElement.groupElement("preferredSingleReferenceNameMask"));
+    /// The [VarHandle] of `preferredSingleReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredSingleReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredSingleReferenceNameMask"));
-    /// The [VarHandle] of `preferredMaxUnidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredMaxUnidirectionalCompoundReferenceCount`.
+    public static final long OFFSET_preferredMaxUnidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxUnidirectionalCompoundReferenceCount"));
+    /// The memory layout of `preferredMaxUnidirectionalCompoundReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxUnidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxUnidirectionalCompoundReferenceCount"));
+    /// The [VarHandle] of `preferredMaxUnidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxUnidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxUnidirectionalCompoundReferenceCount"));
-    /// The [VarHandle] of `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredMaxUnidirectionalCompoundGroup1ReferenceCount`.
+    public static final long OFFSET_preferredMaxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxUnidirectionalCompoundGroup1ReferenceCount"));
+    /// The memory layout of `preferredMaxUnidirectionalCompoundGroup1ReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxUnidirectionalCompoundGroup1ReferenceCount"));
+    /// The [VarHandle] of `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxUnidirectionalCompoundGroup1ReferenceCount"));
-    /// The [VarHandle] of `preferredUnidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredUnidirectionalCompoundReferenceNameMask`.
+    public static final long OFFSET_preferredUnidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("preferredUnidirectionalCompoundReferenceNameMask"));
+    /// The memory layout of `preferredUnidirectionalCompoundReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_preferredUnidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("preferredUnidirectionalCompoundReferenceNameMask"));
+    /// The [VarHandle] of `preferredUnidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredUnidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredUnidirectionalCompoundReferenceNameMask"));
-    /// The [VarHandle] of `preferredMaxBidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredMaxBidirectionalCompoundReferenceCount`.
+    public static final long OFFSET_preferredMaxBidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxBidirectionalCompoundReferenceCount"));
+    /// The memory layout of `preferredMaxBidirectionalCompoundReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxBidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxBidirectionalCompoundReferenceCount"));
+    /// The [VarHandle] of `preferredMaxBidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxBidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxBidirectionalCompoundReferenceCount"));
-    /// The [VarHandle] of `preferredMaxBidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredMaxBidirectionalCompoundGroup1ReferenceCount`.
+    public static final long OFFSET_preferredMaxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup1ReferenceCount"));
+    /// The memory layout of `preferredMaxBidirectionalCompoundGroup1ReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup1ReferenceCount"));
+    /// The [VarHandle] of `preferredMaxBidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup1ReferenceCount"));
-    /// The [VarHandle] of `preferredMaxBidirectionalCompoundGroup2ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredMaxBidirectionalCompoundGroup2ReferenceCount`.
+    public static final long OFFSET_preferredMaxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup2ReferenceCount"));
+    /// The memory layout of `preferredMaxBidirectionalCompoundGroup2ReferenceCount`.
+    public static final MemoryLayout LAYOUT_preferredMaxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.select(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup2ReferenceCount"));
+    /// The [VarHandle] of `preferredMaxBidirectionalCompoundGroup2ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredMaxBidirectionalCompoundGroup2ReferenceCount"));
-    /// The [VarHandle] of `preferredBidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `preferredBidirectionalCompoundReferenceNameMask`.
+    public static final long OFFSET_preferredBidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("preferredBidirectionalCompoundReferenceNameMask"));
+    /// The memory layout of `preferredBidirectionalCompoundReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_preferredBidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("preferredBidirectionalCompoundReferenceNameMask"));
+    /// The [VarHandle] of `preferredBidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_preferredBidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("preferredBidirectionalCompoundReferenceNameMask"));
 
     /// Creates `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment.
@@ -147,19 +175,14 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
     /// Creates `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1QualityLevelPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1QualityLevelPropertiesKHR(segment); }
-
-    /// Creates `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1QualityLevelPropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1QualityLevelPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeAV1QualityLevelPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QualityLevelPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment.
     ///
@@ -167,7 +190,7 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -180,11 +203,6 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1QualityLevelPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1QualityLevelPropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeAV1QualityLevelPropertiesKHR`
-    public static VkVideoEncodeAV1QualityLevelPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeAV1RateControlFlagsKHR") int preferredRateControlFlags, @CType("uint32_t") int preferredGopFrameCount, @CType("uint32_t") int preferredKeyFramePeriod, @CType("uint32_t") int preferredConsecutiveBipredictiveFrameCount, @CType("uint32_t") int preferredTemporalLayerCount, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment preferredConstantQIndex, @CType("uint32_t") int preferredMaxSingleReferenceCount, @CType("uint32_t") int preferredSingleReferenceNameMask, @CType("uint32_t") int preferredMaxUnidirectionalCompoundReferenceCount, @CType("uint32_t") int preferredMaxUnidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int preferredUnidirectionalCompoundReferenceNameMask, @CType("uint32_t") int preferredMaxBidirectionalCompoundReferenceCount, @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup2ReferenceCount, @CType("uint32_t") int preferredBidirectionalCompoundReferenceNameMask) { return alloc(allocator).sType(sType).pNext(pNext).preferredRateControlFlags(preferredRateControlFlags).preferredGopFrameCount(preferredGopFrameCount).preferredKeyFramePeriod(preferredKeyFramePeriod).preferredConsecutiveBipredictiveFrameCount(preferredConsecutiveBipredictiveFrameCount).preferredTemporalLayerCount(preferredTemporalLayerCount).preferredConstantQIndex(preferredConstantQIndex).preferredMaxSingleReferenceCount(preferredMaxSingleReferenceCount).preferredSingleReferenceNameMask(preferredSingleReferenceNameMask).preferredMaxUnidirectionalCompoundReferenceCount(preferredMaxUnidirectionalCompoundReferenceCount).preferredMaxUnidirectionalCompoundGroup1ReferenceCount(preferredMaxUnidirectionalCompoundGroup1ReferenceCount).preferredUnidirectionalCompoundReferenceNameMask(preferredUnidirectionalCompoundReferenceNameMask).preferredMaxBidirectionalCompoundReferenceCount(preferredMaxBidirectionalCompoundReferenceCount).preferredMaxBidirectionalCompoundGroup1ReferenceCount(preferredMaxBidirectionalCompoundGroup1ReferenceCount).preferredMaxBidirectionalCompoundGroup2ReferenceCount(preferredMaxBidirectionalCompoundGroup2ReferenceCount).preferredBidirectionalCompoundReferenceNameMask(preferredBidirectionalCompoundReferenceNameMask); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -192,398 +210,279 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredRateControlFlags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1RateControlFlagsKHR") int get_preferredRateControlFlags(MemorySegment segment, long index) { return (int) VH_preferredRateControlFlags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredRateControlFlags(MemorySegment segment, long index) { return (int) VH_preferredRateControlFlags.get(segment, 0L, index); }
     /// {@return `preferredRateControlFlags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1RateControlFlagsKHR") int get_preferredRateControlFlags(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredRateControlFlags(segment, 0L); }
-    /// {@return `preferredRateControlFlags`}
-    public @CType("VkVideoEncodeAV1RateControlFlagsKHR") int preferredRateControlFlags() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredRateControlFlags(this.segment()); }
+    public int preferredRateControlFlags() { return preferredRateControlFlags(this.segment(), 0L); }
     /// Sets `preferredRateControlFlags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredRateControlFlags(MemorySegment segment, long index, @CType("VkVideoEncodeAV1RateControlFlagsKHR") int value) { VH_preferredRateControlFlags.set(segment, 0L, index, value); }
-    /// Sets `preferredRateControlFlags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredRateControlFlags(MemorySegment segment, @CType("VkVideoEncodeAV1RateControlFlagsKHR") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredRateControlFlags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredRateControlFlags(MemorySegment segment, long index, int value) { VH_preferredRateControlFlags.set(segment, 0L, index, value); }
     /// Sets `preferredRateControlFlags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredRateControlFlags(@CType("VkVideoEncodeAV1RateControlFlagsKHR") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredRateControlFlags(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredRateControlFlags(int value) { preferredRateControlFlags(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredGopFrameCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredGopFrameCount(MemorySegment segment, long index) { return (int) VH_preferredGopFrameCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredGopFrameCount(MemorySegment segment, long index) { return (int) VH_preferredGopFrameCount.get(segment, 0L, index); }
     /// {@return `preferredGopFrameCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredGopFrameCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredGopFrameCount(segment, 0L); }
-    /// {@return `preferredGopFrameCount`}
-    public @CType("uint32_t") int preferredGopFrameCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredGopFrameCount(this.segment()); }
+    public int preferredGopFrameCount() { return preferredGopFrameCount(this.segment(), 0L); }
     /// Sets `preferredGopFrameCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredGopFrameCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredGopFrameCount.set(segment, 0L, index, value); }
-    /// Sets `preferredGopFrameCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredGopFrameCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredGopFrameCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredGopFrameCount(MemorySegment segment, long index, int value) { VH_preferredGopFrameCount.set(segment, 0L, index, value); }
     /// Sets `preferredGopFrameCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredGopFrameCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredGopFrameCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredGopFrameCount(int value) { preferredGopFrameCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredKeyFramePeriod` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredKeyFramePeriod(MemorySegment segment, long index) { return (int) VH_preferredKeyFramePeriod.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredKeyFramePeriod(MemorySegment segment, long index) { return (int) VH_preferredKeyFramePeriod.get(segment, 0L, index); }
     /// {@return `preferredKeyFramePeriod`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredKeyFramePeriod(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredKeyFramePeriod(segment, 0L); }
-    /// {@return `preferredKeyFramePeriod`}
-    public @CType("uint32_t") int preferredKeyFramePeriod() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredKeyFramePeriod(this.segment()); }
+    public int preferredKeyFramePeriod() { return preferredKeyFramePeriod(this.segment(), 0L); }
     /// Sets `preferredKeyFramePeriod` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredKeyFramePeriod(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredKeyFramePeriod.set(segment, 0L, index, value); }
-    /// Sets `preferredKeyFramePeriod` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredKeyFramePeriod(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredKeyFramePeriod(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredKeyFramePeriod(MemorySegment segment, long index, int value) { VH_preferredKeyFramePeriod.set(segment, 0L, index, value); }
     /// Sets `preferredKeyFramePeriod` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredKeyFramePeriod(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredKeyFramePeriod(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredKeyFramePeriod(int value) { preferredKeyFramePeriod(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredConsecutiveBipredictiveFrameCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredConsecutiveBipredictiveFrameCount(MemorySegment segment, long index) { return (int) VH_preferredConsecutiveBipredictiveFrameCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredConsecutiveBipredictiveFrameCount(MemorySegment segment, long index) { return (int) VH_preferredConsecutiveBipredictiveFrameCount.get(segment, 0L, index); }
     /// {@return `preferredConsecutiveBipredictiveFrameCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredConsecutiveBipredictiveFrameCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConsecutiveBipredictiveFrameCount(segment, 0L); }
-    /// {@return `preferredConsecutiveBipredictiveFrameCount`}
-    public @CType("uint32_t") int preferredConsecutiveBipredictiveFrameCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConsecutiveBipredictiveFrameCount(this.segment()); }
+    public int preferredConsecutiveBipredictiveFrameCount() { return preferredConsecutiveBipredictiveFrameCount(this.segment(), 0L); }
     /// Sets `preferredConsecutiveBipredictiveFrameCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredConsecutiveBipredictiveFrameCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredConsecutiveBipredictiveFrameCount.set(segment, 0L, index, value); }
-    /// Sets `preferredConsecutiveBipredictiveFrameCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredConsecutiveBipredictiveFrameCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConsecutiveBipredictiveFrameCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredConsecutiveBipredictiveFrameCount(MemorySegment segment, long index, int value) { VH_preferredConsecutiveBipredictiveFrameCount.set(segment, 0L, index, value); }
     /// Sets `preferredConsecutiveBipredictiveFrameCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConsecutiveBipredictiveFrameCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConsecutiveBipredictiveFrameCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConsecutiveBipredictiveFrameCount(int value) { preferredConsecutiveBipredictiveFrameCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredTemporalLayerCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_preferredTemporalLayerCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_preferredTemporalLayerCount.get(segment, 0L, index); }
     /// {@return `preferredTemporalLayerCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredTemporalLayerCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredTemporalLayerCount(segment, 0L); }
-    /// {@return `preferredTemporalLayerCount`}
-    public @CType("uint32_t") int preferredTemporalLayerCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredTemporalLayerCount(this.segment()); }
+    public int preferredTemporalLayerCount() { return preferredTemporalLayerCount(this.segment(), 0L); }
     /// Sets `preferredTemporalLayerCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredTemporalLayerCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredTemporalLayerCount.set(segment, 0L, index, value); }
-    /// Sets `preferredTemporalLayerCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredTemporalLayerCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredTemporalLayerCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredTemporalLayerCount(MemorySegment segment, long index, int value) { VH_preferredTemporalLayerCount.set(segment, 0L, index, value); }
     /// Sets `preferredTemporalLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredTemporalLayerCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredTemporalLayerCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredTemporalLayerCount(int value) { preferredTemporalLayerCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredConstantQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_preferredConstantQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_preferredConstantQIndex, index), ML_preferredConstantQIndex); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment preferredConstantQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_preferredConstantQIndex, index), LAYOUT_preferredConstantQIndex); }
     /// {@return `preferredConstantQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_preferredConstantQIndex(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConstantQIndex(segment, 0L); }
-    /// {@return `preferredConstantQIndex`}
-    public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment preferredConstantQIndex() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConstantQIndex(this.segment()); }
+    public MemorySegment preferredConstantQIndex() { return preferredConstantQIndex(this.segment(), 0L); }
     /// Sets `preferredConstantQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredConstantQIndex(MemorySegment segment, long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_preferredConstantQIndex, index), ML_preferredConstantQIndex.byteSize()); }
-    /// Sets `preferredConstantQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredConstantQIndex(MemorySegment segment, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConstantQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredConstantQIndex(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_preferredConstantQIndex, index), LAYOUT_preferredConstantQIndex.byteSize()); }
     /// Sets `preferredConstantQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(@CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConstantQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(MemorySegment value) { preferredConstantQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxSingleReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxSingleReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxSingleReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxSingleReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxSingleReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxSingleReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxSingleReferenceCount`}
-    public @CType("uint32_t") int preferredMaxSingleReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxSingleReferenceCount(this.segment()); }
+    public int preferredMaxSingleReferenceCount() { return preferredMaxSingleReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxSingleReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxSingleReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxSingleReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxSingleReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxSingleReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxSingleReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxSingleReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxSingleReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxSingleReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxSingleReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxSingleReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxSingleReferenceCount(int value) { preferredMaxSingleReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredSingleReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredSingleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredSingleReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredSingleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredSingleReferenceNameMask.get(segment, 0L, index); }
     /// {@return `preferredSingleReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredSingleReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredSingleReferenceNameMask(segment, 0L); }
-    /// {@return `preferredSingleReferenceNameMask`}
-    public @CType("uint32_t") int preferredSingleReferenceNameMask() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredSingleReferenceNameMask(this.segment()); }
+    public int preferredSingleReferenceNameMask() { return preferredSingleReferenceNameMask(this.segment(), 0L); }
     /// Sets `preferredSingleReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredSingleReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredSingleReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `preferredSingleReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredSingleReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredSingleReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredSingleReferenceNameMask(MemorySegment segment, long index, int value) { VH_preferredSingleReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `preferredSingleReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredSingleReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredSingleReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredSingleReferenceNameMask(int value) { preferredSingleReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxUnidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxUnidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxUnidirectionalCompoundReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxUnidirectionalCompoundReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxUnidirectionalCompoundReferenceCount`}
-    public @CType("uint32_t") int preferredMaxUnidirectionalCompoundReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundReferenceCount(this.segment()); }
+    public int preferredMaxUnidirectionalCompoundReferenceCount() { return preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxUnidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxUnidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxUnidirectionalCompoundReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxUnidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxUnidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundReferenceCount(int value) { preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxUnidirectionalCompoundGroup1ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxUnidirectionalCompoundGroup1ReferenceCount`}
-    public @CType("uint32_t") int preferredMaxUnidirectionalCompoundGroup1ReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment()); }
+    public int preferredMaxUnidirectionalCompoundGroup1ReferenceCount() { return preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxUnidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundGroup1ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxUnidirectionalCompoundGroup1ReferenceCount(int value) { preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredUnidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredUnidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredUnidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
     /// {@return `preferredUnidirectionalCompoundReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredUnidirectionalCompoundReferenceNameMask(segment, 0L); }
-    /// {@return `preferredUnidirectionalCompoundReferenceNameMask`}
-    public @CType("uint32_t") int preferredUnidirectionalCompoundReferenceNameMask() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredUnidirectionalCompoundReferenceNameMask(this.segment()); }
+    public int preferredUnidirectionalCompoundReferenceNameMask() { return preferredUnidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `preferredUnidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredUnidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `preferredUnidirectionalCompoundReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredUnidirectionalCompoundReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredUnidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_preferredUnidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `preferredUnidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredUnidirectionalCompoundReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredUnidirectionalCompoundReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredUnidirectionalCompoundReferenceNameMask(int value) { preferredUnidirectionalCompoundReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxBidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxBidirectionalCompoundReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxBidirectionalCompoundReferenceCount`}
-    public @CType("uint32_t") int preferredMaxBidirectionalCompoundReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundReferenceCount(this.segment()); }
+    public int preferredMaxBidirectionalCompoundReferenceCount() { return preferredMaxBidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxBidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxBidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxBidirectionalCompoundReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxBidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxBidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundReferenceCount(int value) { preferredMaxBidirectionalCompoundReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxBidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxBidirectionalCompoundGroup1ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup1ReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxBidirectionalCompoundGroup1ReferenceCount`}
-    public @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup1ReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment()); }
+    public int preferredMaxBidirectionalCompoundGroup1ReferenceCount() { return preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxBidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxBidirectionalCompoundGroup1ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup1ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxBidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxBidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup1ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup1ReferenceCount(int value) { preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredMaxBidirectionalCompoundGroup2ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount.get(segment, 0L, index); }
     /// {@return `preferredMaxBidirectionalCompoundGroup2ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup2ReferenceCount(segment, 0L); }
-    /// {@return `preferredMaxBidirectionalCompoundGroup2ReferenceCount`}
-    public @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup2ReferenceCount() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment()); }
+    public int preferredMaxBidirectionalCompoundGroup2ReferenceCount() { return preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), 0L); }
     /// Sets `preferredMaxBidirectionalCompoundGroup2ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `preferredMaxBidirectionalCompoundGroup2ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup2ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredMaxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, int value) { VH_preferredMaxBidirectionalCompoundGroup2ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `preferredMaxBidirectionalCompoundGroup2ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup2ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredMaxBidirectionalCompoundGroup2ReferenceCount(int value) { preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `preferredBidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredBidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_preferredBidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
     /// {@return `preferredBidirectionalCompoundReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredBidirectionalCompoundReferenceNameMask(segment, 0L); }
-    /// {@return `preferredBidirectionalCompoundReferenceNameMask`}
-    public @CType("uint32_t") int preferredBidirectionalCompoundReferenceNameMask() { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredBidirectionalCompoundReferenceNameMask(this.segment()); }
+    public int preferredBidirectionalCompoundReferenceNameMask() { return preferredBidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `preferredBidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_preferredBidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `preferredBidirectionalCompoundReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredBidirectionalCompoundReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void preferredBidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_preferredBidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `preferredBidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredBidirectionalCompoundReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredBidirectionalCompoundReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredBidirectionalCompoundReferenceNameMask(int value) { preferredBidirectionalCompoundReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeAV1QualityLevelPropertiesKHR].
     public static final class Buffer extends VkVideoEncodeAV1QualityLevelPropertiesKHR {
@@ -608,157 +507,157 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `preferredRateControlFlags` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1RateControlFlagsKHR") int preferredRateControlFlagsAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredRateControlFlags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredRateControlFlagsAt(long index) { return preferredRateControlFlags(this.segment(), index); }
         /// Sets `preferredRateControlFlags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredRateControlFlagsAt(long index, @CType("VkVideoEncodeAV1RateControlFlagsKHR") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredRateControlFlags(this.segment(), index, value); return this; }
+        public Buffer preferredRateControlFlagsAt(long index, int value) { preferredRateControlFlags(this.segment(), index, value); return this; }
 
         /// {@return `preferredGopFrameCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredGopFrameCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredGopFrameCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredGopFrameCountAt(long index) { return preferredGopFrameCount(this.segment(), index); }
         /// Sets `preferredGopFrameCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredGopFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredGopFrameCount(this.segment(), index, value); return this; }
+        public Buffer preferredGopFrameCountAt(long index, int value) { preferredGopFrameCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredKeyFramePeriod` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredKeyFramePeriodAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredKeyFramePeriod(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredKeyFramePeriodAt(long index) { return preferredKeyFramePeriod(this.segment(), index); }
         /// Sets `preferredKeyFramePeriod` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredKeyFramePeriodAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredKeyFramePeriod(this.segment(), index, value); return this; }
+        public Buffer preferredKeyFramePeriodAt(long index, int value) { preferredKeyFramePeriod(this.segment(), index, value); return this; }
 
         /// {@return `preferredConsecutiveBipredictiveFrameCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredConsecutiveBipredictiveFrameCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConsecutiveBipredictiveFrameCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredConsecutiveBipredictiveFrameCountAt(long index) { return preferredConsecutiveBipredictiveFrameCount(this.segment(), index); }
         /// Sets `preferredConsecutiveBipredictiveFrameCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredConsecutiveBipredictiveFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConsecutiveBipredictiveFrameCount(this.segment(), index, value); return this; }
+        public Buffer preferredConsecutiveBipredictiveFrameCountAt(long index, int value) { preferredConsecutiveBipredictiveFrameCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredTemporalLayerCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredTemporalLayerCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredTemporalLayerCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredTemporalLayerCountAt(long index) { return preferredTemporalLayerCount(this.segment(), index); }
         /// Sets `preferredTemporalLayerCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredTemporalLayerCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredTemporalLayerCount(this.segment(), index, value); return this; }
+        public Buffer preferredTemporalLayerCountAt(long index, int value) { preferredTemporalLayerCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredConstantQIndex` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment preferredConstantQIndexAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredConstantQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment preferredConstantQIndexAt(long index) { return preferredConstantQIndex(this.segment(), index); }
         /// Sets `preferredConstantQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredConstantQIndexAt(long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredConstantQIndex(this.segment(), index, value); return this; }
+        public Buffer preferredConstantQIndexAt(long index, MemorySegment value) { preferredConstantQIndex(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxSingleReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxSingleReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxSingleReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxSingleReferenceCountAt(long index) { return preferredMaxSingleReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxSingleReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxSingleReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxSingleReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxSingleReferenceCountAt(long index, int value) { preferredMaxSingleReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredSingleReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredSingleReferenceNameMaskAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredSingleReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredSingleReferenceNameMaskAt(long index) { return preferredSingleReferenceNameMask(this.segment(), index); }
         /// Sets `preferredSingleReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredSingleReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredSingleReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer preferredSingleReferenceNameMaskAt(long index, int value) { preferredSingleReferenceNameMask(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxUnidirectionalCompoundReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxUnidirectionalCompoundReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxUnidirectionalCompoundReferenceCountAt(long index) { return preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxUnidirectionalCompoundReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxUnidirectionalCompoundReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxUnidirectionalCompoundReferenceCountAt(long index, int value) { preferredMaxUnidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxUnidirectionalCompoundGroup1ReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxUnidirectionalCompoundGroup1ReferenceCountAt(long index) { return preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxUnidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxUnidirectionalCompoundGroup1ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxUnidirectionalCompoundGroup1ReferenceCountAt(long index, int value) { preferredMaxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredUnidirectionalCompoundReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredUnidirectionalCompoundReferenceNameMaskAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredUnidirectionalCompoundReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredUnidirectionalCompoundReferenceNameMaskAt(long index) { return preferredUnidirectionalCompoundReferenceNameMask(this.segment(), index); }
         /// Sets `preferredUnidirectionalCompoundReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredUnidirectionalCompoundReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredUnidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer preferredUnidirectionalCompoundReferenceNameMaskAt(long index, int value) { preferredUnidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxBidirectionalCompoundReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxBidirectionalCompoundReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxBidirectionalCompoundReferenceCountAt(long index) { return preferredMaxBidirectionalCompoundReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxBidirectionalCompoundReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxBidirectionalCompoundReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxBidirectionalCompoundReferenceCountAt(long index, int value) { preferredMaxBidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxBidirectionalCompoundGroup1ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup1ReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxBidirectionalCompoundGroup1ReferenceCountAt(long index) { return preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxBidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxBidirectionalCompoundGroup1ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxBidirectionalCompoundGroup1ReferenceCountAt(long index, int value) { preferredMaxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredMaxBidirectionalCompoundGroup2ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredMaxBidirectionalCompoundGroup2ReferenceCountAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredMaxBidirectionalCompoundGroup2ReferenceCountAt(long index) { return preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index); }
         /// Sets `preferredMaxBidirectionalCompoundGroup2ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredMaxBidirectionalCompoundGroup2ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer preferredMaxBidirectionalCompoundGroup2ReferenceCountAt(long index, int value) { preferredMaxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `preferredBidirectionalCompoundReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int preferredBidirectionalCompoundReferenceNameMaskAt(long index) { return VkVideoEncodeAV1QualityLevelPropertiesKHR.get_preferredBidirectionalCompoundReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int preferredBidirectionalCompoundReferenceNameMaskAt(long index) { return preferredBidirectionalCompoundReferenceNameMask(this.segment(), index); }
         /// Sets `preferredBidirectionalCompoundReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer preferredBidirectionalCompoundReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1QualityLevelPropertiesKHR.set_preferredBidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer preferredBidirectionalCompoundReferenceNameMaskAt(long index, int value) { preferredBidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
 
     }
 }

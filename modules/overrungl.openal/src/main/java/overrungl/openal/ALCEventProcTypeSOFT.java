@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*ALCEventProcTypeSOFT)(int eventType, int deviceType, ALCdevice* device, int length, const ALCchar* message, void* userParam);
+/// typedef void (*ALCEventProcTypeSOFT)(ALCenum eventType, ALCenum deviceType, ALCdevice* device, ALCsizei length, const ALCchar* message, void* userParam);
 /// ```
 @FunctionalInterface
 public interface ALCEventProcTypeSOFT extends Upcall {

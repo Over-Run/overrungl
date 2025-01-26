@@ -104,7 +104,7 @@ public final class GLARBShaderImageLoadStore {
     }
 
     /// ```
-    /// void glBindImageTexture(unsigned int unit, unsigned int texture, int level, GLboolean layered, int layer, unsigned int access, unsigned int format);
+    /// void glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
     /// ```
     public void BindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTexture)) throw new SymbolNotFoundError("Symbol not found: glBindImageTexture");
@@ -113,7 +113,7 @@ public final class GLARBShaderImageLoadStore {
     }
 
     /// ```
-    /// void glMemoryBarrier(unsigned int barriers);
+    /// void glMemoryBarrier(GLbitfield barriers);
     /// ```
     public void MemoryBarrier(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrier)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier");

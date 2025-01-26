@@ -99,7 +99,7 @@ public final class VulkanVideoCodecAv1std {
     public static final int STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_INVALID = 0x7FFFFFFF;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 1;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 2;
-    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED;
+    public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = 2;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = 4;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G = 5;
     public static final int STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601 = 6;

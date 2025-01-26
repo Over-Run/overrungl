@@ -15,46 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.qcom.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### maxBlockMatchWindow
-/// [Byte offset][#OFFSET_maxBlockMatchWindow] - [Memory layout][#ML_maxBlockMatchWindow] - [Getter][#maxBlockMatchWindow()] - [Setter][#maxBlockMatchWindow(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceImageProcessing2PropertiesQCOM {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkExtent2D maxBlockMatchWindow;
-/// } VkPhysicalDeviceImageProcessing2PropertiesQCOM;
 /// ```
-public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struct {
+/// struct VkPhysicalDeviceImageProcessing2PropertiesQCOM {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkExtent2D maxBlockMatchWindow;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImageProcessing2PropertiesQCOM`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("maxBlockMatchWindow")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `maxBlockMatchWindow`.
     public static final long OFFSET_maxBlockMatchWindow = LAYOUT.byteOffset(PathElement.groupElement("maxBlockMatchWindow"));
     /// The memory layout of `maxBlockMatchWindow`.
-    public static final MemoryLayout ML_maxBlockMatchWindow = LAYOUT.select(PathElement.groupElement("maxBlockMatchWindow"));
+    public static final MemoryLayout LAYOUT_maxBlockMatchWindow = LAYOUT.select(PathElement.groupElement("maxBlockMatchWindow"));
 
     /// Creates `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment.
     /// @param segment the memory segment
@@ -63,19 +63,14 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struc
     /// Creates `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageProcessing2PropertiesQCOM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessing2PropertiesQCOM(segment); }
-
-    /// Creates `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageProcessing2PropertiesQCOM ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessing2PropertiesQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceImageProcessing2PropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessing2PropertiesQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment.
     ///
@@ -83,7 +78,7 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,11 +91,6 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struc
     /// @return the allocated `VkPhysicalDeviceImageProcessing2PropertiesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImageProcessing2PropertiesQCOM` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceImageProcessing2PropertiesQCOM`
-    public static VkPhysicalDeviceImageProcessing2PropertiesQCOM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkExtent2D") MemorySegment maxBlockMatchWindow) { return alloc(allocator).sType(sType).pNext(pNext).maxBlockMatchWindow(maxBlockMatchWindow); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -108,76 +98,55 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageProcessing2PropertiesQCOM sType(@CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageProcessing2PropertiesQCOM pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBlockMatchWindow` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_maxBlockMatchWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxBlockMatchWindow, index), ML_maxBlockMatchWindow); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxBlockMatchWindow(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxBlockMatchWindow, index), LAYOUT_maxBlockMatchWindow); }
     /// {@return `maxBlockMatchWindow`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_maxBlockMatchWindow(MemorySegment segment) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_maxBlockMatchWindow(segment, 0L); }
-    /// {@return `maxBlockMatchWindow`}
-    public @CType("VkExtent2D") MemorySegment maxBlockMatchWindow() { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_maxBlockMatchWindow(this.segment()); }
+    public MemorySegment maxBlockMatchWindow() { return maxBlockMatchWindow(this.segment(), 0L); }
     /// Sets `maxBlockMatchWindow` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBlockMatchWindow(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxBlockMatchWindow, index), ML_maxBlockMatchWindow.byteSize()); }
-    /// Sets `maxBlockMatchWindow` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBlockMatchWindow(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_maxBlockMatchWindow(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBlockMatchWindow(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxBlockMatchWindow, index), LAYOUT_maxBlockMatchWindow.byteSize()); }
     /// Sets `maxBlockMatchWindow` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(@CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_maxBlockMatchWindow(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(MemorySegment value) { maxBlockMatchWindow(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceImageProcessing2PropertiesQCOM].
     public static final class Buffer extends VkPhysicalDeviceImageProcessing2PropertiesQCOM {
@@ -202,31 +171,31 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxBlockMatchWindow` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment maxBlockMatchWindowAt(long index) { return VkPhysicalDeviceImageProcessing2PropertiesQCOM.get_maxBlockMatchWindow(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxBlockMatchWindowAt(long index) { return maxBlockMatchWindow(this.segment(), index); }
         /// Sets `maxBlockMatchWindow` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBlockMatchWindowAt(long index, @CType("VkExtent2D") MemorySegment value) { VkPhysicalDeviceImageProcessing2PropertiesQCOM.set_maxBlockMatchWindow(this.segment(), index, value); return this; }
+        public Buffer maxBlockMatchWindowAt(long index, MemorySegment value) { maxBlockMatchWindow(this.segment(), index, value); return this; }
 
     }
 }

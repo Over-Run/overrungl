@@ -39,7 +39,7 @@ public final class GLARBGlSpirv {
     }
 
     /// ```
-    /// void glSpecializeShaderARB(unsigned int shader, const GLchar* pEntryPoint, unsigned int numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
+    /// void glSpecializeShaderARB(GLuint shader, const GLchar* pEntryPoint, GLuint numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
     /// ```
     public void SpecializeShaderARB(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShaderARB");

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### shaderSubgroupRotate
-/// [VarHandle][#VH_shaderSubgroupRotate] - [Getter][#shaderSubgroupRotate()] - [Setter][#shaderSubgroupRotate(int)]
-/// ### shaderSubgroupRotateClustered
-/// [VarHandle][#VH_shaderSubgroupRotateClustered] - [Getter][#shaderSubgroupRotateClustered()] - [Setter][#shaderSubgroupRotateClustered(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceShaderSubgroupRotateFeatures {
+/// ```
+/// struct VkPhysicalDeviceShaderSubgroupRotateFeatures {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 shaderSubgroupRotate;
 ///     VkBool32 shaderSubgroupRotateClustered;
-/// } VkPhysicalDeviceShaderSubgroupRotateFeatures;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct {
+public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderSubgroupRotateFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupRotate"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupRotateClustered")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderSubgroupRotate` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderSubgroupRotate`.
+    public static final long OFFSET_shaderSubgroupRotate = LAYOUT.byteOffset(PathElement.groupElement("shaderSubgroupRotate"));
+    /// The memory layout of `shaderSubgroupRotate`.
+    public static final MemoryLayout LAYOUT_shaderSubgroupRotate = LAYOUT.select(PathElement.groupElement("shaderSubgroupRotate"));
+    /// The [VarHandle] of `shaderSubgroupRotate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderSubgroupRotate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSubgroupRotate"));
-    /// The [VarHandle] of `shaderSubgroupRotateClustered` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderSubgroupRotateClustered`.
+    public static final long OFFSET_shaderSubgroupRotateClustered = LAYOUT.byteOffset(PathElement.groupElement("shaderSubgroupRotateClustered"));
+    /// The memory layout of `shaderSubgroupRotateClustered`.
+    public static final MemoryLayout LAYOUT_shaderSubgroupRotateClustered = LAYOUT.select(PathElement.groupElement("shaderSubgroupRotateClustered"));
+    /// The [VarHandle] of `shaderSubgroupRotateClustered` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderSubgroupRotateClustered = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSubgroupRotateClustered"));
 
     /// Creates `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct 
     /// Creates `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupRotateFeatures(segment); }
-
-    /// Creates `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupRotateFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceShaderSubgroupRotateFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupRotateFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct 
     /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeatures`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int shaderSubgroupRotate, @CType("VkBool32") int shaderSubgroupRotateClustered) { return alloc(allocator).sType(sType).pNext(pNext).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct 
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderSubgroupRotateFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderSubgroupRotateFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderSubgroupRotateFeatures pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderSubgroupRotateFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderSubgroupRotate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderSubgroupRotate(MemorySegment segment, long index) { return (int) VH_shaderSubgroupRotate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderSubgroupRotate(MemorySegment segment, long index) { return (int) VH_shaderSubgroupRotate.get(segment, 0L, index); }
     /// {@return `shaderSubgroupRotate`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderSubgroupRotate(MemorySegment segment) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotate(segment, 0L); }
-    /// {@return `shaderSubgroupRotate`}
-    public @CType("VkBool32") int shaderSubgroupRotate() { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotate(this.segment()); }
+    public int shaderSubgroupRotate() { return shaderSubgroupRotate(this.segment(), 0L); }
     /// Sets `shaderSubgroupRotate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderSubgroupRotate(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderSubgroupRotate.set(segment, 0L, index, value); }
-    /// Sets `shaderSubgroupRotate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderSubgroupRotate(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderSubgroupRotate(MemorySegment segment, long index, int value) { VH_shaderSubgroupRotate.set(segment, 0L, index, value); }
     /// Sets `shaderSubgroupRotate` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderSubgroupRotateFeatures shaderSubgroupRotate(@CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotate(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderSubgroupRotateFeatures shaderSubgroupRotate(int value) { shaderSubgroupRotate(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderSubgroupRotateClustered` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderSubgroupRotateClustered(MemorySegment segment, long index) { return (int) VH_shaderSubgroupRotateClustered.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderSubgroupRotateClustered(MemorySegment segment, long index) { return (int) VH_shaderSubgroupRotateClustered.get(segment, 0L, index); }
     /// {@return `shaderSubgroupRotateClustered`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderSubgroupRotateClustered(MemorySegment segment) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotateClustered(segment, 0L); }
-    /// {@return `shaderSubgroupRotateClustered`}
-    public @CType("VkBool32") int shaderSubgroupRotateClustered() { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotateClustered(this.segment()); }
+    public int shaderSubgroupRotateClustered() { return shaderSubgroupRotateClustered(this.segment(), 0L); }
     /// Sets `shaderSubgroupRotateClustered` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderSubgroupRotateClustered(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderSubgroupRotateClustered.set(segment, 0L, index, value); }
-    /// Sets `shaderSubgroupRotateClustered` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderSubgroupRotateClustered(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotateClustered(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderSubgroupRotateClustered(MemorySegment segment, long index, int value) { VH_shaderSubgroupRotateClustered.set(segment, 0L, index, value); }
     /// Sets `shaderSubgroupRotateClustered` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderSubgroupRotateFeatures shaderSubgroupRotateClustered(@CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotateClustered(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderSubgroupRotateFeatures shaderSubgroupRotateClustered(int value) { shaderSubgroupRotateClustered(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceShaderSubgroupRotateFeatures].
     public static final class Buffer extends VkPhysicalDeviceShaderSubgroupRotateFeatures {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends Struct 
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderSubgroupRotate` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderSubgroupRotateAt(long index) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderSubgroupRotateAt(long index) { return shaderSubgroupRotate(this.segment(), index); }
         /// Sets `shaderSubgroupRotate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderSubgroupRotateAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotate(this.segment(), index, value); return this; }
+        public Buffer shaderSubgroupRotateAt(long index, int value) { shaderSubgroupRotate(this.segment(), index, value); return this; }
 
         /// {@return `shaderSubgroupRotateClustered` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderSubgroupRotateClusteredAt(long index) { return VkPhysicalDeviceShaderSubgroupRotateFeatures.get_shaderSubgroupRotateClustered(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderSubgroupRotateClusteredAt(long index) { return shaderSubgroupRotateClustered(this.segment(), index); }
         /// Sets `shaderSubgroupRotateClustered` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderSubgroupRotateClusteredAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderSubgroupRotateFeatures.set_shaderSubgroupRotateClustered(this.segment(), index, value); return this; }
+        public Buffer shaderSubgroupRotateClusteredAt(long index, int value) { shaderSubgroupRotateClustered(this.segment(), index, value); return this; }
 
     }
 }

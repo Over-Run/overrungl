@@ -74,7 +74,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glShaderBinary(int count, const GLuint* shaders, unsigned int binaryFormat, const void* binary, int length);
+    /// void glShaderBinary(GLsizei count, const GLuint* shaders, GLenum binaryFormat, const void* binary, GLsizei length);
     /// ```
     public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new SymbolNotFoundError("Symbol not found: glShaderBinary");
@@ -83,7 +83,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glGetShaderPrecisionFormat(unsigned int shadertype, unsigned int precisiontype, GLint* range, GLint* precision);
+    /// void glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint* range, GLint* precision);
     /// ```
     public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new SymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
@@ -92,7 +92,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glDepthRangef(float n, float f);
+    /// void glDepthRangef(GLfloat n, GLfloat f);
     /// ```
     public void DepthRangef(float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangef)) throw new SymbolNotFoundError("Symbol not found: glDepthRangef");
@@ -101,7 +101,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glClearDepthf(float d);
+    /// void glClearDepthf(GLfloat d);
     /// ```
     public void ClearDepthf(float d) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthf)) throw new SymbolNotFoundError("Symbol not found: glClearDepthf");

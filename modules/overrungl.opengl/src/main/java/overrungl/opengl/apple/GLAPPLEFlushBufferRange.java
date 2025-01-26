@@ -42,7 +42,7 @@ public final class GLAPPLEFlushBufferRange {
     }
 
     /// ```
-    /// void glBufferParameteriAPPLE(unsigned int target, unsigned int pname, int param);
+    /// void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
     /// ```
     public void BufferParameteriAPPLE(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
@@ -51,7 +51,7 @@ public final class GLAPPLEFlushBufferRange {
     }
 
     /// ```
-    /// void glFlushMappedBufferRangeAPPLE(unsigned int target, signed long long offset, signed long long size);
+    /// void glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size);
     /// ```
     public void FlushMappedBufferRangeAPPLE(int target, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");

@@ -40,7 +40,7 @@ public final class GLNVConservativeRasterDilate {
     }
 
     /// ```
-    /// void glConservativeRasterParameterfNV(unsigned int pname, float value);
+    /// void glConservativeRasterParameterfNV(GLenum pname, GLfloat value);
     /// ```
     public void ConservativeRasterParameterfNV(int pname, float value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameterfNV");

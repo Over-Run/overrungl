@@ -66,29 +66,41 @@ data object IdentityProcessor : DefTypeProcessor {
     override fun processUpcall(originalValue: String) = originalValue
 }
 
+data class SizingProcessor(val memoryLayout: String, val suffix: String) : DefTypeProcessor {
+    override fun processDowncall(originalValue: String): String =
+        "MemoryUtil.narrowing$suffix($memoryLayout, $originalValue)"
+
+    override fun processUpcall(originalValue: String): String =
+        "MemoryUtil.wideningTo$suffix($memoryLayout, $originalValue)"
+}
+
 
 sealed interface DefinitionType {
     val originalName: String
     val javaType: String
     val memoryLayout: DefTypeMemoryLayout
     val processor: DefTypeProcessor
+
+    fun withName(originalName: String): DefinitionType
 }
 
 data class DefTypeNamePair(val type: DefinitionType, val name: String, val dimensions: List<Long>) {
     val memoryLayoutWithDimensions: DefTypeMemoryLayout by lazy {
-        var layout = type.memoryLayout
-        dimensions.forEach {
-            layout = DefTypeSequenceLayout(it, layout)
+        if (dimensions.isEmpty()) {
+            type.memoryLayout
+        } else {
+            PointerLayout
         }
-        layout
     }
 }
 
-data object VoidType : DefinitionType {
-    override val originalName: String = "void"
+data class GroupTypeMember(val pair: DefTypeNamePair, val bits: Int?)
+
+data class VoidType(override val originalName: String) : DefinitionType {
     override val javaType: String = "void"
     override val memoryLayout: DefTypeMemoryLayout = DefTypeVoidLayout
     override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 data class ValueType(
@@ -97,6 +109,7 @@ data class ValueType(
     override val memoryLayout: DefTypeMemoryLayout
 ) : DefinitionType {
     override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 data class DynamicValueType(
@@ -104,13 +117,19 @@ data class DynamicValueType(
     override val javaType: String,
     override val memoryLayout: DefTypeMemoryLayout,
     override val processor: DefTypeProcessor
-) : DefinitionType
+) : DefinitionType {
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
 
-data class PointerType(override val originalName: String, val type: DefinitionType) : DefinitionType {
+data class PointerType(
+    override val originalName: String,
+    val type: DefinitionType
+) : DefinitionType {
     override val javaType: String = "MemorySegment"
-    override val memoryLayout: DefTypeMemoryLayout =
-        DefTypeValueLayout(memoryLayout = ADDRESS_LAYOUT, carrier = "MemorySegment", asChar = 'P')
+    override val memoryLayout: DefTypeMemoryLayout
+        get() = PointerLayout
     override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 enum class GroupTypeKind(val typedef: String, val layoutBuilder: String) {
@@ -120,18 +139,21 @@ enum class GroupTypeKind(val typedef: String, val layoutBuilder: String) {
 
 data class GroupLayoutType(
     override val originalName: String,
+    val name: String,
     val opaque: Boolean,
-    val members: List<DefTypeNamePair>,
-    val kind: GroupTypeKind
+    val members: List<GroupTypeMember>,
+    val kind: GroupTypeKind,
+    val packageName: String?
 ) : DefinitionType {
     override val javaType: String = "MemorySegment"
     override val memoryLayout: DefTypeMemoryLayout
         get() = DefTypeValueLayout(
-            memoryLayout = if (opaque) ADDRESS_LAYOUT else "$originalName.LAYOUT",
+            memoryLayout = if (opaque) ADDRESS_LAYOUT else "${if (packageName != null) "$packageName." else ""}$name.LAYOUT",
             carrier = "MemorySegment",
             asChar = 'P'
         )
     override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 data class UpcallType(
@@ -145,6 +167,7 @@ data class UpcallType(
     override val memoryLayout: DefTypeMemoryLayout =
         DefTypeValueLayout(memoryLayout = ADDRESS_LAYOUT, carrier = "MemorySegment", asChar = 'P')
     override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 data class CustomDefType(
@@ -152,19 +175,22 @@ data class CustomDefType(
     override val javaType: String,
     override val memoryLayout: DefTypeMemoryLayout,
     override val processor: DefTypeProcessor
-) : DefinitionType
+) : DefinitionType {
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
 
 data class EnumType(
-    val nameValues: List<Pair<String, Int>>
-) : DefinitionType {
+    val nameValues: List<Pair<String, Int>>,
     override val originalName: String
-        get() = "int"
+) : DefinitionType {
     override val javaType: String
         get() = "int"
     override val memoryLayout: DefTypeMemoryLayout
         get() = c_int.memoryLayout
     override val processor: DefTypeProcessor
         get() = c_int.processor
+
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
 }
 
 
@@ -179,8 +205,10 @@ const val C_LONG_LAYOUT = "CanonicalTypes.C_LONG"
 const val SIZE_T_LAYOUT = "CanonicalTypes.SIZE_T"
 const val WCHAR_T_LAYOUT = "CanonicalTypes.WCHAR_T"
 
+val PointerLayout = DefTypeValueLayout(memoryLayout = ADDRESS_LAYOUT, carrier = "MemorySegment", asChar = 'P')
+
 private val builtinType = mutableMapOf<String, DefinitionType>().also {
-    it["void"] = VoidType
+    it["void"] = VoidType("void")
 }
 private val _registeredType = mutableMapOf<String, DefinitionType>()
 val registeredType: Map<String, DefinitionType>
@@ -224,13 +252,7 @@ val c_long = dynamic(
         mapOf("ValueLayout.OfInt" to "int", "ValueLayout.OfLong" to "long"),
         mapOf("ValueLayout.OfInt" to 'I', "ValueLayout.OfLong" to 'J')
     ),
-    object : DefTypeProcessor {
-        override fun processDowncall(originalValue: String): String =
-            "MemoryUtil.narrowingLong($C_LONG_LAYOUT, $originalValue)"
-
-        override fun processUpcall(originalValue: String): String =
-            "MemoryUtil.wideningToLong($C_LONG_LAYOUT, $originalValue)"
-    }
+    SizingProcessor(C_LONG_LAYOUT, "Long")
 )
 val c_long_long = value("long long", "long", LONG_LAYOUT, 'J')
 val c_float = value("float", "float", FLOAT_LAYOUT, 'F')
@@ -260,13 +282,7 @@ val size_t = dynamic(
         mapOf("ValueLayout.OfInt" to "int", "ValueLayout.OfLong" to "long"),
         mapOf("ValueLayout.OfInt" to 'I', "ValueLayout.OfLong" to 'J')
     ),
-    object : DefTypeProcessor {
-        override fun processDowncall(originalValue: String): String =
-            "MemoryUtil.narrowingLong($SIZE_T_LAYOUT, $originalValue)"
-
-        override fun processUpcall(originalValue: String): String =
-            "MemoryUtil.wideningToLong($SIZE_T_LAYOUT, $originalValue)"
-    }
+    SizingProcessor(SIZE_T_LAYOUT, "Long")
 )
 val wchar_t = dynamic(
     "wchar_t",
@@ -277,13 +293,7 @@ val wchar_t = dynamic(
         mapOf("ValueLayout.OfInt" to "int", "ValueLayout.OfChar" to "char"),
         mapOf("ValueLayout.OfInt" to 'I', "ValueLayout.OfChar" to 'C')
     ),
-    object : DefTypeProcessor {
-        override fun processDowncall(originalValue: String): String =
-            "MemoryUtil.narrowingInt($WCHAR_T_LAYOUT, $originalValue)"
-
-        override fun processUpcall(originalValue: String): String =
-            "MemoryUtil.wideningToInt($WCHAR_T_LAYOUT, $originalValue)"
-    }
+    SizingProcessor(WCHAR_T_LAYOUT, "Int")
 )
 val intptr_t = dynamic(
     "intptr_t",

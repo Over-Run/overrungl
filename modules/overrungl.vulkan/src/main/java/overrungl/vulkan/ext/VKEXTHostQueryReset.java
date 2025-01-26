@@ -18,32 +18,33 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.vulkan.VK12.*;
 public class VKEXTHostQueryReset {
     public static final int VK_EXT_HOST_QUERY_RESET_SPEC_VERSION = 1;
     public static final String VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT = 1000261000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkResetQueryPoolEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkResetQueryPoolEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkResetQueryPoolEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkResetQueryPoolEXT = func.invoke(device, "vkResetQueryPoolEXT", "vkResetQueryPool");
         }
     }
 
-    public VKEXTHostQueryReset(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTHostQueryReset(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void ResetQueryPoolEXT(@CType("VkDevice") MemorySegment device, @CType("VkQueryPool") MemorySegment queryPool, @CType("uint32_t") int firstQuery, @CType("uint32_t") int queryCount) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkResetQueryPoolEXT)) throw new SymbolNotFoundError("Symbol not found: vkResetQueryPoolEXT");
+    /// ```
+    /// void vkResetQueryPoolEXT(VkDevice device, VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount);
+    /// ```
+    public void ResetQueryPoolEXT(MemorySegment device, long queryPool, int firstQuery, int queryCount) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkResetQueryPoolEXT)) throw new SymbolNotFoundError("Symbol not found: vkResetQueryPoolEXT");
         try { Handles.MH_vkResetQueryPoolEXT.invokeExact(handles.PFN_vkResetQueryPoolEXT, device, queryPool, firstQuery, queryCount); }
-        catch (Throwable e) { throw new RuntimeException("error in vkResetQueryPoolEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ResetQueryPoolEXT", e); }
     }
 
 }

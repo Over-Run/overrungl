@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct STBRPNode {
-///     int x;
-///     int y;
+///     stbrp_coord x;
+///     stbrp_coord y;
 ///     stbrp_node* next;
 /// };
 /// ```

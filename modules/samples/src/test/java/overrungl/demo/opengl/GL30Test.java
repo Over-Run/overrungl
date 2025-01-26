@@ -27,6 +27,8 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.demo.util.IntSegmentConsumer.glDelete;
+import static overrungl.demo.util.IntSegmentConsumer.glGen;
 import static overrungl.glfw.GLFW.*;
 import static overrungl.opengl.GL.*;
 import static overrungl.stb.STBImage.*;
@@ -54,10 +56,10 @@ public final class GL30Test {
         loop();
 
         gl.DeleteProgram(program);
-        gl.DeleteVertexArrays(vao);
-        gl.DeleteBuffers(vbo);
-        gl.DeleteBuffers(ebo);
-        gl.DeleteTextures(tex);
+        glDelete(vao, gl::DeleteVertexArrays);
+        glDelete(vbo, gl::DeleteBuffers);
+        glDelete(ebo, gl::DeleteBuffers);
+        glDelete(tex, gl::DeleteTextures);
 
         glfwDestroyWindow(window);
         windowArena.close();
@@ -107,7 +109,7 @@ public final class GL30Test {
 
         gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
-        tex = gl.GenTextures();
+        tex = glGen(gl::GenTextures);
         gl.BindTexture(GL_TEXTURE_2D, tex);
         gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -115,8 +117,9 @@ public final class GL30Test {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
+            MemorySegment buffer = IOUtil.ioResourceToSegment(arena, "image.png");
             var data = stbi_load_from_memory(
-                IOUtil.ioResourceToSegment(arena, "image.png"),
+                buffer, Math.toIntExact(buffer.byteSize()),
                 px, py, pc, STBI_rgb
             );
             gl.TexImage2D(GL_TEXTURE_2D,
@@ -136,64 +139,68 @@ public final class GL30Test {
         program = gl.CreateProgram();
         int vsh = gl.CreateShader(GL_VERTEX_SHADER);
         int fsh = gl.CreateShader(GL_FRAGMENT_SHADER);
-        gl.ShaderSource(vsh, """
-            #version 130
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            gl.ShaderSource(vsh, 1, stack.addresses(stack.allocateFrom("""
+                #version 130
 
-            in vec3 position;
-            in vec2 uv;
+                in vec3 position;
+                in vec2 uv;
 
-            out vec2 texCoord;
+                out vec2 texCoord;
 
-            void main() {
-                gl_Position = vec4(position, 1.0);
-                texCoord = uv;
-            }
-            """);
-        gl.ShaderSource(fsh, """
-            #version 130
+                void main() {
+                    gl_Position = vec4(position, 1.0);
+                    texCoord = uv;
+                }
+                """)), MemorySegment.NULL);
+            gl.ShaderSource(fsh, 1, stack.addresses(stack.allocateFrom("""
+                #version 130
 
-            in vec2 texCoord;
+                in vec2 texCoord;
 
-            out vec4 fragColor;
+                out vec4 fragColor;
 
-            uniform sampler2D sampler;
-            uniform float colorFactor;
+                uniform sampler2D sampler;
+                uniform float colorFactor;
 
-            void main() {
-                fragColor = colorFactor * texture(sampler, texCoord);
-            }
-            """);
+                void main() {
+                    fragColor = colorFactor * texture(sampler, texCoord);
+                }
+                """)), MemorySegment.NULL);
+        }
         gl.CompileShader(vsh);
         gl.CompileShader(fsh);
         gl.AttachShader(program, vsh);
         gl.AttachShader(program, fsh);
-        gl.BindAttribLocation(program, 0, "position");
-        gl.BindAttribLocation(program, 1, "uv");
+        gl.BindAttribLocation(program, 0, MemoryUtil.allocString("position"));
+        gl.BindAttribLocation(program, 1, MemoryUtil.allocString("uv"));
         gl.LinkProgram(program);
         gl.DetachShader(program, vsh);
         gl.DetachShader(program, fsh);
         gl.DeleteShader(vsh);
         gl.DeleteShader(fsh);
         gl.UseProgram(program);
-        gl.Uniform1i(gl.GetUniformLocation(program, "sampler"), 0);
+        gl.Uniform1i(gl.GetUniformLocation(program, MemoryUtil.allocString("sampler")), 0);
         gl.UseProgram(0);
 
-        vao = gl.GenVertexArrays();
+        vao = glGen(gl::GenVertexArrays);
         gl.BindVertexArray(vao);
-        vbo = gl.GenBuffers();
+        vbo = glGen(gl::GenBuffers);
         gl.BindBuffer(GL_ARRAY_BUFFER, vbo);
-        gl.BufferData(GL_ARRAY_BUFFER, arena.allocateFrom(JAVA_FLOAT,
+        MemorySegment segment = arena.allocateFrom(JAVA_FLOAT,
             // Vertex          UV
             -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
             0.5f, 0.5f, 0.0f, 1.0f, 0.0f
-        ), GL_STATIC_DRAW);
-        ebo = gl.GenBuffers();
+        );
+        gl.BufferData(GL_ARRAY_BUFFER, segment.byteSize(), segment, GL_STATIC_DRAW);
+        ebo = glGen(gl::GenBuffers);
         gl.BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, arena.allocateFrom(JAVA_BYTE, new byte[]{
+        MemorySegment segment1 = arena.allocateFrom(JAVA_BYTE, new byte[]{
             0, 1, 2, 0, 2, 3
-        }), GL_STATIC_DRAW);
+        });
+        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, segment1.byteSize(), segment1, GL_STATIC_DRAW);
         gl.EnableVertexAttribArray(0);
         gl.EnableVertexAttribArray(1);
         gl.VertexAttribPointer(0, 3, GL_FLOAT, false, 20, MemorySegment.NULL);
@@ -201,7 +208,7 @@ public final class GL30Test {
         gl.BindBuffer(GL_ARRAY_BUFFER, 0);
         gl.BindVertexArray(0);
 
-        colorFactor = gl.GetUniformLocation(program, "colorFactor");
+        colorFactor = gl.GetUniformLocation(program, MemoryUtil.allocString("colorFactor"));
     }
 
     private void loop() {

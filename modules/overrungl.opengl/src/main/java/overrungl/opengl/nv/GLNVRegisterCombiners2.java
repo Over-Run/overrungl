@@ -41,7 +41,7 @@ public final class GLNVRegisterCombiners2 {
     }
 
     /// ```
-    /// void glCombinerStageParameterfvNV(unsigned int stage, unsigned int pname, const GLfloat* params);
+    /// void glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat* params);
     /// ```
     public void CombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
@@ -50,7 +50,7 @@ public final class GLNVRegisterCombiners2 {
     }
 
     /// ```
-    /// void glGetCombinerStageParameterfvNV(unsigned int stage, unsigned int pname, GLfloat* params);
+    /// void glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat* params);
     /// ```
     public void GetCombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");

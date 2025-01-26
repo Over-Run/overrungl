@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### defaultRobustnessStorageBuffers
-/// [VarHandle][#VH_defaultRobustnessStorageBuffers] - [Getter][#defaultRobustnessStorageBuffers()] - [Setter][#defaultRobustnessStorageBuffers(int)]
-/// ### defaultRobustnessUniformBuffers
-/// [VarHandle][#VH_defaultRobustnessUniformBuffers] - [Getter][#defaultRobustnessUniformBuffers()] - [Setter][#defaultRobustnessUniformBuffers(int)]
-/// ### defaultRobustnessVertexInputs
-/// [VarHandle][#VH_defaultRobustnessVertexInputs] - [Getter][#defaultRobustnessVertexInputs()] - [Setter][#defaultRobustnessVertexInputs(int)]
-/// ### defaultRobustnessImages
-/// [VarHandle][#VH_defaultRobustnessImages] - [Getter][#defaultRobustnessImages()] - [Setter][#defaultRobustnessImages(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevicePipelineRobustnessProperties {
+/// ```
+/// struct VkPhysicalDevicePipelineRobustnessProperties {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
 ///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
 ///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
 ///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
-/// } VkPhysicalDevicePipelineRobustnessProperties;
+/// };
 /// ```
-public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct {
+public sealed class VkPhysicalDevicePipelineRobustnessProperties extends GroupType {
     /// The struct layout of `VkPhysicalDevicePipelineRobustnessProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("defaultRobustnessStorageBuffers"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
         ValueLayout.JAVA_INT.withName("defaultRobustnessVertexInputs"),
         ValueLayout.JAVA_INT.withName("defaultRobustnessImages")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `defaultRobustnessStorageBuffers` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `defaultRobustnessStorageBuffers`.
+    public static final long OFFSET_defaultRobustnessStorageBuffers = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessStorageBuffers"));
+    /// The memory layout of `defaultRobustnessStorageBuffers`.
+    public static final MemoryLayout LAYOUT_defaultRobustnessStorageBuffers = LAYOUT.select(PathElement.groupElement("defaultRobustnessStorageBuffers"));
+    /// The [VarHandle] of `defaultRobustnessStorageBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultRobustnessStorageBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessStorageBuffers"));
-    /// The [VarHandle] of `defaultRobustnessUniformBuffers` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `defaultRobustnessUniformBuffers`.
+    public static final long OFFSET_defaultRobustnessUniformBuffers = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessUniformBuffers"));
+    /// The memory layout of `defaultRobustnessUniformBuffers`.
+    public static final MemoryLayout LAYOUT_defaultRobustnessUniformBuffers = LAYOUT.select(PathElement.groupElement("defaultRobustnessUniformBuffers"));
+    /// The [VarHandle] of `defaultRobustnessUniformBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultRobustnessUniformBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessUniformBuffers"));
-    /// The [VarHandle] of `defaultRobustnessVertexInputs` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `defaultRobustnessVertexInputs`.
+    public static final long OFFSET_defaultRobustnessVertexInputs = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessVertexInputs"));
+    /// The memory layout of `defaultRobustnessVertexInputs`.
+    public static final MemoryLayout LAYOUT_defaultRobustnessVertexInputs = LAYOUT.select(PathElement.groupElement("defaultRobustnessVertexInputs"));
+    /// The [VarHandle] of `defaultRobustnessVertexInputs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultRobustnessVertexInputs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessVertexInputs"));
-    /// The [VarHandle] of `defaultRobustnessImages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `defaultRobustnessImages`.
+    public static final long OFFSET_defaultRobustnessImages = LAYOUT.byteOffset(PathElement.groupElement("defaultRobustnessImages"));
+    /// The memory layout of `defaultRobustnessImages`.
+    public static final MemoryLayout LAYOUT_defaultRobustnessImages = LAYOUT.select(PathElement.groupElement("defaultRobustnessImages"));
+    /// The [VarHandle] of `defaultRobustnessImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_defaultRobustnessImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultRobustnessImages"));
 
     /// Creates `VkPhysicalDevicePipelineRobustnessProperties` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
     /// Creates `VkPhysicalDevicePipelineRobustnessProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineRobustnessProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineRobustnessProperties(segment); }
-
-    /// Creates `VkPhysicalDevicePipelineRobustnessProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePipelineRobustnessProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineRobustnessProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineRobustnessProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevicePipelineRobustnessProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineRobustnessProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevicePipelineRobustnessProperties` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePipelineRobustnessProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
     /// @return the allocated `VkPhysicalDevicePipelineRobustnessProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePipelineRobustnessProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePipelineRobustnessProperties`
-    public static VkPhysicalDevicePipelineRobustnessProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessStorageBuffers, @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessUniformBuffers, @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessVertexInputs, @CType("VkPipelineRobustnessImageBehavior") int defaultRobustnessImages) { return alloc(allocator).sType(sType).pNext(pNext).defaultRobustnessStorageBuffers(defaultRobustnessStorageBuffers).defaultRobustnessUniformBuffers(defaultRobustnessUniformBuffers).defaultRobustnessVertexInputs(defaultRobustnessVertexInputs).defaultRobustnessImages(defaultRobustnessImages); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevicePipelineRobustnessProperties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties sType(@CType("VkStructureType") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDevicePipelineRobustnessProperties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDevicePipelineRobustnessProperties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties pNext(@CType("void *") MemorySegment value) { VkPhysicalDevicePipelineRobustnessProperties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `defaultRobustnessStorageBuffers` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessStorageBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessStorageBuffers.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int defaultRobustnessStorageBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessStorageBuffers.get(segment, 0L, index); }
     /// {@return `defaultRobustnessStorageBuffers`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessStorageBuffers(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessStorageBuffers(segment, 0L); }
-    /// {@return `defaultRobustnessStorageBuffers`}
-    public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessStorageBuffers() { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessStorageBuffers(this.segment()); }
+    public int defaultRobustnessStorageBuffers() { return defaultRobustnessStorageBuffers(this.segment(), 0L); }
     /// Sets `defaultRobustnessStorageBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_defaultRobustnessStorageBuffers(MemorySegment segment, long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VH_defaultRobustnessStorageBuffers.set(segment, 0L, index, value); }
-    /// Sets `defaultRobustnessStorageBuffers` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_defaultRobustnessStorageBuffers(MemorySegment segment, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessStorageBuffers(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void defaultRobustnessStorageBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessStorageBuffers.set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessStorageBuffers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessStorageBuffers(@CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessStorageBuffers(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessStorageBuffers(int value) { defaultRobustnessStorageBuffers(this.segment(), 0L, value); return this; }
 
     /// {@return `defaultRobustnessUniformBuffers` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessUniformBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessUniformBuffers.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int defaultRobustnessUniformBuffers(MemorySegment segment, long index) { return (int) VH_defaultRobustnessUniformBuffers.get(segment, 0L, index); }
     /// {@return `defaultRobustnessUniformBuffers`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessUniformBuffers(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessUniformBuffers(segment, 0L); }
-    /// {@return `defaultRobustnessUniformBuffers`}
-    public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessUniformBuffers() { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessUniformBuffers(this.segment()); }
+    public int defaultRobustnessUniformBuffers() { return defaultRobustnessUniformBuffers(this.segment(), 0L); }
     /// Sets `defaultRobustnessUniformBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_defaultRobustnessUniformBuffers(MemorySegment segment, long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VH_defaultRobustnessUniformBuffers.set(segment, 0L, index, value); }
-    /// Sets `defaultRobustnessUniformBuffers` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_defaultRobustnessUniformBuffers(MemorySegment segment, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessUniformBuffers(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void defaultRobustnessUniformBuffers(MemorySegment segment, long index, int value) { VH_defaultRobustnessUniformBuffers.set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessUniformBuffers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessUniformBuffers(@CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessUniformBuffers(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessUniformBuffers(int value) { defaultRobustnessUniformBuffers(this.segment(), 0L, value); return this; }
 
     /// {@return `defaultRobustnessVertexInputs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessVertexInputs(MemorySegment segment, long index) { return (int) VH_defaultRobustnessVertexInputs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int defaultRobustnessVertexInputs(MemorySegment segment, long index) { return (int) VH_defaultRobustnessVertexInputs.get(segment, 0L, index); }
     /// {@return `defaultRobustnessVertexInputs`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineRobustnessBufferBehavior") int get_defaultRobustnessVertexInputs(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessVertexInputs(segment, 0L); }
-    /// {@return `defaultRobustnessVertexInputs`}
-    public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessVertexInputs() { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessVertexInputs(this.segment()); }
+    public int defaultRobustnessVertexInputs() { return defaultRobustnessVertexInputs(this.segment(), 0L); }
     /// Sets `defaultRobustnessVertexInputs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_defaultRobustnessVertexInputs(MemorySegment segment, long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VH_defaultRobustnessVertexInputs.set(segment, 0L, index, value); }
-    /// Sets `defaultRobustnessVertexInputs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_defaultRobustnessVertexInputs(MemorySegment segment, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessVertexInputs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void defaultRobustnessVertexInputs(MemorySegment segment, long index, int value) { VH_defaultRobustnessVertexInputs.set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessVertexInputs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessVertexInputs(@CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessVertexInputs(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessVertexInputs(int value) { defaultRobustnessVertexInputs(this.segment(), 0L, value); return this; }
 
     /// {@return `defaultRobustnessImages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineRobustnessImageBehavior") int get_defaultRobustnessImages(MemorySegment segment, long index) { return (int) VH_defaultRobustnessImages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int defaultRobustnessImages(MemorySegment segment, long index) { return (int) VH_defaultRobustnessImages.get(segment, 0L, index); }
     /// {@return `defaultRobustnessImages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineRobustnessImageBehavior") int get_defaultRobustnessImages(MemorySegment segment) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessImages(segment, 0L); }
-    /// {@return `defaultRobustnessImages`}
-    public @CType("VkPipelineRobustnessImageBehavior") int defaultRobustnessImages() { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessImages(this.segment()); }
+    public int defaultRobustnessImages() { return defaultRobustnessImages(this.segment(), 0L); }
     /// Sets `defaultRobustnessImages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_defaultRobustnessImages(MemorySegment segment, long index, @CType("VkPipelineRobustnessImageBehavior") int value) { VH_defaultRobustnessImages.set(segment, 0L, index, value); }
-    /// Sets `defaultRobustnessImages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_defaultRobustnessImages(MemorySegment segment, @CType("VkPipelineRobustnessImageBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessImages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void defaultRobustnessImages(MemorySegment segment, long index, int value) { VH_defaultRobustnessImages.set(segment, 0L, index, value); }
     /// Sets `defaultRobustnessImages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessImages(@CType("VkPipelineRobustnessImageBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessImages(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineRobustnessProperties defaultRobustnessImages(int value) { defaultRobustnessImages(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevicePipelineRobustnessProperties].
     public static final class Buffer extends VkPhysicalDevicePipelineRobustnessProperties {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDevicePipelineRobustnessProperties extends Struct 
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDevicePipelineRobustnessProperties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `defaultRobustnessStorageBuffers` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessStorageBuffersAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessStorageBuffers(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int defaultRobustnessStorageBuffersAt(long index) { return defaultRobustnessStorageBuffers(this.segment(), index); }
         /// Sets `defaultRobustnessStorageBuffers` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer defaultRobustnessStorageBuffersAt(long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessStorageBuffers(this.segment(), index, value); return this; }
+        public Buffer defaultRobustnessStorageBuffersAt(long index, int value) { defaultRobustnessStorageBuffers(this.segment(), index, value); return this; }
 
         /// {@return `defaultRobustnessUniformBuffers` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessUniformBuffersAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessUniformBuffers(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int defaultRobustnessUniformBuffersAt(long index) { return defaultRobustnessUniformBuffers(this.segment(), index); }
         /// Sets `defaultRobustnessUniformBuffers` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer defaultRobustnessUniformBuffersAt(long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessUniformBuffers(this.segment(), index, value); return this; }
+        public Buffer defaultRobustnessUniformBuffersAt(long index, int value) { defaultRobustnessUniformBuffers(this.segment(), index, value); return this; }
 
         /// {@return `defaultRobustnessVertexInputs` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineRobustnessBufferBehavior") int defaultRobustnessVertexInputsAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessVertexInputs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int defaultRobustnessVertexInputsAt(long index) { return defaultRobustnessVertexInputs(this.segment(), index); }
         /// Sets `defaultRobustnessVertexInputs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer defaultRobustnessVertexInputsAt(long index, @CType("VkPipelineRobustnessBufferBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessVertexInputs(this.segment(), index, value); return this; }
+        public Buffer defaultRobustnessVertexInputsAt(long index, int value) { defaultRobustnessVertexInputs(this.segment(), index, value); return this; }
 
         /// {@return `defaultRobustnessImages` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineRobustnessImageBehavior") int defaultRobustnessImagesAt(long index) { return VkPhysicalDevicePipelineRobustnessProperties.get_defaultRobustnessImages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int defaultRobustnessImagesAt(long index) { return defaultRobustnessImages(this.segment(), index); }
         /// Sets `defaultRobustnessImages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer defaultRobustnessImagesAt(long index, @CType("VkPipelineRobustnessImageBehavior") int value) { VkPhysicalDevicePipelineRobustnessProperties.set_defaultRobustnessImages(this.segment(), index, value); return this; }
+        public Buffer defaultRobustnessImagesAt(long index, int value) { defaultRobustnessImages(this.segment(), index, value); return this; }
 
     }
 }

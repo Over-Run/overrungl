@@ -72,7 +72,7 @@ public final class STBRectPack {
     }
 
     /// ```
-    /// int stbrp_pack_rects(stbrp_context* context, stbrp_rect* rects, int num_rects);
+    /// STBbool stbrp_pack_rects(stbrp_context* context, stbrp_rect* rects, int num_rects);
     /// ```
     public static boolean stbrp_pack_rects(MemorySegment context, MemorySegment rects, int num_rects) {
         try { return (((int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, context, rects, num_rects)) != 0); }

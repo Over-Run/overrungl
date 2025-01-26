@@ -61,7 +61,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glGetMemoryObjectDetachedResourcesuivNV(unsigned int memory, unsigned int pname, int first, int count, GLuint* params);
+    /// void glGetMemoryObjectDetachedResourcesuivNV(GLuint memory, GLenum pname, GLint first, GLsizei count, GLuint* params);
     /// ```
     public void GetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectDetachedResourcesuivNV");
@@ -70,7 +70,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glResetMemoryObjectParameterNV(unsigned int memory, unsigned int pname);
+    /// void glResetMemoryObjectParameterNV(GLuint memory, GLenum pname);
     /// ```
     public void ResetMemoryObjectParameterNV(int memory, int pname) {
         if (MemoryUtil.isNullPointer(handles.PFN_glResetMemoryObjectParameterNV)) throw new SymbolNotFoundError("Symbol not found: glResetMemoryObjectParameterNV");
@@ -79,7 +79,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glTexAttachMemoryNV(unsigned int target, unsigned int memory, uint64_t offset);
+    /// void glTexAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset);
     /// ```
     public void TexAttachMemoryNV(int target, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexAttachMemoryNV)) throw new SymbolNotFoundError("Symbol not found: glTexAttachMemoryNV");
@@ -88,7 +88,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glBufferAttachMemoryNV(unsigned int target, unsigned int memory, uint64_t offset);
+    /// void glBufferAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset);
     /// ```
     public void BufferAttachMemoryNV(int target, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferAttachMemoryNV)) throw new SymbolNotFoundError("Symbol not found: glBufferAttachMemoryNV");
@@ -97,7 +97,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glTextureAttachMemoryNV(unsigned int texture, unsigned int memory, uint64_t offset);
+    /// void glTextureAttachMemoryNV(GLuint texture, GLuint memory, GLuint64 offset);
     /// ```
     public void TextureAttachMemoryNV(int texture, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureAttachMemoryNV)) throw new SymbolNotFoundError("Symbol not found: glTextureAttachMemoryNV");
@@ -106,7 +106,7 @@ public final class GLNVMemoryAttachment {
     }
 
     /// ```
-    /// void glNamedBufferAttachMemoryNV(unsigned int buffer, unsigned int memory, uint64_t offset);
+    /// void glNamedBufferAttachMemoryNV(GLuint buffer, GLuint memory, GLuint64 offset);
     /// ```
     public void NamedBufferAttachMemoryNV(int buffer, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferAttachMemoryNV)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferAttachMemoryNV");

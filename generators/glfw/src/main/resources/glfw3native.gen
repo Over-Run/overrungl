@@ -1,17 +1,13 @@
 // glfw3native.h
 
+import "windows.gen";
+import "x11.gen";
+
 using GLFWmonitor = struct GLFWmonitor;
 using GLFWwindow = struct GLFWwindow;
 
-using HWND = void*;
-using HGLRC = void*;
 using CGDirectDisplayID = uint32_t;
 using id = void*;
-using XID = unsigned long;
-using Display = int; // enum Display {}
-using RRCrtc = XID;
-using RROutput = XID;
-using Window = XID;
 using GLXContext = struct __GLXcontextRec *;
 using GLXWindow = XID;
 using EGLDisplay = void*;

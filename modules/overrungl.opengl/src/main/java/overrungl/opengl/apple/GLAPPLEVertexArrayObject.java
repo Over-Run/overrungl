@@ -47,7 +47,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     /// ```
-    /// void glBindVertexArrayAPPLE(unsigned int array);
+    /// void glBindVertexArrayAPPLE(GLuint array);
     /// ```
     public void BindVertexArrayAPPLE(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBindVertexArrayAPPLE");
@@ -56,7 +56,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     /// ```
-    /// void glDeleteVertexArraysAPPLE(int n, const GLuint* arrays);
+    /// void glDeleteVertexArraysAPPLE(GLsizei n, const GLuint* arrays);
     /// ```
     public void DeleteVertexArraysAPPLE(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexArraysAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArraysAPPLE");
@@ -65,7 +65,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     /// ```
-    /// void glGenVertexArraysAPPLE(int n, GLuint* arrays);
+    /// void glGenVertexArraysAPPLE(GLsizei n, GLuint* arrays);
     /// ```
     public void GenVertexArraysAPPLE(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexArraysAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGenVertexArraysAPPLE");
@@ -74,7 +74,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     /// ```
-    /// GLboolean glIsVertexArrayAPPLE(unsigned int array);
+    /// GLboolean glIsVertexArrayAPPLE(GLuint array);
     /// ```
     public boolean IsVertexArrayAPPLE(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glIsVertexArrayAPPLE");

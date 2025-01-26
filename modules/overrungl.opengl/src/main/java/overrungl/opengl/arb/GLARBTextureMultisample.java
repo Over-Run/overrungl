@@ -67,7 +67,7 @@ public final class GLARBTextureMultisample {
     }
 
     /// ```
-    /// void glTexImage2DMultisample(unsigned int target, int samples, unsigned int internalformat, int width, int height, GLboolean fixedsamplelocations);
+    /// void glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
     /// ```
     public void TexImage2DMultisample(int target, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisample");
@@ -76,7 +76,7 @@ public final class GLARBTextureMultisample {
     }
 
     /// ```
-    /// void glTexImage3DMultisample(unsigned int target, int samples, unsigned int internalformat, int width, int height, int depth, GLboolean fixedsamplelocations);
+    /// void glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
     public void TexImage3DMultisample(int target, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisample");
@@ -85,7 +85,7 @@ public final class GLARBTextureMultisample {
     }
 
     /// ```
-    /// void glGetMultisamplefv(unsigned int pname, unsigned int index, GLfloat* val);
+    /// void glGetMultisamplefv(GLenum pname, GLuint index, GLfloat* val);
     /// ```
     public void GetMultisamplefv(int pname, int index, MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv");
@@ -94,7 +94,7 @@ public final class GLARBTextureMultisample {
     }
 
     /// ```
-    /// void glSampleMaski(unsigned int maskNumber, unsigned int mask);
+    /// void glSampleMaski(GLuint maskNumber, GLbitfield mask);
     /// ```
     public void SampleMaski(int maskNumber, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaski)) throw new SymbolNotFoundError("Symbol not found: glSampleMaski");

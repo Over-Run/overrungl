@@ -15,42 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### surface
-/// [VarHandle][#VH_surface] - [Getter][#surface()] - [Setter][#surface(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceSurfaceInfo2KHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkSurfaceKHR surface;
-/// } VkPhysicalDeviceSurfaceInfo2KHR;
 /// ```
-public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
+/// struct VkPhysicalDeviceSurfaceInfo2KHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSurfaceKHR surface;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceSurfaceInfo2KHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("surface")
+        ValueLayout.JAVA_LONG.withName("surface")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `surface`.
+    public static final long OFFSET_surface = LAYOUT.byteOffset(PathElement.groupElement("surface"));
+    /// The memory layout of `surface`.
+    public static final MemoryLayout LAYOUT_surface = LAYOUT.select(PathElement.groupElement("surface"));
     /// The [VarHandle] of `surface` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_surface = LAYOUT.arrayElementVarHandle(PathElement.groupElement("surface"));
 
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
     /// Creates `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSurfaceInfo2KHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSurfaceInfo2KHR(segment); }
-
-    /// Creates `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSurfaceInfo2KHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSurfaceInfo2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceSurfaceInfo2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSurfaceInfo2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
-    public static VkPhysicalDeviceSurfaceInfo2KHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSurfaceKHR") MemorySegment surface) { return alloc(allocator).sType(sType).pNext(pNext).surface(surface); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSurfaceInfo2KHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSurfaceInfo2KHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSurfaceInfo2KHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSurfaceInfo2KHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceSurfaceInfo2KHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceSurfaceInfo2KHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSurfaceInfo2KHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPhysicalDeviceSurfaceInfo2KHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSurfaceInfo2KHR pNext(@CType("const void *") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceSurfaceInfo2KHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `surface` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSurfaceKHR") MemorySegment get_surface(MemorySegment segment, long index) { return (MemorySegment) VH_surface.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long surface(MemorySegment segment, long index) { return (long) VH_surface.get(segment, 0L, index); }
     /// {@return `surface`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSurfaceKHR") MemorySegment get_surface(MemorySegment segment) { return VkPhysicalDeviceSurfaceInfo2KHR.get_surface(segment, 0L); }
-    /// {@return `surface`}
-    public @CType("VkSurfaceKHR") MemorySegment surface() { return VkPhysicalDeviceSurfaceInfo2KHR.get_surface(this.segment()); }
+    public long surface() { return surface(this.segment(), 0L); }
     /// Sets `surface` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_surface(MemorySegment segment, long index, @CType("VkSurfaceKHR") MemorySegment value) { VH_surface.set(segment, 0L, index, value); }
-    /// Sets `surface` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_surface(MemorySegment segment, @CType("VkSurfaceKHR") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_surface(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void surface(MemorySegment segment, long index, long value) { VH_surface.set(segment, 0L, index, value); }
     /// Sets `surface` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSurfaceInfo2KHR surface(@CType("VkSurfaceKHR") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_surface(this.segment(), value); return this; }
+    public VkPhysicalDeviceSurfaceInfo2KHR surface(long value) { surface(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceSurfaceInfo2KHR].
     public static final class Buffer extends VkPhysicalDeviceSurfaceInfo2KHR {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSurfaceInfo2KHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSurfaceInfo2KHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceSurfaceInfo2KHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `surface` at the given index}
-        /// @param index the index
-        public @CType("VkSurfaceKHR") MemorySegment surfaceAt(long index) { return VkPhysicalDeviceSurfaceInfo2KHR.get_surface(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long surfaceAt(long index) { return surface(this.segment(), index); }
         /// Sets `surface` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer surfaceAt(long index, @CType("VkSurfaceKHR") MemorySegment value) { VkPhysicalDeviceSurfaceInfo2KHR.set_surface(this.segment(), index, value); return this; }
+        public Buffer surfaceAt(long index, long value) { surface(this.segment(), index, value); return this; }
 
     }
 }

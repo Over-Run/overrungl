@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -27,21 +26,24 @@ public class VKEXTDirectModeDisplay {
     public static final String VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkReleaseDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkReleaseDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkReleaseDisplayEXT;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkReleaseDisplayEXT = func.invoke(instance, "vkReleaseDisplayEXT");
         }
     }
 
-    public VKEXTDirectModeDisplay(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKEXTDirectModeDisplay(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int ReleaseDisplayEXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkDisplayKHR") MemorySegment display) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkReleaseDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
+    /// ```
+    /// VkResult vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, VkDisplayKHR display);
+    /// ```
+    public int ReleaseDisplayEXT(MemorySegment physicalDevice, long display) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkReleaseDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
         try { return (int) Handles.MH_vkReleaseDisplayEXT.invokeExact(handles.PFN_vkReleaseDisplayEXT, physicalDevice, display); }
-        catch (Throwable e) { throw new RuntimeException("error in vkReleaseDisplayEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReleaseDisplayEXT", e); }
     }
 
 }

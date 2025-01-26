@@ -40,7 +40,7 @@ public final class GLARBClearBufferObject {
     }
 
     /// ```
-    /// void glClearBufferData(unsigned int target, unsigned int internalformat, unsigned int format, unsigned int type, const void* data);
+    /// void glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearBufferData(int target, int internalformat, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
@@ -49,7 +49,7 @@ public final class GLARBClearBufferObject {
     }
 
     /// ```
-    /// void glClearBufferSubData(unsigned int target, unsigned int internalformat, signed long long offset, signed long long size, unsigned int format, unsigned int type, const void* data);
+    /// void glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearBufferSubData(int target, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");

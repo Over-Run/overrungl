@@ -18,7 +18,6 @@
 package overrungl.vulkan.huawei;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -31,21 +30,24 @@ public class VKHUAWEIInvocationMask {
     public static final long VK_PIPELINE_STAGE_2_INVOCATION_MASK_BIT_HUAWEI = 0x10000000000L;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdBindInvocationMaskHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdBindInvocationMaskHUAWEI;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdBindInvocationMaskHUAWEI = func.invoke(device, "vkCmdBindInvocationMaskHUAWEI");
         }
     }
 
-    public VKHUAWEIInvocationMask(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKHUAWEIInvocationMask(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdBindInvocationMaskHUAWEI(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkImageView") MemorySegment imageView, @CType("VkImageLayout") int imageLayout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBindInvocationMaskHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");
+    /// ```
+    /// void vkCmdBindInvocationMaskHUAWEI(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout);
+    /// ```
+    public void CmdBindInvocationMaskHUAWEI(MemorySegment commandBuffer, long imageView, int imageLayout) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBindInvocationMaskHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");
         try { Handles.MH_vkCmdBindInvocationMaskHUAWEI.invokeExact(handles.PFN_vkCmdBindInvocationMaskHUAWEI, commandBuffer, imageView, imageLayout); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdBindInvocationMaskHUAWEI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdBindInvocationMaskHUAWEI", e); }
     }
 
 }

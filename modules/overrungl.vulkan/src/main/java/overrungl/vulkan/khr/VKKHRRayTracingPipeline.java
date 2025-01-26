@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -58,11 +57,11 @@ public class VKKHRRayTracingPipeline {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdTraceRaysKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCreateRayTracingPipelinesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetRayTracingShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateRayTracingPipelinesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetRayTracingShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdTraceRaysIndirectKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkGetRayTracingShaderGroupStackSizeKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetRayTracingShaderGroupStackSizeKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetRayTracingPipelineStackSizeKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkCmdTraceRaysKHR;
         public final MemorySegment PFN_vkCreateRayTracingPipelinesKHR;
@@ -71,7 +70,7 @@ public class VKKHRRayTracingPipeline {
         public final MemorySegment PFN_vkCmdTraceRaysIndirectKHR;
         public final MemorySegment PFN_vkGetRayTracingShaderGroupStackSizeKHR;
         public final MemorySegment PFN_vkCmdSetRayTracingPipelineStackSizeKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdTraceRaysKHR = func.invoke(device, "vkCmdTraceRaysKHR");
             PFN_vkCreateRayTracingPipelinesKHR = func.invoke(device, "vkCreateRayTracingPipelinesKHR");
             PFN_vkGetRayTracingShaderGroupHandlesKHR = func.invoke(device, "vkGetRayTracingShaderGroupHandlesKHR", "vkGetRayTracingShaderGroupHandlesNV");
@@ -82,50 +81,71 @@ public class VKKHRRayTracingPipeline {
         }
     }
 
-    public VKKHRRayTracingPipeline(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRRayTracingPipeline(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdTraceRaysKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pRaygenShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pMissShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pHitShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pCallableShaderBindingTable, @CType("uint32_t") int width, @CType("uint32_t") int height, @CType("uint32_t") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdTraceRaysKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysKHR");
+    /// ```
+    /// void vkCmdTraceRaysKHR(VkCommandBuffer commandBuffer, const VkStridedDeviceAddressRegionKHR* pRaygenShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pMissShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pHitShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pCallableShaderBindingTable, uint32_t width, uint32_t height, uint32_t depth);
+    /// ```
+    public void CmdTraceRaysKHR(MemorySegment commandBuffer, MemorySegment pRaygenShaderBindingTable, MemorySegment pMissShaderBindingTable, MemorySegment pHitShaderBindingTable, MemorySegment pCallableShaderBindingTable, int width, int height, int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdTraceRaysKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysKHR");
         try { Handles.MH_vkCmdTraceRaysKHR.invokeExact(handles.PFN_vkCmdTraceRaysKHR, commandBuffer, pRaygenShaderBindingTable, pMissShaderBindingTable, pHitShaderBindingTable, pCallableShaderBindingTable, width, height, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdTraceRaysKHR", e); }
     }
 
-    public @CType("VkResult") int CreateRayTracingPipelinesKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeferredOperationKHR") MemorySegment deferredOperation, @CType("VkPipelineCache") MemorySegment pipelineCache, @CType("uint32_t") int createInfoCount, @CType("const VkRayTracingPipelineCreateInfoKHR *") MemorySegment pCreateInfos, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkPipeline *") MemorySegment pPipelines) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateRayTracingPipelinesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateRayTracingPipelinesKHR");
+    /// ```
+    /// VkResult vkCreateRayTracingPipelinesKHR(VkDevice device, VkDeferredOperationKHR deferredOperation, VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkRayTracingPipelineCreateInfoKHR* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+    /// ```
+    public int CreateRayTracingPipelinesKHR(MemorySegment device, long deferredOperation, long pipelineCache, int createInfoCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pPipelines) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateRayTracingPipelinesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateRayTracingPipelinesKHR");
         try { return (int) Handles.MH_vkCreateRayTracingPipelinesKHR.invokeExact(handles.PFN_vkCreateRayTracingPipelinesKHR, device, deferredOperation, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateRayTracingPipelinesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateRayTracingPipelinesKHR", e); }
     }
 
-    public @CType("VkResult") int GetRayTracingShaderGroupHandlesKHR(@CType("VkDevice") MemorySegment device, @CType("VkPipeline") MemorySegment pipeline, @CType("uint32_t") int firstGroup, @CType("uint32_t") int groupCount, @CType("size_t") long dataSize, @CType("void *") MemorySegment pData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetRayTracingShaderGroupHandlesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingShaderGroupHandlesKHR");
-        try { return (int) Handles.MH_vkGetRayTracingShaderGroupHandlesKHR.invokeExact(handles.PFN_vkGetRayTracingShaderGroupHandlesKHR, device, pipeline, firstGroup, groupCount, dataSize, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetRayTracingShaderGroupHandlesKHR", e); }
+    /// ```
+    /// VkResult vkGetRayTracingShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint32_t firstGroup, uint32_t groupCount, size_t dataSize, void* pData);
+    /// ```
+    public int GetRayTracingShaderGroupHandlesKHR(MemorySegment device, long pipeline, int firstGroup, int groupCount, long dataSize, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetRayTracingShaderGroupHandlesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingShaderGroupHandlesKHR");
+        try { return (int) Handles.MH_vkGetRayTracingShaderGroupHandlesKHR.invoke(handles.PFN_vkGetRayTracingShaderGroupHandlesKHR, device, pipeline, firstGroup, groupCount, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData); }
+        catch (Throwable e) { throw new RuntimeException("error in GetRayTracingShaderGroupHandlesKHR", e); }
     }
 
-    public @CType("VkResult") int GetRayTracingCaptureReplayShaderGroupHandlesKHR(@CType("VkDevice") MemorySegment device, @CType("VkPipeline") MemorySegment pipeline, @CType("uint32_t") int firstGroup, @CType("uint32_t") int groupCount, @CType("size_t") long dataSize, @CType("void *") MemorySegment pData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingCaptureReplayShaderGroupHandlesKHR");
-        try { return (int) Handles.MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR.invokeExact(handles.PFN_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR, device, pipeline, firstGroup, groupCount, dataSize, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetRayTracingCaptureReplayShaderGroupHandlesKHR", e); }
+    /// ```
+    /// VkResult vkGetRayTracingCaptureReplayShaderGroupHandlesKHR(VkDevice device, VkPipeline pipeline, uint32_t firstGroup, uint32_t groupCount, size_t dataSize, void* pData);
+    /// ```
+    public int GetRayTracingCaptureReplayShaderGroupHandlesKHR(MemorySegment device, long pipeline, int firstGroup, int groupCount, long dataSize, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingCaptureReplayShaderGroupHandlesKHR");
+        try { return (int) Handles.MH_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR.invoke(handles.PFN_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR, device, pipeline, firstGroup, groupCount, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData); }
+        catch (Throwable e) { throw new RuntimeException("error in GetRayTracingCaptureReplayShaderGroupHandlesKHR", e); }
     }
 
-    public void CmdTraceRaysIndirectKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pRaygenShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pMissShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pHitShaderBindingTable, @CType("const VkStridedDeviceAddressRegionKHR *") MemorySegment pCallableShaderBindingTable, @CType("VkDeviceAddress") long indirectDeviceAddress) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdTraceRaysIndirectKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirectKHR");
+    /// ```
+    /// void vkCmdTraceRaysIndirectKHR(VkCommandBuffer commandBuffer, const VkStridedDeviceAddressRegionKHR* pRaygenShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pMissShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pHitShaderBindingTable, const VkStridedDeviceAddressRegionKHR* pCallableShaderBindingTable, VkDeviceAddress indirectDeviceAddress);
+    /// ```
+    public void CmdTraceRaysIndirectKHR(MemorySegment commandBuffer, MemorySegment pRaygenShaderBindingTable, MemorySegment pMissShaderBindingTable, MemorySegment pHitShaderBindingTable, MemorySegment pCallableShaderBindingTable, long indirectDeviceAddress) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdTraceRaysIndirectKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirectKHR");
         try { Handles.MH_vkCmdTraceRaysIndirectKHR.invokeExact(handles.PFN_vkCmdTraceRaysIndirectKHR, commandBuffer, pRaygenShaderBindingTable, pMissShaderBindingTable, pHitShaderBindingTable, pCallableShaderBindingTable, indirectDeviceAddress); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysIndirectKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdTraceRaysIndirectKHR", e); }
     }
 
-    public @CType("VkDeviceSize") long GetRayTracingShaderGroupStackSizeKHR(@CType("VkDevice") MemorySegment device, @CType("VkPipeline") MemorySegment pipeline, @CType("uint32_t") int group, @CType("VkShaderGroupShaderKHR") int groupShader) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetRayTracingShaderGroupStackSizeKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingShaderGroupStackSizeKHR");
+    /// ```
+    /// VkDeviceSize vkGetRayTracingShaderGroupStackSizeKHR(VkDevice device, VkPipeline pipeline, uint32_t group, VkShaderGroupShaderKHR groupShader);
+    /// ```
+    public long GetRayTracingShaderGroupStackSizeKHR(MemorySegment device, long pipeline, int group, int groupShader) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetRayTracingShaderGroupStackSizeKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetRayTracingShaderGroupStackSizeKHR");
         try { return (long) Handles.MH_vkGetRayTracingShaderGroupStackSizeKHR.invokeExact(handles.PFN_vkGetRayTracingShaderGroupStackSizeKHR, device, pipeline, group, groupShader); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetRayTracingShaderGroupStackSizeKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetRayTracingShaderGroupStackSizeKHR", e); }
     }
 
-    public void CmdSetRayTracingPipelineStackSizeKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int pipelineStackSize) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetRayTracingPipelineStackSizeKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRayTracingPipelineStackSizeKHR");
+    /// ```
+    /// void vkCmdSetRayTracingPipelineStackSizeKHR(VkCommandBuffer commandBuffer, uint32_t pipelineStackSize);
+    /// ```
+    public void CmdSetRayTracingPipelineStackSizeKHR(MemorySegment commandBuffer, int pipelineStackSize) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRayTracingPipelineStackSizeKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRayTracingPipelineStackSizeKHR");
         try { Handles.MH_vkCmdSetRayTracingPipelineStackSizeKHR.invokeExact(handles.PFN_vkCmdSetRayTracingPipelineStackSizeKHR, commandBuffer, pipelineStackSize); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRayTracingPipelineStackSizeKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetRayTracingPipelineStackSizeKHR", e); }
     }
 
 }

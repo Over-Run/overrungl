@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### semaphoreCount
-/// [VarHandle][#VH_semaphoreCount] - [Getter][#semaphoreCount()] - [Setter][#semaphoreCount(int)]
-/// ### pSemaphores
-/// [VarHandle][#VH_pSemaphores] - [Getter][#pSemaphores()] - [Setter][#pSemaphores(MemorySegment)]
-/// ### pValues
-/// [VarHandle][#VH_pValues] - [Getter][#pValues()] - [Setter][#pValues(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSemaphoreWaitInfo {
+/// ```
+/// struct VkSemaphoreWaitInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkSemaphoreWaitFlags flags;
 ///     uint32_t semaphoreCount;
-///     const VkSemaphore * pSemaphores;
-///     const uint64_t * pValues;
-/// } VkSemaphoreWaitInfo;
+///     const VkSemaphore* pSemaphores;
+///     const uint64_t* pValues;
+/// };
 /// ```
-public sealed class VkSemaphoreWaitInfo extends Struct {
+public sealed class VkSemaphoreWaitInfo extends GroupType {
     /// The struct layout of `VkSemaphoreWaitInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -59,16 +45,40 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
         ValueLayout.ADDRESS.withName("pSemaphores"),
         ValueLayout.ADDRESS.withName("pValues")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `semaphoreCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `semaphoreCount`.
+    public static final long OFFSET_semaphoreCount = LAYOUT.byteOffset(PathElement.groupElement("semaphoreCount"));
+    /// The memory layout of `semaphoreCount`.
+    public static final MemoryLayout LAYOUT_semaphoreCount = LAYOUT.select(PathElement.groupElement("semaphoreCount"));
+    /// The [VarHandle] of `semaphoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphoreCount"));
+    /// The byte offset of `pSemaphores`.
+    public static final long OFFSET_pSemaphores = LAYOUT.byteOffset(PathElement.groupElement("pSemaphores"));
+    /// The memory layout of `pSemaphores`.
+    public static final MemoryLayout LAYOUT_pSemaphores = LAYOUT.select(PathElement.groupElement("pSemaphores"));
     /// The [VarHandle] of `pSemaphores` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSemaphores = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSemaphores"));
+    /// The byte offset of `pValues`.
+    public static final long OFFSET_pValues = LAYOUT.byteOffset(PathElement.groupElement("pValues"));
+    /// The memory layout of `pValues`.
+    public static final MemoryLayout LAYOUT_pValues = LAYOUT.select(PathElement.groupElement("pValues"));
     /// The [VarHandle] of `pValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pValues"));
 
@@ -79,19 +89,14 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
     /// Creates `VkSemaphoreWaitInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreWaitInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreWaitInfo(segment); }
-
-    /// Creates `VkSemaphoreWaitInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSemaphoreWaitInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreWaitInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreWaitInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSemaphoreWaitInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreWaitInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSemaphoreWaitInfo` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSemaphoreWaitInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
     /// @return the allocated `VkSemaphoreWaitInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSemaphoreWaitInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSemaphoreWaitInfo`
-    public static VkSemaphoreWaitInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSemaphoreWaitFlags") int flags, @CType("uint32_t") int semaphoreCount, @CType("const VkSemaphore *") MemorySegment pSemaphores, @CType("const uint64_t *") MemorySegment pValues) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).semaphoreCount(semaphoreCount).pSemaphores(pSemaphores).pValues(pValues); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSemaphoreWaitInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSemaphoreWaitInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSemaphoreWaitInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo sType(@CType("VkStructureType") int value) { VkSemaphoreWaitInfo.set_sType(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreWaitInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkSemaphoreWaitInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSemaphoreWaitInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo pNext(@CType("const void *") MemorySegment value) { VkSemaphoreWaitInfo.set_pNext(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSemaphoreWaitFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSemaphoreWaitFlags") int get_flags(MemorySegment segment) { return VkSemaphoreWaitInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkSemaphoreWaitFlags") int flags() { return VkSemaphoreWaitInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkSemaphoreWaitFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkSemaphoreWaitFlags") int value) { VkSemaphoreWaitInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo flags(@CType("VkSemaphoreWaitFlags") int value) { VkSemaphoreWaitInfo.set_flags(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `semaphoreCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_semaphoreCount(MemorySegment segment, long index) { return (int) VH_semaphoreCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int semaphoreCount(MemorySegment segment, long index) { return (int) VH_semaphoreCount.get(segment, 0L, index); }
     /// {@return `semaphoreCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_semaphoreCount(MemorySegment segment) { return VkSemaphoreWaitInfo.get_semaphoreCount(segment, 0L); }
-    /// {@return `semaphoreCount`}
-    public @CType("uint32_t") int semaphoreCount() { return VkSemaphoreWaitInfo.get_semaphoreCount(this.segment()); }
+    public int semaphoreCount() { return semaphoreCount(this.segment(), 0L); }
     /// Sets `semaphoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_semaphoreCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_semaphoreCount.set(segment, 0L, index, value); }
-    /// Sets `semaphoreCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_semaphoreCount(MemorySegment segment, @CType("uint32_t") int value) { VkSemaphoreWaitInfo.set_semaphoreCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void semaphoreCount(MemorySegment segment, long index, int value) { VH_semaphoreCount.set(segment, 0L, index, value); }
     /// Sets `semaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo semaphoreCount(@CType("uint32_t") int value) { VkSemaphoreWaitInfo.set_semaphoreCount(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo semaphoreCount(int value) { semaphoreCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pSemaphores` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSemaphore *") MemorySegment get_pSemaphores(MemorySegment segment, long index) { return (MemorySegment) VH_pSemaphores.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSemaphores(MemorySegment segment, long index) { return (MemorySegment) VH_pSemaphores.get(segment, 0L, index); }
     /// {@return `pSemaphores`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSemaphore *") MemorySegment get_pSemaphores(MemorySegment segment) { return VkSemaphoreWaitInfo.get_pSemaphores(segment, 0L); }
-    /// {@return `pSemaphores`}
-    public @CType("const VkSemaphore *") MemorySegment pSemaphores() { return VkSemaphoreWaitInfo.get_pSemaphores(this.segment()); }
+    public MemorySegment pSemaphores() { return pSemaphores(this.segment(), 0L); }
     /// Sets `pSemaphores` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSemaphores(MemorySegment segment, long index, @CType("const VkSemaphore *") MemorySegment value) { VH_pSemaphores.set(segment, 0L, index, value); }
-    /// Sets `pSemaphores` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSemaphores(MemorySegment segment, @CType("const VkSemaphore *") MemorySegment value) { VkSemaphoreWaitInfo.set_pSemaphores(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSemaphores(MemorySegment segment, long index, MemorySegment value) { VH_pSemaphores.set(segment, 0L, index, value); }
     /// Sets `pSemaphores` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo pSemaphores(@CType("const VkSemaphore *") MemorySegment value) { VkSemaphoreWaitInfo.set_pSemaphores(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo pSemaphores(MemorySegment value) { pSemaphores(this.segment(), 0L, value); return this; }
 
     /// {@return `pValues` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint64_t *") MemorySegment get_pValues(MemorySegment segment, long index) { return (MemorySegment) VH_pValues.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pValues(MemorySegment segment, long index) { return (MemorySegment) VH_pValues.get(segment, 0L, index); }
     /// {@return `pValues`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint64_t *") MemorySegment get_pValues(MemorySegment segment) { return VkSemaphoreWaitInfo.get_pValues(segment, 0L); }
-    /// {@return `pValues`}
-    public @CType("const uint64_t *") MemorySegment pValues() { return VkSemaphoreWaitInfo.get_pValues(this.segment()); }
+    public MemorySegment pValues() { return pValues(this.segment(), 0L); }
     /// Sets `pValues` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pValues(MemorySegment segment, long index, @CType("const uint64_t *") MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
-    /// Sets `pValues` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pValues(MemorySegment segment, @CType("const uint64_t *") MemorySegment value) { VkSemaphoreWaitInfo.set_pValues(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pValues(MemorySegment segment, long index, MemorySegment value) { VH_pValues.set(segment, 0L, index, value); }
     /// Sets `pValues` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreWaitInfo pValues(@CType("const uint64_t *") MemorySegment value) { VkSemaphoreWaitInfo.set_pValues(this.segment(), value); return this; }
+    public VkSemaphoreWaitInfo pValues(MemorySegment value) { pValues(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSemaphoreWaitInfo].
     public static final class Buffer extends VkSemaphoreWaitInfo {
@@ -287,58 +245,58 @@ public sealed class VkSemaphoreWaitInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSemaphoreWaitInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSemaphoreWaitInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSemaphoreWaitInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSemaphoreWaitInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkSemaphoreWaitFlags") int flagsAt(long index) { return VkSemaphoreWaitInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkSemaphoreWaitFlags") int value) { VkSemaphoreWaitInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `semaphoreCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int semaphoreCountAt(long index) { return VkSemaphoreWaitInfo.get_semaphoreCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int semaphoreCountAt(long index) { return semaphoreCount(this.segment(), index); }
         /// Sets `semaphoreCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreCountAt(long index, @CType("uint32_t") int value) { VkSemaphoreWaitInfo.set_semaphoreCount(this.segment(), index, value); return this; }
+        public Buffer semaphoreCountAt(long index, int value) { semaphoreCount(this.segment(), index, value); return this; }
 
         /// {@return `pSemaphores` at the given index}
-        /// @param index the index
-        public @CType("const VkSemaphore *") MemorySegment pSemaphoresAt(long index) { return VkSemaphoreWaitInfo.get_pSemaphores(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSemaphoresAt(long index) { return pSemaphores(this.segment(), index); }
         /// Sets `pSemaphores` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSemaphoresAt(long index, @CType("const VkSemaphore *") MemorySegment value) { VkSemaphoreWaitInfo.set_pSemaphores(this.segment(), index, value); return this; }
+        public Buffer pSemaphoresAt(long index, MemorySegment value) { pSemaphores(this.segment(), index, value); return this; }
 
         /// {@return `pValues` at the given index}
-        /// @param index the index
-        public @CType("const uint64_t *") MemorySegment pValuesAt(long index) { return VkSemaphoreWaitInfo.get_pValues(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pValuesAt(long index) { return pValues(this.segment(), index); }
         /// Sets `pValues` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pValuesAt(long index, @CType("const uint64_t *") MemorySegment value) { VkSemaphoreWaitInfo.set_pValues(this.segment(), index, value); return this; }
+        public Buffer pValuesAt(long index, MemorySegment value) { pValues(this.segment(), index, value); return this; }
 
     }
 }

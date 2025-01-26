@@ -78,7 +78,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetHistogramEXT(unsigned int target, GLboolean reset, unsigned int format, unsigned int type, void* values);
+    /// void glGetHistogramEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void* values);
     /// ```
     public void GetHistogramEXT(int target, boolean reset, int format, int type, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramEXT)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramEXT");
@@ -87,7 +87,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetHistogramParameterfvEXT(unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetHistogramParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterfvEXT");
@@ -96,7 +96,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetHistogramParameterivEXT(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetHistogramParameterivEXT(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetHistogramParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterivEXT");
@@ -105,7 +105,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetMinmaxEXT(unsigned int target, GLboolean reset, unsigned int format, unsigned int type, void* values);
+    /// void glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void* values);
     /// ```
     public void GetMinmaxEXT(int target, boolean reset, int format, int type, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMinmaxEXT");
@@ -114,7 +114,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetMinmaxParameterfvEXT(unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetMinmaxParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMinmaxParameterfvEXT");
@@ -123,7 +123,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glGetMinmaxParameterivEXT(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetMinmaxParameterivEXT(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetMinmaxParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMinmaxParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMinmaxParameterivEXT");
@@ -132,7 +132,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glHistogramEXT(unsigned int target, int width, unsigned int internalformat, GLboolean sink);
+    /// void glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
     /// ```
     public void HistogramEXT(int target, int width, int internalformat, boolean sink) {
         if (MemoryUtil.isNullPointer(handles.PFN_glHistogramEXT)) throw new SymbolNotFoundError("Symbol not found: glHistogramEXT");
@@ -141,7 +141,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glMinmaxEXT(unsigned int target, unsigned int internalformat, GLboolean sink);
+    /// void glMinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink);
     /// ```
     public void MinmaxEXT(int target, int internalformat, boolean sink) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMinmaxEXT)) throw new SymbolNotFoundError("Symbol not found: glMinmaxEXT");
@@ -150,7 +150,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glResetHistogramEXT(unsigned int target);
+    /// void glResetHistogramEXT(GLenum target);
     /// ```
     public void ResetHistogramEXT(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glResetHistogramEXT)) throw new SymbolNotFoundError("Symbol not found: glResetHistogramEXT");
@@ -159,7 +159,7 @@ public final class GLEXTHistogram {
     }
 
     /// ```
-    /// void glResetMinmaxEXT(unsigned int target);
+    /// void glResetMinmaxEXT(GLenum target);
     /// ```
     public void ResetMinmaxEXT(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glResetMinmaxEXT)) throw new SymbolNotFoundError("Symbol not found: glResetMinmaxEXT");

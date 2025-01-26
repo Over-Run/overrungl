@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### qualityLevel
-/// [VarHandle][#VH_qualityLevel] - [Getter][#qualityLevel()] - [Setter][#qualityLevel(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeQualityLevelInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t qualityLevel;
-/// } VkVideoEncodeQualityLevelInfoKHR;
 /// ```
-public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
+/// struct VkVideoEncodeQualityLevelInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t qualityLevel;
+/// };
+/// ```
+public sealed class VkVideoEncodeQualityLevelInfoKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeQualityLevelInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("qualityLevel")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `qualityLevel` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `qualityLevel`.
+    public static final long OFFSET_qualityLevel = LAYOUT.byteOffset(PathElement.groupElement("qualityLevel"));
+    /// The memory layout of `qualityLevel`.
+    public static final MemoryLayout LAYOUT_qualityLevel = LAYOUT.select(PathElement.groupElement("qualityLevel"));
+    /// The [VarHandle] of `qualityLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_qualityLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qualityLevel"));
 
     /// Creates `VkVideoEncodeQualityLevelInfoKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
     /// Creates `VkVideoEncodeQualityLevelInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeQualityLevelInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeQualityLevelInfoKHR(segment); }
-
-    /// Creates `VkVideoEncodeQualityLevelInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeQualityLevelInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeQualityLevelInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeQualityLevelInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeQualityLevelInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeQualityLevelInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeQualityLevelInfoKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeQualityLevelInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeQualityLevelInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeQualityLevelInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeQualityLevelInfoKHR`
-    public static VkVideoEncodeQualityLevelInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int qualityLevel) { return alloc(allocator).sType(sType).pNext(pNext).qualityLevel(qualityLevel); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeQualityLevelInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeQualityLevelInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeQualityLevelInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeQualityLevelInfoKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeQualityLevelInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeQualityLevelInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeQualityLevelInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoEncodeQualityLevelInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoEncodeQualityLevelInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeQualityLevelInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoEncodeQualityLevelInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeQualityLevelInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `qualityLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_qualityLevel(MemorySegment segment, long index) { return (int) VH_qualityLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int qualityLevel(MemorySegment segment, long index) { return (int) VH_qualityLevel.get(segment, 0L, index); }
     /// {@return `qualityLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_qualityLevel(MemorySegment segment) { return VkVideoEncodeQualityLevelInfoKHR.get_qualityLevel(segment, 0L); }
-    /// {@return `qualityLevel`}
-    public @CType("uint32_t") int qualityLevel() { return VkVideoEncodeQualityLevelInfoKHR.get_qualityLevel(this.segment()); }
+    public int qualityLevel() { return qualityLevel(this.segment(), 0L); }
     /// Sets `qualityLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_qualityLevel(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_qualityLevel.set(segment, 0L, index, value); }
-    /// Sets `qualityLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_qualityLevel(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeQualityLevelInfoKHR.set_qualityLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void qualityLevel(MemorySegment segment, long index, int value) { VH_qualityLevel.set(segment, 0L, index, value); }
     /// Sets `qualityLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeQualityLevelInfoKHR qualityLevel(@CType("uint32_t") int value) { VkVideoEncodeQualityLevelInfoKHR.set_qualityLevel(this.segment(), value); return this; }
+    public VkVideoEncodeQualityLevelInfoKHR qualityLevel(int value) { qualityLevel(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeQualityLevelInfoKHR].
     public static final class Buffer extends VkVideoEncodeQualityLevelInfoKHR {
@@ -200,31 +173,31 @@ public sealed class VkVideoEncodeQualityLevelInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeQualityLevelInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeQualityLevelInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoEncodeQualityLevelInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoEncodeQualityLevelInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `qualityLevel` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int qualityLevelAt(long index) { return VkVideoEncodeQualityLevelInfoKHR.get_qualityLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int qualityLevelAt(long index) { return qualityLevel(this.segment(), index); }
         /// Sets `qualityLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer qualityLevelAt(long index, @CType("uint32_t") int value) { VkVideoEncodeQualityLevelInfoKHR.set_qualityLevel(this.segment(), index, value); return this; }
+        public Buffer qualityLevelAt(long index, int value) { qualityLevel(this.segment(), index, value); return this; }
 
     }
 }

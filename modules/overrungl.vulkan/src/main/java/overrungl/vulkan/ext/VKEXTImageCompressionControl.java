@@ -18,11 +18,9 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.vulkan.VK14.*;
 public class VKEXTImageCompressionControl {
     public static final int VK_IMAGE_COMPRESSION_DEFAULT_EXT = 0;
     public static final int VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT = 0x00000001;
@@ -57,27 +55,30 @@ public class VKEXTImageCompressionControl {
     public static final String VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME = "VK_EXT_image_compression_control";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_FEATURES_EXT = 1000338000;
     public static final int VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT = 1000338001;
+    public static final int VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2_EXT = 1000338002;
+    public static final int VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_EXT = 1000338003;
     public static final int VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT = 1000338004;
     public static final int VK_ERROR_COMPRESSION_EXHAUSTED_EXT = -1000338000;
-    public static final int VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2_EXT = VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2;
-    public static final int VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2_EXT = VK_STRUCTURE_TYPE_IMAGE_SUBRESOURCE_2;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageSubresourceLayout2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetImageSubresourceLayout2EXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetImageSubresourceLayout2EXT = func.invoke(device, "vkGetImageSubresourceLayout2EXT", "vkGetImageSubresourceLayout2");
         }
     }
 
-    public VKEXTImageCompressionControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTImageCompressionControl(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void GetImageSubresourceLayout2EXT(@CType("VkDevice") MemorySegment device, @CType("VkImage") MemorySegment image, @CType("const VkImageSubresource2 *") MemorySegment pSubresource, @CType("VkSubresourceLayout2 *") MemorySegment pLayout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageSubresourceLayout2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
+    /// ```
+    /// void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
+    /// ```
+    public void GetImageSubresourceLayout2EXT(MemorySegment device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetImageSubresourceLayout2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
         try { Handles.MH_vkGetImageSubresourceLayout2EXT.invokeExact(handles.PFN_vkGetImageSubresourceLayout2EXT, device, image, pSubresource, pLayout); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2EXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetImageSubresourceLayout2EXT", e); }
     }
 
 }

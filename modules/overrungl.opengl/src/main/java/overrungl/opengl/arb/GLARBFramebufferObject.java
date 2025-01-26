@@ -167,7 +167,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// GLboolean glIsRenderbuffer(unsigned int renderbuffer);
+    /// GLboolean glIsRenderbuffer(GLuint renderbuffer);
     /// ```
     public boolean IsRenderbuffer(int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsRenderbuffer)) throw new SymbolNotFoundError("Symbol not found: glIsRenderbuffer");
@@ -176,7 +176,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glBindRenderbuffer(unsigned int target, unsigned int renderbuffer);
+    /// void glBindRenderbuffer(GLenum target, GLuint renderbuffer);
     /// ```
     public void BindRenderbuffer(int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindRenderbuffer)) throw new SymbolNotFoundError("Symbol not found: glBindRenderbuffer");
@@ -185,7 +185,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glDeleteRenderbuffers(int n, const GLuint* renderbuffers);
+    /// void glDeleteRenderbuffers(GLsizei n, const GLuint* renderbuffers);
     /// ```
     public void DeleteRenderbuffers(int n, MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteRenderbuffers)) throw new SymbolNotFoundError("Symbol not found: glDeleteRenderbuffers");
@@ -194,7 +194,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glGenRenderbuffers(int n, GLuint* renderbuffers);
+    /// void glGenRenderbuffers(GLsizei n, GLuint* renderbuffers);
     /// ```
     public void GenRenderbuffers(int n, MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenRenderbuffers)) throw new SymbolNotFoundError("Symbol not found: glGenRenderbuffers");
@@ -203,7 +203,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glRenderbufferStorage(unsigned int target, unsigned int internalformat, int width, int height);
+    /// void glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void RenderbufferStorage(int target, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorage)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorage");
@@ -212,7 +212,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glGetRenderbufferParameteriv(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetRenderbufferParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetRenderbufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetRenderbufferParameteriv");
@@ -221,7 +221,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// GLboolean glIsFramebuffer(unsigned int framebuffer);
+    /// GLboolean glIsFramebuffer(GLuint framebuffer);
     /// ```
     public boolean IsFramebuffer(int framebuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glIsFramebuffer");
@@ -230,7 +230,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glBindFramebuffer(unsigned int target, unsigned int framebuffer);
+    /// void glBindFramebuffer(GLenum target, GLuint framebuffer);
     /// ```
     public void BindFramebuffer(int target, int framebuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glBindFramebuffer");
@@ -239,7 +239,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glDeleteFramebuffers(int n, const GLuint* framebuffers);
+    /// void glDeleteFramebuffers(GLsizei n, const GLuint* framebuffers);
     /// ```
     public void DeleteFramebuffers(int n, MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFramebuffers)) throw new SymbolNotFoundError("Symbol not found: glDeleteFramebuffers");
@@ -248,7 +248,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glGenFramebuffers(int n, GLuint* framebuffers);
+    /// void glGenFramebuffers(GLsizei n, GLuint* framebuffers);
     /// ```
     public void GenFramebuffers(int n, MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFramebuffers)) throw new SymbolNotFoundError("Symbol not found: glGenFramebuffers");
@@ -257,7 +257,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// unsigned int glCheckFramebufferStatus(unsigned int target);
+    /// GLenum glCheckFramebufferStatus(GLenum target);
     /// ```
     public int CheckFramebufferStatus(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCheckFramebufferStatus)) throw new SymbolNotFoundError("Symbol not found: glCheckFramebufferStatus");
@@ -266,7 +266,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glFramebufferTexture1D(unsigned int target, unsigned int attachment, unsigned int textarget, unsigned int texture, int level);
+    /// void glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
     /// ```
     public void FramebufferTexture1D(int target, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture1D)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture1D");
@@ -275,7 +275,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glFramebufferTexture2D(unsigned int target, unsigned int attachment, unsigned int textarget, unsigned int texture, int level);
+    /// void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
     /// ```
     public void FramebufferTexture2D(int target, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture2D)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture2D");
@@ -284,7 +284,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glFramebufferTexture3D(unsigned int target, unsigned int attachment, unsigned int textarget, unsigned int texture, int level, int zoffset);
+    /// void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
     /// ```
     public void FramebufferTexture3D(int target, int attachment, int textarget, int texture, int level, int zoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture3D)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture3D");
@@ -293,7 +293,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glFramebufferRenderbuffer(unsigned int target, unsigned int attachment, unsigned int renderbuffertarget, unsigned int renderbuffer);
+    /// void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
     /// ```
     public void FramebufferRenderbuffer(int target, int attachment, int renderbuffertarget, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferRenderbuffer)) throw new SymbolNotFoundError("Symbol not found: glFramebufferRenderbuffer");
@@ -302,7 +302,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glGetFramebufferAttachmentParameteriv(unsigned int target, unsigned int attachment, unsigned int pname, GLint* params);
+    /// void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferAttachmentParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferAttachmentParameteriv");
@@ -311,7 +311,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glGenerateMipmap(unsigned int target);
+    /// void glGenerateMipmap(GLenum target);
     /// ```
     public void GenerateMipmap(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMipmap)) throw new SymbolNotFoundError("Symbol not found: glGenerateMipmap");
@@ -320,7 +320,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glBlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, unsigned int mask, unsigned int filter);
+    /// void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
     /// ```
     public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebuffer");
@@ -329,7 +329,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glRenderbufferStorageMultisample(unsigned int target, int samples, unsigned int internalformat, int width, int height);
+    /// void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void RenderbufferStorageMultisample(int target, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisample)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisample");
@@ -338,7 +338,7 @@ public final class GLARBFramebufferObject {
     }
 
     /// ```
-    /// void glFramebufferTextureLayer(unsigned int target, unsigned int attachment, unsigned int texture, int level, int layer);
+    /// void glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
     /// ```
     public void FramebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayer)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayer");

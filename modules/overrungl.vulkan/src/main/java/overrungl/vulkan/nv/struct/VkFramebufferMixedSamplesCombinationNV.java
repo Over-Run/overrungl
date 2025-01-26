@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### coverageReductionMode
-/// [VarHandle][#VH_coverageReductionMode] - [Getter][#coverageReductionMode()] - [Setter][#coverageReductionMode(int)]
-/// ### rasterizationSamples
-/// [VarHandle][#VH_rasterizationSamples] - [Getter][#rasterizationSamples()] - [Setter][#rasterizationSamples(int)]
-/// ### depthStencilSamples
-/// [VarHandle][#VH_depthStencilSamples] - [Getter][#depthStencilSamples()] - [Setter][#depthStencilSamples(int)]
-/// ### colorSamples
-/// [VarHandle][#VH_colorSamples] - [Getter][#colorSamples()] - [Setter][#colorSamples(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkFramebufferMixedSamplesCombinationNV {
+/// ```
+/// struct VkFramebufferMixedSamplesCombinationNV {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkCoverageReductionModeNV coverageReductionMode;
 ///     VkSampleCountFlagBits rasterizationSamples;
 ///     VkSampleCountFlags depthStencilSamples;
 ///     VkSampleCountFlags colorSamples;
-/// } VkFramebufferMixedSamplesCombinationNV;
+/// };
 /// ```
-public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
+public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// The struct layout of `VkFramebufferMixedSamplesCombinationNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("coverageReductionMode"),
@@ -59,17 +45,41 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
         ValueLayout.JAVA_INT.withName("depthStencilSamples"),
         ValueLayout.JAVA_INT.withName("colorSamples")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `coverageReductionMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `coverageReductionMode`.
+    public static final long OFFSET_coverageReductionMode = LAYOUT.byteOffset(PathElement.groupElement("coverageReductionMode"));
+    /// The memory layout of `coverageReductionMode`.
+    public static final MemoryLayout LAYOUT_coverageReductionMode = LAYOUT.select(PathElement.groupElement("coverageReductionMode"));
+    /// The [VarHandle] of `coverageReductionMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_coverageReductionMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageReductionMode"));
-    /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `rasterizationSamples`.
+    public static final long OFFSET_rasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("rasterizationSamples"));
+    /// The memory layout of `rasterizationSamples`.
+    public static final MemoryLayout LAYOUT_rasterizationSamples = LAYOUT.select(PathElement.groupElement("rasterizationSamples"));
+    /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_rasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples"));
-    /// The [VarHandle] of `depthStencilSamples` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthStencilSamples`.
+    public static final long OFFSET_depthStencilSamples = LAYOUT.byteOffset(PathElement.groupElement("depthStencilSamples"));
+    /// The memory layout of `depthStencilSamples`.
+    public static final MemoryLayout LAYOUT_depthStencilSamples = LAYOUT.select(PathElement.groupElement("depthStencilSamples"));
+    /// The [VarHandle] of `depthStencilSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthStencilSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilSamples"));
-    /// The [VarHandle] of `colorSamples` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `colorSamples`.
+    public static final long OFFSET_colorSamples = LAYOUT.byteOffset(PathElement.groupElement("colorSamples"));
+    /// The memory layout of `colorSamples`.
+    public static final MemoryLayout LAYOUT_colorSamples = LAYOUT.select(PathElement.groupElement("colorSamples"));
+    /// The [VarHandle] of `colorSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_colorSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSamples"));
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFramebufferMixedSamplesCombinationNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment); }
-
-    /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFramebufferMixedSamplesCombinationNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkFramebufferMixedSamplesCombinationNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
     /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkCoverageReductionModeNV") int coverageReductionMode, @CType("VkSampleCountFlagBits") int rasterizationSamples, @CType("VkSampleCountFlags") int depthStencilSamples, @CType("VkSampleCountFlags") int colorSamples) { return alloc(allocator).sType(sType).pNext(pNext).coverageReductionMode(coverageReductionMode).rasterizationSamples(rasterizationSamples).depthStencilSamples(depthStencilSamples).colorSamples(colorSamples); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkFramebufferMixedSamplesCombinationNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkFramebufferMixedSamplesCombinationNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV sType(@CType("VkStructureType") int value) { VkFramebufferMixedSamplesCombinationNV.set_sType(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkFramebufferMixedSamplesCombinationNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkFramebufferMixedSamplesCombinationNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV pNext(@CType("void *") MemorySegment value) { VkFramebufferMixedSamplesCombinationNV.set_pNext(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `coverageReductionMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkCoverageReductionModeNV") int get_coverageReductionMode(MemorySegment segment, long index) { return (int) VH_coverageReductionMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int coverageReductionMode(MemorySegment segment, long index) { return (int) VH_coverageReductionMode.get(segment, 0L, index); }
     /// {@return `coverageReductionMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkCoverageReductionModeNV") int get_coverageReductionMode(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_coverageReductionMode(segment, 0L); }
-    /// {@return `coverageReductionMode`}
-    public @CType("VkCoverageReductionModeNV") int coverageReductionMode() { return VkFramebufferMixedSamplesCombinationNV.get_coverageReductionMode(this.segment()); }
+    public int coverageReductionMode() { return coverageReductionMode(this.segment(), 0L); }
     /// Sets `coverageReductionMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_coverageReductionMode(MemorySegment segment, long index, @CType("VkCoverageReductionModeNV") int value) { VH_coverageReductionMode.set(segment, 0L, index, value); }
-    /// Sets `coverageReductionMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_coverageReductionMode(MemorySegment segment, @CType("VkCoverageReductionModeNV") int value) { VkFramebufferMixedSamplesCombinationNV.set_coverageReductionMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void coverageReductionMode(MemorySegment segment, long index, int value) { VH_coverageReductionMode.set(segment, 0L, index, value); }
     /// Sets `coverageReductionMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV coverageReductionMode(@CType("VkCoverageReductionModeNV") int value) { VkFramebufferMixedSamplesCombinationNV.set_coverageReductionMode(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV coverageReductionMode(int value) { coverageReductionMode(this.segment(), 0L, value); return this; }
 
     /// {@return `rasterizationSamples` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
     /// {@return `rasterizationSamples`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_rasterizationSamples(segment, 0L); }
-    /// {@return `rasterizationSamples`}
-    public @CType("VkSampleCountFlagBits") int rasterizationSamples() { return VkFramebufferMixedSamplesCombinationNV.get_rasterizationSamples(this.segment()); }
+    public int rasterizationSamples() { return rasterizationSamples(this.segment(), 0L); }
     /// Sets `rasterizationSamples` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_rasterizationSamples(MemorySegment segment, long index, @CType("VkSampleCountFlagBits") int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
-    /// Sets `rasterizationSamples` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_rasterizationSamples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkFramebufferMixedSamplesCombinationNV.set_rasterizationSamples(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void rasterizationSamples(MemorySegment segment, long index, int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
     /// Sets `rasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(@CType("VkSampleCountFlagBits") int value) { VkFramebufferMixedSamplesCombinationNV.set_rasterizationSamples(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV rasterizationSamples(int value) { rasterizationSamples(this.segment(), 0L, value); return this; }
 
     /// {@return `depthStencilSamples` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampleCountFlags") int get_depthStencilSamples(MemorySegment segment, long index) { return (int) VH_depthStencilSamples.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthStencilSamples(MemorySegment segment, long index) { return (int) VH_depthStencilSamples.get(segment, 0L, index); }
     /// {@return `depthStencilSamples`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampleCountFlags") int get_depthStencilSamples(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_depthStencilSamples(segment, 0L); }
-    /// {@return `depthStencilSamples`}
-    public @CType("VkSampleCountFlags") int depthStencilSamples() { return VkFramebufferMixedSamplesCombinationNV.get_depthStencilSamples(this.segment()); }
+    public int depthStencilSamples() { return depthStencilSamples(this.segment(), 0L); }
     /// Sets `depthStencilSamples` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthStencilSamples(MemorySegment segment, long index, @CType("VkSampleCountFlags") int value) { VH_depthStencilSamples.set(segment, 0L, index, value); }
-    /// Sets `depthStencilSamples` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthStencilSamples(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_depthStencilSamples(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthStencilSamples(MemorySegment segment, long index, int value) { VH_depthStencilSamples.set(segment, 0L, index, value); }
     /// Sets `depthStencilSamples` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(@CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_depthStencilSamples(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV depthStencilSamples(int value) { depthStencilSamples(this.segment(), 0L, value); return this; }
 
     /// {@return `colorSamples` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampleCountFlags") int get_colorSamples(MemorySegment segment, long index) { return (int) VH_colorSamples.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int colorSamples(MemorySegment segment, long index) { return (int) VH_colorSamples.get(segment, 0L, index); }
     /// {@return `colorSamples`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampleCountFlags") int get_colorSamples(MemorySegment segment) { return VkFramebufferMixedSamplesCombinationNV.get_colorSamples(segment, 0L); }
-    /// {@return `colorSamples`}
-    public @CType("VkSampleCountFlags") int colorSamples() { return VkFramebufferMixedSamplesCombinationNV.get_colorSamples(this.segment()); }
+    public int colorSamples() { return colorSamples(this.segment(), 0L); }
     /// Sets `colorSamples` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_colorSamples(MemorySegment segment, long index, @CType("VkSampleCountFlags") int value) { VH_colorSamples.set(segment, 0L, index, value); }
-    /// Sets `colorSamples` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_colorSamples(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_colorSamples(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void colorSamples(MemorySegment segment, long index, int value) { VH_colorSamples.set(segment, 0L, index, value); }
     /// Sets `colorSamples` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFramebufferMixedSamplesCombinationNV colorSamples(@CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_colorSamples(this.segment(), value); return this; }
+    public VkFramebufferMixedSamplesCombinationNV colorSamples(int value) { colorSamples(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkFramebufferMixedSamplesCombinationNV].
     public static final class Buffer extends VkFramebufferMixedSamplesCombinationNV {
@@ -287,58 +245,58 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkFramebufferMixedSamplesCombinationNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkFramebufferMixedSamplesCombinationNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `coverageReductionMode` at the given index}
-        /// @param index the index
-        public @CType("VkCoverageReductionModeNV") int coverageReductionModeAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_coverageReductionMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int coverageReductionModeAt(long index) { return coverageReductionMode(this.segment(), index); }
         /// Sets `coverageReductionMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer coverageReductionModeAt(long index, @CType("VkCoverageReductionModeNV") int value) { VkFramebufferMixedSamplesCombinationNV.set_coverageReductionMode(this.segment(), index, value); return this; }
+        public Buffer coverageReductionModeAt(long index, int value) { coverageReductionMode(this.segment(), index, value); return this; }
 
         /// {@return `rasterizationSamples` at the given index}
-        /// @param index the index
-        public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_rasterizationSamples(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int rasterizationSamplesAt(long index) { return rasterizationSamples(this.segment(), index); }
         /// Sets `rasterizationSamples` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkFramebufferMixedSamplesCombinationNV.set_rasterizationSamples(this.segment(), index, value); return this; }
+        public Buffer rasterizationSamplesAt(long index, int value) { rasterizationSamples(this.segment(), index, value); return this; }
 
         /// {@return `depthStencilSamples` at the given index}
-        /// @param index the index
-        public @CType("VkSampleCountFlags") int depthStencilSamplesAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_depthStencilSamples(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthStencilSamplesAt(long index) { return depthStencilSamples(this.segment(), index); }
         /// Sets `depthStencilSamples` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthStencilSamplesAt(long index, @CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_depthStencilSamples(this.segment(), index, value); return this; }
+        public Buffer depthStencilSamplesAt(long index, int value) { depthStencilSamples(this.segment(), index, value); return this; }
 
         /// {@return `colorSamples` at the given index}
-        /// @param index the index
-        public @CType("VkSampleCountFlags") int colorSamplesAt(long index) { return VkFramebufferMixedSamplesCombinationNV.get_colorSamples(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int colorSamplesAt(long index) { return colorSamples(this.segment(), index); }
         /// Sets `colorSamples` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer colorSamplesAt(long index, @CType("VkSampleCountFlags") int value) { VkFramebufferMixedSamplesCombinationNV.set_colorSamples(this.segment(), index, value); return this; }
+        public Buffer colorSamplesAt(long index, int value) { colorSamples(this.segment(), index, value); return this; }
 
     }
 }

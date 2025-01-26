@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### shaderTileImageColorReadAccess
-/// [VarHandle][#VH_shaderTileImageColorReadAccess] - [Getter][#shaderTileImageColorReadAccess()] - [Setter][#shaderTileImageColorReadAccess(int)]
-/// ### shaderTileImageDepthReadAccess
-/// [VarHandle][#VH_shaderTileImageDepthReadAccess] - [Getter][#shaderTileImageDepthReadAccess()] - [Setter][#shaderTileImageDepthReadAccess(int)]
-/// ### shaderTileImageStencilReadAccess
-/// [VarHandle][#VH_shaderTileImageStencilReadAccess] - [Getter][#shaderTileImageStencilReadAccess()] - [Setter][#shaderTileImageStencilReadAccess(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceShaderTileImageFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceShaderTileImageFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 shaderTileImageColorReadAccess;
 ///     VkBool32 shaderTileImageDepthReadAccess;
 ///     VkBool32 shaderTileImageStencilReadAccess;
-/// } VkPhysicalDeviceShaderTileImageFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderTileImageFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderTileImageColorReadAccess"),
         ValueLayout.JAVA_INT.withName("shaderTileImageDepthReadAccess"),
         ValueLayout.JAVA_INT.withName("shaderTileImageStencilReadAccess")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderTileImageColorReadAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderTileImageColorReadAccess`.
+    public static final long OFFSET_shaderTileImageColorReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageColorReadAccess"));
+    /// The memory layout of `shaderTileImageColorReadAccess`.
+    public static final MemoryLayout LAYOUT_shaderTileImageColorReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageColorReadAccess"));
+    /// The [VarHandle] of `shaderTileImageColorReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderTileImageColorReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageColorReadAccess"));
-    /// The [VarHandle] of `shaderTileImageDepthReadAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderTileImageDepthReadAccess`.
+    public static final long OFFSET_shaderTileImageDepthReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageDepthReadAccess"));
+    /// The memory layout of `shaderTileImageDepthReadAccess`.
+    public static final MemoryLayout LAYOUT_shaderTileImageDepthReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageDepthReadAccess"));
+    /// The [VarHandle] of `shaderTileImageDepthReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderTileImageDepthReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageDepthReadAccess"));
-    /// The [VarHandle] of `shaderTileImageStencilReadAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderTileImageStencilReadAccess`.
+    public static final long OFFSET_shaderTileImageStencilReadAccess = LAYOUT.byteOffset(PathElement.groupElement("shaderTileImageStencilReadAccess"));
+    /// The memory layout of `shaderTileImageStencilReadAccess`.
+    public static final MemoryLayout LAYOUT_shaderTileImageStencilReadAccess = LAYOUT.select(PathElement.groupElement("shaderTileImageStencilReadAccess"));
+    /// The [VarHandle] of `shaderTileImageStencilReadAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderTileImageStencilReadAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTileImageStencilReadAccess"));
 
     /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceShaderTileImageFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTileImageFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int shaderTileImageColorReadAccess, @CType("VkBool32") int shaderTileImageDepthReadAccess, @CType("VkBool32") int shaderTileImageStencilReadAccess) { return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageColorReadAccess(shaderTileImageColorReadAccess).shaderTileImageDepthReadAccess(shaderTileImageDepthReadAccess).shaderTileImageStencilReadAccess(shaderTileImageStencilReadAccess); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderTileImageFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderTileImageFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderTileImageFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderTileImageFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderTileImageColorReadAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderTileImageColorReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageColorReadAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderTileImageColorReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageColorReadAccess.get(segment, 0L, index); }
     /// {@return `shaderTileImageColorReadAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderTileImageColorReadAccess(MemorySegment segment) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageColorReadAccess(segment, 0L); }
-    /// {@return `shaderTileImageColorReadAccess`}
-    public @CType("VkBool32") int shaderTileImageColorReadAccess() { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageColorReadAccess(this.segment()); }
+    public int shaderTileImageColorReadAccess() { return shaderTileImageColorReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageColorReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderTileImageColorReadAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderTileImageColorReadAccess.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageColorReadAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderTileImageColorReadAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageColorReadAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderTileImageColorReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageColorReadAccess.set(segment, 0L, index, value); }
     /// Sets `shaderTileImageColorReadAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageColorReadAccess(@CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageColorReadAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageColorReadAccess(int value) { shaderTileImageColorReadAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderTileImageDepthReadAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderTileImageDepthReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageDepthReadAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderTileImageDepthReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageDepthReadAccess.get(segment, 0L, index); }
     /// {@return `shaderTileImageDepthReadAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderTileImageDepthReadAccess(MemorySegment segment) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageDepthReadAccess(segment, 0L); }
-    /// {@return `shaderTileImageDepthReadAccess`}
-    public @CType("VkBool32") int shaderTileImageDepthReadAccess() { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageDepthReadAccess(this.segment()); }
+    public int shaderTileImageDepthReadAccess() { return shaderTileImageDepthReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageDepthReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderTileImageDepthReadAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderTileImageDepthReadAccess.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageDepthReadAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderTileImageDepthReadAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageDepthReadAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderTileImageDepthReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageDepthReadAccess.set(segment, 0L, index, value); }
     /// Sets `shaderTileImageDepthReadAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageDepthReadAccess(@CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageDepthReadAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageDepthReadAccess(int value) { shaderTileImageDepthReadAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderTileImageStencilReadAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderTileImageStencilReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageStencilReadAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderTileImageStencilReadAccess(MemorySegment segment, long index) { return (int) VH_shaderTileImageStencilReadAccess.get(segment, 0L, index); }
     /// {@return `shaderTileImageStencilReadAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderTileImageStencilReadAccess(MemorySegment segment) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageStencilReadAccess(segment, 0L); }
-    /// {@return `shaderTileImageStencilReadAccess`}
-    public @CType("VkBool32") int shaderTileImageStencilReadAccess() { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageStencilReadAccess(this.segment()); }
+    public int shaderTileImageStencilReadAccess() { return shaderTileImageStencilReadAccess(this.segment(), 0L); }
     /// Sets `shaderTileImageStencilReadAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderTileImageStencilReadAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderTileImageStencilReadAccess.set(segment, 0L, index, value); }
-    /// Sets `shaderTileImageStencilReadAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderTileImageStencilReadAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageStencilReadAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderTileImageStencilReadAccess(MemorySegment segment, long index, int value) { VH_shaderTileImageStencilReadAccess.set(segment, 0L, index, value); }
     /// Sets `shaderTileImageStencilReadAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageStencilReadAccess(@CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageStencilReadAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderTileImageFeaturesEXT shaderTileImageStencilReadAccess(int value) { shaderTileImageStencilReadAccess(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceShaderTileImageFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceShaderTileImageFeaturesEXT {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceShaderTileImageFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderTileImageColorReadAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderTileImageColorReadAccessAt(long index) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageColorReadAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderTileImageColorReadAccessAt(long index) { return shaderTileImageColorReadAccess(this.segment(), index); }
         /// Sets `shaderTileImageColorReadAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderTileImageColorReadAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageColorReadAccess(this.segment(), index, value); return this; }
+        public Buffer shaderTileImageColorReadAccessAt(long index, int value) { shaderTileImageColorReadAccess(this.segment(), index, value); return this; }
 
         /// {@return `shaderTileImageDepthReadAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderTileImageDepthReadAccessAt(long index) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageDepthReadAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderTileImageDepthReadAccessAt(long index) { return shaderTileImageDepthReadAccess(this.segment(), index); }
         /// Sets `shaderTileImageDepthReadAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderTileImageDepthReadAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageDepthReadAccess(this.segment(), index, value); return this; }
+        public Buffer shaderTileImageDepthReadAccessAt(long index, int value) { shaderTileImageDepthReadAccess(this.segment(), index, value); return this; }
 
         /// {@return `shaderTileImageStencilReadAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderTileImageStencilReadAccessAt(long index) { return VkPhysicalDeviceShaderTileImageFeaturesEXT.get_shaderTileImageStencilReadAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderTileImageStencilReadAccessAt(long index) { return shaderTileImageStencilReadAccess(this.segment(), index); }
         /// Sets `shaderTileImageStencilReadAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderTileImageStencilReadAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderTileImageFeaturesEXT.set_shaderTileImageStencilReadAccess(this.segment(), index, value); return this; }
+        public Buffer shaderTileImageStencilReadAccessAt(long index, int value) { shaderTileImageStencilReadAccess(this.segment(), index, value); return this; }
 
     }
 }

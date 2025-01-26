@@ -39,7 +39,7 @@ public final class GLARBClEvent {
     }
 
     /// ```
-    /// __GLsync * glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, unsigned int flags);
+    /// GLsync glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, GLbitfield flags);
     /// ```
     public MemorySegment CreateSyncFromCLeventARB(MemorySegment context, MemorySegment event, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");

@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### memory_management_control_operation
-/// [VarHandle][#VH_memory_management_control_operation] - [Getter][#memory_management_control_operation()] - [Setter][#memory_management_control_operation(int)]
-/// ### difference_of_pic_nums_minus1
-/// [VarHandle][#VH_difference_of_pic_nums_minus1] - [Getter][#difference_of_pic_nums_minus1()] - [Setter][#difference_of_pic_nums_minus1(short)]
-/// ### long_term_pic_num
-/// [VarHandle][#VH_long_term_pic_num] - [Getter][#long_term_pic_num()] - [Setter][#long_term_pic_num(short)]
-/// ### long_term_frame_idx
-/// [VarHandle][#VH_long_term_frame_idx] - [Getter][#long_term_frame_idx()] - [Setter][#long_term_frame_idx(short)]
-/// ### max_long_term_frame_idx_plus1
-/// [VarHandle][#VH_max_long_term_frame_idx_plus1] - [Getter][#max_long_term_frame_idx_plus1()] - [Setter][#max_long_term_frame_idx_plus1(short)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoEncodeH264RefPicMarkingEntry {
+/// ```
+/// struct StdVideoEncodeH264RefPicMarkingEntry {
 ///     StdVideoH264MemMgmtControlOp memory_management_control_operation;
 ///     uint16_t difference_of_pic_nums_minus1;
 ///     uint16_t long_term_pic_num;
 ///     uint16_t long_term_frame_idx;
 ///     uint16_t max_long_term_frame_idx_plus1;
-/// } StdVideoEncodeH264RefPicMarkingEntry;
+/// };
 /// ```
-public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
+public sealed class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// The struct layout of `StdVideoEncodeH264RefPicMarkingEntry`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memory_management_control_operation"),
         ValueLayout.JAVA_SHORT.withName("difference_of_pic_nums_minus1"),
         ValueLayout.JAVA_SHORT.withName("long_term_pic_num"),
         ValueLayout.JAVA_SHORT.withName("long_term_frame_idx"),
         ValueLayout.JAVA_SHORT.withName("max_long_term_frame_idx_plus1")
     );
-    /// The [VarHandle] of `memory_management_control_operation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `memory_management_control_operation`.
+    public static final long OFFSET_memory_management_control_operation = LAYOUT.byteOffset(PathElement.groupElement("memory_management_control_operation"));
+    /// The memory layout of `memory_management_control_operation`.
+    public static final MemoryLayout LAYOUT_memory_management_control_operation = LAYOUT.select(PathElement.groupElement("memory_management_control_operation"));
+    /// The [VarHandle] of `memory_management_control_operation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memory_management_control_operation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memory_management_control_operation"));
-    /// The [VarHandle] of `difference_of_pic_nums_minus1` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `difference_of_pic_nums_minus1`.
+    public static final long OFFSET_difference_of_pic_nums_minus1 = LAYOUT.byteOffset(PathElement.groupElement("difference_of_pic_nums_minus1"));
+    /// The memory layout of `difference_of_pic_nums_minus1`.
+    public static final MemoryLayout LAYOUT_difference_of_pic_nums_minus1 = LAYOUT.select(PathElement.groupElement("difference_of_pic_nums_minus1"));
+    /// The [VarHandle] of `difference_of_pic_nums_minus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_difference_of_pic_nums_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("difference_of_pic_nums_minus1"));
-    /// The [VarHandle] of `long_term_pic_num` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `long_term_pic_num`.
+    public static final long OFFSET_long_term_pic_num = LAYOUT.byteOffset(PathElement.groupElement("long_term_pic_num"));
+    /// The memory layout of `long_term_pic_num`.
+    public static final MemoryLayout LAYOUT_long_term_pic_num = LAYOUT.select(PathElement.groupElement("long_term_pic_num"));
+    /// The [VarHandle] of `long_term_pic_num` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_long_term_pic_num = LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_pic_num"));
-    /// The [VarHandle] of `long_term_frame_idx` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `long_term_frame_idx`.
+    public static final long OFFSET_long_term_frame_idx = LAYOUT.byteOffset(PathElement.groupElement("long_term_frame_idx"));
+    /// The memory layout of `long_term_frame_idx`.
+    public static final MemoryLayout LAYOUT_long_term_frame_idx = LAYOUT.select(PathElement.groupElement("long_term_frame_idx"));
+    /// The [VarHandle] of `long_term_frame_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_long_term_frame_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_frame_idx"));
-    /// The [VarHandle] of `max_long_term_frame_idx_plus1` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `max_long_term_frame_idx_plus1`.
+    public static final long OFFSET_max_long_term_frame_idx_plus1 = LAYOUT.byteOffset(PathElement.groupElement("max_long_term_frame_idx_plus1"));
+    /// The memory layout of `max_long_term_frame_idx_plus1`.
+    public static final MemoryLayout LAYOUT_max_long_term_frame_idx_plus1 = LAYOUT.select(PathElement.groupElement("max_long_term_frame_idx_plus1"));
+    /// The [VarHandle] of `max_long_term_frame_idx_plus1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_max_long_term_frame_idx_plus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_long_term_frame_idx_plus1"));
 
     /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
@@ -73,19 +81,14 @@ public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
     /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264RefPicMarkingEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264RefPicMarkingEntry(segment); }
-
-    /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264RefPicMarkingEntry ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264RefPicMarkingEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoEncodeH264RefPicMarkingEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264RefPicMarkingEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoEncodeH264RefPicMarkingEntry` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
     /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, @CType("StdVideoH264MemMgmtControlOp") int memory_management_control_operation, @CType("uint16_t") short difference_of_pic_nums_minus1, @CType("uint16_t") short long_term_pic_num, @CType("uint16_t") short long_term_frame_idx, @CType("uint16_t") short max_long_term_frame_idx_plus1) { return alloc(allocator).memory_management_control_operation(memory_management_control_operation).difference_of_pic_nums_minus1(difference_of_pic_nums_minus1).long_term_pic_num(long_term_pic_num).long_term_frame_idx(long_term_frame_idx).max_long_term_frame_idx_plus1(max_long_term_frame_idx_plus1); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `memory_management_control_operation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoH264MemMgmtControlOp") int get_memory_management_control_operation(MemorySegment segment, long index) { return (int) VH_memory_management_control_operation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memory_management_control_operation(MemorySegment segment, long index) { return (int) VH_memory_management_control_operation.get(segment, 0L, index); }
     /// {@return `memory_management_control_operation`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoH264MemMgmtControlOp") int get_memory_management_control_operation(MemorySegment segment) { return StdVideoEncodeH264RefPicMarkingEntry.get_memory_management_control_operation(segment, 0L); }
-    /// {@return `memory_management_control_operation`}
-    public @CType("StdVideoH264MemMgmtControlOp") int memory_management_control_operation() { return StdVideoEncodeH264RefPicMarkingEntry.get_memory_management_control_operation(this.segment()); }
+    public int memory_management_control_operation() { return memory_management_control_operation(this.segment(), 0L); }
     /// Sets `memory_management_control_operation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memory_management_control_operation(MemorySegment segment, long index, @CType("StdVideoH264MemMgmtControlOp") int value) { VH_memory_management_control_operation.set(segment, 0L, index, value); }
-    /// Sets `memory_management_control_operation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memory_management_control_operation(MemorySegment segment, @CType("StdVideoH264MemMgmtControlOp") int value) { StdVideoEncodeH264RefPicMarkingEntry.set_memory_management_control_operation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memory_management_control_operation(MemorySegment segment, long index, int value) { VH_memory_management_control_operation.set(segment, 0L, index, value); }
     /// Sets `memory_management_control_operation` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264RefPicMarkingEntry memory_management_control_operation(@CType("StdVideoH264MemMgmtControlOp") int value) { StdVideoEncodeH264RefPicMarkingEntry.set_memory_management_control_operation(this.segment(), value); return this; }
+    public StdVideoEncodeH264RefPicMarkingEntry memory_management_control_operation(int value) { memory_management_control_operation(this.segment(), 0L, value); return this; }
 
     /// {@return `difference_of_pic_nums_minus1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint16_t") short get_difference_of_pic_nums_minus1(MemorySegment segment, long index) { return (short) VH_difference_of_pic_nums_minus1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short difference_of_pic_nums_minus1(MemorySegment segment, long index) { return (short) VH_difference_of_pic_nums_minus1.get(segment, 0L, index); }
     /// {@return `difference_of_pic_nums_minus1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint16_t") short get_difference_of_pic_nums_minus1(MemorySegment segment) { return StdVideoEncodeH264RefPicMarkingEntry.get_difference_of_pic_nums_minus1(segment, 0L); }
-    /// {@return `difference_of_pic_nums_minus1`}
-    public @CType("uint16_t") short difference_of_pic_nums_minus1() { return StdVideoEncodeH264RefPicMarkingEntry.get_difference_of_pic_nums_minus1(this.segment()); }
+    public short difference_of_pic_nums_minus1() { return difference_of_pic_nums_minus1(this.segment(), 0L); }
     /// Sets `difference_of_pic_nums_minus1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_difference_of_pic_nums_minus1(MemorySegment segment, long index, @CType("uint16_t") short value) { VH_difference_of_pic_nums_minus1.set(segment, 0L, index, value); }
-    /// Sets `difference_of_pic_nums_minus1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_difference_of_pic_nums_minus1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_difference_of_pic_nums_minus1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void difference_of_pic_nums_minus1(MemorySegment segment, long index, short value) { VH_difference_of_pic_nums_minus1.set(segment, 0L, index, value); }
     /// Sets `difference_of_pic_nums_minus1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264RefPicMarkingEntry difference_of_pic_nums_minus1(@CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_difference_of_pic_nums_minus1(this.segment(), value); return this; }
+    public StdVideoEncodeH264RefPicMarkingEntry difference_of_pic_nums_minus1(short value) { difference_of_pic_nums_minus1(this.segment(), 0L, value); return this; }
 
     /// {@return `long_term_pic_num` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint16_t") short get_long_term_pic_num(MemorySegment segment, long index) { return (short) VH_long_term_pic_num.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short long_term_pic_num(MemorySegment segment, long index) { return (short) VH_long_term_pic_num.get(segment, 0L, index); }
     /// {@return `long_term_pic_num`}
-    /// @param segment the segment of the struct
-    public static @CType("uint16_t") short get_long_term_pic_num(MemorySegment segment) { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_pic_num(segment, 0L); }
-    /// {@return `long_term_pic_num`}
-    public @CType("uint16_t") short long_term_pic_num() { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_pic_num(this.segment()); }
+    public short long_term_pic_num() { return long_term_pic_num(this.segment(), 0L); }
     /// Sets `long_term_pic_num` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_long_term_pic_num(MemorySegment segment, long index, @CType("uint16_t") short value) { VH_long_term_pic_num.set(segment, 0L, index, value); }
-    /// Sets `long_term_pic_num` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_long_term_pic_num(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_pic_num(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void long_term_pic_num(MemorySegment segment, long index, short value) { VH_long_term_pic_num.set(segment, 0L, index, value); }
     /// Sets `long_term_pic_num` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264RefPicMarkingEntry long_term_pic_num(@CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_pic_num(this.segment(), value); return this; }
+    public StdVideoEncodeH264RefPicMarkingEntry long_term_pic_num(short value) { long_term_pic_num(this.segment(), 0L, value); return this; }
 
     /// {@return `long_term_frame_idx` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint16_t") short get_long_term_frame_idx(MemorySegment segment, long index) { return (short) VH_long_term_frame_idx.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short long_term_frame_idx(MemorySegment segment, long index) { return (short) VH_long_term_frame_idx.get(segment, 0L, index); }
     /// {@return `long_term_frame_idx`}
-    /// @param segment the segment of the struct
-    public static @CType("uint16_t") short get_long_term_frame_idx(MemorySegment segment) { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_frame_idx(segment, 0L); }
-    /// {@return `long_term_frame_idx`}
-    public @CType("uint16_t") short long_term_frame_idx() { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_frame_idx(this.segment()); }
+    public short long_term_frame_idx() { return long_term_frame_idx(this.segment(), 0L); }
     /// Sets `long_term_frame_idx` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_long_term_frame_idx(MemorySegment segment, long index, @CType("uint16_t") short value) { VH_long_term_frame_idx.set(segment, 0L, index, value); }
-    /// Sets `long_term_frame_idx` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_long_term_frame_idx(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_frame_idx(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void long_term_frame_idx(MemorySegment segment, long index, short value) { VH_long_term_frame_idx.set(segment, 0L, index, value); }
     /// Sets `long_term_frame_idx` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264RefPicMarkingEntry long_term_frame_idx(@CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_frame_idx(this.segment(), value); return this; }
+    public StdVideoEncodeH264RefPicMarkingEntry long_term_frame_idx(short value) { long_term_frame_idx(this.segment(), 0L, value); return this; }
 
     /// {@return `max_long_term_frame_idx_plus1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint16_t") short get_max_long_term_frame_idx_plus1(MemorySegment segment, long index) { return (short) VH_max_long_term_frame_idx_plus1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short max_long_term_frame_idx_plus1(MemorySegment segment, long index) { return (short) VH_max_long_term_frame_idx_plus1.get(segment, 0L, index); }
     /// {@return `max_long_term_frame_idx_plus1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint16_t") short get_max_long_term_frame_idx_plus1(MemorySegment segment) { return StdVideoEncodeH264RefPicMarkingEntry.get_max_long_term_frame_idx_plus1(segment, 0L); }
-    /// {@return `max_long_term_frame_idx_plus1`}
-    public @CType("uint16_t") short max_long_term_frame_idx_plus1() { return StdVideoEncodeH264RefPicMarkingEntry.get_max_long_term_frame_idx_plus1(this.segment()); }
+    public short max_long_term_frame_idx_plus1() { return max_long_term_frame_idx_plus1(this.segment(), 0L); }
     /// Sets `max_long_term_frame_idx_plus1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_max_long_term_frame_idx_plus1(MemorySegment segment, long index, @CType("uint16_t") short value) { VH_max_long_term_frame_idx_plus1.set(segment, 0L, index, value); }
-    /// Sets `max_long_term_frame_idx_plus1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_max_long_term_frame_idx_plus1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_max_long_term_frame_idx_plus1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void max_long_term_frame_idx_plus1(MemorySegment segment, long index, short value) { VH_max_long_term_frame_idx_plus1.set(segment, 0L, index, value); }
     /// Sets `max_long_term_frame_idx_plus1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH264RefPicMarkingEntry max_long_term_frame_idx_plus1(@CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_max_long_term_frame_idx_plus1(this.segment(), value); return this; }
+    public StdVideoEncodeH264RefPicMarkingEntry max_long_term_frame_idx_plus1(short value) { max_long_term_frame_idx_plus1(this.segment(), 0L, value); return this; }
 
     /// A buffer of [StdVideoEncodeH264RefPicMarkingEntry].
     public static final class Buffer extends StdVideoEncodeH264RefPicMarkingEntry {
@@ -258,49 +221,49 @@ public sealed class StdVideoEncodeH264RefPicMarkingEntry extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `memory_management_control_operation` at the given index}
-        /// @param index the index
-        public @CType("StdVideoH264MemMgmtControlOp") int memory_management_control_operationAt(long index) { return StdVideoEncodeH264RefPicMarkingEntry.get_memory_management_control_operation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memory_management_control_operationAt(long index) { return memory_management_control_operation(this.segment(), index); }
         /// Sets `memory_management_control_operation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memory_management_control_operationAt(long index, @CType("StdVideoH264MemMgmtControlOp") int value) { StdVideoEncodeH264RefPicMarkingEntry.set_memory_management_control_operation(this.segment(), index, value); return this; }
+        public Buffer memory_management_control_operationAt(long index, int value) { memory_management_control_operation(this.segment(), index, value); return this; }
 
         /// {@return `difference_of_pic_nums_minus1` at the given index}
-        /// @param index the index
-        public @CType("uint16_t") short difference_of_pic_nums_minus1At(long index) { return StdVideoEncodeH264RefPicMarkingEntry.get_difference_of_pic_nums_minus1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short difference_of_pic_nums_minus1At(long index) { return difference_of_pic_nums_minus1(this.segment(), index); }
         /// Sets `difference_of_pic_nums_minus1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer difference_of_pic_nums_minus1At(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_difference_of_pic_nums_minus1(this.segment(), index, value); return this; }
+        public Buffer difference_of_pic_nums_minus1At(long index, short value) { difference_of_pic_nums_minus1(this.segment(), index, value); return this; }
 
         /// {@return `long_term_pic_num` at the given index}
-        /// @param index the index
-        public @CType("uint16_t") short long_term_pic_numAt(long index) { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_pic_num(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short long_term_pic_numAt(long index) { return long_term_pic_num(this.segment(), index); }
         /// Sets `long_term_pic_num` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer long_term_pic_numAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_pic_num(this.segment(), index, value); return this; }
+        public Buffer long_term_pic_numAt(long index, short value) { long_term_pic_num(this.segment(), index, value); return this; }
 
         /// {@return `long_term_frame_idx` at the given index}
-        /// @param index the index
-        public @CType("uint16_t") short long_term_frame_idxAt(long index) { return StdVideoEncodeH264RefPicMarkingEntry.get_long_term_frame_idx(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short long_term_frame_idxAt(long index) { return long_term_frame_idx(this.segment(), index); }
         /// Sets `long_term_frame_idx` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer long_term_frame_idxAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_long_term_frame_idx(this.segment(), index, value); return this; }
+        public Buffer long_term_frame_idxAt(long index, short value) { long_term_frame_idx(this.segment(), index, value); return this; }
 
         /// {@return `max_long_term_frame_idx_plus1` at the given index}
-        /// @param index the index
-        public @CType("uint16_t") short max_long_term_frame_idx_plus1At(long index) { return StdVideoEncodeH264RefPicMarkingEntry.get_max_long_term_frame_idx_plus1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short max_long_term_frame_idx_plus1At(long index) { return max_long_term_frame_idx_plus1(this.segment(), index); }
         /// Sets `max_long_term_frame_idx_plus1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer max_long_term_frame_idx_plus1At(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefPicMarkingEntry.set_max_long_term_frame_idx_plus1(this.segment(), index, value); return this; }
+        public Buffer max_long_term_frame_idx_plus1At(long index, short value) { max_long_term_frame_idx_plus1(this.segment(), index, value); return this; }
 
     }
 }

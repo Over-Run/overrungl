@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### waitSemaphoreValuesCount
-/// [VarHandle][#VH_waitSemaphoreValuesCount] - [Getter][#waitSemaphoreValuesCount()] - [Setter][#waitSemaphoreValuesCount(int)]
-/// ### pWaitSemaphoreValues
-/// [VarHandle][#VH_pWaitSemaphoreValues] - [Getter][#pWaitSemaphoreValues()] - [Setter][#pWaitSemaphoreValues(MemorySegment)]
-/// ### signalSemaphoreValuesCount
-/// [VarHandle][#VH_signalSemaphoreValuesCount] - [Getter][#signalSemaphoreValuesCount()] - [Setter][#signalSemaphoreValuesCount(int)]
-/// ### pSignalSemaphoreValues
-/// [VarHandle][#VH_pSignalSemaphoreValues] - [Getter][#pSignalSemaphoreValues()] - [Setter][#pSignalSemaphoreValues(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkD3D12FenceSubmitInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t waitSemaphoreValuesCount;
-///     const uint64_t * pWaitSemaphoreValues;
-///     uint32_t signalSemaphoreValuesCount;
-///     const uint64_t * pSignalSemaphoreValues;
-/// } VkD3D12FenceSubmitInfoKHR;
 /// ```
-public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
+/// struct VkD3D12FenceSubmitInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreValuesCount;
+///     const uint64_t* pWaitSemaphoreValues;
+///     uint32_t signalSemaphoreValuesCount;
+///     const uint64_t* pSignalSemaphoreValues;
+/// };
+/// ```
+public sealed class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// The struct layout of `VkD3D12FenceSubmitInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("waitSemaphoreValuesCount"),
@@ -59,16 +45,40 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
         ValueLayout.JAVA_INT.withName("signalSemaphoreValuesCount"),
         ValueLayout.ADDRESS.withName("pSignalSemaphoreValues")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `waitSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `waitSemaphoreValuesCount`.
+    public static final long OFFSET_waitSemaphoreValuesCount = LAYOUT.byteOffset(PathElement.groupElement("waitSemaphoreValuesCount"));
+    /// The memory layout of `waitSemaphoreValuesCount`.
+    public static final MemoryLayout LAYOUT_waitSemaphoreValuesCount = LAYOUT.select(PathElement.groupElement("waitSemaphoreValuesCount"));
+    /// The [VarHandle] of `waitSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_waitSemaphoreValuesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreValuesCount"));
+    /// The byte offset of `pWaitSemaphoreValues`.
+    public static final long OFFSET_pWaitSemaphoreValues = LAYOUT.byteOffset(PathElement.groupElement("pWaitSemaphoreValues"));
+    /// The memory layout of `pWaitSemaphoreValues`.
+    public static final MemoryLayout LAYOUT_pWaitSemaphoreValues = LAYOUT.select(PathElement.groupElement("pWaitSemaphoreValues"));
     /// The [VarHandle] of `pWaitSemaphoreValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWaitSemaphoreValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphoreValues"));
-    /// The [VarHandle] of `signalSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `signalSemaphoreValuesCount`.
+    public static final long OFFSET_signalSemaphoreValuesCount = LAYOUT.byteOffset(PathElement.groupElement("signalSemaphoreValuesCount"));
+    /// The memory layout of `signalSemaphoreValuesCount`.
+    public static final MemoryLayout LAYOUT_signalSemaphoreValuesCount = LAYOUT.select(PathElement.groupElement("signalSemaphoreValuesCount"));
+    /// The [VarHandle] of `signalSemaphoreValuesCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_signalSemaphoreValuesCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("signalSemaphoreValuesCount"));
+    /// The byte offset of `pSignalSemaphoreValues`.
+    public static final long OFFSET_pSignalSemaphoreValues = LAYOUT.byteOffset(PathElement.groupElement("pSignalSemaphoreValues"));
+    /// The memory layout of `pSignalSemaphoreValues`.
+    public static final MemoryLayout LAYOUT_pSignalSemaphoreValues = LAYOUT.select(PathElement.groupElement("pSignalSemaphoreValues"));
     /// The [VarHandle] of `pSignalSemaphoreValues` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSignalSemaphoreValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphoreValues"));
 
@@ -79,19 +89,14 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
     /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkD3D12FenceSubmitInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkD3D12FenceSubmitInfoKHR(segment); }
-
-    /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkD3D12FenceSubmitInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkD3D12FenceSubmitInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkD3D12FenceSubmitInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkD3D12FenceSubmitInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
     /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int waitSemaphoreValuesCount, @CType("const uint64_t *") MemorySegment pWaitSemaphoreValues, @CType("uint32_t") int signalSemaphoreValuesCount, @CType("const uint64_t *") MemorySegment pSignalSemaphoreValues) { return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValuesCount(waitSemaphoreValuesCount).pWaitSemaphoreValues(pWaitSemaphoreValues).signalSemaphoreValuesCount(signalSemaphoreValuesCount).pSignalSemaphoreValues(pSignalSemaphoreValues); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkD3D12FenceSubmitInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkD3D12FenceSubmitInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR sType(@CType("VkStructureType") int value) { VkD3D12FenceSubmitInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkD3D12FenceSubmitInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR pNext(@CType("const void *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `waitSemaphoreValuesCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_waitSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreValuesCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int waitSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreValuesCount.get(segment, 0L, index); }
     /// {@return `waitSemaphoreValuesCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_waitSemaphoreValuesCount(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_waitSemaphoreValuesCount(segment, 0L); }
-    /// {@return `waitSemaphoreValuesCount`}
-    public @CType("uint32_t") int waitSemaphoreValuesCount() { return VkD3D12FenceSubmitInfoKHR.get_waitSemaphoreValuesCount(this.segment()); }
+    public int waitSemaphoreValuesCount() { return waitSemaphoreValuesCount(this.segment(), 0L); }
     /// Sets `waitSemaphoreValuesCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_waitSemaphoreValuesCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_waitSemaphoreValuesCount.set(segment, 0L, index, value); }
-    /// Sets `waitSemaphoreValuesCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_waitSemaphoreValuesCount(MemorySegment segment, @CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_waitSemaphoreValuesCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void waitSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreValuesCount.set(segment, 0L, index, value); }
     /// Sets `waitSemaphoreValuesCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR waitSemaphoreValuesCount(@CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_waitSemaphoreValuesCount(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR waitSemaphoreValuesCount(int value) { waitSemaphoreValuesCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pWaitSemaphoreValues` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint64_t *") MemorySegment get_pWaitSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreValues.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pWaitSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphoreValues.get(segment, 0L, index); }
     /// {@return `pWaitSemaphoreValues`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint64_t *") MemorySegment get_pWaitSemaphoreValues(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_pWaitSemaphoreValues(segment, 0L); }
-    /// {@return `pWaitSemaphoreValues`}
-    public @CType("const uint64_t *") MemorySegment pWaitSemaphoreValues() { return VkD3D12FenceSubmitInfoKHR.get_pWaitSemaphoreValues(this.segment()); }
+    public MemorySegment pWaitSemaphoreValues() { return pWaitSemaphoreValues(this.segment(), 0L); }
     /// Sets `pWaitSemaphoreValues` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pWaitSemaphoreValues(MemorySegment segment, long index, @CType("const uint64_t *") MemorySegment value) { VH_pWaitSemaphoreValues.set(segment, 0L, index, value); }
-    /// Sets `pWaitSemaphoreValues` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pWaitSemaphoreValues(MemorySegment segment, @CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pWaitSemaphoreValues(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pWaitSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphoreValues.set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphoreValues` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR pWaitSemaphoreValues(@CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pWaitSemaphoreValues(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR pWaitSemaphoreValues(MemorySegment value) { pWaitSemaphoreValues(this.segment(), 0L, value); return this; }
 
     /// {@return `signalSemaphoreValuesCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_signalSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreValuesCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int signalSemaphoreValuesCount(MemorySegment segment, long index) { return (int) VH_signalSemaphoreValuesCount.get(segment, 0L, index); }
     /// {@return `signalSemaphoreValuesCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_signalSemaphoreValuesCount(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_signalSemaphoreValuesCount(segment, 0L); }
-    /// {@return `signalSemaphoreValuesCount`}
-    public @CType("uint32_t") int signalSemaphoreValuesCount() { return VkD3D12FenceSubmitInfoKHR.get_signalSemaphoreValuesCount(this.segment()); }
+    public int signalSemaphoreValuesCount() { return signalSemaphoreValuesCount(this.segment(), 0L); }
     /// Sets `signalSemaphoreValuesCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_signalSemaphoreValuesCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_signalSemaphoreValuesCount.set(segment, 0L, index, value); }
-    /// Sets `signalSemaphoreValuesCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_signalSemaphoreValuesCount(MemorySegment segment, @CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_signalSemaphoreValuesCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void signalSemaphoreValuesCount(MemorySegment segment, long index, int value) { VH_signalSemaphoreValuesCount.set(segment, 0L, index, value); }
     /// Sets `signalSemaphoreValuesCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR signalSemaphoreValuesCount(@CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_signalSemaphoreValuesCount(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR signalSemaphoreValuesCount(int value) { signalSemaphoreValuesCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pSignalSemaphoreValues` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint64_t *") MemorySegment get_pSignalSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreValues.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSignalSemaphoreValues(MemorySegment segment, long index) { return (MemorySegment) VH_pSignalSemaphoreValues.get(segment, 0L, index); }
     /// {@return `pSignalSemaphoreValues`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint64_t *") MemorySegment get_pSignalSemaphoreValues(MemorySegment segment) { return VkD3D12FenceSubmitInfoKHR.get_pSignalSemaphoreValues(segment, 0L); }
-    /// {@return `pSignalSemaphoreValues`}
-    public @CType("const uint64_t *") MemorySegment pSignalSemaphoreValues() { return VkD3D12FenceSubmitInfoKHR.get_pSignalSemaphoreValues(this.segment()); }
+    public MemorySegment pSignalSemaphoreValues() { return pSignalSemaphoreValues(this.segment(), 0L); }
     /// Sets `pSignalSemaphoreValues` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSignalSemaphoreValues(MemorySegment segment, long index, @CType("const uint64_t *") MemorySegment value) { VH_pSignalSemaphoreValues.set(segment, 0L, index, value); }
-    /// Sets `pSignalSemaphoreValues` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSignalSemaphoreValues(MemorySegment segment, @CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pSignalSemaphoreValues(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSignalSemaphoreValues(MemorySegment segment, long index, MemorySegment value) { VH_pSignalSemaphoreValues.set(segment, 0L, index, value); }
     /// Sets `pSignalSemaphoreValues` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkD3D12FenceSubmitInfoKHR pSignalSemaphoreValues(@CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pSignalSemaphoreValues(this.segment(), value); return this; }
+    public VkD3D12FenceSubmitInfoKHR pSignalSemaphoreValues(MemorySegment value) { pSignalSemaphoreValues(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkD3D12FenceSubmitInfoKHR].
     public static final class Buffer extends VkD3D12FenceSubmitInfoKHR {
@@ -287,58 +245,58 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkD3D12FenceSubmitInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `waitSemaphoreValuesCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int waitSemaphoreValuesCountAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_waitSemaphoreValuesCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int waitSemaphoreValuesCountAt(long index) { return waitSemaphoreValuesCount(this.segment(), index); }
         /// Sets `waitSemaphoreValuesCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer waitSemaphoreValuesCountAt(long index, @CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_waitSemaphoreValuesCount(this.segment(), index, value); return this; }
+        public Buffer waitSemaphoreValuesCountAt(long index, int value) { waitSemaphoreValuesCount(this.segment(), index, value); return this; }
 
         /// {@return `pWaitSemaphoreValues` at the given index}
-        /// @param index the index
-        public @CType("const uint64_t *") MemorySegment pWaitSemaphoreValuesAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_pWaitSemaphoreValues(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pWaitSemaphoreValuesAt(long index) { return pWaitSemaphoreValues(this.segment(), index); }
         /// Sets `pWaitSemaphoreValues` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pWaitSemaphoreValuesAt(long index, @CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pWaitSemaphoreValues(this.segment(), index, value); return this; }
+        public Buffer pWaitSemaphoreValuesAt(long index, MemorySegment value) { pWaitSemaphoreValues(this.segment(), index, value); return this; }
 
         /// {@return `signalSemaphoreValuesCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int signalSemaphoreValuesCountAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_signalSemaphoreValuesCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int signalSemaphoreValuesCountAt(long index) { return signalSemaphoreValuesCount(this.segment(), index); }
         /// Sets `signalSemaphoreValuesCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer signalSemaphoreValuesCountAt(long index, @CType("uint32_t") int value) { VkD3D12FenceSubmitInfoKHR.set_signalSemaphoreValuesCount(this.segment(), index, value); return this; }
+        public Buffer signalSemaphoreValuesCountAt(long index, int value) { signalSemaphoreValuesCount(this.segment(), index, value); return this; }
 
         /// {@return `pSignalSemaphoreValues` at the given index}
-        /// @param index the index
-        public @CType("const uint64_t *") MemorySegment pSignalSemaphoreValuesAt(long index) { return VkD3D12FenceSubmitInfoKHR.get_pSignalSemaphoreValues(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSignalSemaphoreValuesAt(long index) { return pSignalSemaphoreValues(this.segment(), index); }
         /// Sets `pSignalSemaphoreValues` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSignalSemaphoreValuesAt(long index, @CType("const uint64_t *") MemorySegment value) { VkD3D12FenceSubmitInfoKHR.set_pSignalSemaphoreValues(this.segment(), index, value); return this; }
+        public Buffer pSignalSemaphoreValuesAt(long index, MemorySegment value) { pSignalSemaphoreValues(this.segment(), index, value); return this; }
 
     }
 }

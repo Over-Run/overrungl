@@ -15,42 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### opaqueCaptureDescriptorData
-/// [VarHandle][#VH_opaqueCaptureDescriptorData] - [Getter][#opaqueCaptureDescriptorData()] - [Setter][#opaqueCaptureDescriptorData(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     const void * opaqueCaptureDescriptorData;
-/// } VkOpaqueCaptureDescriptorDataCreateInfoEXT;
 /// ```
-public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
+/// struct VkOpaqueCaptureDescriptorDataCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     const void* opaqueCaptureDescriptorData;
+/// };
+/// ```
+public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends GroupType {
     /// The struct layout of `VkOpaqueCaptureDescriptorDataCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("opaqueCaptureDescriptorData")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `opaqueCaptureDescriptorData`.
+    public static final long OFFSET_opaqueCaptureDescriptorData = LAYOUT.byteOffset(PathElement.groupElement("opaqueCaptureDescriptorData"));
+    /// The memory layout of `opaqueCaptureDescriptorData`.
+    public static final MemoryLayout LAYOUT_opaqueCaptureDescriptorData = LAYOUT.select(PathElement.groupElement("opaqueCaptureDescriptorData"));
     /// The [VarHandle] of `opaqueCaptureDescriptorData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_opaqueCaptureDescriptorData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opaqueCaptureDescriptorData"));
 
@@ -61,19 +65,14 @@ public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
     /// Creates `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOpaqueCaptureDescriptorDataCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkOpaqueCaptureDescriptorDataCreateInfoEXT(segment); }
-
-    /// Creates `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOpaqueCaptureDescriptorDataCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkOpaqueCaptureDescriptorDataCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkOpaqueCaptureDescriptorDataCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpaqueCaptureDescriptorDataCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
     /// @return the allocated `VkOpaqueCaptureDescriptorDataCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkOpaqueCaptureDescriptorDataCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkOpaqueCaptureDescriptorDataCreateInfoEXT`
-    public static VkOpaqueCaptureDescriptorDataCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("const void *") MemorySegment opaqueCaptureDescriptorData) { return alloc(allocator).sType(sType).pNext(pNext).opaqueCaptureDescriptorData(opaqueCaptureDescriptorData); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkOpaqueCaptureDescriptorDataCreateInfoEXT sType(@CType("VkStructureType") int value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkOpaqueCaptureDescriptorDataCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `opaqueCaptureDescriptorData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_opaqueCaptureDescriptorData(MemorySegment segment, long index) { return (MemorySegment) VH_opaqueCaptureDescriptorData.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment opaqueCaptureDescriptorData(MemorySegment segment, long index) { return (MemorySegment) VH_opaqueCaptureDescriptorData.get(segment, 0L, index); }
     /// {@return `opaqueCaptureDescriptorData`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_opaqueCaptureDescriptorData(MemorySegment segment) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_opaqueCaptureDescriptorData(segment, 0L); }
-    /// {@return `opaqueCaptureDescriptorData`}
-    public @CType("const void *") MemorySegment opaqueCaptureDescriptorData() { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_opaqueCaptureDescriptorData(this.segment()); }
+    public MemorySegment opaqueCaptureDescriptorData() { return opaqueCaptureDescriptorData(this.segment(), 0L); }
     /// Sets `opaqueCaptureDescriptorData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_opaqueCaptureDescriptorData(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_opaqueCaptureDescriptorData.set(segment, 0L, index, value); }
-    /// Sets `opaqueCaptureDescriptorData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_opaqueCaptureDescriptorData(MemorySegment segment, @CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_opaqueCaptureDescriptorData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void opaqueCaptureDescriptorData(MemorySegment segment, long index, MemorySegment value) { VH_opaqueCaptureDescriptorData.set(segment, 0L, index, value); }
     /// Sets `opaqueCaptureDescriptorData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkOpaqueCaptureDescriptorDataCreateInfoEXT opaqueCaptureDescriptorData(@CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_opaqueCaptureDescriptorData(this.segment(), value); return this; }
+    public VkOpaqueCaptureDescriptorDataCreateInfoEXT opaqueCaptureDescriptorData(MemorySegment value) { opaqueCaptureDescriptorData(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkOpaqueCaptureDescriptorDataCreateInfoEXT].
     public static final class Buffer extends VkOpaqueCaptureDescriptorDataCreateInfoEXT {
@@ -200,31 +173,31 @@ public sealed class VkOpaqueCaptureDescriptorDataCreateInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `opaqueCaptureDescriptorData` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment opaqueCaptureDescriptorDataAt(long index) { return VkOpaqueCaptureDescriptorDataCreateInfoEXT.get_opaqueCaptureDescriptorData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment opaqueCaptureDescriptorDataAt(long index) { return opaqueCaptureDescriptorData(this.segment(), index); }
         /// Sets `opaqueCaptureDescriptorData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer opaqueCaptureDescriptorDataAt(long index, @CType("const void *") MemorySegment value) { VkOpaqueCaptureDescriptorDataCreateInfoEXT.set_opaqueCaptureDescriptorData(this.segment(), index, value); return this; }
+        public Buffer opaqueCaptureDescriptorDataAt(long index, MemorySegment value) { opaqueCaptureDescriptorData(this.segment(), index, value); return this; }
 
     }
 }

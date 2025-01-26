@@ -26,8 +26,8 @@ private val keywords = mapOf(
     "java" to JAVA,
     "opt" to OPTIONAL,
     "package" to PACKAGE,
-    "return" to RETURN,
     "struct" to STRUCT,
+    "union" to UNION,
     "upcall" to UPCALL,
     "using" to USING,
 )
@@ -70,7 +70,7 @@ internal class Lexer(private val source: String) {
             || (ch >= 'a'.code && ch <= 'f'.code)
 
     private fun reportError(message: String): Nothing {
-        error("$message at line $line")
+        error("$message at line $line: ${source.lines()[line - 1]}")
     }
 
     private fun scanTokens() {
@@ -98,12 +98,14 @@ internal class Lexer(private val source: String) {
                 }
             }
 
-            '|'.code -> addToken(PIPE)
+            '|'.code -> addToken(VERTICAL_BAR)
             '='.code -> addToken(EQUAL)
+            '~'.code -> addToken(TILDE)
             '#'.code -> {
                 while (!isAtEnd() && peek() != '\n'.code) {
                     advance()
                 }
+                line++
                 addToken(PREPROCESSOR)
             }
 
@@ -138,6 +140,7 @@ internal class Lexer(private val source: String) {
         var hex = false
         var floatingPoint = false
         var isFloat = false
+        var isLong = false
         if (previous() == '0'.code && (peek() == 'x'.code || peek() == 'X'.code) && isHexDigit(peekNext())) {
             advance()
             hex = true
@@ -165,6 +168,9 @@ internal class Lexer(private val source: String) {
             } else {
                 reportError("can't combine floating point with hex")
             }
+        } else if (peek() == 'l'.code || peek() == 'L'.code) {
+            isLong = true
+            advance()
         }
         if (floatingPoint) {
             addToken(
@@ -173,11 +179,18 @@ internal class Lexer(private val source: String) {
                 else source.substring(start, current).toDouble()
             )
         } else if (hex) {
-            addToken(INTEGER, source.substring(start + 2, current).toLong(16).toInt())
+            if (isLong) {
+                addToken(INTEGER, source.substring(start + 2, current - 1).toLong(16))
+            } else {
+                addToken(INTEGER, source.substring(start + 2, current).toLong(16).toInt())
+            }
         } else {
-            addToken(INTEGER, source.substring(start, current).toLong().toInt())
+            if (isLong) {
+                addToken(INTEGER, source.substring(start, current - 1).toLong())
+            } else {
+                addToken(INTEGER, source.substring(start, current).toLong().toInt())
+            }
         }
-        // TODO long
     }
 
     private fun scanIdentifier() {
@@ -208,8 +221,9 @@ internal enum class TokenType {
     MINUS,
     STAR,
     SLASH,
-    PIPE,
+    VERTICAL_BAR,
     EQUAL,
+    TILDE,
 
     // literals
     INTEGER,
@@ -224,8 +238,8 @@ internal enum class TokenType {
     JAVA,
     OPTIONAL,
     PACKAGE,
-    RETURN,
     STRUCT,
+    UNION,
     UPCALL,
     USING,
 

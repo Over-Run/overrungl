@@ -71,6 +71,8 @@ public final class ALC {
         public static final MethodHandle MH_alcSuspendContext = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcDestroyContext`.
         public static final MethodHandle MH_alcDestroyContext = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        /// The method handle of `alcGetCurrentContext`.
+        public static final MethodHandle MH_alcGetCurrentContext = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The method handle of `alcGetContextsDevice`.
         public static final MethodHandle MH_alcGetContextsDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcOpenDevice`.
@@ -109,6 +111,8 @@ public final class ALC {
         public final MemorySegment PFN_alcSuspendContext;
         /// The function address of `alcDestroyContext`.
         public final MemorySegment PFN_alcDestroyContext;
+        /// The function address of `alcGetCurrentContext`.
+        public final MemorySegment PFN_alcGetCurrentContext;
         /// The function address of `alcGetContextsDevice`.
         public final MemorySegment PFN_alcGetContextsDevice;
         /// The function address of `alcOpenDevice`.
@@ -143,6 +147,7 @@ public final class ALC {
             PFN_alcProcessContext = ALInternal.lookup().findOrThrow("alcProcessContext");
             PFN_alcSuspendContext = ALInternal.lookup().findOrThrow("alcSuspendContext");
             PFN_alcDestroyContext = ALInternal.lookup().findOrThrow("alcDestroyContext");
+            PFN_alcGetCurrentContext = ALInternal.lookup().findOrThrow("alcGetCurrentContext");
             PFN_alcGetContextsDevice = ALInternal.lookup().findOrThrow("alcGetContextsDevice");
             PFN_alcOpenDevice = ALInternal.lookup().findOrThrow("alcOpenDevice");
             PFN_alcCloseDevice = ALInternal.lookup().findOrThrow("alcCloseDevice");
@@ -210,6 +215,14 @@ public final class ALC {
     }
 
     /// ```
+    /// ALCcontext* alcGetCurrentContext();
+    /// ```
+    public static MemorySegment alcGetCurrentContext() {
+        try { return (MemorySegment) Handles.MH_alcGetCurrentContext.invokeExact(Handles.get().PFN_alcGetCurrentContext); }
+        catch (Throwable e) { throw new RuntimeException("error in alcGetCurrentContext", e); }
+    }
+
+    /// ```
     /// ALCdevice* alcGetContextsDevice(ALCcontext* context);
     /// ```
     public static MemorySegment alcGetContextsDevice(MemorySegment context) {
@@ -234,7 +247,7 @@ public final class ALC {
     }
 
     /// ```
-    /// int alcGetError(ALCdevice* device);
+    /// ALCenum alcGetError(ALCdevice* device);
     /// ```
     public static int alcGetError(MemorySegment device) {
         try { return (int) Handles.MH_alcGetError.invokeExact(Handles.get().PFN_alcGetError, device); }
@@ -258,7 +271,7 @@ public final class ALC {
     }
 
     /// ```
-    /// int alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
+    /// ALCenum alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
     /// ```
     public static int alcGetEnumValue(MemorySegment device, MemorySegment enumname) {
         try { return (int) Handles.MH_alcGetEnumValue.invokeExact(Handles.get().PFN_alcGetEnumValue, device, enumname); }
@@ -266,7 +279,7 @@ public final class ALC {
     }
 
     /// ```
-    /// const ALCchar* alcGetString(ALCdevice* device, int param);
+    /// const ALCchar* alcGetString(ALCdevice* device, ALCenum param);
     /// ```
     public static MemorySegment alcGetString(MemorySegment device, int param) {
         try { return (MemorySegment) Handles.MH_alcGetString.invokeExact(Handles.get().PFN_alcGetString, device, param); }
@@ -274,7 +287,7 @@ public final class ALC {
     }
 
     /// ```
-    /// void alcGetIntegerv(ALCdevice* device, int param, int size, ALCint* values);
+    /// void alcGetIntegerv(ALCdevice* device, ALCenum param, ALCsizei size, ALCint* values);
     /// ```
     public static void alcGetIntegerv(MemorySegment device, int param, int size, MemorySegment values) {
         try { Handles.MH_alcGetIntegerv.invokeExact(Handles.get().PFN_alcGetIntegerv, device, param, size, values); }
@@ -282,7 +295,7 @@ public final class ALC {
     }
 
     /// ```
-    /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, unsigned int frequency, int format, int buffersize);
+    /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, ALCuint frequency, ALCenum format, ALCsizei buffersize);
     /// ```
     public static MemorySegment alcCaptureOpenDevice(MemorySegment devicename, int frequency, int format, int buffersize) {
         try { return (MemorySegment) Handles.MH_alcCaptureOpenDevice.invokeExact(Handles.get().PFN_alcCaptureOpenDevice, devicename, frequency, format, buffersize); }
@@ -314,7 +327,7 @@ public final class ALC {
     }
 
     /// ```
-    /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, int samples);
+    /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, ALCsizei samples);
     /// ```
     public static void alcCaptureSamples(MemorySegment device, MemorySegment buffer, int samples) {
         try { Handles.MH_alcCaptureSamples.invokeExact(Handles.get().PFN_alcCaptureSamples, device, buffer, samples); }

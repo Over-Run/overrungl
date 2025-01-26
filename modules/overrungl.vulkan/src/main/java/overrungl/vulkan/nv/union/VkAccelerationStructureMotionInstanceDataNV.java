@@ -15,34 +15,26 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.union;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### staticInstance
-/// [Byte offset][#OFFSET_staticInstance] - [Memory layout][#ML_staticInstance] - [Getter][#staticInstance()] - [Setter][#staticInstance(MemorySegment)]
-/// ### matrixMotionInstance
-/// [Byte offset][#OFFSET_matrixMotionInstance] - [Memory layout][#ML_matrixMotionInstance] - [Getter][#matrixMotionInstance()] - [Setter][#matrixMotionInstance(MemorySegment)]
-/// ### srtMotionInstance
-/// [Byte offset][#OFFSET_srtMotionInstance] - [Memory layout][#ML_srtMotionInstance] - [Getter][#srtMotionInstance()] - [Setter][#srtMotionInstance(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef union VkAccelerationStructureMotionInstanceDataNV {
+/// ```
+/// union VkAccelerationStructureMotionInstanceDataNV {
 ///     VkAccelerationStructureInstanceKHR staticInstance;
 ///     VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
 ///     VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
-/// } VkAccelerationStructureMotionInstanceDataNV;
+/// };
 /// ```
-public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
+public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupType {
     /// The union layout of `VkAccelerationStructureMotionInstanceDataNV`.
-    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR.LAYOUT.withName("staticInstance"),
         overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV.LAYOUT.withName("matrixMotionInstance"),
         overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV.LAYOUT.withName("srtMotionInstance")
@@ -50,15 +42,15 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
     /// The byte offset of `staticInstance`.
     public static final long OFFSET_staticInstance = LAYOUT.byteOffset(PathElement.groupElement("staticInstance"));
     /// The memory layout of `staticInstance`.
-    public static final MemoryLayout ML_staticInstance = LAYOUT.select(PathElement.groupElement("staticInstance"));
+    public static final MemoryLayout LAYOUT_staticInstance = LAYOUT.select(PathElement.groupElement("staticInstance"));
     /// The byte offset of `matrixMotionInstance`.
     public static final long OFFSET_matrixMotionInstance = LAYOUT.byteOffset(PathElement.groupElement("matrixMotionInstance"));
     /// The memory layout of `matrixMotionInstance`.
-    public static final MemoryLayout ML_matrixMotionInstance = LAYOUT.select(PathElement.groupElement("matrixMotionInstance"));
+    public static final MemoryLayout LAYOUT_matrixMotionInstance = LAYOUT.select(PathElement.groupElement("matrixMotionInstance"));
     /// The byte offset of `srtMotionInstance`.
     public static final long OFFSET_srtMotionInstance = LAYOUT.byteOffset(PathElement.groupElement("srtMotionInstance"));
     /// The memory layout of `srtMotionInstance`.
-    public static final MemoryLayout ML_srtMotionInstance = LAYOUT.select(PathElement.groupElement("srtMotionInstance"));
+    public static final MemoryLayout LAYOUT_srtMotionInstance = LAYOUT.select(PathElement.groupElement("srtMotionInstance"));
 
     /// Creates `VkAccelerationStructureMotionInstanceDataNV` with the given segment.
     /// @param segment the memory segment
@@ -67,19 +59,14 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
     /// Creates `VkAccelerationStructureMotionInstanceDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureMotionInstanceDataNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInstanceDataNV(segment); }
-
-    /// Creates `VkAccelerationStructureMotionInstanceDataNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureMotionInstanceDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureMotionInstanceDataNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInstanceDataNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAccelerationStructureMotionInstanceDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInstanceDataNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAccelerationStructureMotionInstanceDataNV` with the given segment.
     ///
@@ -87,7 +74,7 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,76 +94,55 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `staticInstance` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("VkAccelerationStructureInstanceKHR") MemorySegment get_staticInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_staticInstance, index), ML_staticInstance); }
+    /// @param index the index of the union buffer
+    public static MemorySegment staticInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_staticInstance, index), LAYOUT_staticInstance); }
     /// {@return `staticInstance`}
-    /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureInstanceKHR") MemorySegment get_staticInstance(MemorySegment segment) { return VkAccelerationStructureMotionInstanceDataNV.get_staticInstance(segment, 0L); }
-    /// {@return `staticInstance`}
-    public @CType("VkAccelerationStructureInstanceKHR") MemorySegment staticInstance() { return VkAccelerationStructureMotionInstanceDataNV.get_staticInstance(this.segment()); }
+    public MemorySegment staticInstance() { return staticInstance(this.segment(), 0L); }
     /// Sets `staticInstance` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_staticInstance(MemorySegment segment, long index, @CType("VkAccelerationStructureInstanceKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_staticInstance, index), ML_staticInstance.byteSize()); }
-    /// Sets `staticInstance` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_staticInstance(MemorySegment segment, @CType("VkAccelerationStructureInstanceKHR") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_staticInstance(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void staticInstance(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_staticInstance, index), LAYOUT_staticInstance.byteSize()); }
     /// Sets `staticInstance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureMotionInstanceDataNV staticInstance(@CType("VkAccelerationStructureInstanceKHR") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_staticInstance(this.segment(), value); return this; }
+    public VkAccelerationStructureMotionInstanceDataNV staticInstance(MemorySegment value) { staticInstance(this.segment(), 0L, value); return this; }
 
     /// {@return `matrixMotionInstance` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment get_matrixMotionInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_matrixMotionInstance, index), ML_matrixMotionInstance); }
+    /// @param index the index of the union buffer
+    public static MemorySegment matrixMotionInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_matrixMotionInstance, index), LAYOUT_matrixMotionInstance); }
     /// {@return `matrixMotionInstance`}
-    /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment get_matrixMotionInstance(MemorySegment segment) { return VkAccelerationStructureMotionInstanceDataNV.get_matrixMotionInstance(segment, 0L); }
-    /// {@return `matrixMotionInstance`}
-    public @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment matrixMotionInstance() { return VkAccelerationStructureMotionInstanceDataNV.get_matrixMotionInstance(this.segment()); }
+    public MemorySegment matrixMotionInstance() { return matrixMotionInstance(this.segment(), 0L); }
     /// Sets `matrixMotionInstance` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_matrixMotionInstance(MemorySegment segment, long index, @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_matrixMotionInstance, index), ML_matrixMotionInstance.byteSize()); }
-    /// Sets `matrixMotionInstance` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_matrixMotionInstance(MemorySegment segment, @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_matrixMotionInstance(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void matrixMotionInstance(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_matrixMotionInstance, index), LAYOUT_matrixMotionInstance.byteSize()); }
     /// Sets `matrixMotionInstance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(@CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_matrixMotionInstance(this.segment(), value); return this; }
+    public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(MemorySegment value) { matrixMotionInstance(this.segment(), 0L, value); return this; }
 
     /// {@return `srtMotionInstance` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment get_srtMotionInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srtMotionInstance, index), ML_srtMotionInstance); }
+    /// @param index the index of the union buffer
+    public static MemorySegment srtMotionInstance(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srtMotionInstance, index), LAYOUT_srtMotionInstance); }
     /// {@return `srtMotionInstance`}
-    /// @param segment the segment of the union
-    public static @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment get_srtMotionInstance(MemorySegment segment) { return VkAccelerationStructureMotionInstanceDataNV.get_srtMotionInstance(segment, 0L); }
-    /// {@return `srtMotionInstance`}
-    public @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment srtMotionInstance() { return VkAccelerationStructureMotionInstanceDataNV.get_srtMotionInstance(this.segment()); }
+    public MemorySegment srtMotionInstance() { return srtMotionInstance(this.segment(), 0L); }
     /// Sets `srtMotionInstance` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srtMotionInstance(MemorySegment segment, long index, @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srtMotionInstance, index), ML_srtMotionInstance.byteSize()); }
-    /// Sets `srtMotionInstance` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_srtMotionInstance(MemorySegment segment, @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_srtMotionInstance(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void srtMotionInstance(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srtMotionInstance, index), LAYOUT_srtMotionInstance.byteSize()); }
     /// Sets `srtMotionInstance` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(@CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_srtMotionInstance(this.segment(), value); return this; }
+    public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(MemorySegment value) { srtMotionInstance(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAccelerationStructureMotionInstanceDataNV].
     public static final class Buffer extends VkAccelerationStructureMotionInstanceDataNV {
@@ -201,31 +167,31 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends Union {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `staticInstance` at the given index}
-        /// @param index the index
-        public @CType("VkAccelerationStructureInstanceKHR") MemorySegment staticInstanceAt(long index) { return VkAccelerationStructureMotionInstanceDataNV.get_staticInstance(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment staticInstanceAt(long index) { return staticInstance(this.segment(), index); }
         /// Sets `staticInstance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer staticInstanceAt(long index, @CType("VkAccelerationStructureInstanceKHR") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_staticInstance(this.segment(), index, value); return this; }
+        public Buffer staticInstanceAt(long index, MemorySegment value) { staticInstance(this.segment(), index, value); return this; }
 
         /// {@return `matrixMotionInstance` at the given index}
-        /// @param index the index
-        public @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment matrixMotionInstanceAt(long index) { return VkAccelerationStructureMotionInstanceDataNV.get_matrixMotionInstance(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment matrixMotionInstanceAt(long index) { return matrixMotionInstance(this.segment(), index); }
         /// Sets `matrixMotionInstance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer matrixMotionInstanceAt(long index, @CType("VkAccelerationStructureMatrixMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_matrixMotionInstance(this.segment(), index, value); return this; }
+        public Buffer matrixMotionInstanceAt(long index, MemorySegment value) { matrixMotionInstance(this.segment(), index, value); return this; }
 
         /// {@return `srtMotionInstance` at the given index}
-        /// @param index the index
-        public @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment srtMotionInstanceAt(long index) { return VkAccelerationStructureMotionInstanceDataNV.get_srtMotionInstance(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment srtMotionInstanceAt(long index) { return srtMotionInstance(this.segment(), index); }
         /// Sets `srtMotionInstance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srtMotionInstanceAt(long index, @CType("VkAccelerationStructureSRTMotionInstanceNV") MemorySegment value) { VkAccelerationStructureMotionInstanceDataNV.set_srtMotionInstance(this.segment(), index, value); return this; }
+        public Buffer srtMotionInstanceAt(long index, MemorySegment value) { srtMotionInstance(this.segment(), index, value); return this; }
 
     }
 }

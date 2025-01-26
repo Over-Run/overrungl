@@ -354,7 +354,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glAlphaFuncxOES(unsigned int func, int32_t ref);
+    /// void glAlphaFuncxOES(GLenum func, GLfixed ref);
     /// ```
     public void AlphaFuncxOES(int func, int ref) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFuncxOES)) throw new SymbolNotFoundError("Symbol not found: glAlphaFuncxOES");
@@ -363,7 +363,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glClearColorxOES(int32_t red, int32_t green, int32_t blue, int32_t alpha);
+    /// void glClearColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
     /// ```
     public void ClearColorxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearColorxOES)) throw new SymbolNotFoundError("Symbol not found: glClearColorxOES");
@@ -372,7 +372,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glClearDepthxOES(int32_t depth);
+    /// void glClearDepthxOES(GLfixed depth);
     /// ```
     public void ClearDepthxOES(int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthxOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthxOES");
@@ -381,7 +381,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glClipPlanexOES(unsigned int plane, const GLfixed* equation);
+    /// void glClipPlanexOES(GLenum plane, const GLfixed* equation);
     /// ```
     public void ClipPlanexOES(int plane, MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanexOES");
@@ -390,7 +390,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glColor4xOES(int32_t red, int32_t green, int32_t blue, int32_t alpha);
+    /// void glColor4xOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
     /// ```
     public void Color4xOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4xOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xOES");
@@ -399,7 +399,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glDepthRangexOES(int32_t n, int32_t f);
+    /// void glDepthRangexOES(GLfixed n, GLfixed f);
     /// ```
     public void DepthRangexOES(int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangexOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangexOES");
@@ -408,7 +408,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glFogxOES(unsigned int pname, int32_t param);
+    /// void glFogxOES(GLenum pname, GLfixed param);
     /// ```
     public void FogxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogxOES)) throw new SymbolNotFoundError("Symbol not found: glFogxOES");
@@ -417,7 +417,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glFogxvOES(unsigned int pname, const GLfixed* param);
+    /// void glFogxvOES(GLenum pname, const GLfixed* param);
     /// ```
     public void FogxvOES(int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogxvOES)) throw new SymbolNotFoundError("Symbol not found: glFogxvOES");
@@ -426,7 +426,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glFrustumxOES(int32_t l, int32_t r, int32_t b, int32_t t, int32_t n, int32_t f);
+    /// void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
     /// ```
     public void FrustumxOES(int l, int r, int b, int t, int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrustumxOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumxOES");
@@ -435,7 +435,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetClipPlanexOES(unsigned int plane, GLfixed* equation);
+    /// void glGetClipPlanexOES(GLenum plane, GLfixed* equation);
     /// ```
     public void GetClipPlanexOES(int plane, MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
@@ -444,7 +444,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetFixedvOES(unsigned int pname, GLfixed* params);
+    /// void glGetFixedvOES(GLenum pname, GLfixed* params);
     /// ```
     public void GetFixedvOES(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFixedvOES)) throw new SymbolNotFoundError("Symbol not found: glGetFixedvOES");
@@ -453,7 +453,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetTexEnvxvOES(unsigned int target, unsigned int pname, GLfixed* params);
+    /// void glGetTexEnvxvOES(GLenum target, GLenum pname, GLfixed* params);
     /// ```
     public void GetTexEnvxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
@@ -462,7 +462,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetTexParameterxvOES(unsigned int target, unsigned int pname, GLfixed* params);
+    /// void glGetTexParameterxvOES(GLenum target, GLenum pname, GLfixed* params);
     /// ```
     public void GetTexParameterxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
@@ -471,7 +471,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glLightModelxOES(unsigned int pname, int32_t param);
+    /// void glLightModelxOES(GLenum pname, GLfixed param);
     /// ```
     public void LightModelxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxOES");
@@ -480,7 +480,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glLightModelxvOES(unsigned int pname, const GLfixed* param);
+    /// void glLightModelxvOES(GLenum pname, const GLfixed* param);
     /// ```
     public void LightModelxvOES(int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxvOES");
@@ -489,7 +489,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glLightxOES(unsigned int light, unsigned int pname, int32_t param);
+    /// void glLightxOES(GLenum light, GLenum pname, GLfixed param);
     /// ```
     public void LightxOES(int light, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightxOES)) throw new SymbolNotFoundError("Symbol not found: glLightxOES");
@@ -498,7 +498,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glLightxvOES(unsigned int light, unsigned int pname, const GLfixed* params);
+    /// void glLightxvOES(GLenum light, GLenum pname, const GLfixed* params);
     /// ```
     public void LightxvOES(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightxvOES");
@@ -507,7 +507,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glLineWidthxOES(int32_t width);
+    /// void glLineWidthxOES(GLfixed width);
     /// ```
     public void LineWidthxOES(int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLineWidthxOES)) throw new SymbolNotFoundError("Symbol not found: glLineWidthxOES");
@@ -525,7 +525,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMaterialxOES(unsigned int face, unsigned int pname, int32_t param);
+    /// void glMaterialxOES(GLenum face, GLenum pname, GLfixed param);
     /// ```
     public void MaterialxOES(int face, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxOES");
@@ -534,7 +534,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMaterialxvOES(unsigned int face, unsigned int pname, const GLfixed* param);
+    /// void glMaterialxvOES(GLenum face, GLenum pname, const GLfixed* param);
     /// ```
     public void MaterialxvOES(int face, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxvOES");
@@ -552,7 +552,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord4xOES(unsigned int texture, int32_t s, int32_t t, int32_t r, int32_t q);
+    /// void glMultiTexCoord4xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
     /// ```
     public void MultiTexCoord4xOES(int texture, int s, int t, int r, int q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xOES");
@@ -561,7 +561,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glNormal3xOES(int32_t nx, int32_t ny, int32_t nz);
+    /// void glNormal3xOES(GLfixed nx, GLfixed ny, GLfixed nz);
     /// ```
     public void Normal3xOES(int nx, int ny, int nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xOES");
@@ -570,7 +570,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glOrthoxOES(int32_t l, int32_t r, int32_t b, int32_t t, int32_t n, int32_t f);
+    /// void glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
     /// ```
     public void OrthoxOES(int l, int r, int b, int t, int n, int f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glOrthoxOES)) throw new SymbolNotFoundError("Symbol not found: glOrthoxOES");
@@ -579,7 +579,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPointParameterxvOES(unsigned int pname, const GLfixed* params);
+    /// void glPointParameterxvOES(GLenum pname, const GLfixed* params);
     /// ```
     public void PointParameterxvOES(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxvOES");
@@ -588,7 +588,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPointSizexOES(int32_t size);
+    /// void glPointSizexOES(GLfixed size);
     /// ```
     public void PointSizexOES(int size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointSizexOES)) throw new SymbolNotFoundError("Symbol not found: glPointSizexOES");
@@ -597,7 +597,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPolygonOffsetxOES(int32_t factor, int32_t units);
+    /// void glPolygonOffsetxOES(GLfixed factor, GLfixed units);
     /// ```
     public void PolygonOffsetxOES(int factor, int units) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetxOES)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetxOES");
@@ -606,7 +606,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glRotatexOES(int32_t angle, int32_t x, int32_t y, int32_t z);
+    /// void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
     /// ```
     public void RotatexOES(int angle, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRotatexOES)) throw new SymbolNotFoundError("Symbol not found: glRotatexOES");
@@ -615,7 +615,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glScalexOES(int32_t x, int32_t y, int32_t z);
+    /// void glScalexOES(GLfixed x, GLfixed y, GLfixed z);
     /// ```
     public void ScalexOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScalexOES)) throw new SymbolNotFoundError("Symbol not found: glScalexOES");
@@ -624,7 +624,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexEnvxOES(unsigned int target, unsigned int pname, int32_t param);
+    /// void glTexEnvxOES(GLenum target, GLenum pname, GLfixed param);
     /// ```
     public void TexEnvxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxOES");
@@ -633,7 +633,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexEnvxvOES(unsigned int target, unsigned int pname, const GLfixed* params);
+    /// void glTexEnvxvOES(GLenum target, GLenum pname, const GLfixed* params);
     /// ```
     public void TexEnvxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxvOES");
@@ -642,7 +642,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexParameterxOES(unsigned int target, unsigned int pname, int32_t param);
+    /// void glTexParameterxOES(GLenum target, GLenum pname, GLfixed param);
     /// ```
     public void TexParameterxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxOES");
@@ -651,7 +651,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexParameterxvOES(unsigned int target, unsigned int pname, const GLfixed* params);
+    /// void glTexParameterxvOES(GLenum target, GLenum pname, const GLfixed* params);
     /// ```
     public void TexParameterxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxvOES");
@@ -660,7 +660,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTranslatexOES(int32_t x, int32_t y, int32_t z);
+    /// void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z);
     /// ```
     public void TranslatexOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTranslatexOES)) throw new SymbolNotFoundError("Symbol not found: glTranslatexOES");
@@ -669,7 +669,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetLightxvOES(unsigned int light, unsigned int pname, GLfixed* params);
+    /// void glGetLightxvOES(GLenum light, GLenum pname, GLfixed* params);
     /// ```
     public void GetLightxvOES(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxvOES");
@@ -678,7 +678,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetMaterialxvOES(unsigned int face, unsigned int pname, GLfixed* params);
+    /// void glGetMaterialxvOES(GLenum face, GLenum pname, GLfixed* params);
     /// ```
     public void GetMaterialxvOES(int face, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
@@ -687,7 +687,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPointParameterxOES(unsigned int pname, int32_t param);
+    /// void glPointParameterxOES(GLenum pname, GLfixed param);
     /// ```
     public void PointParameterxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxOES");
@@ -696,7 +696,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glSampleCoveragexOES(int32_t value, GLboolean invert);
+    /// void glSampleCoveragexOES(GLclampx value, GLboolean invert);
     /// ```
     public void SampleCoveragexOES(int value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoveragexOES)) throw new SymbolNotFoundError("Symbol not found: glSampleCoveragexOES");
@@ -705,7 +705,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glAccumxOES(unsigned int op, int32_t value);
+    /// void glAccumxOES(GLenum op, GLfixed value);
     /// ```
     public void AccumxOES(int op, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glAccumxOES");
@@ -714,7 +714,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glBitmapxOES(int width, int height, int32_t xorig, int32_t yorig, int32_t xmove, int32_t ymove, const GLubyte* bitmap);
+    /// void glBitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed yorig, GLfixed xmove, GLfixed ymove, const GLubyte* bitmap);
     /// ```
     public void BitmapxOES(int width, int height, int xorig, int yorig, int xmove, int ymove, MemorySegment bitmap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBitmapxOES)) throw new SymbolNotFoundError("Symbol not found: glBitmapxOES");
@@ -723,7 +723,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glBlendColorxOES(int32_t red, int32_t green, int32_t blue, int32_t alpha);
+    /// void glBlendColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
     /// ```
     public void BlendColorxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorxOES)) throw new SymbolNotFoundError("Symbol not found: glBlendColorxOES");
@@ -732,7 +732,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glClearAccumxOES(int32_t red, int32_t green, int32_t blue, int32_t alpha);
+    /// void glClearAccumxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
     /// ```
     public void ClearAccumxOES(int red, int green, int blue, int alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glClearAccumxOES");
@@ -741,7 +741,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glColor3xOES(int32_t red, int32_t green, int32_t blue);
+    /// void glColor3xOES(GLfixed red, GLfixed green, GLfixed blue);
     /// ```
     public void Color3xOES(int red, int green, int blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3xOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xOES");
@@ -768,7 +768,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glConvolutionParameterxOES(unsigned int target, unsigned int pname, int32_t param);
+    /// void glConvolutionParameterxOES(GLenum target, GLenum pname, GLfixed param);
     /// ```
     public void ConvolutionParameterxOES(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxOES");
@@ -777,7 +777,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glConvolutionParameterxvOES(unsigned int target, unsigned int pname, const GLfixed* params);
+    /// void glConvolutionParameterxvOES(GLenum target, GLenum pname, const GLfixed* params);
     /// ```
     public void ConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
@@ -786,7 +786,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glEvalCoord1xOES(int32_t u);
+    /// void glEvalCoord1xOES(GLfixed u);
     /// ```
     public void EvalCoord1xOES(int u) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xOES");
@@ -804,7 +804,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glEvalCoord2xOES(int32_t u, int32_t v);
+    /// void glEvalCoord2xOES(GLfixed u, GLfixed v);
     /// ```
     public void EvalCoord2xOES(int u, int v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xOES");
@@ -822,7 +822,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glFeedbackBufferxOES(int n, unsigned int type, const GLfixed* buffer);
+    /// void glFeedbackBufferxOES(GLsizei n, GLenum type, const GLfixed* buffer);
     /// ```
     public void FeedbackBufferxOES(int n, int type, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new SymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
@@ -831,7 +831,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetConvolutionParameterxvOES(unsigned int target, unsigned int pname, GLfixed* params);
+    /// void glGetConvolutionParameterxvOES(GLenum target, GLenum pname, GLfixed* params);
     /// ```
     public void GetConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
@@ -840,7 +840,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetHistogramParameterxvOES(unsigned int target, unsigned int pname, GLfixed* params);
+    /// void glGetHistogramParameterxvOES(GLenum target, GLenum pname, GLfixed* params);
     /// ```
     public void GetHistogramParameterxvOES(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
@@ -849,7 +849,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetLightxOES(unsigned int light, unsigned int pname, GLfixed* params);
+    /// void glGetLightxOES(GLenum light, GLenum pname, GLfixed* params);
     /// ```
     public void GetLightxOES(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxOES");
@@ -858,7 +858,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetMapxvOES(unsigned int target, unsigned int query, GLfixed* v);
+    /// void glGetMapxvOES(GLenum target, GLenum query, GLfixed* v);
     /// ```
     public void GetMapxvOES(int target, int query, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMapxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMapxvOES");
@@ -867,7 +867,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetMaterialxOES(unsigned int face, unsigned int pname, int32_t param);
+    /// void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param);
     /// ```
     public void GetMaterialxOES(int face, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxOES");
@@ -876,7 +876,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetPixelMapxv(unsigned int map, int size, GLfixed* values);
+    /// void glGetPixelMapxv(GLenum map, GLint size, GLfixed* values);
     /// ```
     public void GetPixelMapxv(int map, int size, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new SymbolNotFoundError("Symbol not found: glGetPixelMapxv");
@@ -885,7 +885,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetTexGenxvOES(unsigned int coord, unsigned int pname, GLfixed* params);
+    /// void glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed* params);
     /// ```
     public void GetTexGenxvOES(int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
@@ -894,7 +894,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glGetTexLevelParameterxvOES(unsigned int target, int level, unsigned int pname, GLfixed* params);
+    /// void glGetTexLevelParameterxvOES(GLenum target, GLint level, GLenum pname, GLfixed* params);
     /// ```
     public void GetTexLevelParameterxvOES(int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
@@ -903,7 +903,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glIndexxOES(int32_t component);
+    /// void glIndexxOES(GLfixed component);
     /// ```
     public void IndexxOES(int component) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexxOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxOES");
@@ -930,7 +930,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMap1xOES(unsigned int target, int32_t u1, int32_t u2, int stride, int order, int32_t points);
+    /// void glMap1xOES(GLenum target, GLfixed u1, GLfixed u2, GLint stride, GLint order, GLfixed points);
     /// ```
     public void Map1xOES(int target, int u1, int u2, int stride, int order, int points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMap1xOES)) throw new SymbolNotFoundError("Symbol not found: glMap1xOES");
@@ -939,7 +939,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMap2xOES(unsigned int target, int32_t u1, int32_t u2, int ustride, int uorder, int32_t v1, int32_t v2, int vstride, int vorder, int32_t points);
+    /// void glMap2xOES(GLenum target, GLfixed u1, GLfixed u2, GLint ustride, GLint uorder, GLfixed v1, GLfixed v2, GLint vstride, GLint vorder, GLfixed points);
     /// ```
     public void Map2xOES(int target, int u1, int u2, int ustride, int uorder, int v1, int v2, int vstride, int vorder, int points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMap2xOES)) throw new SymbolNotFoundError("Symbol not found: glMap2xOES");
@@ -948,7 +948,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMapGrid1xOES(int n, int32_t u1, int32_t u2);
+    /// void glMapGrid1xOES(GLint n, GLfixed u1, GLfixed u2);
     /// ```
     public void MapGrid1xOES(int n, int u1, int u2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid1xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid1xOES");
@@ -957,7 +957,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMapGrid2xOES(int n, int32_t u1, int32_t u2, int32_t v1, int32_t v2);
+    /// void glMapGrid2xOES(GLint n, GLfixed u1, GLfixed u2, GLfixed v1, GLfixed v2);
     /// ```
     public void MapGrid2xOES(int n, int u1, int u2, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid2xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid2xOES");
@@ -975,7 +975,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord1xOES(unsigned int texture, int32_t s);
+    /// void glMultiTexCoord1xOES(GLenum texture, GLfixed s);
     /// ```
     public void MultiTexCoord1xOES(int texture, int s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xOES");
@@ -984,7 +984,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord1xvOES(unsigned int texture, const GLfixed* coords);
+    /// void glMultiTexCoord1xvOES(GLenum texture, const GLfixed* coords);
     /// ```
     public void MultiTexCoord1xvOES(int texture, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
@@ -993,7 +993,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord2xOES(unsigned int texture, int32_t s, int32_t t);
+    /// void glMultiTexCoord2xOES(GLenum texture, GLfixed s, GLfixed t);
     /// ```
     public void MultiTexCoord2xOES(int texture, int s, int t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xOES");
@@ -1002,7 +1002,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord2xvOES(unsigned int texture, const GLfixed* coords);
+    /// void glMultiTexCoord2xvOES(GLenum texture, const GLfixed* coords);
     /// ```
     public void MultiTexCoord2xvOES(int texture, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
@@ -1011,7 +1011,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord3xOES(unsigned int texture, int32_t s, int32_t t, int32_t r);
+    /// void glMultiTexCoord3xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r);
     /// ```
     public void MultiTexCoord3xOES(int texture, int s, int t, int r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xOES");
@@ -1020,7 +1020,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord3xvOES(unsigned int texture, const GLfixed* coords);
+    /// void glMultiTexCoord3xvOES(GLenum texture, const GLfixed* coords);
     /// ```
     public void MultiTexCoord3xvOES(int texture, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
@@ -1029,7 +1029,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glMultiTexCoord4xvOES(unsigned int texture, const GLfixed* coords);
+    /// void glMultiTexCoord4xvOES(GLenum texture, const GLfixed* coords);
     /// ```
     public void MultiTexCoord4xvOES(int texture, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
@@ -1047,7 +1047,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPassThroughxOES(int32_t token);
+    /// void glPassThroughxOES(GLfixed token);
     /// ```
     public void PassThroughxOES(int token) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPassThroughxOES)) throw new SymbolNotFoundError("Symbol not found: glPassThroughxOES");
@@ -1056,7 +1056,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPixelMapx(unsigned int map, int size, const GLfixed* values);
+    /// void glPixelMapx(GLenum map, GLint size, const GLfixed* values);
     /// ```
     public void PixelMapx(int map, int size, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelMapx)) throw new SymbolNotFoundError("Symbol not found: glPixelMapx");
@@ -1065,7 +1065,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPixelStorex(unsigned int pname, int32_t param);
+    /// void glPixelStorex(GLenum pname, GLfixed param);
     /// ```
     public void PixelStorex(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelStorex)) throw new SymbolNotFoundError("Symbol not found: glPixelStorex");
@@ -1074,7 +1074,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPixelTransferxOES(unsigned int pname, int32_t param);
+    /// void glPixelTransferxOES(GLenum pname, GLfixed param);
     /// ```
     public void PixelTransferxOES(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransferxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelTransferxOES");
@@ -1083,7 +1083,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPixelZoomxOES(int32_t xfactor, int32_t yfactor);
+    /// void glPixelZoomxOES(GLfixed xfactor, GLfixed yfactor);
     /// ```
     public void PixelZoomxOES(int xfactor, int yfactor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelZoomxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelZoomxOES");
@@ -1092,7 +1092,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glPrioritizeTexturesxOES(int n, const GLuint* textures, const GLfixed* priorities);
+    /// void glPrioritizeTexturesxOES(GLsizei n, const GLuint* textures, const GLfixed* priorities);
     /// ```
     public void PrioritizeTexturesxOES(int n, MemorySegment textures, MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
@@ -1101,7 +1101,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glRasterPos2xOES(int32_t x, int32_t y);
+    /// void glRasterPos2xOES(GLfixed x, GLfixed y);
     /// ```
     public void RasterPos2xOES(int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xOES");
@@ -1119,7 +1119,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glRasterPos3xOES(int32_t x, int32_t y, int32_t z);
+    /// void glRasterPos3xOES(GLfixed x, GLfixed y, GLfixed z);
     /// ```
     public void RasterPos3xOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xOES");
@@ -1137,7 +1137,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glRasterPos4xOES(int32_t x, int32_t y, int32_t z, int32_t w);
+    /// void glRasterPos4xOES(GLfixed x, GLfixed y, GLfixed z, GLfixed w);
     /// ```
     public void RasterPos4xOES(int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xOES");
@@ -1155,7 +1155,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glRectxOES(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
+    /// void glRectxOES(GLfixed x1, GLfixed y1, GLfixed x2, GLfixed y2);
     /// ```
     public void RectxOES(int x1, int y1, int x2, int y2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRectxOES)) throw new SymbolNotFoundError("Symbol not found: glRectxOES");
@@ -1173,7 +1173,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexCoord1xOES(int32_t s);
+    /// void glTexCoord1xOES(GLfixed s);
     /// ```
     public void TexCoord1xOES(int s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xOES");
@@ -1191,7 +1191,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexCoord2xOES(int32_t s, int32_t t);
+    /// void glTexCoord2xOES(GLfixed s, GLfixed t);
     /// ```
     public void TexCoord2xOES(int s, int t) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xOES");
@@ -1209,7 +1209,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexCoord3xOES(int32_t s, int32_t t, int32_t r);
+    /// void glTexCoord3xOES(GLfixed s, GLfixed t, GLfixed r);
     /// ```
     public void TexCoord3xOES(int s, int t, int r) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xOES");
@@ -1227,7 +1227,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexCoord4xOES(int32_t s, int32_t t, int32_t r, int32_t q);
+    /// void glTexCoord4xOES(GLfixed s, GLfixed t, GLfixed r, GLfixed q);
     /// ```
     public void TexCoord4xOES(int s, int t, int r, int q) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xOES");
@@ -1245,7 +1245,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexGenxOES(unsigned int coord, unsigned int pname, int32_t param);
+    /// void glTexGenxOES(GLenum coord, GLenum pname, GLfixed param);
     /// ```
     public void TexGenxOES(int coord, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxOES");
@@ -1254,7 +1254,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glTexGenxvOES(unsigned int coord, unsigned int pname, const GLfixed* params);
+    /// void glTexGenxvOES(GLenum coord, GLenum pname, const GLfixed* params);
     /// ```
     public void TexGenxvOES(int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxvOES");
@@ -1263,7 +1263,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glVertex2xOES(int32_t x);
+    /// void glVertex2xOES(GLfixed x);
     /// ```
     public void Vertex2xOES(int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xOES");
@@ -1281,7 +1281,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glVertex3xOES(int32_t x, int32_t y);
+    /// void glVertex3xOES(GLfixed x, GLfixed y);
     /// ```
     public void Vertex3xOES(int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xOES");
@@ -1299,7 +1299,7 @@ public final class GLOESFixedPoint {
     }
 
     /// ```
-    /// void glVertex4xOES(int32_t x, int32_t y, int32_t z);
+    /// void glVertex4xOES(GLfixed x, GLfixed y, GLfixed z);
     /// ```
     public void Vertex4xOES(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xOES");

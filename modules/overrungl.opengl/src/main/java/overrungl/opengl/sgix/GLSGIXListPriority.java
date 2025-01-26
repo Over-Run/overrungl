@@ -53,7 +53,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glGetListParameterfvSGIX(unsigned int list, unsigned int pname, GLfloat* params);
+    /// void glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat* params);
     /// ```
     public void GetListParameterfvSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterfvSGIX");
@@ -62,7 +62,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glGetListParameterivSGIX(unsigned int list, unsigned int pname, GLint* params);
+    /// void glGetListParameterivSGIX(GLuint list, GLenum pname, GLint* params);
     /// ```
     public void GetListParameterivSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetListParameterivSGIX");
@@ -71,7 +71,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glListParameterfSGIX(unsigned int list, unsigned int pname, float param);
+    /// void glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param);
     /// ```
     public void ListParameterfSGIX(int list, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfSGIX");
@@ -80,7 +80,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glListParameterfvSGIX(unsigned int list, unsigned int pname, const GLfloat* params);
+    /// void glListParameterfvSGIX(GLuint list, GLenum pname, const GLfloat* params);
     /// ```
     public void ListParameterfvSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterfvSGIX");
@@ -89,7 +89,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glListParameteriSGIX(unsigned int list, unsigned int pname, int param);
+    /// void glListParameteriSGIX(GLuint list, GLenum pname, GLint param);
     /// ```
     public void ListParameteriSGIX(int list, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameteriSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameteriSGIX");
@@ -98,7 +98,7 @@ public final class GLSGIXListPriority {
     }
 
     /// ```
-    /// void glListParameterivSGIX(unsigned int list, unsigned int pname, const GLint* params);
+    /// void glListParameterivSGIX(GLuint list, GLenum pname, const GLint* params);
     /// ```
     public void ListParameterivSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glListParameterivSGIX");

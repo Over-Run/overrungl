@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### taskCount
-/// [VarHandle][#VH_taskCount] - [Getter][#taskCount()] - [Setter][#taskCount(int)]
-/// ### firstTask
-/// [VarHandle][#VH_firstTask] - [Getter][#firstTask()] - [Setter][#firstTask(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDrawMeshTasksIndirectCommandNV {
+/// ```
+/// struct VkDrawMeshTasksIndirectCommandNV {
 ///     uint32_t taskCount;
 ///     uint32_t firstTask;
-/// } VkDrawMeshTasksIndirectCommandNV;
+/// };
 /// ```
-public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
+public sealed class VkDrawMeshTasksIndirectCommandNV extends GroupType {
     /// The struct layout of `VkDrawMeshTasksIndirectCommandNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("taskCount"),
         ValueLayout.JAVA_INT.withName("firstTask")
     );
-    /// The [VarHandle] of `taskCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `taskCount`.
+    public static final long OFFSET_taskCount = LAYOUT.byteOffset(PathElement.groupElement("taskCount"));
+    /// The memory layout of `taskCount`.
+    public static final MemoryLayout LAYOUT_taskCount = LAYOUT.select(PathElement.groupElement("taskCount"));
+    /// The [VarHandle] of `taskCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_taskCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("taskCount"));
-    /// The [VarHandle] of `firstTask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `firstTask`.
+    public static final long OFFSET_firstTask = LAYOUT.byteOffset(PathElement.groupElement("firstTask"));
+    /// The memory layout of `firstTask`.
+    public static final MemoryLayout LAYOUT_firstTask = LAYOUT.select(PathElement.groupElement("firstTask"));
+    /// The [VarHandle] of `firstTask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_firstTask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstTask"));
 
     /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
     /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawMeshTasksIndirectCommandNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandNV(segment); }
-
-    /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawMeshTasksIndirectCommandNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDrawMeshTasksIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDrawMeshTasksIndirectCommandNV` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDrawMeshTasksIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
     /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrawMeshTasksIndirectCommandNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
-    public static VkDrawMeshTasksIndirectCommandNV allocInit(SegmentAllocator allocator, @CType("uint32_t") int taskCount, @CType("uint32_t") int firstTask) { return alloc(allocator).taskCount(taskCount).firstTask(firstTask); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `taskCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_taskCount(MemorySegment segment, long index) { return (int) VH_taskCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int taskCount(MemorySegment segment, long index) { return (int) VH_taskCount.get(segment, 0L, index); }
     /// {@return `taskCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_taskCount(MemorySegment segment) { return VkDrawMeshTasksIndirectCommandNV.get_taskCount(segment, 0L); }
-    /// {@return `taskCount`}
-    public @CType("uint32_t") int taskCount() { return VkDrawMeshTasksIndirectCommandNV.get_taskCount(this.segment()); }
+    public int taskCount() { return taskCount(this.segment(), 0L); }
     /// Sets `taskCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_taskCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_taskCount.set(segment, 0L, index, value); }
-    /// Sets `taskCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_taskCount(MemorySegment segment, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_taskCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void taskCount(MemorySegment segment, long index, int value) { VH_taskCount.set(segment, 0L, index, value); }
     /// Sets `taskCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDrawMeshTasksIndirectCommandNV taskCount(@CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_taskCount(this.segment(), value); return this; }
+    public VkDrawMeshTasksIndirectCommandNV taskCount(int value) { taskCount(this.segment(), 0L, value); return this; }
 
     /// {@return `firstTask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_firstTask(MemorySegment segment, long index) { return (int) VH_firstTask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int firstTask(MemorySegment segment, long index) { return (int) VH_firstTask.get(segment, 0L, index); }
     /// {@return `firstTask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_firstTask(MemorySegment segment) { return VkDrawMeshTasksIndirectCommandNV.get_firstTask(segment, 0L); }
-    /// {@return `firstTask`}
-    public @CType("uint32_t") int firstTask() { return VkDrawMeshTasksIndirectCommandNV.get_firstTask(this.segment()); }
+    public int firstTask() { return firstTask(this.segment(), 0L); }
     /// Sets `firstTask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_firstTask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_firstTask.set(segment, 0L, index, value); }
-    /// Sets `firstTask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_firstTask(MemorySegment segment, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_firstTask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void firstTask(MemorySegment segment, long index, int value) { VH_firstTask.set(segment, 0L, index, value); }
     /// Sets `firstTask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDrawMeshTasksIndirectCommandNV firstTask(@CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_firstTask(this.segment(), value); return this; }
+    public VkDrawMeshTasksIndirectCommandNV firstTask(int value) { firstTask(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDrawMeshTasksIndirectCommandNV].
     public static final class Buffer extends VkDrawMeshTasksIndirectCommandNV {
@@ -171,22 +149,22 @@ public sealed class VkDrawMeshTasksIndirectCommandNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `taskCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int taskCountAt(long index) { return VkDrawMeshTasksIndirectCommandNV.get_taskCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int taskCountAt(long index) { return taskCount(this.segment(), index); }
         /// Sets `taskCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer taskCountAt(long index, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_taskCount(this.segment(), index, value); return this; }
+        public Buffer taskCountAt(long index, int value) { taskCount(this.segment(), index, value); return this; }
 
         /// {@return `firstTask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int firstTaskAt(long index) { return VkDrawMeshTasksIndirectCommandNV.get_firstTask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int firstTaskAt(long index) { return firstTask(this.segment(), index); }
         /// Sets `firstTask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer firstTaskAt(long index, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandNV.set_firstTask(this.segment(), index, value); return this; }
+        public Buffer firstTaskAt(long index, int value) { firstTask(this.segment(), index, value); return this; }
 
     }
 }

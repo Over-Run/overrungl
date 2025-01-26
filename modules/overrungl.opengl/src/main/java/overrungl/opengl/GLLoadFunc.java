@@ -50,7 +50,7 @@ public interface GLLoadFunc {
      */
     default MemorySegment invoke(String name) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return MemoryUtil.allocString(stack, name);
+            return invoke(MemoryUtil.allocString(stack, name));
         }
     }
 

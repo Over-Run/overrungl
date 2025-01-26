@@ -21,6 +21,8 @@ import overrungl.gen.writeNativeImageRegistration
 
 const val nfdPackage = "overrungl.nfd"
 const val nfdLookup = "NFDInternal.lookup()"
+const val nfdnchar_t_LAYOUT = "NFDInternal.nfdnchar_t"
+const val nfdpathsetsize_t_LAYOUT = "NFDInternal.nfdpathsetsize_t"
 
 fun main() {
     registerDefType(
@@ -28,18 +30,21 @@ fun main() {
             "nfdnchar_t",
             "int",
             memoryLayout = DefTypeDynamicValueLayout(
-                memoryLayout = "NFDInternal.nfdnchar_t",
+                memoryLayout = nfdnchar_t_LAYOUT,
                 possibleActualTypes = listOf("ValueLayout.OfByte", "ValueLayout.OfChar"),
                 carrierMap = mapOf("ValueLayout.OfByte" to "byte", "ValueLayout.OfChar" to "char"),
                 asCharMap = mapOf("ValueLayout.OfByte" to 'B', "ValueLayout.OfChar" to 'C'),
             ),
-            processor = wchar_t.processor
+            processor = SizingProcessor(nfdnchar_t_LAYOUT, "Int")
         )
     )
     registerDefType(
         "nfdpathsetsize_t",
-        size_t.copy(memoryLayout = (size_t.memoryLayout as DefTypeDynamicValueLayout)
-            .copy(memoryLayout = "NFDInternal.nfdpathsetsize_t"))
+        size_t.copy(
+            memoryLayout = (size_t.memoryLayout as DefTypeDynamicValueLayout)
+                .copy(memoryLayout = nfdpathsetsize_t_LAYOUT),
+            processor = SizingProcessor(nfdpathsetsize_t_LAYOUT, "Long")
+        )
     )
     DefinitionFile("nfd.gen").compile(nfdPackage, "NFD", nfdLookup)
 

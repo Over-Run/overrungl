@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### shaderSubgroupClock
-/// [VarHandle][#VH_shaderSubgroupClock] - [Getter][#shaderSubgroupClock()] - [Setter][#shaderSubgroupClock(int)]
-/// ### shaderDeviceClock
-/// [VarHandle][#VH_shaderDeviceClock] - [Getter][#shaderDeviceClock()] - [Setter][#shaderDeviceClock(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceShaderClockFeaturesKHR {
+/// ```
+/// struct VkPhysicalDeviceShaderClockFeaturesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 shaderSubgroupClock;
 ///     VkBool32 shaderDeviceClock;
-/// } VkPhysicalDeviceShaderClockFeaturesKHR;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
+public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderClockFeaturesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderSubgroupClock"),
         ValueLayout.JAVA_INT.withName("shaderDeviceClock")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderSubgroupClock` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderSubgroupClock`.
+    public static final long OFFSET_shaderSubgroupClock = LAYOUT.byteOffset(PathElement.groupElement("shaderSubgroupClock"));
+    /// The memory layout of `shaderSubgroupClock`.
+    public static final MemoryLayout LAYOUT_shaderSubgroupClock = LAYOUT.select(PathElement.groupElement("shaderSubgroupClock"));
+    /// The [VarHandle] of `shaderSubgroupClock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderSubgroupClock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSubgroupClock"));
-    /// The [VarHandle] of `shaderDeviceClock` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderDeviceClock`.
+    public static final long OFFSET_shaderDeviceClock = LAYOUT.byteOffset(PathElement.groupElement("shaderDeviceClock"));
+    /// The memory layout of `shaderDeviceClock`.
+    public static final MemoryLayout LAYOUT_shaderDeviceClock = LAYOUT.select(PathElement.groupElement("shaderDeviceClock"));
+    /// The [VarHandle] of `shaderDeviceClock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderDeviceClock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDeviceClock"));
 
     /// Creates `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
     /// Creates `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderClockFeaturesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderClockFeaturesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderClockFeaturesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderClockFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceShaderClockFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderClockFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderClockFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderClockFeaturesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderClockFeaturesKHR`
-    public static VkPhysicalDeviceShaderClockFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int shaderSubgroupClock, @CType("VkBool32") int shaderDeviceClock) { return alloc(allocator).sType(sType).pNext(pNext).shaderSubgroupClock(shaderSubgroupClock).shaderDeviceClock(shaderDeviceClock); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderClockFeaturesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderClockFeaturesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderClockFeaturesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceShaderClockFeaturesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderClockFeaturesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderClockFeaturesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderSubgroupClock` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderSubgroupClock(MemorySegment segment, long index) { return (int) VH_shaderSubgroupClock.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderSubgroupClock(MemorySegment segment, long index) { return (int) VH_shaderSubgroupClock.get(segment, 0L, index); }
     /// {@return `shaderSubgroupClock`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderSubgroupClock(MemorySegment segment) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderSubgroupClock(segment, 0L); }
-    /// {@return `shaderSubgroupClock`}
-    public @CType("VkBool32") int shaderSubgroupClock() { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderSubgroupClock(this.segment()); }
+    public int shaderSubgroupClock() { return shaderSubgroupClock(this.segment(), 0L); }
     /// Sets `shaderSubgroupClock` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderSubgroupClock(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderSubgroupClock.set(segment, 0L, index, value); }
-    /// Sets `shaderSubgroupClock` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderSubgroupClock(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderSubgroupClock(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderSubgroupClock(MemorySegment segment, long index, int value) { VH_shaderSubgroupClock.set(segment, 0L, index, value); }
     /// Sets `shaderSubgroupClock` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderClockFeaturesKHR shaderSubgroupClock(@CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderSubgroupClock(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderClockFeaturesKHR shaderSubgroupClock(int value) { shaderSubgroupClock(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderDeviceClock` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderDeviceClock(MemorySegment segment, long index) { return (int) VH_shaderDeviceClock.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderDeviceClock(MemorySegment segment, long index) { return (int) VH_shaderDeviceClock.get(segment, 0L, index); }
     /// {@return `shaderDeviceClock`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderDeviceClock(MemorySegment segment) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderDeviceClock(segment, 0L); }
-    /// {@return `shaderDeviceClock`}
-    public @CType("VkBool32") int shaderDeviceClock() { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderDeviceClock(this.segment()); }
+    public int shaderDeviceClock() { return shaderDeviceClock(this.segment(), 0L); }
     /// Sets `shaderDeviceClock` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderDeviceClock(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderDeviceClock.set(segment, 0L, index, value); }
-    /// Sets `shaderDeviceClock` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderDeviceClock(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderDeviceClock(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderDeviceClock(MemorySegment segment, long index, int value) { VH_shaderDeviceClock.set(segment, 0L, index, value); }
     /// Sets `shaderDeviceClock` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderClockFeaturesKHR shaderDeviceClock(@CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderDeviceClock(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderClockFeaturesKHR shaderDeviceClock(int value) { shaderDeviceClock(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceShaderClockFeaturesKHR].
     public static final class Buffer extends VkPhysicalDeviceShaderClockFeaturesKHR {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderSubgroupClock` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderSubgroupClockAt(long index) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderSubgroupClock(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderSubgroupClockAt(long index) { return shaderSubgroupClock(this.segment(), index); }
         /// Sets `shaderSubgroupClock` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderSubgroupClockAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderSubgroupClock(this.segment(), index, value); return this; }
+        public Buffer shaderSubgroupClockAt(long index, int value) { shaderSubgroupClock(this.segment(), index, value); return this; }
 
         /// {@return `shaderDeviceClock` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderDeviceClockAt(long index) { return VkPhysicalDeviceShaderClockFeaturesKHR.get_shaderDeviceClock(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderDeviceClockAt(long index) { return shaderDeviceClock(this.segment(), index); }
         /// Sets `shaderDeviceClock` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderDeviceClockAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderClockFeaturesKHR.set_shaderDeviceClock(this.segment(), index, value); return this; }
+        public Buffer shaderDeviceClockAt(long index, int value) { shaderDeviceClock(this.segment(), index, value); return this; }
 
     }
 }

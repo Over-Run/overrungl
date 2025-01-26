@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -36,14 +35,14 @@ public class VKEXTFullScreenExclusive {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT;
         public final MemorySegment PFN_vkAcquireFullScreenExclusiveModeEXT;
         public final MemorySegment PFN_vkReleaseFullScreenExclusiveModeEXT;
         public final MemorySegment PFN_vkGetDeviceGroupSurfacePresentModes2EXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT = func.invoke(device, "vkGetPhysicalDeviceSurfacePresentModes2EXT");
             PFN_vkAcquireFullScreenExclusiveModeEXT = func.invoke(device, "vkAcquireFullScreenExclusiveModeEXT");
             PFN_vkReleaseFullScreenExclusiveModeEXT = func.invoke(device, "vkReleaseFullScreenExclusiveModeEXT");
@@ -51,32 +50,44 @@ public class VKEXTFullScreenExclusive {
         }
     }
 
-    public VKEXTFullScreenExclusive(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTFullScreenExclusive(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceSurfacePresentModes2EXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceSurfaceInfo2KHR *") MemorySegment pSurfaceInfo, @CType("uint32_t *") MemorySegment pPresentModeCount, @CType("VkPresentModeKHR *") MemorySegment pPresentModes) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModes2EXT");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);
+    /// ```
+    public int GetPhysicalDeviceSurfacePresentModes2EXT(MemorySegment physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pPresentModeCount, MemorySegment pPresentModes) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModes2EXT");
         try { return (int) Handles.MH_vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT, physicalDevice, pSurfaceInfo, pPresentModeCount, pPresentModes); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfacePresentModes2EXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfacePresentModes2EXT", e); }
     }
 
-    public @CType("VkResult") int AcquireFullScreenExclusiveModeEXT(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkAcquireFullScreenExclusiveModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireFullScreenExclusiveModeEXT");
+    /// ```
+    /// VkResult vkAcquireFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain);
+    /// ```
+    public int AcquireFullScreenExclusiveModeEXT(MemorySegment device, long swapchain) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkAcquireFullScreenExclusiveModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireFullScreenExclusiveModeEXT");
         try { return (int) Handles.MH_vkAcquireFullScreenExclusiveModeEXT.invokeExact(handles.PFN_vkAcquireFullScreenExclusiveModeEXT, device, swapchain); }
-        catch (Throwable e) { throw new RuntimeException("error in vkAcquireFullScreenExclusiveModeEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AcquireFullScreenExclusiveModeEXT", e); }
     }
 
-    public @CType("VkResult") int ReleaseFullScreenExclusiveModeEXT(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkReleaseFullScreenExclusiveModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseFullScreenExclusiveModeEXT");
+    /// ```
+    /// VkResult vkReleaseFullScreenExclusiveModeEXT(VkDevice device, VkSwapchainKHR swapchain);
+    /// ```
+    public int ReleaseFullScreenExclusiveModeEXT(MemorySegment device, long swapchain) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkReleaseFullScreenExclusiveModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseFullScreenExclusiveModeEXT");
         try { return (int) Handles.MH_vkReleaseFullScreenExclusiveModeEXT.invokeExact(handles.PFN_vkReleaseFullScreenExclusiveModeEXT, device, swapchain); }
-        catch (Throwable e) { throw new RuntimeException("error in vkReleaseFullScreenExclusiveModeEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ReleaseFullScreenExclusiveModeEXT", e); }
     }
 
-    public @CType("VkResult") int GetDeviceGroupSurfacePresentModes2EXT(@CType("VkDevice") MemorySegment device, @CType("const VkPhysicalDeviceSurfaceInfo2KHR *") MemorySegment pSurfaceInfo, @CType("VkDeviceGroupPresentModeFlagsKHR *") MemorySegment pModes) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceGroupSurfacePresentModes2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModes2EXT");
+    /// ```
+    /// VkResult vkGetDeviceGroupSurfacePresentModes2EXT(VkDevice device, const VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkDeviceGroupPresentModeFlagsKHR* pModes);
+    /// ```
+    public int GetDeviceGroupSurfacePresentModes2EXT(MemorySegment device, MemorySegment pSurfaceInfo, MemorySegment pModes) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceGroupSurfacePresentModes2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModes2EXT");
         try { return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(handles.PFN_vkGetDeviceGroupSurfacePresentModes2EXT, device, pSurfaceInfo, pModes); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupSurfacePresentModes2EXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDeviceGroupSurfacePresentModes2EXT", e); }
     }
 
 }

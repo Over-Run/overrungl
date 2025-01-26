@@ -43,7 +43,7 @@ public final class GLAMDOcclusionQueryEvent {
     }
 
     /// ```
-    /// void glQueryObjectParameteruiAMD(unsigned int target, unsigned int id, unsigned int pname, unsigned int param);
+    /// void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param);
     /// ```
     public void QueryObjectParameteruiAMD(int target, int id, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTSurfaceMaintenance1 {
     public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 0x00000001;

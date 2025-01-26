@@ -42,7 +42,7 @@ public final class GLSGISTextureFilter4 {
     }
 
     /// ```
-    /// void glGetTexFilterFuncSGIS(unsigned int target, unsigned int filter, GLfloat* weights);
+    /// void glGetTexFilterFuncSGIS(GLenum target, GLenum filter, GLfloat* weights);
     /// ```
     public void GetTexFilterFuncSGIS(int target, int filter, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
@@ -51,7 +51,7 @@ public final class GLSGISTextureFilter4 {
     }
 
     /// ```
-    /// void glTexFilterFuncSGIS(unsigned int target, unsigned int filter, int n, const GLfloat* weights);
+    /// void glTexFilterFuncSGIS(GLenum target, GLenum filter, GLsizei n, const GLfloat* weights);
     /// ```
     public void TexFilterFuncSGIS(int target, int filter, int n, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");

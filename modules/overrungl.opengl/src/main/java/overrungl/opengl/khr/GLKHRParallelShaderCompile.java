@@ -39,7 +39,7 @@ public final class GLKHRParallelShaderCompile {
     }
 
     /// ```
-    /// void glMaxShaderCompilerThreadsKHR(unsigned int count);
+    /// void glMaxShaderCompilerThreadsKHR(GLuint count);
     /// ```
     public void MaxShaderCompilerThreadsKHR(int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsKHR)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");

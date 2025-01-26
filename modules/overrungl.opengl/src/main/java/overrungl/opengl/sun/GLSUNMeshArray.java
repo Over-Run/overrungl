@@ -39,7 +39,7 @@ public final class GLSUNMeshArray {
     }
 
     /// ```
-    /// void glDrawMeshArraysSUN(unsigned int mode, int first, int count, int width);
+    /// void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width);
     /// ```
     public void DrawMeshArraysSUN(int mode, int first, int count, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshArraysSUN)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");

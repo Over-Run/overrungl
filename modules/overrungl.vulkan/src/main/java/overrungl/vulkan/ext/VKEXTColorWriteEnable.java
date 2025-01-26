@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -32,19 +31,22 @@ public class VKEXTColorWriteEnable {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetColorWriteEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetColorWriteEnableEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetColorWriteEnableEXT = func.invoke(device, "vkCmdSetColorWriteEnableEXT");
         }
     }
 
-    public VKEXTColorWriteEnable(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTColorWriteEnable(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetColorWriteEnableEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int attachmentCount, @CType("const VkBool32 *") MemorySegment pColorWriteEnables) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
+    /// ```
+    /// void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
+    /// ```
+    public void CmdSetColorWriteEnableEXT(MemorySegment commandBuffer, int attachmentCount, MemorySegment pColorWriteEnables) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
         try { Handles.MH_vkCmdSetColorWriteEnableEXT.invokeExact(handles.PFN_vkCmdSetColorWriteEnableEXT, commandBuffer, attachmentCount, pColorWriteEnables); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorWriteEnableEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorWriteEnableEXT", e); }
     }
 
 }

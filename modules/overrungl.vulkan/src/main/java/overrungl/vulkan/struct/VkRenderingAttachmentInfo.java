@@ -15,42 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### imageView
-/// [VarHandle][#VH_imageView] - [Getter][#imageView()] - [Setter][#imageView(MemorySegment)]
-/// ### imageLayout
-/// [VarHandle][#VH_imageLayout] - [Getter][#imageLayout()] - [Setter][#imageLayout(int)]
-/// ### resolveMode
-/// [VarHandle][#VH_resolveMode] - [Getter][#resolveMode()] - [Setter][#resolveMode(int)]
-/// ### resolveImageView
-/// [VarHandle][#VH_resolveImageView] - [Getter][#resolveImageView()] - [Setter][#resolveImageView(MemorySegment)]
-/// ### resolveImageLayout
-/// [VarHandle][#VH_resolveImageLayout] - [Getter][#resolveImageLayout()] - [Setter][#resolveImageLayout(int)]
-/// ### loadOp
-/// [VarHandle][#VH_loadOp] - [Getter][#loadOp()] - [Setter][#loadOp(int)]
-/// ### storeOp
-/// [VarHandle][#VH_storeOp] - [Getter][#storeOp()] - [Setter][#storeOp(int)]
-/// ### clearValue
-/// [Byte offset][#OFFSET_clearValue] - [Memory layout][#ML_clearValue] - [Getter][#clearValue()] - [Setter][#clearValue(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRenderingAttachmentInfo {
+/// ```
+/// struct VkRenderingAttachmentInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkImageView imageView;
 ///     VkImageLayout imageLayout;
 ///     VkResolveModeFlagBits resolveMode;
@@ -59,44 +37,80 @@ import overrungl.util.*;
 ///     VkAttachmentLoadOp loadOp;
 ///     VkAttachmentStoreOp storeOp;
 ///     VkClearValue clearValue;
-/// } VkRenderingAttachmentInfo;
+/// };
 /// ```
-public sealed class VkRenderingAttachmentInfo extends Struct {
+public sealed class VkRenderingAttachmentInfo extends GroupType {
     /// The struct layout of `VkRenderingAttachmentInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("imageView"),
+        ValueLayout.JAVA_LONG.withName("imageView"),
         ValueLayout.JAVA_INT.withName("imageLayout"),
         ValueLayout.JAVA_INT.withName("resolveMode"),
-        ValueLayout.ADDRESS.withName("resolveImageView"),
+        ValueLayout.JAVA_LONG.withName("resolveImageView"),
         ValueLayout.JAVA_INT.withName("resolveImageLayout"),
         ValueLayout.JAVA_INT.withName("loadOp"),
         ValueLayout.JAVA_INT.withName("storeOp"),
         overrungl.vulkan.union.VkClearValue.LAYOUT.withName("clearValue")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `imageView`.
+    public static final long OFFSET_imageView = LAYOUT.byteOffset(PathElement.groupElement("imageView"));
+    /// The memory layout of `imageView`.
+    public static final MemoryLayout LAYOUT_imageView = LAYOUT.select(PathElement.groupElement("imageView"));
     /// The [VarHandle] of `imageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageView"));
-    /// The [VarHandle] of `imageLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imageLayout`.
+    public static final long OFFSET_imageLayout = LAYOUT.byteOffset(PathElement.groupElement("imageLayout"));
+    /// The memory layout of `imageLayout`.
+    public static final MemoryLayout LAYOUT_imageLayout = LAYOUT.select(PathElement.groupElement("imageLayout"));
+    /// The [VarHandle] of `imageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageLayout"));
-    /// The [VarHandle] of `resolveMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `resolveMode`.
+    public static final long OFFSET_resolveMode = LAYOUT.byteOffset(PathElement.groupElement("resolveMode"));
+    /// The memory layout of `resolveMode`.
+    public static final MemoryLayout LAYOUT_resolveMode = LAYOUT.select(PathElement.groupElement("resolveMode"));
+    /// The [VarHandle] of `resolveMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_resolveMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveMode"));
+    /// The byte offset of `resolveImageView`.
+    public static final long OFFSET_resolveImageView = LAYOUT.byteOffset(PathElement.groupElement("resolveImageView"));
+    /// The memory layout of `resolveImageView`.
+    public static final MemoryLayout LAYOUT_resolveImageView = LAYOUT.select(PathElement.groupElement("resolveImageView"));
     /// The [VarHandle] of `resolveImageView` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_resolveImageView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageView"));
-    /// The [VarHandle] of `resolveImageLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `resolveImageLayout`.
+    public static final long OFFSET_resolveImageLayout = LAYOUT.byteOffset(PathElement.groupElement("resolveImageLayout"));
+    /// The memory layout of `resolveImageLayout`.
+    public static final MemoryLayout LAYOUT_resolveImageLayout = LAYOUT.select(PathElement.groupElement("resolveImageLayout"));
+    /// The [VarHandle] of `resolveImageLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_resolveImageLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("resolveImageLayout"));
-    /// The [VarHandle] of `loadOp` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `loadOp`.
+    public static final long OFFSET_loadOp = LAYOUT.byteOffset(PathElement.groupElement("loadOp"));
+    /// The memory layout of `loadOp`.
+    public static final MemoryLayout LAYOUT_loadOp = LAYOUT.select(PathElement.groupElement("loadOp"));
+    /// The [VarHandle] of `loadOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_loadOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loadOp"));
-    /// The [VarHandle] of `storeOp` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storeOp`.
+    public static final long OFFSET_storeOp = LAYOUT.byteOffset(PathElement.groupElement("storeOp"));
+    /// The memory layout of `storeOp`.
+    public static final MemoryLayout LAYOUT_storeOp = LAYOUT.select(PathElement.groupElement("storeOp"));
+    /// The [VarHandle] of `storeOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storeOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storeOp"));
     /// The byte offset of `clearValue`.
     public static final long OFFSET_clearValue = LAYOUT.byteOffset(PathElement.groupElement("clearValue"));
     /// The memory layout of `clearValue`.
-    public static final MemoryLayout ML_clearValue = LAYOUT.select(PathElement.groupElement("clearValue"));
+    public static final MemoryLayout LAYOUT_clearValue = LAYOUT.select(PathElement.groupElement("clearValue"));
 
     /// Creates `VkRenderingAttachmentInfo` with the given segment.
     /// @param segment the memory segment
@@ -105,19 +119,14 @@ public sealed class VkRenderingAttachmentInfo extends Struct {
     /// Creates `VkRenderingAttachmentInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderingAttachmentInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment); }
-
-    /// Creates `VkRenderingAttachmentInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderingAttachmentInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderingAttachmentInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRenderingAttachmentInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingAttachmentInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRenderingAttachmentInfo` with the given segment.
     ///
@@ -125,7 +134,7 @@ public sealed class VkRenderingAttachmentInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderingAttachmentInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -138,11 +147,6 @@ public sealed class VkRenderingAttachmentInfo extends Struct {
     /// @return the allocated `VkRenderingAttachmentInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderingAttachmentInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderingAttachmentInfo`
-    public static VkRenderingAttachmentInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkImageView") MemorySegment imageView, @CType("VkImageLayout") int imageLayout, @CType("VkResolveModeFlagBits") int resolveMode, @CType("VkImageView") MemorySegment resolveImageView, @CType("VkImageLayout") int resolveImageLayout, @CType("VkAttachmentLoadOp") int loadOp, @CType("VkAttachmentStoreOp") int storeOp, @CType("VkClearValue") MemorySegment clearValue) { return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).imageLayout(imageLayout).resolveMode(resolveMode).resolveImageView(resolveImageView).resolveImageLayout(resolveImageLayout).loadOp(loadOp).storeOp(storeOp).clearValue(clearValue); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -150,237 +154,167 @@ public sealed class VkRenderingAttachmentInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderingAttachmentInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkRenderingAttachmentInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderingAttachmentInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo sType(@CType("VkStructureType") int value) { VkRenderingAttachmentInfo.set_sType(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkRenderingAttachmentInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkRenderingAttachmentInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkRenderingAttachmentInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo pNext(@CType("const void *") MemorySegment value) { VkRenderingAttachmentInfo.set_pNext(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `imageView` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment, long index) { return (MemorySegment) VH_imageView.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long imageView(MemorySegment segment, long index) { return (long) VH_imageView.get(segment, 0L, index); }
     /// {@return `imageView`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageView") MemorySegment get_imageView(MemorySegment segment) { return VkRenderingAttachmentInfo.get_imageView(segment, 0L); }
-    /// {@return `imageView`}
-    public @CType("VkImageView") MemorySegment imageView() { return VkRenderingAttachmentInfo.get_imageView(this.segment()); }
+    public long imageView() { return imageView(this.segment(), 0L); }
     /// Sets `imageView` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageView(MemorySegment segment, long index, @CType("VkImageView") MemorySegment value) { VH_imageView.set(segment, 0L, index, value); }
-    /// Sets `imageView` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageView(MemorySegment segment, @CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_imageView(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageView(MemorySegment segment, long index, long value) { VH_imageView.set(segment, 0L, index, value); }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo imageView(@CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_imageView(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo imageView(long value) { imageView(this.segment(), 0L, value); return this; }
 
     /// {@return `imageLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageLayout") int get_imageLayout(MemorySegment segment, long index) { return (int) VH_imageLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imageLayout(MemorySegment segment, long index) { return (int) VH_imageLayout.get(segment, 0L, index); }
     /// {@return `imageLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageLayout") int get_imageLayout(MemorySegment segment) { return VkRenderingAttachmentInfo.get_imageLayout(segment, 0L); }
-    /// {@return `imageLayout`}
-    public @CType("VkImageLayout") int imageLayout() { return VkRenderingAttachmentInfo.get_imageLayout(this.segment()); }
+    public int imageLayout() { return imageLayout(this.segment(), 0L); }
     /// Sets `imageLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageLayout(MemorySegment segment, long index, @CType("VkImageLayout") int value) { VH_imageLayout.set(segment, 0L, index, value); }
-    /// Sets `imageLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_imageLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageLayout(MemorySegment segment, long index, int value) { VH_imageLayout.set(segment, 0L, index, value); }
     /// Sets `imageLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo imageLayout(@CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_imageLayout(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo imageLayout(int value) { imageLayout(this.segment(), 0L, value); return this; }
 
     /// {@return `resolveMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResolveModeFlagBits") int get_resolveMode(MemorySegment segment, long index) { return (int) VH_resolveMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int resolveMode(MemorySegment segment, long index) { return (int) VH_resolveMode.get(segment, 0L, index); }
     /// {@return `resolveMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResolveModeFlagBits") int get_resolveMode(MemorySegment segment) { return VkRenderingAttachmentInfo.get_resolveMode(segment, 0L); }
-    /// {@return `resolveMode`}
-    public @CType("VkResolveModeFlagBits") int resolveMode() { return VkRenderingAttachmentInfo.get_resolveMode(this.segment()); }
+    public int resolveMode() { return resolveMode(this.segment(), 0L); }
     /// Sets `resolveMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_resolveMode(MemorySegment segment, long index, @CType("VkResolveModeFlagBits") int value) { VH_resolveMode.set(segment, 0L, index, value); }
-    /// Sets `resolveMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_resolveMode(MemorySegment segment, @CType("VkResolveModeFlagBits") int value) { VkRenderingAttachmentInfo.set_resolveMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void resolveMode(MemorySegment segment, long index, int value) { VH_resolveMode.set(segment, 0L, index, value); }
     /// Sets `resolveMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo resolveMode(@CType("VkResolveModeFlagBits") int value) { VkRenderingAttachmentInfo.set_resolveMode(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo resolveMode(int value) { resolveMode(this.segment(), 0L, value); return this; }
 
     /// {@return `resolveImageView` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageView") MemorySegment get_resolveImageView(MemorySegment segment, long index) { return (MemorySegment) VH_resolveImageView.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long resolveImageView(MemorySegment segment, long index) { return (long) VH_resolveImageView.get(segment, 0L, index); }
     /// {@return `resolveImageView`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageView") MemorySegment get_resolveImageView(MemorySegment segment) { return VkRenderingAttachmentInfo.get_resolveImageView(segment, 0L); }
-    /// {@return `resolveImageView`}
-    public @CType("VkImageView") MemorySegment resolveImageView() { return VkRenderingAttachmentInfo.get_resolveImageView(this.segment()); }
+    public long resolveImageView() { return resolveImageView(this.segment(), 0L); }
     /// Sets `resolveImageView` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_resolveImageView(MemorySegment segment, long index, @CType("VkImageView") MemorySegment value) { VH_resolveImageView.set(segment, 0L, index, value); }
-    /// Sets `resolveImageView` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_resolveImageView(MemorySegment segment, @CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_resolveImageView(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void resolveImageView(MemorySegment segment, long index, long value) { VH_resolveImageView.set(segment, 0L, index, value); }
     /// Sets `resolveImageView` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageView(@CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_resolveImageView(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo resolveImageView(long value) { resolveImageView(this.segment(), 0L, value); return this; }
 
     /// {@return `resolveImageLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageLayout") int get_resolveImageLayout(MemorySegment segment, long index) { return (int) VH_resolveImageLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int resolveImageLayout(MemorySegment segment, long index) { return (int) VH_resolveImageLayout.get(segment, 0L, index); }
     /// {@return `resolveImageLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageLayout") int get_resolveImageLayout(MemorySegment segment) { return VkRenderingAttachmentInfo.get_resolveImageLayout(segment, 0L); }
-    /// {@return `resolveImageLayout`}
-    public @CType("VkImageLayout") int resolveImageLayout() { return VkRenderingAttachmentInfo.get_resolveImageLayout(this.segment()); }
+    public int resolveImageLayout() { return resolveImageLayout(this.segment(), 0L); }
     /// Sets `resolveImageLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_resolveImageLayout(MemorySegment segment, long index, @CType("VkImageLayout") int value) { VH_resolveImageLayout.set(segment, 0L, index, value); }
-    /// Sets `resolveImageLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_resolveImageLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_resolveImageLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void resolveImageLayout(MemorySegment segment, long index, int value) { VH_resolveImageLayout.set(segment, 0L, index, value); }
     /// Sets `resolveImageLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo resolveImageLayout(@CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_resolveImageLayout(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo resolveImageLayout(int value) { resolveImageLayout(this.segment(), 0L, value); return this; }
 
     /// {@return `loadOp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkAttachmentLoadOp") int get_loadOp(MemorySegment segment, long index) { return (int) VH_loadOp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int loadOp(MemorySegment segment, long index) { return (int) VH_loadOp.get(segment, 0L, index); }
     /// {@return `loadOp`}
-    /// @param segment the segment of the struct
-    public static @CType("VkAttachmentLoadOp") int get_loadOp(MemorySegment segment) { return VkRenderingAttachmentInfo.get_loadOp(segment, 0L); }
-    /// {@return `loadOp`}
-    public @CType("VkAttachmentLoadOp") int loadOp() { return VkRenderingAttachmentInfo.get_loadOp(this.segment()); }
+    public int loadOp() { return loadOp(this.segment(), 0L); }
     /// Sets `loadOp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_loadOp(MemorySegment segment, long index, @CType("VkAttachmentLoadOp") int value) { VH_loadOp.set(segment, 0L, index, value); }
-    /// Sets `loadOp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_loadOp(MemorySegment segment, @CType("VkAttachmentLoadOp") int value) { VkRenderingAttachmentInfo.set_loadOp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void loadOp(MemorySegment segment, long index, int value) { VH_loadOp.set(segment, 0L, index, value); }
     /// Sets `loadOp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo loadOp(@CType("VkAttachmentLoadOp") int value) { VkRenderingAttachmentInfo.set_loadOp(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo loadOp(int value) { loadOp(this.segment(), 0L, value); return this; }
 
     /// {@return `storeOp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkAttachmentStoreOp") int get_storeOp(MemorySegment segment, long index) { return (int) VH_storeOp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storeOp(MemorySegment segment, long index) { return (int) VH_storeOp.get(segment, 0L, index); }
     /// {@return `storeOp`}
-    /// @param segment the segment of the struct
-    public static @CType("VkAttachmentStoreOp") int get_storeOp(MemorySegment segment) { return VkRenderingAttachmentInfo.get_storeOp(segment, 0L); }
-    /// {@return `storeOp`}
-    public @CType("VkAttachmentStoreOp") int storeOp() { return VkRenderingAttachmentInfo.get_storeOp(this.segment()); }
+    public int storeOp() { return storeOp(this.segment(), 0L); }
     /// Sets `storeOp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storeOp(MemorySegment segment, long index, @CType("VkAttachmentStoreOp") int value) { VH_storeOp.set(segment, 0L, index, value); }
-    /// Sets `storeOp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storeOp(MemorySegment segment, @CType("VkAttachmentStoreOp") int value) { VkRenderingAttachmentInfo.set_storeOp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storeOp(MemorySegment segment, long index, int value) { VH_storeOp.set(segment, 0L, index, value); }
     /// Sets `storeOp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo storeOp(@CType("VkAttachmentStoreOp") int value) { VkRenderingAttachmentInfo.set_storeOp(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo storeOp(int value) { storeOp(this.segment(), 0L, value); return this; }
 
     /// {@return `clearValue` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkClearValue") MemorySegment get_clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment clearValue(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue); }
     /// {@return `clearValue`}
-    /// @param segment the segment of the struct
-    public static @CType("VkClearValue") MemorySegment get_clearValue(MemorySegment segment) { return VkRenderingAttachmentInfo.get_clearValue(segment, 0L); }
-    /// {@return `clearValue`}
-    public @CType("VkClearValue") MemorySegment clearValue() { return VkRenderingAttachmentInfo.get_clearValue(this.segment()); }
+    public MemorySegment clearValue() { return clearValue(this.segment(), 0L); }
     /// Sets `clearValue` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_clearValue(MemorySegment segment, long index, @CType("VkClearValue") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), ML_clearValue.byteSize()); }
-    /// Sets `clearValue` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_clearValue(MemorySegment segment, @CType("VkClearValue") MemorySegment value) { VkRenderingAttachmentInfo.set_clearValue(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void clearValue(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_clearValue, index), LAYOUT_clearValue.byteSize()); }
     /// Sets `clearValue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderingAttachmentInfo clearValue(@CType("VkClearValue") MemorySegment value) { VkRenderingAttachmentInfo.set_clearValue(this.segment(), value); return this; }
+    public VkRenderingAttachmentInfo clearValue(MemorySegment value) { clearValue(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRenderingAttachmentInfo].
     public static final class Buffer extends VkRenderingAttachmentInfo {
@@ -405,94 +339,94 @@ public sealed class VkRenderingAttachmentInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderingAttachmentInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderingAttachmentInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkRenderingAttachmentInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkRenderingAttachmentInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageView` at the given index}
-        /// @param index the index
-        public @CType("VkImageView") MemorySegment imageViewAt(long index) { return VkRenderingAttachmentInfo.get_imageView(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long imageViewAt(long index) { return imageView(this.segment(), index); }
         /// Sets `imageView` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageViewAt(long index, @CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_imageView(this.segment(), index, value); return this; }
+        public Buffer imageViewAt(long index, long value) { imageView(this.segment(), index, value); return this; }
 
         /// {@return `imageLayout` at the given index}
-        /// @param index the index
-        public @CType("VkImageLayout") int imageLayoutAt(long index) { return VkRenderingAttachmentInfo.get_imageLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imageLayoutAt(long index) { return imageLayout(this.segment(), index); }
         /// Sets `imageLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageLayoutAt(long index, @CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_imageLayout(this.segment(), index, value); return this; }
+        public Buffer imageLayoutAt(long index, int value) { imageLayout(this.segment(), index, value); return this; }
 
         /// {@return `resolveMode` at the given index}
-        /// @param index the index
-        public @CType("VkResolveModeFlagBits") int resolveModeAt(long index) { return VkRenderingAttachmentInfo.get_resolveMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int resolveModeAt(long index) { return resolveMode(this.segment(), index); }
         /// Sets `resolveMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer resolveModeAt(long index, @CType("VkResolveModeFlagBits") int value) { VkRenderingAttachmentInfo.set_resolveMode(this.segment(), index, value); return this; }
+        public Buffer resolveModeAt(long index, int value) { resolveMode(this.segment(), index, value); return this; }
 
         /// {@return `resolveImageView` at the given index}
-        /// @param index the index
-        public @CType("VkImageView") MemorySegment resolveImageViewAt(long index) { return VkRenderingAttachmentInfo.get_resolveImageView(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long resolveImageViewAt(long index) { return resolveImageView(this.segment(), index); }
         /// Sets `resolveImageView` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer resolveImageViewAt(long index, @CType("VkImageView") MemorySegment value) { VkRenderingAttachmentInfo.set_resolveImageView(this.segment(), index, value); return this; }
+        public Buffer resolveImageViewAt(long index, long value) { resolveImageView(this.segment(), index, value); return this; }
 
         /// {@return `resolveImageLayout` at the given index}
-        /// @param index the index
-        public @CType("VkImageLayout") int resolveImageLayoutAt(long index) { return VkRenderingAttachmentInfo.get_resolveImageLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int resolveImageLayoutAt(long index) { return resolveImageLayout(this.segment(), index); }
         /// Sets `resolveImageLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer resolveImageLayoutAt(long index, @CType("VkImageLayout") int value) { VkRenderingAttachmentInfo.set_resolveImageLayout(this.segment(), index, value); return this; }
+        public Buffer resolveImageLayoutAt(long index, int value) { resolveImageLayout(this.segment(), index, value); return this; }
 
         /// {@return `loadOp` at the given index}
-        /// @param index the index
-        public @CType("VkAttachmentLoadOp") int loadOpAt(long index) { return VkRenderingAttachmentInfo.get_loadOp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int loadOpAt(long index) { return loadOp(this.segment(), index); }
         /// Sets `loadOp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer loadOpAt(long index, @CType("VkAttachmentLoadOp") int value) { VkRenderingAttachmentInfo.set_loadOp(this.segment(), index, value); return this; }
+        public Buffer loadOpAt(long index, int value) { loadOp(this.segment(), index, value); return this; }
 
         /// {@return `storeOp` at the given index}
-        /// @param index the index
-        public @CType("VkAttachmentStoreOp") int storeOpAt(long index) { return VkRenderingAttachmentInfo.get_storeOp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storeOpAt(long index) { return storeOp(this.segment(), index); }
         /// Sets `storeOp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storeOpAt(long index, @CType("VkAttachmentStoreOp") int value) { VkRenderingAttachmentInfo.set_storeOp(this.segment(), index, value); return this; }
+        public Buffer storeOpAt(long index, int value) { storeOp(this.segment(), index, value); return this; }
 
         /// {@return `clearValue` at the given index}
-        /// @param index the index
-        public @CType("VkClearValue") MemorySegment clearValueAt(long index) { return VkRenderingAttachmentInfo.get_clearValue(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment clearValueAt(long index) { return clearValue(this.segment(), index); }
         /// Sets `clearValue` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer clearValueAt(long index, @CType("VkClearValue") MemorySegment value) { VkRenderingAttachmentInfo.set_clearValue(this.segment(), index, value); return this; }
+        public Buffer clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
 
     }
 }

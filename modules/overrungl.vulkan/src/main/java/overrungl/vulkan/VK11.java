@@ -18,7 +18,6 @@
 package overrungl.vulkan;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 public class VK11 extends VK10 {
@@ -71,6 +70,7 @@ public class VK11 extends VK10 {
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 0x00000002;
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = 0x00000004;
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT = 0x00000008;
+    public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT = 0x00000008;
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT = 0x00000010;
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT = 0x00000001;
     public static final int VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT = 0x00000002;
@@ -88,6 +88,7 @@ public class VK11 extends VK10 {
     public static final int VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO = 1000060006;
     public static final int VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT = 0x00000008;
     public static final int VK_PIPELINE_CREATE_DISPATCH_BASE_BIT = 0x00000010;
+    public static final int VK_PIPELINE_CREATE_DISPATCH_BASE = 0x00000010;
     public static final int VK_DEPENDENCY_DEVICE_GROUP_BIT = 0x00000004;
     public static final int VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO = 1000060013;
     public static final int VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO = 1000060014;
@@ -127,6 +128,7 @@ public class VK11 extends VK10 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES = 1000053002;
     public static final int VK_DEPENDENCY_VIEW_LOCAL_BIT = 0x00000002;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES = 1000120000;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = 1000120000;
     public static final int VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO = 1000145000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES = 1000145001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES = 1000145002;
@@ -211,10 +213,7 @@ public class VK11 extends VK10 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES = 1000168000;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT = 1000168001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES = 1000063000;
-    public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT;
-    public static final int VK_PIPELINE_CREATE_DISPATCH_BASE = VK_PIPELINE_CREATE_DISPATCH_BASE_BIT;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = 1000063000;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkEnumerateInstanceVersion = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
@@ -234,13 +233,13 @@ public class VK11 extends VK10 {
         public static final MethodHandle MH_vkGetPhysicalDeviceQueueFamilyProperties2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceMemoryProperties2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSparseImageFormatProperties2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkTrimCommandPool = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkTrimCommandPool = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkGetDeviceQueue2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreateSamplerYcbcrConversion = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroySamplerYcbcrConversion = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroySamplerYcbcrConversion = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreateDescriptorUpdateTemplate = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyDescriptorUpdateTemplate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkUpdateDescriptorSetWithTemplate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDescriptorUpdateTemplate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateDescriptorSetWithTemplate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceExternalBufferProperties = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceExternalFenceProperties = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceExternalSemaphoreProperties = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -273,7 +272,7 @@ public class VK11 extends VK10 {
         public final MemorySegment PFN_vkGetPhysicalDeviceExternalFenceProperties;
         public final MemorySegment PFN_vkGetPhysicalDeviceExternalSemaphoreProperties;
         public final MemorySegment PFN_vkGetDescriptorSetLayoutSupport;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkEnumerateInstanceVersion = func.invoke(instance, "vkEnumerateInstanceVersion");
             PFN_vkBindBufferMemory2 = func.invoke(instance, "vkBindBufferMemory2", "vkBindBufferMemory2KHR");
             PFN_vkBindImageMemory2 = func.invoke(instance, "vkBindImageMemory2", "vkBindImageMemory2KHR");
@@ -305,177 +304,261 @@ public class VK11 extends VK10 {
         }
     }
 
-    public VK11(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VK11(MemorySegment instance, VKLoadFunc func) {
         super(instance, func);
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int EnumerateInstanceVersion(@CType("uint32_t *") MemorySegment pApiVersion) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkEnumerateInstanceVersion)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceVersion");
+    /// ```
+    /// VkResult vkEnumerateInstanceVersion(uint32_t* pApiVersion);
+    /// ```
+    public int EnumerateInstanceVersion(MemorySegment pApiVersion) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkEnumerateInstanceVersion)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceVersion");
         try { return (int) Handles.MH_vkEnumerateInstanceVersion.invokeExact(handles.PFN_vkEnumerateInstanceVersion, pApiVersion); }
-        catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceVersion", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EnumerateInstanceVersion", e); }
     }
 
-    public @CType("VkResult") int BindBufferMemory2(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int bindInfoCount, @CType("const VkBindBufferMemoryInfo *") MemorySegment pBindInfos) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkBindBufferMemory2)) throw new SymbolNotFoundError("Symbol not found: vkBindBufferMemory2");
+    /// ```
+    /// VkResult vkBindBufferMemory2(VkDevice device, uint32_t bindInfoCount, const VkBindBufferMemoryInfo* pBindInfos);
+    /// ```
+    public int BindBufferMemory2(MemorySegment device, int bindInfoCount, MemorySegment pBindInfos) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkBindBufferMemory2)) throw new SymbolNotFoundError("Symbol not found: vkBindBufferMemory2");
         try { return (int) Handles.MH_vkBindBufferMemory2.invokeExact(handles.PFN_vkBindBufferMemory2, device, bindInfoCount, pBindInfos); }
-        catch (Throwable e) { throw new RuntimeException("error in vkBindBufferMemory2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindBufferMemory2", e); }
     }
 
-    public @CType("VkResult") int BindImageMemory2(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int bindInfoCount, @CType("const VkBindImageMemoryInfo *") MemorySegment pBindInfos) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkBindImageMemory2)) throw new SymbolNotFoundError("Symbol not found: vkBindImageMemory2");
+    /// ```
+    /// VkResult vkBindImageMemory2(VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos);
+    /// ```
+    public int BindImageMemory2(MemorySegment device, int bindInfoCount, MemorySegment pBindInfos) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkBindImageMemory2)) throw new SymbolNotFoundError("Symbol not found: vkBindImageMemory2");
         try { return (int) Handles.MH_vkBindImageMemory2.invokeExact(handles.PFN_vkBindImageMemory2, device, bindInfoCount, pBindInfos); }
-        catch (Throwable e) { throw new RuntimeException("error in vkBindImageMemory2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindImageMemory2", e); }
     }
 
-    public void GetDeviceGroupPeerMemoryFeatures(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int heapIndex, @CType("uint32_t") int localDeviceIndex, @CType("uint32_t") int remoteDeviceIndex, @CType("VkPeerMemoryFeatureFlags *") MemorySegment pPeerMemoryFeatures) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceGroupPeerMemoryFeatures)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPeerMemoryFeatures");
+    /// ```
+    /// void vkGetDeviceGroupPeerMemoryFeatures(VkDevice device, uint32_t heapIndex, uint32_t localDeviceIndex, uint32_t remoteDeviceIndex, VkPeerMemoryFeatureFlags* pPeerMemoryFeatures);
+    /// ```
+    public void GetDeviceGroupPeerMemoryFeatures(MemorySegment device, int heapIndex, int localDeviceIndex, int remoteDeviceIndex, MemorySegment pPeerMemoryFeatures) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceGroupPeerMemoryFeatures)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceGroupPeerMemoryFeatures");
         try { Handles.MH_vkGetDeviceGroupPeerMemoryFeatures.invokeExact(handles.PFN_vkGetDeviceGroupPeerMemoryFeatures, device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPeerMemoryFeatures", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDeviceGroupPeerMemoryFeatures", e); }
     }
 
-    public void CmdSetDeviceMask(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int deviceMask) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetDeviceMask)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDeviceMask");
+    /// ```
+    /// void vkCmdSetDeviceMask(VkCommandBuffer commandBuffer, uint32_t deviceMask);
+    /// ```
+    public void CmdSetDeviceMask(MemorySegment commandBuffer, int deviceMask) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDeviceMask)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDeviceMask");
         try { Handles.MH_vkCmdSetDeviceMask.invokeExact(handles.PFN_vkCmdSetDeviceMask, commandBuffer, deviceMask); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDeviceMask", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetDeviceMask", e); }
     }
 
-    public void CmdDispatchBase(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int baseGroupX, @CType("uint32_t") int baseGroupY, @CType("uint32_t") int baseGroupZ, @CType("uint32_t") int groupCountX, @CType("uint32_t") int groupCountY, @CType("uint32_t") int groupCountZ) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDispatchBase)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchBase");
+    /// ```
+    /// void vkCmdDispatchBase(VkCommandBuffer commandBuffer, uint32_t baseGroupX, uint32_t baseGroupY, uint32_t baseGroupZ, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
+    /// ```
+    public void CmdDispatchBase(MemorySegment commandBuffer, int baseGroupX, int baseGroupY, int baseGroupZ, int groupCountX, int groupCountY, int groupCountZ) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDispatchBase)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchBase");
         try { Handles.MH_vkCmdDispatchBase.invokeExact(handles.PFN_vkCmdDispatchBase, commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchBase", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDispatchBase", e); }
     }
 
-    public @CType("VkResult") int EnumeratePhysicalDeviceGroups(@CType("VkInstance") MemorySegment instance, @CType("uint32_t *") MemorySegment pPhysicalDeviceGroupCount, @CType("VkPhysicalDeviceGroupProperties *") MemorySegment pPhysicalDeviceGroupProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkEnumeratePhysicalDeviceGroups)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroups");
+    /// ```
+    /// VkResult vkEnumeratePhysicalDeviceGroups(VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
+    /// ```
+    public int EnumeratePhysicalDeviceGroups(MemorySegment instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkEnumeratePhysicalDeviceGroups)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroups");
         try { return (int) Handles.MH_vkEnumeratePhysicalDeviceGroups.invokeExact(handles.PFN_vkEnumeratePhysicalDeviceGroups, instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceGroups", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EnumeratePhysicalDeviceGroups", e); }
     }
 
-    public void GetImageMemoryRequirements2(@CType("VkDevice") MemorySegment device, @CType("const VkImageMemoryRequirementsInfo2 *") MemorySegment pInfo, @CType("VkMemoryRequirements2 *") MemorySegment pMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageMemoryRequirements2");
+    /// ```
+    /// void vkGetImageMemoryRequirements2(VkDevice device, const VkImageMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// ```
+    public void GetImageMemoryRequirements2(MemorySegment device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetImageMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageMemoryRequirements2");
         try { Handles.MH_vkGetImageMemoryRequirements2.invokeExact(handles.PFN_vkGetImageMemoryRequirements2, device, pInfo, pMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetImageMemoryRequirements2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetImageMemoryRequirements2", e); }
     }
 
-    public void GetBufferMemoryRequirements2(@CType("VkDevice") MemorySegment device, @CType("const VkBufferMemoryRequirementsInfo2 *") MemorySegment pInfo, @CType("VkMemoryRequirements2 *") MemorySegment pMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetBufferMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferMemoryRequirements2");
+    /// ```
+    /// void vkGetBufferMemoryRequirements2(VkDevice device, const VkBufferMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// ```
+    public void GetBufferMemoryRequirements2(MemorySegment device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetBufferMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferMemoryRequirements2");
         try { Handles.MH_vkGetBufferMemoryRequirements2.invokeExact(handles.PFN_vkGetBufferMemoryRequirements2, device, pInfo, pMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetBufferMemoryRequirements2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetBufferMemoryRequirements2", e); }
     }
 
-    public void GetImageSparseMemoryRequirements2(@CType("VkDevice") MemorySegment device, @CType("const VkImageSparseMemoryRequirementsInfo2 *") MemorySegment pInfo, @CType("uint32_t *") MemorySegment pSparseMemoryRequirementCount, @CType("VkSparseImageMemoryRequirements2 *") MemorySegment pSparseMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageSparseMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSparseMemoryRequirements2");
+    /// ```
+    /// void vkGetImageSparseMemoryRequirements2(VkDevice device, const VkImageSparseMemoryRequirementsInfo2* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
+    /// ```
+    public void GetImageSparseMemoryRequirements2(MemorySegment device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetImageSparseMemoryRequirements2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSparseMemoryRequirements2");
         try { Handles.MH_vkGetImageSparseMemoryRequirements2.invokeExact(handles.PFN_vkGetImageSparseMemoryRequirements2, device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetImageSparseMemoryRequirements2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetImageSparseMemoryRequirements2", e); }
     }
 
-    public void GetPhysicalDeviceFeatures2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkPhysicalDeviceFeatures2 *") MemorySegment pFeatures) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceFeatures2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFeatures2");
+    /// ```
+    /// void vkGetPhysicalDeviceFeatures2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* pFeatures);
+    /// ```
+    public void GetPhysicalDeviceFeatures2(MemorySegment physicalDevice, MemorySegment pFeatures) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceFeatures2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFeatures2");
         try { Handles.MH_vkGetPhysicalDeviceFeatures2.invokeExact(handles.PFN_vkGetPhysicalDeviceFeatures2, physicalDevice, pFeatures); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceFeatures2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceFeatures2", e); }
     }
 
-    public void GetPhysicalDeviceProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkPhysicalDeviceProperties2 *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceProperties2");
+    /// ```
+    /// void vkGetPhysicalDeviceProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties2* pProperties);
+    /// ```
+    public void GetPhysicalDeviceProperties2(MemorySegment physicalDevice, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceProperties2");
         try { Handles.MH_vkGetPhysicalDeviceProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceProperties2, physicalDevice, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceProperties2", e); }
     }
 
-    public void GetPhysicalDeviceFormatProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkFormat") int format, @CType("VkFormatProperties2 *") MemorySegment pFormatProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFormatProperties2");
+    /// ```
+    /// void vkGetPhysicalDeviceFormatProperties2(VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties2* pFormatProperties);
+    /// ```
+    public void GetPhysicalDeviceFormatProperties2(MemorySegment physicalDevice, int format, MemorySegment pFormatProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFormatProperties2");
         try { Handles.MH_vkGetPhysicalDeviceFormatProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceFormatProperties2, physicalDevice, format, pFormatProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceFormatProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceFormatProperties2", e); }
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceImageFormatProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceImageFormatInfo2 *") MemorySegment pImageFormatInfo, @CType("VkImageFormatProperties2 *") MemorySegment pImageFormatProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceImageFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceImageFormatProperties2");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceImageFormatProperties2(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo, VkImageFormatProperties2* pImageFormatProperties);
+    /// ```
+    public int GetPhysicalDeviceImageFormatProperties2(MemorySegment physicalDevice, MemorySegment pImageFormatInfo, MemorySegment pImageFormatProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceImageFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceImageFormatProperties2");
         try { return (int) Handles.MH_vkGetPhysicalDeviceImageFormatProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceImageFormatProperties2, physicalDevice, pImageFormatInfo, pImageFormatProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceImageFormatProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceImageFormatProperties2", e); }
     }
 
-    public void GetPhysicalDeviceQueueFamilyProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pQueueFamilyPropertyCount, @CType("VkQueueFamilyProperties2 *") MemorySegment pQueueFamilyProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceQueueFamilyProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyProperties2");
+    /// ```
+    /// void vkGetPhysicalDeviceQueueFamilyProperties2(VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties2* pQueueFamilyProperties);
+    /// ```
+    public void GetPhysicalDeviceQueueFamilyProperties2(MemorySegment physicalDevice, MemorySegment pQueueFamilyPropertyCount, MemorySegment pQueueFamilyProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceQueueFamilyProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyProperties2");
         try { Handles.MH_vkGetPhysicalDeviceQueueFamilyProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceQueueFamilyProperties2, physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceQueueFamilyProperties2", e); }
     }
 
-    public void GetPhysicalDeviceMemoryProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkPhysicalDeviceMemoryProperties2 *") MemorySegment pMemoryProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceMemoryProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMemoryProperties2");
+    /// ```
+    /// void vkGetPhysicalDeviceMemoryProperties2(VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* pMemoryProperties);
+    /// ```
+    public void GetPhysicalDeviceMemoryProperties2(MemorySegment physicalDevice, MemorySegment pMemoryProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceMemoryProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMemoryProperties2");
         try { Handles.MH_vkGetPhysicalDeviceMemoryProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceMemoryProperties2, physicalDevice, pMemoryProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceMemoryProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceMemoryProperties2", e); }
     }
 
-    public void GetPhysicalDeviceSparseImageFormatProperties2(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceSparseImageFormatInfo2 *") MemorySegment pFormatInfo, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkSparseImageFormatProperties2 *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceSparseImageFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSparseImageFormatProperties2");
+    /// ```
+    /// void vkGetPhysicalDeviceSparseImageFormatProperties2(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo, uint32_t* pPropertyCount, VkSparseImageFormatProperties2* pProperties);
+    /// ```
+    public void GetPhysicalDeviceSparseImageFormatProperties2(MemorySegment physicalDevice, MemorySegment pFormatInfo, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSparseImageFormatProperties2)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSparseImageFormatProperties2");
         try { Handles.MH_vkGetPhysicalDeviceSparseImageFormatProperties2.invokeExact(handles.PFN_vkGetPhysicalDeviceSparseImageFormatProperties2, physicalDevice, pFormatInfo, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSparseImageFormatProperties2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSparseImageFormatProperties2", e); }
     }
 
-    public void TrimCommandPool(@CType("VkDevice") MemorySegment device, @CType("VkCommandPool") MemorySegment commandPool, @CType("VkCommandPoolTrimFlags") int flags) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkTrimCommandPool)) throw new SymbolNotFoundError("Symbol not found: vkTrimCommandPool");
+    /// ```
+    /// void vkTrimCommandPool(VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags);
+    /// ```
+    public void TrimCommandPool(MemorySegment device, long commandPool, int flags) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkTrimCommandPool)) throw new SymbolNotFoundError("Symbol not found: vkTrimCommandPool");
         try { Handles.MH_vkTrimCommandPool.invokeExact(handles.PFN_vkTrimCommandPool, device, commandPool, flags); }
-        catch (Throwable e) { throw new RuntimeException("error in vkTrimCommandPool", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TrimCommandPool", e); }
     }
 
-    public void GetDeviceQueue2(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceQueueInfo2 *") MemorySegment pQueueInfo, @CType("VkQueue *") MemorySegment pQueue) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceQueue2)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceQueue2");
+    /// ```
+    /// void vkGetDeviceQueue2(VkDevice device, const VkDeviceQueueInfo2* pQueueInfo, VkQueue* pQueue);
+    /// ```
+    public void GetDeviceQueue2(MemorySegment device, MemorySegment pQueueInfo, MemorySegment pQueue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceQueue2)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceQueue2");
         try { Handles.MH_vkGetDeviceQueue2.invokeExact(handles.PFN_vkGetDeviceQueue2, device, pQueueInfo, pQueue); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceQueue2", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDeviceQueue2", e); }
     }
 
-    public @CType("VkResult") int CreateSamplerYcbcrConversion(@CType("VkDevice") MemorySegment device, @CType("const VkSamplerYcbcrConversionCreateInfo *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSamplerYcbcrConversion *") MemorySegment pYcbcrConversion) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateSamplerYcbcrConversion)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversion");
+    /// ```
+    /// VkResult vkCreateSamplerYcbcrConversion(VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
+    /// ```
+    public int CreateSamplerYcbcrConversion(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pYcbcrConversion) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateSamplerYcbcrConversion)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversion");
         try { return (int) Handles.MH_vkCreateSamplerYcbcrConversion.invokeExact(handles.PFN_vkCreateSamplerYcbcrConversion, device, pCreateInfo, pAllocator, pYcbcrConversion); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateSamplerYcbcrConversion", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateSamplerYcbcrConversion", e); }
     }
 
-    public void DestroySamplerYcbcrConversion(@CType("VkDevice") MemorySegment device, @CType("VkSamplerYcbcrConversion") MemorySegment ycbcrConversion, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroySamplerYcbcrConversion)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversion");
+    /// ```
+    /// void vkDestroySamplerYcbcrConversion(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public void DestroySamplerYcbcrConversion(MemorySegment device, long ycbcrConversion, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroySamplerYcbcrConversion)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversion");
         try { Handles.MH_vkDestroySamplerYcbcrConversion.invokeExact(handles.PFN_vkDestroySamplerYcbcrConversion, device, ycbcrConversion, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDestroySamplerYcbcrConversion", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DestroySamplerYcbcrConversion", e); }
     }
 
-    public @CType("VkResult") int CreateDescriptorUpdateTemplate(@CType("VkDevice") MemorySegment device, @CType("const VkDescriptorUpdateTemplateCreateInfo *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkDescriptorUpdateTemplate *") MemorySegment pDescriptorUpdateTemplate) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDescriptorUpdateTemplate)) throw new SymbolNotFoundError("Symbol not found: vkCreateDescriptorUpdateTemplate");
+    /// ```
+    /// VkResult vkCreateDescriptorUpdateTemplate(VkDevice device, const VkDescriptorUpdateTemplateCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate);
+    /// ```
+    public int CreateDescriptorUpdateTemplate(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pDescriptorUpdateTemplate) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateDescriptorUpdateTemplate)) throw new SymbolNotFoundError("Symbol not found: vkCreateDescriptorUpdateTemplate");
         try { return (int) Handles.MH_vkCreateDescriptorUpdateTemplate.invokeExact(handles.PFN_vkCreateDescriptorUpdateTemplate, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateDescriptorUpdateTemplate", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateDescriptorUpdateTemplate", e); }
     }
 
-    public void DestroyDescriptorUpdateTemplate(@CType("VkDevice") MemorySegment device, @CType("VkDescriptorUpdateTemplate") MemorySegment descriptorUpdateTemplate, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyDescriptorUpdateTemplate)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDescriptorUpdateTemplate");
+    /// ```
+    /// void vkDestroyDescriptorUpdateTemplate(VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public void DestroyDescriptorUpdateTemplate(MemorySegment device, long descriptorUpdateTemplate, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyDescriptorUpdateTemplate)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDescriptorUpdateTemplate");
         try { Handles.MH_vkDestroyDescriptorUpdateTemplate.invokeExact(handles.PFN_vkDestroyDescriptorUpdateTemplate, device, descriptorUpdateTemplate, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDestroyDescriptorUpdateTemplate", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DestroyDescriptorUpdateTemplate", e); }
     }
 
-    public void UpdateDescriptorSetWithTemplate(@CType("VkDevice") MemorySegment device, @CType("VkDescriptorSet") MemorySegment descriptorSet, @CType("VkDescriptorUpdateTemplate") MemorySegment descriptorUpdateTemplate, @CType("const void *") MemorySegment pData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkUpdateDescriptorSetWithTemplate)) throw new SymbolNotFoundError("Symbol not found: vkUpdateDescriptorSetWithTemplate");
+    /// ```
+    /// void vkUpdateDescriptorSetWithTemplate(VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, const void* pData);
+    /// ```
+    public void UpdateDescriptorSetWithTemplate(MemorySegment device, long descriptorSet, long descriptorUpdateTemplate, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkUpdateDescriptorSetWithTemplate)) throw new SymbolNotFoundError("Symbol not found: vkUpdateDescriptorSetWithTemplate");
         try { Handles.MH_vkUpdateDescriptorSetWithTemplate.invokeExact(handles.PFN_vkUpdateDescriptorSetWithTemplate, device, descriptorSet, descriptorUpdateTemplate, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkUpdateDescriptorSetWithTemplate", e); }
+        catch (Throwable e) { throw new RuntimeException("error in UpdateDescriptorSetWithTemplate", e); }
     }
 
-    public void GetPhysicalDeviceExternalBufferProperties(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceExternalBufferInfo *") MemorySegment pExternalBufferInfo, @CType("VkExternalBufferProperties *") MemorySegment pExternalBufferProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalBufferProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferProperties");
+    /// ```
+    /// void vkGetPhysicalDeviceExternalBufferProperties(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
+    /// ```
+    public void GetPhysicalDeviceExternalBufferProperties(MemorySegment physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalBufferProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferProperties");
         try { Handles.MH_vkGetPhysicalDeviceExternalBufferProperties.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalBufferProperties, physicalDevice, pExternalBufferInfo, pExternalBufferProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalBufferProperties", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceExternalBufferProperties", e); }
     }
 
-    public void GetPhysicalDeviceExternalFenceProperties(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceExternalFenceInfo *") MemorySegment pExternalFenceInfo, @CType("VkExternalFenceProperties *") MemorySegment pExternalFenceProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalFenceProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalFenceProperties");
+    /// ```
+    /// void vkGetPhysicalDeviceExternalFenceProperties(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties);
+    /// ```
+    public void GetPhysicalDeviceExternalFenceProperties(MemorySegment physicalDevice, MemorySegment pExternalFenceInfo, MemorySegment pExternalFenceProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalFenceProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalFenceProperties");
         try { Handles.MH_vkGetPhysicalDeviceExternalFenceProperties.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalFenceProperties, physicalDevice, pExternalFenceInfo, pExternalFenceProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalFenceProperties", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceExternalFenceProperties", e); }
     }
 
-    public void GetPhysicalDeviceExternalSemaphoreProperties(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("const VkPhysicalDeviceExternalSemaphoreInfo *") MemorySegment pExternalSemaphoreInfo, @CType("VkExternalSemaphoreProperties *") MemorySegment pExternalSemaphoreProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalSemaphoreProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphoreProperties");
+    /// ```
+    /// void vkGetPhysicalDeviceExternalSemaphoreProperties(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties);
+    /// ```
+    public void GetPhysicalDeviceExternalSemaphoreProperties(MemorySegment physicalDevice, MemorySegment pExternalSemaphoreInfo, MemorySegment pExternalSemaphoreProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalSemaphoreProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphoreProperties");
         try { Handles.MH_vkGetPhysicalDeviceExternalSemaphoreProperties.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalSemaphoreProperties, physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalSemaphoreProperties", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceExternalSemaphoreProperties", e); }
     }
 
-    public void GetDescriptorSetLayoutSupport(@CType("VkDevice") MemorySegment device, @CType("const VkDescriptorSetLayoutCreateInfo *") MemorySegment pCreateInfo, @CType("VkDescriptorSetLayoutSupport *") MemorySegment pSupport) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutSupport)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupport");
+    /// ```
+    /// void vkGetDescriptorSetLayoutSupport(VkDevice device, const VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
+    /// ```
+    public void GetDescriptorSetLayoutSupport(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pSupport) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutSupport)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupport");
         try { Handles.MH_vkGetDescriptorSetLayoutSupport.invokeExact(handles.PFN_vkGetDescriptorSetLayoutSupport, device, pCreateInfo, pSupport); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutSupport", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDescriptorSetLayoutSupport", e); }
     }
 
 }

@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,26 +34,32 @@ public class VKNVScissorExclusive {
         public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetExclusiveScissorEnableNV;
         public final MemorySegment PFN_vkCmdSetExclusiveScissorNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetExclusiveScissorEnableNV = func.invoke(device, "vkCmdSetExclusiveScissorEnableNV");
             PFN_vkCmdSetExclusiveScissorNV = func.invoke(device, "vkCmdSetExclusiveScissorNV");
         }
     }
 
-    public VKNVScissorExclusive(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVScissorExclusive(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetExclusiveScissorEnableNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int firstExclusiveScissor, @CType("uint32_t") int exclusiveScissorCount, @CType("const VkBool32 *") MemorySegment pExclusiveScissorEnables) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetExclusiveScissorEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
+    /// ```
+    /// void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkBool32* pExclusiveScissorEnables);
+    /// ```
+    public void CmdSetExclusiveScissorEnableNV(MemorySegment commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissorEnables) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetExclusiveScissorEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
         try { Handles.MH_vkCmdSetExclusiveScissorEnableNV.invokeExact(handles.PFN_vkCmdSetExclusiveScissorEnableNV, commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorEnableNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetExclusiveScissorEnableNV", e); }
     }
 
-    public void CmdSetExclusiveScissorNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int firstExclusiveScissor, @CType("uint32_t") int exclusiveScissorCount, @CType("const VkRect2D *") MemorySegment pExclusiveScissors) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetExclusiveScissorNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");
+    /// ```
+    /// void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkRect2D* pExclusiveScissors);
+    /// ```
+    public void CmdSetExclusiveScissorNV(MemorySegment commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissors) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetExclusiveScissorNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");
         try { Handles.MH_vkCmdSetExclusiveScissorNV.invokeExact(handles.PFN_vkCmdSetExclusiveScissorNV, commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetExclusiveScissorNV", e); }
     }
 
 }

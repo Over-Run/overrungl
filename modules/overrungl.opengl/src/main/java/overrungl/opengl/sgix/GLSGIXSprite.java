@@ -53,7 +53,7 @@ public final class GLSGIXSprite {
     }
 
     /// ```
-    /// void glSpriteParameterfSGIX(unsigned int pname, float param);
+    /// void glSpriteParameterfSGIX(GLenum pname, GLfloat param);
     /// ```
     public void SpriteParameterfSGIX(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameterfSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameterfSGIX");
@@ -62,7 +62,7 @@ public final class GLSGIXSprite {
     }
 
     /// ```
-    /// void glSpriteParameterfvSGIX(unsigned int pname, const GLfloat* params);
+    /// void glSpriteParameterfvSGIX(GLenum pname, const GLfloat* params);
     /// ```
     public void SpriteParameterfvSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameterfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameterfvSGIX");
@@ -71,7 +71,7 @@ public final class GLSGIXSprite {
     }
 
     /// ```
-    /// void glSpriteParameteriSGIX(unsigned int pname, int param);
+    /// void glSpriteParameteriSGIX(GLenum pname, GLint param);
     /// ```
     public void SpriteParameteriSGIX(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameteriSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameteriSGIX");
@@ -80,7 +80,7 @@ public final class GLSGIXSprite {
     }
 
     /// ```
-    /// void glSpriteParameterivSGIX(unsigned int pname, const GLint* params);
+    /// void glSpriteParameterivSGIX(GLenum pname, const GLint* params);
     /// ```
     public void SpriteParameterivSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSpriteParameterivSGIX)) throw new SymbolNotFoundError("Symbol not found: glSpriteParameterivSGIX");

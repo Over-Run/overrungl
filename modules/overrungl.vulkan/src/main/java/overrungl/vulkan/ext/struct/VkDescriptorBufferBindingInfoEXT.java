@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### address
-/// [VarHandle][#VH_address] - [Getter][#address()] - [Setter][#address(long)]
-/// ### usage
-/// [VarHandle][#VH_usage] - [Getter][#usage()] - [Setter][#usage(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDescriptorBufferBindingInfoEXT {
+/// ```
+/// struct VkDescriptorBufferBindingInfoEXT {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkDeviceAddress address;
 ///     VkBufferUsageFlags usage;
-/// } VkDescriptorBufferBindingInfoEXT;
+/// };
 /// ```
-public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
+public sealed class VkDescriptorBufferBindingInfoEXT extends GroupType {
     /// The struct layout of `VkDescriptorBufferBindingInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("address"),
         ValueLayout.JAVA_INT.withName("usage")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `address` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `address`.
+    public static final long OFFSET_address = LAYOUT.byteOffset(PathElement.groupElement("address"));
+    /// The memory layout of `address`.
+    public static final MemoryLayout LAYOUT_address = LAYOUT.select(PathElement.groupElement("address"));
+    /// The [VarHandle] of `address` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_address = LAYOUT.arrayElementVarHandle(PathElement.groupElement("address"));
-    /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `usage`.
+    public static final long OFFSET_usage = LAYOUT.byteOffset(PathElement.groupElement("usage"));
+    /// The memory layout of `usage`.
+    public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
+    /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
 
     /// Creates `VkDescriptorBufferBindingInfoEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
     /// Creates `VkDescriptorBufferBindingInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorBufferBindingInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorBufferBindingInfoEXT(segment); }
-
-    /// Creates `VkDescriptorBufferBindingInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorBufferBindingInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorBufferBindingInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorBufferBindingInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDescriptorBufferBindingInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorBufferBindingInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDescriptorBufferBindingInfoEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
     /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
-    public static VkDescriptorBufferBindingInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDeviceAddress") long address, @CType("VkBufferUsageFlags") int usage) { return alloc(allocator).sType(sType).pNext(pNext).address(address).usage(usage); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDescriptorBufferBindingInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDescriptorBufferBindingInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDescriptorBufferBindingInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorBufferBindingInfoEXT sType(@CType("VkStructureType") int value) { VkDescriptorBufferBindingInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkDescriptorBufferBindingInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkDescriptorBufferBindingInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkDescriptorBufferBindingInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkDescriptorBufferBindingInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorBufferBindingInfoEXT pNext(@CType("const void *") MemorySegment value) { VkDescriptorBufferBindingInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkDescriptorBufferBindingInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `address` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceAddress") long get_address(MemorySegment segment, long index) { return (long) VH_address.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long address(MemorySegment segment, long index) { return (long) VH_address.get(segment, 0L, index); }
     /// {@return `address`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceAddress") long get_address(MemorySegment segment) { return VkDescriptorBufferBindingInfoEXT.get_address(segment, 0L); }
-    /// {@return `address`}
-    public @CType("VkDeviceAddress") long address() { return VkDescriptorBufferBindingInfoEXT.get_address(this.segment()); }
+    public long address() { return address(this.segment(), 0L); }
     /// Sets `address` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_address(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_address.set(segment, 0L, index, value); }
-    /// Sets `address` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_address(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDescriptorBufferBindingInfoEXT.set_address(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void address(MemorySegment segment, long index, long value) { VH_address.set(segment, 0L, index, value); }
     /// Sets `address` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorBufferBindingInfoEXT address(@CType("VkDeviceAddress") long value) { VkDescriptorBufferBindingInfoEXT.set_address(this.segment(), value); return this; }
+    public VkDescriptorBufferBindingInfoEXT address(long value) { address(this.segment(), 0L, value); return this; }
 
     /// {@return `usage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBufferUsageFlags") int get_usage(MemorySegment segment, long index) { return (int) VH_usage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int usage(MemorySegment segment, long index) { return (int) VH_usage.get(segment, 0L, index); }
     /// {@return `usage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBufferUsageFlags") int get_usage(MemorySegment segment) { return VkDescriptorBufferBindingInfoEXT.get_usage(segment, 0L); }
-    /// {@return `usage`}
-    public @CType("VkBufferUsageFlags") int usage() { return VkDescriptorBufferBindingInfoEXT.get_usage(this.segment()); }
+    public int usage() { return usage(this.segment(), 0L); }
     /// Sets `usage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_usage(MemorySegment segment, long index, @CType("VkBufferUsageFlags") int value) { VH_usage.set(segment, 0L, index, value); }
-    /// Sets `usage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_usage(MemorySegment segment, @CType("VkBufferUsageFlags") int value) { VkDescriptorBufferBindingInfoEXT.set_usage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void usage(MemorySegment segment, long index, int value) { VH_usage.set(segment, 0L, index, value); }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorBufferBindingInfoEXT usage(@CType("VkBufferUsageFlags") int value) { VkDescriptorBufferBindingInfoEXT.set_usage(this.segment(), value); return this; }
+    public VkDescriptorBufferBindingInfoEXT usage(int value) { usage(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDescriptorBufferBindingInfoEXT].
     public static final class Buffer extends VkDescriptorBufferBindingInfoEXT {
@@ -229,40 +197,40 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorBufferBindingInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorBufferBindingInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkDescriptorBufferBindingInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkDescriptorBufferBindingInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `address` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceAddress") long addressAt(long index) { return VkDescriptorBufferBindingInfoEXT.get_address(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long addressAt(long index) { return address(this.segment(), index); }
         /// Sets `address` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer addressAt(long index, @CType("VkDeviceAddress") long value) { VkDescriptorBufferBindingInfoEXT.set_address(this.segment(), index, value); return this; }
+        public Buffer addressAt(long index, long value) { address(this.segment(), index, value); return this; }
 
         /// {@return `usage` at the given index}
-        /// @param index the index
-        public @CType("VkBufferUsageFlags") int usageAt(long index) { return VkDescriptorBufferBindingInfoEXT.get_usage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int usageAt(long index) { return usage(this.segment(), index); }
         /// Sets `usage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer usageAt(long index, @CType("VkBufferUsageFlags") int value) { VkDescriptorBufferBindingInfoEXT.set_usage(this.segment(), index, value); return this; }
+        public Buffer usageAt(long index, int value) { usage(this.segment(), index, value); return this; }
 
     }
 }

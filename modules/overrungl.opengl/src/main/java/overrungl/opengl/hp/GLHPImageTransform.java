@@ -67,7 +67,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glImageTransformParameteriHP(unsigned int target, unsigned int pname, int param);
+    /// void glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param);
     /// ```
     public void ImageTransformParameteriHP(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameteriHP)) throw new SymbolNotFoundError("Symbol not found: glImageTransformParameteriHP");
@@ -76,7 +76,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glImageTransformParameterfHP(unsigned int target, unsigned int pname, float param);
+    /// void glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param);
     /// ```
     public void ImageTransformParameterfHP(int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterfHP)) throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterfHP");
@@ -85,7 +85,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glImageTransformParameterivHP(unsigned int target, unsigned int pname, const GLint* params);
+    /// void glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void ImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterivHP)) throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterivHP");
@@ -94,7 +94,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glImageTransformParameterfvHP(unsigned int target, unsigned int pname, const GLfloat* params);
+    /// void glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat* params);
     /// ```
     public void ImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterfvHP)) throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterfvHP");
@@ -103,7 +103,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glGetImageTransformParameterivHP(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetImageTransformParameterivHP(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageTransformParameterivHP)) throw new SymbolNotFoundError("Symbol not found: glGetImageTransformParameterivHP");
@@ -112,7 +112,7 @@ public final class GLHPImageTransform {
     }
 
     /// ```
-    /// void glGetImageTransformParameterfvHP(unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetImageTransformParameterfvHP(GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageTransformParameterfvHP)) throw new SymbolNotFoundError("Symbol not found: glGetImageTransformParameterfvHP");

@@ -15,49 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### useMinQIndex
-/// [VarHandle][#VH_useMinQIndex] - [Getter][#useMinQIndex()] - [Setter][#useMinQIndex(int)]
-/// ### minQIndex
-/// [Byte offset][#OFFSET_minQIndex] - [Memory layout][#ML_minQIndex] - [Getter][#minQIndex()] - [Setter][#minQIndex(MemorySegment)]
-/// ### useMaxQIndex
-/// [VarHandle][#VH_useMaxQIndex] - [Getter][#useMaxQIndex()] - [Setter][#useMaxQIndex(int)]
-/// ### maxQIndex
-/// [Byte offset][#OFFSET_maxQIndex] - [Memory layout][#ML_maxQIndex] - [Getter][#maxQIndex()] - [Setter][#maxQIndex(MemorySegment)]
-/// ### useMaxFrameSize
-/// [VarHandle][#VH_useMaxFrameSize] - [Getter][#useMaxFrameSize()] - [Setter][#useMaxFrameSize(int)]
-/// ### maxFrameSize
-/// [Byte offset][#OFFSET_maxFrameSize] - [Memory layout][#ML_maxFrameSize] - [Getter][#maxFrameSize()] - [Setter][#maxFrameSize(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeAV1RateControlLayerInfoKHR {
+/// ```
+/// struct VkVideoEncodeAV1RateControlLayerInfoKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkBool32 useMinQIndex;
 ///     VkVideoEncodeAV1QIndexKHR minQIndex;
 ///     VkBool32 useMaxQIndex;
 ///     VkVideoEncodeAV1QIndexKHR maxQIndex;
 ///     VkBool32 useMaxFrameSize;
 ///     VkVideoEncodeAV1FrameSizeKHR maxFrameSize;
-/// } VkVideoEncodeAV1RateControlLayerInfoKHR;
+/// };
 /// ```
-public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
+public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1RateControlLayerInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("useMinQIndex"),
@@ -67,28 +49,48 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
         ValueLayout.JAVA_INT.withName("useMaxFrameSize"),
         overrungl.vulkan.khr.struct.VkVideoEncodeAV1FrameSizeKHR.LAYOUT.withName("maxFrameSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `useMinQIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `useMinQIndex`.
+    public static final long OFFSET_useMinQIndex = LAYOUT.byteOffset(PathElement.groupElement("useMinQIndex"));
+    /// The memory layout of `useMinQIndex`.
+    public static final MemoryLayout LAYOUT_useMinQIndex = LAYOUT.select(PathElement.groupElement("useMinQIndex"));
+    /// The [VarHandle] of `useMinQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_useMinQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMinQIndex"));
     /// The byte offset of `minQIndex`.
     public static final long OFFSET_minQIndex = LAYOUT.byteOffset(PathElement.groupElement("minQIndex"));
     /// The memory layout of `minQIndex`.
-    public static final MemoryLayout ML_minQIndex = LAYOUT.select(PathElement.groupElement("minQIndex"));
-    /// The [VarHandle] of `useMaxQIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_minQIndex = LAYOUT.select(PathElement.groupElement("minQIndex"));
+    /// The byte offset of `useMaxQIndex`.
+    public static final long OFFSET_useMaxQIndex = LAYOUT.byteOffset(PathElement.groupElement("useMaxQIndex"));
+    /// The memory layout of `useMaxQIndex`.
+    public static final MemoryLayout LAYOUT_useMaxQIndex = LAYOUT.select(PathElement.groupElement("useMaxQIndex"));
+    /// The [VarHandle] of `useMaxQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_useMaxQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxQIndex"));
     /// The byte offset of `maxQIndex`.
     public static final long OFFSET_maxQIndex = LAYOUT.byteOffset(PathElement.groupElement("maxQIndex"));
     /// The memory layout of `maxQIndex`.
-    public static final MemoryLayout ML_maxQIndex = LAYOUT.select(PathElement.groupElement("maxQIndex"));
-    /// The [VarHandle] of `useMaxFrameSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_maxQIndex = LAYOUT.select(PathElement.groupElement("maxQIndex"));
+    /// The byte offset of `useMaxFrameSize`.
+    public static final long OFFSET_useMaxFrameSize = LAYOUT.byteOffset(PathElement.groupElement("useMaxFrameSize"));
+    /// The memory layout of `useMaxFrameSize`.
+    public static final MemoryLayout LAYOUT_useMaxFrameSize = LAYOUT.select(PathElement.groupElement("useMaxFrameSize"));
+    /// The [VarHandle] of `useMaxFrameSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_useMaxFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("useMaxFrameSize"));
     /// The byte offset of `maxFrameSize`.
     public static final long OFFSET_maxFrameSize = LAYOUT.byteOffset(PathElement.groupElement("maxFrameSize"));
     /// The memory layout of `maxFrameSize`.
-    public static final MemoryLayout ML_maxFrameSize = LAYOUT.select(PathElement.groupElement("maxFrameSize"));
+    public static final MemoryLayout LAYOUT_maxFrameSize = LAYOUT.select(PathElement.groupElement("maxFrameSize"));
 
     /// Creates `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment.
     /// @param segment the memory segment
@@ -97,19 +99,14 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
     /// Creates `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1RateControlLayerInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1RateControlLayerInfoKHR(segment); }
-
-    /// Creates `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1RateControlLayerInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1RateControlLayerInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeAV1RateControlLayerInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1RateControlLayerInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment.
     ///
@@ -117,7 +114,7 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -130,11 +127,6 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1RateControlLayerInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1RateControlLayerInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeAV1RateControlLayerInfoKHR`
-    public static VkVideoEncodeAV1RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkBool32") int useMinQIndex, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment minQIndex, @CType("VkBool32") int useMaxQIndex, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment maxQIndex, @CType("VkBool32") int useMaxFrameSize, @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment maxFrameSize) { return alloc(allocator).sType(sType).pNext(pNext).useMinQIndex(useMinQIndex).minQIndex(minQIndex).useMaxQIndex(useMaxQIndex).maxQIndex(maxQIndex).useMaxFrameSize(useMaxFrameSize).maxFrameSize(maxFrameSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -142,191 +134,135 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `useMinQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_useMinQIndex(MemorySegment segment, long index) { return (int) VH_useMinQIndex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int useMinQIndex(MemorySegment segment, long index) { return (int) VH_useMinQIndex.get(segment, 0L, index); }
     /// {@return `useMinQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_useMinQIndex(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMinQIndex(segment, 0L); }
-    /// {@return `useMinQIndex`}
-    public @CType("VkBool32") int useMinQIndex() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMinQIndex(this.segment()); }
+    public int useMinQIndex() { return useMinQIndex(this.segment(), 0L); }
     /// Sets `useMinQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_useMinQIndex(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_useMinQIndex.set(segment, 0L, index, value); }
-    /// Sets `useMinQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_useMinQIndex(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMinQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void useMinQIndex(MemorySegment segment, long index, int value) { VH_useMinQIndex.set(segment, 0L, index, value); }
     /// Sets `useMinQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR useMinQIndex(@CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMinQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMinQIndex(int value) { useMinQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `minQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_minQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minQIndex, index), ML_minQIndex); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment minQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minQIndex, index), LAYOUT_minQIndex); }
     /// {@return `minQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_minQIndex(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_minQIndex(segment, 0L); }
-    /// {@return `minQIndex`}
-    public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment minQIndex() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_minQIndex(this.segment()); }
+    public MemorySegment minQIndex() { return minQIndex(this.segment(), 0L); }
     /// Sets `minQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minQIndex(MemorySegment segment, long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minQIndex, index), ML_minQIndex.byteSize()); }
-    /// Sets `minQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minQIndex(MemorySegment segment, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_minQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minQIndex(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minQIndex, index), LAYOUT_minQIndex.byteSize()); }
     /// Sets `minQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR minQIndex(@CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_minQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR minQIndex(MemorySegment value) { minQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `useMaxQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_useMaxQIndex(MemorySegment segment, long index) { return (int) VH_useMaxQIndex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int useMaxQIndex(MemorySegment segment, long index) { return (int) VH_useMaxQIndex.get(segment, 0L, index); }
     /// {@return `useMaxQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_useMaxQIndex(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxQIndex(segment, 0L); }
-    /// {@return `useMaxQIndex`}
-    public @CType("VkBool32") int useMaxQIndex() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxQIndex(this.segment()); }
+    public int useMaxQIndex() { return useMaxQIndex(this.segment(), 0L); }
     /// Sets `useMaxQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_useMaxQIndex(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_useMaxQIndex.set(segment, 0L, index, value); }
-    /// Sets `useMaxQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_useMaxQIndex(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void useMaxQIndex(MemorySegment segment, long index, int value) { VH_useMaxQIndex.set(segment, 0L, index, value); }
     /// Sets `useMaxQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxQIndex(@CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxQIndex(int value) { useMaxQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `maxQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_maxQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxQIndex, index), ML_maxQIndex); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxQIndex(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxQIndex, index), LAYOUT_maxQIndex); }
     /// {@return `maxQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment get_maxQIndex(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxQIndex(segment, 0L); }
-    /// {@return `maxQIndex`}
-    public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment maxQIndex() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxQIndex(this.segment()); }
+    public MemorySegment maxQIndex() { return maxQIndex(this.segment(), 0L); }
     /// Sets `maxQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxQIndex(MemorySegment segment, long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxQIndex, index), ML_maxQIndex.byteSize()); }
-    /// Sets `maxQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxQIndex(MemorySegment segment, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxQIndex(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxQIndex, index), LAYOUT_maxQIndex.byteSize()); }
     /// Sets `maxQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR maxQIndex(@CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxQIndex(MemorySegment value) { maxQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `useMaxFrameSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_useMaxFrameSize(MemorySegment segment, long index) { return (int) VH_useMaxFrameSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int useMaxFrameSize(MemorySegment segment, long index) { return (int) VH_useMaxFrameSize.get(segment, 0L, index); }
     /// {@return `useMaxFrameSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_useMaxFrameSize(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxFrameSize(segment, 0L); }
-    /// {@return `useMaxFrameSize`}
-    public @CType("VkBool32") int useMaxFrameSize() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxFrameSize(this.segment()); }
+    public int useMaxFrameSize() { return useMaxFrameSize(this.segment(), 0L); }
     /// Sets `useMaxFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_useMaxFrameSize(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_useMaxFrameSize.set(segment, 0L, index, value); }
-    /// Sets `useMaxFrameSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_useMaxFrameSize(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxFrameSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void useMaxFrameSize(MemorySegment segment, long index, int value) { VH_useMaxFrameSize.set(segment, 0L, index, value); }
     /// Sets `useMaxFrameSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxFrameSize(@CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxFrameSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR useMaxFrameSize(int value) { useMaxFrameSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxFrameSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment get_maxFrameSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFrameSize, index), ML_maxFrameSize); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxFrameSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxFrameSize, index), LAYOUT_maxFrameSize); }
     /// {@return `maxFrameSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment get_maxFrameSize(MemorySegment segment) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxFrameSize(segment, 0L); }
-    /// {@return `maxFrameSize`}
-    public @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment maxFrameSize() { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxFrameSize(this.segment()); }
+    public MemorySegment maxFrameSize() { return maxFrameSize(this.segment(), 0L); }
     /// Sets `maxFrameSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxFrameSize(MemorySegment segment, long index, @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFrameSize, index), ML_maxFrameSize.byteSize()); }
-    /// Sets `maxFrameSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxFrameSize(MemorySegment segment, @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxFrameSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxFrameSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxFrameSize, index), LAYOUT_maxFrameSize.byteSize()); }
     /// Sets `maxFrameSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1RateControlLayerInfoKHR maxFrameSize(@CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxFrameSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxFrameSize(MemorySegment value) { maxFrameSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeAV1RateControlLayerInfoKHR].
     public static final class Buffer extends VkVideoEncodeAV1RateControlLayerInfoKHR {
@@ -351,76 +287,76 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `useMinQIndex` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int useMinQIndexAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMinQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int useMinQIndexAt(long index) { return useMinQIndex(this.segment(), index); }
         /// Sets `useMinQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer useMinQIndexAt(long index, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMinQIndex(this.segment(), index, value); return this; }
+        public Buffer useMinQIndexAt(long index, int value) { useMinQIndex(this.segment(), index, value); return this; }
 
         /// {@return `minQIndex` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment minQIndexAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_minQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment minQIndexAt(long index) { return minQIndex(this.segment(), index); }
         /// Sets `minQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minQIndexAt(long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_minQIndex(this.segment(), index, value); return this; }
+        public Buffer minQIndexAt(long index, MemorySegment value) { minQIndex(this.segment(), index, value); return this; }
 
         /// {@return `useMaxQIndex` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int useMaxQIndexAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int useMaxQIndexAt(long index) { return useMaxQIndex(this.segment(), index); }
         /// Sets `useMaxQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer useMaxQIndexAt(long index, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxQIndex(this.segment(), index, value); return this; }
+        public Buffer useMaxQIndexAt(long index, int value) { useMaxQIndex(this.segment(), index, value); return this; }
 
         /// {@return `maxQIndex` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment maxQIndexAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxQIndexAt(long index) { return maxQIndex(this.segment(), index); }
         /// Sets `maxQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxQIndexAt(long index, @CType("VkVideoEncodeAV1QIndexKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxQIndex(this.segment(), index, value); return this; }
+        public Buffer maxQIndexAt(long index, MemorySegment value) { maxQIndex(this.segment(), index, value); return this; }
 
         /// {@return `useMaxFrameSize` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int useMaxFrameSizeAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_useMaxFrameSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int useMaxFrameSizeAt(long index) { return useMaxFrameSize(this.segment(), index); }
         /// Sets `useMaxFrameSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer useMaxFrameSizeAt(long index, @CType("VkBool32") int value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_useMaxFrameSize(this.segment(), index, value); return this; }
+        public Buffer useMaxFrameSizeAt(long index, int value) { useMaxFrameSize(this.segment(), index, value); return this; }
 
         /// {@return `maxFrameSize` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment maxFrameSizeAt(long index) { return VkVideoEncodeAV1RateControlLayerInfoKHR.get_maxFrameSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxFrameSizeAt(long index) { return maxFrameSize(this.segment(), index); }
         /// Sets `maxFrameSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxFrameSizeAt(long index, @CType("VkVideoEncodeAV1FrameSizeKHR") MemorySegment value) { VkVideoEncodeAV1RateControlLayerInfoKHR.set_maxFrameSize(this.segment(), index, value); return this; }
+        public Buffer maxFrameSizeAt(long index, MemorySegment value) { maxFrameSize(this.segment(), index, value); return this; }
 
     }
 }

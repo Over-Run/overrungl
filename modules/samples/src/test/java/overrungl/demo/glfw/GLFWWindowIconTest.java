@@ -70,8 +70,9 @@ public final class GLFWWindowIconTest {
             var px = arena.allocate(JAVA_INT);
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
+            MemorySegment buffer = IOUtil.ioResourceToSegment(arena, "image.png");
             var data = stbi_load_from_memory(
-                IOUtil.ioResourceToSegment(arena, "image.png"),
+                buffer, Math.toIntExact(buffer.byteSize()),
                 px, py, pc, STBI_rgb_alpha
             );
             glfwSetWindowIcon(window, 1, GLFWImage.alloc(arena)

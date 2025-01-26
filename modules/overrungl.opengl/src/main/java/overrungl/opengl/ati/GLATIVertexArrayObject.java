@@ -78,7 +78,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// unsigned int glNewObjectBufferATI(int size, const void* pointer, unsigned int usage);
+    /// GLuint glNewObjectBufferATI(GLsizei size, const void* pointer, GLenum usage);
     /// ```
     public int NewObjectBufferATI(int size, MemorySegment pointer, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNewObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glNewObjectBufferATI");
@@ -87,7 +87,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// GLboolean glIsObjectBufferATI(unsigned int buffer);
+    /// GLboolean glIsObjectBufferATI(GLuint buffer);
     /// ```
     public boolean IsObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glIsObjectBufferATI");
@@ -96,7 +96,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glUpdateObjectBufferATI(unsigned int buffer, unsigned int offset, int size, const void* pointer, unsigned int preserve);
+    /// void glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const void* pointer, GLenum preserve);
     /// ```
     public void UpdateObjectBufferATI(int buffer, int offset, int size, MemorySegment pointer, int preserve) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUpdateObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glUpdateObjectBufferATI");
@@ -105,7 +105,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetObjectBufferfvATI(unsigned int buffer, unsigned int pname, GLfloat* params);
+    /// void glGetObjectBufferfvATI(GLuint buffer, GLenum pname, GLfloat* params);
     /// ```
     public void GetObjectBufferfvATI(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectBufferfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferfvATI");
@@ -114,7 +114,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetObjectBufferivATI(unsigned int buffer, unsigned int pname, GLint* params);
+    /// void glGetObjectBufferivATI(GLuint buffer, GLenum pname, GLint* params);
     /// ```
     public void GetObjectBufferivATI(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectBufferivATI)) throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferivATI");
@@ -123,7 +123,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glFreeObjectBufferATI(unsigned int buffer);
+    /// void glFreeObjectBufferATI(GLuint buffer);
     /// ```
     public void FreeObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFreeObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glFreeObjectBufferATI");
@@ -132,7 +132,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glArrayObjectATI(unsigned int array, int size, unsigned int type, int stride, unsigned int buffer, unsigned int offset);
+    /// void glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
     /// ```
     public void ArrayObjectATI(int array, int size, int type, int stride, int buffer, int offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glArrayObjectATI)) throw new SymbolNotFoundError("Symbol not found: glArrayObjectATI");
@@ -141,7 +141,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetArrayObjectfvATI(unsigned int array, unsigned int pname, GLfloat* params);
+    /// void glGetArrayObjectfvATI(GLenum array, GLenum pname, GLfloat* params);
     /// ```
     public void GetArrayObjectfvATI(int array, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectfvATI");
@@ -150,7 +150,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetArrayObjectivATI(unsigned int array, unsigned int pname, GLint* params);
+    /// void glGetArrayObjectivATI(GLenum array, GLenum pname, GLint* params);
     /// ```
     public void GetArrayObjectivATI(int array, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectivATI");
@@ -159,7 +159,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glVariantArrayObjectATI(unsigned int id, unsigned int type, int stride, unsigned int buffer, unsigned int offset);
+    /// void glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
     /// ```
     public void VariantArrayObjectATI(int id, int type, int stride, int buffer, int offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantArrayObjectATI)) throw new SymbolNotFoundError("Symbol not found: glVariantArrayObjectATI");
@@ -168,7 +168,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetVariantArrayObjectfvATI(unsigned int id, unsigned int pname, GLfloat* params);
+    /// void glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat* params);
     /// ```
     public void GetVariantArrayObjectfvATI(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectfvATI");
@@ -177,7 +177,7 @@ public final class GLATIVertexArrayObject {
     }
 
     /// ```
-    /// void glGetVariantArrayObjectivATI(unsigned int id, unsigned int pname, GLint* params);
+    /// void glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint* params);
     /// ```
     public void GetVariantArrayObjectivATI(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectivATI");

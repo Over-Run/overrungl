@@ -41,7 +41,7 @@ public final class GLARBClearTexture {
     }
 
     /// ```
-    /// void glClearTexImage(unsigned int texture, int level, unsigned int format, unsigned int type, const void* data);
+    /// void glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearTexImage(int texture, int level, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearTexImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexImage");
@@ -50,7 +50,7 @@ public final class GLARBClearTexture {
     }
 
     /// ```
-    /// void glClearTexSubImage(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* data);
+    /// void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexSubImage");

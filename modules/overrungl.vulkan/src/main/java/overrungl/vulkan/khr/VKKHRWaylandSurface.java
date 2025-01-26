@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -32,26 +31,32 @@ public class VKKHRWaylandSurface {
         public static final MethodHandle MH_vkGetPhysicalDeviceWaylandPresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateWaylandSurfaceKHR;
         public final MemorySegment PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateWaylandSurfaceKHR = func.invoke(instance, "vkCreateWaylandSurfaceKHR");
             PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR = func.invoke(instance, "vkGetPhysicalDeviceWaylandPresentationSupportKHR");
         }
     }
 
-    public VKKHRWaylandSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKKHRWaylandSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateWaylandSurfaceKHR(@CType("VkInstance") MemorySegment instance, @CType("const VkWaylandSurfaceCreateInfoKHR *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateWaylandSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWaylandSurfaceKHR");
+    /// ```
+    /// VkResult vkCreateWaylandSurfaceKHR(VkInstance instance, const VkWaylandSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateWaylandSurfaceKHR(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateWaylandSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWaylandSurfaceKHR");
         try { return (int) Handles.MH_vkCreateWaylandSurfaceKHR.invokeExact(handles.PFN_vkCreateWaylandSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateWaylandSurfaceKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateWaylandSurfaceKHR", e); }
     }
 
-    public @CType("VkBool32") int GetPhysicalDeviceWaylandPresentationSupportKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t") int queueFamilyIndex, @CType("struct wl_display *") MemorySegment display) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWaylandPresentationSupportKHR");
+    /// ```
+    /// VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, wl_display * display);
+    /// ```
+    public int GetPhysicalDeviceWaylandPresentationSupportKHR(MemorySegment physicalDevice, int queueFamilyIndex, MemorySegment display) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWaylandPresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceWaylandPresentationSupportKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR, physicalDevice, queueFamilyIndex, display); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceWaylandPresentationSupportKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceWaylandPresentationSupportKHR", e); }
     }
 
 }

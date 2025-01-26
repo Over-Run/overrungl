@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### fragmentDensityMap
-/// [VarHandle][#VH_fragmentDensityMap] - [Getter][#fragmentDensityMap()] - [Setter][#fragmentDensityMap(int)]
-/// ### fragmentDensityMapDynamic
-/// [VarHandle][#VH_fragmentDensityMapDynamic] - [Getter][#fragmentDensityMapDynamic()] - [Setter][#fragmentDensityMapDynamic(int)]
-/// ### fragmentDensityMapNonSubsampledImages
-/// [VarHandle][#VH_fragmentDensityMapNonSubsampledImages] - [Getter][#fragmentDensityMapNonSubsampledImages()] - [Setter][#fragmentDensityMapNonSubsampledImages(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 fragmentDensityMap;
 ///     VkBool32 fragmentDensityMapDynamic;
 ///     VkBool32 fragmentDensityMapNonSubsampledImages;
-/// } VkPhysicalDeviceFragmentDensityMapFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("fragmentDensityMap"),
         ValueLayout.JAVA_INT.withName("fragmentDensityMapDynamic"),
         ValueLayout.JAVA_INT.withName("fragmentDensityMapNonSubsampledImages")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `fragmentDensityMap` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `fragmentDensityMap`.
+    public static final long OFFSET_fragmentDensityMap = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityMap"));
+    /// The memory layout of `fragmentDensityMap`.
+    public static final MemoryLayout LAYOUT_fragmentDensityMap = LAYOUT.select(PathElement.groupElement("fragmentDensityMap"));
+    /// The [VarHandle] of `fragmentDensityMap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fragmentDensityMap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityMap"));
-    /// The [VarHandle] of `fragmentDensityMapDynamic` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `fragmentDensityMapDynamic`.
+    public static final long OFFSET_fragmentDensityMapDynamic = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityMapDynamic"));
+    /// The memory layout of `fragmentDensityMapDynamic`.
+    public static final MemoryLayout LAYOUT_fragmentDensityMapDynamic = LAYOUT.select(PathElement.groupElement("fragmentDensityMapDynamic"));
+    /// The [VarHandle] of `fragmentDensityMapDynamic` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fragmentDensityMapDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityMapDynamic"));
-    /// The [VarHandle] of `fragmentDensityMapNonSubsampledImages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `fragmentDensityMapNonSubsampledImages`.
+    public static final long OFFSET_fragmentDensityMapNonSubsampledImages = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityMapNonSubsampledImages"));
+    /// The memory layout of `fragmentDensityMapNonSubsampledImages`.
+    public static final MemoryLayout LAYOUT_fragmentDensityMapNonSubsampledImages = LAYOUT.select(PathElement.groupElement("fragmentDensityMapNonSubsampledImages"));
+    /// The [VarHandle] of `fragmentDensityMapNonSubsampledImages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fragmentDensityMapNonSubsampledImages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentDensityMapNonSubsampledImages"));
 
     /// Creates `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct
     /// Creates `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMapFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
-    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int fragmentDensityMap, @CType("VkBool32") int fragmentDensityMapDynamic, @CType("VkBool32") int fragmentDensityMapNonSubsampledImages) { return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityMap(fragmentDensityMap).fragmentDensityMapDynamic(fragmentDensityMapDynamic).fragmentDensityMapNonSubsampledImages(fragmentDensityMapNonSubsampledImages); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `fragmentDensityMap` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_fragmentDensityMap(MemorySegment segment, long index) { return (int) VH_fragmentDensityMap.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int fragmentDensityMap(MemorySegment segment, long index) { return (int) VH_fragmentDensityMap.get(segment, 0L, index); }
     /// {@return `fragmentDensityMap`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_fragmentDensityMap(MemorySegment segment) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMap(segment, 0L); }
-    /// {@return `fragmentDensityMap`}
-    public @CType("VkBool32") int fragmentDensityMap() { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMap(this.segment()); }
+    public int fragmentDensityMap() { return fragmentDensityMap(this.segment(), 0L); }
     /// Sets `fragmentDensityMap` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fragmentDensityMap(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_fragmentDensityMap.set(segment, 0L, index, value); }
-    /// Sets `fragmentDensityMap` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fragmentDensityMap(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMap(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fragmentDensityMap(MemorySegment segment, long index, int value) { VH_fragmentDensityMap.set(segment, 0L, index, value); }
     /// Sets `fragmentDensityMap` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMap(@CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMap(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMap(int value) { fragmentDensityMap(this.segment(), 0L, value); return this; }
 
     /// {@return `fragmentDensityMapDynamic` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_fragmentDensityMapDynamic(MemorySegment segment, long index) { return (int) VH_fragmentDensityMapDynamic.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int fragmentDensityMapDynamic(MemorySegment segment, long index) { return (int) VH_fragmentDensityMapDynamic.get(segment, 0L, index); }
     /// {@return `fragmentDensityMapDynamic`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_fragmentDensityMapDynamic(MemorySegment segment) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapDynamic(segment, 0L); }
-    /// {@return `fragmentDensityMapDynamic`}
-    public @CType("VkBool32") int fragmentDensityMapDynamic() { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapDynamic(this.segment()); }
+    public int fragmentDensityMapDynamic() { return fragmentDensityMapDynamic(this.segment(), 0L); }
     /// Sets `fragmentDensityMapDynamic` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fragmentDensityMapDynamic(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_fragmentDensityMapDynamic.set(segment, 0L, index, value); }
-    /// Sets `fragmentDensityMapDynamic` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fragmentDensityMapDynamic(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapDynamic(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fragmentDensityMapDynamic(MemorySegment segment, long index, int value) { VH_fragmentDensityMapDynamic.set(segment, 0L, index, value); }
     /// Sets `fragmentDensityMapDynamic` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapDynamic(@CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapDynamic(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapDynamic(int value) { fragmentDensityMapDynamic(this.segment(), 0L, value); return this; }
 
     /// {@return `fragmentDensityMapNonSubsampledImages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_fragmentDensityMapNonSubsampledImages(MemorySegment segment, long index) { return (int) VH_fragmentDensityMapNonSubsampledImages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int fragmentDensityMapNonSubsampledImages(MemorySegment segment, long index) { return (int) VH_fragmentDensityMapNonSubsampledImages.get(segment, 0L, index); }
     /// {@return `fragmentDensityMapNonSubsampledImages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_fragmentDensityMapNonSubsampledImages(MemorySegment segment) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapNonSubsampledImages(segment, 0L); }
-    /// {@return `fragmentDensityMapNonSubsampledImages`}
-    public @CType("VkBool32") int fragmentDensityMapNonSubsampledImages() { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapNonSubsampledImages(this.segment()); }
+    public int fragmentDensityMapNonSubsampledImages() { return fragmentDensityMapNonSubsampledImages(this.segment(), 0L); }
     /// Sets `fragmentDensityMapNonSubsampledImages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fragmentDensityMapNonSubsampledImages(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_fragmentDensityMapNonSubsampledImages.set(segment, 0L, index, value); }
-    /// Sets `fragmentDensityMapNonSubsampledImages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fragmentDensityMapNonSubsampledImages(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapNonSubsampledImages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fragmentDensityMapNonSubsampledImages(MemorySegment segment, long index, int value) { VH_fragmentDensityMapNonSubsampledImages.set(segment, 0L, index, value); }
     /// Sets `fragmentDensityMapNonSubsampledImages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapNonSubsampledImages(@CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapNonSubsampledImages(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentDensityMapFeaturesEXT fragmentDensityMapNonSubsampledImages(int value) { fragmentDensityMapNonSubsampledImages(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceFragmentDensityMapFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends Struct
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `fragmentDensityMap` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int fragmentDensityMapAt(long index) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMap(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int fragmentDensityMapAt(long index) { return fragmentDensityMap(this.segment(), index); }
         /// Sets `fragmentDensityMap` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fragmentDensityMapAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMap(this.segment(), index, value); return this; }
+        public Buffer fragmentDensityMapAt(long index, int value) { fragmentDensityMap(this.segment(), index, value); return this; }
 
         /// {@return `fragmentDensityMapDynamic` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int fragmentDensityMapDynamicAt(long index) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapDynamic(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int fragmentDensityMapDynamicAt(long index) { return fragmentDensityMapDynamic(this.segment(), index); }
         /// Sets `fragmentDensityMapDynamic` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fragmentDensityMapDynamicAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapDynamic(this.segment(), index, value); return this; }
+        public Buffer fragmentDensityMapDynamicAt(long index, int value) { fragmentDensityMapDynamic(this.segment(), index, value); return this; }
 
         /// {@return `fragmentDensityMapNonSubsampledImages` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int fragmentDensityMapNonSubsampledImagesAt(long index) { return VkPhysicalDeviceFragmentDensityMapFeaturesEXT.get_fragmentDensityMapNonSubsampledImages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int fragmentDensityMapNonSubsampledImagesAt(long index) { return fragmentDensityMapNonSubsampledImages(this.segment(), index); }
         /// Sets `fragmentDensityMapNonSubsampledImages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fragmentDensityMapNonSubsampledImagesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentDensityMapFeaturesEXT.set_fragmentDensityMapNonSubsampledImages(this.segment(), index, value); return this; }
+        public Buffer fragmentDensityMapNonSubsampledImagesAt(long index, int value) { fragmentDensityMapNonSubsampledImages(this.segment(), index, value); return this; }
 
     }
 }

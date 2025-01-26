@@ -39,7 +39,7 @@ public final class GLARBCopyBuffer {
     }
 
     /// ```
-    /// void glCopyBufferSubData(unsigned int readTarget, unsigned int writeTarget, signed long long readOffset, signed long long writeOffset, signed long long size);
+    /// void glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
     /// ```
     public void CopyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");

@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKEXTHeadlessSurface {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateHeadlessSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateHeadlessSurfaceEXT;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateHeadlessSurfaceEXT = func.invoke(instance, "vkCreateHeadlessSurfaceEXT");
         }
     }
 
-    public VKEXTHeadlessSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKEXTHeadlessSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateHeadlessSurfaceEXT(@CType("VkInstance") MemorySegment instance, @CType("const VkHeadlessSurfaceCreateInfoEXT *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateHeadlessSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");
+    /// ```
+    /// VkResult vkCreateHeadlessSurfaceEXT(VkInstance instance, const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateHeadlessSurfaceEXT(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateHeadlessSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");
         try { return (int) Handles.MH_vkCreateHeadlessSurfaceEXT.invokeExact(handles.PFN_vkCreateHeadlessSurfaceEXT, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateHeadlessSurfaceEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateHeadlessSurfaceEXT", e); }
     }
 
 }

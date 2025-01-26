@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -32,19 +31,22 @@ public class VKNVCooperativeMatrix2 {
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
         }
     }
 
-    public VKNVCooperativeMatrix2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVCooperativeMatrix2(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkCooperativeMatrixFlexibleDimensionsPropertiesNV *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
+    /// ```
+    public int GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(MemorySegment physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
         try { return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.invokeExact(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV, physicalDevice, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV", e); }
     }
 
 }

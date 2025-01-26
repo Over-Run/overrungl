@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,19 +34,22 @@ public class VKKHRRayTracingMaintenance1 {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCmdTraceRaysIndirect2KHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdTraceRaysIndirect2KHR = func.invoke(device, "vkCmdTraceRaysIndirect2KHR");
         }
     }
 
-    public VKKHRRayTracingMaintenance1(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRRayTracingMaintenance1(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdTraceRaysIndirect2KHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkDeviceAddress") long indirectDeviceAddress) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdTraceRaysIndirect2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
+    /// ```
+    /// void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, VkDeviceAddress indirectDeviceAddress);
+    /// ```
+    public void CmdTraceRaysIndirect2KHR(MemorySegment commandBuffer, long indirectDeviceAddress) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdTraceRaysIndirect2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
         try { Handles.MH_vkCmdTraceRaysIndirect2KHR.invokeExact(handles.PFN_vkCmdTraceRaysIndirect2KHR, commandBuffer, indirectDeviceAddress); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysIndirect2KHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdTraceRaysIndirect2KHR", e); }
     }
 
 }

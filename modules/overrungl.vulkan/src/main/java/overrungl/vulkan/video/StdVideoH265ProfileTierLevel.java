@@ -15,43 +15,45 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
-/// ### general_profile_idc
-/// [VarHandle][#VH_general_profile_idc] - [Getter][#general_profile_idc()] - [Setter][#general_profile_idc(int)]
-/// ### general_level_idc
-/// [VarHandle][#VH_general_level_idc] - [Getter][#general_level_idc()] - [Setter][#general_level_idc(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoH265ProfileTierLevel {
+/// ```
+/// struct StdVideoH265ProfileTierLevel {
 ///     StdVideoH265ProfileTierLevelFlags flags;
 ///     StdVideoH265ProfileIdc general_profile_idc;
 ///     StdVideoH265LevelIdc general_level_idc;
-/// } StdVideoH265ProfileTierLevel;
+/// };
 /// ```
-public sealed class StdVideoH265ProfileTierLevel extends Struct {
+public sealed class StdVideoH265ProfileTierLevel extends GroupType {
     /// The struct layout of `StdVideoH265ProfileTierLevel`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        StdVideoH265ProfileTierLevelFlags.LAYOUT.withName("flags"),
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+        overrungl.vulkan.video.StdVideoH265ProfileTierLevelFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("general_profile_idc"),
         ValueLayout.JAVA_INT.withName("general_level_idc")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `general_profile_idc` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The byte offset of `general_profile_idc`.
+    public static final long OFFSET_general_profile_idc = LAYOUT.byteOffset(PathElement.groupElement("general_profile_idc"));
+    /// The memory layout of `general_profile_idc`.
+    public static final MemoryLayout LAYOUT_general_profile_idc = LAYOUT.select(PathElement.groupElement("general_profile_idc"));
+    /// The [VarHandle] of `general_profile_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_general_profile_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_profile_idc"));
-    /// The [VarHandle] of `general_level_idc` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `general_level_idc`.
+    public static final long OFFSET_general_level_idc = LAYOUT.byteOffset(PathElement.groupElement("general_level_idc"));
+    /// The memory layout of `general_level_idc`.
+    public static final MemoryLayout LAYOUT_general_level_idc = LAYOUT.select(PathElement.groupElement("general_level_idc"));
+    /// The [VarHandle] of `general_level_idc` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_general_level_idc = LAYOUT.arrayElementVarHandle(PathElement.groupElement("general_level_idc"));
 
     /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
@@ -61,19 +63,14 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
     /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265ProfileTierLevel of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ProfileTierLevel(segment); }
-
-    /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265ProfileTierLevel ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ProfileTierLevel(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoH265ProfileTierLevel ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265ProfileTierLevel(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoH265ProfileTierLevel` with the given segment.
     ///
@@ -81,7 +78,7 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +91,6 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
     /// @return the allocated `StdVideoH265ProfileTierLevel`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoH265ProfileTierLevel`
-    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flags, @CType("StdVideoH265ProfileIdc") int general_profile_idc, @CType("StdVideoH265LevelIdc") int general_level_idc) { return alloc(allocator).flags(flags).general_profile_idc(general_profile_idc).general_level_idc(general_level_idc); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +98,55 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment flags(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoH265ProfileTierLevel.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flags() { return StdVideoH265ProfileTierLevel.get_flags(this.segment()); }
+    public MemorySegment flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags.byteSize()); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265ProfileTierLevel flags(@CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), value); return this; }
+    public StdVideoH265ProfileTierLevel flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `general_profile_idc` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoH265ProfileIdc") int get_general_profile_idc(MemorySegment segment, long index) { return (int) VH_general_profile_idc.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int general_profile_idc(MemorySegment segment, long index) { return (int) VH_general_profile_idc.get(segment, 0L, index); }
     /// {@return `general_profile_idc`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoH265ProfileIdc") int get_general_profile_idc(MemorySegment segment) { return StdVideoH265ProfileTierLevel.get_general_profile_idc(segment, 0L); }
-    /// {@return `general_profile_idc`}
-    public @CType("StdVideoH265ProfileIdc") int general_profile_idc() { return StdVideoH265ProfileTierLevel.get_general_profile_idc(this.segment()); }
+    public int general_profile_idc() { return general_profile_idc(this.segment(), 0L); }
     /// Sets `general_profile_idc` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_general_profile_idc(MemorySegment segment, long index, @CType("StdVideoH265ProfileIdc") int value) { VH_general_profile_idc.set(segment, 0L, index, value); }
-    /// Sets `general_profile_idc` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_general_profile_idc(MemorySegment segment, @CType("StdVideoH265ProfileIdc") int value) { StdVideoH265ProfileTierLevel.set_general_profile_idc(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void general_profile_idc(MemorySegment segment, long index, int value) { VH_general_profile_idc.set(segment, 0L, index, value); }
     /// Sets `general_profile_idc` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265ProfileTierLevel general_profile_idc(@CType("StdVideoH265ProfileIdc") int value) { StdVideoH265ProfileTierLevel.set_general_profile_idc(this.segment(), value); return this; }
+    public StdVideoH265ProfileTierLevel general_profile_idc(int value) { general_profile_idc(this.segment(), 0L, value); return this; }
 
     /// {@return `general_level_idc` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoH265LevelIdc") int get_general_level_idc(MemorySegment segment, long index) { return (int) VH_general_level_idc.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int general_level_idc(MemorySegment segment, long index) { return (int) VH_general_level_idc.get(segment, 0L, index); }
     /// {@return `general_level_idc`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoH265LevelIdc") int get_general_level_idc(MemorySegment segment) { return StdVideoH265ProfileTierLevel.get_general_level_idc(segment, 0L); }
-    /// {@return `general_level_idc`}
-    public @CType("StdVideoH265LevelIdc") int general_level_idc() { return StdVideoH265ProfileTierLevel.get_general_level_idc(this.segment()); }
+    public int general_level_idc() { return general_level_idc(this.segment(), 0L); }
     /// Sets `general_level_idc` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_general_level_idc(MemorySegment segment, long index, @CType("StdVideoH265LevelIdc") int value) { VH_general_level_idc.set(segment, 0L, index, value); }
-    /// Sets `general_level_idc` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_general_level_idc(MemorySegment segment, @CType("StdVideoH265LevelIdc") int value) { StdVideoH265ProfileTierLevel.set_general_level_idc(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void general_level_idc(MemorySegment segment, long index, int value) { VH_general_level_idc.set(segment, 0L, index, value); }
     /// Sets `general_level_idc` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265ProfileTierLevel general_level_idc(@CType("StdVideoH265LevelIdc") int value) { StdVideoH265ProfileTierLevel.set_general_level_idc(this.segment(), value); return this; }
+    public StdVideoH265ProfileTierLevel general_level_idc(int value) { general_level_idc(this.segment(), 0L, value); return this; }
 
     /// A buffer of [StdVideoH265ProfileTierLevel].
     public static final class Buffer extends StdVideoH265ProfileTierLevel {
@@ -200,31 +171,31 @@ public sealed class StdVideoH265ProfileTierLevel extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment flagsAt(long index) { return StdVideoH265ProfileTierLevel.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoH265ProfileTierLevelFlags") MemorySegment value) { StdVideoH265ProfileTierLevel.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `general_profile_idc` at the given index}
-        /// @param index the index
-        public @CType("StdVideoH265ProfileIdc") int general_profile_idcAt(long index) { return StdVideoH265ProfileTierLevel.get_general_profile_idc(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int general_profile_idcAt(long index) { return general_profile_idc(this.segment(), index); }
         /// Sets `general_profile_idc` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer general_profile_idcAt(long index, @CType("StdVideoH265ProfileIdc") int value) { StdVideoH265ProfileTierLevel.set_general_profile_idc(this.segment(), index, value); return this; }
+        public Buffer general_profile_idcAt(long index, int value) { general_profile_idc(this.segment(), index, value); return this; }
 
         /// {@return `general_level_idc` at the given index}
-        /// @param index the index
-        public @CType("StdVideoH265LevelIdc") int general_level_idcAt(long index) { return StdVideoH265ProfileTierLevel.get_general_level_idc(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int general_level_idcAt(long index) { return general_level_idc(this.segment(), index); }
         /// Sets `general_level_idc` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer general_level_idcAt(long index, @CType("StdVideoH265LevelIdc") int value) { StdVideoH265ProfileTierLevel.set_general_level_idc(this.segment(), index, value); return this; }
+        public Buffer general_level_idcAt(long index, int value) { general_level_idc(this.segment(), index, value); return this; }
 
     }
 }

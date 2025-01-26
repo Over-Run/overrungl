@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### primitivesGeneratedQuery
-/// [VarHandle][#VH_primitivesGeneratedQuery] - [Getter][#primitivesGeneratedQuery()] - [Setter][#primitivesGeneratedQuery(int)]
-/// ### primitivesGeneratedQueryWithRasterizerDiscard
-/// [VarHandle][#VH_primitivesGeneratedQueryWithRasterizerDiscard] - [Getter][#primitivesGeneratedQueryWithRasterizerDiscard()] - [Setter][#primitivesGeneratedQueryWithRasterizerDiscard(int)]
-/// ### primitivesGeneratedQueryWithNonZeroStreams
-/// [VarHandle][#VH_primitivesGeneratedQueryWithNonZeroStreams] - [Getter][#primitivesGeneratedQueryWithNonZeroStreams()] - [Setter][#primitivesGeneratedQueryWithNonZeroStreams(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
+/// ```
+/// struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 primitivesGeneratedQuery;
 ///     VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
 ///     VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
-/// } VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends Struct {
+public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("primitivesGeneratedQuery"),
         ValueLayout.JAVA_INT.withName("primitivesGeneratedQueryWithRasterizerDiscard"),
         ValueLayout.JAVA_INT.withName("primitivesGeneratedQueryWithNonZeroStreams")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `primitivesGeneratedQuery` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitivesGeneratedQuery`.
+    public static final long OFFSET_primitivesGeneratedQuery = LAYOUT.byteOffset(PathElement.groupElement("primitivesGeneratedQuery"));
+    /// The memory layout of `primitivesGeneratedQuery`.
+    public static final MemoryLayout LAYOUT_primitivesGeneratedQuery = LAYOUT.select(PathElement.groupElement("primitivesGeneratedQuery"));
+    /// The [VarHandle] of `primitivesGeneratedQuery` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitivesGeneratedQuery = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitivesGeneratedQuery"));
-    /// The [VarHandle] of `primitivesGeneratedQueryWithRasterizerDiscard` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitivesGeneratedQueryWithRasterizerDiscard`.
+    public static final long OFFSET_primitivesGeneratedQueryWithRasterizerDiscard = LAYOUT.byteOffset(PathElement.groupElement("primitivesGeneratedQueryWithRasterizerDiscard"));
+    /// The memory layout of `primitivesGeneratedQueryWithRasterizerDiscard`.
+    public static final MemoryLayout LAYOUT_primitivesGeneratedQueryWithRasterizerDiscard = LAYOUT.select(PathElement.groupElement("primitivesGeneratedQueryWithRasterizerDiscard"));
+    /// The [VarHandle] of `primitivesGeneratedQueryWithRasterizerDiscard` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitivesGeneratedQueryWithRasterizerDiscard = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitivesGeneratedQueryWithRasterizerDiscard"));
-    /// The [VarHandle] of `primitivesGeneratedQueryWithNonZeroStreams` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitivesGeneratedQueryWithNonZeroStreams`.
+    public static final long OFFSET_primitivesGeneratedQueryWithNonZeroStreams = LAYOUT.byteOffset(PathElement.groupElement("primitivesGeneratedQueryWithNonZeroStreams"));
+    /// The memory layout of `primitivesGeneratedQueryWithNonZeroStreams`.
+    public static final MemoryLayout LAYOUT_primitivesGeneratedQueryWithNonZeroStreams = LAYOUT.select(PathElement.groupElement("primitivesGeneratedQueryWithNonZeroStreams"));
+    /// The [VarHandle] of `primitivesGeneratedQueryWithNonZeroStreams` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitivesGeneratedQueryWithNonZeroStreams = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitivesGeneratedQueryWithNonZeroStreams"));
 
     /// Creates `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
     /// Creates `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
     /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
-    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int primitivesGeneratedQuery, @CType("VkBool32") int primitivesGeneratedQueryWithRasterizerDiscard, @CType("VkBool32") int primitivesGeneratedQueryWithNonZeroStreams) { return alloc(allocator).sType(sType).pNext(pNext).primitivesGeneratedQuery(primitivesGeneratedQuery).primitivesGeneratedQueryWithRasterizerDiscard(primitivesGeneratedQueryWithRasterizerDiscard).primitivesGeneratedQueryWithNonZeroStreams(primitivesGeneratedQueryWithNonZeroStreams); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `primitivesGeneratedQuery` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_primitivesGeneratedQuery(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQuery.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitivesGeneratedQuery(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQuery.get(segment, 0L, index); }
     /// {@return `primitivesGeneratedQuery`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_primitivesGeneratedQuery(MemorySegment segment) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQuery(segment, 0L); }
-    /// {@return `primitivesGeneratedQuery`}
-    public @CType("VkBool32") int primitivesGeneratedQuery() { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQuery(this.segment()); }
+    public int primitivesGeneratedQuery() { return primitivesGeneratedQuery(this.segment(), 0L); }
     /// Sets `primitivesGeneratedQuery` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitivesGeneratedQuery(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_primitivesGeneratedQuery.set(segment, 0L, index, value); }
-    /// Sets `primitivesGeneratedQuery` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitivesGeneratedQuery(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQuery(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitivesGeneratedQuery(MemorySegment segment, long index, int value) { VH_primitivesGeneratedQuery.set(segment, 0L, index, value); }
     /// Sets `primitivesGeneratedQuery` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQuery(@CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQuery(this.segment(), value); return this; }
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQuery(int value) { primitivesGeneratedQuery(this.segment(), 0L, value); return this; }
 
     /// {@return `primitivesGeneratedQueryWithRasterizerDiscard` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQueryWithRasterizerDiscard.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQueryWithRasterizerDiscard.get(segment, 0L, index); }
     /// {@return `primitivesGeneratedQueryWithRasterizerDiscard`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithRasterizerDiscard(segment, 0L); }
-    /// {@return `primitivesGeneratedQueryWithRasterizerDiscard`}
-    public @CType("VkBool32") int primitivesGeneratedQueryWithRasterizerDiscard() { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithRasterizerDiscard(this.segment()); }
+    public int primitivesGeneratedQueryWithRasterizerDiscard() { return primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), 0L); }
     /// Sets `primitivesGeneratedQueryWithRasterizerDiscard` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_primitivesGeneratedQueryWithRasterizerDiscard.set(segment, 0L, index, value); }
-    /// Sets `primitivesGeneratedQueryWithRasterizerDiscard` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithRasterizerDiscard(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitivesGeneratedQueryWithRasterizerDiscard(MemorySegment segment, long index, int value) { VH_primitivesGeneratedQueryWithRasterizerDiscard.set(segment, 0L, index, value); }
     /// Sets `primitivesGeneratedQueryWithRasterizerDiscard` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithRasterizerDiscard(@CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), value); return this; }
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithRasterizerDiscard(int value) { primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), 0L, value); return this; }
 
     /// {@return `primitivesGeneratedQueryWithNonZeroStreams` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQueryWithNonZeroStreams.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment, long index) { return (int) VH_primitivesGeneratedQueryWithNonZeroStreams.get(segment, 0L, index); }
     /// {@return `primitivesGeneratedQueryWithNonZeroStreams`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithNonZeroStreams(segment, 0L); }
-    /// {@return `primitivesGeneratedQueryWithNonZeroStreams`}
-    public @CType("VkBool32") int primitivesGeneratedQueryWithNonZeroStreams() { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithNonZeroStreams(this.segment()); }
+    public int primitivesGeneratedQueryWithNonZeroStreams() { return primitivesGeneratedQueryWithNonZeroStreams(this.segment(), 0L); }
     /// Sets `primitivesGeneratedQueryWithNonZeroStreams` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_primitivesGeneratedQueryWithNonZeroStreams.set(segment, 0L, index, value); }
-    /// Sets `primitivesGeneratedQueryWithNonZeroStreams` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithNonZeroStreams(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitivesGeneratedQueryWithNonZeroStreams(MemorySegment segment, long index, int value) { VH_primitivesGeneratedQueryWithNonZeroStreams.set(segment, 0L, index, value); }
     /// Sets `primitivesGeneratedQueryWithNonZeroStreams` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithNonZeroStreams(@CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithNonZeroStreams(this.segment(), value); return this; }
+    public VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT primitivesGeneratedQueryWithNonZeroStreams(int value) { primitivesGeneratedQueryWithNonZeroStreams(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT].
     public static final class Buffer extends VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `primitivesGeneratedQuery` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int primitivesGeneratedQueryAt(long index) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQuery(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitivesGeneratedQueryAt(long index) { return primitivesGeneratedQuery(this.segment(), index); }
         /// Sets `primitivesGeneratedQuery` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitivesGeneratedQueryAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQuery(this.segment(), index, value); return this; }
+        public Buffer primitivesGeneratedQueryAt(long index, int value) { primitivesGeneratedQuery(this.segment(), index, value); return this; }
 
         /// {@return `primitivesGeneratedQueryWithRasterizerDiscard` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int primitivesGeneratedQueryWithRasterizerDiscardAt(long index) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitivesGeneratedQueryWithRasterizerDiscardAt(long index) { return primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), index); }
         /// Sets `primitivesGeneratedQueryWithRasterizerDiscard` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitivesGeneratedQueryWithRasterizerDiscardAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), index, value); return this; }
+        public Buffer primitivesGeneratedQueryWithRasterizerDiscardAt(long index, int value) { primitivesGeneratedQueryWithRasterizerDiscard(this.segment(), index, value); return this; }
 
         /// {@return `primitivesGeneratedQueryWithNonZeroStreams` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int primitivesGeneratedQueryWithNonZeroStreamsAt(long index) { return VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.get_primitivesGeneratedQueryWithNonZeroStreams(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitivesGeneratedQueryWithNonZeroStreamsAt(long index) { return primitivesGeneratedQueryWithNonZeroStreams(this.segment(), index); }
         /// Sets `primitivesGeneratedQueryWithNonZeroStreams` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitivesGeneratedQueryWithNonZeroStreamsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT.set_primitivesGeneratedQueryWithNonZeroStreams(this.segment(), index, value); return this; }
+        public Buffer primitivesGeneratedQueryWithNonZeroStreamsAt(long index, int value) { primitivesGeneratedQueryWithNonZeroStreams(this.segment(), index, value); return this; }
 
     }
 }

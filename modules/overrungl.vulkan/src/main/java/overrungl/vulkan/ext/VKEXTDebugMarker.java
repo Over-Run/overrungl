@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -52,16 +51,16 @@ public class VKEXTDebugMarker {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT = 26;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT = 27;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT = 28;
+    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT = 28;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT = 29;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT = 30;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT = 33;
+    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = 33;
     public static final int VK_EXT_DEBUG_MARKER_SPEC_VERSION = 4;
     public static final String VK_EXT_DEBUG_MARKER_EXTENSION_NAME = "VK_EXT_debug_marker";
     public static final int VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT = 1000022000;
     public static final int VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT = 1000022001;
     public static final int VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT = 1000022002;
-    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT;
-    public static final int VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT;
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkDebugMarkerSetObjectTagEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -74,7 +73,7 @@ public class VKEXTDebugMarker {
         public final MemorySegment PFN_vkCmdDebugMarkerBeginEXT;
         public final MemorySegment PFN_vkCmdDebugMarkerEndEXT;
         public final MemorySegment PFN_vkCmdDebugMarkerInsertEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkDebugMarkerSetObjectTagEXT = func.invoke(device, "vkDebugMarkerSetObjectTagEXT");
             PFN_vkDebugMarkerSetObjectNameEXT = func.invoke(device, "vkDebugMarkerSetObjectNameEXT");
             PFN_vkCmdDebugMarkerBeginEXT = func.invoke(device, "vkCmdDebugMarkerBeginEXT");
@@ -83,38 +82,53 @@ public class VKEXTDebugMarker {
         }
     }
 
-    public VKEXTDebugMarker(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTDebugMarker(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int DebugMarkerSetObjectTagEXT(@CType("VkDevice") MemorySegment device, @CType("const VkDebugMarkerObjectTagInfoEXT *") MemorySegment pTagInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDebugMarkerSetObjectTagEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugMarkerSetObjectTagEXT");
+    /// ```
+    /// VkResult vkDebugMarkerSetObjectTagEXT(VkDevice device, const VkDebugMarkerObjectTagInfoEXT* pTagInfo);
+    /// ```
+    public int DebugMarkerSetObjectTagEXT(MemorySegment device, MemorySegment pTagInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDebugMarkerSetObjectTagEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugMarkerSetObjectTagEXT");
         try { return (int) Handles.MH_vkDebugMarkerSetObjectTagEXT.invokeExact(handles.PFN_vkDebugMarkerSetObjectTagEXT, device, pTagInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDebugMarkerSetObjectTagEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DebugMarkerSetObjectTagEXT", e); }
     }
 
-    public @CType("VkResult") int DebugMarkerSetObjectNameEXT(@CType("VkDevice") MemorySegment device, @CType("const VkDebugMarkerObjectNameInfoEXT *") MemorySegment pNameInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDebugMarkerSetObjectNameEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugMarkerSetObjectNameEXT");
+    /// ```
+    /// VkResult vkDebugMarkerSetObjectNameEXT(VkDevice device, const VkDebugMarkerObjectNameInfoEXT* pNameInfo);
+    /// ```
+    public int DebugMarkerSetObjectNameEXT(MemorySegment device, MemorySegment pNameInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDebugMarkerSetObjectNameEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugMarkerSetObjectNameEXT");
         try { return (int) Handles.MH_vkDebugMarkerSetObjectNameEXT.invokeExact(handles.PFN_vkDebugMarkerSetObjectNameEXT, device, pNameInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDebugMarkerSetObjectNameEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DebugMarkerSetObjectNameEXT", e); }
     }
 
-    public void CmdDebugMarkerBeginEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkDebugMarkerMarkerInfoEXT *") MemorySegment pMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDebugMarkerBeginEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerBeginEXT");
+    /// ```
+    /// void vkCmdDebugMarkerBeginEXT(VkCommandBuffer commandBuffer, const VkDebugMarkerMarkerInfoEXT* pMarkerInfo);
+    /// ```
+    public void CmdDebugMarkerBeginEXT(MemorySegment commandBuffer, MemorySegment pMarkerInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDebugMarkerBeginEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerBeginEXT");
         try { Handles.MH_vkCmdDebugMarkerBeginEXT.invokeExact(handles.PFN_vkCmdDebugMarkerBeginEXT, commandBuffer, pMarkerInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDebugMarkerBeginEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDebugMarkerBeginEXT", e); }
     }
 
-    public void CmdDebugMarkerEndEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDebugMarkerEndEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerEndEXT");
+    /// ```
+    /// void vkCmdDebugMarkerEndEXT(VkCommandBuffer commandBuffer);
+    /// ```
+    public void CmdDebugMarkerEndEXT(MemorySegment commandBuffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDebugMarkerEndEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerEndEXT");
         try { Handles.MH_vkCmdDebugMarkerEndEXT.invokeExact(handles.PFN_vkCmdDebugMarkerEndEXT, commandBuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDebugMarkerEndEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDebugMarkerEndEXT", e); }
     }
 
-    public void CmdDebugMarkerInsertEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkDebugMarkerMarkerInfoEXT *") MemorySegment pMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDebugMarkerInsertEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerInsertEXT");
+    /// ```
+    /// void vkCmdDebugMarkerInsertEXT(VkCommandBuffer commandBuffer, const VkDebugMarkerMarkerInfoEXT* pMarkerInfo);
+    /// ```
+    public void CmdDebugMarkerInsertEXT(MemorySegment commandBuffer, MemorySegment pMarkerInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDebugMarkerInsertEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDebugMarkerInsertEXT");
         try { Handles.MH_vkCmdDebugMarkerInsertEXT.invokeExact(handles.PFN_vkCmdDebugMarkerInsertEXT, commandBuffer, pMarkerInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDebugMarkerInsertEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDebugMarkerInsertEXT", e); }
     }
 
 }

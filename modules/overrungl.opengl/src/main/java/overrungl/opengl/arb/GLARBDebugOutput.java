@@ -68,7 +68,7 @@ public final class GLARBDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageControlARB(unsigned int source, unsigned int type, unsigned int severity, int count, const GLuint* ids, GLboolean enabled);
+    /// void glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
     public void DebugMessageControlARB(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageControlARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlARB");
@@ -77,7 +77,7 @@ public final class GLARBDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageInsertARB(unsigned int source, unsigned int type, unsigned int id, unsigned int severity, int length, const GLchar* buf);
+    /// void glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* buf);
     /// ```
     public void DebugMessageInsertARB(int source, int type, int id, int severity, int length, MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertARB");
@@ -86,7 +86,7 @@ public final class GLARBDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageCallbackARB(void (*GLDebugProc)(unsigned int source, unsigned int type, unsigned int id, unsigned int severity, int length, const GLchar* message, const void* userParam) callback, const void* userParam);
+    /// void glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const void* userParam);
     /// ```
     public void DebugMessageCallbackARB(MemorySegment callback, MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackARB");
@@ -95,7 +95,7 @@ public final class GLARBDebugOutput {
     }
 
     /// ```
-    /// unsigned int glGetDebugMessageLogARB(unsigned int count, int bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
+    /// GLuint glGetDebugMessageLogARB(GLuint count, GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
     /// ```
     public int GetDebugMessageLogARB(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogARB)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogARB");

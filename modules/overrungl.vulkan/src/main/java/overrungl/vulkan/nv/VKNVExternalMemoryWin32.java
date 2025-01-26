@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -29,21 +28,24 @@ public class VKNVExternalMemoryWin32 {
     public static final int VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV = 1000057001;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetMemoryWin32HandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetMemoryWin32HandleNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryWin32HandleNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryWin32HandleNV = func.invoke(device, "vkGetMemoryWin32HandleNV");
         }
     }
 
-    public VKNVExternalMemoryWin32(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVExternalMemoryWin32(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetMemoryWin32HandleNV(@CType("VkDevice") MemorySegment device, @CType("VkDeviceMemory") MemorySegment memory, @CType("VkExternalMemoryHandleTypeFlagsNV") int handleType, @CType("HANDLE *") MemorySegment pHandle) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryWin32HandleNV)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleNV");
+    /// ```
+    /// VkResult vkGetMemoryWin32HandleNV(VkDevice device, VkDeviceMemory memory, VkExternalMemoryHandleTypeFlagsNV handleType, HANDLE* pHandle);
+    /// ```
+    public int GetMemoryWin32HandleNV(MemorySegment device, long memory, int handleType, MemorySegment pHandle) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryWin32HandleNV)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleNV");
         try { return (int) Handles.MH_vkGetMemoryWin32HandleNV.invokeExact(handles.PFN_vkGetMemoryWin32HandleNV, device, memory, handleType, pHandle); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryWin32HandleNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryWin32HandleNV", e); }
     }
 
 }

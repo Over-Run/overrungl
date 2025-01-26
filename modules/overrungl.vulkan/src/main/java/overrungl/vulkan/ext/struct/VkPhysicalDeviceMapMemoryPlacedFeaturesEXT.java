@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### memoryMapPlaced
-/// [VarHandle][#VH_memoryMapPlaced] - [Getter][#memoryMapPlaced()] - [Setter][#memoryMapPlaced(int)]
-/// ### memoryMapRangePlaced
-/// [VarHandle][#VH_memoryMapRangePlaced] - [Getter][#memoryMapRangePlaced()] - [Setter][#memoryMapRangePlaced(int)]
-/// ### memoryUnmapReserve
-/// [VarHandle][#VH_memoryUnmapReserve] - [Getter][#memoryUnmapReserve()] - [Setter][#memoryUnmapReserve(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 memoryMapPlaced;
 ///     VkBool32 memoryMapRangePlaced;
 ///     VkBool32 memoryUnmapReserve;
-/// } VkPhysicalDeviceMapMemoryPlacedFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("memoryMapPlaced"),
         ValueLayout.JAVA_INT.withName("memoryMapRangePlaced"),
         ValueLayout.JAVA_INT.withName("memoryUnmapReserve")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `memoryMapPlaced` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `memoryMapPlaced`.
+    public static final long OFFSET_memoryMapPlaced = LAYOUT.byteOffset(PathElement.groupElement("memoryMapPlaced"));
+    /// The memory layout of `memoryMapPlaced`.
+    public static final MemoryLayout LAYOUT_memoryMapPlaced = LAYOUT.select(PathElement.groupElement("memoryMapPlaced"));
+    /// The [VarHandle] of `memoryMapPlaced` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memoryMapPlaced = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapPlaced"));
-    /// The [VarHandle] of `memoryMapRangePlaced` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `memoryMapRangePlaced`.
+    public static final long OFFSET_memoryMapRangePlaced = LAYOUT.byteOffset(PathElement.groupElement("memoryMapRangePlaced"));
+    /// The memory layout of `memoryMapRangePlaced`.
+    public static final MemoryLayout LAYOUT_memoryMapRangePlaced = LAYOUT.select(PathElement.groupElement("memoryMapRangePlaced"));
+    /// The [VarHandle] of `memoryMapRangePlaced` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memoryMapRangePlaced = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryMapRangePlaced"));
-    /// The [VarHandle] of `memoryUnmapReserve` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `memoryUnmapReserve`.
+    public static final long OFFSET_memoryUnmapReserve = LAYOUT.byteOffset(PathElement.groupElement("memoryUnmapReserve"));
+    /// The memory layout of `memoryUnmapReserve`.
+    public static final MemoryLayout LAYOUT_memoryUnmapReserve = LAYOUT.select(PathElement.groupElement("memoryUnmapReserve"));
+    /// The [VarHandle] of `memoryUnmapReserve` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memoryUnmapReserve = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryUnmapReserve"));
 
     /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMapMemoryPlacedFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
-    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int memoryMapPlaced, @CType("VkBool32") int memoryMapRangePlaced, @CType("VkBool32") int memoryUnmapReserve) { return alloc(allocator).sType(sType).pNext(pNext).memoryMapPlaced(memoryMapPlaced).memoryMapRangePlaced(memoryMapRangePlaced).memoryUnmapReserve(memoryUnmapReserve); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryMapPlaced` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_memoryMapPlaced(MemorySegment segment, long index) { return (int) VH_memoryMapPlaced.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memoryMapPlaced(MemorySegment segment, long index) { return (int) VH_memoryMapPlaced.get(segment, 0L, index); }
     /// {@return `memoryMapPlaced`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_memoryMapPlaced(MemorySegment segment) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapPlaced(segment, 0L); }
-    /// {@return `memoryMapPlaced`}
-    public @CType("VkBool32") int memoryMapPlaced() { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapPlaced(this.segment()); }
+    public int memoryMapPlaced() { return memoryMapPlaced(this.segment(), 0L); }
     /// Sets `memoryMapPlaced` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryMapPlaced(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_memoryMapPlaced.set(segment, 0L, index, value); }
-    /// Sets `memoryMapPlaced` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryMapPlaced(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapPlaced(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryMapPlaced(MemorySegment segment, long index, int value) { VH_memoryMapPlaced.set(segment, 0L, index, value); }
     /// Sets `memoryMapPlaced` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapPlaced(@CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapPlaced(this.segment(), value); return this; }
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapPlaced(int value) { memoryMapPlaced(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryMapRangePlaced` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_memoryMapRangePlaced(MemorySegment segment, long index) { return (int) VH_memoryMapRangePlaced.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memoryMapRangePlaced(MemorySegment segment, long index) { return (int) VH_memoryMapRangePlaced.get(segment, 0L, index); }
     /// {@return `memoryMapRangePlaced`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_memoryMapRangePlaced(MemorySegment segment) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapRangePlaced(segment, 0L); }
-    /// {@return `memoryMapRangePlaced`}
-    public @CType("VkBool32") int memoryMapRangePlaced() { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapRangePlaced(this.segment()); }
+    public int memoryMapRangePlaced() { return memoryMapRangePlaced(this.segment(), 0L); }
     /// Sets `memoryMapRangePlaced` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryMapRangePlaced(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_memoryMapRangePlaced.set(segment, 0L, index, value); }
-    /// Sets `memoryMapRangePlaced` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryMapRangePlaced(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapRangePlaced(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryMapRangePlaced(MemorySegment segment, long index, int value) { VH_memoryMapRangePlaced.set(segment, 0L, index, value); }
     /// Sets `memoryMapRangePlaced` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapRangePlaced(@CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapRangePlaced(this.segment(), value); return this; }
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryMapRangePlaced(int value) { memoryMapRangePlaced(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryUnmapReserve` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_memoryUnmapReserve(MemorySegment segment, long index) { return (int) VH_memoryUnmapReserve.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memoryUnmapReserve(MemorySegment segment, long index) { return (int) VH_memoryUnmapReserve.get(segment, 0L, index); }
     /// {@return `memoryUnmapReserve`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_memoryUnmapReserve(MemorySegment segment) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryUnmapReserve(segment, 0L); }
-    /// {@return `memoryUnmapReserve`}
-    public @CType("VkBool32") int memoryUnmapReserve() { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryUnmapReserve(this.segment()); }
+    public int memoryUnmapReserve() { return memoryUnmapReserve(this.segment(), 0L); }
     /// Sets `memoryUnmapReserve` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryUnmapReserve(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_memoryUnmapReserve.set(segment, 0L, index, value); }
-    /// Sets `memoryUnmapReserve` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryUnmapReserve(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryUnmapReserve(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryUnmapReserve(MemorySegment segment, long index, int value) { VH_memoryUnmapReserve.set(segment, 0L, index, value); }
     /// Sets `memoryUnmapReserve` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryUnmapReserve(@CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryUnmapReserve(this.segment(), value); return this; }
+    public VkPhysicalDeviceMapMemoryPlacedFeaturesEXT memoryUnmapReserve(int value) { memoryUnmapReserve(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceMapMemoryPlacedFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `memoryMapPlaced` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int memoryMapPlacedAt(long index) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapPlaced(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memoryMapPlacedAt(long index) { return memoryMapPlaced(this.segment(), index); }
         /// Sets `memoryMapPlaced` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryMapPlacedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapPlaced(this.segment(), index, value); return this; }
+        public Buffer memoryMapPlacedAt(long index, int value) { memoryMapPlaced(this.segment(), index, value); return this; }
 
         /// {@return `memoryMapRangePlaced` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int memoryMapRangePlacedAt(long index) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryMapRangePlaced(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memoryMapRangePlacedAt(long index) { return memoryMapRangePlaced(this.segment(), index); }
         /// Sets `memoryMapRangePlaced` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryMapRangePlacedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryMapRangePlaced(this.segment(), index, value); return this; }
+        public Buffer memoryMapRangePlacedAt(long index, int value) { memoryMapRangePlaced(this.segment(), index, value); return this; }
 
         /// {@return `memoryUnmapReserve` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int memoryUnmapReserveAt(long index) { return VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.get_memoryUnmapReserve(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memoryUnmapReserveAt(long index) { return memoryUnmapReserve(this.segment(), index); }
         /// Sets `memoryUnmapReserve` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryUnmapReserveAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMapMemoryPlacedFeaturesEXT.set_memoryUnmapReserve(this.segment(), index, value); return this; }
+        public Buffer memoryUnmapReserveAt(long index, int value) { memoryUnmapReserve(this.segment(), index, value); return this; }
 
     }
 }

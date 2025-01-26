@@ -59,7 +59,7 @@ public final class GLNVTransformFeedback2 {
     }
 
     /// ```
-    /// void glBindTransformFeedbackNV(unsigned int target, unsigned int id);
+    /// void glBindTransformFeedbackNV(GLenum target, GLuint id);
     /// ```
     public void BindTransformFeedbackNV(int target, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTransformFeedbackNV)) throw new SymbolNotFoundError("Symbol not found: glBindTransformFeedbackNV");
@@ -68,7 +68,7 @@ public final class GLNVTransformFeedback2 {
     }
 
     /// ```
-    /// void glDeleteTransformFeedbacksNV(int n, const GLuint* ids);
+    /// void glDeleteTransformFeedbacksNV(GLsizei n, const GLuint* ids);
     /// ```
     public void DeleteTransformFeedbacksNV(int n, MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTransformFeedbacksNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacksNV");
@@ -77,7 +77,7 @@ public final class GLNVTransformFeedback2 {
     }
 
     /// ```
-    /// void glGenTransformFeedbacksNV(int n, GLuint* ids);
+    /// void glGenTransformFeedbacksNV(GLsizei n, GLuint* ids);
     /// ```
     public void GenTransformFeedbacksNV(int n, MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTransformFeedbacksNV)) throw new SymbolNotFoundError("Symbol not found: glGenTransformFeedbacksNV");
@@ -86,7 +86,7 @@ public final class GLNVTransformFeedback2 {
     }
 
     /// ```
-    /// GLboolean glIsTransformFeedbackNV(unsigned int id);
+    /// GLboolean glIsTransformFeedbackNV(GLuint id);
     /// ```
     public boolean IsTransformFeedbackNV(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTransformFeedbackNV)) throw new SymbolNotFoundError("Symbol not found: glIsTransformFeedbackNV");
@@ -113,7 +113,7 @@ public final class GLNVTransformFeedback2 {
     }
 
     /// ```
-    /// void glDrawTransformFeedbackNV(unsigned int mode, unsigned int id);
+    /// void glDrawTransformFeedbackNV(GLenum mode, GLuint id);
     /// ```
     public void DrawTransformFeedbackNV(int mode, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackNV)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackNV");

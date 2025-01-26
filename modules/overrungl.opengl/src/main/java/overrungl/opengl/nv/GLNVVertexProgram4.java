@@ -104,7 +104,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI1iEXT(unsigned int index, int x);
+    /// void glVertexAttribI1iEXT(GLuint index, GLint x);
     /// ```
     public void VertexAttribI1iEXT(int index, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1iEXT");
@@ -113,7 +113,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI2iEXT(unsigned int index, int x, int y);
+    /// void glVertexAttribI2iEXT(GLuint index, GLint x, GLint y);
     /// ```
     public void VertexAttribI2iEXT(int index, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2iEXT");
@@ -122,7 +122,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI3iEXT(unsigned int index, int x, int y, int z);
+    /// void glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z);
     /// ```
     public void VertexAttribI3iEXT(int index, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3iEXT");
@@ -131,7 +131,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4iEXT(unsigned int index, int x, int y, int z, int w);
+    /// void glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w);
     /// ```
     public void VertexAttribI4iEXT(int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4iEXT");
@@ -140,7 +140,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI1uiEXT(unsigned int index, unsigned int x);
+    /// void glVertexAttribI1uiEXT(GLuint index, GLuint x);
     /// ```
     public void VertexAttribI1uiEXT(int index, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1uiEXT");
@@ -149,7 +149,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI2uiEXT(unsigned int index, unsigned int x, unsigned int y);
+    /// void glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y);
     /// ```
     public void VertexAttribI2uiEXT(int index, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2uiEXT");
@@ -158,7 +158,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI3uiEXT(unsigned int index, unsigned int x, unsigned int y, unsigned int z);
+    /// void glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z);
     /// ```
     public void VertexAttribI3uiEXT(int index, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3uiEXT");
@@ -167,7 +167,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4uiEXT(unsigned int index, unsigned int x, unsigned int y, unsigned int z, unsigned int w);
+    /// void glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
     /// ```
     public void VertexAttribI4uiEXT(int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4uiEXT");
@@ -176,7 +176,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI1ivEXT(unsigned int index, const GLint* v);
+    /// void glVertexAttribI1ivEXT(GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI1ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1ivEXT");
@@ -185,7 +185,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI2ivEXT(unsigned int index, const GLint* v);
+    /// void glVertexAttribI2ivEXT(GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI2ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2ivEXT");
@@ -194,7 +194,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI3ivEXT(unsigned int index, const GLint* v);
+    /// void glVertexAttribI3ivEXT(GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI3ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3ivEXT");
@@ -203,7 +203,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4ivEXT(unsigned int index, const GLint* v);
+    /// void glVertexAttribI4ivEXT(GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI4ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4ivEXT");
@@ -212,7 +212,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI1uivEXT(unsigned int index, const GLuint* v);
+    /// void glVertexAttribI1uivEXT(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI1uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1uivEXT");
@@ -221,7 +221,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI2uivEXT(unsigned int index, const GLuint* v);
+    /// void glVertexAttribI2uivEXT(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI2uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2uivEXT");
@@ -230,7 +230,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI3uivEXT(unsigned int index, const GLuint* v);
+    /// void glVertexAttribI3uivEXT(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI3uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3uivEXT");
@@ -239,7 +239,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4uivEXT(unsigned int index, const GLuint* v);
+    /// void glVertexAttribI4uivEXT(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI4uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4uivEXT");
@@ -248,7 +248,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4bvEXT(unsigned int index, const GLbyte* v);
+    /// void glVertexAttribI4bvEXT(GLuint index, const GLbyte* v);
     /// ```
     public void VertexAttribI4bvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4bvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4bvEXT");
@@ -257,7 +257,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4svEXT(unsigned int index, const GLshort* v);
+    /// void glVertexAttribI4svEXT(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttribI4svEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4svEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4svEXT");
@@ -266,7 +266,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4ubvEXT(unsigned int index, const GLubyte* v);
+    /// void glVertexAttribI4ubvEXT(GLuint index, const GLubyte* v);
     /// ```
     public void VertexAttribI4ubvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ubvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4ubvEXT");
@@ -275,7 +275,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribI4usvEXT(unsigned int index, const GLushort* v);
+    /// void glVertexAttribI4usvEXT(GLuint index, const GLushort* v);
     /// ```
     public void VertexAttribI4usvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4usvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4usvEXT");
@@ -284,7 +284,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glVertexAttribIPointerEXT(unsigned int index, int size, unsigned int type, int stride, const void* pointer);
+    /// void glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void VertexAttribIPointerEXT(int index, int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIPointerEXT");
@@ -293,7 +293,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glGetVertexAttribIivEXT(unsigned int index, unsigned int pname, GLint* params);
+    /// void glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint* params);
     /// ```
     public void GetVertexAttribIivEXT(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribIivEXT");
@@ -302,7 +302,7 @@ public final class GLNVVertexProgram4 {
     }
 
     /// ```
-    /// void glGetVertexAttribIuivEXT(unsigned int index, unsigned int pname, GLuint* params);
+    /// void glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint* params);
     /// ```
     public void GetVertexAttribIuivEXT(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribIuivEXT");

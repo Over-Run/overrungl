@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### subgroupSize
-/// [VarHandle][#VH_subgroupSize] - [Getter][#subgroupSize()] - [Setter][#subgroupSize(int)]
-/// ### supportedStages
-/// [VarHandle][#VH_supportedStages] - [Getter][#supportedStages()] - [Setter][#supportedStages(int)]
-/// ### supportedOperations
-/// [VarHandle][#VH_supportedOperations] - [Getter][#supportedOperations()] - [Setter][#supportedOperations(int)]
-/// ### quadOperationsInAllStages
-/// [VarHandle][#VH_quadOperationsInAllStages] - [Getter][#quadOperationsInAllStages()] - [Setter][#quadOperationsInAllStages(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceSubgroupProperties {
+/// ```
+/// struct VkPhysicalDeviceSubgroupProperties {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     uint32_t subgroupSize;
 ///     VkShaderStageFlags supportedStages;
 ///     VkSubgroupFeatureFlags supportedOperations;
 ///     VkBool32 quadOperationsInAllStages;
-/// } VkPhysicalDeviceSubgroupProperties;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
+public sealed class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceSubgroupProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("subgroupSize"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
         ValueLayout.JAVA_INT.withName("supportedOperations"),
         ValueLayout.JAVA_INT.withName("quadOperationsInAllStages")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subgroupSize`.
+    public static final long OFFSET_subgroupSize = LAYOUT.byteOffset(PathElement.groupElement("subgroupSize"));
+    /// The memory layout of `subgroupSize`.
+    public static final MemoryLayout LAYOUT_subgroupSize = LAYOUT.select(PathElement.groupElement("subgroupSize"));
+    /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize"));
-    /// The [VarHandle] of `supportedStages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedStages`.
+    public static final long OFFSET_supportedStages = LAYOUT.byteOffset(PathElement.groupElement("supportedStages"));
+    /// The memory layout of `supportedStages`.
+    public static final MemoryLayout LAYOUT_supportedStages = LAYOUT.select(PathElement.groupElement("supportedStages"));
+    /// The [VarHandle] of `supportedStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStages"));
-    /// The [VarHandle] of `supportedOperations` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedOperations`.
+    public static final long OFFSET_supportedOperations = LAYOUT.byteOffset(PathElement.groupElement("supportedOperations"));
+    /// The memory layout of `supportedOperations`.
+    public static final MemoryLayout LAYOUT_supportedOperations = LAYOUT.select(PathElement.groupElement("supportedOperations"));
+    /// The [VarHandle] of `supportedOperations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOperations"));
-    /// The [VarHandle] of `quadOperationsInAllStages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `quadOperationsInAllStages`.
+    public static final long OFFSET_quadOperationsInAllStages = LAYOUT.byteOffset(PathElement.groupElement("quadOperationsInAllStages"));
+    /// The memory layout of `quadOperationsInAllStages`.
+    public static final MemoryLayout LAYOUT_quadOperationsInAllStages = LAYOUT.select(PathElement.groupElement("quadOperationsInAllStages"));
+    /// The [VarHandle] of `quadOperationsInAllStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_quadOperationsInAllStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("quadOperationsInAllStages"));
 
     /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
     /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubgroupProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupProperties(segment); }
-
-    /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubgroupProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceSubgroupProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceSubgroupProperties` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
-    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint32_t") int subgroupSize, @CType("VkShaderStageFlags") int supportedStages, @CType("VkSubgroupFeatureFlags") int supportedOperations, @CType("VkBool32") int quadOperationsInAllStages) { return alloc(allocator).sType(sType).pNext(pNext).subgroupSize(subgroupSize).supportedStages(supportedStages).supportedOperations(supportedOperations).quadOperationsInAllStages(quadOperationsInAllStages); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSubgroupProperties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupProperties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupProperties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceSubgroupProperties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceSubgroupProperties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceSubgroupProperties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `subgroupSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
     /// {@return `subgroupSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subgroupSize(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_subgroupSize(segment, 0L); }
-    /// {@return `subgroupSize`}
-    public @CType("uint32_t") int subgroupSize() { return VkPhysicalDeviceSubgroupProperties.get_subgroupSize(this.segment()); }
+    public int subgroupSize() { return subgroupSize(this.segment(), 0L); }
     /// Sets `subgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subgroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subgroupSize.set(segment, 0L, index, value); }
-    /// Sets `subgroupSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subgroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceSubgroupProperties.set_subgroupSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.set(segment, 0L, index, value); }
     /// Sets `subgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties subgroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceSubgroupProperties.set_subgroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties subgroupSize(int value) { subgroupSize(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedStages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkShaderStageFlags") int get_supportedStages(MemorySegment segment, long index) { return (int) VH_supportedStages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedStages(MemorySegment segment, long index) { return (int) VH_supportedStages.get(segment, 0L, index); }
     /// {@return `supportedStages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkShaderStageFlags") int get_supportedStages(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_supportedStages(segment, 0L); }
-    /// {@return `supportedStages`}
-    public @CType("VkShaderStageFlags") int supportedStages() { return VkPhysicalDeviceSubgroupProperties.get_supportedStages(this.segment()); }
+    public int supportedStages() { return supportedStages(this.segment(), 0L); }
     /// Sets `supportedStages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedStages(MemorySegment segment, long index, @CType("VkShaderStageFlags") int value) { VH_supportedStages.set(segment, 0L, index, value); }
-    /// Sets `supportedStages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedStages(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedStages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedStages(MemorySegment segment, long index, int value) { VH_supportedStages.set(segment, 0L, index, value); }
     /// Sets `supportedStages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties supportedStages(@CType("VkShaderStageFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedStages(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties supportedStages(int value) { supportedStages(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedOperations` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSubgroupFeatureFlags") int get_supportedOperations(MemorySegment segment, long index) { return (int) VH_supportedOperations.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedOperations(MemorySegment segment, long index) { return (int) VH_supportedOperations.get(segment, 0L, index); }
     /// {@return `supportedOperations`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSubgroupFeatureFlags") int get_supportedOperations(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_supportedOperations(segment, 0L); }
-    /// {@return `supportedOperations`}
-    public @CType("VkSubgroupFeatureFlags") int supportedOperations() { return VkPhysicalDeviceSubgroupProperties.get_supportedOperations(this.segment()); }
+    public int supportedOperations() { return supportedOperations(this.segment(), 0L); }
     /// Sets `supportedOperations` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedOperations(MemorySegment segment, long index, @CType("VkSubgroupFeatureFlags") int value) { VH_supportedOperations.set(segment, 0L, index, value); }
-    /// Sets `supportedOperations` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedOperations(MemorySegment segment, @CType("VkSubgroupFeatureFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedOperations(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedOperations(MemorySegment segment, long index, int value) { VH_supportedOperations.set(segment, 0L, index, value); }
     /// Sets `supportedOperations` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties supportedOperations(@CType("VkSubgroupFeatureFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedOperations(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties supportedOperations(int value) { supportedOperations(this.segment(), 0L, value); return this; }
 
     /// {@return `quadOperationsInAllStages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_quadOperationsInAllStages(MemorySegment segment, long index) { return (int) VH_quadOperationsInAllStages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int quadOperationsInAllStages(MemorySegment segment, long index) { return (int) VH_quadOperationsInAllStages.get(segment, 0L, index); }
     /// {@return `quadOperationsInAllStages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_quadOperationsInAllStages(MemorySegment segment) { return VkPhysicalDeviceSubgroupProperties.get_quadOperationsInAllStages(segment, 0L); }
-    /// {@return `quadOperationsInAllStages`}
-    public @CType("VkBool32") int quadOperationsInAllStages() { return VkPhysicalDeviceSubgroupProperties.get_quadOperationsInAllStages(this.segment()); }
+    public int quadOperationsInAllStages() { return quadOperationsInAllStages(this.segment(), 0L); }
     /// Sets `quadOperationsInAllStages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_quadOperationsInAllStages(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_quadOperationsInAllStages.set(segment, 0L, index, value); }
-    /// Sets `quadOperationsInAllStages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_quadOperationsInAllStages(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupProperties.set_quadOperationsInAllStages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void quadOperationsInAllStages(MemorySegment segment, long index, int value) { VH_quadOperationsInAllStages.set(segment, 0L, index, value); }
     /// Sets `quadOperationsInAllStages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupProperties quadOperationsInAllStages(@CType("VkBool32") int value) { VkPhysicalDeviceSubgroupProperties.set_quadOperationsInAllStages(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupProperties quadOperationsInAllStages(int value) { quadOperationsInAllStages(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceSubgroupProperties].
     public static final class Buffer extends VkPhysicalDeviceSubgroupProperties {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupProperties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceSubgroupProperties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `subgroupSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subgroupSizeAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_subgroupSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subgroupSizeAt(long index) { return subgroupSize(this.segment(), index); }
         /// Sets `subgroupSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subgroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceSubgroupProperties.set_subgroupSize(this.segment(), index, value); return this; }
+        public Buffer subgroupSizeAt(long index, int value) { subgroupSize(this.segment(), index, value); return this; }
 
         /// {@return `supportedStages` at the given index}
-        /// @param index the index
-        public @CType("VkShaderStageFlags") int supportedStagesAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_supportedStages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedStagesAt(long index) { return supportedStages(this.segment(), index); }
         /// Sets `supportedStages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedStages(this.segment(), index, value); return this; }
+        public Buffer supportedStagesAt(long index, int value) { supportedStages(this.segment(), index, value); return this; }
 
         /// {@return `supportedOperations` at the given index}
-        /// @param index the index
-        public @CType("VkSubgroupFeatureFlags") int supportedOperationsAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_supportedOperations(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedOperationsAt(long index) { return supportedOperations(this.segment(), index); }
         /// Sets `supportedOperations` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedOperationsAt(long index, @CType("VkSubgroupFeatureFlags") int value) { VkPhysicalDeviceSubgroupProperties.set_supportedOperations(this.segment(), index, value); return this; }
+        public Buffer supportedOperationsAt(long index, int value) { supportedOperations(this.segment(), index, value); return this; }
 
         /// {@return `quadOperationsInAllStages` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int quadOperationsInAllStagesAt(long index) { return VkPhysicalDeviceSubgroupProperties.get_quadOperationsInAllStages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int quadOperationsInAllStagesAt(long index) { return quadOperationsInAllStages(this.segment(), index); }
         /// Sets `quadOperationsInAllStages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer quadOperationsInAllStagesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupProperties.set_quadOperationsInAllStages(this.segment(), index, value); return this; }
+        public Buffer quadOperationsInAllStagesAt(long index, int value) { quadOperationsInAllStages(this.segment(), index, value); return this; }
 
     }
 }

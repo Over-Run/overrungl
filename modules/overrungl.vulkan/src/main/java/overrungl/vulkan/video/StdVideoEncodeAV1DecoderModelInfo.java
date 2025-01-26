@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### buffer_delay_length_minus_1
-/// [VarHandle][#VH_buffer_delay_length_minus_1] - [Getter][#buffer_delay_length_minus_1()] - [Setter][#buffer_delay_length_minus_1(byte)]
-/// ### buffer_removal_time_length_minus_1
-/// [VarHandle][#VH_buffer_removal_time_length_minus_1] - [Getter][#buffer_removal_time_length_minus_1()] - [Setter][#buffer_removal_time_length_minus_1(byte)]
-/// ### frame_presentation_time_length_minus_1
-/// [VarHandle][#VH_frame_presentation_time_length_minus_1] - [Getter][#frame_presentation_time_length_minus_1()] - [Setter][#frame_presentation_time_length_minus_1(byte)]
-/// ### reserved1
-/// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(byte)]
-/// ### num_units_in_decoding_tick
-/// [VarHandle][#VH_num_units_in_decoding_tick] - [Getter][#num_units_in_decoding_tick()] - [Setter][#num_units_in_decoding_tick(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoEncodeAV1DecoderModelInfo {
+/// ```
+/// struct StdVideoEncodeAV1DecoderModelInfo {
 ///     uint8_t buffer_delay_length_minus_1;
 ///     uint8_t buffer_removal_time_length_minus_1;
 ///     uint8_t frame_presentation_time_length_minus_1;
 ///     uint8_t reserved1;
 ///     uint32_t num_units_in_decoding_tick;
-/// } StdVideoEncodeAV1DecoderModelInfo;
+/// };
 /// ```
-public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
+public sealed class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1DecoderModelInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("buffer_delay_length_minus_1"),
         ValueLayout.JAVA_BYTE.withName("buffer_removal_time_length_minus_1"),
         ValueLayout.JAVA_BYTE.withName("frame_presentation_time_length_minus_1"),
         ValueLayout.JAVA_BYTE.withName("reserved1"),
         ValueLayout.JAVA_INT.withName("num_units_in_decoding_tick")
     );
-    /// The [VarHandle] of `buffer_delay_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `buffer_delay_length_minus_1`.
+    public static final long OFFSET_buffer_delay_length_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("buffer_delay_length_minus_1"));
+    /// The memory layout of `buffer_delay_length_minus_1`.
+    public static final MemoryLayout LAYOUT_buffer_delay_length_minus_1 = LAYOUT.select(PathElement.groupElement("buffer_delay_length_minus_1"));
+    /// The [VarHandle] of `buffer_delay_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer_delay_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_delay_length_minus_1"));
-    /// The [VarHandle] of `buffer_removal_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `buffer_removal_time_length_minus_1`.
+    public static final long OFFSET_buffer_removal_time_length_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("buffer_removal_time_length_minus_1"));
+    /// The memory layout of `buffer_removal_time_length_minus_1`.
+    public static final MemoryLayout LAYOUT_buffer_removal_time_length_minus_1 = LAYOUT.select(PathElement.groupElement("buffer_removal_time_length_minus_1"));
+    /// The [VarHandle] of `buffer_removal_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer_removal_time_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer_removal_time_length_minus_1"));
-    /// The [VarHandle] of `frame_presentation_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `frame_presentation_time_length_minus_1`.
+    public static final long OFFSET_frame_presentation_time_length_minus_1 = LAYOUT.byteOffset(PathElement.groupElement("frame_presentation_time_length_minus_1"));
+    /// The memory layout of `frame_presentation_time_length_minus_1`.
+    public static final MemoryLayout LAYOUT_frame_presentation_time_length_minus_1 = LAYOUT.select(PathElement.groupElement("frame_presentation_time_length_minus_1"));
+    /// The [VarHandle] of `frame_presentation_time_length_minus_1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_frame_presentation_time_length_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frame_presentation_time_length_minus_1"));
-    /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `reserved1`.
+    public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
+    /// The memory layout of `reserved1`.
+    public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
+    /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
-    /// The [VarHandle] of `num_units_in_decoding_tick` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `num_units_in_decoding_tick`.
+    public static final long OFFSET_num_units_in_decoding_tick = LAYOUT.byteOffset(PathElement.groupElement("num_units_in_decoding_tick"));
+    /// The memory layout of `num_units_in_decoding_tick`.
+    public static final MemoryLayout LAYOUT_num_units_in_decoding_tick = LAYOUT.select(PathElement.groupElement("num_units_in_decoding_tick"));
+    /// The [VarHandle] of `num_units_in_decoding_tick` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_num_units_in_decoding_tick = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_units_in_decoding_tick"));
 
     /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
@@ -73,19 +81,14 @@ public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
     /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1DecoderModelInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1DecoderModelInfo(segment); }
-
-    /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1DecoderModelInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1DecoderModelInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoEncodeAV1DecoderModelInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1DecoderModelInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoEncodeAV1DecoderModelInfo` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
     /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, @CType("uint8_t") byte buffer_delay_length_minus_1, @CType("uint8_t") byte buffer_removal_time_length_minus_1, @CType("uint8_t") byte frame_presentation_time_length_minus_1, @CType("uint8_t") byte reserved1, @CType("uint32_t") int num_units_in_decoding_tick) { return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1).buffer_removal_time_length_minus_1(buffer_removal_time_length_minus_1).frame_presentation_time_length_minus_1(frame_presentation_time_length_minus_1).reserved1(reserved1).num_units_in_decoding_tick(num_units_in_decoding_tick); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `buffer_delay_length_minus_1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_buffer_delay_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_delay_length_minus_1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte buffer_delay_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_delay_length_minus_1.get(segment, 0L, index); }
     /// {@return `buffer_delay_length_minus_1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_buffer_delay_length_minus_1(MemorySegment segment) { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_delay_length_minus_1(segment, 0L); }
-    /// {@return `buffer_delay_length_minus_1`}
-    public @CType("uint8_t") byte buffer_delay_length_minus_1() { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_delay_length_minus_1(this.segment()); }
+    public byte buffer_delay_length_minus_1() { return buffer_delay_length_minus_1(this.segment(), 0L); }
     /// Sets `buffer_delay_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_buffer_delay_length_minus_1(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_buffer_delay_length_minus_1.set(segment, 0L, index, value); }
-    /// Sets `buffer_delay_length_minus_1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_buffer_delay_length_minus_1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_delay_length_minus_1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void buffer_delay_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_delay_length_minus_1.set(segment, 0L, index, value); }
     /// Sets `buffer_delay_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1DecoderModelInfo buffer_delay_length_minus_1(@CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_delay_length_minus_1(this.segment(), value); return this; }
+    public StdVideoEncodeAV1DecoderModelInfo buffer_delay_length_minus_1(byte value) { buffer_delay_length_minus_1(this.segment(), 0L, value); return this; }
 
     /// {@return `buffer_removal_time_length_minus_1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_buffer_removal_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_removal_time_length_minus_1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte buffer_removal_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_buffer_removal_time_length_minus_1.get(segment, 0L, index); }
     /// {@return `buffer_removal_time_length_minus_1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_buffer_removal_time_length_minus_1(MemorySegment segment) { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_removal_time_length_minus_1(segment, 0L); }
-    /// {@return `buffer_removal_time_length_minus_1`}
-    public @CType("uint8_t") byte buffer_removal_time_length_minus_1() { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_removal_time_length_minus_1(this.segment()); }
+    public byte buffer_removal_time_length_minus_1() { return buffer_removal_time_length_minus_1(this.segment(), 0L); }
     /// Sets `buffer_removal_time_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_buffer_removal_time_length_minus_1(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_buffer_removal_time_length_minus_1.set(segment, 0L, index, value); }
-    /// Sets `buffer_removal_time_length_minus_1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_buffer_removal_time_length_minus_1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_removal_time_length_minus_1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void buffer_removal_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_buffer_removal_time_length_minus_1.set(segment, 0L, index, value); }
     /// Sets `buffer_removal_time_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1DecoderModelInfo buffer_removal_time_length_minus_1(@CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_removal_time_length_minus_1(this.segment(), value); return this; }
+    public StdVideoEncodeAV1DecoderModelInfo buffer_removal_time_length_minus_1(byte value) { buffer_removal_time_length_minus_1(this.segment(), 0L, value); return this; }
 
     /// {@return `frame_presentation_time_length_minus_1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_frame_presentation_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_frame_presentation_time_length_minus_1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte frame_presentation_time_length_minus_1(MemorySegment segment, long index) { return (byte) VH_frame_presentation_time_length_minus_1.get(segment, 0L, index); }
     /// {@return `frame_presentation_time_length_minus_1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_frame_presentation_time_length_minus_1(MemorySegment segment) { return StdVideoEncodeAV1DecoderModelInfo.get_frame_presentation_time_length_minus_1(segment, 0L); }
-    /// {@return `frame_presentation_time_length_minus_1`}
-    public @CType("uint8_t") byte frame_presentation_time_length_minus_1() { return StdVideoEncodeAV1DecoderModelInfo.get_frame_presentation_time_length_minus_1(this.segment()); }
+    public byte frame_presentation_time_length_minus_1() { return frame_presentation_time_length_minus_1(this.segment(), 0L); }
     /// Sets `frame_presentation_time_length_minus_1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_frame_presentation_time_length_minus_1(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_frame_presentation_time_length_minus_1.set(segment, 0L, index, value); }
-    /// Sets `frame_presentation_time_length_minus_1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_frame_presentation_time_length_minus_1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_frame_presentation_time_length_minus_1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void frame_presentation_time_length_minus_1(MemorySegment segment, long index, byte value) { VH_frame_presentation_time_length_minus_1.set(segment, 0L, index, value); }
     /// Sets `frame_presentation_time_length_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1DecoderModelInfo frame_presentation_time_length_minus_1(@CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_frame_presentation_time_length_minus_1(this.segment(), value); return this; }
+    public StdVideoEncodeAV1DecoderModelInfo frame_presentation_time_length_minus_1(byte value) { frame_presentation_time_length_minus_1(this.segment(), 0L, value); return this; }
 
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte reserved1(MemorySegment segment, long index) { return (byte) VH_reserved1.get(segment, 0L, index); }
     /// {@return `reserved1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_reserved1(MemorySegment segment) { return StdVideoEncodeAV1DecoderModelInfo.get_reserved1(segment, 0L); }
-    /// {@return `reserved1`}
-    public @CType("uint8_t") byte reserved1() { return StdVideoEncodeAV1DecoderModelInfo.get_reserved1(this.segment()); }
+    public byte reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_reserved1(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_reserved1.set(segment, 0L, index, value); }
-    /// Sets `reserved1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_reserved1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_reserved1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void reserved1(MemorySegment segment, long index, byte value) { VH_reserved1.set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1DecoderModelInfo reserved1(@CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_reserved1(this.segment(), value); return this; }
+    public StdVideoEncodeAV1DecoderModelInfo reserved1(byte value) { reserved1(this.segment(), 0L, value); return this; }
 
     /// {@return `num_units_in_decoding_tick` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_num_units_in_decoding_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_decoding_tick.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int num_units_in_decoding_tick(MemorySegment segment, long index) { return (int) VH_num_units_in_decoding_tick.get(segment, 0L, index); }
     /// {@return `num_units_in_decoding_tick`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_num_units_in_decoding_tick(MemorySegment segment) { return StdVideoEncodeAV1DecoderModelInfo.get_num_units_in_decoding_tick(segment, 0L); }
-    /// {@return `num_units_in_decoding_tick`}
-    public @CType("uint32_t") int num_units_in_decoding_tick() { return StdVideoEncodeAV1DecoderModelInfo.get_num_units_in_decoding_tick(this.segment()); }
+    public int num_units_in_decoding_tick() { return num_units_in_decoding_tick(this.segment(), 0L); }
     /// Sets `num_units_in_decoding_tick` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_num_units_in_decoding_tick(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_num_units_in_decoding_tick.set(segment, 0L, index, value); }
-    /// Sets `num_units_in_decoding_tick` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_num_units_in_decoding_tick(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeAV1DecoderModelInfo.set_num_units_in_decoding_tick(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void num_units_in_decoding_tick(MemorySegment segment, long index, int value) { VH_num_units_in_decoding_tick.set(segment, 0L, index, value); }
     /// Sets `num_units_in_decoding_tick` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeAV1DecoderModelInfo num_units_in_decoding_tick(@CType("uint32_t") int value) { StdVideoEncodeAV1DecoderModelInfo.set_num_units_in_decoding_tick(this.segment(), value); return this; }
+    public StdVideoEncodeAV1DecoderModelInfo num_units_in_decoding_tick(int value) { num_units_in_decoding_tick(this.segment(), 0L, value); return this; }
 
     /// A buffer of [StdVideoEncodeAV1DecoderModelInfo].
     public static final class Buffer extends StdVideoEncodeAV1DecoderModelInfo {
@@ -258,49 +221,49 @@ public sealed class StdVideoEncodeAV1DecoderModelInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `buffer_delay_length_minus_1` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte buffer_delay_length_minus_1At(long index) { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_delay_length_minus_1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte buffer_delay_length_minus_1At(long index) { return buffer_delay_length_minus_1(this.segment(), index); }
         /// Sets `buffer_delay_length_minus_1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer buffer_delay_length_minus_1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_delay_length_minus_1(this.segment(), index, value); return this; }
+        public Buffer buffer_delay_length_minus_1At(long index, byte value) { buffer_delay_length_minus_1(this.segment(), index, value); return this; }
 
         /// {@return `buffer_removal_time_length_minus_1` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte buffer_removal_time_length_minus_1At(long index) { return StdVideoEncodeAV1DecoderModelInfo.get_buffer_removal_time_length_minus_1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte buffer_removal_time_length_minus_1At(long index) { return buffer_removal_time_length_minus_1(this.segment(), index); }
         /// Sets `buffer_removal_time_length_minus_1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer buffer_removal_time_length_minus_1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_buffer_removal_time_length_minus_1(this.segment(), index, value); return this; }
+        public Buffer buffer_removal_time_length_minus_1At(long index, byte value) { buffer_removal_time_length_minus_1(this.segment(), index, value); return this; }
 
         /// {@return `frame_presentation_time_length_minus_1` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte frame_presentation_time_length_minus_1At(long index) { return StdVideoEncodeAV1DecoderModelInfo.get_frame_presentation_time_length_minus_1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte frame_presentation_time_length_minus_1At(long index) { return frame_presentation_time_length_minus_1(this.segment(), index); }
         /// Sets `frame_presentation_time_length_minus_1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer frame_presentation_time_length_minus_1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_frame_presentation_time_length_minus_1(this.segment(), index, value); return this; }
+        public Buffer frame_presentation_time_length_minus_1At(long index, byte value) { frame_presentation_time_length_minus_1(this.segment(), index, value); return this; }
 
         /// {@return `reserved1` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte reserved1At(long index) { return StdVideoEncodeAV1DecoderModelInfo.get_reserved1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte reserved1At(long index) { return reserved1(this.segment(), index); }
         /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer reserved1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1DecoderModelInfo.set_reserved1(this.segment(), index, value); return this; }
+        public Buffer reserved1At(long index, byte value) { reserved1(this.segment(), index, value); return this; }
 
         /// {@return `num_units_in_decoding_tick` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int num_units_in_decoding_tickAt(long index) { return StdVideoEncodeAV1DecoderModelInfo.get_num_units_in_decoding_tick(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int num_units_in_decoding_tickAt(long index) { return num_units_in_decoding_tick(this.segment(), index); }
         /// Sets `num_units_in_decoding_tick` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer num_units_in_decoding_tickAt(long index, @CType("uint32_t") int value) { StdVideoEncodeAV1DecoderModelInfo.set_num_units_in_decoding_tick(this.segment(), index, value); return this; }
+        public Buffer num_units_in_decoding_tickAt(long index, int value) { num_units_in_decoding_tick(this.segment(), index, value); return this; }
 
     }
 }

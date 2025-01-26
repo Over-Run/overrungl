@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### compatibleCtbSizes
-/// [VarHandle][#VH_compatibleCtbSizes] - [Getter][#compatibleCtbSizes()] - [Setter][#compatibleCtbSizes(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoFormatH265QuantizationMapPropertiesKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
-/// } VkVideoFormatH265QuantizationMapPropertiesKHR;
 /// ```
-public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct {
+/// struct VkVideoFormatH265QuantizationMapPropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
+/// };
+/// ```
+public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends GroupType {
     /// The struct layout of `VkVideoFormatH265QuantizationMapPropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("compatibleCtbSizes")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `compatibleCtbSizes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `compatibleCtbSizes`.
+    public static final long OFFSET_compatibleCtbSizes = LAYOUT.byteOffset(PathElement.groupElement("compatibleCtbSizes"));
+    /// The memory layout of `compatibleCtbSizes`.
+    public static final MemoryLayout LAYOUT_compatibleCtbSizes = LAYOUT.select(PathElement.groupElement("compatibleCtbSizes"));
+    /// The [VarHandle] of `compatibleCtbSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_compatibleCtbSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compatibleCtbSizes"));
 
     /// Creates `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct
     /// Creates `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoFormatH265QuantizationMapPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoFormatH265QuantizationMapPropertiesKHR(segment); }
-
-    /// Creates `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoFormatH265QuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoFormatH265QuantizationMapPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoFormatH265QuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatH265QuantizationMapPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct
     /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
-    public static VkVideoFormatH265QuantizationMapPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int compatibleCtbSizes) { return alloc(allocator).sType(sType).pNext(pNext).compatibleCtbSizes(compatibleCtbSizes); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoFormatH265QuantizationMapPropertiesKHR sType(@CType("VkStructureType") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoFormatH265QuantizationMapPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoFormatH265QuantizationMapPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `compatibleCtbSizes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int get_compatibleCtbSizes(MemorySegment segment, long index) { return (int) VH_compatibleCtbSizes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int compatibleCtbSizes(MemorySegment segment, long index) { return (int) VH_compatibleCtbSizes.get(segment, 0L, index); }
     /// {@return `compatibleCtbSizes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int get_compatibleCtbSizes(MemorySegment segment) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_compatibleCtbSizes(segment, 0L); }
-    /// {@return `compatibleCtbSizes`}
-    public @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int compatibleCtbSizes() { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_compatibleCtbSizes(this.segment()); }
+    public int compatibleCtbSizes() { return compatibleCtbSizes(this.segment(), 0L); }
     /// Sets `compatibleCtbSizes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_compatibleCtbSizes(MemorySegment segment, long index, @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int value) { VH_compatibleCtbSizes.set(segment, 0L, index, value); }
-    /// Sets `compatibleCtbSizes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_compatibleCtbSizes(MemorySegment segment, @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_compatibleCtbSizes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void compatibleCtbSizes(MemorySegment segment, long index, int value) { VH_compatibleCtbSizes.set(segment, 0L, index, value); }
     /// Sets `compatibleCtbSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(@CType("VkVideoEncodeH265CtbSizeFlagsKHR") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_compatibleCtbSizes(this.segment(), value); return this; }
+    public VkVideoFormatH265QuantizationMapPropertiesKHR compatibleCtbSizes(int value) { compatibleCtbSizes(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoFormatH265QuantizationMapPropertiesKHR].
     public static final class Buffer extends VkVideoFormatH265QuantizationMapPropertiesKHR {
@@ -200,31 +173,31 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `compatibleCtbSizes` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int compatibleCtbSizesAt(long index) { return VkVideoFormatH265QuantizationMapPropertiesKHR.get_compatibleCtbSizes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int compatibleCtbSizesAt(long index) { return compatibleCtbSizes(this.segment(), index); }
         /// Sets `compatibleCtbSizes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer compatibleCtbSizesAt(long index, @CType("VkVideoEncodeH265CtbSizeFlagsKHR") int value) { VkVideoFormatH265QuantizationMapPropertiesKHR.set_compatibleCtbSizes(this.segment(), index, value); return this; }
+        public Buffer compatibleCtbSizesAt(long index, int value) { compatibleCtbSizes(this.segment(), index, value); return this; }
 
     }
 }

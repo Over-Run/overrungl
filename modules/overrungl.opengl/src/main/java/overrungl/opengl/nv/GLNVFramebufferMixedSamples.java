@@ -60,7 +60,7 @@ public final class GLNVFramebufferMixedSamples {
     }
 
     /// ```
-    /// void glRasterSamplesEXT(unsigned int samples, GLboolean fixedsamplelocations);
+    /// void glRasterSamplesEXT(GLuint samples, GLboolean fixedsamplelocations);
     /// ```
     public void RasterSamplesEXT(int samples, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT");
@@ -69,7 +69,7 @@ public final class GLNVFramebufferMixedSamples {
     }
 
     /// ```
-    /// void glCoverageModulationTableNV(int n, const GLfloat* v);
+    /// void glCoverageModulationTableNV(GLsizei n, const GLfloat* v);
     /// ```
     public void CoverageModulationTableNV(int n, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glCoverageModulationTableNV");
@@ -78,7 +78,7 @@ public final class GLNVFramebufferMixedSamples {
     }
 
     /// ```
-    /// void glGetCoverageModulationTableNV(int bufSize, GLfloat* v);
+    /// void glGetCoverageModulationTableNV(GLsizei bufSize, GLfloat* v);
     /// ```
     public void GetCoverageModulationTableNV(int bufSize, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glGetCoverageModulationTableNV");
@@ -87,7 +87,7 @@ public final class GLNVFramebufferMixedSamples {
     }
 
     /// ```
-    /// void glCoverageModulationNV(unsigned int components);
+    /// void glCoverageModulationNV(GLenum components);
     /// ```
     public void CoverageModulationNV(int components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverageModulationNV)) throw new SymbolNotFoundError("Symbol not found: glCoverageModulationNV");

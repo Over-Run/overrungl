@@ -17,89 +17,61 @@
 package overrungl.gen.file
 
 data class DefineMacro(val type: String, val name: String, val value: String)
+data class UndeterminedType(val type: DefinitionType, val complete: Boolean)
 
 class Interpreter {
-    internal val macros = mutableListOf<DefineMacro>()
-    internal val using = mutableMapOf<String, DefinitionType>()
+    internal val macros = mutableMapOf<String, DefineMacro>()
+    internal val using = mutableMapOf<String, UndeterminedType>()
     internal val structs = mutableMapOf<String, GroupLayoutType>()
     internal val upcalls = mutableMapOf<String, UpcallType>()
     internal val enums = LinkedHashMap<String, Int>()
     internal val functions = mutableMapOf<String, DefinitionFunction>()
 
+    fun macros(): Map<String, DefineMacro> = macros
+    fun enums(): Map<String, Int> = enums
     fun functions(): Map<String, DefinitionFunction> = functions
 
     internal fun interpret(statements: List<Statement>) {
-        statements.forEach { execute(it) }
+        // scan twice
+        statements.forEach { execute(it, true) }
+        statements.forEach { execute(it, false) }
     }
 
     private fun import(interpreter: Interpreter) {
         using.putAll(interpreter.using)
     }
 
-    private fun execute(statement: Statement) {
+    private fun execute(statement: Statement, typeSkipUnknownType: Boolean) {
         when (statement) {
-            is DefinePreprocessor -> macros.add(
-                DefineMacro(
-                    inferenceType(statement.value),
-                    statement.name,
-                    statement.value
-                )
+            is DefinePreprocessor -> macros[statement.name] = DefineMacro(
+                inferenceType(statement.value),
+                statement.name,
+                statement.value
             )
 
-            is DefineAsPreprocessor -> macros.add(DefineMacro(statement.type, statement.name, statement.value))
+            is DefineAsPreprocessor -> macros[statement.name] =
+                DefineMacro(statement.type, statement.name, statement.value)
 
-            is UsingStatement -> using[statement.name.lexeme] = evaluate(statement.oldType) as DefinitionType
+            is UsingStatement -> using[statement.name.lexeme] =
+                evaluate(statement.oldType, typeSkipUnknownType = typeSkipUnknownType) as UndeterminedType
+
             is FunctionDeclaration -> functions[statement.entrypoint] = DefinitionFunction(
-                evaluate(statement.returnType) as DefinitionType,
+                (evaluate(statement.returnType, typeSkipUnknownType = typeSkipUnknownType) as UndeterminedType).type,
                 statement.name.lexeme,
-                statement.parameters.map(::convertTypeNamePair),
+                statement.parameters.map {
+                    val pair = convertTypeNamePair(it, skipUnknownType = false)
+                    pair.first
+                },
                 statement.optional,
                 statement.entrypoint,
-                statement.body?.joinToString(separator = "\n", transform = ::stringifyStatement)
+                statement.body?.joinToString(separator = "\n")
             )
 
-            is EnumDeclaration -> evaluate(statement.enumExpression)
+            is EnumDeclaration -> evaluate(statement.enumExpression, typeSkipUnknownType = typeSkipUnknownType)
 
-            is ExpressionStatement -> evaluate(statement.expression)
+            is ExpressionStatement -> evaluate(statement.expression, typeSkipUnknownType = typeSkipUnknownType)
 
             is ImportStatement -> import(DefinitionFile(statement.filename).interpreter)
-            is ReturnStatement -> {}
-        }
-    }
-
-    private fun stringifyStatement(statement: Statement): String {
-        return when (statement) {
-            is ReturnStatement -> "return ${stringify(statement.value)};"
-            else -> error(statement)
-        }
-    }
-
-    private fun stringify(expression: Expression): String {
-        return when (expression) {
-            is LiteralExpression -> expression.literal.toString()
-            is ParenthesisExpression -> "(${stringify(expression.expression)})"
-            is UnaryExpression -> "${expression.operator.lexeme}${stringify(expression.right)}"
-            is BinaryExpression -> "${stringify(expression.left)} ${expression.operator.lexeme} ${stringify(expression.right)}"
-            is ReferenceExpression -> expression.name
-            is ConstExpression -> "const"
-            is PointerExpression -> "*"
-            is TypeReferenceExpression -> expression.name
-            is TypeExpression -> definitionType(expression.components).originalName
-            is StructExpression -> expression.name.lexeme
-            is UpcallExpression -> "${stringify(expression.type)} (*${expression.name.lexeme})(${
-                expression.parameters.joinToString { p ->
-                    "${stringify(p.type)} ${p.name.lexeme}"
-                }
-            })"
-
-            is JavaTypeExpression -> registeredType[expression.name.lexeme]?.originalName
-                ?: error("unknown type at ${expression.name}")
-
-            is FunctionCallExpression -> "${stringify(expression.callee)}(${
-                expression.arguments.joinToString { stringify(it) }
-            })"
-
-            else -> error(expression.toString())
         }
     }
 
@@ -107,7 +79,9 @@ class Interpreter {
         val tokenize = Lexer(value).tokenize()
         var current = 0
         if (tokenize[current].type == TokenType.LEFT_PARENTHESIS) current++
-        if (tokenize[current].type == TokenType.MINUS) current++
+        if (tokenize[current].type == TokenType.MINUS
+            || tokenize[current].type == TokenType.TILDE
+        ) current++
         return inferenceType(tokenize[current])
     }
 
@@ -127,12 +101,15 @@ class Interpreter {
         }
     }
 
-    private fun evaluate(expression: Expression): Any {
+    private fun evaluate(expression: Expression, typeSkipUnknownType: Boolean = false): Any {
         return when (expression) {
-            is TypeExpression -> definitionType(expression.components)
+            is TypeExpression -> definitionType(expression.components, skipUnknownType = typeSkipUnknownType)
             is LiteralExpression -> expression.literal
 
             is ReferenceExpression -> {
+                if (macros.containsKey(expression.name)) {
+                    return macros[expression.name]!!
+                }
                 if (enums.containsKey(expression.name)) {
                     return enums[expression.name]!!
                 }
@@ -154,7 +131,7 @@ class Interpreter {
                         currentValue = i + 1
                     }
                 }
-                val enumType = EnumType(nameValues)
+                val enumType = EnumType(nameValues, "int")
                 return enumType
             }
 
@@ -162,97 +139,124 @@ class Interpreter {
         }
     }
 
-    private fun definitionType(typeComponents: List<Expression>): DefinitionType {
+    private fun definitionType(typeComponents: List<Expression>, skipUnknownType: Boolean = false): UndeterminedType {
         var previous: Expression? = null
         val originalNameComp = StringBuilder()
-        var type: DefinitionType? = null
+        var type: UndeterminedType? = null
         typeComponents.forEach { expression ->
             when (expression) {
                 ConstExpression -> {
-                    val stringify = stringify(expression)
-                    when (previous) {
-                        null -> {}
-                        ConstExpression,
-                        PointerExpression,
-                        is TypeReferenceExpression,
-                        is StructExpression,
-                        is UpcallExpression -> originalNameComp.append(" ")
-
-                        else -> error(previous.toString())
+                    if (previous != null) {
+                        originalNameComp.append(" ")
                     }
-                    originalNameComp.append(stringify)
+                    originalNameComp.append("const")
                 }
 
                 PointerExpression -> {
-                    val stringify = stringify(expression)
                     when (previous) {
                         null,
                         PointerExpression,
                         is TypeReferenceExpression -> {
                         }
 
-                        ConstExpression,
-                        is StructExpression -> originalNameComp.append(" ")
-
-                        else -> error(previous.toString())
+                        else -> originalNameComp.append(" ")
                     }
-                    originalNameComp.append(stringify)
-                    type = PointerType(originalNameComp.toString(), type!!)
+                    originalNameComp.append("*")
+                    val prevType = type!!
+                    type = UndeterminedType(
+                        PointerType(originalNameComp.toString(), prevType.type),
+                        prevType.complete
+                    )
                 }
 
                 is TypeReferenceExpression -> {
-                    val stringify = stringify(expression)
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> error(previous.toString())
+                    if (previous != null) {
+                        originalNameComp.append(" ")
                     }
-                    originalNameComp.append(stringify)
-                    type = using.getOrElse(expression.name) { findBuiltinType(expression.name) }
-                        ?: error("unknown type ${expression.name} at ${expression.token}")
+                    originalNameComp.append(expression.name)
+                    type = using.getOrElse(expression.name) {
+                        val find = findBuiltinType(expression.name)
+                        if (find == null) {
+                            if (skipUnknownType) {
+                                UndeterminedType(VoidType("void"), false)
+                            } else {
+                                error("unknown type ${expression.name} at ${expression.token}")
+                            }
+                        } else {
+                            UndeterminedType(find.withName(expression.name), true)
+                        }
+                    }.let { it.copy(type = it.type.withName(expression.name)) }
                 }
 
-                is StructExpression -> {
-                    val stringify = stringify(expression)
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> error(previous.toString())
+                is GroupTypeExpression -> {
+                    if (previous != null) {
+                        originalNameComp.append(" ")
                     }
-                    originalNameComp.append(stringify)
+                    val name = expression.name.lexeme
+                    var complete = true
+                    originalNameComp.append(name)
                     val t = GroupLayoutType(
-                        stringify,
+                        name,
+                        name,
                         expression.opaque,
-                        expression.members.map(::convertTypeNamePair),
-                        GroupTypeKind.STRUCT
+                        expression.members.map {
+                            val pair = convertTypeNamePair(
+                                it.pair,
+                                skipUnknownType = skipUnknownType
+                            )
+                            if (!pair.second.complete) {
+                                complete = false
+                            }
+                            GroupTypeMember(pair.first, it.bits)
+                        },
+                        expression.kind,
+                        expression.packageName?.literal as String?
                     )
-                    type = t
-                    structs[stringify] = t
+                    type = UndeterminedType(t, complete)
+                    structs[name] = t
                 }
 
                 is UpcallExpression -> {
-                    val stringify = stringify(expression)
-                    when (previous) {
-                        null -> {}
-                        ConstExpression -> originalNameComp.append(" ")
-                        else -> error(previous.toString())
+                    if (previous != null) {
+                        originalNameComp.append(" ")
                     }
-                    originalNameComp.append(stringify)
+                    val name = expression.name.lexeme
+                    val returnType = evaluate(expression.type) as UndeterminedType
+                    var complete = returnType.complete
+                    val parameters = expression.parameters.map {
+                        val pair = convertTypeNamePair(it, skipUnknownType = skipUnknownType)
+                        if (!pair.second.complete) {
+                            complete = false
+                        }
+                        pair.first
+                    }
+                    val originalName =
+                        "${returnType.type.originalName} (*$name)(${parameters.joinToString { "${it.type.originalName} ${it.name}" }})"
+                    originalNameComp.append(originalName)
                     val upcallType = UpcallType(
-                        stringify,
-                        expression.name.lexeme,
-                        evaluate(expression.type) as DefinitionType,
-                        expression.parameters.map(::convertTypeNamePair),
-                        expression.packageName?.literal as String?
+                        originalName = originalName,
+                        name,
+                        returnType.type,
+                        parameters,
+                        expression.packageName?.literal as String?,
                     )
-                    type = upcallType
-                    upcalls[stringify] = upcallType
+                    type = UndeterminedType(upcallType, complete)
+                    upcalls[name] = upcallType
                 }
 
-                is JavaTypeExpression -> type =
-                    registeredType[expression.name.lexeme] ?: error("unknown type at ${expression.name}")
+                is JavaTypeExpression -> {
+                    type = UndeterminedType(
+                        (registeredType[expression.name.lexeme]
+                            ?: error("unknown type at ${expression.name}")),
+                        true
+                    )
+                }
 
-                is EnumExpression -> type = evaluate(expression) as DefinitionType
+                is EnumExpression -> type =
+                    UndeterminedType(
+                        evaluate(expression, typeSkipUnknownType = skipUnknownType) as EnumType,
+                        true
+                    )
 
                 else -> error(expression)
             }
@@ -261,10 +265,28 @@ class Interpreter {
         return type!!
     }
 
-    private fun convertTypeNamePair(pair: TypeNamePair): DefTypeNamePair =
-        DefTypeNamePair(
-            evaluate(pair.type) as DefinitionType,
+    private fun convertTypeNamePair(
+        pair: TypeNamePair,
+        skipUnknownType: Boolean
+    ): Pair<DefTypeNamePair, UndeterminedType> {
+        val type = evaluate(pair.type, typeSkipUnknownType = skipUnknownType) as UndeterminedType
+        return DefTypeNamePair(
+            type.type,
             pair.name.lexeme,
-            pair.dimensions
-        )
+            pair.dimensions.map {
+                var value: Any? = it
+                while (value !is Long) {
+                    value = evaluate(value as Expression)
+                    when (value) {
+                        is Int -> value = value.toLong()
+                        is Long -> {}
+                        is ReferenceExpression -> {}
+                        is DefineMacro -> value = value.value.toLong()
+                        else -> error(value)
+                    }
+                }
+                value
+            }
+        ) to type
+    }
 }

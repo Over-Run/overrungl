@@ -86,7 +86,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// signed long long glVDPAURegisterVideoSurfaceNV(const void* vdpSurface, unsigned int target, int numTextureNames, const GLuint* textureNames);
+    /// GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceNV(const void* vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint* textureNames);
     /// ```
     public long VDPAURegisterVideoSurfaceNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceNV");
@@ -95,7 +95,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// signed long long glVDPAURegisterOutputSurfaceNV(const void* vdpSurface, unsigned int target, int numTextureNames, const GLuint* textureNames);
+    /// GLvdpauSurfaceNV glVDPAURegisterOutputSurfaceNV(const void* vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint* textureNames);
     /// ```
     public long VDPAURegisterOutputSurfaceNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterOutputSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterOutputSurfaceNV");
@@ -104,7 +104,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// GLboolean glVDPAUIsSurfaceNV(signed long long surface);
+    /// GLboolean glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
     /// ```
     public boolean VDPAUIsSurfaceNV(long surface) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUIsSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUIsSurfaceNV");
@@ -113,7 +113,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// void glVDPAUUnregisterSurfaceNV(signed long long surface);
+    /// void glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);
     /// ```
     public void VDPAUUnregisterSurfaceNV(long surface) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnregisterSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUUnregisterSurfaceNV");
@@ -122,7 +122,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// void glVDPAUGetSurfaceivNV(signed long long surface, unsigned int pname, int count, GLsizei* length, GLint* values);
+    /// void glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei count, GLsizei* length, GLint* values);
     /// ```
     public void VDPAUGetSurfaceivNV(long surface, int pname, int count, MemorySegment length, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUGetSurfaceivNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUGetSurfaceivNV");
@@ -131,7 +131,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// void glVDPAUSurfaceAccessNV(signed long long surface, unsigned int access);
+    /// void glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access);
     /// ```
     public void VDPAUSurfaceAccessNV(long surface, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUSurfaceAccessNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUSurfaceAccessNV");
@@ -140,7 +140,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// void glVDPAUMapSurfacesNV(int numSurfaces, const GLvdpauSurfaceNV* surfaces);
+    /// void glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV* surfaces);
     /// ```
     public void VDPAUMapSurfacesNV(int numSurfaces, MemorySegment surfaces) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUMapSurfacesNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUMapSurfacesNV");
@@ -149,7 +149,7 @@ public final class GLNVVdpauInterop {
     }
 
     /// ```
-    /// void glVDPAUUnmapSurfacesNV(int numSurface, const GLvdpauSurfaceNV* surfaces);
+    /// void glVDPAUUnmapSurfacesNV(GLsizei numSurface, const GLvdpauSurfaceNV* surfaces);
     /// ```
     public void VDPAUUnmapSurfacesNV(int numSurface, MemorySegment surfaces) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnmapSurfacesNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUUnmapSurfacesNV");

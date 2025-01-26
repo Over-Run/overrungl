@@ -46,7 +46,7 @@ public final class GLARBMultisample {
     }
 
     /// ```
-    /// void glSampleCoverageARB(float value, GLboolean invert);
+    /// void glSampleCoverageARB(GLfloat value, GLboolean invert);
     /// ```
     public void SampleCoverageARB(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB");

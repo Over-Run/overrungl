@@ -40,7 +40,7 @@ public final class GLATIMapObjectBuffer {
     }
 
     /// ```
-    /// void* glMapObjectBufferATI(unsigned int buffer);
+    /// void* glMapObjectBufferATI(GLuint buffer);
     /// ```
     public MemorySegment MapObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glMapObjectBufferATI");
@@ -49,7 +49,7 @@ public final class GLATIMapObjectBuffer {
     }
 
     /// ```
-    /// void glUnmapObjectBufferATI(unsigned int buffer);
+    /// void glUnmapObjectBufferATI(GLuint buffer);
     /// ```
     public void UnmapObjectBufferATI(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapObjectBufferATI)) throw new SymbolNotFoundError("Symbol not found: glUnmapObjectBufferATI");

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRComputeShaderDerivatives {
     public static final int VK_KHR_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION = 1;

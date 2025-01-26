@@ -59,7 +59,7 @@ public final class GLARBMatrixPalette {
     }
 
     /// ```
-    /// void glCurrentPaletteMatrixARB(int index);
+    /// void glCurrentPaletteMatrixARB(GLint index);
     /// ```
     public void CurrentPaletteMatrixARB(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCurrentPaletteMatrixARB)) throw new SymbolNotFoundError("Symbol not found: glCurrentPaletteMatrixARB");
@@ -68,7 +68,7 @@ public final class GLARBMatrixPalette {
     }
 
     /// ```
-    /// void glMatrixIndexubvARB(int size, const GLubyte* indices);
+    /// void glMatrixIndexubvARB(GLint size, const GLubyte* indices);
     /// ```
     public void MatrixIndexubvARB(int size, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexubvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexubvARB");
@@ -77,7 +77,7 @@ public final class GLARBMatrixPalette {
     }
 
     /// ```
-    /// void glMatrixIndexusvARB(int size, const GLushort* indices);
+    /// void glMatrixIndexusvARB(GLint size, const GLushort* indices);
     /// ```
     public void MatrixIndexusvARB(int size, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexusvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexusvARB");
@@ -86,7 +86,7 @@ public final class GLARBMatrixPalette {
     }
 
     /// ```
-    /// void glMatrixIndexuivARB(int size, const GLuint* indices);
+    /// void glMatrixIndexuivARB(GLint size, const GLuint* indices);
     /// ```
     public void MatrixIndexuivARB(int size, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexuivARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexuivARB");
@@ -95,7 +95,7 @@ public final class GLARBMatrixPalette {
     }
 
     /// ```
-    /// void glMatrixIndexPointerARB(int size, unsigned int type, int stride, const void* pointer);
+    /// void glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void MatrixIndexPointerARB(int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexPointerARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexPointerARB");

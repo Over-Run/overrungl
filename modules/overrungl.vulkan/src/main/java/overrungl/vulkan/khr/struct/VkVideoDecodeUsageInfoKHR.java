@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### videoUsageHints
-/// [VarHandle][#VH_videoUsageHints] - [Getter][#videoUsageHints()] - [Setter][#videoUsageHints(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoDecodeUsageInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkVideoDecodeUsageFlagsKHR videoUsageHints;
-/// } VkVideoDecodeUsageInfoKHR;
 /// ```
-public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
+/// struct VkVideoDecodeUsageInfoKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkVideoDecodeUsageFlagsKHR videoUsageHints;
+/// };
+/// ```
+public sealed class VkVideoDecodeUsageInfoKHR extends GroupType {
     /// The struct layout of `VkVideoDecodeUsageInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("videoUsageHints")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `videoUsageHints` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `videoUsageHints`.
+    public static final long OFFSET_videoUsageHints = LAYOUT.byteOffset(PathElement.groupElement("videoUsageHints"));
+    /// The memory layout of `videoUsageHints`.
+    public static final MemoryLayout LAYOUT_videoUsageHints = LAYOUT.select(PathElement.groupElement("videoUsageHints"));
+    /// The [VarHandle] of `videoUsageHints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_videoUsageHints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoUsageHints"));
 
     /// Creates `VkVideoDecodeUsageInfoKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
     /// Creates `VkVideoDecodeUsageInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeUsageInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeUsageInfoKHR(segment); }
-
-    /// Creates `VkVideoDecodeUsageInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoDecodeUsageInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeUsageInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeUsageInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoDecodeUsageInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeUsageInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoDecodeUsageInfoKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoDecodeUsageInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
     /// @return the allocated `VkVideoDecodeUsageInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeUsageInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoDecodeUsageInfoKHR`
-    public static VkVideoDecodeUsageInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkVideoDecodeUsageFlagsKHR") int videoUsageHints) { return alloc(allocator).sType(sType).pNext(pNext).videoUsageHints(videoUsageHints); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoDecodeUsageInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoDecodeUsageInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoDecodeUsageInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeUsageInfoKHR sType(@CType("VkStructureType") int value) { VkVideoDecodeUsageInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoDecodeUsageInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeUsageInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoDecodeUsageInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoDecodeUsageInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeUsageInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoDecodeUsageInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoDecodeUsageInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `videoUsageHints` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoDecodeUsageFlagsKHR") int get_videoUsageHints(MemorySegment segment, long index) { return (int) VH_videoUsageHints.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int videoUsageHints(MemorySegment segment, long index) { return (int) VH_videoUsageHints.get(segment, 0L, index); }
     /// {@return `videoUsageHints`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoDecodeUsageFlagsKHR") int get_videoUsageHints(MemorySegment segment) { return VkVideoDecodeUsageInfoKHR.get_videoUsageHints(segment, 0L); }
-    /// {@return `videoUsageHints`}
-    public @CType("VkVideoDecodeUsageFlagsKHR") int videoUsageHints() { return VkVideoDecodeUsageInfoKHR.get_videoUsageHints(this.segment()); }
+    public int videoUsageHints() { return videoUsageHints(this.segment(), 0L); }
     /// Sets `videoUsageHints` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_videoUsageHints(MemorySegment segment, long index, @CType("VkVideoDecodeUsageFlagsKHR") int value) { VH_videoUsageHints.set(segment, 0L, index, value); }
-    /// Sets `videoUsageHints` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_videoUsageHints(MemorySegment segment, @CType("VkVideoDecodeUsageFlagsKHR") int value) { VkVideoDecodeUsageInfoKHR.set_videoUsageHints(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void videoUsageHints(MemorySegment segment, long index, int value) { VH_videoUsageHints.set(segment, 0L, index, value); }
     /// Sets `videoUsageHints` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeUsageInfoKHR videoUsageHints(@CType("VkVideoDecodeUsageFlagsKHR") int value) { VkVideoDecodeUsageInfoKHR.set_videoUsageHints(this.segment(), value); return this; }
+    public VkVideoDecodeUsageInfoKHR videoUsageHints(int value) { videoUsageHints(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoDecodeUsageInfoKHR].
     public static final class Buffer extends VkVideoDecodeUsageInfoKHR {
@@ -200,31 +173,31 @@ public sealed class VkVideoDecodeUsageInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoDecodeUsageInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoDecodeUsageInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoDecodeUsageInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoDecodeUsageInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `videoUsageHints` at the given index}
-        /// @param index the index
-        public @CType("VkVideoDecodeUsageFlagsKHR") int videoUsageHintsAt(long index) { return VkVideoDecodeUsageInfoKHR.get_videoUsageHints(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int videoUsageHintsAt(long index) { return videoUsageHints(this.segment(), index); }
         /// Sets `videoUsageHints` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer videoUsageHintsAt(long index, @CType("VkVideoDecodeUsageFlagsKHR") int value) { VkVideoDecodeUsageInfoKHR.set_videoUsageHints(this.segment(), index, value); return this; }
+        public Buffer videoUsageHintsAt(long index, int value) { videoUsageHints(this.segment(), index, value); return this; }
 
     }
 }

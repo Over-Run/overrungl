@@ -40,7 +40,7 @@ public final class GLEXTExternalBuffer {
     }
 
     /// ```
-    /// void glBufferStorageExternalEXT(unsigned int target, signed long long offset, signed long long size, void* clientBuffer, unsigned int flags);
+    /// void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags);
     /// ```
     public void BufferStorageExternalEXT(int target, long offset, long size, MemorySegment clientBuffer, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorageExternalEXT)) throw new SymbolNotFoundError("Symbol not found: glBufferStorageExternalEXT");
@@ -49,7 +49,7 @@ public final class GLEXTExternalBuffer {
     }
 
     /// ```
-    /// void glNamedBufferStorageExternalEXT(unsigned int buffer, signed long long offset, signed long long size, void* clientBuffer, unsigned int flags);
+    /// void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags);
     /// ```
     public void NamedBufferStorageExternalEXT(int buffer, long offset, long size, MemorySegment clientBuffer, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageExternalEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageExternalEXT");

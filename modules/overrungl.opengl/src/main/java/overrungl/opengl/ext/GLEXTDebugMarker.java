@@ -43,7 +43,7 @@ public final class GLEXTDebugMarker {
     }
 
     /// ```
-    /// void glInsertEventMarkerEXT(int length, const GLchar* marker);
+    /// void glInsertEventMarkerEXT(GLsizei length, const GLchar* marker);
     /// ```
     public void InsertEventMarkerEXT(int length, MemorySegment marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInsertEventMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertEventMarkerEXT");
@@ -52,7 +52,7 @@ public final class GLEXTDebugMarker {
     }
 
     /// ```
-    /// void glPushGroupMarkerEXT(int length, const GLchar* marker);
+    /// void glPushGroupMarkerEXT(GLsizei length, const GLchar* marker);
     /// ```
     public void PushGroupMarkerEXT(int length, MemorySegment marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushGroupMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glPushGroupMarkerEXT");

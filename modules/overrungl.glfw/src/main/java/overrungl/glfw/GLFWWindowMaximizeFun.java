@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLFWWindowMaximizeFun)(GLFWwindow* window, int maximized);
+/// typedef void (*GLFWWindowMaximizeFun)(GLFWwindow* window, GLFWboolean maximized);
 /// ```
 @FunctionalInterface
 public interface GLFWWindowMaximizeFun extends Upcall {

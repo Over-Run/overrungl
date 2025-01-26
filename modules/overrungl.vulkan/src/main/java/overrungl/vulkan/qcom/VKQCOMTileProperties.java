@@ -18,7 +18,6 @@
 package overrungl.vulkan.qcom;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -29,30 +28,36 @@ public class VKQCOMTileProperties {
     public static final int VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM = 1000484001;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetFramebufferTilePropertiesQCOM = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetFramebufferTilePropertiesQCOM = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDynamicRenderingTilePropertiesQCOM = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetFramebufferTilePropertiesQCOM;
         public final MemorySegment PFN_vkGetDynamicRenderingTilePropertiesQCOM;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetFramebufferTilePropertiesQCOM = func.invoke(device, "vkGetFramebufferTilePropertiesQCOM");
             PFN_vkGetDynamicRenderingTilePropertiesQCOM = func.invoke(device, "vkGetDynamicRenderingTilePropertiesQCOM");
         }
     }
 
-    public VKQCOMTileProperties(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKQCOMTileProperties(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetFramebufferTilePropertiesQCOM(@CType("VkDevice") MemorySegment device, @CType("VkFramebuffer") MemorySegment framebuffer, @CType("uint32_t *") MemorySegment pPropertiesCount, @CType("VkTilePropertiesQCOM *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetFramebufferTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetFramebufferTilePropertiesQCOM");
+    /// ```
+    /// VkResult vkGetFramebufferTilePropertiesQCOM(VkDevice device, VkFramebuffer framebuffer, uint32_t* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
+    /// ```
+    public int GetFramebufferTilePropertiesQCOM(MemorySegment device, long framebuffer, MemorySegment pPropertiesCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetFramebufferTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetFramebufferTilePropertiesQCOM");
         try { return (int) Handles.MH_vkGetFramebufferTilePropertiesQCOM.invokeExact(handles.PFN_vkGetFramebufferTilePropertiesQCOM, device, framebuffer, pPropertiesCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetFramebufferTilePropertiesQCOM", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFramebufferTilePropertiesQCOM", e); }
     }
 
-    public @CType("VkResult") int GetDynamicRenderingTilePropertiesQCOM(@CType("VkDevice") MemorySegment device, @CType("const VkRenderingInfo *") MemorySegment pRenderingInfo, @CType("VkTilePropertiesQCOM *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDynamicRenderingTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetDynamicRenderingTilePropertiesQCOM");
+    /// ```
+    /// VkResult vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, const VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties);
+    /// ```
+    public int GetDynamicRenderingTilePropertiesQCOM(MemorySegment device, MemorySegment pRenderingInfo, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDynamicRenderingTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetDynamicRenderingTilePropertiesQCOM");
         try { return (int) Handles.MH_vkGetDynamicRenderingTilePropertiesQCOM.invokeExact(handles.PFN_vkGetDynamicRenderingTilePropertiesQCOM, device, pRenderingInfo, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDynamicRenderingTilePropertiesQCOM", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDynamicRenderingTilePropertiesQCOM", e); }
     }
 
 }

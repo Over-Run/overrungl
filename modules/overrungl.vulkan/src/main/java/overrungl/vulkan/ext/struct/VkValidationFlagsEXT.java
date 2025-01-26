@@ -15,48 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### disabledValidationCheckCount
-/// [VarHandle][#VH_disabledValidationCheckCount] - [Getter][#disabledValidationCheckCount()] - [Setter][#disabledValidationCheckCount(int)]
-/// ### pDisabledValidationChecks
-/// [VarHandle][#VH_pDisabledValidationChecks] - [Getter][#pDisabledValidationChecks()] - [Setter][#pDisabledValidationChecks(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkValidationFlagsEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t disabledValidationCheckCount;
-///     const VkValidationCheckEXT * pDisabledValidationChecks;
-/// } VkValidationFlagsEXT;
 /// ```
-public sealed class VkValidationFlagsEXT extends Struct {
+/// struct VkValidationFlagsEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t disabledValidationCheckCount;
+///     const VkValidationCheckEXT* pDisabledValidationChecks;
+/// };
+/// ```
+public sealed class VkValidationFlagsEXT extends GroupType {
     /// The struct layout of `VkValidationFlagsEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("disabledValidationCheckCount"),
         ValueLayout.ADDRESS.withName("pDisabledValidationChecks")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `disabledValidationCheckCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `disabledValidationCheckCount`.
+    public static final long OFFSET_disabledValidationCheckCount = LAYOUT.byteOffset(PathElement.groupElement("disabledValidationCheckCount"));
+    /// The memory layout of `disabledValidationCheckCount`.
+    public static final MemoryLayout LAYOUT_disabledValidationCheckCount = LAYOUT.select(PathElement.groupElement("disabledValidationCheckCount"));
+    /// The [VarHandle] of `disabledValidationCheckCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_disabledValidationCheckCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("disabledValidationCheckCount"));
+    /// The byte offset of `pDisabledValidationChecks`.
+    public static final long OFFSET_pDisabledValidationChecks = LAYOUT.byteOffset(PathElement.groupElement("pDisabledValidationChecks"));
+    /// The memory layout of `pDisabledValidationChecks`.
+    public static final MemoryLayout LAYOUT_pDisabledValidationChecks = LAYOUT.select(PathElement.groupElement("pDisabledValidationChecks"));
     /// The [VarHandle] of `pDisabledValidationChecks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDisabledValidationChecks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDisabledValidationChecks"));
 
@@ -67,19 +73,14 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// Creates `VkValidationFlagsEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkValidationFlagsEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkValidationFlagsEXT(segment); }
-
-    /// Creates `VkValidationFlagsEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkValidationFlagsEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkValidationFlagsEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkValidationFlagsEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkValidationFlagsEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationFlagsEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkValidationFlagsEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkValidationFlagsEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkValidationFlagsEXT extends Struct {
     /// @return the allocated `VkValidationFlagsEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkValidationFlagsEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkValidationFlagsEXT`
-    public static VkValidationFlagsEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int disabledValidationCheckCount, @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecks) { return alloc(allocator).sType(sType).pNext(pNext).disabledValidationCheckCount(disabledValidationCheckCount).pDisabledValidationChecks(pDisabledValidationChecks); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkValidationFlagsEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkValidationFlagsEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkValidationFlagsEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkValidationFlagsEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT sType(@CType("VkStructureType") int value) { VkValidationFlagsEXT.set_sType(this.segment(), value); return this; }
+    public VkValidationFlagsEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkValidationFlagsEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkValidationFlagsEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT pNext(@CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), value); return this; }
+    public VkValidationFlagsEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `disabledValidationCheckCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_disabledValidationCheckCount(MemorySegment segment, long index) { return (int) VH_disabledValidationCheckCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int disabledValidationCheckCount(MemorySegment segment, long index) { return (int) VH_disabledValidationCheckCount.get(segment, 0L, index); }
     /// {@return `disabledValidationCheckCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_disabledValidationCheckCount(MemorySegment segment) { return VkValidationFlagsEXT.get_disabledValidationCheckCount(segment, 0L); }
-    /// {@return `disabledValidationCheckCount`}
-    public @CType("uint32_t") int disabledValidationCheckCount() { return VkValidationFlagsEXT.get_disabledValidationCheckCount(this.segment()); }
+    public int disabledValidationCheckCount() { return disabledValidationCheckCount(this.segment(), 0L); }
     /// Sets `disabledValidationCheckCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_disabledValidationCheckCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_disabledValidationCheckCount.set(segment, 0L, index, value); }
-    /// Sets `disabledValidationCheckCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_disabledValidationCheckCount(MemorySegment segment, @CType("uint32_t") int value) { VkValidationFlagsEXT.set_disabledValidationCheckCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void disabledValidationCheckCount(MemorySegment segment, long index, int value) { VH_disabledValidationCheckCount.set(segment, 0L, index, value); }
     /// Sets `disabledValidationCheckCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT disabledValidationCheckCount(@CType("uint32_t") int value) { VkValidationFlagsEXT.set_disabledValidationCheckCount(this.segment(), value); return this; }
+    public VkValidationFlagsEXT disabledValidationCheckCount(int value) { disabledValidationCheckCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pDisabledValidationChecks` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkValidationCheckEXT *") MemorySegment get_pDisabledValidationChecks(MemorySegment segment, long index) { return (MemorySegment) VH_pDisabledValidationChecks.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pDisabledValidationChecks(MemorySegment segment, long index) { return (MemorySegment) VH_pDisabledValidationChecks.get(segment, 0L, index); }
     /// {@return `pDisabledValidationChecks`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkValidationCheckEXT *") MemorySegment get_pDisabledValidationChecks(MemorySegment segment) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(segment, 0L); }
-    /// {@return `pDisabledValidationChecks`}
-    public @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecks() { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment()); }
+    public MemorySegment pDisabledValidationChecks() { return pDisabledValidationChecks(this.segment(), 0L); }
     /// Sets `pDisabledValidationChecks` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pDisabledValidationChecks(MemorySegment segment, long index, @CType("const VkValidationCheckEXT *") MemorySegment value) { VH_pDisabledValidationChecks.set(segment, 0L, index, value); }
-    /// Sets `pDisabledValidationChecks` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pDisabledValidationChecks(MemorySegment segment, @CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pDisabledValidationChecks(MemorySegment segment, long index, MemorySegment value) { VH_pDisabledValidationChecks.set(segment, 0L, index, value); }
     /// Sets `pDisabledValidationChecks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkValidationFlagsEXT pDisabledValidationChecks(@CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), value); return this; }
+    public VkValidationFlagsEXT pDisabledValidationChecks(MemorySegment value) { pDisabledValidationChecks(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkValidationFlagsEXT].
     public static final class Buffer extends VkValidationFlagsEXT {
@@ -229,40 +197,40 @@ public sealed class VkValidationFlagsEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkValidationFlagsEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkValidationFlagsEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkValidationFlagsEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkValidationFlagsEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `disabledValidationCheckCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int disabledValidationCheckCountAt(long index) { return VkValidationFlagsEXT.get_disabledValidationCheckCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int disabledValidationCheckCountAt(long index) { return disabledValidationCheckCount(this.segment(), index); }
         /// Sets `disabledValidationCheckCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer disabledValidationCheckCountAt(long index, @CType("uint32_t") int value) { VkValidationFlagsEXT.set_disabledValidationCheckCount(this.segment(), index, value); return this; }
+        public Buffer disabledValidationCheckCountAt(long index, int value) { disabledValidationCheckCount(this.segment(), index, value); return this; }
 
         /// {@return `pDisabledValidationChecks` at the given index}
-        /// @param index the index
-        public @CType("const VkValidationCheckEXT *") MemorySegment pDisabledValidationChecksAt(long index) { return VkValidationFlagsEXT.get_pDisabledValidationChecks(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDisabledValidationChecksAt(long index) { return pDisabledValidationChecks(this.segment(), index); }
         /// Sets `pDisabledValidationChecks` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDisabledValidationChecksAt(long index, @CType("const VkValidationCheckEXT *") MemorySegment value) { VkValidationFlagsEXT.set_pDisabledValidationChecks(this.segment(), index, value); return this; }
+        public Buffer pDisabledValidationChecksAt(long index, MemorySegment value) { pDisabledValidationChecks(this.segment(), index, value); return this; }
 
     }
 }

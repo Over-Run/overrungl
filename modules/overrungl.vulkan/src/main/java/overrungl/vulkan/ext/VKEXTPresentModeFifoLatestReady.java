@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTPresentModeFifoLatestReady {
     public static final int VK_EXT_PRESENT_MODE_FIFO_LATEST_READY_SPEC_VERSION = 1;

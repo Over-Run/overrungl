@@ -57,7 +57,7 @@ public final class GLEXTGeometryShader4 {
     }
 
     /// ```
-    /// void glProgramParameteriEXT(unsigned int program, unsigned int pname, int value);
+    /// void glProgramParameteriEXT(GLuint program, GLenum pname, GLint value);
     /// ```
     public void ProgramParameteriEXT(int program, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriEXT");

@@ -46,7 +46,7 @@ public final class GLATIElementArray {
     }
 
     /// ```
-    /// void glElementPointerATI(unsigned int type, const void* pointer);
+    /// void glElementPointerATI(GLenum type, const void* pointer);
     /// ```
     public void ElementPointerATI(int type, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glElementPointerATI)) throw new SymbolNotFoundError("Symbol not found: glElementPointerATI");
@@ -55,7 +55,7 @@ public final class GLATIElementArray {
     }
 
     /// ```
-    /// void glDrawElementArrayATI(unsigned int mode, int count);
+    /// void glDrawElementArrayATI(GLenum mode, GLsizei count);
     /// ```
     public void DrawElementArrayATI(int mode, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawElementArrayATI");
@@ -64,7 +64,7 @@ public final class GLATIElementArray {
     }
 
     /// ```
-    /// void glDrawRangeElementArrayATI(unsigned int mode, unsigned int start, unsigned int end, int count);
+    /// void glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count);
     /// ```
     public void DrawRangeElementArrayATI(int mode, int start, int end, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementArrayATI)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementArrayATI");

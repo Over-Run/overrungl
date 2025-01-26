@@ -18,7 +18,6 @@
 package overrungl.vulkan.ggp;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKGGPStreamDescriptorSurface {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateStreamDescriptorSurfaceGGP;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateStreamDescriptorSurfaceGGP = func.invoke(instance, "vkCreateStreamDescriptorSurfaceGGP");
         }
     }
 
-    public VKGGPStreamDescriptorSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKGGPStreamDescriptorSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateStreamDescriptorSurfaceGGP(@CType("VkInstance") MemorySegment instance, @CType("const VkStreamDescriptorSurfaceCreateInfoGGP *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new SymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");
+    /// ```
+    /// VkResult vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateStreamDescriptorSurfaceGGP(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new SymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");
         try { return (int) Handles.MH_vkCreateStreamDescriptorSurfaceGGP.invokeExact(handles.PFN_vkCreateStreamDescriptorSurfaceGGP, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateStreamDescriptorSurfaceGGP", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateStreamDescriptorSurfaceGGP", e); }
     }
 
 }

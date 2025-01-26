@@ -15,66 +15,78 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### stage
-/// [VarHandle][#VH_stage] - [Getter][#stage()] - [Setter][#stage(int)]
-/// ### module
-/// [VarHandle][#VH_module] - [Getter][#module()] - [Setter][#module(MemorySegment)]
-/// ### pName
-/// [VarHandle][#VH_pName] - [Getter][#pName()] - [Setter][#pName(MemorySegment)]
-/// ### pSpecializationInfo
-/// [VarHandle][#VH_pSpecializationInfo] - [Getter][#pSpecializationInfo()] - [Setter][#pSpecializationInfo(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineShaderStageCreateInfo {
+/// ```
+/// struct VkPipelineShaderStageCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkPipelineShaderStageCreateFlags flags;
 ///     VkShaderStageFlagBits stage;
 ///     VkShaderModule module;
-///     const char * pName;
-///     const VkSpecializationInfo * pSpecializationInfo;
-/// } VkPipelineShaderStageCreateInfo;
+///     const char* pName;
+///     const VkSpecializationInfo* pSpecializationInfo;
+/// };
 /// ```
-public sealed class VkPipelineShaderStageCreateInfo extends Struct {
+public sealed class VkPipelineShaderStageCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineShaderStageCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("stage"),
-        ValueLayout.ADDRESS.withName("module"),
+        ValueLayout.JAVA_LONG.withName("module"),
         ValueLayout.ADDRESS.withName("pName"),
         ValueLayout.ADDRESS.withName("pSpecializationInfo")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `stage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stage`.
+    public static final long OFFSET_stage = LAYOUT.byteOffset(PathElement.groupElement("stage"));
+    /// The memory layout of `stage`.
+    public static final MemoryLayout LAYOUT_stage = LAYOUT.select(PathElement.groupElement("stage"));
+    /// The [VarHandle] of `stage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stage"));
+    /// The byte offset of `module`.
+    public static final long OFFSET_module = LAYOUT.byteOffset(PathElement.groupElement("module"));
+    /// The memory layout of `module`.
+    public static final MemoryLayout LAYOUT_module = LAYOUT.select(PathElement.groupElement("module"));
     /// The [VarHandle] of `module` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_module = LAYOUT.arrayElementVarHandle(PathElement.groupElement("module"));
+    /// The byte offset of `pName`.
+    public static final long OFFSET_pName = LAYOUT.byteOffset(PathElement.groupElement("pName"));
+    /// The memory layout of `pName`.
+    public static final MemoryLayout LAYOUT_pName = LAYOUT.select(PathElement.groupElement("pName"));
     /// The [VarHandle] of `pName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pName"));
+    /// The byte offset of `pSpecializationInfo`.
+    public static final long OFFSET_pSpecializationInfo = LAYOUT.byteOffset(PathElement.groupElement("pSpecializationInfo"));
+    /// The memory layout of `pSpecializationInfo`.
+    public static final MemoryLayout LAYOUT_pSpecializationInfo = LAYOUT.select(PathElement.groupElement("pSpecializationInfo"));
     /// The [VarHandle] of `pSpecializationInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSpecializationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSpecializationInfo"));
 
@@ -85,19 +97,14 @@ public sealed class VkPipelineShaderStageCreateInfo extends Struct {
     /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineShaderStageCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineShaderStageCreateInfo(segment); }
-
-    /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineShaderStageCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineShaderStageCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineShaderStageCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineShaderStageCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineShaderStageCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkPipelineShaderStageCreateInfo extends Struct {
     /// @return the allocated `VkPipelineShaderStageCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineShaderStageCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineShaderStageCreateInfo`
-    public static VkPipelineShaderStageCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineShaderStageCreateFlags") int flags, @CType("VkShaderStageFlagBits") int stage, @CType("VkShaderModule") MemorySegment module, @CType("const char *") MemorySegment pName, @CType("const VkSpecializationInfo *") MemorySegment pSpecializationInfo) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).module(module).pName(pName).pSpecializationInfo(pSpecializationInfo); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkPipelineShaderStageCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineShaderStageCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPipelineShaderStageCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo pNext(@CType("const void *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineShaderStageCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineShaderStageCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineShaderStageCreateFlags") int flags() { return VkPipelineShaderStageCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineShaderStageCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo flags(@CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `stage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkShaderStageFlagBits") int get_stage(MemorySegment segment, long index) { return (int) VH_stage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stage(MemorySegment segment, long index) { return (int) VH_stage.get(segment, 0L, index); }
     /// {@return `stage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkShaderStageFlagBits") int get_stage(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_stage(segment, 0L); }
-    /// {@return `stage`}
-    public @CType("VkShaderStageFlagBits") int stage() { return VkPipelineShaderStageCreateInfo.get_stage(this.segment()); }
+    public int stage() { return stage(this.segment(), 0L); }
     /// Sets `stage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stage(MemorySegment segment, long index, @CType("VkShaderStageFlagBits") int value) { VH_stage.set(segment, 0L, index, value); }
-    /// Sets `stage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stage(MemorySegment segment, @CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stage(MemorySegment segment, long index, int value) { VH_stage.set(segment, 0L, index, value); }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo stage(@CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo stage(int value) { stage(this.segment(), 0L, value); return this; }
 
     /// {@return `module` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkShaderModule") MemorySegment get_module(MemorySegment segment, long index) { return (MemorySegment) VH_module.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long module(MemorySegment segment, long index) { return (long) VH_module.get(segment, 0L, index); }
     /// {@return `module`}
-    /// @param segment the segment of the struct
-    public static @CType("VkShaderModule") MemorySegment get_module(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_module(segment, 0L); }
-    /// {@return `module`}
-    public @CType("VkShaderModule") MemorySegment module() { return VkPipelineShaderStageCreateInfo.get_module(this.segment()); }
+    public long module() { return module(this.segment(), 0L); }
     /// Sets `module` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_module(MemorySegment segment, long index, @CType("VkShaderModule") MemorySegment value) { VH_module.set(segment, 0L, index, value); }
-    /// Sets `module` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_module(MemorySegment segment, @CType("VkShaderModule") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void module(MemorySegment segment, long index, long value) { VH_module.set(segment, 0L, index, value); }
     /// Sets `module` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo module(@CType("VkShaderModule") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo module(long value) { module(this.segment(), 0L, value); return this; }
 
     /// {@return `pName` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const char *") MemorySegment get_pName(MemorySegment segment, long index) { return (MemorySegment) VH_pName.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pName(MemorySegment segment, long index) { return (MemorySegment) VH_pName.get(segment, 0L, index); }
     /// {@return `pName`}
-    /// @param segment the segment of the struct
-    public static @CType("const char *") MemorySegment get_pName(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pName(segment, 0L); }
-    /// {@return `pName`}
-    public @CType("const char *") MemorySegment pName() { return VkPipelineShaderStageCreateInfo.get_pName(this.segment()); }
+    public MemorySegment pName() { return pName(this.segment(), 0L); }
     /// Sets `pName` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pName(MemorySegment segment, long index, @CType("const char *") MemorySegment value) { VH_pName.set(segment, 0L, index, value); }
-    /// Sets `pName` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pName(MemorySegment segment, @CType("const char *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pName(MemorySegment segment, long index, MemorySegment value) { VH_pName.set(segment, 0L, index, value); }
     /// Sets `pName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo pName(@CType("const char *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo pName(MemorySegment value) { pName(this.segment(), 0L, value); return this; }
 
     /// {@return `pSpecializationInfo` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSpecializationInfo *") MemorySegment get_pSpecializationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pSpecializationInfo.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSpecializationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pSpecializationInfo.get(segment, 0L, index); }
     /// {@return `pSpecializationInfo`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSpecializationInfo *") MemorySegment get_pSpecializationInfo(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(segment, 0L); }
-    /// {@return `pSpecializationInfo`}
-    public @CType("const VkSpecializationInfo *") MemorySegment pSpecializationInfo() { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(this.segment()); }
+    public MemorySegment pSpecializationInfo() { return pSpecializationInfo(this.segment(), 0L); }
     /// Sets `pSpecializationInfo` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSpecializationInfo(MemorySegment segment, long index, @CType("const VkSpecializationInfo *") MemorySegment value) { VH_pSpecializationInfo.set(segment, 0L, index, value); }
-    /// Sets `pSpecializationInfo` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSpecializationInfo(MemorySegment segment, @CType("const VkSpecializationInfo *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSpecializationInfo(MemorySegment segment, long index, MemorySegment value) { VH_pSpecializationInfo.set(segment, 0L, index, value); }
     /// Sets `pSpecializationInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineShaderStageCreateInfo pSpecializationInfo(@CType("const VkSpecializationInfo *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(this.segment(), value); return this; }
+    public VkPipelineShaderStageCreateInfo pSpecializationInfo(MemorySegment value) { pSpecializationInfo(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineShaderStageCreateInfo].
     public static final class Buffer extends VkPipelineShaderStageCreateInfo {
@@ -316,67 +269,67 @@ public sealed class VkPipelineShaderStageCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineShaderStageCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineShaderStageCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineShaderStageCreateFlags") int flagsAt(long index) { return VkPipelineShaderStageCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `stage` at the given index}
-        /// @param index the index
-        public @CType("VkShaderStageFlagBits") int stageAt(long index) { return VkPipelineShaderStageCreateInfo.get_stage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stageAt(long index) { return stage(this.segment(), index); }
         /// Sets `stage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stageAt(long index, @CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(this.segment(), index, value); return this; }
+        public Buffer stageAt(long index, int value) { stage(this.segment(), index, value); return this; }
 
         /// {@return `module` at the given index}
-        /// @param index the index
-        public @CType("VkShaderModule") MemorySegment moduleAt(long index) { return VkPipelineShaderStageCreateInfo.get_module(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long moduleAt(long index) { return module(this.segment(), index); }
         /// Sets `module` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer moduleAt(long index, @CType("VkShaderModule") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(this.segment(), index, value); return this; }
+        public Buffer moduleAt(long index, long value) { module(this.segment(), index, value); return this; }
 
         /// {@return `pName` at the given index}
-        /// @param index the index
-        public @CType("const char *") MemorySegment pNameAt(long index) { return VkPipelineShaderStageCreateInfo.get_pName(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNameAt(long index) { return pName(this.segment(), index); }
         /// Sets `pName` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNameAt(long index, @CType("const char *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(this.segment(), index, value); return this; }
+        public Buffer pNameAt(long index, MemorySegment value) { pName(this.segment(), index, value); return this; }
 
         /// {@return `pSpecializationInfo` at the given index}
-        /// @param index the index
-        public @CType("const VkSpecializationInfo *") MemorySegment pSpecializationInfoAt(long index) { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSpecializationInfoAt(long index) { return pSpecializationInfo(this.segment(), index); }
         /// Sets `pSpecializationInfo` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSpecializationInfoAt(long index, @CType("const VkSpecializationInfo *") MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(this.segment(), index, value); return this; }
+        public Buffer pSpecializationInfoAt(long index, MemorySegment value) { pSpecializationInfo(this.segment(), index, value); return this; }
 
     }
 }

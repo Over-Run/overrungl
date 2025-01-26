@@ -41,7 +41,7 @@ public final class GLNVFramebufferMultisampleCoverage {
     }
 
     /// ```
-    /// void glRenderbufferStorageMultisampleCoverageNV(unsigned int target, int coverageSamples, int colorSamples, unsigned int internalformat, int width, int height);
+    /// void glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void RenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV");

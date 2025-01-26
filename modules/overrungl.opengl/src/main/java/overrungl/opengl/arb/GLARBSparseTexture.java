@@ -48,7 +48,7 @@ public final class GLARBSparseTexture {
     }
 
     /// ```
-    /// void glTexPageCommitmentARB(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, GLboolean commit);
+    /// void glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
     /// ```
     public void TexPageCommitmentARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentARB");

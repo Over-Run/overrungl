@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVShaderSubgroupPartitioned {
     public static final int VK_NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION = 1;

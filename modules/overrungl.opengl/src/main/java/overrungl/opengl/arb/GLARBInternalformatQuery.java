@@ -38,7 +38,7 @@ public final class GLARBInternalformatQuery {
     }
 
     /// ```
-    /// void glGetInternalformativ(unsigned int target, unsigned int internalformat, unsigned int pname, int count, GLint* params);
+    /// void glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint* params);
     /// ```
     public void GetInternalformativ(int target, int internalformat, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ");

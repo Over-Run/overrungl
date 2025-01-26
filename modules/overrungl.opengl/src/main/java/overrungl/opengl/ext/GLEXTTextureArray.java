@@ -46,7 +46,7 @@ public final class GLEXTTextureArray {
     }
 
     /// ```
-    /// void glFramebufferTextureLayerEXT(unsigned int target, unsigned int attachment, unsigned int texture, int level, int layer);
+    /// void glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
     /// ```
     public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");

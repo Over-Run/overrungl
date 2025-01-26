@@ -44,7 +44,7 @@ public final class GLARBPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfARB(unsigned int pname, float param);
+    /// void glPointParameterfARB(GLenum pname, GLfloat param);
     /// ```
     public void PointParameterfARB(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfARB");
@@ -53,7 +53,7 @@ public final class GLARBPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfvARB(unsigned int pname, const GLfloat* params);
+    /// void glPointParameterfvARB(GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvARB(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvARB");

@@ -18,7 +18,6 @@
 package overrungl.vulkan.fuchsia;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,26 +34,32 @@ public class VKFUCHSIAExternalMemory {
         public static final MethodHandle MH_vkGetMemoryZirconHandlePropertiesFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryZirconHandleFUCHSIA;
         public final MemorySegment PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryZirconHandleFUCHSIA = func.invoke(device, "vkGetMemoryZirconHandleFUCHSIA");
             PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA = func.invoke(device, "vkGetMemoryZirconHandlePropertiesFUCHSIA");
         }
     }
 
-    public VKFUCHSIAExternalMemory(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKFUCHSIAExternalMemory(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetMemoryZirconHandleFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("const VkMemoryGetZirconHandleInfoFUCHSIA *") MemorySegment pGetZirconHandleInfo, @CType("zx_handle_t *") MemorySegment pZirconHandle) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
+    /// ```
+    /// VkResult vkGetMemoryZirconHandleFUCHSIA(VkDevice device, const VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
+    /// ```
+    public int GetMemoryZirconHandleFUCHSIA(MemorySegment device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
         try { return (int) Handles.MH_vkGetMemoryZirconHandleFUCHSIA.invokeExact(handles.PFN_vkGetMemoryZirconHandleFUCHSIA, device, pGetZirconHandleInfo, pZirconHandle); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandleFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryZirconHandleFUCHSIA", e); }
     }
 
-    public @CType("VkResult") int GetMemoryZirconHandlePropertiesFUCHSIA(@CType("VkDevice") MemorySegment device, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType, @CType("zx_handle_t") int zirconHandle, @CType("VkMemoryZirconHandlePropertiesFUCHSIA *") MemorySegment pMemoryZirconHandleProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");
+    /// ```
+    /// VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, zx_handle_t zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
+    /// ```
+    public int GetMemoryZirconHandlePropertiesFUCHSIA(MemorySegment device, int handleType, int zirconHandle, MemorySegment pMemoryZirconHandleProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");
         try { return (int) Handles.MH_vkGetMemoryZirconHandlePropertiesFUCHSIA.invokeExact(handles.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA, device, handleType, zirconHandle, pMemoryZirconHandleProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandlePropertiesFUCHSIA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryZirconHandlePropertiesFUCHSIA", e); }
     }
 
 }

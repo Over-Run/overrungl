@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### videoCodecOperation
-/// [VarHandle][#VH_videoCodecOperation] - [Getter][#videoCodecOperation()] - [Setter][#videoCodecOperation(int)]
-/// ### chromaSubsampling
-/// [VarHandle][#VH_chromaSubsampling] - [Getter][#chromaSubsampling()] - [Setter][#chromaSubsampling(int)]
-/// ### lumaBitDepth
-/// [VarHandle][#VH_lumaBitDepth] - [Getter][#lumaBitDepth()] - [Setter][#lumaBitDepth(int)]
-/// ### chromaBitDepth
-/// [VarHandle][#VH_chromaBitDepth] - [Getter][#chromaBitDepth()] - [Setter][#chromaBitDepth(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoProfileInfoKHR {
+/// ```
+/// struct VkVideoProfileInfoKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkVideoCodecOperationFlagBitsKHR videoCodecOperation;
 ///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
 ///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
 ///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
-/// } VkVideoProfileInfoKHR;
+/// };
 /// ```
-public sealed class VkVideoProfileInfoKHR extends Struct {
+public sealed class VkVideoProfileInfoKHR extends GroupType {
     /// The struct layout of `VkVideoProfileInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("videoCodecOperation"),
@@ -59,17 +45,41 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
         ValueLayout.JAVA_INT.withName("lumaBitDepth"),
         ValueLayout.JAVA_INT.withName("chromaBitDepth")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `videoCodecOperation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `videoCodecOperation`.
+    public static final long OFFSET_videoCodecOperation = LAYOUT.byteOffset(PathElement.groupElement("videoCodecOperation"));
+    /// The memory layout of `videoCodecOperation`.
+    public static final MemoryLayout LAYOUT_videoCodecOperation = LAYOUT.select(PathElement.groupElement("videoCodecOperation"));
+    /// The [VarHandle] of `videoCodecOperation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_videoCodecOperation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("videoCodecOperation"));
-    /// The [VarHandle] of `chromaSubsampling` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `chromaSubsampling`.
+    public static final long OFFSET_chromaSubsampling = LAYOUT.byteOffset(PathElement.groupElement("chromaSubsampling"));
+    /// The memory layout of `chromaSubsampling`.
+    public static final MemoryLayout LAYOUT_chromaSubsampling = LAYOUT.select(PathElement.groupElement("chromaSubsampling"));
+    /// The [VarHandle] of `chromaSubsampling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_chromaSubsampling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chromaSubsampling"));
-    /// The [VarHandle] of `lumaBitDepth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `lumaBitDepth`.
+    public static final long OFFSET_lumaBitDepth = LAYOUT.byteOffset(PathElement.groupElement("lumaBitDepth"));
+    /// The memory layout of `lumaBitDepth`.
+    public static final MemoryLayout LAYOUT_lumaBitDepth = LAYOUT.select(PathElement.groupElement("lumaBitDepth"));
+    /// The [VarHandle] of `lumaBitDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_lumaBitDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lumaBitDepth"));
-    /// The [VarHandle] of `chromaBitDepth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `chromaBitDepth`.
+    public static final long OFFSET_chromaBitDepth = LAYOUT.byteOffset(PathElement.groupElement("chromaBitDepth"));
+    /// The memory layout of `chromaBitDepth`.
+    public static final MemoryLayout LAYOUT_chromaBitDepth = LAYOUT.select(PathElement.groupElement("chromaBitDepth"));
+    /// The [VarHandle] of `chromaBitDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_chromaBitDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chromaBitDepth"));
 
     /// Creates `VkVideoProfileInfoKHR` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
     /// Creates `VkVideoProfileInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoProfileInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoProfileInfoKHR(segment); }
-
-    /// Creates `VkVideoProfileInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoProfileInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoProfileInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoProfileInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoProfileInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoProfileInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoProfileInfoKHR` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
     /// @return the allocated `VkVideoProfileInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkVideoCodecOperationFlagBitsKHR") int videoCodecOperation, @CType("VkVideoChromaSubsamplingFlagsKHR") int chromaSubsampling, @CType("VkVideoComponentBitDepthFlagsKHR") int lumaBitDepth, @CType("VkVideoComponentBitDepthFlagsKHR") int chromaBitDepth) { return alloc(allocator).sType(sType).pNext(pNext).videoCodecOperation(videoCodecOperation).chromaSubsampling(chromaSubsampling).lumaBitDepth(lumaBitDepth).chromaBitDepth(chromaBitDepth); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoProfileInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoProfileInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoProfileInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR sType(@CType("VkStructureType") int value) { VkVideoProfileInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoProfileInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoProfileInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoProfileInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoProfileInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `videoCodecOperation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoCodecOperationFlagBitsKHR") int get_videoCodecOperation(MemorySegment segment, long index) { return (int) VH_videoCodecOperation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int videoCodecOperation(MemorySegment segment, long index) { return (int) VH_videoCodecOperation.get(segment, 0L, index); }
     /// {@return `videoCodecOperation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoCodecOperationFlagBitsKHR") int get_videoCodecOperation(MemorySegment segment) { return VkVideoProfileInfoKHR.get_videoCodecOperation(segment, 0L); }
-    /// {@return `videoCodecOperation`}
-    public @CType("VkVideoCodecOperationFlagBitsKHR") int videoCodecOperation() { return VkVideoProfileInfoKHR.get_videoCodecOperation(this.segment()); }
+    public int videoCodecOperation() { return videoCodecOperation(this.segment(), 0L); }
     /// Sets `videoCodecOperation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_videoCodecOperation(MemorySegment segment, long index, @CType("VkVideoCodecOperationFlagBitsKHR") int value) { VH_videoCodecOperation.set(segment, 0L, index, value); }
-    /// Sets `videoCodecOperation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_videoCodecOperation(MemorySegment segment, @CType("VkVideoCodecOperationFlagBitsKHR") int value) { VkVideoProfileInfoKHR.set_videoCodecOperation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void videoCodecOperation(MemorySegment segment, long index, int value) { VH_videoCodecOperation.set(segment, 0L, index, value); }
     /// Sets `videoCodecOperation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR videoCodecOperation(@CType("VkVideoCodecOperationFlagBitsKHR") int value) { VkVideoProfileInfoKHR.set_videoCodecOperation(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR videoCodecOperation(int value) { videoCodecOperation(this.segment(), 0L, value); return this; }
 
     /// {@return `chromaSubsampling` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoChromaSubsamplingFlagsKHR") int get_chromaSubsampling(MemorySegment segment, long index) { return (int) VH_chromaSubsampling.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int chromaSubsampling(MemorySegment segment, long index) { return (int) VH_chromaSubsampling.get(segment, 0L, index); }
     /// {@return `chromaSubsampling`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoChromaSubsamplingFlagsKHR") int get_chromaSubsampling(MemorySegment segment) { return VkVideoProfileInfoKHR.get_chromaSubsampling(segment, 0L); }
-    /// {@return `chromaSubsampling`}
-    public @CType("VkVideoChromaSubsamplingFlagsKHR") int chromaSubsampling() { return VkVideoProfileInfoKHR.get_chromaSubsampling(this.segment()); }
+    public int chromaSubsampling() { return chromaSubsampling(this.segment(), 0L); }
     /// Sets `chromaSubsampling` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_chromaSubsampling(MemorySegment segment, long index, @CType("VkVideoChromaSubsamplingFlagsKHR") int value) { VH_chromaSubsampling.set(segment, 0L, index, value); }
-    /// Sets `chromaSubsampling` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_chromaSubsampling(MemorySegment segment, @CType("VkVideoChromaSubsamplingFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaSubsampling(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void chromaSubsampling(MemorySegment segment, long index, int value) { VH_chromaSubsampling.set(segment, 0L, index, value); }
     /// Sets `chromaSubsampling` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR chromaSubsampling(@CType("VkVideoChromaSubsamplingFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaSubsampling(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR chromaSubsampling(int value) { chromaSubsampling(this.segment(), 0L, value); return this; }
 
     /// {@return `lumaBitDepth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoComponentBitDepthFlagsKHR") int get_lumaBitDepth(MemorySegment segment, long index) { return (int) VH_lumaBitDepth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int lumaBitDepth(MemorySegment segment, long index) { return (int) VH_lumaBitDepth.get(segment, 0L, index); }
     /// {@return `lumaBitDepth`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoComponentBitDepthFlagsKHR") int get_lumaBitDepth(MemorySegment segment) { return VkVideoProfileInfoKHR.get_lumaBitDepth(segment, 0L); }
-    /// {@return `lumaBitDepth`}
-    public @CType("VkVideoComponentBitDepthFlagsKHR") int lumaBitDepth() { return VkVideoProfileInfoKHR.get_lumaBitDepth(this.segment()); }
+    public int lumaBitDepth() { return lumaBitDepth(this.segment(), 0L); }
     /// Sets `lumaBitDepth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_lumaBitDepth(MemorySegment segment, long index, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VH_lumaBitDepth.set(segment, 0L, index, value); }
-    /// Sets `lumaBitDepth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_lumaBitDepth(MemorySegment segment, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_lumaBitDepth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void lumaBitDepth(MemorySegment segment, long index, int value) { VH_lumaBitDepth.set(segment, 0L, index, value); }
     /// Sets `lumaBitDepth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR lumaBitDepth(@CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_lumaBitDepth(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR lumaBitDepth(int value) { lumaBitDepth(this.segment(), 0L, value); return this; }
 
     /// {@return `chromaBitDepth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoComponentBitDepthFlagsKHR") int get_chromaBitDepth(MemorySegment segment, long index) { return (int) VH_chromaBitDepth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int chromaBitDepth(MemorySegment segment, long index) { return (int) VH_chromaBitDepth.get(segment, 0L, index); }
     /// {@return `chromaBitDepth`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoComponentBitDepthFlagsKHR") int get_chromaBitDepth(MemorySegment segment) { return VkVideoProfileInfoKHR.get_chromaBitDepth(segment, 0L); }
-    /// {@return `chromaBitDepth`}
-    public @CType("VkVideoComponentBitDepthFlagsKHR") int chromaBitDepth() { return VkVideoProfileInfoKHR.get_chromaBitDepth(this.segment()); }
+    public int chromaBitDepth() { return chromaBitDepth(this.segment(), 0L); }
     /// Sets `chromaBitDepth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_chromaBitDepth(MemorySegment segment, long index, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VH_chromaBitDepth.set(segment, 0L, index, value); }
-    /// Sets `chromaBitDepth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_chromaBitDepth(MemorySegment segment, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaBitDepth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void chromaBitDepth(MemorySegment segment, long index, int value) { VH_chromaBitDepth.set(segment, 0L, index, value); }
     /// Sets `chromaBitDepth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileInfoKHR chromaBitDepth(@CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaBitDepth(this.segment(), value); return this; }
+    public VkVideoProfileInfoKHR chromaBitDepth(int value) { chromaBitDepth(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoProfileInfoKHR].
     public static final class Buffer extends VkVideoProfileInfoKHR {
@@ -287,58 +245,58 @@ public sealed class VkVideoProfileInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoProfileInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoProfileInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoProfileInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoProfileInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `videoCodecOperation` at the given index}
-        /// @param index the index
-        public @CType("VkVideoCodecOperationFlagBitsKHR") int videoCodecOperationAt(long index) { return VkVideoProfileInfoKHR.get_videoCodecOperation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int videoCodecOperationAt(long index) { return videoCodecOperation(this.segment(), index); }
         /// Sets `videoCodecOperation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer videoCodecOperationAt(long index, @CType("VkVideoCodecOperationFlagBitsKHR") int value) { VkVideoProfileInfoKHR.set_videoCodecOperation(this.segment(), index, value); return this; }
+        public Buffer videoCodecOperationAt(long index, int value) { videoCodecOperation(this.segment(), index, value); return this; }
 
         /// {@return `chromaSubsampling` at the given index}
-        /// @param index the index
-        public @CType("VkVideoChromaSubsamplingFlagsKHR") int chromaSubsamplingAt(long index) { return VkVideoProfileInfoKHR.get_chromaSubsampling(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int chromaSubsamplingAt(long index) { return chromaSubsampling(this.segment(), index); }
         /// Sets `chromaSubsampling` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer chromaSubsamplingAt(long index, @CType("VkVideoChromaSubsamplingFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaSubsampling(this.segment(), index, value); return this; }
+        public Buffer chromaSubsamplingAt(long index, int value) { chromaSubsampling(this.segment(), index, value); return this; }
 
         /// {@return `lumaBitDepth` at the given index}
-        /// @param index the index
-        public @CType("VkVideoComponentBitDepthFlagsKHR") int lumaBitDepthAt(long index) { return VkVideoProfileInfoKHR.get_lumaBitDepth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int lumaBitDepthAt(long index) { return lumaBitDepth(this.segment(), index); }
         /// Sets `lumaBitDepth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer lumaBitDepthAt(long index, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_lumaBitDepth(this.segment(), index, value); return this; }
+        public Buffer lumaBitDepthAt(long index, int value) { lumaBitDepth(this.segment(), index, value); return this; }
 
         /// {@return `chromaBitDepth` at the given index}
-        /// @param index the index
-        public @CType("VkVideoComponentBitDepthFlagsKHR") int chromaBitDepthAt(long index) { return VkVideoProfileInfoKHR.get_chromaBitDepth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int chromaBitDepthAt(long index) { return chromaBitDepth(this.segment(), index); }
         /// Sets `chromaBitDepth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer chromaBitDepthAt(long index, @CType("VkVideoComponentBitDepthFlagsKHR") int value) { VkVideoProfileInfoKHR.set_chromaBitDepth(this.segment(), index, value); return this; }
+        public Buffer chromaBitDepthAt(long index, int value) { chromaBitDepth(this.segment(), index, value); return this; }
 
     }
 }

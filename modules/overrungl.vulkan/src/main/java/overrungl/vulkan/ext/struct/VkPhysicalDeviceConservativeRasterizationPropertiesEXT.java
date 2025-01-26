@@ -15,44 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### primitiveOverestimationSize
-/// [VarHandle][#VH_primitiveOverestimationSize] - [Getter][#primitiveOverestimationSize()] - [Setter][#primitiveOverestimationSize(float)]
-/// ### maxExtraPrimitiveOverestimationSize
-/// [VarHandle][#VH_maxExtraPrimitiveOverestimationSize] - [Getter][#maxExtraPrimitiveOverestimationSize()] - [Setter][#maxExtraPrimitiveOverestimationSize(float)]
-/// ### extraPrimitiveOverestimationSizeGranularity
-/// [VarHandle][#VH_extraPrimitiveOverestimationSizeGranularity] - [Getter][#extraPrimitiveOverestimationSizeGranularity()] - [Setter][#extraPrimitiveOverestimationSizeGranularity(float)]
-/// ### primitiveUnderestimation
-/// [VarHandle][#VH_primitiveUnderestimation] - [Getter][#primitiveUnderestimation()] - [Setter][#primitiveUnderestimation(int)]
-/// ### conservativePointAndLineRasterization
-/// [VarHandle][#VH_conservativePointAndLineRasterization] - [Getter][#conservativePointAndLineRasterization()] - [Setter][#conservativePointAndLineRasterization(int)]
-/// ### degenerateTrianglesRasterized
-/// [VarHandle][#VH_degenerateTrianglesRasterized] - [Getter][#degenerateTrianglesRasterized()] - [Setter][#degenerateTrianglesRasterized(int)]
-/// ### degenerateLinesRasterized
-/// [VarHandle][#VH_degenerateLinesRasterized] - [Getter][#degenerateLinesRasterized()] - [Setter][#degenerateLinesRasterized(int)]
-/// ### fullyCoveredFragmentShaderInputVariable
-/// [VarHandle][#VH_fullyCoveredFragmentShaderInputVariable] - [Getter][#fullyCoveredFragmentShaderInputVariable()] - [Setter][#fullyCoveredFragmentShaderInputVariable(int)]
-/// ### conservativeRasterizationPostDepthCoverage
-/// [VarHandle][#VH_conservativeRasterizationPostDepthCoverage] - [Getter][#conservativeRasterizationPostDepthCoverage()] - [Setter][#conservativeRasterizationPostDepthCoverage(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
+/// ```
+/// struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     float primitiveOverestimationSize;
 ///     float maxExtraPrimitiveOverestimationSize;
 ///     float extraPrimitiveOverestimationSizeGranularity;
@@ -62,11 +38,11 @@ import overrungl.util.*;
 ///     VkBool32 degenerateLinesRasterized;
 ///     VkBool32 fullyCoveredFragmentShaderInputVariable;
 ///     VkBool32 conservativeRasterizationPostDepthCoverage;
-/// } VkPhysicalDeviceConservativeRasterizationPropertiesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_FLOAT.withName("primitiveOverestimationSize"),
@@ -79,27 +55,71 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
         ValueLayout.JAVA_INT.withName("fullyCoveredFragmentShaderInputVariable"),
         ValueLayout.JAVA_INT.withName("conservativeRasterizationPostDepthCoverage")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `primitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `primitiveOverestimationSize`.
+    public static final long OFFSET_primitiveOverestimationSize = LAYOUT.byteOffset(PathElement.groupElement("primitiveOverestimationSize"));
+    /// The memory layout of `primitiveOverestimationSize`.
+    public static final MemoryLayout LAYOUT_primitiveOverestimationSize = LAYOUT.select(PathElement.groupElement("primitiveOverestimationSize"));
+    /// The [VarHandle] of `primitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitiveOverestimationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveOverestimationSize"));
-    /// The [VarHandle] of `maxExtraPrimitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `maxExtraPrimitiveOverestimationSize`.
+    public static final long OFFSET_maxExtraPrimitiveOverestimationSize = LAYOUT.byteOffset(PathElement.groupElement("maxExtraPrimitiveOverestimationSize"));
+    /// The memory layout of `maxExtraPrimitiveOverestimationSize`.
+    public static final MemoryLayout LAYOUT_maxExtraPrimitiveOverestimationSize = LAYOUT.select(PathElement.groupElement("maxExtraPrimitiveOverestimationSize"));
+    /// The [VarHandle] of `maxExtraPrimitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxExtraPrimitiveOverestimationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExtraPrimitiveOverestimationSize"));
-    /// The [VarHandle] of `extraPrimitiveOverestimationSizeGranularity` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `extraPrimitiveOverestimationSizeGranularity`.
+    public static final long OFFSET_extraPrimitiveOverestimationSizeGranularity = LAYOUT.byteOffset(PathElement.groupElement("extraPrimitiveOverestimationSizeGranularity"));
+    /// The memory layout of `extraPrimitiveOverestimationSizeGranularity`.
+    public static final MemoryLayout LAYOUT_extraPrimitiveOverestimationSizeGranularity = LAYOUT.select(PathElement.groupElement("extraPrimitiveOverestimationSizeGranularity"));
+    /// The [VarHandle] of `extraPrimitiveOverestimationSizeGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_extraPrimitiveOverestimationSizeGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extraPrimitiveOverestimationSizeGranularity"));
-    /// The [VarHandle] of `primitiveUnderestimation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitiveUnderestimation`.
+    public static final long OFFSET_primitiveUnderestimation = LAYOUT.byteOffset(PathElement.groupElement("primitiveUnderestimation"));
+    /// The memory layout of `primitiveUnderestimation`.
+    public static final MemoryLayout LAYOUT_primitiveUnderestimation = LAYOUT.select(PathElement.groupElement("primitiveUnderestimation"));
+    /// The [VarHandle] of `primitiveUnderestimation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitiveUnderestimation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveUnderestimation"));
-    /// The [VarHandle] of `conservativePointAndLineRasterization` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `conservativePointAndLineRasterization`.
+    public static final long OFFSET_conservativePointAndLineRasterization = LAYOUT.byteOffset(PathElement.groupElement("conservativePointAndLineRasterization"));
+    /// The memory layout of `conservativePointAndLineRasterization`.
+    public static final MemoryLayout LAYOUT_conservativePointAndLineRasterization = LAYOUT.select(PathElement.groupElement("conservativePointAndLineRasterization"));
+    /// The [VarHandle] of `conservativePointAndLineRasterization` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_conservativePointAndLineRasterization = LAYOUT.arrayElementVarHandle(PathElement.groupElement("conservativePointAndLineRasterization"));
-    /// The [VarHandle] of `degenerateTrianglesRasterized` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `degenerateTrianglesRasterized`.
+    public static final long OFFSET_degenerateTrianglesRasterized = LAYOUT.byteOffset(PathElement.groupElement("degenerateTrianglesRasterized"));
+    /// The memory layout of `degenerateTrianglesRasterized`.
+    public static final MemoryLayout LAYOUT_degenerateTrianglesRasterized = LAYOUT.select(PathElement.groupElement("degenerateTrianglesRasterized"));
+    /// The [VarHandle] of `degenerateTrianglesRasterized` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_degenerateTrianglesRasterized = LAYOUT.arrayElementVarHandle(PathElement.groupElement("degenerateTrianglesRasterized"));
-    /// The [VarHandle] of `degenerateLinesRasterized` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `degenerateLinesRasterized`.
+    public static final long OFFSET_degenerateLinesRasterized = LAYOUT.byteOffset(PathElement.groupElement("degenerateLinesRasterized"));
+    /// The memory layout of `degenerateLinesRasterized`.
+    public static final MemoryLayout LAYOUT_degenerateLinesRasterized = LAYOUT.select(PathElement.groupElement("degenerateLinesRasterized"));
+    /// The [VarHandle] of `degenerateLinesRasterized` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_degenerateLinesRasterized = LAYOUT.arrayElementVarHandle(PathElement.groupElement("degenerateLinesRasterized"));
-    /// The [VarHandle] of `fullyCoveredFragmentShaderInputVariable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `fullyCoveredFragmentShaderInputVariable`.
+    public static final long OFFSET_fullyCoveredFragmentShaderInputVariable = LAYOUT.byteOffset(PathElement.groupElement("fullyCoveredFragmentShaderInputVariable"));
+    /// The memory layout of `fullyCoveredFragmentShaderInputVariable`.
+    public static final MemoryLayout LAYOUT_fullyCoveredFragmentShaderInputVariable = LAYOUT.select(PathElement.groupElement("fullyCoveredFragmentShaderInputVariable"));
+    /// The [VarHandle] of `fullyCoveredFragmentShaderInputVariable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_fullyCoveredFragmentShaderInputVariable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fullyCoveredFragmentShaderInputVariable"));
-    /// The [VarHandle] of `conservativeRasterizationPostDepthCoverage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `conservativeRasterizationPostDepthCoverage`.
+    public static final long OFFSET_conservativeRasterizationPostDepthCoverage = LAYOUT.byteOffset(PathElement.groupElement("conservativeRasterizationPostDepthCoverage"));
+    /// The memory layout of `conservativeRasterizationPostDepthCoverage`.
+    public static final MemoryLayout LAYOUT_conservativeRasterizationPostDepthCoverage = LAYOUT.select(PathElement.groupElement("conservativeRasterizationPostDepthCoverage"));
+    /// The [VarHandle] of `conservativeRasterizationPostDepthCoverage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_conservativeRasterizationPostDepthCoverage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("conservativeRasterizationPostDepthCoverage"));
 
     /// Creates `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment.
@@ -109,19 +129,14 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
     /// Creates `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceConservativeRasterizationPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment.
     ///
@@ -129,7 +144,7 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -142,11 +157,6 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
     /// @return the allocated `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceConservativeRasterizationPropertiesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceConservativeRasterizationPropertiesEXT`
-    public static VkPhysicalDeviceConservativeRasterizationPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("float") float primitiveOverestimationSize, @CType("float") float maxExtraPrimitiveOverestimationSize, @CType("float") float extraPrimitiveOverestimationSizeGranularity, @CType("VkBool32") int primitiveUnderestimation, @CType("VkBool32") int conservativePointAndLineRasterization, @CType("VkBool32") int degenerateTrianglesRasterized, @CType("VkBool32") int degenerateLinesRasterized, @CType("VkBool32") int fullyCoveredFragmentShaderInputVariable, @CType("VkBool32") int conservativeRasterizationPostDepthCoverage) { return alloc(allocator).sType(sType).pNext(pNext).primitiveOverestimationSize(primitiveOverestimationSize).maxExtraPrimitiveOverestimationSize(maxExtraPrimitiveOverestimationSize).extraPrimitiveOverestimationSizeGranularity(extraPrimitiveOverestimationSizeGranularity).primitiveUnderestimation(primitiveUnderestimation).conservativePointAndLineRasterization(conservativePointAndLineRasterization).degenerateTrianglesRasterized(degenerateTrianglesRasterized).degenerateLinesRasterized(degenerateLinesRasterized).fullyCoveredFragmentShaderInputVariable(fullyCoveredFragmentShaderInputVariable).conservativeRasterizationPostDepthCoverage(conservativeRasterizationPostDepthCoverage); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -154,260 +164,183 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `primitiveOverestimationSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_primitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_primitiveOverestimationSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float primitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_primitiveOverestimationSize.get(segment, 0L, index); }
     /// {@return `primitiveOverestimationSize`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_primitiveOverestimationSize(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveOverestimationSize(segment, 0L); }
-    /// {@return `primitiveOverestimationSize`}
-    public @CType("float") float primitiveOverestimationSize() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveOverestimationSize(this.segment()); }
+    public float primitiveOverestimationSize() { return primitiveOverestimationSize(this.segment(), 0L); }
     /// Sets `primitiveOverestimationSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitiveOverestimationSize(MemorySegment segment, long index, @CType("float") float value) { VH_primitiveOverestimationSize.set(segment, 0L, index, value); }
-    /// Sets `primitiveOverestimationSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitiveOverestimationSize(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveOverestimationSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitiveOverestimationSize(MemorySegment segment, long index, float value) { VH_primitiveOverestimationSize.set(segment, 0L, index, value); }
     /// Sets `primitiveOverestimationSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveOverestimationSize(@CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveOverestimationSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveOverestimationSize(float value) { primitiveOverestimationSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxExtraPrimitiveOverestimationSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_maxExtraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_maxExtraPrimitiveOverestimationSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float maxExtraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_maxExtraPrimitiveOverestimationSize.get(segment, 0L, index); }
     /// {@return `maxExtraPrimitiveOverestimationSize`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_maxExtraPrimitiveOverestimationSize(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_maxExtraPrimitiveOverestimationSize(segment, 0L); }
-    /// {@return `maxExtraPrimitiveOverestimationSize`}
-    public @CType("float") float maxExtraPrimitiveOverestimationSize() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_maxExtraPrimitiveOverestimationSize(this.segment()); }
+    public float maxExtraPrimitiveOverestimationSize() { return maxExtraPrimitiveOverestimationSize(this.segment(), 0L); }
     /// Sets `maxExtraPrimitiveOverestimationSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxExtraPrimitiveOverestimationSize(MemorySegment segment, long index, @CType("float") float value) { VH_maxExtraPrimitiveOverestimationSize.set(segment, 0L, index, value); }
-    /// Sets `maxExtraPrimitiveOverestimationSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxExtraPrimitiveOverestimationSize(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_maxExtraPrimitiveOverestimationSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxExtraPrimitiveOverestimationSize(MemorySegment segment, long index, float value) { VH_maxExtraPrimitiveOverestimationSize.set(segment, 0L, index, value); }
     /// Sets `maxExtraPrimitiveOverestimationSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT maxExtraPrimitiveOverestimationSize(@CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_maxExtraPrimitiveOverestimationSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT maxExtraPrimitiveOverestimationSize(float value) { maxExtraPrimitiveOverestimationSize(this.segment(), 0L, value); return this; }
 
     /// {@return `extraPrimitiveOverestimationSizeGranularity` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_extraPrimitiveOverestimationSizeGranularity(MemorySegment segment, long index) { return (float) VH_extraPrimitiveOverestimationSizeGranularity.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float extraPrimitiveOverestimationSizeGranularity(MemorySegment segment, long index) { return (float) VH_extraPrimitiveOverestimationSizeGranularity.get(segment, 0L, index); }
     /// {@return `extraPrimitiveOverestimationSizeGranularity`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_extraPrimitiveOverestimationSizeGranularity(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_extraPrimitiveOverestimationSizeGranularity(segment, 0L); }
-    /// {@return `extraPrimitiveOverestimationSizeGranularity`}
-    public @CType("float") float extraPrimitiveOverestimationSizeGranularity() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_extraPrimitiveOverestimationSizeGranularity(this.segment()); }
+    public float extraPrimitiveOverestimationSizeGranularity() { return extraPrimitiveOverestimationSizeGranularity(this.segment(), 0L); }
     /// Sets `extraPrimitiveOverestimationSizeGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_extraPrimitiveOverestimationSizeGranularity(MemorySegment segment, long index, @CType("float") float value) { VH_extraPrimitiveOverestimationSizeGranularity.set(segment, 0L, index, value); }
-    /// Sets `extraPrimitiveOverestimationSizeGranularity` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_extraPrimitiveOverestimationSizeGranularity(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_extraPrimitiveOverestimationSizeGranularity(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void extraPrimitiveOverestimationSizeGranularity(MemorySegment segment, long index, float value) { VH_extraPrimitiveOverestimationSizeGranularity.set(segment, 0L, index, value); }
     /// Sets `extraPrimitiveOverestimationSizeGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT extraPrimitiveOverestimationSizeGranularity(@CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_extraPrimitiveOverestimationSizeGranularity(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT extraPrimitiveOverestimationSizeGranularity(float value) { extraPrimitiveOverestimationSizeGranularity(this.segment(), 0L, value); return this; }
 
     /// {@return `primitiveUnderestimation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_primitiveUnderestimation(MemorySegment segment, long index) { return (int) VH_primitiveUnderestimation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitiveUnderestimation(MemorySegment segment, long index) { return (int) VH_primitiveUnderestimation.get(segment, 0L, index); }
     /// {@return `primitiveUnderestimation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_primitiveUnderestimation(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveUnderestimation(segment, 0L); }
-    /// {@return `primitiveUnderestimation`}
-    public @CType("VkBool32") int primitiveUnderestimation() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveUnderestimation(this.segment()); }
+    public int primitiveUnderestimation() { return primitiveUnderestimation(this.segment(), 0L); }
     /// Sets `primitiveUnderestimation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitiveUnderestimation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_primitiveUnderestimation.set(segment, 0L, index, value); }
-    /// Sets `primitiveUnderestimation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitiveUnderestimation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveUnderestimation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitiveUnderestimation(MemorySegment segment, long index, int value) { VH_primitiveUnderestimation.set(segment, 0L, index, value); }
     /// Sets `primitiveUnderestimation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveUnderestimation(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveUnderestimation(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT primitiveUnderestimation(int value) { primitiveUnderestimation(this.segment(), 0L, value); return this; }
 
     /// {@return `conservativePointAndLineRasterization` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_conservativePointAndLineRasterization(MemorySegment segment, long index) { return (int) VH_conservativePointAndLineRasterization.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int conservativePointAndLineRasterization(MemorySegment segment, long index) { return (int) VH_conservativePointAndLineRasterization.get(segment, 0L, index); }
     /// {@return `conservativePointAndLineRasterization`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_conservativePointAndLineRasterization(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativePointAndLineRasterization(segment, 0L); }
-    /// {@return `conservativePointAndLineRasterization`}
-    public @CType("VkBool32") int conservativePointAndLineRasterization() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativePointAndLineRasterization(this.segment()); }
+    public int conservativePointAndLineRasterization() { return conservativePointAndLineRasterization(this.segment(), 0L); }
     /// Sets `conservativePointAndLineRasterization` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_conservativePointAndLineRasterization(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_conservativePointAndLineRasterization.set(segment, 0L, index, value); }
-    /// Sets `conservativePointAndLineRasterization` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_conservativePointAndLineRasterization(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativePointAndLineRasterization(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void conservativePointAndLineRasterization(MemorySegment segment, long index, int value) { VH_conservativePointAndLineRasterization.set(segment, 0L, index, value); }
     /// Sets `conservativePointAndLineRasterization` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativePointAndLineRasterization(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativePointAndLineRasterization(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativePointAndLineRasterization(int value) { conservativePointAndLineRasterization(this.segment(), 0L, value); return this; }
 
     /// {@return `degenerateTrianglesRasterized` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_degenerateTrianglesRasterized(MemorySegment segment, long index) { return (int) VH_degenerateTrianglesRasterized.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int degenerateTrianglesRasterized(MemorySegment segment, long index) { return (int) VH_degenerateTrianglesRasterized.get(segment, 0L, index); }
     /// {@return `degenerateTrianglesRasterized`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_degenerateTrianglesRasterized(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateTrianglesRasterized(segment, 0L); }
-    /// {@return `degenerateTrianglesRasterized`}
-    public @CType("VkBool32") int degenerateTrianglesRasterized() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateTrianglesRasterized(this.segment()); }
+    public int degenerateTrianglesRasterized() { return degenerateTrianglesRasterized(this.segment(), 0L); }
     /// Sets `degenerateTrianglesRasterized` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_degenerateTrianglesRasterized(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_degenerateTrianglesRasterized.set(segment, 0L, index, value); }
-    /// Sets `degenerateTrianglesRasterized` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_degenerateTrianglesRasterized(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateTrianglesRasterized(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void degenerateTrianglesRasterized(MemorySegment segment, long index, int value) { VH_degenerateTrianglesRasterized.set(segment, 0L, index, value); }
     /// Sets `degenerateTrianglesRasterized` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateTrianglesRasterized(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateTrianglesRasterized(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateTrianglesRasterized(int value) { degenerateTrianglesRasterized(this.segment(), 0L, value); return this; }
 
     /// {@return `degenerateLinesRasterized` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_degenerateLinesRasterized(MemorySegment segment, long index) { return (int) VH_degenerateLinesRasterized.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int degenerateLinesRasterized(MemorySegment segment, long index) { return (int) VH_degenerateLinesRasterized.get(segment, 0L, index); }
     /// {@return `degenerateLinesRasterized`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_degenerateLinesRasterized(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateLinesRasterized(segment, 0L); }
-    /// {@return `degenerateLinesRasterized`}
-    public @CType("VkBool32") int degenerateLinesRasterized() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateLinesRasterized(this.segment()); }
+    public int degenerateLinesRasterized() { return degenerateLinesRasterized(this.segment(), 0L); }
     /// Sets `degenerateLinesRasterized` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_degenerateLinesRasterized(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_degenerateLinesRasterized.set(segment, 0L, index, value); }
-    /// Sets `degenerateLinesRasterized` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_degenerateLinesRasterized(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateLinesRasterized(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void degenerateLinesRasterized(MemorySegment segment, long index, int value) { VH_degenerateLinesRasterized.set(segment, 0L, index, value); }
     /// Sets `degenerateLinesRasterized` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateLinesRasterized(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateLinesRasterized(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT degenerateLinesRasterized(int value) { degenerateLinesRasterized(this.segment(), 0L, value); return this; }
 
     /// {@return `fullyCoveredFragmentShaderInputVariable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_fullyCoveredFragmentShaderInputVariable(MemorySegment segment, long index) { return (int) VH_fullyCoveredFragmentShaderInputVariable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int fullyCoveredFragmentShaderInputVariable(MemorySegment segment, long index) { return (int) VH_fullyCoveredFragmentShaderInputVariable.get(segment, 0L, index); }
     /// {@return `fullyCoveredFragmentShaderInputVariable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_fullyCoveredFragmentShaderInputVariable(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_fullyCoveredFragmentShaderInputVariable(segment, 0L); }
-    /// {@return `fullyCoveredFragmentShaderInputVariable`}
-    public @CType("VkBool32") int fullyCoveredFragmentShaderInputVariable() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_fullyCoveredFragmentShaderInputVariable(this.segment()); }
+    public int fullyCoveredFragmentShaderInputVariable() { return fullyCoveredFragmentShaderInputVariable(this.segment(), 0L); }
     /// Sets `fullyCoveredFragmentShaderInputVariable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fullyCoveredFragmentShaderInputVariable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_fullyCoveredFragmentShaderInputVariable.set(segment, 0L, index, value); }
-    /// Sets `fullyCoveredFragmentShaderInputVariable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fullyCoveredFragmentShaderInputVariable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_fullyCoveredFragmentShaderInputVariable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fullyCoveredFragmentShaderInputVariable(MemorySegment segment, long index, int value) { VH_fullyCoveredFragmentShaderInputVariable.set(segment, 0L, index, value); }
     /// Sets `fullyCoveredFragmentShaderInputVariable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT fullyCoveredFragmentShaderInputVariable(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_fullyCoveredFragmentShaderInputVariable(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT fullyCoveredFragmentShaderInputVariable(int value) { fullyCoveredFragmentShaderInputVariable(this.segment(), 0L, value); return this; }
 
     /// {@return `conservativeRasterizationPostDepthCoverage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_conservativeRasterizationPostDepthCoverage(MemorySegment segment, long index) { return (int) VH_conservativeRasterizationPostDepthCoverage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int conservativeRasterizationPostDepthCoverage(MemorySegment segment, long index) { return (int) VH_conservativeRasterizationPostDepthCoverage.get(segment, 0L, index); }
     /// {@return `conservativeRasterizationPostDepthCoverage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_conservativeRasterizationPostDepthCoverage(MemorySegment segment) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativeRasterizationPostDepthCoverage(segment, 0L); }
-    /// {@return `conservativeRasterizationPostDepthCoverage`}
-    public @CType("VkBool32") int conservativeRasterizationPostDepthCoverage() { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativeRasterizationPostDepthCoverage(this.segment()); }
+    public int conservativeRasterizationPostDepthCoverage() { return conservativeRasterizationPostDepthCoverage(this.segment(), 0L); }
     /// Sets `conservativeRasterizationPostDepthCoverage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_conservativeRasterizationPostDepthCoverage(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_conservativeRasterizationPostDepthCoverage.set(segment, 0L, index, value); }
-    /// Sets `conservativeRasterizationPostDepthCoverage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_conservativeRasterizationPostDepthCoverage(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativeRasterizationPostDepthCoverage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void conservativeRasterizationPostDepthCoverage(MemorySegment segment, long index, int value) { VH_conservativeRasterizationPostDepthCoverage.set(segment, 0L, index, value); }
     /// Sets `conservativeRasterizationPostDepthCoverage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativeRasterizationPostDepthCoverage(@CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativeRasterizationPostDepthCoverage(this.segment(), value); return this; }
+    public VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservativeRasterizationPostDepthCoverage(int value) { conservativeRasterizationPostDepthCoverage(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceConservativeRasterizationPropertiesEXT].
     public static final class Buffer extends VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
@@ -432,103 +365,103 @@ public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT exten
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `primitiveOverestimationSize` at the given index}
-        /// @param index the index
-        public @CType("float") float primitiveOverestimationSizeAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveOverestimationSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float primitiveOverestimationSizeAt(long index) { return primitiveOverestimationSize(this.segment(), index); }
         /// Sets `primitiveOverestimationSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitiveOverestimationSizeAt(long index, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveOverestimationSize(this.segment(), index, value); return this; }
+        public Buffer primitiveOverestimationSizeAt(long index, float value) { primitiveOverestimationSize(this.segment(), index, value); return this; }
 
         /// {@return `maxExtraPrimitiveOverestimationSize` at the given index}
-        /// @param index the index
-        public @CType("float") float maxExtraPrimitiveOverestimationSizeAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_maxExtraPrimitiveOverestimationSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float maxExtraPrimitiveOverestimationSizeAt(long index) { return maxExtraPrimitiveOverestimationSize(this.segment(), index); }
         /// Sets `maxExtraPrimitiveOverestimationSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxExtraPrimitiveOverestimationSizeAt(long index, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_maxExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
+        public Buffer maxExtraPrimitiveOverestimationSizeAt(long index, float value) { maxExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
 
         /// {@return `extraPrimitiveOverestimationSizeGranularity` at the given index}
-        /// @param index the index
-        public @CType("float") float extraPrimitiveOverestimationSizeGranularityAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_extraPrimitiveOverestimationSizeGranularity(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float extraPrimitiveOverestimationSizeGranularityAt(long index) { return extraPrimitiveOverestimationSizeGranularity(this.segment(), index); }
         /// Sets `extraPrimitiveOverestimationSizeGranularity` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer extraPrimitiveOverestimationSizeGranularityAt(long index, @CType("float") float value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_extraPrimitiveOverestimationSizeGranularity(this.segment(), index, value); return this; }
+        public Buffer extraPrimitiveOverestimationSizeGranularityAt(long index, float value) { extraPrimitiveOverestimationSizeGranularity(this.segment(), index, value); return this; }
 
         /// {@return `primitiveUnderestimation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int primitiveUnderestimationAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_primitiveUnderestimation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitiveUnderestimationAt(long index) { return primitiveUnderestimation(this.segment(), index); }
         /// Sets `primitiveUnderestimation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitiveUnderestimationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_primitiveUnderestimation(this.segment(), index, value); return this; }
+        public Buffer primitiveUnderestimationAt(long index, int value) { primitiveUnderestimation(this.segment(), index, value); return this; }
 
         /// {@return `conservativePointAndLineRasterization` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int conservativePointAndLineRasterizationAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativePointAndLineRasterization(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int conservativePointAndLineRasterizationAt(long index) { return conservativePointAndLineRasterization(this.segment(), index); }
         /// Sets `conservativePointAndLineRasterization` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer conservativePointAndLineRasterizationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativePointAndLineRasterization(this.segment(), index, value); return this; }
+        public Buffer conservativePointAndLineRasterizationAt(long index, int value) { conservativePointAndLineRasterization(this.segment(), index, value); return this; }
 
         /// {@return `degenerateTrianglesRasterized` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int degenerateTrianglesRasterizedAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateTrianglesRasterized(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int degenerateTrianglesRasterizedAt(long index) { return degenerateTrianglesRasterized(this.segment(), index); }
         /// Sets `degenerateTrianglesRasterized` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer degenerateTrianglesRasterizedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateTrianglesRasterized(this.segment(), index, value); return this; }
+        public Buffer degenerateTrianglesRasterizedAt(long index, int value) { degenerateTrianglesRasterized(this.segment(), index, value); return this; }
 
         /// {@return `degenerateLinesRasterized` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int degenerateLinesRasterizedAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_degenerateLinesRasterized(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int degenerateLinesRasterizedAt(long index) { return degenerateLinesRasterized(this.segment(), index); }
         /// Sets `degenerateLinesRasterized` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer degenerateLinesRasterizedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_degenerateLinesRasterized(this.segment(), index, value); return this; }
+        public Buffer degenerateLinesRasterizedAt(long index, int value) { degenerateLinesRasterized(this.segment(), index, value); return this; }
 
         /// {@return `fullyCoveredFragmentShaderInputVariable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int fullyCoveredFragmentShaderInputVariableAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_fullyCoveredFragmentShaderInputVariable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int fullyCoveredFragmentShaderInputVariableAt(long index) { return fullyCoveredFragmentShaderInputVariable(this.segment(), index); }
         /// Sets `fullyCoveredFragmentShaderInputVariable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fullyCoveredFragmentShaderInputVariableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_fullyCoveredFragmentShaderInputVariable(this.segment(), index, value); return this; }
+        public Buffer fullyCoveredFragmentShaderInputVariableAt(long index, int value) { fullyCoveredFragmentShaderInputVariable(this.segment(), index, value); return this; }
 
         /// {@return `conservativeRasterizationPostDepthCoverage` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int conservativeRasterizationPostDepthCoverageAt(long index) { return VkPhysicalDeviceConservativeRasterizationPropertiesEXT.get_conservativeRasterizationPostDepthCoverage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int conservativeRasterizationPostDepthCoverageAt(long index) { return conservativeRasterizationPostDepthCoverage(this.segment(), index); }
         /// Sets `conservativeRasterizationPostDepthCoverage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer conservativeRasterizationPostDepthCoverageAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceConservativeRasterizationPropertiesEXT.set_conservativeRasterizationPostDepthCoverage(this.segment(), index, value); return this; }
+        public Buffer conservativeRasterizationPostDepthCoverageAt(long index, int value) { conservativeRasterizationPostDepthCoverage(this.segment(), index, value); return this; }
 
     }
 }

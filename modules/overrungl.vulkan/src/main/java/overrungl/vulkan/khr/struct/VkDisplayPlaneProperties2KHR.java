@@ -15,46 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### displayPlaneProperties
-/// [Byte offset][#OFFSET_displayPlaneProperties] - [Memory layout][#ML_displayPlaneProperties] - [Getter][#displayPlaneProperties()] - [Setter][#displayPlaneProperties(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDisplayPlaneProperties2KHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkDisplayPlanePropertiesKHR displayPlaneProperties;
-/// } VkDisplayPlaneProperties2KHR;
 /// ```
-public sealed class VkDisplayPlaneProperties2KHR extends Struct {
+/// struct VkDisplayPlaneProperties2KHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDisplayPlanePropertiesKHR displayPlaneProperties;
+/// };
+/// ```
+public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     /// The struct layout of `VkDisplayPlaneProperties2KHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.LAYOUT.withName("displayPlaneProperties")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `displayPlaneProperties`.
     public static final long OFFSET_displayPlaneProperties = LAYOUT.byteOffset(PathElement.groupElement("displayPlaneProperties"));
     /// The memory layout of `displayPlaneProperties`.
-    public static final MemoryLayout ML_displayPlaneProperties = LAYOUT.select(PathElement.groupElement("displayPlaneProperties"));
+    public static final MemoryLayout LAYOUT_displayPlaneProperties = LAYOUT.select(PathElement.groupElement("displayPlaneProperties"));
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     /// @param segment the memory segment
@@ -63,19 +63,14 @@ public sealed class VkDisplayPlaneProperties2KHR extends Struct {
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPlaneProperties2KHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment); }
-
-    /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPlaneProperties2KHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDisplayPlaneProperties2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     ///
@@ -83,7 +78,7 @@ public sealed class VkDisplayPlaneProperties2KHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDisplayPlaneProperties2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,11 +91,6 @@ public sealed class VkDisplayPlaneProperties2KHR extends Struct {
     /// @return the allocated `VkDisplayPlaneProperties2KHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayPlaneProperties2KHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDisplayPlaneProperties2KHR`
-    public static VkDisplayPlaneProperties2KHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkDisplayPlanePropertiesKHR") MemorySegment displayPlaneProperties) { return alloc(allocator).sType(sType).pNext(pNext).displayPlaneProperties(displayPlaneProperties); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -108,76 +98,55 @@ public sealed class VkDisplayPlaneProperties2KHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDisplayPlaneProperties2KHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDisplayPlaneProperties2KHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDisplayPlaneProperties2KHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPlaneProperties2KHR sType(@CType("VkStructureType") int value) { VkDisplayPlaneProperties2KHR.set_sType(this.segment(), value); return this; }
+    public VkDisplayPlaneProperties2KHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkDisplayPlaneProperties2KHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkDisplayPlaneProperties2KHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPlaneProperties2KHR pNext(@CType("void *") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_pNext(this.segment(), value); return this; }
+    public VkDisplayPlaneProperties2KHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `displayPlaneProperties` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDisplayPlanePropertiesKHR") MemorySegment get_displayPlaneProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPlaneProperties, index), ML_displayPlaneProperties); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment displayPlaneProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_displayPlaneProperties, index), LAYOUT_displayPlaneProperties); }
     /// {@return `displayPlaneProperties`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDisplayPlanePropertiesKHR") MemorySegment get_displayPlaneProperties(MemorySegment segment) { return VkDisplayPlaneProperties2KHR.get_displayPlaneProperties(segment, 0L); }
-    /// {@return `displayPlaneProperties`}
-    public @CType("VkDisplayPlanePropertiesKHR") MemorySegment displayPlaneProperties() { return VkDisplayPlaneProperties2KHR.get_displayPlaneProperties(this.segment()); }
+    public MemorySegment displayPlaneProperties() { return displayPlaneProperties(this.segment(), 0L); }
     /// Sets `displayPlaneProperties` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_displayPlaneProperties(MemorySegment segment, long index, @CType("VkDisplayPlanePropertiesKHR") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPlaneProperties, index), ML_displayPlaneProperties.byteSize()); }
-    /// Sets `displayPlaneProperties` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_displayPlaneProperties(MemorySegment segment, @CType("VkDisplayPlanePropertiesKHR") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_displayPlaneProperties(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void displayPlaneProperties(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_displayPlaneProperties, index), LAYOUT_displayPlaneProperties.byteSize()); }
     /// Sets `displayPlaneProperties` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDisplayPlaneProperties2KHR displayPlaneProperties(@CType("VkDisplayPlanePropertiesKHR") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_displayPlaneProperties(this.segment(), value); return this; }
+    public VkDisplayPlaneProperties2KHR displayPlaneProperties(MemorySegment value) { displayPlaneProperties(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDisplayPlaneProperties2KHR].
     public static final class Buffer extends VkDisplayPlaneProperties2KHR {
@@ -202,31 +171,31 @@ public sealed class VkDisplayPlaneProperties2KHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDisplayPlaneProperties2KHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDisplayPlaneProperties2KHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkDisplayPlaneProperties2KHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `displayPlaneProperties` at the given index}
-        /// @param index the index
-        public @CType("VkDisplayPlanePropertiesKHR") MemorySegment displayPlanePropertiesAt(long index) { return VkDisplayPlaneProperties2KHR.get_displayPlaneProperties(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment displayPlanePropertiesAt(long index) { return displayPlaneProperties(this.segment(), index); }
         /// Sets `displayPlaneProperties` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer displayPlanePropertiesAt(long index, @CType("VkDisplayPlanePropertiesKHR") MemorySegment value) { VkDisplayPlaneProperties2KHR.set_displayPlaneProperties(this.segment(), index, value); return this; }
+        public Buffer displayPlanePropertiesAt(long index, MemorySegment value) { displayPlaneProperties(this.segment(), index, value); return this; }
 
     }
 }

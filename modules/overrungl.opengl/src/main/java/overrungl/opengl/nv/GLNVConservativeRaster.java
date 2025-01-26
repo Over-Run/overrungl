@@ -41,7 +41,7 @@ public final class GLNVConservativeRaster {
     }
 
     /// ```
-    /// void glSubpixelPrecisionBiasNV(unsigned int xbits, unsigned int ybits);
+    /// void glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits);
     /// ```
     public void SubpixelPrecisionBiasNV(int xbits, int ybits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new SymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");

@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -34,19 +33,22 @@ public class VKEXTExternalMemoryHost {
     public static final class Handles {
         public static final MethodHandle MH_vkGetMemoryHostPointerPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryHostPointerPropertiesEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryHostPointerPropertiesEXT = func.invoke(device, "vkGetMemoryHostPointerPropertiesEXT");
         }
     }
 
-    public VKEXTExternalMemoryHost(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTExternalMemoryHost(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetMemoryHostPointerPropertiesEXT(@CType("VkDevice") MemorySegment device, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType, @CType("const void *") MemorySegment pHostPointer, @CType("VkMemoryHostPointerPropertiesEXT *") MemorySegment pMemoryHostPointerProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");
+    /// ```
+    /// VkResult vkGetMemoryHostPointerPropertiesEXT(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, const void* pHostPointer, VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
+    /// ```
+    public int GetMemoryHostPointerPropertiesEXT(MemorySegment device, int handleType, MemorySegment pHostPointer, MemorySegment pMemoryHostPointerProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");
         try { return (int) Handles.MH_vkGetMemoryHostPointerPropertiesEXT.invokeExact(handles.PFN_vkGetMemoryHostPointerPropertiesEXT, device, handleType, pHostPointer, pMemoryHostPointerProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryHostPointerPropertiesEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryHostPointerPropertiesEXT", e); }
     }
 
 }

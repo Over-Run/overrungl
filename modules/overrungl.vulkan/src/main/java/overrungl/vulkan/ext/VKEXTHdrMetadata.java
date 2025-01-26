@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKEXTHdrMetadata {
     public static final class Handles {
         public static final MethodHandle MH_vkSetHdrMetadataEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkSetHdrMetadataEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkSetHdrMetadataEXT = func.invoke(device, "vkSetHdrMetadataEXT");
         }
     }
 
-    public VKEXTHdrMetadata(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTHdrMetadata(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void SetHdrMetadataEXT(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int swapchainCount, @CType("const VkSwapchainKHR *") MemorySegment pSwapchains, @CType("const VkHdrMetadataEXT *") MemorySegment pMetadata) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetHdrMetadataEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
+    /// ```
+    /// void vkSetHdrMetadataEXT(VkDevice device, uint32_t swapchainCount, const VkSwapchainKHR* pSwapchains, const VkHdrMetadataEXT* pMetadata);
+    /// ```
+    public void SetHdrMetadataEXT(MemorySegment device, int swapchainCount, MemorySegment pSwapchains, MemorySegment pMetadata) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkSetHdrMetadataEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
         try { Handles.MH_vkSetHdrMetadataEXT.invokeExact(handles.PFN_vkSetHdrMetadataEXT, device, swapchainCount, pSwapchains, pMetadata); }
-        catch (Throwable e) { throw new RuntimeException("error in vkSetHdrMetadataEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SetHdrMetadataEXT", e); }
     }
 
 }

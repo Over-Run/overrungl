@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### stdProfile
-/// [VarHandle][#VH_stdProfile] - [Getter][#stdProfile()] - [Setter][#stdProfile(int)]
-/// ### filmGrainSupport
-/// [VarHandle][#VH_filmGrainSupport] - [Getter][#filmGrainSupport()] - [Setter][#filmGrainSupport(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoDecodeAV1ProfileInfoKHR {
+/// ```
+/// struct VkVideoDecodeAV1ProfileInfoKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     StdVideoAV1Profile stdProfile;
 ///     VkBool32 filmGrainSupport;
-/// } VkVideoDecodeAV1ProfileInfoKHR;
+/// };
 /// ```
-public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
+public sealed class VkVideoDecodeAV1ProfileInfoKHR extends GroupType {
     /// The struct layout of `VkVideoDecodeAV1ProfileInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("stdProfile"),
         ValueLayout.JAVA_INT.withName("filmGrainSupport")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `stdProfile` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stdProfile`.
+    public static final long OFFSET_stdProfile = LAYOUT.byteOffset(PathElement.groupElement("stdProfile"));
+    /// The memory layout of `stdProfile`.
+    public static final MemoryLayout LAYOUT_stdProfile = LAYOUT.select(PathElement.groupElement("stdProfile"));
+    /// The [VarHandle] of `stdProfile` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stdProfile = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdProfile"));
-    /// The [VarHandle] of `filmGrainSupport` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `filmGrainSupport`.
+    public static final long OFFSET_filmGrainSupport = LAYOUT.byteOffset(PathElement.groupElement("filmGrainSupport"));
+    /// The memory layout of `filmGrainSupport`.
+    public static final MemoryLayout LAYOUT_filmGrainSupport = LAYOUT.select(PathElement.groupElement("filmGrainSupport"));
+    /// The [VarHandle] of `filmGrainSupport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_filmGrainSupport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filmGrainSupport"));
 
     /// Creates `VkVideoDecodeAV1ProfileInfoKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
     /// Creates `VkVideoDecodeAV1ProfileInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeAV1ProfileInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeAV1ProfileInfoKHR(segment); }
-
-    /// Creates `VkVideoDecodeAV1ProfileInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoDecodeAV1ProfileInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeAV1ProfileInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeAV1ProfileInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoDecodeAV1ProfileInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1ProfileInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoDecodeAV1ProfileInfoKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
     /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
-    public static VkVideoDecodeAV1ProfileInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("StdVideoAV1Profile") int stdProfile, @CType("VkBool32") int filmGrainSupport) { return alloc(allocator).sType(sType).pNext(pNext).stdProfile(stdProfile).filmGrainSupport(filmGrainSupport); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoDecodeAV1ProfileInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoDecodeAV1ProfileInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeAV1ProfileInfoKHR sType(@CType("VkStructureType") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoDecodeAV1ProfileInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeAV1ProfileInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoDecodeAV1ProfileInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoDecodeAV1ProfileInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeAV1ProfileInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoDecodeAV1ProfileInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoDecodeAV1ProfileInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `stdProfile` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoAV1Profile") int get_stdProfile(MemorySegment segment, long index) { return (int) VH_stdProfile.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stdProfile(MemorySegment segment, long index) { return (int) VH_stdProfile.get(segment, 0L, index); }
     /// {@return `stdProfile`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1Profile") int get_stdProfile(MemorySegment segment) { return VkVideoDecodeAV1ProfileInfoKHR.get_stdProfile(segment, 0L); }
-    /// {@return `stdProfile`}
-    public @CType("StdVideoAV1Profile") int stdProfile() { return VkVideoDecodeAV1ProfileInfoKHR.get_stdProfile(this.segment()); }
+    public int stdProfile() { return stdProfile(this.segment(), 0L); }
     /// Sets `stdProfile` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stdProfile(MemorySegment segment, long index, @CType("StdVideoAV1Profile") int value) { VH_stdProfile.set(segment, 0L, index, value); }
-    /// Sets `stdProfile` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stdProfile(MemorySegment segment, @CType("StdVideoAV1Profile") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_stdProfile(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stdProfile(MemorySegment segment, long index, int value) { VH_stdProfile.set(segment, 0L, index, value); }
     /// Sets `stdProfile` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeAV1ProfileInfoKHR stdProfile(@CType("StdVideoAV1Profile") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_stdProfile(this.segment(), value); return this; }
+    public VkVideoDecodeAV1ProfileInfoKHR stdProfile(int value) { stdProfile(this.segment(), 0L, value); return this; }
 
     /// {@return `filmGrainSupport` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_filmGrainSupport(MemorySegment segment, long index) { return (int) VH_filmGrainSupport.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int filmGrainSupport(MemorySegment segment, long index) { return (int) VH_filmGrainSupport.get(segment, 0L, index); }
     /// {@return `filmGrainSupport`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_filmGrainSupport(MemorySegment segment) { return VkVideoDecodeAV1ProfileInfoKHR.get_filmGrainSupport(segment, 0L); }
-    /// {@return `filmGrainSupport`}
-    public @CType("VkBool32") int filmGrainSupport() { return VkVideoDecodeAV1ProfileInfoKHR.get_filmGrainSupport(this.segment()); }
+    public int filmGrainSupport() { return filmGrainSupport(this.segment(), 0L); }
     /// Sets `filmGrainSupport` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_filmGrainSupport(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_filmGrainSupport.set(segment, 0L, index, value); }
-    /// Sets `filmGrainSupport` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_filmGrainSupport(MemorySegment segment, @CType("VkBool32") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_filmGrainSupport(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void filmGrainSupport(MemorySegment segment, long index, int value) { VH_filmGrainSupport.set(segment, 0L, index, value); }
     /// Sets `filmGrainSupport` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoDecodeAV1ProfileInfoKHR filmGrainSupport(@CType("VkBool32") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_filmGrainSupport(this.segment(), value); return this; }
+    public VkVideoDecodeAV1ProfileInfoKHR filmGrainSupport(int value) { filmGrainSupport(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoDecodeAV1ProfileInfoKHR].
     public static final class Buffer extends VkVideoDecodeAV1ProfileInfoKHR {
@@ -229,40 +197,40 @@ public sealed class VkVideoDecodeAV1ProfileInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoDecodeAV1ProfileInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoDecodeAV1ProfileInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoDecodeAV1ProfileInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `stdProfile` at the given index}
-        /// @param index the index
-        public @CType("StdVideoAV1Profile") int stdProfileAt(long index) { return VkVideoDecodeAV1ProfileInfoKHR.get_stdProfile(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stdProfileAt(long index) { return stdProfile(this.segment(), index); }
         /// Sets `stdProfile` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stdProfileAt(long index, @CType("StdVideoAV1Profile") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_stdProfile(this.segment(), index, value); return this; }
+        public Buffer stdProfileAt(long index, int value) { stdProfile(this.segment(), index, value); return this; }
 
         /// {@return `filmGrainSupport` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int filmGrainSupportAt(long index) { return VkVideoDecodeAV1ProfileInfoKHR.get_filmGrainSupport(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int filmGrainSupportAt(long index) { return filmGrainSupport(this.segment(), index); }
         /// Sets `filmGrainSupport` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer filmGrainSupportAt(long index, @CType("VkBool32") int value) { VkVideoDecodeAV1ProfileInfoKHR.set_filmGrainSupport(this.segment(), index, value); return this; }
+        public Buffer filmGrainSupportAt(long index, int value) { filmGrainSupport(this.segment(), index, value); return this; }
 
     }
 }

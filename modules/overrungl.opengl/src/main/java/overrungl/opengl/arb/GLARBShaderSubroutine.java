@@ -69,7 +69,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// int glGetSubroutineUniformLocation(unsigned int program, unsigned int shadertype, const GLchar* name);
+    /// GLint glGetSubroutineUniformLocation(GLuint program, GLenum shadertype, const GLchar* name);
     /// ```
     public int GetSubroutineUniformLocation(int program, int shadertype, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSubroutineUniformLocation)) throw new SymbolNotFoundError("Symbol not found: glGetSubroutineUniformLocation");
@@ -78,7 +78,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// unsigned int glGetSubroutineIndex(unsigned int program, unsigned int shadertype, const GLchar* name);
+    /// GLuint glGetSubroutineIndex(GLuint program, GLenum shadertype, const GLchar* name);
     /// ```
     public int GetSubroutineIndex(int program, int shadertype, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSubroutineIndex)) throw new SymbolNotFoundError("Symbol not found: glGetSubroutineIndex");
@@ -87,7 +87,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glGetActiveSubroutineUniformiv(unsigned int program, unsigned int shadertype, unsigned int index, unsigned int pname, GLint* values);
+    /// void glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint* values);
     /// ```
     public void GetActiveSubroutineUniformiv(int program, int shadertype, int index, int pname, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineUniformiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformiv");
@@ -96,7 +96,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glGetActiveSubroutineUniformName(unsigned int program, unsigned int shadertype, unsigned int index, int bufSize, GLsizei* length, GLchar* name);
+    /// void glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei* length, GLchar* name);
     /// ```
     public void GetActiveSubroutineUniformName(int program, int shadertype, int index, int bufSize, MemorySegment length, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineUniformName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformName");
@@ -105,7 +105,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glGetActiveSubroutineName(unsigned int program, unsigned int shadertype, unsigned int index, int bufSize, GLsizei* length, GLchar* name);
+    /// void glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei* length, GLchar* name);
     /// ```
     public void GetActiveSubroutineName(int program, int shadertype, int index, int bufSize, MemorySegment length, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveSubroutineName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineName");
@@ -114,7 +114,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glUniformSubroutinesuiv(unsigned int shadertype, int count, const GLuint* indices);
+    /// void glUniformSubroutinesuiv(GLenum shadertype, GLsizei count, const GLuint* indices);
     /// ```
     public void UniformSubroutinesuiv(int shadertype, int count, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformSubroutinesuiv)) throw new SymbolNotFoundError("Symbol not found: glUniformSubroutinesuiv");
@@ -123,7 +123,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glGetUniformSubroutineuiv(unsigned int shadertype, int location, GLuint* params);
+    /// void glGetUniformSubroutineuiv(GLenum shadertype, GLint location, GLuint* params);
     /// ```
     public void GetUniformSubroutineuiv(int shadertype, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformSubroutineuiv)) throw new SymbolNotFoundError("Symbol not found: glGetUniformSubroutineuiv");
@@ -132,7 +132,7 @@ public final class GLARBShaderSubroutine {
     }
 
     /// ```
-    /// void glGetProgramStageiv(unsigned int program, unsigned int shadertype, unsigned int pname, GLint* values);
+    /// void glGetProgramStageiv(GLuint program, GLenum shadertype, GLenum pname, GLint* values);
     /// ```
     public void GetProgramStageiv(int program, int shadertype, int pname, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramStageiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStageiv");

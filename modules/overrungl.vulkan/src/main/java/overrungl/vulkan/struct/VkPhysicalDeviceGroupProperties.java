@@ -15,58 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK11.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### physicalDeviceCount
-/// [VarHandle][#VH_physicalDeviceCount] - [Getter][#physicalDeviceCount()] - [Setter][#physicalDeviceCount(int)]
-/// ### physicalDevices
-/// [Byte offset][#OFFSET_physicalDevices] - [Memory layout][#ML_physicalDevices] - [Getter][#physicalDevices()] - [Setter][#physicalDevices(MemorySegment)]
-/// ### subsetAllocation
-/// [VarHandle][#VH_subsetAllocation] - [Getter][#subsetAllocation()] - [Setter][#subsetAllocation(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceGroupProperties {
-///     VkStructureType sType;
-///     void * pNext;
-///     uint32_t physicalDeviceCount;
-///     VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE] physicalDevices;
-///     VkBool32 subsetAllocation;
-/// } VkPhysicalDeviceGroupProperties;
 /// ```
-public sealed class VkPhysicalDeviceGroupProperties extends Struct {
+/// struct VkPhysicalDeviceGroupProperties {
+///     VkStructureType sType;
+///     void* pNext;
+///     uint32_t physicalDeviceCount;
+///     VkPhysicalDevice physicalDevices[32];
+///     VkBool32 subsetAllocation;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceGroupProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceGroupProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.ADDRESS).withName("physicalDevices"),
+        MemoryLayout.sequenceLayout(32L, ValueLayout.ADDRESS).withName("physicalDevices"),
         ValueLayout.JAVA_INT.withName("subsetAllocation")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `physicalDeviceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `physicalDeviceCount`.
+    public static final long OFFSET_physicalDeviceCount = LAYOUT.byteOffset(PathElement.groupElement("physicalDeviceCount"));
+    /// The memory layout of `physicalDeviceCount`.
+    public static final MemoryLayout LAYOUT_physicalDeviceCount = LAYOUT.select(PathElement.groupElement("physicalDeviceCount"));
+    /// The [VarHandle] of `physicalDeviceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_physicalDeviceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDeviceCount"));
     /// The byte offset of `physicalDevices`.
     public static final long OFFSET_physicalDevices = LAYOUT.byteOffset(PathElement.groupElement("physicalDevices"));
     /// The memory layout of `physicalDevices`.
-    public static final MemoryLayout ML_physicalDevices = LAYOUT.select(PathElement.groupElement("physicalDevices"));
-    /// The [VarHandle] of `subsetAllocation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_physicalDevices = LAYOUT.select(PathElement.groupElement("physicalDevices"));
+    /// The [VarHandle] of `physicalDevices` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_physicalDevices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDevices"), PathElement.sequenceElement());
+    /// The byte offset of `subsetAllocation`.
+    public static final long OFFSET_subsetAllocation = LAYOUT.byteOffset(PathElement.groupElement("subsetAllocation"));
+    /// The memory layout of `subsetAllocation`.
+    public static final MemoryLayout LAYOUT_subsetAllocation = LAYOUT.select(PathElement.groupElement("subsetAllocation"));
+    /// The [VarHandle] of `subsetAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subsetAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subsetAllocation"));
 
     /// Creates `VkPhysicalDeviceGroupProperties` with the given segment.
@@ -76,19 +81,14 @@ public sealed class VkPhysicalDeviceGroupProperties extends Struct {
     /// Creates `VkPhysicalDeviceGroupProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceGroupProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceGroupProperties(segment); }
-
-    /// Creates `VkPhysicalDeviceGroupProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceGroupProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceGroupProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceGroupProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceGroupProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceGroupProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceGroupProperties` with the given segment.
     ///
@@ -96,7 +96,7 @@ public sealed class VkPhysicalDeviceGroupProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceGroupProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -109,11 +109,6 @@ public sealed class VkPhysicalDeviceGroupProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceGroupProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceGroupProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceGroupProperties`
-    public static VkPhysicalDeviceGroupProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint32_t") int physicalDeviceCount, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment physicalDevices, @CType("VkBool32") int subsetAllocation) { return alloc(allocator).sType(sType).pNext(pNext).physicalDeviceCount(physicalDeviceCount).physicalDevices(physicalDevices).subsetAllocation(subsetAllocation); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -121,122 +116,106 @@ public sealed class VkPhysicalDeviceGroupProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceGroupProperties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceGroupProperties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceGroupProperties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceGroupProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceGroupProperties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceGroupProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `physicalDeviceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_physicalDeviceCount(MemorySegment segment, long index) { return (int) VH_physicalDeviceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int physicalDeviceCount(MemorySegment segment, long index) { return (int) VH_physicalDeviceCount.get(segment, 0L, index); }
     /// {@return `physicalDeviceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_physicalDeviceCount(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_physicalDeviceCount(segment, 0L); }
-    /// {@return `physicalDeviceCount`}
-    public @CType("uint32_t") int physicalDeviceCount() { return VkPhysicalDeviceGroupProperties.get_physicalDeviceCount(this.segment()); }
+    public int physicalDeviceCount() { return physicalDeviceCount(this.segment(), 0L); }
     /// Sets `physicalDeviceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_physicalDeviceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_physicalDeviceCount.set(segment, 0L, index, value); }
-    /// Sets `physicalDeviceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_physicalDeviceCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceGroupProperties.set_physicalDeviceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void physicalDeviceCount(MemorySegment segment, long index, int value) { VH_physicalDeviceCount.set(segment, 0L, index, value); }
     /// Sets `physicalDeviceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties physicalDeviceCount(@CType("uint32_t") int value) { VkPhysicalDeviceGroupProperties.set_physicalDeviceCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceGroupProperties physicalDeviceCount(int value) { physicalDeviceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `physicalDevices` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment get_physicalDevices(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_physicalDevices, index), ML_physicalDevices); }
-    /// {@return `physicalDevices`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment physicalDevices(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_physicalDevices, index), LAYOUT_physicalDevices); }
+    /// {@return `physicalDevices` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment get_physicalDevices(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static MemorySegment physicalDevices(MemorySegment segment, long index, long index0) { return (MemorySegment) VH_physicalDevices.get(segment, 0L, index, index0); }
     /// {@return `physicalDevices`}
-    public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment physicalDevices() { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment()); }
+    public MemorySegment physicalDevices() { return physicalDevices(this.segment(), 0L); }
+    /// {@return `physicalDevices`}
+    /// @param index0 the Index 0 of the array
+    public MemorySegment physicalDevices(long index0) { return physicalDevices(this.segment(), 0L, index0); }
     /// Sets `physicalDevices` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_physicalDevices(MemorySegment segment, long index, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_physicalDevices, index), ML_physicalDevices.byteSize()); }
-    /// Sets `physicalDevices` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void physicalDevices(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_physicalDevices, index), LAYOUT_physicalDevices.byteSize()); }
+    /// Sets `physicalDevices` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_physicalDevices(MemorySegment segment, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void physicalDevices(MemorySegment segment, long index, long index0, MemorySegment value) { VH_physicalDevices.set(segment, 0L, index, index0, value); }
     /// Sets `physicalDevices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties physicalDevices(@CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), value); return this; }
+    public VkPhysicalDeviceGroupProperties physicalDevices(MemorySegment value) { physicalDevices(this.segment(), 0L, value); return this; }
+    /// Sets `physicalDevices` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceGroupProperties physicalDevices(long index0, MemorySegment value) { physicalDevices(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `subsetAllocation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_subsetAllocation(MemorySegment segment, long index) { return (int) VH_subsetAllocation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subsetAllocation(MemorySegment segment, long index) { return (int) VH_subsetAllocation.get(segment, 0L, index); }
     /// {@return `subsetAllocation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_subsetAllocation(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_subsetAllocation(segment, 0L); }
-    /// {@return `subsetAllocation`}
-    public @CType("VkBool32") int subsetAllocation() { return VkPhysicalDeviceGroupProperties.get_subsetAllocation(this.segment()); }
+    public int subsetAllocation() { return subsetAllocation(this.segment(), 0L); }
     /// Sets `subsetAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subsetAllocation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_subsetAllocation.set(segment, 0L, index, value); }
-    /// Sets `subsetAllocation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subsetAllocation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceGroupProperties.set_subsetAllocation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subsetAllocation(MemorySegment segment, long index, int value) { VH_subsetAllocation.set(segment, 0L, index, value); }
     /// Sets `subsetAllocation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties subsetAllocation(@CType("VkBool32") int value) { VkPhysicalDeviceGroupProperties.set_subsetAllocation(this.segment(), value); return this; }
+    public VkPhysicalDeviceGroupProperties subsetAllocation(int value) { subsetAllocation(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceGroupProperties].
     public static final class Buffer extends VkPhysicalDeviceGroupProperties {
@@ -261,49 +240,59 @@ public sealed class VkPhysicalDeviceGroupProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceGroupProperties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceGroupProperties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceGroupProperties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `physicalDeviceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int physicalDeviceCountAt(long index) { return VkPhysicalDeviceGroupProperties.get_physicalDeviceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int physicalDeviceCountAt(long index) { return physicalDeviceCount(this.segment(), index); }
         /// Sets `physicalDeviceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer physicalDeviceCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceGroupProperties.set_physicalDeviceCount(this.segment(), index, value); return this; }
+        public Buffer physicalDeviceCountAt(long index, int value) { physicalDeviceCount(this.segment(), index, value); return this; }
 
         /// {@return `physicalDevices` at the given index}
-        /// @param index the index
-        public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment physicalDevicesAt(long index) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment physicalDevicesAt(long index) { return physicalDevices(this.segment(), index); }
+        /// {@return `physicalDevices` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public MemorySegment physicalDevicesAt(long index, long index0) { return physicalDevices(this.segment(), index, index0); }
         /// Sets `physicalDevices` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer physicalDevicesAt(long index, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), index, value); return this; }
+        public Buffer physicalDevicesAt(long index, MemorySegment value) { physicalDevices(this.segment(), index, value); return this; }
+        /// Sets `physicalDevices` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer physicalDevicesAt(long index, long index0, MemorySegment value) { physicalDevices(this.segment(), index, index0, value); return this; }
 
         /// {@return `subsetAllocation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int subsetAllocationAt(long index) { return VkPhysicalDeviceGroupProperties.get_subsetAllocation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subsetAllocationAt(long index) { return subsetAllocation(this.segment(), index); }
         /// Sets `subsetAllocation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subsetAllocationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceGroupProperties.set_subsetAllocation(this.segment(), index, value); return this; }
+        public Buffer subsetAllocationAt(long index, int value) { subsetAllocation(this.segment(), index, value); return this; }
 
     }
 }

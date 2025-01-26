@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### depthBiasControl
-/// [VarHandle][#VH_depthBiasControl] - [Getter][#depthBiasControl()] - [Setter][#depthBiasControl(int)]
-/// ### leastRepresentableValueForceUnormRepresentation
-/// [VarHandle][#VH_leastRepresentableValueForceUnormRepresentation] - [Getter][#leastRepresentableValueForceUnormRepresentation()] - [Setter][#leastRepresentableValueForceUnormRepresentation(int)]
-/// ### floatRepresentation
-/// [VarHandle][#VH_floatRepresentation] - [Getter][#floatRepresentation()] - [Setter][#floatRepresentation(int)]
-/// ### depthBiasExact
-/// [VarHandle][#VH_depthBiasExact] - [Getter][#depthBiasExact()] - [Setter][#depthBiasExact(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceDepthBiasControlFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceDepthBiasControlFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 depthBiasControl;
 ///     VkBool32 leastRepresentableValueForceUnormRepresentation;
 ///     VkBool32 floatRepresentation;
 ///     VkBool32 depthBiasExact;
-/// } VkPhysicalDeviceDepthBiasControlFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDepthBiasControlFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("depthBiasControl"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
         ValueLayout.JAVA_INT.withName("floatRepresentation"),
         ValueLayout.JAVA_INT.withName("depthBiasExact")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `depthBiasControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthBiasControl`.
+    public static final long OFFSET_depthBiasControl = LAYOUT.byteOffset(PathElement.groupElement("depthBiasControl"));
+    /// The memory layout of `depthBiasControl`.
+    public static final MemoryLayout LAYOUT_depthBiasControl = LAYOUT.select(PathElement.groupElement("depthBiasControl"));
+    /// The [VarHandle] of `depthBiasControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthBiasControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasControl"));
-    /// The [VarHandle] of `leastRepresentableValueForceUnormRepresentation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `leastRepresentableValueForceUnormRepresentation`.
+    public static final long OFFSET_leastRepresentableValueForceUnormRepresentation = LAYOUT.byteOffset(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
+    /// The memory layout of `leastRepresentableValueForceUnormRepresentation`.
+    public static final MemoryLayout LAYOUT_leastRepresentableValueForceUnormRepresentation = LAYOUT.select(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
+    /// The [VarHandle] of `leastRepresentableValueForceUnormRepresentation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_leastRepresentableValueForceUnormRepresentation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("leastRepresentableValueForceUnormRepresentation"));
-    /// The [VarHandle] of `floatRepresentation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `floatRepresentation`.
+    public static final long OFFSET_floatRepresentation = LAYOUT.byteOffset(PathElement.groupElement("floatRepresentation"));
+    /// The memory layout of `floatRepresentation`.
+    public static final MemoryLayout LAYOUT_floatRepresentation = LAYOUT.select(PathElement.groupElement("floatRepresentation"));
+    /// The [VarHandle] of `floatRepresentation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_floatRepresentation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("floatRepresentation"));
-    /// The [VarHandle] of `depthBiasExact` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthBiasExact`.
+    public static final long OFFSET_depthBiasExact = LAYOUT.byteOffset(PathElement.groupElement("depthBiasExact"));
+    /// The memory layout of `depthBiasExact`.
+    public static final MemoryLayout LAYOUT_depthBiasExact = LAYOUT.select(PathElement.groupElement("depthBiasExact"));
+    /// The [VarHandle] of `depthBiasExact` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthBiasExact = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasExact"));
 
     /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthBiasControlFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
-    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int depthBiasControl, @CType("VkBool32") int leastRepresentableValueForceUnormRepresentation, @CType("VkBool32") int floatRepresentation, @CType("VkBool32") int depthBiasExact) { return alloc(allocator).sType(sType).pNext(pNext).depthBiasControl(depthBiasControl).leastRepresentableValueForceUnormRepresentation(leastRepresentableValueForceUnormRepresentation).floatRepresentation(floatRepresentation).depthBiasExact(depthBiasExact); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `depthBiasControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthBiasControl(MemorySegment segment, long index) { return (int) VH_depthBiasControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthBiasControl(MemorySegment segment, long index) { return (int) VH_depthBiasControl.get(segment, 0L, index); }
     /// {@return `depthBiasControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthBiasControl(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasControl(segment, 0L); }
-    /// {@return `depthBiasControl`}
-    public @CType("VkBool32") int depthBiasControl() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasControl(this.segment()); }
+    public int depthBiasControl() { return depthBiasControl(this.segment(), 0L); }
     /// Sets `depthBiasControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthBiasControl(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthBiasControl.set(segment, 0L, index, value); }
-    /// Sets `depthBiasControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthBiasControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthBiasControl(MemorySegment segment, long index, int value) { VH_depthBiasControl.set(segment, 0L, index, value); }
     /// Sets `depthBiasControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasControl(@CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasControl(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasControl(int value) { depthBiasControl(this.segment(), 0L, value); return this; }
 
     /// {@return `leastRepresentableValueForceUnormRepresentation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index) { return (int) VH_leastRepresentableValueForceUnormRepresentation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index) { return (int) VH_leastRepresentableValueForceUnormRepresentation.get(segment, 0L, index); }
     /// {@return `leastRepresentableValueForceUnormRepresentation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_leastRepresentableValueForceUnormRepresentation(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_leastRepresentableValueForceUnormRepresentation(segment, 0L); }
-    /// {@return `leastRepresentableValueForceUnormRepresentation`}
-    public @CType("VkBool32") int leastRepresentableValueForceUnormRepresentation() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_leastRepresentableValueForceUnormRepresentation(this.segment()); }
+    public int leastRepresentableValueForceUnormRepresentation() { return leastRepresentableValueForceUnormRepresentation(this.segment(), 0L); }
     /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_leastRepresentableValueForceUnormRepresentation.set(segment, 0L, index, value); }
-    /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_leastRepresentableValueForceUnormRepresentation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_leastRepresentableValueForceUnormRepresentation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void leastRepresentableValueForceUnormRepresentation(MemorySegment segment, long index, int value) { VH_leastRepresentableValueForceUnormRepresentation.set(segment, 0L, index, value); }
     /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT leastRepresentableValueForceUnormRepresentation(@CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_leastRepresentableValueForceUnormRepresentation(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT leastRepresentableValueForceUnormRepresentation(int value) { leastRepresentableValueForceUnormRepresentation(this.segment(), 0L, value); return this; }
 
     /// {@return `floatRepresentation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_floatRepresentation(MemorySegment segment, long index) { return (int) VH_floatRepresentation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int floatRepresentation(MemorySegment segment, long index) { return (int) VH_floatRepresentation.get(segment, 0L, index); }
     /// {@return `floatRepresentation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_floatRepresentation(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_floatRepresentation(segment, 0L); }
-    /// {@return `floatRepresentation`}
-    public @CType("VkBool32") int floatRepresentation() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_floatRepresentation(this.segment()); }
+    public int floatRepresentation() { return floatRepresentation(this.segment(), 0L); }
     /// Sets `floatRepresentation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_floatRepresentation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_floatRepresentation.set(segment, 0L, index, value); }
-    /// Sets `floatRepresentation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_floatRepresentation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_floatRepresentation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void floatRepresentation(MemorySegment segment, long index, int value) { VH_floatRepresentation.set(segment, 0L, index, value); }
     /// Sets `floatRepresentation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT floatRepresentation(@CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_floatRepresentation(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT floatRepresentation(int value) { floatRepresentation(this.segment(), 0L, value); return this; }
 
     /// {@return `depthBiasExact` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthBiasExact(MemorySegment segment, long index) { return (int) VH_depthBiasExact.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthBiasExact(MemorySegment segment, long index) { return (int) VH_depthBiasExact.get(segment, 0L, index); }
     /// {@return `depthBiasExact`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthBiasExact(MemorySegment segment) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasExact(segment, 0L); }
-    /// {@return `depthBiasExact`}
-    public @CType("VkBool32") int depthBiasExact() { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasExact(this.segment()); }
+    public int depthBiasExact() { return depthBiasExact(this.segment(), 0L); }
     /// Sets `depthBiasExact` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthBiasExact(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthBiasExact.set(segment, 0L, index, value); }
-    /// Sets `depthBiasExact` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthBiasExact(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasExact(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthBiasExact(MemorySegment segment, long index, int value) { VH_depthBiasExact.set(segment, 0L, index, value); }
     /// Sets `depthBiasExact` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasExact(@CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasExact(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT depthBiasExact(int value) { depthBiasExact(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceDepthBiasControlFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceDepthBiasControlFeaturesEXT {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `depthBiasControl` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthBiasControlAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthBiasControlAt(long index) { return depthBiasControl(this.segment(), index); }
         /// Sets `depthBiasControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthBiasControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasControl(this.segment(), index, value); return this; }
+        public Buffer depthBiasControlAt(long index, int value) { depthBiasControl(this.segment(), index, value); return this; }
 
         /// {@return `leastRepresentableValueForceUnormRepresentation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int leastRepresentableValueForceUnormRepresentationAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_leastRepresentableValueForceUnormRepresentation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int leastRepresentableValueForceUnormRepresentationAt(long index) { return leastRepresentableValueForceUnormRepresentation(this.segment(), index); }
         /// Sets `leastRepresentableValueForceUnormRepresentation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer leastRepresentableValueForceUnormRepresentationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_leastRepresentableValueForceUnormRepresentation(this.segment(), index, value); return this; }
+        public Buffer leastRepresentableValueForceUnormRepresentationAt(long index, int value) { leastRepresentableValueForceUnormRepresentation(this.segment(), index, value); return this; }
 
         /// {@return `floatRepresentation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int floatRepresentationAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_floatRepresentation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int floatRepresentationAt(long index) { return floatRepresentation(this.segment(), index); }
         /// Sets `floatRepresentation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer floatRepresentationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_floatRepresentation(this.segment(), index, value); return this; }
+        public Buffer floatRepresentationAt(long index, int value) { floatRepresentation(this.segment(), index, value); return this; }
 
         /// {@return `depthBiasExact` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthBiasExactAt(long index) { return VkPhysicalDeviceDepthBiasControlFeaturesEXT.get_depthBiasExact(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthBiasExactAt(long index) { return depthBiasExact(this.segment(), index); }
         /// Sets `depthBiasExact` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthBiasExactAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthBiasControlFeaturesEXT.set_depthBiasExact(this.segment(), index, value); return this; }
+        public Buffer depthBiasExactAt(long index, int value) { depthBiasExact(this.segment(), index, value); return this; }
 
     }
 }

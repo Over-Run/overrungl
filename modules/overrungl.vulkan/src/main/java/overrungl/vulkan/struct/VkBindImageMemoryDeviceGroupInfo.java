@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### deviceIndexCount
-/// [VarHandle][#VH_deviceIndexCount] - [Getter][#deviceIndexCount()] - [Setter][#deviceIndexCount(int)]
-/// ### pDeviceIndices
-/// [VarHandle][#VH_pDeviceIndices] - [Getter][#pDeviceIndices()] - [Setter][#pDeviceIndices(MemorySegment)]
-/// ### splitInstanceBindRegionCount
-/// [VarHandle][#VH_splitInstanceBindRegionCount] - [Getter][#splitInstanceBindRegionCount()] - [Setter][#splitInstanceBindRegionCount(int)]
-/// ### pSplitInstanceBindRegions
-/// [VarHandle][#VH_pSplitInstanceBindRegions] - [Getter][#pSplitInstanceBindRegions()] - [Setter][#pSplitInstanceBindRegions(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkBindImageMemoryDeviceGroupInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t deviceIndexCount;
-///     const uint32_t * pDeviceIndices;
-///     uint32_t splitInstanceBindRegionCount;
-///     const VkRect2D * pSplitInstanceBindRegions;
-/// } VkBindImageMemoryDeviceGroupInfo;
 /// ```
-public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
+/// struct VkBindImageMemoryDeviceGroupInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t deviceIndexCount;
+///     const uint32_t* pDeviceIndices;
+///     uint32_t splitInstanceBindRegionCount;
+///     const VkRect2D* pSplitInstanceBindRegions;
+/// };
+/// ```
+public sealed class VkBindImageMemoryDeviceGroupInfo extends GroupType {
     /// The struct layout of `VkBindImageMemoryDeviceGroupInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("deviceIndexCount"),
@@ -59,16 +45,40 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
         ValueLayout.JAVA_INT.withName("splitInstanceBindRegionCount"),
         ValueLayout.ADDRESS.withName("pSplitInstanceBindRegions")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `deviceIndexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceIndexCount`.
+    public static final long OFFSET_deviceIndexCount = LAYOUT.byteOffset(PathElement.groupElement("deviceIndexCount"));
+    /// The memory layout of `deviceIndexCount`.
+    public static final MemoryLayout LAYOUT_deviceIndexCount = LAYOUT.select(PathElement.groupElement("deviceIndexCount"));
+    /// The [VarHandle] of `deviceIndexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceIndexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceIndexCount"));
+    /// The byte offset of `pDeviceIndices`.
+    public static final long OFFSET_pDeviceIndices = LAYOUT.byteOffset(PathElement.groupElement("pDeviceIndices"));
+    /// The memory layout of `pDeviceIndices`.
+    public static final MemoryLayout LAYOUT_pDeviceIndices = LAYOUT.select(PathElement.groupElement("pDeviceIndices"));
     /// The [VarHandle] of `pDeviceIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDeviceIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceIndices"));
-    /// The [VarHandle] of `splitInstanceBindRegionCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `splitInstanceBindRegionCount`.
+    public static final long OFFSET_splitInstanceBindRegionCount = LAYOUT.byteOffset(PathElement.groupElement("splitInstanceBindRegionCount"));
+    /// The memory layout of `splitInstanceBindRegionCount`.
+    public static final MemoryLayout LAYOUT_splitInstanceBindRegionCount = LAYOUT.select(PathElement.groupElement("splitInstanceBindRegionCount"));
+    /// The [VarHandle] of `splitInstanceBindRegionCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_splitInstanceBindRegionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("splitInstanceBindRegionCount"));
+    /// The byte offset of `pSplitInstanceBindRegions`.
+    public static final long OFFSET_pSplitInstanceBindRegions = LAYOUT.byteOffset(PathElement.groupElement("pSplitInstanceBindRegions"));
+    /// The memory layout of `pSplitInstanceBindRegions`.
+    public static final MemoryLayout LAYOUT_pSplitInstanceBindRegions = LAYOUT.select(PathElement.groupElement("pSplitInstanceBindRegions"));
     /// The [VarHandle] of `pSplitInstanceBindRegions` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSplitInstanceBindRegions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSplitInstanceBindRegions"));
 
@@ -79,19 +89,14 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
     /// Creates `VkBindImageMemoryDeviceGroupInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindImageMemoryDeviceGroupInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindImageMemoryDeviceGroupInfo(segment); }
-
-    /// Creates `VkBindImageMemoryDeviceGroupInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBindImageMemoryDeviceGroupInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindImageMemoryDeviceGroupInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindImageMemoryDeviceGroupInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkBindImageMemoryDeviceGroupInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindImageMemoryDeviceGroupInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkBindImageMemoryDeviceGroupInfo` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBindImageMemoryDeviceGroupInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
     /// @return the allocated `VkBindImageMemoryDeviceGroupInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfo`
-    public static VkBindImageMemoryDeviceGroupInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int deviceIndexCount, @CType("const uint32_t *") MemorySegment pDeviceIndices, @CType("uint32_t") int splitInstanceBindRegionCount, @CType("const VkRect2D *") MemorySegment pSplitInstanceBindRegions) { return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices).splitInstanceBindRegionCount(splitInstanceBindRegionCount).pSplitInstanceBindRegions(pSplitInstanceBindRegions); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkBindImageMemoryDeviceGroupInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBindImageMemoryDeviceGroupInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo sType(@CType("VkStructureType") int value) { VkBindImageMemoryDeviceGroupInfo.set_sType(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkBindImageMemoryDeviceGroupInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo pNext(@CType("const void *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pNext(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceIndexCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_deviceIndexCount(MemorySegment segment, long index) { return (int) VH_deviceIndexCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceIndexCount(MemorySegment segment, long index) { return (int) VH_deviceIndexCount.get(segment, 0L, index); }
     /// {@return `deviceIndexCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_deviceIndexCount(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_deviceIndexCount(segment, 0L); }
-    /// {@return `deviceIndexCount`}
-    public @CType("uint32_t") int deviceIndexCount() { return VkBindImageMemoryDeviceGroupInfo.get_deviceIndexCount(this.segment()); }
+    public int deviceIndexCount() { return deviceIndexCount(this.segment(), 0L); }
     /// Sets `deviceIndexCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceIndexCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_deviceIndexCount.set(segment, 0L, index, value); }
-    /// Sets `deviceIndexCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceIndexCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_deviceIndexCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceIndexCount(MemorySegment segment, long index, int value) { VH_deviceIndexCount.set(segment, 0L, index, value); }
     /// Sets `deviceIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo deviceIndexCount(@CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_deviceIndexCount(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo deviceIndexCount(int value) { deviceIndexCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pDeviceIndices` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint32_t *") MemorySegment get_pDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceIndices.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pDeviceIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pDeviceIndices.get(segment, 0L, index); }
     /// {@return `pDeviceIndices`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") MemorySegment get_pDeviceIndices(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_pDeviceIndices(segment, 0L); }
-    /// {@return `pDeviceIndices`}
-    public @CType("const uint32_t *") MemorySegment pDeviceIndices() { return VkBindImageMemoryDeviceGroupInfo.get_pDeviceIndices(this.segment()); }
+    public MemorySegment pDeviceIndices() { return pDeviceIndices(this.segment(), 0L); }
     /// Sets `pDeviceIndices` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pDeviceIndices(MemorySegment segment, long index, @CType("const uint32_t *") MemorySegment value) { VH_pDeviceIndices.set(segment, 0L, index, value); }
-    /// Sets `pDeviceIndices` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pDeviceIndices(MemorySegment segment, @CType("const uint32_t *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pDeviceIndices(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pDeviceIndices(MemorySegment segment, long index, MemorySegment value) { VH_pDeviceIndices.set(segment, 0L, index, value); }
     /// Sets `pDeviceIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo pDeviceIndices(@CType("const uint32_t *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pDeviceIndices(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo pDeviceIndices(MemorySegment value) { pDeviceIndices(this.segment(), 0L, value); return this; }
 
     /// {@return `splitInstanceBindRegionCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_splitInstanceBindRegionCount(MemorySegment segment, long index) { return (int) VH_splitInstanceBindRegionCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int splitInstanceBindRegionCount(MemorySegment segment, long index) { return (int) VH_splitInstanceBindRegionCount.get(segment, 0L, index); }
     /// {@return `splitInstanceBindRegionCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_splitInstanceBindRegionCount(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_splitInstanceBindRegionCount(segment, 0L); }
-    /// {@return `splitInstanceBindRegionCount`}
-    public @CType("uint32_t") int splitInstanceBindRegionCount() { return VkBindImageMemoryDeviceGroupInfo.get_splitInstanceBindRegionCount(this.segment()); }
+    public int splitInstanceBindRegionCount() { return splitInstanceBindRegionCount(this.segment(), 0L); }
     /// Sets `splitInstanceBindRegionCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_splitInstanceBindRegionCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_splitInstanceBindRegionCount.set(segment, 0L, index, value); }
-    /// Sets `splitInstanceBindRegionCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_splitInstanceBindRegionCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_splitInstanceBindRegionCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void splitInstanceBindRegionCount(MemorySegment segment, long index, int value) { VH_splitInstanceBindRegionCount.set(segment, 0L, index, value); }
     /// Sets `splitInstanceBindRegionCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo splitInstanceBindRegionCount(@CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_splitInstanceBindRegionCount(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo splitInstanceBindRegionCount(int value) { splitInstanceBindRegionCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pSplitInstanceBindRegions` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkRect2D *") MemorySegment get_pSplitInstanceBindRegions(MemorySegment segment, long index) { return (MemorySegment) VH_pSplitInstanceBindRegions.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSplitInstanceBindRegions(MemorySegment segment, long index) { return (MemorySegment) VH_pSplitInstanceBindRegions.get(segment, 0L, index); }
     /// {@return `pSplitInstanceBindRegions`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkRect2D *") MemorySegment get_pSplitInstanceBindRegions(MemorySegment segment) { return VkBindImageMemoryDeviceGroupInfo.get_pSplitInstanceBindRegions(segment, 0L); }
-    /// {@return `pSplitInstanceBindRegions`}
-    public @CType("const VkRect2D *") MemorySegment pSplitInstanceBindRegions() { return VkBindImageMemoryDeviceGroupInfo.get_pSplitInstanceBindRegions(this.segment()); }
+    public MemorySegment pSplitInstanceBindRegions() { return pSplitInstanceBindRegions(this.segment(), 0L); }
     /// Sets `pSplitInstanceBindRegions` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSplitInstanceBindRegions(MemorySegment segment, long index, @CType("const VkRect2D *") MemorySegment value) { VH_pSplitInstanceBindRegions.set(segment, 0L, index, value); }
-    /// Sets `pSplitInstanceBindRegions` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSplitInstanceBindRegions(MemorySegment segment, @CType("const VkRect2D *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pSplitInstanceBindRegions(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSplitInstanceBindRegions(MemorySegment segment, long index, MemorySegment value) { VH_pSplitInstanceBindRegions.set(segment, 0L, index, value); }
     /// Sets `pSplitInstanceBindRegions` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindImageMemoryDeviceGroupInfo pSplitInstanceBindRegions(@CType("const VkRect2D *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pSplitInstanceBindRegions(this.segment(), value); return this; }
+    public VkBindImageMemoryDeviceGroupInfo pSplitInstanceBindRegions(MemorySegment value) { pSplitInstanceBindRegions(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkBindImageMemoryDeviceGroupInfo].
     public static final class Buffer extends VkBindImageMemoryDeviceGroupInfo {
@@ -287,58 +245,58 @@ public sealed class VkBindImageMemoryDeviceGroupInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBindImageMemoryDeviceGroupInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `deviceIndexCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int deviceIndexCountAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_deviceIndexCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceIndexCountAt(long index) { return deviceIndexCount(this.segment(), index); }
         /// Sets `deviceIndexCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceIndexCountAt(long index, @CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_deviceIndexCount(this.segment(), index, value); return this; }
+        public Buffer deviceIndexCountAt(long index, int value) { deviceIndexCount(this.segment(), index, value); return this; }
 
         /// {@return `pDeviceIndices` at the given index}
-        /// @param index the index
-        public @CType("const uint32_t *") MemorySegment pDeviceIndicesAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_pDeviceIndices(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDeviceIndicesAt(long index) { return pDeviceIndices(this.segment(), index); }
         /// Sets `pDeviceIndices` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDeviceIndicesAt(long index, @CType("const uint32_t *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pDeviceIndices(this.segment(), index, value); return this; }
+        public Buffer pDeviceIndicesAt(long index, MemorySegment value) { pDeviceIndices(this.segment(), index, value); return this; }
 
         /// {@return `splitInstanceBindRegionCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int splitInstanceBindRegionCountAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_splitInstanceBindRegionCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int splitInstanceBindRegionCountAt(long index) { return splitInstanceBindRegionCount(this.segment(), index); }
         /// Sets `splitInstanceBindRegionCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer splitInstanceBindRegionCountAt(long index, @CType("uint32_t") int value) { VkBindImageMemoryDeviceGroupInfo.set_splitInstanceBindRegionCount(this.segment(), index, value); return this; }
+        public Buffer splitInstanceBindRegionCountAt(long index, int value) { splitInstanceBindRegionCount(this.segment(), index, value); return this; }
 
         /// {@return `pSplitInstanceBindRegions` at the given index}
-        /// @param index the index
-        public @CType("const VkRect2D *") MemorySegment pSplitInstanceBindRegionsAt(long index) { return VkBindImageMemoryDeviceGroupInfo.get_pSplitInstanceBindRegions(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSplitInstanceBindRegionsAt(long index) { return pSplitInstanceBindRegions(this.segment(), index); }
         /// Sets `pSplitInstanceBindRegions` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSplitInstanceBindRegionsAt(long index, @CType("const VkRect2D *") MemorySegment value) { VkBindImageMemoryDeviceGroupInfo.set_pSplitInstanceBindRegions(this.segment(), index, value); return this; }
+        public Buffer pSplitInstanceBindRegionsAt(long index, MemorySegment value) { pSplitInstanceBindRegions(this.segment(), index, value); return this; }
 
     }
 }

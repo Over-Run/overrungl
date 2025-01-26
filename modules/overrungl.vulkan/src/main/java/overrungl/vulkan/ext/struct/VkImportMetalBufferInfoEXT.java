@@ -15,42 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### mtlBuffer
-/// [VarHandle][#VH_mtlBuffer] - [Getter][#mtlBuffer()] - [Setter][#mtlBuffer(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkImportMetalBufferInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     MTLBuffer_id mtlBuffer;
-/// } VkImportMetalBufferInfoEXT;
 /// ```
-public sealed class VkImportMetalBufferInfoEXT extends Struct {
+/// struct VkImportMetalBufferInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     MTLBuffer_id mtlBuffer;
+/// };
+/// ```
+public sealed class VkImportMetalBufferInfoEXT extends GroupType {
     /// The struct layout of `VkImportMetalBufferInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("mtlBuffer")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `mtlBuffer`.
+    public static final long OFFSET_mtlBuffer = LAYOUT.byteOffset(PathElement.groupElement("mtlBuffer"));
+    /// The memory layout of `mtlBuffer`.
+    public static final MemoryLayout LAYOUT_mtlBuffer = LAYOUT.select(PathElement.groupElement("mtlBuffer"));
     /// The [VarHandle] of `mtlBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mtlBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlBuffer"));
 
@@ -61,19 +65,14 @@ public sealed class VkImportMetalBufferInfoEXT extends Struct {
     /// Creates `VkImportMetalBufferInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportMetalBufferInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImportMetalBufferInfoEXT(segment); }
-
-    /// Creates `VkImportMetalBufferInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImportMetalBufferInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportMetalBufferInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImportMetalBufferInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkImportMetalBufferInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportMetalBufferInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkImportMetalBufferInfoEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkImportMetalBufferInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImportMetalBufferInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkImportMetalBufferInfoEXT extends Struct {
     /// @return the allocated `VkImportMetalBufferInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportMetalBufferInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImportMetalBufferInfoEXT`
-    public static VkImportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("MTLBuffer_id") MemorySegment mtlBuffer) { return alloc(allocator).sType(sType).pNext(pNext).mtlBuffer(mtlBuffer); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkImportMetalBufferInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImportMetalBufferInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkImportMetalBufferInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImportMetalBufferInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMetalBufferInfoEXT sType(@CType("VkStructureType") int value) { VkImportMetalBufferInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkImportMetalBufferInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkImportMetalBufferInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkImportMetalBufferInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkImportMetalBufferInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMetalBufferInfoEXT pNext(@CType("const void *") MemorySegment value) { VkImportMetalBufferInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkImportMetalBufferInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `mtlBuffer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("MTLBuffer_id") MemorySegment get_mtlBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_mtlBuffer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment mtlBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_mtlBuffer.get(segment, 0L, index); }
     /// {@return `mtlBuffer`}
-    /// @param segment the segment of the struct
-    public static @CType("MTLBuffer_id") MemorySegment get_mtlBuffer(MemorySegment segment) { return VkImportMetalBufferInfoEXT.get_mtlBuffer(segment, 0L); }
-    /// {@return `mtlBuffer`}
-    public @CType("MTLBuffer_id") MemorySegment mtlBuffer() { return VkImportMetalBufferInfoEXT.get_mtlBuffer(this.segment()); }
+    public MemorySegment mtlBuffer() { return mtlBuffer(this.segment(), 0L); }
     /// Sets `mtlBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mtlBuffer(MemorySegment segment, long index, @CType("MTLBuffer_id") MemorySegment value) { VH_mtlBuffer.set(segment, 0L, index, value); }
-    /// Sets `mtlBuffer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mtlBuffer(MemorySegment segment, @CType("MTLBuffer_id") MemorySegment value) { VkImportMetalBufferInfoEXT.set_mtlBuffer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mtlBuffer(MemorySegment segment, long index, MemorySegment value) { VH_mtlBuffer.set(segment, 0L, index, value); }
     /// Sets `mtlBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImportMetalBufferInfoEXT mtlBuffer(@CType("MTLBuffer_id") MemorySegment value) { VkImportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), value); return this; }
+    public VkImportMetalBufferInfoEXT mtlBuffer(MemorySegment value) { mtlBuffer(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkImportMetalBufferInfoEXT].
     public static final class Buffer extends VkImportMetalBufferInfoEXT {
@@ -200,31 +173,31 @@ public sealed class VkImportMetalBufferInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkImportMetalBufferInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImportMetalBufferInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkImportMetalBufferInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkImportMetalBufferInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `mtlBuffer` at the given index}
-        /// @param index the index
-        public @CType("MTLBuffer_id") MemorySegment mtlBufferAt(long index) { return VkImportMetalBufferInfoEXT.get_mtlBuffer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment mtlBufferAt(long index) { return mtlBuffer(this.segment(), index); }
         /// Sets `mtlBuffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer mtlBufferAt(long index, @CType("MTLBuffer_id") MemorySegment value) { VkImportMetalBufferInfoEXT.set_mtlBuffer(this.segment(), index, value); return this; }
+        public Buffer mtlBufferAt(long index, MemorySegment value) { mtlBuffer(this.segment(), index, value); return this; }
 
     }
 }

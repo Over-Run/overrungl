@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### image2DViewOf3D
-/// [VarHandle][#VH_image2DViewOf3D] - [Getter][#image2DViewOf3D()] - [Setter][#image2DViewOf3D(int)]
-/// ### sampler2DViewOf3D
-/// [VarHandle][#VH_sampler2DViewOf3D] - [Getter][#sampler2DViewOf3D()] - [Setter][#sampler2DViewOf3D(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
+/// ```
+/// struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 image2DViewOf3D;
 ///     VkBool32 sampler2DViewOf3D;
-/// } VkPhysicalDeviceImage2DViewOf3DFeaturesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("image2DViewOf3D"),
         ValueLayout.JAVA_INT.withName("sampler2DViewOf3D")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `image2DViewOf3D` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `image2DViewOf3D`.
+    public static final long OFFSET_image2DViewOf3D = LAYOUT.byteOffset(PathElement.groupElement("image2DViewOf3D"));
+    /// The memory layout of `image2DViewOf3D`.
+    public static final MemoryLayout LAYOUT_image2DViewOf3D = LAYOUT.select(PathElement.groupElement("image2DViewOf3D"));
+    /// The [VarHandle] of `image2DViewOf3D` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_image2DViewOf3D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("image2DViewOf3D"));
-    /// The [VarHandle] of `sampler2DViewOf3D` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sampler2DViewOf3D`.
+    public static final long OFFSET_sampler2DViewOf3D = LAYOUT.byteOffset(PathElement.groupElement("sampler2DViewOf3D"));
+    /// The memory layout of `sampler2DViewOf3D`.
+    public static final MemoryLayout LAYOUT_sampler2DViewOf3D = LAYOUT.select(PathElement.groupElement("sampler2DViewOf3D"));
+    /// The [VarHandle] of `sampler2DViewOf3D` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sampler2DViewOf3D = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampler2DViewOf3D"));
 
     /// Creates `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
-    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int image2DViewOf3D, @CType("VkBool32") int sampler2DViewOf3D) { return alloc(allocator).sType(sType).pNext(pNext).image2DViewOf3D(image2DViewOf3D).sampler2DViewOf3D(sampler2DViewOf3D); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `image2DViewOf3D` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_image2DViewOf3D(MemorySegment segment, long index) { return (int) VH_image2DViewOf3D.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int image2DViewOf3D(MemorySegment segment, long index) { return (int) VH_image2DViewOf3D.get(segment, 0L, index); }
     /// {@return `image2DViewOf3D`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_image2DViewOf3D(MemorySegment segment) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_image2DViewOf3D(segment, 0L); }
-    /// {@return `image2DViewOf3D`}
-    public @CType("VkBool32") int image2DViewOf3D() { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_image2DViewOf3D(this.segment()); }
+    public int image2DViewOf3D() { return image2DViewOf3D(this.segment(), 0L); }
     /// Sets `image2DViewOf3D` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_image2DViewOf3D(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_image2DViewOf3D.set(segment, 0L, index, value); }
-    /// Sets `image2DViewOf3D` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_image2DViewOf3D(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_image2DViewOf3D(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void image2DViewOf3D(MemorySegment segment, long index, int value) { VH_image2DViewOf3D.set(segment, 0L, index, value); }
     /// Sets `image2DViewOf3D` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT image2DViewOf3D(@CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_image2DViewOf3D(this.segment(), value); return this; }
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT image2DViewOf3D(int value) { image2DViewOf3D(this.segment(), 0L, value); return this; }
 
     /// {@return `sampler2DViewOf3D` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_sampler2DViewOf3D(MemorySegment segment, long index) { return (int) VH_sampler2DViewOf3D.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sampler2DViewOf3D(MemorySegment segment, long index) { return (int) VH_sampler2DViewOf3D.get(segment, 0L, index); }
     /// {@return `sampler2DViewOf3D`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_sampler2DViewOf3D(MemorySegment segment) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sampler2DViewOf3D(segment, 0L); }
-    /// {@return `sampler2DViewOf3D`}
-    public @CType("VkBool32") int sampler2DViewOf3D() { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sampler2DViewOf3D(this.segment()); }
+    public int sampler2DViewOf3D() { return sampler2DViewOf3D(this.segment(), 0L); }
     /// Sets `sampler2DViewOf3D` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sampler2DViewOf3D(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_sampler2DViewOf3D.set(segment, 0L, index, value); }
-    /// Sets `sampler2DViewOf3D` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sampler2DViewOf3D(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sampler2DViewOf3D(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sampler2DViewOf3D(MemorySegment segment, long index, int value) { VH_sampler2DViewOf3D.set(segment, 0L, index, value); }
     /// Sets `sampler2DViewOf3D` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sampler2DViewOf3D(@CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sampler2DViewOf3D(this.segment(), value); return this; }
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT sampler2DViewOf3D(int value) { sampler2DViewOf3D(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceImage2DViewOf3DFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `image2DViewOf3D` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int image2DViewOf3DAt(long index) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_image2DViewOf3D(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int image2DViewOf3DAt(long index) { return image2DViewOf3D(this.segment(), index); }
         /// Sets `image2DViewOf3D` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer image2DViewOf3DAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_image2DViewOf3D(this.segment(), index, value); return this; }
+        public Buffer image2DViewOf3DAt(long index, int value) { image2DViewOf3D(this.segment(), index, value); return this; }
 
         /// {@return `sampler2DViewOf3D` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int sampler2DViewOf3DAt(long index) { return VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.get_sampler2DViewOf3D(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sampler2DViewOf3DAt(long index) { return sampler2DViewOf3D(this.segment(), index); }
         /// Sets `sampler2DViewOf3D` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sampler2DViewOf3DAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImage2DViewOf3DFeaturesEXT.set_sampler2DViewOf3D(this.segment(), index, value); return this; }
+        public Buffer sampler2DViewOf3DAt(long index, int value) { sampler2DViewOf3D(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,74 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### maxLevel
-/// [VarHandle][#VH_maxLevel] - [Getter][#maxLevel()] - [Setter][#maxLevel(int)]
-/// ### codedPictureAlignment
-/// [Byte offset][#OFFSET_codedPictureAlignment] - [Memory layout][#ML_codedPictureAlignment] - [Getter][#codedPictureAlignment()] - [Setter][#codedPictureAlignment(MemorySegment)]
-/// ### maxTiles
-/// [Byte offset][#OFFSET_maxTiles] - [Memory layout][#ML_maxTiles] - [Getter][#maxTiles()] - [Setter][#maxTiles(MemorySegment)]
-/// ### minTileSize
-/// [Byte offset][#OFFSET_minTileSize] - [Memory layout][#ML_minTileSize] - [Getter][#minTileSize()] - [Setter][#minTileSize(MemorySegment)]
-/// ### maxTileSize
-/// [Byte offset][#OFFSET_maxTileSize] - [Memory layout][#ML_maxTileSize] - [Getter][#maxTileSize()] - [Setter][#maxTileSize(MemorySegment)]
-/// ### superblockSizes
-/// [VarHandle][#VH_superblockSizes] - [Getter][#superblockSizes()] - [Setter][#superblockSizes(int)]
-/// ### maxSingleReferenceCount
-/// [VarHandle][#VH_maxSingleReferenceCount] - [Getter][#maxSingleReferenceCount()] - [Setter][#maxSingleReferenceCount(int)]
-/// ### singleReferenceNameMask
-/// [VarHandle][#VH_singleReferenceNameMask] - [Getter][#singleReferenceNameMask()] - [Setter][#singleReferenceNameMask(int)]
-/// ### maxUnidirectionalCompoundReferenceCount
-/// [VarHandle][#VH_maxUnidirectionalCompoundReferenceCount] - [Getter][#maxUnidirectionalCompoundReferenceCount()] - [Setter][#maxUnidirectionalCompoundReferenceCount(int)]
-/// ### maxUnidirectionalCompoundGroup1ReferenceCount
-/// [VarHandle][#VH_maxUnidirectionalCompoundGroup1ReferenceCount] - [Getter][#maxUnidirectionalCompoundGroup1ReferenceCount()] - [Setter][#maxUnidirectionalCompoundGroup1ReferenceCount(int)]
-/// ### unidirectionalCompoundReferenceNameMask
-/// [VarHandle][#VH_unidirectionalCompoundReferenceNameMask] - [Getter][#unidirectionalCompoundReferenceNameMask()] - [Setter][#unidirectionalCompoundReferenceNameMask(int)]
-/// ### maxBidirectionalCompoundReferenceCount
-/// [VarHandle][#VH_maxBidirectionalCompoundReferenceCount] - [Getter][#maxBidirectionalCompoundReferenceCount()] - [Setter][#maxBidirectionalCompoundReferenceCount(int)]
-/// ### maxBidirectionalCompoundGroup1ReferenceCount
-/// [VarHandle][#VH_maxBidirectionalCompoundGroup1ReferenceCount] - [Getter][#maxBidirectionalCompoundGroup1ReferenceCount()] - [Setter][#maxBidirectionalCompoundGroup1ReferenceCount(int)]
-/// ### maxBidirectionalCompoundGroup2ReferenceCount
-/// [VarHandle][#VH_maxBidirectionalCompoundGroup2ReferenceCount] - [Getter][#maxBidirectionalCompoundGroup2ReferenceCount()] - [Setter][#maxBidirectionalCompoundGroup2ReferenceCount(int)]
-/// ### bidirectionalCompoundReferenceNameMask
-/// [VarHandle][#VH_bidirectionalCompoundReferenceNameMask] - [Getter][#bidirectionalCompoundReferenceNameMask()] - [Setter][#bidirectionalCompoundReferenceNameMask(int)]
-/// ### maxTemporalLayerCount
-/// [VarHandle][#VH_maxTemporalLayerCount] - [Getter][#maxTemporalLayerCount()] - [Setter][#maxTemporalLayerCount(int)]
-/// ### maxSpatialLayerCount
-/// [VarHandle][#VH_maxSpatialLayerCount] - [Getter][#maxSpatialLayerCount()] - [Setter][#maxSpatialLayerCount(int)]
-/// ### maxOperatingPoints
-/// [VarHandle][#VH_maxOperatingPoints] - [Getter][#maxOperatingPoints()] - [Setter][#maxOperatingPoints(int)]
-/// ### minQIndex
-/// [VarHandle][#VH_minQIndex] - [Getter][#minQIndex()] - [Setter][#minQIndex(int)]
-/// ### maxQIndex
-/// [VarHandle][#VH_maxQIndex] - [Getter][#maxQIndex()] - [Setter][#maxQIndex(int)]
-/// ### prefersGopRemainingFrames
-/// [VarHandle][#VH_prefersGopRemainingFrames] - [Getter][#prefersGopRemainingFrames()] - [Setter][#prefersGopRemainingFrames(int)]
-/// ### requiresGopRemainingFrames
-/// [VarHandle][#VH_requiresGopRemainingFrames] - [Getter][#requiresGopRemainingFrames()] - [Setter][#requiresGopRemainingFrames(int)]
-/// ### stdSyntaxFlags
-/// [VarHandle][#VH_stdSyntaxFlags] - [Getter][#stdSyntaxFlags()] - [Setter][#stdSyntaxFlags(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeAV1CapabilitiesKHR {
+/// ```
+/// struct VkVideoEncodeAV1CapabilitiesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkVideoEncodeAV1CapabilityFlagsKHR flags;
 ///     StdVideoAV1Level maxLevel;
 ///     VkExtent2D codedPictureAlignment;
@@ -107,11 +53,11 @@ import overrungl.util.*;
 ///     VkBool32 prefersGopRemainingFrames;
 ///     VkBool32 requiresGopRemainingFrames;
 ///     VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags;
-/// } VkVideoEncodeAV1CapabilitiesKHR;
+/// };
 /// ```
-public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
+public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1CapabilitiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -139,65 +85,153 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
         ValueLayout.JAVA_INT.withName("requiresGopRemainingFrames"),
         ValueLayout.JAVA_INT.withName("stdSyntaxFlags")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `maxLevel` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxLevel`.
+    public static final long OFFSET_maxLevel = LAYOUT.byteOffset(PathElement.groupElement("maxLevel"));
+    /// The memory layout of `maxLevel`.
+    public static final MemoryLayout LAYOUT_maxLevel = LAYOUT.select(PathElement.groupElement("maxLevel"));
+    /// The [VarHandle] of `maxLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxLevel"));
     /// The byte offset of `codedPictureAlignment`.
     public static final long OFFSET_codedPictureAlignment = LAYOUT.byteOffset(PathElement.groupElement("codedPictureAlignment"));
     /// The memory layout of `codedPictureAlignment`.
-    public static final MemoryLayout ML_codedPictureAlignment = LAYOUT.select(PathElement.groupElement("codedPictureAlignment"));
+    public static final MemoryLayout LAYOUT_codedPictureAlignment = LAYOUT.select(PathElement.groupElement("codedPictureAlignment"));
     /// The byte offset of `maxTiles`.
     public static final long OFFSET_maxTiles = LAYOUT.byteOffset(PathElement.groupElement("maxTiles"));
     /// The memory layout of `maxTiles`.
-    public static final MemoryLayout ML_maxTiles = LAYOUT.select(PathElement.groupElement("maxTiles"));
+    public static final MemoryLayout LAYOUT_maxTiles = LAYOUT.select(PathElement.groupElement("maxTiles"));
     /// The byte offset of `minTileSize`.
     public static final long OFFSET_minTileSize = LAYOUT.byteOffset(PathElement.groupElement("minTileSize"));
     /// The memory layout of `minTileSize`.
-    public static final MemoryLayout ML_minTileSize = LAYOUT.select(PathElement.groupElement("minTileSize"));
+    public static final MemoryLayout LAYOUT_minTileSize = LAYOUT.select(PathElement.groupElement("minTileSize"));
     /// The byte offset of `maxTileSize`.
     public static final long OFFSET_maxTileSize = LAYOUT.byteOffset(PathElement.groupElement("maxTileSize"));
     /// The memory layout of `maxTileSize`.
-    public static final MemoryLayout ML_maxTileSize = LAYOUT.select(PathElement.groupElement("maxTileSize"));
-    /// The [VarHandle] of `superblockSizes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_maxTileSize = LAYOUT.select(PathElement.groupElement("maxTileSize"));
+    /// The byte offset of `superblockSizes`.
+    public static final long OFFSET_superblockSizes = LAYOUT.byteOffset(PathElement.groupElement("superblockSizes"));
+    /// The memory layout of `superblockSizes`.
+    public static final MemoryLayout LAYOUT_superblockSizes = LAYOUT.select(PathElement.groupElement("superblockSizes"));
+    /// The [VarHandle] of `superblockSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_superblockSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("superblockSizes"));
-    /// The [VarHandle] of `maxSingleReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxSingleReferenceCount`.
+    public static final long OFFSET_maxSingleReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxSingleReferenceCount"));
+    /// The memory layout of `maxSingleReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxSingleReferenceCount = LAYOUT.select(PathElement.groupElement("maxSingleReferenceCount"));
+    /// The [VarHandle] of `maxSingleReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSingleReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSingleReferenceCount"));
-    /// The [VarHandle] of `singleReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `singleReferenceNameMask`.
+    public static final long OFFSET_singleReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("singleReferenceNameMask"));
+    /// The memory layout of `singleReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_singleReferenceNameMask = LAYOUT.select(PathElement.groupElement("singleReferenceNameMask"));
+    /// The [VarHandle] of `singleReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_singleReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("singleReferenceNameMask"));
-    /// The [VarHandle] of `maxUnidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxUnidirectionalCompoundReferenceCount`.
+    public static final long OFFSET_maxUnidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
+    /// The memory layout of `maxUnidirectionalCompoundReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxUnidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
+    /// The [VarHandle] of `maxUnidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxUnidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundReferenceCount"));
-    /// The [VarHandle] of `maxUnidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxUnidirectionalCompoundGroup1ReferenceCount`.
+    public static final long OFFSET_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
+    /// The memory layout of `maxUnidirectionalCompoundGroup1ReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
+    /// The [VarHandle] of `maxUnidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxUnidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxUnidirectionalCompoundGroup1ReferenceCount"));
-    /// The [VarHandle] of `unidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `unidirectionalCompoundReferenceNameMask`.
+    public static final long OFFSET_unidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
+    /// The memory layout of `unidirectionalCompoundReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_unidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
+    /// The [VarHandle] of `unidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_unidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unidirectionalCompoundReferenceNameMask"));
-    /// The [VarHandle] of `maxBidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxBidirectionalCompoundReferenceCount`.
+    public static final long OFFSET_maxBidirectionalCompoundReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
+    /// The memory layout of `maxBidirectionalCompoundReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxBidirectionalCompoundReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
+    /// The [VarHandle] of `maxBidirectionalCompoundReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBidirectionalCompoundReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundReferenceCount"));
-    /// The [VarHandle] of `maxBidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxBidirectionalCompoundGroup1ReferenceCount`.
+    public static final long OFFSET_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
+    /// The memory layout of `maxBidirectionalCompoundGroup1ReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
+    /// The [VarHandle] of `maxBidirectionalCompoundGroup1ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBidirectionalCompoundGroup1ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup1ReferenceCount"));
-    /// The [VarHandle] of `maxBidirectionalCompoundGroup2ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxBidirectionalCompoundGroup2ReferenceCount`.
+    public static final long OFFSET_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.byteOffset(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
+    /// The memory layout of `maxBidirectionalCompoundGroup2ReferenceCount`.
+    public static final MemoryLayout LAYOUT_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.select(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
+    /// The [VarHandle] of `maxBidirectionalCompoundGroup2ReferenceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBidirectionalCompoundGroup2ReferenceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBidirectionalCompoundGroup2ReferenceCount"));
-    /// The [VarHandle] of `bidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bidirectionalCompoundReferenceNameMask`.
+    public static final long OFFSET_bidirectionalCompoundReferenceNameMask = LAYOUT.byteOffset(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
+    /// The memory layout of `bidirectionalCompoundReferenceNameMask`.
+    public static final MemoryLayout LAYOUT_bidirectionalCompoundReferenceNameMask = LAYOUT.select(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
+    /// The [VarHandle] of `bidirectionalCompoundReferenceNameMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bidirectionalCompoundReferenceNameMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalCompoundReferenceNameMask"));
-    /// The [VarHandle] of `maxTemporalLayerCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxTemporalLayerCount`.
+    public static final long OFFSET_maxTemporalLayerCount = LAYOUT.byteOffset(PathElement.groupElement("maxTemporalLayerCount"));
+    /// The memory layout of `maxTemporalLayerCount`.
+    public static final MemoryLayout LAYOUT_maxTemporalLayerCount = LAYOUT.select(PathElement.groupElement("maxTemporalLayerCount"));
+    /// The [VarHandle] of `maxTemporalLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxTemporalLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTemporalLayerCount"));
-    /// The [VarHandle] of `maxSpatialLayerCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxSpatialLayerCount`.
+    public static final long OFFSET_maxSpatialLayerCount = LAYOUT.byteOffset(PathElement.groupElement("maxSpatialLayerCount"));
+    /// The memory layout of `maxSpatialLayerCount`.
+    public static final MemoryLayout LAYOUT_maxSpatialLayerCount = LAYOUT.select(PathElement.groupElement("maxSpatialLayerCount"));
+    /// The [VarHandle] of `maxSpatialLayerCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSpatialLayerCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSpatialLayerCount"));
-    /// The [VarHandle] of `maxOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxOperatingPoints`.
+    public static final long OFFSET_maxOperatingPoints = LAYOUT.byteOffset(PathElement.groupElement("maxOperatingPoints"));
+    /// The memory layout of `maxOperatingPoints`.
+    public static final MemoryLayout LAYOUT_maxOperatingPoints = LAYOUT.select(PathElement.groupElement("maxOperatingPoints"));
+    /// The [VarHandle] of `maxOperatingPoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxOperatingPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOperatingPoints"));
-    /// The [VarHandle] of `minQIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `minQIndex`.
+    public static final long OFFSET_minQIndex = LAYOUT.byteOffset(PathElement.groupElement("minQIndex"));
+    /// The memory layout of `minQIndex`.
+    public static final MemoryLayout LAYOUT_minQIndex = LAYOUT.select(PathElement.groupElement("minQIndex"));
+    /// The [VarHandle] of `minQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minQIndex"));
-    /// The [VarHandle] of `maxQIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxQIndex`.
+    public static final long OFFSET_maxQIndex = LAYOUT.byteOffset(PathElement.groupElement("maxQIndex"));
+    /// The memory layout of `maxQIndex`.
+    public static final MemoryLayout LAYOUT_maxQIndex = LAYOUT.select(PathElement.groupElement("maxQIndex"));
+    /// The [VarHandle] of `maxQIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQIndex"));
-    /// The [VarHandle] of `prefersGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `prefersGopRemainingFrames`.
+    public static final long OFFSET_prefersGopRemainingFrames = LAYOUT.byteOffset(PathElement.groupElement("prefersGopRemainingFrames"));
+    /// The memory layout of `prefersGopRemainingFrames`.
+    public static final MemoryLayout LAYOUT_prefersGopRemainingFrames = LAYOUT.select(PathElement.groupElement("prefersGopRemainingFrames"));
+    /// The [VarHandle] of `prefersGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_prefersGopRemainingFrames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("prefersGopRemainingFrames"));
-    /// The [VarHandle] of `requiresGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `requiresGopRemainingFrames`.
+    public static final long OFFSET_requiresGopRemainingFrames = LAYOUT.byteOffset(PathElement.groupElement("requiresGopRemainingFrames"));
+    /// The memory layout of `requiresGopRemainingFrames`.
+    public static final MemoryLayout LAYOUT_requiresGopRemainingFrames = LAYOUT.select(PathElement.groupElement("requiresGopRemainingFrames"));
+    /// The [VarHandle] of `requiresGopRemainingFrames` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_requiresGopRemainingFrames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiresGopRemainingFrames"));
-    /// The [VarHandle] of `stdSyntaxFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stdSyntaxFlags`.
+    public static final long OFFSET_stdSyntaxFlags = LAYOUT.byteOffset(PathElement.groupElement("stdSyntaxFlags"));
+    /// The memory layout of `stdSyntaxFlags`.
+    public static final MemoryLayout LAYOUT_stdSyntaxFlags = LAYOUT.select(PathElement.groupElement("stdSyntaxFlags"));
+    /// The [VarHandle] of `stdSyntaxFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stdSyntaxFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stdSyntaxFlags"));
 
     /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
@@ -207,19 +241,14 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1CapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1CapabilitiesKHR(segment); }
-
-    /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1CapabilitiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeAV1CapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeAV1CapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1CapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeAV1CapabilitiesKHR` with the given segment.
     ///
@@ -227,7 +256,7 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -240,11 +269,6 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
-    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int flags, @CType("StdVideoAV1Level") int maxLevel, @CType("VkExtent2D") MemorySegment codedPictureAlignment, @CType("VkExtent2D") MemorySegment maxTiles, @CType("VkExtent2D") MemorySegment minTileSize, @CType("VkExtent2D") MemorySegment maxTileSize, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int superblockSizes, @CType("uint32_t") int maxSingleReferenceCount, @CType("uint32_t") int singleReferenceNameMask, @CType("uint32_t") int maxUnidirectionalCompoundReferenceCount, @CType("uint32_t") int maxUnidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int unidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxBidirectionalCompoundReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup1ReferenceCount, @CType("uint32_t") int maxBidirectionalCompoundGroup2ReferenceCount, @CType("uint32_t") int bidirectionalCompoundReferenceNameMask, @CType("uint32_t") int maxTemporalLayerCount, @CType("uint32_t") int maxSpatialLayerCount, @CType("uint32_t") int maxOperatingPoints, @CType("uint32_t") int minQIndex, @CType("uint32_t") int maxQIndex, @CType("VkBool32") int prefersGopRemainingFrames, @CType("VkBool32") int requiresGopRemainingFrames, @CType("VkVideoEncodeAV1StdFlagsKHR") int stdSyntaxFlags) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames).stdSyntaxFlags(stdSyntaxFlags); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -252,605 +276,423 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeAV1CapabilitiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR pNext(@CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int get_flags(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int flags() { return VkVideoEncodeAV1CapabilitiesKHR.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR flags(@CType("VkVideoEncodeAV1CapabilityFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_flags(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `maxLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoAV1Level") int get_maxLevel(MemorySegment segment, long index) { return (int) VH_maxLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxLevel(MemorySegment segment, long index) { return (int) VH_maxLevel.get(segment, 0L, index); }
     /// {@return `maxLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoAV1Level") int get_maxLevel(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxLevel(segment, 0L); }
-    /// {@return `maxLevel`}
-    public @CType("StdVideoAV1Level") int maxLevel() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxLevel(this.segment()); }
+    public int maxLevel() { return maxLevel(this.segment(), 0L); }
     /// Sets `maxLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxLevel(MemorySegment segment, long index, @CType("StdVideoAV1Level") int value) { VH_maxLevel.set(segment, 0L, index, value); }
-    /// Sets `maxLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxLevel(MemorySegment segment, @CType("StdVideoAV1Level") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxLevel(MemorySegment segment, long index, int value) { VH_maxLevel.set(segment, 0L, index, value); }
     /// Sets `maxLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxLevel(@CType("StdVideoAV1Level") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxLevel(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxLevel(int value) { maxLevel(this.segment(), 0L, value); return this; }
 
     /// {@return `codedPictureAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_codedPictureAlignment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment codedPictureAlignment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_codedPictureAlignment, index), LAYOUT_codedPictureAlignment); }
     /// {@return `codedPictureAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_codedPictureAlignment(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(segment, 0L); }
-    /// {@return `codedPictureAlignment`}
-    public @CType("VkExtent2D") MemorySegment codedPictureAlignment() { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment()); }
+    public MemorySegment codedPictureAlignment() { return codedPictureAlignment(this.segment(), 0L); }
     /// Sets `codedPictureAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_codedPictureAlignment(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedPictureAlignment, index), ML_codedPictureAlignment.byteSize()); }
-    /// Sets `codedPictureAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_codedPictureAlignment(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void codedPictureAlignment(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_codedPictureAlignment, index), LAYOUT_codedPictureAlignment.byteSize()); }
     /// Sets `codedPictureAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(MemorySegment value) { codedPictureAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `maxTiles` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_maxTiles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxTiles(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTiles, index), LAYOUT_maxTiles); }
     /// {@return `maxTiles`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_maxTiles(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(segment, 0L); }
-    /// {@return `maxTiles`}
-    public @CType("VkExtent2D") MemorySegment maxTiles() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment()); }
+    public MemorySegment maxTiles() { return maxTiles(this.segment(), 0L); }
     /// Sets `maxTiles` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxTiles(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTiles, index), ML_maxTiles.byteSize()); }
-    /// Sets `maxTiles` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxTiles(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxTiles(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTiles, index), LAYOUT_maxTiles.byteSize()); }
     /// Sets `maxTiles` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(MemorySegment value) { maxTiles(this.segment(), 0L, value); return this; }
 
     /// {@return `minTileSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_minTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment minTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minTileSize, index), LAYOUT_minTileSize); }
     /// {@return `minTileSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_minTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(segment, 0L); }
-    /// {@return `minTileSize`}
-    public @CType("VkExtent2D") MemorySegment minTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment()); }
+    public MemorySegment minTileSize() { return minTileSize(this.segment(), 0L); }
     /// Sets `minTileSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minTileSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minTileSize, index), ML_minTileSize.byteSize()); }
-    /// Sets `minTileSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minTileSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minTileSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minTileSize, index), LAYOUT_minTileSize.byteSize()); }
     /// Sets `minTileSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(MemorySegment value) { minTileSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxTileSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_maxTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxTileSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTileSize, index), LAYOUT_maxTileSize); }
     /// {@return `maxTileSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_maxTileSize(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(segment, 0L); }
-    /// {@return `maxTileSize`}
-    public @CType("VkExtent2D") MemorySegment maxTileSize() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment()); }
+    public MemorySegment maxTileSize() { return maxTileSize(this.segment(), 0L); }
     /// Sets `maxTileSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxTileSize(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTileSize, index), ML_maxTileSize.byteSize()); }
-    /// Sets `maxTileSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxTileSize(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxTileSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTileSize, index), LAYOUT_maxTileSize.byteSize()); }
     /// Sets `maxTileSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(@CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(MemorySegment value) { maxTileSize(this.segment(), 0L, value); return this; }
 
     /// {@return `superblockSizes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int get_superblockSizes(MemorySegment segment, long index) { return (int) VH_superblockSizes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int superblockSizes(MemorySegment segment, long index) { return (int) VH_superblockSizes.get(segment, 0L, index); }
     /// {@return `superblockSizes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int get_superblockSizes(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_superblockSizes(segment, 0L); }
-    /// {@return `superblockSizes`}
-    public @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int superblockSizes() { return VkVideoEncodeAV1CapabilitiesKHR.get_superblockSizes(this.segment()); }
+    public int superblockSizes() { return superblockSizes(this.segment(), 0L); }
     /// Sets `superblockSizes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_superblockSizes(MemorySegment segment, long index, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int value) { VH_superblockSizes.set(segment, 0L, index, value); }
-    /// Sets `superblockSizes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_superblockSizes(MemorySegment segment, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_superblockSizes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void superblockSizes(MemorySegment segment, long index, int value) { VH_superblockSizes.set(segment, 0L, index, value); }
     /// Sets `superblockSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(@CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_superblockSizes(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR superblockSizes(int value) { superblockSizes(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSingleReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_maxSingleReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxSingleReferenceCount(MemorySegment segment, long index) { return (int) VH_maxSingleReferenceCount.get(segment, 0L, index); }
     /// {@return `maxSingleReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxSingleReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSingleReferenceCount(segment, 0L); }
-    /// {@return `maxSingleReferenceCount`}
-    public @CType("uint32_t") int maxSingleReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSingleReferenceCount(this.segment()); }
+    public int maxSingleReferenceCount() { return maxSingleReferenceCount(this.segment(), 0L); }
     /// Sets `maxSingleReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSingleReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxSingleReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxSingleReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSingleReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSingleReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSingleReferenceCount(MemorySegment segment, long index, int value) { VH_maxSingleReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxSingleReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxSingleReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSingleReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxSingleReferenceCount(int value) { maxSingleReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `singleReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_singleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_singleReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int singleReferenceNameMask(MemorySegment segment, long index) { return (int) VH_singleReferenceNameMask.get(segment, 0L, index); }
     /// {@return `singleReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_singleReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_singleReferenceNameMask(segment, 0L); }
-    /// {@return `singleReferenceNameMask`}
-    public @CType("uint32_t") int singleReferenceNameMask() { return VkVideoEncodeAV1CapabilitiesKHR.get_singleReferenceNameMask(this.segment()); }
+    public int singleReferenceNameMask() { return singleReferenceNameMask(this.segment(), 0L); }
     /// Sets `singleReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_singleReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_singleReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `singleReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_singleReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_singleReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void singleReferenceNameMask(MemorySegment segment, long index, int value) { VH_singleReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `singleReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR singleReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_singleReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR singleReferenceNameMask(int value) { singleReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// {@return `maxUnidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundReferenceCount.get(segment, 0L, index); }
     /// {@return `maxUnidirectionalCompoundReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxUnidirectionalCompoundReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundReferenceCount(segment, 0L); }
-    /// {@return `maxUnidirectionalCompoundReferenceCount`}
-    public @CType("uint32_t") int maxUnidirectionalCompoundReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundReferenceCount(this.segment()); }
+    public int maxUnidirectionalCompoundReferenceCount() { return maxUnidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxUnidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxUnidirectionalCompoundReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxUnidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxUnidirectionalCompoundReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxUnidirectionalCompoundReferenceCount(int value) { maxUnidirectionalCompoundReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxUnidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
     /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundGroup1ReferenceCount(segment, 0L); }
-    /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount`}
-    public @CType("uint32_t") int maxUnidirectionalCompoundGroup1ReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundGroup1ReferenceCount(this.segment()); }
+    public int maxUnidirectionalCompoundGroup1ReferenceCount() { return maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxUnidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundGroup1ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxUnidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxUnidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxUnidirectionalCompoundGroup1ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxUnidirectionalCompoundGroup1ReferenceCount(int value) { maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `unidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_unidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_unidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
     /// {@return `unidirectionalCompoundReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_unidirectionalCompoundReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_unidirectionalCompoundReferenceNameMask(segment, 0L); }
-    /// {@return `unidirectionalCompoundReferenceNameMask`}
-    public @CType("uint32_t") int unidirectionalCompoundReferenceNameMask() { return VkVideoEncodeAV1CapabilitiesKHR.get_unidirectionalCompoundReferenceNameMask(this.segment()); }
+    public int unidirectionalCompoundReferenceNameMask() { return unidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `unidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_unidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `unidirectionalCompoundReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_unidirectionalCompoundReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_unidirectionalCompoundReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void unidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_unidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `unidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR unidirectionalCompoundReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_unidirectionalCompoundReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR unidirectionalCompoundReferenceNameMask(int value) { unidirectionalCompoundReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBidirectionalCompoundReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundReferenceCount.get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundReferenceCount(segment, 0L); }
-    /// {@return `maxBidirectionalCompoundReferenceCount`}
-    public @CType("uint32_t") int maxBidirectionalCompoundReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundReferenceCount(this.segment()); }
+    public int maxBidirectionalCompoundReferenceCount() { return maxBidirectionalCompoundReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxBidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxBidirectionalCompoundReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBidirectionalCompoundReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundReferenceCount(int value) { maxBidirectionalCompoundReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBidirectionalCompoundGroup1ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup1ReferenceCount.get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundGroup1ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup1ReferenceCount(segment, 0L); }
-    /// {@return `maxBidirectionalCompoundGroup1ReferenceCount`}
-    public @CType("uint32_t") int maxBidirectionalCompoundGroup1ReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup1ReferenceCount(this.segment()); }
+    public int maxBidirectionalCompoundGroup1ReferenceCount() { return maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxBidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup1ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBidirectionalCompoundGroup1ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup1ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundGroup1ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundGroup1ReferenceCount(int value) { maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBidirectionalCompoundGroup2ReferenceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup2ReferenceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index) { return (int) VH_maxBidirectionalCompoundGroup2ReferenceCount.get(segment, 0L, index); }
     /// {@return `maxBidirectionalCompoundGroup2ReferenceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup2ReferenceCount(segment, 0L); }
-    /// {@return `maxBidirectionalCompoundGroup2ReferenceCount`}
-    public @CType("uint32_t") int maxBidirectionalCompoundGroup2ReferenceCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup2ReferenceCount(this.segment()); }
+    public int maxBidirectionalCompoundGroup2ReferenceCount() { return maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), 0L); }
     /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxBidirectionalCompoundGroup2ReferenceCount.set(segment, 0L, index, value); }
-    /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup2ReferenceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBidirectionalCompoundGroup2ReferenceCount(MemorySegment segment, long index, int value) { VH_maxBidirectionalCompoundGroup2ReferenceCount.set(segment, 0L, index, value); }
     /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundGroup2ReferenceCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxBidirectionalCompoundGroup2ReferenceCount(int value) { maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `bidirectionalCompoundReferenceNameMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_bidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index) { return (int) VH_bidirectionalCompoundReferenceNameMask.get(segment, 0L, index); }
     /// {@return `bidirectionalCompoundReferenceNameMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_bidirectionalCompoundReferenceNameMask(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_bidirectionalCompoundReferenceNameMask(segment, 0L); }
-    /// {@return `bidirectionalCompoundReferenceNameMask`}
-    public @CType("uint32_t") int bidirectionalCompoundReferenceNameMask() { return VkVideoEncodeAV1CapabilitiesKHR.get_bidirectionalCompoundReferenceNameMask(this.segment()); }
+    public int bidirectionalCompoundReferenceNameMask() { return bidirectionalCompoundReferenceNameMask(this.segment(), 0L); }
     /// Sets `bidirectionalCompoundReferenceNameMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_bidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
-    /// Sets `bidirectionalCompoundReferenceNameMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bidirectionalCompoundReferenceNameMask(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_bidirectionalCompoundReferenceNameMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bidirectionalCompoundReferenceNameMask(MemorySegment segment, long index, int value) { VH_bidirectionalCompoundReferenceNameMask.set(segment, 0L, index, value); }
     /// Sets `bidirectionalCompoundReferenceNameMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR bidirectionalCompoundReferenceNameMask(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_bidirectionalCompoundReferenceNameMask(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR bidirectionalCompoundReferenceNameMask(int value) { bidirectionalCompoundReferenceNameMask(this.segment(), 0L, value); return this; }
 
     /// {@return `maxTemporalLayerCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_maxTemporalLayerCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxTemporalLayerCount(MemorySegment segment, long index) { return (int) VH_maxTemporalLayerCount.get(segment, 0L, index); }
     /// {@return `maxTemporalLayerCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxTemporalLayerCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTemporalLayerCount(segment, 0L); }
-    /// {@return `maxTemporalLayerCount`}
-    public @CType("uint32_t") int maxTemporalLayerCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTemporalLayerCount(this.segment()); }
+    public int maxTemporalLayerCount() { return maxTemporalLayerCount(this.segment(), 0L); }
     /// Sets `maxTemporalLayerCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxTemporalLayerCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxTemporalLayerCount.set(segment, 0L, index, value); }
-    /// Sets `maxTemporalLayerCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxTemporalLayerCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTemporalLayerCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxTemporalLayerCount(MemorySegment segment, long index, int value) { VH_maxTemporalLayerCount.set(segment, 0L, index, value); }
     /// Sets `maxTemporalLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxTemporalLayerCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTemporalLayerCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxTemporalLayerCount(int value) { maxTemporalLayerCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSpatialLayerCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxSpatialLayerCount(MemorySegment segment, long index) { return (int) VH_maxSpatialLayerCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxSpatialLayerCount(MemorySegment segment, long index) { return (int) VH_maxSpatialLayerCount.get(segment, 0L, index); }
     /// {@return `maxSpatialLayerCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxSpatialLayerCount(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSpatialLayerCount(segment, 0L); }
-    /// {@return `maxSpatialLayerCount`}
-    public @CType("uint32_t") int maxSpatialLayerCount() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSpatialLayerCount(this.segment()); }
+    public int maxSpatialLayerCount() { return maxSpatialLayerCount(this.segment(), 0L); }
     /// Sets `maxSpatialLayerCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSpatialLayerCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxSpatialLayerCount.set(segment, 0L, index, value); }
-    /// Sets `maxSpatialLayerCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSpatialLayerCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSpatialLayerCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSpatialLayerCount(MemorySegment segment, long index, int value) { VH_maxSpatialLayerCount.set(segment, 0L, index, value); }
     /// Sets `maxSpatialLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxSpatialLayerCount(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSpatialLayerCount(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxSpatialLayerCount(int value) { maxSpatialLayerCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxOperatingPoints` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxOperatingPoints(MemorySegment segment, long index) { return (int) VH_maxOperatingPoints.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxOperatingPoints(MemorySegment segment, long index) { return (int) VH_maxOperatingPoints.get(segment, 0L, index); }
     /// {@return `maxOperatingPoints`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxOperatingPoints(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxOperatingPoints(segment, 0L); }
-    /// {@return `maxOperatingPoints`}
-    public @CType("uint32_t") int maxOperatingPoints() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxOperatingPoints(this.segment()); }
+    public int maxOperatingPoints() { return maxOperatingPoints(this.segment(), 0L); }
     /// Sets `maxOperatingPoints` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxOperatingPoints(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxOperatingPoints.set(segment, 0L, index, value); }
-    /// Sets `maxOperatingPoints` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxOperatingPoints(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxOperatingPoints(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxOperatingPoints(MemorySegment segment, long index, int value) { VH_maxOperatingPoints.set(segment, 0L, index, value); }
     /// Sets `maxOperatingPoints` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxOperatingPoints(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxOperatingPoints(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxOperatingPoints(int value) { maxOperatingPoints(this.segment(), 0L, value); return this; }
 
     /// {@return `minQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_minQIndex(MemorySegment segment, long index) { return (int) VH_minQIndex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int minQIndex(MemorySegment segment, long index) { return (int) VH_minQIndex.get(segment, 0L, index); }
     /// {@return `minQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_minQIndex(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_minQIndex(segment, 0L); }
-    /// {@return `minQIndex`}
-    public @CType("uint32_t") int minQIndex() { return VkVideoEncodeAV1CapabilitiesKHR.get_minQIndex(this.segment()); }
+    public int minQIndex() { return minQIndex(this.segment(), 0L); }
     /// Sets `minQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minQIndex(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_minQIndex.set(segment, 0L, index, value); }
-    /// Sets `minQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minQIndex(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_minQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minQIndex(MemorySegment segment, long index, int value) { VH_minQIndex.set(segment, 0L, index, value); }
     /// Sets `minQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR minQIndex(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_minQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR minQIndex(int value) { minQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `maxQIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxQIndex(MemorySegment segment, long index) { return (int) VH_maxQIndex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxQIndex(MemorySegment segment, long index) { return (int) VH_maxQIndex.get(segment, 0L, index); }
     /// {@return `maxQIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxQIndex(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxQIndex(segment, 0L); }
-    /// {@return `maxQIndex`}
-    public @CType("uint32_t") int maxQIndex() { return VkVideoEncodeAV1CapabilitiesKHR.get_maxQIndex(this.segment()); }
+    public int maxQIndex() { return maxQIndex(this.segment(), 0L); }
     /// Sets `maxQIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxQIndex(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxQIndex.set(segment, 0L, index, value); }
-    /// Sets `maxQIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxQIndex(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxQIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxQIndex(MemorySegment segment, long index, int value) { VH_maxQIndex.set(segment, 0L, index, value); }
     /// Sets `maxQIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR maxQIndex(@CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxQIndex(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR maxQIndex(int value) { maxQIndex(this.segment(), 0L, value); return this; }
 
     /// {@return `prefersGopRemainingFrames` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_prefersGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_prefersGopRemainingFrames.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int prefersGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_prefersGopRemainingFrames.get(segment, 0L, index); }
     /// {@return `prefersGopRemainingFrames`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_prefersGopRemainingFrames(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_prefersGopRemainingFrames(segment, 0L); }
-    /// {@return `prefersGopRemainingFrames`}
-    public @CType("VkBool32") int prefersGopRemainingFrames() { return VkVideoEncodeAV1CapabilitiesKHR.get_prefersGopRemainingFrames(this.segment()); }
+    public int prefersGopRemainingFrames() { return prefersGopRemainingFrames(this.segment(), 0L); }
     /// Sets `prefersGopRemainingFrames` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_prefersGopRemainingFrames(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_prefersGopRemainingFrames.set(segment, 0L, index, value); }
-    /// Sets `prefersGopRemainingFrames` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_prefersGopRemainingFrames(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_prefersGopRemainingFrames(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void prefersGopRemainingFrames(MemorySegment segment, long index, int value) { VH_prefersGopRemainingFrames.set(segment, 0L, index, value); }
     /// Sets `prefersGopRemainingFrames` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR prefersGopRemainingFrames(@CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_prefersGopRemainingFrames(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR prefersGopRemainingFrames(int value) { prefersGopRemainingFrames(this.segment(), 0L, value); return this; }
 
     /// {@return `requiresGopRemainingFrames` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_requiresGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_requiresGopRemainingFrames.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int requiresGopRemainingFrames(MemorySegment segment, long index) { return (int) VH_requiresGopRemainingFrames.get(segment, 0L, index); }
     /// {@return `requiresGopRemainingFrames`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_requiresGopRemainingFrames(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_requiresGopRemainingFrames(segment, 0L); }
-    /// {@return `requiresGopRemainingFrames`}
-    public @CType("VkBool32") int requiresGopRemainingFrames() { return VkVideoEncodeAV1CapabilitiesKHR.get_requiresGopRemainingFrames(this.segment()); }
+    public int requiresGopRemainingFrames() { return requiresGopRemainingFrames(this.segment(), 0L); }
     /// Sets `requiresGopRemainingFrames` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_requiresGopRemainingFrames(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_requiresGopRemainingFrames.set(segment, 0L, index, value); }
-    /// Sets `requiresGopRemainingFrames` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_requiresGopRemainingFrames(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_requiresGopRemainingFrames(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void requiresGopRemainingFrames(MemorySegment segment, long index, int value) { VH_requiresGopRemainingFrames.set(segment, 0L, index, value); }
     /// Sets `requiresGopRemainingFrames` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR requiresGopRemainingFrames(@CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_requiresGopRemainingFrames(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR requiresGopRemainingFrames(int value) { requiresGopRemainingFrames(this.segment(), 0L, value); return this; }
 
     /// {@return `stdSyntaxFlags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkVideoEncodeAV1StdFlagsKHR") int get_stdSyntaxFlags(MemorySegment segment, long index) { return (int) VH_stdSyntaxFlags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stdSyntaxFlags(MemorySegment segment, long index) { return (int) VH_stdSyntaxFlags.get(segment, 0L, index); }
     /// {@return `stdSyntaxFlags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkVideoEncodeAV1StdFlagsKHR") int get_stdSyntaxFlags(MemorySegment segment) { return VkVideoEncodeAV1CapabilitiesKHR.get_stdSyntaxFlags(segment, 0L); }
-    /// {@return `stdSyntaxFlags`}
-    public @CType("VkVideoEncodeAV1StdFlagsKHR") int stdSyntaxFlags() { return VkVideoEncodeAV1CapabilitiesKHR.get_stdSyntaxFlags(this.segment()); }
+    public int stdSyntaxFlags() { return stdSyntaxFlags(this.segment(), 0L); }
     /// Sets `stdSyntaxFlags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stdSyntaxFlags(MemorySegment segment, long index, @CType("VkVideoEncodeAV1StdFlagsKHR") int value) { VH_stdSyntaxFlags.set(segment, 0L, index, value); }
-    /// Sets `stdSyntaxFlags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stdSyntaxFlags(MemorySegment segment, @CType("VkVideoEncodeAV1StdFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_stdSyntaxFlags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stdSyntaxFlags(MemorySegment segment, long index, int value) { VH_stdSyntaxFlags.set(segment, 0L, index, value); }
     /// Sets `stdSyntaxFlags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(@CType("VkVideoEncodeAV1StdFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_stdSyntaxFlags(this.segment(), value); return this; }
+    public VkVideoEncodeAV1CapabilitiesKHR stdSyntaxFlags(int value) { stdSyntaxFlags(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeAV1CapabilitiesKHR].
     public static final class Buffer extends VkVideoEncodeAV1CapabilitiesKHR {
@@ -875,238 +717,238 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int flagsAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkVideoEncodeAV1CapabilityFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `maxLevel` at the given index}
-        /// @param index the index
-        public @CType("StdVideoAV1Level") int maxLevelAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxLevelAt(long index) { return maxLevel(this.segment(), index); }
         /// Sets `maxLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxLevelAt(long index, @CType("StdVideoAV1Level") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxLevel(this.segment(), index, value); return this; }
+        public Buffer maxLevelAt(long index, int value) { maxLevel(this.segment(), index, value); return this; }
 
         /// {@return `codedPictureAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment codedPictureAlignmentAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_codedPictureAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment codedPictureAlignmentAt(long index) { return codedPictureAlignment(this.segment(), index); }
         /// Sets `codedPictureAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer codedPictureAlignmentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_codedPictureAlignment(this.segment(), index, value); return this; }
+        public Buffer codedPictureAlignmentAt(long index, MemorySegment value) { codedPictureAlignment(this.segment(), index, value); return this; }
 
         /// {@return `maxTiles` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment maxTilesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTiles(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxTilesAt(long index) { return maxTiles(this.segment(), index); }
         /// Sets `maxTiles` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxTilesAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTiles(this.segment(), index, value); return this; }
+        public Buffer maxTilesAt(long index, MemorySegment value) { maxTiles(this.segment(), index, value); return this; }
 
         /// {@return `minTileSize` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment minTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_minTileSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment minTileSizeAt(long index) { return minTileSize(this.segment(), index); }
         /// Sets `minTileSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minTileSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_minTileSize(this.segment(), index, value); return this; }
+        public Buffer minTileSizeAt(long index, MemorySegment value) { minTileSize(this.segment(), index, value); return this; }
 
         /// {@return `maxTileSize` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment maxTileSizeAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTileSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxTileSizeAt(long index) { return maxTileSize(this.segment(), index); }
         /// Sets `maxTileSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxTileSizeAt(long index, @CType("VkExtent2D") MemorySegment value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTileSize(this.segment(), index, value); return this; }
+        public Buffer maxTileSizeAt(long index, MemorySegment value) { maxTileSize(this.segment(), index, value); return this; }
 
         /// {@return `superblockSizes` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int superblockSizesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_superblockSizes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int superblockSizesAt(long index) { return superblockSizes(this.segment(), index); }
         /// Sets `superblockSizes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer superblockSizesAt(long index, @CType("VkVideoEncodeAV1SuperblockSizeFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_superblockSizes(this.segment(), index, value); return this; }
+        public Buffer superblockSizesAt(long index, int value) { superblockSizes(this.segment(), index, value); return this; }
 
         /// {@return `maxSingleReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxSingleReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSingleReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxSingleReferenceCountAt(long index) { return maxSingleReferenceCount(this.segment(), index); }
         /// Sets `maxSingleReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSingleReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSingleReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxSingleReferenceCountAt(long index, int value) { maxSingleReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `singleReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int singleReferenceNameMaskAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_singleReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int singleReferenceNameMaskAt(long index) { return singleReferenceNameMask(this.segment(), index); }
         /// Sets `singleReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer singleReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_singleReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer singleReferenceNameMaskAt(long index, int value) { singleReferenceNameMask(this.segment(), index, value); return this; }
 
         /// {@return `maxUnidirectionalCompoundReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxUnidirectionalCompoundReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxUnidirectionalCompoundReferenceCountAt(long index) { return maxUnidirectionalCompoundReferenceCount(this.segment(), index); }
         /// Sets `maxUnidirectionalCompoundReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxUnidirectionalCompoundReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxUnidirectionalCompoundReferenceCountAt(long index, int value) { maxUnidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `maxUnidirectionalCompoundGroup1ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxUnidirectionalCompoundGroup1ReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxUnidirectionalCompoundGroup1ReferenceCountAt(long index) { return maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
         /// Sets `maxUnidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxUnidirectionalCompoundGroup1ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxUnidirectionalCompoundGroup1ReferenceCountAt(long index, int value) { maxUnidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `unidirectionalCompoundReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int unidirectionalCompoundReferenceNameMaskAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_unidirectionalCompoundReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int unidirectionalCompoundReferenceNameMaskAt(long index) { return unidirectionalCompoundReferenceNameMask(this.segment(), index); }
         /// Sets `unidirectionalCompoundReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer unidirectionalCompoundReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_unidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer unidirectionalCompoundReferenceNameMaskAt(long index, int value) { unidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
 
         /// {@return `maxBidirectionalCompoundReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxBidirectionalCompoundReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxBidirectionalCompoundReferenceCountAt(long index) { return maxBidirectionalCompoundReferenceCount(this.segment(), index); }
         /// Sets `maxBidirectionalCompoundReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBidirectionalCompoundReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxBidirectionalCompoundReferenceCountAt(long index, int value) { maxBidirectionalCompoundReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `maxBidirectionalCompoundGroup1ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxBidirectionalCompoundGroup1ReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxBidirectionalCompoundGroup1ReferenceCountAt(long index) { return maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index); }
         /// Sets `maxBidirectionalCompoundGroup1ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBidirectionalCompoundGroup1ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxBidirectionalCompoundGroup1ReferenceCountAt(long index, int value) { maxBidirectionalCompoundGroup1ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `maxBidirectionalCompoundGroup2ReferenceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxBidirectionalCompoundGroup2ReferenceCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxBidirectionalCompoundGroup2ReferenceCountAt(long index) { return maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index); }
         /// Sets `maxBidirectionalCompoundGroup2ReferenceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBidirectionalCompoundGroup2ReferenceCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index, value); return this; }
+        public Buffer maxBidirectionalCompoundGroup2ReferenceCountAt(long index, int value) { maxBidirectionalCompoundGroup2ReferenceCount(this.segment(), index, value); return this; }
 
         /// {@return `bidirectionalCompoundReferenceNameMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bidirectionalCompoundReferenceNameMaskAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_bidirectionalCompoundReferenceNameMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bidirectionalCompoundReferenceNameMaskAt(long index) { return bidirectionalCompoundReferenceNameMask(this.segment(), index); }
         /// Sets `bidirectionalCompoundReferenceNameMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bidirectionalCompoundReferenceNameMaskAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_bidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
+        public Buffer bidirectionalCompoundReferenceNameMaskAt(long index, int value) { bidirectionalCompoundReferenceNameMask(this.segment(), index, value); return this; }
 
         /// {@return `maxTemporalLayerCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxTemporalLayerCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxTemporalLayerCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxTemporalLayerCountAt(long index) { return maxTemporalLayerCount(this.segment(), index); }
         /// Sets `maxTemporalLayerCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxTemporalLayerCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxTemporalLayerCount(this.segment(), index, value); return this; }
+        public Buffer maxTemporalLayerCountAt(long index, int value) { maxTemporalLayerCount(this.segment(), index, value); return this; }
 
         /// {@return `maxSpatialLayerCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxSpatialLayerCountAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxSpatialLayerCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxSpatialLayerCountAt(long index) { return maxSpatialLayerCount(this.segment(), index); }
         /// Sets `maxSpatialLayerCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSpatialLayerCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxSpatialLayerCount(this.segment(), index, value); return this; }
+        public Buffer maxSpatialLayerCountAt(long index, int value) { maxSpatialLayerCount(this.segment(), index, value); return this; }
 
         /// {@return `maxOperatingPoints` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxOperatingPointsAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxOperatingPoints(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxOperatingPointsAt(long index) { return maxOperatingPoints(this.segment(), index); }
         /// Sets `maxOperatingPoints` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxOperatingPointsAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxOperatingPoints(this.segment(), index, value); return this; }
+        public Buffer maxOperatingPointsAt(long index, int value) { maxOperatingPoints(this.segment(), index, value); return this; }
 
         /// {@return `minQIndex` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int minQIndexAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_minQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int minQIndexAt(long index) { return minQIndex(this.segment(), index); }
         /// Sets `minQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minQIndexAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_minQIndex(this.segment(), index, value); return this; }
+        public Buffer minQIndexAt(long index, int value) { minQIndex(this.segment(), index, value); return this; }
 
         /// {@return `maxQIndex` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxQIndexAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_maxQIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxQIndexAt(long index) { return maxQIndex(this.segment(), index); }
         /// Sets `maxQIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxQIndexAt(long index, @CType("uint32_t") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_maxQIndex(this.segment(), index, value); return this; }
+        public Buffer maxQIndexAt(long index, int value) { maxQIndex(this.segment(), index, value); return this; }
 
         /// {@return `prefersGopRemainingFrames` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int prefersGopRemainingFramesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_prefersGopRemainingFrames(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int prefersGopRemainingFramesAt(long index) { return prefersGopRemainingFrames(this.segment(), index); }
         /// Sets `prefersGopRemainingFrames` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer prefersGopRemainingFramesAt(long index, @CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_prefersGopRemainingFrames(this.segment(), index, value); return this; }
+        public Buffer prefersGopRemainingFramesAt(long index, int value) { prefersGopRemainingFrames(this.segment(), index, value); return this; }
 
         /// {@return `requiresGopRemainingFrames` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int requiresGopRemainingFramesAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_requiresGopRemainingFrames(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int requiresGopRemainingFramesAt(long index) { return requiresGopRemainingFrames(this.segment(), index); }
         /// Sets `requiresGopRemainingFrames` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer requiresGopRemainingFramesAt(long index, @CType("VkBool32") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_requiresGopRemainingFrames(this.segment(), index, value); return this; }
+        public Buffer requiresGopRemainingFramesAt(long index, int value) { requiresGopRemainingFrames(this.segment(), index, value); return this; }
 
         /// {@return `stdSyntaxFlags` at the given index}
-        /// @param index the index
-        public @CType("VkVideoEncodeAV1StdFlagsKHR") int stdSyntaxFlagsAt(long index) { return VkVideoEncodeAV1CapabilitiesKHR.get_stdSyntaxFlags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stdSyntaxFlagsAt(long index) { return stdSyntaxFlags(this.segment(), index); }
         /// Sets `stdSyntaxFlags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stdSyntaxFlagsAt(long index, @CType("VkVideoEncodeAV1StdFlagsKHR") int value) { VkVideoEncodeAV1CapabilitiesKHR.set_stdSyntaxFlags(this.segment(), index, value); return this; }
+        public Buffer stdSyntaxFlagsAt(long index, int value) { stdSyntaxFlags(this.segment(), index, value); return this; }
 
     }
 }

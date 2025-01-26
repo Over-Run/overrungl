@@ -100,7 +100,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBeginTransformFeedbackNV(unsigned int primitiveMode);
+    /// void glBeginTransformFeedbackNV(GLenum primitiveMode);
     /// ```
     public void BeginTransformFeedbackNV(int primitiveMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginTransformFeedbackNV)) throw new SymbolNotFoundError("Symbol not found: glBeginTransformFeedbackNV");
@@ -118,7 +118,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackAttribsNV(int count, const GLint* attribs, unsigned int bufferMode);
+    /// void glTransformFeedbackAttribsNV(GLsizei count, const GLint* attribs, GLenum bufferMode);
     /// ```
     public void TransformFeedbackAttribsNV(int count, MemorySegment attribs, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackAttribsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackAttribsNV");
@@ -127,7 +127,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferRangeNV(unsigned int target, unsigned int index, unsigned int buffer, signed long long offset, signed long long size);
+    /// void glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
     /// ```
     public void BindBufferRangeNV(int target, int index, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRangeNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRangeNV");
@@ -136,7 +136,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferOffsetNV(unsigned int target, unsigned int index, unsigned int buffer, signed long long offset);
+    /// void glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
     /// ```
     public void BindBufferOffsetNV(int target, int index, int buffer, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferOffsetNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferOffsetNV");
@@ -145,7 +145,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferBaseNV(unsigned int target, unsigned int index, unsigned int buffer);
+    /// void glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer);
     /// ```
     public void BindBufferBaseNV(int target, int index, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBaseNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBaseNV");
@@ -154,7 +154,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackVaryingsNV(unsigned int program, int count, const GLint* locations, unsigned int bufferMode);
+    /// void glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint* locations, GLenum bufferMode);
     /// ```
     public void TransformFeedbackVaryingsNV(int program, int count, MemorySegment locations, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackVaryingsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsNV");
@@ -163,7 +163,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glActiveVaryingNV(unsigned int program, const GLchar* name);
+    /// void glActiveVaryingNV(GLuint program, const GLchar* name);
     /// ```
     public void ActiveVaryingNV(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glActiveVaryingNV");
@@ -172,7 +172,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// int glGetVaryingLocationNV(unsigned int program, const GLchar* name);
+    /// GLint glGetVaryingLocationNV(GLuint program, const GLchar* name);
     /// ```
     public int GetVaryingLocationNV(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVaryingLocationNV)) throw new SymbolNotFoundError("Symbol not found: glGetVaryingLocationNV");
@@ -181,7 +181,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glGetActiveVaryingNV(unsigned int program, unsigned int index, int bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
+    /// void glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
     /// ```
     public void GetActiveVaryingNV(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glGetActiveVaryingNV");
@@ -190,7 +190,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glGetTransformFeedbackVaryingNV(unsigned int program, unsigned int index, GLint* location);
+    /// void glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint* location);
     /// ```
     public void GetTransformFeedbackVaryingNV(int program, int index, MemorySegment location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingNV");
@@ -199,7 +199,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackStreamAttribsNV(int count, const GLint* attribs, int nbuffers, const GLint* bufstreams, unsigned int bufferMode);
+    /// void glTransformFeedbackStreamAttribsNV(GLsizei count, const GLint* attribs, GLsizei nbuffers, const GLint* bufstreams, GLenum bufferMode);
     /// ```
     public void TransformFeedbackStreamAttribsNV(int count, MemorySegment attribs, int nbuffers, MemorySegment bufstreams, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackStreamAttribsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackStreamAttribsNV");

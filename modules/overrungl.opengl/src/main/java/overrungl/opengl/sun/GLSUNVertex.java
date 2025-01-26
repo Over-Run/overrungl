@@ -154,7 +154,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glColor4ubVertex2fSUN(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float x, float y);
+    /// void glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
     /// ```
     public void Color4ubVertex2fSUN(byte r, byte g, byte b, byte a, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4ubVertex2fSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4ubVertex2fSUN");
@@ -172,7 +172,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glColor4ubVertex3fSUN(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float x, float y, float z);
+    /// void glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void Color4ubVertex3fSUN(byte r, byte g, byte b, byte a, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4ubVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4ubVertex3fSUN");
@@ -190,7 +190,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glColor3fVertex3fSUN(float r, float g, float b, float x, float y, float z);
+    /// void glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void Color3fVertex3fSUN(float r, float g, float b, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glColor3fVertex3fSUN");
@@ -208,7 +208,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glNormal3fVertex3fSUN(float nx, float ny, float nz, float x, float y, float z);
+    /// void glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void Normal3fVertex3fSUN(float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glNormal3fVertex3fSUN");
@@ -226,7 +226,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glColor4fNormal3fVertex3fSUN(float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z);
+    /// void glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void Color4fNormal3fVertex3fSUN(float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColor4fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glColor4fNormal3fVertex3fSUN");
@@ -244,7 +244,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord2fVertex3fSUN(float s, float t, float x, float y, float z);
+    /// void glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void TexCoord2fVertex3fSUN(float s, float t, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fVertex3fSUN");
@@ -262,7 +262,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord4fVertex4fSUN(float s, float t, float p, float q, float x, float y, float z, float w);
+    /// void glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void TexCoord4fVertex4fSUN(float s, float t, float p, float q, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4fVertex4fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4fVertex4fSUN");
@@ -280,7 +280,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord2fColor4ubVertex3fSUN(float s, float t, unsigned char r, unsigned char g, unsigned char b, unsigned char a, float x, float y, float z);
+    /// void glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void TexCoord2fColor4ubVertex3fSUN(float s, float t, byte r, byte g, byte b, byte a, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2fColor4ubVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor4ubVertex3fSUN");
@@ -298,7 +298,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord2fColor3fVertex3fSUN(float s, float t, float r, float g, float b, float x, float y, float z);
+    /// void glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void TexCoord2fColor3fVertex3fSUN(float s, float t, float r, float g, float b, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2fColor3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor3fVertex3fSUN");
@@ -316,7 +316,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord2fNormal3fVertex3fSUN(float s, float t, float nx, float ny, float nz, float x, float y, float z);
+    /// void glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void TexCoord2fNormal3fVertex3fSUN(float s, float t, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fNormal3fVertex3fSUN");
@@ -334,7 +334,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord2fColor4fNormal3fVertex3fSUN(float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z);
+    /// void glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void TexCoord2fColor4fNormal3fVertex3fSUN(float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2fColor4fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2fColor4fNormal3fVertex3fSUN");
@@ -352,7 +352,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glTexCoord4fColor4fNormal3fVertex4fSUN(float s, float t, float p, float q, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z, float w);
+    /// void glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void TexCoord4fColor4fNormal3fVertex4fSUN(float s, float t, float p, float q, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4fColor4fNormal3fVertex4fSUN)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4fColor4fNormal3fVertex4fSUN");
@@ -370,7 +370,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiVertex3fSUN(unsigned int rc, float x, float y, float z);
+    /// void glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiVertex3fSUN(int rc, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiVertex3fSUN");
@@ -388,7 +388,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiColor4ubVertex3fSUN(unsigned int rc, unsigned char r, unsigned char g, unsigned char b, unsigned char a, float x, float y, float z);
+    /// void glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiColor4ubVertex3fSUN(int rc, byte r, byte g, byte b, byte a, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiColor4ubVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor4ubVertex3fSUN");
@@ -406,7 +406,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiColor3fVertex3fSUN(unsigned int rc, float r, float g, float b, float x, float y, float z);
+    /// void glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiColor3fVertex3fSUN(int rc, float r, float g, float b, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiColor3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor3fVertex3fSUN");
@@ -424,7 +424,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiNormal3fVertex3fSUN(unsigned int rc, float nx, float ny, float nz, float x, float y, float z);
+    /// void glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiNormal3fVertex3fSUN(int rc, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiNormal3fVertex3fSUN");
@@ -442,7 +442,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiColor4fNormal3fVertex3fSUN(unsigned int rc, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z);
+    /// void glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiColor4fNormal3fVertex3fSUN(int rc, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiColor4fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiColor4fNormal3fVertex3fSUN");
@@ -460,7 +460,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiTexCoord2fVertex3fSUN(unsigned int rc, float s, float t, float x, float y, float z);
+    /// void glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiTexCoord2fVertex3fSUN(int rc, float s, float t, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fVertex3fSUN");
@@ -478,7 +478,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(unsigned int rc, float s, float t, float nx, float ny, float nz, float x, float y, float z);
+    /// void glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(int rc, float s, float t, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
@@ -496,7 +496,7 @@ public final class GLSUNVertex {
     }
 
     /// ```
-    /// void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(unsigned int rc, float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z);
+    /// void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(int rc, float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");

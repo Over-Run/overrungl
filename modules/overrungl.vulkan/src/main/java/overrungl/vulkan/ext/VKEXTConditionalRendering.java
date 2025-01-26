@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -38,26 +37,32 @@ public class VKEXTConditionalRendering {
         public static final MethodHandle MH_vkCmdEndConditionalRenderingEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBeginConditionalRenderingEXT;
         public final MemorySegment PFN_vkCmdEndConditionalRenderingEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdBeginConditionalRenderingEXT = func.invoke(device, "vkCmdBeginConditionalRenderingEXT");
             PFN_vkCmdEndConditionalRenderingEXT = func.invoke(device, "vkCmdEndConditionalRenderingEXT");
         }
     }
 
-    public VKEXTConditionalRendering(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTConditionalRendering(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdBeginConditionalRenderingEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkConditionalRenderingBeginInfoEXT *") MemorySegment pConditionalRenderingBegin) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBeginConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginConditionalRenderingEXT");
+    /// ```
+    /// void vkCmdBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, const VkConditionalRenderingBeginInfoEXT* pConditionalRenderingBegin);
+    /// ```
+    public void CmdBeginConditionalRenderingEXT(MemorySegment commandBuffer, MemorySegment pConditionalRenderingBegin) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBeginConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginConditionalRenderingEXT");
         try { Handles.MH_vkCmdBeginConditionalRenderingEXT.invokeExact(handles.PFN_vkCmdBeginConditionalRenderingEXT, commandBuffer, pConditionalRenderingBegin); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginConditionalRenderingEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdBeginConditionalRenderingEXT", e); }
     }
 
-    public void CmdEndConditionalRenderingEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdEndConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndConditionalRenderingEXT");
+    /// ```
+    /// void vkCmdEndConditionalRenderingEXT(VkCommandBuffer commandBuffer);
+    /// ```
+    public void CmdEndConditionalRenderingEXT(MemorySegment commandBuffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdEndConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndConditionalRenderingEXT");
         try { Handles.MH_vkCmdEndConditionalRenderingEXT.invokeExact(handles.PFN_vkCmdEndConditionalRenderingEXT, commandBuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdEndConditionalRenderingEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdEndConditionalRenderingEXT", e); }
     }
 
 }

@@ -43,7 +43,7 @@ public final class GLEXTCullVertex {
     }
 
     /// ```
-    /// void glCullParameterdvEXT(unsigned int pname, GLdouble* params);
+    /// void glCullParameterdvEXT(GLenum pname, GLdouble* params);
     /// ```
     public void CullParameterdvEXT(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
@@ -52,7 +52,7 @@ public final class GLEXTCullVertex {
     }
 
     /// ```
-    /// void glCullParameterfvEXT(unsigned int pname, GLfloat* params);
+    /// void glCullParameterfvEXT(GLenum pname, GLfloat* params);
     /// ```
     public void CullParameterfvEXT(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");

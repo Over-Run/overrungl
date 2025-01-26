@@ -15,46 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### setLayoutCount
-/// [VarHandle][#VH_setLayoutCount] - [Getter][#setLayoutCount()] - [Setter][#setLayoutCount(int)]
-/// ### pSetLayouts
-/// [VarHandle][#VH_pSetLayouts] - [Getter][#pSetLayouts()] - [Setter][#pSetLayouts(MemorySegment)]
-/// ### pushConstantRangeCount
-/// [VarHandle][#VH_pushConstantRangeCount] - [Getter][#pushConstantRangeCount()] - [Setter][#pushConstantRangeCount(int)]
-/// ### pPushConstantRanges
-/// [VarHandle][#VH_pPushConstantRanges] - [Getter][#pPushConstantRanges()] - [Setter][#pPushConstantRanges(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineLayoutCreateInfo {
+/// ```
+/// struct VkPipelineLayoutCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkPipelineLayoutCreateFlags flags;
 ///     uint32_t setLayoutCount;
-///     const VkDescriptorSetLayout * pSetLayouts;
+///     const VkDescriptorSetLayout* pSetLayouts;
 ///     uint32_t pushConstantRangeCount;
-///     const VkPushConstantRange * pPushConstantRanges;
-/// } VkPipelineLayoutCreateInfo;
+///     const VkPushConstantRange* pPushConstantRanges;
+/// };
 /// ```
-public sealed class VkPipelineLayoutCreateInfo extends Struct {
+public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineLayoutCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -63,18 +47,46 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
         ValueLayout.JAVA_INT.withName("pushConstantRangeCount"),
         ValueLayout.ADDRESS.withName("pPushConstantRanges")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `setLayoutCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `setLayoutCount`.
+    public static final long OFFSET_setLayoutCount = LAYOUT.byteOffset(PathElement.groupElement("setLayoutCount"));
+    /// The memory layout of `setLayoutCount`.
+    public static final MemoryLayout LAYOUT_setLayoutCount = LAYOUT.select(PathElement.groupElement("setLayoutCount"));
+    /// The [VarHandle] of `setLayoutCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_setLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("setLayoutCount"));
+    /// The byte offset of `pSetLayouts`.
+    public static final long OFFSET_pSetLayouts = LAYOUT.byteOffset(PathElement.groupElement("pSetLayouts"));
+    /// The memory layout of `pSetLayouts`.
+    public static final MemoryLayout LAYOUT_pSetLayouts = LAYOUT.select(PathElement.groupElement("pSetLayouts"));
     /// The [VarHandle] of `pSetLayouts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSetLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayouts"));
-    /// The [VarHandle] of `pushConstantRangeCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pushConstantRangeCount`.
+    public static final long OFFSET_pushConstantRangeCount = LAYOUT.byteOffset(PathElement.groupElement("pushConstantRangeCount"));
+    /// The memory layout of `pushConstantRangeCount`.
+    public static final MemoryLayout LAYOUT_pushConstantRangeCount = LAYOUT.select(PathElement.groupElement("pushConstantRangeCount"));
+    /// The [VarHandle] of `pushConstantRangeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pushConstantRangeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pushConstantRangeCount"));
+    /// The byte offset of `pPushConstantRanges`.
+    public static final long OFFSET_pPushConstantRanges = LAYOUT.byteOffset(PathElement.groupElement("pPushConstantRanges"));
+    /// The memory layout of `pPushConstantRanges`.
+    public static final MemoryLayout LAYOUT_pPushConstantRanges = LAYOUT.select(PathElement.groupElement("pPushConstantRanges"));
     /// The [VarHandle] of `pPushConstantRanges` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPushConstantRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstantRanges"));
 
@@ -85,19 +97,14 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineLayoutCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment); }
-
-    /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineLayoutCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineLayoutCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
     /// @return the allocated `VkPipelineLayoutCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineLayoutCreateInfo`
-    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineLayoutCreateFlags") int flags, @CType("uint32_t") int setLayoutCount, @CType("const VkDescriptorSetLayout *") MemorySegment pSetLayouts, @CType("uint32_t") int pushConstantRangeCount, @CType("const VkPushConstantRange *") MemorySegment pPushConstantRanges) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineLayoutCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineLayoutCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineLayoutCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPipelineLayoutCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo pNext(@CType("const void *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineLayoutCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayoutCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineLayoutCreateFlags") int flags() { return VkPipelineLayoutCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineLayoutCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineLayoutCreateFlags") int value) { VkPipelineLayoutCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo flags(@CType("VkPipelineLayoutCreateFlags") int value) { VkPipelineLayoutCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `setLayoutCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_setLayoutCount(MemorySegment segment, long index) { return (int) VH_setLayoutCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int setLayoutCount(MemorySegment segment, long index) { return (int) VH_setLayoutCount.get(segment, 0L, index); }
     /// {@return `setLayoutCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_setLayoutCount(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_setLayoutCount(segment, 0L); }
-    /// {@return `setLayoutCount`}
-    public @CType("uint32_t") int setLayoutCount() { return VkPipelineLayoutCreateInfo.get_setLayoutCount(this.segment()); }
+    public int setLayoutCount() { return setLayoutCount(this.segment(), 0L); }
     /// Sets `setLayoutCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_setLayoutCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_setLayoutCount.set(segment, 0L, index, value); }
-    /// Sets `setLayoutCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_setLayoutCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_setLayoutCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void setLayoutCount(MemorySegment segment, long index, int value) { VH_setLayoutCount.set(segment, 0L, index, value); }
     /// Sets `setLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo setLayoutCount(@CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_setLayoutCount(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo setLayoutCount(int value) { setLayoutCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pSetLayouts` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkDescriptorSetLayout *") MemorySegment get_pSetLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayouts.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSetLayouts(MemorySegment segment, long index) { return (MemorySegment) VH_pSetLayouts.get(segment, 0L, index); }
     /// {@return `pSetLayouts`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkDescriptorSetLayout *") MemorySegment get_pSetLayouts(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_pSetLayouts(segment, 0L); }
-    /// {@return `pSetLayouts`}
-    public @CType("const VkDescriptorSetLayout *") MemorySegment pSetLayouts() { return VkPipelineLayoutCreateInfo.get_pSetLayouts(this.segment()); }
+    public MemorySegment pSetLayouts() { return pSetLayouts(this.segment(), 0L); }
     /// Sets `pSetLayouts` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSetLayouts(MemorySegment segment, long index, @CType("const VkDescriptorSetLayout *") MemorySegment value) { VH_pSetLayouts.set(segment, 0L, index, value); }
-    /// Sets `pSetLayouts` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSetLayouts(MemorySegment segment, @CType("const VkDescriptorSetLayout *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pSetLayouts(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSetLayouts(MemorySegment segment, long index, MemorySegment value) { VH_pSetLayouts.set(segment, 0L, index, value); }
     /// Sets `pSetLayouts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo pSetLayouts(@CType("const VkDescriptorSetLayout *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pSetLayouts(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo pSetLayouts(MemorySegment value) { pSetLayouts(this.segment(), 0L, value); return this; }
 
     /// {@return `pushConstantRangeCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_pushConstantRangeCount(MemorySegment segment, long index) { return (int) VH_pushConstantRangeCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pushConstantRangeCount(MemorySegment segment, long index) { return (int) VH_pushConstantRangeCount.get(segment, 0L, index); }
     /// {@return `pushConstantRangeCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_pushConstantRangeCount(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_pushConstantRangeCount(segment, 0L); }
-    /// {@return `pushConstantRangeCount`}
-    public @CType("uint32_t") int pushConstantRangeCount() { return VkPipelineLayoutCreateInfo.get_pushConstantRangeCount(this.segment()); }
+    public int pushConstantRangeCount() { return pushConstantRangeCount(this.segment(), 0L); }
     /// Sets `pushConstantRangeCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pushConstantRangeCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_pushConstantRangeCount.set(segment, 0L, index, value); }
-    /// Sets `pushConstantRangeCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pushConstantRangeCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_pushConstantRangeCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pushConstantRangeCount(MemorySegment segment, long index, int value) { VH_pushConstantRangeCount.set(segment, 0L, index, value); }
     /// Sets `pushConstantRangeCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo pushConstantRangeCount(@CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_pushConstantRangeCount(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo pushConstantRangeCount(int value) { pushConstantRangeCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pPushConstantRanges` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPushConstantRange *") MemorySegment get_pPushConstantRanges(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstantRanges.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPushConstantRanges(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstantRanges.get(segment, 0L, index); }
     /// {@return `pPushConstantRanges`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPushConstantRange *") MemorySegment get_pPushConstantRanges(MemorySegment segment) { return VkPipelineLayoutCreateInfo.get_pPushConstantRanges(segment, 0L); }
-    /// {@return `pPushConstantRanges`}
-    public @CType("const VkPushConstantRange *") MemorySegment pPushConstantRanges() { return VkPipelineLayoutCreateInfo.get_pPushConstantRanges(this.segment()); }
+    public MemorySegment pPushConstantRanges() { return pPushConstantRanges(this.segment(), 0L); }
     /// Sets `pPushConstantRanges` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPushConstantRanges(MemorySegment segment, long index, @CType("const VkPushConstantRange *") MemorySegment value) { VH_pPushConstantRanges.set(segment, 0L, index, value); }
-    /// Sets `pPushConstantRanges` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPushConstantRanges(MemorySegment segment, @CType("const VkPushConstantRange *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pPushConstantRanges(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPushConstantRanges(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstantRanges.set(segment, 0L, index, value); }
     /// Sets `pPushConstantRanges` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineLayoutCreateInfo pPushConstantRanges(@CType("const VkPushConstantRange *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pPushConstantRanges(this.segment(), value); return this; }
+    public VkPipelineLayoutCreateInfo pPushConstantRanges(MemorySegment value) { pPushConstantRanges(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineLayoutCreateInfo].
     public static final class Buffer extends VkPipelineLayoutCreateInfo {
@@ -316,67 +269,67 @@ public sealed class VkPipelineLayoutCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineLayoutCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineLayoutCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineLayoutCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineLayoutCreateFlags") int flagsAt(long index) { return VkPipelineLayoutCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineLayoutCreateFlags") int value) { VkPipelineLayoutCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `setLayoutCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int setLayoutCountAt(long index) { return VkPipelineLayoutCreateInfo.get_setLayoutCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int setLayoutCountAt(long index) { return setLayoutCount(this.segment(), index); }
         /// Sets `setLayoutCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer setLayoutCountAt(long index, @CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_setLayoutCount(this.segment(), index, value); return this; }
+        public Buffer setLayoutCountAt(long index, int value) { setLayoutCount(this.segment(), index, value); return this; }
 
         /// {@return `pSetLayouts` at the given index}
-        /// @param index the index
-        public @CType("const VkDescriptorSetLayout *") MemorySegment pSetLayoutsAt(long index) { return VkPipelineLayoutCreateInfo.get_pSetLayouts(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
         /// Sets `pSetLayouts` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSetLayoutsAt(long index, @CType("const VkDescriptorSetLayout *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pSetLayouts(this.segment(), index, value); return this; }
+        public Buffer pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
 
         /// {@return `pushConstantRangeCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int pushConstantRangeCountAt(long index) { return VkPipelineLayoutCreateInfo.get_pushConstantRangeCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pushConstantRangeCountAt(long index) { return pushConstantRangeCount(this.segment(), index); }
         /// Sets `pushConstantRangeCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pushConstantRangeCountAt(long index, @CType("uint32_t") int value) { VkPipelineLayoutCreateInfo.set_pushConstantRangeCount(this.segment(), index, value); return this; }
+        public Buffer pushConstantRangeCountAt(long index, int value) { pushConstantRangeCount(this.segment(), index, value); return this; }
 
         /// {@return `pPushConstantRanges` at the given index}
-        /// @param index the index
-        public @CType("const VkPushConstantRange *") MemorySegment pPushConstantRangesAt(long index) { return VkPipelineLayoutCreateInfo.get_pPushConstantRanges(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPushConstantRangesAt(long index) { return pPushConstantRanges(this.segment(), index); }
         /// Sets `pPushConstantRanges` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPushConstantRangesAt(long index, @CType("const VkPushConstantRange *") MemorySegment value) { VkPipelineLayoutCreateInfo.set_pPushConstantRanges(this.segment(), index, value); return this; }
+        public Buffer pPushConstantRangesAt(long index, MemorySegment value) { pPushConstantRanges(this.segment(), index, value); return this; }
 
     }
 }

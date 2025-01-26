@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.upcall;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*VkFaultCallbackFunction)(VkBool32 unrecordedFaults, uint32_t faultCount, const VkFaultData* pFaults);
+/// ```
 @FunctionalInterface
 public interface VkFaultCallbackFunction extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(VkFaultCallbackFunction.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(VkFaultCallbackFunction.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `VkFaultCallbackFunction`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, VkFaultCallbackFunction func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("void") void invoke(@CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") MemorySegment pFaults);
+    void invoke(int unrecordedFaults, int faultCount, MemorySegment pFaults);
+
+    /// The target method of the upcall.
+    default void invoke_(int unrecordedFaults, int faultCount, MemorySegment pFaults) {
+        invoke(unrecordedFaults, faultCount, pFaults);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("void") void invoke(MemorySegment stub, @CType("VkBool32") int unrecordedFaults, @CType("uint32_t") int faultCount, @CType("const VkFaultData *") MemorySegment pFaults) {
-        try { HANDLE.invokeExact(stub, unrecordedFaults, faultCount, pFaults); }
-        catch (Throwable e) { throw new RuntimeException("error in VkFaultCallbackFunction::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static VkFaultCallbackFunction wrap(MemorySegment stub) {
-        return (unrecordedFaults, faultCount, pFaults) ->
-            invoke(stub, unrecordedFaults, faultCount, pFaults);
-    }
 }

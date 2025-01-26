@@ -18,7 +18,6 @@
 package overrungl.vulkan.qnx;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -35,19 +34,22 @@ public class VKQNXExternalMemoryScreenBuffer {
     public static final class Handles {
         public static final MethodHandle MH_vkGetScreenBufferPropertiesQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetScreenBufferPropertiesQNX;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetScreenBufferPropertiesQNX = func.invoke(device, "vkGetScreenBufferPropertiesQNX");
         }
     }
 
-    public VKQNXExternalMemoryScreenBuffer(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKQNXExternalMemoryScreenBuffer(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetScreenBufferPropertiesQNX(@CType("VkDevice") MemorySegment device, @CType("const struct _screen_buffer *") MemorySegment buffer, @CType("VkScreenBufferPropertiesQNX *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetScreenBufferPropertiesQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
+    /// ```
+    /// VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, const _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
+    /// ```
+    public int GetScreenBufferPropertiesQNX(MemorySegment device, MemorySegment buffer, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetScreenBufferPropertiesQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
         try { return (int) Handles.MH_vkGetScreenBufferPropertiesQNX.invokeExact(handles.PFN_vkGetScreenBufferPropertiesQNX, device, buffer, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetScreenBufferPropertiesQNX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetScreenBufferPropertiesQNX", e); }
     }
 
 }

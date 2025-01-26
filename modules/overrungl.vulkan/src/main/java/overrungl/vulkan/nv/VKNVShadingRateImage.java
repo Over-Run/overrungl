@@ -18,11 +18,9 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
 public class VKNVShadingRateImage {
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0;
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV = 1;
@@ -45,48 +43,57 @@ public class VKNVShadingRateImage {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV = 1000164000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV = 1000164001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV = 1000164002;
+    public static final int VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV = 1000226003;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV = 1000164004;
+    public static final int VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV = 0x00800000;
+    public static final int VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = 0x00000100;
+    public static final int VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = 0x00400000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV = 1000164005;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV = 1000164006;
-    public static final int VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV = VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR;
-    public static final int VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV = VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR;
-    public static final int VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR;
-    public static final int VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindShadingRateImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdBindShadingRateImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetViewportShadingRatePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetCoarseSampleOrderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdBindShadingRateImageNV;
         public final MemorySegment PFN_vkCmdSetViewportShadingRatePaletteNV;
         public final MemorySegment PFN_vkCmdSetCoarseSampleOrderNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdBindShadingRateImageNV = func.invoke(device, "vkCmdBindShadingRateImageNV");
             PFN_vkCmdSetViewportShadingRatePaletteNV = func.invoke(device, "vkCmdSetViewportShadingRatePaletteNV");
             PFN_vkCmdSetCoarseSampleOrderNV = func.invoke(device, "vkCmdSetCoarseSampleOrderNV");
         }
     }
 
-    public VKNVShadingRateImage(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVShadingRateImage(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdBindShadingRateImageNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkImageView") MemorySegment imageView, @CType("VkImageLayout") int imageLayout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBindShadingRateImageNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
+    /// ```
+    /// void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, VkImageView imageView, VkImageLayout imageLayout);
+    /// ```
+    public void CmdBindShadingRateImageNV(MemorySegment commandBuffer, long imageView, int imageLayout) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBindShadingRateImageNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
         try { Handles.MH_vkCmdBindShadingRateImageNV.invokeExact(handles.PFN_vkCmdBindShadingRateImageNV, commandBuffer, imageView, imageLayout); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdBindShadingRateImageNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdBindShadingRateImageNV", e); }
     }
 
-    public void CmdSetViewportShadingRatePaletteNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int firstViewport, @CType("uint32_t") int viewportCount, @CType("const VkShadingRatePaletteNV *") MemorySegment pShadingRatePalettes) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
+    /// ```
+    /// void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkShadingRatePaletteNV* pShadingRatePalettes);
+    /// ```
+    public void CmdSetViewportShadingRatePaletteNV(MemorySegment commandBuffer, int firstViewport, int viewportCount, MemorySegment pShadingRatePalettes) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
         try { Handles.MH_vkCmdSetViewportShadingRatePaletteNV.invokeExact(handles.PFN_vkCmdSetViewportShadingRatePaletteNV, commandBuffer, firstViewport, viewportCount, pShadingRatePalettes); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportShadingRatePaletteNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetViewportShadingRatePaletteNV", e); }
     }
 
-    public void CmdSetCoarseSampleOrderNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkCoarseSampleOrderTypeNV") int sampleOrderType, @CType("uint32_t") int customSampleOrderCount, @CType("const VkCoarseSampleOrderCustomNV *") MemorySegment pCustomSampleOrders) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetCoarseSampleOrderNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");
+    /// ```
+    /// void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, VkCoarseSampleOrderTypeNV sampleOrderType, uint32_t customSampleOrderCount, const VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
+    /// ```
+    public void CmdSetCoarseSampleOrderNV(MemorySegment commandBuffer, int sampleOrderType, int customSampleOrderCount, MemorySegment pCustomSampleOrders) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoarseSampleOrderNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");
         try { Handles.MH_vkCmdSetCoarseSampleOrderNV.invokeExact(handles.PFN_vkCmdSetCoarseSampleOrderNV, commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoarseSampleOrderNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoarseSampleOrderNV", e); }
     }
 
 }

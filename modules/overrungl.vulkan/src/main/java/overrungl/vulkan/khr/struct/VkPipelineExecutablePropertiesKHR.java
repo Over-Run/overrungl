@@ -15,67 +15,71 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### stages
-/// [VarHandle][#VH_stages] - [Getter][#stages()] - [Setter][#stages(int)]
-/// ### name
-/// [Byte offset][#OFFSET_name] - [Memory layout][#ML_name] - [Getter][#name()] - [Setter][#name(MemorySegment)]
-/// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(MemorySegment)]
-/// ### subgroupSize
-/// [VarHandle][#VH_subgroupSize] - [Getter][#subgroupSize()] - [Setter][#subgroupSize(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineExecutablePropertiesKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkShaderStageFlags stages;
-///     char[VK_MAX_DESCRIPTION_SIZE] name;
-///     char[VK_MAX_DESCRIPTION_SIZE] description;
-///     uint32_t subgroupSize;
-/// } VkPipelineExecutablePropertiesKHR;
 /// ```
-public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
+/// struct VkPipelineExecutablePropertiesKHR {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkShaderStageFlags stages;
+///     char name[256];
+///     char description[256];
+///     uint32_t subgroupSize;
+/// };
+/// ```
+public sealed class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// The struct layout of `VkPipelineExecutablePropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("stages"),
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("subgroupSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `stages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stages`.
+    public static final long OFFSET_stages = LAYOUT.byteOffset(PathElement.groupElement("stages"));
+    /// The memory layout of `stages`.
+    public static final MemoryLayout LAYOUT_stages = LAYOUT.select(PathElement.groupElement("stages"));
+    /// The [VarHandle] of `stages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stages"));
     /// The byte offset of `name`.
     public static final long OFFSET_name = LAYOUT.byteOffset(PathElement.groupElement("name"));
     /// The memory layout of `name`.
-    public static final MemoryLayout ML_name = LAYOUT.select(PathElement.groupElement("name"));
+    public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
+    /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement());
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
-    public static final MemoryLayout ML_description = LAYOUT.select(PathElement.groupElement("description"));
-    /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
+    /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
+    /// The byte offset of `subgroupSize`.
+    public static final long OFFSET_subgroupSize = LAYOUT.byteOffset(PathElement.groupElement("subgroupSize"));
+    /// The memory layout of `subgroupSize`.
+    public static final MemoryLayout LAYOUT_subgroupSize = LAYOUT.select(PathElement.groupElement("subgroupSize"));
+    /// The [VarHandle] of `subgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSize"));
 
     /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
@@ -85,19 +89,14 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutablePropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineExecutablePropertiesKHR(segment); }
-
-    /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutablePropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineExecutablePropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineExecutablePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutablePropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineExecutablePropertiesKHR` with the given segment.
     ///
@@ -105,7 +104,7 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +117,6 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
     /// @return the allocated `VkPipelineExecutablePropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
-    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkShaderStageFlags") int stages, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment name, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description, @CType("uint32_t") int subgroupSize) { return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name).description(description).subgroupSize(subgroupSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,145 +124,141 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineExecutablePropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineExecutablePropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR sType(@CType("VkStructureType") int value) { VkPipelineExecutablePropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `stages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkShaderStageFlags") int get_stages(MemorySegment segment, long index) { return (int) VH_stages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stages(MemorySegment segment, long index) { return (int) VH_stages.get(segment, 0L, index); }
     /// {@return `stages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkShaderStageFlags") int get_stages(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_stages(segment, 0L); }
-    /// {@return `stages`}
-    public @CType("VkShaderStageFlags") int stages() { return VkPipelineExecutablePropertiesKHR.get_stages(this.segment()); }
+    public int stages() { return stages(this.segment(), 0L); }
     /// Sets `stages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stages(MemorySegment segment, long index, @CType("VkShaderStageFlags") int value) { VH_stages.set(segment, 0L, index, value); }
-    /// Sets `stages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stages(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPipelineExecutablePropertiesKHR.set_stages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stages(MemorySegment segment, long index, int value) { VH_stages.set(segment, 0L, index, value); }
     /// Sets `stages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR stages(@CType("VkShaderStageFlags") int value) { VkPipelineExecutablePropertiesKHR.set_stages(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR stages(int value) { stages(this.segment(), 0L, value); return this; }
 
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), ML_name); }
-    /// {@return `name`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), LAYOUT_name); }
+    /// {@return `name` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_name(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_name(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get(segment, 0L, index, index0); }
     /// {@return `name`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment name() { return VkPipelineExecutablePropertiesKHR.get_name(this.segment()); }
+    public MemorySegment name() { return name(this.segment(), 0L); }
+    /// {@return `name`}
+    /// @param index0 the Index 0 of the array
+    public byte name(long index0) { return name(this.segment(), 0L, index0); }
     /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_name(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), ML_name.byteSize()); }
-    /// Sets `name` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void name(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), LAYOUT_name.byteSize()); }
+    /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_name(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.set(segment, 0L, index, index0, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR name(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR name(MemorySegment value) { name(this.segment(), 0L, value); return this; }
+    /// Sets `name` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutablePropertiesKHR name(long index0, byte value) { name(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
-    /// {@return `description`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), LAYOUT_description); }
+    /// {@return `description` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment get_description(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_description(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment description() { return VkPipelineExecutablePropertiesKHR.get_description(this.segment()); }
+    public MemorySegment description() { return description(this.segment(), 0L); }
+    /// {@return `description`}
+    /// @param index0 the Index 0 of the array
+    public byte description(long index0) { return description(this.segment(), 0L, index0); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
-    /// Sets `description` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void description(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), LAYOUT_description.byteSize()); }
+    /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR description(MemorySegment value) { description(this.segment(), 0L, value); return this; }
+    /// Sets `description` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutablePropertiesKHR description(long index0, byte value) { description(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `subgroupSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subgroupSize(MemorySegment segment, long index) { return (int) VH_subgroupSize.get(segment, 0L, index); }
     /// {@return `subgroupSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subgroupSize(MemorySegment segment) { return VkPipelineExecutablePropertiesKHR.get_subgroupSize(segment, 0L); }
-    /// {@return `subgroupSize`}
-    public @CType("uint32_t") int subgroupSize() { return VkPipelineExecutablePropertiesKHR.get_subgroupSize(this.segment()); }
+    public int subgroupSize() { return subgroupSize(this.segment(), 0L); }
     /// Sets `subgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subgroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subgroupSize.set(segment, 0L, index, value); }
-    /// Sets `subgroupSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subgroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineExecutablePropertiesKHR.set_subgroupSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subgroupSize(MemorySegment segment, long index, int value) { VH_subgroupSize.set(segment, 0L, index, value); }
     /// Sets `subgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutablePropertiesKHR subgroupSize(@CType("uint32_t") int value) { VkPipelineExecutablePropertiesKHR.set_subgroupSize(this.segment(), value); return this; }
+    public VkPipelineExecutablePropertiesKHR subgroupSize(int value) { subgroupSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineExecutablePropertiesKHR].
     public static final class Buffer extends VkPipelineExecutablePropertiesKHR {
@@ -293,58 +283,78 @@ public sealed class VkPipelineExecutablePropertiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineExecutablePropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineExecutablePropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPipelineExecutablePropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `stages` at the given index}
-        /// @param index the index
-        public @CType("VkShaderStageFlags") int stagesAt(long index) { return VkPipelineExecutablePropertiesKHR.get_stages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stagesAt(long index) { return stages(this.segment(), index); }
         /// Sets `stages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stagesAt(long index, @CType("VkShaderStageFlags") int value) { VkPipelineExecutablePropertiesKHR.set_stages(this.segment(), index, value); return this; }
+        public Buffer stagesAt(long index, int value) { stages(this.segment(), index, value); return this; }
 
         /// {@return `name` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment nameAt(long index) { return VkPipelineExecutablePropertiesKHR.get_name(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+        /// {@return `name` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte nameAt(long index, long index0) { return name(this.segment(), index, index0); }
         /// Sets `name` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer nameAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_name(this.segment(), index, value); return this; }
+        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
+        /// Sets `name` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
 
         /// {@return `description` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment descriptionAt(long index) { return VkPipelineExecutablePropertiesKHR.get_description(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+        /// {@return `description` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
         /// Sets `description` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") MemorySegment value) { VkPipelineExecutablePropertiesKHR.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+        /// Sets `description` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
         /// {@return `subgroupSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subgroupSizeAt(long index) { return VkPipelineExecutablePropertiesKHR.get_subgroupSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subgroupSizeAt(long index) { return subgroupSize(this.segment(), index); }
         /// Sets `subgroupSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subgroupSizeAt(long index, @CType("uint32_t") int value) { VkPipelineExecutablePropertiesKHR.set_subgroupSize(this.segment(), index, value); return this; }
+        public Buffer subgroupSizeAt(long index, int value) { subgroupSize(this.segment(), index, value); return this; }
 
     }
 }

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKQCOMFragmentDensityMapOffset {
     public static final int VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 2;

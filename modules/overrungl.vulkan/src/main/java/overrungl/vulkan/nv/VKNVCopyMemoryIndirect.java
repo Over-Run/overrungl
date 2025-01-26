@@ -18,7 +18,6 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,29 +29,35 @@ public class VKNVCopyMemoryIndirect {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdCopyMemoryIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdCopyMemoryToImageIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyMemoryToImageIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdCopyMemoryIndirectNV;
         public final MemorySegment PFN_vkCmdCopyMemoryToImageIndirectNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdCopyMemoryIndirectNV = func.invoke(device, "vkCmdCopyMemoryIndirectNV");
             PFN_vkCmdCopyMemoryToImageIndirectNV = func.invoke(device, "vkCmdCopyMemoryToImageIndirectNV");
         }
     }
 
-    public VKNVCopyMemoryIndirect(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVCopyMemoryIndirect(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdCopyMemoryIndirectNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkDeviceAddress") long copyBufferAddress, @CType("uint32_t") int copyCount, @CType("uint32_t") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdCopyMemoryIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectNV");
+    /// ```
+    /// void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride);
+    /// ```
+    public void CmdCopyMemoryIndirectNV(MemorySegment commandBuffer, long copyBufferAddress, int copyCount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyMemoryIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectNV");
         try { Handles.MH_vkCmdCopyMemoryIndirectNV.invokeExact(handles.PFN_vkCmdCopyMemoryIndirectNV, commandBuffer, copyBufferAddress, copyCount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryIndirectNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdCopyMemoryIndirectNV", e); }
     }
 
-    public void CmdCopyMemoryToImageIndirectNV(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkDeviceAddress") long copyBufferAddress, @CType("uint32_t") int copyCount, @CType("uint32_t") int stride, @CType("VkImage") MemorySegment dstImage, @CType("VkImageLayout") int dstImageLayout, @CType("const VkImageSubresourceLayers *") MemorySegment pImageSubresources) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdCopyMemoryToImageIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectNV");
+    /// ```
+    /// void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride, VkImage dstImage, VkImageLayout dstImageLayout, const VkImageSubresourceLayers* pImageSubresources);
+    /// ```
+    public void CmdCopyMemoryToImageIndirectNV(MemorySegment commandBuffer, long copyBufferAddress, int copyCount, int stride, long dstImage, int dstImageLayout, MemorySegment pImageSubresources) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyMemoryToImageIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectNV");
         try { Handles.MH_vkCmdCopyMemoryToImageIndirectNV.invokeExact(handles.PFN_vkCmdCopyMemoryToImageIndirectNV, commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryToImageIndirectNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdCopyMemoryToImageIndirectNV", e); }
     }
 
 }

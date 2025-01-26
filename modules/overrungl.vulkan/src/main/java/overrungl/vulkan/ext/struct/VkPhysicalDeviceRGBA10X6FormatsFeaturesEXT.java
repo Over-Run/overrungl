@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### formatRgba10x6WithoutYCbCrSampler
-/// [VarHandle][#VH_formatRgba10x6WithoutYCbCrSampler] - [Getter][#formatRgba10x6WithoutYCbCrSampler()] - [Setter][#formatRgba10x6WithoutYCbCrSampler(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 formatRgba10x6WithoutYCbCrSampler;
-/// } VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT;
 /// ```
-public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
+/// struct VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 formatRgba10x6WithoutYCbCrSampler;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("formatRgba10x6WithoutYCbCrSampler")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `formatRgba10x6WithoutYCbCrSampler` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `formatRgba10x6WithoutYCbCrSampler`.
+    public static final long OFFSET_formatRgba10x6WithoutYCbCrSampler = LAYOUT.byteOffset(PathElement.groupElement("formatRgba10x6WithoutYCbCrSampler"));
+    /// The memory layout of `formatRgba10x6WithoutYCbCrSampler`.
+    public static final MemoryLayout LAYOUT_formatRgba10x6WithoutYCbCrSampler = LAYOUT.select(PathElement.groupElement("formatRgba10x6WithoutYCbCrSampler"));
+    /// The [VarHandle] of `formatRgba10x6WithoutYCbCrSampler` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_formatRgba10x6WithoutYCbCrSampler = LAYOUT.arrayElementVarHandle(PathElement.groupElement("formatRgba10x6WithoutYCbCrSampler"));
 
     /// Creates `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
     /// Creates `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int formatRgba10x6WithoutYCbCrSampler) { return alloc(allocator).sType(sType).pNext(pNext).formatRgba10x6WithoutYCbCrSampler(formatRgba10x6WithoutYCbCrSampler); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `formatRgba10x6WithoutYCbCrSampler` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_formatRgba10x6WithoutYCbCrSampler(MemorySegment segment, long index) { return (int) VH_formatRgba10x6WithoutYCbCrSampler.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int formatRgba10x6WithoutYCbCrSampler(MemorySegment segment, long index) { return (int) VH_formatRgba10x6WithoutYCbCrSampler.get(segment, 0L, index); }
     /// {@return `formatRgba10x6WithoutYCbCrSampler`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_formatRgba10x6WithoutYCbCrSampler(MemorySegment segment) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_formatRgba10x6WithoutYCbCrSampler(segment, 0L); }
-    /// {@return `formatRgba10x6WithoutYCbCrSampler`}
-    public @CType("VkBool32") int formatRgba10x6WithoutYCbCrSampler() { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_formatRgba10x6WithoutYCbCrSampler(this.segment()); }
+    public int formatRgba10x6WithoutYCbCrSampler() { return formatRgba10x6WithoutYCbCrSampler(this.segment(), 0L); }
     /// Sets `formatRgba10x6WithoutYCbCrSampler` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_formatRgba10x6WithoutYCbCrSampler(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_formatRgba10x6WithoutYCbCrSampler.set(segment, 0L, index, value); }
-    /// Sets `formatRgba10x6WithoutYCbCrSampler` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_formatRgba10x6WithoutYCbCrSampler(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_formatRgba10x6WithoutYCbCrSampler(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void formatRgba10x6WithoutYCbCrSampler(MemorySegment segment, long index, int value) { VH_formatRgba10x6WithoutYCbCrSampler.set(segment, 0L, index, value); }
     /// Sets `formatRgba10x6WithoutYCbCrSampler` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT formatRgba10x6WithoutYCbCrSampler(@CType("VkBool32") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_formatRgba10x6WithoutYCbCrSampler(this.segment(), value); return this; }
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT formatRgba10x6WithoutYCbCrSampler(int value) { formatRgba10x6WithoutYCbCrSampler(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `formatRgba10x6WithoutYCbCrSampler` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int formatRgba10x6WithoutYCbCrSamplerAt(long index) { return VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.get_formatRgba10x6WithoutYCbCrSampler(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int formatRgba10x6WithoutYCbCrSamplerAt(long index) { return formatRgba10x6WithoutYCbCrSampler(this.segment(), index); }
         /// Sets `formatRgba10x6WithoutYCbCrSampler` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer formatRgba10x6WithoutYCbCrSamplerAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT.set_formatRgba10x6WithoutYCbCrSampler(this.segment(), index, value); return this; }
+        public Buffer formatRgba10x6WithoutYCbCrSamplerAt(long index, int value) { formatRgba10x6WithoutYCbCrSampler(this.segment(), index, value); return this; }
 
     }
 }

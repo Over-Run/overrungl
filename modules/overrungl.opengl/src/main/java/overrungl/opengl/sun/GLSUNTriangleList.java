@@ -72,7 +72,7 @@ public final class GLSUNTriangleList {
     }
 
     /// ```
-    /// void glReplacementCodeuiSUN(unsigned int code);
+    /// void glReplacementCodeuiSUN(GLuint code);
     /// ```
     public void ReplacementCodeuiSUN(int code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeuiSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiSUN");
@@ -81,7 +81,7 @@ public final class GLSUNTriangleList {
     }
 
     /// ```
-    /// void glReplacementCodeusSUN(unsigned short code);
+    /// void glReplacementCodeusSUN(GLushort code);
     /// ```
     public void ReplacementCodeusSUN(short code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeusSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusSUN");
@@ -90,7 +90,7 @@ public final class GLSUNTriangleList {
     }
 
     /// ```
-    /// void glReplacementCodeubSUN(unsigned char code);
+    /// void glReplacementCodeubSUN(GLubyte code);
     /// ```
     public void ReplacementCodeubSUN(byte code) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodeubSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubSUN");
@@ -126,7 +126,7 @@ public final class GLSUNTriangleList {
     }
 
     /// ```
-    /// void glReplacementCodePointerSUN(unsigned int type, int stride, const void** pointer);
+    /// void glReplacementCodePointerSUN(GLenum type, GLsizei stride, const void** pointer);
     /// ```
     public void ReplacementCodePointerSUN(int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReplacementCodePointerSUN)) throw new SymbolNotFoundError("Symbol not found: glReplacementCodePointerSUN");

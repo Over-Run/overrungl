@@ -47,7 +47,7 @@ public final class GLNVDepthBufferFloat {
     }
 
     /// ```
-    /// void glDepthRangedNV(double zNear, double zFar);
+    /// void glDepthRangedNV(GLdouble zNear, GLdouble zFar);
     /// ```
     public void DepthRangedNV(double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangedNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangedNV");
@@ -56,7 +56,7 @@ public final class GLNVDepthBufferFloat {
     }
 
     /// ```
-    /// void glClearDepthdNV(double depth);
+    /// void glClearDepthdNV(GLdouble depth);
     /// ```
     public void ClearDepthdNV(double depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthdNV)) throw new SymbolNotFoundError("Symbol not found: glClearDepthdNV");
@@ -65,7 +65,7 @@ public final class GLNVDepthBufferFloat {
     }
 
     /// ```
-    /// void glDepthBoundsdNV(double zmin, double zmax);
+    /// void glDepthBoundsdNV(GLdouble zmin, GLdouble zmax);
     /// ```
     public void DepthBoundsdNV(double zmin, double zmax) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsdNV)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsdNV");

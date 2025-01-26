@@ -46,7 +46,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFuncIndexedAMD(unsigned int buf, unsigned int src, unsigned int dst);
+    /// void glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenum dst);
     /// ```
     public void BlendFuncIndexedAMD(int buf, int src, int dst) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncIndexedAMD");
@@ -55,7 +55,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFuncSeparateIndexedAMD(unsigned int buf, unsigned int srcRGB, unsigned int dstRGB, unsigned int srcAlpha, unsigned int dstAlpha);
+    /// void glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
     /// ```
     public void BlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateIndexedAMD");
@@ -64,7 +64,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationIndexedAMD(unsigned int buf, unsigned int mode);
+    /// void glBlendEquationIndexedAMD(GLuint buf, GLenum mode);
     /// ```
     public void BlendEquationIndexedAMD(int buf, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationIndexedAMD");
@@ -73,7 +73,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationSeparateIndexedAMD(unsigned int buf, unsigned int modeRGB, unsigned int modeAlpha);
+    /// void glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
     /// ```
     public void BlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateIndexedAMD)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateIndexedAMD");

@@ -18,7 +18,6 @@
 package overrungl.vulkan.valve;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -31,29 +30,35 @@ public class VKVALVEDescriptorSetHostMapping {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE;
         public final MemorySegment PFN_vkGetDescriptorSetHostMappingVALVE;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE = func.invoke(device, "vkGetDescriptorSetLayoutHostMappingInfoVALVE");
             PFN_vkGetDescriptorSetHostMappingVALVE = func.invoke(device, "vkGetDescriptorSetHostMappingVALVE");
         }
     }
 
-    public VKVALVEDescriptorSetHostMapping(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKVALVEDescriptorSetHostMapping(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void GetDescriptorSetLayoutHostMappingInfoVALVE(@CType("VkDevice") MemorySegment device, @CType("const VkDescriptorSetBindingReferenceVALVE *") MemorySegment pBindingReference, @CType("VkDescriptorSetLayoutHostMappingInfoVALVE *") MemorySegment pHostMapping) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
+    /// ```
+    /// void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, const VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
+    /// ```
+    public void GetDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment device, MemorySegment pBindingReference, MemorySegment pHostMapping) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
         try { Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(handles.PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device, pBindingReference, pHostMapping); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutHostMappingInfoVALVE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDescriptorSetLayoutHostMappingInfoVALVE", e); }
     }
 
-    public void GetDescriptorSetHostMappingVALVE(@CType("VkDevice") MemorySegment device, @CType("VkDescriptorSet") MemorySegment descriptorSet, @CType("void **") MemorySegment ppData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDescriptorSetHostMappingVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
+    /// ```
+    /// void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData);
+    /// ```
+    public void GetDescriptorSetHostMappingVALVE(MemorySegment device, long descriptorSet, MemorySegment ppData) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDescriptorSetHostMappingVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
         try { Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(handles.PFN_vkGetDescriptorSetHostMappingVALVE, device, descriptorSet, ppData); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetHostMappingVALVE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetDescriptorSetHostMappingVALVE", e); }
     }
 
 }

@@ -49,6 +49,7 @@ fn ALCboolean  alcMakeContextCurrent(ALCcontext *context);
 fn void        alcProcessContext(ALCcontext *context);
 fn void        alcSuspendContext(ALCcontext *context);
 fn void        alcDestroyContext(ALCcontext *context);
+fn ALCcontext* alcGetCurrentContext();
 fn ALCdevice*  alcGetContextsDevice(ALCcontext *context);
 
 fn ALCdevice* alcOpenDevice(const ALCchar *devicename);

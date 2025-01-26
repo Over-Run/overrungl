@@ -49,7 +49,7 @@ public final class GLEXTTexture3D {
     }
 
     /// ```
-    /// void glTexImage3DEXT(unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexImage3DEXT(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT");
@@ -58,7 +58,7 @@ public final class GLEXTTexture3D {
     }
 
     /// ```
-    /// void glTexSubImage3DEXT(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");

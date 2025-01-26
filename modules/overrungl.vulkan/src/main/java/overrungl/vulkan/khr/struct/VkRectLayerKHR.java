@@ -15,34 +15,26 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### offset
-/// [Byte offset][#OFFSET_offset] - [Memory layout][#ML_offset] - [Getter][#offset()] - [Setter][#offset(MemorySegment)]
-/// ### extent
-/// [Byte offset][#OFFSET_extent] - [Memory layout][#ML_extent] - [Getter][#extent()] - [Setter][#extent(MemorySegment)]
-/// ### layer
-/// [VarHandle][#VH_layer] - [Getter][#layer()] - [Setter][#layer(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRectLayerKHR {
+/// ```
+/// struct VkRectLayerKHR {
 ///     VkOffset2D offset;
 ///     VkExtent2D extent;
 ///     uint32_t layer;
-/// } VkRectLayerKHR;
+/// };
 /// ```
-public sealed class VkRectLayerKHR extends Struct {
+public sealed class VkRectLayerKHR extends GroupType {
     /// The struct layout of `VkRectLayerKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("offset"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("extent"),
         ValueLayout.JAVA_INT.withName("layer")
@@ -50,12 +42,16 @@ public sealed class VkRectLayerKHR extends Struct {
     /// The byte offset of `offset`.
     public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
     /// The memory layout of `offset`.
-    public static final MemoryLayout ML_offset = LAYOUT.select(PathElement.groupElement("offset"));
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
     /// The byte offset of `extent`.
     public static final long OFFSET_extent = LAYOUT.byteOffset(PathElement.groupElement("extent"));
     /// The memory layout of `extent`.
-    public static final MemoryLayout ML_extent = LAYOUT.select(PathElement.groupElement("extent"));
-    /// The [VarHandle] of `layer` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_extent = LAYOUT.select(PathElement.groupElement("extent"));
+    /// The byte offset of `layer`.
+    public static final long OFFSET_layer = LAYOUT.byteOffset(PathElement.groupElement("layer"));
+    /// The memory layout of `layer`.
+    public static final MemoryLayout LAYOUT_layer = LAYOUT.select(PathElement.groupElement("layer"));
+    /// The [VarHandle] of `layer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer"));
 
     /// Creates `VkRectLayerKHR` with the given segment.
@@ -65,19 +61,14 @@ public sealed class VkRectLayerKHR extends Struct {
     /// Creates `VkRectLayerKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRectLayerKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRectLayerKHR(segment); }
-
-    /// Creates `VkRectLayerKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRectLayerKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRectLayerKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRectLayerKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRectLayerKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRectLayerKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRectLayerKHR` with the given segment.
     ///
@@ -85,7 +76,7 @@ public sealed class VkRectLayerKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRectLayerKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -98,11 +89,6 @@ public sealed class VkRectLayerKHR extends Struct {
     /// @return the allocated `VkRectLayerKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRectLayerKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRectLayerKHR`
-    public static VkRectLayerKHR allocInit(SegmentAllocator allocator, @CType("VkOffset2D") MemorySegment offset, @CType("VkExtent2D") MemorySegment extent, @CType("uint32_t") int layer) { return alloc(allocator).offset(offset).extent(extent).layer(layer); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -110,76 +96,55 @@ public sealed class VkRectLayerKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkOffset2D") MemorySegment get_offset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_offset, index), ML_offset); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment offset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset); }
     /// {@return `offset`}
-    /// @param segment the segment of the struct
-    public static @CType("VkOffset2D") MemorySegment get_offset(MemorySegment segment) { return VkRectLayerKHR.get_offset(segment, 0L); }
-    /// {@return `offset`}
-    public @CType("VkOffset2D") MemorySegment offset() { return VkRectLayerKHR.get_offset(this.segment()); }
+    public MemorySegment offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, long index, @CType("VkOffset2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_offset, index), ML_offset.byteSize()); }
-    /// Sets `offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, @CType("VkOffset2D") MemorySegment value) { VkRectLayerKHR.set_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void offset(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_offset, index), LAYOUT_offset.byteSize()); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRectLayerKHR offset(@CType("VkOffset2D") MemorySegment value) { VkRectLayerKHR.set_offset(this.segment(), value); return this; }
+    public VkRectLayerKHR offset(MemorySegment value) { offset(this.segment(), 0L, value); return this; }
 
     /// {@return `extent` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") MemorySegment get_extent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_extent, index), ML_extent); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment extent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent); }
     /// {@return `extent`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") MemorySegment get_extent(MemorySegment segment) { return VkRectLayerKHR.get_extent(segment, 0L); }
-    /// {@return `extent`}
-    public @CType("VkExtent2D") MemorySegment extent() { return VkRectLayerKHR.get_extent(this.segment()); }
+    public MemorySegment extent() { return extent(this.segment(), 0L); }
     /// Sets `extent` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_extent(MemorySegment segment, long index, @CType("VkExtent2D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_extent, index), ML_extent.byteSize()); }
-    /// Sets `extent` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_extent(MemorySegment segment, @CType("VkExtent2D") MemorySegment value) { VkRectLayerKHR.set_extent(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void extent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_extent, index), LAYOUT_extent.byteSize()); }
     /// Sets `extent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRectLayerKHR extent(@CType("VkExtent2D") MemorySegment value) { VkRectLayerKHR.set_extent(this.segment(), value); return this; }
+    public VkRectLayerKHR extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
 
     /// {@return `layer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_layer(MemorySegment segment, long index) { return (int) VH_layer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int layer(MemorySegment segment, long index) { return (int) VH_layer.get(segment, 0L, index); }
     /// {@return `layer`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_layer(MemorySegment segment) { return VkRectLayerKHR.get_layer(segment, 0L); }
-    /// {@return `layer`}
-    public @CType("uint32_t") int layer() { return VkRectLayerKHR.get_layer(this.segment()); }
+    public int layer() { return layer(this.segment(), 0L); }
     /// Sets `layer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_layer(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_layer.set(segment, 0L, index, value); }
-    /// Sets `layer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_layer(MemorySegment segment, @CType("uint32_t") int value) { VkRectLayerKHR.set_layer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void layer(MemorySegment segment, long index, int value) { VH_layer.set(segment, 0L, index, value); }
     /// Sets `layer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRectLayerKHR layer(@CType("uint32_t") int value) { VkRectLayerKHR.set_layer(this.segment(), value); return this; }
+    public VkRectLayerKHR layer(int value) { layer(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRectLayerKHR].
     public static final class Buffer extends VkRectLayerKHR {
@@ -204,31 +169,31 @@ public sealed class VkRectLayerKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `offset` at the given index}
-        /// @param index the index
-        public @CType("VkOffset2D") MemorySegment offsetAt(long index) { return VkRectLayerKHR.get_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment offsetAt(long index) { return offset(this.segment(), index); }
         /// Sets `offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer offsetAt(long index, @CType("VkOffset2D") MemorySegment value) { VkRectLayerKHR.set_offset(this.segment(), index, value); return this; }
+        public Buffer offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
 
         /// {@return `extent` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") MemorySegment extentAt(long index) { return VkRectLayerKHR.get_extent(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
         /// Sets `extent` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer extentAt(long index, @CType("VkExtent2D") MemorySegment value) { VkRectLayerKHR.set_extent(this.segment(), index, value); return this; }
+        public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
 
         /// {@return `layer` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int layerAt(long index) { return VkRectLayerKHR.get_layer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int layerAt(long index) { return layer(this.segment(), index); }
         /// Sets `layer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer layerAt(long index, @CType("uint32_t") int value) { VkRectLayerKHR.set_layer(this.segment(), index, value); return this; }
+        public Buffer layerAt(long index, int value) { layer(this.segment(), index, value); return this; }
 
     }
 }

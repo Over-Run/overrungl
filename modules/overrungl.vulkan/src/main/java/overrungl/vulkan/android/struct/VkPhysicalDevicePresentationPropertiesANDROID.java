@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.android.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### sharedImage
-/// [VarHandle][#VH_sharedImage] - [Getter][#sharedImage()] - [Setter][#sharedImage(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevicePresentationPropertiesANDROID {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBool32 sharedImage;
-/// } VkPhysicalDevicePresentationPropertiesANDROID;
 /// ```
-public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct {
+/// struct VkPhysicalDevicePresentationPropertiesANDROID {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 sharedImage;
+/// };
+/// ```
+public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends GroupType {
     /// The struct layout of `VkPhysicalDevicePresentationPropertiesANDROID`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("sharedImage")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `sharedImage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sharedImage`.
+    public static final long OFFSET_sharedImage = LAYOUT.byteOffset(PathElement.groupElement("sharedImage"));
+    /// The memory layout of `sharedImage`.
+    public static final MemoryLayout LAYOUT_sharedImage = LAYOUT.select(PathElement.groupElement("sharedImage"));
+    /// The [VarHandle] of `sharedImage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sharedImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sharedImage"));
 
     /// Creates `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct
     /// Creates `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePresentationPropertiesANDROID of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePresentationPropertiesANDROID(segment); }
-
-    /// Creates `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePresentationPropertiesANDROID ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePresentationPropertiesANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevicePresentationPropertiesANDROID ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePresentationPropertiesANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct
     /// @return the allocated `VkPhysicalDevicePresentationPropertiesANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePresentationPropertiesANDROID` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePresentationPropertiesANDROID`
-    public static VkPhysicalDevicePresentationPropertiesANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkBool32") int sharedImage) { return alloc(allocator).sType(sType).pNext(pNext).sharedImage(sharedImage); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePresentationPropertiesANDROID.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevicePresentationPropertiesANDROID.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePresentationPropertiesANDROID sType(@CType("VkStructureType") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevicePresentationPropertiesANDROID sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePresentationPropertiesANDROID.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPhysicalDevicePresentationPropertiesANDROID.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPhysicalDevicePresentationPropertiesANDROID.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePresentationPropertiesANDROID pNext(@CType("const void *") MemorySegment value) { VkPhysicalDevicePresentationPropertiesANDROID.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePresentationPropertiesANDROID pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `sharedImage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_sharedImage(MemorySegment segment, long index) { return (int) VH_sharedImage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sharedImage(MemorySegment segment, long index) { return (int) VH_sharedImage.get(segment, 0L, index); }
     /// {@return `sharedImage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_sharedImage(MemorySegment segment) { return VkPhysicalDevicePresentationPropertiesANDROID.get_sharedImage(segment, 0L); }
-    /// {@return `sharedImage`}
-    public @CType("VkBool32") int sharedImage() { return VkPhysicalDevicePresentationPropertiesANDROID.get_sharedImage(this.segment()); }
+    public int sharedImage() { return sharedImage(this.segment(), 0L); }
     /// Sets `sharedImage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sharedImage(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_sharedImage.set(segment, 0L, index, value); }
-    /// Sets `sharedImage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sharedImage(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sharedImage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sharedImage(MemorySegment segment, long index, int value) { VH_sharedImage.set(segment, 0L, index, value); }
     /// Sets `sharedImage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePresentationPropertiesANDROID sharedImage(@CType("VkBool32") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sharedImage(this.segment(), value); return this; }
+    public VkPhysicalDevicePresentationPropertiesANDROID sharedImage(int value) { sharedImage(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevicePresentationPropertiesANDROID].
     public static final class Buffer extends VkPhysicalDevicePresentationPropertiesANDROID {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends Struct
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePresentationPropertiesANDROID.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPhysicalDevicePresentationPropertiesANDROID.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPhysicalDevicePresentationPropertiesANDROID.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `sharedImage` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int sharedImageAt(long index) { return VkPhysicalDevicePresentationPropertiesANDROID.get_sharedImage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sharedImageAt(long index) { return sharedImage(this.segment(), index); }
         /// Sets `sharedImage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sharedImageAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePresentationPropertiesANDROID.set_sharedImage(this.segment(), index, value); return this; }
+        public Buffer sharedImageAt(long index, int value) { sharedImage(this.segment(), index, value); return this; }
 
     }
 }

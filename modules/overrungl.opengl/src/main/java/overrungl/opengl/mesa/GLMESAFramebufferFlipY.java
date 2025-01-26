@@ -41,7 +41,7 @@ public final class GLMESAFramebufferFlipY {
     }
 
     /// ```
-    /// void glFramebufferParameteriMESA(unsigned int target, unsigned int pname, int param);
+    /// void glFramebufferParameteriMESA(GLenum target, GLenum pname, GLint param);
     /// ```
     public void FramebufferParameteriMESA(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
@@ -50,7 +50,7 @@ public final class GLMESAFramebufferFlipY {
     }
 
     /// ```
-    /// void glGetFramebufferParameterivMESA(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetFramebufferParameterivMESA(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameterivMESA(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");

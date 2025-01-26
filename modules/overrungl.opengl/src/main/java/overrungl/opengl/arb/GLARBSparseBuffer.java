@@ -43,7 +43,7 @@ public final class GLARBSparseBuffer {
     }
 
     /// ```
-    /// void glBufferPageCommitmentARB(unsigned int target, signed long long offset, signed long long size, GLboolean commit);
+    /// void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
     /// ```
     public void BufferPageCommitmentARB(int target, long offset, long size, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentARB");
@@ -52,7 +52,7 @@ public final class GLARBSparseBuffer {
     }
 
     /// ```
-    /// void glNamedBufferPageCommitmentEXT(unsigned int buffer, signed long long offset, signed long long size, GLboolean commit);
+    /// void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
     /// ```
     public void NamedBufferPageCommitmentEXT(int buffer, long offset, long size, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferPageCommitmentEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentEXT");
@@ -61,7 +61,7 @@ public final class GLARBSparseBuffer {
     }
 
     /// ```
-    /// void glNamedBufferPageCommitmentARB(unsigned int buffer, signed long long offset, signed long long size, GLboolean commit);
+    /// void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
     /// ```
     public void NamedBufferPageCommitmentARB(int buffer, long offset, long size, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentARB");

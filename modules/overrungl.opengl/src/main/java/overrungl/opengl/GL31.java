@@ -132,7 +132,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glDrawArraysInstanced(unsigned int mode, int first, int count, int instancecount);
+    /// void glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
     /// ```
     public void DrawArraysInstanced(int mode, int first, int count, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstanced");
@@ -141,7 +141,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glDrawElementsInstanced(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount);
+    /// void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount);
     /// ```
     public void DrawElementsInstanced(int mode, int count, int type, MemorySegment indices, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstanced");
@@ -150,7 +150,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glTexBuffer(unsigned int target, unsigned int internalformat, unsigned int buffer);
+    /// void glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer);
     /// ```
     public void TexBuffer(int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBuffer)) throw new SymbolNotFoundError("Symbol not found: glTexBuffer");
@@ -159,7 +159,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glPrimitiveRestartIndex(unsigned int index);
+    /// void glPrimitiveRestartIndex(GLuint index);
     /// ```
     public void PrimitiveRestartIndex(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartIndex)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndex");
@@ -168,7 +168,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glCopyBufferSubData(unsigned int readTarget, unsigned int writeTarget, signed long long readOffset, signed long long writeOffset, signed long long size);
+    /// void glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
     /// ```
     public void CopyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData");
@@ -177,7 +177,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glGetUniformIndices(unsigned int program, int uniformCount, const GLchar* const * uniformNames, GLuint* uniformIndices);
+    /// void glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar* const * uniformNames, GLuint* uniformIndices);
     /// ```
     public void GetUniformIndices(int program, int uniformCount, MemorySegment uniformNames, MemorySegment uniformIndices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformIndices)) throw new SymbolNotFoundError("Symbol not found: glGetUniformIndices");
@@ -186,7 +186,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glGetActiveUniformsiv(unsigned int program, int uniformCount, const GLuint* uniformIndices, unsigned int pname, GLint* params);
+    /// void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint* uniformIndices, GLenum pname, GLint* params);
     /// ```
     public void GetActiveUniformsiv(int program, int uniformCount, MemorySegment uniformIndices, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformsiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformsiv");
@@ -195,7 +195,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glGetActiveUniformName(unsigned int program, unsigned int uniformIndex, int bufSize, GLsizei* length, GLchar* uniformName);
+    /// void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformName);
     /// ```
     public void GetActiveUniformName(int program, int uniformIndex, int bufSize, MemorySegment length, MemorySegment uniformName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformName");
@@ -204,7 +204,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// unsigned int glGetUniformBlockIndex(unsigned int program, const GLchar* uniformBlockName);
+    /// GLuint glGetUniformBlockIndex(GLuint program, const GLchar* uniformBlockName);
     /// ```
     public int GetUniformBlockIndex(int program, MemorySegment uniformBlockName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformBlockIndex)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBlockIndex");
@@ -213,7 +213,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glGetActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, unsigned int pname, GLint* params);
+    /// void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint* params);
     /// ```
     public void GetActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformBlockiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformBlockiv");
@@ -222,7 +222,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glGetActiveUniformBlockName(unsigned int program, unsigned int uniformBlockIndex, int bufSize, GLsizei* length, GLchar* uniformBlockName);
+    /// void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformBlockName);
     /// ```
     public void GetActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, MemorySegment length, MemorySegment uniformBlockName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformBlockName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformBlockName");
@@ -231,7 +231,7 @@ public class GL31 extends GL30 {
     }
 
     /// ```
-    /// void glUniformBlockBinding(unsigned int program, unsigned int uniformBlockIndex, unsigned int uniformBlockBinding);
+    /// void glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
     /// ```
     public void UniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glUniformBlockBinding");

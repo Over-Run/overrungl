@@ -37,7 +37,7 @@ public final class GLINGRBlendFuncSeparate {
     }
 
     /// ```
-    /// void glBlendFuncSeparateINGR(unsigned int sfactorRGB, unsigned int dfactorRGB, unsigned int sfactorAlpha, unsigned int dfactorAlpha);
+    /// void glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
     /// ```
     public void BlendFuncSeparateINGR(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateINGR)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR");

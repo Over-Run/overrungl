@@ -15,65 +15,72 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### vendorID
-/// [VarHandle][#VH_vendorID] - [Getter][#vendorID()] - [Setter][#vendorID(int)]
-/// ### deviceID
-/// [VarHandle][#VH_deviceID] - [Getter][#deviceID()] - [Setter][#deviceID(int)]
-/// ### layeredAPI
-/// [VarHandle][#VH_layeredAPI] - [Getter][#layeredAPI()] - [Setter][#layeredAPI(int)]
-/// ### deviceName
-/// [Byte offset][#OFFSET_deviceName] - [Memory layout][#ML_deviceName] - [Getter][#deviceName()] - [Setter][#deviceName(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceLayeredApiPropertiesKHR {
+/// ```
+/// struct VkPhysicalDeviceLayeredApiPropertiesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
 ///     VkPhysicalDeviceLayeredApiKHR layeredAPI;
-///     char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE] deviceName;
-/// } VkPhysicalDeviceLayeredApiPropertiesKHR;
+///     char deviceName[256];
+/// };
 /// ```
-public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
+public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceLayeredApiPropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("layeredAPI"),
-        MemoryLayout.sequenceLayout(VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("deviceName")
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("deviceName")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `vendorID` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vendorID`.
+    public static final long OFFSET_vendorID = LAYOUT.byteOffset(PathElement.groupElement("vendorID"));
+    /// The memory layout of `vendorID`.
+    public static final MemoryLayout LAYOUT_vendorID = LAYOUT.select(PathElement.groupElement("vendorID"));
+    /// The [VarHandle] of `vendorID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vendorID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorID"));
-    /// The [VarHandle] of `deviceID` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceID`.
+    public static final long OFFSET_deviceID = LAYOUT.byteOffset(PathElement.groupElement("deviceID"));
+    /// The memory layout of `deviceID`.
+    public static final MemoryLayout LAYOUT_deviceID = LAYOUT.select(PathElement.groupElement("deviceID"));
+    /// The [VarHandle] of `deviceID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID"));
-    /// The [VarHandle] of `layeredAPI` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `layeredAPI`.
+    public static final long OFFSET_layeredAPI = LAYOUT.byteOffset(PathElement.groupElement("layeredAPI"));
+    /// The memory layout of `layeredAPI`.
+    public static final MemoryLayout LAYOUT_layeredAPI = LAYOUT.select(PathElement.groupElement("layeredAPI"));
+    /// The [VarHandle] of `layeredAPI` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layeredAPI = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layeredAPI"));
     /// The byte offset of `deviceName`.
     public static final long OFFSET_deviceName = LAYOUT.byteOffset(PathElement.groupElement("deviceName"));
     /// The memory layout of `deviceName`.
-    public static final MemoryLayout ML_deviceName = LAYOUT.select(PathElement.groupElement("deviceName"));
+    public static final MemoryLayout LAYOUT_deviceName = LAYOUT.select(PathElement.groupElement("deviceName"));
+    /// The [VarHandle] of `deviceName` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_deviceName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceName"), PathElement.sequenceElement());
 
     /// Creates `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment.
     /// @param segment the memory segment
@@ -82,19 +89,14 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
     /// Creates `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLayeredApiPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiPropertiesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLayeredApiPropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLayeredApiPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment.
     ///
@@ -102,7 +104,7 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -115,11 +117,6 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("uint32_t") int vendorID, @CType("uint32_t") int deviceID, @CType("VkPhysicalDeviceLayeredApiKHR") int layeredAPI, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceName) { return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).layeredAPI(layeredAPI).deviceName(deviceName); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -127,145 +124,122 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `vendorID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get(segment, 0L, index); }
     /// {@return `vendorID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_vendorID(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_vendorID(segment, 0L); }
-    /// {@return `vendorID`}
-    public @CType("uint32_t") int vendorID() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_vendorID(this.segment()); }
+    public int vendorID() { return vendorID(this.segment(), 0L); }
     /// Sets `vendorID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vendorID(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_vendorID.set(segment, 0L, index, value); }
-    /// Sets `vendorID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vendorID(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_vendorID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vendorID(MemorySegment segment, long index, int value) { VH_vendorID.set(segment, 0L, index, value); }
     /// Sets `vendorID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR vendorID(@CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_vendorID(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR vendorID(int value) { vendorID(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get(segment, 0L, index); }
     /// {@return `deviceID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_deviceID(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceID(segment, 0L); }
-    /// {@return `deviceID`}
-    public @CType("uint32_t") int deviceID() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceID(this.segment()); }
+    public int deviceID() { return deviceID(this.segment(), 0L); }
     /// Sets `deviceID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceID(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_deviceID.set(segment, 0L, index, value); }
-    /// Sets `deviceID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceID(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceID(MemorySegment segment, long index, int value) { VH_deviceID.set(segment, 0L, index, value); }
     /// Sets `deviceID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceID(@CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceID(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceID(int value) { deviceID(this.segment(), 0L, value); return this; }
 
     /// {@return `layeredAPI` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPhysicalDeviceLayeredApiKHR") int get_layeredAPI(MemorySegment segment, long index) { return (int) VH_layeredAPI.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int layeredAPI(MemorySegment segment, long index) { return (int) VH_layeredAPI.get(segment, 0L, index); }
     /// {@return `layeredAPI`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPhysicalDeviceLayeredApiKHR") int get_layeredAPI(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_layeredAPI(segment, 0L); }
-    /// {@return `layeredAPI`}
-    public @CType("VkPhysicalDeviceLayeredApiKHR") int layeredAPI() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_layeredAPI(this.segment()); }
+    public int layeredAPI() { return layeredAPI(this.segment(), 0L); }
     /// Sets `layeredAPI` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_layeredAPI(MemorySegment segment, long index, @CType("VkPhysicalDeviceLayeredApiKHR") int value) { VH_layeredAPI.set(segment, 0L, index, value); }
-    /// Sets `layeredAPI` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_layeredAPI(MemorySegment segment, @CType("VkPhysicalDeviceLayeredApiKHR") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_layeredAPI(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void layeredAPI(MemorySegment segment, long index, int value) { VH_layeredAPI.set(segment, 0L, index, value); }
     /// Sets `layeredAPI` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR layeredAPI(@CType("VkPhysicalDeviceLayeredApiKHR") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_layeredAPI(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR layeredAPI(int value) { layeredAPI(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceName` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment get_deviceName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName); }
-    /// {@return `deviceName`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment deviceName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceName, index), LAYOUT_deviceName); }
+    /// {@return `deviceName` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment get_deviceName(MemorySegment segment) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceName(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte deviceName(MemorySegment segment, long index, long index0) { return (byte) VH_deviceName.get(segment, 0L, index, index0); }
     /// {@return `deviceName`}
-    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceName() { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceName(this.segment()); }
+    public MemorySegment deviceName() { return deviceName(this.segment(), 0L); }
+    /// {@return `deviceName`}
+    /// @param index0 the Index 0 of the array
+    public byte deviceName(long index0) { return deviceName(this.segment(), 0L, index0); }
     /// Sets `deviceName` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceName(MemorySegment segment, long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName.byteSize()); }
-    /// Sets `deviceName` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceName(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceName, index), LAYOUT_deviceName.byteSize()); }
+    /// Sets `deviceName` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceName(MemorySegment segment, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceName(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void deviceName(MemorySegment segment, long index, long index0, byte value) { VH_deviceName.set(segment, 0L, index, index0, value); }
     /// Sets `deviceName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(@CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceName(this.segment(), value); return this; }
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(MemorySegment value) { deviceName(this.segment(), 0L, value); return this; }
+    /// Sets `deviceName` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLayeredApiPropertiesKHR deviceName(long index0, byte value) { deviceName(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceLayeredApiPropertiesKHR].
     public static final class Buffer extends VkPhysicalDeviceLayeredApiPropertiesKHR {
@@ -290,58 +264,68 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `vendorID` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int vendorIDAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_vendorID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vendorIDAt(long index) { return vendorID(this.segment(), index); }
         /// Sets `vendorID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vendorIDAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_vendorID(this.segment(), index, value); return this; }
+        public Buffer vendorIDAt(long index, int value) { vendorID(this.segment(), index, value); return this; }
 
         /// {@return `deviceID` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int deviceIDAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceIDAt(long index) { return deviceID(this.segment(), index); }
         /// Sets `deviceID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceIDAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceID(this.segment(), index, value); return this; }
+        public Buffer deviceIDAt(long index, int value) { deviceID(this.segment(), index, value); return this; }
 
         /// {@return `layeredAPI` at the given index}
-        /// @param index the index
-        public @CType("VkPhysicalDeviceLayeredApiKHR") int layeredAPIAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_layeredAPI(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int layeredAPIAt(long index) { return layeredAPI(this.segment(), index); }
         /// Sets `layeredAPI` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer layeredAPIAt(long index, @CType("VkPhysicalDeviceLayeredApiKHR") int value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_layeredAPI(this.segment(), index, value); return this; }
+        public Buffer layeredAPIAt(long index, int value) { layeredAPI(this.segment(), index, value); return this; }
 
         /// {@return `deviceName` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment deviceNameAt(long index) { return VkPhysicalDeviceLayeredApiPropertiesKHR.get_deviceName(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment deviceNameAt(long index) { return deviceName(this.segment(), index); }
+        /// {@return `deviceName` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte deviceNameAt(long index, long index0) { return deviceName(this.segment(), index, index0); }
         /// Sets `deviceName` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceNameAt(long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") MemorySegment value) { VkPhysicalDeviceLayeredApiPropertiesKHR.set_deviceName(this.segment(), index, value); return this; }
+        public Buffer deviceNameAt(long index, MemorySegment value) { deviceName(this.segment(), index, value); return this; }
+        /// Sets `deviceName` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceNameAt(long index, long index0, byte value) { deviceName(this.segment(), index, index0, value); return this; }
 
     }
 }

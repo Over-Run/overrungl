@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -36,15 +35,15 @@ public class VKEXTDisplayControl {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT = 1000091003;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkDisplayPowerControlEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDisplayPowerControlEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkRegisterDeviceEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkRegisterDisplayEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSwapchainCounterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkRegisterDisplayEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSwapchainCounterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkDisplayPowerControlEXT;
         public final MemorySegment PFN_vkRegisterDeviceEventEXT;
         public final MemorySegment PFN_vkRegisterDisplayEventEXT;
         public final MemorySegment PFN_vkGetSwapchainCounterEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkDisplayPowerControlEXT = func.invoke(device, "vkDisplayPowerControlEXT");
             PFN_vkRegisterDeviceEventEXT = func.invoke(device, "vkRegisterDeviceEventEXT");
             PFN_vkRegisterDisplayEventEXT = func.invoke(device, "vkRegisterDisplayEventEXT");
@@ -52,32 +51,44 @@ public class VKEXTDisplayControl {
         }
     }
 
-    public VKEXTDisplayControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTDisplayControl(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int DisplayPowerControlEXT(@CType("VkDevice") MemorySegment device, @CType("VkDisplayKHR") MemorySegment display, @CType("const VkDisplayPowerInfoEXT *") MemorySegment pDisplayPowerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDisplayPowerControlEXT)) throw new SymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
+    /// ```
+    /// VkResult vkDisplayPowerControlEXT(VkDevice device, VkDisplayKHR display, const VkDisplayPowerInfoEXT* pDisplayPowerInfo);
+    /// ```
+    public int DisplayPowerControlEXT(MemorySegment device, long display, MemorySegment pDisplayPowerInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDisplayPowerControlEXT)) throw new SymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
         try { return (int) Handles.MH_vkDisplayPowerControlEXT.invokeExact(handles.PFN_vkDisplayPowerControlEXT, device, display, pDisplayPowerInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDisplayPowerControlEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DisplayPowerControlEXT", e); }
     }
 
-    public @CType("VkResult") int RegisterDeviceEventEXT(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceEventInfoEXT *") MemorySegment pDeviceEventInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkFence *") MemorySegment pFence) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkRegisterDeviceEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
+    /// ```
+    /// VkResult vkRegisterDeviceEventEXT(VkDevice device, const VkDeviceEventInfoEXT* pDeviceEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
+    /// ```
+    public int RegisterDeviceEventEXT(MemorySegment device, MemorySegment pDeviceEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkRegisterDeviceEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
         try { return (int) Handles.MH_vkRegisterDeviceEventEXT.invokeExact(handles.PFN_vkRegisterDeviceEventEXT, device, pDeviceEventInfo, pAllocator, pFence); }
-        catch (Throwable e) { throw new RuntimeException("error in vkRegisterDeviceEventEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RegisterDeviceEventEXT", e); }
     }
 
-    public @CType("VkResult") int RegisterDisplayEventEXT(@CType("VkDevice") MemorySegment device, @CType("VkDisplayKHR") MemorySegment display, @CType("const VkDisplayEventInfoEXT *") MemorySegment pDisplayEventInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkFence *") MemorySegment pFence) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkRegisterDisplayEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
+    /// ```
+    /// VkResult vkRegisterDisplayEventEXT(VkDevice device, VkDisplayKHR display, const VkDisplayEventInfoEXT* pDisplayEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
+    /// ```
+    public int RegisterDisplayEventEXT(MemorySegment device, long display, MemorySegment pDisplayEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkRegisterDisplayEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
         try { return (int) Handles.MH_vkRegisterDisplayEventEXT.invokeExact(handles.PFN_vkRegisterDisplayEventEXT, device, display, pDisplayEventInfo, pAllocator, pFence); }
-        catch (Throwable e) { throw new RuntimeException("error in vkRegisterDisplayEventEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RegisterDisplayEventEXT", e); }
     }
 
-    public @CType("VkResult") int GetSwapchainCounterEXT(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("VkSurfaceCounterFlagBitsEXT") int counter, @CType("uint64_t *") MemorySegment pCounterValue) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetSwapchainCounterEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
+    /// ```
+    /// VkResult vkGetSwapchainCounterEXT(VkDevice device, VkSwapchainKHR swapchain, VkSurfaceCounterFlagBitsEXT counter, uint64_t* pCounterValue);
+    /// ```
+    public int GetSwapchainCounterEXT(MemorySegment device, long swapchain, int counter, MemorySegment pCounterValue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetSwapchainCounterEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
         try { return (int) Handles.MH_vkGetSwapchainCounterEXT.invokeExact(handles.PFN_vkGetSwapchainCounterEXT, device, swapchain, counter, pCounterValue); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainCounterEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSwapchainCounterEXT", e); }
     }
 
 }

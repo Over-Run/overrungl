@@ -40,7 +40,7 @@ public final class STBEasyFont {
         /// The method handle of `stb_easy_font_spacing`.
         public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stb_easy_font_print`.
-        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_BYTE), ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stb_easy_font_width`.
         public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stb_easy_font_height`.

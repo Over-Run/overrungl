@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -34,19 +33,22 @@ public class VKEXTDepthClampControl {
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetDepthClampRangeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCmdSetDepthClampRangeEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdSetDepthClampRangeEXT = func.invoke(device, "vkCmdSetDepthClampRangeEXT");
         }
     }
 
-    public VKEXTDepthClampControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTDepthClampControl(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdSetDepthClampRangeEXT(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkDepthClampModeEXT") int depthClampMode, @CType("const VkDepthClampRangeEXT *") MemorySegment pDepthClampRange) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetDepthClampRangeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClampRangeEXT");
+    /// ```
+    /// void vkCmdSetDepthClampRangeEXT(VkCommandBuffer commandBuffer, VkDepthClampModeEXT depthClampMode, const VkDepthClampRangeEXT* pDepthClampRange);
+    /// ```
+    public void CmdSetDepthClampRangeEXT(MemorySegment commandBuffer, int depthClampMode, MemorySegment pDepthClampRange) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthClampRangeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClampRangeEXT");
         try { Handles.MH_vkCmdSetDepthClampRangeEXT.invokeExact(handles.PFN_vkCmdSetDepthClampRangeEXT, commandBuffer, depthClampMode, pDepthClampRange); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthClampRangeEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthClampRangeEXT", e); }
     }
 
 }

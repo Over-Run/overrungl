@@ -47,7 +47,7 @@ public final class GLEXTSemaphoreWin32 {
     }
 
     /// ```
-    /// void glImportSemaphoreWin32HandleEXT(unsigned int semaphore, unsigned int handleType, void* handle);
+    /// void glImportSemaphoreWin32HandleEXT(GLuint semaphore, GLenum handleType, void* handle);
     /// ```
     public void ImportSemaphoreWin32HandleEXT(int semaphore, int handleType, MemorySegment handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32HandleEXT");
@@ -56,7 +56,7 @@ public final class GLEXTSemaphoreWin32 {
     }
 
     /// ```
-    /// void glImportSemaphoreWin32NameEXT(unsigned int semaphore, unsigned int handleType, const void* name);
+    /// void glImportSemaphoreWin32NameEXT(GLuint semaphore, GLenum handleType, const void* name);
     /// ```
     public void ImportSemaphoreWin32NameEXT(int semaphore, int handleType, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32NameEXT");

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### commandPoolReservedSize
-/// [VarHandle][#VH_commandPoolReservedSize] - [Getter][#commandPoolReservedSize()] - [Setter][#commandPoolReservedSize(long)]
-/// ### commandPoolMaxCommandBuffers
-/// [VarHandle][#VH_commandPoolMaxCommandBuffers] - [Getter][#commandPoolMaxCommandBuffers()] - [Setter][#commandPoolMaxCommandBuffers(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkCommandPoolMemoryReservationCreateInfo {
+/// ```
+/// struct VkCommandPoolMemoryReservationCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkDeviceSize commandPoolReservedSize;
 ///     uint32_t commandPoolMaxCommandBuffers;
-/// } VkCommandPoolMemoryReservationCreateInfo;
+/// };
 /// ```
-public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
+public sealed class VkCommandPoolMemoryReservationCreateInfo extends GroupType {
     /// The struct layout of `VkCommandPoolMemoryReservationCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("commandPoolReservedSize"),
         ValueLayout.JAVA_INT.withName("commandPoolMaxCommandBuffers")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `commandPoolReservedSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `commandPoolReservedSize`.
+    public static final long OFFSET_commandPoolReservedSize = LAYOUT.byteOffset(PathElement.groupElement("commandPoolReservedSize"));
+    /// The memory layout of `commandPoolReservedSize`.
+    public static final MemoryLayout LAYOUT_commandPoolReservedSize = LAYOUT.select(PathElement.groupElement("commandPoolReservedSize"));
+    /// The [VarHandle] of `commandPoolReservedSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPoolReservedSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolReservedSize"));
-    /// The [VarHandle] of `commandPoolMaxCommandBuffers` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandPoolMaxCommandBuffers`.
+    public static final long OFFSET_commandPoolMaxCommandBuffers = LAYOUT.byteOffset(PathElement.groupElement("commandPoolMaxCommandBuffers"));
+    /// The memory layout of `commandPoolMaxCommandBuffers`.
+    public static final MemoryLayout LAYOUT_commandPoolMaxCommandBuffers = LAYOUT.select(PathElement.groupElement("commandPoolMaxCommandBuffers"));
+    /// The [VarHandle] of `commandPoolMaxCommandBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPoolMaxCommandBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolMaxCommandBuffers"));
 
     /// Creates `VkCommandPoolMemoryReservationCreateInfo` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
     /// Creates `VkCommandPoolMemoryReservationCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandPoolMemoryReservationCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandPoolMemoryReservationCreateInfo(segment); }
-
-    /// Creates `VkCommandPoolMemoryReservationCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCommandPoolMemoryReservationCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandPoolMemoryReservationCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandPoolMemoryReservationCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkCommandPoolMemoryReservationCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandPoolMemoryReservationCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkCommandPoolMemoryReservationCreateInfo` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
     /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
-    public static VkCommandPoolMemoryReservationCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkDeviceSize") long commandPoolReservedSize, @CType("uint32_t") int commandPoolMaxCommandBuffers) { return alloc(allocator).sType(sType).pNext(pNext).commandPoolReservedSize(commandPoolReservedSize).commandPoolMaxCommandBuffers(commandPoolMaxCommandBuffers); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandPoolMemoryReservationCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkCommandPoolMemoryReservationCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandPoolMemoryReservationCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandPoolMemoryReservationCreateInfo sType(@CType("VkStructureType") int value) { VkCommandPoolMemoryReservationCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkCommandPoolMemoryReservationCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCommandPoolMemoryReservationCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkCommandPoolMemoryReservationCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCommandPoolMemoryReservationCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandPoolMemoryReservationCreateInfo pNext(@CType("const void *") MemorySegment value) { VkCommandPoolMemoryReservationCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkCommandPoolMemoryReservationCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPoolReservedSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_commandPoolReservedSize(MemorySegment segment, long index) { return (long) VH_commandPoolReservedSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long commandPoolReservedSize(MemorySegment segment, long index) { return (long) VH_commandPoolReservedSize.get(segment, 0L, index); }
     /// {@return `commandPoolReservedSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_commandPoolReservedSize(MemorySegment segment) { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolReservedSize(segment, 0L); }
-    /// {@return `commandPoolReservedSize`}
-    public @CType("VkDeviceSize") long commandPoolReservedSize() { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolReservedSize(this.segment()); }
+    public long commandPoolReservedSize() { return commandPoolReservedSize(this.segment(), 0L); }
     /// Sets `commandPoolReservedSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPoolReservedSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_commandPoolReservedSize.set(segment, 0L, index, value); }
-    /// Sets `commandPoolReservedSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPoolReservedSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolReservedSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPoolReservedSize(MemorySegment segment, long index, long value) { VH_commandPoolReservedSize.set(segment, 0L, index, value); }
     /// Sets `commandPoolReservedSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandPoolMemoryReservationCreateInfo commandPoolReservedSize(@CType("VkDeviceSize") long value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolReservedSize(this.segment(), value); return this; }
+    public VkCommandPoolMemoryReservationCreateInfo commandPoolReservedSize(long value) { commandPoolReservedSize(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPoolMaxCommandBuffers` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_commandPoolMaxCommandBuffers(MemorySegment segment, long index) { return (int) VH_commandPoolMaxCommandBuffers.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandPoolMaxCommandBuffers(MemorySegment segment, long index) { return (int) VH_commandPoolMaxCommandBuffers.get(segment, 0L, index); }
     /// {@return `commandPoolMaxCommandBuffers`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_commandPoolMaxCommandBuffers(MemorySegment segment) { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolMaxCommandBuffers(segment, 0L); }
-    /// {@return `commandPoolMaxCommandBuffers`}
-    public @CType("uint32_t") int commandPoolMaxCommandBuffers() { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolMaxCommandBuffers(this.segment()); }
+    public int commandPoolMaxCommandBuffers() { return commandPoolMaxCommandBuffers(this.segment(), 0L); }
     /// Sets `commandPoolMaxCommandBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPoolMaxCommandBuffers(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_commandPoolMaxCommandBuffers.set(segment, 0L, index, value); }
-    /// Sets `commandPoolMaxCommandBuffers` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPoolMaxCommandBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolMaxCommandBuffers(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPoolMaxCommandBuffers(MemorySegment segment, long index, int value) { VH_commandPoolMaxCommandBuffers.set(segment, 0L, index, value); }
     /// Sets `commandPoolMaxCommandBuffers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandPoolMemoryReservationCreateInfo commandPoolMaxCommandBuffers(@CType("uint32_t") int value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolMaxCommandBuffers(this.segment(), value); return this; }
+    public VkCommandPoolMemoryReservationCreateInfo commandPoolMaxCommandBuffers(int value) { commandPoolMaxCommandBuffers(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkCommandPoolMemoryReservationCreateInfo].
     public static final class Buffer extends VkCommandPoolMemoryReservationCreateInfo {
@@ -229,40 +197,40 @@ public sealed class VkCommandPoolMemoryReservationCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandPoolMemoryReservationCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandPoolMemoryReservationCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCommandPoolMemoryReservationCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCommandPoolMemoryReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `commandPoolReservedSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long commandPoolReservedSizeAt(long index) { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolReservedSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long commandPoolReservedSizeAt(long index) { return commandPoolReservedSize(this.segment(), index); }
         /// Sets `commandPoolReservedSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolReservedSizeAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolReservedSize(this.segment(), index, value); return this; }
+        public Buffer commandPoolReservedSizeAt(long index, long value) { commandPoolReservedSize(this.segment(), index, value); return this; }
 
         /// {@return `commandPoolMaxCommandBuffers` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int commandPoolMaxCommandBuffersAt(long index) { return VkCommandPoolMemoryReservationCreateInfo.get_commandPoolMaxCommandBuffers(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandPoolMaxCommandBuffersAt(long index) { return commandPoolMaxCommandBuffers(this.segment(), index); }
         /// Sets `commandPoolMaxCommandBuffers` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolMaxCommandBuffersAt(long index, @CType("uint32_t") int value) { VkCommandPoolMemoryReservationCreateInfo.set_commandPoolMaxCommandBuffers(this.segment(), index, value); return this; }
+        public Buffer commandPoolMaxCommandBuffersAt(long index, int value) { commandPoolMaxCommandBuffers(this.segment(), index, value); return this; }
 
     }
 }

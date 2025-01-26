@@ -54,7 +54,7 @@ public final class GLARBShaderStorageBufferObject {
     }
 
     /// ```
-    /// void glShaderStorageBlockBinding(unsigned int program, unsigned int storageBlockIndex, unsigned int storageBlockBinding);
+    /// void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
     /// ```
     public void ShaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");

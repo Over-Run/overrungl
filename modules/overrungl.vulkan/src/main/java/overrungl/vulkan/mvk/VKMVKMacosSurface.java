@@ -18,7 +18,6 @@
 package overrungl.vulkan.mvk;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKMVKMacosSurface {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateMacOSSurfaceMVK = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateMacOSSurfaceMVK;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateMacOSSurfaceMVK = func.invoke(instance, "vkCreateMacOSSurfaceMVK");
         }
     }
 
-    public VKMVKMacosSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKMVKMacosSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateMacOSSurfaceMVK(@CType("VkInstance") MemorySegment instance, @CType("const VkMacOSSurfaceCreateInfoMVK *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateMacOSSurfaceMVK)) throw new SymbolNotFoundError("Symbol not found: vkCreateMacOSSurfaceMVK");
+    /// ```
+    /// VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, const VkMacOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateMacOSSurfaceMVK(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateMacOSSurfaceMVK)) throw new SymbolNotFoundError("Symbol not found: vkCreateMacOSSurfaceMVK");
         try { return (int) Handles.MH_vkCreateMacOSSurfaceMVK.invokeExact(handles.PFN_vkCreateMacOSSurfaceMVK, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateMacOSSurfaceMVK", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateMacOSSurfaceMVK", e); }
     }
 
 }

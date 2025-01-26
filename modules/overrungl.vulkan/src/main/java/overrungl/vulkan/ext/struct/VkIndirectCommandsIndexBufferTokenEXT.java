@@ -15,31 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### mode
-/// [VarHandle][#VH_mode] - [Getter][#mode()] - [Setter][#mode(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkIndirectCommandsIndexBufferTokenEXT {
-///     VkIndirectCommandsInputModeFlagBitsEXT mode;
-/// } VkIndirectCommandsIndexBufferTokenEXT;
 /// ```
-public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
+/// struct VkIndirectCommandsIndexBufferTokenEXT {
+///     VkIndirectCommandsInputModeFlagBitsEXT mode;
+/// };
+/// ```
+public sealed class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {
     /// The struct layout of `VkIndirectCommandsIndexBufferTokenEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("mode")
     );
-    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `mode`.
+    public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
+    /// The memory layout of `mode`.
+    public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
+    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
 
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
@@ -49,19 +49,14 @@ public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsIndexBufferTokenEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsIndexBufferTokenEXT(segment); }
-
-    /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsIndexBufferTokenEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsIndexBufferTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkIndirectCommandsIndexBufferTokenEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsIndexBufferTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
     ///
@@ -69,7 +64,7 @@ public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsIndexBufferTokenEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -82,11 +77,6 @@ public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsIndexBufferTokenEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
-    public static VkIndirectCommandsIndexBufferTokenEXT allocInit(SegmentAllocator allocator, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int mode) { return alloc(allocator).mode(mode); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -94,30 +84,23 @@ public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkIndirectCommandsInputModeFlagBitsEXT") int get_mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
     /// {@return `mode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkIndirectCommandsInputModeFlagBitsEXT") int get_mode(MemorySegment segment) { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(segment, 0L); }
-    /// {@return `mode`}
-    public @CType("VkIndirectCommandsInputModeFlagBitsEXT") int mode() { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(this.segment()); }
+    public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, long index, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VH_mode.set(segment, 0L, index, value); }
-    /// Sets `mode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsIndexBufferTokenEXT mode(@CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(this.segment(), value); return this; }
+    public VkIndirectCommandsIndexBufferTokenEXT mode(int value) { mode(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkIndirectCommandsIndexBufferTokenEXT].
     public static final class Buffer extends VkIndirectCommandsIndexBufferTokenEXT {
@@ -142,13 +125,13 @@ public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `mode` at the given index}
-        /// @param index the index
-        public @CType("VkIndirectCommandsInputModeFlagBitsEXT") int modeAt(long index) { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int modeAt(long index) { return mode(this.segment(), index); }
         /// Sets `mode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer modeAt(long index, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(this.segment(), index, value); return this; }
+        public Buffer modeAt(long index, int value) { mode(this.segment(), index, value); return this; }
 
     }
 }

@@ -41,7 +41,7 @@ public final class GLEXTBlendMinmax {
     }
 
     /// ```
-    /// void glBlendEquationEXT(unsigned int mode);
+    /// void glBlendEquationEXT(GLenum mode);
     /// ```
     public void BlendEquationEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");

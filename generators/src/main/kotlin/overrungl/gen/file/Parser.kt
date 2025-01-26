@@ -111,11 +111,11 @@ internal class Parser(private val tokens: List<Token>) {
         val entrypoint =
             if (match(AT)) consume("expect identifier", IDENTIFIER).lexeme
             else name.lexeme
-        val body: MutableList<Statement>?
+        val body: MutableList<String>?
         if (match(LEFT_BRACE)) {
             body = mutableListOf()
             while (!isAtEnd() && !check(RIGHT_BRACE)) {
-                body.add(statement())
+                body.add(consume("expect string", STRING).literal!! as String)
             }
             consume("expect '}'", RIGHT_BRACE)
         } else {
@@ -138,21 +138,14 @@ internal class Parser(private val tokens: List<Token>) {
                 current = startParamIndex
                 val paramType = typeExpression(paramNameIndex)
                 val paramName = consume("expect identifier", IDENTIFIER)
-                val dims = mutableListOf<Long>()
+                val dims = mutableListOf<Expression>()
                 while (match(LEFT_BRACKET)) {
-                    if (match(INTEGER)) {
-                        val dim = previous()!!
-                        dims.add(
-                            when (dim.literal) {
-                                is Int -> dim.literal.toLong()
-                                is Long -> dim.literal
-                                else -> error(dim)
-                            }
-                        )
-                        consume("expect ']'", RIGHT_BRACKET)
-                    } else {
-                        consume("expect ']'", RIGHT_BRACKET)
+                    if (match(RIGHT_BRACKET)) {
                         ((paramType as TypeExpression).components as MutableList).add(PointerExpression)
+                    } else {
+                        val dim = expression()
+                        dims.add(dim)
+                        consume("expect ']'", RIGHT_BRACKET)
                     }
                 }
                 parameters.add(TypeNamePair(paramType, paramName, dims))
@@ -164,7 +157,6 @@ internal class Parser(private val tokens: List<Token>) {
 
     private fun statement(): Statement {
         if (match(IMPORT)) return importStatement()
-        if (match(RETURN)) return returnStatement()
 
         return ExpressionStatement(expression())
     }
@@ -173,12 +165,6 @@ internal class Parser(private val tokens: List<Token>) {
         val string = consume("expect string", STRING)
         consume("expect ';'", SEMICOLON)
         return ImportStatement(string.literal as String)
-    }
-
-    private fun returnStatement(): Statement {
-        val value = expression()
-        consume("expect ';'", SEMICOLON)
-        return ReturnStatement(value)
     }
 
     private fun typeExpression(scanUntil: Int = tokens.size): Expression {
@@ -211,8 +197,8 @@ internal class Parser(private val tokens: List<Token>) {
                 i++
             }
             return TypeReferenceExpression(sb.toString(), previous()!!)
-        } else if (match(STRUCT)) {
-            return structExpression()
+        } else if (match(STRUCT, UNION)) {
+            return groupTypeExpression()
         } else if (match(UPCALL)) {
             return upcallExpression()
         } else if (match(JAVA)) {
@@ -223,15 +209,25 @@ internal class Parser(private val tokens: List<Token>) {
         reportError("expect identifier, 'struct', 'upcall', 'java' or 'enum'")
     }
 
-    private fun structExpression(): Expression {
-        // structExpression = "struct" identifier memberList?
+    private fun groupTypeExpression(): Expression {
+        // groupTypeExpression = ("struct" | "union") identifier memberList?
         // memberList = "{" member* "}"
         // member = typeExpression identifier dims? ";"
+        val kind = when (previous()!!.type) {
+            STRUCT -> GroupTypeKind.STRUCT
+            UNION -> GroupTypeKind.UNION
+            else -> error(previous()!!)
+        }
         val name = consume("expect identifier", IDENTIFIER)
         var opaque = true
-        val members = mutableListOf<TypeNamePair>()
+        val members = mutableListOf<ParserGroupTypeMember>()
+        var packageName: Token? = null
         if (match(LEFT_BRACE)) {
             opaque = false
+            if (match(PACKAGE)) {
+                packageName = consume("expect string", STRING)
+                consume("expect ';'", SEMICOLON)
+            }
             while (!isAtEnd() && !check(RIGHT_BRACE)) {
                 // type
                 val previous = current
@@ -239,6 +235,7 @@ internal class Parser(private val tokens: List<Token>) {
                     && !check(LEFT_BRACKET)
                     && !check(SEMICOLON)
                     && !check(COMMA)
+                    && !check(COLON)
                 ) {
                     advance()
                 }
@@ -247,30 +244,24 @@ internal class Parser(private val tokens: List<Token>) {
                 val memberType = typeExpression(memberNameIndex)
                 do {
                     val memberName = consume("expect identifier", IDENTIFIER)
-                    val dims = mutableListOf<Long>()
-                    while (match(LEFT_BRACKET)) {
-                        if (match(INTEGER)) {
-                            val dim = previous()!!
-                            dims.add(
-                                when (dim.literal) {
-                                    is Int -> dim.literal.toLong()
-                                    is Long -> dim.literal
-                                    else -> error(dim)
-                                }
-                            )
+                    val dims = mutableListOf<Expression>()
+                    var bits: Int? = null
+                    if (check(LEFT_BRACKET)) {
+                        while (match(LEFT_BRACKET)) {
+                            val dim = expression()
+                            dims.add(dim)
                             consume("expect ']'", RIGHT_BRACKET)
-                        } else {
-                            consume("expect ']'", RIGHT_BRACKET)
-                            ((memberType as TypeExpression).components as MutableList).add(PointerExpression)
                         }
+                    } else if (match(COLON)) {
+                        bits = consume("expect integer", INTEGER).literal as Int
                     }
-                    members.add(TypeNamePair(memberType, memberName, dims))
+                    members.add(ParserGroupTypeMember(TypeNamePair(memberType, memberName, dims), bits))
                 } while (match(COMMA))
                 consume("expect ';'", SEMICOLON)
             }
             consume("expect '}'", RIGHT_BRACE)
         }
-        return StructExpression(name, opaque, members)
+        return GroupTypeExpression(name, opaque, members, packageName, kind)
     }
 
     private fun upcallExpression(): Expression {
@@ -316,7 +307,7 @@ internal class Parser(private val tokens: List<Token>) {
 
     private fun bitwise(): Expression {
         val left = unary()
-        if (match(PIPE)) {
+        if (match(VERTICAL_BAR)) {
             val operator = previous()!!
             val right = unary()
             return BinaryExpression(left, operator, right)
@@ -330,30 +321,7 @@ internal class Parser(private val tokens: List<Token>) {
             val right = unary()
             return UnaryExpression(operator, right)
         }
-        return functionCall()
-    }
-
-    private fun functionCall(): Expression {
-        var expr = primary()
-        while (true) {
-            if (match(LEFT_PARENTHESIS)) {
-                expr = finishCall(expr)
-            } else {
-                break
-            }
-        }
-        return expr
-    }
-
-    private fun finishCall(callee: Expression): Expression {
-        val arguments = mutableListOf<Expression>()
-        if (!check(RIGHT_PARENTHESIS)) {
-            do {
-                arguments.add(expression())
-            } while (match(COMMA))
-        }
-        consume("expect ')'", RIGHT_PARENTHESIS)
-        return FunctionCallExpression(callee, arguments)
+        return primary()
     }
 
     private fun primary(): Expression {
@@ -383,7 +351,7 @@ internal data class FunctionDeclaration(
     val parameters: List<TypeNamePair>,
     val optional: Boolean,
     val entrypoint: String,
-    val body: List<Statement>?
+    val body: List<String>?
 ) : Statement
 
 internal data class EnumDeclaration(
@@ -391,7 +359,6 @@ internal data class EnumDeclaration(
 ) : Statement
 
 internal data class ImportStatement(val filename: String) : Statement
-internal data class ReturnStatement(val value: Expression) : Statement
 internal data class ExpressionStatement(val expression: Expression) : Statement
 
 internal sealed interface Expression
@@ -405,8 +372,16 @@ internal data object PointerExpression : Expression
 internal data class TypeReferenceExpression(val name: String, val token: Token) : Expression
 internal data class TypeExpression(val components: List<Expression>) : Expression
 
-internal data class TypeNamePair(val type: Expression, val name: Token, val dimensions: List<Long>)
-internal data class StructExpression(val name: Token, val opaque: Boolean, val members: List<TypeNamePair>) : Expression
+internal data class TypeNamePair(val type: Expression, val name: Token, val dimensions: List<Expression>)
+internal data class ParserGroupTypeMember(val pair: TypeNamePair, val bits: Int?)
+internal data class GroupTypeExpression(
+    val name: Token,
+    val opaque: Boolean,
+    val members: List<ParserGroupTypeMember>,
+    val packageName: Token?,
+    val kind: GroupTypeKind
+) : Expression
+
 internal data class UpcallExpression(
     val type: Expression,
     val name: Token,
@@ -417,4 +392,3 @@ internal data class UpcallExpression(
 
 internal data class JavaTypeExpression(val name: Token) : Expression
 internal data class EnumExpression(val nameValues: List<Pair<String, Expression?>>) : Expression
-internal data class FunctionCallExpression(val callee: Expression, val arguments: List<Expression>) : Expression

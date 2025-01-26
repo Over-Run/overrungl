@@ -58,7 +58,7 @@ public final class GLARBComputeShader {
     }
 
     /// ```
-    /// void glDispatchCompute(unsigned int num_groups_x, unsigned int num_groups_y, unsigned int num_groups_z);
+    /// void glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
     /// ```
     public void DispatchCompute(int num_groups_x, int num_groups_y, int num_groups_z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
@@ -67,7 +67,7 @@ public final class GLARBComputeShader {
     }
 
     /// ```
-    /// void glDispatchComputeIndirect(signed long long indirect);
+    /// void glDispatchComputeIndirect(GLintptr indirect);
     /// ```
     public void DispatchComputeIndirect(long indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");

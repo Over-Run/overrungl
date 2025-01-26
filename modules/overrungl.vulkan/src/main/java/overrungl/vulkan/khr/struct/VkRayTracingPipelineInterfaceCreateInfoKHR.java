@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### maxPipelineRayPayloadSize
-/// [VarHandle][#VH_maxPipelineRayPayloadSize] - [Getter][#maxPipelineRayPayloadSize()] - [Setter][#maxPipelineRayPayloadSize(int)]
-/// ### maxPipelineRayHitAttributeSize
-/// [VarHandle][#VH_maxPipelineRayHitAttributeSize] - [Getter][#maxPipelineRayHitAttributeSize()] - [Setter][#maxPipelineRayHitAttributeSize(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRayTracingPipelineInterfaceCreateInfoKHR {
+/// ```
+/// struct VkRayTracingPipelineInterfaceCreateInfoKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     uint32_t maxPipelineRayPayloadSize;
 ///     uint32_t maxPipelineRayHitAttributeSize;
-/// } VkRayTracingPipelineInterfaceCreateInfoKHR;
+/// };
 /// ```
-public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
+public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends GroupType {
     /// The struct layout of `VkRayTracingPipelineInterfaceCreateInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxPipelineRayPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxPipelineRayHitAttributeSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `maxPipelineRayPayloadSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxPipelineRayPayloadSize`.
+    public static final long OFFSET_maxPipelineRayPayloadSize = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineRayPayloadSize"));
+    /// The memory layout of `maxPipelineRayPayloadSize`.
+    public static final MemoryLayout LAYOUT_maxPipelineRayPayloadSize = LAYOUT.select(PathElement.groupElement("maxPipelineRayPayloadSize"));
+    /// The [VarHandle] of `maxPipelineRayPayloadSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxPipelineRayPayloadSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayPayloadSize"));
-    /// The [VarHandle] of `maxPipelineRayHitAttributeSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxPipelineRayHitAttributeSize`.
+    public static final long OFFSET_maxPipelineRayHitAttributeSize = LAYOUT.byteOffset(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
+    /// The memory layout of `maxPipelineRayHitAttributeSize`.
+    public static final MemoryLayout LAYOUT_maxPipelineRayHitAttributeSize = LAYOUT.select(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
+    /// The [VarHandle] of `maxPipelineRayHitAttributeSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxPipelineRayHitAttributeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPipelineRayHitAttributeSize"));
 
     /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
     /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRayTracingPipelineInterfaceCreateInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRayTracingPipelineInterfaceCreateInfoKHR(segment); }
-
-    /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRayTracingPipelineInterfaceCreateInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRayTracingPipelineInterfaceCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRayTracingPipelineInterfaceCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
     /// @return the allocated `VkRayTracingPipelineInterfaceCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRayTracingPipelineInterfaceCreateInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRayTracingPipelineInterfaceCreateInfoKHR`
-    public static VkRayTracingPipelineInterfaceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int maxPipelineRayPayloadSize, @CType("uint32_t") int maxPipelineRayHitAttributeSize) { return alloc(allocator).sType(sType).pNext(pNext).maxPipelineRayPayloadSize(maxPipelineRayPayloadSize).maxPipelineRayHitAttributeSize(maxPipelineRayHitAttributeSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRayTracingPipelineInterfaceCreateInfoKHR sType(@CType("VkStructureType") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkRayTracingPipelineInterfaceCreateInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRayTracingPipelineInterfaceCreateInfoKHR pNext(@CType("const void *") MemorySegment value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkRayTracingPipelineInterfaceCreateInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `maxPipelineRayPayloadSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxPipelineRayPayloadSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayPayloadSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxPipelineRayPayloadSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayPayloadSize.get(segment, 0L, index); }
     /// {@return `maxPipelineRayPayloadSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxPipelineRayPayloadSize(MemorySegment segment) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayPayloadSize(segment, 0L); }
-    /// {@return `maxPipelineRayPayloadSize`}
-    public @CType("uint32_t") int maxPipelineRayPayloadSize() { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayPayloadSize(this.segment()); }
+    public int maxPipelineRayPayloadSize() { return maxPipelineRayPayloadSize(this.segment(), 0L); }
     /// Sets `maxPipelineRayPayloadSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxPipelineRayPayloadSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxPipelineRayPayloadSize.set(segment, 0L, index, value); }
-    /// Sets `maxPipelineRayPayloadSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxPipelineRayPayloadSize(MemorySegment segment, @CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayPayloadSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxPipelineRayPayloadSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayPayloadSize.set(segment, 0L, index, value); }
     /// Sets `maxPipelineRayPayloadSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayPayloadSize(@CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayPayloadSize(this.segment(), value); return this; }
+    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayPayloadSize(int value) { maxPipelineRayPayloadSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxPipelineRayHitAttributeSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxPipelineRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayHitAttributeSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxPipelineRayHitAttributeSize(MemorySegment segment, long index) { return (int) VH_maxPipelineRayHitAttributeSize.get(segment, 0L, index); }
     /// {@return `maxPipelineRayHitAttributeSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxPipelineRayHitAttributeSize(MemorySegment segment) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayHitAttributeSize(segment, 0L); }
-    /// {@return `maxPipelineRayHitAttributeSize`}
-    public @CType("uint32_t") int maxPipelineRayHitAttributeSize() { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayHitAttributeSize(this.segment()); }
+    public int maxPipelineRayHitAttributeSize() { return maxPipelineRayHitAttributeSize(this.segment(), 0L); }
     /// Sets `maxPipelineRayHitAttributeSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxPipelineRayHitAttributeSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxPipelineRayHitAttributeSize.set(segment, 0L, index, value); }
-    /// Sets `maxPipelineRayHitAttributeSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxPipelineRayHitAttributeSize(MemorySegment segment, @CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayHitAttributeSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxPipelineRayHitAttributeSize(MemorySegment segment, long index, int value) { VH_maxPipelineRayHitAttributeSize.set(segment, 0L, index, value); }
     /// Sets `maxPipelineRayHitAttributeSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayHitAttributeSize(@CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayHitAttributeSize(this.segment(), value); return this; }
+    public VkRayTracingPipelineInterfaceCreateInfoKHR maxPipelineRayHitAttributeSize(int value) { maxPipelineRayHitAttributeSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRayTracingPipelineInterfaceCreateInfoKHR].
     public static final class Buffer extends VkRayTracingPipelineInterfaceCreateInfoKHR {
@@ -229,40 +197,40 @@ public sealed class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxPipelineRayPayloadSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxPipelineRayPayloadSizeAt(long index) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayPayloadSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxPipelineRayPayloadSizeAt(long index) { return maxPipelineRayPayloadSize(this.segment(), index); }
         /// Sets `maxPipelineRayPayloadSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxPipelineRayPayloadSizeAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayPayloadSize(this.segment(), index, value); return this; }
+        public Buffer maxPipelineRayPayloadSizeAt(long index, int value) { maxPipelineRayPayloadSize(this.segment(), index, value); return this; }
 
         /// {@return `maxPipelineRayHitAttributeSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxPipelineRayHitAttributeSizeAt(long index) { return VkRayTracingPipelineInterfaceCreateInfoKHR.get_maxPipelineRayHitAttributeSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxPipelineRayHitAttributeSizeAt(long index) { return maxPipelineRayHitAttributeSize(this.segment(), index); }
         /// Sets `maxPipelineRayHitAttributeSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxPipelineRayHitAttributeSizeAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineInterfaceCreateInfoKHR.set_maxPipelineRayHitAttributeSize(this.segment(), index, value); return this; }
+        public Buffer maxPipelineRayHitAttributeSizeAt(long index, int value) { maxPipelineRayHitAttributeSize(this.segment(), index, value); return this; }
 
     }
 }

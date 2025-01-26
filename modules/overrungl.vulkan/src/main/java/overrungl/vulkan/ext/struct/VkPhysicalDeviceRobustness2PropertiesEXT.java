@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### robustStorageBufferAccessSizeAlignment
-/// [VarHandle][#VH_robustStorageBufferAccessSizeAlignment] - [Getter][#robustStorageBufferAccessSizeAlignment()] - [Setter][#robustStorageBufferAccessSizeAlignment(long)]
-/// ### robustUniformBufferAccessSizeAlignment
-/// [VarHandle][#VH_robustUniformBufferAccessSizeAlignment] - [Getter][#robustUniformBufferAccessSizeAlignment()] - [Setter][#robustUniformBufferAccessSizeAlignment(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRobustness2PropertiesEXT {
+/// ```
+/// struct VkPhysicalDeviceRobustness2PropertiesEXT {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkDeviceSize robustStorageBufferAccessSizeAlignment;
 ///     VkDeviceSize robustUniformBufferAccessSizeAlignment;
-/// } VkPhysicalDeviceRobustness2PropertiesEXT;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRobustness2PropertiesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("robustStorageBufferAccessSizeAlignment"),
         ValueLayout.JAVA_LONG.withName("robustUniformBufferAccessSizeAlignment")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `robustStorageBufferAccessSizeAlignment` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `robustStorageBufferAccessSizeAlignment`.
+    public static final long OFFSET_robustStorageBufferAccessSizeAlignment = LAYOUT.byteOffset(PathElement.groupElement("robustStorageBufferAccessSizeAlignment"));
+    /// The memory layout of `robustStorageBufferAccessSizeAlignment`.
+    public static final MemoryLayout LAYOUT_robustStorageBufferAccessSizeAlignment = LAYOUT.select(PathElement.groupElement("robustStorageBufferAccessSizeAlignment"));
+    /// The [VarHandle] of `robustStorageBufferAccessSizeAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_robustStorageBufferAccessSizeAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustStorageBufferAccessSizeAlignment"));
-    /// The [VarHandle] of `robustUniformBufferAccessSizeAlignment` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `robustUniformBufferAccessSizeAlignment`.
+    public static final long OFFSET_robustUniformBufferAccessSizeAlignment = LAYOUT.byteOffset(PathElement.groupElement("robustUniformBufferAccessSizeAlignment"));
+    /// The memory layout of `robustUniformBufferAccessSizeAlignment`.
+    public static final MemoryLayout LAYOUT_robustUniformBufferAccessSizeAlignment = LAYOUT.select(PathElement.groupElement("robustUniformBufferAccessSizeAlignment"));
+    /// The [VarHandle] of `robustUniformBufferAccessSizeAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_robustUniformBufferAccessSizeAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustUniformBufferAccessSizeAlignment"));
 
     /// Creates `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
     /// Creates `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRobustness2PropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2PropertiesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRobustness2PropertiesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2PropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRobustness2PropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2PropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRobustness2PropertiesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesEXT`
-    public static VkPhysicalDeviceRobustness2PropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkDeviceSize") long robustStorageBufferAccessSizeAlignment, @CType("VkDeviceSize") long robustUniformBufferAccessSizeAlignment) { return alloc(allocator).sType(sType).pNext(pNext).robustStorageBufferAccessSizeAlignment(robustStorageBufferAccessSizeAlignment).robustUniformBufferAccessSizeAlignment(robustUniformBufferAccessSizeAlignment); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRobustness2PropertiesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRobustness2PropertiesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRobustness2PropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceRobustness2PropertiesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRobustness2PropertiesEXT pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRobustness2PropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `robustStorageBufferAccessSizeAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_robustStorageBufferAccessSizeAlignment(MemorySegment segment, long index) { return (long) VH_robustStorageBufferAccessSizeAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long robustStorageBufferAccessSizeAlignment(MemorySegment segment, long index) { return (long) VH_robustStorageBufferAccessSizeAlignment.get(segment, 0L, index); }
     /// {@return `robustStorageBufferAccessSizeAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_robustStorageBufferAccessSizeAlignment(MemorySegment segment) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustStorageBufferAccessSizeAlignment(segment, 0L); }
-    /// {@return `robustStorageBufferAccessSizeAlignment`}
-    public @CType("VkDeviceSize") long robustStorageBufferAccessSizeAlignment() { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustStorageBufferAccessSizeAlignment(this.segment()); }
+    public long robustStorageBufferAccessSizeAlignment() { return robustStorageBufferAccessSizeAlignment(this.segment(), 0L); }
     /// Sets `robustStorageBufferAccessSizeAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_robustStorageBufferAccessSizeAlignment(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_robustStorageBufferAccessSizeAlignment.set(segment, 0L, index, value); }
-    /// Sets `robustStorageBufferAccessSizeAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_robustStorageBufferAccessSizeAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustStorageBufferAccessSizeAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void robustStorageBufferAccessSizeAlignment(MemorySegment segment, long index, long value) { VH_robustStorageBufferAccessSizeAlignment.set(segment, 0L, index, value); }
     /// Sets `robustStorageBufferAccessSizeAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRobustness2PropertiesEXT robustStorageBufferAccessSizeAlignment(@CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustStorageBufferAccessSizeAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceRobustness2PropertiesEXT robustStorageBufferAccessSizeAlignment(long value) { robustStorageBufferAccessSizeAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `robustUniformBufferAccessSizeAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_robustUniformBufferAccessSizeAlignment(MemorySegment segment, long index) { return (long) VH_robustUniformBufferAccessSizeAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long robustUniformBufferAccessSizeAlignment(MemorySegment segment, long index) { return (long) VH_robustUniformBufferAccessSizeAlignment.get(segment, 0L, index); }
     /// {@return `robustUniformBufferAccessSizeAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_robustUniformBufferAccessSizeAlignment(MemorySegment segment) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustUniformBufferAccessSizeAlignment(segment, 0L); }
-    /// {@return `robustUniformBufferAccessSizeAlignment`}
-    public @CType("VkDeviceSize") long robustUniformBufferAccessSizeAlignment() { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustUniformBufferAccessSizeAlignment(this.segment()); }
+    public long robustUniformBufferAccessSizeAlignment() { return robustUniformBufferAccessSizeAlignment(this.segment(), 0L); }
     /// Sets `robustUniformBufferAccessSizeAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_robustUniformBufferAccessSizeAlignment(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_robustUniformBufferAccessSizeAlignment.set(segment, 0L, index, value); }
-    /// Sets `robustUniformBufferAccessSizeAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_robustUniformBufferAccessSizeAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustUniformBufferAccessSizeAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void robustUniformBufferAccessSizeAlignment(MemorySegment segment, long index, long value) { VH_robustUniformBufferAccessSizeAlignment.set(segment, 0L, index, value); }
     /// Sets `robustUniformBufferAccessSizeAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRobustness2PropertiesEXT robustUniformBufferAccessSizeAlignment(@CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustUniformBufferAccessSizeAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceRobustness2PropertiesEXT robustUniformBufferAccessSizeAlignment(long value) { robustUniformBufferAccessSizeAlignment(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRobustness2PropertiesEXT].
     public static final class Buffer extends VkPhysicalDeviceRobustness2PropertiesEXT {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `robustStorageBufferAccessSizeAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long robustStorageBufferAccessSizeAlignmentAt(long index) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustStorageBufferAccessSizeAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long robustStorageBufferAccessSizeAlignmentAt(long index) { return robustStorageBufferAccessSizeAlignment(this.segment(), index); }
         /// Sets `robustStorageBufferAccessSizeAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer robustStorageBufferAccessSizeAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustStorageBufferAccessSizeAlignment(this.segment(), index, value); return this; }
+        public Buffer robustStorageBufferAccessSizeAlignmentAt(long index, long value) { robustStorageBufferAccessSizeAlignment(this.segment(), index, value); return this; }
 
         /// {@return `robustUniformBufferAccessSizeAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long robustUniformBufferAccessSizeAlignmentAt(long index) { return VkPhysicalDeviceRobustness2PropertiesEXT.get_robustUniformBufferAccessSizeAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long robustUniformBufferAccessSizeAlignmentAt(long index) { return robustUniformBufferAccessSizeAlignment(this.segment(), index); }
         /// Sets `robustUniformBufferAccessSizeAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer robustUniformBufferAccessSizeAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceRobustness2PropertiesEXT.set_robustUniformBufferAccessSizeAlignment(this.segment(), index, value); return this; }
+        public Buffer robustUniformBufferAccessSizeAlignmentAt(long index, long value) { robustUniformBufferAccessSizeAlignment(this.segment(), index, value); return this; }
 
     }
 }

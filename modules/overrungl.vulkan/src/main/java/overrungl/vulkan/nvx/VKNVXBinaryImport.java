@@ -18,7 +18,6 @@
 package overrungl.vulkan.nvx;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -37,15 +36,15 @@ public class VKNVXBinaryImport {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateCuModuleNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreateCuFunctionNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyCuModuleNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyCuFunctionNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCuModuleNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyCuFunctionNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdCuLaunchKernelNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateCuModuleNVX;
         public final MemorySegment PFN_vkCreateCuFunctionNVX;
         public final MemorySegment PFN_vkDestroyCuModuleNVX;
         public final MemorySegment PFN_vkDestroyCuFunctionNVX;
         public final MemorySegment PFN_vkCmdCuLaunchKernelNVX;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCreateCuModuleNVX = func.invoke(device, "vkCreateCuModuleNVX");
             PFN_vkCreateCuFunctionNVX = func.invoke(device, "vkCreateCuFunctionNVX");
             PFN_vkDestroyCuModuleNVX = func.invoke(device, "vkDestroyCuModuleNVX");
@@ -54,38 +53,53 @@ public class VKNVXBinaryImport {
         }
     }
 
-    public VKNVXBinaryImport(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKNVXBinaryImport(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int CreateCuModuleNVX(@CType("VkDevice") MemorySegment device, @CType("const VkCuModuleCreateInfoNVX *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkCuModuleNVX *") MemorySegment pModule) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuModuleNVX");
+    /// ```
+    /// VkResult vkCreateCuModuleNVX(VkDevice device, const VkCuModuleCreateInfoNVX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCuModuleNVX* pModule);
+    /// ```
+    public int CreateCuModuleNVX(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pModule) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuModuleNVX");
         try { return (int) Handles.MH_vkCreateCuModuleNVX.invokeExact(handles.PFN_vkCreateCuModuleNVX, device, pCreateInfo, pAllocator, pModule); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateCuModuleNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateCuModuleNVX", e); }
     }
 
-    public @CType("VkResult") int CreateCuFunctionNVX(@CType("VkDevice") MemorySegment device, @CType("const VkCuFunctionCreateInfoNVX *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkCuFunctionNVX *") MemorySegment pFunction) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuFunctionNVX");
+    /// ```
+    /// VkResult vkCreateCuFunctionNVX(VkDevice device, const VkCuFunctionCreateInfoNVX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCuFunctionNVX* pFunction);
+    /// ```
+    public int CreateCuFunctionNVX(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pFunction) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuFunctionNVX");
         try { return (int) Handles.MH_vkCreateCuFunctionNVX.invokeExact(handles.PFN_vkCreateCuFunctionNVX, device, pCreateInfo, pAllocator, pFunction); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateCuFunctionNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateCuFunctionNVX", e); }
     }
 
-    public void DestroyCuModuleNVX(@CType("VkDevice") MemorySegment device, @CType("VkCuModuleNVX") MemorySegment module, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuModuleNVX");
+    /// ```
+    /// void vkDestroyCuModuleNVX(VkDevice device, VkCuModuleNVX module, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public void DestroyCuModuleNVX(MemorySegment device, long module, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuModuleNVX");
         try { Handles.MH_vkDestroyCuModuleNVX.invokeExact(handles.PFN_vkDestroyCuModuleNVX, device, module, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDestroyCuModuleNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DestroyCuModuleNVX", e); }
     }
 
-    public void DestroyCuFunctionNVX(@CType("VkDevice") MemorySegment device, @CType("VkCuFunctionNVX") MemorySegment function, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuFunctionNVX");
+    /// ```
+    /// void vkDestroyCuFunctionNVX(VkDevice device, VkCuFunctionNVX function, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public void DestroyCuFunctionNVX(MemorySegment device, long function, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuFunctionNVX");
         try { Handles.MH_vkDestroyCuFunctionNVX.invokeExact(handles.PFN_vkDestroyCuFunctionNVX, device, function, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in vkDestroyCuFunctionNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DestroyCuFunctionNVX", e); }
     }
 
-    public void CmdCuLaunchKernelNVX(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkCuLaunchInfoNVX *") MemorySegment pLaunchInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdCuLaunchKernelNVX)) throw new SymbolNotFoundError("Symbol not found: vkCmdCuLaunchKernelNVX");
+    /// ```
+    /// void vkCmdCuLaunchKernelNVX(VkCommandBuffer commandBuffer, const VkCuLaunchInfoNVX* pLaunchInfo);
+    /// ```
+    public void CmdCuLaunchKernelNVX(MemorySegment commandBuffer, MemorySegment pLaunchInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCuLaunchKernelNVX)) throw new SymbolNotFoundError("Symbol not found: vkCmdCuLaunchKernelNVX");
         try { Handles.MH_vkCmdCuLaunchKernelNVX.invokeExact(handles.PFN_vkCmdCuLaunchKernelNVX, commandBuffer, pLaunchInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdCuLaunchKernelNVX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdCuLaunchKernelNVX", e); }
     }
 
 }

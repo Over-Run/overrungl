@@ -82,7 +82,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glViewportArrayv(unsigned int first, int count, const GLfloat* v);
+    /// void glViewportArrayv(GLuint first, GLsizei count, const GLfloat* v);
     /// ```
     public void ViewportArrayv(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportArrayv)) throw new SymbolNotFoundError("Symbol not found: glViewportArrayv");
@@ -91,7 +91,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glViewportIndexedf(unsigned int index, float x, float y, float w, float h);
+    /// void glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
     /// ```
     public void ViewportIndexedf(int index, float x, float y, float w, float h) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportIndexedf)) throw new SymbolNotFoundError("Symbol not found: glViewportIndexedf");
@@ -100,7 +100,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glViewportIndexedfv(unsigned int index, const GLfloat* v);
+    /// void glViewportIndexedfv(GLuint index, const GLfloat* v);
     /// ```
     public void ViewportIndexedfv(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportIndexedfv)) throw new SymbolNotFoundError("Symbol not found: glViewportIndexedfv");
@@ -109,7 +109,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glScissorArrayv(unsigned int first, int count, const GLint* v);
+    /// void glScissorArrayv(GLuint first, GLsizei count, const GLint* v);
     /// ```
     public void ScissorArrayv(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorArrayv)) throw new SymbolNotFoundError("Symbol not found: glScissorArrayv");
@@ -118,7 +118,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glScissorIndexed(unsigned int index, int left, int bottom, int width, int height);
+    /// void glScissorIndexed(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
     /// ```
     public void ScissorIndexed(int index, int left, int bottom, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorIndexed)) throw new SymbolNotFoundError("Symbol not found: glScissorIndexed");
@@ -127,7 +127,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glScissorIndexedv(unsigned int index, const GLint* v);
+    /// void glScissorIndexedv(GLuint index, const GLint* v);
     /// ```
     public void ScissorIndexedv(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorIndexedv)) throw new SymbolNotFoundError("Symbol not found: glScissorIndexedv");
@@ -136,7 +136,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glDepthRangeArrayv(unsigned int first, int count, const GLdouble* v);
+    /// void glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble* v);
     /// ```
     public void DepthRangeArrayv(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeArrayv)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeArrayv");
@@ -145,7 +145,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glDepthRangeIndexed(unsigned int index, double n, double f);
+    /// void glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f);
     /// ```
     public void DepthRangeIndexed(int index, double n, double f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeIndexed)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeIndexed");
@@ -154,7 +154,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glGetFloati_v(unsigned int target, unsigned int index, GLfloat* data);
+    /// void glGetFloati_v(GLenum target, GLuint index, GLfloat* data);
     /// ```
     public void GetFloati_v(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_v)) throw new SymbolNotFoundError("Symbol not found: glGetFloati_v");
@@ -163,7 +163,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glGetDoublei_v(unsigned int target, unsigned int index, GLdouble* data);
+    /// void glGetDoublei_v(GLenum target, GLuint index, GLdouble* data);
     /// ```
     public void GetDoublei_v(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_v)) throw new SymbolNotFoundError("Symbol not found: glGetDoublei_v");
@@ -172,7 +172,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glDepthRangeArraydvNV(unsigned int first, int count, const GLdouble* v);
+    /// void glDepthRangeArraydvNV(GLuint first, GLsizei count, const GLdouble* v);
     /// ```
     public void DepthRangeArraydvNV(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeArraydvNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeArraydvNV");
@@ -181,7 +181,7 @@ public final class GLARBViewportArray {
     }
 
     /// ```
-    /// void glDepthRangeIndexeddNV(unsigned int index, double n, double f);
+    /// void glDepthRangeIndexeddNV(GLuint index, GLdouble n, GLdouble f);
     /// ```
     public void DepthRangeIndexeddNV(int index, double n, double f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangeIndexeddNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangeIndexeddNV");

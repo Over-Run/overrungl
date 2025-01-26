@@ -43,7 +43,7 @@ public final class GLEXTWindowRectangles {
     }
 
     /// ```
-    /// void glWindowRectanglesEXT(unsigned int mode, int count, const GLint* box);
+    /// void glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint* box);
     /// ```
     public void WindowRectanglesEXT(int mode, int count, MemorySegment box) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new SymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");

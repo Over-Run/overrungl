@@ -15,52 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### queueFlags
-/// [VarHandle][#VH_queueFlags] - [Getter][#queueFlags()] - [Setter][#queueFlags(int)]
-/// ### queueCount
-/// [VarHandle][#VH_queueCount] - [Getter][#queueCount()] - [Setter][#queueCount(int)]
-/// ### timestampValidBits
-/// [VarHandle][#VH_timestampValidBits] - [Getter][#timestampValidBits()] - [Setter][#timestampValidBits(int)]
-/// ### minImageTransferGranularity
-/// [Byte offset][#OFFSET_minImageTransferGranularity] - [Memory layout][#ML_minImageTransferGranularity] - [Getter][#minImageTransferGranularity()] - [Setter][#minImageTransferGranularity(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkQueueFamilyProperties {
+/// ```
+/// struct VkQueueFamilyProperties {
 ///     VkQueueFlags queueFlags;
 ///     uint32_t queueCount;
 ///     uint32_t timestampValidBits;
 ///     VkExtent3D minImageTransferGranularity;
-/// } VkQueueFamilyProperties;
+/// };
 /// ```
-public sealed class VkQueueFamilyProperties extends Struct {
+public sealed class VkQueueFamilyProperties extends GroupType {
     /// The struct layout of `VkQueueFamilyProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("queueFlags"),
         ValueLayout.JAVA_INT.withName("queueCount"),
         ValueLayout.JAVA_INT.withName("timestampValidBits"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("minImageTransferGranularity")
     );
-    /// The [VarHandle] of `queueFlags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `queueFlags`.
+    public static final long OFFSET_queueFlags = LAYOUT.byteOffset(PathElement.groupElement("queueFlags"));
+    /// The memory layout of `queueFlags`.
+    public static final MemoryLayout LAYOUT_queueFlags = LAYOUT.select(PathElement.groupElement("queueFlags"));
+    /// The [VarHandle] of `queueFlags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_queueFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueFlags"));
-    /// The [VarHandle] of `queueCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `queueCount`.
+    public static final long OFFSET_queueCount = LAYOUT.byteOffset(PathElement.groupElement("queueCount"));
+    /// The memory layout of `queueCount`.
+    public static final MemoryLayout LAYOUT_queueCount = LAYOUT.select(PathElement.groupElement("queueCount"));
+    /// The [VarHandle] of `queueCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_queueCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueCount"));
-    /// The [VarHandle] of `timestampValidBits` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `timestampValidBits`.
+    public static final long OFFSET_timestampValidBits = LAYOUT.byteOffset(PathElement.groupElement("timestampValidBits"));
+    /// The memory layout of `timestampValidBits`.
+    public static final MemoryLayout LAYOUT_timestampValidBits = LAYOUT.select(PathElement.groupElement("timestampValidBits"));
+    /// The [VarHandle] of `timestampValidBits` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_timestampValidBits = LAYOUT.arrayElementVarHandle(PathElement.groupElement("timestampValidBits"));
     /// The byte offset of `minImageTransferGranularity`.
     public static final long OFFSET_minImageTransferGranularity = LAYOUT.byteOffset(PathElement.groupElement("minImageTransferGranularity"));
     /// The memory layout of `minImageTransferGranularity`.
-    public static final MemoryLayout ML_minImageTransferGranularity = LAYOUT.select(PathElement.groupElement("minImageTransferGranularity"));
+    public static final MemoryLayout LAYOUT_minImageTransferGranularity = LAYOUT.select(PathElement.groupElement("minImageTransferGranularity"));
 
     /// Creates `VkQueueFamilyProperties` with the given segment.
     /// @param segment the memory segment
@@ -69,19 +71,14 @@ public sealed class VkQueueFamilyProperties extends Struct {
     /// Creates `VkQueueFamilyProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkQueueFamilyProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkQueueFamilyProperties(segment); }
-
-    /// Creates `VkQueueFamilyProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkQueueFamilyProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkQueueFamilyProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkQueueFamilyProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkQueueFamilyProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkQueueFamilyProperties` with the given segment.
     ///
@@ -89,7 +86,7 @@ public sealed class VkQueueFamilyProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkQueueFamilyProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -102,11 +99,6 @@ public sealed class VkQueueFamilyProperties extends Struct {
     /// @return the allocated `VkQueueFamilyProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkQueueFamilyProperties`
-    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, @CType("VkQueueFlags") int queueFlags, @CType("uint32_t") int queueCount, @CType("uint32_t") int timestampValidBits, @CType("VkExtent3D") MemorySegment minImageTransferGranularity) { return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount).timestampValidBits(timestampValidBits).minImageTransferGranularity(minImageTransferGranularity); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -114,99 +106,71 @@ public sealed class VkQueueFamilyProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `queueFlags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkQueueFlags") int get_queueFlags(MemorySegment segment, long index) { return (int) VH_queueFlags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int queueFlags(MemorySegment segment, long index) { return (int) VH_queueFlags.get(segment, 0L, index); }
     /// {@return `queueFlags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkQueueFlags") int get_queueFlags(MemorySegment segment) { return VkQueueFamilyProperties.get_queueFlags(segment, 0L); }
-    /// {@return `queueFlags`}
-    public @CType("VkQueueFlags") int queueFlags() { return VkQueueFamilyProperties.get_queueFlags(this.segment()); }
+    public int queueFlags() { return queueFlags(this.segment(), 0L); }
     /// Sets `queueFlags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_queueFlags(MemorySegment segment, long index, @CType("VkQueueFlags") int value) { VH_queueFlags.set(segment, 0L, index, value); }
-    /// Sets `queueFlags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_queueFlags(MemorySegment segment, @CType("VkQueueFlags") int value) { VkQueueFamilyProperties.set_queueFlags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void queueFlags(MemorySegment segment, long index, int value) { VH_queueFlags.set(segment, 0L, index, value); }
     /// Sets `queueFlags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueueFamilyProperties queueFlags(@CType("VkQueueFlags") int value) { VkQueueFamilyProperties.set_queueFlags(this.segment(), value); return this; }
+    public VkQueueFamilyProperties queueFlags(int value) { queueFlags(this.segment(), 0L, value); return this; }
 
     /// {@return `queueCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_queueCount(MemorySegment segment, long index) { return (int) VH_queueCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int queueCount(MemorySegment segment, long index) { return (int) VH_queueCount.get(segment, 0L, index); }
     /// {@return `queueCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_queueCount(MemorySegment segment) { return VkQueueFamilyProperties.get_queueCount(segment, 0L); }
-    /// {@return `queueCount`}
-    public @CType("uint32_t") int queueCount() { return VkQueueFamilyProperties.get_queueCount(this.segment()); }
+    public int queueCount() { return queueCount(this.segment(), 0L); }
     /// Sets `queueCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_queueCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_queueCount.set(segment, 0L, index, value); }
-    /// Sets `queueCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_queueCount(MemorySegment segment, @CType("uint32_t") int value) { VkQueueFamilyProperties.set_queueCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void queueCount(MemorySegment segment, long index, int value) { VH_queueCount.set(segment, 0L, index, value); }
     /// Sets `queueCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueueFamilyProperties queueCount(@CType("uint32_t") int value) { VkQueueFamilyProperties.set_queueCount(this.segment(), value); return this; }
+    public VkQueueFamilyProperties queueCount(int value) { queueCount(this.segment(), 0L, value); return this; }
 
     /// {@return `timestampValidBits` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_timestampValidBits(MemorySegment segment, long index) { return (int) VH_timestampValidBits.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int timestampValidBits(MemorySegment segment, long index) { return (int) VH_timestampValidBits.get(segment, 0L, index); }
     /// {@return `timestampValidBits`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_timestampValidBits(MemorySegment segment) { return VkQueueFamilyProperties.get_timestampValidBits(segment, 0L); }
-    /// {@return `timestampValidBits`}
-    public @CType("uint32_t") int timestampValidBits() { return VkQueueFamilyProperties.get_timestampValidBits(this.segment()); }
+    public int timestampValidBits() { return timestampValidBits(this.segment(), 0L); }
     /// Sets `timestampValidBits` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_timestampValidBits(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_timestampValidBits.set(segment, 0L, index, value); }
-    /// Sets `timestampValidBits` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_timestampValidBits(MemorySegment segment, @CType("uint32_t") int value) { VkQueueFamilyProperties.set_timestampValidBits(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void timestampValidBits(MemorySegment segment, long index, int value) { VH_timestampValidBits.set(segment, 0L, index, value); }
     /// Sets `timestampValidBits` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueueFamilyProperties timestampValidBits(@CType("uint32_t") int value) { VkQueueFamilyProperties.set_timestampValidBits(this.segment(), value); return this; }
+    public VkQueueFamilyProperties timestampValidBits(int value) { timestampValidBits(this.segment(), 0L, value); return this; }
 
     /// {@return `minImageTransferGranularity` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent3D") MemorySegment get_minImageTransferGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment minImageTransferGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minImageTransferGranularity, index), LAYOUT_minImageTransferGranularity); }
     /// {@return `minImageTransferGranularity`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") MemorySegment get_minImageTransferGranularity(MemorySegment segment) { return VkQueueFamilyProperties.get_minImageTransferGranularity(segment, 0L); }
-    /// {@return `minImageTransferGranularity`}
-    public @CType("VkExtent3D") MemorySegment minImageTransferGranularity() { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment()); }
+    public MemorySegment minImageTransferGranularity() { return minImageTransferGranularity(this.segment(), 0L); }
     /// Sets `minImageTransferGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minImageTransferGranularity(MemorySegment segment, long index, @CType("VkExtent3D") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minImageTransferGranularity, index), ML_minImageTransferGranularity.byteSize()); }
-    /// Sets `minImageTransferGranularity` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minImageTransferGranularity(MemorySegment segment, @CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minImageTransferGranularity(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minImageTransferGranularity, index), LAYOUT_minImageTransferGranularity.byteSize()); }
     /// Sets `minImageTransferGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkQueueFamilyProperties minImageTransferGranularity(@CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), value); return this; }
+    public VkQueueFamilyProperties minImageTransferGranularity(MemorySegment value) { minImageTransferGranularity(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkQueueFamilyProperties].
     public static final class Buffer extends VkQueueFamilyProperties {
@@ -231,40 +195,40 @@ public sealed class VkQueueFamilyProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `queueFlags` at the given index}
-        /// @param index the index
-        public @CType("VkQueueFlags") int queueFlagsAt(long index) { return VkQueueFamilyProperties.get_queueFlags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int queueFlagsAt(long index) { return queueFlags(this.segment(), index); }
         /// Sets `queueFlags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer queueFlagsAt(long index, @CType("VkQueueFlags") int value) { VkQueueFamilyProperties.set_queueFlags(this.segment(), index, value); return this; }
+        public Buffer queueFlagsAt(long index, int value) { queueFlags(this.segment(), index, value); return this; }
 
         /// {@return `queueCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int queueCountAt(long index) { return VkQueueFamilyProperties.get_queueCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int queueCountAt(long index) { return queueCount(this.segment(), index); }
         /// Sets `queueCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer queueCountAt(long index, @CType("uint32_t") int value) { VkQueueFamilyProperties.set_queueCount(this.segment(), index, value); return this; }
+        public Buffer queueCountAt(long index, int value) { queueCount(this.segment(), index, value); return this; }
 
         /// {@return `timestampValidBits` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int timestampValidBitsAt(long index) { return VkQueueFamilyProperties.get_timestampValidBits(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int timestampValidBitsAt(long index) { return timestampValidBits(this.segment(), index); }
         /// Sets `timestampValidBits` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer timestampValidBitsAt(long index, @CType("uint32_t") int value) { VkQueueFamilyProperties.set_timestampValidBits(this.segment(), index, value); return this; }
+        public Buffer timestampValidBitsAt(long index, int value) { timestampValidBits(this.segment(), index, value); return this; }
 
         /// {@return `minImageTransferGranularity` at the given index}
-        /// @param index the index
-        public @CType("VkExtent3D") MemorySegment minImageTransferGranularityAt(long index) { return VkQueueFamilyProperties.get_minImageTransferGranularity(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment minImageTransferGranularityAt(long index) { return minImageTransferGranularity(this.segment(), index); }
         /// Sets `minImageTransferGranularity` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minImageTransferGranularityAt(long index, @CType("VkExtent3D") MemorySegment value) { VkQueueFamilyProperties.set_minImageTransferGranularity(this.segment(), index, value); return this; }
+        public Buffer minImageTransferGranularityAt(long index, MemorySegment value) { minImageTransferGranularity(this.segment(), index, value); return this; }
 
     }
 }

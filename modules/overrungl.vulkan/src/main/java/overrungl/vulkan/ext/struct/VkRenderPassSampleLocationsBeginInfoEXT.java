@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### attachmentInitialSampleLocationsCount
-/// [VarHandle][#VH_attachmentInitialSampleLocationsCount] - [Getter][#attachmentInitialSampleLocationsCount()] - [Setter][#attachmentInitialSampleLocationsCount(int)]
-/// ### pAttachmentInitialSampleLocations
-/// [VarHandle][#VH_pAttachmentInitialSampleLocations] - [Getter][#pAttachmentInitialSampleLocations()] - [Setter][#pAttachmentInitialSampleLocations(MemorySegment)]
-/// ### postSubpassSampleLocationsCount
-/// [VarHandle][#VH_postSubpassSampleLocationsCount] - [Getter][#postSubpassSampleLocationsCount()] - [Setter][#postSubpassSampleLocationsCount(int)]
-/// ### pPostSubpassSampleLocations
-/// [VarHandle][#VH_pPostSubpassSampleLocations] - [Getter][#pPostSubpassSampleLocations()] - [Setter][#pPostSubpassSampleLocations(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRenderPassSampleLocationsBeginInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t attachmentInitialSampleLocationsCount;
-///     const VkAttachmentSampleLocationsEXT * pAttachmentInitialSampleLocations;
-///     uint32_t postSubpassSampleLocationsCount;
-///     const VkSubpassSampleLocationsEXT * pPostSubpassSampleLocations;
-/// } VkRenderPassSampleLocationsBeginInfoEXT;
 /// ```
-public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
+/// struct VkRenderPassSampleLocationsBeginInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     uint32_t attachmentInitialSampleLocationsCount;
+///     const VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations;
+///     uint32_t postSubpassSampleLocationsCount;
+///     const VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations;
+/// };
+/// ```
+public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends GroupType {
     /// The struct layout of `VkRenderPassSampleLocationsBeginInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("attachmentInitialSampleLocationsCount"),
@@ -59,16 +45,40 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
         ValueLayout.JAVA_INT.withName("postSubpassSampleLocationsCount"),
         ValueLayout.ADDRESS.withName("pPostSubpassSampleLocations")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `attachmentInitialSampleLocationsCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `attachmentInitialSampleLocationsCount`.
+    public static final long OFFSET_attachmentInitialSampleLocationsCount = LAYOUT.byteOffset(PathElement.groupElement("attachmentInitialSampleLocationsCount"));
+    /// The memory layout of `attachmentInitialSampleLocationsCount`.
+    public static final MemoryLayout LAYOUT_attachmentInitialSampleLocationsCount = LAYOUT.select(PathElement.groupElement("attachmentInitialSampleLocationsCount"));
+    /// The [VarHandle] of `attachmentInitialSampleLocationsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_attachmentInitialSampleLocationsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentInitialSampleLocationsCount"));
+    /// The byte offset of `pAttachmentInitialSampleLocations`.
+    public static final long OFFSET_pAttachmentInitialSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("pAttachmentInitialSampleLocations"));
+    /// The memory layout of `pAttachmentInitialSampleLocations`.
+    public static final MemoryLayout LAYOUT_pAttachmentInitialSampleLocations = LAYOUT.select(PathElement.groupElement("pAttachmentInitialSampleLocations"));
     /// The [VarHandle] of `pAttachmentInitialSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pAttachmentInitialSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAttachmentInitialSampleLocations"));
-    /// The [VarHandle] of `postSubpassSampleLocationsCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `postSubpassSampleLocationsCount`.
+    public static final long OFFSET_postSubpassSampleLocationsCount = LAYOUT.byteOffset(PathElement.groupElement("postSubpassSampleLocationsCount"));
+    /// The memory layout of `postSubpassSampleLocationsCount`.
+    public static final MemoryLayout LAYOUT_postSubpassSampleLocationsCount = LAYOUT.select(PathElement.groupElement("postSubpassSampleLocationsCount"));
+    /// The [VarHandle] of `postSubpassSampleLocationsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_postSubpassSampleLocationsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("postSubpassSampleLocationsCount"));
+    /// The byte offset of `pPostSubpassSampleLocations`.
+    public static final long OFFSET_pPostSubpassSampleLocations = LAYOUT.byteOffset(PathElement.groupElement("pPostSubpassSampleLocations"));
+    /// The memory layout of `pPostSubpassSampleLocations`.
+    public static final MemoryLayout LAYOUT_pPostSubpassSampleLocations = LAYOUT.select(PathElement.groupElement("pPostSubpassSampleLocations"));
     /// The [VarHandle] of `pPostSubpassSampleLocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPostSubpassSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPostSubpassSampleLocations"));
 
@@ -79,19 +89,14 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
     /// Creates `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassSampleLocationsBeginInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassSampleLocationsBeginInfoEXT(segment); }
-
-    /// Creates `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassSampleLocationsBeginInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassSampleLocationsBeginInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRenderPassSampleLocationsBeginInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSampleLocationsBeginInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
     /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
-    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint32_t") int attachmentInitialSampleLocationsCount, @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment pAttachmentInitialSampleLocations, @CType("uint32_t") int postSubpassSampleLocationsCount, @CType("const VkSubpassSampleLocationsEXT *") MemorySegment pPostSubpassSampleLocations) { return alloc(allocator).sType(sType).pNext(pNext).attachmentInitialSampleLocationsCount(attachmentInitialSampleLocationsCount).pAttachmentInitialSampleLocations(pAttachmentInitialSampleLocations).postSubpassSampleLocationsCount(postSubpassSampleLocationsCount).pPostSubpassSampleLocations(pPostSubpassSampleLocations); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkRenderPassSampleLocationsBeginInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT sType(@CType("VkStructureType") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkRenderPassSampleLocationsBeginInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT pNext(@CType("const void *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `attachmentInitialSampleLocationsCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_attachmentInitialSampleLocationsCount(MemorySegment segment, long index) { return (int) VH_attachmentInitialSampleLocationsCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int attachmentInitialSampleLocationsCount(MemorySegment segment, long index) { return (int) VH_attachmentInitialSampleLocationsCount.get(segment, 0L, index); }
     /// {@return `attachmentInitialSampleLocationsCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_attachmentInitialSampleLocationsCount(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_attachmentInitialSampleLocationsCount(segment, 0L); }
-    /// {@return `attachmentInitialSampleLocationsCount`}
-    public @CType("uint32_t") int attachmentInitialSampleLocationsCount() { return VkRenderPassSampleLocationsBeginInfoEXT.get_attachmentInitialSampleLocationsCount(this.segment()); }
+    public int attachmentInitialSampleLocationsCount() { return attachmentInitialSampleLocationsCount(this.segment(), 0L); }
     /// Sets `attachmentInitialSampleLocationsCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_attachmentInitialSampleLocationsCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_attachmentInitialSampleLocationsCount.set(segment, 0L, index, value); }
-    /// Sets `attachmentInitialSampleLocationsCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_attachmentInitialSampleLocationsCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_attachmentInitialSampleLocationsCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void attachmentInitialSampleLocationsCount(MemorySegment segment, long index, int value) { VH_attachmentInitialSampleLocationsCount.set(segment, 0L, index, value); }
     /// Sets `attachmentInitialSampleLocationsCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT attachmentInitialSampleLocationsCount(@CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_attachmentInitialSampleLocationsCount(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT attachmentInitialSampleLocationsCount(int value) { attachmentInitialSampleLocationsCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pAttachmentInitialSampleLocations` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment get_pAttachmentInitialSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pAttachmentInitialSampleLocations.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pAttachmentInitialSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pAttachmentInitialSampleLocations.get(segment, 0L, index); }
     /// {@return `pAttachmentInitialSampleLocations`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment get_pAttachmentInitialSampleLocations(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pAttachmentInitialSampleLocations(segment, 0L); }
-    /// {@return `pAttachmentInitialSampleLocations`}
-    public @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment pAttachmentInitialSampleLocations() { return VkRenderPassSampleLocationsBeginInfoEXT.get_pAttachmentInitialSampleLocations(this.segment()); }
+    public MemorySegment pAttachmentInitialSampleLocations() { return pAttachmentInitialSampleLocations(this.segment(), 0L); }
     /// Sets `pAttachmentInitialSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pAttachmentInitialSampleLocations(MemorySegment segment, long index, @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment value) { VH_pAttachmentInitialSampleLocations.set(segment, 0L, index, value); }
-    /// Sets `pAttachmentInitialSampleLocations` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pAttachmentInitialSampleLocations(MemorySegment segment, @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pAttachmentInitialSampleLocations(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pAttachmentInitialSampleLocations(MemorySegment segment, long index, MemorySegment value) { VH_pAttachmentInitialSampleLocations.set(segment, 0L, index, value); }
     /// Sets `pAttachmentInitialSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT pAttachmentInitialSampleLocations(@CType("const VkAttachmentSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pAttachmentInitialSampleLocations(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT pAttachmentInitialSampleLocations(MemorySegment value) { pAttachmentInitialSampleLocations(this.segment(), 0L, value); return this; }
 
     /// {@return `postSubpassSampleLocationsCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_postSubpassSampleLocationsCount(MemorySegment segment, long index) { return (int) VH_postSubpassSampleLocationsCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int postSubpassSampleLocationsCount(MemorySegment segment, long index) { return (int) VH_postSubpassSampleLocationsCount.get(segment, 0L, index); }
     /// {@return `postSubpassSampleLocationsCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_postSubpassSampleLocationsCount(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_postSubpassSampleLocationsCount(segment, 0L); }
-    /// {@return `postSubpassSampleLocationsCount`}
-    public @CType("uint32_t") int postSubpassSampleLocationsCount() { return VkRenderPassSampleLocationsBeginInfoEXT.get_postSubpassSampleLocationsCount(this.segment()); }
+    public int postSubpassSampleLocationsCount() { return postSubpassSampleLocationsCount(this.segment(), 0L); }
     /// Sets `postSubpassSampleLocationsCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_postSubpassSampleLocationsCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_postSubpassSampleLocationsCount.set(segment, 0L, index, value); }
-    /// Sets `postSubpassSampleLocationsCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_postSubpassSampleLocationsCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_postSubpassSampleLocationsCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void postSubpassSampleLocationsCount(MemorySegment segment, long index, int value) { VH_postSubpassSampleLocationsCount.set(segment, 0L, index, value); }
     /// Sets `postSubpassSampleLocationsCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT postSubpassSampleLocationsCount(@CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_postSubpassSampleLocationsCount(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT postSubpassSampleLocationsCount(int value) { postSubpassSampleLocationsCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pPostSubpassSampleLocations` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSubpassSampleLocationsEXT *") MemorySegment get_pPostSubpassSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pPostSubpassSampleLocations.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPostSubpassSampleLocations(MemorySegment segment, long index) { return (MemorySegment) VH_pPostSubpassSampleLocations.get(segment, 0L, index); }
     /// {@return `pPostSubpassSampleLocations`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSubpassSampleLocationsEXT *") MemorySegment get_pPostSubpassSampleLocations(MemorySegment segment) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pPostSubpassSampleLocations(segment, 0L); }
-    /// {@return `pPostSubpassSampleLocations`}
-    public @CType("const VkSubpassSampleLocationsEXT *") MemorySegment pPostSubpassSampleLocations() { return VkRenderPassSampleLocationsBeginInfoEXT.get_pPostSubpassSampleLocations(this.segment()); }
+    public MemorySegment pPostSubpassSampleLocations() { return pPostSubpassSampleLocations(this.segment(), 0L); }
     /// Sets `pPostSubpassSampleLocations` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPostSubpassSampleLocations(MemorySegment segment, long index, @CType("const VkSubpassSampleLocationsEXT *") MemorySegment value) { VH_pPostSubpassSampleLocations.set(segment, 0L, index, value); }
-    /// Sets `pPostSubpassSampleLocations` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPostSubpassSampleLocations(MemorySegment segment, @CType("const VkSubpassSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pPostSubpassSampleLocations(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPostSubpassSampleLocations(MemorySegment segment, long index, MemorySegment value) { VH_pPostSubpassSampleLocations.set(segment, 0L, index, value); }
     /// Sets `pPostSubpassSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassSampleLocationsBeginInfoEXT pPostSubpassSampleLocations(@CType("const VkSubpassSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pPostSubpassSampleLocations(this.segment(), value); return this; }
+    public VkRenderPassSampleLocationsBeginInfoEXT pPostSubpassSampleLocations(MemorySegment value) { pPostSubpassSampleLocations(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRenderPassSampleLocationsBeginInfoEXT].
     public static final class Buffer extends VkRenderPassSampleLocationsBeginInfoEXT {
@@ -287,58 +245,58 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `attachmentInitialSampleLocationsCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int attachmentInitialSampleLocationsCountAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_attachmentInitialSampleLocationsCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int attachmentInitialSampleLocationsCountAt(long index) { return attachmentInitialSampleLocationsCount(this.segment(), index); }
         /// Sets `attachmentInitialSampleLocationsCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer attachmentInitialSampleLocationsCountAt(long index, @CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_attachmentInitialSampleLocationsCount(this.segment(), index, value); return this; }
+        public Buffer attachmentInitialSampleLocationsCountAt(long index, int value) { attachmentInitialSampleLocationsCount(this.segment(), index, value); return this; }
 
         /// {@return `pAttachmentInitialSampleLocations` at the given index}
-        /// @param index the index
-        public @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment pAttachmentInitialSampleLocationsAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pAttachmentInitialSampleLocations(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pAttachmentInitialSampleLocationsAt(long index) { return pAttachmentInitialSampleLocations(this.segment(), index); }
         /// Sets `pAttachmentInitialSampleLocations` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pAttachmentInitialSampleLocationsAt(long index, @CType("const VkAttachmentSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pAttachmentInitialSampleLocations(this.segment(), index, value); return this; }
+        public Buffer pAttachmentInitialSampleLocationsAt(long index, MemorySegment value) { pAttachmentInitialSampleLocations(this.segment(), index, value); return this; }
 
         /// {@return `postSubpassSampleLocationsCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int postSubpassSampleLocationsCountAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_postSubpassSampleLocationsCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int postSubpassSampleLocationsCountAt(long index) { return postSubpassSampleLocationsCount(this.segment(), index); }
         /// Sets `postSubpassSampleLocationsCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer postSubpassSampleLocationsCountAt(long index, @CType("uint32_t") int value) { VkRenderPassSampleLocationsBeginInfoEXT.set_postSubpassSampleLocationsCount(this.segment(), index, value); return this; }
+        public Buffer postSubpassSampleLocationsCountAt(long index, int value) { postSubpassSampleLocationsCount(this.segment(), index, value); return this; }
 
         /// {@return `pPostSubpassSampleLocations` at the given index}
-        /// @param index the index
-        public @CType("const VkSubpassSampleLocationsEXT *") MemorySegment pPostSubpassSampleLocationsAt(long index) { return VkRenderPassSampleLocationsBeginInfoEXT.get_pPostSubpassSampleLocations(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPostSubpassSampleLocationsAt(long index) { return pPostSubpassSampleLocations(this.segment(), index); }
         /// Sets `pPostSubpassSampleLocations` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPostSubpassSampleLocationsAt(long index, @CType("const VkSubpassSampleLocationsEXT *") MemorySegment value) { VkRenderPassSampleLocationsBeginInfoEXT.set_pPostSubpassSampleLocations(this.segment(), index, value); return this; }
+        public Buffer pPostSubpassSampleLocationsAt(long index, MemorySegment value) { pPostSubpassSampleLocations(this.segment(), index, value); return this; }
 
     }
 }

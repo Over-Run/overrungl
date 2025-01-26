@@ -46,7 +46,7 @@ public final class GLNVPixelDataRange {
     }
 
     /// ```
-    /// void glPixelDataRangeNV(unsigned int target, int length, const void* pointer);
+    /// void glPixelDataRangeNV(GLenum target, GLsizei length, const void* pointer);
     /// ```
     public void PixelDataRangeNV(int target, int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPixelDataRangeNV");
@@ -55,7 +55,7 @@ public final class GLNVPixelDataRange {
     }
 
     /// ```
-    /// void glFlushPixelDataRangeNV(unsigned int target);
+    /// void glFlushPixelDataRangeNV(GLenum target);
     /// ```
     public void FlushPixelDataRangeNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushPixelDataRangeNV)) throw new SymbolNotFoundError("Symbol not found: glFlushPixelDataRangeNV");

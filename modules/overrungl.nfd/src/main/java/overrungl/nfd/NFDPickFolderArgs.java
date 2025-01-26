@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct NFDPickFolderArgs {
 ///     const nfdnchar_t* defaultPath;
-///     NFDWindowHandle parentWindow;
+///     nfdwindowhandle_t parentWindow;
 /// };
 /// ```
 public sealed class NFDPickFolderArgs extends GroupType {

@@ -757,7 +757,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixLoadfEXT(unsigned int mode, const GLfloat* m);
+    /// void glMatrixLoadfEXT(GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixLoadfEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
@@ -766,7 +766,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixLoaddEXT(unsigned int mode, const GLdouble* m);
+    /// void glMatrixLoaddEXT(GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixLoaddEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoaddEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
@@ -775,7 +775,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixMultfEXT(unsigned int mode, const GLfloat* m);
+    /// void glMatrixMultfEXT(GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixMultfEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
@@ -784,7 +784,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixMultdEXT(unsigned int mode, const GLdouble* m);
+    /// void glMatrixMultdEXT(GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixMultdEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultdEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
@@ -793,7 +793,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixLoadIdentityEXT(unsigned int mode);
+    /// void glMatrixLoadIdentityEXT(GLenum mode);
     /// ```
     public void MatrixLoadIdentityEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadIdentityEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadIdentityEXT");
@@ -802,7 +802,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixRotatefEXT(unsigned int mode, float angle, float x, float y, float z);
+    /// void glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void MatrixRotatefEXT(int mode, float angle, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatefEXT");
@@ -811,7 +811,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixRotatedEXT(unsigned int mode, double angle, double x, double y, double z);
+    /// void glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
     /// ```
     public void MatrixRotatedEXT(int mode, double angle, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatedEXT");
@@ -820,7 +820,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixScalefEXT(unsigned int mode, float x, float y, float z);
+    /// void glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void MatrixScalefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScalefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScalefEXT");
@@ -829,7 +829,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixScaledEXT(unsigned int mode, double x, double y, double z);
+    /// void glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
     /// ```
     public void MatrixScaledEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScaledEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScaledEXT");
@@ -838,7 +838,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixTranslatefEXT(unsigned int mode, float x, float y, float z);
+    /// void glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void MatrixTranslatefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatefEXT");
@@ -847,7 +847,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixTranslatedEXT(unsigned int mode, double x, double y, double z);
+    /// void glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
     /// ```
     public void MatrixTranslatedEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatedEXT");
@@ -856,7 +856,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixFrustumEXT(unsigned int mode, double left, double right, double bottom, double top, double zNear, double zFar);
+    /// void glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
     /// ```
     public void MatrixFrustumEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixFrustumEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixFrustumEXT");
@@ -865,7 +865,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixOrthoEXT(unsigned int mode, double left, double right, double bottom, double top, double zNear, double zFar);
+    /// void glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
     /// ```
     public void MatrixOrthoEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixOrthoEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixOrthoEXT");
@@ -874,7 +874,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixPopEXT(unsigned int mode);
+    /// void glMatrixPopEXT(GLenum mode);
     /// ```
     public void MatrixPopEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPopEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPopEXT");
@@ -883,7 +883,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixPushEXT(unsigned int mode);
+    /// void glMatrixPushEXT(GLenum mode);
     /// ```
     public void MatrixPushEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPushEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPushEXT");
@@ -892,7 +892,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glClientAttribDefaultEXT(unsigned int mask);
+    /// void glClientAttribDefaultEXT(GLbitfield mask);
     /// ```
     public void ClientAttribDefaultEXT(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientAttribDefaultEXT)) throw new SymbolNotFoundError("Symbol not found: glClientAttribDefaultEXT");
@@ -901,7 +901,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glPushClientAttribDefaultEXT(unsigned int mask);
+    /// void glPushClientAttribDefaultEXT(GLbitfield mask);
     /// ```
     public void PushClientAttribDefaultEXT(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushClientAttribDefaultEXT)) throw new SymbolNotFoundError("Symbol not found: glPushClientAttribDefaultEXT");
@@ -910,7 +910,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameterfEXT(unsigned int texture, unsigned int target, unsigned int pname, float param);
+    /// void glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param);
     /// ```
     public void TextureParameterfEXT(int texture, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterfEXT");
@@ -919,7 +919,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameterfvEXT(unsigned int texture, unsigned int target, unsigned int pname, const GLfloat* params);
+    /// void glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat* params);
     /// ```
     public void TextureParameterfvEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterfvEXT");
@@ -928,7 +928,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameteriEXT(unsigned int texture, unsigned int target, unsigned int pname, int param);
+    /// void glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param);
     /// ```
     public void TextureParameteriEXT(int texture, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameteriEXT");
@@ -937,7 +937,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameterivEXT(unsigned int texture, unsigned int target, unsigned int pname, const GLint* params);
+    /// void glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void TextureParameterivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterivEXT");
@@ -946,7 +946,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureImage1DEXT(unsigned int texture, unsigned int target, int level, int internalformat, int width, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureImage1DEXT");
@@ -955,7 +955,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureImage2DEXT(unsigned int texture, unsigned int target, int level, int internalformat, int width, int height, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureImage2DEXT");
@@ -964,7 +964,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureSubImage1DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int width, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage1DEXT");
@@ -973,7 +973,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureSubImage2DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage2DEXT");
@@ -982,7 +982,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyTextureImage1DEXT(unsigned int texture, unsigned int target, int level, unsigned int internalformat, int x, int y, int width, int border);
+    /// void glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
     /// ```
     public void CopyTextureImage1DEXT(int texture, int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureImage1DEXT");
@@ -991,7 +991,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyTextureImage2DEXT(unsigned int texture, unsigned int target, int level, unsigned int internalformat, int x, int y, int width, int height, int border);
+    /// void glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
     /// ```
     public void CopyTextureImage2DEXT(int texture, int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureImage2DEXT");
@@ -1000,7 +1000,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyTextureSubImage1DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int x, int y, int width);
+    /// void glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
     /// ```
     public void CopyTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage1DEXT");
@@ -1009,7 +1009,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyTextureSubImage2DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int x, int y, int width, int height);
+    /// void glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void CopyTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage2DEXT");
@@ -1018,7 +1018,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureImageEXT(unsigned int texture, unsigned int target, int level, unsigned int format, unsigned int type, void* pixels);
+    /// void glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, void* pixels);
     /// ```
     public void GetTextureImageEXT(int texture, int target, int level, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureImageEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureImageEXT");
@@ -1027,7 +1027,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureParameterfvEXT(unsigned int texture, unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetTextureParameterfvEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterfvEXT");
@@ -1036,7 +1036,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureParameterivEXT(unsigned int texture, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetTextureParameterivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterivEXT");
@@ -1045,7 +1045,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureLevelParameterfvEXT(unsigned int texture, unsigned int target, int level, unsigned int pname, GLfloat* params);
+    /// void glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat* params);
     /// ```
     public void GetTextureLevelParameterfvEXT(int texture, int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameterfvEXT");
@@ -1054,7 +1054,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureLevelParameterivEXT(unsigned int texture, unsigned int target, int level, unsigned int pname, GLint* params);
+    /// void glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint* params);
     /// ```
     public void GetTextureLevelParameterivEXT(int texture, int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureLevelParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureLevelParameterivEXT");
@@ -1063,7 +1063,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureImage3DEXT(unsigned int texture, unsigned int target, int level, int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureImage3DEXT");
@@ -1072,7 +1072,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureSubImage3DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureSubImage3DEXT");
@@ -1081,7 +1081,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyTextureSubImage3DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    /// void glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void CopyTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTextureSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTextureSubImage3DEXT");
@@ -1090,7 +1090,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glBindMultiTextureEXT(unsigned int texunit, unsigned int target, unsigned int texture);
+    /// void glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture);
     /// ```
     public void BindMultiTextureEXT(int texunit, int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindMultiTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindMultiTextureEXT");
@@ -1099,7 +1099,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexCoordPointerEXT(unsigned int texunit, int size, unsigned int type, int stride, const void* pointer);
+    /// void glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void MultiTexCoordPointerEXT(int texunit, int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordPointerEXT");
@@ -1108,7 +1108,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexEnvfEXT(unsigned int texunit, unsigned int target, unsigned int pname, float param);
+    /// void glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
     /// ```
     public void MultiTexEnvfEXT(int texunit, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvfEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexEnvfEXT");
@@ -1117,7 +1117,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexEnvfvEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLfloat* params);
+    /// void glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat* params);
     /// ```
     public void MultiTexEnvfvEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvfvEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexEnvfvEXT");
@@ -1126,7 +1126,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexEnviEXT(unsigned int texunit, unsigned int target, unsigned int pname, int param);
+    /// void glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
     /// ```
     public void MultiTexEnviEXT(int texunit, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnviEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexEnviEXT");
@@ -1135,7 +1135,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexEnvivEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLint* params);
+    /// void glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void MultiTexEnvivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexEnvivEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexEnvivEXT");
@@ -1144,7 +1144,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGendEXT(unsigned int texunit, unsigned int coord, unsigned int pname, double param);
+    /// void glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
     /// ```
     public void MultiTexGendEXT(int texunit, int coord, int pname, double param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGendEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGendEXT");
@@ -1153,7 +1153,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGendvEXT(unsigned int texunit, unsigned int coord, unsigned int pname, const GLdouble* params);
+    /// void glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble* params);
     /// ```
     public void MultiTexGendvEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGendvEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGendvEXT");
@@ -1162,7 +1162,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGenfEXT(unsigned int texunit, unsigned int coord, unsigned int pname, float param);
+    /// void glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
     /// ```
     public void MultiTexGenfEXT(int texunit, int coord, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenfEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGenfEXT");
@@ -1171,7 +1171,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGenfvEXT(unsigned int texunit, unsigned int coord, unsigned int pname, const GLfloat* params);
+    /// void glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat* params);
     /// ```
     public void MultiTexGenfvEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenfvEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGenfvEXT");
@@ -1180,7 +1180,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGeniEXT(unsigned int texunit, unsigned int coord, unsigned int pname, int param);
+    /// void glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param);
     /// ```
     public void MultiTexGeniEXT(int texunit, int coord, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGeniEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGeniEXT");
@@ -1189,7 +1189,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexGenivEXT(unsigned int texunit, unsigned int coord, unsigned int pname, const GLint* params);
+    /// void glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint* params);
     /// ```
     public void MultiTexGenivEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexGenivEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexGenivEXT");
@@ -1198,7 +1198,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexEnvfvEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetMultiTexEnvfvEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexEnvfvEXT");
@@ -1207,7 +1207,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexEnvivEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetMultiTexEnvivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexEnvivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexEnvivEXT");
@@ -1216,7 +1216,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexGendvEXT(unsigned int texunit, unsigned int coord, unsigned int pname, GLdouble* params);
+    /// void glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble* params);
     /// ```
     public void GetMultiTexGendvEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGendvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexGendvEXT");
@@ -1225,7 +1225,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexGenfvEXT(unsigned int texunit, unsigned int coord, unsigned int pname, GLfloat* params);
+    /// void glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat* params);
     /// ```
     public void GetMultiTexGenfvEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexGenfvEXT");
@@ -1234,7 +1234,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexGenivEXT(unsigned int texunit, unsigned int coord, unsigned int pname, GLint* params);
+    /// void glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint* params);
     /// ```
     public void GetMultiTexGenivEXT(int texunit, int coord, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexGenivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexGenivEXT");
@@ -1243,7 +1243,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameteriEXT(unsigned int texunit, unsigned int target, unsigned int pname, int param);
+    /// void glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
     /// ```
     public void MultiTexParameteriEXT(int texunit, int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameteriEXT");
@@ -1252,7 +1252,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameterivEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLint* params);
+    /// void glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void MultiTexParameterivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameterivEXT");
@@ -1261,7 +1261,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameterfEXT(unsigned int texunit, unsigned int target, unsigned int pname, float param);
+    /// void glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
     /// ```
     public void MultiTexParameterfEXT(int texunit, int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameterfEXT");
@@ -1270,7 +1270,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameterfvEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLfloat* params);
+    /// void glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat* params);
     /// ```
     public void MultiTexParameterfvEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameterfvEXT");
@@ -1279,7 +1279,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexImage1DEXT(unsigned int texunit, unsigned int target, int level, int internalformat, int width, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexImage1DEXT");
@@ -1288,7 +1288,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexImage2DEXT(unsigned int texunit, unsigned int target, int level, int internalformat, int width, int height, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexImage2DEXT");
@@ -1297,7 +1297,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexSubImage1DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int width, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexSubImage1DEXT");
@@ -1306,7 +1306,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexSubImage2DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexSubImage2DEXT");
@@ -1315,7 +1315,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyMultiTexImage1DEXT(unsigned int texunit, unsigned int target, int level, unsigned int internalformat, int x, int y, int width, int border);
+    /// void glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
     /// ```
     public void CopyMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyMultiTexImage1DEXT");
@@ -1324,7 +1324,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyMultiTexImage2DEXT(unsigned int texunit, unsigned int target, int level, unsigned int internalformat, int x, int y, int width, int height, int border);
+    /// void glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
     /// ```
     public void CopyMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyMultiTexImage2DEXT");
@@ -1333,7 +1333,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyMultiTexSubImage1DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int x, int y, int width);
+    /// void glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
     /// ```
     public void CopyMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage1DEXT");
@@ -1342,7 +1342,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyMultiTexSubImage2DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int x, int y, int width, int height);
+    /// void glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void CopyMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage2DEXT");
@@ -1351,7 +1351,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexImageEXT(unsigned int texunit, unsigned int target, int level, unsigned int format, unsigned int type, void* pixels);
+    /// void glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, void* pixels);
     /// ```
     public void GetMultiTexImageEXT(int texunit, int target, int level, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexImageEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexImageEXT");
@@ -1360,7 +1360,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexParameterfvEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetMultiTexParameterfvEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexParameterfvEXT");
@@ -1369,7 +1369,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexParameterivEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetMultiTexParameterivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexParameterivEXT");
@@ -1378,7 +1378,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexLevelParameterfvEXT(unsigned int texunit, unsigned int target, int level, unsigned int pname, GLfloat* params);
+    /// void glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat* params);
     /// ```
     public void GetMultiTexLevelParameterfvEXT(int texunit, int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterfvEXT");
@@ -1387,7 +1387,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexLevelParameterivEXT(unsigned int texunit, unsigned int target, int level, unsigned int pname, GLint* params);
+    /// void glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint* params);
     /// ```
     public void GetMultiTexLevelParameterivEXT(int texunit, int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexLevelParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexLevelParameterivEXT");
@@ -1396,7 +1396,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexImage3DEXT(unsigned int texunit, unsigned int target, int level, int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexImage3DEXT");
@@ -1405,7 +1405,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexSubImage3DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void MultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexSubImage3DEXT");
@@ -1414,7 +1414,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCopyMultiTexSubImage3DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    /// void glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void CopyMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyMultiTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyMultiTexSubImage3DEXT");
@@ -1423,7 +1423,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glEnableClientStateIndexedEXT(unsigned int array, unsigned int index);
+    /// void glEnableClientStateIndexedEXT(GLenum array, GLuint index);
     /// ```
     public void EnableClientStateIndexedEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableClientStateIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableClientStateIndexedEXT");
@@ -1432,7 +1432,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glDisableClientStateIndexedEXT(unsigned int array, unsigned int index);
+    /// void glDisableClientStateIndexedEXT(GLenum array, GLuint index);
     /// ```
     public void DisableClientStateIndexedEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableClientStateIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableClientStateIndexedEXT");
@@ -1441,7 +1441,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetFloatIndexedvEXT(unsigned int target, unsigned int index, GLfloat* data);
+    /// void glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat* data);
     /// ```
     public void GetFloatIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloatIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetFloatIndexedvEXT");
@@ -1450,7 +1450,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetDoubleIndexedvEXT(unsigned int target, unsigned int index, GLdouble* data);
+    /// void glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble* data);
     /// ```
     public void GetDoubleIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoubleIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetDoubleIndexedvEXT");
@@ -1459,7 +1459,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetPointerIndexedvEXT(unsigned int target, unsigned int index, void** data);
+    /// void glGetPointerIndexedvEXT(GLenum target, GLuint index, void** data);
     /// ```
     public void GetPointerIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointerIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPointerIndexedvEXT");
@@ -1468,7 +1468,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glEnableIndexedEXT(unsigned int target, unsigned int index);
+    /// void glEnableIndexedEXT(GLenum target, GLuint index);
     /// ```
     public void EnableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
@@ -1477,7 +1477,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glDisableIndexedEXT(unsigned int target, unsigned int index);
+    /// void glDisableIndexedEXT(GLenum target, GLuint index);
     /// ```
     public void DisableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
@@ -1486,7 +1486,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// GLboolean glIsEnabledIndexedEXT(unsigned int target, unsigned int index);
+    /// GLboolean glIsEnabledIndexedEXT(GLenum target, GLuint index);
     /// ```
     public boolean IsEnabledIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");
@@ -1495,7 +1495,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetIntegerIndexedvEXT(unsigned int target, unsigned int index, GLint* data);
+    /// void glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint* data);
     /// ```
     public void GetIntegerIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
@@ -1504,7 +1504,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetBooleanIndexedvEXT(unsigned int target, unsigned int index, GLboolean* data);
+    /// void glGetBooleanIndexedvEXT(GLenum target, GLuint index, GLboolean* data);
     /// ```
     public void GetBooleanIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
@@ -1513,7 +1513,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureImage3DEXT(unsigned int texture, unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int border, int imageSize, const void* bits);
+    /// void glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureImage3DEXT(int texture, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureImage3DEXT");
@@ -1522,7 +1522,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureImage2DEXT(unsigned int texture, unsigned int target, int level, unsigned int internalformat, int width, int height, int border, int imageSize, const void* bits);
+    /// void glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureImage2DEXT(int texture, int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureImage2DEXT");
@@ -1531,7 +1531,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureImage1DEXT(unsigned int texture, unsigned int target, int level, unsigned int internalformat, int width, int border, int imageSize, const void* bits);
+    /// void glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureImage1DEXT(int texture, int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureImage1DEXT");
@@ -1540,7 +1540,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureSubImage3DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureSubImage3DEXT(int texture, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage3DEXT");
@@ -1549,7 +1549,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureSubImage2DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureSubImage2DEXT(int texture, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage2DEXT");
@@ -1558,7 +1558,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedTextureSubImage1DEXT(unsigned int texture, unsigned int target, int level, int xoffset, int width, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedTextureSubImage1DEXT(int texture, int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTextureSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedTextureSubImage1DEXT");
@@ -1567,7 +1567,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetCompressedTextureImageEXT(unsigned int texture, unsigned int target, int lod, void* img);
+    /// void glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, void* img);
     /// ```
     public void GetCompressedTextureImageEXT(int texture, int target, int lod, MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTextureImageEXT)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureImageEXT");
@@ -1576,7 +1576,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexImage3DEXT(unsigned int texunit, unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int border, int imageSize, const void* bits);
+    /// void glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexImage3DEXT(int texunit, int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexImage3DEXT");
@@ -1585,7 +1585,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexImage2DEXT(unsigned int texunit, unsigned int target, int level, unsigned int internalformat, int width, int height, int border, int imageSize, const void* bits);
+    /// void glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexImage2DEXT(int texunit, int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexImage2DEXT");
@@ -1594,7 +1594,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexImage1DEXT(unsigned int texunit, unsigned int target, int level, unsigned int internalformat, int width, int border, int imageSize, const void* bits);
+    /// void glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexImage1DEXT(int texunit, int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexImage1DEXT");
@@ -1603,7 +1603,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexSubImage3DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexSubImage3DEXT(int texunit, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage3DEXT");
@@ -1612,7 +1612,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexSubImage2DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexSubImage2DEXT(int texunit, int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage2DEXT");
@@ -1621,7 +1621,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glCompressedMultiTexSubImage1DEXT(unsigned int texunit, unsigned int target, int level, int xoffset, int width, unsigned int format, int imageSize, const void* bits);
+    /// void glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void* bits);
     /// ```
     public void CompressedMultiTexSubImage1DEXT(int texunit, int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment bits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedMultiTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCompressedMultiTexSubImage1DEXT");
@@ -1630,7 +1630,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetCompressedMultiTexImageEXT(unsigned int texunit, unsigned int target, int lod, void* img);
+    /// void glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, void* img);
     /// ```
     public void GetCompressedMultiTexImageEXT(int texunit, int target, int lod, MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedMultiTexImageEXT)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedMultiTexImageEXT");
@@ -1639,7 +1639,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixLoadTransposefEXT(unsigned int mode, const GLfloat* m);
+    /// void glMatrixLoadTransposefEXT(GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixLoadTransposefEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
@@ -1648,7 +1648,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixLoadTransposedEXT(unsigned int mode, const GLdouble* m);
+    /// void glMatrixLoadTransposedEXT(GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixLoadTransposedEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
@@ -1657,7 +1657,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixMultTransposefEXT(unsigned int mode, const GLfloat* m);
+    /// void glMatrixMultTransposefEXT(GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixMultTransposefEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
@@ -1666,7 +1666,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMatrixMultTransposedEXT(unsigned int mode, const GLdouble* m);
+    /// void glMatrixMultTransposedEXT(GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixMultTransposedEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
@@ -1675,7 +1675,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedBufferDataEXT(unsigned int buffer, signed long long size, const void* data, unsigned int usage);
+    /// void glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void* data, GLenum usage);
     /// ```
     public void NamedBufferDataEXT(int buffer, long size, MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferDataEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferDataEXT");
@@ -1684,7 +1684,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedBufferSubDataEXT(unsigned int buffer, signed long long offset, signed long long size, const void* data);
+    /// void glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void* data);
     /// ```
     public void NamedBufferSubDataEXT(int buffer, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferSubDataEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferSubDataEXT");
@@ -1693,7 +1693,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void* glMapNamedBufferEXT(unsigned int buffer, unsigned int access);
+    /// void* glMapNamedBufferEXT(GLuint buffer, GLenum access);
     /// ```
     public MemorySegment MapNamedBufferEXT(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBufferEXT");
@@ -1702,7 +1702,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// GLboolean glUnmapNamedBufferEXT(unsigned int buffer);
+    /// GLboolean glUnmapNamedBufferEXT(GLuint buffer);
     /// ```
     public boolean UnmapNamedBufferEXT(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapNamedBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glUnmapNamedBufferEXT");
@@ -1711,7 +1711,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedBufferParameterivEXT(unsigned int buffer, unsigned int pname, GLint* params);
+    /// void glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint* params);
     /// ```
     public void GetNamedBufferParameterivEXT(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameterivEXT");
@@ -1720,7 +1720,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedBufferPointervEXT(unsigned int buffer, unsigned int pname, void** params);
+    /// void glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, void** params);
     /// ```
     public void GetNamedBufferPointervEXT(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferPointervEXT");
@@ -1729,7 +1729,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedBufferSubDataEXT(unsigned int buffer, signed long long offset, signed long long size, void* data);
+    /// void glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, void* data);
     /// ```
     public void GetNamedBufferSubDataEXT(int buffer, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferSubDataEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferSubDataEXT");
@@ -1738,7 +1738,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1fEXT(unsigned int program, int location, float v0);
+    /// void glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0);
     /// ```
     public void ProgramUniform1fEXT(int program, int location, float v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1fEXT");
@@ -1747,7 +1747,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2fEXT(unsigned int program, int location, float v0, float v1);
+    /// void glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1);
     /// ```
     public void ProgramUniform2fEXT(int program, int location, float v0, float v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2fEXT");
@@ -1756,7 +1756,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3fEXT(unsigned int program, int location, float v0, float v1, float v2);
+    /// void glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
     /// ```
     public void ProgramUniform3fEXT(int program, int location, float v0, float v1, float v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3fEXT");
@@ -1765,7 +1765,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4fEXT(unsigned int program, int location, float v0, float v1, float v2, float v3);
+    /// void glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
     /// ```
     public void ProgramUniform4fEXT(int program, int location, float v0, float v1, float v2, float v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4fEXT");
@@ -1774,7 +1774,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1iEXT(unsigned int program, int location, int v0);
+    /// void glProgramUniform1iEXT(GLuint program, GLint location, GLint v0);
     /// ```
     public void ProgramUniform1iEXT(int program, int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1iEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1iEXT");
@@ -1783,7 +1783,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2iEXT(unsigned int program, int location, int v0, int v1);
+    /// void glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1);
     /// ```
     public void ProgramUniform2iEXT(int program, int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2iEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2iEXT");
@@ -1792,7 +1792,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3iEXT(unsigned int program, int location, int v0, int v1, int v2);
+    /// void glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
     /// ```
     public void ProgramUniform3iEXT(int program, int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3iEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3iEXT");
@@ -1801,7 +1801,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4iEXT(unsigned int program, int location, int v0, int v1, int v2, int v3);
+    /// void glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
     /// ```
     public void ProgramUniform4iEXT(int program, int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4iEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4iEXT");
@@ -1810,7 +1810,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1fvEXT(unsigned int program, int location, int count, const GLfloat* value);
+    /// void glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat* value);
     /// ```
     public void ProgramUniform1fvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1fvEXT");
@@ -1819,7 +1819,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2fvEXT(unsigned int program, int location, int count, const GLfloat* value);
+    /// void glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat* value);
     /// ```
     public void ProgramUniform2fvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2fvEXT");
@@ -1828,7 +1828,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3fvEXT(unsigned int program, int location, int count, const GLfloat* value);
+    /// void glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat* value);
     /// ```
     public void ProgramUniform3fvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3fvEXT");
@@ -1837,7 +1837,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4fvEXT(unsigned int program, int location, int count, const GLfloat* value);
+    /// void glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat* value);
     /// ```
     public void ProgramUniform4fvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4fvEXT");
@@ -1846,7 +1846,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1ivEXT(unsigned int program, int location, int count, const GLint* value);
+    /// void glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint* value);
     /// ```
     public void ProgramUniform1ivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ivEXT");
@@ -1855,7 +1855,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2ivEXT(unsigned int program, int location, int count, const GLint* value);
+    /// void glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint* value);
     /// ```
     public void ProgramUniform2ivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ivEXT");
@@ -1864,7 +1864,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3ivEXT(unsigned int program, int location, int count, const GLint* value);
+    /// void glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint* value);
     /// ```
     public void ProgramUniform3ivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ivEXT");
@@ -1873,7 +1873,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4ivEXT(unsigned int program, int location, int count, const GLint* value);
+    /// void glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint* value);
     /// ```
     public void ProgramUniform4ivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ivEXT");
@@ -1882,7 +1882,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2fvEXT");
@@ -1891,7 +1891,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3fvEXT");
@@ -1900,7 +1900,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4fvEXT");
@@ -1909,7 +1909,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2x3fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix2x3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3fvEXT");
@@ -1918,7 +1918,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3x2fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix3x2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2fvEXT");
@@ -1927,7 +1927,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2x4fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix2x4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4fvEXT");
@@ -1936,7 +1936,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4x2fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix4x2fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2fvEXT");
@@ -1945,7 +1945,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3x4fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix3x4fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4fvEXT");
@@ -1954,7 +1954,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4x3fvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLfloat* value);
+    /// void glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void ProgramUniformMatrix4x3fvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3fvEXT");
@@ -1963,7 +1963,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureBufferEXT(unsigned int texture, unsigned int target, unsigned int internalformat, unsigned int buffer);
+    /// void glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
     /// ```
     public void TextureBufferEXT(int texture, int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureBufferEXT");
@@ -1972,7 +1972,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexBufferEXT(unsigned int texunit, unsigned int target, unsigned int internalformat, unsigned int buffer);
+    /// void glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
     /// ```
     public void MultiTexBufferEXT(int texunit, int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexBufferEXT");
@@ -1981,7 +1981,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameterIivEXT(unsigned int texture, unsigned int target, unsigned int pname, const GLint* params);
+    /// void glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void TextureParameterIivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIivEXT");
@@ -1990,7 +1990,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureParameterIuivEXT(unsigned int texture, unsigned int target, unsigned int pname, const GLuint* params);
+    /// void glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint* params);
     /// ```
     public void TextureParameterIuivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureParameterIuivEXT");
@@ -1999,7 +1999,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureParameterIivEXT(unsigned int texture, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetTextureParameterIivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIivEXT");
@@ -2008,7 +2008,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetTextureParameterIuivEXT(unsigned int texture, unsigned int target, unsigned int pname, GLuint* params);
+    /// void glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint* params);
     /// ```
     public void GetTextureParameterIuivEXT(int texture, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTextureParameterIuivEXT");
@@ -2017,7 +2017,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameterIivEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLint* params);
+    /// void glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void MultiTexParameterIivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameterIivEXT");
@@ -2026,7 +2026,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexParameterIuivEXT(unsigned int texunit, unsigned int target, unsigned int pname, const GLuint* params);
+    /// void glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint* params);
     /// ```
     public void MultiTexParameterIuivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexParameterIuivEXT");
@@ -2035,7 +2035,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexParameterIivEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetMultiTexParameterIivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexParameterIivEXT");
@@ -2044,7 +2044,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetMultiTexParameterIuivEXT(unsigned int texunit, unsigned int target, unsigned int pname, GLuint* params);
+    /// void glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint* params);
     /// ```
     public void GetMultiTexParameterIuivEXT(int texunit, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultiTexParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMultiTexParameterIuivEXT");
@@ -2053,7 +2053,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1uiEXT(unsigned int program, int location, unsigned int v0);
+    /// void glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0);
     /// ```
     public void ProgramUniform1uiEXT(int program, int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uiEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1uiEXT");
@@ -2062,7 +2062,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2uiEXT(unsigned int program, int location, unsigned int v0, unsigned int v1);
+    /// void glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1);
     /// ```
     public void ProgramUniform2uiEXT(int program, int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uiEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2uiEXT");
@@ -2071,7 +2071,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3uiEXT(unsigned int program, int location, unsigned int v0, unsigned int v1, unsigned int v2);
+    /// void glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
     /// ```
     public void ProgramUniform3uiEXT(int program, int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3uiEXT");
@@ -2080,7 +2080,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4uiEXT(unsigned int program, int location, unsigned int v0, unsigned int v1, unsigned int v2, unsigned int v3);
+    /// void glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
     /// ```
     public void ProgramUniform4uiEXT(int program, int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uiEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4uiEXT");
@@ -2089,7 +2089,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1uivEXT(unsigned int program, int location, int count, const GLuint* value);
+    /// void glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint* value);
     /// ```
     public void ProgramUniform1uivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1uivEXT");
@@ -2098,7 +2098,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2uivEXT(unsigned int program, int location, int count, const GLuint* value);
+    /// void glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint* value);
     /// ```
     public void ProgramUniform2uivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2uivEXT");
@@ -2107,7 +2107,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3uivEXT(unsigned int program, int location, int count, const GLuint* value);
+    /// void glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint* value);
     /// ```
     public void ProgramUniform3uivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3uivEXT");
@@ -2116,7 +2116,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4uivEXT(unsigned int program, int location, int count, const GLuint* value);
+    /// void glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint* value);
     /// ```
     public void ProgramUniform4uivEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4uivEXT");
@@ -2125,7 +2125,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameters4fvEXT(unsigned int program, unsigned int target, unsigned int index, int count, const GLfloat* params);
+    /// void glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat* params);
     /// ```
     public void NamedProgramLocalParameters4fvEXT(int program, int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameters4fvEXT");
@@ -2134,7 +2134,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameterI4iEXT(unsigned int program, unsigned int target, unsigned int index, int x, int y, int z, int w);
+    /// void glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
     /// ```
     public void NamedProgramLocalParameterI4iEXT(int program, int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4iEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4iEXT");
@@ -2143,7 +2143,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameterI4ivEXT(unsigned int program, unsigned int target, unsigned int index, const GLint* params);
+    /// void glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint* params);
     /// ```
     public void NamedProgramLocalParameterI4ivEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4ivEXT");
@@ -2152,7 +2152,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParametersI4ivEXT(unsigned int program, unsigned int target, unsigned int index, int count, const GLint* params);
+    /// void glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint* params);
     /// ```
     public void NamedProgramLocalParametersI4ivEXT(int program, int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4ivEXT");
@@ -2161,7 +2161,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameterI4uiEXT(unsigned int program, unsigned int target, unsigned int index, unsigned int x, unsigned int y, unsigned int z, unsigned int w);
+    /// void glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
     /// ```
     public void NamedProgramLocalParameterI4uiEXT(int program, int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4uiEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4uiEXT");
@@ -2170,7 +2170,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameterI4uivEXT(unsigned int program, unsigned int target, unsigned int index, const GLuint* params);
+    /// void glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint* params);
     /// ```
     public void NamedProgramLocalParameterI4uivEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameterI4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameterI4uivEXT");
@@ -2179,7 +2179,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParametersI4uivEXT(unsigned int program, unsigned int target, unsigned int index, int count, const GLuint* params);
+    /// void glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint* params);
     /// ```
     public void NamedProgramLocalParametersI4uivEXT(int program, int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParametersI4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParametersI4uivEXT");
@@ -2188,7 +2188,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramLocalParameterIivEXT(unsigned int program, unsigned int target, unsigned int index, GLint* params);
+    /// void glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint* params);
     /// ```
     public void GetNamedProgramLocalParameterIivEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIivEXT");
@@ -2197,7 +2197,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramLocalParameterIuivEXT(unsigned int program, unsigned int target, unsigned int index, GLuint* params);
+    /// void glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint* params);
     /// ```
     public void GetNamedProgramLocalParameterIuivEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterIuivEXT");
@@ -2206,7 +2206,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glEnableClientStateiEXT(unsigned int array, unsigned int index);
+    /// void glEnableClientStateiEXT(GLenum array, GLuint index);
     /// ```
     public void EnableClientStateiEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableClientStateiEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableClientStateiEXT");
@@ -2215,7 +2215,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glDisableClientStateiEXT(unsigned int array, unsigned int index);
+    /// void glDisableClientStateiEXT(GLenum array, GLuint index);
     /// ```
     public void DisableClientStateiEXT(int array, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableClientStateiEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableClientStateiEXT");
@@ -2224,7 +2224,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetFloati_vEXT(unsigned int pname, unsigned int index, GLfloat* params);
+    /// void glGetFloati_vEXT(GLenum pname, GLuint index, GLfloat* params);
     /// ```
     public void GetFloati_vEXT(int pname, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloati_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetFloati_vEXT");
@@ -2233,7 +2233,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetDoublei_vEXT(unsigned int pname, unsigned int index, GLdouble* params);
+    /// void glGetDoublei_vEXT(GLenum pname, GLuint index, GLdouble* params);
     /// ```
     public void GetDoublei_vEXT(int pname, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetDoublei_vEXT");
@@ -2242,7 +2242,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetPointeri_vEXT(unsigned int pname, unsigned int index, void** params);
+    /// void glGetPointeri_vEXT(GLenum pname, GLuint index, void** params);
     /// ```
     public void GetPointeri_vEXT(int pname, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointeri_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPointeri_vEXT");
@@ -2251,7 +2251,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramStringEXT(unsigned int program, unsigned int target, unsigned int format, int len, const void* string);
+    /// void glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const void* string);
     /// ```
     public void NamedProgramStringEXT(int program, int target, int format, int len, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramStringEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramStringEXT");
@@ -2260,7 +2260,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameter4dEXT(unsigned int program, unsigned int target, unsigned int index, double x, double y, double z, double w);
+    /// void glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void NamedProgramLocalParameter4dEXT(int program, int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4dEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4dEXT");
@@ -2269,7 +2269,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameter4dvEXT(unsigned int program, unsigned int target, unsigned int index, const GLdouble* params);
+    /// void glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble* params);
     /// ```
     public void NamedProgramLocalParameter4dvEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4dvEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4dvEXT");
@@ -2278,7 +2278,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameter4fEXT(unsigned int program, unsigned int target, unsigned int index, float x, float y, float z, float w);
+    /// void glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void NamedProgramLocalParameter4fEXT(int program, int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4fEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4fEXT");
@@ -2287,7 +2287,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedProgramLocalParameter4fvEXT(unsigned int program, unsigned int target, unsigned int index, const GLfloat* params);
+    /// void glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat* params);
     /// ```
     public void NamedProgramLocalParameter4fvEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedProgramLocalParameter4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedProgramLocalParameter4fvEXT");
@@ -2296,7 +2296,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramLocalParameterdvEXT(unsigned int program, unsigned int target, unsigned int index, GLdouble* params);
+    /// void glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble* params);
     /// ```
     public void GetNamedProgramLocalParameterdvEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterdvEXT");
@@ -2305,7 +2305,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramLocalParameterfvEXT(unsigned int program, unsigned int target, unsigned int index, GLfloat* params);
+    /// void glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat* params);
     /// ```
     public void GetNamedProgramLocalParameterfvEXT(int program, int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramLocalParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramLocalParameterfvEXT");
@@ -2314,7 +2314,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramivEXT(unsigned int program, unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetNamedProgramivEXT(int program, int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramivEXT");
@@ -2323,7 +2323,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedProgramStringEXT(unsigned int program, unsigned int target, unsigned int pname, void* string);
+    /// void glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, void* string);
     /// ```
     public void GetNamedProgramStringEXT(int program, int target, int pname, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedProgramStringEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedProgramStringEXT");
@@ -2332,7 +2332,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedRenderbufferStorageEXT(unsigned int renderbuffer, unsigned int internalformat, int width, int height);
+    /// void glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void NamedRenderbufferStorageEXT(int renderbuffer, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageEXT");
@@ -2341,7 +2341,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedRenderbufferParameterivEXT(unsigned int renderbuffer, unsigned int pname, GLint* params);
+    /// void glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint* params);
     /// ```
     public void GetNamedRenderbufferParameterivEXT(int renderbuffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedRenderbufferParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedRenderbufferParameterivEXT");
@@ -2350,7 +2350,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedRenderbufferStorageMultisampleEXT(unsigned int renderbuffer, int samples, unsigned int internalformat, int width, int height);
+    /// void glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void NamedRenderbufferStorageMultisampleEXT(int renderbuffer, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleEXT");
@@ -2359,7 +2359,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedRenderbufferStorageMultisampleCoverageEXT(unsigned int renderbuffer, int coverageSamples, int colorSamples, unsigned int internalformat, int width, int height);
+    /// void glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void NamedRenderbufferStorageMultisampleCoverageEXT(int renderbuffer, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleCoverageEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleCoverageEXT");
@@ -2368,7 +2368,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// unsigned int glCheckNamedFramebufferStatusEXT(unsigned int framebuffer, unsigned int target);
+    /// GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target);
     /// ```
     public int CheckNamedFramebufferStatusEXT(int framebuffer, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCheckNamedFramebufferStatusEXT)) throw new SymbolNotFoundError("Symbol not found: glCheckNamedFramebufferStatusEXT");
@@ -2377,7 +2377,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTexture1DEXT(unsigned int framebuffer, unsigned int attachment, unsigned int textarget, unsigned int texture, int level);
+    /// void glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
     /// ```
     public void NamedFramebufferTexture1DEXT(int framebuffer, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture1DEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTexture1DEXT");
@@ -2386,7 +2386,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTexture2DEXT(unsigned int framebuffer, unsigned int attachment, unsigned int textarget, unsigned int texture, int level);
+    /// void glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
     /// ```
     public void NamedFramebufferTexture2DEXT(int framebuffer, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture2DEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTexture2DEXT");
@@ -2395,7 +2395,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTexture3DEXT(unsigned int framebuffer, unsigned int attachment, unsigned int textarget, unsigned int texture, int level, int zoffset);
+    /// void glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
     /// ```
     public void NamedFramebufferTexture3DEXT(int framebuffer, int attachment, int textarget, int texture, int level, int zoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTexture3DEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTexture3DEXT");
@@ -2404,7 +2404,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferRenderbufferEXT(unsigned int framebuffer, unsigned int attachment, unsigned int renderbuffertarget, unsigned int renderbuffer);
+    /// void glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
     /// ```
     public void NamedFramebufferRenderbufferEXT(int framebuffer, int attachment, int renderbuffertarget, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferRenderbufferEXT");
@@ -2413,7 +2413,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedFramebufferAttachmentParameterivEXT(unsigned int framebuffer, unsigned int attachment, unsigned int pname, GLint* params);
+    /// void glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint* params);
     /// ```
     public void GetNamedFramebufferAttachmentParameterivEXT(int framebuffer, int attachment, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferAttachmentParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferAttachmentParameterivEXT");
@@ -2422,7 +2422,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGenerateTextureMipmapEXT(unsigned int texture, unsigned int target);
+    /// void glGenerateTextureMipmapEXT(GLuint texture, GLenum target);
     /// ```
     public void GenerateTextureMipmapEXT(int texture, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateTextureMipmapEXT)) throw new SymbolNotFoundError("Symbol not found: glGenerateTextureMipmapEXT");
@@ -2431,7 +2431,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGenerateMultiTexMipmapEXT(unsigned int texunit, unsigned int target);
+    /// void glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target);
     /// ```
     public void GenerateMultiTexMipmapEXT(int texunit, int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMultiTexMipmapEXT)) throw new SymbolNotFoundError("Symbol not found: glGenerateMultiTexMipmapEXT");
@@ -2440,7 +2440,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glFramebufferDrawBufferEXT(unsigned int framebuffer, unsigned int mode);
+    /// void glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
     /// ```
     public void FramebufferDrawBufferEXT(int framebuffer, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferDrawBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferDrawBufferEXT");
@@ -2449,7 +2449,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glFramebufferDrawBuffersEXT(unsigned int framebuffer, int n, const GLenum* bufs);
+    /// void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum* bufs);
     /// ```
     public void FramebufferDrawBuffersEXT(int framebuffer, int n, MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferDrawBuffersEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferDrawBuffersEXT");
@@ -2458,7 +2458,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glFramebufferReadBufferEXT(unsigned int framebuffer, unsigned int mode);
+    /// void glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
     /// ```
     public void FramebufferReadBufferEXT(int framebuffer, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferReadBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferReadBufferEXT");
@@ -2467,7 +2467,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetFramebufferParameterivEXT(unsigned int framebuffer, unsigned int pname, GLint* params);
+    /// void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameterivEXT(int framebuffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivEXT");
@@ -2476,7 +2476,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedCopyBufferSubDataEXT(unsigned int readBuffer, unsigned int writeBuffer, signed long long readOffset, signed long long writeOffset, signed long long size);
+    /// void glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
     /// ```
     public void NamedCopyBufferSubDataEXT(int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedCopyBufferSubDataEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedCopyBufferSubDataEXT");
@@ -2485,7 +2485,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTextureEXT(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level);
+    /// void glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
     /// ```
     public void NamedFramebufferTextureEXT(int framebuffer, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureEXT");
@@ -2494,7 +2494,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTextureLayerEXT(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level, int layer);
+    /// void glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
     /// ```
     public void NamedFramebufferTextureLayerEXT(int framebuffer, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureLayerEXT");
@@ -2503,7 +2503,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferTextureFaceEXT(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level, unsigned int face);
+    /// void glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
     /// ```
     public void NamedFramebufferTextureFaceEXT(int framebuffer, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureFaceEXT");
@@ -2512,7 +2512,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureRenderbufferEXT(unsigned int texture, unsigned int target, unsigned int renderbuffer);
+    /// void glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer);
     /// ```
     public void TextureRenderbufferEXT(int texture, int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureRenderbufferEXT");
@@ -2521,7 +2521,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glMultiTexRenderbufferEXT(unsigned int texunit, unsigned int target, unsigned int renderbuffer);
+    /// void glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer);
     /// ```
     public void MultiTexRenderbufferEXT(int texunit, int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiTexRenderbufferEXT");
@@ -2530,7 +2530,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexOffsetEXT(unsigned int vaobj, unsigned int buffer, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayVertexOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexOffsetEXT");
@@ -2539,7 +2539,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayColorOffsetEXT(unsigned int vaobj, unsigned int buffer, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayColorOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayColorOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayColorOffsetEXT");
@@ -2548,7 +2548,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayEdgeFlagOffsetEXT(unsigned int vaobj, unsigned int buffer, int stride, signed long long offset);
+    /// void glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayEdgeFlagOffsetEXT(int vaobj, int buffer, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayEdgeFlagOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayEdgeFlagOffsetEXT");
@@ -2557,7 +2557,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayIndexOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayIndexOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayIndexOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayIndexOffsetEXT");
@@ -2566,7 +2566,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayNormalOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayNormalOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayNormalOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayNormalOffsetEXT");
@@ -2575,7 +2575,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayTexCoordOffsetEXT(unsigned int vaobj, unsigned int buffer, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayTexCoordOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayTexCoordOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayTexCoordOffsetEXT");
@@ -2584,7 +2584,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayMultiTexCoordOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int texunit, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayMultiTexCoordOffsetEXT(int vaobj, int buffer, int texunit, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayMultiTexCoordOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayMultiTexCoordOffsetEXT");
@@ -2593,7 +2593,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayFogCoordOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayFogCoordOffsetEXT(int vaobj, int buffer, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayFogCoordOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayFogCoordOffsetEXT");
@@ -2602,7 +2602,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArraySecondaryColorOffsetEXT(unsigned int vaobj, unsigned int buffer, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArraySecondaryColorOffsetEXT(int vaobj, int buffer, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArraySecondaryColorOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArraySecondaryColorOffsetEXT");
@@ -2611,7 +2611,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int index, int size, unsigned int type, GLboolean normalized, int stride, signed long long offset);
+    /// void glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayVertexAttribOffsetEXT(int vaobj, int buffer, int index, int size, int type, boolean normalized, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribOffsetEXT");
@@ -2620,7 +2620,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribIOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int index, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayVertexAttribIOffsetEXT(int vaobj, int buffer, int index, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribIOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribIOffsetEXT");
@@ -2629,7 +2629,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glEnableVertexArrayEXT(unsigned int vaobj, unsigned int array);
+    /// void glEnableVertexArrayEXT(GLuint vaobj, GLenum array);
     /// ```
     public void EnableVertexArrayEXT(int vaobj, int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexArrayEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexArrayEXT");
@@ -2638,7 +2638,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glDisableVertexArrayEXT(unsigned int vaobj, unsigned int array);
+    /// void glDisableVertexArrayEXT(GLuint vaobj, GLenum array);
     /// ```
     public void DisableVertexArrayEXT(int vaobj, int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexArrayEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexArrayEXT");
@@ -2647,7 +2647,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glEnableVertexArrayAttribEXT(unsigned int vaobj, unsigned int index);
+    /// void glEnableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
     /// ```
     public void EnableVertexArrayAttribEXT(int vaobj, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexArrayAttribEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexArrayAttribEXT");
@@ -2656,7 +2656,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glDisableVertexArrayAttribEXT(unsigned int vaobj, unsigned int index);
+    /// void glDisableVertexArrayAttribEXT(GLuint vaobj, GLuint index);
     /// ```
     public void DisableVertexArrayAttribEXT(int vaobj, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexArrayAttribEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexArrayAttribEXT");
@@ -2665,7 +2665,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetVertexArrayIntegervEXT(unsigned int vaobj, unsigned int pname, GLint* param);
+    /// void glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint* param);
     /// ```
     public void GetVertexArrayIntegervEXT(int vaobj, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIntegervEXT");
@@ -2674,7 +2674,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetVertexArrayPointervEXT(unsigned int vaobj, unsigned int pname, void** param);
+    /// void glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, void** param);
     /// ```
     public void GetVertexArrayPointervEXT(int vaobj, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayPointervEXT");
@@ -2683,7 +2683,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetVertexArrayIntegeri_vEXT(unsigned int vaobj, unsigned int index, unsigned int pname, GLint* param);
+    /// void glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint* param);
     /// ```
     public void GetVertexArrayIntegeri_vEXT(int vaobj, int index, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayIntegeri_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayIntegeri_vEXT");
@@ -2692,7 +2692,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetVertexArrayPointeri_vEXT(unsigned int vaobj, unsigned int index, unsigned int pname, void** param);
+    /// void glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, void** param);
     /// ```
     public void GetVertexArrayPointeri_vEXT(int vaobj, int index, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexArrayPointeri_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexArrayPointeri_vEXT");
@@ -2701,7 +2701,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void* glMapNamedBufferRangeEXT(unsigned int buffer, signed long long offset, signed long long length, unsigned int access);
+    /// void* glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
     /// ```
     public MemorySegment MapNamedBufferRangeEXT(int buffer, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapNamedBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glMapNamedBufferRangeEXT");
@@ -2710,7 +2710,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glFlushMappedNamedBufferRangeEXT(unsigned int buffer, signed long long offset, signed long long length);
+    /// void glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length);
     /// ```
     public void FlushMappedNamedBufferRangeEXT(int buffer, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedNamedBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedNamedBufferRangeEXT");
@@ -2719,7 +2719,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedBufferStorageEXT(unsigned int buffer, signed long long size, const void* data, unsigned int flags);
+    /// void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void* data, GLbitfield flags);
     /// ```
     public void NamedBufferStorageEXT(int buffer, long size, MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageEXT");
@@ -2728,7 +2728,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glClearNamedBufferDataEXT(unsigned int buffer, unsigned int internalformat, unsigned int format, unsigned int type, const void* data);
+    /// void glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearNamedBufferDataEXT(int buffer, int internalformat, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferDataEXT)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferDataEXT");
@@ -2737,7 +2737,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glClearNamedBufferSubDataEXT(unsigned int buffer, unsigned int internalformat, signed long long offset, signed long long size, unsigned int format, unsigned int type, const void* data);
+    /// void glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLsizeiptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data);
     /// ```
     public void ClearNamedBufferSubDataEXT(int buffer, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearNamedBufferSubDataEXT)) throw new SymbolNotFoundError("Symbol not found: glClearNamedBufferSubDataEXT");
@@ -2746,7 +2746,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glNamedFramebufferParameteriEXT(unsigned int framebuffer, unsigned int pname, int param);
+    /// void glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param);
     /// ```
     public void NamedFramebufferParameteriEXT(int framebuffer, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferParameteriEXT");
@@ -2755,7 +2755,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glGetNamedFramebufferParameterivEXT(unsigned int framebuffer, unsigned int pname, GLint* params);
+    /// void glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint* params);
     /// ```
     public void GetNamedFramebufferParameterivEXT(int framebuffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterivEXT");
@@ -2764,7 +2764,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1dEXT(unsigned int program, int location, double x);
+    /// void glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x);
     /// ```
     public void ProgramUniform1dEXT(int program, int location, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1dEXT");
@@ -2773,7 +2773,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2dEXT(unsigned int program, int location, double x, double y);
+    /// void glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y);
     /// ```
     public void ProgramUniform2dEXT(int program, int location, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2dEXT");
@@ -2782,7 +2782,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3dEXT(unsigned int program, int location, double x, double y, double z);
+    /// void glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
     /// ```
     public void ProgramUniform3dEXT(int program, int location, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3dEXT");
@@ -2791,7 +2791,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4dEXT(unsigned int program, int location, double x, double y, double z, double w);
+    /// void glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void ProgramUniform4dEXT(int program, int location, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4dEXT");
@@ -2800,7 +2800,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform1dvEXT(unsigned int program, int location, int count, const GLdouble* value);
+    /// void glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble* value);
     /// ```
     public void ProgramUniform1dvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1dvEXT");
@@ -2809,7 +2809,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform2dvEXT(unsigned int program, int location, int count, const GLdouble* value);
+    /// void glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble* value);
     /// ```
     public void ProgramUniform2dvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2dvEXT");
@@ -2818,7 +2818,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform3dvEXT(unsigned int program, int location, int count, const GLdouble* value);
+    /// void glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble* value);
     /// ```
     public void ProgramUniform3dvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3dvEXT");
@@ -2827,7 +2827,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniform4dvEXT(unsigned int program, int location, int count, const GLdouble* value);
+    /// void glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble* value);
     /// ```
     public void ProgramUniform4dvEXT(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4dvEXT");
@@ -2836,7 +2836,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2dvEXT");
@@ -2845,7 +2845,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3dvEXT");
@@ -2854,7 +2854,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4dvEXT");
@@ -2863,7 +2863,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2x3dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix2x3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x3dvEXT");
@@ -2872,7 +2872,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix2x4dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix2x4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix2x4dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix2x4dvEXT");
@@ -2881,7 +2881,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3x2dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix3x2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x2dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x2dvEXT");
@@ -2890,7 +2890,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix3x4dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix3x4dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix3x4dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix3x4dvEXT");
@@ -2899,7 +2899,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4x2dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix4x2dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x2dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x2dvEXT");
@@ -2908,7 +2908,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glProgramUniformMatrix4x3dvEXT(unsigned int program, int location, int count, GLboolean transpose, const GLdouble* value);
+    /// void glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void ProgramUniformMatrix4x3dvEXT(int program, int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformMatrix4x3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformMatrix4x3dvEXT");
@@ -2917,7 +2917,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureBufferRangeEXT(unsigned int texture, unsigned int target, unsigned int internalformat, unsigned int buffer, signed long long offset, signed long long size);
+    /// void glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
     /// ```
     public void TextureBufferRangeEXT(int texture, int target, int internalformat, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureBufferRangeEXT");
@@ -2926,7 +2926,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureStorage1DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width);
+    /// void glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
     /// ```
     public void TextureStorage1DEXT(int texture, int target, int levels, int internalformat, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage1DEXT");
@@ -2935,7 +2935,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureStorage2DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height);
+    /// void glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
     /// ```
     public void TextureStorage2DEXT(int texture, int target, int levels, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DEXT");
@@ -2944,7 +2944,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureStorage3DEXT(unsigned int texture, unsigned int target, int levels, unsigned int internalformat, int width, int height, int depth);
+    /// void glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
     /// ```
     public void TextureStorage3DEXT(int texture, int target, int levels, int internalformat, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DEXT");
@@ -2953,7 +2953,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureStorage2DMultisampleEXT(unsigned int texture, unsigned int target, int samples, unsigned int internalformat, int width, int height, GLboolean fixedsamplelocations);
+    /// void glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
     /// ```
     public void TextureStorage2DMultisampleEXT(int texture, int target, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage2DMultisampleEXT");
@@ -2962,7 +2962,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTextureStorage3DMultisampleEXT(unsigned int texture, unsigned int target, int samples, unsigned int internalformat, int width, int height, int depth, GLboolean fixedsamplelocations);
+    /// void glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
     public void TextureStorage3DMultisampleEXT(int texture, int target, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorage3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorage3DMultisampleEXT");
@@ -2971,7 +2971,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayBindVertexBufferEXT(unsigned int vaobj, unsigned int bindingindex, unsigned int buffer, signed long long offset, int stride);
+    /// void glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
     /// ```
     public void VertexArrayBindVertexBufferEXT(int vaobj, int bindingindex, int buffer, long offset, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayBindVertexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayBindVertexBufferEXT");
@@ -2980,7 +2980,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribFormatEXT(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, GLboolean normalized, unsigned int relativeoffset);
+    /// void glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
     /// ```
     public void VertexArrayVertexAttribFormatEXT(int vaobj, int attribindex, int size, int type, boolean normalized, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribFormatEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribFormatEXT");
@@ -2989,7 +2989,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribIFormatEXT(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, unsigned int relativeoffset);
+    /// void glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
     /// ```
     public void VertexArrayVertexAttribIFormatEXT(int vaobj, int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribIFormatEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribIFormatEXT");
@@ -2998,7 +2998,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribLFormatEXT(unsigned int vaobj, unsigned int attribindex, int size, unsigned int type, unsigned int relativeoffset);
+    /// void glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
     /// ```
     public void VertexArrayVertexAttribLFormatEXT(int vaobj, int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribLFormatEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribLFormatEXT");
@@ -3007,7 +3007,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribBindingEXT(unsigned int vaobj, unsigned int attribindex, unsigned int bindingindex);
+    /// void glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
     /// ```
     public void VertexArrayVertexAttribBindingEXT(int vaobj, int attribindex, int bindingindex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribBindingEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribBindingEXT");
@@ -3016,7 +3016,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexBindingDivisorEXT(unsigned int vaobj, unsigned int bindingindex, unsigned int divisor);
+    /// void glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
     /// ```
     public void VertexArrayVertexBindingDivisorEXT(int vaobj, int bindingindex, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexBindingDivisorEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexBindingDivisorEXT");
@@ -3025,7 +3025,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribLOffsetEXT(unsigned int vaobj, unsigned int buffer, unsigned int index, int size, unsigned int type, int stride, signed long long offset);
+    /// void glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
     /// ```
     public void VertexArrayVertexAttribLOffsetEXT(int vaobj, int buffer, int index, int size, int type, int stride, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribLOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribLOffsetEXT");
@@ -3034,7 +3034,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glTexturePageCommitmentEXT(unsigned int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, GLboolean commit);
+    /// void glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
     /// ```
     public void TexturePageCommitmentEXT(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexturePageCommitmentEXT)) throw new SymbolNotFoundError("Symbol not found: glTexturePageCommitmentEXT");
@@ -3043,7 +3043,7 @@ public final class GLEXTDirectStateAccess {
     }
 
     /// ```
-    /// void glVertexArrayVertexAttribDivisorEXT(unsigned int vaobj, unsigned int index, unsigned int divisor);
+    /// void glVertexArrayVertexAttribDivisorEXT(GLuint vaobj, GLuint index, GLuint divisor);
     /// ```
     public void VertexArrayVertexAttribDivisorEXT(int vaobj, int index, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayVertexAttribDivisorEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayVertexAttribDivisorEXT");

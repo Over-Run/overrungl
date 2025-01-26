@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -36,26 +35,32 @@ public class VKKHRCalibratedTimestamps {
         public static final MethodHandle MH_vkGetCalibratedTimestampsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
         public final MemorySegment PFN_vkGetCalibratedTimestampsKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = func.invoke(device, "vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
             PFN_vkGetCalibratedTimestampsKHR = func.invoke(device, "vkGetCalibratedTimestampsKHR", "vkGetCalibratedTimestampsEXT");
         }
     }
 
-    public VKKHRCalibratedTimestamps(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRCalibratedTimestamps(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceCalibrateableTimeDomainsKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pTimeDomainCount, @CType("VkTimeDomainKHR *") MemorySegment pTimeDomains) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(VkPhysicalDevice physicalDevice, uint32_t* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains);
+    /// ```
+    public int GetPhysicalDeviceCalibrateableTimeDomainsKHR(MemorySegment physicalDevice, MemorySegment pTimeDomainCount, MemorySegment pTimeDomains) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR, physicalDevice, pTimeDomainCount, pTimeDomains); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceCalibrateableTimeDomainsKHR", e); }
     }
 
-    public @CType("VkResult") int GetCalibratedTimestampsKHR(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int timestampCount, @CType("const VkCalibratedTimestampInfoKHR *") MemorySegment pTimestampInfos, @CType("uint64_t *") MemorySegment pTimestamps, @CType("uint64_t *") MemorySegment pMaxDeviation) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetCalibratedTimestampsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsKHR");
+    /// ```
+    /// VkResult vkGetCalibratedTimestampsKHR(VkDevice device, uint32_t timestampCount, const VkCalibratedTimestampInfoKHR* pTimestampInfos, uint64_t* pTimestamps, uint64_t* pMaxDeviation);
+    /// ```
+    public int GetCalibratedTimestampsKHR(MemorySegment device, int timestampCount, MemorySegment pTimestampInfos, MemorySegment pTimestamps, MemorySegment pMaxDeviation) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetCalibratedTimestampsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsKHR");
         try { return (int) Handles.MH_vkGetCalibratedTimestampsKHR.invokeExact(handles.PFN_vkGetCalibratedTimestampsKHR, device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetCalibratedTimestampsKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetCalibratedTimestampsKHR", e); }
     }
 
 }

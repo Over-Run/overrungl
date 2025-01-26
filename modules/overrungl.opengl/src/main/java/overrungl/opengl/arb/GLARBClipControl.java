@@ -43,7 +43,7 @@ public final class GLARBClipControl {
     }
 
     /// ```
-    /// void glClipControl(unsigned int origin, unsigned int depth);
+    /// void glClipControl(GLenum origin, GLenum depth);
     /// ```
     public void ClipControl(int origin, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");

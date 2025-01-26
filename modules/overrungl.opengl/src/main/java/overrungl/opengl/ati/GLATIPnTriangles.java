@@ -49,7 +49,7 @@ public final class GLATIPnTriangles {
     }
 
     /// ```
-    /// void glPNTrianglesiATI(unsigned int pname, int param);
+    /// void glPNTrianglesiATI(GLenum pname, GLint param);
     /// ```
     public void PNTrianglesiATI(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesiATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesiATI");
@@ -58,7 +58,7 @@ public final class GLATIPnTriangles {
     }
 
     /// ```
-    /// void glPNTrianglesfATI(unsigned int pname, float param);
+    /// void glPNTrianglesfATI(GLenum pname, GLfloat param);
     /// ```
     public void PNTrianglesfATI(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesfATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesfATI");

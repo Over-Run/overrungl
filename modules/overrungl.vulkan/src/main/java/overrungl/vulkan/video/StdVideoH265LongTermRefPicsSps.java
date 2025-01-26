@@ -15,38 +15,40 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### used_by_curr_pic_lt_sps_flag
-/// [VarHandle][#VH_used_by_curr_pic_lt_sps_flag] - [Getter][#used_by_curr_pic_lt_sps_flag()] - [Setter][#used_by_curr_pic_lt_sps_flag(int)]
-/// ### lt_ref_pic_poc_lsb_sps
-/// [VarHandle][#VH_lt_ref_pic_poc_lsb_sps] - [Getter][#lt_ref_pic_poc_lsb_sps()] - [Setter][#lt_ref_pic_poc_lsb_sps(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoH265LongTermRefPicsSps {
-///     uint32_t used_by_curr_pic_lt_sps_flag;
-///     uint32_t [ ] lt_ref_pic_poc_lsb_sps;
-/// } StdVideoH265LongTermRefPicsSps;
 /// ```
-public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
+/// struct StdVideoH265LongTermRefPicsSps {
+///     uint32_t used_by_curr_pic_lt_sps_flag;
+///     uint32_t lt_ref_pic_poc_lsb_sps[32];
+/// };
+/// ```
+public sealed class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// The struct layout of `StdVideoH265LongTermRefPicsSps`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
-        ValueLayout.JAVA_INT.withName("lt_ref_pic_poc_lsb_sps")
+        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("lt_ref_pic_poc_lsb_sps")
     );
-    /// The [VarHandle] of `used_by_curr_pic_lt_sps_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `used_by_curr_pic_lt_sps_flag`.
+    public static final long OFFSET_used_by_curr_pic_lt_sps_flag = LAYOUT.byteOffset(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));
+    /// The memory layout of `used_by_curr_pic_lt_sps_flag`.
+    public static final MemoryLayout LAYOUT_used_by_curr_pic_lt_sps_flag = LAYOUT.select(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));
+    /// The [VarHandle] of `used_by_curr_pic_lt_sps_flag` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_used_by_curr_pic_lt_sps_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));
-    /// The [VarHandle] of `lt_ref_pic_poc_lsb_sps` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_lt_ref_pic_poc_lsb_sps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"));
+    /// The byte offset of `lt_ref_pic_poc_lsb_sps`.
+    public static final long OFFSET_lt_ref_pic_poc_lsb_sps = LAYOUT.byteOffset(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"));
+    /// The memory layout of `lt_ref_pic_poc_lsb_sps`.
+    public static final MemoryLayout LAYOUT_lt_ref_pic_poc_lsb_sps = LAYOUT.select(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"));
+    /// The [VarHandle] of `lt_ref_pic_poc_lsb_sps` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_lt_ref_pic_poc_lsb_sps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lt_ref_pic_poc_lsb_sps"), PathElement.sequenceElement());
 
     /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
     /// @param segment the memory segment
@@ -55,19 +57,14 @@ public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
     /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265LongTermRefPicsSps of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265LongTermRefPicsSps(segment); }
-
-    /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265LongTermRefPicsSps ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265LongTermRefPicsSps(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoH265LongTermRefPicsSps ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265LongTermRefPicsSps(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoH265LongTermRefPicsSps` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265LongTermRefPicsSps` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
     /// @return the allocated `StdVideoH265LongTermRefPicsSps`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265LongTermRefPicsSps` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoH265LongTermRefPicsSps`
-    public static StdVideoH265LongTermRefPicsSps allocInit(SegmentAllocator allocator, @CType("uint32_t") int used_by_curr_pic_lt_sps_flag, @CType("uint32_t [ ]") int lt_ref_pic_poc_lsb_sps) { return alloc(allocator).used_by_curr_pic_lt_sps_flag(used_by_curr_pic_lt_sps_flag).lt_ref_pic_poc_lsb_sps(lt_ref_pic_poc_lsb_sps); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,58 @@ public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `used_by_curr_pic_lt_sps_flag` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index) { return (int) VH_used_by_curr_pic_lt_sps_flag.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index) { return (int) VH_used_by_curr_pic_lt_sps_flag.get(segment, 0L, index); }
     /// {@return `used_by_curr_pic_lt_sps_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_used_by_curr_pic_lt_sps_flag(MemorySegment segment) { return StdVideoH265LongTermRefPicsSps.get_used_by_curr_pic_lt_sps_flag(segment, 0L); }
-    /// {@return `used_by_curr_pic_lt_sps_flag`}
-    public @CType("uint32_t") int used_by_curr_pic_lt_sps_flag() { return StdVideoH265LongTermRefPicsSps.get_used_by_curr_pic_lt_sps_flag(this.segment()); }
+    public int used_by_curr_pic_lt_sps_flag() { return used_by_curr_pic_lt_sps_flag(this.segment(), 0L); }
     /// Sets `used_by_curr_pic_lt_sps_flag` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_used_by_curr_pic_lt_sps_flag.set(segment, 0L, index, value); }
-    /// Sets `used_by_curr_pic_lt_sps_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_used_by_curr_pic_lt_sps_flag(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH265LongTermRefPicsSps.set_used_by_curr_pic_lt_sps_flag(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void used_by_curr_pic_lt_sps_flag(MemorySegment segment, long index, int value) { VH_used_by_curr_pic_lt_sps_flag.set(segment, 0L, index, value); }
     /// Sets `used_by_curr_pic_lt_sps_flag` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265LongTermRefPicsSps used_by_curr_pic_lt_sps_flag(@CType("uint32_t") int value) { StdVideoH265LongTermRefPicsSps.set_used_by_curr_pic_lt_sps_flag(this.segment(), value); return this; }
+    public StdVideoH265LongTermRefPicsSps used_by_curr_pic_lt_sps_flag(int value) { used_by_curr_pic_lt_sps_flag(this.segment(), 0L, value); return this; }
 
     /// {@return `lt_ref_pic_poc_lsb_sps` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t [ ]") int get_lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index) { return (int) VH_lt_ref_pic_poc_lsb_sps.get(segment, 0L, index); }
-    /// {@return `lt_ref_pic_poc_lsb_sps`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_lt_ref_pic_poc_lsb_sps, index), LAYOUT_lt_ref_pic_poc_lsb_sps); }
+    /// {@return `lt_ref_pic_poc_lsb_sps` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t [ ]") int get_lt_ref_pic_poc_lsb_sps(MemorySegment segment) { return StdVideoH265LongTermRefPicsSps.get_lt_ref_pic_poc_lsb_sps(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static int lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0) { return (int) VH_lt_ref_pic_poc_lsb_sps.get(segment, 0L, index, index0); }
     /// {@return `lt_ref_pic_poc_lsb_sps`}
-    public @CType("uint32_t [ ]") int lt_ref_pic_poc_lsb_sps() { return StdVideoH265LongTermRefPicsSps.get_lt_ref_pic_poc_lsb_sps(this.segment()); }
+    public MemorySegment lt_ref_pic_poc_lsb_sps() { return lt_ref_pic_poc_lsb_sps(this.segment(), 0L); }
+    /// {@return `lt_ref_pic_poc_lsb_sps`}
+    /// @param index0 the Index 0 of the array
+    public int lt_ref_pic_poc_lsb_sps(long index0) { return lt_ref_pic_poc_lsb_sps(this.segment(), 0L, index0); }
     /// Sets `lt_ref_pic_poc_lsb_sps` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, @CType("uint32_t [ ]") int value) { VH_lt_ref_pic_poc_lsb_sps.set(segment, 0L, index, value); }
-    /// Sets `lt_ref_pic_poc_lsb_sps` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_lt_ref_pic_poc_lsb_sps, index), LAYOUT_lt_ref_pic_poc_lsb_sps.byteSize()); }
+    /// Sets `lt_ref_pic_poc_lsb_sps` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_lt_ref_pic_poc_lsb_sps(MemorySegment segment, @CType("uint32_t [ ]") int value) { StdVideoH265LongTermRefPicsSps.set_lt_ref_pic_poc_lsb_sps(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void lt_ref_pic_poc_lsb_sps(MemorySegment segment, long index, long index0, int value) { VH_lt_ref_pic_poc_lsb_sps.set(segment, 0L, index, index0, value); }
     /// Sets `lt_ref_pic_poc_lsb_sps` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(@CType("uint32_t [ ]") int value) { StdVideoH265LongTermRefPicsSps.set_lt_ref_pic_poc_lsb_sps(this.segment(), value); return this; }
+    public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(MemorySegment value) { lt_ref_pic_poc_lsb_sps(this.segment(), 0L, value); return this; }
+    /// Sets `lt_ref_pic_poc_lsb_sps` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265LongTermRefPicsSps lt_ref_pic_poc_lsb_sps(long index0, int value) { lt_ref_pic_poc_lsb_sps(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [StdVideoH265LongTermRefPicsSps].
     public static final class Buffer extends StdVideoH265LongTermRefPicsSps {
@@ -171,22 +168,32 @@ public sealed class StdVideoH265LongTermRefPicsSps extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `used_by_curr_pic_lt_sps_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int used_by_curr_pic_lt_sps_flagAt(long index) { return StdVideoH265LongTermRefPicsSps.get_used_by_curr_pic_lt_sps_flag(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int used_by_curr_pic_lt_sps_flagAt(long index) { return used_by_curr_pic_lt_sps_flag(this.segment(), index); }
         /// Sets `used_by_curr_pic_lt_sps_flag` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer used_by_curr_pic_lt_sps_flagAt(long index, @CType("uint32_t") int value) { StdVideoH265LongTermRefPicsSps.set_used_by_curr_pic_lt_sps_flag(this.segment(), index, value); return this; }
+        public Buffer used_by_curr_pic_lt_sps_flagAt(long index, int value) { used_by_curr_pic_lt_sps_flag(this.segment(), index, value); return this; }
 
         /// {@return `lt_ref_pic_poc_lsb_sps` at the given index}
-        /// @param index the index
-        public @CType("uint32_t [ ]") int lt_ref_pic_poc_lsb_spsAt(long index) { return StdVideoH265LongTermRefPicsSps.get_lt_ref_pic_poc_lsb_sps(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment lt_ref_pic_poc_lsb_spsAt(long index) { return lt_ref_pic_poc_lsb_sps(this.segment(), index); }
+        /// {@return `lt_ref_pic_poc_lsb_sps` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public int lt_ref_pic_poc_lsb_spsAt(long index, long index0) { return lt_ref_pic_poc_lsb_sps(this.segment(), index, index0); }
         /// Sets `lt_ref_pic_poc_lsb_sps` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer lt_ref_pic_poc_lsb_spsAt(long index, @CType("uint32_t [ ]") int value) { StdVideoH265LongTermRefPicsSps.set_lt_ref_pic_poc_lsb_sps(this.segment(), index, value); return this; }
+        public Buffer lt_ref_pic_poc_lsb_spsAt(long index, MemorySegment value) { lt_ref_pic_poc_lsb_sps(this.segment(), index, value); return this; }
+        /// Sets `lt_ref_pic_poc_lsb_sps` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer lt_ref_pic_poc_lsb_spsAt(long index, long index0, int value) { lt_ref_pic_poc_lsb_sps(this.segment(), index, index0, value); return this; }
 
     }
 }

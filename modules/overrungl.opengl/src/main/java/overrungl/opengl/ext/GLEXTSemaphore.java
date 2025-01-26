@@ -74,7 +74,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glGetUnsignedBytevEXT(unsigned int pname, GLubyte* data);
+    /// void glGetUnsignedBytevEXT(GLenum pname, GLubyte* data);
     /// ```
     public void GetUnsignedBytevEXT(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
@@ -83,7 +83,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glGetUnsignedBytei_vEXT(unsigned int target, unsigned int index, GLubyte* data);
+    /// void glGetUnsignedBytei_vEXT(GLenum target, GLuint index, GLubyte* data);
     /// ```
     public void GetUnsignedBytei_vEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
@@ -92,7 +92,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glGenSemaphoresEXT(int n, GLuint* semaphores);
+    /// void glGenSemaphoresEXT(GLsizei n, GLuint* semaphores);
     /// ```
     public void GenSemaphoresEXT(int n, MemorySegment semaphores) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenSemaphoresEXT)) throw new SymbolNotFoundError("Symbol not found: glGenSemaphoresEXT");
@@ -101,7 +101,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glDeleteSemaphoresEXT(int n, const GLuint* semaphores);
+    /// void glDeleteSemaphoresEXT(GLsizei n, const GLuint* semaphores);
     /// ```
     public void DeleteSemaphoresEXT(int n, MemorySegment semaphores) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSemaphoresEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteSemaphoresEXT");
@@ -110,7 +110,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// GLboolean glIsSemaphoreEXT(unsigned int semaphore);
+    /// GLboolean glIsSemaphoreEXT(GLuint semaphore);
     /// ```
     public boolean IsSemaphoreEXT(int semaphore) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsSemaphoreEXT)) throw new SymbolNotFoundError("Symbol not found: glIsSemaphoreEXT");
@@ -119,7 +119,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glSemaphoreParameterui64vEXT(unsigned int semaphore, unsigned int pname, const GLuint64* params);
+    /// void glSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, const GLuint64* params);
     /// ```
     public void SemaphoreParameterui64vEXT(int semaphore, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSemaphoreParameterui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterui64vEXT");
@@ -128,7 +128,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glGetSemaphoreParameterui64vEXT(unsigned int semaphore, unsigned int pname, GLuint64* params);
+    /// void glGetSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, GLuint64* params);
     /// ```
     public void GetSemaphoreParameterui64vEXT(int semaphore, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSemaphoreParameterui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterui64vEXT");
@@ -137,7 +137,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glWaitSemaphoreEXT(unsigned int semaphore, unsigned int numBufferBarriers, const GLuint* buffers, unsigned int numTextureBarriers, const GLuint* textures, const GLenum* srcLayouts);
+    /// void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint* buffers, GLuint numTextureBarriers, const GLuint* textures, const GLenum* srcLayouts);
     /// ```
     public void WaitSemaphoreEXT(int semaphore, int numBufferBarriers, MemorySegment buffers, int numTextureBarriers, MemorySegment textures, MemorySegment srcLayouts) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSemaphoreEXT)) throw new SymbolNotFoundError("Symbol not found: glWaitSemaphoreEXT");
@@ -146,7 +146,7 @@ public final class GLEXTSemaphore {
     }
 
     /// ```
-    /// void glSignalSemaphoreEXT(unsigned int semaphore, unsigned int numBufferBarriers, const GLuint* buffers, unsigned int numTextureBarriers, const GLuint* textures, const GLenum* dstLayouts);
+    /// void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint* buffers, GLuint numTextureBarriers, const GLuint* textures, const GLenum* dstLayouts);
     /// ```
     public void SignalSemaphoreEXT(int semaphore, int numBufferBarriers, MemorySegment buffers, int numTextureBarriers, MemorySegment textures, MemorySegment dstLayouts) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSignalSemaphoreEXT)) throw new SymbolNotFoundError("Symbol not found: glSignalSemaphoreEXT");

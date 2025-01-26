@@ -42,7 +42,7 @@ public final class GLNVScissorExclusive {
     }
 
     /// ```
-    /// void glScissorExclusiveNV(int x, int y, int width, int height);
+    /// void glScissorExclusiveNV(GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void ScissorExclusiveNV(int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
@@ -51,7 +51,7 @@ public final class GLNVScissorExclusive {
     }
 
     /// ```
-    /// void glScissorExclusiveArrayvNV(unsigned int first, int count, const GLint* v);
+    /// void glScissorExclusiveArrayvNV(GLuint first, GLsizei count, const GLint* v);
     /// ```
     public void ScissorExclusiveArrayvNV(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");

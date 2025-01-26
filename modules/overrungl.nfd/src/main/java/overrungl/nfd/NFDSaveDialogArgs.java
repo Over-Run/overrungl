@@ -28,10 +28,10 @@ import overrungl.util.*;
 /// ```
 /// struct NFDSaveDialogArgs {
 ///     const nfdnfilteritem_t* filterList;
-///     unsigned int filterCount;
+///     nfdfiltersize_t filterCount;
 ///     const nfdnchar_t* defaultPath;
 ///     const nfdnchar_t* defaultName;
-///     NFDWindowHandle parentWindow;
+///     nfdwindowhandle_t parentWindow;
 /// };
 /// ```
 public sealed class NFDSaveDialogArgs extends GroupType {

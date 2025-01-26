@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.amdx.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### minSize
-/// [VarHandle][#VH_minSize] - [Getter][#minSize()] - [Setter][#minSize(long)]
-/// ### maxSize
-/// [VarHandle][#VH_maxSize] - [Getter][#maxSize()] - [Setter][#maxSize(long)]
-/// ### sizeGranularity
-/// [VarHandle][#VH_sizeGranularity] - [Getter][#sizeGranularity()] - [Setter][#sizeGranularity(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkExecutionGraphPipelineScratchSizeAMDX {
+/// ```
+/// struct VkExecutionGraphPipelineScratchSizeAMDX {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkDeviceSize minSize;
 ///     VkDeviceSize maxSize;
 ///     VkDeviceSize sizeGranularity;
-/// } VkExecutionGraphPipelineScratchSizeAMDX;
+/// };
 /// ```
-public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
+public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// The struct layout of `VkExecutionGraphPipelineScratchSizeAMDX`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("minSize"),
         ValueLayout.JAVA_LONG.withName("maxSize"),
         ValueLayout.JAVA_LONG.withName("sizeGranularity")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `minSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `minSize`.
+    public static final long OFFSET_minSize = LAYOUT.byteOffset(PathElement.groupElement("minSize"));
+    /// The memory layout of `minSize`.
+    public static final MemoryLayout LAYOUT_minSize = LAYOUT.select(PathElement.groupElement("minSize"));
+    /// The [VarHandle] of `minSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSize"));
-    /// The [VarHandle] of `maxSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxSize`.
+    public static final long OFFSET_maxSize = LAYOUT.byteOffset(PathElement.groupElement("maxSize"));
+    /// The memory layout of `maxSize`.
+    public static final MemoryLayout LAYOUT_maxSize = LAYOUT.select(PathElement.groupElement("maxSize"));
+    /// The [VarHandle] of `maxSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSize"));
-    /// The [VarHandle] of `sizeGranularity` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `sizeGranularity`.
+    public static final long OFFSET_sizeGranularity = LAYOUT.byteOffset(PathElement.groupElement("sizeGranularity"));
+    /// The memory layout of `sizeGranularity`.
+    public static final MemoryLayout LAYOUT_sizeGranularity = LAYOUT.select(PathElement.groupElement("sizeGranularity"));
+    /// The [VarHandle] of `sizeGranularity` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sizeGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sizeGranularity"));
 
     /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
     /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExecutionGraphPipelineScratchSizeAMDX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExecutionGraphPipelineScratchSizeAMDX(segment); }
-
-    /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExecutionGraphPipelineScratchSizeAMDX ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExecutionGraphPipelineScratchSizeAMDX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkExecutionGraphPipelineScratchSizeAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExecutionGraphPipelineScratchSizeAMDX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
     /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
-    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkDeviceSize") long minSize, @CType("VkDeviceSize") long maxSize, @CType("VkDeviceSize") long sizeGranularity) { return alloc(allocator).sType(sType).pNext(pNext).minSize(minSize).maxSize(maxSize).sizeGranularity(sizeGranularity); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExecutionGraphPipelineScratchSizeAMDX.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkExecutionGraphPipelineScratchSizeAMDX.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExecutionGraphPipelineScratchSizeAMDX sType(@CType("VkStructureType") int value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sType(this.segment(), value); return this; }
+    public VkExecutionGraphPipelineScratchSizeAMDX sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkExecutionGraphPipelineScratchSizeAMDX.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkExecutionGraphPipelineScratchSizeAMDX.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkExecutionGraphPipelineScratchSizeAMDX.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExecutionGraphPipelineScratchSizeAMDX pNext(@CType("void *") MemorySegment value) { VkExecutionGraphPipelineScratchSizeAMDX.set_pNext(this.segment(), value); return this; }
+    public VkExecutionGraphPipelineScratchSizeAMDX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `minSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_minSize(MemorySegment segment, long index) { return (long) VH_minSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long minSize(MemorySegment segment, long index) { return (long) VH_minSize.get(segment, 0L, index); }
     /// {@return `minSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_minSize(MemorySegment segment) { return VkExecutionGraphPipelineScratchSizeAMDX.get_minSize(segment, 0L); }
-    /// {@return `minSize`}
-    public @CType("VkDeviceSize") long minSize() { return VkExecutionGraphPipelineScratchSizeAMDX.get_minSize(this.segment()); }
+    public long minSize() { return minSize(this.segment(), 0L); }
     /// Sets `minSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_minSize.set(segment, 0L, index, value); }
-    /// Sets `minSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_minSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minSize(MemorySegment segment, long index, long value) { VH_minSize.set(segment, 0L, index, value); }
     /// Sets `minSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExecutionGraphPipelineScratchSizeAMDX minSize(@CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_minSize(this.segment(), value); return this; }
+    public VkExecutionGraphPipelineScratchSizeAMDX minSize(long value) { minSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_maxSize(MemorySegment segment, long index) { return (long) VH_maxSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxSize(MemorySegment segment, long index) { return (long) VH_maxSize.get(segment, 0L, index); }
     /// {@return `maxSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_maxSize(MemorySegment segment) { return VkExecutionGraphPipelineScratchSizeAMDX.get_maxSize(segment, 0L); }
-    /// {@return `maxSize`}
-    public @CType("VkDeviceSize") long maxSize() { return VkExecutionGraphPipelineScratchSizeAMDX.get_maxSize(this.segment()); }
+    public long maxSize() { return maxSize(this.segment(), 0L); }
     /// Sets `maxSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_maxSize.set(segment, 0L, index, value); }
-    /// Sets `maxSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_maxSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSize(MemorySegment segment, long index, long value) { VH_maxSize.set(segment, 0L, index, value); }
     /// Sets `maxSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExecutionGraphPipelineScratchSizeAMDX maxSize(@CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_maxSize(this.segment(), value); return this; }
+    public VkExecutionGraphPipelineScratchSizeAMDX maxSize(long value) { maxSize(this.segment(), 0L, value); return this; }
 
     /// {@return `sizeGranularity` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_sizeGranularity(MemorySegment segment, long index) { return (long) VH_sizeGranularity.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long sizeGranularity(MemorySegment segment, long index) { return (long) VH_sizeGranularity.get(segment, 0L, index); }
     /// {@return `sizeGranularity`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_sizeGranularity(MemorySegment segment) { return VkExecutionGraphPipelineScratchSizeAMDX.get_sizeGranularity(segment, 0L); }
-    /// {@return `sizeGranularity`}
-    public @CType("VkDeviceSize") long sizeGranularity() { return VkExecutionGraphPipelineScratchSizeAMDX.get_sizeGranularity(this.segment()); }
+    public long sizeGranularity() { return sizeGranularity(this.segment(), 0L); }
     /// Sets `sizeGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sizeGranularity(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_sizeGranularity.set(segment, 0L, index, value); }
-    /// Sets `sizeGranularity` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sizeGranularity(MemorySegment segment, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sizeGranularity(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sizeGranularity(MemorySegment segment, long index, long value) { VH_sizeGranularity.set(segment, 0L, index, value); }
     /// Sets `sizeGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExecutionGraphPipelineScratchSizeAMDX sizeGranularity(@CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sizeGranularity(this.segment(), value); return this; }
+    public VkExecutionGraphPipelineScratchSizeAMDX sizeGranularity(long value) { sizeGranularity(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkExecutionGraphPipelineScratchSizeAMDX].
     public static final class Buffer extends VkExecutionGraphPipelineScratchSizeAMDX {
@@ -258,49 +221,49 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkExecutionGraphPipelineScratchSizeAMDX.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkExecutionGraphPipelineScratchSizeAMDX.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkExecutionGraphPipelineScratchSizeAMDX.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `minSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long minSizeAt(long index) { return VkExecutionGraphPipelineScratchSizeAMDX.get_minSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long minSizeAt(long index) { return minSize(this.segment(), index); }
         /// Sets `minSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minSizeAt(long index, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_minSize(this.segment(), index, value); return this; }
+        public Buffer minSizeAt(long index, long value) { minSize(this.segment(), index, value); return this; }
 
         /// {@return `maxSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long maxSizeAt(long index) { return VkExecutionGraphPipelineScratchSizeAMDX.get_maxSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxSizeAt(long index) { return maxSize(this.segment(), index); }
         /// Sets `maxSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSizeAt(long index, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_maxSize(this.segment(), index, value); return this; }
+        public Buffer maxSizeAt(long index, long value) { maxSize(this.segment(), index, value); return this; }
 
         /// {@return `sizeGranularity` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long sizeGranularityAt(long index) { return VkExecutionGraphPipelineScratchSizeAMDX.get_sizeGranularity(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long sizeGranularityAt(long index) { return sizeGranularity(this.segment(), index); }
         /// Sets `sizeGranularity` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sizeGranularityAt(long index, @CType("VkDeviceSize") long value) { VkExecutionGraphPipelineScratchSizeAMDX.set_sizeGranularity(this.segment(), index, value); return this; }
+        public Buffer sizeGranularityAt(long index, long value) { sizeGranularity(this.segment(), index, value); return this; }
 
     }
 }

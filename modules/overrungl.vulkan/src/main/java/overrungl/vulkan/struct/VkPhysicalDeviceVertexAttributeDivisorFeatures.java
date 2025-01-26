@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### vertexAttributeInstanceRateDivisor
-/// [VarHandle][#VH_vertexAttributeInstanceRateDivisor] - [Getter][#vertexAttributeInstanceRateDivisor()] - [Setter][#vertexAttributeInstanceRateDivisor(int)]
-/// ### vertexAttributeInstanceRateZeroDivisor
-/// [VarHandle][#VH_vertexAttributeInstanceRateZeroDivisor] - [Getter][#vertexAttributeInstanceRateZeroDivisor()] - [Setter][#vertexAttributeInstanceRateZeroDivisor(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceVertexAttributeDivisorFeatures {
+/// ```
+/// struct VkPhysicalDeviceVertexAttributeDivisorFeatures {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 vertexAttributeInstanceRateDivisor;
 ///     VkBool32 vertexAttributeInstanceRateZeroDivisor;
-/// } VkPhysicalDeviceVertexAttributeDivisorFeatures;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struct {
+public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVertexAttributeDivisorFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateDivisor"),
         ValueLayout.JAVA_INT.withName("vertexAttributeInstanceRateZeroDivisor")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `vertexAttributeInstanceRateDivisor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vertexAttributeInstanceRateDivisor`.
+    public static final long OFFSET_vertexAttributeInstanceRateDivisor = LAYOUT.byteOffset(PathElement.groupElement("vertexAttributeInstanceRateDivisor"));
+    /// The memory layout of `vertexAttributeInstanceRateDivisor`.
+    public static final MemoryLayout LAYOUT_vertexAttributeInstanceRateDivisor = LAYOUT.select(PathElement.groupElement("vertexAttributeInstanceRateDivisor"));
+    /// The [VarHandle] of `vertexAttributeInstanceRateDivisor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertexAttributeInstanceRateDivisor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexAttributeInstanceRateDivisor"));
-    /// The [VarHandle] of `vertexAttributeInstanceRateZeroDivisor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vertexAttributeInstanceRateZeroDivisor`.
+    public static final long OFFSET_vertexAttributeInstanceRateZeroDivisor = LAYOUT.byteOffset(PathElement.groupElement("vertexAttributeInstanceRateZeroDivisor"));
+    /// The memory layout of `vertexAttributeInstanceRateZeroDivisor`.
+    public static final MemoryLayout LAYOUT_vertexAttributeInstanceRateZeroDivisor = LAYOUT.select(PathElement.groupElement("vertexAttributeInstanceRateZeroDivisor"));
+    /// The [VarHandle] of `vertexAttributeInstanceRateZeroDivisor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertexAttributeInstanceRateZeroDivisor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexAttributeInstanceRateZeroDivisor"));
 
     /// Creates `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struc
     /// Creates `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVertexAttributeDivisorFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVertexAttributeDivisorFeatures(segment); }
-
-    /// Creates `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVertexAttributeDivisorFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVertexAttributeDivisorFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVertexAttributeDivisorFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVertexAttributeDivisorFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struc
     /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
-    public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int vertexAttributeInstanceRateDivisor, @CType("VkBool32") int vertexAttributeInstanceRateZeroDivisor) { return alloc(allocator).sType(sType).pNext(pNext).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVertexAttributeDivisorFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVertexAttributeDivisorFeatures pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexAttributeInstanceRateDivisor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_vertexAttributeInstanceRateDivisor(MemorySegment segment, long index) { return (int) VH_vertexAttributeInstanceRateDivisor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vertexAttributeInstanceRateDivisor(MemorySegment segment, long index) { return (int) VH_vertexAttributeInstanceRateDivisor.get(segment, 0L, index); }
     /// {@return `vertexAttributeInstanceRateDivisor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_vertexAttributeInstanceRateDivisor(MemorySegment segment) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateDivisor(segment, 0L); }
-    /// {@return `vertexAttributeInstanceRateDivisor`}
-    public @CType("VkBool32") int vertexAttributeInstanceRateDivisor() { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateDivisor(this.segment()); }
+    public int vertexAttributeInstanceRateDivisor() { return vertexAttributeInstanceRateDivisor(this.segment(), 0L); }
     /// Sets `vertexAttributeInstanceRateDivisor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexAttributeInstanceRateDivisor(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_vertexAttributeInstanceRateDivisor.set(segment, 0L, index, value); }
-    /// Sets `vertexAttributeInstanceRateDivisor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexAttributeInstanceRateDivisor(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateDivisor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexAttributeInstanceRateDivisor(MemorySegment segment, long index, int value) { VH_vertexAttributeInstanceRateDivisor.set(segment, 0L, index, value); }
     /// Sets `vertexAttributeInstanceRateDivisor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateDivisor(@CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateDivisor(this.segment(), value); return this; }
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateDivisor(int value) { vertexAttributeInstanceRateDivisor(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexAttributeInstanceRateZeroDivisor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_vertexAttributeInstanceRateZeroDivisor(MemorySegment segment, long index) { return (int) VH_vertexAttributeInstanceRateZeroDivisor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vertexAttributeInstanceRateZeroDivisor(MemorySegment segment, long index) { return (int) VH_vertexAttributeInstanceRateZeroDivisor.get(segment, 0L, index); }
     /// {@return `vertexAttributeInstanceRateZeroDivisor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_vertexAttributeInstanceRateZeroDivisor(MemorySegment segment) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateZeroDivisor(segment, 0L); }
-    /// {@return `vertexAttributeInstanceRateZeroDivisor`}
-    public @CType("VkBool32") int vertexAttributeInstanceRateZeroDivisor() { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateZeroDivisor(this.segment()); }
+    public int vertexAttributeInstanceRateZeroDivisor() { return vertexAttributeInstanceRateZeroDivisor(this.segment(), 0L); }
     /// Sets `vertexAttributeInstanceRateZeroDivisor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexAttributeInstanceRateZeroDivisor(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_vertexAttributeInstanceRateZeroDivisor.set(segment, 0L, index, value); }
-    /// Sets `vertexAttributeInstanceRateZeroDivisor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexAttributeInstanceRateZeroDivisor(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateZeroDivisor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexAttributeInstanceRateZeroDivisor(MemorySegment segment, long index, int value) { VH_vertexAttributeInstanceRateZeroDivisor.set(segment, 0L, index, value); }
     /// Sets `vertexAttributeInstanceRateZeroDivisor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateZeroDivisor(@CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateZeroDivisor(this.segment(), value); return this; }
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures vertexAttributeInstanceRateZeroDivisor(int value) { vertexAttributeInstanceRateZeroDivisor(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceVertexAttributeDivisorFeatures].
     public static final class Buffer extends VkPhysicalDeviceVertexAttributeDivisorFeatures {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `vertexAttributeInstanceRateDivisor` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int vertexAttributeInstanceRateDivisorAt(long index) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateDivisor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vertexAttributeInstanceRateDivisorAt(long index) { return vertexAttributeInstanceRateDivisor(this.segment(), index); }
         /// Sets `vertexAttributeInstanceRateDivisor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexAttributeInstanceRateDivisorAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateDivisor(this.segment(), index, value); return this; }
+        public Buffer vertexAttributeInstanceRateDivisorAt(long index, int value) { vertexAttributeInstanceRateDivisor(this.segment(), index, value); return this; }
 
         /// {@return `vertexAttributeInstanceRateZeroDivisor` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int vertexAttributeInstanceRateZeroDivisorAt(long index) { return VkPhysicalDeviceVertexAttributeDivisorFeatures.get_vertexAttributeInstanceRateZeroDivisor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vertexAttributeInstanceRateZeroDivisorAt(long index) { return vertexAttributeInstanceRateZeroDivisor(this.segment(), index); }
         /// Sets `vertexAttributeInstanceRateZeroDivisor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexAttributeInstanceRateZeroDivisorAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVertexAttributeDivisorFeatures.set_vertexAttributeInstanceRateZeroDivisor(this.segment(), index, value); return this; }
+        public Buffer vertexAttributeInstanceRateZeroDivisorAt(long index, int value) { vertexAttributeInstanceRateZeroDivisor(this.segment(), index, value); return this; }
 
     }
 }

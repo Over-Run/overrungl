@@ -39,7 +39,7 @@ public final class GLEXTDepthBoundsTest {
     }
 
     /// ```
-    /// void glDepthBoundsEXT(double zmin, double zmax);
+    /// void glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
     /// ```
     public void DepthBoundsEXT(double zmin, double zmax) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");

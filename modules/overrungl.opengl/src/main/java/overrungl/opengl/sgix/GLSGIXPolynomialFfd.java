@@ -52,7 +52,7 @@ public final class GLSGIXPolynomialFfd {
     }
 
     /// ```
-    /// void glDeformationMap3dSGIX(unsigned int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, const GLdouble* points);
+    /// void glDeformationMap3dSGIX(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble* points);
     /// ```
     public void DeformationMap3dSGIX(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3dSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3dSGIX");
@@ -61,7 +61,7 @@ public final class GLSGIXPolynomialFfd {
     }
 
     /// ```
-    /// void glDeformationMap3fSGIX(unsigned int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, const GLfloat* points);
+    /// void glDeformationMap3fSGIX(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat* points);
     /// ```
     public void DeformationMap3fSGIX(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformationMap3fSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformationMap3fSGIX");
@@ -70,7 +70,7 @@ public final class GLSGIXPolynomialFfd {
     }
 
     /// ```
-    /// void glDeformSGIX(unsigned int mask);
+    /// void glDeformSGIX(GLbitfield mask);
     /// ```
     public void DeformSGIX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeformSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeformSGIX");
@@ -79,7 +79,7 @@ public final class GLSGIXPolynomialFfd {
     }
 
     /// ```
-    /// void glLoadIdentityDeformationMapSGIX(unsigned int mask);
+    /// void glLoadIdentityDeformationMapSGIX(GLbitfield mask);
     /// ```
     public void LoadIdentityDeformationMapSGIX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLoadIdentityDeformationMapSGIX)) throw new SymbolNotFoundError("Symbol not found: glLoadIdentityDeformationMapSGIX");

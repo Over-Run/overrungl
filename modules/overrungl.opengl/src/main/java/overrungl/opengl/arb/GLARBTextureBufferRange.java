@@ -40,7 +40,7 @@ public final class GLARBTextureBufferRange {
     }
 
     /// ```
-    /// void glTexBufferRange(unsigned int target, unsigned int internalformat, unsigned int buffer, signed long long offset, signed long long size);
+    /// void glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
     /// ```
     public void TexBufferRange(int target, int internalformat, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTexBufferRange");

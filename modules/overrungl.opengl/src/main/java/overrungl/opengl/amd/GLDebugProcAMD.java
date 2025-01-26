@@ -16,7 +16,7 @@
 
 // This file is auto-generated. DO NOT EDIT!
 //@formatter:off
-package overrungl.opengl;
+package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLDebugProcAMD)(unsigned int id, unsigned int category, unsigned int severity, int length, const GLchar* message, void* userParam);
+/// typedef void (*GLDebugProcAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar* message, void* userParam);
 /// ```
 @FunctionalInterface
 public interface GLDebugProcAMD extends Upcall {

@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLFWWindowIconifyFun)(GLFWwindow* window, int iconified);
+/// typedef void (*GLFWWindowIconifyFun)(GLFWwindow* window, GLFWboolean iconified);
 /// ```
 @FunctionalInterface
 public interface GLFWWindowIconifyFun extends Upcall {

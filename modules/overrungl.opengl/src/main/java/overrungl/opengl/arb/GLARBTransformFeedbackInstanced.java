@@ -40,7 +40,7 @@ public final class GLARBTransformFeedbackInstanced {
     }
 
     /// ```
-    /// void glDrawTransformFeedbackInstanced(unsigned int mode, unsigned int id, int instancecount);
+    /// void glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount);
     /// ```
     public void DrawTransformFeedbackInstanced(int mode, int id, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced");
@@ -49,7 +49,7 @@ public final class GLARBTransformFeedbackInstanced {
     }
 
     /// ```
-    /// void glDrawTransformFeedbackStreamInstanced(unsigned int mode, unsigned int id, unsigned int stream, int instancecount);
+    /// void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
     /// ```
     public void DrawTransformFeedbackStreamInstanced(int mode, int id, int stream, int instancecount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTransformFeedbackStreamInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced");

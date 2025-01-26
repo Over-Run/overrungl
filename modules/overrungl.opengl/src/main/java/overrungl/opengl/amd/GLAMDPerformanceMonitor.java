@@ -74,7 +74,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorGroupsAMD(GLint* numGroups, int groupsSize, GLuint* groups);
+    /// void glGetPerfMonitorGroupsAMD(GLint* numGroups, GLsizei groupsSize, GLuint* groups);
     /// ```
     public void GetPerfMonitorGroupsAMD(MemorySegment numGroups, int groupsSize, MemorySegment groups) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorGroupsAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupsAMD");
@@ -83,7 +83,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorCountersAMD(unsigned int group, GLint* numCounters, GLint* maxActiveCounters, int counterSize, GLuint* counters);
+    /// void glGetPerfMonitorCountersAMD(GLuint group, GLint* numCounters, GLint* maxActiveCounters, GLsizei counterSize, GLuint* counters);
     /// ```
     public void GetPerfMonitorCountersAMD(int group, MemorySegment numCounters, MemorySegment maxActiveCounters, int counterSize, MemorySegment counters) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCountersAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCountersAMD");
@@ -92,7 +92,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorGroupStringAMD(unsigned int group, int bufSize, GLsizei* length, GLchar* groupString);
+    /// void glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei* length, GLchar* groupString);
     /// ```
     public void GetPerfMonitorGroupStringAMD(int group, int bufSize, MemorySegment length, MemorySegment groupString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorGroupStringAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupStringAMD");
@@ -101,7 +101,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorCounterStringAMD(unsigned int group, unsigned int counter, int bufSize, GLsizei* length, GLchar* counterString);
+    /// void glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei* length, GLchar* counterString);
     /// ```
     public void GetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, MemorySegment length, MemorySegment counterString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterStringAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterStringAMD");
@@ -110,7 +110,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorCounterInfoAMD(unsigned int group, unsigned int counter, unsigned int pname, void* data);
+    /// void glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint counter, GLenum pname, void* data);
     /// ```
     public void GetPerfMonitorCounterInfoAMD(int group, int counter, int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterInfoAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterInfoAMD");
@@ -119,7 +119,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGenPerfMonitorsAMD(int n, GLuint* monitors);
+    /// void glGenPerfMonitorsAMD(GLsizei n, GLuint* monitors);
     /// ```
     public void GenPerfMonitorsAMD(int n, MemorySegment monitors) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenPerfMonitorsAMD)) throw new SymbolNotFoundError("Symbol not found: glGenPerfMonitorsAMD");
@@ -128,7 +128,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glDeletePerfMonitorsAMD(int n, GLuint* monitors);
+    /// void glDeletePerfMonitorsAMD(GLsizei n, GLuint* monitors);
     /// ```
     public void DeletePerfMonitorsAMD(int n, MemorySegment monitors) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeletePerfMonitorsAMD)) throw new SymbolNotFoundError("Symbol not found: glDeletePerfMonitorsAMD");
@@ -137,7 +137,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glSelectPerfMonitorCountersAMD(unsigned int monitor, GLboolean enable, unsigned int group, int numCounters, GLuint* counterList);
+    /// void glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint* counterList);
     /// ```
     public void SelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, MemorySegment counterList) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSelectPerfMonitorCountersAMD)) throw new SymbolNotFoundError("Symbol not found: glSelectPerfMonitorCountersAMD");
@@ -146,7 +146,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glBeginPerfMonitorAMD(unsigned int monitor);
+    /// void glBeginPerfMonitorAMD(GLuint monitor);
     /// ```
     public void BeginPerfMonitorAMD(int monitor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginPerfMonitorAMD)) throw new SymbolNotFoundError("Symbol not found: glBeginPerfMonitorAMD");
@@ -155,7 +155,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glEndPerfMonitorAMD(unsigned int monitor);
+    /// void glEndPerfMonitorAMD(GLuint monitor);
     /// ```
     public void EndPerfMonitorAMD(int monitor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndPerfMonitorAMD)) throw new SymbolNotFoundError("Symbol not found: glEndPerfMonitorAMD");
@@ -164,7 +164,7 @@ public final class GLAMDPerformanceMonitor {
     }
 
     /// ```
-    /// void glGetPerfMonitorCounterDataAMD(unsigned int monitor, unsigned int pname, int dataSize, GLuint* data, GLint* bytesWritten);
+    /// void glGetPerfMonitorCounterDataAMD(GLuint monitor, GLenum pname, GLsizei dataSize, GLuint* data, GLint* bytesWritten);
     /// ```
     public void GetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, MemorySegment data, MemorySegment bytesWritten) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterDataAMD)) throw new SymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterDataAMD");

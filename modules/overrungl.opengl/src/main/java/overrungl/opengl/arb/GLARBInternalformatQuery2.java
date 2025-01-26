@@ -171,7 +171,7 @@ public final class GLARBInternalformatQuery2 {
     }
 
     /// ```
-    /// void glGetInternalformati64v(unsigned int target, unsigned int internalformat, unsigned int pname, int count, GLint64* params);
+    /// void glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint64* params);
     /// ```
     public void GetInternalformati64v(int target, int internalformat, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");

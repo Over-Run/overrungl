@@ -61,7 +61,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glPixelTransformParameteriEXT(unsigned int target, unsigned int pname, int param);
+    /// void glPixelTransformParameteriEXT(GLenum target, GLenum pname, GLint param);
     /// ```
     public void PixelTransformParameteriEXT(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameteriEXT");
@@ -70,7 +70,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glPixelTransformParameterfEXT(unsigned int target, unsigned int pname, float param);
+    /// void glPixelTransformParameterfEXT(GLenum target, GLenum pname, GLfloat param);
     /// ```
     public void PixelTransformParameterfEXT(int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterfEXT");
@@ -79,7 +79,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glPixelTransformParameterivEXT(unsigned int target, unsigned int pname, const GLint* params);
+    /// void glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint* params);
     /// ```
     public void PixelTransformParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterivEXT");
@@ -88,7 +88,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glPixelTransformParameterfvEXT(unsigned int target, unsigned int pname, const GLfloat* params);
+    /// void glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat* params);
     /// ```
     public void PixelTransformParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransformParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterfvEXT");
@@ -97,7 +97,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glGetPixelTransformParameterivEXT(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetPixelTransformParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTransformParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTransformParameterivEXT");
@@ -106,7 +106,7 @@ public final class GLEXTPixelTransform {
     }
 
     /// ```
-    /// void glGetPixelTransformParameterfvEXT(unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetPixelTransformParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTransformParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTransformParameterfvEXT");

@@ -83,7 +83,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetTextureHandleARB(unsigned int texture);
+    /// GLuint64 glGetTextureHandleARB(GLuint texture);
     /// ```
     public long GetTextureHandleARB(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetTextureHandleARB");
@@ -92,7 +92,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetTextureSamplerHandleARB(unsigned int texture, unsigned int sampler);
+    /// GLuint64 glGetTextureSamplerHandleARB(GLuint texture, GLuint sampler);
     /// ```
     public long GetTextureSamplerHandleARB(int texture, int sampler) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTextureSamplerHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetTextureSamplerHandleARB");
@@ -101,7 +101,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glMakeTextureHandleResidentARB(uint64_t handle);
+    /// void glMakeTextureHandleResidentARB(GLuint64 handle);
     /// ```
     public void MakeTextureHandleResidentARB(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleResidentARB");
@@ -110,7 +110,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glMakeTextureHandleNonResidentARB(uint64_t handle);
+    /// void glMakeTextureHandleNonResidentARB(GLuint64 handle);
     /// ```
     public void MakeTextureHandleNonResidentARB(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeTextureHandleNonResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleNonResidentARB");
@@ -119,7 +119,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// uint64_t glGetImageHandleARB(unsigned int texture, int level, GLboolean layered, int layer, unsigned int format);
+    /// GLuint64 glGetImageHandleARB(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
     /// ```
     public long GetImageHandleARB(int texture, int level, boolean layered, int layer, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetImageHandleARB");
@@ -128,7 +128,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glMakeImageHandleResidentARB(uint64_t handle, unsigned int access);
+    /// void glMakeImageHandleResidentARB(GLuint64 handle, GLenum access);
     /// ```
     public void MakeImageHandleResidentARB(long handle, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleResidentARB");
@@ -137,7 +137,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glMakeImageHandleNonResidentARB(uint64_t handle);
+    /// void glMakeImageHandleNonResidentARB(GLuint64 handle);
     /// ```
     public void MakeImageHandleNonResidentARB(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeImageHandleNonResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleNonResidentARB");
@@ -146,7 +146,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glUniformHandleui64ARB(int location, uint64_t value);
+    /// void glUniformHandleui64ARB(GLint location, GLuint64 value);
     /// ```
     public void UniformHandleui64ARB(int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64ARB");
@@ -155,7 +155,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glUniformHandleui64vARB(int location, int count, const GLuint64* value);
+    /// void glUniformHandleui64vARB(GLint location, GLsizei count, const GLuint64* value);
     /// ```
     public void UniformHandleui64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vARB");
@@ -164,7 +164,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glProgramUniformHandleui64ARB(unsigned int program, int location, uint64_t value);
+    /// void glProgramUniformHandleui64ARB(GLuint program, GLint location, GLuint64 value);
     /// ```
     public void ProgramUniformHandleui64ARB(int program, int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64ARB");
@@ -173,7 +173,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glProgramUniformHandleui64vARB(unsigned int program, int location, int count, const GLuint64* values);
+    /// void glProgramUniformHandleui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64* values);
     /// ```
     public void ProgramUniformHandleui64vARB(int program, int location, int count, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB");
@@ -182,7 +182,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// GLboolean glIsTextureHandleResidentARB(uint64_t handle);
+    /// GLboolean glIsTextureHandleResidentARB(GLuint64 handle);
     /// ```
     public boolean IsTextureHandleResidentARB(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glIsTextureHandleResidentARB");
@@ -191,7 +191,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// GLboolean glIsImageHandleResidentARB(uint64_t handle);
+    /// GLboolean glIsImageHandleResidentARB(GLuint64 handle);
     /// ```
     public boolean IsImageHandleResidentARB(long handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsImageHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glIsImageHandleResidentARB");
@@ -200,7 +200,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glVertexAttribL1ui64ARB(unsigned int index, uint64_t x);
+    /// void glVertexAttribL1ui64ARB(GLuint index, GLuint64EXT x);
     /// ```
     public void VertexAttribL1ui64ARB(int index, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64ARB");
@@ -209,7 +209,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glVertexAttribL1ui64vARB(unsigned int index, const GLuint64EXT* v);
+    /// void glVertexAttribL1ui64vARB(GLuint index, const GLuint64EXT* v);
     /// ```
     public void VertexAttribL1ui64vARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB");
@@ -218,7 +218,7 @@ public final class GLARBBindlessTexture {
     }
 
     /// ```
-    /// void glGetVertexAttribLui64vARB(unsigned int index, unsigned int pname, GLuint64EXT* params);
+    /// void glGetVertexAttribLui64vARB(GLuint index, GLenum pname, GLuint64EXT* params);
     /// ```
     public void GetVertexAttribLui64vARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB");

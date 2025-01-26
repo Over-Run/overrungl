@@ -18,7 +18,6 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,21 +29,24 @@ public class VKAMDDisplayNativeHdr {
     public static final int VK_COLOR_SPACE_DISPLAY_NATIVE_AMD = 1000213000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_vkSetLocalDimmingAMD;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkSetLocalDimmingAMD = func.invoke(device, "vkSetLocalDimmingAMD");
         }
     }
 
-    public VKAMDDisplayNativeHdr(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKAMDDisplayNativeHdr(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void SetLocalDimmingAMD(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapChain, @CType("VkBool32") int localDimmingEnable) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetLocalDimmingAMD)) throw new SymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
+    /// ```
+    /// void vkSetLocalDimmingAMD(VkDevice device, VkSwapchainKHR swapChain, VkBool32 localDimmingEnable);
+    /// ```
+    public void SetLocalDimmingAMD(MemorySegment device, long swapChain, int localDimmingEnable) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkSetLocalDimmingAMD)) throw new SymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
         try { Handles.MH_vkSetLocalDimmingAMD.invokeExact(handles.PFN_vkSetLocalDimmingAMD, device, swapChain, localDimmingEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in vkSetLocalDimmingAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SetLocalDimmingAMD", e); }
     }
 
 }

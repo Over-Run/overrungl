@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### srcPremultiplied
-/// [VarHandle][#VH_srcPremultiplied] - [Getter][#srcPremultiplied()] - [Setter][#srcPremultiplied(int)]
-/// ### dstPremultiplied
-/// [VarHandle][#VH_dstPremultiplied] - [Getter][#dstPremultiplied()] - [Setter][#dstPremultiplied(int)]
-/// ### blendOverlap
-/// [VarHandle][#VH_blendOverlap] - [Getter][#blendOverlap()] - [Setter][#blendOverlap(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineColorBlendAdvancedStateCreateInfoEXT {
+/// ```
+/// struct VkPipelineColorBlendAdvancedStateCreateInfoEXT {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkBool32 srcPremultiplied;
 ///     VkBool32 dstPremultiplied;
 ///     VkBlendOverlapEXT blendOverlap;
-/// } VkPipelineColorBlendAdvancedStateCreateInfoEXT;
+/// };
 /// ```
-public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struct {
+public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends GroupType {
     /// The struct layout of `VkPipelineColorBlendAdvancedStateCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("srcPremultiplied"),
         ValueLayout.JAVA_INT.withName("dstPremultiplied"),
         ValueLayout.JAVA_INT.withName("blendOverlap")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `srcPremultiplied` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `srcPremultiplied`.
+    public static final long OFFSET_srcPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("srcPremultiplied"));
+    /// The memory layout of `srcPremultiplied`.
+    public static final MemoryLayout LAYOUT_srcPremultiplied = LAYOUT.select(PathElement.groupElement("srcPremultiplied"));
+    /// The [VarHandle] of `srcPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcPremultiplied"));
-    /// The [VarHandle] of `dstPremultiplied` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dstPremultiplied`.
+    public static final long OFFSET_dstPremultiplied = LAYOUT.byteOffset(PathElement.groupElement("dstPremultiplied"));
+    /// The memory layout of `dstPremultiplied`.
+    public static final MemoryLayout LAYOUT_dstPremultiplied = LAYOUT.select(PathElement.groupElement("dstPremultiplied"));
+    /// The [VarHandle] of `dstPremultiplied` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstPremultiplied = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstPremultiplied"));
-    /// The [VarHandle] of `blendOverlap` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `blendOverlap`.
+    public static final long OFFSET_blendOverlap = LAYOUT.byteOffset(PathElement.groupElement("blendOverlap"));
+    /// The memory layout of `blendOverlap`.
+    public static final MemoryLayout LAYOUT_blendOverlap = LAYOUT.select(PathElement.groupElement("blendOverlap"));
+    /// The [VarHandle] of `blendOverlap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_blendOverlap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendOverlap"));
 
     /// Creates `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struc
     /// Creates `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment); }
-
-    /// Creates `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorBlendAdvancedStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struc
     /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
-    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkBool32") int srcPremultiplied, @CType("VkBool32") int dstPremultiplied, @CType("VkBlendOverlapEXT") int blendOverlap) { return alloc(allocator).sType(sType).pNext(pNext).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied).blendOverlap(blendOverlap); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT sType(@CType("VkStructureType") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `srcPremultiplied` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_srcPremultiplied(MemorySegment segment, long index) { return (int) VH_srcPremultiplied.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int srcPremultiplied(MemorySegment segment, long index) { return (int) VH_srcPremultiplied.get(segment, 0L, index); }
     /// {@return `srcPremultiplied`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_srcPremultiplied(MemorySegment segment) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_srcPremultiplied(segment, 0L); }
-    /// {@return `srcPremultiplied`}
-    public @CType("VkBool32") int srcPremultiplied() { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_srcPremultiplied(this.segment()); }
+    public int srcPremultiplied() { return srcPremultiplied(this.segment(), 0L); }
     /// Sets `srcPremultiplied` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srcPremultiplied(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_srcPremultiplied.set(segment, 0L, index, value); }
-    /// Sets `srcPremultiplied` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_srcPremultiplied(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_srcPremultiplied(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void srcPremultiplied(MemorySegment segment, long index, int value) { VH_srcPremultiplied.set(segment, 0L, index, value); }
     /// Sets `srcPremultiplied` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT srcPremultiplied(@CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_srcPremultiplied(this.segment(), value); return this; }
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT srcPremultiplied(int value) { srcPremultiplied(this.segment(), 0L, value); return this; }
 
     /// {@return `dstPremultiplied` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_dstPremultiplied(MemorySegment segment, long index) { return (int) VH_dstPremultiplied.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dstPremultiplied(MemorySegment segment, long index) { return (int) VH_dstPremultiplied.get(segment, 0L, index); }
     /// {@return `dstPremultiplied`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_dstPremultiplied(MemorySegment segment) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_dstPremultiplied(segment, 0L); }
-    /// {@return `dstPremultiplied`}
-    public @CType("VkBool32") int dstPremultiplied() { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_dstPremultiplied(this.segment()); }
+    public int dstPremultiplied() { return dstPremultiplied(this.segment(), 0L); }
     /// Sets `dstPremultiplied` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dstPremultiplied(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_dstPremultiplied.set(segment, 0L, index, value); }
-    /// Sets `dstPremultiplied` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dstPremultiplied(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_dstPremultiplied(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dstPremultiplied(MemorySegment segment, long index, int value) { VH_dstPremultiplied.set(segment, 0L, index, value); }
     /// Sets `dstPremultiplied` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT dstPremultiplied(@CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_dstPremultiplied(this.segment(), value); return this; }
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT dstPremultiplied(int value) { dstPremultiplied(this.segment(), 0L, value); return this; }
 
     /// {@return `blendOverlap` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendOverlapEXT") int get_blendOverlap(MemorySegment segment, long index) { return (int) VH_blendOverlap.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int blendOverlap(MemorySegment segment, long index) { return (int) VH_blendOverlap.get(segment, 0L, index); }
     /// {@return `blendOverlap`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendOverlapEXT") int get_blendOverlap(MemorySegment segment) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_blendOverlap(segment, 0L); }
-    /// {@return `blendOverlap`}
-    public @CType("VkBlendOverlapEXT") int blendOverlap() { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_blendOverlap(this.segment()); }
+    public int blendOverlap() { return blendOverlap(this.segment(), 0L); }
     /// Sets `blendOverlap` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_blendOverlap(MemorySegment segment, long index, @CType("VkBlendOverlapEXT") int value) { VH_blendOverlap.set(segment, 0L, index, value); }
-    /// Sets `blendOverlap` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_blendOverlap(MemorySegment segment, @CType("VkBlendOverlapEXT") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_blendOverlap(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void blendOverlap(MemorySegment segment, long index, int value) { VH_blendOverlap.set(segment, 0L, index, value); }
     /// Sets `blendOverlap` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendAdvancedStateCreateInfoEXT blendOverlap(@CType("VkBlendOverlapEXT") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_blendOverlap(this.segment(), value); return this; }
+    public VkPipelineColorBlendAdvancedStateCreateInfoEXT blendOverlap(int value) { blendOverlap(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineColorBlendAdvancedStateCreateInfoEXT].
     public static final class Buffer extends VkPipelineColorBlendAdvancedStateCreateInfoEXT {
@@ -258,49 +221,49 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `srcPremultiplied` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int srcPremultipliedAt(long index) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_srcPremultiplied(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int srcPremultipliedAt(long index) { return srcPremultiplied(this.segment(), index); }
         /// Sets `srcPremultiplied` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srcPremultipliedAt(long index, @CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_srcPremultiplied(this.segment(), index, value); return this; }
+        public Buffer srcPremultipliedAt(long index, int value) { srcPremultiplied(this.segment(), index, value); return this; }
 
         /// {@return `dstPremultiplied` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int dstPremultipliedAt(long index) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_dstPremultiplied(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dstPremultipliedAt(long index) { return dstPremultiplied(this.segment(), index); }
         /// Sets `dstPremultiplied` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dstPremultipliedAt(long index, @CType("VkBool32") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_dstPremultiplied(this.segment(), index, value); return this; }
+        public Buffer dstPremultipliedAt(long index, int value) { dstPremultiplied(this.segment(), index, value); return this; }
 
         /// {@return `blendOverlap` at the given index}
-        /// @param index the index
-        public @CType("VkBlendOverlapEXT") int blendOverlapAt(long index) { return VkPipelineColorBlendAdvancedStateCreateInfoEXT.get_blendOverlap(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int blendOverlapAt(long index) { return blendOverlap(this.segment(), index); }
         /// Sets `blendOverlap` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer blendOverlapAt(long index, @CType("VkBlendOverlapEXT") int value) { VkPipelineColorBlendAdvancedStateCreateInfoEXT.set_blendOverlap(this.segment(), index, value); return this; }
+        public Buffer blendOverlapAt(long index, int value) { blendOverlap(this.segment(), index, value); return this; }
 
     }
 }

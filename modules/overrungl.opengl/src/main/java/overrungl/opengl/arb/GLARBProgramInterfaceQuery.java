@@ -102,7 +102,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// void glGetProgramInterfaceiv(unsigned int program, unsigned int programInterface, unsigned int pname, GLint* params);
+    /// void glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint* params);
     /// ```
     public void GetProgramInterfaceiv(int program, int programInterface, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramInterfaceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramInterfaceiv");
@@ -111,7 +111,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// unsigned int glGetProgramResourceIndex(unsigned int program, unsigned int programInterface, const GLchar* name);
+    /// GLuint glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceIndex(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceIndex");
@@ -120,7 +120,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// void glGetProgramResourceName(unsigned int program, unsigned int programInterface, unsigned int index, int bufSize, GLsizei* length, GLchar* name);
+    /// void glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei* length, GLchar* name);
     /// ```
     public void GetProgramResourceName(int program, int programInterface, int index, int bufSize, MemorySegment length, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceName)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceName");
@@ -129,7 +129,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// void glGetProgramResourceiv(unsigned int program, unsigned int programInterface, unsigned int index, int propCount, const GLenum* props, int count, GLsizei* length, GLint* params);
+    /// void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum* props, GLsizei count, GLsizei* length, GLint* params);
     /// ```
     public void GetProgramResourceiv(int program, int programInterface, int index, int propCount, MemorySegment props, int count, MemorySegment length, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceiv");
@@ -138,7 +138,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// int glGetProgramResourceLocation(unsigned int program, unsigned int programInterface, const GLchar* name);
+    /// GLint glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocation(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocation)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocation");
@@ -147,7 +147,7 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     /// ```
-    /// int glGetProgramResourceLocationIndex(unsigned int program, unsigned int programInterface, const GLchar* name);
+    /// GLint glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocationIndex(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocationIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocationIndex");

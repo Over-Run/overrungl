@@ -48,7 +48,7 @@ public final class GLNVTimelineSemaphore {
     }
 
     /// ```
-    /// void glCreateSemaphoresNV(int n, GLuint* semaphores);
+    /// void glCreateSemaphoresNV(GLsizei n, GLuint* semaphores);
     /// ```
     public void CreateSemaphoresNV(int n, MemorySegment semaphores) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateSemaphoresNV)) throw new SymbolNotFoundError("Symbol not found: glCreateSemaphoresNV");
@@ -57,7 +57,7 @@ public final class GLNVTimelineSemaphore {
     }
 
     /// ```
-    /// void glSemaphoreParameterivNV(unsigned int semaphore, unsigned int pname, const GLint* params);
+    /// void glSemaphoreParameterivNV(GLuint semaphore, GLenum pname, const GLint* params);
     /// ```
     public void SemaphoreParameterivNV(int semaphore, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterivNV");
@@ -66,7 +66,7 @@ public final class GLNVTimelineSemaphore {
     }
 
     /// ```
-    /// void glGetSemaphoreParameterivNV(unsigned int semaphore, unsigned int pname, GLint* params);
+    /// void glGetSemaphoreParameterivNV(GLuint semaphore, GLenum pname, GLint* params);
     /// ```
     public void GetSemaphoreParameterivNV(int semaphore, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSemaphoreParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterivNV");

@@ -53,7 +53,7 @@ public final class GLEXTPalettedTexture {
     }
 
     /// ```
-    /// void glColorTableEXT(unsigned int target, unsigned int internalFormat, int width, unsigned int format, unsigned int type, const void* table);
+    /// void glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const void* table);
     /// ```
     public void ColorTableEXT(int target, int internalFormat, int width, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorTableEXT");
@@ -62,7 +62,7 @@ public final class GLEXTPalettedTexture {
     }
 
     /// ```
-    /// void glGetColorTableEXT(unsigned int target, unsigned int format, unsigned int type, void* data);
+    /// void glGetColorTableEXT(GLenum target, GLenum format, GLenum type, void* data);
     /// ```
     public void GetColorTableEXT(int target, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableEXT");
@@ -71,7 +71,7 @@ public final class GLEXTPalettedTexture {
     }
 
     /// ```
-    /// void glGetColorTableParameterivEXT(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetColorTableParameterivEXT(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetColorTableParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivEXT");
@@ -80,7 +80,7 @@ public final class GLEXTPalettedTexture {
     }
 
     /// ```
-    /// void glGetColorTableParameterfvEXT(unsigned int target, unsigned int pname, GLfloat* params);
+    /// void glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat* params);
     /// ```
     public void GetColorTableParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvEXT");

@@ -15,48 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### supportedOutputGridSizes
-/// [VarHandle][#VH_supportedOutputGridSizes] - [Getter][#supportedOutputGridSizes()] - [Setter][#supportedOutputGridSizes(int)]
-/// ### supportedHintGridSizes
-/// [VarHandle][#VH_supportedHintGridSizes] - [Getter][#supportedHintGridSizes()] - [Setter][#supportedHintGridSizes(int)]
-/// ### hintSupported
-/// [VarHandle][#VH_hintSupported] - [Getter][#hintSupported()] - [Setter][#hintSupported(int)]
-/// ### costSupported
-/// [VarHandle][#VH_costSupported] - [Getter][#costSupported()] - [Setter][#costSupported(int)]
-/// ### bidirectionalFlowSupported
-/// [VarHandle][#VH_bidirectionalFlowSupported] - [Getter][#bidirectionalFlowSupported()] - [Setter][#bidirectionalFlowSupported(int)]
-/// ### globalFlowSupported
-/// [VarHandle][#VH_globalFlowSupported] - [Getter][#globalFlowSupported()] - [Setter][#globalFlowSupported(int)]
-/// ### minWidth
-/// [VarHandle][#VH_minWidth] - [Getter][#minWidth()] - [Setter][#minWidth(int)]
-/// ### minHeight
-/// [VarHandle][#VH_minHeight] - [Getter][#minHeight()] - [Setter][#minHeight(int)]
-/// ### maxWidth
-/// [VarHandle][#VH_maxWidth] - [Getter][#maxWidth()] - [Setter][#maxWidth(int)]
-/// ### maxHeight
-/// [VarHandle][#VH_maxHeight] - [Getter][#maxHeight()] - [Setter][#maxHeight(int)]
-/// ### maxNumRegionsOfInterest
-/// [VarHandle][#VH_maxNumRegionsOfInterest] - [Getter][#maxNumRegionsOfInterest()] - [Setter][#maxNumRegionsOfInterest(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceOpticalFlowPropertiesNV {
+/// ```
+/// struct VkPhysicalDeviceOpticalFlowPropertiesNV {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
 ///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
 ///     VkBool32 hintSupported;
@@ -68,11 +40,11 @@ import overrungl.util.*;
 ///     uint32_t maxWidth;
 ///     uint32_t maxHeight;
 ///     uint32_t maxNumRegionsOfInterest;
-/// } VkPhysicalDeviceOpticalFlowPropertiesNV;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
+public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportedOutputGridSizes"),
@@ -87,31 +59,83 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
         ValueLayout.JAVA_INT.withName("maxHeight"),
         ValueLayout.JAVA_INT.withName("maxNumRegionsOfInterest")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `supportedOutputGridSizes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedOutputGridSizes`.
+    public static final long OFFSET_supportedOutputGridSizes = LAYOUT.byteOffset(PathElement.groupElement("supportedOutputGridSizes"));
+    /// The memory layout of `supportedOutputGridSizes`.
+    public static final MemoryLayout LAYOUT_supportedOutputGridSizes = LAYOUT.select(PathElement.groupElement("supportedOutputGridSizes"));
+    /// The [VarHandle] of `supportedOutputGridSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedOutputGridSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedOutputGridSizes"));
-    /// The [VarHandle] of `supportedHintGridSizes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedHintGridSizes`.
+    public static final long OFFSET_supportedHintGridSizes = LAYOUT.byteOffset(PathElement.groupElement("supportedHintGridSizes"));
+    /// The memory layout of `supportedHintGridSizes`.
+    public static final MemoryLayout LAYOUT_supportedHintGridSizes = LAYOUT.select(PathElement.groupElement("supportedHintGridSizes"));
+    /// The [VarHandle] of `supportedHintGridSizes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedHintGridSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedHintGridSizes"));
-    /// The [VarHandle] of `hintSupported` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `hintSupported`.
+    public static final long OFFSET_hintSupported = LAYOUT.byteOffset(PathElement.groupElement("hintSupported"));
+    /// The memory layout of `hintSupported`.
+    public static final MemoryLayout LAYOUT_hintSupported = LAYOUT.select(PathElement.groupElement("hintSupported"));
+    /// The [VarHandle] of `hintSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hintSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hintSupported"));
-    /// The [VarHandle] of `costSupported` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `costSupported`.
+    public static final long OFFSET_costSupported = LAYOUT.byteOffset(PathElement.groupElement("costSupported"));
+    /// The memory layout of `costSupported`.
+    public static final MemoryLayout LAYOUT_costSupported = LAYOUT.select(PathElement.groupElement("costSupported"));
+    /// The [VarHandle] of `costSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_costSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("costSupported"));
-    /// The [VarHandle] of `bidirectionalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bidirectionalFlowSupported`.
+    public static final long OFFSET_bidirectionalFlowSupported = LAYOUT.byteOffset(PathElement.groupElement("bidirectionalFlowSupported"));
+    /// The memory layout of `bidirectionalFlowSupported`.
+    public static final MemoryLayout LAYOUT_bidirectionalFlowSupported = LAYOUT.select(PathElement.groupElement("bidirectionalFlowSupported"));
+    /// The [VarHandle] of `bidirectionalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bidirectionalFlowSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bidirectionalFlowSupported"));
-    /// The [VarHandle] of `globalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `globalFlowSupported`.
+    public static final long OFFSET_globalFlowSupported = LAYOUT.byteOffset(PathElement.groupElement("globalFlowSupported"));
+    /// The memory layout of `globalFlowSupported`.
+    public static final MemoryLayout LAYOUT_globalFlowSupported = LAYOUT.select(PathElement.groupElement("globalFlowSupported"));
+    /// The [VarHandle] of `globalFlowSupported` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_globalFlowSupported = LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalFlowSupported"));
-    /// The [VarHandle] of `minWidth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `minWidth`.
+    public static final long OFFSET_minWidth = LAYOUT.byteOffset(PathElement.groupElement("minWidth"));
+    /// The memory layout of `minWidth`.
+    public static final MemoryLayout LAYOUT_minWidth = LAYOUT.select(PathElement.groupElement("minWidth"));
+    /// The [VarHandle] of `minWidth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minWidth"));
-    /// The [VarHandle] of `minHeight` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `minHeight`.
+    public static final long OFFSET_minHeight = LAYOUT.byteOffset(PathElement.groupElement("minHeight"));
+    /// The memory layout of `minHeight`.
+    public static final MemoryLayout LAYOUT_minHeight = LAYOUT.select(PathElement.groupElement("minHeight"));
+    /// The [VarHandle] of `minHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minHeight"));
-    /// The [VarHandle] of `maxWidth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxWidth`.
+    public static final long OFFSET_maxWidth = LAYOUT.byteOffset(PathElement.groupElement("maxWidth"));
+    /// The memory layout of `maxWidth`.
+    public static final MemoryLayout LAYOUT_maxWidth = LAYOUT.select(PathElement.groupElement("maxWidth"));
+    /// The [VarHandle] of `maxWidth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxWidth"));
-    /// The [VarHandle] of `maxHeight` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxHeight`.
+    public static final long OFFSET_maxHeight = LAYOUT.byteOffset(PathElement.groupElement("maxHeight"));
+    /// The memory layout of `maxHeight`.
+    public static final MemoryLayout LAYOUT_maxHeight = LAYOUT.select(PathElement.groupElement("maxHeight"));
+    /// The [VarHandle] of `maxHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxHeight"));
-    /// The [VarHandle] of `maxNumRegionsOfInterest` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxNumRegionsOfInterest`.
+    public static final long OFFSET_maxNumRegionsOfInterest = LAYOUT.byteOffset(PathElement.groupElement("maxNumRegionsOfInterest"));
+    /// The memory layout of `maxNumRegionsOfInterest`.
+    public static final MemoryLayout LAYOUT_maxNumRegionsOfInterest = LAYOUT.select(PathElement.groupElement("maxNumRegionsOfInterest"));
+    /// The [VarHandle] of `maxNumRegionsOfInterest` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxNumRegionsOfInterest = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxNumRegionsOfInterest"));
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
@@ -121,19 +145,14 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceOpticalFlowPropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceOpticalFlowPropertiesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     ///
@@ -141,7 +160,7 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -154,11 +173,6 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceOpticalFlowPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceOpticalFlowPropertiesNV`
-    public static VkPhysicalDeviceOpticalFlowPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkOpticalFlowGridSizeFlagsNV") int supportedOutputGridSizes, @CType("VkOpticalFlowGridSizeFlagsNV") int supportedHintGridSizes, @CType("VkBool32") int hintSupported, @CType("VkBool32") int costSupported, @CType("VkBool32") int bidirectionalFlowSupported, @CType("VkBool32") int globalFlowSupported, @CType("uint32_t") int minWidth, @CType("uint32_t") int minHeight, @CType("uint32_t") int maxWidth, @CType("uint32_t") int maxHeight, @CType("uint32_t") int maxNumRegionsOfInterest) { return alloc(allocator).sType(sType).pNext(pNext).supportedOutputGridSizes(supportedOutputGridSizes).supportedHintGridSizes(supportedHintGridSizes).hintSupported(hintSupported).costSupported(costSupported).bidirectionalFlowSupported(bidirectionalFlowSupported).globalFlowSupported(globalFlowSupported).minWidth(minWidth).minHeight(minHeight).maxWidth(maxWidth).maxHeight(maxHeight).maxNumRegionsOfInterest(maxNumRegionsOfInterest); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -166,306 +180,215 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedOutputGridSizes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkOpticalFlowGridSizeFlagsNV") int get_supportedOutputGridSizes(MemorySegment segment, long index) { return (int) VH_supportedOutputGridSizes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedOutputGridSizes(MemorySegment segment, long index) { return (int) VH_supportedOutputGridSizes.get(segment, 0L, index); }
     /// {@return `supportedOutputGridSizes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkOpticalFlowGridSizeFlagsNV") int get_supportedOutputGridSizes(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedOutputGridSizes(segment, 0L); }
-    /// {@return `supportedOutputGridSizes`}
-    public @CType("VkOpticalFlowGridSizeFlagsNV") int supportedOutputGridSizes() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedOutputGridSizes(this.segment()); }
+    public int supportedOutputGridSizes() { return supportedOutputGridSizes(this.segment(), 0L); }
     /// Sets `supportedOutputGridSizes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedOutputGridSizes(MemorySegment segment, long index, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VH_supportedOutputGridSizes.set(segment, 0L, index, value); }
-    /// Sets `supportedOutputGridSizes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedOutputGridSizes(MemorySegment segment, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedOutputGridSizes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedOutputGridSizes(MemorySegment segment, long index, int value) { VH_supportedOutputGridSizes.set(segment, 0L, index, value); }
     /// Sets `supportedOutputGridSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(@CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedOutputGridSizes(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizes(int value) { supportedOutputGridSizes(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedHintGridSizes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkOpticalFlowGridSizeFlagsNV") int get_supportedHintGridSizes(MemorySegment segment, long index) { return (int) VH_supportedHintGridSizes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedHintGridSizes(MemorySegment segment, long index) { return (int) VH_supportedHintGridSizes.get(segment, 0L, index); }
     /// {@return `supportedHintGridSizes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkOpticalFlowGridSizeFlagsNV") int get_supportedHintGridSizes(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedHintGridSizes(segment, 0L); }
-    /// {@return `supportedHintGridSizes`}
-    public @CType("VkOpticalFlowGridSizeFlagsNV") int supportedHintGridSizes() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedHintGridSizes(this.segment()); }
+    public int supportedHintGridSizes() { return supportedHintGridSizes(this.segment(), 0L); }
     /// Sets `supportedHintGridSizes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedHintGridSizes(MemorySegment segment, long index, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VH_supportedHintGridSizes.set(segment, 0L, index, value); }
-    /// Sets `supportedHintGridSizes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedHintGridSizes(MemorySegment segment, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedHintGridSizes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedHintGridSizes(MemorySegment segment, long index, int value) { VH_supportedHintGridSizes.set(segment, 0L, index, value); }
     /// Sets `supportedHintGridSizes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(@CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedHintGridSizes(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizes(int value) { supportedHintGridSizes(this.segment(), 0L, value); return this; }
 
     /// {@return `hintSupported` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_hintSupported(MemorySegment segment, long index) { return (int) VH_hintSupported.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int hintSupported(MemorySegment segment, long index) { return (int) VH_hintSupported.get(segment, 0L, index); }
     /// {@return `hintSupported`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_hintSupported(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_hintSupported(segment, 0L); }
-    /// {@return `hintSupported`}
-    public @CType("VkBool32") int hintSupported() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_hintSupported(this.segment()); }
+    public int hintSupported() { return hintSupported(this.segment(), 0L); }
     /// Sets `hintSupported` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_hintSupported(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_hintSupported.set(segment, 0L, index, value); }
-    /// Sets `hintSupported` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_hintSupported(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_hintSupported(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void hintSupported(MemorySegment segment, long index, int value) { VH_hintSupported.set(segment, 0L, index, value); }
     /// Sets `hintSupported` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV hintSupported(@CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_hintSupported(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV hintSupported(int value) { hintSupported(this.segment(), 0L, value); return this; }
 
     /// {@return `costSupported` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_costSupported(MemorySegment segment, long index) { return (int) VH_costSupported.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int costSupported(MemorySegment segment, long index) { return (int) VH_costSupported.get(segment, 0L, index); }
     /// {@return `costSupported`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_costSupported(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_costSupported(segment, 0L); }
-    /// {@return `costSupported`}
-    public @CType("VkBool32") int costSupported() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_costSupported(this.segment()); }
+    public int costSupported() { return costSupported(this.segment(), 0L); }
     /// Sets `costSupported` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_costSupported(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_costSupported.set(segment, 0L, index, value); }
-    /// Sets `costSupported` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_costSupported(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_costSupported(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void costSupported(MemorySegment segment, long index, int value) { VH_costSupported.set(segment, 0L, index, value); }
     /// Sets `costSupported` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV costSupported(@CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_costSupported(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV costSupported(int value) { costSupported(this.segment(), 0L, value); return this; }
 
     /// {@return `bidirectionalFlowSupported` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_bidirectionalFlowSupported(MemorySegment segment, long index) { return (int) VH_bidirectionalFlowSupported.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bidirectionalFlowSupported(MemorySegment segment, long index) { return (int) VH_bidirectionalFlowSupported.get(segment, 0L, index); }
     /// {@return `bidirectionalFlowSupported`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_bidirectionalFlowSupported(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_bidirectionalFlowSupported(segment, 0L); }
-    /// {@return `bidirectionalFlowSupported`}
-    public @CType("VkBool32") int bidirectionalFlowSupported() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_bidirectionalFlowSupported(this.segment()); }
+    public int bidirectionalFlowSupported() { return bidirectionalFlowSupported(this.segment(), 0L); }
     /// Sets `bidirectionalFlowSupported` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bidirectionalFlowSupported(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_bidirectionalFlowSupported.set(segment, 0L, index, value); }
-    /// Sets `bidirectionalFlowSupported` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bidirectionalFlowSupported(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_bidirectionalFlowSupported(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bidirectionalFlowSupported(MemorySegment segment, long index, int value) { VH_bidirectionalFlowSupported.set(segment, 0L, index, value); }
     /// Sets `bidirectionalFlowSupported` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV bidirectionalFlowSupported(@CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_bidirectionalFlowSupported(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV bidirectionalFlowSupported(int value) { bidirectionalFlowSupported(this.segment(), 0L, value); return this; }
 
     /// {@return `globalFlowSupported` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_globalFlowSupported(MemorySegment segment, long index) { return (int) VH_globalFlowSupported.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int globalFlowSupported(MemorySegment segment, long index) { return (int) VH_globalFlowSupported.get(segment, 0L, index); }
     /// {@return `globalFlowSupported`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_globalFlowSupported(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_globalFlowSupported(segment, 0L); }
-    /// {@return `globalFlowSupported`}
-    public @CType("VkBool32") int globalFlowSupported() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_globalFlowSupported(this.segment()); }
+    public int globalFlowSupported() { return globalFlowSupported(this.segment(), 0L); }
     /// Sets `globalFlowSupported` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_globalFlowSupported(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_globalFlowSupported.set(segment, 0L, index, value); }
-    /// Sets `globalFlowSupported` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_globalFlowSupported(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_globalFlowSupported(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void globalFlowSupported(MemorySegment segment, long index, int value) { VH_globalFlowSupported.set(segment, 0L, index, value); }
     /// Sets `globalFlowSupported` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV globalFlowSupported(@CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_globalFlowSupported(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV globalFlowSupported(int value) { globalFlowSupported(this.segment(), 0L, value); return this; }
 
     /// {@return `minWidth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_minWidth(MemorySegment segment, long index) { return (int) VH_minWidth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int minWidth(MemorySegment segment, long index) { return (int) VH_minWidth.get(segment, 0L, index); }
     /// {@return `minWidth`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_minWidth(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minWidth(segment, 0L); }
-    /// {@return `minWidth`}
-    public @CType("uint32_t") int minWidth() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minWidth(this.segment()); }
+    public int minWidth() { return minWidth(this.segment(), 0L); }
     /// Sets `minWidth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minWidth(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_minWidth.set(segment, 0L, index, value); }
-    /// Sets `minWidth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minWidth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minWidth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minWidth(MemorySegment segment, long index, int value) { VH_minWidth.set(segment, 0L, index, value); }
     /// Sets `minWidth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV minWidth(@CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minWidth(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minWidth(int value) { minWidth(this.segment(), 0L, value); return this; }
 
     /// {@return `minHeight` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_minHeight(MemorySegment segment, long index) { return (int) VH_minHeight.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int minHeight(MemorySegment segment, long index) { return (int) VH_minHeight.get(segment, 0L, index); }
     /// {@return `minHeight`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_minHeight(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minHeight(segment, 0L); }
-    /// {@return `minHeight`}
-    public @CType("uint32_t") int minHeight() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minHeight(this.segment()); }
+    public int minHeight() { return minHeight(this.segment(), 0L); }
     /// Sets `minHeight` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minHeight(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_minHeight.set(segment, 0L, index, value); }
-    /// Sets `minHeight` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minHeight(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minHeight(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minHeight(MemorySegment segment, long index, int value) { VH_minHeight.set(segment, 0L, index, value); }
     /// Sets `minHeight` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV minHeight(@CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minHeight(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minHeight(int value) { minHeight(this.segment(), 0L, value); return this; }
 
     /// {@return `maxWidth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxWidth(MemorySegment segment, long index) { return (int) VH_maxWidth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxWidth(MemorySegment segment, long index) { return (int) VH_maxWidth.get(segment, 0L, index); }
     /// {@return `maxWidth`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxWidth(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxWidth(segment, 0L); }
-    /// {@return `maxWidth`}
-    public @CType("uint32_t") int maxWidth() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxWidth(this.segment()); }
+    public int maxWidth() { return maxWidth(this.segment(), 0L); }
     /// Sets `maxWidth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxWidth(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxWidth.set(segment, 0L, index, value); }
-    /// Sets `maxWidth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxWidth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxWidth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxWidth(MemorySegment segment, long index, int value) { VH_maxWidth.set(segment, 0L, index, value); }
     /// Sets `maxWidth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV maxWidth(@CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxWidth(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxWidth(int value) { maxWidth(this.segment(), 0L, value); return this; }
 
     /// {@return `maxHeight` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxHeight(MemorySegment segment, long index) { return (int) VH_maxHeight.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxHeight(MemorySegment segment, long index) { return (int) VH_maxHeight.get(segment, 0L, index); }
     /// {@return `maxHeight`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxHeight(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxHeight(segment, 0L); }
-    /// {@return `maxHeight`}
-    public @CType("uint32_t") int maxHeight() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxHeight(this.segment()); }
+    public int maxHeight() { return maxHeight(this.segment(), 0L); }
     /// Sets `maxHeight` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxHeight(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxHeight.set(segment, 0L, index, value); }
-    /// Sets `maxHeight` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxHeight(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxHeight(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxHeight(MemorySegment segment, long index, int value) { VH_maxHeight.set(segment, 0L, index, value); }
     /// Sets `maxHeight` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV maxHeight(@CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxHeight(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxHeight(int value) { maxHeight(this.segment(), 0L, value); return this; }
 
     /// {@return `maxNumRegionsOfInterest` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxNumRegionsOfInterest(MemorySegment segment, long index) { return (int) VH_maxNumRegionsOfInterest.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxNumRegionsOfInterest(MemorySegment segment, long index) { return (int) VH_maxNumRegionsOfInterest.get(segment, 0L, index); }
     /// {@return `maxNumRegionsOfInterest`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxNumRegionsOfInterest(MemorySegment segment) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxNumRegionsOfInterest(segment, 0L); }
-    /// {@return `maxNumRegionsOfInterest`}
-    public @CType("uint32_t") int maxNumRegionsOfInterest() { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxNumRegionsOfInterest(this.segment()); }
+    public int maxNumRegionsOfInterest() { return maxNumRegionsOfInterest(this.segment(), 0L); }
     /// Sets `maxNumRegionsOfInterest` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxNumRegionsOfInterest(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxNumRegionsOfInterest.set(segment, 0L, index, value); }
-    /// Sets `maxNumRegionsOfInterest` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxNumRegionsOfInterest(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxNumRegionsOfInterest(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxNumRegionsOfInterest(MemorySegment segment, long index, int value) { VH_maxNumRegionsOfInterest.set(segment, 0L, index, value); }
     /// Sets `maxNumRegionsOfInterest` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceOpticalFlowPropertiesNV maxNumRegionsOfInterest(@CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxNumRegionsOfInterest(this.segment(), value); return this; }
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxNumRegionsOfInterest(int value) { maxNumRegionsOfInterest(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceOpticalFlowPropertiesNV].
     public static final class Buffer extends VkPhysicalDeviceOpticalFlowPropertiesNV {
@@ -490,121 +413,121 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `supportedOutputGridSizes` at the given index}
-        /// @param index the index
-        public @CType("VkOpticalFlowGridSizeFlagsNV") int supportedOutputGridSizesAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedOutputGridSizes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedOutputGridSizesAt(long index) { return supportedOutputGridSizes(this.segment(), index); }
         /// Sets `supportedOutputGridSizes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedOutputGridSizesAt(long index, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedOutputGridSizes(this.segment(), index, value); return this; }
+        public Buffer supportedOutputGridSizesAt(long index, int value) { supportedOutputGridSizes(this.segment(), index, value); return this; }
 
         /// {@return `supportedHintGridSizes` at the given index}
-        /// @param index the index
-        public @CType("VkOpticalFlowGridSizeFlagsNV") int supportedHintGridSizesAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_supportedHintGridSizes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedHintGridSizesAt(long index) { return supportedHintGridSizes(this.segment(), index); }
         /// Sets `supportedHintGridSizes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedHintGridSizesAt(long index, @CType("VkOpticalFlowGridSizeFlagsNV") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_supportedHintGridSizes(this.segment(), index, value); return this; }
+        public Buffer supportedHintGridSizesAt(long index, int value) { supportedHintGridSizes(this.segment(), index, value); return this; }
 
         /// {@return `hintSupported` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int hintSupportedAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_hintSupported(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int hintSupportedAt(long index) { return hintSupported(this.segment(), index); }
         /// Sets `hintSupported` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer hintSupportedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_hintSupported(this.segment(), index, value); return this; }
+        public Buffer hintSupportedAt(long index, int value) { hintSupported(this.segment(), index, value); return this; }
 
         /// {@return `costSupported` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int costSupportedAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_costSupported(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int costSupportedAt(long index) { return costSupported(this.segment(), index); }
         /// Sets `costSupported` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer costSupportedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_costSupported(this.segment(), index, value); return this; }
+        public Buffer costSupportedAt(long index, int value) { costSupported(this.segment(), index, value); return this; }
 
         /// {@return `bidirectionalFlowSupported` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int bidirectionalFlowSupportedAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_bidirectionalFlowSupported(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bidirectionalFlowSupportedAt(long index) { return bidirectionalFlowSupported(this.segment(), index); }
         /// Sets `bidirectionalFlowSupported` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bidirectionalFlowSupportedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_bidirectionalFlowSupported(this.segment(), index, value); return this; }
+        public Buffer bidirectionalFlowSupportedAt(long index, int value) { bidirectionalFlowSupported(this.segment(), index, value); return this; }
 
         /// {@return `globalFlowSupported` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int globalFlowSupportedAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_globalFlowSupported(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int globalFlowSupportedAt(long index) { return globalFlowSupported(this.segment(), index); }
         /// Sets `globalFlowSupported` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer globalFlowSupportedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_globalFlowSupported(this.segment(), index, value); return this; }
+        public Buffer globalFlowSupportedAt(long index, int value) { globalFlowSupported(this.segment(), index, value); return this; }
 
         /// {@return `minWidth` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int minWidthAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minWidth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int minWidthAt(long index) { return minWidth(this.segment(), index); }
         /// Sets `minWidth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minWidthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minWidth(this.segment(), index, value); return this; }
+        public Buffer minWidthAt(long index, int value) { minWidth(this.segment(), index, value); return this; }
 
         /// {@return `minHeight` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int minHeightAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_minHeight(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int minHeightAt(long index) { return minHeight(this.segment(), index); }
         /// Sets `minHeight` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minHeightAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_minHeight(this.segment(), index, value); return this; }
+        public Buffer minHeightAt(long index, int value) { minHeight(this.segment(), index, value); return this; }
 
         /// {@return `maxWidth` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxWidthAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxWidth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxWidthAt(long index) { return maxWidth(this.segment(), index); }
         /// Sets `maxWidth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxWidthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxWidth(this.segment(), index, value); return this; }
+        public Buffer maxWidthAt(long index, int value) { maxWidth(this.segment(), index, value); return this; }
 
         /// {@return `maxHeight` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxHeightAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxHeight(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxHeightAt(long index) { return maxHeight(this.segment(), index); }
         /// Sets `maxHeight` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxHeightAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxHeight(this.segment(), index, value); return this; }
+        public Buffer maxHeightAt(long index, int value) { maxHeight(this.segment(), index, value); return this; }
 
         /// {@return `maxNumRegionsOfInterest` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxNumRegionsOfInterestAt(long index) { return VkPhysicalDeviceOpticalFlowPropertiesNV.get_maxNumRegionsOfInterest(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxNumRegionsOfInterestAt(long index) { return maxNumRegionsOfInterest(this.segment(), index); }
         /// Sets `maxNumRegionsOfInterest` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxNumRegionsOfInterestAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceOpticalFlowPropertiesNV.set_maxNumRegionsOfInterest(this.segment(), index, value); return this; }
+        public Buffer maxNumRegionsOfInterestAt(long index, int value) { maxNumRegionsOfInterest(this.segment(), index, value); return this; }
 
     }
 }

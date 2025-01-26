@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### averageBitrate
-/// [VarHandle][#VH_averageBitrate] - [Getter][#averageBitrate()] - [Setter][#averageBitrate(long)]
-/// ### maxBitrate
-/// [VarHandle][#VH_maxBitrate] - [Getter][#maxBitrate()] - [Setter][#maxBitrate(long)]
-/// ### frameRateNumerator
-/// [VarHandle][#VH_frameRateNumerator] - [Getter][#frameRateNumerator()] - [Setter][#frameRateNumerator(int)]
-/// ### frameRateDenominator
-/// [VarHandle][#VH_frameRateDenominator] - [Getter][#frameRateDenominator()] - [Setter][#frameRateDenominator(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeRateControlLayerInfoKHR {
+/// ```
+/// struct VkVideoEncodeRateControlLayerInfoKHR {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     uint64_t averageBitrate;
 ///     uint64_t maxBitrate;
 ///     uint32_t frameRateNumerator;
 ///     uint32_t frameRateDenominator;
-/// } VkVideoEncodeRateControlLayerInfoKHR;
+/// };
 /// ```
-public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
+public sealed class VkVideoEncodeRateControlLayerInfoKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeRateControlLayerInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("averageBitrate"),
@@ -59,17 +45,41 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
         ValueLayout.JAVA_INT.withName("frameRateNumerator"),
         ValueLayout.JAVA_INT.withName("frameRateDenominator")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `averageBitrate` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `averageBitrate`.
+    public static final long OFFSET_averageBitrate = LAYOUT.byteOffset(PathElement.groupElement("averageBitrate"));
+    /// The memory layout of `averageBitrate`.
+    public static final MemoryLayout LAYOUT_averageBitrate = LAYOUT.select(PathElement.groupElement("averageBitrate"));
+    /// The [VarHandle] of `averageBitrate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_averageBitrate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("averageBitrate"));
-    /// The [VarHandle] of `maxBitrate` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxBitrate`.
+    public static final long OFFSET_maxBitrate = LAYOUT.byteOffset(PathElement.groupElement("maxBitrate"));
+    /// The memory layout of `maxBitrate`.
+    public static final MemoryLayout LAYOUT_maxBitrate = LAYOUT.select(PathElement.groupElement("maxBitrate"));
+    /// The [VarHandle] of `maxBitrate` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBitrate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBitrate"));
-    /// The [VarHandle] of `frameRateNumerator` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `frameRateNumerator`.
+    public static final long OFFSET_frameRateNumerator = LAYOUT.byteOffset(PathElement.groupElement("frameRateNumerator"));
+    /// The memory layout of `frameRateNumerator`.
+    public static final MemoryLayout LAYOUT_frameRateNumerator = LAYOUT.select(PathElement.groupElement("frameRateNumerator"));
+    /// The [VarHandle] of `frameRateNumerator` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_frameRateNumerator = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameRateNumerator"));
-    /// The [VarHandle] of `frameRateDenominator` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `frameRateDenominator`.
+    public static final long OFFSET_frameRateDenominator = LAYOUT.byteOffset(PathElement.groupElement("frameRateDenominator"));
+    /// The memory layout of `frameRateDenominator`.
+    public static final MemoryLayout LAYOUT_frameRateDenominator = LAYOUT.select(PathElement.groupElement("frameRateDenominator"));
+    /// The [VarHandle] of `frameRateDenominator` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_frameRateDenominator = LAYOUT.arrayElementVarHandle(PathElement.groupElement("frameRateDenominator"));
 
     /// Creates `VkVideoEncodeRateControlLayerInfoKHR` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
     /// Creates `VkVideoEncodeRateControlLayerInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeRateControlLayerInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeRateControlLayerInfoKHR(segment); }
-
-    /// Creates `VkVideoEncodeRateControlLayerInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeRateControlLayerInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeRateControlLayerInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeRateControlLayerInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeRateControlLayerInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeRateControlLayerInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeRateControlLayerInfoKHR` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("uint64_t") long averageBitrate, @CType("uint64_t") long maxBitrate, @CType("uint32_t") int frameRateNumerator, @CType("uint32_t") int frameRateDenominator) { return alloc(allocator).sType(sType).pNext(pNext).averageBitrate(averageBitrate).maxBitrate(maxBitrate).frameRateNumerator(frameRateNumerator).frameRateDenominator(frameRateDenominator); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeRateControlLayerInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkVideoEncodeRateControlLayerInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkVideoEncodeRateControlLayerInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR pNext(@CType("const void *") MemorySegment value) { VkVideoEncodeRateControlLayerInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `averageBitrate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_averageBitrate(MemorySegment segment, long index) { return (long) VH_averageBitrate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long averageBitrate(MemorySegment segment, long index) { return (long) VH_averageBitrate.get(segment, 0L, index); }
     /// {@return `averageBitrate`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_averageBitrate(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_averageBitrate(segment, 0L); }
-    /// {@return `averageBitrate`}
-    public @CType("uint64_t") long averageBitrate() { return VkVideoEncodeRateControlLayerInfoKHR.get_averageBitrate(this.segment()); }
+    public long averageBitrate() { return averageBitrate(this.segment(), 0L); }
     /// Sets `averageBitrate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_averageBitrate(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_averageBitrate.set(segment, 0L, index, value); }
-    /// Sets `averageBitrate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_averageBitrate(MemorySegment segment, @CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_averageBitrate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void averageBitrate(MemorySegment segment, long index, long value) { VH_averageBitrate.set(segment, 0L, index, value); }
     /// Sets `averageBitrate` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR averageBitrate(@CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_averageBitrate(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR averageBitrate(long value) { averageBitrate(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBitrate` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_maxBitrate(MemorySegment segment, long index) { return (long) VH_maxBitrate.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxBitrate(MemorySegment segment, long index) { return (long) VH_maxBitrate.get(segment, 0L, index); }
     /// {@return `maxBitrate`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_maxBitrate(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_maxBitrate(segment, 0L); }
-    /// {@return `maxBitrate`}
-    public @CType("uint64_t") long maxBitrate() { return VkVideoEncodeRateControlLayerInfoKHR.get_maxBitrate(this.segment()); }
+    public long maxBitrate() { return maxBitrate(this.segment(), 0L); }
     /// Sets `maxBitrate` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBitrate(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_maxBitrate.set(segment, 0L, index, value); }
-    /// Sets `maxBitrate` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBitrate(MemorySegment segment, @CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_maxBitrate(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBitrate(MemorySegment segment, long index, long value) { VH_maxBitrate.set(segment, 0L, index, value); }
     /// Sets `maxBitrate` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR maxBitrate(@CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_maxBitrate(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR maxBitrate(long value) { maxBitrate(this.segment(), 0L, value); return this; }
 
     /// {@return `frameRateNumerator` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_frameRateNumerator(MemorySegment segment, long index) { return (int) VH_frameRateNumerator.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int frameRateNumerator(MemorySegment segment, long index) { return (int) VH_frameRateNumerator.get(segment, 0L, index); }
     /// {@return `frameRateNumerator`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_frameRateNumerator(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateNumerator(segment, 0L); }
-    /// {@return `frameRateNumerator`}
-    public @CType("uint32_t") int frameRateNumerator() { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateNumerator(this.segment()); }
+    public int frameRateNumerator() { return frameRateNumerator(this.segment(), 0L); }
     /// Sets `frameRateNumerator` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_frameRateNumerator(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_frameRateNumerator.set(segment, 0L, index, value); }
-    /// Sets `frameRateNumerator` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_frameRateNumerator(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateNumerator(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void frameRateNumerator(MemorySegment segment, long index, int value) { VH_frameRateNumerator.set(segment, 0L, index, value); }
     /// Sets `frameRateNumerator` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR frameRateNumerator(@CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateNumerator(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR frameRateNumerator(int value) { frameRateNumerator(this.segment(), 0L, value); return this; }
 
     /// {@return `frameRateDenominator` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_frameRateDenominator(MemorySegment segment, long index) { return (int) VH_frameRateDenominator.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int frameRateDenominator(MemorySegment segment, long index) { return (int) VH_frameRateDenominator.get(segment, 0L, index); }
     /// {@return `frameRateDenominator`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_frameRateDenominator(MemorySegment segment) { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateDenominator(segment, 0L); }
-    /// {@return `frameRateDenominator`}
-    public @CType("uint32_t") int frameRateDenominator() { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateDenominator(this.segment()); }
+    public int frameRateDenominator() { return frameRateDenominator(this.segment(), 0L); }
     /// Sets `frameRateDenominator` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_frameRateDenominator(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_frameRateDenominator.set(segment, 0L, index, value); }
-    /// Sets `frameRateDenominator` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_frameRateDenominator(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateDenominator(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void frameRateDenominator(MemorySegment segment, long index, int value) { VH_frameRateDenominator.set(segment, 0L, index, value); }
     /// Sets `frameRateDenominator` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeRateControlLayerInfoKHR frameRateDenominator(@CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateDenominator(this.segment(), value); return this; }
+    public VkVideoEncodeRateControlLayerInfoKHR frameRateDenominator(int value) { frameRateDenominator(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeRateControlLayerInfoKHR].
     public static final class Buffer extends VkVideoEncodeRateControlLayerInfoKHR {
@@ -287,58 +245,58 @@ public sealed class VkVideoEncodeRateControlLayerInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkVideoEncodeRateControlLayerInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `averageBitrate` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long averageBitrateAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_averageBitrate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long averageBitrateAt(long index) { return averageBitrate(this.segment(), index); }
         /// Sets `averageBitrate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer averageBitrateAt(long index, @CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_averageBitrate(this.segment(), index, value); return this; }
+        public Buffer averageBitrateAt(long index, long value) { averageBitrate(this.segment(), index, value); return this; }
 
         /// {@return `maxBitrate` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long maxBitrateAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_maxBitrate(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxBitrateAt(long index) { return maxBitrate(this.segment(), index); }
         /// Sets `maxBitrate` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBitrateAt(long index, @CType("uint64_t") long value) { VkVideoEncodeRateControlLayerInfoKHR.set_maxBitrate(this.segment(), index, value); return this; }
+        public Buffer maxBitrateAt(long index, long value) { maxBitrate(this.segment(), index, value); return this; }
 
         /// {@return `frameRateNumerator` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int frameRateNumeratorAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateNumerator(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int frameRateNumeratorAt(long index) { return frameRateNumerator(this.segment(), index); }
         /// Sets `frameRateNumerator` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer frameRateNumeratorAt(long index, @CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateNumerator(this.segment(), index, value); return this; }
+        public Buffer frameRateNumeratorAt(long index, int value) { frameRateNumerator(this.segment(), index, value); return this; }
 
         /// {@return `frameRateDenominator` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int frameRateDenominatorAt(long index) { return VkVideoEncodeRateControlLayerInfoKHR.get_frameRateDenominator(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int frameRateDenominatorAt(long index) { return frameRateDenominator(this.segment(), index); }
         /// Sets `frameRateDenominator` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer frameRateDenominatorAt(long index, @CType("uint32_t") int value) { VkVideoEncodeRateControlLayerInfoKHR.set_frameRateDenominator(this.segment(), index, value); return this; }
+        public Buffer frameRateDenominatorAt(long index, int value) { frameRateDenominator(this.segment(), index, value); return this; }
 
     }
 }

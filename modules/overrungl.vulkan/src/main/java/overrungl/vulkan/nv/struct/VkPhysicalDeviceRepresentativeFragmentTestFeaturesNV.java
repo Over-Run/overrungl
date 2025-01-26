@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### representativeFragmentTest
-/// [VarHandle][#VH_representativeFragmentTest] - [Getter][#representativeFragmentTest()] - [Setter][#representativeFragmentTest(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 representativeFragmentTest;
-/// } VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV;
 /// ```
-public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends Struct {
+/// struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 representativeFragmentTest;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("representativeFragmentTest")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `representativeFragmentTest` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `representativeFragmentTest`.
+    public static final long OFFSET_representativeFragmentTest = LAYOUT.byteOffset(PathElement.groupElement("representativeFragmentTest"));
+    /// The memory layout of `representativeFragmentTest`.
+    public static final MemoryLayout LAYOUT_representativeFragmentTest = LAYOUT.select(PathElement.groupElement("representativeFragmentTest"));
+    /// The [VarHandle] of `representativeFragmentTest` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_representativeFragmentTest = LAYOUT.arrayElementVarHandle(PathElement.groupElement("representativeFragmentTest"));
 
     /// Creates `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
     /// Creates `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
     /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
-    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int representativeFragmentTest) { return alloc(allocator).sType(sType).pNext(pNext).representativeFragmentTest(representativeFragmentTest); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `representativeFragmentTest` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_representativeFragmentTest(MemorySegment segment, long index) { return (int) VH_representativeFragmentTest.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int representativeFragmentTest(MemorySegment segment, long index) { return (int) VH_representativeFragmentTest.get(segment, 0L, index); }
     /// {@return `representativeFragmentTest`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_representativeFragmentTest(MemorySegment segment) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_representativeFragmentTest(segment, 0L); }
-    /// {@return `representativeFragmentTest`}
-    public @CType("VkBool32") int representativeFragmentTest() { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_representativeFragmentTest(this.segment()); }
+    public int representativeFragmentTest() { return representativeFragmentTest(this.segment(), 0L); }
     /// Sets `representativeFragmentTest` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_representativeFragmentTest(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_representativeFragmentTest.set(segment, 0L, index, value); }
-    /// Sets `representativeFragmentTest` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_representativeFragmentTest(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_representativeFragmentTest(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void representativeFragmentTest(MemorySegment segment, long index, int value) { VH_representativeFragmentTest.set(segment, 0L, index, value); }
     /// Sets `representativeFragmentTest` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV representativeFragmentTest(@CType("VkBool32") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_representativeFragmentTest(this.segment(), value); return this; }
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV representativeFragmentTest(int value) { representativeFragmentTest(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV].
     public static final class Buffer extends VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `representativeFragmentTest` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int representativeFragmentTestAt(long index) { return VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.get_representativeFragmentTest(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int representativeFragmentTestAt(long index) { return representativeFragmentTest(this.segment(), index); }
         /// Sets `representativeFragmentTest` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer representativeFragmentTestAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV.set_representativeFragmentTest(this.segment(), index, value); return this; }
+        public Buffer representativeFragmentTestAt(long index, int value) { representativeFragmentTest(this.segment(), index, value); return this; }
 
     }
 }

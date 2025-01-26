@@ -44,7 +44,7 @@ public final class GLNVInternalformatSampleQuery {
     }
 
     /// ```
-    /// void glGetInternalformatSampleivNV(unsigned int target, unsigned int internalformat, int samples, unsigned int pname, int count, GLint* params);
+    /// void glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei count, GLint* params);
     /// ```
     public void GetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");

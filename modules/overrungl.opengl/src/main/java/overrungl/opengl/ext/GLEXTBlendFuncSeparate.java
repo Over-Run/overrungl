@@ -41,7 +41,7 @@ public final class GLEXTBlendFuncSeparate {
     }
 
     /// ```
-    /// void glBlendFuncSeparateEXT(unsigned int sfactorRGB, unsigned int dfactorRGB, unsigned int sfactorAlpha, unsigned int dfactorAlpha);
+    /// void glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
     /// ```
     public void BlendFuncSeparateEXT(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT");

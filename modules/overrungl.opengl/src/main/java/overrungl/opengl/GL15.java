@@ -120,7 +120,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGenQueries(int n, GLuint* ids);
+    /// void glGenQueries(GLsizei n, GLuint* ids);
     /// ```
     public void GenQueries(int n, MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenQueries)) throw new SymbolNotFoundError("Symbol not found: glGenQueries");
@@ -129,7 +129,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glDeleteQueries(int n, const GLuint* ids);
+    /// void glDeleteQueries(GLsizei n, const GLuint* ids);
     /// ```
     public void DeleteQueries(int n, MemorySegment ids) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteQueries)) throw new SymbolNotFoundError("Symbol not found: glDeleteQueries");
@@ -138,7 +138,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// GLboolean glIsQuery(unsigned int id);
+    /// GLboolean glIsQuery(GLuint id);
     /// ```
     public boolean IsQuery(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsQuery)) throw new SymbolNotFoundError("Symbol not found: glIsQuery");
@@ -147,7 +147,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glBeginQuery(unsigned int target, unsigned int id);
+    /// void glBeginQuery(GLenum target, GLuint id);
     /// ```
     public void BeginQuery(int target, int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginQuery)) throw new SymbolNotFoundError("Symbol not found: glBeginQuery");
@@ -156,7 +156,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glEndQuery(unsigned int target);
+    /// void glEndQuery(GLenum target);
     /// ```
     public void EndQuery(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndQuery)) throw new SymbolNotFoundError("Symbol not found: glEndQuery");
@@ -165,7 +165,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetQueryiv(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetQueryiv(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetQueryiv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryiv");
@@ -174,7 +174,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetQueryObjectiv(unsigned int id, unsigned int pname, GLint* params);
+    /// void glGetQueryObjectiv(GLuint id, GLenum pname, GLint* params);
     /// ```
     public void GetQueryObjectiv(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectiv");
@@ -183,7 +183,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetQueryObjectuiv(unsigned int id, unsigned int pname, GLuint* params);
+    /// void glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint* params);
     /// ```
     public void GetQueryObjectuiv(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectuiv)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectuiv");
@@ -192,7 +192,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glBindBuffer(unsigned int target, unsigned int buffer);
+    /// void glBindBuffer(GLenum target, GLuint buffer);
     /// ```
     public void BindBuffer(int target, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBuffer)) throw new SymbolNotFoundError("Symbol not found: glBindBuffer");
@@ -201,7 +201,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glDeleteBuffers(int n, const GLuint* buffers);
+    /// void glDeleteBuffers(GLsizei n, const GLuint* buffers);
     /// ```
     public void DeleteBuffers(int n, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteBuffers)) throw new SymbolNotFoundError("Symbol not found: glDeleteBuffers");
@@ -210,7 +210,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGenBuffers(int n, GLuint* buffers);
+    /// void glGenBuffers(GLsizei n, GLuint* buffers);
     /// ```
     public void GenBuffers(int n, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenBuffers)) throw new SymbolNotFoundError("Symbol not found: glGenBuffers");
@@ -219,7 +219,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// GLboolean glIsBuffer(unsigned int buffer);
+    /// GLboolean glIsBuffer(GLuint buffer);
     /// ```
     public boolean IsBuffer(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsBuffer)) throw new SymbolNotFoundError("Symbol not found: glIsBuffer");
@@ -228,7 +228,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glBufferData(unsigned int target, signed long long size, const void* data, unsigned int usage);
+    /// void glBufferData(GLenum target, GLsizeiptr size, const void* data, GLenum usage);
     /// ```
     public void BufferData(int target, long size, MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferData)) throw new SymbolNotFoundError("Symbol not found: glBufferData");
@@ -237,7 +237,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glBufferSubData(unsigned int target, signed long long offset, signed long long size, const void* data);
+    /// void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void* data);
     /// ```
     public void BufferSubData(int target, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glBufferSubData");
@@ -246,7 +246,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetBufferSubData(unsigned int target, signed long long offset, signed long long size, void* data);
+    /// void glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void* data);
     /// ```
     public void GetBufferSubData(int target, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glGetBufferSubData");
@@ -255,7 +255,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void* glMapBuffer(unsigned int target, unsigned int access);
+    /// void* glMapBuffer(GLenum target, GLenum access);
     /// ```
     public MemorySegment MapBuffer(int target, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBuffer)) throw new SymbolNotFoundError("Symbol not found: glMapBuffer");
@@ -264,7 +264,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// GLboolean glUnmapBuffer(unsigned int target);
+    /// GLboolean glUnmapBuffer(GLenum target);
     /// ```
     public boolean UnmapBuffer(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapBuffer)) throw new SymbolNotFoundError("Symbol not found: glUnmapBuffer");
@@ -273,7 +273,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetBufferParameteriv(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetBufferParameteriv(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetBufferParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetBufferParameteriv");
@@ -282,7 +282,7 @@ public class GL15 extends GL14 {
     }
 
     /// ```
-    /// void glGetBufferPointerv(unsigned int target, unsigned int pname, void** params);
+    /// void glGetBufferPointerv(GLenum target, GLenum pname, void** params);
     /// ```
     public void GetBufferPointerv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferPointerv)) throw new SymbolNotFoundError("Symbol not found: glGetBufferPointerv");
@@ -290,14 +290,4 @@ public class GL15 extends GL14 {
         catch (Throwable e) { throw new RuntimeException("error in GetBufferPointerv", e); }
     }
 
-    // --- OverrunGL custom code ---
-    public int GenQueries() { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GenQueries(1, p); return p.get(ValueLayout.JAVA_INT, 0); } }
-    public void DeleteQueries(int id) { try (var __stack = MemoryStack.pushLocal()) { DeleteQueries(1, __stack.ints(id)); } }
-    public int GetQueryiv(@CType("GLenum") int target, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetQueryiv(target, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
-    public int GetQueryObjectiv(@CType("GLuint") int id, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetQueryObjectiv(id, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
-    public int GetQueryObjectuiv(@CType("GLuint") int id, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetQueryObjectuiv(id, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
-    public void DeleteBuffers(int buffer) { try (var __stack = MemoryStack.pushLocal()) { DeleteBuffers(1, __stack.ints(buffer)); } }
-    public int GenBuffers() { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GenBuffers(1, p); return p.get(ValueLayout.JAVA_INT, 0); } }
-    public void BufferData(@CType("GLenum") int target, @CType("const void *") MemorySegment data, @CType("GLenum") int usage) { BufferData(target, data.byteSize(), data, usage); }
-    public int GetBufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetBufferParameteriv(target, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
 }

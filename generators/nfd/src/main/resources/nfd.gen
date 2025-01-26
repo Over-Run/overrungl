@@ -70,7 +70,7 @@ fn nfdresult_t NFD_OpenDialog_With_Impl(nfdversion_t version,
                                         const nfdopendialognargs_t* args) @NFD_OpenDialogN_With_Impl;
 fn nfdresult_t NFD_OpenDialog_With(nfdnchar_t** outPath,
                                    const nfdopendialognargs_t* args) {
-    return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
+    "return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
 }
 
 fn nfdresult_t NFD_OpenDialogMultiple(const nfdpathset_t** outPaths,
@@ -82,7 +82,7 @@ fn nfdresult_t NFD_OpenDialogMultiple_With_Impl(nfdversion_t version,
                                                 const nfdopendialognargs_t* args) @NFD_OpenDialogMultipleN_With_Impl;
 fn nfdresult_t NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths,
                                            const nfdopendialognargs_t* args) {
-    return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
+    "return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
 }
 
 fn nfdresult_t NFD_SaveDialog(nfdnchar_t** outPath,
@@ -95,7 +95,7 @@ fn nfdresult_t NFD_SaveDialog_With_Impl(nfdversion_t version,
                                         const nfdsavedialognargs_t* args) @NFD_SaveDialogN_With_Impl;
 fn nfdresult_t NFD_SaveDialog_With(nfdnchar_t** outPath,
                                    const nfdsavedialognargs_t* args) {
-    return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
+    "return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
 }
 
 fn nfdresult_t NFD_PickFolder(nfdnchar_t** outPath, const nfdnchar_t* defaultPath) @NFD_PickFolderN;
@@ -104,7 +104,7 @@ fn nfdresult_t NFD_PickFolder_With_Impl(nfdversion_t version,
                                         const nfdpickfoldernargs_t* args) @NFD_PickFolderN_With_Impl;
 fn nfdresult_t NFD_PickFolder_With(nfdnchar_t** outPath,
                                    const nfdpickfoldernargs_t* args) {
-    return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
+    "return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
 }
 
 fn nfdresult_t NFD_PickFolderMultiple(const nfdpathset_t** outPaths,
@@ -114,7 +114,7 @@ fn nfdresult_t NFD_PickFolderMultiple_With_Impl(nfdversion_t version,
                                                 const nfdpickfoldernargs_t* args) @NFD_PickFolderMultipleN_With_Impl;
 fn nfdresult_t NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths,
                                            const nfdpickfoldernargs_t* args) {
-    return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
+    "return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
 }
 
 fn const char* NFD_GetError();

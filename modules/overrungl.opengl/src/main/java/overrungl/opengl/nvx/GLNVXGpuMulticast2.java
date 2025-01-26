@@ -53,7 +53,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// void glUploadGpuMaskNVX(unsigned int mask);
+    /// void glUploadGpuMaskNVX(GLbitfield mask);
     /// ```
     public void UploadGpuMaskNVX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUploadGpuMaskNVX)) throw new SymbolNotFoundError("Symbol not found: glUploadGpuMaskNVX");
@@ -62,7 +62,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// void glMulticastViewportArrayvNVX(unsigned int gpu, unsigned int first, int count, const GLfloat* v);
+    /// void glMulticastViewportArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLfloat* v);
     /// ```
     public void MulticastViewportArrayvNVX(int gpu, int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportArrayvNVX");
@@ -71,7 +71,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// void glMulticastViewportPositionWScaleNVX(unsigned int gpu, unsigned int index, float xcoeff, float ycoeff);
+    /// void glMulticastViewportPositionWScaleNVX(GLuint gpu, GLuint index, GLfloat xcoeff, GLfloat ycoeff);
     /// ```
     public void MulticastViewportPositionWScaleNVX(int gpu, int index, float xcoeff, float ycoeff) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportPositionWScaleNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastViewportPositionWScaleNVX");
@@ -80,7 +80,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// void glMulticastScissorArrayvNVX(unsigned int gpu, unsigned int first, int count, const GLint* v);
+    /// void glMulticastScissorArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLint* v);
     /// ```
     public void MulticastScissorArrayvNVX(int gpu, int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastScissorArrayvNVX)) throw new SymbolNotFoundError("Symbol not found: glMulticastScissorArrayvNVX");
@@ -89,7 +89,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// unsigned int glAsyncCopyBufferSubDataNVX(int waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* fenceValueArray, unsigned int readGpu, unsigned int writeGpuMask, unsigned int readBuffer, unsigned int writeBuffer, signed long long readOffset, signed long long writeOffset, signed long long size, int signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
+    /// GLuint glAsyncCopyBufferSubDataNVX(GLsizei waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* fenceValueArray, GLuint readGpu, GLbitfield writeGpuMask, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size, GLsizei signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
     /// ```
     public int AsyncCopyBufferSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment fenceValueArray, int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyBufferSubDataNVX");
@@ -98,7 +98,7 @@ public final class GLNVXGpuMulticast2 {
     }
 
     /// ```
-    /// unsigned int glAsyncCopyImageSubDataNVX(int waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* waitValueArray, unsigned int srcGpu, unsigned int dstGpuMask, unsigned int srcName, unsigned int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, unsigned int dstName, unsigned int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
+    /// GLuint glAsyncCopyImageSubDataNVX(GLsizei waitSemaphoreCount, const GLuint* waitSemaphoreArray, const GLuint64* waitValueArray, GLuint srcGpu, GLbitfield dstGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth, GLsizei signalSemaphoreCount, const GLuint* signalSemaphoreArray, const GLuint64* signalValueArray);
     /// ```
     public int AsyncCopyImageSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment waitValueArray, int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glAsyncCopyImageSubDataNVX");

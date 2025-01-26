@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.huawei.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### renderPass
-/// [VarHandle][#VH_renderPass] - [Getter][#renderPass()] - [Setter][#renderPass(MemorySegment)]
-/// ### subpass
-/// [VarHandle][#VH_subpass] - [Getter][#subpass()] - [Setter][#subpass(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSubpassShadingPipelineCreateInfoHUAWEI {
+/// ```
+/// struct VkSubpassShadingPipelineCreateInfoHUAWEI {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkRenderPass renderPass;
 ///     uint32_t subpass;
-/// } VkSubpassShadingPipelineCreateInfoHUAWEI;
+/// };
 /// ```
-public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
+public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends GroupType {
     /// The struct layout of `VkSubpassShadingPipelineCreateInfoHUAWEI`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_LONG.withName("renderPass"),
         ValueLayout.JAVA_INT.withName("subpass")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `renderPass`.
+    public static final long OFFSET_renderPass = LAYOUT.byteOffset(PathElement.groupElement("renderPass"));
+    /// The memory layout of `renderPass`.
+    public static final MemoryLayout LAYOUT_renderPass = LAYOUT.select(PathElement.groupElement("renderPass"));
     /// The [VarHandle] of `renderPass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_renderPass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderPass"));
-    /// The [VarHandle] of `subpass` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subpass`.
+    public static final long OFFSET_subpass = LAYOUT.byteOffset(PathElement.groupElement("subpass"));
+    /// The memory layout of `subpass`.
+    public static final MemoryLayout LAYOUT_subpass = LAYOUT.select(PathElement.groupElement("subpass"));
+    /// The [VarHandle] of `subpass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subpass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpass"));
 
     /// Creates `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
     /// Creates `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassShadingPipelineCreateInfoHUAWEI of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassShadingPipelineCreateInfoHUAWEI(segment); }
-
-    /// Creates `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassShadingPipelineCreateInfoHUAWEI ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSubpassShadingPipelineCreateInfoHUAWEI ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassShadingPipelineCreateInfoHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
     /// @return the allocated `VkSubpassShadingPipelineCreateInfoHUAWEI`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubpassShadingPipelineCreateInfoHUAWEI` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSubpassShadingPipelineCreateInfoHUAWEI`
-    public static VkSubpassShadingPipelineCreateInfoHUAWEI allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkRenderPass") MemorySegment renderPass, @CType("uint32_t") int subpass) { return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassShadingPipelineCreateInfoHUAWEI sType(@CType("VkStructureType") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_sType(this.segment(), value); return this; }
+    public VkSubpassShadingPipelineCreateInfoHUAWEI sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassShadingPipelineCreateInfoHUAWEI pNext(@CType("void *") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_pNext(this.segment(), value); return this; }
+    public VkSubpassShadingPipelineCreateInfoHUAWEI pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `renderPass` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkRenderPass") MemorySegment get_renderPass(MemorySegment segment, long index) { return (MemorySegment) VH_renderPass.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long renderPass(MemorySegment segment, long index) { return (long) VH_renderPass.get(segment, 0L, index); }
     /// {@return `renderPass`}
-    /// @param segment the segment of the struct
-    public static @CType("VkRenderPass") MemorySegment get_renderPass(MemorySegment segment) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_renderPass(segment, 0L); }
-    /// {@return `renderPass`}
-    public @CType("VkRenderPass") MemorySegment renderPass() { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_renderPass(this.segment()); }
+    public long renderPass() { return renderPass(this.segment(), 0L); }
     /// Sets `renderPass` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderPass(MemorySegment segment, long index, @CType("VkRenderPass") MemorySegment value) { VH_renderPass.set(segment, 0L, index, value); }
-    /// Sets `renderPass` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderPass(MemorySegment segment, @CType("VkRenderPass") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_renderPass(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderPass(MemorySegment segment, long index, long value) { VH_renderPass.set(segment, 0L, index, value); }
     /// Sets `renderPass` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassShadingPipelineCreateInfoHUAWEI renderPass(@CType("VkRenderPass") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_renderPass(this.segment(), value); return this; }
+    public VkSubpassShadingPipelineCreateInfoHUAWEI renderPass(long value) { renderPass(this.segment(), 0L, value); return this; }
 
     /// {@return `subpass` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subpass(MemorySegment segment, long index) { return (int) VH_subpass.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subpass(MemorySegment segment, long index) { return (int) VH_subpass.get(segment, 0L, index); }
     /// {@return `subpass`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subpass(MemorySegment segment) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_subpass(segment, 0L); }
-    /// {@return `subpass`}
-    public @CType("uint32_t") int subpass() { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_subpass(this.segment()); }
+    public int subpass() { return subpass(this.segment(), 0L); }
     /// Sets `subpass` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subpass(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subpass.set(segment, 0L, index, value); }
-    /// Sets `subpass` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subpass(MemorySegment segment, @CType("uint32_t") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_subpass(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subpass(MemorySegment segment, long index, int value) { VH_subpass.set(segment, 0L, index, value); }
     /// Sets `subpass` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSubpassShadingPipelineCreateInfoHUAWEI subpass(@CType("uint32_t") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_subpass(this.segment(), value); return this; }
+    public VkSubpassShadingPipelineCreateInfoHUAWEI subpass(int value) { subpass(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSubpassShadingPipelineCreateInfoHUAWEI].
     public static final class Buffer extends VkSubpassShadingPipelineCreateInfoHUAWEI {
@@ -229,40 +197,40 @@ public sealed class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `renderPass` at the given index}
-        /// @param index the index
-        public @CType("VkRenderPass") MemorySegment renderPassAt(long index) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_renderPass(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long renderPassAt(long index) { return renderPass(this.segment(), index); }
         /// Sets `renderPass` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderPassAt(long index, @CType("VkRenderPass") MemorySegment value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_renderPass(this.segment(), index, value); return this; }
+        public Buffer renderPassAt(long index, long value) { renderPass(this.segment(), index, value); return this; }
 
         /// {@return `subpass` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subpassAt(long index) { return VkSubpassShadingPipelineCreateInfoHUAWEI.get_subpass(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subpassAt(long index) { return subpass(this.segment(), index); }
         /// Sets `subpass` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subpassAt(long index, @CType("uint32_t") int value) { VkSubpassShadingPipelineCreateInfoHUAWEI.set_subpass(this.segment(), index, value); return this; }
+        public Buffer subpassAt(long index, int value) { subpass(this.segment(), index, value); return this; }
 
     }
 }

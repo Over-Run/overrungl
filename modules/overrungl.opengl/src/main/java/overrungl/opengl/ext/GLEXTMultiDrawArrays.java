@@ -40,7 +40,7 @@ public final class GLEXTMultiDrawArrays {
     }
 
     /// ```
-    /// void glMultiDrawArraysEXT(unsigned int mode, const GLint* first, const GLsizei* count, int primcount);
+    /// void glMultiDrawArraysEXT(GLenum mode, const GLint* first, const GLsizei* count, GLsizei primcount);
     /// ```
     public void MultiDrawArraysEXT(int mode, MemorySegment first, MemorySegment count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
@@ -49,7 +49,7 @@ public final class GLEXTMultiDrawArrays {
     }
 
     /// ```
-    /// void glMultiDrawElementsEXT(unsigned int mode, const GLsizei* count, unsigned int type, const void* const * indices, int primcount);
+    /// void glMultiDrawElementsEXT(GLenum mode, const GLsizei* count, GLenum type, const void* const * indices, GLsizei primcount);
     /// ```
     public void MultiDrawElementsEXT(int mode, MemorySegment count, int type, MemorySegment indices, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");

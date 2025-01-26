@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### commandPool
-/// [VarHandle][#VH_commandPool] - [Getter][#commandPool()] - [Setter][#commandPool(MemorySegment)]
-/// ### level
-/// [VarHandle][#VH_level] - [Getter][#level()] - [Setter][#level(int)]
-/// ### commandBufferCount
-/// [VarHandle][#VH_commandBufferCount] - [Getter][#commandBufferCount()] - [Setter][#commandBufferCount(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkCommandBufferAllocateInfo {
+/// ```
+/// struct VkCommandBufferAllocateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkCommandPool commandPool;
 ///     VkCommandBufferLevel level;
 ///     uint32_t commandBufferCount;
-/// } VkCommandBufferAllocateInfo;
+/// };
 /// ```
-public sealed class VkCommandBufferAllocateInfo extends Struct {
+public sealed class VkCommandBufferAllocateInfo extends GroupType {
     /// The struct layout of `VkCommandBufferAllocateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("commandPool"),
+        ValueLayout.JAVA_LONG.withName("commandPool"),
         ValueLayout.JAVA_INT.withName("level"),
         ValueLayout.JAVA_INT.withName("commandBufferCount")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The byte offset of `commandPool`.
+    public static final long OFFSET_commandPool = LAYOUT.byteOffset(PathElement.groupElement("commandPool"));
+    /// The memory layout of `commandPool`.
+    public static final MemoryLayout LAYOUT_commandPool = LAYOUT.select(PathElement.groupElement("commandPool"));
     /// The [VarHandle] of `commandPool` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPool = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPool"));
-    /// The [VarHandle] of `level` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `level`.
+    public static final long OFFSET_level = LAYOUT.byteOffset(PathElement.groupElement("level"));
+    /// The memory layout of `level`.
+    public static final MemoryLayout LAYOUT_level = LAYOUT.select(PathElement.groupElement("level"));
+    /// The [VarHandle] of `level` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_level = LAYOUT.arrayElementVarHandle(PathElement.groupElement("level"));
-    /// The [VarHandle] of `commandBufferCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandBufferCount`.
+    public static final long OFFSET_commandBufferCount = LAYOUT.byteOffset(PathElement.groupElement("commandBufferCount"));
+    /// The memory layout of `commandBufferCount`.
+    public static final MemoryLayout LAYOUT_commandBufferCount = LAYOUT.select(PathElement.groupElement("commandBufferCount"));
+    /// The [VarHandle] of `commandBufferCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandBufferCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferCount"));
 
     /// Creates `VkCommandBufferAllocateInfo` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkCommandBufferAllocateInfo extends Struct {
     /// Creates `VkCommandBufferAllocateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferAllocateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferAllocateInfo(segment); }
-
-    /// Creates `VkCommandBufferAllocateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCommandBufferAllocateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferAllocateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferAllocateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkCommandBufferAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferAllocateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkCommandBufferAllocateInfo` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkCommandBufferAllocateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkCommandBufferAllocateInfo extends Struct {
     /// @return the allocated `VkCommandBufferAllocateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCommandBufferAllocateInfo`
-    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkCommandPool") MemorySegment commandPool, @CType("VkCommandBufferLevel") int level, @CType("uint32_t") int commandBufferCount) { return alloc(allocator).sType(sType).pNext(pNext).commandPool(commandPool).level(level).commandBufferCount(commandBufferCount); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkCommandBufferAllocateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandBufferAllocateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkCommandBufferAllocateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandBufferAllocateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferAllocateInfo sType(@CType("VkStructureType") int value) { VkCommandBufferAllocateInfo.set_sType(this.segment(), value); return this; }
+    public VkCommandBufferAllocateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferAllocateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkCommandBufferAllocateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkCommandBufferAllocateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferAllocateInfo pNext(@CType("const void *") MemorySegment value) { VkCommandBufferAllocateInfo.set_pNext(this.segment(), value); return this; }
+    public VkCommandBufferAllocateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPool` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkCommandPool") MemorySegment get_commandPool(MemorySegment segment, long index) { return (MemorySegment) VH_commandPool.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long commandPool(MemorySegment segment, long index) { return (long) VH_commandPool.get(segment, 0L, index); }
     /// {@return `commandPool`}
-    /// @param segment the segment of the struct
-    public static @CType("VkCommandPool") MemorySegment get_commandPool(MemorySegment segment) { return VkCommandBufferAllocateInfo.get_commandPool(segment, 0L); }
-    /// {@return `commandPool`}
-    public @CType("VkCommandPool") MemorySegment commandPool() { return VkCommandBufferAllocateInfo.get_commandPool(this.segment()); }
+    public long commandPool() { return commandPool(this.segment(), 0L); }
     /// Sets `commandPool` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPool(MemorySegment segment, long index, @CType("VkCommandPool") MemorySegment value) { VH_commandPool.set(segment, 0L, index, value); }
-    /// Sets `commandPool` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPool(MemorySegment segment, @CType("VkCommandPool") MemorySegment value) { VkCommandBufferAllocateInfo.set_commandPool(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPool(MemorySegment segment, long index, long value) { VH_commandPool.set(segment, 0L, index, value); }
     /// Sets `commandPool` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferAllocateInfo commandPool(@CType("VkCommandPool") MemorySegment value) { VkCommandBufferAllocateInfo.set_commandPool(this.segment(), value); return this; }
+    public VkCommandBufferAllocateInfo commandPool(long value) { commandPool(this.segment(), 0L, value); return this; }
 
     /// {@return `level` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkCommandBufferLevel") int get_level(MemorySegment segment, long index) { return (int) VH_level.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int level(MemorySegment segment, long index) { return (int) VH_level.get(segment, 0L, index); }
     /// {@return `level`}
-    /// @param segment the segment of the struct
-    public static @CType("VkCommandBufferLevel") int get_level(MemorySegment segment) { return VkCommandBufferAllocateInfo.get_level(segment, 0L); }
-    /// {@return `level`}
-    public @CType("VkCommandBufferLevel") int level() { return VkCommandBufferAllocateInfo.get_level(this.segment()); }
+    public int level() { return level(this.segment(), 0L); }
     /// Sets `level` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_level(MemorySegment segment, long index, @CType("VkCommandBufferLevel") int value) { VH_level.set(segment, 0L, index, value); }
-    /// Sets `level` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_level(MemorySegment segment, @CType("VkCommandBufferLevel") int value) { VkCommandBufferAllocateInfo.set_level(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void level(MemorySegment segment, long index, int value) { VH_level.set(segment, 0L, index, value); }
     /// Sets `level` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferAllocateInfo level(@CType("VkCommandBufferLevel") int value) { VkCommandBufferAllocateInfo.set_level(this.segment(), value); return this; }
+    public VkCommandBufferAllocateInfo level(int value) { level(this.segment(), 0L, value); return this; }
 
     /// {@return `commandBufferCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandBufferCount(MemorySegment segment, long index) { return (int) VH_commandBufferCount.get(segment, 0L, index); }
     /// {@return `commandBufferCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_commandBufferCount(MemorySegment segment) { return VkCommandBufferAllocateInfo.get_commandBufferCount(segment, 0L); }
-    /// {@return `commandBufferCount`}
-    public @CType("uint32_t") int commandBufferCount() { return VkCommandBufferAllocateInfo.get_commandBufferCount(this.segment()); }
+    public int commandBufferCount() { return commandBufferCount(this.segment(), 0L); }
     /// Sets `commandBufferCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandBufferCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_commandBufferCount.set(segment, 0L, index, value); }
-    /// Sets `commandBufferCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandBufferCount(MemorySegment segment, @CType("uint32_t") int value) { VkCommandBufferAllocateInfo.set_commandBufferCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandBufferCount(MemorySegment segment, long index, int value) { VH_commandBufferCount.set(segment, 0L, index, value); }
     /// Sets `commandBufferCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferAllocateInfo commandBufferCount(@CType("uint32_t") int value) { VkCommandBufferAllocateInfo.set_commandBufferCount(this.segment(), value); return this; }
+    public VkCommandBufferAllocateInfo commandBufferCount(int value) { commandBufferCount(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkCommandBufferAllocateInfo].
     public static final class Buffer extends VkCommandBufferAllocateInfo {
@@ -258,49 +221,49 @@ public sealed class VkCommandBufferAllocateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferAllocateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferAllocateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkCommandBufferAllocateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkCommandBufferAllocateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `commandPool` at the given index}
-        /// @param index the index
-        public @CType("VkCommandPool") MemorySegment commandPoolAt(long index) { return VkCommandBufferAllocateInfo.get_commandPool(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long commandPoolAt(long index) { return commandPool(this.segment(), index); }
         /// Sets `commandPool` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolAt(long index, @CType("VkCommandPool") MemorySegment value) { VkCommandBufferAllocateInfo.set_commandPool(this.segment(), index, value); return this; }
+        public Buffer commandPoolAt(long index, long value) { commandPool(this.segment(), index, value); return this; }
 
         /// {@return `level` at the given index}
-        /// @param index the index
-        public @CType("VkCommandBufferLevel") int levelAt(long index) { return VkCommandBufferAllocateInfo.get_level(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int levelAt(long index) { return level(this.segment(), index); }
         /// Sets `level` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer levelAt(long index, @CType("VkCommandBufferLevel") int value) { VkCommandBufferAllocateInfo.set_level(this.segment(), index, value); return this; }
+        public Buffer levelAt(long index, int value) { level(this.segment(), index, value); return this; }
 
         /// {@return `commandBufferCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int commandBufferCountAt(long index) { return VkCommandBufferAllocateInfo.get_commandBufferCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandBufferCountAt(long index) { return commandBufferCount(this.segment(), index); }
         /// Sets `commandBufferCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandBufferCountAt(long index, @CType("uint32_t") int value) { VkCommandBufferAllocateInfo.set_commandBufferCount(this.segment(), index, value); return this; }
+        public Buffer commandBufferCountAt(long index, int value) { commandBufferCount(this.segment(), index, value); return this; }
 
     }
 }

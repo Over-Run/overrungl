@@ -1,0 +1,6 @@
+using XID = unsigned long;
+using Display = int; // enum Display {}
+using RRCrtc = XID;
+using RROutput = XID;
+using Window = XID;
+using VisualID = XID;

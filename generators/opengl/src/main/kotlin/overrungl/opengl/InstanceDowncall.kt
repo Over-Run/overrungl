@@ -32,7 +32,6 @@ class InstanceDowncall(
     var constructorParam: String? = null
     var handlesConstructorCode: String? = null
     var constructorCode: String? = null
-    var customCode: String? = null
     private val extends = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
     val handleFields = mutableListOf<InstanceDowncallField>()
@@ -139,11 +138,6 @@ class InstanceDowncall(
         // methods
         methods.forEach { m ->
             writeFunction(sb, m, handlesInstance = "handles", staticMethod = false)
-        }
-
-        if (customCode != null) {
-            sb.appendLine("    // --- OverrunGL custom code ---")
-            sb.appendLine(customCode!!.prependIndent("    "))
         }
 
         sb.appendLine("}")

@@ -66,7 +66,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexImage3DARB(unsigned int target, int level, unsigned int internalformat, int width, int height, int depth, int border, int imageSize, const void* data);
+    /// void glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage3DARB(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage3DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage3DARB");
@@ -75,7 +75,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexImage2DARB(unsigned int target, int level, unsigned int internalformat, int width, int height, int border, int imageSize, const void* data);
+    /// void glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage2DARB(int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage2DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage2DARB");
@@ -84,7 +84,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexImage1DARB(unsigned int target, int level, unsigned int internalformat, int width, int border, int imageSize, const void* data);
+    /// void glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage1DARB(int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage1DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage1DARB");
@@ -93,7 +93,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexSubImage3DARB(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, int imageSize, const void* data);
+    /// void glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage3DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage3DARB");
@@ -102,7 +102,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexSubImage2DARB(unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, int imageSize, const void* data);
+    /// void glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage2DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage2DARB");
@@ -111,7 +111,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glCompressedTexSubImage1DARB(unsigned int target, int level, int xoffset, int width, unsigned int format, int imageSize, const void* data);
+    /// void glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage1DARB)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage1DARB");
@@ -120,7 +120,7 @@ public final class GLARBTextureCompression {
     }
 
     /// ```
-    /// void glGetCompressedTexImageARB(unsigned int target, int level, void* img);
+    /// void glGetCompressedTexImageARB(GLenum target, GLint level, void* img);
     /// ```
     public void GetCompressedTexImageARB(int target, int level, MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTexImageARB)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTexImageARB");

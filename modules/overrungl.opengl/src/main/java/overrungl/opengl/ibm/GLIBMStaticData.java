@@ -39,7 +39,7 @@ public final class GLIBMStaticData {
     }
 
     /// ```
-    /// void glFlushStaticDataIBM(unsigned int target);
+    /// void glFlushStaticDataIBM(GLenum target);
     /// ```
     public void FlushStaticDataIBM(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushStaticDataIBM)) throw new SymbolNotFoundError("Symbol not found: glFlushStaticDataIBM");

@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -28,21 +27,24 @@ public class VKKHRPresentWait {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR = 1000248000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkWaitForPresentKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkWaitForPresentKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkWaitForPresentKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkWaitForPresentKHR = func.invoke(device, "vkWaitForPresentKHR");
         }
     }
 
-    public VKKHRPresentWait(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRPresentWait(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int WaitForPresentKHR(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("uint64_t") long presentId, @CType("uint64_t") long timeout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkWaitForPresentKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitForPresentKHR");
+    /// ```
+    /// VkResult vkWaitForPresentKHR(VkDevice device, VkSwapchainKHR swapchain, uint64_t presentId, uint64_t timeout);
+    /// ```
+    public int WaitForPresentKHR(MemorySegment device, long swapchain, long presentId, long timeout) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkWaitForPresentKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitForPresentKHR");
         try { return (int) Handles.MH_vkWaitForPresentKHR.invokeExact(handles.PFN_vkWaitForPresentKHR, device, swapchain, presentId, timeout); }
-        catch (Throwable e) { throw new RuntimeException("error in vkWaitForPresentKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in WaitForPresentKHR", e); }
     }
 
 }

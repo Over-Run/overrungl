@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.intel;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKINTELShaderIntegerFunctions2 {
     public static final int VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION = 1;

@@ -44,7 +44,7 @@ public final class GLEXTPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfEXT(unsigned int pname, float param);
+    /// void glPointParameterfEXT(GLenum pname, GLfloat param);
     /// ```
     public void PointParameterfEXT(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT");
@@ -53,7 +53,7 @@ public final class GLEXTPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfvEXT(unsigned int pname, const GLfloat* params);
+    /// void glPointParameterfvEXT(GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvEXT(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");

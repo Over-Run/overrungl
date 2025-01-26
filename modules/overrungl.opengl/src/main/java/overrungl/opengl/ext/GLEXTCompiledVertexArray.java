@@ -42,7 +42,7 @@ public final class GLEXTCompiledVertexArray {
     }
 
     /// ```
-    /// void glLockArraysEXT(int first, int count);
+    /// void glLockArraysEXT(GLint first, GLsizei count);
     /// ```
     public void LockArraysEXT(int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");

@@ -92,7 +92,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3bEXT(signed char red, signed char green, signed char blue);
+    /// void glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue);
     /// ```
     public void SecondaryColor3bEXT(byte red, byte green, byte blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3bEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bEXT");
@@ -110,7 +110,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3dEXT(double red, double green, double blue);
+    /// void glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue);
     /// ```
     public void SecondaryColor3dEXT(double red, double green, double blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3dEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dEXT");
@@ -128,7 +128,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3fEXT(float red, float green, float blue);
+    /// void glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue);
     /// ```
     public void SecondaryColor3fEXT(float red, float green, float blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3fEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fEXT");
@@ -146,7 +146,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3iEXT(int red, int green, int blue);
+    /// void glSecondaryColor3iEXT(GLint red, GLint green, GLint blue);
     /// ```
     public void SecondaryColor3iEXT(int red, int green, int blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3iEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3iEXT");
@@ -164,7 +164,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3sEXT(signed short red, signed short green, signed short blue);
+    /// void glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue);
     /// ```
     public void SecondaryColor3sEXT(short red, short green, short blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3sEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3sEXT");
@@ -182,7 +182,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3ubEXT(unsigned char red, unsigned char green, unsigned char blue);
+    /// void glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue);
     /// ```
     public void SecondaryColor3ubEXT(byte red, byte green, byte blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ubEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubEXT");
@@ -200,7 +200,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3uiEXT(unsigned int red, unsigned int green, unsigned int blue);
+    /// void glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue);
     /// ```
     public void SecondaryColor3uiEXT(int red, int green, int blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uiEXT");
@@ -218,7 +218,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColor3usEXT(unsigned short red, unsigned short green, unsigned short blue);
+    /// void glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue);
     /// ```
     public void SecondaryColor3usEXT(short red, short green, short blue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3usEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usEXT");
@@ -236,7 +236,7 @@ public final class GLEXTSecondaryColor {
     }
 
     /// ```
-    /// void glSecondaryColorPointerEXT(int size, unsigned int type, int stride, const void* pointer);
+    /// void glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void SecondaryColorPointerEXT(int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerEXT");

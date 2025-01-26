@@ -94,7 +94,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glDrawMeshTasksNV(unsigned int first, unsigned int count);
+    /// void glDrawMeshTasksNV(GLuint first, GLuint count);
     /// ```
     public void DrawMeshTasksNV(int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
@@ -103,7 +103,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glDrawMeshTasksIndirectNV(signed long long indirect);
+    /// void glDrawMeshTasksIndirectNV(GLintptr indirect);
     /// ```
     public void DrawMeshTasksIndirectNV(long indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
@@ -112,7 +112,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glMultiDrawMeshTasksIndirectNV(signed long long indirect, int drawcount, int stride);
+    /// void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
@@ -121,7 +121,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glMultiDrawMeshTasksIndirectCountNV(signed long long indirect, signed long long drawcount, int maxdrawcount, int stride);
+    /// void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");

@@ -37,7 +37,7 @@ public final class GLNVCopyImage {
     }
 
     /// ```
-    /// void glCopyImageSubDataNV(unsigned int srcName, unsigned int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, unsigned int dstName, unsigned int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth);
+    /// void glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
     /// ```
     public void CopyImageSubDataNV(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyImageSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glCopyImageSubDataNV");

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### primitiveCount
-/// [VarHandle][#VH_primitiveCount] - [Getter][#primitiveCount()] - [Setter][#primitiveCount(int)]
-/// ### primitiveOffset
-/// [VarHandle][#VH_primitiveOffset] - [Getter][#primitiveOffset()] - [Setter][#primitiveOffset(int)]
-/// ### firstVertex
-/// [VarHandle][#VH_firstVertex] - [Getter][#firstVertex()] - [Setter][#firstVertex(int)]
-/// ### transformOffset
-/// [VarHandle][#VH_transformOffset] - [Getter][#transformOffset()] - [Setter][#transformOffset(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkAccelerationStructureBuildRangeInfoKHR {
+/// ```
+/// struct VkAccelerationStructureBuildRangeInfoKHR {
 ///     uint32_t primitiveCount;
 ///     uint32_t primitiveOffset;
 ///     uint32_t firstVertex;
 ///     uint32_t transformOffset;
-/// } VkAccelerationStructureBuildRangeInfoKHR;
+/// };
 /// ```
-public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
+public sealed class VkAccelerationStructureBuildRangeInfoKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureBuildRangeInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("primitiveCount"),
         ValueLayout.JAVA_INT.withName("primitiveOffset"),
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("transformOffset")
     );
-    /// The [VarHandle] of `primitiveCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitiveCount`.
+    public static final long OFFSET_primitiveCount = LAYOUT.byteOffset(PathElement.groupElement("primitiveCount"));
+    /// The memory layout of `primitiveCount`.
+    public static final MemoryLayout LAYOUT_primitiveCount = LAYOUT.select(PathElement.groupElement("primitiveCount"));
+    /// The [VarHandle] of `primitiveCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitiveCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveCount"));
-    /// The [VarHandle] of `primitiveOffset` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `primitiveOffset`.
+    public static final long OFFSET_primitiveOffset = LAYOUT.byteOffset(PathElement.groupElement("primitiveOffset"));
+    /// The memory layout of `primitiveOffset`.
+    public static final MemoryLayout LAYOUT_primitiveOffset = LAYOUT.select(PathElement.groupElement("primitiveOffset"));
+    /// The [VarHandle] of `primitiveOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_primitiveOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("primitiveOffset"));
-    /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `firstVertex`.
+    public static final long OFFSET_firstVertex = LAYOUT.byteOffset(PathElement.groupElement("firstVertex"));
+    /// The memory layout of `firstVertex`.
+    public static final MemoryLayout LAYOUT_firstVertex = LAYOUT.select(PathElement.groupElement("firstVertex"));
+    /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_firstVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex"));
-    /// The [VarHandle] of `transformOffset` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `transformOffset`.
+    public static final long OFFSET_transformOffset = LAYOUT.byteOffset(PathElement.groupElement("transformOffset"));
+    /// The memory layout of `transformOffset`.
+    public static final MemoryLayout LAYOUT_transformOffset = LAYOUT.select(PathElement.groupElement("transformOffset"));
+    /// The [VarHandle] of `transformOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_transformOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformOffset"));
 
     /// Creates `VkAccelerationStructureBuildRangeInfoKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
     /// Creates `VkAccelerationStructureBuildRangeInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureBuildRangeInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureBuildRangeInfoKHR(segment); }
-
-    /// Creates `VkAccelerationStructureBuildRangeInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureBuildRangeInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureBuildRangeInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureBuildRangeInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAccelerationStructureBuildRangeInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureBuildRangeInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAccelerationStructureBuildRangeInfoKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
     /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
-    public static VkAccelerationStructureBuildRangeInfoKHR allocInit(SegmentAllocator allocator, @CType("uint32_t") int primitiveCount, @CType("uint32_t") int primitiveOffset, @CType("uint32_t") int firstVertex, @CType("uint32_t") int transformOffset) { return alloc(allocator).primitiveCount(primitiveCount).primitiveOffset(primitiveOffset).firstVertex(firstVertex).transformOffset(transformOffset); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `primitiveCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_primitiveCount(MemorySegment segment, long index) { return (int) VH_primitiveCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitiveCount(MemorySegment segment, long index) { return (int) VH_primitiveCount.get(segment, 0L, index); }
     /// {@return `primitiveCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_primitiveCount(MemorySegment segment) { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveCount(segment, 0L); }
-    /// {@return `primitiveCount`}
-    public @CType("uint32_t") int primitiveCount() { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveCount(this.segment()); }
+    public int primitiveCount() { return primitiveCount(this.segment(), 0L); }
     /// Sets `primitiveCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitiveCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_primitiveCount.set(segment, 0L, index, value); }
-    /// Sets `primitiveCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitiveCount(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitiveCount(MemorySegment segment, long index, int value) { VH_primitiveCount.set(segment, 0L, index, value); }
     /// Sets `primitiveCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureBuildRangeInfoKHR primitiveCount(@CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveCount(this.segment(), value); return this; }
+    public VkAccelerationStructureBuildRangeInfoKHR primitiveCount(int value) { primitiveCount(this.segment(), 0L, value); return this; }
 
     /// {@return `primitiveOffset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_primitiveOffset(MemorySegment segment, long index) { return (int) VH_primitiveOffset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int primitiveOffset(MemorySegment segment, long index) { return (int) VH_primitiveOffset.get(segment, 0L, index); }
     /// {@return `primitiveOffset`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_primitiveOffset(MemorySegment segment) { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveOffset(segment, 0L); }
-    /// {@return `primitiveOffset`}
-    public @CType("uint32_t") int primitiveOffset() { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveOffset(this.segment()); }
+    public int primitiveOffset() { return primitiveOffset(this.segment(), 0L); }
     /// Sets `primitiveOffset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_primitiveOffset(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_primitiveOffset.set(segment, 0L, index, value); }
-    /// Sets `primitiveOffset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_primitiveOffset(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveOffset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void primitiveOffset(MemorySegment segment, long index, int value) { VH_primitiveOffset.set(segment, 0L, index, value); }
     /// Sets `primitiveOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureBuildRangeInfoKHR primitiveOffset(@CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveOffset(this.segment(), value); return this; }
+    public VkAccelerationStructureBuildRangeInfoKHR primitiveOffset(int value) { primitiveOffset(this.segment(), 0L, value); return this; }
 
     /// {@return `firstVertex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
     /// {@return `firstVertex`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_firstVertex(MemorySegment segment) { return VkAccelerationStructureBuildRangeInfoKHR.get_firstVertex(segment, 0L); }
-    /// {@return `firstVertex`}
-    public @CType("uint32_t") int firstVertex() { return VkAccelerationStructureBuildRangeInfoKHR.get_firstVertex(this.segment()); }
+    public int firstVertex() { return firstVertex(this.segment(), 0L); }
     /// Sets `firstVertex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_firstVertex(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_firstVertex.set(segment, 0L, index, value); }
-    /// Sets `firstVertex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_firstVertex(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_firstVertex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.set(segment, 0L, index, value); }
     /// Sets `firstVertex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureBuildRangeInfoKHR firstVertex(@CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_firstVertex(this.segment(), value); return this; }
+    public VkAccelerationStructureBuildRangeInfoKHR firstVertex(int value) { firstVertex(this.segment(), 0L, value); return this; }
 
     /// {@return `transformOffset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_transformOffset(MemorySegment segment, long index) { return (int) VH_transformOffset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int transformOffset(MemorySegment segment, long index) { return (int) VH_transformOffset.get(segment, 0L, index); }
     /// {@return `transformOffset`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_transformOffset(MemorySegment segment) { return VkAccelerationStructureBuildRangeInfoKHR.get_transformOffset(segment, 0L); }
-    /// {@return `transformOffset`}
-    public @CType("uint32_t") int transformOffset() { return VkAccelerationStructureBuildRangeInfoKHR.get_transformOffset(this.segment()); }
+    public int transformOffset() { return transformOffset(this.segment(), 0L); }
     /// Sets `transformOffset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_transformOffset(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_transformOffset.set(segment, 0L, index, value); }
-    /// Sets `transformOffset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_transformOffset(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_transformOffset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void transformOffset(MemorySegment segment, long index, int value) { VH_transformOffset.set(segment, 0L, index, value); }
     /// Sets `transformOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureBuildRangeInfoKHR transformOffset(@CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_transformOffset(this.segment(), value); return this; }
+    public VkAccelerationStructureBuildRangeInfoKHR transformOffset(int value) { transformOffset(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAccelerationStructureBuildRangeInfoKHR].
     public static final class Buffer extends VkAccelerationStructureBuildRangeInfoKHR {
@@ -229,40 +197,40 @@ public sealed class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `primitiveCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int primitiveCountAt(long index) { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitiveCountAt(long index) { return primitiveCount(this.segment(), index); }
         /// Sets `primitiveCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitiveCountAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveCount(this.segment(), index, value); return this; }
+        public Buffer primitiveCountAt(long index, int value) { primitiveCount(this.segment(), index, value); return this; }
 
         /// {@return `primitiveOffset` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int primitiveOffsetAt(long index) { return VkAccelerationStructureBuildRangeInfoKHR.get_primitiveOffset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int primitiveOffsetAt(long index) { return primitiveOffset(this.segment(), index); }
         /// Sets `primitiveOffset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer primitiveOffsetAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_primitiveOffset(this.segment(), index, value); return this; }
+        public Buffer primitiveOffsetAt(long index, int value) { primitiveOffset(this.segment(), index, value); return this; }
 
         /// {@return `firstVertex` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int firstVertexAt(long index) { return VkAccelerationStructureBuildRangeInfoKHR.get_firstVertex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int firstVertexAt(long index) { return firstVertex(this.segment(), index); }
         /// Sets `firstVertex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer firstVertexAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_firstVertex(this.segment(), index, value); return this; }
+        public Buffer firstVertexAt(long index, int value) { firstVertex(this.segment(), index, value); return this; }
 
         /// {@return `transformOffset` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int transformOffsetAt(long index) { return VkAccelerationStructureBuildRangeInfoKHR.get_transformOffset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int transformOffsetAt(long index) { return transformOffset(this.segment(), index); }
         /// Sets `transformOffset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer transformOffsetAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureBuildRangeInfoKHR.set_transformOffset(this.segment(), index, value); return this; }
+        public Buffer transformOffsetAt(long index, int value) { transformOffset(this.segment(), index, value); return this; }
 
     }
 }

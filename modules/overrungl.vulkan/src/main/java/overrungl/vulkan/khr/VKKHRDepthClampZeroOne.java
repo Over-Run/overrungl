@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2025 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,18 +14,14 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.vulkan
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan.khr;
+import overrungl.vulkan.*;
+public final class VKKHRDepthClampZeroOne {
+    public static final int VK_KHR_DEPTH_CLAMP_ZERO_ONE_SPEC_VERSION = 1;
+    public static final String VK_KHR_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_KHR_depth_clamp_zero_one";
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR = 1000604000;
 
-class VkStruct(
-    val packageName: String,
-    val name: String,
-    val union: Boolean,
-    val members: List<VkStructMember>,
-    val usedEnums: Set<String>,
-)
+    private VKKHRDepthClampZeroOne() { }
 
-data class VkStructMember(
-    val type: List<VkTypeComponent>,
-    val name: String,
-    val fixedSize: String?
-)
+}

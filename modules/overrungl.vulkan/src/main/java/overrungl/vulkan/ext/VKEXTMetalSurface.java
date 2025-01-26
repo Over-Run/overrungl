@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -30,19 +29,22 @@ public class VKEXTMetalSurface {
     public static final class Handles {
         public static final MethodHandle MH_vkCreateMetalSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkCreateMetalSurfaceEXT;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+        private Handles(MemorySegment instance, VKLoadFunc func) {
             PFN_vkCreateMetalSurfaceEXT = func.invoke(instance, "vkCreateMetalSurfaceEXT");
         }
     }
 
-    public VKEXTMetalSurface(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
+    public VKEXTMetalSurface(MemorySegment instance, VKLoadFunc func) {
         this.handles = new Handles(instance, func);
     }
 
-    public @CType("VkResult") int CreateMetalSurfaceEXT(@CType("VkInstance") MemorySegment instance, @CType("const VkMetalSurfaceCreateInfoEXT *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkSurfaceKHR *") MemorySegment pSurface) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateMetalSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateMetalSurfaceEXT");
+    /// ```
+    /// VkResult vkCreateMetalSurfaceEXT(VkInstance instance, const VkMetalSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// ```
+    public int CreateMetalSurfaceEXT(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateMetalSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateMetalSurfaceEXT");
         try { return (int) Handles.MH_vkCreateMetalSurfaceEXT.invokeExact(handles.PFN_vkCreateMetalSurfaceEXT, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCreateMetalSurfaceEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CreateMetalSurfaceEXT", e); }
     }
 
 }

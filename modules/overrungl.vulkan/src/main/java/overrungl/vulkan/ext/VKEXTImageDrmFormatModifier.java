@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -39,21 +38,24 @@ public class VKEXTImageDrmFormatModifier {
     public static final int VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT = 1000158006;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetImageDrmFormatModifierPropertiesEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetImageDrmFormatModifierPropertiesEXT = func.invoke(device, "vkGetImageDrmFormatModifierPropertiesEXT");
         }
     }
 
-    public VKEXTImageDrmFormatModifier(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTImageDrmFormatModifier(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetImageDrmFormatModifierPropertiesEXT(@CType("VkDevice") MemorySegment device, @CType("VkImage") MemorySegment image, @CType("VkImageDrmFormatModifierPropertiesEXT *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
+    /// ```
+    /// VkResult vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, VkImage image, VkImageDrmFormatModifierPropertiesEXT* pProperties);
+    /// ```
+    public int GetImageDrmFormatModifierPropertiesEXT(MemorySegment device, long image, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
         try { return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(handles.PFN_vkGetImageDrmFormatModifierPropertiesEXT, device, image, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetImageDrmFormatModifierPropertiesEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetImageDrmFormatModifierPropertiesEXT", e); }
     }
 
 }

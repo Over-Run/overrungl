@@ -284,6 +284,6 @@ class ForeignRegistrationFeature implements Feature {
         registerForDowncall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
         registerForDowncall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
         registerForUpcall(overrungl.opengl.GLDebugProc.DESCRIPTOR);
-        registerForUpcall(overrungl.opengl.GLDebugProcAMD.DESCRIPTOR);
+        registerForUpcall(overrungl.opengl.amd.GLDebugProcAMD.DESCRIPTOR);
     }
 }

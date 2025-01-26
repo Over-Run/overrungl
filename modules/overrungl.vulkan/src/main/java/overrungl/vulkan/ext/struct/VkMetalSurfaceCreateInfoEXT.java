@@ -15,48 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### pLayer
-/// [VarHandle][#VH_pLayer] - [Getter][#pLayer()] - [Setter][#pLayer(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkMetalSurfaceCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkMetalSurfaceCreateFlagsEXT flags;
-///     const CAMetalLayer * pLayer;
-/// } VkMetalSurfaceCreateInfoEXT;
 /// ```
-public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
+/// struct VkMetalSurfaceCreateInfoEXT {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkMetalSurfaceCreateFlagsEXT flags;
+///     const CAMetalLayer* pLayer;
+/// };
+/// ```
+public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
     /// The struct layout of `VkMetalSurfaceCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("pLayer")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    /// The byte offset of `pLayer`.
+    public static final long OFFSET_pLayer = LAYOUT.byteOffset(PathElement.groupElement("pLayer"));
+    /// The memory layout of `pLayer`.
+    public static final MemoryLayout LAYOUT_pLayer = LAYOUT.select(PathElement.groupElement("pLayer"));
     /// The [VarHandle] of `pLayer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLayer"));
 
@@ -67,19 +73,14 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMetalSurfaceCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment); }
-
-    /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMetalSurfaceCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkMetalSurfaceCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMetalSurfaceCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
     /// @return the allocated `VkMetalSurfaceCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMetalSurfaceCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMetalSurfaceCreateInfoEXT`
-    public static VkMetalSurfaceCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkMetalSurfaceCreateFlagsEXT") int flags, @CType("const CAMetalLayer *") MemorySegment pLayer) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pLayer(pLayer); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkMetalSurfaceCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkMetalSurfaceCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkMetalSurfaceCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMetalSurfaceCreateInfoEXT sType(@CType("VkStructureType") int value) { VkMetalSurfaceCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkMetalSurfaceCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkMetalSurfaceCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkMetalSurfaceCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMetalSurfaceCreateInfoEXT pNext(@CType("const void *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkMetalSurfaceCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMetalSurfaceCreateFlagsEXT") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMetalSurfaceCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkMetalSurfaceCreateInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkMetalSurfaceCreateFlagsEXT") int flags() { return VkMetalSurfaceCreateInfoEXT.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkMetalSurfaceCreateFlagsEXT") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkMetalSurfaceCreateFlagsEXT") int value) { VkMetalSurfaceCreateInfoEXT.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMetalSurfaceCreateInfoEXT flags(@CType("VkMetalSurfaceCreateFlagsEXT") int value) { VkMetalSurfaceCreateInfoEXT.set_flags(this.segment(), value); return this; }
+    public VkMetalSurfaceCreateInfoEXT flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `pLayer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const CAMetalLayer *") MemorySegment get_pLayer(MemorySegment segment, long index) { return (MemorySegment) VH_pLayer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pLayer(MemorySegment segment, long index) { return (MemorySegment) VH_pLayer.get(segment, 0L, index); }
     /// {@return `pLayer`}
-    /// @param segment the segment of the struct
-    public static @CType("const CAMetalLayer *") MemorySegment get_pLayer(MemorySegment segment) { return VkMetalSurfaceCreateInfoEXT.get_pLayer(segment, 0L); }
-    /// {@return `pLayer`}
-    public @CType("const CAMetalLayer *") MemorySegment pLayer() { return VkMetalSurfaceCreateInfoEXT.get_pLayer(this.segment()); }
+    public MemorySegment pLayer() { return pLayer(this.segment(), 0L); }
     /// Sets `pLayer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pLayer(MemorySegment segment, long index, @CType("const CAMetalLayer *") MemorySegment value) { VH_pLayer.set(segment, 0L, index, value); }
-    /// Sets `pLayer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pLayer(MemorySegment segment, @CType("const CAMetalLayer *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pLayer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pLayer(MemorySegment segment, long index, MemorySegment value) { VH_pLayer.set(segment, 0L, index, value); }
     /// Sets `pLayer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMetalSurfaceCreateInfoEXT pLayer(@CType("const CAMetalLayer *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pLayer(this.segment(), value); return this; }
+    public VkMetalSurfaceCreateInfoEXT pLayer(MemorySegment value) { pLayer(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkMetalSurfaceCreateInfoEXT].
     public static final class Buffer extends VkMetalSurfaceCreateInfoEXT {
@@ -229,40 +197,40 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkMetalSurfaceCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkMetalSurfaceCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkMetalSurfaceCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkMetalSurfaceCreateFlagsEXT") int flagsAt(long index) { return VkMetalSurfaceCreateInfoEXT.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkMetalSurfaceCreateFlagsEXT") int value) { VkMetalSurfaceCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `pLayer` at the given index}
-        /// @param index the index
-        public @CType("const CAMetalLayer *") MemorySegment pLayerAt(long index) { return VkMetalSurfaceCreateInfoEXT.get_pLayer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pLayerAt(long index) { return pLayer(this.segment(), index); }
         /// Sets `pLayer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pLayerAt(long index, @CType("const CAMetalLayer *") MemorySegment value) { VkMetalSurfaceCreateInfoEXT.set_pLayer(this.segment(), index, value); return this; }
+        public Buffer pLayerAt(long index, MemorySegment value) { pLayer(this.segment(), index, value); return this; }
 
     }
 }

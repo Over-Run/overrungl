@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -47,19 +46,22 @@ public class VKEXTMetalObjects {
     public static final class Handles {
         public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkExportMetalObjectsEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");
         }
     }
 
-    public VKEXTMetalObjects(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTMetalObjects(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void ExportMetalObjectsEXT(@CType("VkDevice") MemorySegment device, @CType("VkExportMetalObjectsInfoEXT *") MemorySegment pMetalObjectsInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
+    /// ```
+    /// void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
+    /// ```
+    public void ExportMetalObjectsEXT(MemorySegment device, MemorySegment pMetalObjectsInfo) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
         try { Handles.MH_vkExportMetalObjectsEXT.invokeExact(handles.PFN_vkExportMetalObjectsEXT, device, pMetalObjectsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in vkExportMetalObjectsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ExportMetalObjectsEXT", e); }
     }
 
 }

@@ -40,7 +40,7 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     }
 
     /// ```
-    /// void glConservativeRasterParameteriNV(unsigned int pname, int param);
+    /// void glConservativeRasterParameteriNV(GLenum pname, GLint param);
     /// ```
     public void ConservativeRasterParameteriNV(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");

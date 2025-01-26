@@ -42,7 +42,7 @@ public final class GLEXTBlendColor {
     }
 
     /// ```
-    /// void glBlendColorEXT(float red, float green, float blue, float alpha);
+    /// void glBlendColorEXT(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
     /// ```
     public void BlendColorEXT(float red, float green, float blue, float alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendColorEXT");

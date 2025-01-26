@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -47,19 +46,22 @@ public class VKKHRCooperativeMatrix {
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
         }
     }
 
-    public VKKHRCooperativeMatrix(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRCooperativeMatrix(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetPhysicalDeviceCooperativeMatrixPropertiesKHR(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkCooperativeMatrixPropertiesKHR *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
+    /// ```
+    /// VkResult vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixPropertiesKHR* pProperties);
+    /// ```
+    public int GetPhysicalDeviceCooperativeMatrixPropertiesKHR(MemorySegment physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR, physicalDevice, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceCooperativeMatrixPropertiesKHR", e); }
     }
 
 }

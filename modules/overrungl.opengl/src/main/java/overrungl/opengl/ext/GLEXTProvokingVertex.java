@@ -41,7 +41,7 @@ public final class GLEXTProvokingVertex {
     }
 
     /// ```
-    /// void glProvokingVertexEXT(unsigned int mode);
+    /// void glProvokingVertexEXT(GLenum mode);
     /// ```
     public void ProvokingVertexEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");

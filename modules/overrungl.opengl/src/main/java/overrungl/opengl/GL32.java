@@ -156,7 +156,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glDrawElementsBaseVertex(unsigned int mode, int count, unsigned int type, const void* indices, int basevertex);
+    /// void glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const void* indices, GLint basevertex);
     /// ```
     public void DrawElementsBaseVertex(int mode, int count, int type, MemorySegment indices, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsBaseVertex");
@@ -165,7 +165,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glDrawRangeElementsBaseVertex(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices, int basevertex);
+    /// void glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void* indices, GLint basevertex);
     /// ```
     public void DrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsBaseVertex");
@@ -174,7 +174,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glDrawElementsInstancedBaseVertex(unsigned int mode, int count, unsigned int type, const void* indices, int instancecount, int basevertex);
+    /// void glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLint basevertex);
     /// ```
     public void DrawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instancecount, int basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertex");
@@ -183,7 +183,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glMultiDrawElementsBaseVertex(unsigned int mode, const GLsizei* count, unsigned int type, const void* const * indices, int drawcount, const GLint* basevertex);
+    /// void glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei* count, GLenum type, const void* const * indices, GLsizei drawcount, const GLint* basevertex);
     /// ```
     public void MultiDrawElementsBaseVertex(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount, MemorySegment basevertex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsBaseVertex)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsBaseVertex");
@@ -192,7 +192,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glProvokingVertex(unsigned int mode);
+    /// void glProvokingVertex(GLenum mode);
     /// ```
     public void ProvokingVertex(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertex)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertex");
@@ -201,7 +201,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// __GLsync * glFenceSync(unsigned int condition, unsigned int flags);
+    /// GLsync glFenceSync(GLenum condition, GLbitfield flags);
     /// ```
     public MemorySegment FenceSync(int condition, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFenceSync)) throw new SymbolNotFoundError("Symbol not found: glFenceSync");
@@ -210,7 +210,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// GLboolean glIsSync(__GLsync * sync);
+    /// GLboolean glIsSync(GLsync sync);
     /// ```
     public boolean IsSync(MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsSync)) throw new SymbolNotFoundError("Symbol not found: glIsSync");
@@ -219,7 +219,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glDeleteSync(__GLsync * sync);
+    /// void glDeleteSync(GLsync sync);
     /// ```
     public void DeleteSync(MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSync)) throw new SymbolNotFoundError("Symbol not found: glDeleteSync");
@@ -228,7 +228,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// unsigned int glClientWaitSync(__GLsync * sync, unsigned int flags, uint64_t timeout);
+    /// GLenum glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
     /// ```
     public int ClientWaitSync(MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientWaitSync)) throw new SymbolNotFoundError("Symbol not found: glClientWaitSync");
@@ -237,7 +237,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glWaitSync(__GLsync * sync, unsigned int flags, uint64_t timeout);
+    /// void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
     /// ```
     public void WaitSync(MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSync)) throw new SymbolNotFoundError("Symbol not found: glWaitSync");
@@ -246,7 +246,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glGetInteger64v(unsigned int pname, GLint64* data);
+    /// void glGetInteger64v(GLenum pname, GLint64* data);
     /// ```
     public void GetInteger64v(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInteger64v)) throw new SymbolNotFoundError("Symbol not found: glGetInteger64v");
@@ -255,7 +255,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glGetSynciv(__GLsync * sync, unsigned int pname, int count, GLsizei* length, GLint* values);
+    /// void glGetSynciv(GLsync sync, GLenum pname, GLsizei count, GLsizei* length, GLint* values);
     /// ```
     public void GetSynciv(MemorySegment sync, int pname, int count, MemorySegment length, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSynciv)) throw new SymbolNotFoundError("Symbol not found: glGetSynciv");
@@ -264,7 +264,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glGetInteger64i_v(unsigned int target, unsigned int index, GLint64* data);
+    /// void glGetInteger64i_v(GLenum target, GLuint index, GLint64* data);
     /// ```
     public void GetInteger64i_v(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInteger64i_v)) throw new SymbolNotFoundError("Symbol not found: glGetInteger64i_v");
@@ -273,7 +273,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glGetBufferParameteri64v(unsigned int target, unsigned int pname, GLint64* params);
+    /// void glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64* params);
     /// ```
     public void GetBufferParameteri64v(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameteri64v)) throw new SymbolNotFoundError("Symbol not found: glGetBufferParameteri64v");
@@ -282,7 +282,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glFramebufferTexture(unsigned int target, unsigned int attachment, unsigned int texture, int level);
+    /// void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level);
     /// ```
     public void FramebufferTexture(int target, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture");
@@ -291,7 +291,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glTexImage2DMultisample(unsigned int target, int samples, unsigned int internalformat, int width, int height, GLboolean fixedsamplelocations);
+    /// void glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
     /// ```
     public void TexImage2DMultisample(int target, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisample");
@@ -300,7 +300,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glTexImage3DMultisample(unsigned int target, int samples, unsigned int internalformat, int width, int height, int depth, GLboolean fixedsamplelocations);
+    /// void glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
     public void TexImage3DMultisample(int target, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisample");
@@ -309,7 +309,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glGetMultisamplefv(unsigned int pname, unsigned int index, GLfloat* val);
+    /// void glGetMultisamplefv(GLenum pname, GLuint index, GLfloat* val);
     /// ```
     public void GetMultisamplefv(int pname, int index, MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefv)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv");
@@ -318,7 +318,7 @@ public class GL32 extends GL31 {
     }
 
     /// ```
-    /// void glSampleMaski(unsigned int maskNumber, unsigned int mask);
+    /// void glSampleMaski(GLuint maskNumber, GLbitfield mask);
     /// ```
     public void SampleMaski(int maskNumber, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaski)) throw new SymbolNotFoundError("Symbol not found: glSampleMaski");
@@ -326,7 +326,4 @@ public class GL32 extends GL31 {
         catch (Throwable e) { throw new RuntimeException("error in SampleMaski", e); }
     }
 
-    // --- OverrunGL custom code ---
-    public long GetInteger64i_v(@CType("GLenum") int target, @CType("GLuint") int index) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.longs(0); GetInteger64i_v(target, index, p); return p.get(ValueLayout.JAVA_LONG, 0); } }
-    public long GetBufferParameteri64v(@CType("GLenum") int target, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.longs(0); GetBufferParameteri64v(target, pname, p); return p.get(ValueLayout.JAVA_LONG, 0); } }
 }

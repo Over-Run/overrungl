@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### pipelineProtectedAccess
-/// [VarHandle][#VH_pipelineProtectedAccess] - [Getter][#pipelineProtectedAccess()] - [Setter][#pipelineProtectedAccess(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevicePipelineProtectedAccessFeatures {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 pipelineProtectedAccess;
-/// } VkPhysicalDevicePipelineProtectedAccessFeatures;
 /// ```
-public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Struct {
+/// struct VkPhysicalDevicePipelineProtectedAccessFeatures {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkBool32 pipelineProtectedAccess;
+/// };
+/// ```
+public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDevicePipelineProtectedAccessFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("pipelineProtectedAccess")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `pipelineProtectedAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineProtectedAccess`.
+    public static final long OFFSET_pipelineProtectedAccess = LAYOUT.byteOffset(PathElement.groupElement("pipelineProtectedAccess"));
+    /// The memory layout of `pipelineProtectedAccess`.
+    public static final MemoryLayout LAYOUT_pipelineProtectedAccess = LAYOUT.select(PathElement.groupElement("pipelineProtectedAccess"));
+    /// The [VarHandle] of `pipelineProtectedAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineProtectedAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineProtectedAccess"));
 
     /// Creates `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Stru
     /// Creates `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineProtectedAccessFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineProtectedAccessFeatures(segment); }
-
-    /// Creates `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineProtectedAccessFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineProtectedAccessFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevicePipelineProtectedAccessFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineProtectedAccessFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Stru
     /// @return the allocated `VkPhysicalDevicePipelineProtectedAccessFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePipelineProtectedAccessFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePipelineProtectedAccessFeatures`
-    public static VkPhysicalDevicePipelineProtectedAccessFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int pipelineProtectedAccess) { return alloc(allocator).sType(sType).pNext(pNext).pipelineProtectedAccess(pipelineProtectedAccess); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineProtectedAccessFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineProtectedAccessFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineProtectedAccessFeatures pNext(@CType("void *") MemorySegment value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineProtectedAccessFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineProtectedAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_pipelineProtectedAccess(MemorySegment segment, long index) { return (int) VH_pipelineProtectedAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineProtectedAccess(MemorySegment segment, long index) { return (int) VH_pipelineProtectedAccess.get(segment, 0L, index); }
     /// {@return `pipelineProtectedAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_pipelineProtectedAccess(MemorySegment segment) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pipelineProtectedAccess(segment, 0L); }
-    /// {@return `pipelineProtectedAccess`}
-    public @CType("VkBool32") int pipelineProtectedAccess() { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pipelineProtectedAccess(this.segment()); }
+    public int pipelineProtectedAccess() { return pipelineProtectedAccess(this.segment(), 0L); }
     /// Sets `pipelineProtectedAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineProtectedAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_pipelineProtectedAccess.set(segment, 0L, index, value); }
-    /// Sets `pipelineProtectedAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineProtectedAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pipelineProtectedAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineProtectedAccess(MemorySegment segment, long index, int value) { VH_pipelineProtectedAccess.set(segment, 0L, index, value); }
     /// Sets `pipelineProtectedAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePipelineProtectedAccessFeatures pipelineProtectedAccess(@CType("VkBool32") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pipelineProtectedAccess(this.segment(), value); return this; }
+    public VkPhysicalDevicePipelineProtectedAccessFeatures pipelineProtectedAccess(int value) { pipelineProtectedAccess(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevicePipelineProtectedAccessFeatures].
     public static final class Buffer extends VkPhysicalDevicePipelineProtectedAccessFeatures {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDevicePipelineProtectedAccessFeatures extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `pipelineProtectedAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int pipelineProtectedAccessAt(long index) { return VkPhysicalDevicePipelineProtectedAccessFeatures.get_pipelineProtectedAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineProtectedAccessAt(long index) { return pipelineProtectedAccess(this.segment(), index); }
         /// Sets `pipelineProtectedAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineProtectedAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineProtectedAccessFeatures.set_pipelineProtectedAccess(this.segment(), index, value); return this; }
+        public Buffer pipelineProtectedAccessAt(long index, int value) { pipelineProtectedAccess(this.segment(), index, value); return this; }
 
     }
 }

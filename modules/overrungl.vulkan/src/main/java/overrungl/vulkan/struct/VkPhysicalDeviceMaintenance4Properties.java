@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### maxBufferSize
-/// [VarHandle][#VH_maxBufferSize] - [Getter][#maxBufferSize()] - [Setter][#maxBufferSize(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceMaintenance4Properties {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkDeviceSize maxBufferSize;
-/// } VkPhysicalDeviceMaintenance4Properties;
 /// ```
-public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
+/// struct VkPhysicalDeviceMaintenance4Properties {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkDeviceSize maxBufferSize;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceMaintenance4Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance4Properties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("maxBufferSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `maxBufferSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxBufferSize`.
+    public static final long OFFSET_maxBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxBufferSize"));
+    /// The memory layout of `maxBufferSize`.
+    public static final MemoryLayout LAYOUT_maxBufferSize = LAYOUT.select(PathElement.groupElement("maxBufferSize"));
+    /// The [VarHandle] of `maxBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferSize"));
 
     /// Creates `VkPhysicalDeviceMaintenance4Properties` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
     /// Creates `VkPhysicalDeviceMaintenance4Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance4Properties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance4Properties(segment); }
-
-    /// Creates `VkPhysicalDeviceMaintenance4Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMaintenance4Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance4Properties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance4Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceMaintenance4Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance4Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceMaintenance4Properties` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance4Properties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceMaintenance4Properties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance4Properties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMaintenance4Properties`
-    public static VkPhysicalDeviceMaintenance4Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkDeviceSize") long maxBufferSize) { return alloc(allocator).sType(sType).pNext(pNext).maxBufferSize(maxBufferSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMaintenance4Properties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMaintenance4Properties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance4Properties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance4Properties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance4Properties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance4Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMaintenance4Properties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceMaintenance4Properties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceMaintenance4Properties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance4Properties pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceMaintenance4Properties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance4Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBufferSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get(segment, 0L, index); }
     /// {@return `maxBufferSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_maxBufferSize(MemorySegment segment) { return VkPhysicalDeviceMaintenance4Properties.get_maxBufferSize(segment, 0L); }
-    /// {@return `maxBufferSize`}
-    public @CType("VkDeviceSize") long maxBufferSize() { return VkPhysicalDeviceMaintenance4Properties.get_maxBufferSize(this.segment()); }
+    public long maxBufferSize() { return maxBufferSize(this.segment(), 0L); }
     /// Sets `maxBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBufferSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_maxBufferSize.set(segment, 0L, index, value); }
-    /// Sets `maxBufferSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBufferSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceMaintenance4Properties.set_maxBufferSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBufferSize(MemorySegment segment, long index, long value) { VH_maxBufferSize.set(segment, 0L, index, value); }
     /// Sets `maxBufferSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance4Properties maxBufferSize(@CType("VkDeviceSize") long value) { VkPhysicalDeviceMaintenance4Properties.set_maxBufferSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance4Properties maxBufferSize(long value) { maxBufferSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceMaintenance4Properties].
     public static final class Buffer extends VkPhysicalDeviceMaintenance4Properties {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceMaintenance4Properties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMaintenance4Properties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance4Properties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceMaintenance4Properties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceMaintenance4Properties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxBufferSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long maxBufferSizeAt(long index) { return VkPhysicalDeviceMaintenance4Properties.get_maxBufferSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxBufferSizeAt(long index) { return maxBufferSize(this.segment(), index); }
         /// Sets `maxBufferSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBufferSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceMaintenance4Properties.set_maxBufferSize(this.segment(), index, value); return this; }
+        public Buffer maxBufferSizeAt(long index, long value) { maxBufferSize(this.segment(), index, value); return this; }
 
     }
 }

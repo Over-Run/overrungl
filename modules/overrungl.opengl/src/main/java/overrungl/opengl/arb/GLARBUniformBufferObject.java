@@ -97,7 +97,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetUniformIndices(unsigned int program, int uniformCount, const GLchar* const * uniformNames, GLuint* uniformIndices);
+    /// void glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar* const * uniformNames, GLuint* uniformIndices);
     /// ```
     public void GetUniformIndices(int program, int uniformCount, MemorySegment uniformNames, MemorySegment uniformIndices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformIndices)) throw new SymbolNotFoundError("Symbol not found: glGetUniformIndices");
@@ -106,7 +106,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetActiveUniformsiv(unsigned int program, int uniformCount, const GLuint* uniformIndices, unsigned int pname, GLint* params);
+    /// void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint* uniformIndices, GLenum pname, GLint* params);
     /// ```
     public void GetActiveUniformsiv(int program, int uniformCount, MemorySegment uniformIndices, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformsiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformsiv");
@@ -115,7 +115,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetActiveUniformName(unsigned int program, unsigned int uniformIndex, int bufSize, GLsizei* length, GLchar* uniformName);
+    /// void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformName);
     /// ```
     public void GetActiveUniformName(int program, int uniformIndex, int bufSize, MemorySegment length, MemorySegment uniformName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformName");
@@ -124,7 +124,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// unsigned int glGetUniformBlockIndex(unsigned int program, const GLchar* uniformBlockName);
+    /// GLuint glGetUniformBlockIndex(GLuint program, const GLchar* uniformBlockName);
     /// ```
     public int GetUniformBlockIndex(int program, MemorySegment uniformBlockName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformBlockIndex)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBlockIndex");
@@ -133,7 +133,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetActiveUniformBlockiv(unsigned int program, unsigned int uniformBlockIndex, unsigned int pname, GLint* params);
+    /// void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint* params);
     /// ```
     public void GetActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformBlockiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformBlockiv");
@@ -142,7 +142,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetActiveUniformBlockName(unsigned int program, unsigned int uniformBlockIndex, int bufSize, GLsizei* length, GLchar* uniformBlockName);
+    /// void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei* length, GLchar* uniformBlockName);
     /// ```
     public void GetActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, MemorySegment length, MemorySegment uniformBlockName) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformBlockName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformBlockName");
@@ -151,7 +151,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glUniformBlockBinding(unsigned int program, unsigned int uniformBlockIndex, unsigned int uniformBlockBinding);
+    /// void glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
     /// ```
     public void UniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glUniformBlockBinding");
@@ -160,7 +160,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glBindBufferRange(unsigned int target, unsigned int index, unsigned int buffer, signed long long offset, signed long long size);
+    /// void glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
     /// ```
     public void BindBufferRange(int target, int index, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRange)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRange");
@@ -169,7 +169,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glBindBufferBase(unsigned int target, unsigned int index, unsigned int buffer);
+    /// void glBindBufferBase(GLenum target, GLuint index, GLuint buffer);
     /// ```
     public void BindBufferBase(int target, int index, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBase)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBase");
@@ -178,7 +178,7 @@ public final class GLARBUniformBufferObject {
     }
 
     /// ```
-    /// void glGetIntegeri_v(unsigned int target, unsigned int index, GLint* data);
+    /// void glGetIntegeri_v(GLenum target, GLuint index, GLint* data);
     /// ```
     public void GetIntegeri_v(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegeri_v)) throw new SymbolNotFoundError("Symbol not found: glGetIntegeri_v");

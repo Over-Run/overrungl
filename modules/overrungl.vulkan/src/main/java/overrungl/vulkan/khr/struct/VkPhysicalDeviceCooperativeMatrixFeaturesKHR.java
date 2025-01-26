@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### cooperativeMatrix
-/// [VarHandle][#VH_cooperativeMatrix] - [Getter][#cooperativeMatrix()] - [Setter][#cooperativeMatrix(int)]
-/// ### cooperativeMatrixRobustBufferAccess
-/// [VarHandle][#VH_cooperativeMatrixRobustBufferAccess] - [Getter][#cooperativeMatrixRobustBufferAccess()] - [Setter][#cooperativeMatrixRobustBufferAccess(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR {
+/// ```
+/// struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR {
 ///     VkStructureType sType;
-///     void * pNext;
+///     void* pNext;
 ///     VkBool32 cooperativeMatrix;
 ///     VkBool32 cooperativeMatrixRobustBufferAccess;
-/// } VkPhysicalDeviceCooperativeMatrixFeaturesKHR;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct {
+public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrix"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrixRobustBufferAccess")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `cooperativeMatrix` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `cooperativeMatrix`.
+    public static final long OFFSET_cooperativeMatrix = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrix"));
+    /// The memory layout of `cooperativeMatrix`.
+    public static final MemoryLayout LAYOUT_cooperativeMatrix = LAYOUT.select(PathElement.groupElement("cooperativeMatrix"));
+    /// The [VarHandle] of `cooperativeMatrix` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_cooperativeMatrix = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrix"));
-    /// The [VarHandle] of `cooperativeMatrixRobustBufferAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `cooperativeMatrixRobustBufferAccess`.
+    public static final long OFFSET_cooperativeMatrixRobustBufferAccess = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixRobustBufferAccess"));
+    /// The memory layout of `cooperativeMatrixRobustBufferAccess`.
+    public static final MemoryLayout LAYOUT_cooperativeMatrixRobustBufferAccess = LAYOUT.select(PathElement.groupElement("cooperativeMatrixRobustBufferAccess"));
+    /// The [VarHandle] of `cooperativeMatrixRobustBufferAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_cooperativeMatrixRobustBufferAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixRobustBufferAccess"));
 
     /// Creates `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct 
     /// Creates `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrixFeaturesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrixFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrixFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct 
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkBool32") int cooperativeMatrix, @CType("VkBool32") int cooperativeMatrixRobustBufferAccess) { return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrix(cooperativeMatrix).cooperativeMatrixRobustBufferAccess(cooperativeMatrixRobustBufferAccess); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct 
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR pNext(@CType("void *") MemorySegment value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `cooperativeMatrix` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_cooperativeMatrix(MemorySegment segment, long index) { return (int) VH_cooperativeMatrix.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int cooperativeMatrix(MemorySegment segment, long index) { return (int) VH_cooperativeMatrix.get(segment, 0L, index); }
     /// {@return `cooperativeMatrix`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_cooperativeMatrix(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrix(segment, 0L); }
-    /// {@return `cooperativeMatrix`}
-    public @CType("VkBool32") int cooperativeMatrix() { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrix(this.segment()); }
+    public int cooperativeMatrix() { return cooperativeMatrix(this.segment(), 0L); }
     /// Sets `cooperativeMatrix` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_cooperativeMatrix(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_cooperativeMatrix.set(segment, 0L, index, value); }
-    /// Sets `cooperativeMatrix` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_cooperativeMatrix(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrix(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void cooperativeMatrix(MemorySegment segment, long index, int value) { VH_cooperativeMatrix.set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrix` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR cooperativeMatrix(@CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrix(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR cooperativeMatrix(int value) { cooperativeMatrix(this.segment(), 0L, value); return this; }
 
     /// {@return `cooperativeMatrixRobustBufferAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_cooperativeMatrixRobustBufferAccess(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixRobustBufferAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int cooperativeMatrixRobustBufferAccess(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixRobustBufferAccess.get(segment, 0L, index); }
     /// {@return `cooperativeMatrixRobustBufferAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_cooperativeMatrixRobustBufferAccess(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrixRobustBufferAccess(segment, 0L); }
-    /// {@return `cooperativeMatrixRobustBufferAccess`}
-    public @CType("VkBool32") int cooperativeMatrixRobustBufferAccess() { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrixRobustBufferAccess(this.segment()); }
+    public int cooperativeMatrixRobustBufferAccess() { return cooperativeMatrixRobustBufferAccess(this.segment(), 0L); }
     /// Sets `cooperativeMatrixRobustBufferAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_cooperativeMatrixRobustBufferAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_cooperativeMatrixRobustBufferAccess.set(segment, 0L, index, value); }
-    /// Sets `cooperativeMatrixRobustBufferAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_cooperativeMatrixRobustBufferAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrixRobustBufferAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void cooperativeMatrixRobustBufferAccess(MemorySegment segment, long index, int value) { VH_cooperativeMatrixRobustBufferAccess.set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixRobustBufferAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR cooperativeMatrixRobustBufferAccess(@CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrixRobustBufferAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrixFeaturesKHR cooperativeMatrixRobustBufferAccess(int value) { cooperativeMatrixRobustBufferAccess(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceCooperativeMatrixFeaturesKHR].
     public static final class Buffer extends VkPhysicalDeviceCooperativeMatrixFeaturesKHR {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends Struct 
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `cooperativeMatrix` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int cooperativeMatrixAt(long index) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrix(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int cooperativeMatrixAt(long index) { return cooperativeMatrix(this.segment(), index); }
         /// Sets `cooperativeMatrix` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer cooperativeMatrixAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrix(this.segment(), index, value); return this; }
+        public Buffer cooperativeMatrixAt(long index, int value) { cooperativeMatrix(this.segment(), index, value); return this; }
 
         /// {@return `cooperativeMatrixRobustBufferAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int cooperativeMatrixRobustBufferAccessAt(long index) { return VkPhysicalDeviceCooperativeMatrixFeaturesKHR.get_cooperativeMatrixRobustBufferAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int cooperativeMatrixRobustBufferAccessAt(long index) { return cooperativeMatrixRobustBufferAccess(this.segment(), index); }
         /// Sets `cooperativeMatrixRobustBufferAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer cooperativeMatrixRobustBufferAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceCooperativeMatrixFeaturesKHR.set_cooperativeMatrixRobustBufferAccess(this.segment(), index, value); return this; }
+        public Buffer cooperativeMatrixRobustBufferAccessAt(long index, int value) { cooperativeMatrixRobustBufferAccess(this.segment(), index, value); return this; }
 
     }
 }

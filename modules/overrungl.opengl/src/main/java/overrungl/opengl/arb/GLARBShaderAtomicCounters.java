@@ -66,7 +66,7 @@ public final class GLARBShaderAtomicCounters {
     }
 
     /// ```
-    /// void glGetActiveAtomicCounterBufferiv(unsigned int program, unsigned int bufferIndex, unsigned int pname, GLint* params);
+    /// void glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint* params);
     /// ```
     public void GetActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveAtomicCounterBufferiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv");

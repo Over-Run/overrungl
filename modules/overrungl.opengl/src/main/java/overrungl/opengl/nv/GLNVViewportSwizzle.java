@@ -49,7 +49,7 @@ public final class GLNVViewportSwizzle {
     }
 
     /// ```
-    /// void glViewportSwizzleNV(unsigned int index, unsigned int swizzlex, unsigned int swizzley, unsigned int swizzlez, unsigned int swizzlew);
+    /// void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
     /// ```
     public void ViewportSwizzleNV(int index, int swizzlex, int swizzley, int swizzlez, int swizzlew) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV");

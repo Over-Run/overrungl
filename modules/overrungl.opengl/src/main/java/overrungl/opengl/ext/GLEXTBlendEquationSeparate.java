@@ -39,7 +39,7 @@ public final class GLEXTBlendEquationSeparate {
     }
 
     /// ```
-    /// void glBlendEquationSeparateEXT(unsigned int modeRGB, unsigned int modeAlpha);
+    /// void glBlendEquationSeparateEXT(GLenum modeRGB, GLenum modeAlpha);
     /// ```
     public void BlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");

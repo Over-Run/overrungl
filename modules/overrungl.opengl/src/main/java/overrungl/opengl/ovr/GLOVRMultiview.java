@@ -43,7 +43,7 @@ public final class GLOVRMultiview {
     }
 
     /// ```
-    /// void glFramebufferTextureMultiviewOVR(unsigned int target, unsigned int attachment, unsigned int texture, int level, int baseViewIndex, int numViews);
+    /// void glFramebufferTextureMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
     /// ```
     public void FramebufferTextureMultiviewOVR(int target, int attachment, int texture, int level, int baseViewIndex, int numViews) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR");
@@ -52,7 +52,7 @@ public final class GLOVRMultiview {
     }
 
     /// ```
-    /// void glNamedFramebufferTextureMultiviewOVR(unsigned int framebuffer, unsigned int attachment, unsigned int texture, int level, int baseViewIndex, int numViews);
+    /// void glNamedFramebufferTextureMultiviewOVR(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
     /// ```
     public void NamedFramebufferTextureMultiviewOVR(int framebuffer, int attachment, int texture, int level, int baseViewIndex, int numViews) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR");

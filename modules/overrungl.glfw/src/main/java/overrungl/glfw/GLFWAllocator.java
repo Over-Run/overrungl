@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct GLFWAllocator {
-///     void* (*GLFWAllocateFun)(size_t size, void* user) allocate;
-///     void* (*GLFWReallocateFun)(void* block, size_t size, void* user) reallocate;
-///     void (*GLFWDeallocateFun)(void* block, void* user) deallocate;
+///     GLFWallocatefun allocate;
+///     GLFWreallocatefun reallocate;
+///     GLFWdeallocatefun deallocate;
 ///     void* user;
 /// };
 /// ```

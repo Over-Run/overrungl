@@ -39,7 +39,7 @@ public final class GLARBParallelShaderCompile {
     }
 
     /// ```
-    /// void glMaxShaderCompilerThreadsARB(unsigned int count);
+    /// void glMaxShaderCompilerThreadsARB(GLuint count);
     /// ```
     public void MaxShaderCompilerThreadsARB(int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsARB)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsARB");

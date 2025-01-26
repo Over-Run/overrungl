@@ -35,7 +35,7 @@ import overrungl.util.*;
 ///     int num_nodes;
 ///     stbrp_node* active_head;
 ///     stbrp_node* free_head;
-///     STBRPNode extra[2];
+///     stbrp_node extra[2];
 /// };
 /// ```
 public sealed class STBRPContext extends GroupType {

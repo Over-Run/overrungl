@@ -42,7 +42,7 @@ public final class GLARBIndirectParameters {
     }
 
     /// ```
-    /// void glMultiDrawArraysIndirectCountARB(unsigned int mode, const void* indirect, signed long long drawcount, int maxdrawcount, int stride);
+    /// void glMultiDrawArraysIndirectCountARB(GLenum mode, const void* indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirectCountARB(int mode, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCountARB)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCountARB");
@@ -51,7 +51,7 @@ public final class GLARBIndirectParameters {
     }
 
     /// ```
-    /// void glMultiDrawElementsIndirectCountARB(unsigned int mode, unsigned int type, const void* indirect, signed long long drawcount, int maxdrawcount, int stride);
+    /// void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void* indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirectCountARB(int mode, int type, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCountARB)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCountARB");

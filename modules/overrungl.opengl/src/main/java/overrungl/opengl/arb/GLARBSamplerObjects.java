@@ -77,7 +77,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glGenSamplers(int count, GLuint* samplers);
+    /// void glGenSamplers(GLsizei count, GLuint* samplers);
     /// ```
     public void GenSamplers(int count, MemorySegment samplers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenSamplers)) throw new SymbolNotFoundError("Symbol not found: glGenSamplers");
@@ -86,7 +86,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glDeleteSamplers(int count, const GLuint* samplers);
+    /// void glDeleteSamplers(GLsizei count, const GLuint* samplers);
     /// ```
     public void DeleteSamplers(int count, MemorySegment samplers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSamplers)) throw new SymbolNotFoundError("Symbol not found: glDeleteSamplers");
@@ -95,7 +95,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// GLboolean glIsSampler(unsigned int sampler);
+    /// GLboolean glIsSampler(GLuint sampler);
     /// ```
     public boolean IsSampler(int sampler) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsSampler)) throw new SymbolNotFoundError("Symbol not found: glIsSampler");
@@ -104,7 +104,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glBindSampler(unsigned int unit, unsigned int sampler);
+    /// void glBindSampler(GLuint unit, GLuint sampler);
     /// ```
     public void BindSampler(int unit, int sampler) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindSampler)) throw new SymbolNotFoundError("Symbol not found: glBindSampler");
@@ -113,7 +113,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameteri(unsigned int sampler, unsigned int pname, int param);
+    /// void glSamplerParameteri(GLuint sampler, GLenum pname, GLint param);
     /// ```
     public void SamplerParameteri(int sampler, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteri)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteri");
@@ -122,7 +122,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameteriv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// void glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint* param);
     /// ```
     public void SamplerParameteriv(int sampler, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameteriv");
@@ -131,7 +131,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameterf(unsigned int sampler, unsigned int pname, float param);
+    /// void glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param);
     /// ```
     public void SamplerParameterf(int sampler, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterf)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterf");
@@ -140,7 +140,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameterfv(unsigned int sampler, unsigned int pname, const GLfloat* param);
+    /// void glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat* param);
     /// ```
     public void SamplerParameterfv(int sampler, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterfv");
@@ -149,7 +149,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameterIiv(unsigned int sampler, unsigned int pname, const GLint* param);
+    /// void glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint* param);
     /// ```
     public void SamplerParameterIiv(int sampler, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIiv");
@@ -158,7 +158,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glSamplerParameterIuiv(unsigned int sampler, unsigned int pname, const GLuint* param);
+    /// void glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint* param);
     /// ```
     public void SamplerParameterIuiv(int sampler, int pname, MemorySegment param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glSamplerParameterIuiv");
@@ -167,7 +167,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glGetSamplerParameteriv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint* params);
     /// ```
     public void GetSamplerParameteriv(int sampler, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameteriv");
@@ -176,7 +176,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glGetSamplerParameterIiv(unsigned int sampler, unsigned int pname, GLint* params);
+    /// void glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint* params);
     /// ```
     public void GetSamplerParameterIiv(int sampler, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIiv");
@@ -185,7 +185,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glGetSamplerParameterfv(unsigned int sampler, unsigned int pname, GLfloat* params);
+    /// void glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat* params);
     /// ```
     public void GetSamplerParameterfv(int sampler, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterfv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterfv");
@@ -194,7 +194,7 @@ public final class GLARBSamplerObjects {
     }
 
     /// ```
-    /// void glGetSamplerParameterIuiv(unsigned int sampler, unsigned int pname, GLuint* params);
+    /// void glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint* params);
     /// ```
     public void GetSamplerParameterIuiv(int sampler, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSamplerParameterIuiv)) throw new SymbolNotFoundError("Symbol not found: glGetSamplerParameterIuiv");

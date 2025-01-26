@@ -42,7 +42,7 @@ public final class GLARBColorBufferFloat {
     }
 
     /// ```
-    /// void glClampColorARB(unsigned int target, unsigned int clamp);
+    /// void glClampColorARB(GLenum target, GLenum clamp);
     /// ```
     public void ClampColorARB(int target, int clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClampColorARB)) throw new SymbolNotFoundError("Symbol not found: glClampColorARB");

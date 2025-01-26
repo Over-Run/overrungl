@@ -46,7 +46,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationiARB(unsigned int buf, unsigned int mode);
+    /// void glBlendEquationiARB(GLuint buf, GLenum mode);
     /// ```
     public void BlendEquationiARB(int buf, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationiARB");
@@ -55,7 +55,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationSeparateiARB(unsigned int buf, unsigned int modeRGB, unsigned int modeAlpha);
+    /// void glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
     /// ```
     public void BlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB");
@@ -64,7 +64,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFunciARB(unsigned int buf, unsigned int src, unsigned int dst);
+    /// void glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
     /// ```
     public void BlendFunciARB(int buf, int src, int dst) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFunciARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFunciARB");
@@ -73,7 +73,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFuncSeparateiARB(unsigned int buf, unsigned int srcRGB, unsigned int dstRGB, unsigned int srcAlpha, unsigned int dstAlpha);
+    /// void glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
     /// ```
     public void BlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB");

@@ -47,7 +47,7 @@ public final class GLINTELMapTexture {
     }
 
     /// ```
-    /// void glSyncTextureINTEL(unsigned int texture);
+    /// void glSyncTextureINTEL(GLuint texture);
     /// ```
     public void SyncTextureINTEL(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSyncTextureINTEL)) throw new SymbolNotFoundError("Symbol not found: glSyncTextureINTEL");
@@ -56,7 +56,7 @@ public final class GLINTELMapTexture {
     }
 
     /// ```
-    /// void glUnmapTexture2DINTEL(unsigned int texture, int level);
+    /// void glUnmapTexture2DINTEL(GLuint texture, GLint level);
     /// ```
     public void UnmapTexture2DINTEL(int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL");
@@ -65,7 +65,7 @@ public final class GLINTELMapTexture {
     }
 
     /// ```
-    /// void* glMapTexture2DINTEL(unsigned int texture, int level, unsigned int access, GLint* stride, GLenum* layout);
+    /// void* glMapTexture2DINTEL(GLuint texture, GLint level, GLbitfield access, GLint* stride, GLenum* layout);
     /// ```
     public MemorySegment MapTexture2DINTEL(int texture, int level, int access, MemorySegment stride, MemorySegment layout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");

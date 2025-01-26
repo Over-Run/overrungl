@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### x
-/// [VarHandle][#VH_x] - [Getter][#x()] - [Setter][#x(float)]
-/// ### y
-/// [VarHandle][#VH_y] - [Getter][#y()] - [Setter][#y(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkXYColorEXT {
+/// ```
+/// struct VkXYColorEXT {
 ///     float x;
 ///     float y;
-/// } VkXYColorEXT;
+/// };
 /// ```
-public sealed class VkXYColorEXT extends Struct {
+public sealed class VkXYColorEXT extends GroupType {
     /// The struct layout of `VkXYColorEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("x"),
         ValueLayout.JAVA_FLOAT.withName("y")
     );
-    /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `x`.
+    public static final long OFFSET_x = LAYOUT.byteOffset(PathElement.groupElement("x"));
+    /// The memory layout of `x`.
+    public static final MemoryLayout LAYOUT_x = LAYOUT.select(PathElement.groupElement("x"));
+    /// The [VarHandle] of `x` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_x = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x"));
-    /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `y`.
+    public static final long OFFSET_y = LAYOUT.byteOffset(PathElement.groupElement("y"));
+    /// The memory layout of `y`.
+    public static final MemoryLayout LAYOUT_y = LAYOUT.select(PathElement.groupElement("y"));
+    /// The [VarHandle] of `y` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
 
     /// Creates `VkXYColorEXT` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkXYColorEXT extends Struct {
     /// Creates `VkXYColorEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkXYColorEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkXYColorEXT(segment); }
-
-    /// Creates `VkXYColorEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkXYColorEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkXYColorEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkXYColorEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkXYColorEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkXYColorEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkXYColorEXT` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkXYColorEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkXYColorEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkXYColorEXT extends Struct {
     /// @return the allocated `VkXYColorEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkXYColorEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkXYColorEXT`
-    public static VkXYColorEXT allocInit(SegmentAllocator allocator, @CType("float") float x, @CType("float") float y) { return alloc(allocator).x(x).y(y); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkXYColorEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_x(MemorySegment segment, long index) { return (float) VH_x.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float x(MemorySegment segment, long index) { return (float) VH_x.get(segment, 0L, index); }
     /// {@return `x`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_x(MemorySegment segment) { return VkXYColorEXT.get_x(segment, 0L); }
-    /// {@return `x`}
-    public @CType("float") float x() { return VkXYColorEXT.get_x(this.segment()); }
+    public float x() { return x(this.segment(), 0L); }
     /// Sets `x` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_x(MemorySegment segment, long index, @CType("float") float value) { VH_x.set(segment, 0L, index, value); }
-    /// Sets `x` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_x(MemorySegment segment, @CType("float") float value) { VkXYColorEXT.set_x(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void x(MemorySegment segment, long index, float value) { VH_x.set(segment, 0L, index, value); }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXYColorEXT x(@CType("float") float value) { VkXYColorEXT.set_x(this.segment(), value); return this; }
+    public VkXYColorEXT x(float value) { x(this.segment(), 0L, value); return this; }
 
     /// {@return `y` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_y(MemorySegment segment, long index) { return (float) VH_y.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float y(MemorySegment segment, long index) { return (float) VH_y.get(segment, 0L, index); }
     /// {@return `y`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_y(MemorySegment segment) { return VkXYColorEXT.get_y(segment, 0L); }
-    /// {@return `y`}
-    public @CType("float") float y() { return VkXYColorEXT.get_y(this.segment()); }
+    public float y() { return y(this.segment(), 0L); }
     /// Sets `y` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_y(MemorySegment segment, long index, @CType("float") float value) { VH_y.set(segment, 0L, index, value); }
-    /// Sets `y` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_y(MemorySegment segment, @CType("float") float value) { VkXYColorEXT.set_y(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void y(MemorySegment segment, long index, float value) { VH_y.set(segment, 0L, index, value); }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXYColorEXT y(@CType("float") float value) { VkXYColorEXT.set_y(this.segment(), value); return this; }
+    public VkXYColorEXT y(float value) { y(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkXYColorEXT].
     public static final class Buffer extends VkXYColorEXT {
@@ -171,22 +149,22 @@ public sealed class VkXYColorEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `x` at the given index}
-        /// @param index the index
-        public @CType("float") float xAt(long index) { return VkXYColorEXT.get_x(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float xAt(long index) { return x(this.segment(), index); }
         /// Sets `x` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer xAt(long index, @CType("float") float value) { VkXYColorEXT.set_x(this.segment(), index, value); return this; }
+        public Buffer xAt(long index, float value) { x(this.segment(), index, value); return this; }
 
         /// {@return `y` at the given index}
-        /// @param index the index
-        public @CType("float") float yAt(long index) { return VkXYColorEXT.get_y(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float yAt(long index) { return y(this.segment(), index); }
         /// Sets `y` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer yAt(long index, @CType("float") float value) { VkXYColorEXT.set_y(this.segment(), index, value); return this; }
+        public Buffer yAt(long index, float value) { y(this.segment(), index, value); return this; }
 
     }
 }

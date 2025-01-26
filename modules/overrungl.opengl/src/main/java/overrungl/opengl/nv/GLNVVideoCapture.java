@@ -99,7 +99,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glBeginVideoCaptureNV(unsigned int video_capture_slot);
+    /// void glBeginVideoCaptureNV(GLuint video_capture_slot);
     /// ```
     public void BeginVideoCaptureNV(int video_capture_slot) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glBeginVideoCaptureNV");
@@ -108,7 +108,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glBindVideoCaptureStreamBufferNV(unsigned int video_capture_slot, unsigned int stream, unsigned int frame_region, signed long long offset);
+    /// void glBindVideoCaptureStreamBufferNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptrARB offset);
     /// ```
     public void BindVideoCaptureStreamBufferNV(int video_capture_slot, int stream, int frame_region, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVideoCaptureStreamBufferNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamBufferNV");
@@ -117,7 +117,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glBindVideoCaptureStreamTextureNV(unsigned int video_capture_slot, unsigned int stream, unsigned int frame_region, unsigned int target, unsigned int texture);
+    /// void glBindVideoCaptureStreamTextureNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
     /// ```
     public void BindVideoCaptureStreamTextureNV(int video_capture_slot, int stream, int frame_region, int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVideoCaptureStreamTextureNV)) throw new SymbolNotFoundError("Symbol not found: glBindVideoCaptureStreamTextureNV");
@@ -126,7 +126,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glEndVideoCaptureNV(unsigned int video_capture_slot);
+    /// void glEndVideoCaptureNV(GLuint video_capture_slot);
     /// ```
     public void EndVideoCaptureNV(int video_capture_slot) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glEndVideoCaptureNV");
@@ -135,7 +135,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glGetVideoCaptureivNV(unsigned int video_capture_slot, unsigned int pname, GLint* params);
+    /// void glGetVideoCaptureivNV(GLuint video_capture_slot, GLenum pname, GLint* params);
     /// ```
     public void GetVideoCaptureivNV(int video_capture_slot, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureivNV");
@@ -144,7 +144,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glGetVideoCaptureStreamivNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLint* params);
+    /// void glGetVideoCaptureStreamivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLint* params);
     /// ```
     public void GetVideoCaptureStreamivNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamivNV");
@@ -153,7 +153,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glGetVideoCaptureStreamfvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLfloat* params);
+    /// void glGetVideoCaptureStreamfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat* params);
     /// ```
     public void GetVideoCaptureStreamfvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamfvNV");
@@ -162,7 +162,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glGetVideoCaptureStreamdvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, GLdouble* params);
+    /// void glGetVideoCaptureStreamdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble* params);
     /// ```
     public void GetVideoCaptureStreamdvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoCaptureStreamdvNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoCaptureStreamdvNV");
@@ -171,7 +171,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// unsigned int glVideoCaptureNV(unsigned int video_capture_slot, GLuint* sequence_num, GLuint64EXT* capture_time);
+    /// GLenum glVideoCaptureNV(GLuint video_capture_slot, GLuint* sequence_num, GLuint64EXT* capture_time);
     /// ```
     public int VideoCaptureNV(int video_capture_slot, MemorySegment sequence_num, MemorySegment capture_time) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureNV");
@@ -180,7 +180,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glVideoCaptureStreamParameterivNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLint* params);
+    /// void glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint* params);
     /// ```
     public void VideoCaptureStreamParameterivNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterivNV");
@@ -189,7 +189,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glVideoCaptureStreamParameterfvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLfloat* params);
+    /// void glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat* params);
     /// ```
     public void VideoCaptureStreamParameterfvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterfvNV");
@@ -198,7 +198,7 @@ public final class GLNVVideoCapture {
     }
 
     /// ```
-    /// void glVideoCaptureStreamParameterdvNV(unsigned int video_capture_slot, unsigned int stream, unsigned int pname, const GLdouble* params);
+    /// void glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble* params);
     /// ```
     public void VideoCaptureStreamParameterdvNV(int video_capture_slot, int stream, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVideoCaptureStreamParameterdvNV)) throw new SymbolNotFoundError("Symbol not found: glVideoCaptureStreamParameterdvNV");

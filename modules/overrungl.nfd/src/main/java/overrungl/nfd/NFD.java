@@ -19,10 +19,7 @@ package overrungl.nfd;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.nio.charset.Charset;
 
@@ -32,8 +29,10 @@ import java.nio.charset.Charset;
 ///
 /// ## Important
 ///
-/// NFD uses UTF-16 on Windows. You should use [NFD#allocString(SegmentAllocator, String)] and [NFD#nativeString(MemorySegment)]
-/// instead of the version of [MemoryUtil].
+/// NFD uses UTF-16 on Windows. You should use
+/// [NFD_AllocString][NFD#NFD_AllocString(SegmentAllocator, String)] and
+/// [NFD_NativeString][NFD#NFD_NativeString(MemorySegment)]
+/// instead of the [MemoryUtil] version.
 ///
 /// @author squid233
 /// @since 0.1.0
@@ -184,7 +183,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_Init();
+    /// nfdresult_t NFD_Init();
     /// ```
     public static int NFD_Init() {
         try { return (int) Handles.MH_NFD_Init.invokeExact(Handles.get().PFN_NFD_Init); }
@@ -200,7 +199,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
+    /// nfdresult_t NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_OpenDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_OpenDialogN.invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath); }
@@ -208,7 +207,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_OpenDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// nfdresult_t NFD_OpenDialogN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -216,14 +215,14 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// nfdresult_t NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// int NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath);
+    /// nfdresult_t NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_OpenDialogMultiple(MemorySegment outPaths, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_OpenDialogMultipleN.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath); }
@@ -231,7 +230,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_OpenDialogMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// nfdresult_t NFD_OpenDialogMultipleN_With_Impl(nfdversion_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialogMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try { return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
@@ -239,14 +238,14 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// nfdresult_t NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialogMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
     /// ```
-    /// int NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, unsigned int filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
+    /// nfdresult_t NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
     /// ```
     public static int NFD_SaveDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName) {
         try { return (int) Handles.MH_NFD_SaveDialogN.invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName); }
@@ -254,7 +253,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_SaveDialogN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// nfdresult_t NFD_SaveDialogN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
     public static int NFD_SaveDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invoke(Handles.get().PFN_NFD_SaveDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -262,14 +261,14 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// nfdresult_t NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
     public static int NFD_SaveDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// int NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
+    /// nfdresult_t NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_PickFolder(MemorySegment outPath, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_PickFolderN.invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath); }
@@ -277,7 +276,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PickFolderN_With_Impl(size_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// nfdresult_t NFD_PickFolderN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolder_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_PickFolderN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -285,14 +284,14 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// nfdresult_t NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolder_With(MemorySegment outPath, MemorySegment args) {
         return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// int NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
+    /// nfdresult_t NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_PickFolderMultiple(MemorySegment outPaths, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_PickFolderMultipleN.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath); }
@@ -300,7 +299,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PickFolderMultipleN_With_Impl(size_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// nfdresult_t NFD_PickFolderMultipleN_With_Impl(nfdversion_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolderMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try { return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
@@ -308,7 +307,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// nfdresult_t NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolderMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
@@ -331,7 +330,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
+    /// nfdresult_t NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
     /// ```
     public static int NFD_PathSet_GetCount(MemorySegment pathSet, MemorySegment count) {
         try { return (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count); }
@@ -339,10 +338,10 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, size_t index, nfdnchar_t** outPath);
+    /// nfdresult_t NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, nfdpathsetsize_t index, nfdnchar_t** outPath);
     /// ```
     public static int NFD_PathSet_GetPath(MemorySegment pathSet, long index, MemorySegment outPath) {
-        try { return (int) Handles.MH_NFD_PathSet_GetPathN.invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, index), outPath); }
+        try { return (int) Handles.MH_NFD_PathSet_GetPathN.invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(NFDInternal.nfdpathsetsize_t, index), outPath); }
         catch (Throwable e) { throw new RuntimeException("error in NFD_PathSet_GetPath", e); }
     }
 
@@ -355,7 +354,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
+    /// nfdresult_t NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
     /// ```
     public static int NFD_PathSet_GetEnum(MemorySegment pathSet, MemorySegment outEnumerator) {
         try { return (int) Handles.MH_NFD_PathSet_GetEnum.invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator); }
@@ -371,7 +370,7 @@ public final class NFD {
     }
 
     /// ```
-    /// int NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
+    /// nfdresult_t NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
     /// ```
     public static int NFD_PathSet_EnumNext(MemorySegment enumerator, MemorySegment outPath) {
         try { return (int) Handles.MH_NFD_PathSet_EnumNextN.invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath); }
@@ -392,13 +391,18 @@ public final class NFD {
     private NFD() {
     }
 
+    /// On Windows, this is UTF-16 little-endian; on others, this is UTF-8
     public static final Charset NFD_CHARSET = NFDInternal.nfdCharset;
+    /// On Windows, this is `wchar_t`; on others, this is byte
+    public static final MemoryLayout nfdnchar_t = NFDInternal.nfdnchar_t;
+    /// On macOS, this is C `long`; on Windows and others, this is int
+    public static final MemoryLayout nfdpathsetsize_t = NFDInternal.nfdpathsetsize_t;
 
-    public static MemorySegment allocString(SegmentAllocator allocator, String string) {
+    public static MemorySegment NFD_AllocString(SegmentAllocator allocator, String string) {
         return MemoryUtil.allocString(allocator, string, NFD_CHARSET);
     }
 
-    public static String nativeString(MemorySegment segment) {
+    public static String NFD_NativeString(MemorySegment segment) {
         return MemoryUtil.nativeString(segment, NFD_CHARSET);
     }
 }

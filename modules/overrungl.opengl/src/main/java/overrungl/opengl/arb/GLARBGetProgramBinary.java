@@ -47,7 +47,7 @@ public final class GLARBGetProgramBinary {
     }
 
     /// ```
-    /// void glGetProgramBinary(unsigned int program, int bufSize, GLsizei* length, GLenum* binaryFormat, void* binary);
+    /// void glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei* length, GLenum* binaryFormat, void* binary);
     /// ```
     public void GetProgramBinary(int program, int bufSize, MemorySegment length, MemorySegment binaryFormat, MemorySegment binary) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glGetProgramBinary");
@@ -56,7 +56,7 @@ public final class GLARBGetProgramBinary {
     }
 
     /// ```
-    /// void glProgramBinary(unsigned int program, unsigned int binaryFormat, const void* binary, int length);
+    /// void glProgramBinary(GLuint program, GLenum binaryFormat, const void* binary, GLsizei length);
     /// ```
     public void ProgramBinary(int program, int binaryFormat, MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramBinary)) throw new SymbolNotFoundError("Symbol not found: glProgramBinary");
@@ -65,7 +65,7 @@ public final class GLARBGetProgramBinary {
     }
 
     /// ```
-    /// void glProgramParameteri(unsigned int program, unsigned int pname, int value);
+    /// void glProgramParameteri(GLuint program, GLenum pname, GLint value);
     /// ```
     public void ProgramParameteri(int program, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteri)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteri");

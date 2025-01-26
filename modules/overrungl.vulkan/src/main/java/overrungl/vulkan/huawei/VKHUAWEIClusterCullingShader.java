@@ -18,7 +18,6 @@
 package overrungl.vulkan.huawei;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -34,29 +33,35 @@ public class VKHUAWEIClusterCullingShader {
     private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDrawClusterHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkCmdDrawClusterIndirectHUAWEI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_vkCmdDrawClusterHUAWEI;
         public final MemorySegment PFN_vkCmdDrawClusterIndirectHUAWEI;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkCmdDrawClusterHUAWEI = func.invoke(device, "vkCmdDrawClusterHUAWEI");
             PFN_vkCmdDrawClusterIndirectHUAWEI = func.invoke(device, "vkCmdDrawClusterIndirectHUAWEI");
         }
     }
 
-    public VKHUAWEIClusterCullingShader(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKHUAWEIClusterCullingShader(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void CmdDrawClusterHUAWEI(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int groupCountX, @CType("uint32_t") int groupCountY, @CType("uint32_t") int groupCountZ) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawClusterHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
+    /// ```
+    /// void vkCmdDrawClusterHUAWEI(VkCommandBuffer commandBuffer, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
+    /// ```
+    public void CmdDrawClusterHUAWEI(MemorySegment commandBuffer, int groupCountX, int groupCountY, int groupCountZ) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDrawClusterHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
         try { Handles.MH_vkCmdDrawClusterHUAWEI.invokeExact(handles.PFN_vkCmdDrawClusterHUAWEI, commandBuffer, groupCountX, groupCountY, groupCountZ); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterHUAWEI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDrawClusterHUAWEI", e); }
     }
 
-    public void CmdDrawClusterIndirectHUAWEI(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");
+    /// ```
+    /// void vkCmdDrawClusterIndirectHUAWEI(VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset);
+    /// ```
+    public void CmdDrawClusterIndirectHUAWEI(MemorySegment commandBuffer, long buffer, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");
         try { Handles.MH_vkCmdDrawClusterIndirectHUAWEI.invokeExact(handles.PFN_vkCmdDrawClusterIndirectHUAWEI, commandBuffer, buffer, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterIndirectHUAWEI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CmdDrawClusterIndirectHUAWEI", e); }
     }
 
 }

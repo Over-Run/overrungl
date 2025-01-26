@@ -15,50 +15,18 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(MemorySegment)]
-/// ### slice_type
-/// [VarHandle][#VH_slice_type] - [Getter][#slice_type()] - [Setter][#slice_type(int)]
-/// ### slice_segment_address
-/// [VarHandle][#VH_slice_segment_address] - [Getter][#slice_segment_address()] - [Setter][#slice_segment_address(int)]
-/// ### collocated_ref_idx
-/// [VarHandle][#VH_collocated_ref_idx] - [Getter][#collocated_ref_idx()] - [Setter][#collocated_ref_idx(byte)]
-/// ### MaxNumMergeCand
-/// [VarHandle][#VH_MaxNumMergeCand] - [Getter][#MaxNumMergeCand()] - [Setter][#MaxNumMergeCand(byte)]
-/// ### slice_cb_qp_offset
-/// [VarHandle][#VH_slice_cb_qp_offset] - [Getter][#slice_cb_qp_offset()] - [Setter][#slice_cb_qp_offset(byte)]
-/// ### slice_cr_qp_offset
-/// [VarHandle][#VH_slice_cr_qp_offset] - [Getter][#slice_cr_qp_offset()] - [Setter][#slice_cr_qp_offset(byte)]
-/// ### slice_beta_offset_div2
-/// [VarHandle][#VH_slice_beta_offset_div2] - [Getter][#slice_beta_offset_div2()] - [Setter][#slice_beta_offset_div2(byte)]
-/// ### slice_tc_offset_div2
-/// [VarHandle][#VH_slice_tc_offset_div2] - [Getter][#slice_tc_offset_div2()] - [Setter][#slice_tc_offset_div2(byte)]
-/// ### slice_act_y_qp_offset
-/// [VarHandle][#VH_slice_act_y_qp_offset] - [Getter][#slice_act_y_qp_offset()] - [Setter][#slice_act_y_qp_offset(byte)]
-/// ### slice_act_cb_qp_offset
-/// [VarHandle][#VH_slice_act_cb_qp_offset] - [Getter][#slice_act_cb_qp_offset()] - [Setter][#slice_act_cb_qp_offset(byte)]
-/// ### slice_act_cr_qp_offset
-/// [VarHandle][#VH_slice_act_cr_qp_offset] - [Getter][#slice_act_cr_qp_offset()] - [Setter][#slice_act_cr_qp_offset(byte)]
-/// ### slice_qp_delta
-/// [VarHandle][#VH_slice_qp_delta] - [Getter][#slice_qp_delta()] - [Setter][#slice_qp_delta(byte)]
-/// ### reserved1
-/// [VarHandle][#VH_reserved1] - [Getter][#reserved1()] - [Setter][#reserved1(short)]
-/// ### pWeightTable
-/// [VarHandle][#VH_pWeightTable] - [Getter][#pWeightTable()] - [Setter][#pWeightTable(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoEncodeH265SliceSegmentHeader {
+/// ```
+/// struct StdVideoEncodeH265SliceSegmentHeader {
 ///     StdVideoEncodeH265SliceSegmentHeaderFlags flags;
 ///     StdVideoH265SliceType slice_type;
 ///     uint32_t slice_segment_address;
@@ -73,13 +41,13 @@ import overrungl.util.*;
 ///     int8_t slice_act_cr_qp_offset;
 ///     int8_t slice_qp_delta;
 ///     uint16_t reserved1;
-///     const StdVideoEncodeH265WeightTable * pWeightTable;
-/// } StdVideoEncodeH265SliceSegmentHeader;
+///     const StdVideoEncodeH265WeightTable* pWeightTable;
+/// };
 /// ```
-public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
+public sealed class StdVideoEncodeH265SliceSegmentHeader extends GroupType {
     /// The struct layout of `StdVideoEncodeH265SliceSegmentHeader`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        StdVideoEncodeH265SliceSegmentHeaderFlags.LAYOUT.withName("flags"),
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
+        overrungl.vulkan.video.StdVideoEncodeH265SliceSegmentHeaderFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_INT.withName("slice_type"),
         ValueLayout.JAVA_INT.withName("slice_segment_address"),
         ValueLayout.JAVA_BYTE.withName("collocated_ref_idx"),
@@ -95,34 +63,92 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
         ValueLayout.JAVA_SHORT.withName("reserved1"),
         ValueLayout.ADDRESS.withName("pWeightTable")
     );
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
-    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `slice_type` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The byte offset of `slice_type`.
+    public static final long OFFSET_slice_type = LAYOUT.byteOffset(PathElement.groupElement("slice_type"));
+    /// The memory layout of `slice_type`.
+    public static final MemoryLayout LAYOUT_slice_type = LAYOUT.select(PathElement.groupElement("slice_type"));
+    /// The [VarHandle] of `slice_type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_type"));
-    /// The [VarHandle] of `slice_segment_address` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `slice_segment_address`.
+    public static final long OFFSET_slice_segment_address = LAYOUT.byteOffset(PathElement.groupElement("slice_segment_address"));
+    /// The memory layout of `slice_segment_address`.
+    public static final MemoryLayout LAYOUT_slice_segment_address = LAYOUT.select(PathElement.groupElement("slice_segment_address"));
+    /// The [VarHandle] of `slice_segment_address` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_segment_address = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_segment_address"));
-    /// The [VarHandle] of `collocated_ref_idx` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `collocated_ref_idx`.
+    public static final long OFFSET_collocated_ref_idx = LAYOUT.byteOffset(PathElement.groupElement("collocated_ref_idx"));
+    /// The memory layout of `collocated_ref_idx`.
+    public static final MemoryLayout LAYOUT_collocated_ref_idx = LAYOUT.select(PathElement.groupElement("collocated_ref_idx"));
+    /// The [VarHandle] of `collocated_ref_idx` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_collocated_ref_idx = LAYOUT.arrayElementVarHandle(PathElement.groupElement("collocated_ref_idx"));
-    /// The [VarHandle] of `MaxNumMergeCand` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `MaxNumMergeCand`.
+    public static final long OFFSET_MaxNumMergeCand = LAYOUT.byteOffset(PathElement.groupElement("MaxNumMergeCand"));
+    /// The memory layout of `MaxNumMergeCand`.
+    public static final MemoryLayout LAYOUT_MaxNumMergeCand = LAYOUT.select(PathElement.groupElement("MaxNumMergeCand"));
+    /// The [VarHandle] of `MaxNumMergeCand` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_MaxNumMergeCand = LAYOUT.arrayElementVarHandle(PathElement.groupElement("MaxNumMergeCand"));
-    /// The [VarHandle] of `slice_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_cb_qp_offset`.
+    public static final long OFFSET_slice_cb_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_cb_qp_offset"));
+    /// The memory layout of `slice_cb_qp_offset`.
+    public static final MemoryLayout LAYOUT_slice_cb_qp_offset = LAYOUT.select(PathElement.groupElement("slice_cb_qp_offset"));
+    /// The [VarHandle] of `slice_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_cb_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cb_qp_offset"));
-    /// The [VarHandle] of `slice_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_cr_qp_offset`.
+    public static final long OFFSET_slice_cr_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_cr_qp_offset"));
+    /// The memory layout of `slice_cr_qp_offset`.
+    public static final MemoryLayout LAYOUT_slice_cr_qp_offset = LAYOUT.select(PathElement.groupElement("slice_cr_qp_offset"));
+    /// The [VarHandle] of `slice_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_cr_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_cr_qp_offset"));
-    /// The [VarHandle] of `slice_beta_offset_div2` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_beta_offset_div2`.
+    public static final long OFFSET_slice_beta_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_beta_offset_div2"));
+    /// The memory layout of `slice_beta_offset_div2`.
+    public static final MemoryLayout LAYOUT_slice_beta_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_beta_offset_div2"));
+    /// The [VarHandle] of `slice_beta_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_beta_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_beta_offset_div2"));
-    /// The [VarHandle] of `slice_tc_offset_div2` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_tc_offset_div2`.
+    public static final long OFFSET_slice_tc_offset_div2 = LAYOUT.byteOffset(PathElement.groupElement("slice_tc_offset_div2"));
+    /// The memory layout of `slice_tc_offset_div2`.
+    public static final MemoryLayout LAYOUT_slice_tc_offset_div2 = LAYOUT.select(PathElement.groupElement("slice_tc_offset_div2"));
+    /// The [VarHandle] of `slice_tc_offset_div2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_tc_offset_div2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_tc_offset_div2"));
-    /// The [VarHandle] of `slice_act_y_qp_offset` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_act_y_qp_offset`.
+    public static final long OFFSET_slice_act_y_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_y_qp_offset"));
+    /// The memory layout of `slice_act_y_qp_offset`.
+    public static final MemoryLayout LAYOUT_slice_act_y_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_y_qp_offset"));
+    /// The [VarHandle] of `slice_act_y_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_act_y_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_y_qp_offset"));
-    /// The [VarHandle] of `slice_act_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_act_cb_qp_offset`.
+    public static final long OFFSET_slice_act_cb_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_cb_qp_offset"));
+    /// The memory layout of `slice_act_cb_qp_offset`.
+    public static final MemoryLayout LAYOUT_slice_act_cb_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_cb_qp_offset"));
+    /// The [VarHandle] of `slice_act_cb_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_act_cb_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cb_qp_offset"));
-    /// The [VarHandle] of `slice_act_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_act_cr_qp_offset`.
+    public static final long OFFSET_slice_act_cr_qp_offset = LAYOUT.byteOffset(PathElement.groupElement("slice_act_cr_qp_offset"));
+    /// The memory layout of `slice_act_cr_qp_offset`.
+    public static final MemoryLayout LAYOUT_slice_act_cr_qp_offset = LAYOUT.select(PathElement.groupElement("slice_act_cr_qp_offset"));
+    /// The [VarHandle] of `slice_act_cr_qp_offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_act_cr_qp_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_act_cr_qp_offset"));
-    /// The [VarHandle] of `slice_qp_delta` of type `(MemorySegment base, long baseOffset, long index)byte`.
+    /// The byte offset of `slice_qp_delta`.
+    public static final long OFFSET_slice_qp_delta = LAYOUT.byteOffset(PathElement.groupElement("slice_qp_delta"));
+    /// The memory layout of `slice_qp_delta`.
+    public static final MemoryLayout LAYOUT_slice_qp_delta = LAYOUT.select(PathElement.groupElement("slice_qp_delta"));
+    /// The [VarHandle] of `slice_qp_delta` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_slice_qp_delta = LAYOUT.arrayElementVarHandle(PathElement.groupElement("slice_qp_delta"));
-    /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `reserved1`.
+    public static final long OFFSET_reserved1 = LAYOUT.byteOffset(PathElement.groupElement("reserved1"));
+    /// The memory layout of `reserved1`.
+    public static final MemoryLayout LAYOUT_reserved1 = LAYOUT.select(PathElement.groupElement("reserved1"));
+    /// The [VarHandle] of `reserved1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_reserved1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved1"));
+    /// The byte offset of `pWeightTable`.
+    public static final long OFFSET_pWeightTable = LAYOUT.byteOffset(PathElement.groupElement("pWeightTable"));
+    /// The memory layout of `pWeightTable`.
+    public static final MemoryLayout LAYOUT_pWeightTable = LAYOUT.select(PathElement.groupElement("pWeightTable"));
     /// The [VarHandle] of `pWeightTable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWeightTable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWeightTable"));
 
@@ -133,19 +159,14 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265SliceSegmentHeader of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265SliceSegmentHeader(segment); }
-
-    /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265SliceSegmentHeader ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265SliceSegmentHeader(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoEncodeH265SliceSegmentHeader ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265SliceSegmentHeader(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeader` with the given segment.
     ///
@@ -153,7 +174,7 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH265SliceSegmentHeader` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -166,11 +187,6 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
     /// @return the allocated `StdVideoEncodeH265SliceSegmentHeader`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH265SliceSegmentHeader` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoEncodeH265SliceSegmentHeader`
-    public static StdVideoEncodeH265SliceSegmentHeader allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flags, @CType("StdVideoH265SliceType") int slice_type, @CType("uint32_t") int slice_segment_address, @CType("uint8_t") byte collocated_ref_idx, @CType("uint8_t") byte MaxNumMergeCand, @CType("int8_t") byte slice_cb_qp_offset, @CType("int8_t") byte slice_cr_qp_offset, @CType("int8_t") byte slice_beta_offset_div2, @CType("int8_t") byte slice_tc_offset_div2, @CType("int8_t") byte slice_act_y_qp_offset, @CType("int8_t") byte slice_act_cb_qp_offset, @CType("int8_t") byte slice_act_cr_qp_offset, @CType("int8_t") byte slice_qp_delta, @CType("uint16_t") short reserved1, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTable) { return alloc(allocator).flags(flags).slice_type(slice_type).slice_segment_address(slice_segment_address).collocated_ref_idx(collocated_ref_idx).MaxNumMergeCand(MaxNumMergeCand).slice_cb_qp_offset(slice_cb_qp_offset).slice_cr_qp_offset(slice_cr_qp_offset).slice_beta_offset_div2(slice_beta_offset_div2).slice_tc_offset_div2(slice_tc_offset_div2).slice_act_y_qp_offset(slice_act_y_qp_offset).slice_act_cb_qp_offset(slice_act_cb_qp_offset).slice_act_cr_qp_offset(slice_act_cr_qp_offset).slice_qp_delta(slice_qp_delta).reserved1(reserved1).pWeightTable(pWeightTable); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -178,352 +194,247 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment get_flags(MemorySegment segment, long index) { return (MemorySegment) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment flags(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flags() { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment()); }
+    public MemorySegment flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_flags, index), LAYOUT_flags.byteSize()); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader flags(@CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_type` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("StdVideoH265SliceType") int get_slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int slice_type(MemorySegment segment, long index) { return (int) VH_slice_type.get(segment, 0L, index); }
     /// {@return `slice_type`}
-    /// @param segment the segment of the struct
-    public static @CType("StdVideoH265SliceType") int get_slice_type(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_type(segment, 0L); }
-    /// {@return `slice_type`}
-    public @CType("StdVideoH265SliceType") int slice_type() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_type(this.segment()); }
+    public int slice_type() { return slice_type(this.segment(), 0L); }
     /// Sets `slice_type` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_type(MemorySegment segment, long index, @CType("StdVideoH265SliceType") int value) { VH_slice_type.set(segment, 0L, index, value); }
-    /// Sets `slice_type` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_type(MemorySegment segment, @CType("StdVideoH265SliceType") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_type(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_type(MemorySegment segment, long index, int value) { VH_slice_type.set(segment, 0L, index, value); }
     /// Sets `slice_type` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_type(@CType("StdVideoH265SliceType") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_type(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_type(int value) { slice_type(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_segment_address` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_slice_segment_address(MemorySegment segment, long index) { return (int) VH_slice_segment_address.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int slice_segment_address(MemorySegment segment, long index) { return (int) VH_slice_segment_address.get(segment, 0L, index); }
     /// {@return `slice_segment_address`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_slice_segment_address(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_segment_address(segment, 0L); }
-    /// {@return `slice_segment_address`}
-    public @CType("uint32_t") int slice_segment_address() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_segment_address(this.segment()); }
+    public int slice_segment_address() { return slice_segment_address(this.segment(), 0L); }
     /// Sets `slice_segment_address` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_segment_address(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_slice_segment_address.set(segment, 0L, index, value); }
-    /// Sets `slice_segment_address` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_segment_address(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_segment_address(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_segment_address(MemorySegment segment, long index, int value) { VH_slice_segment_address.set(segment, 0L, index, value); }
     /// Sets `slice_segment_address` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_segment_address(@CType("uint32_t") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_segment_address(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_segment_address(int value) { slice_segment_address(this.segment(), 0L, value); return this; }
 
     /// {@return `collocated_ref_idx` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_collocated_ref_idx(MemorySegment segment, long index) { return (byte) VH_collocated_ref_idx.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte collocated_ref_idx(MemorySegment segment, long index) { return (byte) VH_collocated_ref_idx.get(segment, 0L, index); }
     /// {@return `collocated_ref_idx`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_collocated_ref_idx(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_collocated_ref_idx(segment, 0L); }
-    /// {@return `collocated_ref_idx`}
-    public @CType("uint8_t") byte collocated_ref_idx() { return StdVideoEncodeH265SliceSegmentHeader.get_collocated_ref_idx(this.segment()); }
+    public byte collocated_ref_idx() { return collocated_ref_idx(this.segment(), 0L); }
     /// Sets `collocated_ref_idx` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_collocated_ref_idx(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_collocated_ref_idx.set(segment, 0L, index, value); }
-    /// Sets `collocated_ref_idx` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_collocated_ref_idx(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_collocated_ref_idx(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void collocated_ref_idx(MemorySegment segment, long index, byte value) { VH_collocated_ref_idx.set(segment, 0L, index, value); }
     /// Sets `collocated_ref_idx` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader collocated_ref_idx(@CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_collocated_ref_idx(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader collocated_ref_idx(byte value) { collocated_ref_idx(this.segment(), 0L, value); return this; }
 
     /// {@return `MaxNumMergeCand` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t") byte get_MaxNumMergeCand(MemorySegment segment, long index) { return (byte) VH_MaxNumMergeCand.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte MaxNumMergeCand(MemorySegment segment, long index) { return (byte) VH_MaxNumMergeCand.get(segment, 0L, index); }
     /// {@return `MaxNumMergeCand`}
-    /// @param segment the segment of the struct
-    public static @CType("uint8_t") byte get_MaxNumMergeCand(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_MaxNumMergeCand(segment, 0L); }
-    /// {@return `MaxNumMergeCand`}
-    public @CType("uint8_t") byte MaxNumMergeCand() { return StdVideoEncodeH265SliceSegmentHeader.get_MaxNumMergeCand(this.segment()); }
+    public byte MaxNumMergeCand() { return MaxNumMergeCand(this.segment(), 0L); }
     /// Sets `MaxNumMergeCand` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_MaxNumMergeCand(MemorySegment segment, long index, @CType("uint8_t") byte value) { VH_MaxNumMergeCand.set(segment, 0L, index, value); }
-    /// Sets `MaxNumMergeCand` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_MaxNumMergeCand(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_MaxNumMergeCand(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void MaxNumMergeCand(MemorySegment segment, long index, byte value) { VH_MaxNumMergeCand.set(segment, 0L, index, value); }
     /// Sets `MaxNumMergeCand` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader MaxNumMergeCand(@CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_MaxNumMergeCand(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader MaxNumMergeCand(byte value) { MaxNumMergeCand(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_cb_qp_offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cb_qp_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cb_qp_offset.get(segment, 0L, index); }
     /// {@return `slice_cb_qp_offset`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_cb_qp_offset(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cb_qp_offset(segment, 0L); }
-    /// {@return `slice_cb_qp_offset`}
-    public @CType("int8_t") byte slice_cb_qp_offset() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cb_qp_offset(this.segment()); }
+    public byte slice_cb_qp_offset() { return slice_cb_qp_offset(this.segment(), 0L); }
     /// Sets `slice_cb_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_cb_qp_offset(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_cb_qp_offset.set(segment, 0L, index, value); }
-    /// Sets `slice_cb_qp_offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_cb_qp_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cb_qp_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cb_qp_offset.set(segment, 0L, index, value); }
     /// Sets `slice_cb_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_cb_qp_offset(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cb_qp_offset(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_cb_qp_offset(byte value) { slice_cb_qp_offset(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_cr_qp_offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cr_qp_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_cr_qp_offset.get(segment, 0L, index); }
     /// {@return `slice_cr_qp_offset`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_cr_qp_offset(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cr_qp_offset(segment, 0L); }
-    /// {@return `slice_cr_qp_offset`}
-    public @CType("int8_t") byte slice_cr_qp_offset() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cr_qp_offset(this.segment()); }
+    public byte slice_cr_qp_offset() { return slice_cr_qp_offset(this.segment(), 0L); }
     /// Sets `slice_cr_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_cr_qp_offset(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_cr_qp_offset.set(segment, 0L, index, value); }
-    /// Sets `slice_cr_qp_offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_cr_qp_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cr_qp_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_cr_qp_offset.set(segment, 0L, index, value); }
     /// Sets `slice_cr_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_cr_qp_offset(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cr_qp_offset(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_cr_qp_offset(byte value) { slice_cr_qp_offset(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_beta_offset_div2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_beta_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_beta_offset_div2.get(segment, 0L, index); }
     /// {@return `slice_beta_offset_div2`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_beta_offset_div2(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_beta_offset_div2(segment, 0L); }
-    /// {@return `slice_beta_offset_div2`}
-    public @CType("int8_t") byte slice_beta_offset_div2() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_beta_offset_div2(this.segment()); }
+    public byte slice_beta_offset_div2() { return slice_beta_offset_div2(this.segment(), 0L); }
     /// Sets `slice_beta_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_beta_offset_div2(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_beta_offset_div2.set(segment, 0L, index, value); }
-    /// Sets `slice_beta_offset_div2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_beta_offset_div2(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_beta_offset_div2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_beta_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_beta_offset_div2.set(segment, 0L, index, value); }
     /// Sets `slice_beta_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_beta_offset_div2(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_beta_offset_div2(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_beta_offset_div2(byte value) { slice_beta_offset_div2(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_tc_offset_div2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_tc_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_tc_offset_div2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_tc_offset_div2(MemorySegment segment, long index) { return (byte) VH_slice_tc_offset_div2.get(segment, 0L, index); }
     /// {@return `slice_tc_offset_div2`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_tc_offset_div2(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_tc_offset_div2(segment, 0L); }
-    /// {@return `slice_tc_offset_div2`}
-    public @CType("int8_t") byte slice_tc_offset_div2() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_tc_offset_div2(this.segment()); }
+    public byte slice_tc_offset_div2() { return slice_tc_offset_div2(this.segment(), 0L); }
     /// Sets `slice_tc_offset_div2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_tc_offset_div2(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_tc_offset_div2.set(segment, 0L, index, value); }
-    /// Sets `slice_tc_offset_div2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_tc_offset_div2(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_tc_offset_div2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_tc_offset_div2(MemorySegment segment, long index, byte value) { VH_slice_tc_offset_div2.set(segment, 0L, index, value); }
     /// Sets `slice_tc_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_tc_offset_div2(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_tc_offset_div2(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_tc_offset_div2(byte value) { slice_tc_offset_div2(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_act_y_qp_offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_act_y_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_y_qp_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_act_y_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_y_qp_offset.get(segment, 0L, index); }
     /// {@return `slice_act_y_qp_offset`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_act_y_qp_offset(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_y_qp_offset(segment, 0L); }
-    /// {@return `slice_act_y_qp_offset`}
-    public @CType("int8_t") byte slice_act_y_qp_offset() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_y_qp_offset(this.segment()); }
+    public byte slice_act_y_qp_offset() { return slice_act_y_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_y_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_act_y_qp_offset(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_act_y_qp_offset.set(segment, 0L, index, value); }
-    /// Sets `slice_act_y_qp_offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_act_y_qp_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_y_qp_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_act_y_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_y_qp_offset.set(segment, 0L, index, value); }
     /// Sets `slice_act_y_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_act_y_qp_offset(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_y_qp_offset(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_y_qp_offset(byte value) { slice_act_y_qp_offset(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_act_cb_qp_offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_act_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cb_qp_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_act_cb_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cb_qp_offset.get(segment, 0L, index); }
     /// {@return `slice_act_cb_qp_offset`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_act_cb_qp_offset(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cb_qp_offset(segment, 0L); }
-    /// {@return `slice_act_cb_qp_offset`}
-    public @CType("int8_t") byte slice_act_cb_qp_offset() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cb_qp_offset(this.segment()); }
+    public byte slice_act_cb_qp_offset() { return slice_act_cb_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_cb_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_act_cb_qp_offset(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_act_cb_qp_offset.set(segment, 0L, index, value); }
-    /// Sets `slice_act_cb_qp_offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_act_cb_qp_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cb_qp_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_act_cb_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cb_qp_offset.set(segment, 0L, index, value); }
     /// Sets `slice_act_cb_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_act_cb_qp_offset(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cb_qp_offset(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_cb_qp_offset(byte value) { slice_act_cb_qp_offset(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_act_cr_qp_offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_act_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cr_qp_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_act_cr_qp_offset(MemorySegment segment, long index) { return (byte) VH_slice_act_cr_qp_offset.get(segment, 0L, index); }
     /// {@return `slice_act_cr_qp_offset`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_act_cr_qp_offset(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cr_qp_offset(segment, 0L); }
-    /// {@return `slice_act_cr_qp_offset`}
-    public @CType("int8_t") byte slice_act_cr_qp_offset() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cr_qp_offset(this.segment()); }
+    public byte slice_act_cr_qp_offset() { return slice_act_cr_qp_offset(this.segment(), 0L); }
     /// Sets `slice_act_cr_qp_offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_act_cr_qp_offset(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_act_cr_qp_offset.set(segment, 0L, index, value); }
-    /// Sets `slice_act_cr_qp_offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_act_cr_qp_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cr_qp_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_act_cr_qp_offset(MemorySegment segment, long index, byte value) { VH_slice_act_cr_qp_offset.set(segment, 0L, index, value); }
     /// Sets `slice_act_cr_qp_offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_act_cr_qp_offset(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cr_qp_offset(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_act_cr_qp_offset(byte value) { slice_act_cr_qp_offset(this.segment(), 0L, value); return this; }
 
     /// {@return `slice_qp_delta` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int8_t") byte get_slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static byte slice_qp_delta(MemorySegment segment, long index) { return (byte) VH_slice_qp_delta.get(segment, 0L, index); }
     /// {@return `slice_qp_delta`}
-    /// @param segment the segment of the struct
-    public static @CType("int8_t") byte get_slice_qp_delta(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_qp_delta(segment, 0L); }
-    /// {@return `slice_qp_delta`}
-    public @CType("int8_t") byte slice_qp_delta() { return StdVideoEncodeH265SliceSegmentHeader.get_slice_qp_delta(this.segment()); }
+    public byte slice_qp_delta() { return slice_qp_delta(this.segment(), 0L); }
     /// Sets `slice_qp_delta` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_slice_qp_delta(MemorySegment segment, long index, @CType("int8_t") byte value) { VH_slice_qp_delta.set(segment, 0L, index, value); }
-    /// Sets `slice_qp_delta` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_slice_qp_delta(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_qp_delta(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void slice_qp_delta(MemorySegment segment, long index, byte value) { VH_slice_qp_delta.set(segment, 0L, index, value); }
     /// Sets `slice_qp_delta` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader slice_qp_delta(@CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_qp_delta(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader slice_qp_delta(byte value) { slice_qp_delta(this.segment(), 0L, value); return this; }
 
     /// {@return `reserved1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint16_t") short get_reserved1(MemorySegment segment, long index) { return (short) VH_reserved1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short reserved1(MemorySegment segment, long index) { return (short) VH_reserved1.get(segment, 0L, index); }
     /// {@return `reserved1`}
-    /// @param segment the segment of the struct
-    public static @CType("uint16_t") short get_reserved1(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_reserved1(segment, 0L); }
-    /// {@return `reserved1`}
-    public @CType("uint16_t") short reserved1() { return StdVideoEncodeH265SliceSegmentHeader.get_reserved1(this.segment()); }
+    public short reserved1() { return reserved1(this.segment(), 0L); }
     /// Sets `reserved1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_reserved1(MemorySegment segment, long index, @CType("uint16_t") short value) { VH_reserved1.set(segment, 0L, index, value); }
-    /// Sets `reserved1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_reserved1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH265SliceSegmentHeader.set_reserved1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void reserved1(MemorySegment segment, long index, short value) { VH_reserved1.set(segment, 0L, index, value); }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader reserved1(@CType("uint16_t") short value) { StdVideoEncodeH265SliceSegmentHeader.set_reserved1(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader reserved1(short value) { reserved1(this.segment(), 0L, value); return this; }
 
     /// {@return `pWeightTable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const StdVideoEncodeH265WeightTable *") MemorySegment get_pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pWeightTable(MemorySegment segment, long index) { return (MemorySegment) VH_pWeightTable.get(segment, 0L, index); }
     /// {@return `pWeightTable`}
-    /// @param segment the segment of the struct
-    public static @CType("const StdVideoEncodeH265WeightTable *") MemorySegment get_pWeightTable(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(segment, 0L); }
-    /// {@return `pWeightTable`}
-    public @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTable() { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment()); }
+    public MemorySegment pWeightTable() { return pWeightTable(this.segment(), 0L); }
     /// Sets `pWeightTable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pWeightTable(MemorySegment segment, long index, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
-    /// Sets `pWeightTable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pWeightTable(MemorySegment segment, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pWeightTable(MemorySegment segment, long index, MemorySegment value) { VH_pWeightTable.set(segment, 0L, index, value); }
     /// Sets `pWeightTable` with the given value.
     /// @param value the value
     /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeader pWeightTable(@CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), value); return this; }
+    public StdVideoEncodeH265SliceSegmentHeader pWeightTable(MemorySegment value) { pWeightTable(this.segment(), 0L, value); return this; }
 
     /// A buffer of [StdVideoEncodeH265SliceSegmentHeader].
     public static final class Buffer extends StdVideoEncodeH265SliceSegmentHeader {
@@ -548,139 +459,139 @@ public sealed class StdVideoEncodeH265SliceSegmentHeader extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment flagsAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("StdVideoEncodeH265SliceSegmentHeaderFlags") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `slice_type` at the given index}
-        /// @param index the index
-        public @CType("StdVideoH265SliceType") int slice_typeAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_type(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int slice_typeAt(long index) { return slice_type(this.segment(), index); }
         /// Sets `slice_type` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_typeAt(long index, @CType("StdVideoH265SliceType") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_type(this.segment(), index, value); return this; }
+        public Buffer slice_typeAt(long index, int value) { slice_type(this.segment(), index, value); return this; }
 
         /// {@return `slice_segment_address` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int slice_segment_addressAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_segment_address(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int slice_segment_addressAt(long index) { return slice_segment_address(this.segment(), index); }
         /// Sets `slice_segment_address` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_segment_addressAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_segment_address(this.segment(), index, value); return this; }
+        public Buffer slice_segment_addressAt(long index, int value) { slice_segment_address(this.segment(), index, value); return this; }
 
         /// {@return `collocated_ref_idx` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte collocated_ref_idxAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_collocated_ref_idx(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte collocated_ref_idxAt(long index) { return collocated_ref_idx(this.segment(), index); }
         /// Sets `collocated_ref_idx` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer collocated_ref_idxAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_collocated_ref_idx(this.segment(), index, value); return this; }
+        public Buffer collocated_ref_idxAt(long index, byte value) { collocated_ref_idx(this.segment(), index, value); return this; }
 
         /// {@return `MaxNumMergeCand` at the given index}
-        /// @param index the index
-        public @CType("uint8_t") byte MaxNumMergeCandAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_MaxNumMergeCand(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte MaxNumMergeCandAt(long index) { return MaxNumMergeCand(this.segment(), index); }
         /// Sets `MaxNumMergeCand` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer MaxNumMergeCandAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_MaxNumMergeCand(this.segment(), index, value); return this; }
+        public Buffer MaxNumMergeCandAt(long index, byte value) { MaxNumMergeCand(this.segment(), index, value); return this; }
 
         /// {@return `slice_cb_qp_offset` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_cb_qp_offsetAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cb_qp_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_cb_qp_offsetAt(long index) { return slice_cb_qp_offset(this.segment(), index); }
         /// Sets `slice_cb_qp_offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_cb_qp_offsetAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cb_qp_offset(this.segment(), index, value); return this; }
+        public Buffer slice_cb_qp_offsetAt(long index, byte value) { slice_cb_qp_offset(this.segment(), index, value); return this; }
 
         /// {@return `slice_cr_qp_offset` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_cr_qp_offsetAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_cr_qp_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_cr_qp_offsetAt(long index) { return slice_cr_qp_offset(this.segment(), index); }
         /// Sets `slice_cr_qp_offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_cr_qp_offsetAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_cr_qp_offset(this.segment(), index, value); return this; }
+        public Buffer slice_cr_qp_offsetAt(long index, byte value) { slice_cr_qp_offset(this.segment(), index, value); return this; }
 
         /// {@return `slice_beta_offset_div2` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_beta_offset_div2At(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_beta_offset_div2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_beta_offset_div2At(long index) { return slice_beta_offset_div2(this.segment(), index); }
         /// Sets `slice_beta_offset_div2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_beta_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_beta_offset_div2(this.segment(), index, value); return this; }
+        public Buffer slice_beta_offset_div2At(long index, byte value) { slice_beta_offset_div2(this.segment(), index, value); return this; }
 
         /// {@return `slice_tc_offset_div2` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_tc_offset_div2At(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_tc_offset_div2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_tc_offset_div2At(long index) { return slice_tc_offset_div2(this.segment(), index); }
         /// Sets `slice_tc_offset_div2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_tc_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_tc_offset_div2(this.segment(), index, value); return this; }
+        public Buffer slice_tc_offset_div2At(long index, byte value) { slice_tc_offset_div2(this.segment(), index, value); return this; }
 
         /// {@return `slice_act_y_qp_offset` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_act_y_qp_offsetAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_y_qp_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_act_y_qp_offsetAt(long index) { return slice_act_y_qp_offset(this.segment(), index); }
         /// Sets `slice_act_y_qp_offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_act_y_qp_offsetAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_y_qp_offset(this.segment(), index, value); return this; }
+        public Buffer slice_act_y_qp_offsetAt(long index, byte value) { slice_act_y_qp_offset(this.segment(), index, value); return this; }
 
         /// {@return `slice_act_cb_qp_offset` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_act_cb_qp_offsetAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cb_qp_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_act_cb_qp_offsetAt(long index) { return slice_act_cb_qp_offset(this.segment(), index); }
         /// Sets `slice_act_cb_qp_offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_act_cb_qp_offsetAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cb_qp_offset(this.segment(), index, value); return this; }
+        public Buffer slice_act_cb_qp_offsetAt(long index, byte value) { slice_act_cb_qp_offset(this.segment(), index, value); return this; }
 
         /// {@return `slice_act_cr_qp_offset` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_act_cr_qp_offsetAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_act_cr_qp_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_act_cr_qp_offsetAt(long index) { return slice_act_cr_qp_offset(this.segment(), index); }
         /// Sets `slice_act_cr_qp_offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_act_cr_qp_offsetAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_act_cr_qp_offset(this.segment(), index, value); return this; }
+        public Buffer slice_act_cr_qp_offsetAt(long index, byte value) { slice_act_cr_qp_offset(this.segment(), index, value); return this; }
 
         /// {@return `slice_qp_delta` at the given index}
-        /// @param index the index
-        public @CType("int8_t") byte slice_qp_deltaAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_slice_qp_delta(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public byte slice_qp_deltaAt(long index) { return slice_qp_delta(this.segment(), index); }
         /// Sets `slice_qp_delta` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer slice_qp_deltaAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH265SliceSegmentHeader.set_slice_qp_delta(this.segment(), index, value); return this; }
+        public Buffer slice_qp_deltaAt(long index, byte value) { slice_qp_delta(this.segment(), index, value); return this; }
 
         /// {@return `reserved1` at the given index}
-        /// @param index the index
-        public @CType("uint16_t") short reserved1At(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_reserved1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short reserved1At(long index) { return reserved1(this.segment(), index); }
         /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer reserved1At(long index, @CType("uint16_t") short value) { StdVideoEncodeH265SliceSegmentHeader.set_reserved1(this.segment(), index, value); return this; }
+        public Buffer reserved1At(long index, short value) { reserved1(this.segment(), index, value); return this; }
 
         /// {@return `pWeightTable` at the given index}
-        /// @param index the index
-        public @CType("const StdVideoEncodeH265WeightTable *") MemorySegment pWeightTableAt(long index) { return StdVideoEncodeH265SliceSegmentHeader.get_pWeightTable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pWeightTableAt(long index) { return pWeightTable(this.segment(), index); }
         /// Sets `pWeightTable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pWeightTableAt(long index, @CType("const StdVideoEncodeH265WeightTable *") MemorySegment value) { StdVideoEncodeH265SliceSegmentHeader.set_pWeightTable(this.segment(), index, value); return this; }
+        public Buffer pWeightTableAt(long index, MemorySegment value) { pWeightTable(this.segment(), index, value); return this; }
 
     }
 }

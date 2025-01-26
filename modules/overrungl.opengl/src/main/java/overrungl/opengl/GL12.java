@@ -83,7 +83,7 @@ public class GL12 extends GL11 {
     }
 
     /// ```
-    /// void glDrawRangeElements(unsigned int mode, unsigned int start, unsigned int end, int count, unsigned int type, const void* indices);
+    /// void glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void* indices);
     /// ```
     public void DrawRangeElements(int mode, int start, int end, int count, int type, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElements)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElements");
@@ -92,7 +92,7 @@ public class GL12 extends GL11 {
     }
 
     /// ```
-    /// void glTexImage3D(unsigned int target, int level, int internalformat, int width, int height, int depth, int border, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexImage3D");
@@ -101,7 +101,7 @@ public class GL12 extends GL11 {
     }
 
     /// ```
-    /// void glTexSubImage3D(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage3D");
@@ -110,7 +110,7 @@ public class GL12 extends GL11 {
     }
 
     /// ```
-    /// void glCopyTexSubImage3D(unsigned int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    /// void glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
     /// ```
     public void CopyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3D");

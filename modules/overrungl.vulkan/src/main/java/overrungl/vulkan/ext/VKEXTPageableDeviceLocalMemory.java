@@ -18,7 +18,6 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -28,21 +27,24 @@ public class VKEXTPageableDeviceLocalMemory {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_vkSetDeviceMemoryPriorityEXT;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkSetDeviceMemoryPriorityEXT = func.invoke(device, "vkSetDeviceMemoryPriorityEXT");
         }
     }
 
-    public VKEXTPageableDeviceLocalMemory(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKEXTPageableDeviceLocalMemory(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public void SetDeviceMemoryPriorityEXT(@CType("VkDevice") MemorySegment device, @CType("VkDeviceMemory") MemorySegment memory, float priority) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetDeviceMemoryPriorityEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
+    /// ```
+    /// void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority);
+    /// ```
+    public void SetDeviceMemoryPriorityEXT(MemorySegment device, long memory, float priority) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkSetDeviceMemoryPriorityEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
         try { Handles.MH_vkSetDeviceMemoryPriorityEXT.invokeExact(handles.PFN_vkSetDeviceMemoryPriorityEXT, device, memory, priority); }
-        catch (Throwable e) { throw new RuntimeException("error in vkSetDeviceMemoryPriorityEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SetDeviceMemoryPriorityEXT", e); }
     }
 
 }

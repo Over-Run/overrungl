@@ -40,7 +40,7 @@ public final class GLEXTSubtexture {
     }
 
     /// ```
-    /// void glTexSubImage1DEXT(unsigned int target, int level, int xoffset, int width, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
@@ -49,7 +49,7 @@ public final class GLEXTSubtexture {
     }
 
     /// ```
-    /// void glTexSubImage2DEXT(unsigned int target, int level, int xoffset, int yoffset, int width, int height, unsigned int format, unsigned int type, const void* pixels);
+    /// void glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* pixels);
     /// ```
     public void TexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");

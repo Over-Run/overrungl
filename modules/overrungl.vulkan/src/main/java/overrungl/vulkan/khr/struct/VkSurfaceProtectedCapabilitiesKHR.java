@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### supportsProtected
-/// [VarHandle][#VH_supportsProtected] - [Getter][#supportsProtected()] - [Setter][#supportsProtected(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSurfaceProtectedCapabilitiesKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBool32 supportsProtected;
-/// } VkSurfaceProtectedCapabilitiesKHR;
 /// ```
-public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
+/// struct VkSurfaceProtectedCapabilitiesKHR {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkBool32 supportsProtected;
+/// };
+/// ```
+public sealed class VkSurfaceProtectedCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkSurfaceProtectedCapabilitiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportsProtected")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `supportsProtected` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportsProtected`.
+    public static final long OFFSET_supportsProtected = LAYOUT.byteOffset(PathElement.groupElement("supportsProtected"));
+    /// The memory layout of `supportsProtected`.
+    public static final MemoryLayout LAYOUT_supportsProtected = LAYOUT.select(PathElement.groupElement("supportsProtected"));
+    /// The [VarHandle] of `supportsProtected` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportsProtected = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportsProtected"));
 
     /// Creates `VkSurfaceProtectedCapabilitiesKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
     /// Creates `VkSurfaceProtectedCapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceProtectedCapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceProtectedCapabilitiesKHR(segment); }
-
-    /// Creates `VkSurfaceProtectedCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSurfaceProtectedCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceProtectedCapabilitiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceProtectedCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSurfaceProtectedCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceProtectedCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSurfaceProtectedCapabilitiesKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSurfaceProtectedCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
     /// @return the allocated `VkSurfaceProtectedCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfaceProtectedCapabilitiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSurfaceProtectedCapabilitiesKHR`
-    public static VkSurfaceProtectedCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkBool32") int supportsProtected) { return alloc(allocator).sType(sType).pNext(pNext).supportsProtected(supportsProtected); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSurfaceProtectedCapabilitiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSurfaceProtectedCapabilitiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSurfaceProtectedCapabilitiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceProtectedCapabilitiesKHR sType(@CType("VkStructureType") int value) { VkSurfaceProtectedCapabilitiesKHR.set_sType(this.segment(), value); return this; }
+    public VkSurfaceProtectedCapabilitiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSurfaceProtectedCapabilitiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkSurfaceProtectedCapabilitiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSurfaceProtectedCapabilitiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceProtectedCapabilitiesKHR pNext(@CType("const void *") MemorySegment value) { VkSurfaceProtectedCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkSurfaceProtectedCapabilitiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `supportsProtected` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_supportsProtected(MemorySegment segment, long index) { return (int) VH_supportsProtected.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportsProtected(MemorySegment segment, long index) { return (int) VH_supportsProtected.get(segment, 0L, index); }
     /// {@return `supportsProtected`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_supportsProtected(MemorySegment segment) { return VkSurfaceProtectedCapabilitiesKHR.get_supportsProtected(segment, 0L); }
-    /// {@return `supportsProtected`}
-    public @CType("VkBool32") int supportsProtected() { return VkSurfaceProtectedCapabilitiesKHR.get_supportsProtected(this.segment()); }
+    public int supportsProtected() { return supportsProtected(this.segment(), 0L); }
     /// Sets `supportsProtected` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportsProtected(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_supportsProtected.set(segment, 0L, index, value); }
-    /// Sets `supportsProtected` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportsProtected(MemorySegment segment, @CType("VkBool32") int value) { VkSurfaceProtectedCapabilitiesKHR.set_supportsProtected(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportsProtected(MemorySegment segment, long index, int value) { VH_supportsProtected.set(segment, 0L, index, value); }
     /// Sets `supportsProtected` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceProtectedCapabilitiesKHR supportsProtected(@CType("VkBool32") int value) { VkSurfaceProtectedCapabilitiesKHR.set_supportsProtected(this.segment(), value); return this; }
+    public VkSurfaceProtectedCapabilitiesKHR supportsProtected(int value) { supportsProtected(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSurfaceProtectedCapabilitiesKHR].
     public static final class Buffer extends VkSurfaceProtectedCapabilitiesKHR {
@@ -200,31 +173,31 @@ public sealed class VkSurfaceProtectedCapabilitiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSurfaceProtectedCapabilitiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSurfaceProtectedCapabilitiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSurfaceProtectedCapabilitiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSurfaceProtectedCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `supportsProtected` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int supportsProtectedAt(long index) { return VkSurfaceProtectedCapabilitiesKHR.get_supportsProtected(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportsProtectedAt(long index) { return supportsProtected(this.segment(), index); }
         /// Sets `supportsProtected` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportsProtectedAt(long index, @CType("VkBool32") int value) { VkSurfaceProtectedCapabilitiesKHR.set_supportsProtected(this.segment(), index, value); return this; }
+        public Buffer supportsProtectedAt(long index, int value) { supportsProtected(this.segment(), index, value); return this; }
 
     }
 }

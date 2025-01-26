@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef int (*ALBufferCallbackTypeSOFT)(ALvoid* userptr, ALvoid* sampledata, int numbytes);
+/// typedef ALsizei (*ALBufferCallbackTypeSOFT)(ALvoid* userptr, ALvoid* sampledata, ALsizei numbytes);
 /// ```
 @FunctionalInterface
 public interface ALBufferCallbackTypeSOFT extends Upcall {

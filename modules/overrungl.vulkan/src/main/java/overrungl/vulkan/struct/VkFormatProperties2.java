@@ -15,46 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### formatProperties
-/// [Byte offset][#OFFSET_formatProperties] - [Memory layout][#ML_formatProperties] - [Getter][#formatProperties()] - [Setter][#formatProperties(MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkFormatProperties2 {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkFormatProperties formatProperties;
-/// } VkFormatProperties2;
 /// ```
-public sealed class VkFormatProperties2 extends Struct {
+/// struct VkFormatProperties2 {
+///     VkStructureType sType;
+///     void* pNext;
+///     VkFormatProperties formatProperties;
+/// };
+/// ```
+public sealed class VkFormatProperties2 extends GroupType {
     /// The struct layout of `VkFormatProperties2`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkFormatProperties.LAYOUT.withName("formatProperties")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `formatProperties`.
     public static final long OFFSET_formatProperties = LAYOUT.byteOffset(PathElement.groupElement("formatProperties"));
     /// The memory layout of `formatProperties`.
-    public static final MemoryLayout ML_formatProperties = LAYOUT.select(PathElement.groupElement("formatProperties"));
+    public static final MemoryLayout LAYOUT_formatProperties = LAYOUT.select(PathElement.groupElement("formatProperties"));
 
     /// Creates `VkFormatProperties2` with the given segment.
     /// @param segment the memory segment
@@ -63,19 +63,14 @@ public sealed class VkFormatProperties2 extends Struct {
     /// Creates `VkFormatProperties2` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFormatProperties2 of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFormatProperties2(segment); }
-
-    /// Creates `VkFormatProperties2` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkFormatProperties2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFormatProperties2 ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFormatProperties2(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkFormatProperties2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFormatProperties2(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkFormatProperties2` with the given segment.
     ///
@@ -83,7 +78,7 @@ public sealed class VkFormatProperties2 extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkFormatProperties2` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,11 +91,6 @@ public sealed class VkFormatProperties2 extends Struct {
     /// @return the allocated `VkFormatProperties2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFormatProperties2` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkFormatProperties2`
-    public static VkFormatProperties2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") MemorySegment pNext, @CType("VkFormatProperties") MemorySegment formatProperties) { return alloc(allocator).sType(sType).pNext(pNext).formatProperties(formatProperties); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -108,76 +98,55 @@ public sealed class VkFormatProperties2 extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkFormatProperties2.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkFormatProperties2.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkFormatProperties2.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFormatProperties2 sType(@CType("VkStructureType") int value) { VkFormatProperties2.set_sType(this.segment(), value); return this; }
+    public VkFormatProperties2 sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") MemorySegment get_pNext(MemorySegment segment) { return VkFormatProperties2.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") MemorySegment pNext() { return VkFormatProperties2.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") MemorySegment value) { VkFormatProperties2.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFormatProperties2 pNext(@CType("void *") MemorySegment value) { VkFormatProperties2.set_pNext(this.segment(), value); return this; }
+    public VkFormatProperties2 pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `formatProperties` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormatProperties") MemorySegment get_formatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment formatProperties(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_formatProperties, index), LAYOUT_formatProperties); }
     /// {@return `formatProperties`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormatProperties") MemorySegment get_formatProperties(MemorySegment segment) { return VkFormatProperties2.get_formatProperties(segment, 0L); }
-    /// {@return `formatProperties`}
-    public @CType("VkFormatProperties") MemorySegment formatProperties() { return VkFormatProperties2.get_formatProperties(this.segment()); }
+    public MemorySegment formatProperties() { return formatProperties(this.segment(), 0L); }
     /// Sets `formatProperties` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_formatProperties(MemorySegment segment, long index, @CType("VkFormatProperties") MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_formatProperties, index), ML_formatProperties.byteSize()); }
-    /// Sets `formatProperties` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_formatProperties(MemorySegment segment, @CType("VkFormatProperties") MemorySegment value) { VkFormatProperties2.set_formatProperties(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void formatProperties(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_formatProperties, index), LAYOUT_formatProperties.byteSize()); }
     /// Sets `formatProperties` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkFormatProperties2 formatProperties(@CType("VkFormatProperties") MemorySegment value) { VkFormatProperties2.set_formatProperties(this.segment(), value); return this; }
+    public VkFormatProperties2 formatProperties(MemorySegment value) { formatProperties(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkFormatProperties2].
     public static final class Buffer extends VkFormatProperties2 {
@@ -202,31 +171,31 @@ public sealed class VkFormatProperties2 extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkFormatProperties2.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkFormatProperties2.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") MemorySegment pNextAt(long index) { return VkFormatProperties2.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") MemorySegment value) { VkFormatProperties2.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `formatProperties` at the given index}
-        /// @param index the index
-        public @CType("VkFormatProperties") MemorySegment formatPropertiesAt(long index) { return VkFormatProperties2.get_formatProperties(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment formatPropertiesAt(long index) { return formatProperties(this.segment(), index); }
         /// Sets `formatProperties` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer formatPropertiesAt(long index, @CType("VkFormatProperties") MemorySegment value) { VkFormatProperties2.set_formatProperties(this.segment(), index, value); return this; }
+        public Buffer formatPropertiesAt(long index, MemorySegment value) { formatProperties(this.segment(), index, value); return this; }
 
     }
 }

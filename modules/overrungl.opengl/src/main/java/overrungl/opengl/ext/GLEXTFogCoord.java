@@ -57,7 +57,7 @@ public final class GLEXTFogCoord {
     }
 
     /// ```
-    /// void glFogCoordfEXT(float coord);
+    /// void glFogCoordfEXT(GLfloat coord);
     /// ```
     public void FogCoordfEXT(float coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordfEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoordfEXT");
@@ -75,7 +75,7 @@ public final class GLEXTFogCoord {
     }
 
     /// ```
-    /// void glFogCoorddEXT(double coord);
+    /// void glFogCoorddEXT(GLdouble coord);
     /// ```
     public void FogCoorddEXT(double coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoorddEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoorddEXT");
@@ -93,7 +93,7 @@ public final class GLEXTFogCoord {
     }
 
     /// ```
-    /// void glFogCoordPointerEXT(unsigned int type, int stride, const void* pointer);
+    /// void glFogCoordPointerEXT(GLenum type, GLsizei stride, const void* pointer);
     /// ```
     public void FogCoordPointerEXT(int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glFogCoordPointerEXT");

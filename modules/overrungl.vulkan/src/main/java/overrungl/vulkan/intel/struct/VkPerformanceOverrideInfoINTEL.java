@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.intel.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### type
-/// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(int)]
-/// ### enable
-/// [VarHandle][#VH_enable] - [Getter][#enable()] - [Setter][#enable(int)]
-/// ### parameter
-/// [VarHandle][#VH_parameter] - [Getter][#parameter()] - [Setter][#parameter(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPerformanceOverrideInfoINTEL {
+/// ```
+/// struct VkPerformanceOverrideInfoINTEL {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkPerformanceOverrideTypeINTEL type;
 ///     VkBool32 enable;
 ///     uint64_t parameter;
-/// } VkPerformanceOverrideInfoINTEL;
+/// };
 /// ```
-public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
+public sealed class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// The struct layout of `VkPerformanceOverrideInfoINTEL`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("enable"),
         ValueLayout.JAVA_LONG.withName("parameter")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `type`.
+    public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
+    /// The memory layout of `type`.
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
+    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The [VarHandle] of `enable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `enable`.
+    public static final long OFFSET_enable = LAYOUT.byteOffset(PathElement.groupElement("enable"));
+    /// The memory layout of `enable`.
+    public static final MemoryLayout LAYOUT_enable = LAYOUT.select(PathElement.groupElement("enable"));
+    /// The [VarHandle] of `enable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_enable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("enable"));
-    /// The [VarHandle] of `parameter` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `parameter`.
+    public static final long OFFSET_parameter = LAYOUT.byteOffset(PathElement.groupElement("parameter"));
+    /// The memory layout of `parameter`.
+    public static final MemoryLayout LAYOUT_parameter = LAYOUT.select(PathElement.groupElement("parameter"));
+    /// The [VarHandle] of `parameter` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_parameter = LAYOUT.arrayElementVarHandle(PathElement.groupElement("parameter"));
 
     /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
     /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceOverrideInfoINTEL of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceOverrideInfoINTEL(segment); }
-
-    /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceOverrideInfoINTEL ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceOverrideInfoINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPerformanceOverrideInfoINTEL ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceOverrideInfoINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPerformanceOverrideInfoINTEL` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
     /// @return the allocated `VkPerformanceOverrideInfoINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
-    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPerformanceOverrideTypeINTEL") int type, @CType("VkBool32") int enable, @CType("uint64_t") long parameter) { return alloc(allocator).sType(sType).pNext(pNext).type(type).enable(enable).parameter(parameter); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPerformanceOverrideInfoINTEL.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPerformanceOverrideInfoINTEL.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPerformanceOverrideInfoINTEL.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceOverrideInfoINTEL sType(@CType("VkStructureType") int value) { VkPerformanceOverrideInfoINTEL.set_sType(this.segment(), value); return this; }
+    public VkPerformanceOverrideInfoINTEL sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkPerformanceOverrideInfoINTEL.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkPerformanceOverrideInfoINTEL.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkPerformanceOverrideInfoINTEL.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceOverrideInfoINTEL pNext(@CType("const void *") MemorySegment value) { VkPerformanceOverrideInfoINTEL.set_pNext(this.segment(), value); return this; }
+    public VkPerformanceOverrideInfoINTEL pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPerformanceOverrideTypeINTEL") int get_type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
     /// {@return `type`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPerformanceOverrideTypeINTEL") int get_type(MemorySegment segment) { return VkPerformanceOverrideInfoINTEL.get_type(segment, 0L); }
-    /// {@return `type`}
-    public @CType("VkPerformanceOverrideTypeINTEL") int type() { return VkPerformanceOverrideInfoINTEL.get_type(this.segment()); }
+    public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, long index, @CType("VkPerformanceOverrideTypeINTEL") int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, @CType("VkPerformanceOverrideTypeINTEL") int value) { VkPerformanceOverrideInfoINTEL.set_type(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceOverrideInfoINTEL type(@CType("VkPerformanceOverrideTypeINTEL") int value) { VkPerformanceOverrideInfoINTEL.set_type(this.segment(), value); return this; }
+    public VkPerformanceOverrideInfoINTEL type(int value) { type(this.segment(), 0L, value); return this; }
 
     /// {@return `enable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_enable(MemorySegment segment, long index) { return (int) VH_enable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int enable(MemorySegment segment, long index) { return (int) VH_enable.get(segment, 0L, index); }
     /// {@return `enable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_enable(MemorySegment segment) { return VkPerformanceOverrideInfoINTEL.get_enable(segment, 0L); }
-    /// {@return `enable`}
-    public @CType("VkBool32") int enable() { return VkPerformanceOverrideInfoINTEL.get_enable(this.segment()); }
+    public int enable() { return enable(this.segment(), 0L); }
     /// Sets `enable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_enable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_enable.set(segment, 0L, index, value); }
-    /// Sets `enable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_enable(MemorySegment segment, @CType("VkBool32") int value) { VkPerformanceOverrideInfoINTEL.set_enable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void enable(MemorySegment segment, long index, int value) { VH_enable.set(segment, 0L, index, value); }
     /// Sets `enable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceOverrideInfoINTEL enable(@CType("VkBool32") int value) { VkPerformanceOverrideInfoINTEL.set_enable(this.segment(), value); return this; }
+    public VkPerformanceOverrideInfoINTEL enable(int value) { enable(this.segment(), 0L, value); return this; }
 
     /// {@return `parameter` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_parameter(MemorySegment segment, long index) { return (long) VH_parameter.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long parameter(MemorySegment segment, long index) { return (long) VH_parameter.get(segment, 0L, index); }
     /// {@return `parameter`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_parameter(MemorySegment segment) { return VkPerformanceOverrideInfoINTEL.get_parameter(segment, 0L); }
-    /// {@return `parameter`}
-    public @CType("uint64_t") long parameter() { return VkPerformanceOverrideInfoINTEL.get_parameter(this.segment()); }
+    public long parameter() { return parameter(this.segment(), 0L); }
     /// Sets `parameter` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_parameter(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_parameter.set(segment, 0L, index, value); }
-    /// Sets `parameter` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_parameter(MemorySegment segment, @CType("uint64_t") long value) { VkPerformanceOverrideInfoINTEL.set_parameter(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void parameter(MemorySegment segment, long index, long value) { VH_parameter.set(segment, 0L, index, value); }
     /// Sets `parameter` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceOverrideInfoINTEL parameter(@CType("uint64_t") long value) { VkPerformanceOverrideInfoINTEL.set_parameter(this.segment(), value); return this; }
+    public VkPerformanceOverrideInfoINTEL parameter(long value) { parameter(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPerformanceOverrideInfoINTEL].
     public static final class Buffer extends VkPerformanceOverrideInfoINTEL {
@@ -258,49 +221,49 @@ public sealed class VkPerformanceOverrideInfoINTEL extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceOverrideInfoINTEL.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceOverrideInfoINTEL.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkPerformanceOverrideInfoINTEL.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkPerformanceOverrideInfoINTEL.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `type` at the given index}
-        /// @param index the index
-        public @CType("VkPerformanceOverrideTypeINTEL") int typeAt(long index) { return VkPerformanceOverrideInfoINTEL.get_type(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int typeAt(long index) { return type(this.segment(), index); }
         /// Sets `type` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer typeAt(long index, @CType("VkPerformanceOverrideTypeINTEL") int value) { VkPerformanceOverrideInfoINTEL.set_type(this.segment(), index, value); return this; }
+        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
         /// {@return `enable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int enableAt(long index) { return VkPerformanceOverrideInfoINTEL.get_enable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int enableAt(long index) { return enable(this.segment(), index); }
         /// Sets `enable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer enableAt(long index, @CType("VkBool32") int value) { VkPerformanceOverrideInfoINTEL.set_enable(this.segment(), index, value); return this; }
+        public Buffer enableAt(long index, int value) { enable(this.segment(), index, value); return this; }
 
         /// {@return `parameter` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long parameterAt(long index) { return VkPerformanceOverrideInfoINTEL.get_parameter(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long parameterAt(long index) { return parameter(this.segment(), index); }
         /// Sets `parameter` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer parameterAt(long index, @CType("uint64_t") long value) { VkPerformanceOverrideInfoINTEL.set_parameter(this.segment(), index, value); return this; }
+        public Buffer parameterAt(long index, long value) { parameter(this.segment(), index, value); return this; }
 
     }
 }

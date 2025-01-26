@@ -18,7 +18,6 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
@@ -34,26 +33,32 @@ public class VKKHRExternalMemoryFd {
         public static final MethodHandle MH_vkGetMemoryFdPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_vkGetMemoryFdKHR;
         public final MemorySegment PFN_vkGetMemoryFdPropertiesKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+        private Handles(MemorySegment device, VKLoadFunc func) {
             PFN_vkGetMemoryFdKHR = func.invoke(device, "vkGetMemoryFdKHR");
             PFN_vkGetMemoryFdPropertiesKHR = func.invoke(device, "vkGetMemoryFdPropertiesKHR");
         }
     }
 
-    public VKKHRExternalMemoryFd(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
+    public VKKHRExternalMemoryFd(MemorySegment device, VKLoadFunc func) {
         this.handles = new Handles(device, func);
     }
 
-    public @CType("VkResult") int GetMemoryFdKHR(@CType("VkDevice") MemorySegment device, @CType("const VkMemoryGetFdInfoKHR *") MemorySegment pGetFdInfo, @CType("int *") MemorySegment pFd) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdKHR");
+    /// ```
+    /// VkResult vkGetMemoryFdKHR(VkDevice device, const VkMemoryGetFdInfoKHR* pGetFdInfo, int* pFd);
+    /// ```
+    public int GetMemoryFdKHR(MemorySegment device, MemorySegment pGetFdInfo, MemorySegment pFd) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdKHR");
         try { return (int) Handles.MH_vkGetMemoryFdKHR.invokeExact(handles.PFN_vkGetMemoryFdKHR, device, pGetFdInfo, pFd); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryFdKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryFdKHR", e); }
     }
 
-    public @CType("VkResult") int GetMemoryFdPropertiesKHR(@CType("VkDevice") MemorySegment device, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType, int fd, @CType("VkMemoryFdPropertiesKHR *") MemorySegment pMemoryFdProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetMemoryFdPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdPropertiesKHR");
+    /// ```
+    /// VkResult vkGetMemoryFdPropertiesKHR(VkDevice device, VkExternalMemoryHandleTypeFlagBits handleType, int fd, VkMemoryFdPropertiesKHR* pMemoryFdProperties);
+    /// ```
+    public int GetMemoryFdPropertiesKHR(MemorySegment device, int handleType, int fd, MemorySegment pMemoryFdProperties) {
+        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryFdPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdPropertiesKHR");
         try { return (int) Handles.MH_vkGetMemoryFdPropertiesKHR.invokeExact(handles.PFN_vkGetMemoryFdPropertiesKHR, device, handleType, fd, pMemoryFdProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryFdPropertiesKHR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMemoryFdPropertiesKHR", e); }
     }
 
 }

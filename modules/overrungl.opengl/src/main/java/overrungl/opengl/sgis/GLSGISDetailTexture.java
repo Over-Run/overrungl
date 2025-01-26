@@ -48,7 +48,7 @@ public final class GLSGISDetailTexture {
     }
 
     /// ```
-    /// void glDetailTexFuncSGIS(unsigned int target, int n, const GLfloat* points);
+    /// void glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat* points);
     /// ```
     public void DetailTexFuncSGIS(int target, int n, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
@@ -57,7 +57,7 @@ public final class GLSGISDetailTexture {
     }
 
     /// ```
-    /// void glGetDetailTexFuncSGIS(unsigned int target, GLfloat* points);
+    /// void glGetDetailTexFuncSGIS(GLenum target, GLfloat* points);
     /// ```
     public void GetDetailTexFuncSGIS(int target, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");

@@ -40,7 +40,7 @@ public final class GLIBMMultimodeDrawArrays {
     }
 
     /// ```
-    /// void glMultiModeDrawArraysIBM(const GLenum* mode, const GLint* first, const GLsizei* count, int primcount, int modestride);
+    /// void glMultiModeDrawArraysIBM(const GLenum* mode, const GLint* first, const GLsizei* count, GLsizei primcount, GLint modestride);
     /// ```
     public void MultiModeDrawArraysIBM(MemorySegment mode, MemorySegment first, MemorySegment count, int primcount, int modestride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
@@ -49,7 +49,7 @@ public final class GLIBMMultimodeDrawArrays {
     }
 
     /// ```
-    /// void glMultiModeDrawElementsIBM(const GLenum* mode, const GLsizei* count, unsigned int type, const void* const * indices, int primcount, int modestride);
+    /// void glMultiModeDrawElementsIBM(const GLenum* mode, const GLsizei* count, GLenum type, const void* const * indices, GLsizei primcount, GLint modestride);
     /// ```
     public void MultiModeDrawElementsIBM(MemorySegment mode, MemorySegment count, int type, MemorySegment indices, int primcount, int modestride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");

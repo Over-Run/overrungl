@@ -15,82 +15,42 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### stageCount
-/// [VarHandle][#VH_stageCount] - [Getter][#stageCount()] - [Setter][#stageCount(int)]
-/// ### pStages
-/// [VarHandle][#VH_pStages] - [Getter][#pStages()] - [Setter][#pStages(MemorySegment)]
-/// ### pVertexInputState
-/// [VarHandle][#VH_pVertexInputState] - [Getter][#pVertexInputState()] - [Setter][#pVertexInputState(MemorySegment)]
-/// ### pInputAssemblyState
-/// [VarHandle][#VH_pInputAssemblyState] - [Getter][#pInputAssemblyState()] - [Setter][#pInputAssemblyState(MemorySegment)]
-/// ### pTessellationState
-/// [VarHandle][#VH_pTessellationState] - [Getter][#pTessellationState()] - [Setter][#pTessellationState(MemorySegment)]
-/// ### pViewportState
-/// [VarHandle][#VH_pViewportState] - [Getter][#pViewportState()] - [Setter][#pViewportState(MemorySegment)]
-/// ### pRasterizationState
-/// [VarHandle][#VH_pRasterizationState] - [Getter][#pRasterizationState()] - [Setter][#pRasterizationState(MemorySegment)]
-/// ### pMultisampleState
-/// [VarHandle][#VH_pMultisampleState] - [Getter][#pMultisampleState()] - [Setter][#pMultisampleState(MemorySegment)]
-/// ### pDepthStencilState
-/// [VarHandle][#VH_pDepthStencilState] - [Getter][#pDepthStencilState()] - [Setter][#pDepthStencilState(MemorySegment)]
-/// ### pColorBlendState
-/// [VarHandle][#VH_pColorBlendState] - [Getter][#pColorBlendState()] - [Setter][#pColorBlendState(MemorySegment)]
-/// ### pDynamicState
-/// [VarHandle][#VH_pDynamicState] - [Getter][#pDynamicState()] - [Setter][#pDynamicState(MemorySegment)]
-/// ### layout
-/// [VarHandle][#VH_layout] - [Getter][#layout()] - [Setter][#layout(MemorySegment)]
-/// ### renderPass
-/// [VarHandle][#VH_renderPass] - [Getter][#renderPass()] - [Setter][#renderPass(MemorySegment)]
-/// ### subpass
-/// [VarHandle][#VH_subpass] - [Getter][#subpass()] - [Setter][#subpass(int)]
-/// ### basePipelineHandle
-/// [VarHandle][#VH_basePipelineHandle] - [Getter][#basePipelineHandle()] - [Setter][#basePipelineHandle(MemorySegment)]
-/// ### basePipelineIndex
-/// [VarHandle][#VH_basePipelineIndex] - [Getter][#basePipelineIndex()] - [Setter][#basePipelineIndex(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkGraphicsPipelineCreateInfo {
+/// ```
+/// struct VkGraphicsPipelineCreateInfo {
 ///     VkStructureType sType;
-///     const void * pNext;
+///     const void* pNext;
 ///     VkPipelineCreateFlags flags;
 ///     uint32_t stageCount;
-///     const VkPipelineShaderStageCreateInfo * pStages;
-///     const VkPipelineVertexInputStateCreateInfo * pVertexInputState;
-///     const VkPipelineInputAssemblyStateCreateInfo * pInputAssemblyState;
-///     const VkPipelineTessellationStateCreateInfo * pTessellationState;
-///     const VkPipelineViewportStateCreateInfo * pViewportState;
-///     const VkPipelineRasterizationStateCreateInfo * pRasterizationState;
-///     const VkPipelineMultisampleStateCreateInfo * pMultisampleState;
-///     const VkPipelineDepthStencilStateCreateInfo * pDepthStencilState;
-///     const VkPipelineColorBlendStateCreateInfo * pColorBlendState;
-///     const VkPipelineDynamicStateCreateInfo * pDynamicState;
+///     const VkPipelineShaderStageCreateInfo* pStages;
+///     const VkPipelineVertexInputStateCreateInfo* pVertexInputState;
+///     const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState;
+///     const VkPipelineTessellationStateCreateInfo* pTessellationState;
+///     const VkPipelineViewportStateCreateInfo* pViewportState;
+///     const VkPipelineRasterizationStateCreateInfo* pRasterizationState;
+///     const VkPipelineMultisampleStateCreateInfo* pMultisampleState;
+///     const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState;
+///     const VkPipelineColorBlendStateCreateInfo* pColorBlendState;
+///     const VkPipelineDynamicStateCreateInfo* pDynamicState;
 ///     VkPipelineLayout layout;
 ///     VkRenderPass renderPass;
 ///     uint32_t subpass;
 ///     VkPipeline basePipelineHandle;
 ///     int32_t basePipelineIndex;
-/// } VkGraphicsPipelineCreateInfo;
+/// };
 /// ```
-public sealed class VkGraphicsPipelineCreateInfo extends Struct {
+public sealed class VkGraphicsPipelineCreateInfo extends GroupType {
     /// The struct layout of `VkGraphicsPipelineCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -105,49 +65,125 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
         ValueLayout.ADDRESS.withName("pDepthStencilState"),
         ValueLayout.ADDRESS.withName("pColorBlendState"),
         ValueLayout.ADDRESS.withName("pDynamicState"),
-        ValueLayout.ADDRESS.withName("layout"),
-        ValueLayout.ADDRESS.withName("renderPass"),
+        ValueLayout.JAVA_LONG.withName("layout"),
+        ValueLayout.JAVA_LONG.withName("renderPass"),
         ValueLayout.JAVA_INT.withName("subpass"),
-        ValueLayout.ADDRESS.withName("basePipelineHandle"),
+        ValueLayout.JAVA_LONG.withName("basePipelineHandle"),
         ValueLayout.JAVA_INT.withName("basePipelineIndex")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `stageCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stageCount`.
+    public static final long OFFSET_stageCount = LAYOUT.byteOffset(PathElement.groupElement("stageCount"));
+    /// The memory layout of `stageCount`.
+    public static final MemoryLayout LAYOUT_stageCount = LAYOUT.select(PathElement.groupElement("stageCount"));
+    /// The [VarHandle] of `stageCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stageCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageCount"));
+    /// The byte offset of `pStages`.
+    public static final long OFFSET_pStages = LAYOUT.byteOffset(PathElement.groupElement("pStages"));
+    /// The memory layout of `pStages`.
+    public static final MemoryLayout LAYOUT_pStages = LAYOUT.select(PathElement.groupElement("pStages"));
     /// The [VarHandle] of `pStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStages"));
+    /// The byte offset of `pVertexInputState`.
+    public static final long OFFSET_pVertexInputState = LAYOUT.byteOffset(PathElement.groupElement("pVertexInputState"));
+    /// The memory layout of `pVertexInputState`.
+    public static final MemoryLayout LAYOUT_pVertexInputState = LAYOUT.select(PathElement.groupElement("pVertexInputState"));
     /// The [VarHandle] of `pVertexInputState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVertexInputState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexInputState"));
+    /// The byte offset of `pInputAssemblyState`.
+    public static final long OFFSET_pInputAssemblyState = LAYOUT.byteOffset(PathElement.groupElement("pInputAssemblyState"));
+    /// The memory layout of `pInputAssemblyState`.
+    public static final MemoryLayout LAYOUT_pInputAssemblyState = LAYOUT.select(PathElement.groupElement("pInputAssemblyState"));
     /// The [VarHandle] of `pInputAssemblyState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pInputAssemblyState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pInputAssemblyState"));
+    /// The byte offset of `pTessellationState`.
+    public static final long OFFSET_pTessellationState = LAYOUT.byteOffset(PathElement.groupElement("pTessellationState"));
+    /// The memory layout of `pTessellationState`.
+    public static final MemoryLayout LAYOUT_pTessellationState = LAYOUT.select(PathElement.groupElement("pTessellationState"));
     /// The [VarHandle] of `pTessellationState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTessellationState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTessellationState"));
+    /// The byte offset of `pViewportState`.
+    public static final long OFFSET_pViewportState = LAYOUT.byteOffset(PathElement.groupElement("pViewportState"));
+    /// The memory layout of `pViewportState`.
+    public static final MemoryLayout LAYOUT_pViewportState = LAYOUT.select(PathElement.groupElement("pViewportState"));
     /// The [VarHandle] of `pViewportState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewportState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportState"));
+    /// The byte offset of `pRasterizationState`.
+    public static final long OFFSET_pRasterizationState = LAYOUT.byteOffset(PathElement.groupElement("pRasterizationState"));
+    /// The memory layout of `pRasterizationState`.
+    public static final MemoryLayout LAYOUT_pRasterizationState = LAYOUT.select(PathElement.groupElement("pRasterizationState"));
     /// The [VarHandle] of `pRasterizationState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pRasterizationState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRasterizationState"));
+    /// The byte offset of `pMultisampleState`.
+    public static final long OFFSET_pMultisampleState = LAYOUT.byteOffset(PathElement.groupElement("pMultisampleState"));
+    /// The memory layout of `pMultisampleState`.
+    public static final MemoryLayout LAYOUT_pMultisampleState = LAYOUT.select(PathElement.groupElement("pMultisampleState"));
     /// The [VarHandle] of `pMultisampleState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pMultisampleState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMultisampleState"));
+    /// The byte offset of `pDepthStencilState`.
+    public static final long OFFSET_pDepthStencilState = LAYOUT.byteOffset(PathElement.groupElement("pDepthStencilState"));
+    /// The memory layout of `pDepthStencilState`.
+    public static final MemoryLayout LAYOUT_pDepthStencilState = LAYOUT.select(PathElement.groupElement("pDepthStencilState"));
     /// The [VarHandle] of `pDepthStencilState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDepthStencilState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDepthStencilState"));
+    /// The byte offset of `pColorBlendState`.
+    public static final long OFFSET_pColorBlendState = LAYOUT.byteOffset(PathElement.groupElement("pColorBlendState"));
+    /// The memory layout of `pColorBlendState`.
+    public static final MemoryLayout LAYOUT_pColorBlendState = LAYOUT.select(PathElement.groupElement("pColorBlendState"));
     /// The [VarHandle] of `pColorBlendState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorBlendState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorBlendState"));
+    /// The byte offset of `pDynamicState`.
+    public static final long OFFSET_pDynamicState = LAYOUT.byteOffset(PathElement.groupElement("pDynamicState"));
+    /// The memory layout of `pDynamicState`.
+    public static final MemoryLayout LAYOUT_pDynamicState = LAYOUT.select(PathElement.groupElement("pDynamicState"));
     /// The [VarHandle] of `pDynamicState` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pDynamicState = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDynamicState"));
+    /// The byte offset of `layout`.
+    public static final long OFFSET_layout = LAYOUT.byteOffset(PathElement.groupElement("layout"));
+    /// The memory layout of `layout`.
+    public static final MemoryLayout LAYOUT_layout = LAYOUT.select(PathElement.groupElement("layout"));
     /// The [VarHandle] of `layout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_layout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layout"));
+    /// The byte offset of `renderPass`.
+    public static final long OFFSET_renderPass = LAYOUT.byteOffset(PathElement.groupElement("renderPass"));
+    /// The memory layout of `renderPass`.
+    public static final MemoryLayout LAYOUT_renderPass = LAYOUT.select(PathElement.groupElement("renderPass"));
     /// The [VarHandle] of `renderPass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_renderPass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderPass"));
-    /// The [VarHandle] of `subpass` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subpass`.
+    public static final long OFFSET_subpass = LAYOUT.byteOffset(PathElement.groupElement("subpass"));
+    /// The memory layout of `subpass`.
+    public static final MemoryLayout LAYOUT_subpass = LAYOUT.select(PathElement.groupElement("subpass"));
+    /// The [VarHandle] of `subpass` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subpass = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subpass"));
+    /// The byte offset of `basePipelineHandle`.
+    public static final long OFFSET_basePipelineHandle = LAYOUT.byteOffset(PathElement.groupElement("basePipelineHandle"));
+    /// The memory layout of `basePipelineHandle`.
+    public static final MemoryLayout LAYOUT_basePipelineHandle = LAYOUT.select(PathElement.groupElement("basePipelineHandle"));
     /// The [VarHandle] of `basePipelineHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_basePipelineHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineHandle"));
-    /// The [VarHandle] of `basePipelineIndex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `basePipelineIndex`.
+    public static final long OFFSET_basePipelineIndex = LAYOUT.byteOffset(PathElement.groupElement("basePipelineIndex"));
+    /// The memory layout of `basePipelineIndex`.
+    public static final MemoryLayout LAYOUT_basePipelineIndex = LAYOUT.select(PathElement.groupElement("basePipelineIndex"));
+    /// The [VarHandle] of `basePipelineIndex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_basePipelineIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("basePipelineIndex"));
 
     /// Creates `VkGraphicsPipelineCreateInfo` with the given segment.
@@ -157,19 +193,14 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
     /// Creates `VkGraphicsPipelineCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGraphicsPipelineCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGraphicsPipelineCreateInfo(segment); }
-
-    /// Creates `VkGraphicsPipelineCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkGraphicsPipelineCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGraphicsPipelineCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGraphicsPipelineCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkGraphicsPipelineCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGraphicsPipelineCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkGraphicsPipelineCreateInfo` with the given segment.
     ///
@@ -177,7 +208,7 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -190,11 +221,6 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
     /// @return the allocated `VkGraphicsPipelineCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkGraphicsPipelineCreateInfo`
-    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkPipelineCreateFlags") int flags, @CType("uint32_t") int stageCount, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStages, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputState, @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment pInputAssemblyState, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationState, @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment pViewportState, @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment pRasterizationState, @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment pMultisampleState, @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment pDepthStencilState, @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment pColorBlendState, @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment pDynamicState, @CType("VkPipelineLayout") MemorySegment layout, @CType("VkRenderPass") MemorySegment renderPass, @CType("uint32_t") int subpass, @CType("VkPipeline") MemorySegment basePipelineHandle, @CType("int32_t") int basePipelineIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout).renderPass(renderPass).subpass(subpass).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -202,444 +228,311 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkGraphicsPipelineCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkGraphicsPipelineCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo sType(@CType("VkStructureType") int value) { VkGraphicsPipelineCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkGraphicsPipelineCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pNext(@CType("const void *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineCreateFlags") int get_flags(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineCreateFlags") int flags() { return VkGraphicsPipelineCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineCreateFlags") int value) { VkGraphicsPipelineCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo flags(@CType("VkPipelineCreateFlags") int value) { VkGraphicsPipelineCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `stageCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_stageCount(MemorySegment segment, long index) { return (int) VH_stageCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stageCount(MemorySegment segment, long index) { return (int) VH_stageCount.get(segment, 0L, index); }
     /// {@return `stageCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_stageCount(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_stageCount(segment, 0L); }
-    /// {@return `stageCount`}
-    public @CType("uint32_t") int stageCount() { return VkGraphicsPipelineCreateInfo.get_stageCount(this.segment()); }
+    public int stageCount() { return stageCount(this.segment(), 0L); }
     /// Sets `stageCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stageCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_stageCount.set(segment, 0L, index, value); }
-    /// Sets `stageCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stageCount(MemorySegment segment, @CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_stageCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stageCount(MemorySegment segment, long index, int value) { VH_stageCount.set(segment, 0L, index, value); }
     /// Sets `stageCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo stageCount(@CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_stageCount(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo stageCount(int value) { stageCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pStages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment get_pStages(MemorySegment segment, long index) { return (MemorySegment) VH_pStages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pStages(MemorySegment segment, long index) { return (MemorySegment) VH_pStages.get(segment, 0L, index); }
     /// {@return `pStages`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment get_pStages(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pStages(segment, 0L); }
-    /// {@return `pStages`}
-    public @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStages() { return VkGraphicsPipelineCreateInfo.get_pStages(this.segment()); }
+    public MemorySegment pStages() { return pStages(this.segment(), 0L); }
     /// Sets `pStages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pStages(MemorySegment segment, long index, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VH_pStages.set(segment, 0L, index, value); }
-    /// Sets `pStages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pStages(MemorySegment segment, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pStages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pStages(MemorySegment segment, long index, MemorySegment value) { VH_pStages.set(segment, 0L, index, value); }
     /// Sets `pStages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pStages(@CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pStages(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pStages(MemorySegment value) { pStages(this.segment(), 0L, value); return this; }
 
     /// {@return `pVertexInputState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment get_pVertexInputState(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexInputState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pVertexInputState(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexInputState.get(segment, 0L, index); }
     /// {@return `pVertexInputState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment get_pVertexInputState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pVertexInputState(segment, 0L); }
-    /// {@return `pVertexInputState`}
-    public @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputState() { return VkGraphicsPipelineCreateInfo.get_pVertexInputState(this.segment()); }
+    public MemorySegment pVertexInputState() { return pVertexInputState(this.segment(), 0L); }
     /// Sets `pVertexInputState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pVertexInputState(MemorySegment segment, long index, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VH_pVertexInputState.set(segment, 0L, index, value); }
-    /// Sets `pVertexInputState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pVertexInputState(MemorySegment segment, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pVertexInputState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pVertexInputState(MemorySegment segment, long index, MemorySegment value) { VH_pVertexInputState.set(segment, 0L, index, value); }
     /// Sets `pVertexInputState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pVertexInputState(@CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pVertexInputState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pVertexInputState(MemorySegment value) { pVertexInputState(this.segment(), 0L, value); return this; }
 
     /// {@return `pInputAssemblyState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment get_pInputAssemblyState(MemorySegment segment, long index) { return (MemorySegment) VH_pInputAssemblyState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pInputAssemblyState(MemorySegment segment, long index) { return (MemorySegment) VH_pInputAssemblyState.get(segment, 0L, index); }
     /// {@return `pInputAssemblyState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment get_pInputAssemblyState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pInputAssemblyState(segment, 0L); }
-    /// {@return `pInputAssemblyState`}
-    public @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment pInputAssemblyState() { return VkGraphicsPipelineCreateInfo.get_pInputAssemblyState(this.segment()); }
+    public MemorySegment pInputAssemblyState() { return pInputAssemblyState(this.segment(), 0L); }
     /// Sets `pInputAssemblyState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pInputAssemblyState(MemorySegment segment, long index, @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment value) { VH_pInputAssemblyState.set(segment, 0L, index, value); }
-    /// Sets `pInputAssemblyState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pInputAssemblyState(MemorySegment segment, @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pInputAssemblyState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pInputAssemblyState(MemorySegment segment, long index, MemorySegment value) { VH_pInputAssemblyState.set(segment, 0L, index, value); }
     /// Sets `pInputAssemblyState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pInputAssemblyState(@CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pInputAssemblyState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pInputAssemblyState(MemorySegment value) { pInputAssemblyState(this.segment(), 0L, value); return this; }
 
     /// {@return `pTessellationState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment get_pTessellationState(MemorySegment segment, long index) { return (MemorySegment) VH_pTessellationState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pTessellationState(MemorySegment segment, long index) { return (MemorySegment) VH_pTessellationState.get(segment, 0L, index); }
     /// {@return `pTessellationState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment get_pTessellationState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pTessellationState(segment, 0L); }
-    /// {@return `pTessellationState`}
-    public @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationState() { return VkGraphicsPipelineCreateInfo.get_pTessellationState(this.segment()); }
+    public MemorySegment pTessellationState() { return pTessellationState(this.segment(), 0L); }
     /// Sets `pTessellationState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pTessellationState(MemorySegment segment, long index, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VH_pTessellationState.set(segment, 0L, index, value); }
-    /// Sets `pTessellationState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pTessellationState(MemorySegment segment, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pTessellationState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pTessellationState(MemorySegment segment, long index, MemorySegment value) { VH_pTessellationState.set(segment, 0L, index, value); }
     /// Sets `pTessellationState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pTessellationState(@CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pTessellationState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pTessellationState(MemorySegment value) { pTessellationState(this.segment(), 0L, value); return this; }
 
     /// {@return `pViewportState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment get_pViewportState(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pViewportState(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportState.get(segment, 0L, index); }
     /// {@return `pViewportState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment get_pViewportState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pViewportState(segment, 0L); }
-    /// {@return `pViewportState`}
-    public @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment pViewportState() { return VkGraphicsPipelineCreateInfo.get_pViewportState(this.segment()); }
+    public MemorySegment pViewportState() { return pViewportState(this.segment(), 0L); }
     /// Sets `pViewportState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pViewportState(MemorySegment segment, long index, @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment value) { VH_pViewportState.set(segment, 0L, index, value); }
-    /// Sets `pViewportState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pViewportState(MemorySegment segment, @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pViewportState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pViewportState(MemorySegment segment, long index, MemorySegment value) { VH_pViewportState.set(segment, 0L, index, value); }
     /// Sets `pViewportState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pViewportState(@CType("const VkPipelineViewportStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pViewportState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pViewportState(MemorySegment value) { pViewportState(this.segment(), 0L, value); return this; }
 
     /// {@return `pRasterizationState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment get_pRasterizationState(MemorySegment segment, long index) { return (MemorySegment) VH_pRasterizationState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pRasterizationState(MemorySegment segment, long index) { return (MemorySegment) VH_pRasterizationState.get(segment, 0L, index); }
     /// {@return `pRasterizationState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment get_pRasterizationState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pRasterizationState(segment, 0L); }
-    /// {@return `pRasterizationState`}
-    public @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment pRasterizationState() { return VkGraphicsPipelineCreateInfo.get_pRasterizationState(this.segment()); }
+    public MemorySegment pRasterizationState() { return pRasterizationState(this.segment(), 0L); }
     /// Sets `pRasterizationState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pRasterizationState(MemorySegment segment, long index, @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment value) { VH_pRasterizationState.set(segment, 0L, index, value); }
-    /// Sets `pRasterizationState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pRasterizationState(MemorySegment segment, @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pRasterizationState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pRasterizationState(MemorySegment segment, long index, MemorySegment value) { VH_pRasterizationState.set(segment, 0L, index, value); }
     /// Sets `pRasterizationState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pRasterizationState(@CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pRasterizationState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pRasterizationState(MemorySegment value) { pRasterizationState(this.segment(), 0L, value); return this; }
 
     /// {@return `pMultisampleState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment get_pMultisampleState(MemorySegment segment, long index) { return (MemorySegment) VH_pMultisampleState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pMultisampleState(MemorySegment segment, long index) { return (MemorySegment) VH_pMultisampleState.get(segment, 0L, index); }
     /// {@return `pMultisampleState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment get_pMultisampleState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pMultisampleState(segment, 0L); }
-    /// {@return `pMultisampleState`}
-    public @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment pMultisampleState() { return VkGraphicsPipelineCreateInfo.get_pMultisampleState(this.segment()); }
+    public MemorySegment pMultisampleState() { return pMultisampleState(this.segment(), 0L); }
     /// Sets `pMultisampleState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pMultisampleState(MemorySegment segment, long index, @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment value) { VH_pMultisampleState.set(segment, 0L, index, value); }
-    /// Sets `pMultisampleState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pMultisampleState(MemorySegment segment, @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pMultisampleState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pMultisampleState(MemorySegment segment, long index, MemorySegment value) { VH_pMultisampleState.set(segment, 0L, index, value); }
     /// Sets `pMultisampleState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pMultisampleState(@CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pMultisampleState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pMultisampleState(MemorySegment value) { pMultisampleState(this.segment(), 0L, value); return this; }
 
     /// {@return `pDepthStencilState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment get_pDepthStencilState(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthStencilState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pDepthStencilState(MemorySegment segment, long index) { return (MemorySegment) VH_pDepthStencilState.get(segment, 0L, index); }
     /// {@return `pDepthStencilState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment get_pDepthStencilState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pDepthStencilState(segment, 0L); }
-    /// {@return `pDepthStencilState`}
-    public @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment pDepthStencilState() { return VkGraphicsPipelineCreateInfo.get_pDepthStencilState(this.segment()); }
+    public MemorySegment pDepthStencilState() { return pDepthStencilState(this.segment(), 0L); }
     /// Sets `pDepthStencilState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pDepthStencilState(MemorySegment segment, long index, @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment value) { VH_pDepthStencilState.set(segment, 0L, index, value); }
-    /// Sets `pDepthStencilState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pDepthStencilState(MemorySegment segment, @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDepthStencilState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pDepthStencilState(MemorySegment segment, long index, MemorySegment value) { VH_pDepthStencilState.set(segment, 0L, index, value); }
     /// Sets `pDepthStencilState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pDepthStencilState(@CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDepthStencilState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pDepthStencilState(MemorySegment value) { pDepthStencilState(this.segment(), 0L, value); return this; }
 
     /// {@return `pColorBlendState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment get_pColorBlendState(MemorySegment segment, long index) { return (MemorySegment) VH_pColorBlendState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pColorBlendState(MemorySegment segment, long index) { return (MemorySegment) VH_pColorBlendState.get(segment, 0L, index); }
     /// {@return `pColorBlendState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment get_pColorBlendState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pColorBlendState(segment, 0L); }
-    /// {@return `pColorBlendState`}
-    public @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment pColorBlendState() { return VkGraphicsPipelineCreateInfo.get_pColorBlendState(this.segment()); }
+    public MemorySegment pColorBlendState() { return pColorBlendState(this.segment(), 0L); }
     /// Sets `pColorBlendState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pColorBlendState(MemorySegment segment, long index, @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment value) { VH_pColorBlendState.set(segment, 0L, index, value); }
-    /// Sets `pColorBlendState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pColorBlendState(MemorySegment segment, @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pColorBlendState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pColorBlendState(MemorySegment segment, long index, MemorySegment value) { VH_pColorBlendState.set(segment, 0L, index, value); }
     /// Sets `pColorBlendState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pColorBlendState(@CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pColorBlendState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pColorBlendState(MemorySegment value) { pColorBlendState(this.segment(), 0L, value); return this; }
 
     /// {@return `pDynamicState` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment get_pDynamicState(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicState.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pDynamicState(MemorySegment segment, long index) { return (MemorySegment) VH_pDynamicState.get(segment, 0L, index); }
     /// {@return `pDynamicState`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment get_pDynamicState(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_pDynamicState(segment, 0L); }
-    /// {@return `pDynamicState`}
-    public @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment pDynamicState() { return VkGraphicsPipelineCreateInfo.get_pDynamicState(this.segment()); }
+    public MemorySegment pDynamicState() { return pDynamicState(this.segment(), 0L); }
     /// Sets `pDynamicState` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pDynamicState(MemorySegment segment, long index, @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment value) { VH_pDynamicState.set(segment, 0L, index, value); }
-    /// Sets `pDynamicState` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pDynamicState(MemorySegment segment, @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDynamicState(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pDynamicState(MemorySegment segment, long index, MemorySegment value) { VH_pDynamicState.set(segment, 0L, index, value); }
     /// Sets `pDynamicState` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo pDynamicState(@CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDynamicState(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo pDynamicState(MemorySegment value) { pDynamicState(this.segment(), 0L, value); return this; }
 
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment, long index) { return (MemorySegment) VH_layout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long layout(MemorySegment segment, long index) { return (long) VH_layout.get(segment, 0L, index); }
     /// {@return `layout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineLayout") MemorySegment get_layout(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_layout(segment, 0L); }
-    /// {@return `layout`}
-    public @CType("VkPipelineLayout") MemorySegment layout() { return VkGraphicsPipelineCreateInfo.get_layout(this.segment()); }
+    public long layout() { return layout(this.segment(), 0L); }
     /// Sets `layout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_layout(MemorySegment segment, long index, @CType("VkPipelineLayout") MemorySegment value) { VH_layout.set(segment, 0L, index, value); }
-    /// Sets `layout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_layout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void layout(MemorySegment segment, long index, long value) { VH_layout.set(segment, 0L, index, value); }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo layout(@CType("VkPipelineLayout") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_layout(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo layout(long value) { layout(this.segment(), 0L, value); return this; }
 
     /// {@return `renderPass` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkRenderPass") MemorySegment get_renderPass(MemorySegment segment, long index) { return (MemorySegment) VH_renderPass.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long renderPass(MemorySegment segment, long index) { return (long) VH_renderPass.get(segment, 0L, index); }
     /// {@return `renderPass`}
-    /// @param segment the segment of the struct
-    public static @CType("VkRenderPass") MemorySegment get_renderPass(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_renderPass(segment, 0L); }
-    /// {@return `renderPass`}
-    public @CType("VkRenderPass") MemorySegment renderPass() { return VkGraphicsPipelineCreateInfo.get_renderPass(this.segment()); }
+    public long renderPass() { return renderPass(this.segment(), 0L); }
     /// Sets `renderPass` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderPass(MemorySegment segment, long index, @CType("VkRenderPass") MemorySegment value) { VH_renderPass.set(segment, 0L, index, value); }
-    /// Sets `renderPass` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderPass(MemorySegment segment, @CType("VkRenderPass") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_renderPass(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderPass(MemorySegment segment, long index, long value) { VH_renderPass.set(segment, 0L, index, value); }
     /// Sets `renderPass` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo renderPass(@CType("VkRenderPass") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_renderPass(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo renderPass(long value) { renderPass(this.segment(), 0L, value); return this; }
 
     /// {@return `subpass` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subpass(MemorySegment segment, long index) { return (int) VH_subpass.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subpass(MemorySegment segment, long index) { return (int) VH_subpass.get(segment, 0L, index); }
     /// {@return `subpass`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subpass(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_subpass(segment, 0L); }
-    /// {@return `subpass`}
-    public @CType("uint32_t") int subpass() { return VkGraphicsPipelineCreateInfo.get_subpass(this.segment()); }
+    public int subpass() { return subpass(this.segment(), 0L); }
     /// Sets `subpass` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subpass(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subpass.set(segment, 0L, index, value); }
-    /// Sets `subpass` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subpass(MemorySegment segment, @CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_subpass(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subpass(MemorySegment segment, long index, int value) { VH_subpass.set(segment, 0L, index, value); }
     /// Sets `subpass` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo subpass(@CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_subpass(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo subpass(int value) { subpass(this.segment(), 0L, value); return this; }
 
     /// {@return `basePipelineHandle` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipeline") MemorySegment get_basePipelineHandle(MemorySegment segment, long index) { return (MemorySegment) VH_basePipelineHandle.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long basePipelineHandle(MemorySegment segment, long index) { return (long) VH_basePipelineHandle.get(segment, 0L, index); }
     /// {@return `basePipelineHandle`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipeline") MemorySegment get_basePipelineHandle(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_basePipelineHandle(segment, 0L); }
-    /// {@return `basePipelineHandle`}
-    public @CType("VkPipeline") MemorySegment basePipelineHandle() { return VkGraphicsPipelineCreateInfo.get_basePipelineHandle(this.segment()); }
+    public long basePipelineHandle() { return basePipelineHandle(this.segment(), 0L); }
     /// Sets `basePipelineHandle` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_basePipelineHandle(MemorySegment segment, long index, @CType("VkPipeline") MemorySegment value) { VH_basePipelineHandle.set(segment, 0L, index, value); }
-    /// Sets `basePipelineHandle` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_basePipelineHandle(MemorySegment segment, @CType("VkPipeline") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_basePipelineHandle(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void basePipelineHandle(MemorySegment segment, long index, long value) { VH_basePipelineHandle.set(segment, 0L, index, value); }
     /// Sets `basePipelineHandle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo basePipelineHandle(@CType("VkPipeline") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_basePipelineHandle(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo basePipelineHandle(long value) { basePipelineHandle(this.segment(), 0L, value); return this; }
 
     /// {@return `basePipelineIndex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("int32_t") int get_basePipelineIndex(MemorySegment segment, long index) { return (int) VH_basePipelineIndex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int basePipelineIndex(MemorySegment segment, long index) { return (int) VH_basePipelineIndex.get(segment, 0L, index); }
     /// {@return `basePipelineIndex`}
-    /// @param segment the segment of the struct
-    public static @CType("int32_t") int get_basePipelineIndex(MemorySegment segment) { return VkGraphicsPipelineCreateInfo.get_basePipelineIndex(segment, 0L); }
-    /// {@return `basePipelineIndex`}
-    public @CType("int32_t") int basePipelineIndex() { return VkGraphicsPipelineCreateInfo.get_basePipelineIndex(this.segment()); }
+    public int basePipelineIndex() { return basePipelineIndex(this.segment(), 0L); }
     /// Sets `basePipelineIndex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_basePipelineIndex(MemorySegment segment, long index, @CType("int32_t") int value) { VH_basePipelineIndex.set(segment, 0L, index, value); }
-    /// Sets `basePipelineIndex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_basePipelineIndex(MemorySegment segment, @CType("int32_t") int value) { VkGraphicsPipelineCreateInfo.set_basePipelineIndex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void basePipelineIndex(MemorySegment segment, long index, int value) { VH_basePipelineIndex.set(segment, 0L, index, value); }
     /// Sets `basePipelineIndex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkGraphicsPipelineCreateInfo basePipelineIndex(@CType("int32_t") int value) { VkGraphicsPipelineCreateInfo.set_basePipelineIndex(this.segment(), value); return this; }
+    public VkGraphicsPipelineCreateInfo basePipelineIndex(int value) { basePipelineIndex(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkGraphicsPipelineCreateInfo].
     public static final class Buffer extends VkGraphicsPipelineCreateInfo {
@@ -664,175 +557,175 @@ public sealed class VkGraphicsPipelineCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkGraphicsPipelineCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkGraphicsPipelineCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkGraphicsPipelineCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineCreateFlags") int flagsAt(long index) { return VkGraphicsPipelineCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineCreateFlags") int value) { VkGraphicsPipelineCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `stageCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int stageCountAt(long index) { return VkGraphicsPipelineCreateInfo.get_stageCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stageCountAt(long index) { return stageCount(this.segment(), index); }
         /// Sets `stageCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stageCountAt(long index, @CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_stageCount(this.segment(), index, value); return this; }
+        public Buffer stageCountAt(long index, int value) { stageCount(this.segment(), index, value); return this; }
 
         /// {@return `pStages` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment pStagesAt(long index) { return VkGraphicsPipelineCreateInfo.get_pStages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pStagesAt(long index) { return pStages(this.segment(), index); }
         /// Sets `pStages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pStages(this.segment(), index, value); return this; }
+        public Buffer pStagesAt(long index, MemorySegment value) { pStages(this.segment(), index, value); return this; }
 
         /// {@return `pVertexInputState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment pVertexInputStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pVertexInputState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pVertexInputStateAt(long index) { return pVertexInputState(this.segment(), index); }
         /// Sets `pVertexInputState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pVertexInputStateAt(long index, @CType("const VkPipelineVertexInputStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pVertexInputState(this.segment(), index, value); return this; }
+        public Buffer pVertexInputStateAt(long index, MemorySegment value) { pVertexInputState(this.segment(), index, value); return this; }
 
         /// {@return `pInputAssemblyState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment pInputAssemblyStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pInputAssemblyState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pInputAssemblyStateAt(long index) { return pInputAssemblyState(this.segment(), index); }
         /// Sets `pInputAssemblyState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pInputAssemblyStateAt(long index, @CType("const VkPipelineInputAssemblyStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pInputAssemblyState(this.segment(), index, value); return this; }
+        public Buffer pInputAssemblyStateAt(long index, MemorySegment value) { pInputAssemblyState(this.segment(), index, value); return this; }
 
         /// {@return `pTessellationState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment pTessellationStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pTessellationState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pTessellationStateAt(long index) { return pTessellationState(this.segment(), index); }
         /// Sets `pTessellationState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pTessellationStateAt(long index, @CType("const VkPipelineTessellationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pTessellationState(this.segment(), index, value); return this; }
+        public Buffer pTessellationStateAt(long index, MemorySegment value) { pTessellationState(this.segment(), index, value); return this; }
 
         /// {@return `pViewportState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment pViewportStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pViewportState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pViewportStateAt(long index) { return pViewportState(this.segment(), index); }
         /// Sets `pViewportState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pViewportStateAt(long index, @CType("const VkPipelineViewportStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pViewportState(this.segment(), index, value); return this; }
+        public Buffer pViewportStateAt(long index, MemorySegment value) { pViewportState(this.segment(), index, value); return this; }
 
         /// {@return `pRasterizationState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment pRasterizationStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pRasterizationState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pRasterizationStateAt(long index) { return pRasterizationState(this.segment(), index); }
         /// Sets `pRasterizationState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pRasterizationStateAt(long index, @CType("const VkPipelineRasterizationStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pRasterizationState(this.segment(), index, value); return this; }
+        public Buffer pRasterizationStateAt(long index, MemorySegment value) { pRasterizationState(this.segment(), index, value); return this; }
 
         /// {@return `pMultisampleState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment pMultisampleStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pMultisampleState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pMultisampleStateAt(long index) { return pMultisampleState(this.segment(), index); }
         /// Sets `pMultisampleState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pMultisampleStateAt(long index, @CType("const VkPipelineMultisampleStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pMultisampleState(this.segment(), index, value); return this; }
+        public Buffer pMultisampleStateAt(long index, MemorySegment value) { pMultisampleState(this.segment(), index, value); return this; }
 
         /// {@return `pDepthStencilState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment pDepthStencilStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pDepthStencilState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDepthStencilStateAt(long index) { return pDepthStencilState(this.segment(), index); }
         /// Sets `pDepthStencilState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDepthStencilStateAt(long index, @CType("const VkPipelineDepthStencilStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDepthStencilState(this.segment(), index, value); return this; }
+        public Buffer pDepthStencilStateAt(long index, MemorySegment value) { pDepthStencilState(this.segment(), index, value); return this; }
 
         /// {@return `pColorBlendState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment pColorBlendStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pColorBlendState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pColorBlendStateAt(long index) { return pColorBlendState(this.segment(), index); }
         /// Sets `pColorBlendState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pColorBlendStateAt(long index, @CType("const VkPipelineColorBlendStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pColorBlendState(this.segment(), index, value); return this; }
+        public Buffer pColorBlendStateAt(long index, MemorySegment value) { pColorBlendState(this.segment(), index, value); return this; }
 
         /// {@return `pDynamicState` at the given index}
-        /// @param index the index
-        public @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment pDynamicStateAt(long index) { return VkGraphicsPipelineCreateInfo.get_pDynamicState(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDynamicStateAt(long index) { return pDynamicState(this.segment(), index); }
         /// Sets `pDynamicState` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDynamicStateAt(long index, @CType("const VkPipelineDynamicStateCreateInfo *") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_pDynamicState(this.segment(), index, value); return this; }
+        public Buffer pDynamicStateAt(long index, MemorySegment value) { pDynamicState(this.segment(), index, value); return this; }
 
         /// {@return `layout` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineLayout") MemorySegment layoutAt(long index) { return VkGraphicsPipelineCreateInfo.get_layout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long layoutAt(long index) { return layout(this.segment(), index); }
         /// Sets `layout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer layoutAt(long index, @CType("VkPipelineLayout") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_layout(this.segment(), index, value); return this; }
+        public Buffer layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
 
         /// {@return `renderPass` at the given index}
-        /// @param index the index
-        public @CType("VkRenderPass") MemorySegment renderPassAt(long index) { return VkGraphicsPipelineCreateInfo.get_renderPass(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long renderPassAt(long index) { return renderPass(this.segment(), index); }
         /// Sets `renderPass` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderPassAt(long index, @CType("VkRenderPass") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_renderPass(this.segment(), index, value); return this; }
+        public Buffer renderPassAt(long index, long value) { renderPass(this.segment(), index, value); return this; }
 
         /// {@return `subpass` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subpassAt(long index) { return VkGraphicsPipelineCreateInfo.get_subpass(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subpassAt(long index) { return subpass(this.segment(), index); }
         /// Sets `subpass` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subpassAt(long index, @CType("uint32_t") int value) { VkGraphicsPipelineCreateInfo.set_subpass(this.segment(), index, value); return this; }
+        public Buffer subpassAt(long index, int value) { subpass(this.segment(), index, value); return this; }
 
         /// {@return `basePipelineHandle` at the given index}
-        /// @param index the index
-        public @CType("VkPipeline") MemorySegment basePipelineHandleAt(long index) { return VkGraphicsPipelineCreateInfo.get_basePipelineHandle(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long basePipelineHandleAt(long index) { return basePipelineHandle(this.segment(), index); }
         /// Sets `basePipelineHandle` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer basePipelineHandleAt(long index, @CType("VkPipeline") MemorySegment value) { VkGraphicsPipelineCreateInfo.set_basePipelineHandle(this.segment(), index, value); return this; }
+        public Buffer basePipelineHandleAt(long index, long value) { basePipelineHandle(this.segment(), index, value); return this; }
 
         /// {@return `basePipelineIndex` at the given index}
-        /// @param index the index
-        public @CType("int32_t") int basePipelineIndexAt(long index) { return VkGraphicsPipelineCreateInfo.get_basePipelineIndex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int basePipelineIndexAt(long index) { return basePipelineIndex(this.segment(), index); }
         /// Sets `basePipelineIndex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer basePipelineIndexAt(long index, @CType("int32_t") int value) { VkGraphicsPipelineCreateInfo.set_basePipelineIndex(this.segment(), index, value); return this; }
+        public Buffer basePipelineIndexAt(long index, int value) { basePipelineIndex(this.segment(), index, value); return this; }
 
     }
 }

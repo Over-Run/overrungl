@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(MemorySegment)]
-/// ### reductionMode
-/// [VarHandle][#VH_reductionMode] - [Getter][#reductionMode()] - [Setter][#reductionMode(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSamplerReductionModeCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkSamplerReductionMode reductionMode;
-/// } VkSamplerReductionModeCreateInfo;
 /// ```
-public sealed class VkSamplerReductionModeCreateInfo extends Struct {
+/// struct VkSamplerReductionModeCreateInfo {
+///     VkStructureType sType;
+///     const void* pNext;
+///     VkSamplerReductionMode reductionMode;
+/// };
+/// ```
+public sealed class VkSamplerReductionModeCreateInfo extends GroupType {
     /// The struct layout of `VkSamplerReductionModeCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("reductionMode")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `reductionMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `reductionMode`.
+    public static final long OFFSET_reductionMode = LAYOUT.byteOffset(PathElement.groupElement("reductionMode"));
+    /// The memory layout of `reductionMode`.
+    public static final MemoryLayout LAYOUT_reductionMode = LAYOUT.select(PathElement.groupElement("reductionMode"));
+    /// The [VarHandle] of `reductionMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_reductionMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reductionMode"));
 
     /// Creates `VkSamplerReductionModeCreateInfo` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkSamplerReductionModeCreateInfo extends Struct {
     /// Creates `VkSamplerReductionModeCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerReductionModeCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerReductionModeCreateInfo(segment); }
-
-    /// Creates `VkSamplerReductionModeCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSamplerReductionModeCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerReductionModeCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerReductionModeCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSamplerReductionModeCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerReductionModeCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSamplerReductionModeCreateInfo` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkSamplerReductionModeCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSamplerReductionModeCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkSamplerReductionModeCreateInfo extends Struct {
     /// @return the allocated `VkSamplerReductionModeCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerReductionModeCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSamplerReductionModeCreateInfo`
-    public static VkSamplerReductionModeCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") MemorySegment pNext, @CType("VkSamplerReductionMode") int reductionMode) { return alloc(allocator).sType(sType).pNext(pNext).reductionMode(reductionMode); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkSamplerReductionModeCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSamplerReductionModeCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSamplerReductionModeCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSamplerReductionModeCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerReductionModeCreateInfo sType(@CType("VkStructureType") int value) { VkSamplerReductionModeCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkSamplerReductionModeCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") MemorySegment get_pNext(MemorySegment segment) { return VkSamplerReductionModeCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") MemorySegment pNext() { return VkSamplerReductionModeCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") MemorySegment value) { VkSamplerReductionModeCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerReductionModeCreateInfo pNext(@CType("const void *") MemorySegment value) { VkSamplerReductionModeCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkSamplerReductionModeCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `reductionMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSamplerReductionMode") int get_reductionMode(MemorySegment segment, long index) { return (int) VH_reductionMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int reductionMode(MemorySegment segment, long index) { return (int) VH_reductionMode.get(segment, 0L, index); }
     /// {@return `reductionMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSamplerReductionMode") int get_reductionMode(MemorySegment segment) { return VkSamplerReductionModeCreateInfo.get_reductionMode(segment, 0L); }
-    /// {@return `reductionMode`}
-    public @CType("VkSamplerReductionMode") int reductionMode() { return VkSamplerReductionModeCreateInfo.get_reductionMode(this.segment()); }
+    public int reductionMode() { return reductionMode(this.segment(), 0L); }
     /// Sets `reductionMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_reductionMode(MemorySegment segment, long index, @CType("VkSamplerReductionMode") int value) { VH_reductionMode.set(segment, 0L, index, value); }
-    /// Sets `reductionMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_reductionMode(MemorySegment segment, @CType("VkSamplerReductionMode") int value) { VkSamplerReductionModeCreateInfo.set_reductionMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void reductionMode(MemorySegment segment, long index, int value) { VH_reductionMode.set(segment, 0L, index, value); }
     /// Sets `reductionMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerReductionModeCreateInfo reductionMode(@CType("VkSamplerReductionMode") int value) { VkSamplerReductionModeCreateInfo.set_reductionMode(this.segment(), value); return this; }
+    public VkSamplerReductionModeCreateInfo reductionMode(int value) { reductionMode(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSamplerReductionModeCreateInfo].
     public static final class Buffer extends VkSamplerReductionModeCreateInfo {
@@ -200,31 +173,31 @@ public sealed class VkSamplerReductionModeCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSamplerReductionModeCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSamplerReductionModeCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") MemorySegment pNextAt(long index) { return VkSamplerReductionModeCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") MemorySegment value) { VkSamplerReductionModeCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `reductionMode` at the given index}
-        /// @param index the index
-        public @CType("VkSamplerReductionMode") int reductionModeAt(long index) { return VkSamplerReductionModeCreateInfo.get_reductionMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int reductionModeAt(long index) { return reductionMode(this.segment(), index); }
         /// Sets `reductionMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer reductionModeAt(long index, @CType("VkSamplerReductionMode") int value) { VkSamplerReductionModeCreateInfo.set_reductionMode(this.segment(), index, value); return this; }
+        public Buffer reductionModeAt(long index, int value) { reductionMode(this.segment(), index, value); return this; }
 
     }
 }

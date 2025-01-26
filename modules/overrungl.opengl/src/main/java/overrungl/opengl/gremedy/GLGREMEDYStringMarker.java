@@ -37,7 +37,7 @@ public final class GLGREMEDYStringMarker {
     }
 
     /// ```
-    /// void glStringMarkerGREMEDY(int len, const void* string);
+    /// void glStringMarkerGREMEDY(GLsizei len, const void* string);
     /// ```
     public void StringMarkerGREMEDY(int len, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStringMarkerGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glStringMarkerGREMEDY");

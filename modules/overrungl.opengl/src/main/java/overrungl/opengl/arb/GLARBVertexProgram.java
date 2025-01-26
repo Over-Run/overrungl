@@ -299,7 +299,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1dARB(unsigned int index, double x);
+    /// void glVertexAttrib1dARB(GLuint index, GLdouble x);
     /// ```
     public void VertexAttrib1dARB(int index, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1dARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1dARB");
@@ -308,7 +308,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1dvARB(unsigned int index, const GLdouble* v);
+    /// void glVertexAttrib1dvARB(GLuint index, const GLdouble* v);
     /// ```
     public void VertexAttrib1dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1dvARB");
@@ -317,7 +317,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1fARB(unsigned int index, float x);
+    /// void glVertexAttrib1fARB(GLuint index, GLfloat x);
     /// ```
     public void VertexAttrib1fARB(int index, float x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1fARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1fARB");
@@ -326,7 +326,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1fvARB(unsigned int index, const GLfloat* v);
+    /// void glVertexAttrib1fvARB(GLuint index, const GLfloat* v);
     /// ```
     public void VertexAttrib1fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1fvARB");
@@ -335,7 +335,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1sARB(unsigned int index, signed short x);
+    /// void glVertexAttrib1sARB(GLuint index, GLshort x);
     /// ```
     public void VertexAttrib1sARB(int index, short x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1sARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1sARB");
@@ -344,7 +344,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib1svARB(unsigned int index, const GLshort* v);
+    /// void glVertexAttrib1svARB(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttrib1svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib1svARB");
@@ -353,7 +353,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2dARB(unsigned int index, double x, double y);
+    /// void glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y);
     /// ```
     public void VertexAttrib2dARB(int index, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2dARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2dARB");
@@ -362,7 +362,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2dvARB(unsigned int index, const GLdouble* v);
+    /// void glVertexAttrib2dvARB(GLuint index, const GLdouble* v);
     /// ```
     public void VertexAttrib2dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2dvARB");
@@ -371,7 +371,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2fARB(unsigned int index, float x, float y);
+    /// void glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y);
     /// ```
     public void VertexAttrib2fARB(int index, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2fARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2fARB");
@@ -380,7 +380,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2fvARB(unsigned int index, const GLfloat* v);
+    /// void glVertexAttrib2fvARB(GLuint index, const GLfloat* v);
     /// ```
     public void VertexAttrib2fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2fvARB");
@@ -389,7 +389,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2sARB(unsigned int index, signed short x, signed short y);
+    /// void glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y);
     /// ```
     public void VertexAttrib2sARB(int index, short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2sARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2sARB");
@@ -398,7 +398,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib2svARB(unsigned int index, const GLshort* v);
+    /// void glVertexAttrib2svARB(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttrib2svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib2svARB");
@@ -407,7 +407,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3dARB(unsigned int index, double x, double y, double z);
+    /// void glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z);
     /// ```
     public void VertexAttrib3dARB(int index, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3dARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3dARB");
@@ -416,7 +416,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3dvARB(unsigned int index, const GLdouble* v);
+    /// void glVertexAttrib3dvARB(GLuint index, const GLdouble* v);
     /// ```
     public void VertexAttrib3dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3dvARB");
@@ -425,7 +425,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3fARB(unsigned int index, float x, float y, float z);
+    /// void glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z);
     /// ```
     public void VertexAttrib3fARB(int index, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3fARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3fARB");
@@ -434,7 +434,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3fvARB(unsigned int index, const GLfloat* v);
+    /// void glVertexAttrib3fvARB(GLuint index, const GLfloat* v);
     /// ```
     public void VertexAttrib3fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3fvARB");
@@ -443,7 +443,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3sARB(unsigned int index, signed short x, signed short y, signed short z);
+    /// void glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z);
     /// ```
     public void VertexAttrib3sARB(int index, short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3sARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3sARB");
@@ -452,7 +452,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib3svARB(unsigned int index, const GLshort* v);
+    /// void glVertexAttrib3svARB(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttrib3svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib3svARB");
@@ -461,7 +461,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NbvARB(unsigned int index, const GLbyte* v);
+    /// void glVertexAttrib4NbvARB(GLuint index, const GLbyte* v);
     /// ```
     public void VertexAttrib4NbvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NbvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NbvARB");
@@ -470,7 +470,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NivARB(unsigned int index, const GLint* v);
+    /// void glVertexAttrib4NivARB(GLuint index, const GLint* v);
     /// ```
     public void VertexAttrib4NivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NivARB");
@@ -479,7 +479,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NsvARB(unsigned int index, const GLshort* v);
+    /// void glVertexAttrib4NsvARB(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttrib4NsvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NsvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NsvARB");
@@ -488,7 +488,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NubARB(unsigned int index, unsigned char x, unsigned char y, unsigned char z, unsigned char w);
+    /// void glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
     /// ```
     public void VertexAttrib4NubARB(int index, byte x, byte y, byte z, byte w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NubARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NubARB");
@@ -497,7 +497,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NubvARB(unsigned int index, const GLubyte* v);
+    /// void glVertexAttrib4NubvARB(GLuint index, const GLubyte* v);
     /// ```
     public void VertexAttrib4NubvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NubvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NubvARB");
@@ -506,7 +506,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NuivARB(unsigned int index, const GLuint* v);
+    /// void glVertexAttrib4NuivARB(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttrib4NuivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NuivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NuivARB");
@@ -515,7 +515,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4NusvARB(unsigned int index, const GLushort* v);
+    /// void glVertexAttrib4NusvARB(GLuint index, const GLushort* v);
     /// ```
     public void VertexAttrib4NusvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NusvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4NusvARB");
@@ -524,7 +524,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4bvARB(unsigned int index, const GLbyte* v);
+    /// void glVertexAttrib4bvARB(GLuint index, const GLbyte* v);
     /// ```
     public void VertexAttrib4bvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4bvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4bvARB");
@@ -533,7 +533,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4dARB(unsigned int index, double x, double y, double z, double w);
+    /// void glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void VertexAttrib4dARB(int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4dARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4dARB");
@@ -542,7 +542,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4dvARB(unsigned int index, const GLdouble* v);
+    /// void glVertexAttrib4dvARB(GLuint index, const GLdouble* v);
     /// ```
     public void VertexAttrib4dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4dvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4dvARB");
@@ -551,7 +551,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4fARB(unsigned int index, float x, float y, float z, float w);
+    /// void glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void VertexAttrib4fARB(int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4fARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4fARB");
@@ -560,7 +560,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4fvARB(unsigned int index, const GLfloat* v);
+    /// void glVertexAttrib4fvARB(GLuint index, const GLfloat* v);
     /// ```
     public void VertexAttrib4fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4fvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4fvARB");
@@ -569,7 +569,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4ivARB(unsigned int index, const GLint* v);
+    /// void glVertexAttrib4ivARB(GLuint index, const GLint* v);
     /// ```
     public void VertexAttrib4ivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4ivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4ivARB");
@@ -578,7 +578,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4sARB(unsigned int index, signed short x, signed short y, signed short z, signed short w);
+    /// void glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
     /// ```
     public void VertexAttrib4sARB(int index, short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4sARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4sARB");
@@ -587,7 +587,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4svARB(unsigned int index, const GLshort* v);
+    /// void glVertexAttrib4svARB(GLuint index, const GLshort* v);
     /// ```
     public void VertexAttrib4svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4svARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4svARB");
@@ -596,7 +596,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4ubvARB(unsigned int index, const GLubyte* v);
+    /// void glVertexAttrib4ubvARB(GLuint index, const GLubyte* v);
     /// ```
     public void VertexAttrib4ubvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4ubvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4ubvARB");
@@ -605,7 +605,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4uivARB(unsigned int index, const GLuint* v);
+    /// void glVertexAttrib4uivARB(GLuint index, const GLuint* v);
     /// ```
     public void VertexAttrib4uivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4uivARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4uivARB");
@@ -614,7 +614,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttrib4usvARB(unsigned int index, const GLushort* v);
+    /// void glVertexAttrib4usvARB(GLuint index, const GLushort* v);
     /// ```
     public void VertexAttrib4usvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4usvARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttrib4usvARB");
@@ -623,7 +623,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glVertexAttribPointerARB(unsigned int index, int size, unsigned int type, GLboolean normalized, int stride, const void* pointer);
+    /// void glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer);
     /// ```
     public void VertexAttribPointerARB(int index, int size, int type, boolean normalized, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribPointerARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribPointerARB");
@@ -632,7 +632,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glEnableVertexAttribArrayARB(unsigned int index);
+    /// void glEnableVertexAttribArrayARB(GLuint index);
     /// ```
     public void EnableVertexAttribArrayARB(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexAttribArrayARB)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexAttribArrayARB");
@@ -641,7 +641,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glDisableVertexAttribArrayARB(unsigned int index);
+    /// void glDisableVertexAttribArrayARB(GLuint index);
     /// ```
     public void DisableVertexAttribArrayARB(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexAttribArrayARB)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexAttribArrayARB");
@@ -650,7 +650,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramStringARB(unsigned int target, unsigned int format, int len, const void* string);
+    /// void glProgramStringARB(GLenum target, GLenum format, GLsizei len, const void* string);
     /// ```
     public void ProgramStringARB(int target, int format, int len, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glProgramStringARB");
@@ -659,7 +659,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glBindProgramARB(unsigned int target, unsigned int program);
+    /// void glBindProgramARB(GLenum target, GLuint program);
     /// ```
     public void BindProgramARB(int target, int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindProgramARB)) throw new SymbolNotFoundError("Symbol not found: glBindProgramARB");
@@ -668,7 +668,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glDeleteProgramsARB(int n, const GLuint* programs);
+    /// void glDeleteProgramsARB(GLsizei n, const GLuint* programs);
     /// ```
     public void DeleteProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteProgramsARB");
@@ -677,7 +677,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGenProgramsARB(int n, GLuint* programs);
+    /// void glGenProgramsARB(GLsizei n, GLuint* programs);
     /// ```
     public void GenProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glGenProgramsARB");
@@ -686,7 +686,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4dARB(unsigned int target, unsigned int index, double x, double y, double z, double w);
+    /// void glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void ProgramEnvParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dARB");
@@ -695,7 +695,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4dvARB(unsigned int target, unsigned int index, const GLdouble* params);
+    /// void glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble* params);
     /// ```
     public void ProgramEnvParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dvARB");
@@ -704,7 +704,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4fARB(unsigned int target, unsigned int index, float x, float y, float z, float w);
+    /// void glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void ProgramEnvParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fARB");
@@ -713,7 +713,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4fvARB(unsigned int target, unsigned int index, const GLfloat* params);
+    /// void glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat* params);
     /// ```
     public void ProgramEnvParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fvARB");
@@ -722,7 +722,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4dARB(unsigned int target, unsigned int index, double x, double y, double z, double w);
+    /// void glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
     /// ```
     public void ProgramLocalParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dARB");
@@ -731,7 +731,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4dvARB(unsigned int target, unsigned int index, const GLdouble* params);
+    /// void glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble* params);
     /// ```
     public void ProgramLocalParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dvARB");
@@ -740,7 +740,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4fARB(unsigned int target, unsigned int index, float x, float y, float z, float w);
+    /// void glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     /// ```
     public void ProgramLocalParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fARB");
@@ -749,7 +749,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4fvARB(unsigned int target, unsigned int index, const GLfloat* params);
+    /// void glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat* params);
     /// ```
     public void ProgramLocalParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fvARB");
@@ -758,7 +758,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterdvARB(unsigned int target, unsigned int index, GLdouble* params);
+    /// void glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble* params);
     /// ```
     public void GetProgramEnvParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterdvARB");
@@ -767,7 +767,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterfvARB(unsigned int target, unsigned int index, GLfloat* params);
+    /// void glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat* params);
     /// ```
     public void GetProgramEnvParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterfvARB");
@@ -776,7 +776,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterdvARB(unsigned int target, unsigned int index, GLdouble* params);
+    /// void glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble* params);
     /// ```
     public void GetProgramLocalParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterdvARB");
@@ -785,7 +785,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterfvARB(unsigned int target, unsigned int index, GLfloat* params);
+    /// void glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat* params);
     /// ```
     public void GetProgramLocalParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterfvARB");
@@ -794,7 +794,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramivARB(unsigned int target, unsigned int pname, GLint* params);
+    /// void glGetProgramivARB(GLenum target, GLenum pname, GLint* params);
     /// ```
     public void GetProgramivARB(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramivARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramivARB");
@@ -803,7 +803,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetProgramStringARB(unsigned int target, unsigned int pname, void* string);
+    /// void glGetProgramStringARB(GLenum target, GLenum pname, void* string);
     /// ```
     public void GetProgramStringARB(int target, int pname, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStringARB");
@@ -812,7 +812,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetVertexAttribdvARB(unsigned int index, unsigned int pname, GLdouble* params);
+    /// void glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble* params);
     /// ```
     public void GetVertexAttribdvARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribdvARB");
@@ -821,7 +821,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetVertexAttribfvARB(unsigned int index, unsigned int pname, GLfloat* params);
+    /// void glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat* params);
     /// ```
     public void GetVertexAttribfvARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribfvARB");
@@ -830,7 +830,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetVertexAttribivARB(unsigned int index, unsigned int pname, GLint* params);
+    /// void glGetVertexAttribivARB(GLuint index, GLenum pname, GLint* params);
     /// ```
     public void GetVertexAttribivARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribivARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribivARB");
@@ -839,7 +839,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// void glGetVertexAttribPointervARB(unsigned int index, unsigned int pname, void** pointer);
+    /// void glGetVertexAttribPointervARB(GLuint index, GLenum pname, void** pointer);
     /// ```
     public void GetVertexAttribPointervARB(int index, int pname, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribPointervARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribPointervARB");
@@ -848,7 +848,7 @@ public final class GLARBVertexProgram {
     }
 
     /// ```
-    /// GLboolean glIsProgramARB(unsigned int program);
+    /// GLboolean glIsProgramARB(GLuint program);
     /// ```
     public boolean IsProgramARB(int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsProgramARB)) throw new SymbolNotFoundError("Symbol not found: glIsProgramARB");

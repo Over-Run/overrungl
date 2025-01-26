@@ -49,7 +49,7 @@ public final class GLAMDSparseTexture {
     }
 
     /// ```
-    /// void glTexStorageSparseAMD(unsigned int target, unsigned int internalFormat, int width, int height, int depth, int layers, unsigned int flags);
+    /// void glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
     /// ```
     public void TexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTexStorageSparseAMD");
@@ -58,7 +58,7 @@ public final class GLAMDSparseTexture {
     }
 
     /// ```
-    /// void glTextureStorageSparseAMD(unsigned int texture, unsigned int target, unsigned int internalFormat, int width, int height, int depth, int layers, unsigned int flags);
+    /// void glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
     /// ```
     public void TextureStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD");
