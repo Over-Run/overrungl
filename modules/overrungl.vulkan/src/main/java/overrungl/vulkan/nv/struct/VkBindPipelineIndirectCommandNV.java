@@ -15,31 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### pipelineAddress
-/// [VarHandle][#VH_pipelineAddress] - [Getter][#pipelineAddress()] - [Setter][#pipelineAddress(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkBindPipelineIndirectCommandNV {
-///     VkDeviceAddress pipelineAddress;
-/// } VkBindPipelineIndirectCommandNV;
 /// ```
-public sealed class VkBindPipelineIndirectCommandNV extends Struct {
+/// struct VkBindPipelineIndirectCommandNV {
+///     (uint64_t) VkDeviceAddress pipelineAddress;
+/// };
+/// ```
+public sealed class VkBindPipelineIndirectCommandNV extends GroupType {
     /// The struct layout of `VkBindPipelineIndirectCommandNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("pipelineAddress")
     );
-    /// The [VarHandle] of `pipelineAddress` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `pipelineAddress`.
+    public static final long OFFSET_pipelineAddress = LAYOUT.byteOffset(PathElement.groupElement("pipelineAddress"));
+    /// The memory layout of `pipelineAddress`.
+    public static final MemoryLayout LAYOUT_pipelineAddress = LAYOUT.select(PathElement.groupElement("pipelineAddress"));
+    /// The [VarHandle] of `pipelineAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineAddress"));
 
     /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
@@ -49,19 +49,14 @@ public sealed class VkBindPipelineIndirectCommandNV extends Struct {
     /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindPipelineIndirectCommandNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindPipelineIndirectCommandNV(segment); }
-
-    /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindPipelineIndirectCommandNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindPipelineIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkBindPipelineIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindPipelineIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkBindPipelineIndirectCommandNV` with the given segment.
     ///
@@ -69,7 +64,7 @@ public sealed class VkBindPipelineIndirectCommandNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBindPipelineIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -82,11 +77,6 @@ public sealed class VkBindPipelineIndirectCommandNV extends Struct {
     /// @return the allocated `VkBindPipelineIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindPipelineIndirectCommandNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBindPipelineIndirectCommandNV`
-    public static VkBindPipelineIndirectCommandNV allocInit(SegmentAllocator allocator, @CType("VkDeviceAddress") long pipelineAddress) { return alloc(allocator).pipelineAddress(pipelineAddress); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -94,30 +84,23 @@ public sealed class VkBindPipelineIndirectCommandNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `pipelineAddress` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceAddress") long get_pipelineAddress(MemorySegment segment, long index) { return (long) VH_pipelineAddress.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long pipelineAddress(MemorySegment segment, long index) { return (long) VH_pipelineAddress.get(segment, 0L, index); }
     /// {@return `pipelineAddress`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceAddress") long get_pipelineAddress(MemorySegment segment) { return VkBindPipelineIndirectCommandNV.get_pipelineAddress(segment, 0L); }
-    /// {@return `pipelineAddress`}
-    public @CType("VkDeviceAddress") long pipelineAddress() { return VkBindPipelineIndirectCommandNV.get_pipelineAddress(this.segment()); }
+    public long pipelineAddress() { return pipelineAddress(this.segment(), 0L); }
     /// Sets `pipelineAddress` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineAddress(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_pipelineAddress.set(segment, 0L, index, value); }
-    /// Sets `pipelineAddress` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkBindPipelineIndirectCommandNV.set_pipelineAddress(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineAddress(MemorySegment segment, long index, long value) { VH_pipelineAddress.set(segment, 0L, index, value); }
     /// Sets `pipelineAddress` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBindPipelineIndirectCommandNV pipelineAddress(@CType("VkDeviceAddress") long value) { VkBindPipelineIndirectCommandNV.set_pipelineAddress(this.segment(), value); return this; }
+    public VkBindPipelineIndirectCommandNV pipelineAddress(long value) { pipelineAddress(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkBindPipelineIndirectCommandNV].
     public static final class Buffer extends VkBindPipelineIndirectCommandNV {
@@ -142,13 +125,13 @@ public sealed class VkBindPipelineIndirectCommandNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `pipelineAddress` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceAddress") long pipelineAddressAt(long index) { return VkBindPipelineIndirectCommandNV.get_pipelineAddress(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long pipelineAddressAt(long index) { return pipelineAddress(this.segment(), index); }
         /// Sets `pipelineAddress` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineAddressAt(long index, @CType("VkDeviceAddress") long value) { VkBindPipelineIndirectCommandNV.set_pipelineAddress(this.segment(), index, value); return this; }
+        public Buffer pipelineAddressAt(long index, long value) { pipelineAddress(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,44 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### disable_frame_end_update_cdf
-/// [VarHandle][#VH_disable_frame_end_update_cdf] - [Getter][#disable_frame_end_update_cdf()] - [Setter][#disable_frame_end_update_cdf(int)]
-/// ### segmentation_enabled
-/// [VarHandle][#VH_segmentation_enabled] - [Getter][#segmentation_enabled()] - [Setter][#segmentation_enabled(int)]
-/// ### reserved
-/// [VarHandle][#VH_reserved] - [Getter][#reserved()] - [Setter][#reserved(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoDecodeAV1ReferenceInfoFlags {
-///     uint32_t : 1 disable_frame_end_update_cdf;
-///     uint32_t : 1 segmentation_enabled;
-///     uint32_t : 30 reserved;
-/// } StdVideoDecodeAV1ReferenceInfoFlags;
 /// ```
-public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
+/// struct StdVideoDecodeAV1ReferenceInfoFlags {
+///     uint32_t disable_frame_end_update_cdf : 1;
+///     uint32_t segmentation_enabled : 1;
+///     uint32_t reserved : 30;
+/// };
+/// ```
+public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoDecodeAV1ReferenceInfoFlags`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.JAVA_INT.withName("disable_frame_end_update_cdf"),
-        ValueLayout.JAVA_INT.withName("segmentation_enabled"),
-        ValueLayout.JAVA_INT.withName("reserved")
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("disable_frame_end_update_cdf"), 1,
+        ValueLayout.JAVA_INT.withName("segmentation_enabled"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
-    /// The [VarHandle] of `disable_frame_end_update_cdf` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_disable_frame_end_update_cdf = LAYOUT.arrayElementVarHandle(PathElement.groupElement("disable_frame_end_update_cdf"));
-    /// The [VarHandle] of `segmentation_enabled` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_segmentation_enabled = LAYOUT.arrayElementVarHandle(PathElement.groupElement("segmentation_enabled"));
-    /// The [VarHandle] of `reserved` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_reserved = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reserved"));
 
     /// Creates `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment.
     /// @param segment the memory segment
@@ -61,19 +47,14 @@ public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
     /// Creates `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoDecodeAV1ReferenceInfoFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoDecodeAV1ReferenceInfoFlags(segment); }
-
-    /// Creates `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoDecodeAV1ReferenceInfoFlags ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoDecodeAV1ReferenceInfoFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoDecodeAV1ReferenceInfoFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoDecodeAV1ReferenceInfoFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment.
     ///
@@ -81,7 +62,7 @@ public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +75,6 @@ public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
     /// @return the allocated `StdVideoDecodeAV1ReferenceInfoFlags`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfoFlags` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfoFlags`
-    public static StdVideoDecodeAV1ReferenceInfoFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int disable_frame_end_update_cdf, @CType("uint32_t : 1") int segmentation_enabled, @CType("uint32_t : 30") int reserved) { return alloc(allocator).disable_frame_end_update_cdf(disable_frame_end_update_cdf).segmentation_enabled(segmentation_enabled).reserved(reserved); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +82,7 @@ public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
-
-    /// {@return `disable_frame_end_update_cdf` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_disable_frame_end_update_cdf(MemorySegment segment, long index) { return (int) VH_disable_frame_end_update_cdf.get(segment, 0L, index); }
-    /// {@return `disable_frame_end_update_cdf`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_disable_frame_end_update_cdf(MemorySegment segment) { return StdVideoDecodeAV1ReferenceInfoFlags.get_disable_frame_end_update_cdf(segment, 0L); }
-    /// {@return `disable_frame_end_update_cdf`}
-    public @CType("uint32_t : 1") int disable_frame_end_update_cdf() { return StdVideoDecodeAV1ReferenceInfoFlags.get_disable_frame_end_update_cdf(this.segment()); }
-    /// Sets `disable_frame_end_update_cdf` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_disable_frame_end_update_cdf(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_disable_frame_end_update_cdf.set(segment, 0L, index, value); }
-    /// Sets `disable_frame_end_update_cdf` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_disable_frame_end_update_cdf(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_disable_frame_end_update_cdf(segment, 0L, value); }
-    /// Sets `disable_frame_end_update_cdf` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeAV1ReferenceInfoFlags disable_frame_end_update_cdf(@CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_disable_frame_end_update_cdf(this.segment(), value); return this; }
-
-    /// {@return `segmentation_enabled` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_segmentation_enabled(MemorySegment segment, long index) { return (int) VH_segmentation_enabled.get(segment, 0L, index); }
-    /// {@return `segmentation_enabled`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_segmentation_enabled(MemorySegment segment) { return StdVideoDecodeAV1ReferenceInfoFlags.get_segmentation_enabled(segment, 0L); }
-    /// {@return `segmentation_enabled`}
-    public @CType("uint32_t : 1") int segmentation_enabled() { return StdVideoDecodeAV1ReferenceInfoFlags.get_segmentation_enabled(this.segment()); }
-    /// Sets `segmentation_enabled` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_segmentation_enabled(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_segmentation_enabled.set(segment, 0L, index, value); }
-    /// Sets `segmentation_enabled` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_segmentation_enabled(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_segmentation_enabled(segment, 0L, value); }
-    /// Sets `segmentation_enabled` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeAV1ReferenceInfoFlags segmentation_enabled(@CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_segmentation_enabled(this.segment(), value); return this; }
-
-    /// {@return `reserved` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 30") int get_reserved(MemorySegment segment, long index) { return (int) VH_reserved.get(segment, 0L, index); }
-    /// {@return `reserved`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 30") int get_reserved(MemorySegment segment) { return StdVideoDecodeAV1ReferenceInfoFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved`}
-    public @CType("uint32_t : 30") int reserved() { return StdVideoDecodeAV1ReferenceInfoFlags.get_reserved(this.segment()); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_reserved(MemorySegment segment, long index, @CType("uint32_t : 30") int value) { VH_reserved.set(segment, 0L, index, value); }
-    /// Sets `reserved` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_reserved(MemorySegment segment, @CType("uint32_t : 30") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeAV1ReferenceInfoFlags reserved(@CType("uint32_t : 30") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_reserved(this.segment(), value); return this; }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// A buffer of [StdVideoDecodeAV1ReferenceInfoFlags].
     public static final class Buffer extends StdVideoDecodeAV1ReferenceInfoFlags {
@@ -198,33 +105,6 @@ public sealed class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
         /// @param count the count
         /// @return the slice of `StdVideoDecodeAV1ReferenceInfoFlags`
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `disable_frame_end_update_cdf` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int disable_frame_end_update_cdfAt(long index) { return StdVideoDecodeAV1ReferenceInfoFlags.get_disable_frame_end_update_cdf(this.segment(), index); }
-        /// Sets `disable_frame_end_update_cdf` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer disable_frame_end_update_cdfAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_disable_frame_end_update_cdf(this.segment(), index, value); return this; }
-
-        /// {@return `segmentation_enabled` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int segmentation_enabledAt(long index) { return StdVideoDecodeAV1ReferenceInfoFlags.get_segmentation_enabled(this.segment(), index); }
-        /// Sets `segmentation_enabled` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer segmentation_enabledAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_segmentation_enabled(this.segment(), index, value); return this; }
-
-        /// {@return `reserved` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 30") int reservedAt(long index) { return StdVideoDecodeAV1ReferenceInfoFlags.get_reserved(this.segment(), index); }
-        /// Sets `reserved` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer reservedAt(long index, @CType("uint32_t : 30") int value) { StdVideoDecodeAV1ReferenceInfoFlags.set_reserved(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### connection
-/// [VarHandle][#VH_connection] - [Getter][#connection()] - [Setter][#connection(java.lang.foreign.MemorySegment)]
-/// ### window
-/// [VarHandle][#VH_window] - [Getter][#window()] - [Setter][#window(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkXcbSurfaceCreateInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkXcbSurfaceCreateFlagsKHR flags;
-///     xcb_connection_t * connection;
-///     xcb_window_t window;
-/// } VkXcbSurfaceCreateInfoKHR;
 /// ```
-public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
+/// struct VkXcbSurfaceCreateInfoKHR {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkXcbSurfaceCreateFlagsKHR flags;
+///     xcb_connection_t* connection;
+///     (uint32_t) xcb_window_t window;
+/// };
+/// ```
+public sealed class VkXcbSurfaceCreateInfoKHR extends GroupType {
     /// The struct layout of `VkXcbSurfaceCreateInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("connection"),
         ValueLayout.JAVA_INT.withName("window")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `connection` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `connection`.
+    public static final long OFFSET_connection = LAYOUT.byteOffset(PathElement.groupElement("connection"));
+    /// The memory layout of `connection`.
+    public static final MemoryLayout LAYOUT_connection = LAYOUT.select(PathElement.groupElement("connection"));
+    /// The [VarHandle] of `connection` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_connection = LAYOUT.arrayElementVarHandle(PathElement.groupElement("connection"));
-    /// The [VarHandle] of `window` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `window`.
+    public static final long OFFSET_window = LAYOUT.byteOffset(PathElement.groupElement("window"));
+    /// The memory layout of `window`.
+    public static final MemoryLayout LAYOUT_window = LAYOUT.select(PathElement.groupElement("window"));
+    /// The [VarHandle] of `window` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_window = LAYOUT.arrayElementVarHandle(PathElement.groupElement("window"));
 
     /// Creates `VkXcbSurfaceCreateInfoKHR` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
     /// Creates `VkXcbSurfaceCreateInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkXcbSurfaceCreateInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkXcbSurfaceCreateInfoKHR(segment); }
-
-    /// Creates `VkXcbSurfaceCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkXcbSurfaceCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkXcbSurfaceCreateInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkXcbSurfaceCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkXcbSurfaceCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkXcbSurfaceCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkXcbSurfaceCreateInfoKHR` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkXcbSurfaceCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
     /// @return the allocated `VkXcbSurfaceCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkXcbSurfaceCreateInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkXcbSurfaceCreateInfoKHR`
-    public static VkXcbSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkXcbSurfaceCreateFlagsKHR") int flags, @CType("xcb_connection_t *") java.lang.foreign.MemorySegment connection, @CType("xcb_window_t") int window) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).connection(connection).window(window); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkXcbSurfaceCreateInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkXcbSurfaceCreateInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkXcbSurfaceCreateInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXcbSurfaceCreateInfoKHR sType(@CType("VkStructureType") int value) { VkXcbSurfaceCreateInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkXcbSurfaceCreateInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkXcbSurfaceCreateInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkXcbSurfaceCreateInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXcbSurfaceCreateInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkXcbSurfaceCreateInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkXcbSurfaceCreateFlagsKHR") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkXcbSurfaceCreateFlagsKHR") int get_flags(MemorySegment segment) { return VkXcbSurfaceCreateInfoKHR.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkXcbSurfaceCreateFlagsKHR") int flags() { return VkXcbSurfaceCreateInfoKHR.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkXcbSurfaceCreateFlagsKHR") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkXcbSurfaceCreateFlagsKHR") int value) { VkXcbSurfaceCreateInfoKHR.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXcbSurfaceCreateInfoKHR flags(@CType("VkXcbSurfaceCreateFlagsKHR") int value) { VkXcbSurfaceCreateInfoKHR.set_flags(this.segment(), value); return this; }
+    public VkXcbSurfaceCreateInfoKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `connection` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("xcb_connection_t *") java.lang.foreign.MemorySegment get_connection(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_connection.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment connection(MemorySegment segment, long index) { return (MemorySegment) VH_connection.get(segment, 0L, index); }
     /// {@return `connection`}
-    /// @param segment the segment of the struct
-    public static @CType("xcb_connection_t *") java.lang.foreign.MemorySegment get_connection(MemorySegment segment) { return VkXcbSurfaceCreateInfoKHR.get_connection(segment, 0L); }
-    /// {@return `connection`}
-    public @CType("xcb_connection_t *") java.lang.foreign.MemorySegment connection() { return VkXcbSurfaceCreateInfoKHR.get_connection(this.segment()); }
+    public MemorySegment connection() { return connection(this.segment(), 0L); }
     /// Sets `connection` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_connection(MemorySegment segment, long index, @CType("xcb_connection_t *") java.lang.foreign.MemorySegment value) { VH_connection.set(segment, 0L, index, value); }
-    /// Sets `connection` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_connection(MemorySegment segment, @CType("xcb_connection_t *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_connection(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void connection(MemorySegment segment, long index, MemorySegment value) { VH_connection.set(segment, 0L, index, value); }
     /// Sets `connection` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXcbSurfaceCreateInfoKHR connection(@CType("xcb_connection_t *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_connection(this.segment(), value); return this; }
+    public VkXcbSurfaceCreateInfoKHR connection(MemorySegment value) { connection(this.segment(), 0L, value); return this; }
 
     /// {@return `window` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("xcb_window_t") int get_window(MemorySegment segment, long index) { return (int) VH_window.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int window(MemorySegment segment, long index) { return (int) VH_window.get(segment, 0L, index); }
     /// {@return `window`}
-    /// @param segment the segment of the struct
-    public static @CType("xcb_window_t") int get_window(MemorySegment segment) { return VkXcbSurfaceCreateInfoKHR.get_window(segment, 0L); }
-    /// {@return `window`}
-    public @CType("xcb_window_t") int window() { return VkXcbSurfaceCreateInfoKHR.get_window(this.segment()); }
+    public int window() { return window(this.segment(), 0L); }
     /// Sets `window` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_window(MemorySegment segment, long index, @CType("xcb_window_t") int value) { VH_window.set(segment, 0L, index, value); }
-    /// Sets `window` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_window(MemorySegment segment, @CType("xcb_window_t") int value) { VkXcbSurfaceCreateInfoKHR.set_window(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void window(MemorySegment segment, long index, int value) { VH_window.set(segment, 0L, index, value); }
     /// Sets `window` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkXcbSurfaceCreateInfoKHR window(@CType("xcb_window_t") int value) { VkXcbSurfaceCreateInfoKHR.set_window(this.segment(), value); return this; }
+    public VkXcbSurfaceCreateInfoKHR window(int value) { window(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkXcbSurfaceCreateInfoKHR].
     public static final class Buffer extends VkXcbSurfaceCreateInfoKHR {
@@ -258,49 +221,49 @@ public sealed class VkXcbSurfaceCreateInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkXcbSurfaceCreateInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkXcbSurfaceCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkXcbSurfaceCreateInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkXcbSurfaceCreateFlagsKHR") int flagsAt(long index) { return VkXcbSurfaceCreateInfoKHR.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkXcbSurfaceCreateFlagsKHR") int value) { VkXcbSurfaceCreateInfoKHR.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `connection` at the given index}
-        /// @param index the index
-        public @CType("xcb_connection_t *") java.lang.foreign.MemorySegment connectionAt(long index) { return VkXcbSurfaceCreateInfoKHR.get_connection(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment connectionAt(long index) { return connection(this.segment(), index); }
         /// Sets `connection` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer connectionAt(long index, @CType("xcb_connection_t *") java.lang.foreign.MemorySegment value) { VkXcbSurfaceCreateInfoKHR.set_connection(this.segment(), index, value); return this; }
+        public Buffer connectionAt(long index, MemorySegment value) { connection(this.segment(), index, value); return this; }
 
         /// {@return `window` at the given index}
-        /// @param index the index
-        public @CType("xcb_window_t") int windowAt(long index) { return VkXcbSurfaceCreateInfoKHR.get_window(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int windowAt(long index) { return window(this.segment(), index); }
         /// Sets `window` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer windowAt(long index, @CType("xcb_window_t") int value) { VkXcbSurfaceCreateInfoKHR.set_window(this.segment(), index, value); return this; }
+        public Buffer windowAt(long index, int value) { window(this.segment(), index, value); return this; }
 
     }
 }

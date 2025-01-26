@@ -19,8 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -48,24 +46,11 @@ public class GL46 extends GL45 {
     public static final int GL_TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
     public static final int GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSpecializeShader = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiDrawArraysIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElementsIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPolygonOffsetClamp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSpecializeShader,
-            FD_glMultiDrawArraysIndirectCount,
-            FD_glMultiDrawElementsIndirectCount,
-            FD_glPolygonOffsetClamp
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSpecializeShader = RuntimeHelper.downcall(Descriptors.FD_glSpecializeShader);
-        public static final MethodHandle MH_glMultiDrawArraysIndirectCount = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectCount);
-        public static final MethodHandle MH_glMultiDrawElementsIndirectCount = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElementsIndirectCount);
-        public static final MethodHandle MH_glPolygonOffsetClamp = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetClamp);
+        public static final MethodHandle MH_glSpecializeShader = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiDrawArraysIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsIndirectCount = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPolygonOffsetClamp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glSpecializeShader;
         public final MemorySegment PFN_glMultiDrawArraysIndirectCount;
         public final MemorySegment PFN_glMultiDrawElementsIndirectCount;
@@ -83,28 +68,40 @@ public class GL46 extends GL45 {
         this.handles = new Handles(func);
     }
 
-    public void SpecializeShader(@CType("GLuint") int shader, @CType("const GLchar *") java.lang.foreign.MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantIndex, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantValue) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSpecializeShader)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShader");
+    /// ```
+    /// void glSpecializeShader((unsigned int) GLuint shader, const GLchar* pEntryPoint, (unsigned int) GLuint numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
+    /// ```
+    public void SpecializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShader)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShader");
         try { Handles.MH_glSpecializeShader.invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
-        catch (Throwable e) { throw new RuntimeException("error in glSpecializeShader", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SpecializeShader", e); }
     }
 
-    public void MultiDrawArraysIndirectCount(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
+    /// ```
+    /// void glMultiDrawArraysIndirectCount((unsigned int) GLenum mode, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
+    /// ```
+    public void MultiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
         try { Handles.MH_glMultiDrawArraysIndirectCount.invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCount", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectCount", e); }
     }
 
-    public void MultiDrawElementsIndirectCount(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
+    /// ```
+    /// void glMultiDrawElementsIndirectCount((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
+    /// ```
+    public void MultiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
         try { Handles.MH_glMultiDrawElementsIndirectCount.invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCount", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectCount", e); }
     }
 
-    public void PolygonOffsetClamp(@CType("GLfloat") float factor, @CType("GLfloat") float units, @CType("GLfloat") float clamp) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
+    /// ```
+    /// void glPolygonOffsetClamp(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
+    /// ```
+    public void PolygonOffsetClamp(float factor, float units, float clamp) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
         try { Handles.MH_glPolygonOffsetClamp.invokeExact(handles.PFN_glPolygonOffsetClamp, factor, units, clamp); }
-        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClamp", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetClamp", e); }
     }
 
 }

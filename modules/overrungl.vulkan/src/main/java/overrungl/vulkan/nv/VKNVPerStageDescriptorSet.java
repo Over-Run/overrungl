@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVPerStageDescriptorSet {
     public static final int VK_NV_PER_STAGE_DESCRIPTOR_SET_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKNVPerStageDescriptorSet {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV = 1000516000;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV = 0x00000040;
 
-    private VKNVPerStageDescriptorSet() { }
+    private VKNVPerStageDescriptorSet() {}
 
 }

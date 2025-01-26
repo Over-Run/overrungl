@@ -18,37 +18,25 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKEXTDirectModeDisplay {
+public final class VKEXTDirectModeDisplay {
     public static final int VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkReleaseDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkReleaseDisplayEXT
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkReleaseDisplayEXT = RuntimeHelper.downcall(Descriptors.FD_vkReleaseDisplayEXT);
-        public final MemorySegment PFN_vkReleaseDisplayEXT;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-            PFN_vkReleaseDisplayEXT = func.invoke(instance, "vkReleaseDisplayEXT");
-        }
+        public static final MethodHandle MH_vkReleaseDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        private Handles() {}
     }
 
-    public VKEXTDirectModeDisplay(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKEXTDirectModeDisplay() {}
 
-    public @CType("VkResult") int ReleaseDisplayEXT(@CType("VkPhysicalDevice") MemorySegment physicalDevice, @CType("VkDisplayKHR") MemorySegment display) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkReleaseDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
-        try { return (int) Handles.MH_vkReleaseDisplayEXT.invokeExact(handles.PFN_vkReleaseDisplayEXT, physicalDevice, display); }
+    /// ```
+    /// (int) VkResult vkReleaseDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkDisplayKHR display);
+    /// ```
+    public static int vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, long display) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkReleaseDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
+        try { return (int) Handles.MH_vkReleaseDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkReleaseDisplayEXT, physicalDevice.segment(), display); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseDisplayEXT", e); }
     }
 

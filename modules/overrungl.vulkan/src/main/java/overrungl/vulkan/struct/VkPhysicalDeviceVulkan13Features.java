@@ -15,76 +15,40 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### robustImageAccess
-/// [VarHandle][#VH_robustImageAccess] - [Getter][#robustImageAccess()] - [Setter][#robustImageAccess(int)]
-/// ### inlineUniformBlock
-/// [VarHandle][#VH_inlineUniformBlock] - [Getter][#inlineUniformBlock()] - [Setter][#inlineUniformBlock(int)]
-/// ### descriptorBindingInlineUniformBlockUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingInlineUniformBlockUpdateAfterBind] - [Getter][#descriptorBindingInlineUniformBlockUpdateAfterBind()] - [Setter][#descriptorBindingInlineUniformBlockUpdateAfterBind(int)]
-/// ### pipelineCreationCacheControl
-/// [VarHandle][#VH_pipelineCreationCacheControl] - [Getter][#pipelineCreationCacheControl()] - [Setter][#pipelineCreationCacheControl(int)]
-/// ### privateData
-/// [VarHandle][#VH_privateData] - [Getter][#privateData()] - [Setter][#privateData(int)]
-/// ### shaderDemoteToHelperInvocation
-/// [VarHandle][#VH_shaderDemoteToHelperInvocation] - [Getter][#shaderDemoteToHelperInvocation()] - [Setter][#shaderDemoteToHelperInvocation(int)]
-/// ### shaderTerminateInvocation
-/// [VarHandle][#VH_shaderTerminateInvocation] - [Getter][#shaderTerminateInvocation()] - [Setter][#shaderTerminateInvocation(int)]
-/// ### subgroupSizeControl
-/// [VarHandle][#VH_subgroupSizeControl] - [Getter][#subgroupSizeControl()] - [Setter][#subgroupSizeControl(int)]
-/// ### computeFullSubgroups
-/// [VarHandle][#VH_computeFullSubgroups] - [Getter][#computeFullSubgroups()] - [Setter][#computeFullSubgroups(int)]
-/// ### synchronization2
-/// [VarHandle][#VH_synchronization2] - [Getter][#synchronization2()] - [Setter][#synchronization2(int)]
-/// ### textureCompressionASTC_HDR
-/// [VarHandle][#VH_textureCompressionASTC_HDR] - [Getter][#textureCompressionASTC_HDR()] - [Setter][#textureCompressionASTC_HDR(int)]
-/// ### shaderZeroInitializeWorkgroupMemory
-/// [VarHandle][#VH_shaderZeroInitializeWorkgroupMemory] - [Getter][#shaderZeroInitializeWorkgroupMemory()] - [Setter][#shaderZeroInitializeWorkgroupMemory(int)]
-/// ### dynamicRendering
-/// [VarHandle][#VH_dynamicRendering] - [Getter][#dynamicRendering()] - [Setter][#dynamicRendering(int)]
-/// ### shaderIntegerDotProduct
-/// [VarHandle][#VH_shaderIntegerDotProduct] - [Getter][#shaderIntegerDotProduct()] - [Setter][#shaderIntegerDotProduct(int)]
-/// ### maintenance4
-/// [VarHandle][#VH_maintenance4] - [Getter][#maintenance4()] - [Setter][#maintenance4(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceVulkan13Features {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 robustImageAccess;
-///     VkBool32 inlineUniformBlock;
-///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
-///     VkBool32 pipelineCreationCacheControl;
-///     VkBool32 privateData;
-///     VkBool32 shaderDemoteToHelperInvocation;
-///     VkBool32 shaderTerminateInvocation;
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
-///     VkBool32 synchronization2;
-///     VkBool32 textureCompressionASTC_HDR;
-///     VkBool32 shaderZeroInitializeWorkgroupMemory;
-///     VkBool32 dynamicRendering;
-///     VkBool32 shaderIntegerDotProduct;
-///     VkBool32 maintenance4;
-/// } VkPhysicalDeviceVulkan13Features;
 /// ```
-public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
+/// struct VkPhysicalDeviceVulkan13Features {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 robustImageAccess;
+///     (uint32_t) VkBool32 inlineUniformBlock;
+///     (uint32_t) VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     (uint32_t) VkBool32 pipelineCreationCacheControl;
+///     (uint32_t) VkBool32 privateData;
+///     (uint32_t) VkBool32 shaderDemoteToHelperInvocation;
+///     (uint32_t) VkBool32 shaderTerminateInvocation;
+///     (uint32_t) VkBool32 subgroupSizeControl;
+///     (uint32_t) VkBool32 computeFullSubgroups;
+///     (uint32_t) VkBool32 synchronization2;
+///     (uint32_t) VkBool32 textureCompressionASTC_HDR;
+///     (uint32_t) VkBool32 shaderZeroInitializeWorkgroupMemory;
+///     (uint32_t) VkBool32 dynamicRendering;
+///     (uint32_t) VkBool32 shaderIntegerDotProduct;
+///     (uint32_t) VkBool32 maintenance4;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceVulkan13Features extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVulkan13Features`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("robustImageAccess"),
@@ -103,39 +67,107 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
         ValueLayout.JAVA_INT.withName("shaderIntegerDotProduct"),
         ValueLayout.JAVA_INT.withName("maintenance4")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `robustImageAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `robustImageAccess`.
+    public static final long OFFSET_robustImageAccess = LAYOUT.byteOffset(PathElement.groupElement("robustImageAccess"));
+    /// The memory layout of `robustImageAccess`.
+    public static final MemoryLayout LAYOUT_robustImageAccess = LAYOUT.select(PathElement.groupElement("robustImageAccess"));
+    /// The [VarHandle] of `robustImageAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_robustImageAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("robustImageAccess"));
-    /// The [VarHandle] of `inlineUniformBlock` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `inlineUniformBlock`.
+    public static final long OFFSET_inlineUniformBlock = LAYOUT.byteOffset(PathElement.groupElement("inlineUniformBlock"));
+    /// The memory layout of `inlineUniformBlock`.
+    public static final MemoryLayout LAYOUT_inlineUniformBlock = LAYOUT.select(PathElement.groupElement("inlineUniformBlock"));
+    /// The [VarHandle] of `inlineUniformBlock` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_inlineUniformBlock = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inlineUniformBlock"));
-    /// The [VarHandle] of `descriptorBindingInlineUniformBlockUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingInlineUniformBlockUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingInlineUniformBlockUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingInlineUniformBlockUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingInlineUniformBlockUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingInlineUniformBlockUpdateAfterBind"));
-    /// The [VarHandle] of `pipelineCreationCacheControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineCreationCacheControl`.
+    public static final long OFFSET_pipelineCreationCacheControl = LAYOUT.byteOffset(PathElement.groupElement("pipelineCreationCacheControl"));
+    /// The memory layout of `pipelineCreationCacheControl`.
+    public static final MemoryLayout LAYOUT_pipelineCreationCacheControl = LAYOUT.select(PathElement.groupElement("pipelineCreationCacheControl"));
+    /// The [VarHandle] of `pipelineCreationCacheControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineCreationCacheControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCreationCacheControl"));
-    /// The [VarHandle] of `privateData` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `privateData`.
+    public static final long OFFSET_privateData = LAYOUT.byteOffset(PathElement.groupElement("privateData"));
+    /// The memory layout of `privateData`.
+    public static final MemoryLayout LAYOUT_privateData = LAYOUT.select(PathElement.groupElement("privateData"));
+    /// The [VarHandle] of `privateData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_privateData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("privateData"));
-    /// The [VarHandle] of `shaderDemoteToHelperInvocation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderDemoteToHelperInvocation`.
+    public static final long OFFSET_shaderDemoteToHelperInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderDemoteToHelperInvocation"));
+    /// The memory layout of `shaderDemoteToHelperInvocation`.
+    public static final MemoryLayout LAYOUT_shaderDemoteToHelperInvocation = LAYOUT.select(PathElement.groupElement("shaderDemoteToHelperInvocation"));
+    /// The [VarHandle] of `shaderDemoteToHelperInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderDemoteToHelperInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderDemoteToHelperInvocation"));
-    /// The [VarHandle] of `shaderTerminateInvocation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderTerminateInvocation`.
+    public static final long OFFSET_shaderTerminateInvocation = LAYOUT.byteOffset(PathElement.groupElement("shaderTerminateInvocation"));
+    /// The memory layout of `shaderTerminateInvocation`.
+    public static final MemoryLayout LAYOUT_shaderTerminateInvocation = LAYOUT.select(PathElement.groupElement("shaderTerminateInvocation"));
+    /// The [VarHandle] of `shaderTerminateInvocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderTerminateInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTerminateInvocation"));
-    /// The [VarHandle] of `subgroupSizeControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subgroupSizeControl`.
+    public static final long OFFSET_subgroupSizeControl = LAYOUT.byteOffset(PathElement.groupElement("subgroupSizeControl"));
+    /// The memory layout of `subgroupSizeControl`.
+    public static final MemoryLayout LAYOUT_subgroupSizeControl = LAYOUT.select(PathElement.groupElement("subgroupSizeControl"));
+    /// The [VarHandle] of `subgroupSizeControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subgroupSizeControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSizeControl"));
-    /// The [VarHandle] of `computeFullSubgroups` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `computeFullSubgroups`.
+    public static final long OFFSET_computeFullSubgroups = LAYOUT.byteOffset(PathElement.groupElement("computeFullSubgroups"));
+    /// The memory layout of `computeFullSubgroups`.
+    public static final MemoryLayout LAYOUT_computeFullSubgroups = LAYOUT.select(PathElement.groupElement("computeFullSubgroups"));
+    /// The [VarHandle] of `computeFullSubgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_computeFullSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeFullSubgroups"));
-    /// The [VarHandle] of `synchronization2` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `synchronization2`.
+    public static final long OFFSET_synchronization2 = LAYOUT.byteOffset(PathElement.groupElement("synchronization2"));
+    /// The memory layout of `synchronization2`.
+    public static final MemoryLayout LAYOUT_synchronization2 = LAYOUT.select(PathElement.groupElement("synchronization2"));
+    /// The [VarHandle] of `synchronization2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_synchronization2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("synchronization2"));
-    /// The [VarHandle] of `textureCompressionASTC_HDR` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `textureCompressionASTC_HDR`.
+    public static final long OFFSET_textureCompressionASTC_HDR = LAYOUT.byteOffset(PathElement.groupElement("textureCompressionASTC_HDR"));
+    /// The memory layout of `textureCompressionASTC_HDR`.
+    public static final MemoryLayout LAYOUT_textureCompressionASTC_HDR = LAYOUT.select(PathElement.groupElement("textureCompressionASTC_HDR"));
+    /// The [VarHandle] of `textureCompressionASTC_HDR` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_textureCompressionASTC_HDR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("textureCompressionASTC_HDR"));
-    /// The [VarHandle] of `shaderZeroInitializeWorkgroupMemory` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderZeroInitializeWorkgroupMemory`.
+    public static final long OFFSET_shaderZeroInitializeWorkgroupMemory = LAYOUT.byteOffset(PathElement.groupElement("shaderZeroInitializeWorkgroupMemory"));
+    /// The memory layout of `shaderZeroInitializeWorkgroupMemory`.
+    public static final MemoryLayout LAYOUT_shaderZeroInitializeWorkgroupMemory = LAYOUT.select(PathElement.groupElement("shaderZeroInitializeWorkgroupMemory"));
+    /// The [VarHandle] of `shaderZeroInitializeWorkgroupMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderZeroInitializeWorkgroupMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderZeroInitializeWorkgroupMemory"));
-    /// The [VarHandle] of `dynamicRendering` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dynamicRendering`.
+    public static final long OFFSET_dynamicRendering = LAYOUT.byteOffset(PathElement.groupElement("dynamicRendering"));
+    /// The memory layout of `dynamicRendering`.
+    public static final MemoryLayout LAYOUT_dynamicRendering = LAYOUT.select(PathElement.groupElement("dynamicRendering"));
+    /// The [VarHandle] of `dynamicRendering` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dynamicRendering = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicRendering"));
-    /// The [VarHandle] of `shaderIntegerDotProduct` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderIntegerDotProduct`.
+    public static final long OFFSET_shaderIntegerDotProduct = LAYOUT.byteOffset(PathElement.groupElement("shaderIntegerDotProduct"));
+    /// The memory layout of `shaderIntegerDotProduct`.
+    public static final MemoryLayout LAYOUT_shaderIntegerDotProduct = LAYOUT.select(PathElement.groupElement("shaderIntegerDotProduct"));
+    /// The [VarHandle] of `shaderIntegerDotProduct` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderIntegerDotProduct = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderIntegerDotProduct"));
-    /// The [VarHandle] of `maintenance4` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maintenance4`.
+    public static final long OFFSET_maintenance4 = LAYOUT.byteOffset(PathElement.groupElement("maintenance4"));
+    /// The memory layout of `maintenance4`.
+    public static final MemoryLayout LAYOUT_maintenance4 = LAYOUT.select(PathElement.groupElement("maintenance4"));
+    /// The [VarHandle] of `maintenance4` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maintenance4 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maintenance4"));
 
     /// Creates `VkPhysicalDeviceVulkan13Features` with the given segment.
@@ -145,19 +177,14 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
     /// Creates `VkPhysicalDeviceVulkan13Features` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan13Features of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Features(segment); }
-
-    /// Creates `VkPhysicalDeviceVulkan13Features` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVulkan13Features` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan13Features ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Features(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVulkan13Features ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Features(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceVulkan13Features` with the given segment.
     ///
@@ -165,7 +192,7 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -178,11 +205,6 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkan13Features`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
-    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int robustImageAccess, @CType("VkBool32") int inlineUniformBlock, @CType("VkBool32") int descriptorBindingInlineUniformBlockUpdateAfterBind, @CType("VkBool32") int pipelineCreationCacheControl, @CType("VkBool32") int privateData, @CType("VkBool32") int shaderDemoteToHelperInvocation, @CType("VkBool32") int shaderTerminateInvocation, @CType("VkBool32") int subgroupSizeControl, @CType("VkBool32") int computeFullSubgroups, @CType("VkBool32") int synchronization2, @CType("VkBool32") int textureCompressionASTC_HDR, @CType("VkBool32") int shaderZeroInitializeWorkgroupMemory, @CType("VkBool32") int dynamicRendering, @CType("VkBool32") int shaderIntegerDotProduct, @CType("VkBool32") int maintenance4) { return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory).dynamicRendering(dynamicRendering).shaderIntegerDotProduct(shaderIntegerDotProduct).maintenance4(maintenance4); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -190,398 +212,279 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVulkan13Features.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Features.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features sType(@CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Features.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkan13Features.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Features.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Features.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `robustImageAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_robustImageAccess(MemorySegment segment, long index) { return (int) VH_robustImageAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int robustImageAccess(MemorySegment segment, long index) { return (int) VH_robustImageAccess.get(segment, 0L, index); }
     /// {@return `robustImageAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_robustImageAccess(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_robustImageAccess(segment, 0L); }
-    /// {@return `robustImageAccess`}
-    public @CType("VkBool32") int robustImageAccess() { return VkPhysicalDeviceVulkan13Features.get_robustImageAccess(this.segment()); }
+    public int robustImageAccess() { return robustImageAccess(this.segment(), 0L); }
     /// Sets `robustImageAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_robustImageAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_robustImageAccess.set(segment, 0L, index, value); }
-    /// Sets `robustImageAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_robustImageAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_robustImageAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void robustImageAccess(MemorySegment segment, long index, int value) { VH_robustImageAccess.set(segment, 0L, index, value); }
     /// Sets `robustImageAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features robustImageAccess(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_robustImageAccess(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features robustImageAccess(int value) { robustImageAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `inlineUniformBlock` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_inlineUniformBlock(MemorySegment segment, long index) { return (int) VH_inlineUniformBlock.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int inlineUniformBlock(MemorySegment segment, long index) { return (int) VH_inlineUniformBlock.get(segment, 0L, index); }
     /// {@return `inlineUniformBlock`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_inlineUniformBlock(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_inlineUniformBlock(segment, 0L); }
-    /// {@return `inlineUniformBlock`}
-    public @CType("VkBool32") int inlineUniformBlock() { return VkPhysicalDeviceVulkan13Features.get_inlineUniformBlock(this.segment()); }
+    public int inlineUniformBlock() { return inlineUniformBlock(this.segment(), 0L); }
     /// Sets `inlineUniformBlock` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_inlineUniformBlock(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_inlineUniformBlock.set(segment, 0L, index, value); }
-    /// Sets `inlineUniformBlock` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_inlineUniformBlock(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_inlineUniformBlock(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void inlineUniformBlock(MemorySegment segment, long index, int value) { VH_inlineUniformBlock.set(segment, 0L, index, value); }
     /// Sets `inlineUniformBlock` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features inlineUniformBlock(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_inlineUniformBlock(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features inlineUniformBlock(int value) { inlineUniformBlock(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingInlineUniformBlockUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingInlineUniformBlockUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingInlineUniformBlockUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingInlineUniformBlockUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_descriptorBindingInlineUniformBlockUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingInlineUniformBlockUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingInlineUniformBlockUpdateAfterBind() { return VkPhysicalDeviceVulkan13Features.get_descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment()); }
+    public int descriptorBindingInlineUniformBlockUpdateAfterBind() { return descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingInlineUniformBlockUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingInlineUniformBlockUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingInlineUniformBlockUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_descriptorBindingInlineUniformBlockUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingInlineUniformBlockUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingInlineUniformBlockUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingInlineUniformBlockUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features descriptorBindingInlineUniformBlockUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features descriptorBindingInlineUniformBlockUpdateAfterBind(int value) { descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineCreationCacheControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_pipelineCreationCacheControl(MemorySegment segment, long index) { return (int) VH_pipelineCreationCacheControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineCreationCacheControl(MemorySegment segment, long index) { return (int) VH_pipelineCreationCacheControl.get(segment, 0L, index); }
     /// {@return `pipelineCreationCacheControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_pipelineCreationCacheControl(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_pipelineCreationCacheControl(segment, 0L); }
-    /// {@return `pipelineCreationCacheControl`}
-    public @CType("VkBool32") int pipelineCreationCacheControl() { return VkPhysicalDeviceVulkan13Features.get_pipelineCreationCacheControl(this.segment()); }
+    public int pipelineCreationCacheControl() { return pipelineCreationCacheControl(this.segment(), 0L); }
     /// Sets `pipelineCreationCacheControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineCreationCacheControl(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_pipelineCreationCacheControl.set(segment, 0L, index, value); }
-    /// Sets `pipelineCreationCacheControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineCreationCacheControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_pipelineCreationCacheControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineCreationCacheControl(MemorySegment segment, long index, int value) { VH_pipelineCreationCacheControl.set(segment, 0L, index, value); }
     /// Sets `pipelineCreationCacheControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features pipelineCreationCacheControl(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_pipelineCreationCacheControl(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features pipelineCreationCacheControl(int value) { pipelineCreationCacheControl(this.segment(), 0L, value); return this; }
 
     /// {@return `privateData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_privateData(MemorySegment segment, long index) { return (int) VH_privateData.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int privateData(MemorySegment segment, long index) { return (int) VH_privateData.get(segment, 0L, index); }
     /// {@return `privateData`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_privateData(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_privateData(segment, 0L); }
-    /// {@return `privateData`}
-    public @CType("VkBool32") int privateData() { return VkPhysicalDeviceVulkan13Features.get_privateData(this.segment()); }
+    public int privateData() { return privateData(this.segment(), 0L); }
     /// Sets `privateData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_privateData(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_privateData.set(segment, 0L, index, value); }
-    /// Sets `privateData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_privateData(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_privateData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void privateData(MemorySegment segment, long index, int value) { VH_privateData.set(segment, 0L, index, value); }
     /// Sets `privateData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features privateData(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_privateData(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features privateData(int value) { privateData(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderDemoteToHelperInvocation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderDemoteToHelperInvocation(MemorySegment segment, long index) { return (int) VH_shaderDemoteToHelperInvocation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderDemoteToHelperInvocation(MemorySegment segment, long index) { return (int) VH_shaderDemoteToHelperInvocation.get(segment, 0L, index); }
     /// {@return `shaderDemoteToHelperInvocation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderDemoteToHelperInvocation(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_shaderDemoteToHelperInvocation(segment, 0L); }
-    /// {@return `shaderDemoteToHelperInvocation`}
-    public @CType("VkBool32") int shaderDemoteToHelperInvocation() { return VkPhysicalDeviceVulkan13Features.get_shaderDemoteToHelperInvocation(this.segment()); }
+    public int shaderDemoteToHelperInvocation() { return shaderDemoteToHelperInvocation(this.segment(), 0L); }
     /// Sets `shaderDemoteToHelperInvocation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderDemoteToHelperInvocation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderDemoteToHelperInvocation.set(segment, 0L, index, value); }
-    /// Sets `shaderDemoteToHelperInvocation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderDemoteToHelperInvocation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderDemoteToHelperInvocation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderDemoteToHelperInvocation(MemorySegment segment, long index, int value) { VH_shaderDemoteToHelperInvocation.set(segment, 0L, index, value); }
     /// Sets `shaderDemoteToHelperInvocation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features shaderDemoteToHelperInvocation(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderDemoteToHelperInvocation(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features shaderDemoteToHelperInvocation(int value) { shaderDemoteToHelperInvocation(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderTerminateInvocation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderTerminateInvocation(MemorySegment segment, long index) { return (int) VH_shaderTerminateInvocation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderTerminateInvocation(MemorySegment segment, long index) { return (int) VH_shaderTerminateInvocation.get(segment, 0L, index); }
     /// {@return `shaderTerminateInvocation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderTerminateInvocation(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_shaderTerminateInvocation(segment, 0L); }
-    /// {@return `shaderTerminateInvocation`}
-    public @CType("VkBool32") int shaderTerminateInvocation() { return VkPhysicalDeviceVulkan13Features.get_shaderTerminateInvocation(this.segment()); }
+    public int shaderTerminateInvocation() { return shaderTerminateInvocation(this.segment(), 0L); }
     /// Sets `shaderTerminateInvocation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderTerminateInvocation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderTerminateInvocation.set(segment, 0L, index, value); }
-    /// Sets `shaderTerminateInvocation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderTerminateInvocation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderTerminateInvocation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderTerminateInvocation(MemorySegment segment, long index, int value) { VH_shaderTerminateInvocation.set(segment, 0L, index, value); }
     /// Sets `shaderTerminateInvocation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features shaderTerminateInvocation(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderTerminateInvocation(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features shaderTerminateInvocation(int value) { shaderTerminateInvocation(this.segment(), 0L, value); return this; }
 
     /// {@return `subgroupSizeControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_subgroupSizeControl(MemorySegment segment, long index) { return (int) VH_subgroupSizeControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subgroupSizeControl(MemorySegment segment, long index) { return (int) VH_subgroupSizeControl.get(segment, 0L, index); }
     /// {@return `subgroupSizeControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_subgroupSizeControl(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_subgroupSizeControl(segment, 0L); }
-    /// {@return `subgroupSizeControl`}
-    public @CType("VkBool32") int subgroupSizeControl() { return VkPhysicalDeviceVulkan13Features.get_subgroupSizeControl(this.segment()); }
+    public int subgroupSizeControl() { return subgroupSizeControl(this.segment(), 0L); }
     /// Sets `subgroupSizeControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subgroupSizeControl(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_subgroupSizeControl.set(segment, 0L, index, value); }
-    /// Sets `subgroupSizeControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subgroupSizeControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_subgroupSizeControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subgroupSizeControl(MemorySegment segment, long index, int value) { VH_subgroupSizeControl.set(segment, 0L, index, value); }
     /// Sets `subgroupSizeControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features subgroupSizeControl(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_subgroupSizeControl(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features subgroupSizeControl(int value) { subgroupSizeControl(this.segment(), 0L, value); return this; }
 
     /// {@return `computeFullSubgroups` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_computeFullSubgroups(MemorySegment segment, long index) { return (int) VH_computeFullSubgroups.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int computeFullSubgroups(MemorySegment segment, long index) { return (int) VH_computeFullSubgroups.get(segment, 0L, index); }
     /// {@return `computeFullSubgroups`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_computeFullSubgroups(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_computeFullSubgroups(segment, 0L); }
-    /// {@return `computeFullSubgroups`}
-    public @CType("VkBool32") int computeFullSubgroups() { return VkPhysicalDeviceVulkan13Features.get_computeFullSubgroups(this.segment()); }
+    public int computeFullSubgroups() { return computeFullSubgroups(this.segment(), 0L); }
     /// Sets `computeFullSubgroups` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_computeFullSubgroups(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_computeFullSubgroups.set(segment, 0L, index, value); }
-    /// Sets `computeFullSubgroups` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_computeFullSubgroups(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_computeFullSubgroups(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void computeFullSubgroups(MemorySegment segment, long index, int value) { VH_computeFullSubgroups.set(segment, 0L, index, value); }
     /// Sets `computeFullSubgroups` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features computeFullSubgroups(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_computeFullSubgroups(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features computeFullSubgroups(int value) { computeFullSubgroups(this.segment(), 0L, value); return this; }
 
     /// {@return `synchronization2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_synchronization2(MemorySegment segment, long index) { return (int) VH_synchronization2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int synchronization2(MemorySegment segment, long index) { return (int) VH_synchronization2.get(segment, 0L, index); }
     /// {@return `synchronization2`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_synchronization2(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_synchronization2(segment, 0L); }
-    /// {@return `synchronization2`}
-    public @CType("VkBool32") int synchronization2() { return VkPhysicalDeviceVulkan13Features.get_synchronization2(this.segment()); }
+    public int synchronization2() { return synchronization2(this.segment(), 0L); }
     /// Sets `synchronization2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_synchronization2(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_synchronization2.set(segment, 0L, index, value); }
-    /// Sets `synchronization2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_synchronization2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_synchronization2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void synchronization2(MemorySegment segment, long index, int value) { VH_synchronization2.set(segment, 0L, index, value); }
     /// Sets `synchronization2` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features synchronization2(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_synchronization2(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features synchronization2(int value) { synchronization2(this.segment(), 0L, value); return this; }
 
     /// {@return `textureCompressionASTC_HDR` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_textureCompressionASTC_HDR(MemorySegment segment, long index) { return (int) VH_textureCompressionASTC_HDR.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int textureCompressionASTC_HDR(MemorySegment segment, long index) { return (int) VH_textureCompressionASTC_HDR.get(segment, 0L, index); }
     /// {@return `textureCompressionASTC_HDR`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_textureCompressionASTC_HDR(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_textureCompressionASTC_HDR(segment, 0L); }
-    /// {@return `textureCompressionASTC_HDR`}
-    public @CType("VkBool32") int textureCompressionASTC_HDR() { return VkPhysicalDeviceVulkan13Features.get_textureCompressionASTC_HDR(this.segment()); }
+    public int textureCompressionASTC_HDR() { return textureCompressionASTC_HDR(this.segment(), 0L); }
     /// Sets `textureCompressionASTC_HDR` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_textureCompressionASTC_HDR(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_textureCompressionASTC_HDR.set(segment, 0L, index, value); }
-    /// Sets `textureCompressionASTC_HDR` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_textureCompressionASTC_HDR(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_textureCompressionASTC_HDR(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void textureCompressionASTC_HDR(MemorySegment segment, long index, int value) { VH_textureCompressionASTC_HDR.set(segment, 0L, index, value); }
     /// Sets `textureCompressionASTC_HDR` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features textureCompressionASTC_HDR(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_textureCompressionASTC_HDR(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features textureCompressionASTC_HDR(int value) { textureCompressionASTC_HDR(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderZeroInitializeWorkgroupMemory` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderZeroInitializeWorkgroupMemory(MemorySegment segment, long index) { return (int) VH_shaderZeroInitializeWorkgroupMemory.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderZeroInitializeWorkgroupMemory(MemorySegment segment, long index) { return (int) VH_shaderZeroInitializeWorkgroupMemory.get(segment, 0L, index); }
     /// {@return `shaderZeroInitializeWorkgroupMemory`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderZeroInitializeWorkgroupMemory(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_shaderZeroInitializeWorkgroupMemory(segment, 0L); }
-    /// {@return `shaderZeroInitializeWorkgroupMemory`}
-    public @CType("VkBool32") int shaderZeroInitializeWorkgroupMemory() { return VkPhysicalDeviceVulkan13Features.get_shaderZeroInitializeWorkgroupMemory(this.segment()); }
+    public int shaderZeroInitializeWorkgroupMemory() { return shaderZeroInitializeWorkgroupMemory(this.segment(), 0L); }
     /// Sets `shaderZeroInitializeWorkgroupMemory` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderZeroInitializeWorkgroupMemory(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderZeroInitializeWorkgroupMemory.set(segment, 0L, index, value); }
-    /// Sets `shaderZeroInitializeWorkgroupMemory` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderZeroInitializeWorkgroupMemory(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderZeroInitializeWorkgroupMemory(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderZeroInitializeWorkgroupMemory(MemorySegment segment, long index, int value) { VH_shaderZeroInitializeWorkgroupMemory.set(segment, 0L, index, value); }
     /// Sets `shaderZeroInitializeWorkgroupMemory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features shaderZeroInitializeWorkgroupMemory(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderZeroInitializeWorkgroupMemory(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features shaderZeroInitializeWorkgroupMemory(int value) { shaderZeroInitializeWorkgroupMemory(this.segment(), 0L, value); return this; }
 
     /// {@return `dynamicRendering` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_dynamicRendering(MemorySegment segment, long index) { return (int) VH_dynamicRendering.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dynamicRendering(MemorySegment segment, long index) { return (int) VH_dynamicRendering.get(segment, 0L, index); }
     /// {@return `dynamicRendering`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_dynamicRendering(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_dynamicRendering(segment, 0L); }
-    /// {@return `dynamicRendering`}
-    public @CType("VkBool32") int dynamicRendering() { return VkPhysicalDeviceVulkan13Features.get_dynamicRendering(this.segment()); }
+    public int dynamicRendering() { return dynamicRendering(this.segment(), 0L); }
     /// Sets `dynamicRendering` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dynamicRendering(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_dynamicRendering.set(segment, 0L, index, value); }
-    /// Sets `dynamicRendering` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dynamicRendering(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_dynamicRendering(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dynamicRendering(MemorySegment segment, long index, int value) { VH_dynamicRendering.set(segment, 0L, index, value); }
     /// Sets `dynamicRendering` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features dynamicRendering(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_dynamicRendering(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features dynamicRendering(int value) { dynamicRendering(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderIntegerDotProduct` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderIntegerDotProduct(MemorySegment segment, long index) { return (int) VH_shaderIntegerDotProduct.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderIntegerDotProduct(MemorySegment segment, long index) { return (int) VH_shaderIntegerDotProduct.get(segment, 0L, index); }
     /// {@return `shaderIntegerDotProduct`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderIntegerDotProduct(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_shaderIntegerDotProduct(segment, 0L); }
-    /// {@return `shaderIntegerDotProduct`}
-    public @CType("VkBool32") int shaderIntegerDotProduct() { return VkPhysicalDeviceVulkan13Features.get_shaderIntegerDotProduct(this.segment()); }
+    public int shaderIntegerDotProduct() { return shaderIntegerDotProduct(this.segment(), 0L); }
     /// Sets `shaderIntegerDotProduct` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderIntegerDotProduct(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderIntegerDotProduct.set(segment, 0L, index, value); }
-    /// Sets `shaderIntegerDotProduct` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderIntegerDotProduct(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderIntegerDotProduct(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderIntegerDotProduct(MemorySegment segment, long index, int value) { VH_shaderIntegerDotProduct.set(segment, 0L, index, value); }
     /// Sets `shaderIntegerDotProduct` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features shaderIntegerDotProduct(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderIntegerDotProduct(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features shaderIntegerDotProduct(int value) { shaderIntegerDotProduct(this.segment(), 0L, value); return this; }
 
     /// {@return `maintenance4` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_maintenance4(MemorySegment segment, long index) { return (int) VH_maintenance4.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maintenance4(MemorySegment segment, long index) { return (int) VH_maintenance4.get(segment, 0L, index); }
     /// {@return `maintenance4`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_maintenance4(MemorySegment segment) { return VkPhysicalDeviceVulkan13Features.get_maintenance4(segment, 0L); }
-    /// {@return `maintenance4`}
-    public @CType("VkBool32") int maintenance4() { return VkPhysicalDeviceVulkan13Features.get_maintenance4(this.segment()); }
+    public int maintenance4() { return maintenance4(this.segment(), 0L); }
     /// Sets `maintenance4` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maintenance4(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_maintenance4.set(segment, 0L, index, value); }
-    /// Sets `maintenance4` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maintenance4(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_maintenance4(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maintenance4(MemorySegment segment, long index, int value) { VH_maintenance4.set(segment, 0L, index, value); }
     /// Sets `maintenance4` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Features maintenance4(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_maintenance4(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Features maintenance4(int value) { maintenance4(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceVulkan13Features].
     public static final class Buffer extends VkPhysicalDeviceVulkan13Features {
@@ -606,157 +509,157 @@ public sealed class VkPhysicalDeviceVulkan13Features extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkan13Features.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Features.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan13Features.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Features.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `robustImageAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int robustImageAccessAt(long index) { return VkPhysicalDeviceVulkan13Features.get_robustImageAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int robustImageAccessAt(long index) { return robustImageAccess(this.segment(), index); }
         /// Sets `robustImageAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer robustImageAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_robustImageAccess(this.segment(), index, value); return this; }
+        public Buffer robustImageAccessAt(long index, int value) { robustImageAccess(this.segment(), index, value); return this; }
 
         /// {@return `inlineUniformBlock` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int inlineUniformBlockAt(long index) { return VkPhysicalDeviceVulkan13Features.get_inlineUniformBlock(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int inlineUniformBlockAt(long index) { return inlineUniformBlock(this.segment(), index); }
         /// Sets `inlineUniformBlock` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer inlineUniformBlockAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_inlineUniformBlock(this.segment(), index, value); return this; }
+        public Buffer inlineUniformBlockAt(long index, int value) { inlineUniformBlock(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingInlineUniformBlockUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingInlineUniformBlockUpdateAfterBindAt(long index) { return VkPhysicalDeviceVulkan13Features.get_descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingInlineUniformBlockUpdateAfterBindAt(long index) { return descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingInlineUniformBlockUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingInlineUniformBlockUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingInlineUniformBlockUpdateAfterBindAt(long index, int value) { descriptorBindingInlineUniformBlockUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCreationCacheControl` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int pipelineCreationCacheControlAt(long index) { return VkPhysicalDeviceVulkan13Features.get_pipelineCreationCacheControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineCreationCacheControlAt(long index) { return pipelineCreationCacheControl(this.segment(), index); }
         /// Sets `pipelineCreationCacheControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineCreationCacheControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_pipelineCreationCacheControl(this.segment(), index, value); return this; }
+        public Buffer pipelineCreationCacheControlAt(long index, int value) { pipelineCreationCacheControl(this.segment(), index, value); return this; }
 
         /// {@return `privateData` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int privateDataAt(long index) { return VkPhysicalDeviceVulkan13Features.get_privateData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int privateDataAt(long index) { return privateData(this.segment(), index); }
         /// Sets `privateData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer privateDataAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_privateData(this.segment(), index, value); return this; }
+        public Buffer privateDataAt(long index, int value) { privateData(this.segment(), index, value); return this; }
 
         /// {@return `shaderDemoteToHelperInvocation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderDemoteToHelperInvocationAt(long index) { return VkPhysicalDeviceVulkan13Features.get_shaderDemoteToHelperInvocation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderDemoteToHelperInvocationAt(long index) { return shaderDemoteToHelperInvocation(this.segment(), index); }
         /// Sets `shaderDemoteToHelperInvocation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderDemoteToHelperInvocationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderDemoteToHelperInvocation(this.segment(), index, value); return this; }
+        public Buffer shaderDemoteToHelperInvocationAt(long index, int value) { shaderDemoteToHelperInvocation(this.segment(), index, value); return this; }
 
         /// {@return `shaderTerminateInvocation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderTerminateInvocationAt(long index) { return VkPhysicalDeviceVulkan13Features.get_shaderTerminateInvocation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderTerminateInvocationAt(long index) { return shaderTerminateInvocation(this.segment(), index); }
         /// Sets `shaderTerminateInvocation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderTerminateInvocationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderTerminateInvocation(this.segment(), index, value); return this; }
+        public Buffer shaderTerminateInvocationAt(long index, int value) { shaderTerminateInvocation(this.segment(), index, value); return this; }
 
         /// {@return `subgroupSizeControl` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int subgroupSizeControlAt(long index) { return VkPhysicalDeviceVulkan13Features.get_subgroupSizeControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subgroupSizeControlAt(long index) { return subgroupSizeControl(this.segment(), index); }
         /// Sets `subgroupSizeControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subgroupSizeControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_subgroupSizeControl(this.segment(), index, value); return this; }
+        public Buffer subgroupSizeControlAt(long index, int value) { subgroupSizeControl(this.segment(), index, value); return this; }
 
         /// {@return `computeFullSubgroups` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int computeFullSubgroupsAt(long index) { return VkPhysicalDeviceVulkan13Features.get_computeFullSubgroups(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int computeFullSubgroupsAt(long index) { return computeFullSubgroups(this.segment(), index); }
         /// Sets `computeFullSubgroups` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer computeFullSubgroupsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_computeFullSubgroups(this.segment(), index, value); return this; }
+        public Buffer computeFullSubgroupsAt(long index, int value) { computeFullSubgroups(this.segment(), index, value); return this; }
 
         /// {@return `synchronization2` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int synchronization2At(long index) { return VkPhysicalDeviceVulkan13Features.get_synchronization2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int synchronization2At(long index) { return synchronization2(this.segment(), index); }
         /// Sets `synchronization2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer synchronization2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_synchronization2(this.segment(), index, value); return this; }
+        public Buffer synchronization2At(long index, int value) { synchronization2(this.segment(), index, value); return this; }
 
         /// {@return `textureCompressionASTC_HDR` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int textureCompressionASTC_HDRAt(long index) { return VkPhysicalDeviceVulkan13Features.get_textureCompressionASTC_HDR(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int textureCompressionASTC_HDRAt(long index) { return textureCompressionASTC_HDR(this.segment(), index); }
         /// Sets `textureCompressionASTC_HDR` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer textureCompressionASTC_HDRAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_textureCompressionASTC_HDR(this.segment(), index, value); return this; }
+        public Buffer textureCompressionASTC_HDRAt(long index, int value) { textureCompressionASTC_HDR(this.segment(), index, value); return this; }
 
         /// {@return `shaderZeroInitializeWorkgroupMemory` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderZeroInitializeWorkgroupMemoryAt(long index) { return VkPhysicalDeviceVulkan13Features.get_shaderZeroInitializeWorkgroupMemory(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderZeroInitializeWorkgroupMemoryAt(long index) { return shaderZeroInitializeWorkgroupMemory(this.segment(), index); }
         /// Sets `shaderZeroInitializeWorkgroupMemory` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderZeroInitializeWorkgroupMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderZeroInitializeWorkgroupMemory(this.segment(), index, value); return this; }
+        public Buffer shaderZeroInitializeWorkgroupMemoryAt(long index, int value) { shaderZeroInitializeWorkgroupMemory(this.segment(), index, value); return this; }
 
         /// {@return `dynamicRendering` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int dynamicRenderingAt(long index) { return VkPhysicalDeviceVulkan13Features.get_dynamicRendering(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dynamicRenderingAt(long index) { return dynamicRendering(this.segment(), index); }
         /// Sets `dynamicRendering` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dynamicRenderingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_dynamicRendering(this.segment(), index, value); return this; }
+        public Buffer dynamicRenderingAt(long index, int value) { dynamicRendering(this.segment(), index, value); return this; }
 
         /// {@return `shaderIntegerDotProduct` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderIntegerDotProductAt(long index) { return VkPhysicalDeviceVulkan13Features.get_shaderIntegerDotProduct(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderIntegerDotProductAt(long index) { return shaderIntegerDotProduct(this.segment(), index); }
         /// Sets `shaderIntegerDotProduct` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderIntegerDotProductAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_shaderIntegerDotProduct(this.segment(), index, value); return this; }
+        public Buffer shaderIntegerDotProductAt(long index, int value) { shaderIntegerDotProduct(this.segment(), index, value); return this; }
 
         /// {@return `maintenance4` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int maintenance4At(long index) { return VkPhysicalDeviceVulkan13Features.get_maintenance4(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maintenance4At(long index) { return maintenance4(this.segment(), index); }
         /// Sets `maintenance4` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maintenance4At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Features.set_maintenance4(this.segment(), index, value); return this; }
+        public Buffer maintenance4At(long index, int value) { maintenance4(this.segment(), index, value); return this; }
 
     }
 }

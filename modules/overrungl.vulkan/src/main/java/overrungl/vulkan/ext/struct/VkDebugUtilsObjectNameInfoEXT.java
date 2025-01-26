@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### objectType
-/// [VarHandle][#VH_objectType] - [Getter][#objectType()] - [Setter][#objectType(int)]
-/// ### objectHandle
-/// [VarHandle][#VH_objectHandle] - [Getter][#objectHandle()] - [Setter][#objectHandle(long)]
-/// ### pObjectName
-/// [VarHandle][#VH_pObjectName] - [Getter][#pObjectName()] - [Setter][#pObjectName(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDebugUtilsObjectNameInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     const char * pObjectName;
-/// } VkDebugUtilsObjectNameInfoEXT;
 /// ```
-public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
+/// struct VkDebugUtilsObjectNameInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (int) VkObjectType objectType;
+///     uint64_t objectHandle;
+///     const char* pObjectName;
+/// };
+/// ```
+public sealed class VkDebugUtilsObjectNameInfoEXT extends GroupType {
     /// The struct layout of `VkDebugUtilsObjectNameInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("objectType"),
         ValueLayout.JAVA_LONG.withName("objectHandle"),
         ValueLayout.ADDRESS.withName("pObjectName")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `objectType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `objectType`.
+    public static final long OFFSET_objectType = LAYOUT.byteOffset(PathElement.groupElement("objectType"));
+    /// The memory layout of `objectType`.
+    public static final MemoryLayout LAYOUT_objectType = LAYOUT.select(PathElement.groupElement("objectType"));
+    /// The [VarHandle] of `objectType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_objectType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectType"));
-    /// The [VarHandle] of `objectHandle` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `objectHandle`.
+    public static final long OFFSET_objectHandle = LAYOUT.byteOffset(PathElement.groupElement("objectHandle"));
+    /// The memory layout of `objectHandle`.
+    public static final MemoryLayout LAYOUT_objectHandle = LAYOUT.select(PathElement.groupElement("objectHandle"));
+    /// The [VarHandle] of `objectHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_objectHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectHandle"));
-    /// The [VarHandle] of `pObjectName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pObjectName`.
+    public static final long OFFSET_pObjectName = LAYOUT.byteOffset(PathElement.groupElement("pObjectName"));
+    /// The memory layout of `pObjectName`.
+    public static final MemoryLayout LAYOUT_pObjectName = LAYOUT.select(PathElement.groupElement("pObjectName"));
+    /// The [VarHandle] of `pObjectName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pObjectName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pObjectName"));
 
     /// Creates `VkDebugUtilsObjectNameInfoEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
     /// Creates `VkDebugUtilsObjectNameInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDebugUtilsObjectNameInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDebugUtilsObjectNameInfoEXT(segment); }
-
-    /// Creates `VkDebugUtilsObjectNameInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDebugUtilsObjectNameInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDebugUtilsObjectNameInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDebugUtilsObjectNameInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDebugUtilsObjectNameInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugUtilsObjectNameInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDebugUtilsObjectNameInfoEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDebugUtilsObjectNameInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
     /// @return the allocated `VkDebugUtilsObjectNameInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDebugUtilsObjectNameInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDebugUtilsObjectNameInfoEXT`
-    public static VkDebugUtilsObjectNameInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkObjectType") int objectType, @CType("uint64_t") long objectHandle, @CType("const char *") java.lang.foreign.MemorySegment pObjectName) { return alloc(allocator).sType(sType).pNext(pNext).objectType(objectType).objectHandle(objectHandle).pObjectName(pObjectName); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDebugUtilsObjectNameInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDebugUtilsObjectNameInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDebugUtilsObjectNameInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsObjectNameInfoEXT sType(@CType("VkStructureType") int value) { VkDebugUtilsObjectNameInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkDebugUtilsObjectNameInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsObjectNameInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDebugUtilsObjectNameInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsObjectNameInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkDebugUtilsObjectNameInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `objectType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkObjectType") int get_objectType(MemorySegment segment, long index) { return (int) VH_objectType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int objectType(MemorySegment segment, long index) { return (int) VH_objectType.get(segment, 0L, index); }
     /// {@return `objectType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkObjectType") int get_objectType(MemorySegment segment) { return VkDebugUtilsObjectNameInfoEXT.get_objectType(segment, 0L); }
-    /// {@return `objectType`}
-    public @CType("VkObjectType") int objectType() { return VkDebugUtilsObjectNameInfoEXT.get_objectType(this.segment()); }
+    public int objectType() { return objectType(this.segment(), 0L); }
     /// Sets `objectType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_objectType(MemorySegment segment, long index, @CType("VkObjectType") int value) { VH_objectType.set(segment, 0L, index, value); }
-    /// Sets `objectType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_objectType(MemorySegment segment, @CType("VkObjectType") int value) { VkDebugUtilsObjectNameInfoEXT.set_objectType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void objectType(MemorySegment segment, long index, int value) { VH_objectType.set(segment, 0L, index, value); }
     /// Sets `objectType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsObjectNameInfoEXT objectType(@CType("VkObjectType") int value) { VkDebugUtilsObjectNameInfoEXT.set_objectType(this.segment(), value); return this; }
+    public VkDebugUtilsObjectNameInfoEXT objectType(int value) { objectType(this.segment(), 0L, value); return this; }
 
     /// {@return `objectHandle` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get(segment, 0L, index); }
     /// {@return `objectHandle`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_objectHandle(MemorySegment segment) { return VkDebugUtilsObjectNameInfoEXT.get_objectHandle(segment, 0L); }
-    /// {@return `objectHandle`}
-    public @CType("uint64_t") long objectHandle() { return VkDebugUtilsObjectNameInfoEXT.get_objectHandle(this.segment()); }
+    public long objectHandle() { return objectHandle(this.segment(), 0L); }
     /// Sets `objectHandle` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_objectHandle(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_objectHandle.set(segment, 0L, index, value); }
-    /// Sets `objectHandle` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_objectHandle(MemorySegment segment, @CType("uint64_t") long value) { VkDebugUtilsObjectNameInfoEXT.set_objectHandle(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void objectHandle(MemorySegment segment, long index, long value) { VH_objectHandle.set(segment, 0L, index, value); }
     /// Sets `objectHandle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsObjectNameInfoEXT objectHandle(@CType("uint64_t") long value) { VkDebugUtilsObjectNameInfoEXT.set_objectHandle(this.segment(), value); return this; }
+    public VkDebugUtilsObjectNameInfoEXT objectHandle(long value) { objectHandle(this.segment(), 0L, value); return this; }
 
     /// {@return `pObjectName` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pObjectName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pObjectName.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pObjectName(MemorySegment segment, long index) { return (MemorySegment) VH_pObjectName.get(segment, 0L, index); }
     /// {@return `pObjectName`}
-    /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pObjectName(MemorySegment segment) { return VkDebugUtilsObjectNameInfoEXT.get_pObjectName(segment, 0L); }
-    /// {@return `pObjectName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pObjectName() { return VkDebugUtilsObjectNameInfoEXT.get_pObjectName(this.segment()); }
+    public MemorySegment pObjectName() { return pObjectName(this.segment(), 0L); }
     /// Sets `pObjectName` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pObjectName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pObjectName.set(segment, 0L, index, value); }
-    /// Sets `pObjectName` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pObjectName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pObjectName(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pObjectName(MemorySegment segment, long index, MemorySegment value) { VH_pObjectName.set(segment, 0L, index, value); }
     /// Sets `pObjectName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsObjectNameInfoEXT pObjectName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pObjectName(this.segment(), value); return this; }
+    public VkDebugUtilsObjectNameInfoEXT pObjectName(MemorySegment value) { pObjectName(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDebugUtilsObjectNameInfoEXT].
     public static final class Buffer extends VkDebugUtilsObjectNameInfoEXT {
@@ -258,49 +221,49 @@ public sealed class VkDebugUtilsObjectNameInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDebugUtilsObjectNameInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDebugUtilsObjectNameInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDebugUtilsObjectNameInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `objectType` at the given index}
-        /// @param index the index
-        public @CType("VkObjectType") int objectTypeAt(long index) { return VkDebugUtilsObjectNameInfoEXT.get_objectType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int objectTypeAt(long index) { return objectType(this.segment(), index); }
         /// Sets `objectType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer objectTypeAt(long index, @CType("VkObjectType") int value) { VkDebugUtilsObjectNameInfoEXT.set_objectType(this.segment(), index, value); return this; }
+        public Buffer objectTypeAt(long index, int value) { objectType(this.segment(), index, value); return this; }
 
         /// {@return `objectHandle` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long objectHandleAt(long index) { return VkDebugUtilsObjectNameInfoEXT.get_objectHandle(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long objectHandleAt(long index) { return objectHandle(this.segment(), index); }
         /// Sets `objectHandle` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer objectHandleAt(long index, @CType("uint64_t") long value) { VkDebugUtilsObjectNameInfoEXT.set_objectHandle(this.segment(), index, value); return this; }
+        public Buffer objectHandleAt(long index, long value) { objectHandle(this.segment(), index, value); return this; }
 
         /// {@return `pObjectName` at the given index}
-        /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pObjectNameAt(long index) { return VkDebugUtilsObjectNameInfoEXT.get_pObjectName(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pObjectNameAt(long index) { return pObjectName(this.segment(), index); }
         /// Sets `pObjectName` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pObjectNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugUtilsObjectNameInfoEXT.set_pObjectName(this.segment(), index, value); return this; }
+        public Buffer pObjectNameAt(long index, MemorySegment value) { pObjectName(this.segment(), index, value); return this; }
 
     }
 }

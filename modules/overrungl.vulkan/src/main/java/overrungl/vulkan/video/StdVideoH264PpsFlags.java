@@ -15,74 +15,40 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.video;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### transform_8x8_mode_flag
-/// [VarHandle][#VH_transform_8x8_mode_flag] - [Getter][#transform_8x8_mode_flag()] - [Setter][#transform_8x8_mode_flag(int)]
-/// ### redundant_pic_cnt_present_flag
-/// [VarHandle][#VH_redundant_pic_cnt_present_flag] - [Getter][#redundant_pic_cnt_present_flag()] - [Setter][#redundant_pic_cnt_present_flag(int)]
-/// ### constrained_intra_pred_flag
-/// [VarHandle][#VH_constrained_intra_pred_flag] - [Getter][#constrained_intra_pred_flag()] - [Setter][#constrained_intra_pred_flag(int)]
-/// ### deblocking_filter_control_present_flag
-/// [VarHandle][#VH_deblocking_filter_control_present_flag] - [Getter][#deblocking_filter_control_present_flag()] - [Setter][#deblocking_filter_control_present_flag(int)]
-/// ### weighted_pred_flag
-/// [VarHandle][#VH_weighted_pred_flag] - [Getter][#weighted_pred_flag()] - [Setter][#weighted_pred_flag(int)]
-/// ### bottom_field_pic_order_in_frame_present_flag
-/// [VarHandle][#VH_bottom_field_pic_order_in_frame_present_flag] - [Getter][#bottom_field_pic_order_in_frame_present_flag()] - [Setter][#bottom_field_pic_order_in_frame_present_flag(int)]
-/// ### entropy_coding_mode_flag
-/// [VarHandle][#VH_entropy_coding_mode_flag] - [Getter][#entropy_coding_mode_flag()] - [Setter][#entropy_coding_mode_flag(int)]
-/// ### pic_scaling_matrix_present_flag
-/// [VarHandle][#VH_pic_scaling_matrix_present_flag] - [Getter][#pic_scaling_matrix_present_flag()] - [Setter][#pic_scaling_matrix_present_flag(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct StdVideoH264PpsFlags {
-///     uint32_t : 1 transform_8x8_mode_flag;
-///     uint32_t : 1 redundant_pic_cnt_present_flag;
-///     uint32_t : 1 constrained_intra_pred_flag;
-///     uint32_t : 1 deblocking_filter_control_present_flag;
-///     uint32_t : 1 weighted_pred_flag;
-///     uint32_t : 1 bottom_field_pic_order_in_frame_present_flag;
-///     uint32_t : 1 entropy_coding_mode_flag;
-///     uint32_t : 1 pic_scaling_matrix_present_flag;
-/// } StdVideoH264PpsFlags;
 /// ```
-public sealed class StdVideoH264PpsFlags extends Struct {
+/// struct StdVideoH264PpsFlags {
+///     uint32_t transform_8x8_mode_flag : 1;
+///     uint32_t redundant_pic_cnt_present_flag : 1;
+///     uint32_t constrained_intra_pred_flag : 1;
+///     uint32_t deblocking_filter_control_present_flag : 1;
+///     uint32_t weighted_pred_flag : 1;
+///     uint32_t bottom_field_pic_order_in_frame_present_flag : 1;
+///     uint32_t entropy_coding_mode_flag : 1;
+///     uint32_t pic_scaling_matrix_present_flag : 1;
+/// };
+/// ```
+public sealed class StdVideoH264PpsFlags extends GroupType {
     /// The struct layout of `StdVideoH264PpsFlags`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.JAVA_INT.withName("transform_8x8_mode_flag"),
-        ValueLayout.JAVA_INT.withName("redundant_pic_cnt_present_flag"),
-        ValueLayout.JAVA_INT.withName("constrained_intra_pred_flag"),
-        ValueLayout.JAVA_INT.withName("deblocking_filter_control_present_flag"),
-        ValueLayout.JAVA_INT.withName("weighted_pred_flag"),
-        ValueLayout.JAVA_INT.withName("bottom_field_pic_order_in_frame_present_flag"),
-        ValueLayout.JAVA_INT.withName("entropy_coding_mode_flag"),
-        ValueLayout.JAVA_INT.withName("pic_scaling_matrix_present_flag")
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("transform_8x8_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("redundant_pic_cnt_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constrained_intra_pred_flag"), 1,
+        ValueLayout.JAVA_INT.withName("deblocking_filter_control_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("weighted_pred_flag"), 1,
+        ValueLayout.JAVA_INT.withName("bottom_field_pic_order_in_frame_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("entropy_coding_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("pic_scaling_matrix_present_flag"), 1
     );
-    /// The [VarHandle] of `transform_8x8_mode_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_transform_8x8_mode_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transform_8x8_mode_flag"));
-    /// The [VarHandle] of `redundant_pic_cnt_present_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_redundant_pic_cnt_present_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("redundant_pic_cnt_present_flag"));
-    /// The [VarHandle] of `constrained_intra_pred_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_constrained_intra_pred_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constrained_intra_pred_flag"));
-    /// The [VarHandle] of `deblocking_filter_control_present_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_deblocking_filter_control_present_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deblocking_filter_control_present_flag"));
-    /// The [VarHandle] of `weighted_pred_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_weighted_pred_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("weighted_pred_flag"));
-    /// The [VarHandle] of `bottom_field_pic_order_in_frame_present_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_bottom_field_pic_order_in_frame_present_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bottom_field_pic_order_in_frame_present_flag"));
-    /// The [VarHandle] of `entropy_coding_mode_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_entropy_coding_mode_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("entropy_coding_mode_flag"));
-    /// The [VarHandle] of `pic_scaling_matrix_present_flag` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_pic_scaling_matrix_present_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pic_scaling_matrix_present_flag"));
 
     /// Creates `StdVideoH264PpsFlags` with the given segment.
     /// @param segment the memory segment
@@ -91,19 +57,14 @@ public sealed class StdVideoH264PpsFlags extends Struct {
     /// Creates `StdVideoH264PpsFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264PpsFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264PpsFlags(segment); }
-
-    /// Creates `StdVideoH264PpsFlags` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH264PpsFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264PpsFlags ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264PpsFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static StdVideoH264PpsFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH264PpsFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `StdVideoH264PpsFlags` with the given segment.
     ///
@@ -111,7 +72,7 @@ public sealed class StdVideoH264PpsFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH264PpsFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -124,11 +85,6 @@ public sealed class StdVideoH264PpsFlags extends Struct {
     /// @return the allocated `StdVideoH264PpsFlags`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH264PpsFlags` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `StdVideoH264PpsFlags`
-    public static StdVideoH264PpsFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int transform_8x8_mode_flag, @CType("uint32_t : 1") int redundant_pic_cnt_present_flag, @CType("uint32_t : 1") int constrained_intra_pred_flag, @CType("uint32_t : 1") int deblocking_filter_control_present_flag, @CType("uint32_t : 1") int weighted_pred_flag, @CType("uint32_t : 1") int bottom_field_pic_order_in_frame_present_flag, @CType("uint32_t : 1") int entropy_coding_mode_flag, @CType("uint32_t : 1") int pic_scaling_matrix_present_flag) { return alloc(allocator).transform_8x8_mode_flag(transform_8x8_mode_flag).redundant_pic_cnt_present_flag(redundant_pic_cnt_present_flag).constrained_intra_pred_flag(constrained_intra_pred_flag).deblocking_filter_control_present_flag(deblocking_filter_control_present_flag).weighted_pred_flag(weighted_pred_flag).bottom_field_pic_order_in_frame_present_flag(bottom_field_pic_order_in_frame_present_flag).entropy_coding_mode_flag(entropy_coding_mode_flag).pic_scaling_matrix_present_flag(pic_scaling_matrix_present_flag); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -136,191 +92,7 @@ public sealed class StdVideoH264PpsFlags extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
-
-    /// {@return `transform_8x8_mode_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_transform_8x8_mode_flag(MemorySegment segment, long index) { return (int) VH_transform_8x8_mode_flag.get(segment, 0L, index); }
-    /// {@return `transform_8x8_mode_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_transform_8x8_mode_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_transform_8x8_mode_flag(segment, 0L); }
-    /// {@return `transform_8x8_mode_flag`}
-    public @CType("uint32_t : 1") int transform_8x8_mode_flag() { return StdVideoH264PpsFlags.get_transform_8x8_mode_flag(this.segment()); }
-    /// Sets `transform_8x8_mode_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_transform_8x8_mode_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_transform_8x8_mode_flag.set(segment, 0L, index, value); }
-    /// Sets `transform_8x8_mode_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_transform_8x8_mode_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_transform_8x8_mode_flag(segment, 0L, value); }
-    /// Sets `transform_8x8_mode_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags transform_8x8_mode_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_transform_8x8_mode_flag(this.segment(), value); return this; }
-
-    /// {@return `redundant_pic_cnt_present_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_redundant_pic_cnt_present_flag(MemorySegment segment, long index) { return (int) VH_redundant_pic_cnt_present_flag.get(segment, 0L, index); }
-    /// {@return `redundant_pic_cnt_present_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_redundant_pic_cnt_present_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_redundant_pic_cnt_present_flag(segment, 0L); }
-    /// {@return `redundant_pic_cnt_present_flag`}
-    public @CType("uint32_t : 1") int redundant_pic_cnt_present_flag() { return StdVideoH264PpsFlags.get_redundant_pic_cnt_present_flag(this.segment()); }
-    /// Sets `redundant_pic_cnt_present_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_redundant_pic_cnt_present_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_redundant_pic_cnt_present_flag.set(segment, 0L, index, value); }
-    /// Sets `redundant_pic_cnt_present_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_redundant_pic_cnt_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_redundant_pic_cnt_present_flag(segment, 0L, value); }
-    /// Sets `redundant_pic_cnt_present_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags redundant_pic_cnt_present_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_redundant_pic_cnt_present_flag(this.segment(), value); return this; }
-
-    /// {@return `constrained_intra_pred_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_constrained_intra_pred_flag(MemorySegment segment, long index) { return (int) VH_constrained_intra_pred_flag.get(segment, 0L, index); }
-    /// {@return `constrained_intra_pred_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_constrained_intra_pred_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_constrained_intra_pred_flag(segment, 0L); }
-    /// {@return `constrained_intra_pred_flag`}
-    public @CType("uint32_t : 1") int constrained_intra_pred_flag() { return StdVideoH264PpsFlags.get_constrained_intra_pred_flag(this.segment()); }
-    /// Sets `constrained_intra_pred_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_constrained_intra_pred_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_constrained_intra_pred_flag.set(segment, 0L, index, value); }
-    /// Sets `constrained_intra_pred_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_constrained_intra_pred_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_constrained_intra_pred_flag(segment, 0L, value); }
-    /// Sets `constrained_intra_pred_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags constrained_intra_pred_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_constrained_intra_pred_flag(this.segment(), value); return this; }
-
-    /// {@return `deblocking_filter_control_present_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_deblocking_filter_control_present_flag(MemorySegment segment, long index) { return (int) VH_deblocking_filter_control_present_flag.get(segment, 0L, index); }
-    /// {@return `deblocking_filter_control_present_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_deblocking_filter_control_present_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_deblocking_filter_control_present_flag(segment, 0L); }
-    /// {@return `deblocking_filter_control_present_flag`}
-    public @CType("uint32_t : 1") int deblocking_filter_control_present_flag() { return StdVideoH264PpsFlags.get_deblocking_filter_control_present_flag(this.segment()); }
-    /// Sets `deblocking_filter_control_present_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deblocking_filter_control_present_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_deblocking_filter_control_present_flag.set(segment, 0L, index, value); }
-    /// Sets `deblocking_filter_control_present_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deblocking_filter_control_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_deblocking_filter_control_present_flag(segment, 0L, value); }
-    /// Sets `deblocking_filter_control_present_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags deblocking_filter_control_present_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_deblocking_filter_control_present_flag(this.segment(), value); return this; }
-
-    /// {@return `weighted_pred_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_weighted_pred_flag(MemorySegment segment, long index) { return (int) VH_weighted_pred_flag.get(segment, 0L, index); }
-    /// {@return `weighted_pred_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_weighted_pred_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_weighted_pred_flag(segment, 0L); }
-    /// {@return `weighted_pred_flag`}
-    public @CType("uint32_t : 1") int weighted_pred_flag() { return StdVideoH264PpsFlags.get_weighted_pred_flag(this.segment()); }
-    /// Sets `weighted_pred_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_weighted_pred_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_weighted_pred_flag.set(segment, 0L, index, value); }
-    /// Sets `weighted_pred_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_weighted_pred_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_weighted_pred_flag(segment, 0L, value); }
-    /// Sets `weighted_pred_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags weighted_pred_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_weighted_pred_flag(this.segment(), value); return this; }
-
-    /// {@return `bottom_field_pic_order_in_frame_present_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_bottom_field_pic_order_in_frame_present_flag(MemorySegment segment, long index) { return (int) VH_bottom_field_pic_order_in_frame_present_flag.get(segment, 0L, index); }
-    /// {@return `bottom_field_pic_order_in_frame_present_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_bottom_field_pic_order_in_frame_present_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_bottom_field_pic_order_in_frame_present_flag(segment, 0L); }
-    /// {@return `bottom_field_pic_order_in_frame_present_flag`}
-    public @CType("uint32_t : 1") int bottom_field_pic_order_in_frame_present_flag() { return StdVideoH264PpsFlags.get_bottom_field_pic_order_in_frame_present_flag(this.segment()); }
-    /// Sets `bottom_field_pic_order_in_frame_present_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bottom_field_pic_order_in_frame_present_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_bottom_field_pic_order_in_frame_present_flag.set(segment, 0L, index, value); }
-    /// Sets `bottom_field_pic_order_in_frame_present_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bottom_field_pic_order_in_frame_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_bottom_field_pic_order_in_frame_present_flag(segment, 0L, value); }
-    /// Sets `bottom_field_pic_order_in_frame_present_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags bottom_field_pic_order_in_frame_present_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_bottom_field_pic_order_in_frame_present_flag(this.segment(), value); return this; }
-
-    /// {@return `entropy_coding_mode_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_entropy_coding_mode_flag(MemorySegment segment, long index) { return (int) VH_entropy_coding_mode_flag.get(segment, 0L, index); }
-    /// {@return `entropy_coding_mode_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_entropy_coding_mode_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_entropy_coding_mode_flag(segment, 0L); }
-    /// {@return `entropy_coding_mode_flag`}
-    public @CType("uint32_t : 1") int entropy_coding_mode_flag() { return StdVideoH264PpsFlags.get_entropy_coding_mode_flag(this.segment()); }
-    /// Sets `entropy_coding_mode_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_entropy_coding_mode_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_entropy_coding_mode_flag.set(segment, 0L, index, value); }
-    /// Sets `entropy_coding_mode_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_entropy_coding_mode_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_entropy_coding_mode_flag(segment, 0L, value); }
-    /// Sets `entropy_coding_mode_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags entropy_coding_mode_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_entropy_coding_mode_flag(this.segment(), value); return this; }
-
-    /// {@return `pic_scaling_matrix_present_flag` at the given index}
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t : 1") int get_pic_scaling_matrix_present_flag(MemorySegment segment, long index) { return (int) VH_pic_scaling_matrix_present_flag.get(segment, 0L, index); }
-    /// {@return `pic_scaling_matrix_present_flag`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t : 1") int get_pic_scaling_matrix_present_flag(MemorySegment segment) { return StdVideoH264PpsFlags.get_pic_scaling_matrix_present_flag(segment, 0L); }
-    /// {@return `pic_scaling_matrix_present_flag`}
-    public @CType("uint32_t : 1") int pic_scaling_matrix_present_flag() { return StdVideoH264PpsFlags.get_pic_scaling_matrix_present_flag(this.segment()); }
-    /// Sets `pic_scaling_matrix_present_flag` with the given value at the given index.
-    /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pic_scaling_matrix_present_flag(MemorySegment segment, long index, @CType("uint32_t : 1") int value) { VH_pic_scaling_matrix_present_flag.set(segment, 0L, index, value); }
-    /// Sets `pic_scaling_matrix_present_flag` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pic_scaling_matrix_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_pic_scaling_matrix_present_flag(segment, 0L, value); }
-    /// Sets `pic_scaling_matrix_present_flag` with the given value.
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PpsFlags pic_scaling_matrix_present_flag(@CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_pic_scaling_matrix_present_flag(this.segment(), value); return this; }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// A buffer of [StdVideoH264PpsFlags].
     public static final class Buffer extends StdVideoH264PpsFlags {
@@ -343,78 +115,6 @@ public sealed class StdVideoH264PpsFlags extends Struct {
         /// @param count the count
         /// @return the slice of `StdVideoH264PpsFlags`
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `transform_8x8_mode_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int transform_8x8_mode_flagAt(long index) { return StdVideoH264PpsFlags.get_transform_8x8_mode_flag(this.segment(), index); }
-        /// Sets `transform_8x8_mode_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer transform_8x8_mode_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_transform_8x8_mode_flag(this.segment(), index, value); return this; }
-
-        /// {@return `redundant_pic_cnt_present_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int redundant_pic_cnt_present_flagAt(long index) { return StdVideoH264PpsFlags.get_redundant_pic_cnt_present_flag(this.segment(), index); }
-        /// Sets `redundant_pic_cnt_present_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer redundant_pic_cnt_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_redundant_pic_cnt_present_flag(this.segment(), index, value); return this; }
-
-        /// {@return `constrained_intra_pred_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int constrained_intra_pred_flagAt(long index) { return StdVideoH264PpsFlags.get_constrained_intra_pred_flag(this.segment(), index); }
-        /// Sets `constrained_intra_pred_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer constrained_intra_pred_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_constrained_intra_pred_flag(this.segment(), index, value); return this; }
-
-        /// {@return `deblocking_filter_control_present_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int deblocking_filter_control_present_flagAt(long index) { return StdVideoH264PpsFlags.get_deblocking_filter_control_present_flag(this.segment(), index); }
-        /// Sets `deblocking_filter_control_present_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer deblocking_filter_control_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_deblocking_filter_control_present_flag(this.segment(), index, value); return this; }
-
-        /// {@return `weighted_pred_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int weighted_pred_flagAt(long index) { return StdVideoH264PpsFlags.get_weighted_pred_flag(this.segment(), index); }
-        /// Sets `weighted_pred_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer weighted_pred_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_weighted_pred_flag(this.segment(), index, value); return this; }
-
-        /// {@return `bottom_field_pic_order_in_frame_present_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int bottom_field_pic_order_in_frame_present_flagAt(long index) { return StdVideoH264PpsFlags.get_bottom_field_pic_order_in_frame_present_flag(this.segment(), index); }
-        /// Sets `bottom_field_pic_order_in_frame_present_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer bottom_field_pic_order_in_frame_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_bottom_field_pic_order_in_frame_present_flag(this.segment(), index, value); return this; }
-
-        /// {@return `entropy_coding_mode_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int entropy_coding_mode_flagAt(long index) { return StdVideoH264PpsFlags.get_entropy_coding_mode_flag(this.segment(), index); }
-        /// Sets `entropy_coding_mode_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer entropy_coding_mode_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_entropy_coding_mode_flag(this.segment(), index, value); return this; }
-
-        /// {@return `pic_scaling_matrix_present_flag` at the given index}
-        /// @param index the index
-        public @CType("uint32_t : 1") int pic_scaling_matrix_present_flagAt(long index) { return StdVideoH264PpsFlags.get_pic_scaling_matrix_present_flag(this.segment(), index); }
-        /// Sets `pic_scaling_matrix_present_flag` with the given value at the given index.
-        /// @param index the index
-        /// @param value the value
-        /// @return `this`
-        public Buffer pic_scaling_matrix_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH264PpsFlags.set_pic_scaling_matrix_present_flag(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### meshAndTaskShaderDerivatives
-/// [VarHandle][#VH_meshAndTaskShaderDerivatives] - [Getter][#meshAndTaskShaderDerivatives()] - [Setter][#meshAndTaskShaderDerivatives(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 meshAndTaskShaderDerivatives;
-/// } VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR;
 /// ```
-public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extends Struct {
+/// struct VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 meshAndTaskShaderDerivatives;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("meshAndTaskShaderDerivatives")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `meshAndTaskShaderDerivatives` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `meshAndTaskShaderDerivatives`.
+    public static final long OFFSET_meshAndTaskShaderDerivatives = LAYOUT.byteOffset(PathElement.groupElement("meshAndTaskShaderDerivatives"));
+    /// The memory layout of `meshAndTaskShaderDerivatives`.
+    public static final MemoryLayout LAYOUT_meshAndTaskShaderDerivatives = LAYOUT.select(PathElement.groupElement("meshAndTaskShaderDerivatives"));
+    /// The [VarHandle] of `meshAndTaskShaderDerivatives` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_meshAndTaskShaderDerivatives = LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshAndTaskShaderDerivatives"));
 
     /// Creates `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extend
     /// Creates `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extend
     /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR`
-    public static VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int meshAndTaskShaderDerivatives) { return alloc(allocator).sType(sType).pNext(pNext).meshAndTaskShaderDerivatives(meshAndTaskShaderDerivatives); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extend
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `meshAndTaskShaderDerivatives` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_meshAndTaskShaderDerivatives(MemorySegment segment, long index) { return (int) VH_meshAndTaskShaderDerivatives.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int meshAndTaskShaderDerivatives(MemorySegment segment, long index) { return (int) VH_meshAndTaskShaderDerivatives.get(segment, 0L, index); }
     /// {@return `meshAndTaskShaderDerivatives`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_meshAndTaskShaderDerivatives(MemorySegment segment) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_meshAndTaskShaderDerivatives(segment, 0L); }
-    /// {@return `meshAndTaskShaderDerivatives`}
-    public @CType("VkBool32") int meshAndTaskShaderDerivatives() { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_meshAndTaskShaderDerivatives(this.segment()); }
+    public int meshAndTaskShaderDerivatives() { return meshAndTaskShaderDerivatives(this.segment(), 0L); }
     /// Sets `meshAndTaskShaderDerivatives` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_meshAndTaskShaderDerivatives(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_meshAndTaskShaderDerivatives.set(segment, 0L, index, value); }
-    /// Sets `meshAndTaskShaderDerivatives` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_meshAndTaskShaderDerivatives(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_meshAndTaskShaderDerivatives(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void meshAndTaskShaderDerivatives(MemorySegment segment, long index, int value) { VH_meshAndTaskShaderDerivatives.set(segment, 0L, index, value); }
     /// Sets `meshAndTaskShaderDerivatives` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR meshAndTaskShaderDerivatives(@CType("VkBool32") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_meshAndTaskShaderDerivatives(this.segment(), value); return this; }
+    public VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR meshAndTaskShaderDerivatives(int value) { meshAndTaskShaderDerivatives(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR].
     public static final class Buffer extends VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR extend
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `meshAndTaskShaderDerivatives` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int meshAndTaskShaderDerivativesAt(long index) { return VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.get_meshAndTaskShaderDerivatives(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int meshAndTaskShaderDerivativesAt(long index) { return meshAndTaskShaderDerivatives(this.segment(), index); }
         /// Sets `meshAndTaskShaderDerivatives` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer meshAndTaskShaderDerivativesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR.set_meshAndTaskShaderDerivatives(this.segment(), index, value); return this; }
+        public Buffer meshAndTaskShaderDerivativesAt(long index, int value) { meshAndTaskShaderDerivatives(this.segment(), index, value); return this; }
 
     }
 }

@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLEXTProvokingVertex {
     public static final int GL_LAST_VERTEX_CONVENTION_EXT = 0x8E4E;
     public static final int GL_PROVOKING_VERTEX_EXT = 0x8E4F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProvokingVertexEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProvokingVertexEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProvokingVertexEXT = RuntimeHelper.downcall(Descriptors.FD_glProvokingVertexEXT);
+        public static final MethodHandle MH_glProvokingVertexEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertexEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProvokingVertexEXT = func.invoke("glProvokingVertexEXT", "glProvokingVertex");
@@ -49,10 +40,13 @@ public final class GLEXTProvokingVertex {
         this.handles = new Handles(func);
     }
 
-    public void ProvokingVertexEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
+    /// ```
+    /// void glProvokingVertexEXT((unsigned int) GLenum mode);
+    /// ```
+    public void ProvokingVertexEXT(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
         try { Handles.MH_glProvokingVertexEXT.invokeExact(handles.PFN_glProvokingVertexEXT, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glProvokingVertexEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProvokingVertexEXT", e); }
     }
 
 }

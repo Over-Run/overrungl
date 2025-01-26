@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVCornerSampledImage {
     public static final int VK_NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION = 2;
@@ -28,6 +23,6 @@ public final class VKNVCornerSampledImage {
     public static final int VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV = 0x00002000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV = 1000050000;
 
-    private VKNVCornerSampledImage() { }
+    private VKNVCornerSampledImage() {}
 
 }

@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -34,60 +32,23 @@ public final class GLNVGpuProgram4 {
     public static final int GL_MAX_PROGRAM_GENERIC_ATTRIBS_NV = 0x8DA5;
     public static final int GL_MAX_PROGRAM_GENERIC_RESULTS_NV = 0x8DA6;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4iNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParametersI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4uiNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramLocalParameterI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramLocalParametersI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4iNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParametersI4ivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4uiNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glProgramEnvParameterI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glProgramEnvParametersI4uivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramLocalParameterIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramLocalParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramEnvParameterIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetProgramEnvParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramLocalParameterI4iNV,
-            FD_glProgramLocalParameterI4ivNV,
-            FD_glProgramLocalParametersI4ivNV,
-            FD_glProgramLocalParameterI4uiNV,
-            FD_glProgramLocalParameterI4uivNV,
-            FD_glProgramLocalParametersI4uivNV,
-            FD_glProgramEnvParameterI4iNV,
-            FD_glProgramEnvParameterI4ivNV,
-            FD_glProgramEnvParametersI4ivNV,
-            FD_glProgramEnvParameterI4uiNV,
-            FD_glProgramEnvParameterI4uivNV,
-            FD_glProgramEnvParametersI4uivNV,
-            FD_glGetProgramLocalParameterIivNV,
-            FD_glGetProgramLocalParameterIuivNV,
-            FD_glGetProgramEnvParameterIivNV,
-            FD_glGetProgramEnvParameterIuivNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProgramLocalParameterI4iNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4iNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4ivNV);
-        public static final MethodHandle MH_glProgramLocalParametersI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParametersI4ivNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4uiNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4uiNV);
-        public static final MethodHandle MH_glProgramLocalParameterI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4uivNV);
-        public static final MethodHandle MH_glProgramLocalParametersI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParametersI4uivNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4iNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4iNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4ivNV);
-        public static final MethodHandle MH_glProgramEnvParametersI4ivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParametersI4ivNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4uiNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4uiNV);
-        public static final MethodHandle MH_glProgramEnvParameterI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameterI4uivNV);
-        public static final MethodHandle MH_glProgramEnvParametersI4uivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParametersI4uivNV);
-        public static final MethodHandle MH_glGetProgramLocalParameterIivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterIivNV);
-        public static final MethodHandle MH_glGetProgramLocalParameterIuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramLocalParameterIuivNV);
-        public static final MethodHandle MH_glGetProgramEnvParameterIivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterIivNV);
-        public static final MethodHandle MH_glGetProgramEnvParameterIuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetProgramEnvParameterIuivNV);
+        public static final MethodHandle MH_glProgramLocalParameterI4iNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramLocalParameterI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParametersI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameterI4uiNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramLocalParameterI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParametersI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameterI4iNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramEnvParameterI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParametersI4ivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameterI4uiNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramEnvParameterI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParametersI4uivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterIivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterIuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterIivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterIuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramLocalParameterI4iNV;
         public final MemorySegment PFN_glProgramLocalParameterI4ivNV;
         public final MemorySegment PFN_glProgramLocalParametersI4ivNV;
@@ -128,100 +89,148 @@ public final class GLNVGpuProgram4 {
         this.handles = new Handles(func);
     }
 
-    public void ProgramLocalParameterI4iNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint") int x, @CType("GLint") int y, @CType("GLint") int z, @CType("GLint") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4iNV");
+    /// ```
+    /// void glProgramLocalParameterI4iNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
+    /// ```
+    public void ProgramLocalParameterI4iNV(int target, int index, int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4iNV");
         try { Handles.MH_glProgramLocalParameterI4iNV.invokeExact(handles.PFN_glProgramLocalParameterI4iNV, target, index, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameterI4iNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameterI4iNV", e); }
     }
 
-    public void ProgramLocalParameterI4ivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4ivNV");
+    /// ```
+    /// void glProgramLocalParameterI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLint* params);
+    /// ```
+    public void ProgramLocalParameterI4ivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4ivNV");
         try { Handles.MH_glProgramLocalParameterI4ivNV.invokeExact(handles.PFN_glProgramLocalParameterI4ivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameterI4ivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameterI4ivNV", e); }
     }
 
-    public void ProgramLocalParametersI4ivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4ivNV");
+    /// ```
+    /// void glProgramLocalParametersI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLint* params);
+    /// ```
+    public void ProgramLocalParametersI4ivNV(int target, int index, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4ivNV");
         try { Handles.MH_glProgramLocalParametersI4ivNV.invokeExact(handles.PFN_glProgramLocalParametersI4ivNV, target, index, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParametersI4ivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParametersI4ivNV", e); }
     }
 
-    public void ProgramLocalParameterI4uiNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int x, @CType("GLuint") int y, @CType("GLuint") int z, @CType("GLuint") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uiNV");
+    /// ```
+    /// void glProgramLocalParameterI4uiNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
+    /// ```
+    public void ProgramLocalParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uiNV");
         try { Handles.MH_glProgramLocalParameterI4uiNV.invokeExact(handles.PFN_glProgramLocalParameterI4uiNV, target, index, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameterI4uiNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameterI4uiNV", e); }
     }
 
-    public void ProgramLocalParameterI4uivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uivNV");
+    /// ```
+    /// void glProgramLocalParameterI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLuint* params);
+    /// ```
+    public void ProgramLocalParameterI4uivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uivNV");
         try { Handles.MH_glProgramLocalParameterI4uivNV.invokeExact(handles.PFN_glProgramLocalParameterI4uivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameterI4uivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameterI4uivNV", e); }
     }
 
-    public void ProgramLocalParametersI4uivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramLocalParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4uivNV");
+    /// ```
+    /// void glProgramLocalParametersI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLuint* params);
+    /// ```
+    public void ProgramLocalParametersI4uivNV(int target, int index, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4uivNV");
         try { Handles.MH_glProgramLocalParametersI4uivNV.invokeExact(handles.PFN_glProgramLocalParametersI4uivNV, target, index, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParametersI4uivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParametersI4uivNV", e); }
     }
 
-    public void ProgramEnvParameterI4iNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint") int x, @CType("GLint") int y, @CType("GLint") int z, @CType("GLint") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4iNV");
+    /// ```
+    /// void glProgramEnvParameterI4iNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
+    /// ```
+    public void ProgramEnvParameterI4iNV(int target, int index, int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4iNV");
         try { Handles.MH_glProgramEnvParameterI4iNV.invokeExact(handles.PFN_glProgramEnvParameterI4iNV, target, index, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameterI4iNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameterI4iNV", e); }
     }
 
-    public void ProgramEnvParameterI4ivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4ivNV");
+    /// ```
+    /// void glProgramEnvParameterI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLint* params);
+    /// ```
+    public void ProgramEnvParameterI4ivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4ivNV");
         try { Handles.MH_glProgramEnvParameterI4ivNV.invokeExact(handles.PFN_glProgramEnvParameterI4ivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameterI4ivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameterI4ivNV", e); }
     }
 
-    public void ProgramEnvParametersI4ivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4ivNV");
+    /// ```
+    /// void glProgramEnvParametersI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLint* params);
+    /// ```
+    public void ProgramEnvParametersI4ivNV(int target, int index, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4ivNV");
         try { Handles.MH_glProgramEnvParametersI4ivNV.invokeExact(handles.PFN_glProgramEnvParametersI4ivNV, target, index, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParametersI4ivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParametersI4ivNV", e); }
     }
 
-    public void ProgramEnvParameterI4uiNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int x, @CType("GLuint") int y, @CType("GLuint") int z, @CType("GLuint") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uiNV");
+    /// ```
+    /// void glProgramEnvParameterI4uiNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
+    /// ```
+    public void ProgramEnvParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uiNV");
         try { Handles.MH_glProgramEnvParameterI4uiNV.invokeExact(handles.PFN_glProgramEnvParameterI4uiNV, target, index, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameterI4uiNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameterI4uiNV", e); }
     }
 
-    public void ProgramEnvParameterI4uivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uivNV");
+    /// ```
+    /// void glProgramEnvParameterI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLuint* params);
+    /// ```
+    public void ProgramEnvParameterI4uivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uivNV");
         try { Handles.MH_glProgramEnvParameterI4uivNV.invokeExact(handles.PFN_glProgramEnvParameterI4uivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameterI4uivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameterI4uivNV", e); }
     }
 
-    public void ProgramEnvParametersI4uivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProgramEnvParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4uivNV");
+    /// ```
+    /// void glProgramEnvParametersI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLuint* params);
+    /// ```
+    public void ProgramEnvParametersI4uivNV(int target, int index, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4uivNV");
         try { Handles.MH_glProgramEnvParametersI4uivNV.invokeExact(handles.PFN_glProgramEnvParametersI4uivNV, target, index, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParametersI4uivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParametersI4uivNV", e); }
     }
 
-    public void GetProgramLocalParameterIivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramLocalParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIivNV");
+    /// ```
+    /// void glGetProgramLocalParameterIivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* params);
+    /// ```
+    public void GetProgramLocalParameterIivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIivNV");
         try { Handles.MH_glGetProgramLocalParameterIivNV.invokeExact(handles.PFN_glGetProgramLocalParameterIivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramLocalParameterIivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramLocalParameterIivNV", e); }
     }
 
-    public void GetProgramLocalParameterIuivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramLocalParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIuivNV");
+    /// ```
+    /// void glGetProgramLocalParameterIuivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* params);
+    /// ```
+    public void GetProgramLocalParameterIuivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIuivNV");
         try { Handles.MH_glGetProgramLocalParameterIuivNV.invokeExact(handles.PFN_glGetProgramLocalParameterIuivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramLocalParameterIuivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramLocalParameterIuivNV", e); }
     }
 
-    public void GetProgramEnvParameterIivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramEnvParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIivNV");
+    /// ```
+    /// void glGetProgramEnvParameterIivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* params);
+    /// ```
+    public void GetProgramEnvParameterIivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIivNV");
         try { Handles.MH_glGetProgramEnvParameterIivNV.invokeExact(handles.PFN_glGetProgramEnvParameterIivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramEnvParameterIivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramEnvParameterIivNV", e); }
     }
 
-    public void GetProgramEnvParameterIuivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetProgramEnvParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIuivNV");
+    /// ```
+    /// void glGetProgramEnvParameterIuivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* params);
+    /// ```
+    public void GetProgramEnvParameterIuivNV(int target, int index, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIuivNV");
         try { Handles.MH_glGetProgramEnvParameterIuivNV.invokeExact(handles.PFN_glGetProgramEnvParameterIuivNV, target, index, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramEnvParameterIuivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetProgramEnvParameterIuivNV", e); }
     }
 
 }

@@ -19,34 +19,17 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVDrawVulkanImage {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawVkImageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glGetVkProcAddrNV = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glWaitVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glSignalVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glSignalVkFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawVkImageNV,
-            FD_glGetVkProcAddrNV,
-            FD_glWaitVkSemaphoreNV,
-            FD_glSignalVkSemaphoreNV,
-            FD_glSignalVkFenceNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawVkImageNV = RuntimeHelper.downcall(Descriptors.FD_glDrawVkImageNV);
-        public static final MethodHandle MH_glGetVkProcAddrNV = RuntimeHelper.downcall(Descriptors.FD_glGetVkProcAddrNV);
-        public static final MethodHandle MH_glWaitVkSemaphoreNV = RuntimeHelper.downcall(Descriptors.FD_glWaitVkSemaphoreNV);
-        public static final MethodHandle MH_glSignalVkSemaphoreNV = RuntimeHelper.downcall(Descriptors.FD_glSignalVkSemaphoreNV);
-        public static final MethodHandle MH_glSignalVkFenceNV = RuntimeHelper.downcall(Descriptors.FD_glSignalVkFenceNV);
+        public static final MethodHandle MH_glDrawVkImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glGetVkProcAddrNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWaitVkSemaphoreNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glSignalVkSemaphoreNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glSignalVkFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glDrawVkImageNV;
         public final MemorySegment PFN_glGetVkProcAddrNV;
         public final MemorySegment PFN_glWaitVkSemaphoreNV;
@@ -65,34 +48,49 @@ public final class GLNVDrawVulkanImage {
         this.handles = new Handles(func);
     }
 
-    public void DrawVkImageNV(@CType("GLuint64") long vkImage, @CType("GLuint") int sampler, @CType("GLfloat") float x0, @CType("GLfloat") float y0, @CType("GLfloat") float x1, @CType("GLfloat") float y1, @CType("GLfloat") float z, @CType("GLfloat") float s0, @CType("GLfloat") float t0, @CType("GLfloat") float s1, @CType("GLfloat") float t1) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawVkImageNV)) throw new SymbolNotFoundError("Symbol not found: glDrawVkImageNV");
+    /// ```
+    /// void glDrawVkImageNV(((uint64_t) khronos_uint64_t) GLuint64 vkImage, (unsigned int) GLuint sampler, ((float) khronos_float_t) GLfloat x0, ((float) khronos_float_t) GLfloat y0, ((float) khronos_float_t) GLfloat x1, ((float) khronos_float_t) GLfloat y1, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat s0, ((float) khronos_float_t) GLfloat t0, ((float) khronos_float_t) GLfloat s1, ((float) khronos_float_t) GLfloat t1);
+    /// ```
+    public void DrawVkImageNV(long vkImage, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawVkImageNV)) throw new SymbolNotFoundError("Symbol not found: glDrawVkImageNV");
         try { Handles.MH_glDrawVkImageNV.invokeExact(handles.PFN_glDrawVkImageNV, vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawVkImageNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawVkImageNV", e); }
     }
 
-    public @CType("GLVULKANPROCNV") java.lang.foreign.MemorySegment GetVkProcAddrNV(@CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new SymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
-        try { return (java.lang.foreign.MemorySegment) Handles.MH_glGetVkProcAddrNV.invokeExact(handles.PFN_glGetVkProcAddrNV, name); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVkProcAddrNV", e); }
+    /// ```
+    /// (void*) GLVULKANPROCNV glGetVkProcAddrNV(const GLchar* name);
+    /// ```
+    public MemorySegment GetVkProcAddrNV(MemorySegment name) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new SymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
+        try { return (MemorySegment) Handles.MH_glGetVkProcAddrNV.invokeExact(handles.PFN_glGetVkProcAddrNV, name); }
+        catch (Throwable e) { throw new RuntimeException("error in GetVkProcAddrNV", e); }
     }
 
-    public void WaitVkSemaphoreNV(@CType("GLuint64") long vkSemaphore) {
-        if (Unmarshal.isNullPointer(handles.PFN_glWaitVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glWaitVkSemaphoreNV");
+    /// ```
+    /// void glWaitVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
+    /// ```
+    public void WaitVkSemaphoreNV(long vkSemaphore) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glWaitVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glWaitVkSemaphoreNV");
         try { Handles.MH_glWaitVkSemaphoreNV.invokeExact(handles.PFN_glWaitVkSemaphoreNV, vkSemaphore); }
-        catch (Throwable e) { throw new RuntimeException("error in glWaitVkSemaphoreNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in WaitVkSemaphoreNV", e); }
     }
 
-    public void SignalVkSemaphoreNV(@CType("GLuint64") long vkSemaphore) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSignalVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkSemaphoreNV");
+    /// ```
+    /// void glSignalVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
+    /// ```
+    public void SignalVkSemaphoreNV(long vkSemaphore) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkSemaphoreNV");
         try { Handles.MH_glSignalVkSemaphoreNV.invokeExact(handles.PFN_glSignalVkSemaphoreNV, vkSemaphore); }
-        catch (Throwable e) { throw new RuntimeException("error in glSignalVkSemaphoreNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SignalVkSemaphoreNV", e); }
     }
 
-    public void SignalVkFenceNV(@CType("GLuint64") long vkFence) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSignalVkFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkFenceNV");
+    /// ```
+    /// void glSignalVkFenceNV(((uint64_t) khronos_uint64_t) GLuint64 vkFence);
+    /// ```
+    public void SignalVkFenceNV(long vkFence) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkFenceNV");
         try { Handles.MH_glSignalVkFenceNV.invokeExact(handles.PFN_glSignalVkFenceNV, vkFence); }
-        catch (Throwable e) { throw new RuntimeException("error in glSignalVkFenceNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SignalVkFenceNV", e); }
     }
 
 }

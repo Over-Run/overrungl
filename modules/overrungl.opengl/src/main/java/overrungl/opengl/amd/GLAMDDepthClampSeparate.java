@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.amd;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLAMDDepthClampSeparate {
     public static final int GL_DEPTH_CLAMP_NEAR_AMD = 0x901E;
     public static final int GL_DEPTH_CLAMP_FAR_AMD = 0x901F;

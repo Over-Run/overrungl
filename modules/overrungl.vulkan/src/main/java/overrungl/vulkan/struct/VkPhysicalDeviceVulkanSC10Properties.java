@@ -15,70 +15,28 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### deviceNoDynamicHostAllocations
-/// [VarHandle][#VH_deviceNoDynamicHostAllocations] - [Getter][#deviceNoDynamicHostAllocations()] - [Setter][#deviceNoDynamicHostAllocations(int)]
-/// ### deviceDestroyFreesMemory
-/// [VarHandle][#VH_deviceDestroyFreesMemory] - [Getter][#deviceDestroyFreesMemory()] - [Setter][#deviceDestroyFreesMemory(int)]
-/// ### commandPoolMultipleCommandBuffersRecording
-/// [VarHandle][#VH_commandPoolMultipleCommandBuffersRecording] - [Getter][#commandPoolMultipleCommandBuffersRecording()] - [Setter][#commandPoolMultipleCommandBuffersRecording(int)]
-/// ### commandPoolResetCommandBuffer
-/// [VarHandle][#VH_commandPoolResetCommandBuffer] - [Getter][#commandPoolResetCommandBuffer()] - [Setter][#commandPoolResetCommandBuffer(int)]
-/// ### commandBufferSimultaneousUse
-/// [VarHandle][#VH_commandBufferSimultaneousUse] - [Getter][#commandBufferSimultaneousUse()] - [Setter][#commandBufferSimultaneousUse(int)]
-/// ### secondaryCommandBufferNullOrImagelessFramebuffer
-/// [VarHandle][#VH_secondaryCommandBufferNullOrImagelessFramebuffer] - [Getter][#secondaryCommandBufferNullOrImagelessFramebuffer()] - [Setter][#secondaryCommandBufferNullOrImagelessFramebuffer(int)]
-/// ### recycleDescriptorSetMemory
-/// [VarHandle][#VH_recycleDescriptorSetMemory] - [Getter][#recycleDescriptorSetMemory()] - [Setter][#recycleDescriptorSetMemory(int)]
-/// ### recyclePipelineMemory
-/// [VarHandle][#VH_recyclePipelineMemory] - [Getter][#recyclePipelineMemory()] - [Setter][#recyclePipelineMemory(int)]
-/// ### maxRenderPassSubpasses
-/// [VarHandle][#VH_maxRenderPassSubpasses] - [Getter][#maxRenderPassSubpasses()] - [Setter][#maxRenderPassSubpasses(int)]
-/// ### maxRenderPassDependencies
-/// [VarHandle][#VH_maxRenderPassDependencies] - [Getter][#maxRenderPassDependencies()] - [Setter][#maxRenderPassDependencies(int)]
-/// ### maxSubpassInputAttachments
-/// [VarHandle][#VH_maxSubpassInputAttachments] - [Getter][#maxSubpassInputAttachments()] - [Setter][#maxSubpassInputAttachments(int)]
-/// ### maxSubpassPreserveAttachments
-/// [VarHandle][#VH_maxSubpassPreserveAttachments] - [Getter][#maxSubpassPreserveAttachments()] - [Setter][#maxSubpassPreserveAttachments(int)]
-/// ### maxFramebufferAttachments
-/// [VarHandle][#VH_maxFramebufferAttachments] - [Getter][#maxFramebufferAttachments()] - [Setter][#maxFramebufferAttachments(int)]
-/// ### maxDescriptorSetLayoutBindings
-/// [VarHandle][#VH_maxDescriptorSetLayoutBindings] - [Getter][#maxDescriptorSetLayoutBindings()] - [Setter][#maxDescriptorSetLayoutBindings(int)]
-/// ### maxQueryFaultCount
-/// [VarHandle][#VH_maxQueryFaultCount] - [Getter][#maxQueryFaultCount()] - [Setter][#maxQueryFaultCount(int)]
-/// ### maxCallbackFaultCount
-/// [VarHandle][#VH_maxCallbackFaultCount] - [Getter][#maxCallbackFaultCount()] - [Setter][#maxCallbackFaultCount(int)]
-/// ### maxCommandPoolCommandBuffers
-/// [VarHandle][#VH_maxCommandPoolCommandBuffers] - [Getter][#maxCommandPoolCommandBuffers()] - [Setter][#maxCommandPoolCommandBuffers(int)]
-/// ### maxCommandBufferSize
-/// [VarHandle][#VH_maxCommandBufferSize] - [Getter][#maxCommandBufferSize()] - [Setter][#maxCommandBufferSize(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceVulkanSC10Properties {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 deviceNoDynamicHostAllocations;
-///     VkBool32 deviceDestroyFreesMemory;
-///     VkBool32 commandPoolMultipleCommandBuffersRecording;
-///     VkBool32 commandPoolResetCommandBuffer;
-///     VkBool32 commandBufferSimultaneousUse;
-///     VkBool32 secondaryCommandBufferNullOrImagelessFramebuffer;
-///     VkBool32 recycleDescriptorSetMemory;
-///     VkBool32 recyclePipelineMemory;
+/// ```
+/// struct VkPhysicalDeviceVulkanSC10Properties {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 deviceNoDynamicHostAllocations;
+///     (uint32_t) VkBool32 deviceDestroyFreesMemory;
+///     (uint32_t) VkBool32 commandPoolMultipleCommandBuffersRecording;
+///     (uint32_t) VkBool32 commandPoolResetCommandBuffer;
+///     (uint32_t) VkBool32 commandBufferSimultaneousUse;
+///     (uint32_t) VkBool32 secondaryCommandBufferNullOrImagelessFramebuffer;
+///     (uint32_t) VkBool32 recycleDescriptorSetMemory;
+///     (uint32_t) VkBool32 recyclePipelineMemory;
 ///     uint32_t maxRenderPassSubpasses;
 ///     uint32_t maxRenderPassDependencies;
 ///     uint32_t maxSubpassInputAttachments;
@@ -88,12 +46,12 @@ import overrungl.util.*;
 ///     uint32_t maxQueryFaultCount;
 ///     uint32_t maxCallbackFaultCount;
 ///     uint32_t maxCommandPoolCommandBuffers;
-///     VkDeviceSize maxCommandBufferSize;
-/// } VkPhysicalDeviceVulkanSC10Properties;
+///     (uint64_t) VkDeviceSize maxCommandBufferSize;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
+public sealed class VkPhysicalDeviceVulkanSC10Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVulkanSC10Properties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("deviceNoDynamicHostAllocations"),
@@ -115,45 +73,125 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
         ValueLayout.JAVA_INT.withName("maxCommandPoolCommandBuffers"),
         ValueLayout.JAVA_LONG.withName("maxCommandBufferSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `deviceNoDynamicHostAllocations` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceNoDynamicHostAllocations`.
+    public static final long OFFSET_deviceNoDynamicHostAllocations = LAYOUT.byteOffset(PathElement.groupElement("deviceNoDynamicHostAllocations"));
+    /// The memory layout of `deviceNoDynamicHostAllocations`.
+    public static final MemoryLayout LAYOUT_deviceNoDynamicHostAllocations = LAYOUT.select(PathElement.groupElement("deviceNoDynamicHostAllocations"));
+    /// The [VarHandle] of `deviceNoDynamicHostAllocations` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceNoDynamicHostAllocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceNoDynamicHostAllocations"));
-    /// The [VarHandle] of `deviceDestroyFreesMemory` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceDestroyFreesMemory`.
+    public static final long OFFSET_deviceDestroyFreesMemory = LAYOUT.byteOffset(PathElement.groupElement("deviceDestroyFreesMemory"));
+    /// The memory layout of `deviceDestroyFreesMemory`.
+    public static final MemoryLayout LAYOUT_deviceDestroyFreesMemory = LAYOUT.select(PathElement.groupElement("deviceDestroyFreesMemory"));
+    /// The [VarHandle] of `deviceDestroyFreesMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceDestroyFreesMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceDestroyFreesMemory"));
-    /// The [VarHandle] of `commandPoolMultipleCommandBuffersRecording` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandPoolMultipleCommandBuffersRecording`.
+    public static final long OFFSET_commandPoolMultipleCommandBuffersRecording = LAYOUT.byteOffset(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
+    /// The memory layout of `commandPoolMultipleCommandBuffersRecording`.
+    public static final MemoryLayout LAYOUT_commandPoolMultipleCommandBuffersRecording = LAYOUT.select(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
+    /// The [VarHandle] of `commandPoolMultipleCommandBuffersRecording` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPoolMultipleCommandBuffersRecording = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolMultipleCommandBuffersRecording"));
-    /// The [VarHandle] of `commandPoolResetCommandBuffer` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandPoolResetCommandBuffer`.
+    public static final long OFFSET_commandPoolResetCommandBuffer = LAYOUT.byteOffset(PathElement.groupElement("commandPoolResetCommandBuffer"));
+    /// The memory layout of `commandPoolResetCommandBuffer`.
+    public static final MemoryLayout LAYOUT_commandPoolResetCommandBuffer = LAYOUT.select(PathElement.groupElement("commandPoolResetCommandBuffer"));
+    /// The [VarHandle] of `commandPoolResetCommandBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandPoolResetCommandBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandPoolResetCommandBuffer"));
-    /// The [VarHandle] of `commandBufferSimultaneousUse` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `commandBufferSimultaneousUse`.
+    public static final long OFFSET_commandBufferSimultaneousUse = LAYOUT.byteOffset(PathElement.groupElement("commandBufferSimultaneousUse"));
+    /// The memory layout of `commandBufferSimultaneousUse`.
+    public static final MemoryLayout LAYOUT_commandBufferSimultaneousUse = LAYOUT.select(PathElement.groupElement("commandBufferSimultaneousUse"));
+    /// The [VarHandle] of `commandBufferSimultaneousUse` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_commandBufferSimultaneousUse = LAYOUT.arrayElementVarHandle(PathElement.groupElement("commandBufferSimultaneousUse"));
-    /// The [VarHandle] of `secondaryCommandBufferNullOrImagelessFramebuffer` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `secondaryCommandBufferNullOrImagelessFramebuffer`.
+    public static final long OFFSET_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.byteOffset(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
+    /// The memory layout of `secondaryCommandBufferNullOrImagelessFramebuffer`.
+    public static final MemoryLayout LAYOUT_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.select(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
+    /// The [VarHandle] of `secondaryCommandBufferNullOrImagelessFramebuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_secondaryCommandBufferNullOrImagelessFramebuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("secondaryCommandBufferNullOrImagelessFramebuffer"));
-    /// The [VarHandle] of `recycleDescriptorSetMemory` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `recycleDescriptorSetMemory`.
+    public static final long OFFSET_recycleDescriptorSetMemory = LAYOUT.byteOffset(PathElement.groupElement("recycleDescriptorSetMemory"));
+    /// The memory layout of `recycleDescriptorSetMemory`.
+    public static final MemoryLayout LAYOUT_recycleDescriptorSetMemory = LAYOUT.select(PathElement.groupElement("recycleDescriptorSetMemory"));
+    /// The [VarHandle] of `recycleDescriptorSetMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_recycleDescriptorSetMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("recycleDescriptorSetMemory"));
-    /// The [VarHandle] of `recyclePipelineMemory` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `recyclePipelineMemory`.
+    public static final long OFFSET_recyclePipelineMemory = LAYOUT.byteOffset(PathElement.groupElement("recyclePipelineMemory"));
+    /// The memory layout of `recyclePipelineMemory`.
+    public static final MemoryLayout LAYOUT_recyclePipelineMemory = LAYOUT.select(PathElement.groupElement("recyclePipelineMemory"));
+    /// The [VarHandle] of `recyclePipelineMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_recyclePipelineMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("recyclePipelineMemory"));
-    /// The [VarHandle] of `maxRenderPassSubpasses` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRenderPassSubpasses`.
+    public static final long OFFSET_maxRenderPassSubpasses = LAYOUT.byteOffset(PathElement.groupElement("maxRenderPassSubpasses"));
+    /// The memory layout of `maxRenderPassSubpasses`.
+    public static final MemoryLayout LAYOUT_maxRenderPassSubpasses = LAYOUT.select(PathElement.groupElement("maxRenderPassSubpasses"));
+    /// The [VarHandle] of `maxRenderPassSubpasses` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRenderPassSubpasses = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassSubpasses"));
-    /// The [VarHandle] of `maxRenderPassDependencies` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRenderPassDependencies`.
+    public static final long OFFSET_maxRenderPassDependencies = LAYOUT.byteOffset(PathElement.groupElement("maxRenderPassDependencies"));
+    /// The memory layout of `maxRenderPassDependencies`.
+    public static final MemoryLayout LAYOUT_maxRenderPassDependencies = LAYOUT.select(PathElement.groupElement("maxRenderPassDependencies"));
+    /// The [VarHandle] of `maxRenderPassDependencies` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRenderPassDependencies = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassDependencies"));
-    /// The [VarHandle] of `maxSubpassInputAttachments` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxSubpassInputAttachments`.
+    public static final long OFFSET_maxSubpassInputAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxSubpassInputAttachments"));
+    /// The memory layout of `maxSubpassInputAttachments`.
+    public static final MemoryLayout LAYOUT_maxSubpassInputAttachments = LAYOUT.select(PathElement.groupElement("maxSubpassInputAttachments"));
+    /// The [VarHandle] of `maxSubpassInputAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSubpassInputAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassInputAttachments"));
-    /// The [VarHandle] of `maxSubpassPreserveAttachments` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxSubpassPreserveAttachments`.
+    public static final long OFFSET_maxSubpassPreserveAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxSubpassPreserveAttachments"));
+    /// The memory layout of `maxSubpassPreserveAttachments`.
+    public static final MemoryLayout LAYOUT_maxSubpassPreserveAttachments = LAYOUT.select(PathElement.groupElement("maxSubpassPreserveAttachments"));
+    /// The [VarHandle] of `maxSubpassPreserveAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSubpassPreserveAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubpassPreserveAttachments"));
-    /// The [VarHandle] of `maxFramebufferAttachments` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxFramebufferAttachments`.
+    public static final long OFFSET_maxFramebufferAttachments = LAYOUT.byteOffset(PathElement.groupElement("maxFramebufferAttachments"));
+    /// The memory layout of `maxFramebufferAttachments`.
+    public static final MemoryLayout LAYOUT_maxFramebufferAttachments = LAYOUT.select(PathElement.groupElement("maxFramebufferAttachments"));
+    /// The [VarHandle] of `maxFramebufferAttachments` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxFramebufferAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFramebufferAttachments"));
-    /// The [VarHandle] of `maxDescriptorSetLayoutBindings` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxDescriptorSetLayoutBindings`.
+    public static final long OFFSET_maxDescriptorSetLayoutBindings = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
+    /// The memory layout of `maxDescriptorSetLayoutBindings`.
+    public static final MemoryLayout LAYOUT_maxDescriptorSetLayoutBindings = LAYOUT.select(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
+    /// The [VarHandle] of `maxDescriptorSetLayoutBindings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxDescriptorSetLayoutBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetLayoutBindings"));
-    /// The [VarHandle] of `maxQueryFaultCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxQueryFaultCount`.
+    public static final long OFFSET_maxQueryFaultCount = LAYOUT.byteOffset(PathElement.groupElement("maxQueryFaultCount"));
+    /// The memory layout of `maxQueryFaultCount`.
+    public static final MemoryLayout LAYOUT_maxQueryFaultCount = LAYOUT.select(PathElement.groupElement("maxQueryFaultCount"));
+    /// The [VarHandle] of `maxQueryFaultCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxQueryFaultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxQueryFaultCount"));
-    /// The [VarHandle] of `maxCallbackFaultCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxCallbackFaultCount`.
+    public static final long OFFSET_maxCallbackFaultCount = LAYOUT.byteOffset(PathElement.groupElement("maxCallbackFaultCount"));
+    /// The memory layout of `maxCallbackFaultCount`.
+    public static final MemoryLayout LAYOUT_maxCallbackFaultCount = LAYOUT.select(PathElement.groupElement("maxCallbackFaultCount"));
+    /// The [VarHandle] of `maxCallbackFaultCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxCallbackFaultCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCallbackFaultCount"));
-    /// The [VarHandle] of `maxCommandPoolCommandBuffers` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxCommandPoolCommandBuffers`.
+    public static final long OFFSET_maxCommandPoolCommandBuffers = LAYOUT.byteOffset(PathElement.groupElement("maxCommandPoolCommandBuffers"));
+    /// The memory layout of `maxCommandPoolCommandBuffers`.
+    public static final MemoryLayout LAYOUT_maxCommandPoolCommandBuffers = LAYOUT.select(PathElement.groupElement("maxCommandPoolCommandBuffers"));
+    /// The [VarHandle] of `maxCommandPoolCommandBuffers` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxCommandPoolCommandBuffers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandPoolCommandBuffers"));
-    /// The [VarHandle] of `maxCommandBufferSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxCommandBufferSize`.
+    public static final long OFFSET_maxCommandBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxCommandBufferSize"));
+    /// The memory layout of `maxCommandBufferSize`.
+    public static final MemoryLayout LAYOUT_maxCommandBufferSize = LAYOUT.select(PathElement.groupElement("maxCommandBufferSize"));
+    /// The [VarHandle] of `maxCommandBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxCommandBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandBufferSize"));
 
     /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
@@ -163,19 +201,14 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
     /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkanSC10Properties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkanSC10Properties(segment); }
-
-    /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkanSC10Properties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkanSC10Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVulkanSC10Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkanSC10Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceVulkanSC10Properties` with the given segment.
     ///
@@ -183,7 +216,7 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVulkanSC10Properties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -196,11 +229,6 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkanSC10Properties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVulkanSC10Properties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceVulkanSC10Properties`
-    public static VkPhysicalDeviceVulkanSC10Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int deviceNoDynamicHostAllocations, @CType("VkBool32") int deviceDestroyFreesMemory, @CType("VkBool32") int commandPoolMultipleCommandBuffersRecording, @CType("VkBool32") int commandPoolResetCommandBuffer, @CType("VkBool32") int commandBufferSimultaneousUse, @CType("VkBool32") int secondaryCommandBufferNullOrImagelessFramebuffer, @CType("VkBool32") int recycleDescriptorSetMemory, @CType("VkBool32") int recyclePipelineMemory, @CType("uint32_t") int maxRenderPassSubpasses, @CType("uint32_t") int maxRenderPassDependencies, @CType("uint32_t") int maxSubpassInputAttachments, @CType("uint32_t") int maxSubpassPreserveAttachments, @CType("uint32_t") int maxFramebufferAttachments, @CType("uint32_t") int maxDescriptorSetLayoutBindings, @CType("uint32_t") int maxQueryFaultCount, @CType("uint32_t") int maxCallbackFaultCount, @CType("uint32_t") int maxCommandPoolCommandBuffers, @CType("VkDeviceSize") long maxCommandBufferSize) { return alloc(allocator).sType(sType).pNext(pNext).deviceNoDynamicHostAllocations(deviceNoDynamicHostAllocations).deviceDestroyFreesMemory(deviceDestroyFreesMemory).commandPoolMultipleCommandBuffersRecording(commandPoolMultipleCommandBuffersRecording).commandPoolResetCommandBuffer(commandPoolResetCommandBuffer).commandBufferSimultaneousUse(commandBufferSimultaneousUse).secondaryCommandBufferNullOrImagelessFramebuffer(secondaryCommandBufferNullOrImagelessFramebuffer).recycleDescriptorSetMemory(recycleDescriptorSetMemory).recyclePipelineMemory(recyclePipelineMemory).maxRenderPassSubpasses(maxRenderPassSubpasses).maxRenderPassDependencies(maxRenderPassDependencies).maxSubpassInputAttachments(maxSubpassInputAttachments).maxSubpassPreserveAttachments(maxSubpassPreserveAttachments).maxFramebufferAttachments(maxFramebufferAttachments).maxDescriptorSetLayoutBindings(maxDescriptorSetLayoutBindings).maxQueryFaultCount(maxQueryFaultCount).maxCallbackFaultCount(maxCallbackFaultCount).maxCommandPoolCommandBuffers(maxCommandPoolCommandBuffers).maxCommandBufferSize(maxCommandBufferSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -208,467 +236,327 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVulkanSC10Properties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkanSC10Properties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceVulkanSC10Properties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkanSC10Properties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanSC10Properties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanSC10Properties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceNoDynamicHostAllocations` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_deviceNoDynamicHostAllocations(MemorySegment segment, long index) { return (int) VH_deviceNoDynamicHostAllocations.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceNoDynamicHostAllocations(MemorySegment segment, long index) { return (int) VH_deviceNoDynamicHostAllocations.get(segment, 0L, index); }
     /// {@return `deviceNoDynamicHostAllocations`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_deviceNoDynamicHostAllocations(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_deviceNoDynamicHostAllocations(segment, 0L); }
-    /// {@return `deviceNoDynamicHostAllocations`}
-    public @CType("VkBool32") int deviceNoDynamicHostAllocations() { return VkPhysicalDeviceVulkanSC10Properties.get_deviceNoDynamicHostAllocations(this.segment()); }
+    public int deviceNoDynamicHostAllocations() { return deviceNoDynamicHostAllocations(this.segment(), 0L); }
     /// Sets `deviceNoDynamicHostAllocations` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceNoDynamicHostAllocations(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_deviceNoDynamicHostAllocations.set(segment, 0L, index, value); }
-    /// Sets `deviceNoDynamicHostAllocations` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceNoDynamicHostAllocations(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceNoDynamicHostAllocations(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceNoDynamicHostAllocations(MemorySegment segment, long index, int value) { VH_deviceNoDynamicHostAllocations.set(segment, 0L, index, value); }
     /// Sets `deviceNoDynamicHostAllocations` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties deviceNoDynamicHostAllocations(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceNoDynamicHostAllocations(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties deviceNoDynamicHostAllocations(int value) { deviceNoDynamicHostAllocations(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceDestroyFreesMemory` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_deviceDestroyFreesMemory(MemorySegment segment, long index) { return (int) VH_deviceDestroyFreesMemory.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceDestroyFreesMemory(MemorySegment segment, long index) { return (int) VH_deviceDestroyFreesMemory.get(segment, 0L, index); }
     /// {@return `deviceDestroyFreesMemory`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_deviceDestroyFreesMemory(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_deviceDestroyFreesMemory(segment, 0L); }
-    /// {@return `deviceDestroyFreesMemory`}
-    public @CType("VkBool32") int deviceDestroyFreesMemory() { return VkPhysicalDeviceVulkanSC10Properties.get_deviceDestroyFreesMemory(this.segment()); }
+    public int deviceDestroyFreesMemory() { return deviceDestroyFreesMemory(this.segment(), 0L); }
     /// Sets `deviceDestroyFreesMemory` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceDestroyFreesMemory(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_deviceDestroyFreesMemory.set(segment, 0L, index, value); }
-    /// Sets `deviceDestroyFreesMemory` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceDestroyFreesMemory(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceDestroyFreesMemory(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceDestroyFreesMemory(MemorySegment segment, long index, int value) { VH_deviceDestroyFreesMemory.set(segment, 0L, index, value); }
     /// Sets `deviceDestroyFreesMemory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties deviceDestroyFreesMemory(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceDestroyFreesMemory(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties deviceDestroyFreesMemory(int value) { deviceDestroyFreesMemory(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPoolMultipleCommandBuffersRecording` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index) { return (int) VH_commandPoolMultipleCommandBuffersRecording.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index) { return (int) VH_commandPoolMultipleCommandBuffersRecording.get(segment, 0L, index); }
     /// {@return `commandPoolMultipleCommandBuffersRecording`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_commandPoolMultipleCommandBuffersRecording(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolMultipleCommandBuffersRecording(segment, 0L); }
-    /// {@return `commandPoolMultipleCommandBuffersRecording`}
-    public @CType("VkBool32") int commandPoolMultipleCommandBuffersRecording() { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolMultipleCommandBuffersRecording(this.segment()); }
+    public int commandPoolMultipleCommandBuffersRecording() { return commandPoolMultipleCommandBuffersRecording(this.segment(), 0L); }
     /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_commandPoolMultipleCommandBuffersRecording.set(segment, 0L, index, value); }
-    /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPoolMultipleCommandBuffersRecording(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolMultipleCommandBuffersRecording(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPoolMultipleCommandBuffersRecording(MemorySegment segment, long index, int value) { VH_commandPoolMultipleCommandBuffersRecording.set(segment, 0L, index, value); }
     /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties commandPoolMultipleCommandBuffersRecording(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolMultipleCommandBuffersRecording(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties commandPoolMultipleCommandBuffersRecording(int value) { commandPoolMultipleCommandBuffersRecording(this.segment(), 0L, value); return this; }
 
     /// {@return `commandPoolResetCommandBuffer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_commandPoolResetCommandBuffer(MemorySegment segment, long index) { return (int) VH_commandPoolResetCommandBuffer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandPoolResetCommandBuffer(MemorySegment segment, long index) { return (int) VH_commandPoolResetCommandBuffer.get(segment, 0L, index); }
     /// {@return `commandPoolResetCommandBuffer`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_commandPoolResetCommandBuffer(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolResetCommandBuffer(segment, 0L); }
-    /// {@return `commandPoolResetCommandBuffer`}
-    public @CType("VkBool32") int commandPoolResetCommandBuffer() { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolResetCommandBuffer(this.segment()); }
+    public int commandPoolResetCommandBuffer() { return commandPoolResetCommandBuffer(this.segment(), 0L); }
     /// Sets `commandPoolResetCommandBuffer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandPoolResetCommandBuffer(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_commandPoolResetCommandBuffer.set(segment, 0L, index, value); }
-    /// Sets `commandPoolResetCommandBuffer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandPoolResetCommandBuffer(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolResetCommandBuffer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandPoolResetCommandBuffer(MemorySegment segment, long index, int value) { VH_commandPoolResetCommandBuffer.set(segment, 0L, index, value); }
     /// Sets `commandPoolResetCommandBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties commandPoolResetCommandBuffer(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolResetCommandBuffer(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties commandPoolResetCommandBuffer(int value) { commandPoolResetCommandBuffer(this.segment(), 0L, value); return this; }
 
     /// {@return `commandBufferSimultaneousUse` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_commandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_commandBufferSimultaneousUse.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int commandBufferSimultaneousUse(MemorySegment segment, long index) { return (int) VH_commandBufferSimultaneousUse.get(segment, 0L, index); }
     /// {@return `commandBufferSimultaneousUse`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_commandBufferSimultaneousUse(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_commandBufferSimultaneousUse(segment, 0L); }
-    /// {@return `commandBufferSimultaneousUse`}
-    public @CType("VkBool32") int commandBufferSimultaneousUse() { return VkPhysicalDeviceVulkanSC10Properties.get_commandBufferSimultaneousUse(this.segment()); }
+    public int commandBufferSimultaneousUse() { return commandBufferSimultaneousUse(this.segment(), 0L); }
     /// Sets `commandBufferSimultaneousUse` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_commandBufferSimultaneousUse(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_commandBufferSimultaneousUse.set(segment, 0L, index, value); }
-    /// Sets `commandBufferSimultaneousUse` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_commandBufferSimultaneousUse(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandBufferSimultaneousUse(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void commandBufferSimultaneousUse(MemorySegment segment, long index, int value) { VH_commandBufferSimultaneousUse.set(segment, 0L, index, value); }
     /// Sets `commandBufferSimultaneousUse` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties commandBufferSimultaneousUse(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandBufferSimultaneousUse(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties commandBufferSimultaneousUse(int value) { commandBufferSimultaneousUse(this.segment(), 0L, value); return this; }
 
     /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index) { return (int) VH_secondaryCommandBufferNullOrImagelessFramebuffer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index) { return (int) VH_secondaryCommandBufferNullOrImagelessFramebuffer.get(segment, 0L, index); }
     /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_secondaryCommandBufferNullOrImagelessFramebuffer(segment, 0L); }
-    /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer`}
-    public @CType("VkBool32") int secondaryCommandBufferNullOrImagelessFramebuffer() { return VkPhysicalDeviceVulkanSC10Properties.get_secondaryCommandBufferNullOrImagelessFramebuffer(this.segment()); }
+    public int secondaryCommandBufferNullOrImagelessFramebuffer() { return secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), 0L); }
     /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_secondaryCommandBufferNullOrImagelessFramebuffer.set(segment, 0L, index, value); }
-    /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_secondaryCommandBufferNullOrImagelessFramebuffer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void secondaryCommandBufferNullOrImagelessFramebuffer(MemorySegment segment, long index, int value) { VH_secondaryCommandBufferNullOrImagelessFramebuffer.set(segment, 0L, index, value); }
     /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties secondaryCommandBufferNullOrImagelessFramebuffer(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties secondaryCommandBufferNullOrImagelessFramebuffer(int value) { secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), 0L, value); return this; }
 
     /// {@return `recycleDescriptorSetMemory` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_recycleDescriptorSetMemory(MemorySegment segment, long index) { return (int) VH_recycleDescriptorSetMemory.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int recycleDescriptorSetMemory(MemorySegment segment, long index) { return (int) VH_recycleDescriptorSetMemory.get(segment, 0L, index); }
     /// {@return `recycleDescriptorSetMemory`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_recycleDescriptorSetMemory(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_recycleDescriptorSetMemory(segment, 0L); }
-    /// {@return `recycleDescriptorSetMemory`}
-    public @CType("VkBool32") int recycleDescriptorSetMemory() { return VkPhysicalDeviceVulkanSC10Properties.get_recycleDescriptorSetMemory(this.segment()); }
+    public int recycleDescriptorSetMemory() { return recycleDescriptorSetMemory(this.segment(), 0L); }
     /// Sets `recycleDescriptorSetMemory` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_recycleDescriptorSetMemory(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_recycleDescriptorSetMemory.set(segment, 0L, index, value); }
-    /// Sets `recycleDescriptorSetMemory` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_recycleDescriptorSetMemory(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recycleDescriptorSetMemory(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void recycleDescriptorSetMemory(MemorySegment segment, long index, int value) { VH_recycleDescriptorSetMemory.set(segment, 0L, index, value); }
     /// Sets `recycleDescriptorSetMemory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties recycleDescriptorSetMemory(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recycleDescriptorSetMemory(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties recycleDescriptorSetMemory(int value) { recycleDescriptorSetMemory(this.segment(), 0L, value); return this; }
 
     /// {@return `recyclePipelineMemory` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_recyclePipelineMemory(MemorySegment segment, long index) { return (int) VH_recyclePipelineMemory.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int recyclePipelineMemory(MemorySegment segment, long index) { return (int) VH_recyclePipelineMemory.get(segment, 0L, index); }
     /// {@return `recyclePipelineMemory`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_recyclePipelineMemory(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_recyclePipelineMemory(segment, 0L); }
-    /// {@return `recyclePipelineMemory`}
-    public @CType("VkBool32") int recyclePipelineMemory() { return VkPhysicalDeviceVulkanSC10Properties.get_recyclePipelineMemory(this.segment()); }
+    public int recyclePipelineMemory() { return recyclePipelineMemory(this.segment(), 0L); }
     /// Sets `recyclePipelineMemory` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_recyclePipelineMemory(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_recyclePipelineMemory.set(segment, 0L, index, value); }
-    /// Sets `recyclePipelineMemory` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_recyclePipelineMemory(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recyclePipelineMemory(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void recyclePipelineMemory(MemorySegment segment, long index, int value) { VH_recyclePipelineMemory.set(segment, 0L, index, value); }
     /// Sets `recyclePipelineMemory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties recyclePipelineMemory(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recyclePipelineMemory(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties recyclePipelineMemory(int value) { recyclePipelineMemory(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRenderPassSubpasses` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRenderPassSubpasses(MemorySegment segment, long index) { return (int) VH_maxRenderPassSubpasses.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRenderPassSubpasses(MemorySegment segment, long index) { return (int) VH_maxRenderPassSubpasses.get(segment, 0L, index); }
     /// {@return `maxRenderPassSubpasses`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRenderPassSubpasses(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassSubpasses(segment, 0L); }
-    /// {@return `maxRenderPassSubpasses`}
-    public @CType("uint32_t") int maxRenderPassSubpasses() { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassSubpasses(this.segment()); }
+    public int maxRenderPassSubpasses() { return maxRenderPassSubpasses(this.segment(), 0L); }
     /// Sets `maxRenderPassSubpasses` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRenderPassSubpasses(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRenderPassSubpasses.set(segment, 0L, index, value); }
-    /// Sets `maxRenderPassSubpasses` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRenderPassSubpasses(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassSubpasses(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRenderPassSubpasses(MemorySegment segment, long index, int value) { VH_maxRenderPassSubpasses.set(segment, 0L, index, value); }
     /// Sets `maxRenderPassSubpasses` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxRenderPassSubpasses(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassSubpasses(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxRenderPassSubpasses(int value) { maxRenderPassSubpasses(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRenderPassDependencies` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRenderPassDependencies(MemorySegment segment, long index) { return (int) VH_maxRenderPassDependencies.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRenderPassDependencies(MemorySegment segment, long index) { return (int) VH_maxRenderPassDependencies.get(segment, 0L, index); }
     /// {@return `maxRenderPassDependencies`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRenderPassDependencies(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassDependencies(segment, 0L); }
-    /// {@return `maxRenderPassDependencies`}
-    public @CType("uint32_t") int maxRenderPassDependencies() { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassDependencies(this.segment()); }
+    public int maxRenderPassDependencies() { return maxRenderPassDependencies(this.segment(), 0L); }
     /// Sets `maxRenderPassDependencies` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRenderPassDependencies(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRenderPassDependencies.set(segment, 0L, index, value); }
-    /// Sets `maxRenderPassDependencies` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRenderPassDependencies(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassDependencies(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRenderPassDependencies(MemorySegment segment, long index, int value) { VH_maxRenderPassDependencies.set(segment, 0L, index, value); }
     /// Sets `maxRenderPassDependencies` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxRenderPassDependencies(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassDependencies(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxRenderPassDependencies(int value) { maxRenderPassDependencies(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSubpassInputAttachments` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxSubpassInputAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassInputAttachments.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxSubpassInputAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassInputAttachments.get(segment, 0L, index); }
     /// {@return `maxSubpassInputAttachments`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxSubpassInputAttachments(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassInputAttachments(segment, 0L); }
-    /// {@return `maxSubpassInputAttachments`}
-    public @CType("uint32_t") int maxSubpassInputAttachments() { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassInputAttachments(this.segment()); }
+    public int maxSubpassInputAttachments() { return maxSubpassInputAttachments(this.segment(), 0L); }
     /// Sets `maxSubpassInputAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSubpassInputAttachments(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxSubpassInputAttachments.set(segment, 0L, index, value); }
-    /// Sets `maxSubpassInputAttachments` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSubpassInputAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassInputAttachments(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSubpassInputAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassInputAttachments.set(segment, 0L, index, value); }
     /// Sets `maxSubpassInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxSubpassInputAttachments(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassInputAttachments(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxSubpassInputAttachments(int value) { maxSubpassInputAttachments(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSubpassPreserveAttachments` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxSubpassPreserveAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassPreserveAttachments.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxSubpassPreserveAttachments(MemorySegment segment, long index) { return (int) VH_maxSubpassPreserveAttachments.get(segment, 0L, index); }
     /// {@return `maxSubpassPreserveAttachments`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxSubpassPreserveAttachments(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassPreserveAttachments(segment, 0L); }
-    /// {@return `maxSubpassPreserveAttachments`}
-    public @CType("uint32_t") int maxSubpassPreserveAttachments() { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassPreserveAttachments(this.segment()); }
+    public int maxSubpassPreserveAttachments() { return maxSubpassPreserveAttachments(this.segment(), 0L); }
     /// Sets `maxSubpassPreserveAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSubpassPreserveAttachments(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxSubpassPreserveAttachments.set(segment, 0L, index, value); }
-    /// Sets `maxSubpassPreserveAttachments` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSubpassPreserveAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassPreserveAttachments(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSubpassPreserveAttachments(MemorySegment segment, long index, int value) { VH_maxSubpassPreserveAttachments.set(segment, 0L, index, value); }
     /// Sets `maxSubpassPreserveAttachments` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxSubpassPreserveAttachments(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassPreserveAttachments(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxSubpassPreserveAttachments(int value) { maxSubpassPreserveAttachments(this.segment(), 0L, value); return this; }
 
     /// {@return `maxFramebufferAttachments` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxFramebufferAttachments(MemorySegment segment, long index) { return (int) VH_maxFramebufferAttachments.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxFramebufferAttachments(MemorySegment segment, long index) { return (int) VH_maxFramebufferAttachments.get(segment, 0L, index); }
     /// {@return `maxFramebufferAttachments`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxFramebufferAttachments(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxFramebufferAttachments(segment, 0L); }
-    /// {@return `maxFramebufferAttachments`}
-    public @CType("uint32_t") int maxFramebufferAttachments() { return VkPhysicalDeviceVulkanSC10Properties.get_maxFramebufferAttachments(this.segment()); }
+    public int maxFramebufferAttachments() { return maxFramebufferAttachments(this.segment(), 0L); }
     /// Sets `maxFramebufferAttachments` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxFramebufferAttachments(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxFramebufferAttachments.set(segment, 0L, index, value); }
-    /// Sets `maxFramebufferAttachments` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxFramebufferAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxFramebufferAttachments(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxFramebufferAttachments(MemorySegment segment, long index, int value) { VH_maxFramebufferAttachments.set(segment, 0L, index, value); }
     /// Sets `maxFramebufferAttachments` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxFramebufferAttachments(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxFramebufferAttachments(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxFramebufferAttachments(int value) { maxFramebufferAttachments(this.segment(), 0L, value); return this; }
 
     /// {@return `maxDescriptorSetLayoutBindings` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxDescriptorSetLayoutBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetLayoutBindings.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxDescriptorSetLayoutBindings(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetLayoutBindings.get(segment, 0L, index); }
     /// {@return `maxDescriptorSetLayoutBindings`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxDescriptorSetLayoutBindings(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxDescriptorSetLayoutBindings(segment, 0L); }
-    /// {@return `maxDescriptorSetLayoutBindings`}
-    public @CType("uint32_t") int maxDescriptorSetLayoutBindings() { return VkPhysicalDeviceVulkanSC10Properties.get_maxDescriptorSetLayoutBindings(this.segment()); }
+    public int maxDescriptorSetLayoutBindings() { return maxDescriptorSetLayoutBindings(this.segment(), 0L); }
     /// Sets `maxDescriptorSetLayoutBindings` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxDescriptorSetLayoutBindings(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxDescriptorSetLayoutBindings.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetLayoutBindings` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxDescriptorSetLayoutBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxDescriptorSetLayoutBindings(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxDescriptorSetLayoutBindings(MemorySegment segment, long index, int value) { VH_maxDescriptorSetLayoutBindings.set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetLayoutBindings` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxDescriptorSetLayoutBindings(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxDescriptorSetLayoutBindings(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxDescriptorSetLayoutBindings(int value) { maxDescriptorSetLayoutBindings(this.segment(), 0L, value); return this; }
 
     /// {@return `maxQueryFaultCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxQueryFaultCount(MemorySegment segment, long index) { return (int) VH_maxQueryFaultCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxQueryFaultCount(MemorySegment segment, long index) { return (int) VH_maxQueryFaultCount.get(segment, 0L, index); }
     /// {@return `maxQueryFaultCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxQueryFaultCount(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxQueryFaultCount(segment, 0L); }
-    /// {@return `maxQueryFaultCount`}
-    public @CType("uint32_t") int maxQueryFaultCount() { return VkPhysicalDeviceVulkanSC10Properties.get_maxQueryFaultCount(this.segment()); }
+    public int maxQueryFaultCount() { return maxQueryFaultCount(this.segment(), 0L); }
     /// Sets `maxQueryFaultCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxQueryFaultCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxQueryFaultCount.set(segment, 0L, index, value); }
-    /// Sets `maxQueryFaultCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxQueryFaultCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxQueryFaultCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxQueryFaultCount(MemorySegment segment, long index, int value) { VH_maxQueryFaultCount.set(segment, 0L, index, value); }
     /// Sets `maxQueryFaultCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxQueryFaultCount(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxQueryFaultCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxQueryFaultCount(int value) { maxQueryFaultCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxCallbackFaultCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxCallbackFaultCount(MemorySegment segment, long index) { return (int) VH_maxCallbackFaultCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxCallbackFaultCount(MemorySegment segment, long index) { return (int) VH_maxCallbackFaultCount.get(segment, 0L, index); }
     /// {@return `maxCallbackFaultCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxCallbackFaultCount(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCallbackFaultCount(segment, 0L); }
-    /// {@return `maxCallbackFaultCount`}
-    public @CType("uint32_t") int maxCallbackFaultCount() { return VkPhysicalDeviceVulkanSC10Properties.get_maxCallbackFaultCount(this.segment()); }
+    public int maxCallbackFaultCount() { return maxCallbackFaultCount(this.segment(), 0L); }
     /// Sets `maxCallbackFaultCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxCallbackFaultCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxCallbackFaultCount.set(segment, 0L, index, value); }
-    /// Sets `maxCallbackFaultCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxCallbackFaultCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCallbackFaultCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxCallbackFaultCount(MemorySegment segment, long index, int value) { VH_maxCallbackFaultCount.set(segment, 0L, index, value); }
     /// Sets `maxCallbackFaultCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxCallbackFaultCount(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCallbackFaultCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxCallbackFaultCount(int value) { maxCallbackFaultCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxCommandPoolCommandBuffers` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxCommandPoolCommandBuffers(MemorySegment segment, long index) { return (int) VH_maxCommandPoolCommandBuffers.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxCommandPoolCommandBuffers(MemorySegment segment, long index) { return (int) VH_maxCommandPoolCommandBuffers.get(segment, 0L, index); }
     /// {@return `maxCommandPoolCommandBuffers`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxCommandPoolCommandBuffers(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandPoolCommandBuffers(segment, 0L); }
-    /// {@return `maxCommandPoolCommandBuffers`}
-    public @CType("uint32_t") int maxCommandPoolCommandBuffers() { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandPoolCommandBuffers(this.segment()); }
+    public int maxCommandPoolCommandBuffers() { return maxCommandPoolCommandBuffers(this.segment(), 0L); }
     /// Sets `maxCommandPoolCommandBuffers` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxCommandPoolCommandBuffers(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxCommandPoolCommandBuffers.set(segment, 0L, index, value); }
-    /// Sets `maxCommandPoolCommandBuffers` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxCommandPoolCommandBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandPoolCommandBuffers(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxCommandPoolCommandBuffers(MemorySegment segment, long index, int value) { VH_maxCommandPoolCommandBuffers.set(segment, 0L, index, value); }
     /// Sets `maxCommandPoolCommandBuffers` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxCommandPoolCommandBuffers(@CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandPoolCommandBuffers(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxCommandPoolCommandBuffers(int value) { maxCommandPoolCommandBuffers(this.segment(), 0L, value); return this; }
 
     /// {@return `maxCommandBufferSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_maxCommandBufferSize(MemorySegment segment, long index) { return (long) VH_maxCommandBufferSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxCommandBufferSize(MemorySegment segment, long index) { return (long) VH_maxCommandBufferSize.get(segment, 0L, index); }
     /// {@return `maxCommandBufferSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_maxCommandBufferSize(MemorySegment segment) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandBufferSize(segment, 0L); }
-    /// {@return `maxCommandBufferSize`}
-    public @CType("VkDeviceSize") long maxCommandBufferSize() { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandBufferSize(this.segment()); }
+    public long maxCommandBufferSize() { return maxCommandBufferSize(this.segment(), 0L); }
     /// Sets `maxCommandBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxCommandBufferSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_maxCommandBufferSize.set(segment, 0L, index, value); }
-    /// Sets `maxCommandBufferSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxCommandBufferSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandBufferSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxCommandBufferSize(MemorySegment segment, long index, long value) { VH_maxCommandBufferSize.set(segment, 0L, index, value); }
     /// Sets `maxCommandBufferSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkanSC10Properties maxCommandBufferSize(@CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandBufferSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkanSC10Properties maxCommandBufferSize(long value) { maxCommandBufferSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceVulkanSC10Properties].
     public static final class Buffer extends VkPhysicalDeviceVulkanSC10Properties {
@@ -693,184 +581,184 @@ public sealed class VkPhysicalDeviceVulkanSC10Properties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkanSC10Properties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanSC10Properties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `deviceNoDynamicHostAllocations` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int deviceNoDynamicHostAllocationsAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_deviceNoDynamicHostAllocations(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceNoDynamicHostAllocationsAt(long index) { return deviceNoDynamicHostAllocations(this.segment(), index); }
         /// Sets `deviceNoDynamicHostAllocations` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceNoDynamicHostAllocationsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceNoDynamicHostAllocations(this.segment(), index, value); return this; }
+        public Buffer deviceNoDynamicHostAllocationsAt(long index, int value) { deviceNoDynamicHostAllocations(this.segment(), index, value); return this; }
 
         /// {@return `deviceDestroyFreesMemory` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int deviceDestroyFreesMemoryAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_deviceDestroyFreesMemory(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceDestroyFreesMemoryAt(long index) { return deviceDestroyFreesMemory(this.segment(), index); }
         /// Sets `deviceDestroyFreesMemory` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceDestroyFreesMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_deviceDestroyFreesMemory(this.segment(), index, value); return this; }
+        public Buffer deviceDestroyFreesMemoryAt(long index, int value) { deviceDestroyFreesMemory(this.segment(), index, value); return this; }
 
         /// {@return `commandPoolMultipleCommandBuffersRecording` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int commandPoolMultipleCommandBuffersRecordingAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolMultipleCommandBuffersRecording(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandPoolMultipleCommandBuffersRecordingAt(long index) { return commandPoolMultipleCommandBuffersRecording(this.segment(), index); }
         /// Sets `commandPoolMultipleCommandBuffersRecording` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolMultipleCommandBuffersRecordingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolMultipleCommandBuffersRecording(this.segment(), index, value); return this; }
+        public Buffer commandPoolMultipleCommandBuffersRecordingAt(long index, int value) { commandPoolMultipleCommandBuffersRecording(this.segment(), index, value); return this; }
 
         /// {@return `commandPoolResetCommandBuffer` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int commandPoolResetCommandBufferAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_commandPoolResetCommandBuffer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandPoolResetCommandBufferAt(long index) { return commandPoolResetCommandBuffer(this.segment(), index); }
         /// Sets `commandPoolResetCommandBuffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandPoolResetCommandBufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandPoolResetCommandBuffer(this.segment(), index, value); return this; }
+        public Buffer commandPoolResetCommandBufferAt(long index, int value) { commandPoolResetCommandBuffer(this.segment(), index, value); return this; }
 
         /// {@return `commandBufferSimultaneousUse` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int commandBufferSimultaneousUseAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_commandBufferSimultaneousUse(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int commandBufferSimultaneousUseAt(long index) { return commandBufferSimultaneousUse(this.segment(), index); }
         /// Sets `commandBufferSimultaneousUse` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer commandBufferSimultaneousUseAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_commandBufferSimultaneousUse(this.segment(), index, value); return this; }
+        public Buffer commandBufferSimultaneousUseAt(long index, int value) { commandBufferSimultaneousUse(this.segment(), index, value); return this; }
 
         /// {@return `secondaryCommandBufferNullOrImagelessFramebuffer` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int secondaryCommandBufferNullOrImagelessFramebufferAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int secondaryCommandBufferNullOrImagelessFramebufferAt(long index) { return secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), index); }
         /// Sets `secondaryCommandBufferNullOrImagelessFramebuffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer secondaryCommandBufferNullOrImagelessFramebufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), index, value); return this; }
+        public Buffer secondaryCommandBufferNullOrImagelessFramebufferAt(long index, int value) { secondaryCommandBufferNullOrImagelessFramebuffer(this.segment(), index, value); return this; }
 
         /// {@return `recycleDescriptorSetMemory` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int recycleDescriptorSetMemoryAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_recycleDescriptorSetMemory(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int recycleDescriptorSetMemoryAt(long index) { return recycleDescriptorSetMemory(this.segment(), index); }
         /// Sets `recycleDescriptorSetMemory` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer recycleDescriptorSetMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recycleDescriptorSetMemory(this.segment(), index, value); return this; }
+        public Buffer recycleDescriptorSetMemoryAt(long index, int value) { recycleDescriptorSetMemory(this.segment(), index, value); return this; }
 
         /// {@return `recyclePipelineMemory` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int recyclePipelineMemoryAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_recyclePipelineMemory(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int recyclePipelineMemoryAt(long index) { return recyclePipelineMemory(this.segment(), index); }
         /// Sets `recyclePipelineMemory` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer recyclePipelineMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanSC10Properties.set_recyclePipelineMemory(this.segment(), index, value); return this; }
+        public Buffer recyclePipelineMemoryAt(long index, int value) { recyclePipelineMemory(this.segment(), index, value); return this; }
 
         /// {@return `maxRenderPassSubpasses` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRenderPassSubpassesAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassSubpasses(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRenderPassSubpassesAt(long index) { return maxRenderPassSubpasses(this.segment(), index); }
         /// Sets `maxRenderPassSubpasses` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRenderPassSubpassesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassSubpasses(this.segment(), index, value); return this; }
+        public Buffer maxRenderPassSubpassesAt(long index, int value) { maxRenderPassSubpasses(this.segment(), index, value); return this; }
 
         /// {@return `maxRenderPassDependencies` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRenderPassDependenciesAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxRenderPassDependencies(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRenderPassDependenciesAt(long index) { return maxRenderPassDependencies(this.segment(), index); }
         /// Sets `maxRenderPassDependencies` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRenderPassDependenciesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxRenderPassDependencies(this.segment(), index, value); return this; }
+        public Buffer maxRenderPassDependenciesAt(long index, int value) { maxRenderPassDependencies(this.segment(), index, value); return this; }
 
         /// {@return `maxSubpassInputAttachments` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxSubpassInputAttachmentsAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassInputAttachments(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxSubpassInputAttachmentsAt(long index) { return maxSubpassInputAttachments(this.segment(), index); }
         /// Sets `maxSubpassInputAttachments` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSubpassInputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassInputAttachments(this.segment(), index, value); return this; }
+        public Buffer maxSubpassInputAttachmentsAt(long index, int value) { maxSubpassInputAttachments(this.segment(), index, value); return this; }
 
         /// {@return `maxSubpassPreserveAttachments` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxSubpassPreserveAttachmentsAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxSubpassPreserveAttachments(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxSubpassPreserveAttachmentsAt(long index) { return maxSubpassPreserveAttachments(this.segment(), index); }
         /// Sets `maxSubpassPreserveAttachments` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSubpassPreserveAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxSubpassPreserveAttachments(this.segment(), index, value); return this; }
+        public Buffer maxSubpassPreserveAttachmentsAt(long index, int value) { maxSubpassPreserveAttachments(this.segment(), index, value); return this; }
 
         /// {@return `maxFramebufferAttachments` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxFramebufferAttachmentsAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxFramebufferAttachments(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxFramebufferAttachmentsAt(long index) { return maxFramebufferAttachments(this.segment(), index); }
         /// Sets `maxFramebufferAttachments` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxFramebufferAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxFramebufferAttachments(this.segment(), index, value); return this; }
+        public Buffer maxFramebufferAttachmentsAt(long index, int value) { maxFramebufferAttachments(this.segment(), index, value); return this; }
 
         /// {@return `maxDescriptorSetLayoutBindings` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxDescriptorSetLayoutBindingsAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxDescriptorSetLayoutBindings(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxDescriptorSetLayoutBindingsAt(long index) { return maxDescriptorSetLayoutBindings(this.segment(), index); }
         /// Sets `maxDescriptorSetLayoutBindings` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxDescriptorSetLayoutBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxDescriptorSetLayoutBindings(this.segment(), index, value); return this; }
+        public Buffer maxDescriptorSetLayoutBindingsAt(long index, int value) { maxDescriptorSetLayoutBindings(this.segment(), index, value); return this; }
 
         /// {@return `maxQueryFaultCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxQueryFaultCountAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxQueryFaultCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxQueryFaultCountAt(long index) { return maxQueryFaultCount(this.segment(), index); }
         /// Sets `maxQueryFaultCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxQueryFaultCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxQueryFaultCount(this.segment(), index, value); return this; }
+        public Buffer maxQueryFaultCountAt(long index, int value) { maxQueryFaultCount(this.segment(), index, value); return this; }
 
         /// {@return `maxCallbackFaultCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxCallbackFaultCountAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCallbackFaultCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxCallbackFaultCountAt(long index) { return maxCallbackFaultCount(this.segment(), index); }
         /// Sets `maxCallbackFaultCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxCallbackFaultCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCallbackFaultCount(this.segment(), index, value); return this; }
+        public Buffer maxCallbackFaultCountAt(long index, int value) { maxCallbackFaultCount(this.segment(), index, value); return this; }
 
         /// {@return `maxCommandPoolCommandBuffers` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxCommandPoolCommandBuffersAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandPoolCommandBuffers(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxCommandPoolCommandBuffersAt(long index) { return maxCommandPoolCommandBuffers(this.segment(), index); }
         /// Sets `maxCommandPoolCommandBuffers` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxCommandPoolCommandBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandPoolCommandBuffers(this.segment(), index, value); return this; }
+        public Buffer maxCommandPoolCommandBuffersAt(long index, int value) { maxCommandPoolCommandBuffers(this.segment(), index, value); return this; }
 
         /// {@return `maxCommandBufferSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long maxCommandBufferSizeAt(long index) { return VkPhysicalDeviceVulkanSC10Properties.get_maxCommandBufferSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxCommandBufferSizeAt(long index) { return maxCommandBufferSize(this.segment(), index); }
         /// Sets `maxCommandBufferSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxCommandBufferSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkanSC10Properties.set_maxCommandBufferSize(this.segment(), index, value); return this; }
+        public Buffer maxCommandBufferSizeAt(long index, long value) { maxCommandBufferSize(this.segment(), index, value); return this; }
 
     }
 }

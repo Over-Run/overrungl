@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -160,15 +158,8 @@ public final class GLARBInternalformatQuery2 {
     public static final int GL_VIEW_CLASS_ASTC_12x10_RGBA = 0x9394;
     public static final int GL_VIEW_CLASS_ASTC_12x12_RGBA = 0x9395;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInternalformati64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetInternalformati64v
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformati64v);
+        public static final MethodHandle MH_glGetInternalformati64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformati64v;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformati64v = func.invoke("glGetInternalformati64v");
@@ -179,10 +170,13 @@ public final class GLARBInternalformatQuery2 {
         this.handles = new Handles(func);
     }
 
-    public void GetInternalformati64v(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
+    /// ```
+    /// void glGetInternalformati64v((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum pname, (int) GLsizei count, GLint64* params);
+    /// ```
+    public void GetInternalformati64v(int target, int internalformat, int pname, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
         try { Handles.MH_glGetInternalformati64v.invokeExact(handles.PFN_glGetInternalformati64v, target, internalformat, pname, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformati64v", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetInternalformati64v", e); }
     }
 
 }

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRPresentId {
     public static final int VK_KHR_PRESENT_ID_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKKHRPresentId {
     public static final int VK_STRUCTURE_TYPE_PRESENT_ID_KHR = 1000294000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR = 1000294001;
 
-    private VKKHRPresentId() { }
+    private VKKHRPresentId() {}
 
 }

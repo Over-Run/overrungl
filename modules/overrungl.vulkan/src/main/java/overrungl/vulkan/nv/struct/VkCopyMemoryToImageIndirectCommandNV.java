@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### srcAddress
-/// [VarHandle][#VH_srcAddress] - [Getter][#srcAddress()] - [Setter][#srcAddress(long)]
-/// ### bufferRowLength
-/// [VarHandle][#VH_bufferRowLength] - [Getter][#bufferRowLength()] - [Setter][#bufferRowLength(int)]
-/// ### bufferImageHeight
-/// [VarHandle][#VH_bufferImageHeight] - [Getter][#bufferImageHeight()] - [Setter][#bufferImageHeight(int)]
-/// ### imageSubresource
-/// [Byte offset][#OFFSET_imageSubresource] - [Memory layout][#ML_imageSubresource] - [Getter][#imageSubresource()] - [Setter][#imageSubresource(java.lang.foreign.MemorySegment)]
-/// ### imageOffset
-/// [Byte offset][#OFFSET_imageOffset] - [Memory layout][#ML_imageOffset] - [Getter][#imageOffset()] - [Setter][#imageOffset(java.lang.foreign.MemorySegment)]
-/// ### imageExtent
-/// [Byte offset][#OFFSET_imageExtent] - [Memory layout][#ML_imageExtent] - [Getter][#imageExtent()] - [Setter][#imageExtent(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkCopyMemoryToImageIndirectCommandNV {
-///     VkDeviceAddress srcAddress;
+/// ```
+/// struct VkCopyMemoryToImageIndirectCommandNV {
+///     (uint64_t) VkDeviceAddress srcAddress;
 ///     uint32_t bufferRowLength;
 ///     uint32_t bufferImageHeight;
-///     VkImageSubresourceLayers imageSubresource;
-///     VkOffset3D imageOffset;
-///     VkExtent3D imageExtent;
-/// } VkCopyMemoryToImageIndirectCommandNV;
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers imageSubresource;
+///     (struct VkOffset3D) VkOffset3D imageOffset;
+///     (struct VkExtent3D) VkExtent3D imageExtent;
+/// };
 /// ```
-public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
+public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
     /// The struct layout of `VkCopyMemoryToImageIndirectCommandNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("srcAddress"),
         ValueLayout.JAVA_INT.withName("bufferRowLength"),
         ValueLayout.JAVA_INT.withName("bufferImageHeight"),
@@ -59,24 +45,36 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
         overrungl.vulkan.struct.VkOffset3D.LAYOUT.withName("imageOffset"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("imageExtent")
     );
-    /// The [VarHandle] of `srcAddress` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `srcAddress`.
+    public static final long OFFSET_srcAddress = LAYOUT.byteOffset(PathElement.groupElement("srcAddress"));
+    /// The memory layout of `srcAddress`.
+    public static final MemoryLayout LAYOUT_srcAddress = LAYOUT.select(PathElement.groupElement("srcAddress"));
+    /// The [VarHandle] of `srcAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAddress"));
-    /// The [VarHandle] of `bufferRowLength` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bufferRowLength`.
+    public static final long OFFSET_bufferRowLength = LAYOUT.byteOffset(PathElement.groupElement("bufferRowLength"));
+    /// The memory layout of `bufferRowLength`.
+    public static final MemoryLayout LAYOUT_bufferRowLength = LAYOUT.select(PathElement.groupElement("bufferRowLength"));
+    /// The [VarHandle] of `bufferRowLength` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bufferRowLength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferRowLength"));
-    /// The [VarHandle] of `bufferImageHeight` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `bufferImageHeight`.
+    public static final long OFFSET_bufferImageHeight = LAYOUT.byteOffset(PathElement.groupElement("bufferImageHeight"));
+    /// The memory layout of `bufferImageHeight`.
+    public static final MemoryLayout LAYOUT_bufferImageHeight = LAYOUT.select(PathElement.groupElement("bufferImageHeight"));
+    /// The [VarHandle] of `bufferImageHeight` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_bufferImageHeight = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferImageHeight"));
     /// The byte offset of `imageSubresource`.
     public static final long OFFSET_imageSubresource = LAYOUT.byteOffset(PathElement.groupElement("imageSubresource"));
     /// The memory layout of `imageSubresource`.
-    public static final MemoryLayout ML_imageSubresource = LAYOUT.select(PathElement.groupElement("imageSubresource"));
+    public static final MemoryLayout LAYOUT_imageSubresource = LAYOUT.select(PathElement.groupElement("imageSubresource"));
     /// The byte offset of `imageOffset`.
     public static final long OFFSET_imageOffset = LAYOUT.byteOffset(PathElement.groupElement("imageOffset"));
     /// The memory layout of `imageOffset`.
-    public static final MemoryLayout ML_imageOffset = LAYOUT.select(PathElement.groupElement("imageOffset"));
+    public static final MemoryLayout LAYOUT_imageOffset = LAYOUT.select(PathElement.groupElement("imageOffset"));
     /// The byte offset of `imageExtent`.
     public static final long OFFSET_imageExtent = LAYOUT.byteOffset(PathElement.groupElement("imageExtent"));
     /// The memory layout of `imageExtent`.
-    public static final MemoryLayout ML_imageExtent = LAYOUT.select(PathElement.groupElement("imageExtent"));
+    public static final MemoryLayout LAYOUT_imageExtent = LAYOUT.select(PathElement.groupElement("imageExtent"));
 
     /// Creates `VkCopyMemoryToImageIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
@@ -85,19 +83,14 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
     /// Creates `VkCopyMemoryToImageIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCopyMemoryToImageIndirectCommandNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyMemoryToImageIndirectCommandNV(segment); }
-
-    /// Creates `VkCopyMemoryToImageIndirectCommandNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCopyMemoryToImageIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCopyMemoryToImageIndirectCommandNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyMemoryToImageIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkCopyMemoryToImageIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCopyMemoryToImageIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkCopyMemoryToImageIndirectCommandNV` with the given segment.
     ///
@@ -105,7 +98,7 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +111,6 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
     /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, @CType("VkDeviceAddress") long srcAddress, @CType("uint32_t") int bufferRowLength, @CType("uint32_t") int bufferImageHeight, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresource, @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffset, @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtent) { return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset).imageExtent(imageExtent); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,145 +118,103 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceAddress") long get_srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long srcAddress(MemorySegment segment, long index) { return (long) VH_srcAddress.get(segment, 0L, index); }
     /// {@return `srcAddress`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceAddress") long get_srcAddress(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_srcAddress(segment, 0L); }
-    /// {@return `srcAddress`}
-    public @CType("VkDeviceAddress") long srcAddress() { return VkCopyMemoryToImageIndirectCommandNV.get_srcAddress(this.segment()); }
+    public long srcAddress() { return srcAddress(this.segment(), 0L); }
     /// Sets `srcAddress` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srcAddress(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_srcAddress.set(segment, 0L, index, value); }
-    /// Sets `srcAddress` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_srcAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkCopyMemoryToImageIndirectCommandNV.set_srcAddress(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void srcAddress(MemorySegment segment, long index, long value) { VH_srcAddress.set(segment, 0L, index, value); }
     /// Sets `srcAddress` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV srcAddress(@CType("VkDeviceAddress") long value) { VkCopyMemoryToImageIndirectCommandNV.set_srcAddress(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV srcAddress(long value) { srcAddress(this.segment(), 0L, value); return this; }
 
     /// {@return `bufferRowLength` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bufferRowLength(MemorySegment segment, long index) { return (int) VH_bufferRowLength.get(segment, 0L, index); }
     /// {@return `bufferRowLength`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_bufferRowLength(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_bufferRowLength(segment, 0L); }
-    /// {@return `bufferRowLength`}
-    public @CType("uint32_t") int bufferRowLength() { return VkCopyMemoryToImageIndirectCommandNV.get_bufferRowLength(this.segment()); }
+    public int bufferRowLength() { return bufferRowLength(this.segment(), 0L); }
     /// Sets `bufferRowLength` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bufferRowLength(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_bufferRowLength.set(segment, 0L, index, value); }
-    /// Sets `bufferRowLength` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bufferRowLength(MemorySegment segment, @CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferRowLength(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bufferRowLength(MemorySegment segment, long index, int value) { VH_bufferRowLength.set(segment, 0L, index, value); }
     /// Sets `bufferRowLength` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV bufferRowLength(@CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferRowLength(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV bufferRowLength(int value) { bufferRowLength(this.segment(), 0L, value); return this; }
 
     /// {@return `bufferImageHeight` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int bufferImageHeight(MemorySegment segment, long index) { return (int) VH_bufferImageHeight.get(segment, 0L, index); }
     /// {@return `bufferImageHeight`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_bufferImageHeight(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_bufferImageHeight(segment, 0L); }
-    /// {@return `bufferImageHeight`}
-    public @CType("uint32_t") int bufferImageHeight() { return VkCopyMemoryToImageIndirectCommandNV.get_bufferImageHeight(this.segment()); }
+    public int bufferImageHeight() { return bufferImageHeight(this.segment(), 0L); }
     /// Sets `bufferImageHeight` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_bufferImageHeight(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_bufferImageHeight.set(segment, 0L, index, value); }
-    /// Sets `bufferImageHeight` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_bufferImageHeight(MemorySegment segment, @CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferImageHeight(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void bufferImageHeight(MemorySegment segment, long index, int value) { VH_bufferImageHeight.set(segment, 0L, index, value); }
     /// Sets `bufferImageHeight` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV bufferImageHeight(@CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferImageHeight(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV bufferImageHeight(int value) { bufferImageHeight(this.segment(), 0L, value); return this; }
 
     /// {@return `imageSubresource` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_imageSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment imageSubresource(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageSubresource, index), LAYOUT_imageSubresource); }
     /// {@return `imageSubresource`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_imageSubresource(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_imageSubresource(segment, 0L); }
-    /// {@return `imageSubresource`}
-    public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresource() { return VkCopyMemoryToImageIndirectCommandNV.get_imageSubresource(this.segment()); }
+    public MemorySegment imageSubresource() { return imageSubresource(this.segment(), 0L); }
     /// Sets `imageSubresource` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageSubresource(MemorySegment segment, long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageSubresource, index), ML_imageSubresource.byteSize()); }
-    /// Sets `imageSubresource` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageSubresource(MemorySegment segment, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageSubresource(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageSubresource(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageSubresource, index), LAYOUT_imageSubresource.byteSize()); }
     /// Sets `imageSubresource` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV imageSubresource(@CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageSubresource(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV imageSubresource(MemorySegment value) { imageSubresource(this.segment(), 0L, value); return this; }
 
     /// {@return `imageOffset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_imageOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment imageOffset(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageOffset, index), LAYOUT_imageOffset); }
     /// {@return `imageOffset`}
-    /// @param segment the segment of the struct
-    public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_imageOffset(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_imageOffset(segment, 0L); }
-    /// {@return `imageOffset`}
-    public @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffset() { return VkCopyMemoryToImageIndirectCommandNV.get_imageOffset(this.segment()); }
+    public MemorySegment imageOffset() { return imageOffset(this.segment(), 0L); }
     /// Sets `imageOffset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageOffset(MemorySegment segment, long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageOffset, index), ML_imageOffset.byteSize()); }
-    /// Sets `imageOffset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageOffset(MemorySegment segment, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageOffset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageOffset(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageOffset, index), LAYOUT_imageOffset.byteSize()); }
     /// Sets `imageOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV imageOffset(@CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageOffset(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV imageOffset(MemorySegment value) { imageOffset(this.segment(), 0L, value); return this; }
 
     /// {@return `imageExtent` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment imageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageExtent, index), LAYOUT_imageExtent); }
     /// {@return `imageExtent`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment) { return VkCopyMemoryToImageIndirectCommandNV.get_imageExtent(segment, 0L); }
-    /// {@return `imageExtent`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtent() { return VkCopyMemoryToImageIndirectCommandNV.get_imageExtent(this.segment()); }
+    public MemorySegment imageExtent() { return imageExtent(this.segment(), 0L); }
     /// Sets `imageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageExtent(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageExtent, index), ML_imageExtent.byteSize()); }
-    /// Sets `imageExtent` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageExtent(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageExtent(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageExtent, index), LAYOUT_imageExtent.byteSize()); }
     /// Sets `imageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCopyMemoryToImageIndirectCommandNV imageExtent(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageExtent(this.segment(), value); return this; }
+    public VkCopyMemoryToImageIndirectCommandNV imageExtent(MemorySegment value) { imageExtent(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkCopyMemoryToImageIndirectCommandNV].
     public static final class Buffer extends VkCopyMemoryToImageIndirectCommandNV {
@@ -293,58 +239,58 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `srcAddress` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceAddress") long srcAddressAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_srcAddress(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long srcAddressAt(long index) { return srcAddress(this.segment(), index); }
         /// Sets `srcAddress` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srcAddressAt(long index, @CType("VkDeviceAddress") long value) { VkCopyMemoryToImageIndirectCommandNV.set_srcAddress(this.segment(), index, value); return this; }
+        public Buffer srcAddressAt(long index, long value) { srcAddress(this.segment(), index, value); return this; }
 
         /// {@return `bufferRowLength` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bufferRowLengthAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_bufferRowLength(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bufferRowLengthAt(long index) { return bufferRowLength(this.segment(), index); }
         /// Sets `bufferRowLength` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferRowLengthAt(long index, @CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferRowLength(this.segment(), index, value); return this; }
+        public Buffer bufferRowLengthAt(long index, int value) { bufferRowLength(this.segment(), index, value); return this; }
 
         /// {@return `bufferImageHeight` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bufferImageHeightAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_bufferImageHeight(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bufferImageHeightAt(long index) { return bufferImageHeight(this.segment(), index); }
         /// Sets `bufferImageHeight` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferImageHeightAt(long index, @CType("uint32_t") int value) { VkCopyMemoryToImageIndirectCommandNV.set_bufferImageHeight(this.segment(), index, value); return this; }
+        public Buffer bufferImageHeightAt(long index, int value) { bufferImageHeight(this.segment(), index, value); return this; }
 
         /// {@return `imageSubresource` at the given index}
-        /// @param index the index
-        public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment imageSubresourceAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_imageSubresource(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment imageSubresourceAt(long index) { return imageSubresource(this.segment(), index); }
         /// Sets `imageSubresource` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageSubresource(this.segment(), index, value); return this; }
+        public Buffer imageSubresourceAt(long index, MemorySegment value) { imageSubresource(this.segment(), index, value); return this; }
 
         /// {@return `imageOffset` at the given index}
-        /// @param index the index
-        public @CType("VkOffset3D") java.lang.foreign.MemorySegment imageOffsetAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_imageOffset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment imageOffsetAt(long index) { return imageOffset(this.segment(), index); }
         /// Sets `imageOffset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageOffset(this.segment(), index, value); return this; }
+        public Buffer imageOffsetAt(long index, MemorySegment value) { imageOffset(this.segment(), index, value); return this; }
 
         /// {@return `imageExtent` at the given index}
-        /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkCopyMemoryToImageIndirectCommandNV.get_imageExtent(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment imageExtentAt(long index) { return imageExtent(this.segment(), index); }
         /// Sets `imageExtent` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageExtentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkCopyMemoryToImageIndirectCommandNV.set_imageExtent(this.segment(), index, value); return this; }
+        public Buffer imageExtentAt(long index, MemorySegment value) { imageExtent(this.segment(), index, value); return this; }
 
     }
 }

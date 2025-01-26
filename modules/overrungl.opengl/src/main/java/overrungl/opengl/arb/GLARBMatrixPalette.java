@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -36,27 +34,12 @@ public final class GLARBMatrixPalette {
     public static final int GL_MATRIX_INDEX_ARRAY_STRIDE_ARB = 0x8848;
     public static final int GL_MATRIX_INDEX_ARRAY_POINTER_ARB = 0x8849;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCurrentPaletteMatrixARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMatrixIndexubvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexusvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMatrixIndexPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCurrentPaletteMatrixARB,
-            FD_glMatrixIndexubvARB,
-            FD_glMatrixIndexusvARB,
-            FD_glMatrixIndexuivARB,
-            FD_glMatrixIndexPointerARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCurrentPaletteMatrixARB = RuntimeHelper.downcall(Descriptors.FD_glCurrentPaletteMatrixARB);
-        public static final MethodHandle MH_glMatrixIndexubvARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexubvARB);
-        public static final MethodHandle MH_glMatrixIndexusvARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexusvARB);
-        public static final MethodHandle MH_glMatrixIndexuivARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexuivARB);
-        public static final MethodHandle MH_glMatrixIndexPointerARB = RuntimeHelper.downcall(Descriptors.FD_glMatrixIndexPointerARB);
+        public static final MethodHandle MH_glCurrentPaletteMatrixARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMatrixIndexubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexusvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMatrixIndexPointerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCurrentPaletteMatrixARB;
         public final MemorySegment PFN_glMatrixIndexubvARB;
         public final MemorySegment PFN_glMatrixIndexusvARB;
@@ -75,34 +58,49 @@ public final class GLARBMatrixPalette {
         this.handles = new Handles(func);
     }
 
-    public void CurrentPaletteMatrixARB(@CType("GLint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCurrentPaletteMatrixARB)) throw new SymbolNotFoundError("Symbol not found: glCurrentPaletteMatrixARB");
+    /// ```
+    /// void glCurrentPaletteMatrixARB((int) GLint index);
+    /// ```
+    public void CurrentPaletteMatrixARB(int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCurrentPaletteMatrixARB)) throw new SymbolNotFoundError("Symbol not found: glCurrentPaletteMatrixARB");
         try { Handles.MH_glCurrentPaletteMatrixARB.invokeExact(handles.PFN_glCurrentPaletteMatrixARB, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glCurrentPaletteMatrixARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CurrentPaletteMatrixARB", e); }
     }
 
-    public void MatrixIndexubvARB(@CType("GLint") int size, @CType("const GLubyte *") java.lang.foreign.MemorySegment indices) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMatrixIndexubvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexubvARB");
+    /// ```
+    /// void glMatrixIndexubvARB((int) GLint size, const GLubyte* indices);
+    /// ```
+    public void MatrixIndexubvARB(int size, MemorySegment indices) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexubvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexubvARB");
         try { Handles.MH_glMatrixIndexubvARB.invokeExact(handles.PFN_glMatrixIndexubvARB, size, indices); }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexubvARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MatrixIndexubvARB", e); }
     }
 
-    public void MatrixIndexusvARB(@CType("GLint") int size, @CType("const GLushort *") java.lang.foreign.MemorySegment indices) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMatrixIndexusvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexusvARB");
+    /// ```
+    /// void glMatrixIndexusvARB((int) GLint size, const GLushort* indices);
+    /// ```
+    public void MatrixIndexusvARB(int size, MemorySegment indices) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexusvARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexusvARB");
         try { Handles.MH_glMatrixIndexusvARB.invokeExact(handles.PFN_glMatrixIndexusvARB, size, indices); }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexusvARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MatrixIndexusvARB", e); }
     }
 
-    public void MatrixIndexuivARB(@CType("GLint") int size, @CType("const GLuint *") java.lang.foreign.MemorySegment indices) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMatrixIndexuivARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexuivARB");
+    /// ```
+    /// void glMatrixIndexuivARB((int) GLint size, const GLuint* indices);
+    /// ```
+    public void MatrixIndexuivARB(int size, MemorySegment indices) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexuivARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexuivARB");
         try { Handles.MH_glMatrixIndexuivARB.invokeExact(handles.PFN_glMatrixIndexuivARB, size, indices); }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexuivARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MatrixIndexuivARB", e); }
     }
 
-    public void MatrixIndexPointerARB(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMatrixIndexPointerARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexPointerARB");
+    /// ```
+    /// void glMatrixIndexPointerARB((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
+    /// ```
+    public void MatrixIndexPointerARB(int size, int type, int stride, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMatrixIndexPointerARB)) throw new SymbolNotFoundError("Symbol not found: glMatrixIndexPointerARB");
         try { Handles.MH_glMatrixIndexPointerARB.invokeExact(handles.PFN_glMatrixIndexPointerARB, size, type, stride, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexPointerARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MatrixIndexPointerARB", e); }
     }
 
 }

@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLARBComputeVariableGroupSize {
     public static final int GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB = 0x9345;
     public static final int GL_MAX_COMPUTE_FIXED_GROUP_SIZE_ARB = 0x91BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDispatchComputeGroupSizeARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDispatchComputeGroupSizeARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDispatchComputeGroupSizeARB = RuntimeHelper.downcall(Descriptors.FD_glDispatchComputeGroupSizeARB);
+        public static final MethodHandle MH_glDispatchComputeGroupSizeARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDispatchComputeGroupSizeARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDispatchComputeGroupSizeARB = func.invoke("glDispatchComputeGroupSizeARB");
@@ -49,10 +40,13 @@ public final class GLARBComputeVariableGroupSize {
         this.handles = new Handles(func);
     }
 
-    public void DispatchComputeGroupSizeARB(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z, @CType("GLuint") int group_size_x, @CType("GLuint") int group_size_y, @CType("GLuint") int group_size_z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDispatchComputeGroupSizeARB)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeGroupSizeARB");
+    /// ```
+    /// void glDispatchComputeGroupSizeARB((unsigned int) GLuint num_groups_x, (unsigned int) GLuint num_groups_y, (unsigned int) GLuint num_groups_z, (unsigned int) GLuint group_size_x, (unsigned int) GLuint group_size_y, (unsigned int) GLuint group_size_z);
+    /// ```
+    public void DispatchComputeGroupSizeARB(int num_groups_x, int num_groups_y, int num_groups_z, int group_size_x, int group_size_y, int group_size_z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeGroupSizeARB)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeGroupSizeARB");
         try { Handles.MH_glDispatchComputeGroupSizeARB.invokeExact(handles.PFN_glDispatchComputeGroupSizeARB, num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z); }
-        catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeGroupSizeARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DispatchComputeGroupSizeARB", e); }
     }
 
 }

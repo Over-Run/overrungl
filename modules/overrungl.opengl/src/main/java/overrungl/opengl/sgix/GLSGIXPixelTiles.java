@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXPixelTiles {
     public static final int GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = 0x813E;
     public static final int GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = 0x813F;

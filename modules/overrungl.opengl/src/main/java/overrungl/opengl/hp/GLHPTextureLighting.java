@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.hp;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLHPTextureLighting {
     public static final int GL_TEXTURE_LIGHTING_MODE_HP = 0x8167;
     public static final int GL_TEXTURE_POST_SPECULAR_HP = 0x8168;

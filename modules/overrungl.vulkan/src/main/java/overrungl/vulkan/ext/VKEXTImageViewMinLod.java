@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTImageViewMinLod {
     public static final int VK_EXT_IMAGE_VIEW_MIN_LOD_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKEXTImageViewMinLod {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT = 1000391000;
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT = 1000391001;
 
-    private VKEXTImageViewMinLod() { }
+    private VKEXTImageViewMinLod() {}
 
 }

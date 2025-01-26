@@ -19,23 +19,14 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTMemoryObjectFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportMemoryFdEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glImportMemoryFdEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportMemoryFdEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryFdEXT);
+        public static final MethodHandle MH_glImportMemoryFdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportMemoryFdEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportMemoryFdEXT = func.invoke("glImportMemoryFdEXT");
@@ -46,10 +37,13 @@ public final class GLEXTMemoryObjectFd {
         this.handles = new Handles(func);
     }
 
-    public void ImportMemoryFdEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("GLint") int fd) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
+    /// ```
+    /// void glImportMemoryFdEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, (int) GLint fd);
+    /// ```
+    public void ImportMemoryFdEXT(int memory, long size, int handleType, int fd) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
         try { Handles.MH_glImportMemoryFdEXT.invokeExact(handles.PFN_glImportMemoryFdEXT, memory, size, handleType, fd); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryFdEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportMemoryFdEXT", e); }
     }
 
 }

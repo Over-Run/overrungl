@@ -15,52 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK11.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### presentMask
-/// [Byte offset][#OFFSET_presentMask] - [Memory layout][#ML_presentMask] - [Getter][#presentMask()] - [Setter][#presentMask(java.lang.foreign.MemorySegment)]
-/// ### modes
-/// [VarHandle][#VH_modes] - [Getter][#modes()] - [Setter][#modes(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDeviceGroupPresentCapabilitiesKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     uint32_t[VK_MAX_DEVICE_GROUP_SIZE] presentMask;
-///     VkDeviceGroupPresentModeFlagsKHR modes;
-/// } VkDeviceGroupPresentCapabilitiesKHR;
 /// ```
-public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
+/// struct VkDeviceGroupPresentCapabilitiesKHR {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     uint32_t presentMask[32];
+///     ((uint32_t) VkFlags) VkDeviceGroupPresentModeFlagsKHR modes;
+/// };
+/// ```
+public sealed class VkDeviceGroupPresentCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkDeviceGroupPresentCapabilitiesKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(VK_MAX_DEVICE_GROUP_SIZE, ValueLayout.JAVA_INT).withName("presentMask"),
+        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("presentMask"),
         ValueLayout.JAVA_INT.withName("modes")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `presentMask`.
     public static final long OFFSET_presentMask = LAYOUT.byteOffset(PathElement.groupElement("presentMask"));
     /// The memory layout of `presentMask`.
-    public static final MemoryLayout ML_presentMask = LAYOUT.select(PathElement.groupElement("presentMask"));
-    /// The [VarHandle] of `modes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_presentMask = LAYOUT.select(PathElement.groupElement("presentMask"));
+    /// The [VarHandle] of `presentMask` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_presentMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMask"), PathElement.sequenceElement());
+    /// The byte offset of `modes`.
+    public static final long OFFSET_modes = LAYOUT.byteOffset(PathElement.groupElement("modes"));
+    /// The memory layout of `modes`.
+    public static final MemoryLayout LAYOUT_modes = LAYOUT.select(PathElement.groupElement("modes"));
+    /// The [VarHandle] of `modes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_modes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("modes"));
 
     /// Creates `VkDeviceGroupPresentCapabilitiesKHR` with the given segment.
@@ -70,19 +73,14 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     /// Creates `VkDeviceGroupPresentCapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceGroupPresentCapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceGroupPresentCapabilitiesKHR(segment); }
-
-    /// Creates `VkDeviceGroupPresentCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceGroupPresentCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceGroupPresentCapabilitiesKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceGroupPresentCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDeviceGroupPresentCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupPresentCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDeviceGroupPresentCapabilitiesKHR` with the given segment.
     ///
@@ -90,7 +88,7 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -103,11 +101,6 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
-    public static VkDeviceGroupPresentCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMask, @CType("VkDeviceGroupPresentModeFlagsKHR") int modes) { return alloc(allocator).sType(sType).pNext(pNext).presentMask(presentMask).modes(modes); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -115,99 +108,90 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceGroupPresentCapabilitiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDeviceGroupPresentCapabilitiesKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR sType(@CType("VkStructureType") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_sType(this.segment(), value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceGroupPresentCapabilitiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceGroupPresentCapabilitiesKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `presentMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_presentMask, index), ML_presentMask); }
-    /// {@return `presentMask`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment presentMask(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_presentMask, index), LAYOUT_presentMask); }
+    /// {@return `presentMask` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static int presentMask(MemorySegment segment, long index, long index0) { return (int) VH_presentMask.get(segment, 0L, index, index0); }
     /// {@return `presentMask`}
-    public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMask() { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment()); }
+    public MemorySegment presentMask() { return presentMask(this.segment(), 0L); }
+    /// {@return `presentMask`}
+    /// @param index0 the Index 0 of the array
+    public int presentMask(long index0) { return presentMask(this.segment(), 0L, index0); }
     /// Sets `presentMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentMask(MemorySegment segment, long index, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_presentMask, index), ML_presentMask.byteSize()); }
-    /// Sets `presentMask` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentMask(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_presentMask, index), LAYOUT_presentMask.byteSize()); }
+    /// Sets `presentMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentMask(MemorySegment segment, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void presentMask(MemorySegment segment, long index, long index0, int value) { VH_presentMask.set(segment, 0L, index, index0, value); }
     /// Sets `presentMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(MemorySegment value) { presentMask(this.segment(), 0L, value); return this; }
+    /// Sets `presentMask` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(long index0, int value) { presentMask(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `modes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceGroupPresentModeFlagsKHR") int get_modes(MemorySegment segment, long index) { return (int) VH_modes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int modes(MemorySegment segment, long index) { return (int) VH_modes.get(segment, 0L, index); }
     /// {@return `modes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceGroupPresentModeFlagsKHR") int get_modes(MemorySegment segment) { return VkDeviceGroupPresentCapabilitiesKHR.get_modes(segment, 0L); }
-    /// {@return `modes`}
-    public @CType("VkDeviceGroupPresentModeFlagsKHR") int modes() { return VkDeviceGroupPresentCapabilitiesKHR.get_modes(this.segment()); }
+    public int modes() { return modes(this.segment(), 0L); }
     /// Sets `modes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_modes(MemorySegment segment, long index, @CType("VkDeviceGroupPresentModeFlagsKHR") int value) { VH_modes.set(segment, 0L, index, value); }
-    /// Sets `modes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_modes(MemorySegment segment, @CType("VkDeviceGroupPresentModeFlagsKHR") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_modes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void modes(MemorySegment segment, long index, int value) { VH_modes.set(segment, 0L, index, value); }
     /// Sets `modes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR modes(@CType("VkDeviceGroupPresentModeFlagsKHR") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_modes(this.segment(), value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR modes(int value) { modes(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDeviceGroupPresentCapabilitiesKHR].
     public static final class Buffer extends VkDeviceGroupPresentCapabilitiesKHR {
@@ -232,40 +216,50 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceGroupPresentCapabilitiesKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceGroupPresentCapabilitiesKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `presentMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMaskAt(long index) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment presentMaskAt(long index) { return presentMask(this.segment(), index); }
+        /// {@return `presentMask` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public int presentMaskAt(long index, long index0) { return presentMask(this.segment(), index, index0); }
         /// Sets `presentMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentMaskAt(long index, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), index, value); return this; }
+        public Buffer presentMaskAt(long index, MemorySegment value) { presentMask(this.segment(), index, value); return this; }
+        /// Sets `presentMask` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer presentMaskAt(long index, long index0, int value) { presentMask(this.segment(), index, index0, value); return this; }
 
         /// {@return `modes` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceGroupPresentModeFlagsKHR") int modesAt(long index) { return VkDeviceGroupPresentCapabilitiesKHR.get_modes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int modesAt(long index) { return modes(this.segment(), index); }
         /// Sets `modes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer modesAt(long index, @CType("VkDeviceGroupPresentModeFlagsKHR") int value) { VkDeviceGroupPresentCapabilitiesKHR.set_modes(this.segment(), index, value); return this; }
+        public Buffer modesAt(long index, int value) { modes(this.segment(), index, value); return this; }
 
     }
 }

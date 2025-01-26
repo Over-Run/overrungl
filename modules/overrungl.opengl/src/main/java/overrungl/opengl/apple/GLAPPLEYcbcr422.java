@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.apple;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLAPPLEYcbcr422 {
     public static final int GL_YCBCR_422_APPLE = 0x85B9;
     public static final int GL_UNSIGNED_SHORT_8_8_APPLE = 0x85BA;

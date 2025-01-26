@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTValidationFeatures {
     public static final int VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT = 0;
@@ -40,6 +35,6 @@ public final class VKEXTValidationFeatures {
     public static final String VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
     public static final int VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT = 1000247000;
 
-    private VKEXTValidationFeatures() { }
+    private VKEXTValidationFeatures() {}
 
 }

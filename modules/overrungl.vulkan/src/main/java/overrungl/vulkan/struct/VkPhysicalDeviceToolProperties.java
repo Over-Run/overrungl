@@ -15,80 +15,80 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
-import static overrungl.vulkan.VK10.*;
-import static overrungl.vulkan.VK10.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### name
-/// [Byte offset][#OFFSET_name] - [Memory layout][#ML_name] - [Getter][#name()] - [Setter][#name(java.lang.foreign.MemorySegment)]
-/// ### version
-/// [Byte offset][#OFFSET_version] - [Memory layout][#ML_version] - [Getter][#version()] - [Setter][#version(java.lang.foreign.MemorySegment)]
-/// ### purposes
-/// [VarHandle][#VH_purposes] - [Getter][#purposes()] - [Setter][#purposes(int)]
-/// ### description
-/// [Byte offset][#OFFSET_description] - [Memory layout][#ML_description] - [Getter][#description()] - [Setter][#description(java.lang.foreign.MemorySegment)]
-/// ### layer
-/// [Byte offset][#OFFSET_layer] - [Memory layout][#ML_layer] - [Getter][#layer()] - [Setter][#layer(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceToolProperties {
-///     VkStructureType sType;
-///     void * pNext;
-///     char[VK_MAX_EXTENSION_NAME_SIZE] name;
-///     char[VK_MAX_EXTENSION_NAME_SIZE] version;
-///     VkToolPurposeFlags purposes;
-///     char[VK_MAX_DESCRIPTION_SIZE] description;
-///     char[VK_MAX_EXTENSION_NAME_SIZE] layer;
-/// } VkPhysicalDeviceToolProperties;
 /// ```
-public sealed class VkPhysicalDeviceToolProperties extends Struct {
+/// struct VkPhysicalDeviceToolProperties {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     char name[256];
+///     char version[256];
+///     ((uint32_t) VkFlags) VkToolPurposeFlags purposes;
+///     char description[256];
+///     char layer[256];
+/// };
+/// ```
+public sealed class VkPhysicalDeviceToolProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceToolProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("version"),
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("version"),
         ValueLayout.JAVA_INT.withName("purposes"),
-        MemoryLayout.sequenceLayout(VK_MAX_DESCRIPTION_SIZE, ValueLayout.JAVA_BYTE).withName("description"),
-        MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("layer")
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("layer")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `name`.
     public static final long OFFSET_name = LAYOUT.byteOffset(PathElement.groupElement("name"));
     /// The memory layout of `name`.
-    public static final MemoryLayout ML_name = LAYOUT.select(PathElement.groupElement("name"));
+    public static final MemoryLayout LAYOUT_name = LAYOUT.select(PathElement.groupElement("name"));
+    /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"), PathElement.sequenceElement());
     /// The byte offset of `version`.
     public static final long OFFSET_version = LAYOUT.byteOffset(PathElement.groupElement("version"));
     /// The memory layout of `version`.
-    public static final MemoryLayout ML_version = LAYOUT.select(PathElement.groupElement("version"));
-    /// The [VarHandle] of `purposes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_version = LAYOUT.select(PathElement.groupElement("version"));
+    /// The [VarHandle] of `version` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_version = LAYOUT.arrayElementVarHandle(PathElement.groupElement("version"), PathElement.sequenceElement());
+    /// The byte offset of `purposes`.
+    public static final long OFFSET_purposes = LAYOUT.byteOffset(PathElement.groupElement("purposes"));
+    /// The memory layout of `purposes`.
+    public static final MemoryLayout LAYOUT_purposes = LAYOUT.select(PathElement.groupElement("purposes"));
+    /// The [VarHandle] of `purposes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_purposes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("purposes"));
     /// The byte offset of `description`.
     public static final long OFFSET_description = LAYOUT.byteOffset(PathElement.groupElement("description"));
     /// The memory layout of `description`.
-    public static final MemoryLayout ML_description = LAYOUT.select(PathElement.groupElement("description"));
+    public static final MemoryLayout LAYOUT_description = LAYOUT.select(PathElement.groupElement("description"));
+    /// The [VarHandle] of `description` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
     /// The byte offset of `layer`.
     public static final long OFFSET_layer = LAYOUT.byteOffset(PathElement.groupElement("layer"));
     /// The memory layout of `layer`.
-    public static final MemoryLayout ML_layer = LAYOUT.select(PathElement.groupElement("layer"));
+    public static final MemoryLayout LAYOUT_layer = LAYOUT.select(PathElement.groupElement("layer"));
+    /// The [VarHandle] of `layer` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_layer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("layer"), PathElement.sequenceElement());
 
     /// Creates `VkPhysicalDeviceToolProperties` with the given segment.
     /// @param segment the memory segment
@@ -97,19 +97,14 @@ public sealed class VkPhysicalDeviceToolProperties extends Struct {
     /// Creates `VkPhysicalDeviceToolProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceToolProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceToolProperties(segment); }
-
-    /// Creates `VkPhysicalDeviceToolProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceToolProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceToolProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceToolProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceToolProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceToolProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceToolProperties` with the given segment.
     ///
@@ -117,7 +112,7 @@ public sealed class VkPhysicalDeviceToolProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceToolProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -130,11 +125,6 @@ public sealed class VkPhysicalDeviceToolProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceToolProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceToolProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceToolProperties`
-    public static VkPhysicalDeviceToolProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment name, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment version, @CType("VkToolPurposeFlags") int purposes, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layer) { return alloc(allocator).sType(sType).pNext(pNext).name(name).version(version).purposes(purposes).description(description).layer(layer); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -142,168 +132,195 @@ public sealed class VkPhysicalDeviceToolProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceToolProperties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceToolProperties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceToolProperties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceToolProperties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), ML_name); }
-    /// {@return `name`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment name(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_name, index), LAYOUT_name); }
+    /// {@return `name` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_name(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_name(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte name(MemorySegment segment, long index, long index0) { return (byte) VH_name.get(segment, 0L, index, index0); }
     /// {@return `name`}
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment name() { return VkPhysicalDeviceToolProperties.get_name(this.segment()); }
+    public MemorySegment name() { return name(this.segment(), 0L); }
+    /// {@return `name`}
+    /// @param index0 the Index 0 of the array
+    public byte name(long index0) { return name(this.segment(), 0L, index0); }
     /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_name(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), ML_name.byteSize()); }
-    /// Sets `name` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void name(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_name, index), LAYOUT_name.byteSize()); }
+    /// Sets `name` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_name(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_name(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void name(MemorySegment segment, long index, long index0, byte value) { VH_name.set(segment, 0L, index, index0, value); }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties name(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_name(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties name(MemorySegment value) { name(this.segment(), 0L, value); return this; }
+    /// Sets `name` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceToolProperties name(long index0, byte value) { name(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `version` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_version(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_version, index), ML_version); }
-    /// {@return `version`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment version(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_version, index), LAYOUT_version); }
+    /// {@return `version` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_version(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_version(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte version(MemorySegment segment, long index, long index0) { return (byte) VH_version.get(segment, 0L, index, index0); }
     /// {@return `version`}
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment version() { return VkPhysicalDeviceToolProperties.get_version(this.segment()); }
+    public MemorySegment version() { return version(this.segment(), 0L); }
+    /// {@return `version`}
+    /// @param index0 the Index 0 of the array
+    public byte version(long index0) { return version(this.segment(), 0L, index0); }
     /// Sets `version` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_version(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_version, index), ML_version.byteSize()); }
-    /// Sets `version` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void version(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_version, index), LAYOUT_version.byteSize()); }
+    /// Sets `version` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_version(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_version(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void version(MemorySegment segment, long index, long index0, byte value) { VH_version.set(segment, 0L, index, index0, value); }
     /// Sets `version` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties version(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_version(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties version(MemorySegment value) { version(this.segment(), 0L, value); return this; }
+    /// Sets `version` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceToolProperties version(long index0, byte value) { version(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `purposes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkToolPurposeFlags") int get_purposes(MemorySegment segment, long index) { return (int) VH_purposes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int purposes(MemorySegment segment, long index) { return (int) VH_purposes.get(segment, 0L, index); }
     /// {@return `purposes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkToolPurposeFlags") int get_purposes(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_purposes(segment, 0L); }
-    /// {@return `purposes`}
-    public @CType("VkToolPurposeFlags") int purposes() { return VkPhysicalDeviceToolProperties.get_purposes(this.segment()); }
+    public int purposes() { return purposes(this.segment(), 0L); }
     /// Sets `purposes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_purposes(MemorySegment segment, long index, @CType("VkToolPurposeFlags") int value) { VH_purposes.set(segment, 0L, index, value); }
-    /// Sets `purposes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_purposes(MemorySegment segment, @CType("VkToolPurposeFlags") int value) { VkPhysicalDeviceToolProperties.set_purposes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void purposes(MemorySegment segment, long index, int value) { VH_purposes.set(segment, 0L, index, value); }
     /// Sets `purposes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties purposes(@CType("VkToolPurposeFlags") int value) { VkPhysicalDeviceToolProperties.set_purposes(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties purposes(int value) { purposes(this.segment(), 0L, value); return this; }
 
     /// {@return `description` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), ML_description); }
-    /// {@return `description`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment description(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_description, index), LAYOUT_description); }
+    /// {@return `description` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_description(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte description(MemorySegment segment, long index, long index0) { return (byte) VH_description.get(segment, 0L, index, index0); }
     /// {@return `description`}
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkPhysicalDeviceToolProperties.get_description(this.segment()); }
+    public MemorySegment description() { return description(this.segment(), 0L); }
+    /// {@return `description`}
+    /// @param index0 the Index 0 of the array
+    public byte description(long index0) { return description(this.segment(), 0L, index0); }
     /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_description(MemorySegment segment, long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), ML_description.byteSize()); }
-    /// Sets `description` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void description(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_description, index), LAYOUT_description.byteSize()); }
+    /// Sets `description` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_description(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void description(MemorySegment segment, long index, long index0, byte value) { VH_description.set(segment, 0L, index, index0, value); }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_description(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties description(MemorySegment value) { description(this.segment(), 0L, value); return this; }
+    /// Sets `description` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceToolProperties description(long index0, byte value) { description(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `layer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_layer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_layer, index), ML_layer); }
-    /// {@return `layer`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment layer(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_layer, index), LAYOUT_layer); }
+    /// {@return `layer` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_layer(MemorySegment segment) { return VkPhysicalDeviceToolProperties.get_layer(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte layer(MemorySegment segment, long index, long index0) { return (byte) VH_layer.get(segment, 0L, index, index0); }
     /// {@return `layer`}
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layer() { return VkPhysicalDeviceToolProperties.get_layer(this.segment()); }
+    public MemorySegment layer() { return layer(this.segment(), 0L); }
+    /// {@return `layer`}
+    /// @param index0 the Index 0 of the array
+    public byte layer(long index0) { return layer(this.segment(), 0L, index0); }
     /// Sets `layer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_layer(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_layer, index), ML_layer.byteSize()); }
-    /// Sets `layer` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void layer(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_layer, index), LAYOUT_layer.byteSize()); }
+    /// Sets `layer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_layer(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_layer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void layer(MemorySegment segment, long index, long index0, byte value) { VH_layer.set(segment, 0L, index, index0, value); }
     /// Sets `layer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceToolProperties layer(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_layer(this.segment(), value); return this; }
+    public VkPhysicalDeviceToolProperties layer(MemorySegment value) { layer(this.segment(), 0L, value); return this; }
+    /// Sets `layer` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceToolProperties layer(long index0, byte value) { layer(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceToolProperties].
     public static final class Buffer extends VkPhysicalDeviceToolProperties {
@@ -328,67 +345,107 @@ public sealed class VkPhysicalDeviceToolProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceToolProperties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceToolProperties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceToolProperties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `name` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment nameAt(long index) { return VkPhysicalDeviceToolProperties.get_name(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+        /// {@return `name` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte nameAt(long index, long index0) { return name(this.segment(), index, index0); }
         /// Sets `name` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer nameAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_name(this.segment(), index, value); return this; }
+        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
+        /// Sets `name` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
 
         /// {@return `version` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment versionAt(long index) { return VkPhysicalDeviceToolProperties.get_version(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment versionAt(long index) { return version(this.segment(), index); }
+        /// {@return `version` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte versionAt(long index, long index0) { return version(this.segment(), index, index0); }
         /// Sets `version` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer versionAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_version(this.segment(), index, value); return this; }
+        public Buffer versionAt(long index, MemorySegment value) { version(this.segment(), index, value); return this; }
+        /// Sets `version` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer versionAt(long index, long index0, byte value) { version(this.segment(), index, index0, value); return this; }
 
         /// {@return `purposes` at the given index}
-        /// @param index the index
-        public @CType("VkToolPurposeFlags") int purposesAt(long index) { return VkPhysicalDeviceToolProperties.get_purposes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int purposesAt(long index) { return purposes(this.segment(), index); }
         /// Sets `purposes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer purposesAt(long index, @CType("VkToolPurposeFlags") int value) { VkPhysicalDeviceToolProperties.set_purposes(this.segment(), index, value); return this; }
+        public Buffer purposesAt(long index, int value) { purposes(this.segment(), index, value); return this; }
 
         /// {@return `description` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkPhysicalDeviceToolProperties.get_description(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+        /// {@return `description` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
         /// Sets `description` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_description(this.segment(), index, value); return this; }
+        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+        /// Sets `description` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
         /// {@return `layer` at the given index}
-        /// @param index the index
-        public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment layerAt(long index) { return VkPhysicalDeviceToolProperties.get_layer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment layerAt(long index) { return layer(this.segment(), index); }
+        /// {@return `layer` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte layerAt(long index, long index0) { return layer(this.segment(), index, index0); }
         /// Sets `layer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer layerAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceToolProperties.set_layer(this.segment(), index, value); return this; }
+        public Buffer layerAt(long index, MemorySegment value) { layer(this.segment(), index, value); return this; }
+        /// Sets `layer` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer layerAt(long index, long index0, byte value) { layer(this.segment(), index, index0, value); return this; }
 
     }
 }

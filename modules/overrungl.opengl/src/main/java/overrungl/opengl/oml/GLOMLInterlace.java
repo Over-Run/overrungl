@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oml;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLOMLInterlace {
     public static final int GL_INTERLACE_OML = 0x8980;
     public static final int GL_INTERLACE_READ_OML = 0x8981;

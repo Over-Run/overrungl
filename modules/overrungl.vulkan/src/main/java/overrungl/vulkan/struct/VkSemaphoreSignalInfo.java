@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### semaphore
-/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(java.lang.foreign.MemorySegment)]
-/// ### value
-/// [VarHandle][#VH_value] - [Getter][#value()] - [Setter][#value(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSemaphoreSignalInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkSemaphore semaphore;
-///     uint64_t value;
-/// } VkSemaphoreSignalInfo;
 /// ```
-public sealed class VkSemaphoreSignalInfo extends Struct {
+/// struct VkSemaphoreSignalInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint64_t) VkSemaphore semaphore;
+///     uint64_t value;
+/// };
+/// ```
+public sealed class VkSemaphoreSignalInfo extends GroupType {
     /// The struct layout of `VkSemaphoreSignalInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("semaphore"),
+        ValueLayout.JAVA_LONG.withName("semaphore"),
         ValueLayout.JAVA_LONG.withName("value")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `semaphore`.
+    public static final long OFFSET_semaphore = LAYOUT.byteOffset(PathElement.groupElement("semaphore"));
+    /// The memory layout of `semaphore`.
+    public static final MemoryLayout LAYOUT_semaphore = LAYOUT.select(PathElement.groupElement("semaphore"));
+    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
-    /// The [VarHandle] of `value` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `value`.
+    public static final long OFFSET_value = LAYOUT.byteOffset(PathElement.groupElement("value"));
+    /// The memory layout of `value`.
+    public static final MemoryLayout LAYOUT_value = LAYOUT.select(PathElement.groupElement("value"));
+    /// The [VarHandle] of `value` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value"));
 
     /// Creates `VkSemaphoreSignalInfo` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkSemaphoreSignalInfo extends Struct {
     /// Creates `VkSemaphoreSignalInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreSignalInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreSignalInfo(segment); }
-
-    /// Creates `VkSemaphoreSignalInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSemaphoreSignalInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreSignalInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreSignalInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSemaphoreSignalInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreSignalInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSemaphoreSignalInfo` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkSemaphoreSignalInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkSemaphoreSignalInfo extends Struct {
     /// @return the allocated `VkSemaphoreSignalInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSemaphoreSignalInfo`
-    public static VkSemaphoreSignalInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("uint64_t") long value) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkSemaphoreSignalInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSemaphoreSignalInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSemaphoreSignalInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSemaphoreSignalInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSignalInfo sType(@CType("VkStructureType") int value) { VkSemaphoreSignalInfo.set_sType(this.segment(), value); return this; }
+    public VkSemaphoreSignalInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreSignalInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSemaphoreSignalInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSignalInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_pNext(this.segment(), value); return this; }
+    public VkSemaphoreSignalInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `semaphore` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_semaphore.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long semaphore(MemorySegment segment, long index) { return (long) VH_semaphore.get(segment, 0L, index); }
     /// {@return `semaphore`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkSemaphoreSignalInfo.get_semaphore(segment, 0L); }
-    /// {@return `semaphore`}
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkSemaphoreSignalInfo.get_semaphore(this.segment()); }
+    public long semaphore() { return semaphore(this.segment(), 0L); }
     /// Sets `semaphore` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
-    /// Sets `semaphore` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_semaphore(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void semaphore(MemorySegment segment, long index, long value) { VH_semaphore.set(segment, 0L, index, value); }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSignalInfo semaphore(@CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_semaphore(this.segment(), value); return this; }
+    public VkSemaphoreSignalInfo semaphore(long value) { semaphore(this.segment(), 0L, value); return this; }
 
     /// {@return `value` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_value(MemorySegment segment, long index) { return (long) VH_value.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long value(MemorySegment segment, long index) { return (long) VH_value.get(segment, 0L, index); }
     /// {@return `value`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_value(MemorySegment segment) { return VkSemaphoreSignalInfo.get_value(segment, 0L); }
-    /// {@return `value`}
-    public @CType("uint64_t") long value() { return VkSemaphoreSignalInfo.get_value(this.segment()); }
+    public long value() { return value(this.segment(), 0L); }
     /// Sets `value` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_value(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_value.set(segment, 0L, index, value); }
-    /// Sets `value` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_value(MemorySegment segment, @CType("uint64_t") long value) { VkSemaphoreSignalInfo.set_value(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void value(MemorySegment segment, long index, long value) { VH_value.set(segment, 0L, index, value); }
     /// Sets `value` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSemaphoreSignalInfo value(@CType("uint64_t") long value) { VkSemaphoreSignalInfo.set_value(this.segment(), value); return this; }
+    public VkSemaphoreSignalInfo value(long value) { value(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSemaphoreSignalInfo].
     public static final class Buffer extends VkSemaphoreSignalInfo {
@@ -229,40 +197,40 @@ public sealed class VkSemaphoreSignalInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSemaphoreSignalInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSemaphoreSignalInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSemaphoreSignalInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `semaphore` at the given index}
-        /// @param index the index
-        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkSemaphoreSignalInfo.get_semaphore(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
         /// Sets `semaphore` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSignalInfo.set_semaphore(this.segment(), index, value); return this; }
+        public Buffer semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
 
         /// {@return `value` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long valueAt(long index) { return VkSemaphoreSignalInfo.get_value(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long valueAt(long index) { return value(this.segment(), index); }
         /// Sets `value` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer valueAt(long index, @CType("uint64_t") long value) { VkSemaphoreSignalInfo.set_value(this.segment(), index, value); return this; }
+        public Buffer valueAt(long index, long value) { value(this.segment(), index, value); return this; }
 
     }
 }

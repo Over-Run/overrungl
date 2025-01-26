@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -35,15 +33,8 @@ public final class GLARBMultisample {
     public static final int GL_SAMPLE_COVERAGE_INVERT_ARB = 0x80AB;
     public static final int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSampleCoverageARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSampleCoverageARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(Descriptors.FD_glSampleCoverageARB);
+        public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glSampleCoverageARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSampleCoverageARB = func.invoke("glSampleCoverageARB", "glSampleCoverage");
@@ -54,10 +45,13 @@ public final class GLARBMultisample {
         this.handles = new Handles(func);
     }
 
-    public void SampleCoverageARB(@CType("GLfloat") float value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB");
-        try { Handles.MH_glSampleCoverageARB.invokeExact(handles.PFN_glSampleCoverageARB, value, invert); }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleCoverageARB", e); }
+    /// ```
+    /// void glSampleCoverageARB(((float) khronos_float_t) GLfloat value, GLboolean invert);
+    /// ```
+    public void SampleCoverageARB(float value, boolean invert) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB");
+        try { Handles.MH_glSampleCoverageARB.invokeExact(handles.PFN_glSampleCoverageARB, value, ((invert) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in SampleCoverageARB", e); }
     }
 
 }

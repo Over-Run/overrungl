@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.sec.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### firstDrawTimestamp
-/// [VarHandle][#VH_firstDrawTimestamp] - [Getter][#firstDrawTimestamp()] - [Setter][#firstDrawTimestamp(long)]
-/// ### swapBufferTimestamp
-/// [VarHandle][#VH_swapBufferTimestamp] - [Getter][#swapBufferTimestamp()] - [Setter][#swapBufferTimestamp(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkAmigoProfilingSubmitInfoSEC {
-///     VkStructureType sType;
-///     const void * pNext;
+/// ```
+/// struct VkAmigoProfilingSubmitInfoSEC {
+///     (int) VkStructureType sType;
+///     const void* pNext;
 ///     uint64_t firstDrawTimestamp;
 ///     uint64_t swapBufferTimestamp;
-/// } VkAmigoProfilingSubmitInfoSEC;
+/// };
 /// ```
-public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
+public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     /// The struct layout of `VkAmigoProfilingSubmitInfoSEC`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("firstDrawTimestamp"),
         ValueLayout.JAVA_LONG.withName("swapBufferTimestamp")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `firstDrawTimestamp` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `firstDrawTimestamp`.
+    public static final long OFFSET_firstDrawTimestamp = LAYOUT.byteOffset(PathElement.groupElement("firstDrawTimestamp"));
+    /// The memory layout of `firstDrawTimestamp`.
+    public static final MemoryLayout LAYOUT_firstDrawTimestamp = LAYOUT.select(PathElement.groupElement("firstDrawTimestamp"));
+    /// The [VarHandle] of `firstDrawTimestamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_firstDrawTimestamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstDrawTimestamp"));
-    /// The [VarHandle] of `swapBufferTimestamp` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `swapBufferTimestamp`.
+    public static final long OFFSET_swapBufferTimestamp = LAYOUT.byteOffset(PathElement.groupElement("swapBufferTimestamp"));
+    /// The memory layout of `swapBufferTimestamp`.
+    public static final MemoryLayout LAYOUT_swapBufferTimestamp = LAYOUT.select(PathElement.groupElement("swapBufferTimestamp"));
+    /// The [VarHandle] of `swapBufferTimestamp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapBufferTimestamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapBufferTimestamp"));
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAmigoProfilingSubmitInfoSEC of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment); }
-
-    /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAmigoProfilingSubmitInfoSEC ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAmigoProfilingSubmitInfoSEC ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAmigoProfilingSubmitInfoSEC` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
     /// @return the allocated `VkAmigoProfilingSubmitInfoSEC`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAmigoProfilingSubmitInfoSEC` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAmigoProfilingSubmitInfoSEC`
-    public static VkAmigoProfilingSubmitInfoSEC allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint64_t") long firstDrawTimestamp, @CType("uint64_t") long swapBufferTimestamp) { return alloc(allocator).sType(sType).pNext(pNext).firstDrawTimestamp(firstDrawTimestamp).swapBufferTimestamp(swapBufferTimestamp); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAmigoProfilingSubmitInfoSEC.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkAmigoProfilingSubmitInfoSEC.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAmigoProfilingSubmitInfoSEC.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAmigoProfilingSubmitInfoSEC sType(@CType("VkStructureType") int value) { VkAmigoProfilingSubmitInfoSEC.set_sType(this.segment(), value); return this; }
+    public VkAmigoProfilingSubmitInfoSEC sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAmigoProfilingSubmitInfoSEC.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAmigoProfilingSubmitInfoSEC.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAmigoProfilingSubmitInfoSEC.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAmigoProfilingSubmitInfoSEC pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAmigoProfilingSubmitInfoSEC.set_pNext(this.segment(), value); return this; }
+    public VkAmigoProfilingSubmitInfoSEC pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `firstDrawTimestamp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_firstDrawTimestamp(MemorySegment segment, long index) { return (long) VH_firstDrawTimestamp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long firstDrawTimestamp(MemorySegment segment, long index) { return (long) VH_firstDrawTimestamp.get(segment, 0L, index); }
     /// {@return `firstDrawTimestamp`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_firstDrawTimestamp(MemorySegment segment) { return VkAmigoProfilingSubmitInfoSEC.get_firstDrawTimestamp(segment, 0L); }
-    /// {@return `firstDrawTimestamp`}
-    public @CType("uint64_t") long firstDrawTimestamp() { return VkAmigoProfilingSubmitInfoSEC.get_firstDrawTimestamp(this.segment()); }
+    public long firstDrawTimestamp() { return firstDrawTimestamp(this.segment(), 0L); }
     /// Sets `firstDrawTimestamp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_firstDrawTimestamp(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_firstDrawTimestamp.set(segment, 0L, index, value); }
-    /// Sets `firstDrawTimestamp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_firstDrawTimestamp(MemorySegment segment, @CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_firstDrawTimestamp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void firstDrawTimestamp(MemorySegment segment, long index, long value) { VH_firstDrawTimestamp.set(segment, 0L, index, value); }
     /// Sets `firstDrawTimestamp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAmigoProfilingSubmitInfoSEC firstDrawTimestamp(@CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_firstDrawTimestamp(this.segment(), value); return this; }
+    public VkAmigoProfilingSubmitInfoSEC firstDrawTimestamp(long value) { firstDrawTimestamp(this.segment(), 0L, value); return this; }
 
     /// {@return `swapBufferTimestamp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_swapBufferTimestamp(MemorySegment segment, long index) { return (long) VH_swapBufferTimestamp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long swapBufferTimestamp(MemorySegment segment, long index) { return (long) VH_swapBufferTimestamp.get(segment, 0L, index); }
     /// {@return `swapBufferTimestamp`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_swapBufferTimestamp(MemorySegment segment) { return VkAmigoProfilingSubmitInfoSEC.get_swapBufferTimestamp(segment, 0L); }
-    /// {@return `swapBufferTimestamp`}
-    public @CType("uint64_t") long swapBufferTimestamp() { return VkAmigoProfilingSubmitInfoSEC.get_swapBufferTimestamp(this.segment()); }
+    public long swapBufferTimestamp() { return swapBufferTimestamp(this.segment(), 0L); }
     /// Sets `swapBufferTimestamp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_swapBufferTimestamp(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_swapBufferTimestamp.set(segment, 0L, index, value); }
-    /// Sets `swapBufferTimestamp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_swapBufferTimestamp(MemorySegment segment, @CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_swapBufferTimestamp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void swapBufferTimestamp(MemorySegment segment, long index, long value) { VH_swapBufferTimestamp.set(segment, 0L, index, value); }
     /// Sets `swapBufferTimestamp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAmigoProfilingSubmitInfoSEC swapBufferTimestamp(@CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_swapBufferTimestamp(this.segment(), value); return this; }
+    public VkAmigoProfilingSubmitInfoSEC swapBufferTimestamp(long value) { swapBufferTimestamp(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAmigoProfilingSubmitInfoSEC].
     public static final class Buffer extends VkAmigoProfilingSubmitInfoSEC {
@@ -229,40 +197,40 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkAmigoProfilingSubmitInfoSEC.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAmigoProfilingSubmitInfoSEC.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAmigoProfilingSubmitInfoSEC.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAmigoProfilingSubmitInfoSEC.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `firstDrawTimestamp` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long firstDrawTimestampAt(long index) { return VkAmigoProfilingSubmitInfoSEC.get_firstDrawTimestamp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long firstDrawTimestampAt(long index) { return firstDrawTimestamp(this.segment(), index); }
         /// Sets `firstDrawTimestamp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer firstDrawTimestampAt(long index, @CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_firstDrawTimestamp(this.segment(), index, value); return this; }
+        public Buffer firstDrawTimestampAt(long index, long value) { firstDrawTimestamp(this.segment(), index, value); return this; }
 
         /// {@return `swapBufferTimestamp` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long swapBufferTimestampAt(long index) { return VkAmigoProfilingSubmitInfoSEC.get_swapBufferTimestamp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long swapBufferTimestampAt(long index) { return swapBufferTimestamp(this.segment(), index); }
         /// Sets `swapBufferTimestamp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer swapBufferTimestampAt(long index, @CType("uint64_t") long value) { VkAmigoProfilingSubmitInfoSEC.set_swapBufferTimestamp(this.segment(), index, value); return this; }
+        public Buffer swapBufferTimestampAt(long index, long value) { swapBufferTimestamp(this.segment(), index, value); return this; }
 
     }
 }

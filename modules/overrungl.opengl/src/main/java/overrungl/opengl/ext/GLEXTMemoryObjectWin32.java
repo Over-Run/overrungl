@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -35,18 +33,9 @@ public final class GLEXTMemoryObjectWin32 {
     public static final int GL_HANDLE_TYPE_D3D11_IMAGE_EXT = 0x958B;
     public static final int GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT = 0x958C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportMemoryWin32HandleEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glImportMemoryWin32NameEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glImportMemoryWin32HandleEXT,
-            FD_glImportMemoryWin32NameEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportMemoryWin32HandleEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryWin32HandleEXT);
-        public static final MethodHandle MH_glImportMemoryWin32NameEXT = RuntimeHelper.downcall(Descriptors.FD_glImportMemoryWin32NameEXT);
+        public static final MethodHandle MH_glImportMemoryWin32HandleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImportMemoryWin32NameEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glImportMemoryWin32HandleEXT;
         public final MemorySegment PFN_glImportMemoryWin32NameEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -59,16 +48,22 @@ public final class GLEXTMemoryObjectWin32 {
         this.handles = new Handles(func);
     }
 
-    public void ImportMemoryWin32HandleEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("void*") java.lang.foreign.MemorySegment handle) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
+    /// ```
+    /// void glImportMemoryWin32HandleEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, void* handle);
+    /// ```
+    public void ImportMemoryWin32HandleEXT(int memory, long size, int handleType, MemorySegment handle) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
         try { Handles.MH_glImportMemoryWin32HandleEXT.invokeExact(handles.PFN_glImportMemoryWin32HandleEXT, memory, size, handleType, handle); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32HandleEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32HandleEXT", e); }
     }
 
-    public void ImportMemoryWin32NameEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("const void *") java.lang.foreign.MemorySegment name) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");
+    /// ```
+    /// void glImportMemoryWin32NameEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, const void* name);
+    /// ```
+    public void ImportMemoryWin32NameEXT(int memory, long size, int handleType, MemorySegment name) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");
         try { Handles.MH_glImportMemoryWin32NameEXT.invokeExact(handles.PFN_glImportMemoryWin32NameEXT, memory, size, handleType, name); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32NameEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32NameEXT", e); }
     }
 
 }

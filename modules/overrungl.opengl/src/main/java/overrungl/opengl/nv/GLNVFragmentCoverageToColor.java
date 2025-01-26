@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -28,15 +26,8 @@ public final class GLNVFragmentCoverageToColor {
     public static final int GL_FRAGMENT_COVERAGE_TO_COLOR_NV = 0x92DD;
     public static final int GL_FRAGMENT_COVERAGE_COLOR_NV = 0x92DE;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFragmentCoverageColorNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFragmentCoverageColorNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFragmentCoverageColorNV = RuntimeHelper.downcall(Descriptors.FD_glFragmentCoverageColorNV);
+        public static final MethodHandle MH_glFragmentCoverageColorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFragmentCoverageColorNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFragmentCoverageColorNV = func.invoke("glFragmentCoverageColorNV");
@@ -47,10 +38,13 @@ public final class GLNVFragmentCoverageToColor {
         this.handles = new Handles(func);
     }
 
-    public void FragmentCoverageColorNV(@CType("GLuint") int color) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
+    /// ```
+    /// void glFragmentCoverageColorNV((unsigned int) GLuint color);
+    /// ```
+    public void FragmentCoverageColorNV(int color) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
         try { Handles.MH_glFragmentCoverageColorNV.invokeExact(handles.PFN_glFragmentCoverageColorNV, color); }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentCoverageColorNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FragmentCoverageColorNV", e); }
     }
 
 }

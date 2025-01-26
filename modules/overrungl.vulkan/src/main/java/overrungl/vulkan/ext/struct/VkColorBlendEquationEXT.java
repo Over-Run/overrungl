@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### srcColorBlendFactor
-/// [VarHandle][#VH_srcColorBlendFactor] - [Getter][#srcColorBlendFactor()] - [Setter][#srcColorBlendFactor(int)]
-/// ### dstColorBlendFactor
-/// [VarHandle][#VH_dstColorBlendFactor] - [Getter][#dstColorBlendFactor()] - [Setter][#dstColorBlendFactor(int)]
-/// ### colorBlendOp
-/// [VarHandle][#VH_colorBlendOp] - [Getter][#colorBlendOp()] - [Setter][#colorBlendOp(int)]
-/// ### srcAlphaBlendFactor
-/// [VarHandle][#VH_srcAlphaBlendFactor] - [Getter][#srcAlphaBlendFactor()] - [Setter][#srcAlphaBlendFactor(int)]
-/// ### dstAlphaBlendFactor
-/// [VarHandle][#VH_dstAlphaBlendFactor] - [Getter][#dstAlphaBlendFactor()] - [Setter][#dstAlphaBlendFactor(int)]
-/// ### alphaBlendOp
-/// [VarHandle][#VH_alphaBlendOp] - [Getter][#alphaBlendOp()] - [Setter][#alphaBlendOp(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkColorBlendEquationEXT {
-///     VkBlendFactor srcColorBlendFactor;
-///     VkBlendFactor dstColorBlendFactor;
-///     VkBlendOp colorBlendOp;
-///     VkBlendFactor srcAlphaBlendFactor;
-///     VkBlendFactor dstAlphaBlendFactor;
-///     VkBlendOp alphaBlendOp;
-/// } VkColorBlendEquationEXT;
 /// ```
-public sealed class VkColorBlendEquationEXT extends Struct {
+/// struct VkColorBlendEquationEXT {
+///     (int) VkBlendFactor srcColorBlendFactor;
+///     (int) VkBlendFactor dstColorBlendFactor;
+///     (int) VkBlendOp colorBlendOp;
+///     (int) VkBlendFactor srcAlphaBlendFactor;
+///     (int) VkBlendFactor dstAlphaBlendFactor;
+///     (int) VkBlendOp alphaBlendOp;
+/// };
+/// ```
+public sealed class VkColorBlendEquationEXT extends GroupType {
     /// The struct layout of `VkColorBlendEquationEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("srcColorBlendFactor"),
         ValueLayout.JAVA_INT.withName("dstColorBlendFactor"),
         ValueLayout.JAVA_INT.withName("colorBlendOp"),
@@ -59,17 +45,41 @@ public sealed class VkColorBlendEquationEXT extends Struct {
         ValueLayout.JAVA_INT.withName("dstAlphaBlendFactor"),
         ValueLayout.JAVA_INT.withName("alphaBlendOp")
     );
-    /// The [VarHandle] of `srcColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `srcColorBlendFactor`.
+    public static final long OFFSET_srcColorBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("srcColorBlendFactor"));
+    /// The memory layout of `srcColorBlendFactor`.
+    public static final MemoryLayout LAYOUT_srcColorBlendFactor = LAYOUT.select(PathElement.groupElement("srcColorBlendFactor"));
+    /// The [VarHandle] of `srcColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcColorBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcColorBlendFactor"));
-    /// The [VarHandle] of `dstColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dstColorBlendFactor`.
+    public static final long OFFSET_dstColorBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("dstColorBlendFactor"));
+    /// The memory layout of `dstColorBlendFactor`.
+    public static final MemoryLayout LAYOUT_dstColorBlendFactor = LAYOUT.select(PathElement.groupElement("dstColorBlendFactor"));
+    /// The [VarHandle] of `dstColorBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstColorBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstColorBlendFactor"));
-    /// The [VarHandle] of `colorBlendOp` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `colorBlendOp`.
+    public static final long OFFSET_colorBlendOp = LAYOUT.byteOffset(PathElement.groupElement("colorBlendOp"));
+    /// The memory layout of `colorBlendOp`.
+    public static final MemoryLayout LAYOUT_colorBlendOp = LAYOUT.select(PathElement.groupElement("colorBlendOp"));
+    /// The [VarHandle] of `colorBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_colorBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorBlendOp"));
-    /// The [VarHandle] of `srcAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `srcAlphaBlendFactor`.
+    public static final long OFFSET_srcAlphaBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("srcAlphaBlendFactor"));
+    /// The memory layout of `srcAlphaBlendFactor`.
+    public static final MemoryLayout LAYOUT_srcAlphaBlendFactor = LAYOUT.select(PathElement.groupElement("srcAlphaBlendFactor"));
+    /// The [VarHandle] of `srcAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srcAlphaBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srcAlphaBlendFactor"));
-    /// The [VarHandle] of `dstAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dstAlphaBlendFactor`.
+    public static final long OFFSET_dstAlphaBlendFactor = LAYOUT.byteOffset(PathElement.groupElement("dstAlphaBlendFactor"));
+    /// The memory layout of `dstAlphaBlendFactor`.
+    public static final MemoryLayout LAYOUT_dstAlphaBlendFactor = LAYOUT.select(PathElement.groupElement("dstAlphaBlendFactor"));
+    /// The [VarHandle] of `dstAlphaBlendFactor` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstAlphaBlendFactor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstAlphaBlendFactor"));
-    /// The [VarHandle] of `alphaBlendOp` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `alphaBlendOp`.
+    public static final long OFFSET_alphaBlendOp = LAYOUT.byteOffset(PathElement.groupElement("alphaBlendOp"));
+    /// The memory layout of `alphaBlendOp`.
+    public static final MemoryLayout LAYOUT_alphaBlendOp = LAYOUT.select(PathElement.groupElement("alphaBlendOp"));
+    /// The [VarHandle] of `alphaBlendOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_alphaBlendOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("alphaBlendOp"));
 
     /// Creates `VkColorBlendEquationEXT` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkColorBlendEquationEXT extends Struct {
     /// Creates `VkColorBlendEquationEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkColorBlendEquationEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkColorBlendEquationEXT(segment); }
-
-    /// Creates `VkColorBlendEquationEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkColorBlendEquationEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkColorBlendEquationEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkColorBlendEquationEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkColorBlendEquationEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkColorBlendEquationEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkColorBlendEquationEXT` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkColorBlendEquationEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkColorBlendEquationEXT extends Struct {
     /// @return the allocated `VkColorBlendEquationEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, @CType("VkBlendFactor") int srcColorBlendFactor, @CType("VkBlendFactor") int dstColorBlendFactor, @CType("VkBlendOp") int colorBlendOp, @CType("VkBlendFactor") int srcAlphaBlendFactor, @CType("VkBlendFactor") int dstAlphaBlendFactor, @CType("VkBlendOp") int alphaBlendOp) { return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor).colorBlendOp(colorBlendOp).srcAlphaBlendFactor(srcAlphaBlendFactor).dstAlphaBlendFactor(dstAlphaBlendFactor).alphaBlendOp(alphaBlendOp); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkColorBlendEquationEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `srcColorBlendFactor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendFactor") int get_srcColorBlendFactor(MemorySegment segment, long index) { return (int) VH_srcColorBlendFactor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int srcColorBlendFactor(MemorySegment segment, long index) { return (int) VH_srcColorBlendFactor.get(segment, 0L, index); }
     /// {@return `srcColorBlendFactor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendFactor") int get_srcColorBlendFactor(MemorySegment segment) { return VkColorBlendEquationEXT.get_srcColorBlendFactor(segment, 0L); }
-    /// {@return `srcColorBlendFactor`}
-    public @CType("VkBlendFactor") int srcColorBlendFactor() { return VkColorBlendEquationEXT.get_srcColorBlendFactor(this.segment()); }
+    public int srcColorBlendFactor() { return srcColorBlendFactor(this.segment(), 0L); }
     /// Sets `srcColorBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srcColorBlendFactor(MemorySegment segment, long index, @CType("VkBlendFactor") int value) { VH_srcColorBlendFactor.set(segment, 0L, index, value); }
-    /// Sets `srcColorBlendFactor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_srcColorBlendFactor(MemorySegment segment, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcColorBlendFactor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void srcColorBlendFactor(MemorySegment segment, long index, int value) { VH_srcColorBlendFactor.set(segment, 0L, index, value); }
     /// Sets `srcColorBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT srcColorBlendFactor(@CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcColorBlendFactor(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT srcColorBlendFactor(int value) { srcColorBlendFactor(this.segment(), 0L, value); return this; }
 
     /// {@return `dstColorBlendFactor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendFactor") int get_dstColorBlendFactor(MemorySegment segment, long index) { return (int) VH_dstColorBlendFactor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dstColorBlendFactor(MemorySegment segment, long index) { return (int) VH_dstColorBlendFactor.get(segment, 0L, index); }
     /// {@return `dstColorBlendFactor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendFactor") int get_dstColorBlendFactor(MemorySegment segment) { return VkColorBlendEquationEXT.get_dstColorBlendFactor(segment, 0L); }
-    /// {@return `dstColorBlendFactor`}
-    public @CType("VkBlendFactor") int dstColorBlendFactor() { return VkColorBlendEquationEXT.get_dstColorBlendFactor(this.segment()); }
+    public int dstColorBlendFactor() { return dstColorBlendFactor(this.segment(), 0L); }
     /// Sets `dstColorBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dstColorBlendFactor(MemorySegment segment, long index, @CType("VkBlendFactor") int value) { VH_dstColorBlendFactor.set(segment, 0L, index, value); }
-    /// Sets `dstColorBlendFactor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dstColorBlendFactor(MemorySegment segment, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstColorBlendFactor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dstColorBlendFactor(MemorySegment segment, long index, int value) { VH_dstColorBlendFactor.set(segment, 0L, index, value); }
     /// Sets `dstColorBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT dstColorBlendFactor(@CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstColorBlendFactor(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT dstColorBlendFactor(int value) { dstColorBlendFactor(this.segment(), 0L, value); return this; }
 
     /// {@return `colorBlendOp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendOp") int get_colorBlendOp(MemorySegment segment, long index) { return (int) VH_colorBlendOp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int colorBlendOp(MemorySegment segment, long index) { return (int) VH_colorBlendOp.get(segment, 0L, index); }
     /// {@return `colorBlendOp`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendOp") int get_colorBlendOp(MemorySegment segment) { return VkColorBlendEquationEXT.get_colorBlendOp(segment, 0L); }
-    /// {@return `colorBlendOp`}
-    public @CType("VkBlendOp") int colorBlendOp() { return VkColorBlendEquationEXT.get_colorBlendOp(this.segment()); }
+    public int colorBlendOp() { return colorBlendOp(this.segment(), 0L); }
     /// Sets `colorBlendOp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_colorBlendOp(MemorySegment segment, long index, @CType("VkBlendOp") int value) { VH_colorBlendOp.set(segment, 0L, index, value); }
-    /// Sets `colorBlendOp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_colorBlendOp(MemorySegment segment, @CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_colorBlendOp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void colorBlendOp(MemorySegment segment, long index, int value) { VH_colorBlendOp.set(segment, 0L, index, value); }
     /// Sets `colorBlendOp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT colorBlendOp(@CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_colorBlendOp(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT colorBlendOp(int value) { colorBlendOp(this.segment(), 0L, value); return this; }
 
     /// {@return `srcAlphaBlendFactor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendFactor") int get_srcAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_srcAlphaBlendFactor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int srcAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_srcAlphaBlendFactor.get(segment, 0L, index); }
     /// {@return `srcAlphaBlendFactor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendFactor") int get_srcAlphaBlendFactor(MemorySegment segment) { return VkColorBlendEquationEXT.get_srcAlphaBlendFactor(segment, 0L); }
-    /// {@return `srcAlphaBlendFactor`}
-    public @CType("VkBlendFactor") int srcAlphaBlendFactor() { return VkColorBlendEquationEXT.get_srcAlphaBlendFactor(this.segment()); }
+    public int srcAlphaBlendFactor() { return srcAlphaBlendFactor(this.segment(), 0L); }
     /// Sets `srcAlphaBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srcAlphaBlendFactor(MemorySegment segment, long index, @CType("VkBlendFactor") int value) { VH_srcAlphaBlendFactor.set(segment, 0L, index, value); }
-    /// Sets `srcAlphaBlendFactor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_srcAlphaBlendFactor(MemorySegment segment, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcAlphaBlendFactor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void srcAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_srcAlphaBlendFactor.set(segment, 0L, index, value); }
     /// Sets `srcAlphaBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT srcAlphaBlendFactor(@CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcAlphaBlendFactor(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT srcAlphaBlendFactor(int value) { srcAlphaBlendFactor(this.segment(), 0L, value); return this; }
 
     /// {@return `dstAlphaBlendFactor` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendFactor") int get_dstAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_dstAlphaBlendFactor.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dstAlphaBlendFactor(MemorySegment segment, long index) { return (int) VH_dstAlphaBlendFactor.get(segment, 0L, index); }
     /// {@return `dstAlphaBlendFactor`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendFactor") int get_dstAlphaBlendFactor(MemorySegment segment) { return VkColorBlendEquationEXT.get_dstAlphaBlendFactor(segment, 0L); }
-    /// {@return `dstAlphaBlendFactor`}
-    public @CType("VkBlendFactor") int dstAlphaBlendFactor() { return VkColorBlendEquationEXT.get_dstAlphaBlendFactor(this.segment()); }
+    public int dstAlphaBlendFactor() { return dstAlphaBlendFactor(this.segment(), 0L); }
     /// Sets `dstAlphaBlendFactor` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dstAlphaBlendFactor(MemorySegment segment, long index, @CType("VkBlendFactor") int value) { VH_dstAlphaBlendFactor.set(segment, 0L, index, value); }
-    /// Sets `dstAlphaBlendFactor` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dstAlphaBlendFactor(MemorySegment segment, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstAlphaBlendFactor(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dstAlphaBlendFactor(MemorySegment segment, long index, int value) { VH_dstAlphaBlendFactor.set(segment, 0L, index, value); }
     /// Sets `dstAlphaBlendFactor` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT dstAlphaBlendFactor(@CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstAlphaBlendFactor(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT dstAlphaBlendFactor(int value) { dstAlphaBlendFactor(this.segment(), 0L, value); return this; }
 
     /// {@return `alphaBlendOp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBlendOp") int get_alphaBlendOp(MemorySegment segment, long index) { return (int) VH_alphaBlendOp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int alphaBlendOp(MemorySegment segment, long index) { return (int) VH_alphaBlendOp.get(segment, 0L, index); }
     /// {@return `alphaBlendOp`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBlendOp") int get_alphaBlendOp(MemorySegment segment) { return VkColorBlendEquationEXT.get_alphaBlendOp(segment, 0L); }
-    /// {@return `alphaBlendOp`}
-    public @CType("VkBlendOp") int alphaBlendOp() { return VkColorBlendEquationEXT.get_alphaBlendOp(this.segment()); }
+    public int alphaBlendOp() { return alphaBlendOp(this.segment(), 0L); }
     /// Sets `alphaBlendOp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_alphaBlendOp(MemorySegment segment, long index, @CType("VkBlendOp") int value) { VH_alphaBlendOp.set(segment, 0L, index, value); }
-    /// Sets `alphaBlendOp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_alphaBlendOp(MemorySegment segment, @CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_alphaBlendOp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void alphaBlendOp(MemorySegment segment, long index, int value) { VH_alphaBlendOp.set(segment, 0L, index, value); }
     /// Sets `alphaBlendOp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkColorBlendEquationEXT alphaBlendOp(@CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_alphaBlendOp(this.segment(), value); return this; }
+    public VkColorBlendEquationEXT alphaBlendOp(int value) { alphaBlendOp(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkColorBlendEquationEXT].
     public static final class Buffer extends VkColorBlendEquationEXT {
@@ -287,58 +245,58 @@ public sealed class VkColorBlendEquationEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `srcColorBlendFactor` at the given index}
-        /// @param index the index
-        public @CType("VkBlendFactor") int srcColorBlendFactorAt(long index) { return VkColorBlendEquationEXT.get_srcColorBlendFactor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int srcColorBlendFactorAt(long index) { return srcColorBlendFactor(this.segment(), index); }
         /// Sets `srcColorBlendFactor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srcColorBlendFactorAt(long index, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcColorBlendFactor(this.segment(), index, value); return this; }
+        public Buffer srcColorBlendFactorAt(long index, int value) { srcColorBlendFactor(this.segment(), index, value); return this; }
 
         /// {@return `dstColorBlendFactor` at the given index}
-        /// @param index the index
-        public @CType("VkBlendFactor") int dstColorBlendFactorAt(long index) { return VkColorBlendEquationEXT.get_dstColorBlendFactor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dstColorBlendFactorAt(long index) { return dstColorBlendFactor(this.segment(), index); }
         /// Sets `dstColorBlendFactor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dstColorBlendFactorAt(long index, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstColorBlendFactor(this.segment(), index, value); return this; }
+        public Buffer dstColorBlendFactorAt(long index, int value) { dstColorBlendFactor(this.segment(), index, value); return this; }
 
         /// {@return `colorBlendOp` at the given index}
-        /// @param index the index
-        public @CType("VkBlendOp") int colorBlendOpAt(long index) { return VkColorBlendEquationEXT.get_colorBlendOp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int colorBlendOpAt(long index) { return colorBlendOp(this.segment(), index); }
         /// Sets `colorBlendOp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer colorBlendOpAt(long index, @CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_colorBlendOp(this.segment(), index, value); return this; }
+        public Buffer colorBlendOpAt(long index, int value) { colorBlendOp(this.segment(), index, value); return this; }
 
         /// {@return `srcAlphaBlendFactor` at the given index}
-        /// @param index the index
-        public @CType("VkBlendFactor") int srcAlphaBlendFactorAt(long index) { return VkColorBlendEquationEXT.get_srcAlphaBlendFactor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int srcAlphaBlendFactorAt(long index) { return srcAlphaBlendFactor(this.segment(), index); }
         /// Sets `srcAlphaBlendFactor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srcAlphaBlendFactorAt(long index, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_srcAlphaBlendFactor(this.segment(), index, value); return this; }
+        public Buffer srcAlphaBlendFactorAt(long index, int value) { srcAlphaBlendFactor(this.segment(), index, value); return this; }
 
         /// {@return `dstAlphaBlendFactor` at the given index}
-        /// @param index the index
-        public @CType("VkBlendFactor") int dstAlphaBlendFactorAt(long index) { return VkColorBlendEquationEXT.get_dstAlphaBlendFactor(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dstAlphaBlendFactorAt(long index) { return dstAlphaBlendFactor(this.segment(), index); }
         /// Sets `dstAlphaBlendFactor` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dstAlphaBlendFactorAt(long index, @CType("VkBlendFactor") int value) { VkColorBlendEquationEXT.set_dstAlphaBlendFactor(this.segment(), index, value); return this; }
+        public Buffer dstAlphaBlendFactorAt(long index, int value) { dstAlphaBlendFactor(this.segment(), index, value); return this; }
 
         /// {@return `alphaBlendOp` at the given index}
-        /// @param index the index
-        public @CType("VkBlendOp") int alphaBlendOpAt(long index) { return VkColorBlendEquationEXT.get_alphaBlendOp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int alphaBlendOpAt(long index) { return alphaBlendOp(this.segment(), index); }
         /// Sets `alphaBlendOp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer alphaBlendOpAt(long index, @CType("VkBlendOp") int value) { VkColorBlendEquationEXT.set_alphaBlendOp(this.segment(), index, value); return this; }
+        public Buffer alphaBlendOpAt(long index, int value) { alphaBlendOp(this.segment(), index, value); return this; }
 
     }
 }

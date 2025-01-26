@@ -1,0 +1,12 @@
+using HWND = void*;
+using HGLRC = void*;
+using HINSTANCE = void*;
+using HMONITOR = void*;
+using HANDLE = void*;
+using SECURITY_ATTRIBUTES = struct _SECURITY_ATTRIBUTES; // {
+                                                         // DWORD  nLength;
+                                                         // LPVOID lpSecurityDescriptor;
+                                                         // BOOL   bInheritHandle;
+                                                         // }
+using DWORD = unsigned long;
+using LPCWSTR = const wchar_t*;

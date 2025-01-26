@@ -16,17 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.img;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKIMGRelaxedLineRasterization {
     public static final int VK_IMG_RELAXED_LINE_RASTERIZATION_SPEC_VERSION = 1;
     public static final String VK_IMG_RELAXED_LINE_RASTERIZATION_EXTENSION_NAME = "VK_IMG_relaxed_line_rasterization";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG = 1000110000;
 
-    private VKIMGRelaxedLineRasterization() { }
+    private VKIMGRelaxedLineRasterization() {}
 
 }

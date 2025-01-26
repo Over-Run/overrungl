@@ -16,12 +16,11 @@
 
 package overrungl.demo.opengl;
 
-import overrungl.glfw.GLFW;
-import overrungl.glfw.GLFWCallbacks;
-import overrungl.glfw.GLFWErrorCallback;
+import overrungl.glfw.*;
 import overrungl.opengl.GL;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import static overrungl.glfw.GLFW.*;
@@ -30,15 +29,18 @@ import static overrungl.opengl.GL.*;
 public class HelloWorld {
     private static final int INIT_WIDTH = 300;
     private static final int INIT_HEIGHT = 300;
-    // The window handle
+    /// The arena of the window
+    private Arena windowArena;
+    /// The window handle
     private MemorySegment window = MemorySegment.NULL;
-    // The OpenGL context
+    /// The OpenGL context
     private GL gl = null;
 
     private void start() {
         // Set up an error callback. The default implementation
         // will print the error message in System.err.
-        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        // We simply use a global arena to manage the upcall stub.
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint().stub(Arena.global()));
 
         // Initialize GLFW. Most GLFW functions will not work before doing this.
         // If you are using Kotlin, you can use the builtin check function
@@ -53,32 +55,41 @@ public class HelloWorld {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         // Get the resolution of the primary monitor
-        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        // GLFWVidMode::ofNative is used since glfwGetVideoMode is a native function,
+        // and it returns a zero-length segment
+        var vidMode = GLFWVidMode.ofNative(glfwGetVideoMode(glfwGetPrimaryMonitor()));
         if (vidMode != null) {
             // Center the window
             glfwWindowHint(GLFW_POSITION_X, (vidMode.width() - INIT_WIDTH) / 2);
             glfwWindowHint(GLFW_POSITION_Y, (vidMode.height() - INIT_HEIGHT) / 2);
         }
 
+        // The window arena for us to create window callbacks.
+        // Callbacks cannot be accessed on other threads, so we use confined arena.
+        windowArena = Arena.ofConfined();
         // Create the window
-        window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
-        if (Unmarshal.isNullPointer(window)) {
+        // As glfwCreateWindow copies the string,
+        // we can use MemoryUtil::allocString to allocate a string managed with GC.
+        window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, MemoryUtil.allocString("Hello World!"), MemorySegment.NULL, MemorySegment.NULL)
+            // associate the window with the given arena
+            .reinterpret(windowArena, null);
+        if (MemoryUtil.isNullPointer(window)) {
             throw new IllegalStateException("Failed to create the GLFW window");
         }
 
         // Set up a key callback. It will be called every time a key is pressed, repeated or released.
-        glfwSetKeyCallback(window, (handle, key, _, action, _) -> {
+        glfwSetKeyCallback(window, GLFWKeyFun.alloc(windowArena, (handle, key, _, action, _) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                 // We will detect this in the rendering loop
                 glfwSetWindowShouldClose(handle, true);
             }
-        });
-        glfwSetFramebufferSizeCallback(window, (_, width, height) -> {
+        }));
+        glfwSetFramebufferSizeCallback(window, GLFWFramebufferSizeFun.alloc(windowArena, (_, width, height) -> {
             // Resize the viewport
             if (gl != null) {
                 gl.Viewport(0, 0, width, height);
             }
-        });
+        }));
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(window);
@@ -117,9 +128,10 @@ public class HelloWorld {
     }
 
     private void dispose() {
-        // Free the window callbacks and destroy the window
-        GLFWCallbacks.free(window);
+        // Destroy the window
         glfwDestroyWindow(window);
+        // Closes the window arena, which also releases callbacks
+        windowArena.close();
 
         // Terminate GLFW
         glfwTerminate();

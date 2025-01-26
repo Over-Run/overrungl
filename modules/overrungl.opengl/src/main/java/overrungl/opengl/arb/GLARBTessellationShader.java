@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -63,18 +61,9 @@ public final class GLARBTessellationShader {
     public static final int GL_TESS_EVALUATION_SHADER = 0x8E87;
     public static final int GL_TESS_CONTROL_SHADER = 0x8E88;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPatchParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPatchParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPatchParameteri,
-            FD_glPatchParameterfv
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPatchParameteri = RuntimeHelper.downcall(Descriptors.FD_glPatchParameteri);
-        public static final MethodHandle MH_glPatchParameterfv = RuntimeHelper.downcall(Descriptors.FD_glPatchParameterfv);
+        public static final MethodHandle MH_glPatchParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPatchParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPatchParameteri;
         public final MemorySegment PFN_glPatchParameterfv;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -87,16 +76,22 @@ public final class GLARBTessellationShader {
         this.handles = new Handles(func);
     }
 
-    public void PatchParameteri(@CType("GLenum") int pname, @CType("GLint") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPatchParameteri)) throw new SymbolNotFoundError("Symbol not found: glPatchParameteri");
+    /// ```
+    /// void glPatchParameteri((unsigned int) GLenum pname, (int) GLint value);
+    /// ```
+    public void PatchParameteri(int pname, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameteri)) throw new SymbolNotFoundError("Symbol not found: glPatchParameteri");
         try { Handles.MH_glPatchParameteri.invokeExact(handles.PFN_glPatchParameteri, pname, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glPatchParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PatchParameteri", e); }
     }
 
-    public void PatchParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment values) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPatchParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPatchParameterfv");
+    /// ```
+    /// void glPatchParameterfv((unsigned int) GLenum pname, const GLfloat* values);
+    /// ```
+    public void PatchParameterfv(int pname, MemorySegment values) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPatchParameterfv");
         try { Handles.MH_glPatchParameterfv.invokeExact(handles.PFN_glPatchParameterfv, pname, values); }
-        catch (Throwable e) { throw new RuntimeException("error in glPatchParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PatchParameterfv", e); }
     }
 
 }

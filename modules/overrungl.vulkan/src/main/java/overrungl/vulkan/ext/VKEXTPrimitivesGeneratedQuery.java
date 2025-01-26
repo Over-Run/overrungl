@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTPrimitivesGeneratedQuery {
     public static final int VK_EXT_PRIMITIVES_GENERATED_QUERY_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKEXTPrimitivesGeneratedQuery {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT = 1000382000;
     public static final int VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT = 1000382000;
 
-    private VKEXTPrimitivesGeneratedQuery() { }
+    private VKEXTPrimitivesGeneratedQuery() {}
 
 }

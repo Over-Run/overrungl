@@ -20,29 +20,68 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.util.CanonicalTypes.SIZE_T;
 
-/**
- * The standard-C memory allocator.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// Utilities of memory segment.
+///
+/// ## C memory allocator
+///
+/// This class supports C-style memory allocation via [malloc][#malloc(long)], [calloc][#calloc(long, long)]
+/// and [free][#free(MemorySegment)].
+///
+/// ## Null-safe allocator
+///
+/// This class adds null-safe allocating methods for [String] and arrays.
+/// For `null` values, those methods return [NULL][MemorySegment#NULL].
+///
+/// ## Reinterpreting string
+///
+/// This class provides `nativeString` methods to get a string from a zero-length memory segment.
+///
+/// ## Copying
+///
+/// This class provides `copy` methods to copy content from a memory segment to an array.
+///
+/// ## Widening and narrowing
+///
+/// This class adds `wideningTo*` and `narrowing*` methods to converts a value
+/// whose byte size varies between platforms.
+///
+/// The memory layouts of those values are often canonical layouts defined in [CanonicalTypes].
+///
+/// @author squid233
+/// @since 0.1.0
 public final class MemoryUtil {
-    private static final Linker LINKER = Linker.nativeLinker();
-    private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
-    private static final MethodHandle
-        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG)),
-        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG)),
-        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG)),
-        m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
-        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
-        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
-        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG));
+    //region C-standard memory allocator
 
-    private static MethodHandle downcall(String name, FunctionDescriptor function) {
-        return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
+    public static final FunctionDescriptor
+        FD_malloc = FunctionDescriptor.of(ADDRESS, SIZE_T),
+        FD_calloc = FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T),
+        FD_realloc = FunctionDescriptor.of(ADDRESS, ADDRESS, SIZE_T),
+        FD_free = FunctionDescriptor.ofVoid(ADDRESS),
+        FD_memcpy = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
+        FD_memmove = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
+        FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, SIZE_T);
+
+    private static final class Handles {
+        private static final Linker LINKER = Linker.nativeLinker();
+        private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
+        private static final MethodHandle
+            m_malloc = downcall("malloc", FD_malloc),
+            m_calloc = downcall("calloc", FD_calloc),
+            m_realloc = downcall("realloc", FD_realloc),
+            m_free = downcall("free", FD_free),
+            m_memcpy = downcall("memcpy", FD_memcpy),
+            m_memmove = downcall("memmove", FD_memmove),
+            m_memset = downcall("memset", FD_memset);
+
+        private static MethodHandle downcall(String name, FunctionDescriptor function) {
+            return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
+        }
     }
 
     private MemoryUtil() {
@@ -93,8 +132,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            return ((MemorySegment) m_malloc.invokeExact(size))
-                .reinterpret(size);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ -> (MemorySegment) Handles.m_malloc.invokeExact(Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_malloc.invokeExact(size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -126,8 +169,13 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            return ((MemorySegment) m_calloc.invokeExact(number, size))
-                .reinterpret(byteSize);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_calloc.invokeExact(Math.toIntExact(number), Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_calloc.invokeExact(number, size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(byteSize);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -180,8 +228,12 @@ public final class MemoryUtil {
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
-            return ((MemorySegment) m_realloc.invokeExact(mem, size))
-                .reinterpret(size);
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ -> (MemorySegment) Handles.m_realloc.invokeExact(mem, Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_realloc.invokeExact(mem, size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -201,9 +253,9 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (Unmarshal.isNullPointer(memblock)) return;
+        if (isNullPointer(memblock)) return;
         try {
-            m_free.invokeExact(memblock);
+            Handles.m_free.invokeExact(memblock);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -225,7 +277,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) m_memcpy.invokeExact(dest, src, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -250,7 +307,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) m_memmove.invokeExact(dest, src, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memmove.invokeExact(dest, src, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memmove.invokeExact(dest, src, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -273,7 +335,12 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
+            final var _ = switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.m_memset.invokeExact(dest, c, Math.toIntExact(count));
+                case ValueLayout.OfLong _ -> (MemorySegment) Handles.m_memset.invokeExact(dest, c, count);
+                default -> throw new AssertionError();
+            };
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -293,5 +360,513 @@ public final class MemoryUtil {
             checkAlignment(byteAlignment);
             return calloc(byteSize, 1).reinterpret(arena, MemoryUtil::free);
         };
+    }
+
+    //endregion
+
+    //region Downcall utils
+
+    /// Allocates a string with the given segment allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param string    the string
+    /// @param charset   the charset of the string; defaults to UTF-8
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
+    public static MemorySegment allocString(SegmentAllocator allocator, String string, Charset charset) {
+        if (string == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(string, charset);
+    }
+
+    /// Allocates a string with the given segment allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param string    the string
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
+    public static MemorySegment allocString(SegmentAllocator allocator, String string) {
+        if (string == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(string);
+    }
+
+    /// Allocates a string with the [auto arena][Arena#ofAuto()].
+    ///
+    /// The allocated segment is managed with the garbage collector,
+    /// and you should only use it if its usage doesn't hold it.
+    ///
+    /// @param string  the string
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
+    public static MemorySegment allocString(String string, Charset charset) {
+        return allocString(Arena.ofAuto(), string, charset);
+    }
+
+    /// Allocates a string encoded with UTF-8 with the [auto arena][Arena#ofAuto()].
+    ///
+    /// The allocated segment is managed with the garbage collector,
+    /// and you should only use it if its usage doesn't hold it.
+    ///
+    /// @param string the string
+    /// @return the allocated segment; or `NULL` if _`string`_ is `null`
+    public static MemorySegment allocString(String string) {
+        return allocString(Arena.ofAuto(), string);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, char[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_CHAR, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, byte[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_BYTE, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, short[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_SHORT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, int[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_INT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, long[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_LONG, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, float[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_FLOAT, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, double[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        return allocator.allocateFrom(JAVA_DOUBLE, arr);
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, MemorySegment[] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            segment.setAtIndex(ADDRESS, i, arr[i]);
+        }
+        return segment;
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @param charset   the charset of the string
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr, Charset charset) {
+        if (arr == null) return MemorySegment.NULL;
+        MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            segment.setAtIndex(ADDRESS, i, allocString(allocator, arr[i], charset));
+        }
+        return segment;
+    }
+
+    /// Allocates an array with the given allocator.
+    ///
+    /// @param allocator the allocator
+    /// @param arr       the array
+    /// @return the allocated segment; or `NULL` if _`arr`_ is `null`
+    public static MemorySegment allocArray(SegmentAllocator allocator, String[] arr) {
+        return allocArray(allocator, arr, StandardCharsets.UTF_8);
+    }
+
+    /// Converts a `long` to another type whose size might be smaller than `long`. This is usually used by `long` and `size_t`.
+    ///
+    /// @param layout the actual value layout of the result
+    /// @param value  the value to be converted
+    /// @return the result
+    public static Object narrowingLong(MemoryLayout layout, long value) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> (byte) value;
+            case OfChar _ -> (char) value;
+            case OfShort _ -> (short) value;
+            case OfInt _ -> (int) value;
+            case OfLong _ -> value;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    /// Converts a `int` to another type whose size might be smaller than `int`. This is usually used by `wchar_t`.
+    ///
+    /// @param layout the actual value layout of the result
+    /// @param value  the value to be converted
+    /// @return the result
+    public static Object narrowingInt(MemoryLayout layout, int value) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> (byte) value;
+            case OfChar _ -> (char) value;
+            case OfShort _ -> (short) value;
+            case OfInt _ -> value;
+            case OfLong _ -> (long) value;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    //endregion
+
+    //region Upcall utils
+
+    /**
+     * The max string size.
+     */
+    public static final long STR_SIZE = Integer.MAX_VALUE - 8;
+    /**
+     * The address layout which dereferences a string with {@linkplain #STR_SIZE the max size}.
+     */
+    public static final AddressLayout STR_LAYOUT = ADDRESS.withTargetLayout(
+        MemoryLayout.sequenceLayout(STR_SIZE, JAVA_BYTE)
+    );
+
+    /**
+     * {@return {@code true} if the given segment is a null pointer; {@code false} otherwise}
+     *
+     * @param segment the native segment
+     */
+    public static boolean isNullPointer(@Nullable MemorySegment segment) {
+        return segment == null || segment.equals(MemorySegment.NULL);
+    }
+
+    /// Gets the string from the given segment.
+    ///
+    /// The segment will be reinterpreted if it is a zero-length segment.
+    ///
+    /// @param segment the segment
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the string; or `null` if _`segment`_ is `NULL`
+    public static String nativeString(MemorySegment segment, Charset charset) {
+        if (isNullPointer(segment)) return null;
+        return (segment.byteSize() == 0 ? segment.reinterpret(STR_SIZE) : segment)
+            .getString(0, charset);
+    }
+
+    /// Gets the string encoded with UTF-8 from the given segment.
+    ///
+    /// The segment will be reinterpreted if it is a zero-length segment.
+    ///
+    /// @param segment the segment
+    /// @return the string; or `null` if _`segment`_ is `NULL`
+    public static String nativeString(MemorySegment segment) {
+        return nativeString(segment, StandardCharsets.UTF_8);
+    }
+
+    /// Gets chars from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the char array; or `null` if _`segment`_ is `NULL`
+    public static char[] asCharArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_CHAR);
+    }
+
+    /// Gets bytes from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the byte array; or `null` if _`segment`_ is `NULL`
+    public static byte[] asByteArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_BYTE);
+    }
+
+    /// Gets shorts from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the short array; or `null` if _`segment`_ is `NULL`
+    public static short[] asShortArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_SHORT);
+    }
+
+    /// Gets integers from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the int array; or `null` if _`segment`_ is `NULL`
+    public static int[] asIntArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_INT);
+    }
+
+    /// Gets longs from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the long array; or `null` if _`segment`_ is `NULL`
+    public static long[] asLongArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_LONG);
+    }
+
+    /// Gets floats from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the float array; or `null` if _`segment`_ is `NULL`
+    public static float[] asFloatArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_FLOAT);
+    }
+
+    /// Gets doubles from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the double array; or `null` if _`segment`_ is `NULL`
+    public static double[] asDoubleArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_DOUBLE);
+    }
+
+    private static int checkArraySize(MemorySegment segment, String typeName, int elemSize) {
+        long length = segment.byteSize();
+        if ((length & (elemSize - 1)) != 0) {
+            throw new IllegalStateException(String.format("Segment size is not a multiple of %d. Size: %d", elemSize, length));
+        }
+        long arraySize = length / elemSize;
+        if (arraySize > (Integer.MAX_VALUE - 8)) {
+            throw new IllegalStateException(String.format("Segment is too large to wrap as %s. Size: %d", typeName, length));
+        }
+        return (int) arraySize;
+    }
+
+    /// Gets addresses from the given segment.
+    ///
+    /// The returned segments are zero-length segments.
+    ///
+    /// @param segment the segment
+    /// @return the address array; or `null` if _`segment`_ is `NULL`
+    public static MemorySegment[] asAddressArray(MemorySegment segment) {
+        if (isNullPointer(segment)) return null;
+        int size = checkArraySize(segment, MemorySegment[].class.getSimpleName(), (int) ADDRESS.byteSize());
+        var arr = new MemorySegment[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = segment.getAtIndex(ADDRESS, i);
+        }
+        return arr;
+    }
+
+    /// Gets strings from the given segment.
+    ///
+    /// @param segment the segment
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the string array; or `null` if _`segment`_ is `NULL`
+    public static String[] asStringArray(MemorySegment segment, Charset charset) {
+        if (isNullPointer(segment)) return null;
+        int size = checkArraySize(segment, String[].class.getSimpleName(), (int) ADDRESS.byteSize());
+        var arr = new String[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = segment.getAtIndex(STR_LAYOUT, i).getString(0L, charset);
+        }
+        return arr;
+    }
+
+    /// Gets strings encoded with UTF-8 from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the string array; or `null` if _`segment`_ is `NULL`
+    public static String[] asStringArray(MemorySegment segment) {
+        return asStringArray(segment, StandardCharsets.UTF_8);
+    }
+
+    /// Converts an integer to `long`. This is usually used by `long` and `size_t`.
+    ///
+    /// @param layout the actual value layout of _`o`_
+    /// @param o      the integer to be converted
+    /// @return the result
+    public static long wideningToLong(MemoryLayout layout, Object o) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> ((Byte) o).longValue();
+            case OfChar _ -> (long) (Character) o;
+            case OfShort _ -> ((Short) o).longValue();
+            case OfInt _ -> ((Integer) o).longValue();
+            case OfLong _ -> (Long) o;
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    /// Converts an integer to `int`. This is usually used by `wchar_t`.
+    ///
+    /// @param layout the actual value layout of _`o`_
+    /// @param o      the integer to be converted
+    /// @return the result
+    public static int wideningToInt(MemoryLayout layout, Object o) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw notValueLayout(layout);
+        }
+        return switch (valueLayout) {
+            case OfByte _ -> ((Byte) o).intValue();
+            case OfChar _ -> (int) (Character) o;
+            case OfShort _ -> ((Short) o).intValue();
+            case OfInt _ -> (Integer) o;
+            case OfLong _ -> ((Long) o).intValue();
+            default -> throw new IllegalArgumentException("Not representing an integral type: " + layout);
+        };
+    }
+
+    //endregion
+
+    // other
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, char @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_CHAR, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, byte @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_BYTE, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, short @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_SHORT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, int @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_INT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, long @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_LONG, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, float @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_FLOAT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, double @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_DOUBLE, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, String @Nullable [] dst) {
+        copy(src, dst, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src     the source segment
+     * @param dst     the destination
+     * @param charset the charset
+     */
+    public static void copy(MemorySegment src, String @Nullable [] dst, Charset charset) {
+        if (isNullPointer(src) || dst == null) return;
+        for (int i = 0; i < dst.length; i++) {
+            dst[i] = nativeString(src.getAtIndex(STR_LAYOUT, i), charset);
+        }
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, MemorySegment @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        for (int i = 0; i < dst.length; i++) {
+            dst[i] = src.getAtIndex(ADDRESS, i);
+        }
+    }
+
+    private static IllegalArgumentException notValueLayout(MemoryLayout layout) {
+        return new IllegalArgumentException("Not a value layout: " + layout);
     }
 }

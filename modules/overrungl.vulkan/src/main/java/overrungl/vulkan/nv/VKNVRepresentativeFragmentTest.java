@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVRepresentativeFragmentTest {
     public static final int VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION = 2;
@@ -28,6 +23,6 @@ public final class VKNVRepresentativeFragmentTest {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV = 1000166000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV = 1000166001;
 
-    private VKNVRepresentativeFragmentTest() { }
+    private VKNVRepresentativeFragmentTest() {}
 
 }

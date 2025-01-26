@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.mesa.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### maximumRequestedAlignment
-/// [VarHandle][#VH_maximumRequestedAlignment] - [Getter][#maximumRequestedAlignment()] - [Setter][#maximumRequestedAlignment(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkImageAlignmentControlCreateInfoMESA {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t maximumRequestedAlignment;
-/// } VkImageAlignmentControlCreateInfoMESA;
 /// ```
-public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
+/// struct VkImageAlignmentControlCreateInfoMESA {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t maximumRequestedAlignment;
+/// };
+/// ```
+public sealed class VkImageAlignmentControlCreateInfoMESA extends GroupType {
     /// The struct layout of `VkImageAlignmentControlCreateInfoMESA`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maximumRequestedAlignment")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `maximumRequestedAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maximumRequestedAlignment`.
+    public static final long OFFSET_maximumRequestedAlignment = LAYOUT.byteOffset(PathElement.groupElement("maximumRequestedAlignment"));
+    /// The memory layout of `maximumRequestedAlignment`.
+    public static final MemoryLayout LAYOUT_maximumRequestedAlignment = LAYOUT.select(PathElement.groupElement("maximumRequestedAlignment"));
+    /// The [VarHandle] of `maximumRequestedAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maximumRequestedAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maximumRequestedAlignment"));
 
     /// Creates `VkImageAlignmentControlCreateInfoMESA` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
     /// Creates `VkImageAlignmentControlCreateInfoMESA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageAlignmentControlCreateInfoMESA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageAlignmentControlCreateInfoMESA(segment); }
-
-    /// Creates `VkImageAlignmentControlCreateInfoMESA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageAlignmentControlCreateInfoMESA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageAlignmentControlCreateInfoMESA ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageAlignmentControlCreateInfoMESA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkImageAlignmentControlCreateInfoMESA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageAlignmentControlCreateInfoMESA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkImageAlignmentControlCreateInfoMESA` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageAlignmentControlCreateInfoMESA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
     /// @return the allocated `VkImageAlignmentControlCreateInfoMESA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageAlignmentControlCreateInfoMESA` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageAlignmentControlCreateInfoMESA`
-    public static VkImageAlignmentControlCreateInfoMESA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maximumRequestedAlignment) { return alloc(allocator).sType(sType).pNext(pNext).maximumRequestedAlignment(maximumRequestedAlignment); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageAlignmentControlCreateInfoMESA.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkImageAlignmentControlCreateInfoMESA.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageAlignmentControlCreateInfoMESA.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageAlignmentControlCreateInfoMESA sType(@CType("VkStructureType") int value) { VkImageAlignmentControlCreateInfoMESA.set_sType(this.segment(), value); return this; }
+    public VkImageAlignmentControlCreateInfoMESA sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageAlignmentControlCreateInfoMESA.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageAlignmentControlCreateInfoMESA.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageAlignmentControlCreateInfoMESA.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageAlignmentControlCreateInfoMESA pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImageAlignmentControlCreateInfoMESA.set_pNext(this.segment(), value); return this; }
+    public VkImageAlignmentControlCreateInfoMESA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `maximumRequestedAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maximumRequestedAlignment(MemorySegment segment, long index) { return (int) VH_maximumRequestedAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maximumRequestedAlignment(MemorySegment segment, long index) { return (int) VH_maximumRequestedAlignment.get(segment, 0L, index); }
     /// {@return `maximumRequestedAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maximumRequestedAlignment(MemorySegment segment) { return VkImageAlignmentControlCreateInfoMESA.get_maximumRequestedAlignment(segment, 0L); }
-    /// {@return `maximumRequestedAlignment`}
-    public @CType("uint32_t") int maximumRequestedAlignment() { return VkImageAlignmentControlCreateInfoMESA.get_maximumRequestedAlignment(this.segment()); }
+    public int maximumRequestedAlignment() { return maximumRequestedAlignment(this.segment(), 0L); }
     /// Sets `maximumRequestedAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maximumRequestedAlignment(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maximumRequestedAlignment.set(segment, 0L, index, value); }
-    /// Sets `maximumRequestedAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maximumRequestedAlignment(MemorySegment segment, @CType("uint32_t") int value) { VkImageAlignmentControlCreateInfoMESA.set_maximumRequestedAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maximumRequestedAlignment(MemorySegment segment, long index, int value) { VH_maximumRequestedAlignment.set(segment, 0L, index, value); }
     /// Sets `maximumRequestedAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageAlignmentControlCreateInfoMESA maximumRequestedAlignment(@CType("uint32_t") int value) { VkImageAlignmentControlCreateInfoMESA.set_maximumRequestedAlignment(this.segment(), value); return this; }
+    public VkImageAlignmentControlCreateInfoMESA maximumRequestedAlignment(int value) { maximumRequestedAlignment(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkImageAlignmentControlCreateInfoMESA].
     public static final class Buffer extends VkImageAlignmentControlCreateInfoMESA {
@@ -200,31 +173,31 @@ public sealed class VkImageAlignmentControlCreateInfoMESA extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageAlignmentControlCreateInfoMESA.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageAlignmentControlCreateInfoMESA.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageAlignmentControlCreateInfoMESA.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageAlignmentControlCreateInfoMESA.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `maximumRequestedAlignment` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maximumRequestedAlignmentAt(long index) { return VkImageAlignmentControlCreateInfoMESA.get_maximumRequestedAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maximumRequestedAlignmentAt(long index) { return maximumRequestedAlignment(this.segment(), index); }
         /// Sets `maximumRequestedAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maximumRequestedAlignmentAt(long index, @CType("uint32_t") int value) { VkImageAlignmentControlCreateInfoMESA.set_maximumRequestedAlignment(this.segment(), index, value); return this; }
+        public Buffer maximumRequestedAlignmentAt(long index, int value) { maximumRequestedAlignment(this.segment(), index, value); return this; }
 
     }
 }

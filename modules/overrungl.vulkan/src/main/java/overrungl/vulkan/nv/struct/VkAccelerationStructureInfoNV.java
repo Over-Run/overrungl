@@ -15,46 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### type
-/// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(int)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### instanceCount
-/// [VarHandle][#VH_instanceCount] - [Getter][#instanceCount()] - [Setter][#instanceCount(int)]
-/// ### geometryCount
-/// [VarHandle][#VH_geometryCount] - [Getter][#geometryCount()] - [Setter][#geometryCount(int)]
-/// ### pGeometries
-/// [VarHandle][#VH_pGeometries] - [Getter][#pGeometries()] - [Setter][#pGeometries(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkAccelerationStructureInfoNV {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkAccelerationStructureTypeNV type;
-///     VkBuildAccelerationStructureFlagsNV flags;
+/// ```
+/// struct VkAccelerationStructureInfoNV {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((int) VkAccelerationStructureTypeKHR) VkAccelerationStructureTypeNV type;
+///     (((uint32_t) VkFlags) VkBuildAccelerationStructureFlagsKHR) VkBuildAccelerationStructureFlagsNV flags;
 ///     uint32_t instanceCount;
 ///     uint32_t geometryCount;
-///     const VkGeometryNV * pGeometries;
-/// } VkAccelerationStructureInfoNV;
+///     const VkGeometryNV* pGeometries;
+/// };
 /// ```
-public sealed class VkAccelerationStructureInfoNV extends Struct {
+public sealed class VkAccelerationStructureInfoNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureInfoNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("type"),
@@ -63,19 +47,47 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
         ValueLayout.JAVA_INT.withName("geometryCount"),
         ValueLayout.ADDRESS.withName("pGeometries")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `type`.
+    public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
+    /// The memory layout of `type`.
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
+    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `instanceCount`.
+    public static final long OFFSET_instanceCount = LAYOUT.byteOffset(PathElement.groupElement("instanceCount"));
+    /// The memory layout of `instanceCount`.
+    public static final MemoryLayout LAYOUT_instanceCount = LAYOUT.select(PathElement.groupElement("instanceCount"));
+    /// The [VarHandle] of `instanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_instanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("instanceCount"));
-    /// The [VarHandle] of `geometryCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `geometryCount`.
+    public static final long OFFSET_geometryCount = LAYOUT.byteOffset(PathElement.groupElement("geometryCount"));
+    /// The memory layout of `geometryCount`.
+    public static final MemoryLayout LAYOUT_geometryCount = LAYOUT.select(PathElement.groupElement("geometryCount"));
+    /// The [VarHandle] of `geometryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_geometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("geometryCount"));
-    /// The [VarHandle] of `pGeometries` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pGeometries`.
+    public static final long OFFSET_pGeometries = LAYOUT.byteOffset(PathElement.groupElement("pGeometries"));
+    /// The memory layout of `pGeometries`.
+    public static final MemoryLayout LAYOUT_pGeometries = LAYOUT.select(PathElement.groupElement("pGeometries"));
+    /// The [VarHandle] of `pGeometries` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pGeometries = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pGeometries"));
 
     /// Creates `VkAccelerationStructureInfoNV` with the given segment.
@@ -85,19 +97,14 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
     /// Creates `VkAccelerationStructureInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureInfoNV(segment); }
-
-    /// Creates `VkAccelerationStructureInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureInfoNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAccelerationStructureInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAccelerationStructureInfoNV` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
     /// @return the allocated `VkAccelerationStructureInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureInfoNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAccelerationStructureInfoNV`
-    public static VkAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAccelerationStructureTypeNV") int type, @CType("VkBuildAccelerationStructureFlagsNV") int flags, @CType("uint32_t") int instanceCount, @CType("uint32_t") int geometryCount, @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment pGeometries) { return alloc(allocator).sType(sType).pNext(pNext).type(type).flags(flags).instanceCount(instanceCount).geometryCount(geometryCount).pGeometries(pGeometries); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkAccelerationStructureInfoNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAccelerationStructureInfoNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV sType(@CType("VkStructureType") int value) { VkAccelerationStructureInfoNV.set_sType(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureInfoNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkAccelerationStructureTypeNV") int get_type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
     /// {@return `type`}
-    /// @param segment the segment of the struct
-    public static @CType("VkAccelerationStructureTypeNV") int get_type(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_type(segment, 0L); }
-    /// {@return `type`}
-    public @CType("VkAccelerationStructureTypeNV") int type() { return VkAccelerationStructureInfoNV.get_type(this.segment()); }
+    public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, long index, @CType("VkAccelerationStructureTypeNV") int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, @CType("VkAccelerationStructureTypeNV") int value) { VkAccelerationStructureInfoNV.set_type(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV type(@CType("VkAccelerationStructureTypeNV") int value) { VkAccelerationStructureInfoNV.set_type(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV type(int value) { type(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBuildAccelerationStructureFlagsNV") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBuildAccelerationStructureFlagsNV") int get_flags(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkBuildAccelerationStructureFlagsNV") int flags() { return VkAccelerationStructureInfoNV.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkBuildAccelerationStructureFlagsNV") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkBuildAccelerationStructureFlagsNV") int value) { VkAccelerationStructureInfoNV.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV flags(@CType("VkBuildAccelerationStructureFlagsNV") int value) { VkAccelerationStructureInfoNV.set_flags(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `instanceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int instanceCount(MemorySegment segment, long index) { return (int) VH_instanceCount.get(segment, 0L, index); }
     /// {@return `instanceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_instanceCount(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_instanceCount(segment, 0L); }
-    /// {@return `instanceCount`}
-    public @CType("uint32_t") int instanceCount() { return VkAccelerationStructureInfoNV.get_instanceCount(this.segment()); }
+    public int instanceCount() { return instanceCount(this.segment(), 0L); }
     /// Sets `instanceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_instanceCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_instanceCount.set(segment, 0L, index, value); }
-    /// Sets `instanceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_instanceCount(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_instanceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void instanceCount(MemorySegment segment, long index, int value) { VH_instanceCount.set(segment, 0L, index, value); }
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV instanceCount(@CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_instanceCount(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV instanceCount(int value) { instanceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `geometryCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_geometryCount(MemorySegment segment, long index) { return (int) VH_geometryCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int geometryCount(MemorySegment segment, long index) { return (int) VH_geometryCount.get(segment, 0L, index); }
     /// {@return `geometryCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_geometryCount(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_geometryCount(segment, 0L); }
-    /// {@return `geometryCount`}
-    public @CType("uint32_t") int geometryCount() { return VkAccelerationStructureInfoNV.get_geometryCount(this.segment()); }
+    public int geometryCount() { return geometryCount(this.segment(), 0L); }
     /// Sets `geometryCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_geometryCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_geometryCount.set(segment, 0L, index, value); }
-    /// Sets `geometryCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_geometryCount(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_geometryCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void geometryCount(MemorySegment segment, long index, int value) { VH_geometryCount.set(segment, 0L, index, value); }
     /// Sets `geometryCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV geometryCount(@CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_geometryCount(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV geometryCount(int value) { geometryCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pGeometries` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment get_pGeometries(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pGeometries.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pGeometries(MemorySegment segment, long index) { return (MemorySegment) VH_pGeometries.get(segment, 0L, index); }
     /// {@return `pGeometries`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment get_pGeometries(MemorySegment segment) { return VkAccelerationStructureInfoNV.get_pGeometries(segment, 0L); }
-    /// {@return `pGeometries`}
-    public @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment pGeometries() { return VkAccelerationStructureInfoNV.get_pGeometries(this.segment()); }
+    public MemorySegment pGeometries() { return pGeometries(this.segment(), 0L); }
     /// Sets `pGeometries` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pGeometries(MemorySegment segment, long index, @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment value) { VH_pGeometries.set(segment, 0L, index, value); }
-    /// Sets `pGeometries` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pGeometries(MemorySegment segment, @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pGeometries(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pGeometries(MemorySegment segment, long index, MemorySegment value) { VH_pGeometries.set(segment, 0L, index, value); }
     /// Sets `pGeometries` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAccelerationStructureInfoNV pGeometries(@CType("const VkGeometryNV *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pGeometries(this.segment(), value); return this; }
+    public VkAccelerationStructureInfoNV pGeometries(MemorySegment value) { pGeometries(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAccelerationStructureInfoNV].
     public static final class Buffer extends VkAccelerationStructureInfoNV {
@@ -316,67 +269,67 @@ public sealed class VkAccelerationStructureInfoNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureInfoNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureInfoNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureInfoNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `type` at the given index}
-        /// @param index the index
-        public @CType("VkAccelerationStructureTypeNV") int typeAt(long index) { return VkAccelerationStructureInfoNV.get_type(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int typeAt(long index) { return type(this.segment(), index); }
         /// Sets `type` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer typeAt(long index, @CType("VkAccelerationStructureTypeNV") int value) { VkAccelerationStructureInfoNV.set_type(this.segment(), index, value); return this; }
+        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkBuildAccelerationStructureFlagsNV") int flagsAt(long index) { return VkAccelerationStructureInfoNV.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkBuildAccelerationStructureFlagsNV") int value) { VkAccelerationStructureInfoNV.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `instanceCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int instanceCountAt(long index) { return VkAccelerationStructureInfoNV.get_instanceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int instanceCountAt(long index) { return instanceCount(this.segment(), index); }
         /// Sets `instanceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer instanceCountAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_instanceCount(this.segment(), index, value); return this; }
+        public Buffer instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
 
         /// {@return `geometryCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int geometryCountAt(long index) { return VkAccelerationStructureInfoNV.get_geometryCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int geometryCountAt(long index) { return geometryCount(this.segment(), index); }
         /// Sets `geometryCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer geometryCountAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureInfoNV.set_geometryCount(this.segment(), index, value); return this; }
+        public Buffer geometryCountAt(long index, int value) { geometryCount(this.segment(), index, value); return this; }
 
         /// {@return `pGeometries` at the given index}
-        /// @param index the index
-        public @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment pGeometriesAt(long index) { return VkAccelerationStructureInfoNV.get_pGeometries(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pGeometriesAt(long index) { return pGeometries(this.segment(), index); }
         /// Sets `pGeometries` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pGeometriesAt(long index, @CType("const VkGeometryNV *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureInfoNV.set_pGeometries(this.segment(), index, value); return this; }
+        public Buffer pGeometriesAt(long index, MemorySegment value) { pGeometries(this.segment(), index, value); return this; }
 
     }
 }

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.lunarg;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKLUNARGDirectDriverLoading {
     public static final int VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG = 0;
@@ -30,6 +25,6 @@ public final class VKLUNARGDirectDriverLoading {
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG = 1000459000;
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG = 1000459001;
 
-    private VKLUNARGDirectDriverLoading() { }
+    private VKLUNARGDirectDriverLoading() {}
 
 }

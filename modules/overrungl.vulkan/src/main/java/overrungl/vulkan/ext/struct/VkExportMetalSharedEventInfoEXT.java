@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### semaphore
-/// [VarHandle][#VH_semaphore] - [Getter][#semaphore()] - [Setter][#semaphore(java.lang.foreign.MemorySegment)]
-/// ### event
-/// [VarHandle][#VH_event] - [Getter][#event()] - [Setter][#event(java.lang.foreign.MemorySegment)]
-/// ### mtlSharedEvent
-/// [VarHandle][#VH_mtlSharedEvent] - [Getter][#mtlSharedEvent()] - [Setter][#mtlSharedEvent(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkExportMetalSharedEventInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkSemaphore semaphore;
-///     VkEvent event;
-///     MTLSharedEvent_id mtlSharedEvent;
-/// } VkExportMetalSharedEventInfoEXT;
 /// ```
-public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
+/// struct VkExportMetalSharedEventInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint64_t) VkSemaphore semaphore;
+///     (uint64_t) VkEvent event;
+///     (void*) MTLSharedEvent_id mtlSharedEvent;
+/// };
+/// ```
+public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// The struct layout of `VkExportMetalSharedEventInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("semaphore"),
-        ValueLayout.ADDRESS.withName("event"),
+        ValueLayout.JAVA_LONG.withName("semaphore"),
+        ValueLayout.JAVA_LONG.withName("event"),
         ValueLayout.ADDRESS.withName("mtlSharedEvent")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `semaphore`.
+    public static final long OFFSET_semaphore = LAYOUT.byteOffset(PathElement.groupElement("semaphore"));
+    /// The memory layout of `semaphore`.
+    public static final MemoryLayout LAYOUT_semaphore = LAYOUT.select(PathElement.groupElement("semaphore"));
+    /// The [VarHandle] of `semaphore` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_semaphore = LAYOUT.arrayElementVarHandle(PathElement.groupElement("semaphore"));
-    /// The [VarHandle] of `event` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `event`.
+    public static final long OFFSET_event = LAYOUT.byteOffset(PathElement.groupElement("event"));
+    /// The memory layout of `event`.
+    public static final MemoryLayout LAYOUT_event = LAYOUT.select(PathElement.groupElement("event"));
+    /// The [VarHandle] of `event` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_event = LAYOUT.arrayElementVarHandle(PathElement.groupElement("event"));
-    /// The [VarHandle] of `mtlSharedEvent` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `mtlSharedEvent`.
+    public static final long OFFSET_mtlSharedEvent = LAYOUT.byteOffset(PathElement.groupElement("mtlSharedEvent"));
+    /// The memory layout of `mtlSharedEvent`.
+    public static final MemoryLayout LAYOUT_mtlSharedEvent = LAYOUT.select(PathElement.groupElement("mtlSharedEvent"));
+    /// The [VarHandle] of `mtlSharedEvent` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mtlSharedEvent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlSharedEvent"));
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalSharedEventInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment); }
-
-    /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalSharedEventInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkExportMetalSharedEventInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
     /// @return the allocated `VkExportMetalSharedEventInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
-    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("VkEvent") java.lang.foreign.MemorySegment event, @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment mtlSharedEvent) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).event(event).mtlSharedEvent(mtlSharedEvent); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMetalSharedEventInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkExportMetalSharedEventInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMetalSharedEventInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalSharedEventInfoEXT sType(@CType("VkStructureType") int value) { VkExportMetalSharedEventInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkExportMetalSharedEventInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalSharedEventInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMetalSharedEventInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalSharedEventInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkExportMetalSharedEventInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `semaphore` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_semaphore.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long semaphore(MemorySegment segment, long index) { return (long) VH_semaphore.get(segment, 0L, index); }
     /// {@return `semaphore`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkExportMetalSharedEventInfoEXT.get_semaphore(segment, 0L); }
-    /// {@return `semaphore`}
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkExportMetalSharedEventInfoEXT.get_semaphore(this.segment()); }
+    public long semaphore() { return semaphore(this.segment(), 0L); }
     /// Sets `semaphore` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VH_semaphore.set(segment, 0L, index, value); }
-    /// Sets `semaphore` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_semaphore(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void semaphore(MemorySegment segment, long index, long value) { VH_semaphore.set(segment, 0L, index, value); }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalSharedEventInfoEXT semaphore(@CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_semaphore(this.segment(), value); return this; }
+    public VkExportMetalSharedEventInfoEXT semaphore(long value) { semaphore(this.segment(), 0L, value); return this; }
 
     /// {@return `event` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkEvent") java.lang.foreign.MemorySegment get_event(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_event.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long event(MemorySegment segment, long index) { return (long) VH_event.get(segment, 0L, index); }
     /// {@return `event`}
-    /// @param segment the segment of the struct
-    public static @CType("VkEvent") java.lang.foreign.MemorySegment get_event(MemorySegment segment) { return VkExportMetalSharedEventInfoEXT.get_event(segment, 0L); }
-    /// {@return `event`}
-    public @CType("VkEvent") java.lang.foreign.MemorySegment event() { return VkExportMetalSharedEventInfoEXT.get_event(this.segment()); }
+    public long event() { return event(this.segment(), 0L); }
     /// Sets `event` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_event(MemorySegment segment, long index, @CType("VkEvent") java.lang.foreign.MemorySegment value) { VH_event.set(segment, 0L, index, value); }
-    /// Sets `event` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_event(MemorySegment segment, @CType("VkEvent") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_event(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void event(MemorySegment segment, long index, long value) { VH_event.set(segment, 0L, index, value); }
     /// Sets `event` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalSharedEventInfoEXT event(@CType("VkEvent") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_event(this.segment(), value); return this; }
+    public VkExportMetalSharedEventInfoEXT event(long value) { event(this.segment(), 0L, value); return this; }
 
     /// {@return `mtlSharedEvent` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment get_mtlSharedEvent(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_mtlSharedEvent.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment mtlSharedEvent(MemorySegment segment, long index) { return (MemorySegment) VH_mtlSharedEvent.get(segment, 0L, index); }
     /// {@return `mtlSharedEvent`}
-    /// @param segment the segment of the struct
-    public static @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment get_mtlSharedEvent(MemorySegment segment) { return VkExportMetalSharedEventInfoEXT.get_mtlSharedEvent(segment, 0L); }
-    /// {@return `mtlSharedEvent`}
-    public @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment mtlSharedEvent() { return VkExportMetalSharedEventInfoEXT.get_mtlSharedEvent(this.segment()); }
+    public MemorySegment mtlSharedEvent() { return mtlSharedEvent(this.segment(), 0L); }
     /// Sets `mtlSharedEvent` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mtlSharedEvent(MemorySegment segment, long index, @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment value) { VH_mtlSharedEvent.set(segment, 0L, index, value); }
-    /// Sets `mtlSharedEvent` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mtlSharedEvent(MemorySegment segment, @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_mtlSharedEvent(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mtlSharedEvent(MemorySegment segment, long index, MemorySegment value) { VH_mtlSharedEvent.set(segment, 0L, index, value); }
     /// Sets `mtlSharedEvent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalSharedEventInfoEXT mtlSharedEvent(@CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_mtlSharedEvent(this.segment(), value); return this; }
+    public VkExportMetalSharedEventInfoEXT mtlSharedEvent(MemorySegment value) { mtlSharedEvent(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkExportMetalSharedEventInfoEXT].
     public static final class Buffer extends VkExportMetalSharedEventInfoEXT {
@@ -258,49 +221,49 @@ public sealed class VkExportMetalSharedEventInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalSharedEventInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalSharedEventInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalSharedEventInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `semaphore` at the given index}
-        /// @param index the index
-        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkExportMetalSharedEventInfoEXT.get_semaphore(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
         /// Sets `semaphore` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_semaphore(this.segment(), index, value); return this; }
+        public Buffer semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
 
         /// {@return `event` at the given index}
-        /// @param index the index
-        public @CType("VkEvent") java.lang.foreign.MemorySegment eventAt(long index) { return VkExportMetalSharedEventInfoEXT.get_event(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long eventAt(long index) { return event(this.segment(), index); }
         /// Sets `event` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer eventAt(long index, @CType("VkEvent") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_event(this.segment(), index, value); return this; }
+        public Buffer eventAt(long index, long value) { event(this.segment(), index, value); return this; }
 
         /// {@return `mtlSharedEvent` at the given index}
-        /// @param index the index
-        public @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment mtlSharedEventAt(long index) { return VkExportMetalSharedEventInfoEXT.get_mtlSharedEvent(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment mtlSharedEventAt(long index) { return mtlSharedEvent(this.segment(), index); }
         /// Sets `mtlSharedEvent` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer mtlSharedEventAt(long index, @CType("MTLSharedEvent_id") java.lang.foreign.MemorySegment value) { VkExportMetalSharedEventInfoEXT.set_mtlSharedEvent(this.segment(), index, value); return this; }
+        public Buffer mtlSharedEventAt(long index, MemorySegment value) { mtlSharedEvent(this.segment(), index, value); return this; }
 
     }
 }

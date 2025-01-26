@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### supportedDepthResolveModes
-/// [VarHandle][#VH_supportedDepthResolveModes] - [Getter][#supportedDepthResolveModes()] - [Setter][#supportedDepthResolveModes(int)]
-/// ### supportedStencilResolveModes
-/// [VarHandle][#VH_supportedStencilResolveModes] - [Getter][#supportedStencilResolveModes()] - [Setter][#supportedStencilResolveModes(int)]
-/// ### independentResolveNone
-/// [VarHandle][#VH_independentResolveNone] - [Getter][#independentResolveNone()] - [Setter][#independentResolveNone(int)]
-/// ### independentResolve
-/// [VarHandle][#VH_independentResolve] - [Getter][#independentResolve()] - [Setter][#independentResolve(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceDepthStencilResolveProperties {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkResolveModeFlags supportedDepthResolveModes;
-///     VkResolveModeFlags supportedStencilResolveModes;
-///     VkBool32 independentResolveNone;
-///     VkBool32 independentResolve;
-/// } VkPhysicalDeviceDepthStencilResolveProperties;
 /// ```
-public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct {
+/// struct VkPhysicalDeviceDepthStencilResolveProperties {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     ((uint32_t) VkFlags) VkResolveModeFlags supportedDepthResolveModes;
+///     ((uint32_t) VkFlags) VkResolveModeFlags supportedStencilResolveModes;
+///     (uint32_t) VkBool32 independentResolveNone;
+///     (uint32_t) VkBool32 independentResolve;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDepthStencilResolveProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportedDepthResolveModes"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
         ValueLayout.JAVA_INT.withName("independentResolveNone"),
         ValueLayout.JAVA_INT.withName("independentResolve")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `supportedDepthResolveModes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedDepthResolveModes`.
+    public static final long OFFSET_supportedDepthResolveModes = LAYOUT.byteOffset(PathElement.groupElement("supportedDepthResolveModes"));
+    /// The memory layout of `supportedDepthResolveModes`.
+    public static final MemoryLayout LAYOUT_supportedDepthResolveModes = LAYOUT.select(PathElement.groupElement("supportedDepthResolveModes"));
+    /// The [VarHandle] of `supportedDepthResolveModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedDepthResolveModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedDepthResolveModes"));
-    /// The [VarHandle] of `supportedStencilResolveModes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedStencilResolveModes`.
+    public static final long OFFSET_supportedStencilResolveModes = LAYOUT.byteOffset(PathElement.groupElement("supportedStencilResolveModes"));
+    /// The memory layout of `supportedStencilResolveModes`.
+    public static final MemoryLayout LAYOUT_supportedStencilResolveModes = LAYOUT.select(PathElement.groupElement("supportedStencilResolveModes"));
+    /// The [VarHandle] of `supportedStencilResolveModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedStencilResolveModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedStencilResolveModes"));
-    /// The [VarHandle] of `independentResolveNone` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `independentResolveNone`.
+    public static final long OFFSET_independentResolveNone = LAYOUT.byteOffset(PathElement.groupElement("independentResolveNone"));
+    /// The memory layout of `independentResolveNone`.
+    public static final MemoryLayout LAYOUT_independentResolveNone = LAYOUT.select(PathElement.groupElement("independentResolveNone"));
+    /// The [VarHandle] of `independentResolveNone` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_independentResolveNone = LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolveNone"));
-    /// The [VarHandle] of `independentResolve` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `independentResolve`.
+    public static final long OFFSET_independentResolve = LAYOUT.byteOffset(PathElement.groupElement("independentResolve"));
+    /// The memory layout of `independentResolve`.
+    public static final MemoryLayout LAYOUT_independentResolve = LAYOUT.select(PathElement.groupElement("independentResolve"));
+    /// The [VarHandle] of `independentResolve` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_independentResolve = LAYOUT.arrayElementVarHandle(PathElement.groupElement("independentResolve"));
 
     /// Creates `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
     /// Creates `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDepthStencilResolveProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthStencilResolveProperties(segment); }
-
-    /// Creates `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDepthStencilResolveProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthStencilResolveProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceDepthStencilResolveProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDepthStencilResolveProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
     /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkResolveModeFlags") int supportedDepthResolveModes, @CType("VkResolveModeFlags") int supportedStencilResolveModes, @CType("VkBool32") int independentResolveNone, @CType("VkBool32") int independentResolve) { return alloc(allocator).sType(sType).pNext(pNext).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes).independentResolveNone(independentResolveNone).independentResolve(independentResolve); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDepthStencilResolveProperties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDepthStencilResolveProperties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDepthStencilResolveProperties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDepthStencilResolveProperties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedDepthResolveModes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResolveModeFlags") int get_supportedDepthResolveModes(MemorySegment segment, long index) { return (int) VH_supportedDepthResolveModes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedDepthResolveModes(MemorySegment segment, long index) { return (int) VH_supportedDepthResolveModes.get(segment, 0L, index); }
     /// {@return `supportedDepthResolveModes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResolveModeFlags") int get_supportedDepthResolveModes(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedDepthResolveModes(segment, 0L); }
-    /// {@return `supportedDepthResolveModes`}
-    public @CType("VkResolveModeFlags") int supportedDepthResolveModes() { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedDepthResolveModes(this.segment()); }
+    public int supportedDepthResolveModes() { return supportedDepthResolveModes(this.segment(), 0L); }
     /// Sets `supportedDepthResolveModes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedDepthResolveModes(MemorySegment segment, long index, @CType("VkResolveModeFlags") int value) { VH_supportedDepthResolveModes.set(segment, 0L, index, value); }
-    /// Sets `supportedDepthResolveModes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedDepthResolveModes(MemorySegment segment, @CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedDepthResolveModes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedDepthResolveModes(MemorySegment segment, long index, int value) { VH_supportedDepthResolveModes.set(segment, 0L, index, value); }
     /// Sets `supportedDepthResolveModes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(@CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedDepthResolveModes(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedDepthResolveModes(int value) { supportedDepthResolveModes(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedStencilResolveModes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResolveModeFlags") int get_supportedStencilResolveModes(MemorySegment segment, long index) { return (int) VH_supportedStencilResolveModes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedStencilResolveModes(MemorySegment segment, long index) { return (int) VH_supportedStencilResolveModes.get(segment, 0L, index); }
     /// {@return `supportedStencilResolveModes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResolveModeFlags") int get_supportedStencilResolveModes(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedStencilResolveModes(segment, 0L); }
-    /// {@return `supportedStencilResolveModes`}
-    public @CType("VkResolveModeFlags") int supportedStencilResolveModes() { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedStencilResolveModes(this.segment()); }
+    public int supportedStencilResolveModes() { return supportedStencilResolveModes(this.segment(), 0L); }
     /// Sets `supportedStencilResolveModes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedStencilResolveModes(MemorySegment segment, long index, @CType("VkResolveModeFlags") int value) { VH_supportedStencilResolveModes.set(segment, 0L, index, value); }
-    /// Sets `supportedStencilResolveModes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedStencilResolveModes(MemorySegment segment, @CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedStencilResolveModes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedStencilResolveModes(MemorySegment segment, long index, int value) { VH_supportedStencilResolveModes.set(segment, 0L, index, value); }
     /// Sets `supportedStencilResolveModes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(@CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedStencilResolveModes(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties supportedStencilResolveModes(int value) { supportedStencilResolveModes(this.segment(), 0L, value); return this; }
 
     /// {@return `independentResolveNone` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_independentResolveNone(MemorySegment segment, long index) { return (int) VH_independentResolveNone.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int independentResolveNone(MemorySegment segment, long index) { return (int) VH_independentResolveNone.get(segment, 0L, index); }
     /// {@return `independentResolveNone`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_independentResolveNone(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolveNone(segment, 0L); }
-    /// {@return `independentResolveNone`}
-    public @CType("VkBool32") int independentResolveNone() { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolveNone(this.segment()); }
+    public int independentResolveNone() { return independentResolveNone(this.segment(), 0L); }
     /// Sets `independentResolveNone` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_independentResolveNone(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_independentResolveNone.set(segment, 0L, index, value); }
-    /// Sets `independentResolveNone` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_independentResolveNone(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolveNone(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void independentResolveNone(MemorySegment segment, long index, int value) { VH_independentResolveNone.set(segment, 0L, index, value); }
     /// Sets `independentResolveNone` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties independentResolveNone(@CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolveNone(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties independentResolveNone(int value) { independentResolveNone(this.segment(), 0L, value); return this; }
 
     /// {@return `independentResolve` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_independentResolve(MemorySegment segment, long index) { return (int) VH_independentResolve.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int independentResolve(MemorySegment segment, long index) { return (int) VH_independentResolve.get(segment, 0L, index); }
     /// {@return `independentResolve`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_independentResolve(MemorySegment segment) { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolve(segment, 0L); }
-    /// {@return `independentResolve`}
-    public @CType("VkBool32") int independentResolve() { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolve(this.segment()); }
+    public int independentResolve() { return independentResolve(this.segment(), 0L); }
     /// Sets `independentResolve` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_independentResolve(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_independentResolve.set(segment, 0L, index, value); }
-    /// Sets `independentResolve` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_independentResolve(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolve(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void independentResolve(MemorySegment segment, long index, int value) { VH_independentResolve.set(segment, 0L, index, value); }
     /// Sets `independentResolve` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDepthStencilResolveProperties independentResolve(@CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolve(this.segment(), value); return this; }
+    public VkPhysicalDeviceDepthStencilResolveProperties independentResolve(int value) { independentResolve(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceDepthStencilResolveProperties].
     public static final class Buffer extends VkPhysicalDeviceDepthStencilResolveProperties {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends Struct
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDepthStencilResolveProperties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `supportedDepthResolveModes` at the given index}
-        /// @param index the index
-        public @CType("VkResolveModeFlags") int supportedDepthResolveModesAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedDepthResolveModes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedDepthResolveModesAt(long index) { return supportedDepthResolveModes(this.segment(), index); }
         /// Sets `supportedDepthResolveModes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedDepthResolveModesAt(long index, @CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedDepthResolveModes(this.segment(), index, value); return this; }
+        public Buffer supportedDepthResolveModesAt(long index, int value) { supportedDepthResolveModes(this.segment(), index, value); return this; }
 
         /// {@return `supportedStencilResolveModes` at the given index}
-        /// @param index the index
-        public @CType("VkResolveModeFlags") int supportedStencilResolveModesAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_supportedStencilResolveModes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedStencilResolveModesAt(long index) { return supportedStencilResolveModes(this.segment(), index); }
         /// Sets `supportedStencilResolveModes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedStencilResolveModesAt(long index, @CType("VkResolveModeFlags") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_supportedStencilResolveModes(this.segment(), index, value); return this; }
+        public Buffer supportedStencilResolveModesAt(long index, int value) { supportedStencilResolveModes(this.segment(), index, value); return this; }
 
         /// {@return `independentResolveNone` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int independentResolveNoneAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolveNone(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int independentResolveNoneAt(long index) { return independentResolveNone(this.segment(), index); }
         /// Sets `independentResolveNone` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer independentResolveNoneAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolveNone(this.segment(), index, value); return this; }
+        public Buffer independentResolveNoneAt(long index, int value) { independentResolveNone(this.segment(), index, value); return this; }
 
         /// {@return `independentResolve` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int independentResolveAt(long index) { return VkPhysicalDeviceDepthStencilResolveProperties.get_independentResolve(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int independentResolveAt(long index) { return independentResolve(this.segment(), index); }
         /// Sets `independentResolve` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer independentResolveAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDepthStencilResolveProperties.set_independentResolve(this.segment(), index, value); return this; }
+        public Buffer independentResolveAt(long index, int value) { independentResolve(this.segment(), index, value); return this; }
 
     }
 }

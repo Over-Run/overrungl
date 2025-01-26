@@ -15,54 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### presentID
-/// [VarHandle][#VH_presentID] - [Getter][#presentID()] - [Setter][#presentID(long)]
-/// ### inputSampleTimeUs
-/// [VarHandle][#VH_inputSampleTimeUs] - [Getter][#inputSampleTimeUs()] - [Setter][#inputSampleTimeUs(long)]
-/// ### simStartTimeUs
-/// [VarHandle][#VH_simStartTimeUs] - [Getter][#simStartTimeUs()] - [Setter][#simStartTimeUs(long)]
-/// ### simEndTimeUs
-/// [VarHandle][#VH_simEndTimeUs] - [Getter][#simEndTimeUs()] - [Setter][#simEndTimeUs(long)]
-/// ### renderSubmitStartTimeUs
-/// [VarHandle][#VH_renderSubmitStartTimeUs] - [Getter][#renderSubmitStartTimeUs()] - [Setter][#renderSubmitStartTimeUs(long)]
-/// ### renderSubmitEndTimeUs
-/// [VarHandle][#VH_renderSubmitEndTimeUs] - [Getter][#renderSubmitEndTimeUs()] - [Setter][#renderSubmitEndTimeUs(long)]
-/// ### presentStartTimeUs
-/// [VarHandle][#VH_presentStartTimeUs] - [Getter][#presentStartTimeUs()] - [Setter][#presentStartTimeUs(long)]
-/// ### presentEndTimeUs
-/// [VarHandle][#VH_presentEndTimeUs] - [Getter][#presentEndTimeUs()] - [Setter][#presentEndTimeUs(long)]
-/// ### driverStartTimeUs
-/// [VarHandle][#VH_driverStartTimeUs] - [Getter][#driverStartTimeUs()] - [Setter][#driverStartTimeUs(long)]
-/// ### driverEndTimeUs
-/// [VarHandle][#VH_driverEndTimeUs] - [Getter][#driverEndTimeUs()] - [Setter][#driverEndTimeUs(long)]
-/// ### osRenderQueueStartTimeUs
-/// [VarHandle][#VH_osRenderQueueStartTimeUs] - [Getter][#osRenderQueueStartTimeUs()] - [Setter][#osRenderQueueStartTimeUs(long)]
-/// ### osRenderQueueEndTimeUs
-/// [VarHandle][#VH_osRenderQueueEndTimeUs] - [Getter][#osRenderQueueEndTimeUs()] - [Setter][#osRenderQueueEndTimeUs(long)]
-/// ### gpuRenderStartTimeUs
-/// [VarHandle][#VH_gpuRenderStartTimeUs] - [Getter][#gpuRenderStartTimeUs()] - [Setter][#gpuRenderStartTimeUs(long)]
-/// ### gpuRenderEndTimeUs
-/// [VarHandle][#VH_gpuRenderEndTimeUs] - [Getter][#gpuRenderEndTimeUs()] - [Setter][#gpuRenderEndTimeUs(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkLatencyTimingsFrameReportNV {
-///     VkStructureType sType;
-///     const void * pNext;
+/// ```
+/// struct VkLatencyTimingsFrameReportNV {
+///     (int) VkStructureType sType;
+///     const void* pNext;
 ///     uint64_t presentID;
 ///     uint64_t inputSampleTimeUs;
 ///     uint64_t simStartTimeUs;
@@ -77,11 +43,11 @@ import overrungl.util.*;
 ///     uint64_t osRenderQueueEndTimeUs;
 ///     uint64_t gpuRenderStartTimeUs;
 ///     uint64_t gpuRenderEndTimeUs;
-/// } VkLatencyTimingsFrameReportNV;
+/// };
 /// ```
-public sealed class VkLatencyTimingsFrameReportNV extends Struct {
+public sealed class VkLatencyTimingsFrameReportNV extends GroupType {
     /// The struct layout of `VkLatencyTimingsFrameReportNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_LONG.withName("presentID"),
@@ -99,37 +65,101 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
         ValueLayout.JAVA_LONG.withName("gpuRenderStartTimeUs"),
         ValueLayout.JAVA_LONG.withName("gpuRenderEndTimeUs")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `presentID`.
+    public static final long OFFSET_presentID = LAYOUT.byteOffset(PathElement.groupElement("presentID"));
+    /// The memory layout of `presentID`.
+    public static final MemoryLayout LAYOUT_presentID = LAYOUT.select(PathElement.groupElement("presentID"));
+    /// The [VarHandle] of `presentID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID"));
-    /// The [VarHandle] of `inputSampleTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `inputSampleTimeUs`.
+    public static final long OFFSET_inputSampleTimeUs = LAYOUT.byteOffset(PathElement.groupElement("inputSampleTimeUs"));
+    /// The memory layout of `inputSampleTimeUs`.
+    public static final MemoryLayout LAYOUT_inputSampleTimeUs = LAYOUT.select(PathElement.groupElement("inputSampleTimeUs"));
+    /// The [VarHandle] of `inputSampleTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_inputSampleTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("inputSampleTimeUs"));
-    /// The [VarHandle] of `simStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `simStartTimeUs`.
+    public static final long OFFSET_simStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("simStartTimeUs"));
+    /// The memory layout of `simStartTimeUs`.
+    public static final MemoryLayout LAYOUT_simStartTimeUs = LAYOUT.select(PathElement.groupElement("simStartTimeUs"));
+    /// The [VarHandle] of `simStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_simStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("simStartTimeUs"));
-    /// The [VarHandle] of `simEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `simEndTimeUs`.
+    public static final long OFFSET_simEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("simEndTimeUs"));
+    /// The memory layout of `simEndTimeUs`.
+    public static final MemoryLayout LAYOUT_simEndTimeUs = LAYOUT.select(PathElement.groupElement("simEndTimeUs"));
+    /// The [VarHandle] of `simEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_simEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("simEndTimeUs"));
-    /// The [VarHandle] of `renderSubmitStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `renderSubmitStartTimeUs`.
+    public static final long OFFSET_renderSubmitStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("renderSubmitStartTimeUs"));
+    /// The memory layout of `renderSubmitStartTimeUs`.
+    public static final MemoryLayout LAYOUT_renderSubmitStartTimeUs = LAYOUT.select(PathElement.groupElement("renderSubmitStartTimeUs"));
+    /// The [VarHandle] of `renderSubmitStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_renderSubmitStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderSubmitStartTimeUs"));
-    /// The [VarHandle] of `renderSubmitEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `renderSubmitEndTimeUs`.
+    public static final long OFFSET_renderSubmitEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("renderSubmitEndTimeUs"));
+    /// The memory layout of `renderSubmitEndTimeUs`.
+    public static final MemoryLayout LAYOUT_renderSubmitEndTimeUs = LAYOUT.select(PathElement.groupElement("renderSubmitEndTimeUs"));
+    /// The [VarHandle] of `renderSubmitEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_renderSubmitEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderSubmitEndTimeUs"));
-    /// The [VarHandle] of `presentStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `presentStartTimeUs`.
+    public static final long OFFSET_presentStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("presentStartTimeUs"));
+    /// The memory layout of `presentStartTimeUs`.
+    public static final MemoryLayout LAYOUT_presentStartTimeUs = LAYOUT.select(PathElement.groupElement("presentStartTimeUs"));
+    /// The [VarHandle] of `presentStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentStartTimeUs"));
-    /// The [VarHandle] of `presentEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `presentEndTimeUs`.
+    public static final long OFFSET_presentEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("presentEndTimeUs"));
+    /// The memory layout of `presentEndTimeUs`.
+    public static final MemoryLayout LAYOUT_presentEndTimeUs = LAYOUT.select(PathElement.groupElement("presentEndTimeUs"));
+    /// The [VarHandle] of `presentEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentEndTimeUs"));
-    /// The [VarHandle] of `driverStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `driverStartTimeUs`.
+    public static final long OFFSET_driverStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("driverStartTimeUs"));
+    /// The memory layout of `driverStartTimeUs`.
+    public static final MemoryLayout LAYOUT_driverStartTimeUs = LAYOUT.select(PathElement.groupElement("driverStartTimeUs"));
+    /// The [VarHandle] of `driverStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_driverStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverStartTimeUs"));
-    /// The [VarHandle] of `driverEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `driverEndTimeUs`.
+    public static final long OFFSET_driverEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("driverEndTimeUs"));
+    /// The memory layout of `driverEndTimeUs`.
+    public static final MemoryLayout LAYOUT_driverEndTimeUs = LAYOUT.select(PathElement.groupElement("driverEndTimeUs"));
+    /// The [VarHandle] of `driverEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_driverEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverEndTimeUs"));
-    /// The [VarHandle] of `osRenderQueueStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `osRenderQueueStartTimeUs`.
+    public static final long OFFSET_osRenderQueueStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("osRenderQueueStartTimeUs"));
+    /// The memory layout of `osRenderQueueStartTimeUs`.
+    public static final MemoryLayout LAYOUT_osRenderQueueStartTimeUs = LAYOUT.select(PathElement.groupElement("osRenderQueueStartTimeUs"));
+    /// The [VarHandle] of `osRenderQueueStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_osRenderQueueStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("osRenderQueueStartTimeUs"));
-    /// The [VarHandle] of `osRenderQueueEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `osRenderQueueEndTimeUs`.
+    public static final long OFFSET_osRenderQueueEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("osRenderQueueEndTimeUs"));
+    /// The memory layout of `osRenderQueueEndTimeUs`.
+    public static final MemoryLayout LAYOUT_osRenderQueueEndTimeUs = LAYOUT.select(PathElement.groupElement("osRenderQueueEndTimeUs"));
+    /// The [VarHandle] of `osRenderQueueEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_osRenderQueueEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("osRenderQueueEndTimeUs"));
-    /// The [VarHandle] of `gpuRenderStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `gpuRenderStartTimeUs`.
+    public static final long OFFSET_gpuRenderStartTimeUs = LAYOUT.byteOffset(PathElement.groupElement("gpuRenderStartTimeUs"));
+    /// The memory layout of `gpuRenderStartTimeUs`.
+    public static final MemoryLayout LAYOUT_gpuRenderStartTimeUs = LAYOUT.select(PathElement.groupElement("gpuRenderStartTimeUs"));
+    /// The [VarHandle] of `gpuRenderStartTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_gpuRenderStartTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gpuRenderStartTimeUs"));
-    /// The [VarHandle] of `gpuRenderEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `gpuRenderEndTimeUs`.
+    public static final long OFFSET_gpuRenderEndTimeUs = LAYOUT.byteOffset(PathElement.groupElement("gpuRenderEndTimeUs"));
+    /// The memory layout of `gpuRenderEndTimeUs`.
+    public static final MemoryLayout LAYOUT_gpuRenderEndTimeUs = LAYOUT.select(PathElement.groupElement("gpuRenderEndTimeUs"));
+    /// The [VarHandle] of `gpuRenderEndTimeUs` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_gpuRenderEndTimeUs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("gpuRenderEndTimeUs"));
 
     /// Creates `VkLatencyTimingsFrameReportNV` with the given segment.
@@ -139,19 +169,14 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
     /// Creates `VkLatencyTimingsFrameReportNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLatencyTimingsFrameReportNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkLatencyTimingsFrameReportNV(segment); }
-
-    /// Creates `VkLatencyTimingsFrameReportNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkLatencyTimingsFrameReportNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLatencyTimingsFrameReportNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkLatencyTimingsFrameReportNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkLatencyTimingsFrameReportNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencyTimingsFrameReportNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkLatencyTimingsFrameReportNV` with the given segment.
     ///
@@ -159,7 +184,7 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkLatencyTimingsFrameReportNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -172,11 +197,6 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
     /// @return the allocated `VkLatencyTimingsFrameReportNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkLatencyTimingsFrameReportNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkLatencyTimingsFrameReportNV`
-    public static VkLatencyTimingsFrameReportNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint64_t") long presentID, @CType("uint64_t") long inputSampleTimeUs, @CType("uint64_t") long simStartTimeUs, @CType("uint64_t") long simEndTimeUs, @CType("uint64_t") long renderSubmitStartTimeUs, @CType("uint64_t") long renderSubmitEndTimeUs, @CType("uint64_t") long presentStartTimeUs, @CType("uint64_t") long presentEndTimeUs, @CType("uint64_t") long driverStartTimeUs, @CType("uint64_t") long driverEndTimeUs, @CType("uint64_t") long osRenderQueueStartTimeUs, @CType("uint64_t") long osRenderQueueEndTimeUs, @CType("uint64_t") long gpuRenderStartTimeUs, @CType("uint64_t") long gpuRenderEndTimeUs) { return alloc(allocator).sType(sType).pNext(pNext).presentID(presentID).inputSampleTimeUs(inputSampleTimeUs).simStartTimeUs(simStartTimeUs).simEndTimeUs(simEndTimeUs).renderSubmitStartTimeUs(renderSubmitStartTimeUs).renderSubmitEndTimeUs(renderSubmitEndTimeUs).presentStartTimeUs(presentStartTimeUs).presentEndTimeUs(presentEndTimeUs).driverStartTimeUs(driverStartTimeUs).driverEndTimeUs(driverEndTimeUs).osRenderQueueStartTimeUs(osRenderQueueStartTimeUs).osRenderQueueEndTimeUs(osRenderQueueEndTimeUs).gpuRenderStartTimeUs(gpuRenderStartTimeUs).gpuRenderEndTimeUs(gpuRenderEndTimeUs); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -184,375 +204,263 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkLatencyTimingsFrameReportNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkLatencyTimingsFrameReportNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV sType(@CType("VkStructureType") int value) { VkLatencyTimingsFrameReportNV.set_sType(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkLatencyTimingsFrameReportNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencyTimingsFrameReportNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencyTimingsFrameReportNV.set_pNext(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_presentID(MemorySegment segment, long index) { return (long) VH_presentID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long presentID(MemorySegment segment, long index) { return (long) VH_presentID.get(segment, 0L, index); }
     /// {@return `presentID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_presentID(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_presentID(segment, 0L); }
-    /// {@return `presentID`}
-    public @CType("uint64_t") long presentID() { return VkLatencyTimingsFrameReportNV.get_presentID(this.segment()); }
+    public long presentID() { return presentID(this.segment(), 0L); }
     /// Sets `presentID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentID(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_presentID.set(segment, 0L, index, value); }
-    /// Sets `presentID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentID(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentID(MemorySegment segment, long index, long value) { VH_presentID.set(segment, 0L, index, value); }
     /// Sets `presentID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV presentID(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentID(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV presentID(long value) { presentID(this.segment(), 0L, value); return this; }
 
     /// {@return `inputSampleTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_inputSampleTimeUs(MemorySegment segment, long index) { return (long) VH_inputSampleTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long inputSampleTimeUs(MemorySegment segment, long index) { return (long) VH_inputSampleTimeUs.get(segment, 0L, index); }
     /// {@return `inputSampleTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_inputSampleTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_inputSampleTimeUs(segment, 0L); }
-    /// {@return `inputSampleTimeUs`}
-    public @CType("uint64_t") long inputSampleTimeUs() { return VkLatencyTimingsFrameReportNV.get_inputSampleTimeUs(this.segment()); }
+    public long inputSampleTimeUs() { return inputSampleTimeUs(this.segment(), 0L); }
     /// Sets `inputSampleTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_inputSampleTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_inputSampleTimeUs.set(segment, 0L, index, value); }
-    /// Sets `inputSampleTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_inputSampleTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_inputSampleTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void inputSampleTimeUs(MemorySegment segment, long index, long value) { VH_inputSampleTimeUs.set(segment, 0L, index, value); }
     /// Sets `inputSampleTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV inputSampleTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_inputSampleTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV inputSampleTimeUs(long value) { inputSampleTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `simStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_simStartTimeUs(MemorySegment segment, long index) { return (long) VH_simStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long simStartTimeUs(MemorySegment segment, long index) { return (long) VH_simStartTimeUs.get(segment, 0L, index); }
     /// {@return `simStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_simStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_simStartTimeUs(segment, 0L); }
-    /// {@return `simStartTimeUs`}
-    public @CType("uint64_t") long simStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_simStartTimeUs(this.segment()); }
+    public long simStartTimeUs() { return simStartTimeUs(this.segment(), 0L); }
     /// Sets `simStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_simStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_simStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `simStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_simStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void simStartTimeUs(MemorySegment segment, long index, long value) { VH_simStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `simStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV simStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV simStartTimeUs(long value) { simStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `simEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_simEndTimeUs(MemorySegment segment, long index) { return (long) VH_simEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long simEndTimeUs(MemorySegment segment, long index) { return (long) VH_simEndTimeUs.get(segment, 0L, index); }
     /// {@return `simEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_simEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_simEndTimeUs(segment, 0L); }
-    /// {@return `simEndTimeUs`}
-    public @CType("uint64_t") long simEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_simEndTimeUs(this.segment()); }
+    public long simEndTimeUs() { return simEndTimeUs(this.segment(), 0L); }
     /// Sets `simEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_simEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_simEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `simEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_simEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void simEndTimeUs(MemorySegment segment, long index, long value) { VH_simEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `simEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV simEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV simEndTimeUs(long value) { simEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `renderSubmitStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_renderSubmitStartTimeUs(MemorySegment segment, long index) { return (long) VH_renderSubmitStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long renderSubmitStartTimeUs(MemorySegment segment, long index) { return (long) VH_renderSubmitStartTimeUs.get(segment, 0L, index); }
     /// {@return `renderSubmitStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_renderSubmitStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_renderSubmitStartTimeUs(segment, 0L); }
-    /// {@return `renderSubmitStartTimeUs`}
-    public @CType("uint64_t") long renderSubmitStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_renderSubmitStartTimeUs(this.segment()); }
+    public long renderSubmitStartTimeUs() { return renderSubmitStartTimeUs(this.segment(), 0L); }
     /// Sets `renderSubmitStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderSubmitStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_renderSubmitStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `renderSubmitStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderSubmitStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderSubmitStartTimeUs(MemorySegment segment, long index, long value) { VH_renderSubmitStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `renderSubmitStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV renderSubmitStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV renderSubmitStartTimeUs(long value) { renderSubmitStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `renderSubmitEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_renderSubmitEndTimeUs(MemorySegment segment, long index) { return (long) VH_renderSubmitEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long renderSubmitEndTimeUs(MemorySegment segment, long index) { return (long) VH_renderSubmitEndTimeUs.get(segment, 0L, index); }
     /// {@return `renderSubmitEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_renderSubmitEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_renderSubmitEndTimeUs(segment, 0L); }
-    /// {@return `renderSubmitEndTimeUs`}
-    public @CType("uint64_t") long renderSubmitEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_renderSubmitEndTimeUs(this.segment()); }
+    public long renderSubmitEndTimeUs() { return renderSubmitEndTimeUs(this.segment(), 0L); }
     /// Sets `renderSubmitEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderSubmitEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_renderSubmitEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `renderSubmitEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderSubmitEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderSubmitEndTimeUs(MemorySegment segment, long index, long value) { VH_renderSubmitEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `renderSubmitEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV renderSubmitEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV renderSubmitEndTimeUs(long value) { renderSubmitEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `presentStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_presentStartTimeUs(MemorySegment segment, long index) { return (long) VH_presentStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long presentStartTimeUs(MemorySegment segment, long index) { return (long) VH_presentStartTimeUs.get(segment, 0L, index); }
     /// {@return `presentStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_presentStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_presentStartTimeUs(segment, 0L); }
-    /// {@return `presentStartTimeUs`}
-    public @CType("uint64_t") long presentStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_presentStartTimeUs(this.segment()); }
+    public long presentStartTimeUs() { return presentStartTimeUs(this.segment(), 0L); }
     /// Sets `presentStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_presentStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `presentStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentStartTimeUs(MemorySegment segment, long index, long value) { VH_presentStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `presentStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV presentStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV presentStartTimeUs(long value) { presentStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `presentEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_presentEndTimeUs(MemorySegment segment, long index) { return (long) VH_presentEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long presentEndTimeUs(MemorySegment segment, long index) { return (long) VH_presentEndTimeUs.get(segment, 0L, index); }
     /// {@return `presentEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_presentEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_presentEndTimeUs(segment, 0L); }
-    /// {@return `presentEndTimeUs`}
-    public @CType("uint64_t") long presentEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_presentEndTimeUs(this.segment()); }
+    public long presentEndTimeUs() { return presentEndTimeUs(this.segment(), 0L); }
     /// Sets `presentEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_presentEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `presentEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentEndTimeUs(MemorySegment segment, long index, long value) { VH_presentEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `presentEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV presentEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV presentEndTimeUs(long value) { presentEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `driverStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_driverStartTimeUs(MemorySegment segment, long index) { return (long) VH_driverStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long driverStartTimeUs(MemorySegment segment, long index) { return (long) VH_driverStartTimeUs.get(segment, 0L, index); }
     /// {@return `driverStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_driverStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_driverStartTimeUs(segment, 0L); }
-    /// {@return `driverStartTimeUs`}
-    public @CType("uint64_t") long driverStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_driverStartTimeUs(this.segment()); }
+    public long driverStartTimeUs() { return driverStartTimeUs(this.segment(), 0L); }
     /// Sets `driverStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_driverStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_driverStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `driverStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_driverStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void driverStartTimeUs(MemorySegment segment, long index, long value) { VH_driverStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `driverStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV driverStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV driverStartTimeUs(long value) { driverStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `driverEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_driverEndTimeUs(MemorySegment segment, long index) { return (long) VH_driverEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long driverEndTimeUs(MemorySegment segment, long index) { return (long) VH_driverEndTimeUs.get(segment, 0L, index); }
     /// {@return `driverEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_driverEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_driverEndTimeUs(segment, 0L); }
-    /// {@return `driverEndTimeUs`}
-    public @CType("uint64_t") long driverEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_driverEndTimeUs(this.segment()); }
+    public long driverEndTimeUs() { return driverEndTimeUs(this.segment(), 0L); }
     /// Sets `driverEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_driverEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_driverEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `driverEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_driverEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void driverEndTimeUs(MemorySegment segment, long index, long value) { VH_driverEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `driverEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV driverEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV driverEndTimeUs(long value) { driverEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `osRenderQueueStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_osRenderQueueStartTimeUs(MemorySegment segment, long index) { return (long) VH_osRenderQueueStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long osRenderQueueStartTimeUs(MemorySegment segment, long index) { return (long) VH_osRenderQueueStartTimeUs.get(segment, 0L, index); }
     /// {@return `osRenderQueueStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_osRenderQueueStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_osRenderQueueStartTimeUs(segment, 0L); }
-    /// {@return `osRenderQueueStartTimeUs`}
-    public @CType("uint64_t") long osRenderQueueStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_osRenderQueueStartTimeUs(this.segment()); }
+    public long osRenderQueueStartTimeUs() { return osRenderQueueStartTimeUs(this.segment(), 0L); }
     /// Sets `osRenderQueueStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_osRenderQueueStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_osRenderQueueStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `osRenderQueueStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_osRenderQueueStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void osRenderQueueStartTimeUs(MemorySegment segment, long index, long value) { VH_osRenderQueueStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `osRenderQueueStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV osRenderQueueStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV osRenderQueueStartTimeUs(long value) { osRenderQueueStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `osRenderQueueEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_osRenderQueueEndTimeUs(MemorySegment segment, long index) { return (long) VH_osRenderQueueEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long osRenderQueueEndTimeUs(MemorySegment segment, long index) { return (long) VH_osRenderQueueEndTimeUs.get(segment, 0L, index); }
     /// {@return `osRenderQueueEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_osRenderQueueEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_osRenderQueueEndTimeUs(segment, 0L); }
-    /// {@return `osRenderQueueEndTimeUs`}
-    public @CType("uint64_t") long osRenderQueueEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_osRenderQueueEndTimeUs(this.segment()); }
+    public long osRenderQueueEndTimeUs() { return osRenderQueueEndTimeUs(this.segment(), 0L); }
     /// Sets `osRenderQueueEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_osRenderQueueEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_osRenderQueueEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `osRenderQueueEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_osRenderQueueEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void osRenderQueueEndTimeUs(MemorySegment segment, long index, long value) { VH_osRenderQueueEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `osRenderQueueEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV osRenderQueueEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV osRenderQueueEndTimeUs(long value) { osRenderQueueEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `gpuRenderStartTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_gpuRenderStartTimeUs(MemorySegment segment, long index) { return (long) VH_gpuRenderStartTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long gpuRenderStartTimeUs(MemorySegment segment, long index) { return (long) VH_gpuRenderStartTimeUs.get(segment, 0L, index); }
     /// {@return `gpuRenderStartTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_gpuRenderStartTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_gpuRenderStartTimeUs(segment, 0L); }
-    /// {@return `gpuRenderStartTimeUs`}
-    public @CType("uint64_t") long gpuRenderStartTimeUs() { return VkLatencyTimingsFrameReportNV.get_gpuRenderStartTimeUs(this.segment()); }
+    public long gpuRenderStartTimeUs() { return gpuRenderStartTimeUs(this.segment(), 0L); }
     /// Sets `gpuRenderStartTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_gpuRenderStartTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_gpuRenderStartTimeUs.set(segment, 0L, index, value); }
-    /// Sets `gpuRenderStartTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_gpuRenderStartTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderStartTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void gpuRenderStartTimeUs(MemorySegment segment, long index, long value) { VH_gpuRenderStartTimeUs.set(segment, 0L, index, value); }
     /// Sets `gpuRenderStartTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV gpuRenderStartTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderStartTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV gpuRenderStartTimeUs(long value) { gpuRenderStartTimeUs(this.segment(), 0L, value); return this; }
 
     /// {@return `gpuRenderEndTimeUs` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_gpuRenderEndTimeUs(MemorySegment segment, long index) { return (long) VH_gpuRenderEndTimeUs.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long gpuRenderEndTimeUs(MemorySegment segment, long index) { return (long) VH_gpuRenderEndTimeUs.get(segment, 0L, index); }
     /// {@return `gpuRenderEndTimeUs`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_gpuRenderEndTimeUs(MemorySegment segment) { return VkLatencyTimingsFrameReportNV.get_gpuRenderEndTimeUs(segment, 0L); }
-    /// {@return `gpuRenderEndTimeUs`}
-    public @CType("uint64_t") long gpuRenderEndTimeUs() { return VkLatencyTimingsFrameReportNV.get_gpuRenderEndTimeUs(this.segment()); }
+    public long gpuRenderEndTimeUs() { return gpuRenderEndTimeUs(this.segment(), 0L); }
     /// Sets `gpuRenderEndTimeUs` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_gpuRenderEndTimeUs(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_gpuRenderEndTimeUs.set(segment, 0L, index, value); }
-    /// Sets `gpuRenderEndTimeUs` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_gpuRenderEndTimeUs(MemorySegment segment, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderEndTimeUs(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void gpuRenderEndTimeUs(MemorySegment segment, long index, long value) { VH_gpuRenderEndTimeUs.set(segment, 0L, index, value); }
     /// Sets `gpuRenderEndTimeUs` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkLatencyTimingsFrameReportNV gpuRenderEndTimeUs(@CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderEndTimeUs(this.segment(), value); return this; }
+    public VkLatencyTimingsFrameReportNV gpuRenderEndTimeUs(long value) { gpuRenderEndTimeUs(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkLatencyTimingsFrameReportNV].
     public static final class Buffer extends VkLatencyTimingsFrameReportNV {
@@ -577,148 +485,148 @@ public sealed class VkLatencyTimingsFrameReportNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkLatencyTimingsFrameReportNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkLatencyTimingsFrameReportNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkLatencyTimingsFrameReportNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencyTimingsFrameReportNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `presentID` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long presentIDAt(long index) { return VkLatencyTimingsFrameReportNV.get_presentID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long presentIDAt(long index) { return presentID(this.segment(), index); }
         /// Sets `presentID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentIDAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentID(this.segment(), index, value); return this; }
+        public Buffer presentIDAt(long index, long value) { presentID(this.segment(), index, value); return this; }
 
         /// {@return `inputSampleTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long inputSampleTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_inputSampleTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long inputSampleTimeUsAt(long index) { return inputSampleTimeUs(this.segment(), index); }
         /// Sets `inputSampleTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer inputSampleTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_inputSampleTimeUs(this.segment(), index, value); return this; }
+        public Buffer inputSampleTimeUsAt(long index, long value) { inputSampleTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `simStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long simStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_simStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long simStartTimeUsAt(long index) { return simStartTimeUs(this.segment(), index); }
         /// Sets `simStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer simStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer simStartTimeUsAt(long index, long value) { simStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `simEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long simEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_simEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long simEndTimeUsAt(long index) { return simEndTimeUs(this.segment(), index); }
         /// Sets `simEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer simEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_simEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer simEndTimeUsAt(long index, long value) { simEndTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `renderSubmitStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long renderSubmitStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_renderSubmitStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long renderSubmitStartTimeUsAt(long index) { return renderSubmitStartTimeUs(this.segment(), index); }
         /// Sets `renderSubmitStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderSubmitStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer renderSubmitStartTimeUsAt(long index, long value) { renderSubmitStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `renderSubmitEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long renderSubmitEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_renderSubmitEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long renderSubmitEndTimeUsAt(long index) { return renderSubmitEndTimeUs(this.segment(), index); }
         /// Sets `renderSubmitEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderSubmitEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_renderSubmitEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer renderSubmitEndTimeUsAt(long index, long value) { renderSubmitEndTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `presentStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long presentStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_presentStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long presentStartTimeUsAt(long index) { return presentStartTimeUs(this.segment(), index); }
         /// Sets `presentStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer presentStartTimeUsAt(long index, long value) { presentStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `presentEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long presentEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_presentEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long presentEndTimeUsAt(long index) { return presentEndTimeUs(this.segment(), index); }
         /// Sets `presentEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_presentEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer presentEndTimeUsAt(long index, long value) { presentEndTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `driverStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long driverStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_driverStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long driverStartTimeUsAt(long index) { return driverStartTimeUs(this.segment(), index); }
         /// Sets `driverStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer driverStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer driverStartTimeUsAt(long index, long value) { driverStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `driverEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long driverEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_driverEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long driverEndTimeUsAt(long index) { return driverEndTimeUs(this.segment(), index); }
         /// Sets `driverEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer driverEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_driverEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer driverEndTimeUsAt(long index, long value) { driverEndTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `osRenderQueueStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long osRenderQueueStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_osRenderQueueStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long osRenderQueueStartTimeUsAt(long index) { return osRenderQueueStartTimeUs(this.segment(), index); }
         /// Sets `osRenderQueueStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer osRenderQueueStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer osRenderQueueStartTimeUsAt(long index, long value) { osRenderQueueStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `osRenderQueueEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long osRenderQueueEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_osRenderQueueEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long osRenderQueueEndTimeUsAt(long index) { return osRenderQueueEndTimeUs(this.segment(), index); }
         /// Sets `osRenderQueueEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer osRenderQueueEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_osRenderQueueEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer osRenderQueueEndTimeUsAt(long index, long value) { osRenderQueueEndTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `gpuRenderStartTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long gpuRenderStartTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_gpuRenderStartTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long gpuRenderStartTimeUsAt(long index) { return gpuRenderStartTimeUs(this.segment(), index); }
         /// Sets `gpuRenderStartTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer gpuRenderStartTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderStartTimeUs(this.segment(), index, value); return this; }
+        public Buffer gpuRenderStartTimeUsAt(long index, long value) { gpuRenderStartTimeUs(this.segment(), index, value); return this; }
 
         /// {@return `gpuRenderEndTimeUs` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long gpuRenderEndTimeUsAt(long index) { return VkLatencyTimingsFrameReportNV.get_gpuRenderEndTimeUs(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long gpuRenderEndTimeUsAt(long index) { return gpuRenderEndTimeUs(this.segment(), index); }
         /// Sets `gpuRenderEndTimeUs` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer gpuRenderEndTimeUsAt(long index, @CType("uint64_t") long value) { VkLatencyTimingsFrameReportNV.set_gpuRenderEndTimeUs(this.segment(), index, value); return this; }
+        public Buffer gpuRenderEndTimeUsAt(long index, long value) { gpuRenderEndTimeUs(this.segment(), index, value); return this; }
 
     }
 }

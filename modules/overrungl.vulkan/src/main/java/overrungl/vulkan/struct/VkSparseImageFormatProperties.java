@@ -15,45 +15,45 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### aspectMask
-/// [VarHandle][#VH_aspectMask] - [Getter][#aspectMask()] - [Setter][#aspectMask(int)]
-/// ### imageGranularity
-/// [Byte offset][#OFFSET_imageGranularity] - [Memory layout][#ML_imageGranularity] - [Getter][#imageGranularity()] - [Setter][#imageGranularity(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSparseImageFormatProperties {
-///     VkImageAspectFlags aspectMask;
-///     VkExtent3D imageGranularity;
-///     VkSparseImageFormatFlags flags;
-/// } VkSparseImageFormatProperties;
 /// ```
-public sealed class VkSparseImageFormatProperties extends Struct {
+/// struct VkSparseImageFormatProperties {
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
+///     (struct VkExtent3D) VkExtent3D imageGranularity;
+///     ((uint32_t) VkFlags) VkSparseImageFormatFlags flags;
+/// };
+/// ```
+public sealed class VkSparseImageFormatProperties extends GroupType {
     /// The struct layout of `VkSparseImageFormatProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("imageGranularity"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `aspectMask`.
+    public static final long OFFSET_aspectMask = LAYOUT.byteOffset(PathElement.groupElement("aspectMask"));
+    /// The memory layout of `aspectMask`.
+    public static final MemoryLayout LAYOUT_aspectMask = LAYOUT.select(PathElement.groupElement("aspectMask"));
+    /// The [VarHandle] of `aspectMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_aspectMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aspectMask"));
     /// The byte offset of `imageGranularity`.
     public static final long OFFSET_imageGranularity = LAYOUT.byteOffset(PathElement.groupElement("imageGranularity"));
     /// The memory layout of `imageGranularity`.
-    public static final MemoryLayout ML_imageGranularity = LAYOUT.select(PathElement.groupElement("imageGranularity"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_imageGranularity = LAYOUT.select(PathElement.groupElement("imageGranularity"));
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
     /// Creates `VkSparseImageFormatProperties` with the given segment.
@@ -63,19 +63,14 @@ public sealed class VkSparseImageFormatProperties extends Struct {
     /// Creates `VkSparseImageFormatProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSparseImageFormatProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSparseImageFormatProperties(segment); }
-
-    /// Creates `VkSparseImageFormatProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSparseImageFormatProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSparseImageFormatProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSparseImageFormatProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSparseImageFormatProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageFormatProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSparseImageFormatProperties` with the given segment.
     ///
@@ -83,7 +78,7 @@ public sealed class VkSparseImageFormatProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,11 +91,6 @@ public sealed class VkSparseImageFormatProperties extends Struct {
     /// @return the allocated `VkSparseImageFormatProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSparseImageFormatProperties`
-    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularity, @CType("VkSparseImageFormatFlags") int flags) { return alloc(allocator).aspectMask(aspectMask).imageGranularity(imageGranularity).flags(flags); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -108,76 +98,55 @@ public sealed class VkSparseImageFormatProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImageAspectFlags") int get_aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int aspectMask(MemorySegment segment, long index) { return (int) VH_aspectMask.get(segment, 0L, index); }
     /// {@return `aspectMask`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImageAspectFlags") int get_aspectMask(MemorySegment segment) { return VkSparseImageFormatProperties.get_aspectMask(segment, 0L); }
-    /// {@return `aspectMask`}
-    public @CType("VkImageAspectFlags") int aspectMask() { return VkSparseImageFormatProperties.get_aspectMask(this.segment()); }
+    public int aspectMask() { return aspectMask(this.segment(), 0L); }
     /// Sets `aspectMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_aspectMask(MemorySegment segment, long index, @CType("VkImageAspectFlags") int value) { VH_aspectMask.set(segment, 0L, index, value); }
-    /// Sets `aspectMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_aspectMask(MemorySegment segment, @CType("VkImageAspectFlags") int value) { VkSparseImageFormatProperties.set_aspectMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void aspectMask(MemorySegment segment, long index, int value) { VH_aspectMask.set(segment, 0L, index, value); }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseImageFormatProperties aspectMask(@CType("VkImageAspectFlags") int value) { VkSparseImageFormatProperties.set_aspectMask(this.segment(), value); return this; }
+    public VkSparseImageFormatProperties aspectMask(int value) { aspectMask(this.segment(), 0L, value); return this; }
 
     /// {@return `imageGranularity` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment imageGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_imageGranularity, index), LAYOUT_imageGranularity); }
     /// {@return `imageGranularity`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_imageGranularity(MemorySegment segment) { return VkSparseImageFormatProperties.get_imageGranularity(segment, 0L); }
-    /// {@return `imageGranularity`}
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularity() { return VkSparseImageFormatProperties.get_imageGranularity(this.segment()); }
+    public MemorySegment imageGranularity() { return imageGranularity(this.segment(), 0L); }
     /// Sets `imageGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageGranularity(MemorySegment segment, long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageGranularity, index), ML_imageGranularity.byteSize()); }
-    /// Sets `imageGranularity` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageGranularity(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageGranularity(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_imageGranularity, index), LAYOUT_imageGranularity.byteSize()); }
     /// Sets `imageGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseImageFormatProperties imageGranularity(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), value); return this; }
+    public VkSparseImageFormatProperties imageGranularity(MemorySegment value) { imageGranularity(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSparseImageFormatFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSparseImageFormatFlags") int get_flags(MemorySegment segment) { return VkSparseImageFormatProperties.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkSparseImageFormatFlags") int flags() { return VkSparseImageFormatProperties.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkSparseImageFormatFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkSparseImageFormatFlags") int value) { VkSparseImageFormatProperties.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSparseImageFormatProperties flags(@CType("VkSparseImageFormatFlags") int value) { VkSparseImageFormatProperties.set_flags(this.segment(), value); return this; }
+    public VkSparseImageFormatProperties flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSparseImageFormatProperties].
     public static final class Buffer extends VkSparseImageFormatProperties {
@@ -202,31 +171,31 @@ public sealed class VkSparseImageFormatProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `aspectMask` at the given index}
-        /// @param index the index
-        public @CType("VkImageAspectFlags") int aspectMaskAt(long index) { return VkSparseImageFormatProperties.get_aspectMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
         /// Sets `aspectMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer aspectMaskAt(long index, @CType("VkImageAspectFlags") int value) { VkSparseImageFormatProperties.set_aspectMask(this.segment(), index, value); return this; }
+        public Buffer aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
 
         /// {@return `imageGranularity` at the given index}
-        /// @param index the index
-        public @CType("VkExtent3D") java.lang.foreign.MemorySegment imageGranularityAt(long index) { return VkSparseImageFormatProperties.get_imageGranularity(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment imageGranularityAt(long index) { return imageGranularity(this.segment(), index); }
         /// Sets `imageGranularity` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageGranularityAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkSparseImageFormatProperties.set_imageGranularity(this.segment(), index, value); return this; }
+        public Buffer imageGranularityAt(long index, MemorySegment value) { imageGranularity(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkSparseImageFormatFlags") int flagsAt(long index) { return VkSparseImageFormatProperties.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkSparseImageFormatFlags") int value) { VkSparseImageFormatProperties.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
     }
 }

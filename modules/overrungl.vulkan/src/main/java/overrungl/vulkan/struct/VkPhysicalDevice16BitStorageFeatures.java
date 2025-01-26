@@ -15,43 +15,29 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### storageBuffer16BitAccess
-/// [VarHandle][#VH_storageBuffer16BitAccess] - [Getter][#storageBuffer16BitAccess()] - [Setter][#storageBuffer16BitAccess(int)]
-/// ### uniformAndStorageBuffer16BitAccess
-/// [VarHandle][#VH_uniformAndStorageBuffer16BitAccess] - [Getter][#uniformAndStorageBuffer16BitAccess()] - [Setter][#uniformAndStorageBuffer16BitAccess(int)]
-/// ### storagePushConstant16
-/// [VarHandle][#VH_storagePushConstant16] - [Getter][#storagePushConstant16()] - [Setter][#storagePushConstant16(int)]
-/// ### storageInputOutput16
-/// [VarHandle][#VH_storageInputOutput16] - [Getter][#storageInputOutput16()] - [Setter][#storageInputOutput16(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevice16BitStorageFeatures {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 storageBuffer16BitAccess;
-///     VkBool32 uniformAndStorageBuffer16BitAccess;
-///     VkBool32 storagePushConstant16;
-///     VkBool32 storageInputOutput16;
-/// } VkPhysicalDevice16BitStorageFeatures;
 /// ```
-public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
+/// struct VkPhysicalDevice16BitStorageFeatures {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 storageBuffer16BitAccess;
+///     (uint32_t) VkBool32 uniformAndStorageBuffer16BitAccess;
+///     (uint32_t) VkBool32 storagePushConstant16;
+///     (uint32_t) VkBool32 storageInputOutput16;
+/// };
+/// ```
+public sealed class VkPhysicalDevice16BitStorageFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDevice16BitStorageFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("storageBuffer16BitAccess"),
@@ -59,17 +45,41 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
         ValueLayout.JAVA_INT.withName("storagePushConstant16"),
         ValueLayout.JAVA_INT.withName("storageInputOutput16")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `storageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storageBuffer16BitAccess`.
+    public static final long OFFSET_storageBuffer16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("storageBuffer16BitAccess"));
+    /// The memory layout of `storageBuffer16BitAccess`.
+    public static final MemoryLayout LAYOUT_storageBuffer16BitAccess = LAYOUT.select(PathElement.groupElement("storageBuffer16BitAccess"));
+    /// The [VarHandle] of `storageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storageBuffer16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageBuffer16BitAccess"));
-    /// The [VarHandle] of `uniformAndStorageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `uniformAndStorageBuffer16BitAccess`.
+    public static final long OFFSET_uniformAndStorageBuffer16BitAccess = LAYOUT.byteOffset(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
+    /// The memory layout of `uniformAndStorageBuffer16BitAccess`.
+    public static final MemoryLayout LAYOUT_uniformAndStorageBuffer16BitAccess = LAYOUT.select(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
+    /// The [VarHandle] of `uniformAndStorageBuffer16BitAccess` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_uniformAndStorageBuffer16BitAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformAndStorageBuffer16BitAccess"));
-    /// The [VarHandle] of `storagePushConstant16` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storagePushConstant16`.
+    public static final long OFFSET_storagePushConstant16 = LAYOUT.byteOffset(PathElement.groupElement("storagePushConstant16"));
+    /// The memory layout of `storagePushConstant16`.
+    public static final MemoryLayout LAYOUT_storagePushConstant16 = LAYOUT.select(PathElement.groupElement("storagePushConstant16"));
+    /// The [VarHandle] of `storagePushConstant16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storagePushConstant16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant16"));
-    /// The [VarHandle] of `storageInputOutput16` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storageInputOutput16`.
+    public static final long OFFSET_storageInputOutput16 = LAYOUT.byteOffset(PathElement.groupElement("storageInputOutput16"));
+    /// The memory layout of `storageInputOutput16`.
+    public static final MemoryLayout LAYOUT_storageInputOutput16 = LAYOUT.select(PathElement.groupElement("storageInputOutput16"));
+    /// The [VarHandle] of `storageInputOutput16` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storageInputOutput16 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageInputOutput16"));
 
     /// Creates `VkPhysicalDevice16BitStorageFeatures` with the given segment.
@@ -79,19 +89,14 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
     /// Creates `VkPhysicalDevice16BitStorageFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevice16BitStorageFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevice16BitStorageFeatures(segment); }
-
-    /// Creates `VkPhysicalDevice16BitStorageFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevice16BitStorageFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevice16BitStorageFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevice16BitStorageFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevice16BitStorageFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevice16BitStorageFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevice16BitStorageFeatures` with the given segment.
     ///
@@ -99,7 +104,7 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevice16BitStorageFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -112,11 +117,6 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
     /// @return the allocated `VkPhysicalDevice16BitStorageFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevice16BitStorageFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeatures`
-    public static VkPhysicalDevice16BitStorageFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int storageBuffer16BitAccess, @CType("VkBool32") int uniformAndStorageBuffer16BitAccess, @CType("VkBool32") int storagePushConstant16, @CType("VkBool32") int storageInputOutput16) { return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess).uniformAndStorageBuffer16BitAccess(uniformAndStorageBuffer16BitAccess).storagePushConstant16(storagePushConstant16).storageInputOutput16(storageInputOutput16); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -124,145 +124,103 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevice16BitStorageFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevice16BitStorageFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDevice16BitStorageFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevice16BitStorageFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevice16BitStorageFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevice16BitStorageFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `storageBuffer16BitAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_storageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer16BitAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_storageBuffer16BitAccess.get(segment, 0L, index); }
     /// {@return `storageBuffer16BitAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_storageBuffer16BitAccess(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_storageBuffer16BitAccess(segment, 0L); }
-    /// {@return `storageBuffer16BitAccess`}
-    public @CType("VkBool32") int storageBuffer16BitAccess() { return VkPhysicalDevice16BitStorageFeatures.get_storageBuffer16BitAccess(this.segment()); }
+    public int storageBuffer16BitAccess() { return storageBuffer16BitAccess(this.segment(), 0L); }
     /// Sets `storageBuffer16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storageBuffer16BitAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_storageBuffer16BitAccess.set(segment, 0L, index, value); }
-    /// Sets `storageBuffer16BitAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storageBuffer16BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageBuffer16BitAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_storageBuffer16BitAccess.set(segment, 0L, index, value); }
     /// Sets `storageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures storageBuffer16BitAccess(@CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageBuffer16BitAccess(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures storageBuffer16BitAccess(int value) { storageBuffer16BitAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `uniformAndStorageBuffer16BitAccess` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer16BitAccess.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index) { return (int) VH_uniformAndStorageBuffer16BitAccess.get(segment, 0L, index); }
     /// {@return `uniformAndStorageBuffer16BitAccess`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_uniformAndStorageBuffer16BitAccess(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_uniformAndStorageBuffer16BitAccess(segment, 0L); }
-    /// {@return `uniformAndStorageBuffer16BitAccess`}
-    public @CType("VkBool32") int uniformAndStorageBuffer16BitAccess() { return VkPhysicalDevice16BitStorageFeatures.get_uniformAndStorageBuffer16BitAccess(this.segment()); }
+    public int uniformAndStorageBuffer16BitAccess() { return uniformAndStorageBuffer16BitAccess(this.segment(), 0L); }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_uniformAndStorageBuffer16BitAccess.set(segment, 0L, index, value); }
-    /// Sets `uniformAndStorageBuffer16BitAccess` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_uniformAndStorageBuffer16BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_uniformAndStorageBuffer16BitAccess(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void uniformAndStorageBuffer16BitAccess(MemorySegment segment, long index, int value) { VH_uniformAndStorageBuffer16BitAccess.set(segment, 0L, index, value); }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures uniformAndStorageBuffer16BitAccess(@CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_uniformAndStorageBuffer16BitAccess(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures uniformAndStorageBuffer16BitAccess(int value) { uniformAndStorageBuffer16BitAccess(this.segment(), 0L, value); return this; }
 
     /// {@return `storagePushConstant16` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_storagePushConstant16(MemorySegment segment, long index) { return (int) VH_storagePushConstant16.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storagePushConstant16(MemorySegment segment, long index) { return (int) VH_storagePushConstant16.get(segment, 0L, index); }
     /// {@return `storagePushConstant16`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_storagePushConstant16(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_storagePushConstant16(segment, 0L); }
-    /// {@return `storagePushConstant16`}
-    public @CType("VkBool32") int storagePushConstant16() { return VkPhysicalDevice16BitStorageFeatures.get_storagePushConstant16(this.segment()); }
+    public int storagePushConstant16() { return storagePushConstant16(this.segment(), 0L); }
     /// Sets `storagePushConstant16` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storagePushConstant16(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_storagePushConstant16.set(segment, 0L, index, value); }
-    /// Sets `storagePushConstant16` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storagePushConstant16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storagePushConstant16(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storagePushConstant16(MemorySegment segment, long index, int value) { VH_storagePushConstant16.set(segment, 0L, index, value); }
     /// Sets `storagePushConstant16` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures storagePushConstant16(@CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storagePushConstant16(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures storagePushConstant16(int value) { storagePushConstant16(this.segment(), 0L, value); return this; }
 
     /// {@return `storageInputOutput16` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_storageInputOutput16(MemorySegment segment, long index) { return (int) VH_storageInputOutput16.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storageInputOutput16(MemorySegment segment, long index) { return (int) VH_storageInputOutput16.get(segment, 0L, index); }
     /// {@return `storageInputOutput16`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_storageInputOutput16(MemorySegment segment) { return VkPhysicalDevice16BitStorageFeatures.get_storageInputOutput16(segment, 0L); }
-    /// {@return `storageInputOutput16`}
-    public @CType("VkBool32") int storageInputOutput16() { return VkPhysicalDevice16BitStorageFeatures.get_storageInputOutput16(this.segment()); }
+    public int storageInputOutput16() { return storageInputOutput16(this.segment(), 0L); }
     /// Sets `storageInputOutput16` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storageInputOutput16(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_storageInputOutput16.set(segment, 0L, index, value); }
-    /// Sets `storageInputOutput16` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storageInputOutput16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageInputOutput16(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storageInputOutput16(MemorySegment segment, long index, int value) { VH_storageInputOutput16.set(segment, 0L, index, value); }
     /// Sets `storageInputOutput16` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevice16BitStorageFeatures storageInputOutput16(@CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageInputOutput16(this.segment(), value); return this; }
+    public VkPhysicalDevice16BitStorageFeatures storageInputOutput16(int value) { storageInputOutput16(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevice16BitStorageFeatures].
     public static final class Buffer extends VkPhysicalDevice16BitStorageFeatures {
@@ -287,58 +245,58 @@ public sealed class VkPhysicalDevice16BitStorageFeatures extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevice16BitStorageFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevice16BitStorageFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevice16BitStorageFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevice16BitStorageFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `storageBuffer16BitAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int storageBuffer16BitAccessAt(long index) { return VkPhysicalDevice16BitStorageFeatures.get_storageBuffer16BitAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storageBuffer16BitAccessAt(long index) { return storageBuffer16BitAccess(this.segment(), index); }
         /// Sets `storageBuffer16BitAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageBuffer16BitAccess(this.segment(), index, value); return this; }
+        public Buffer storageBuffer16BitAccessAt(long index, int value) { storageBuffer16BitAccess(this.segment(), index, value); return this; }
 
         /// {@return `uniformAndStorageBuffer16BitAccess` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int uniformAndStorageBuffer16BitAccessAt(long index) { return VkPhysicalDevice16BitStorageFeatures.get_uniformAndStorageBuffer16BitAccess(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int uniformAndStorageBuffer16BitAccessAt(long index) { return uniformAndStorageBuffer16BitAccess(this.segment(), index); }
         /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer uniformAndStorageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_uniformAndStorageBuffer16BitAccess(this.segment(), index, value); return this; }
+        public Buffer uniformAndStorageBuffer16BitAccessAt(long index, int value) { uniformAndStorageBuffer16BitAccess(this.segment(), index, value); return this; }
 
         /// {@return `storagePushConstant16` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int storagePushConstant16At(long index) { return VkPhysicalDevice16BitStorageFeatures.get_storagePushConstant16(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storagePushConstant16At(long index) { return storagePushConstant16(this.segment(), index); }
         /// Sets `storagePushConstant16` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storagePushConstant16At(long index, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storagePushConstant16(this.segment(), index, value); return this; }
+        public Buffer storagePushConstant16At(long index, int value) { storagePushConstant16(this.segment(), index, value); return this; }
 
         /// {@return `storageInputOutput16` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int storageInputOutput16At(long index) { return VkPhysicalDevice16BitStorageFeatures.get_storageInputOutput16(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storageInputOutput16At(long index) { return storageInputOutput16(this.segment(), index); }
         /// Sets `storageInputOutput16` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storageInputOutput16At(long index, @CType("VkBool32") int value) { VkPhysicalDevice16BitStorageFeatures.set_storageInputOutput16(this.segment(), index, value); return this; }
+        public Buffer storageInputOutput16At(long index, int value) { storageInputOutput16(this.segment(), index, value); return this; }
 
     }
 }

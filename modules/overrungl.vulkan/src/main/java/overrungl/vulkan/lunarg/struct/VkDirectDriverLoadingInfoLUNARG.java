@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.lunarg.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### pfnGetInstanceProcAddr
-/// [VarHandle][#VH_pfnGetInstanceProcAddr] - [Getter][#pfnGetInstanceProcAddr()] - [Setter][#pfnGetInstanceProcAddr(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDirectDriverLoadingInfoLUNARG {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkDirectDriverLoadingFlagsLUNARG flags;
-///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
-/// } VkDirectDriverLoadingInfoLUNARG;
 /// ```
-public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
+/// struct VkDirectDriverLoadingInfoLUNARG {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     ((uint32_t) VkFlags) VkDirectDriverLoadingFlagsLUNARG flags;
+///     ((void (*VkVoidFunction)()) PFN_vkVoidFunction (*VkGetInstanceProcAddrLUNARG)((struct VkInstance*) VkInstance instance, const char* pName)) PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
+/// };
+/// ```
+public sealed class VkDirectDriverLoadingInfoLUNARG extends GroupType {
     /// The struct layout of `VkDirectDriverLoadingInfoLUNARG`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("pfnGetInstanceProcAddr")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `pfnGetInstanceProcAddr` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pfnGetInstanceProcAddr`.
+    public static final long OFFSET_pfnGetInstanceProcAddr = LAYOUT.byteOffset(PathElement.groupElement("pfnGetInstanceProcAddr"));
+    /// The memory layout of `pfnGetInstanceProcAddr`.
+    public static final MemoryLayout LAYOUT_pfnGetInstanceProcAddr = LAYOUT.select(PathElement.groupElement("pfnGetInstanceProcAddr"));
+    /// The [VarHandle] of `pfnGetInstanceProcAddr` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pfnGetInstanceProcAddr = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnGetInstanceProcAddr"));
 
     /// Creates `VkDirectDriverLoadingInfoLUNARG` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
     /// Creates `VkDirectDriverLoadingInfoLUNARG` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDirectDriverLoadingInfoLUNARG of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDirectDriverLoadingInfoLUNARG(segment); }
-
-    /// Creates `VkDirectDriverLoadingInfoLUNARG` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDirectDriverLoadingInfoLUNARG` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDirectDriverLoadingInfoLUNARG ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDirectDriverLoadingInfoLUNARG(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDirectDriverLoadingInfoLUNARG ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDirectDriverLoadingInfoLUNARG(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDirectDriverLoadingInfoLUNARG` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDirectDriverLoadingInfoLUNARG` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
     /// @return the allocated `VkDirectDriverLoadingInfoLUNARG`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDirectDriverLoadingInfoLUNARG` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDirectDriverLoadingInfoLUNARG`
-    public static VkDirectDriverLoadingInfoLUNARG allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDirectDriverLoadingFlagsLUNARG") int flags, @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment pfnGetInstanceProcAddr) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pfnGetInstanceProcAddr(pfnGetInstanceProcAddr); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDirectDriverLoadingInfoLUNARG.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDirectDriverLoadingInfoLUNARG.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDirectDriverLoadingInfoLUNARG.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingInfoLUNARG sType(@CType("VkStructureType") int value) { VkDirectDriverLoadingInfoLUNARG.set_sType(this.segment(), value); return this; }
+    public VkDirectDriverLoadingInfoLUNARG sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDirectDriverLoadingInfoLUNARG.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDirectDriverLoadingInfoLUNARG.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingInfoLUNARG pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pNext(this.segment(), value); return this; }
+    public VkDirectDriverLoadingInfoLUNARG pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDirectDriverLoadingFlagsLUNARG") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDirectDriverLoadingFlagsLUNARG") int get_flags(MemorySegment segment) { return VkDirectDriverLoadingInfoLUNARG.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkDirectDriverLoadingFlagsLUNARG") int flags() { return VkDirectDriverLoadingInfoLUNARG.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkDirectDriverLoadingFlagsLUNARG") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkDirectDriverLoadingFlagsLUNARG") int value) { VkDirectDriverLoadingInfoLUNARG.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingInfoLUNARG flags(@CType("VkDirectDriverLoadingFlagsLUNARG") int value) { VkDirectDriverLoadingInfoLUNARG.set_flags(this.segment(), value); return this; }
+    public VkDirectDriverLoadingInfoLUNARG flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `pfnGetInstanceProcAddr` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment get_pfnGetInstanceProcAddr(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pfnGetInstanceProcAddr.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pfnGetInstanceProcAddr(MemorySegment segment, long index) { return (MemorySegment) VH_pfnGetInstanceProcAddr.get(segment, 0L, index); }
     /// {@return `pfnGetInstanceProcAddr`}
-    /// @param segment the segment of the struct
-    public static @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment get_pfnGetInstanceProcAddr(MemorySegment segment) { return VkDirectDriverLoadingInfoLUNARG.get_pfnGetInstanceProcAddr(segment, 0L); }
-    /// {@return `pfnGetInstanceProcAddr`}
-    public @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment pfnGetInstanceProcAddr() { return VkDirectDriverLoadingInfoLUNARG.get_pfnGetInstanceProcAddr(this.segment()); }
+    public MemorySegment pfnGetInstanceProcAddr() { return pfnGetInstanceProcAddr(this.segment(), 0L); }
     /// Sets `pfnGetInstanceProcAddr` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pfnGetInstanceProcAddr(MemorySegment segment, long index, @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment value) { VH_pfnGetInstanceProcAddr.set(segment, 0L, index, value); }
-    /// Sets `pfnGetInstanceProcAddr` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pfnGetInstanceProcAddr(MemorySegment segment, @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pfnGetInstanceProcAddr(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pfnGetInstanceProcAddr(MemorySegment segment, long index, MemorySegment value) { VH_pfnGetInstanceProcAddr.set(segment, 0L, index, value); }
     /// Sets `pfnGetInstanceProcAddr` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(@CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pfnGetInstanceProcAddr(this.segment(), value); return this; }
+    public VkDirectDriverLoadingInfoLUNARG pfnGetInstanceProcAddr(MemorySegment value) { pfnGetInstanceProcAddr(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDirectDriverLoadingInfoLUNARG].
     public static final class Buffer extends VkDirectDriverLoadingInfoLUNARG {
@@ -229,40 +197,40 @@ public sealed class VkDirectDriverLoadingInfoLUNARG extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDirectDriverLoadingInfoLUNARG.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDirectDriverLoadingInfoLUNARG.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDirectDriverLoadingInfoLUNARG.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkDirectDriverLoadingFlagsLUNARG") int flagsAt(long index) { return VkDirectDriverLoadingInfoLUNARG.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkDirectDriverLoadingFlagsLUNARG") int value) { VkDirectDriverLoadingInfoLUNARG.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `pfnGetInstanceProcAddr` at the given index}
-        /// @param index the index
-        public @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment pfnGetInstanceProcAddrAt(long index) { return VkDirectDriverLoadingInfoLUNARG.get_pfnGetInstanceProcAddr(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pfnGetInstanceProcAddrAt(long index) { return pfnGetInstanceProcAddr(this.segment(), index); }
         /// Sets `pfnGetInstanceProcAddr` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pfnGetInstanceProcAddrAt(long index, @CType("PFN_vkGetInstanceProcAddrLUNARG") java.lang.foreign.MemorySegment value) { VkDirectDriverLoadingInfoLUNARG.set_pfnGetInstanceProcAddr(this.segment(), index, value); return this; }
+        public Buffer pfnGetInstanceProcAddrAt(long index, MemorySegment value) { pfnGetInstanceProcAddr(this.segment(), index, value); return this; }
 
     }
 }

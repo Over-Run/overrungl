@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,18 +28,9 @@ public final class GLNVConditionalRender {
     public static final int GL_QUERY_BY_REGION_WAIT_NV = 0x8E15;
     public static final int GL_QUERY_BY_REGION_NO_WAIT_NV = 0x8E16;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginConditionalRenderNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndConditionalRenderNV = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginConditionalRenderNV,
-            FD_glEndConditionalRenderNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginConditionalRenderNV = RuntimeHelper.downcall(Descriptors.FD_glBeginConditionalRenderNV);
-        public static final MethodHandle MH_glEndConditionalRenderNV = RuntimeHelper.downcall(Descriptors.FD_glEndConditionalRenderNV);
+        public static final MethodHandle MH_glBeginConditionalRenderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndConditionalRenderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBeginConditionalRenderNV;
         public final MemorySegment PFN_glEndConditionalRenderNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -54,16 +43,22 @@ public final class GLNVConditionalRender {
         this.handles = new Handles(func);
     }
 
-    public void BeginConditionalRenderNV(@CType("GLuint") int id, @CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBeginConditionalRenderNV)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNV");
+    /// ```
+    /// void glBeginConditionalRenderNV((unsigned int) GLuint id, (unsigned int) GLenum mode);
+    /// ```
+    public void BeginConditionalRenderNV(int id, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNV)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNV");
         try { Handles.MH_glBeginConditionalRenderNV.invokeExact(handles.PFN_glBeginConditionalRenderNV, id, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BeginConditionalRenderNV", e); }
     }
 
+    /// ```
+    /// void glEndConditionalRenderNV();
+    /// ```
     public void EndConditionalRenderNV() {
-        if (Unmarshal.isNullPointer(handles.PFN_glEndConditionalRenderNV)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndConditionalRenderNV)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNV");
         try { Handles.MH_glEndConditionalRenderNV.invokeExact(handles.PFN_glEndConditionalRenderNV); }
-        catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EndConditionalRenderNV", e); }
     }
 
 }

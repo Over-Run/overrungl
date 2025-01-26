@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### profileCount
-/// [VarHandle][#VH_profileCount] - [Getter][#profileCount()] - [Setter][#profileCount(int)]
-/// ### pProfiles
-/// [VarHandle][#VH_pProfiles] - [Getter][#pProfiles()] - [Setter][#pProfiles(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoProfileListInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t profileCount;
-///     const VkVideoProfileInfoKHR * pProfiles;
-/// } VkVideoProfileListInfoKHR;
 /// ```
-public sealed class VkVideoProfileListInfoKHR extends Struct {
+/// struct VkVideoProfileListInfoKHR {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t profileCount;
+///     const VkVideoProfileInfoKHR* pProfiles;
+/// };
+/// ```
+public sealed class VkVideoProfileListInfoKHR extends GroupType {
     /// The struct layout of `VkVideoProfileListInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("profileCount"),
         ValueLayout.ADDRESS.withName("pProfiles")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `profileCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `profileCount`.
+    public static final long OFFSET_profileCount = LAYOUT.byteOffset(PathElement.groupElement("profileCount"));
+    /// The memory layout of `profileCount`.
+    public static final MemoryLayout LAYOUT_profileCount = LAYOUT.select(PathElement.groupElement("profileCount"));
+    /// The [VarHandle] of `profileCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_profileCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("profileCount"));
-    /// The [VarHandle] of `pProfiles` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pProfiles`.
+    public static final long OFFSET_pProfiles = LAYOUT.byteOffset(PathElement.groupElement("pProfiles"));
+    /// The memory layout of `pProfiles`.
+    public static final MemoryLayout LAYOUT_pProfiles = LAYOUT.select(PathElement.groupElement("pProfiles"));
+    /// The [VarHandle] of `pProfiles` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pProfiles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pProfiles"));
 
     /// Creates `VkVideoProfileListInfoKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkVideoProfileListInfoKHR extends Struct {
     /// Creates `VkVideoProfileListInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoProfileListInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoProfileListInfoKHR(segment); }
-
-    /// Creates `VkVideoProfileListInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoProfileListInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoProfileListInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoProfileListInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoProfileListInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoProfileListInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoProfileListInfoKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkVideoProfileListInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoProfileListInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkVideoProfileListInfoKHR extends Struct {
     /// @return the allocated `VkVideoProfileListInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoProfileListInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoProfileListInfoKHR`
-    public static VkVideoProfileListInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int profileCount, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pProfiles) { return alloc(allocator).sType(sType).pNext(pNext).profileCount(profileCount).pProfiles(pProfiles); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkVideoProfileListInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoProfileListInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoProfileListInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoProfileListInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileListInfoKHR sType(@CType("VkStructureType") int value) { VkVideoProfileListInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoProfileListInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoProfileListInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoProfileListInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileListInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoProfileListInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `profileCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_profileCount(MemorySegment segment, long index) { return (int) VH_profileCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int profileCount(MemorySegment segment, long index) { return (int) VH_profileCount.get(segment, 0L, index); }
     /// {@return `profileCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_profileCount(MemorySegment segment) { return VkVideoProfileListInfoKHR.get_profileCount(segment, 0L); }
-    /// {@return `profileCount`}
-    public @CType("uint32_t") int profileCount() { return VkVideoProfileListInfoKHR.get_profileCount(this.segment()); }
+    public int profileCount() { return profileCount(this.segment(), 0L); }
     /// Sets `profileCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_profileCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_profileCount.set(segment, 0L, index, value); }
-    /// Sets `profileCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_profileCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoProfileListInfoKHR.set_profileCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void profileCount(MemorySegment segment, long index, int value) { VH_profileCount.set(segment, 0L, index, value); }
     /// Sets `profileCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileListInfoKHR profileCount(@CType("uint32_t") int value) { VkVideoProfileListInfoKHR.set_profileCount(this.segment(), value); return this; }
+    public VkVideoProfileListInfoKHR profileCount(int value) { profileCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pProfiles` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment get_pProfiles(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pProfiles.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pProfiles(MemorySegment segment, long index) { return (MemorySegment) VH_pProfiles.get(segment, 0L, index); }
     /// {@return `pProfiles`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment get_pProfiles(MemorySegment segment) { return VkVideoProfileListInfoKHR.get_pProfiles(segment, 0L); }
-    /// {@return `pProfiles`}
-    public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pProfiles() { return VkVideoProfileListInfoKHR.get_pProfiles(this.segment()); }
+    public MemorySegment pProfiles() { return pProfiles(this.segment(), 0L); }
     /// Sets `pProfiles` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pProfiles(MemorySegment segment, long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VH_pProfiles.set(segment, 0L, index, value); }
-    /// Sets `pProfiles` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pProfiles(MemorySegment segment, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pProfiles(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pProfiles(MemorySegment segment, long index, MemorySegment value) { VH_pProfiles.set(segment, 0L, index, value); }
     /// Sets `pProfiles` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoProfileListInfoKHR pProfiles(@CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pProfiles(this.segment(), value); return this; }
+    public VkVideoProfileListInfoKHR pProfiles(MemorySegment value) { pProfiles(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoProfileListInfoKHR].
     public static final class Buffer extends VkVideoProfileListInfoKHR {
@@ -229,40 +197,40 @@ public sealed class VkVideoProfileListInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoProfileListInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoProfileListInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoProfileListInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `profileCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int profileCountAt(long index) { return VkVideoProfileListInfoKHR.get_profileCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int profileCountAt(long index) { return profileCount(this.segment(), index); }
         /// Sets `profileCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer profileCountAt(long index, @CType("uint32_t") int value) { VkVideoProfileListInfoKHR.set_profileCount(this.segment(), index, value); return this; }
+        public Buffer profileCountAt(long index, int value) { profileCount(this.segment(), index, value); return this; }
 
         /// {@return `pProfiles` at the given index}
-        /// @param index the index
-        public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pProfilesAt(long index) { return VkVideoProfileListInfoKHR.get_pProfiles(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pProfilesAt(long index) { return pProfiles(this.segment(), index); }
         /// Sets `pProfiles` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pProfilesAt(long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoProfileListInfoKHR.set_pProfiles(this.segment(), index, value); return this; }
+        public Buffer pProfilesAt(long index, MemorySegment value) { pProfiles(this.segment(), index, value); return this; }
 
     }
 }

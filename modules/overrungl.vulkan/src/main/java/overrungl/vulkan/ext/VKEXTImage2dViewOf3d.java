@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTImage2dViewOf3d {
     public static final int VK_EXT_IMAGE_2D_VIEW_OF_3D_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKEXTImage2dViewOf3d {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_2D_VIEW_OF_3D_FEATURES_EXT = 1000393000;
     public static final int VK_IMAGE_CREATE_2D_VIEW_COMPATIBLE_BIT_EXT = 0x00020000;
 
-    private VKEXTImage2dViewOf3d() { }
+    private VKEXTImage2dViewOf3d() {}
 
 }

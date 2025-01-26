@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### texelBufferAlignment
-/// [VarHandle][#VH_texelBufferAlignment] - [Getter][#texelBufferAlignment()] - [Setter][#texelBufferAlignment(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 texelBufferAlignment;
-/// } VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT;
 /// ```
-public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Struct {
+/// struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 texelBufferAlignment;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("texelBufferAlignment")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `texelBufferAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `texelBufferAlignment`.
+    public static final long OFFSET_texelBufferAlignment = LAYOUT.byteOffset(PathElement.groupElement("texelBufferAlignment"));
+    /// The memory layout of `texelBufferAlignment`.
+    public static final MemoryLayout LAYOUT_texelBufferAlignment = LAYOUT.select(PathElement.groupElement("texelBufferAlignment"));
+    /// The [VarHandle] of `texelBufferAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_texelBufferAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("texelBufferAlignment"));
 
     /// Creates `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Stru
     /// Creates `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int texelBufferAlignment) { return alloc(allocator).sType(sType).pNext(pNext).texelBufferAlignment(texelBufferAlignment); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `texelBufferAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_texelBufferAlignment(MemorySegment segment, long index) { return (int) VH_texelBufferAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int texelBufferAlignment(MemorySegment segment, long index) { return (int) VH_texelBufferAlignment.get(segment, 0L, index); }
     /// {@return `texelBufferAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_texelBufferAlignment(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_texelBufferAlignment(segment, 0L); }
-    /// {@return `texelBufferAlignment`}
-    public @CType("VkBool32") int texelBufferAlignment() { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_texelBufferAlignment(this.segment()); }
+    public int texelBufferAlignment() { return texelBufferAlignment(this.segment(), 0L); }
     /// Sets `texelBufferAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_texelBufferAlignment(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_texelBufferAlignment.set(segment, 0L, index, value); }
-    /// Sets `texelBufferAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_texelBufferAlignment(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_texelBufferAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void texelBufferAlignment(MemorySegment segment, long index, int value) { VH_texelBufferAlignment.set(segment, 0L, index, value); }
     /// Sets `texelBufferAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT texelBufferAlignment(@CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_texelBufferAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT texelBufferAlignment(int value) { texelBufferAlignment(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT].
     public static final class Buffer extends VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `texelBufferAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int texelBufferAlignmentAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.get_texelBufferAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int texelBufferAlignmentAt(long index) { return texelBufferAlignment(this.segment(), index); }
         /// Sets `texelBufferAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer texelBufferAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT.set_texelBufferAlignment(this.segment(), index, value); return this; }
+        public Buffer texelBufferAlignmentAt(long index, int value) { texelBufferAlignment(this.segment(), index, value); return this; }
 
     }
 }

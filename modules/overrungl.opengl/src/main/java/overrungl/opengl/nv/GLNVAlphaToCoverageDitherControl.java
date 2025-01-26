@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLNVAlphaToCoverageDitherControl {
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV = 0x934F;
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_MODE_NV = 0x92BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAlphaToCoverageDitherControlNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAlphaToCoverageDitherControlNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAlphaToCoverageDitherControlNV = RuntimeHelper.downcall(Descriptors.FD_glAlphaToCoverageDitherControlNV);
+        public static final MethodHandle MH_glAlphaToCoverageDitherControlNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glAlphaToCoverageDitherControlNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glAlphaToCoverageDitherControlNV = func.invoke("glAlphaToCoverageDitherControlNV");
@@ -49,10 +40,13 @@ public final class GLNVAlphaToCoverageDitherControl {
         this.handles = new Handles(func);
     }
 
-    public void AlphaToCoverageDitherControlNV(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
+    /// ```
+    /// void glAlphaToCoverageDitherControlNV((unsigned int) GLenum mode);
+    /// ```
+    public void AlphaToCoverageDitherControlNV(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
         try { Handles.MH_glAlphaToCoverageDitherControlNV.invokeExact(handles.PFN_glAlphaToCoverageDitherControlNV, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaToCoverageDitherControlNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AlphaToCoverageDitherControlNV", e); }
     }
 
 }

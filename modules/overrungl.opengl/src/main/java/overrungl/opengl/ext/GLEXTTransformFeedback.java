@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -41,33 +39,14 @@ public final class GLEXTTransformFeedback {
     public static final int GL_TRANSFORM_FEEDBACK_BUFFER_MODE_EXT = 0x8C7F;
     public static final int GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH_EXT = 0x8C76;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBeginTransformFeedbackEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEndTransformFeedbackEXT = FunctionDescriptor.ofVoid();
-        public static final FunctionDescriptor FD_glBindBufferRangeEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferOffsetEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final FunctionDescriptor FD_glBindBufferBaseEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTransformFeedbackVaryingsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetTransformFeedbackVaryingEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginTransformFeedbackEXT,
-            FD_glEndTransformFeedbackEXT,
-            FD_glBindBufferRangeEXT,
-            FD_glBindBufferOffsetEXT,
-            FD_glBindBufferBaseEXT,
-            FD_glTransformFeedbackVaryingsEXT,
-            FD_glGetTransformFeedbackVaryingEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBeginTransformFeedbackEXT = RuntimeHelper.downcall(Descriptors.FD_glBeginTransformFeedbackEXT);
-        public static final MethodHandle MH_glEndTransformFeedbackEXT = RuntimeHelper.downcall(Descriptors.FD_glEndTransformFeedbackEXT);
-        public static final MethodHandle MH_glBindBufferRangeEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferRangeEXT);
-        public static final MethodHandle MH_glBindBufferOffsetEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferOffsetEXT);
-        public static final MethodHandle MH_glBindBufferBaseEXT = RuntimeHelper.downcall(Descriptors.FD_glBindBufferBaseEXT);
-        public static final MethodHandle MH_glTransformFeedbackVaryingsEXT = RuntimeHelper.downcall(Descriptors.FD_glTransformFeedbackVaryingsEXT);
-        public static final MethodHandle MH_glGetTransformFeedbackVaryingEXT = RuntimeHelper.downcall(Descriptors.FD_glGetTransformFeedbackVaryingEXT);
+        public static final MethodHandle MH_glBeginTransformFeedbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndTransformFeedbackEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glBindBufferRangeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBindBufferBaseEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTransformFeedbackVaryingsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTransformFeedbackVaryingEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBeginTransformFeedbackEXT;
         public final MemorySegment PFN_glEndTransformFeedbackEXT;
         public final MemorySegment PFN_glBindBufferRangeEXT;
@@ -90,46 +69,67 @@ public final class GLEXTTransformFeedback {
         this.handles = new Handles(func);
     }
 
-    public void BeginTransformFeedbackEXT(@CType("GLenum") int primitiveMode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBeginTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: glBeginTransformFeedbackEXT");
+    /// ```
+    /// void glBeginTransformFeedbackEXT((unsigned int) GLenum primitiveMode);
+    /// ```
+    public void BeginTransformFeedbackEXT(int primitiveMode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: glBeginTransformFeedbackEXT");
         try { Handles.MH_glBeginTransformFeedbackEXT.invokeExact(handles.PFN_glBeginTransformFeedbackEXT, primitiveMode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginTransformFeedbackEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BeginTransformFeedbackEXT", e); }
     }
 
+    /// ```
+    /// void glEndTransformFeedbackEXT();
+    /// ```
     public void EndTransformFeedbackEXT() {
-        if (Unmarshal.isNullPointer(handles.PFN_glEndTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: glEndTransformFeedbackEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: glEndTransformFeedbackEXT");
         try { Handles.MH_glEndTransformFeedbackEXT.invokeExact(handles.PFN_glEndTransformFeedbackEXT); }
-        catch (Throwable e) { throw new RuntimeException("error in glEndTransformFeedbackEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EndTransformFeedbackEXT", e); }
     }
 
-    public void BindBufferRangeEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRangeEXT");
+    /// ```
+    /// void glBindBufferRangeEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
+    /// ```
+    public void BindBufferRangeEXT(int target, int index, int buffer, long offset, long size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRangeEXT");
         try { Handles.MH_glBindBufferRangeEXT.invokeExact(handles.PFN_glBindBufferRangeEXT, target, index, buffer, offset, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindBufferRangeEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindBufferRangeEXT", e); }
     }
 
-    public void BindBufferOffsetEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int buffer, @CType("GLintptr") long offset) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindBufferOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferOffsetEXT");
+    /// ```
+    /// void glBindBufferOffsetEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset);
+    /// ```
+    public void BindBufferOffsetEXT(int target, int index, int buffer, long offset) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferOffsetEXT");
         try { Handles.MH_glBindBufferOffsetEXT.invokeExact(handles.PFN_glBindBufferOffsetEXT, target, index, buffer, offset); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindBufferOffsetEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindBufferOffsetEXT", e); }
     }
 
-    public void BindBufferBaseEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBindBufferBaseEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBaseEXT");
+    /// ```
+    /// void glBindBufferBaseEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer);
+    /// ```
+    public void BindBufferBaseEXT(int target, int index, int buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBaseEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBaseEXT");
         try { Handles.MH_glBindBufferBaseEXT.invokeExact(handles.PFN_glBindBufferBaseEXT, target, index, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glBindBufferBaseEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BindBufferBaseEXT", e); }
     }
 
-    public void TransformFeedbackVaryingsEXT(@CType("GLuint") int program, @CType("GLsizei") int count, @CType("const GLchar *const*") java.lang.foreign.MemorySegment varyings, @CType("GLenum") int bufferMode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTransformFeedbackVaryingsEXT)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsEXT");
+    /// ```
+    /// void glTransformFeedbackVaryingsEXT((unsigned int) GLuint program, (int) GLsizei count, const GLchar* const * varyings, (unsigned int) GLenum bufferMode);
+    /// ```
+    public void TransformFeedbackVaryingsEXT(int program, int count, MemorySegment varyings, int bufferMode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackVaryingsEXT)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsEXT");
         try { Handles.MH_glTransformFeedbackVaryingsEXT.invokeExact(handles.PFN_glTransformFeedbackVaryingsEXT, program, count, varyings, bufferMode); }
-        catch (Throwable e) { throw new RuntimeException("error in glTransformFeedbackVaryingsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TransformFeedbackVaryingsEXT", e); }
     }
 
-    public void GetTransformFeedbackVaryingEXT(@CType("GLuint") int program, @CType("GLuint") int index, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLsizei *") java.lang.foreign.MemorySegment size, @CType("GLenum *") java.lang.foreign.MemorySegment type, @CType("GLchar *") java.lang.foreign.MemorySegment name) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingEXT");
+    /// ```
+    /// void glGetTransformFeedbackVaryingEXT((unsigned int) GLuint program, (unsigned int) GLuint index, (int) GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
+    /// ```
+    public void GetTransformFeedbackVaryingEXT(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingEXT");
         try { Handles.MH_glGetTransformFeedbackVaryingEXT.invokeExact(handles.PFN_glGetTransformFeedbackVaryingEXT, program, index, bufSize, length, size, type, name); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTransformFeedbackVaryingEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTransformFeedbackVaryingEXT", e); }
     }
 
 }

@@ -19,8 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -43,15 +41,8 @@ public final class GLATIDrawBuffers {
     public static final int GL_DRAW_BUFFER14_ATI = 0x8833;
     public static final int GL_DRAW_BUFFER15_ATI = 0x8834;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDrawBuffersATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawBuffersATI
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDrawBuffersATI = RuntimeHelper.downcall(Descriptors.FD_glDrawBuffersATI);
+        public static final MethodHandle MH_glDrawBuffersATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawBuffersATI = func.invoke("glDrawBuffersATI", "glDrawBuffers");
@@ -62,10 +53,13 @@ public final class GLATIDrawBuffers {
         this.handles = new Handles(func);
     }
 
-    public void DrawBuffersATI(@CType("GLsizei") int n, @CType("const GLenum *") java.lang.foreign.MemorySegment bufs) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");
+    /// ```
+    /// void glDrawBuffersATI((int) GLsizei n, const GLenum* bufs);
+    /// ```
+    public void DrawBuffersATI(int n, MemorySegment bufs) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");
         try { Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersATI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DrawBuffersATI", e); }
     }
 
 }

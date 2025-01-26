@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTTextureCubeMap {
     public static final int GL_NORMAL_MAP_EXT = 0x8511;
     public static final int GL_REFLECTION_MAP_EXT = 0x8512;

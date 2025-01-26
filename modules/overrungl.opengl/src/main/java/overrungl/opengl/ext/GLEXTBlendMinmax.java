@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLEXTBlendMinmax {
     public static final int GL_FUNC_ADD_EXT = 0x8006;
     public static final int GL_BLEND_EQUATION_EXT = 0x8009;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendEquationEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendEquationEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationEXT);
+        public static final MethodHandle MH_glBlendEquationEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendEquationEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendEquationEXT = func.invoke("glBlendEquationEXT", "glBlendEquation");
@@ -49,10 +40,13 @@ public final class GLEXTBlendMinmax {
         this.handles = new Handles(func);
     }
 
-    public void BlendEquationEXT(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");
+    /// ```
+    /// void glBlendEquationEXT((unsigned int) GLenum mode);
+    /// ```
+    public void BlendEquationEXT(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");
         try { Handles.MH_glBlendEquationEXT.invokeExact(handles.PFN_glBlendEquationEXT, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationEXT", e); }
     }
 
 }

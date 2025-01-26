@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.fuchsia.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### imagePipeHandle
-/// [VarHandle][#VH_imagePipeHandle] - [Getter][#imagePipeHandle()] - [Setter][#imagePipeHandle(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkImagePipeSurfaceCreateInfoFUCHSIA {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
-///     zx_handle_t imagePipeHandle;
-/// } VkImagePipeSurfaceCreateInfoFUCHSIA;
 /// ```
-public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
+/// struct VkImagePipeSurfaceCreateInfoFUCHSIA {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
+///     (int32_t) zx_handle_t imagePipeHandle;
+/// };
+/// ```
+public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends GroupType {
     /// The struct layout of `VkImagePipeSurfaceCreateInfoFUCHSIA`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("imagePipeHandle")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `imagePipeHandle` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imagePipeHandle`.
+    public static final long OFFSET_imagePipeHandle = LAYOUT.byteOffset(PathElement.groupElement("imagePipeHandle"));
+    /// The memory layout of `imagePipeHandle`.
+    public static final MemoryLayout LAYOUT_imagePipeHandle = LAYOUT.select(PathElement.groupElement("imagePipeHandle"));
+    /// The [VarHandle] of `imagePipeHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imagePipeHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imagePipeHandle"));
 
     /// Creates `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
     /// Creates `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImagePipeSurfaceCreateInfoFUCHSIA(segment); }
-
-    /// Creates `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImagePipeSurfaceCreateInfoFUCHSIA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkImagePipeSurfaceCreateInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImagePipeSurfaceCreateInfoFUCHSIA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
     /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int flags, @CType("zx_handle_t") int imagePipeHandle) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imagePipeHandle(imagePipeHandle); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImagePipeSurfaceCreateInfoFUCHSIA sType(@CType("VkStructureType") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_sType(this.segment(), value); return this; }
+    public VkImagePipeSurfaceCreateInfoFUCHSIA sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImagePipeSurfaceCreateInfoFUCHSIA pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_pNext(this.segment(), value); return this; }
+    public VkImagePipeSurfaceCreateInfoFUCHSIA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int get_flags(MemorySegment segment) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int flags() { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(@CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_flags(this.segment(), value); return this; }
+    public VkImagePipeSurfaceCreateInfoFUCHSIA flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `imagePipeHandle` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("zx_handle_t") int get_imagePipeHandle(MemorySegment segment, long index) { return (int) VH_imagePipeHandle.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imagePipeHandle(MemorySegment segment, long index) { return (int) VH_imagePipeHandle.get(segment, 0L, index); }
     /// {@return `imagePipeHandle`}
-    /// @param segment the segment of the struct
-    public static @CType("zx_handle_t") int get_imagePipeHandle(MemorySegment segment) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_imagePipeHandle(segment, 0L); }
-    /// {@return `imagePipeHandle`}
-    public @CType("zx_handle_t") int imagePipeHandle() { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_imagePipeHandle(this.segment()); }
+    public int imagePipeHandle() { return imagePipeHandle(this.segment(), 0L); }
     /// Sets `imagePipeHandle` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imagePipeHandle(MemorySegment segment, long index, @CType("zx_handle_t") int value) { VH_imagePipeHandle.set(segment, 0L, index, value); }
-    /// Sets `imagePipeHandle` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imagePipeHandle(MemorySegment segment, @CType("zx_handle_t") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_imagePipeHandle(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imagePipeHandle(MemorySegment segment, long index, int value) { VH_imagePipeHandle.set(segment, 0L, index, value); }
     /// Sets `imagePipeHandle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImagePipeSurfaceCreateInfoFUCHSIA imagePipeHandle(@CType("zx_handle_t") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_imagePipeHandle(this.segment(), value); return this; }
+    public VkImagePipeSurfaceCreateInfoFUCHSIA imagePipeHandle(int value) { imagePipeHandle(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkImagePipeSurfaceCreateInfoFUCHSIA].
     public static final class Buffer extends VkImagePipeSurfaceCreateInfoFUCHSIA {
@@ -229,40 +197,40 @@ public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int flagsAt(long index) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkImagePipeSurfaceCreateFlagsFUCHSIA") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `imagePipeHandle` at the given index}
-        /// @param index the index
-        public @CType("zx_handle_t") int imagePipeHandleAt(long index) { return VkImagePipeSurfaceCreateInfoFUCHSIA.get_imagePipeHandle(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imagePipeHandleAt(long index) { return imagePipeHandle(this.segment(), index); }
         /// Sets `imagePipeHandle` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imagePipeHandleAt(long index, @CType("zx_handle_t") int value) { VkImagePipeSurfaceCreateInfoFUCHSIA.set_imagePipeHandle(this.segment(), index, value); return this; }
+        public Buffer imagePipeHandleAt(long index, int value) { imagePipeHandle(this.segment(), index, value); return this; }
 
     }
 }

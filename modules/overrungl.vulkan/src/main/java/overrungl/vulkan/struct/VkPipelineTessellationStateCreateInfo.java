@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### patchControlPoints
-/// [VarHandle][#VH_patchControlPoints] - [Getter][#patchControlPoints()] - [Setter][#patchControlPoints(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineTessellationStateCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkPipelineTessellationStateCreateFlags flags;
-///     uint32_t patchControlPoints;
-/// } VkPipelineTessellationStateCreateInfo;
 /// ```
-public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
+/// struct VkPipelineTessellationStateCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkPipelineTessellationStateCreateFlags flags;
+///     uint32_t patchControlPoints;
+/// };
+/// ```
+public sealed class VkPipelineTessellationStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineTessellationStateCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("patchControlPoints")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `patchControlPoints` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `patchControlPoints`.
+    public static final long OFFSET_patchControlPoints = LAYOUT.byteOffset(PathElement.groupElement("patchControlPoints"));
+    /// The memory layout of `patchControlPoints`.
+    public static final MemoryLayout LAYOUT_patchControlPoints = LAYOUT.select(PathElement.groupElement("patchControlPoints"));
+    /// The [VarHandle] of `patchControlPoints` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_patchControlPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("patchControlPoints"));
 
     /// Creates `VkPipelineTessellationStateCreateInfo` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
     /// Creates `VkPipelineTessellationStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineTessellationStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineTessellationStateCreateInfo(segment); }
-
-    /// Creates `VkPipelineTessellationStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineTessellationStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineTessellationStateCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineTessellationStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineTessellationStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineTessellationStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineTessellationStateCreateInfo` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineTessellationStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineTessellationStateCreateInfo`
-    public static VkPipelineTessellationStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineTessellationStateCreateFlags") int flags, @CType("uint32_t") int patchControlPoints) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).patchControlPoints(patchControlPoints); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineTessellationStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineTessellationStateCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineTessellationStateCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineTessellationStateCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineTessellationStateCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineTessellationStateCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineTessellationStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineTessellationStateCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineTessellationStateCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineTessellationStateCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineTessellationStateCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineTessellationStateCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineTessellationStateCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineTessellationStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineTessellationStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineTessellationStateCreateFlags") int flags() { return VkPipelineTessellationStateCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineTessellationStateCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineTessellationStateCreateFlags") int value) { VkPipelineTessellationStateCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineTessellationStateCreateInfo flags(@CType("VkPipelineTessellationStateCreateFlags") int value) { VkPipelineTessellationStateCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkPipelineTessellationStateCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `patchControlPoints` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_patchControlPoints(MemorySegment segment, long index) { return (int) VH_patchControlPoints.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int patchControlPoints(MemorySegment segment, long index) { return (int) VH_patchControlPoints.get(segment, 0L, index); }
     /// {@return `patchControlPoints`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_patchControlPoints(MemorySegment segment) { return VkPipelineTessellationStateCreateInfo.get_patchControlPoints(segment, 0L); }
-    /// {@return `patchControlPoints`}
-    public @CType("uint32_t") int patchControlPoints() { return VkPipelineTessellationStateCreateInfo.get_patchControlPoints(this.segment()); }
+    public int patchControlPoints() { return patchControlPoints(this.segment(), 0L); }
     /// Sets `patchControlPoints` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_patchControlPoints(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_patchControlPoints.set(segment, 0L, index, value); }
-    /// Sets `patchControlPoints` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_patchControlPoints(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineTessellationStateCreateInfo.set_patchControlPoints(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void patchControlPoints(MemorySegment segment, long index, int value) { VH_patchControlPoints.set(segment, 0L, index, value); }
     /// Sets `patchControlPoints` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineTessellationStateCreateInfo patchControlPoints(@CType("uint32_t") int value) { VkPipelineTessellationStateCreateInfo.set_patchControlPoints(this.segment(), value); return this; }
+    public VkPipelineTessellationStateCreateInfo patchControlPoints(int value) { patchControlPoints(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineTessellationStateCreateInfo].
     public static final class Buffer extends VkPipelineTessellationStateCreateInfo {
@@ -229,40 +197,40 @@ public sealed class VkPipelineTessellationStateCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineTessellationStateCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineTessellationStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineTessellationStateCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineTessellationStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineTessellationStateCreateFlags") int flagsAt(long index) { return VkPipelineTessellationStateCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineTessellationStateCreateFlags") int value) { VkPipelineTessellationStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `patchControlPoints` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int patchControlPointsAt(long index) { return VkPipelineTessellationStateCreateInfo.get_patchControlPoints(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int patchControlPointsAt(long index) { return patchControlPoints(this.segment(), index); }
         /// Sets `patchControlPoints` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer patchControlPointsAt(long index, @CType("uint32_t") int value) { VkPipelineTessellationStateCreateInfo.set_patchControlPoints(this.segment(), index, value); return this; }
+        public Buffer patchControlPointsAt(long index, int value) { patchControlPoints(this.segment(), index, value); return this; }
 
     }
 }

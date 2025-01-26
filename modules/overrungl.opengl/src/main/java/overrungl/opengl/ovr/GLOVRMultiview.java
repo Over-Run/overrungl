@@ -19,8 +19,6 @@ package overrungl.opengl.ovr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,18 +28,9 @@ public final class GLOVRMultiview {
     public static final int GL_MAX_VIEWS_OVR = 0x9631;
     public static final int GL_FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR = 0x9633;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNamedFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferTextureMultiviewOVR,
-            FD_glNamedFramebufferTextureMultiviewOVR
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureMultiviewOVR);
-        public static final MethodHandle MH_glNamedFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(Descriptors.FD_glNamedFramebufferTextureMultiviewOVR);
+        public static final MethodHandle MH_glFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNamedFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFramebufferTextureMultiviewOVR;
         public final MemorySegment PFN_glNamedFramebufferTextureMultiviewOVR;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -53,16 +42,22 @@ public final class GLOVRMultiview {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferTextureMultiviewOVR(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int baseViewIndex, @CType("GLsizei") int numViews) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR");
+    /// ```
+    /// void glFramebufferTextureMultiviewOVR((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
+    /// ```
+    public void FramebufferTextureMultiviewOVR(int target, int attachment, int texture, int level, int baseViewIndex, int numViews) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR");
         try { Handles.MH_glFramebufferTextureMultiviewOVR.invokeExact(handles.PFN_glFramebufferTextureMultiviewOVR, target, attachment, texture, level, baseViewIndex, numViews); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureMultiviewOVR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureMultiviewOVR", e); }
     }
 
-    public void NamedFramebufferTextureMultiviewOVR(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int baseViewIndex, @CType("GLsizei") int numViews) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNamedFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR");
+    /// ```
+    /// void glNamedFramebufferTextureMultiviewOVR((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
+    /// ```
+    public void NamedFramebufferTextureMultiviewOVR(int framebuffer, int attachment, int texture, int level, int baseViewIndex, int numViews) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR");
         try { Handles.MH_glNamedFramebufferTextureMultiviewOVR.invokeExact(handles.PFN_glNamedFramebufferTextureMultiviewOVR, framebuffer, attachment, texture, level, baseViewIndex, numViews); }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferTextureMultiviewOVR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureMultiviewOVR", e); }
     }
 
 }

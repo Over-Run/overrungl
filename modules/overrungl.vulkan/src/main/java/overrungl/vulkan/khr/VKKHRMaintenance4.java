@@ -18,65 +18,50 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-import static overrungl.vulkan.VK13.*;
-public class VKKHRMaintenance4 {
+public final class VKKHRMaintenance4 {
     public static final int VK_KHR_MAINTENANCE_4_SPEC_VERSION = 2;
     public static final String VK_KHR_MAINTENANCE_4_EXTENSION_NAME = "VK_KHR_maintenance4";
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES;
-    public static final int VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS;
-    public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS;
-    public static final int VK_IMAGE_ASPECT_NONE_KHR = VK_IMAGE_ASPECT_NONE;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetDeviceBufferMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageSparseMemoryRequirementsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetDeviceBufferMemoryRequirementsKHR,
-            FD_vkGetDeviceImageMemoryRequirementsKHR,
-            FD_vkGetDeviceImageSparseMemoryRequirementsKHR
-        );
-        private Descriptors() {}
-    }
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES_KHR = 1000413000;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES_KHR = 1000413001;
+    public static final int VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = 1000413002;
+    public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003;
+    public static final int VK_IMAGE_ASPECT_NONE_KHR = 0;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceBufferMemoryRequirementsKHR);
-        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageMemoryRequirementsKHR);
-        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageSparseMemoryRequirementsKHR);
-        public final MemorySegment PFN_vkGetDeviceBufferMemoryRequirementsKHR;
-        public final MemorySegment PFN_vkGetDeviceImageMemoryRequirementsKHR;
-        public final MemorySegment PFN_vkGetDeviceImageSparseMemoryRequirementsKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetDeviceBufferMemoryRequirementsKHR = func.invoke(device, "vkGetDeviceBufferMemoryRequirementsKHR", "vkGetDeviceBufferMemoryRequirements");
-            PFN_vkGetDeviceImageMemoryRequirementsKHR = func.invoke(device, "vkGetDeviceImageMemoryRequirementsKHR", "vkGetDeviceImageMemoryRequirements");
-            PFN_vkGetDeviceImageSparseMemoryRequirementsKHR = func.invoke(device, "vkGetDeviceImageSparseMemoryRequirementsKHR", "vkGetDeviceImageSparseMemoryRequirements");
-        }
+        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKKHRMaintenance4(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRMaintenance4() {}
 
-    public void GetDeviceBufferMemoryRequirementsKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceBufferMemoryRequirements *") MemorySegment pInfo, @CType("VkMemoryRequirements2 *") MemorySegment pMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceBufferMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceBufferMemoryRequirementsKHR.invokeExact(handles.PFN_vkGetDeviceBufferMemoryRequirementsKHR, device, pInfo, pMemoryRequirements); }
+    /// ```
+    /// void vkGetDeviceBufferMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// ```
+    public static void vkGetDeviceBufferMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirementsKHR");
+        try { Handles.MH_vkGetDeviceBufferMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceBufferMemoryRequirementsKHR", e); }
     }
 
-    public void GetDeviceImageMemoryRequirementsKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceImageMemoryRequirements *") MemorySegment pInfo, @CType("VkMemoryRequirements2 *") MemorySegment pMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceImageMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceImageMemoryRequirementsKHR.invokeExact(handles.PFN_vkGetDeviceImageMemoryRequirementsKHR, device, pInfo, pMemoryRequirements); }
+    /// ```
+    /// void vkGetDeviceImageMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// ```
+    public static void vkGetDeviceImageMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirementsKHR");
+        try { Handles.MH_vkGetDeviceImageMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageMemoryRequirementsKHR", e); }
     }
 
-    public void GetDeviceImageSparseMemoryRequirementsKHR(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceImageMemoryRequirements *") MemorySegment pInfo, @CType("uint32_t *") MemorySegment pSparseMemoryRequirementCount, @CType("VkSparseImageMemoryRequirements2 *") MemorySegment pSparseMemoryRequirements) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceImageSparseMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceImageSparseMemoryRequirementsKHR.invokeExact(handles.PFN_vkGetDeviceImageSparseMemoryRequirementsKHR, device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
+    /// ```
+    /// void vkGetDeviceImageSparseMemoryRequirementsKHR((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
+    /// ```
+    public static void vkGetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirementsKHR");
+        try { Handles.MH_vkGetDeviceImageSparseMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR, device.segment(), pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSparseMemoryRequirementsKHR", e); }
     }
 

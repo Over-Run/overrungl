@@ -18,58 +18,44 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-import static overrungl.vulkan.VK13.*;
-public class VKKHRDynamicRendering {
+public final class VKKHRDynamicRendering {
     public static final int VK_KHR_DYNAMIC_RENDERING_SPEC_VERSION = 1;
     public static final String VK_KHR_DYNAMIC_RENDERING_EXTENSION_NAME = "VK_KHR_dynamic_rendering";
-    public static final int VK_STRUCTURE_TYPE_RENDERING_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_INFO;
-    public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR = VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO;
-    public static final int VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR = VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES;
-    public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO;
-    public static final int VK_ATTACHMENT_STORE_OP_NONE_KHR = VK_ATTACHMENT_STORE_OP_NONE;
-    public static final int VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR = VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT;
-    public static final int VK_RENDERING_SUSPENDING_BIT_KHR = VK_RENDERING_SUSPENDING_BIT;
-    public static final int VK_RENDERING_RESUMING_BIT_KHR = VK_RENDERING_RESUMING_BIT;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdBeginRenderingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndRenderingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBeginRenderingKHR,
-            FD_vkCmdEndRenderingKHR
-        );
-        private Descriptors() {}
-    }
+    public static final int VK_STRUCTURE_TYPE_RENDERING_INFO_KHR = 1000044000;
+    public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO_KHR = 1000044001;
+    public static final int VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR = 1000044002;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES_KHR = 1000044003;
+    public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR = 1000044004;
+    public static final int VK_ATTACHMENT_STORE_OP_NONE_KHR = 1000301000;
+    public static final int VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR = 0x00000001;
+    public static final int VK_RENDERING_SUSPENDING_BIT_KHR = 0x00000002;
+    public static final int VK_RENDERING_RESUMING_BIT_KHR = 0x00000004;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBeginRenderingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderingKHR);
-        public static final MethodHandle MH_vkCmdEndRenderingKHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderingKHR);
-        public final MemorySegment PFN_vkCmdBeginRenderingKHR;
-        public final MemorySegment PFN_vkCmdEndRenderingKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdBeginRenderingKHR = func.invoke(device, "vkCmdBeginRenderingKHR", "vkCmdBeginRendering");
-            PFN_vkCmdEndRenderingKHR = func.invoke(device, "vkCmdEndRenderingKHR", "vkCmdEndRendering");
-        }
+        public static final MethodHandle MH_vkCmdBeginRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKKHRDynamicRendering(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRDynamicRendering() {}
 
-    public void CmdBeginRenderingKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderingInfo *") MemorySegment pRenderingInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBeginRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
-        try { Handles.MH_vkCmdBeginRenderingKHR.invokeExact(handles.PFN_vkCmdBeginRenderingKHR, commandBuffer, pRenderingInfo); }
+    /// ```
+    /// void vkCmdBeginRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
+    /// ```
+    public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, MemorySegment pRenderingInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
+        try { Handles.MH_vkCmdBeginRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR, commandBuffer.segment(), pRenderingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderingKHR", e); }
     }
 
-    public void CmdEndRenderingKHR(@CType("VkCommandBuffer") MemorySegment commandBuffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdEndRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
-        try { Handles.MH_vkCmdEndRenderingKHR.invokeExact(handles.PFN_vkCmdEndRenderingKHR, commandBuffer); }
+    /// ```
+    /// void vkCmdEndRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
+    /// ```
+    public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
+        try { Handles.MH_vkCmdEndRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderingKHR", e); }
     }
 

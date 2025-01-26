@@ -15,46 +15,46 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### fragmentDensityMapAttachment
-/// [Byte offset][#OFFSET_fragmentDensityMapAttachment] - [Memory layout][#ML_fragmentDensityMapAttachment] - [Getter][#fragmentDensityMapAttachment()] - [Setter][#fragmentDensityMapAttachment(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRenderPassFragmentDensityMapCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkAttachmentReference fragmentDensityMapAttachment;
-/// } VkRenderPassFragmentDensityMapCreateInfoEXT;
 /// ```
-public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
+/// struct VkRenderPassFragmentDensityMapCreateInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (struct VkAttachmentReference) VkAttachmentReference fragmentDensityMapAttachment;
+/// };
+/// ```
+public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends GroupType {
     /// The struct layout of `VkRenderPassFragmentDensityMapCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkAttachmentReference.LAYOUT.withName("fragmentDensityMapAttachment")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `fragmentDensityMapAttachment`.
     public static final long OFFSET_fragmentDensityMapAttachment = LAYOUT.byteOffset(PathElement.groupElement("fragmentDensityMapAttachment"));
     /// The memory layout of `fragmentDensityMapAttachment`.
-    public static final MemoryLayout ML_fragmentDensityMapAttachment = LAYOUT.select(PathElement.groupElement("fragmentDensityMapAttachment"));
+    public static final MemoryLayout LAYOUT_fragmentDensityMapAttachment = LAYOUT.select(PathElement.groupElement("fragmentDensityMapAttachment"));
 
     /// Creates `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
@@ -63,19 +63,14 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
     /// Creates `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassFragmentDensityMapCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassFragmentDensityMapCreateInfoEXT(segment); }
-
-    /// Creates `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassFragmentDensityMapCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassFragmentDensityMapCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRenderPassFragmentDensityMapCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassFragmentDensityMapCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment.
     ///
@@ -83,7 +78,7 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,11 +91,6 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
     /// @return the allocated `VkRenderPassFragmentDensityMapCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassFragmentDensityMapCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderPassFragmentDensityMapCreateInfoEXT`
-    public static VkRenderPassFragmentDensityMapCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAttachmentReference") java.lang.foreign.MemorySegment fragmentDensityMapAttachment) { return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityMapAttachment(fragmentDensityMapAttachment); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -108,76 +98,55 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassFragmentDensityMapCreateInfoEXT sType(@CType("VkStructureType") int value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkRenderPassFragmentDensityMapCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassFragmentDensityMapCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkRenderPassFragmentDensityMapCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `fragmentDensityMapAttachment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkAttachmentReference") java.lang.foreign.MemorySegment get_fragmentDensityMapAttachment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fragmentDensityMapAttachment, index), ML_fragmentDensityMapAttachment); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment fragmentDensityMapAttachment(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fragmentDensityMapAttachment, index), LAYOUT_fragmentDensityMapAttachment); }
     /// {@return `fragmentDensityMapAttachment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkAttachmentReference") java.lang.foreign.MemorySegment get_fragmentDensityMapAttachment(MemorySegment segment) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_fragmentDensityMapAttachment(segment, 0L); }
-    /// {@return `fragmentDensityMapAttachment`}
-    public @CType("VkAttachmentReference") java.lang.foreign.MemorySegment fragmentDensityMapAttachment() { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_fragmentDensityMapAttachment(this.segment()); }
+    public MemorySegment fragmentDensityMapAttachment() { return fragmentDensityMapAttachment(this.segment(), 0L); }
     /// Sets `fragmentDensityMapAttachment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fragmentDensityMapAttachment(MemorySegment segment, long index, @CType("VkAttachmentReference") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fragmentDensityMapAttachment, index), ML_fragmentDensityMapAttachment.byteSize()); }
-    /// Sets `fragmentDensityMapAttachment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fragmentDensityMapAttachment(MemorySegment segment, @CType("VkAttachmentReference") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_fragmentDensityMapAttachment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fragmentDensityMapAttachment(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fragmentDensityMapAttachment, index), LAYOUT_fragmentDensityMapAttachment.byteSize()); }
     /// Sets `fragmentDensityMapAttachment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(@CType("VkAttachmentReference") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_fragmentDensityMapAttachment(this.segment(), value); return this; }
+    public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(MemorySegment value) { fragmentDensityMapAttachment(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRenderPassFragmentDensityMapCreateInfoEXT].
     public static final class Buffer extends VkRenderPassFragmentDensityMapCreateInfoEXT {
@@ -202,31 +171,31 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `fragmentDensityMapAttachment` at the given index}
-        /// @param index the index
-        public @CType("VkAttachmentReference") java.lang.foreign.MemorySegment fragmentDensityMapAttachmentAt(long index) { return VkRenderPassFragmentDensityMapCreateInfoEXT.get_fragmentDensityMapAttachment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment fragmentDensityMapAttachmentAt(long index) { return fragmentDensityMapAttachment(this.segment(), index); }
         /// Sets `fragmentDensityMapAttachment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fragmentDensityMapAttachmentAt(long index, @CType("VkAttachmentReference") java.lang.foreign.MemorySegment value) { VkRenderPassFragmentDensityMapCreateInfoEXT.set_fragmentDensityMapAttachment(this.segment(), index, value); return this; }
+        public Buffer fragmentDensityMapAttachmentAt(long index, MemorySegment value) { fragmentDensityMapAttachment(this.segment(), index, value); return this; }
 
     }
 }

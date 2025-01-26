@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -28,15 +26,8 @@ public final class GLEXTBlendEquationSeparate {
     public static final int GL_BLEND_EQUATION_RGB_EXT = 0x8009;
     public static final int GL_BLEND_EQUATION_ALPHA_EXT = 0x883D;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendEquationSeparateEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendEquationSeparateEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendEquationSeparateEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationSeparateEXT);
+        public static final MethodHandle MH_glBlendEquationSeparateEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendEquationSeparateEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendEquationSeparateEXT = func.invoke("glBlendEquationSeparateEXT", "glBlendEquationSeparate");
@@ -47,10 +38,13 @@ public final class GLEXTBlendEquationSeparate {
         this.handles = new Handles(func);
     }
 
-    public void BlendEquationSeparateEXT(@CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
+    /// ```
+    /// void glBlendEquationSeparateEXT((unsigned int) GLenum modeRGB, (unsigned int) GLenum modeAlpha);
+    /// ```
+    public void BlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
         try { Handles.MH_glBlendEquationSeparateEXT.invokeExact(handles.PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateEXT", e); }
     }
 
 }

@@ -20,7 +20,6 @@
 /// @since 0.1.0
 module overrungl.core {
     exports overrungl;
-    exports overrungl.annotation;
     exports overrungl.struct;
     exports overrungl.upcall;
     exports overrungl.util;
@@ -34,4 +33,5 @@ module overrungl.core {
 
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;
+    requires org.graalvm.nativeimage;
 }

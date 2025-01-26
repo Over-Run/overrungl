@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKQCOMFilterCubicWeights {
     public static final int VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0;
@@ -33,6 +28,6 @@ public final class VKQCOMFilterCubicWeights {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM = 1000519001;
     public static final int VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM = 1000519002;
 
-    private VKQCOMFilterCubicWeights() { }
+    private VKQCOMFilterCubicWeights() {}
 
 }

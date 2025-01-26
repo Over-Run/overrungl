@@ -15,49 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### earlyFragmentMultisampleCoverageAfterSampleCounting
-/// [VarHandle][#VH_earlyFragmentMultisampleCoverageAfterSampleCounting] - [Getter][#earlyFragmentMultisampleCoverageAfterSampleCounting()] - [Setter][#earlyFragmentMultisampleCoverageAfterSampleCounting(int)]
-/// ### earlyFragmentSampleMaskTestBeforeSampleCounting
-/// [VarHandle][#VH_earlyFragmentSampleMaskTestBeforeSampleCounting] - [Getter][#earlyFragmentSampleMaskTestBeforeSampleCounting()] - [Setter][#earlyFragmentSampleMaskTestBeforeSampleCounting(int)]
-/// ### depthStencilSwizzleOneSupport
-/// [VarHandle][#VH_depthStencilSwizzleOneSupport] - [Getter][#depthStencilSwizzleOneSupport()] - [Setter][#depthStencilSwizzleOneSupport(int)]
-/// ### polygonModePointSize
-/// [VarHandle][#VH_polygonModePointSize] - [Getter][#polygonModePointSize()] - [Setter][#polygonModePointSize(int)]
-/// ### nonStrictSinglePixelWideLinesUseParallelogram
-/// [VarHandle][#VH_nonStrictSinglePixelWideLinesUseParallelogram] - [Getter][#nonStrictSinglePixelWideLinesUseParallelogram()] - [Setter][#nonStrictSinglePixelWideLinesUseParallelogram(int)]
-/// ### nonStrictWideLinesUseParallelogram
-/// [VarHandle][#VH_nonStrictWideLinesUseParallelogram] - [Getter][#nonStrictWideLinesUseParallelogram()] - [Setter][#nonStrictWideLinesUseParallelogram(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceMaintenance5Properties {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
-///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
-///     VkBool32 depthStencilSwizzleOneSupport;
-///     VkBool32 polygonModePointSize;
-///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
-///     VkBool32 nonStrictWideLinesUseParallelogram;
-/// } VkPhysicalDeviceMaintenance5Properties;
 /// ```
-public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
+/// struct VkPhysicalDeviceMaintenance5Properties {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+///     (uint32_t) VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+///     (uint32_t) VkBool32 depthStencilSwizzleOneSupport;
+///     (uint32_t) VkBool32 polygonModePointSize;
+///     (uint32_t) VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+///     (uint32_t) VkBool32 nonStrictWideLinesUseParallelogram;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance5Properties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("earlyFragmentMultisampleCoverageAfterSampleCounting"),
@@ -67,21 +49,53 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
         ValueLayout.JAVA_INT.withName("nonStrictSinglePixelWideLinesUseParallelogram"),
         ValueLayout.JAVA_INT.withName("nonStrictWideLinesUseParallelogram")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `earlyFragmentMultisampleCoverageAfterSampleCounting` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `earlyFragmentMultisampleCoverageAfterSampleCounting`.
+    public static final long OFFSET_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.byteOffset(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
+    /// The memory layout of `earlyFragmentMultisampleCoverageAfterSampleCounting`.
+    public static final MemoryLayout LAYOUT_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.select(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
+    /// The [VarHandle] of `earlyFragmentMultisampleCoverageAfterSampleCounting` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_earlyFragmentMultisampleCoverageAfterSampleCounting = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentMultisampleCoverageAfterSampleCounting"));
-    /// The [VarHandle] of `earlyFragmentSampleMaskTestBeforeSampleCounting` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `earlyFragmentSampleMaskTestBeforeSampleCounting`.
+    public static final long OFFSET_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.byteOffset(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
+    /// The memory layout of `earlyFragmentSampleMaskTestBeforeSampleCounting`.
+    public static final MemoryLayout LAYOUT_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.select(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
+    /// The [VarHandle] of `earlyFragmentSampleMaskTestBeforeSampleCounting` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_earlyFragmentSampleMaskTestBeforeSampleCounting = LAYOUT.arrayElementVarHandle(PathElement.groupElement("earlyFragmentSampleMaskTestBeforeSampleCounting"));
-    /// The [VarHandle] of `depthStencilSwizzleOneSupport` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthStencilSwizzleOneSupport`.
+    public static final long OFFSET_depthStencilSwizzleOneSupport = LAYOUT.byteOffset(PathElement.groupElement("depthStencilSwizzleOneSupport"));
+    /// The memory layout of `depthStencilSwizzleOneSupport`.
+    public static final MemoryLayout LAYOUT_depthStencilSwizzleOneSupport = LAYOUT.select(PathElement.groupElement("depthStencilSwizzleOneSupport"));
+    /// The [VarHandle] of `depthStencilSwizzleOneSupport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthStencilSwizzleOneSupport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilSwizzleOneSupport"));
-    /// The [VarHandle] of `polygonModePointSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `polygonModePointSize`.
+    public static final long OFFSET_polygonModePointSize = LAYOUT.byteOffset(PathElement.groupElement("polygonModePointSize"));
+    /// The memory layout of `polygonModePointSize`.
+    public static final MemoryLayout LAYOUT_polygonModePointSize = LAYOUT.select(PathElement.groupElement("polygonModePointSize"));
+    /// The [VarHandle] of `polygonModePointSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_polygonModePointSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("polygonModePointSize"));
-    /// The [VarHandle] of `nonStrictSinglePixelWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `nonStrictSinglePixelWideLinesUseParallelogram`.
+    public static final long OFFSET_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.byteOffset(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
+    /// The memory layout of `nonStrictSinglePixelWideLinesUseParallelogram`.
+    public static final MemoryLayout LAYOUT_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.select(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
+    /// The [VarHandle] of `nonStrictSinglePixelWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_nonStrictSinglePixelWideLinesUseParallelogram = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictSinglePixelWideLinesUseParallelogram"));
-    /// The [VarHandle] of `nonStrictWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `nonStrictWideLinesUseParallelogram`.
+    public static final long OFFSET_nonStrictWideLinesUseParallelogram = LAYOUT.byteOffset(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
+    /// The memory layout of `nonStrictWideLinesUseParallelogram`.
+    public static final MemoryLayout LAYOUT_nonStrictWideLinesUseParallelogram = LAYOUT.select(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
+    /// The [VarHandle] of `nonStrictWideLinesUseParallelogram` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_nonStrictWideLinesUseParallelogram = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
@@ -91,19 +105,14 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance5Properties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment); }
-
-    /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance5Properties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceMaintenance5Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     ///
@@ -111,7 +120,7 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance5Properties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -124,11 +133,6 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceMaintenance5Properties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance5Properties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMaintenance5Properties`
-    public static VkPhysicalDeviceMaintenance5Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int earlyFragmentMultisampleCoverageAfterSampleCounting, @CType("VkBool32") int earlyFragmentSampleMaskTestBeforeSampleCounting, @CType("VkBool32") int depthStencilSwizzleOneSupport, @CType("VkBool32") int polygonModePointSize, @CType("VkBool32") int nonStrictSinglePixelWideLinesUseParallelogram, @CType("VkBool32") int nonStrictWideLinesUseParallelogram) { return alloc(allocator).sType(sType).pNext(pNext).earlyFragmentMultisampleCoverageAfterSampleCounting(earlyFragmentMultisampleCoverageAfterSampleCounting).earlyFragmentSampleMaskTestBeforeSampleCounting(earlyFragmentSampleMaskTestBeforeSampleCounting).depthStencilSwizzleOneSupport(depthStencilSwizzleOneSupport).polygonModePointSize(polygonModePointSize).nonStrictSinglePixelWideLinesUseParallelogram(nonStrictSinglePixelWideLinesUseParallelogram).nonStrictWideLinesUseParallelogram(nonStrictWideLinesUseParallelogram); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -136,191 +140,135 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMaintenance5Properties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance5Properties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance5Properties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceMaintenance5Properties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMaintenance5Properties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMaintenance5Properties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentMultisampleCoverageAfterSampleCounting.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentMultisampleCoverageAfterSampleCounting.get(segment, 0L, index); }
     /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentMultisampleCoverageAfterSampleCounting(segment, 0L); }
-    /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting`}
-    public @CType("VkBool32") int earlyFragmentMultisampleCoverageAfterSampleCounting() { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment()); }
+    public int earlyFragmentMultisampleCoverageAfterSampleCounting() { return earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), 0L); }
     /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_earlyFragmentMultisampleCoverageAfterSampleCounting.set(segment, 0L, index, value); }
-    /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentMultisampleCoverageAfterSampleCounting(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void earlyFragmentMultisampleCoverageAfterSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentMultisampleCoverageAfterSampleCounting.set(segment, 0L, index, value); }
     /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties earlyFragmentMultisampleCoverageAfterSampleCounting(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentMultisampleCoverageAfterSampleCounting(int value) { earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), 0L, value); return this; }
 
     /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentSampleMaskTestBeforeSampleCounting.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index) { return (int) VH_earlyFragmentSampleMaskTestBeforeSampleCounting.get(segment, 0L, index); }
     /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentSampleMaskTestBeforeSampleCounting(segment, 0L); }
-    /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting`}
-    public @CType("VkBool32") int earlyFragmentSampleMaskTestBeforeSampleCounting() { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment()); }
+    public int earlyFragmentSampleMaskTestBeforeSampleCounting() { return earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), 0L); }
     /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_earlyFragmentSampleMaskTestBeforeSampleCounting.set(segment, 0L, index, value); }
-    /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentSampleMaskTestBeforeSampleCounting(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void earlyFragmentSampleMaskTestBeforeSampleCounting(MemorySegment segment, long index, int value) { VH_earlyFragmentSampleMaskTestBeforeSampleCounting.set(segment, 0L, index, value); }
     /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties earlyFragmentSampleMaskTestBeforeSampleCounting(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentSampleMaskTestBeforeSampleCounting(int value) { earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), 0L, value); return this; }
 
     /// {@return `depthStencilSwizzleOneSupport` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthStencilSwizzleOneSupport(MemorySegment segment, long index) { return (int) VH_depthStencilSwizzleOneSupport.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthStencilSwizzleOneSupport(MemorySegment segment, long index) { return (int) VH_depthStencilSwizzleOneSupport.get(segment, 0L, index); }
     /// {@return `depthStencilSwizzleOneSupport`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthStencilSwizzleOneSupport(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_depthStencilSwizzleOneSupport(segment, 0L); }
-    /// {@return `depthStencilSwizzleOneSupport`}
-    public @CType("VkBool32") int depthStencilSwizzleOneSupport() { return VkPhysicalDeviceMaintenance5Properties.get_depthStencilSwizzleOneSupport(this.segment()); }
+    public int depthStencilSwizzleOneSupport() { return depthStencilSwizzleOneSupport(this.segment(), 0L); }
     /// Sets `depthStencilSwizzleOneSupport` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthStencilSwizzleOneSupport(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthStencilSwizzleOneSupport.set(segment, 0L, index, value); }
-    /// Sets `depthStencilSwizzleOneSupport` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthStencilSwizzleOneSupport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_depthStencilSwizzleOneSupport(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthStencilSwizzleOneSupport(MemorySegment segment, long index, int value) { VH_depthStencilSwizzleOneSupport.set(segment, 0L, index, value); }
     /// Sets `depthStencilSwizzleOneSupport` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties depthStencilSwizzleOneSupport(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_depthStencilSwizzleOneSupport(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties depthStencilSwizzleOneSupport(int value) { depthStencilSwizzleOneSupport(this.segment(), 0L, value); return this; }
 
     /// {@return `polygonModePointSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_polygonModePointSize(MemorySegment segment, long index) { return (int) VH_polygonModePointSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int polygonModePointSize(MemorySegment segment, long index) { return (int) VH_polygonModePointSize.get(segment, 0L, index); }
     /// {@return `polygonModePointSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_polygonModePointSize(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_polygonModePointSize(segment, 0L); }
-    /// {@return `polygonModePointSize`}
-    public @CType("VkBool32") int polygonModePointSize() { return VkPhysicalDeviceMaintenance5Properties.get_polygonModePointSize(this.segment()); }
+    public int polygonModePointSize() { return polygonModePointSize(this.segment(), 0L); }
     /// Sets `polygonModePointSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_polygonModePointSize(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_polygonModePointSize.set(segment, 0L, index, value); }
-    /// Sets `polygonModePointSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_polygonModePointSize(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_polygonModePointSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void polygonModePointSize(MemorySegment segment, long index, int value) { VH_polygonModePointSize.set(segment, 0L, index, value); }
     /// Sets `polygonModePointSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties polygonModePointSize(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_polygonModePointSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties polygonModePointSize(int value) { polygonModePointSize(this.segment(), 0L, value); return this; }
 
     /// {@return `nonStrictSinglePixelWideLinesUseParallelogram` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictSinglePixelWideLinesUseParallelogram.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictSinglePixelWideLinesUseParallelogram.get(segment, 0L, index); }
     /// {@return `nonStrictSinglePixelWideLinesUseParallelogram`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictSinglePixelWideLinesUseParallelogram(segment, 0L); }
-    /// {@return `nonStrictSinglePixelWideLinesUseParallelogram`}
-    public @CType("VkBool32") int nonStrictSinglePixelWideLinesUseParallelogram() { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictSinglePixelWideLinesUseParallelogram(this.segment()); }
+    public int nonStrictSinglePixelWideLinesUseParallelogram() { return nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), 0L); }
     /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_nonStrictSinglePixelWideLinesUseParallelogram.set(segment, 0L, index, value); }
-    /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictSinglePixelWideLinesUseParallelogram(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void nonStrictSinglePixelWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictSinglePixelWideLinesUseParallelogram.set(segment, 0L, index, value); }
     /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties nonStrictSinglePixelWideLinesUseParallelogram(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties nonStrictSinglePixelWideLinesUseParallelogram(int value) { nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), 0L, value); return this; }
 
     /// {@return `nonStrictWideLinesUseParallelogram` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_nonStrictWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictWideLinesUseParallelogram.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int nonStrictWideLinesUseParallelogram(MemorySegment segment, long index) { return (int) VH_nonStrictWideLinesUseParallelogram.get(segment, 0L, index); }
     /// {@return `nonStrictWideLinesUseParallelogram`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_nonStrictWideLinesUseParallelogram(MemorySegment segment) { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictWideLinesUseParallelogram(segment, 0L); }
-    /// {@return `nonStrictWideLinesUseParallelogram`}
-    public @CType("VkBool32") int nonStrictWideLinesUseParallelogram() { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictWideLinesUseParallelogram(this.segment()); }
+    public int nonStrictWideLinesUseParallelogram() { return nonStrictWideLinesUseParallelogram(this.segment(), 0L); }
     /// Sets `nonStrictWideLinesUseParallelogram` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_nonStrictWideLinesUseParallelogram(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_nonStrictWideLinesUseParallelogram.set(segment, 0L, index, value); }
-    /// Sets `nonStrictWideLinesUseParallelogram` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_nonStrictWideLinesUseParallelogram(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictWideLinesUseParallelogram(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void nonStrictWideLinesUseParallelogram(MemorySegment segment, long index, int value) { VH_nonStrictWideLinesUseParallelogram.set(segment, 0L, index, value); }
     /// Sets `nonStrictWideLinesUseParallelogram` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMaintenance5Properties nonStrictWideLinesUseParallelogram(@CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictWideLinesUseParallelogram(this.segment(), value); return this; }
+    public VkPhysicalDeviceMaintenance5Properties nonStrictWideLinesUseParallelogram(int value) { nonStrictWideLinesUseParallelogram(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceMaintenance5Properties].
     public static final class Buffer extends VkPhysicalDeviceMaintenance5Properties {
@@ -345,76 +293,76 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMaintenance5Properties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMaintenance5Properties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index) { return earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index); }
         /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index, value); return this; }
+        public Buffer earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index, int value) { earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index, value); return this; }
 
         /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index) { return earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index); }
         /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index, value); return this; }
+        public Buffer earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index, int value) { earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index, value); return this; }
 
         /// {@return `depthStencilSwizzleOneSupport` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthStencilSwizzleOneSupportAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_depthStencilSwizzleOneSupport(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthStencilSwizzleOneSupportAt(long index) { return depthStencilSwizzleOneSupport(this.segment(), index); }
         /// Sets `depthStencilSwizzleOneSupport` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthStencilSwizzleOneSupportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_depthStencilSwizzleOneSupport(this.segment(), index, value); return this; }
+        public Buffer depthStencilSwizzleOneSupportAt(long index, int value) { depthStencilSwizzleOneSupport(this.segment(), index, value); return this; }
 
         /// {@return `polygonModePointSize` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int polygonModePointSizeAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_polygonModePointSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int polygonModePointSizeAt(long index) { return polygonModePointSize(this.segment(), index); }
         /// Sets `polygonModePointSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer polygonModePointSizeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_polygonModePointSize(this.segment(), index, value); return this; }
+        public Buffer polygonModePointSizeAt(long index, int value) { polygonModePointSize(this.segment(), index, value); return this; }
 
         /// {@return `nonStrictSinglePixelWideLinesUseParallelogram` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int nonStrictSinglePixelWideLinesUseParallelogramAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int nonStrictSinglePixelWideLinesUseParallelogramAt(long index) { return nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index); }
         /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer nonStrictSinglePixelWideLinesUseParallelogramAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index, value); return this; }
+        public Buffer nonStrictSinglePixelWideLinesUseParallelogramAt(long index, int value) { nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index, value); return this; }
 
         /// {@return `nonStrictWideLinesUseParallelogram` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int nonStrictWideLinesUseParallelogramAt(long index) { return VkPhysicalDeviceMaintenance5Properties.get_nonStrictWideLinesUseParallelogram(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int nonStrictWideLinesUseParallelogramAt(long index) { return nonStrictWideLinesUseParallelogram(this.segment(), index); }
         /// Sets `nonStrictWideLinesUseParallelogram` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer nonStrictWideLinesUseParallelogramAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMaintenance5Properties.set_nonStrictWideLinesUseParallelogram(this.segment(), index, value); return this; }
+        public Buffer nonStrictWideLinesUseParallelogramAt(long index, int value) { nonStrictWideLinesUseParallelogram(this.segment(), index, value); return this; }
 
     }
 }

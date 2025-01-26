@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXYcrcb {
     public static final int GL_YCRCB_422_SGIX = 0x81BB;
     public static final int GL_YCRCB_444_SGIX = 0x81BC;

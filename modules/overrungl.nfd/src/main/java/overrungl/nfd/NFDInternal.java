@@ -20,11 +20,9 @@ import io.github.overrun.platform.Platform;
 import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.Marshal;
+import overrungl.util.CanonicalTypes;
 
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
@@ -41,16 +39,12 @@ final class NFDInternal {
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
+    static final MemoryLayout nfdnchar_t = isOsWin ? CanonicalTypes.WCHAR_T : ValueLayout.JAVA_BYTE;
+    static final MemoryLayout nfdpathsetsize_t = (os instanceof Platform.Windows || os instanceof Platform.MacOS)
+        ? CanonicalTypes.C_LONG
+        : ValueLayout.JAVA_INT;
 
     private NFDInternal() {
-    }
-
-    static MemorySegment marshalString(SegmentAllocator allocator, String s) {
-        return Marshal.marshal(allocator, s, nfdCharset);
-    }
-
-    static MemorySegment marshalString(SegmentAllocator allocator, String[] arr) {
-        return Marshal.marshal(allocator, arr, nfdCharset);
     }
 
     static SymbolLookup lookup() {

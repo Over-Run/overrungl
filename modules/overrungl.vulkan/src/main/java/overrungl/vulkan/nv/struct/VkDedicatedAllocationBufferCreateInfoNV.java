@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### dedicatedAllocation
-/// [VarHandle][#VH_dedicatedAllocation] - [Getter][#dedicatedAllocation()] - [Setter][#dedicatedAllocation(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDedicatedAllocationBufferCreateInfoNV {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBool32 dedicatedAllocation;
-/// } VkDedicatedAllocationBufferCreateInfoNV;
 /// ```
-public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
+/// struct VkDedicatedAllocationBufferCreateInfoNV {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint32_t) VkBool32 dedicatedAllocation;
+/// };
+/// ```
+public sealed class VkDedicatedAllocationBufferCreateInfoNV extends GroupType {
     /// The struct layout of `VkDedicatedAllocationBufferCreateInfoNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("dedicatedAllocation")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `dedicatedAllocation` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dedicatedAllocation`.
+    public static final long OFFSET_dedicatedAllocation = LAYOUT.byteOffset(PathElement.groupElement("dedicatedAllocation"));
+    /// The memory layout of `dedicatedAllocation`.
+    public static final MemoryLayout LAYOUT_dedicatedAllocation = LAYOUT.select(PathElement.groupElement("dedicatedAllocation"));
+    /// The [VarHandle] of `dedicatedAllocation` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dedicatedAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dedicatedAllocation"));
 
     /// Creates `VkDedicatedAllocationBufferCreateInfoNV` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
     /// Creates `VkDedicatedAllocationBufferCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDedicatedAllocationBufferCreateInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDedicatedAllocationBufferCreateInfoNV(segment); }
-
-    /// Creates `VkDedicatedAllocationBufferCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDedicatedAllocationBufferCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDedicatedAllocationBufferCreateInfoNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDedicatedAllocationBufferCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDedicatedAllocationBufferCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDedicatedAllocationBufferCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDedicatedAllocationBufferCreateInfoNV` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDedicatedAllocationBufferCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
     /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDedicatedAllocationBufferCreateInfoNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
-    public static VkDedicatedAllocationBufferCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int dedicatedAllocation) { return alloc(allocator).sType(sType).pNext(pNext).dedicatedAllocation(dedicatedAllocation); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDedicatedAllocationBufferCreateInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDedicatedAllocationBufferCreateInfoNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDedicatedAllocationBufferCreateInfoNV sType(@CType("VkStructureType") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_sType(this.segment(), value); return this; }
+    public VkDedicatedAllocationBufferCreateInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDedicatedAllocationBufferCreateInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDedicatedAllocationBufferCreateInfoNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDedicatedAllocationBufferCreateInfoNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDedicatedAllocationBufferCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDedicatedAllocationBufferCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkDedicatedAllocationBufferCreateInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `dedicatedAllocation` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_dedicatedAllocation(MemorySegment segment, long index) { return (int) VH_dedicatedAllocation.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dedicatedAllocation(MemorySegment segment, long index) { return (int) VH_dedicatedAllocation.get(segment, 0L, index); }
     /// {@return `dedicatedAllocation`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_dedicatedAllocation(MemorySegment segment) { return VkDedicatedAllocationBufferCreateInfoNV.get_dedicatedAllocation(segment, 0L); }
-    /// {@return `dedicatedAllocation`}
-    public @CType("VkBool32") int dedicatedAllocation() { return VkDedicatedAllocationBufferCreateInfoNV.get_dedicatedAllocation(this.segment()); }
+    public int dedicatedAllocation() { return dedicatedAllocation(this.segment(), 0L); }
     /// Sets `dedicatedAllocation` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dedicatedAllocation(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_dedicatedAllocation.set(segment, 0L, index, value); }
-    /// Sets `dedicatedAllocation` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dedicatedAllocation(MemorySegment segment, @CType("VkBool32") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_dedicatedAllocation(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dedicatedAllocation(MemorySegment segment, long index, int value) { VH_dedicatedAllocation.set(segment, 0L, index, value); }
     /// Sets `dedicatedAllocation` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDedicatedAllocationBufferCreateInfoNV dedicatedAllocation(@CType("VkBool32") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_dedicatedAllocation(this.segment(), value); return this; }
+    public VkDedicatedAllocationBufferCreateInfoNV dedicatedAllocation(int value) { dedicatedAllocation(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDedicatedAllocationBufferCreateInfoNV].
     public static final class Buffer extends VkDedicatedAllocationBufferCreateInfoNV {
@@ -200,31 +173,31 @@ public sealed class VkDedicatedAllocationBufferCreateInfoNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDedicatedAllocationBufferCreateInfoNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDedicatedAllocationBufferCreateInfoNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDedicatedAllocationBufferCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `dedicatedAllocation` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int dedicatedAllocationAt(long index) { return VkDedicatedAllocationBufferCreateInfoNV.get_dedicatedAllocation(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dedicatedAllocationAt(long index) { return dedicatedAllocation(this.segment(), index); }
         /// Sets `dedicatedAllocation` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dedicatedAllocationAt(long index, @CType("VkBool32") int value) { VkDedicatedAllocationBufferCreateInfoNV.set_dedicatedAllocation(this.segment(), index, value); return this; }
+        public Buffer dedicatedAllocationAt(long index, int value) { dedicatedAllocation(this.segment(), index, value); return this; }
 
     }
 }

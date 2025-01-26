@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTSubpassMergeFeedback {
     public static final int VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0;
@@ -44,6 +39,6 @@ public final class VKEXTSubpassMergeFeedback {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT = 1000458002;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT = 1000458003;
 
-    private VKEXTSubpassMergeFeedback() { }
+    private VKEXTSubpassMergeFeedback() {}
 
 }

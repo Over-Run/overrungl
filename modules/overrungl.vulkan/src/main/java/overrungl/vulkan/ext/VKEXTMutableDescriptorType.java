@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTMutableDescriptorType {
     public static final int VK_EXT_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
@@ -31,6 +26,6 @@ public final class VKEXTMutableDescriptorType {
     public static final int VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT = 0x00000004;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT = 0x00000004;
 
-    private VKEXTMutableDescriptorType() { }
+    private VKEXTMutableDescriptorType() {}
 
 }

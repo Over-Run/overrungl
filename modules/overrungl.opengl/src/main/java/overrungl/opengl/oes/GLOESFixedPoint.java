@@ -19,341 +19,120 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLOESFixedPoint {
     public static final int GL_FIXED_OES = 0x140C;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glAlphaFuncxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClearColorxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClearDepthxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClipPlanexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColor4xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDepthRangexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFogxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glFogxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFrustumxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetClipPlanexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetFixedvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexEnvxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glLightModelxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLightModelxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glLightxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLightxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glLineWidthxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glLoadMatrixxOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMaterialxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMaterialxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultMatrixxOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoord4xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glNormal3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glOrthoxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPointParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPointSizexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPolygonOffsetxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glRotatexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glScalexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexEnvxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexEnvxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexParameterxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTranslatexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetLightxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMaterialxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPointParameterxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glSampleCoveragexOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glAccumxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBitmapxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBlendColorxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glClearAccumxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColor3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glColor3xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glColor4xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glConvolutionParameterxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glConvolutionParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEvalCoord1xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEvalCoord1xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEvalCoord2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glEvalCoord2xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glFeedbackBufferxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetConvolutionParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetHistogramParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetLightxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMapxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetMaterialxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetPixelMapxv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexGenxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexLevelParameterxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glIndexxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIndexxvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glLoadTransposeMatrixxOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMap1xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMap2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMapGrid1xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMapGrid2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultTransposeMatrixxOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoord1xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoord1xvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoord2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoord2xvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoord3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiTexCoord3xvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMultiTexCoord4xvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glNormal3xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPassThroughxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelMapx = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPixelStorex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelTransferxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPixelZoomxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPrioritizeTexturesxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glRasterPos2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glRasterPos2xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glRasterPos3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glRasterPos3xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glRasterPos4xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glRasterPos4xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glRectxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glRectxvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoord1xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoord1xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoord2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoord2xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoord3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoord3xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexCoord4xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexCoord4xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glTexGenxOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glTexGenxvOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertex2xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertex2xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertex3xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertex3xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glVertex4xOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glVertex4xvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAlphaFuncxOES,
-            FD_glClearColorxOES,
-            FD_glClearDepthxOES,
-            FD_glClipPlanexOES,
-            FD_glColor4xOES,
-            FD_glDepthRangexOES,
-            FD_glFogxOES,
-            FD_glFogxvOES,
-            FD_glFrustumxOES,
-            FD_glGetClipPlanexOES,
-            FD_glGetFixedvOES,
-            FD_glGetTexEnvxvOES,
-            FD_glGetTexParameterxvOES,
-            FD_glLightModelxOES,
-            FD_glLightModelxvOES,
-            FD_glLightxOES,
-            FD_glLightxvOES,
-            FD_glLineWidthxOES,
-            FD_glLoadMatrixxOES,
-            FD_glMaterialxOES,
-            FD_glMaterialxvOES,
-            FD_glMultMatrixxOES,
-            FD_glMultiTexCoord4xOES,
-            FD_glNormal3xOES,
-            FD_glOrthoxOES,
-            FD_glPointParameterxvOES,
-            FD_glPointSizexOES,
-            FD_glPolygonOffsetxOES,
-            FD_glRotatexOES,
-            FD_glScalexOES,
-            FD_glTexEnvxOES,
-            FD_glTexEnvxvOES,
-            FD_glTexParameterxOES,
-            FD_glTexParameterxvOES,
-            FD_glTranslatexOES,
-            FD_glGetLightxvOES,
-            FD_glGetMaterialxvOES,
-            FD_glPointParameterxOES,
-            FD_glSampleCoveragexOES,
-            FD_glAccumxOES,
-            FD_glBitmapxOES,
-            FD_glBlendColorxOES,
-            FD_glClearAccumxOES,
-            FD_glColor3xOES,
-            FD_glColor3xvOES,
-            FD_glColor4xvOES,
-            FD_glConvolutionParameterxOES,
-            FD_glConvolutionParameterxvOES,
-            FD_glEvalCoord1xOES,
-            FD_glEvalCoord1xvOES,
-            FD_glEvalCoord2xOES,
-            FD_glEvalCoord2xvOES,
-            FD_glFeedbackBufferxOES,
-            FD_glGetConvolutionParameterxvOES,
-            FD_glGetHistogramParameterxvOES,
-            FD_glGetLightxOES,
-            FD_glGetMapxvOES,
-            FD_glGetMaterialxOES,
-            FD_glGetPixelMapxv,
-            FD_glGetTexGenxvOES,
-            FD_glGetTexLevelParameterxvOES,
-            FD_glIndexxOES,
-            FD_glIndexxvOES,
-            FD_glLoadTransposeMatrixxOES,
-            FD_glMap1xOES,
-            FD_glMap2xOES,
-            FD_glMapGrid1xOES,
-            FD_glMapGrid2xOES,
-            FD_glMultTransposeMatrixxOES,
-            FD_glMultiTexCoord1xOES,
-            FD_glMultiTexCoord1xvOES,
-            FD_glMultiTexCoord2xOES,
-            FD_glMultiTexCoord2xvOES,
-            FD_glMultiTexCoord3xOES,
-            FD_glMultiTexCoord3xvOES,
-            FD_glMultiTexCoord4xvOES,
-            FD_glNormal3xvOES,
-            FD_glPassThroughxOES,
-            FD_glPixelMapx,
-            FD_glPixelStorex,
-            FD_glPixelTransferxOES,
-            FD_glPixelZoomxOES,
-            FD_glPrioritizeTexturesxOES,
-            FD_glRasterPos2xOES,
-            FD_glRasterPos2xvOES,
-            FD_glRasterPos3xOES,
-            FD_glRasterPos3xvOES,
-            FD_glRasterPos4xOES,
-            FD_glRasterPos4xvOES,
-            FD_glRectxOES,
-            FD_glRectxvOES,
-            FD_glTexCoord1xOES,
-            FD_glTexCoord1xvOES,
-            FD_glTexCoord2xOES,
-            FD_glTexCoord2xvOES,
-            FD_glTexCoord3xOES,
-            FD_glTexCoord3xvOES,
-            FD_glTexCoord4xOES,
-            FD_glTexCoord4xvOES,
-            FD_glTexGenxOES,
-            FD_glTexGenxvOES,
-            FD_glVertex2xOES,
-            FD_glVertex2xvOES,
-            FD_glVertex3xOES,
-            FD_glVertex3xvOES,
-            FD_glVertex4xOES,
-            FD_glVertex4xvOES
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glAlphaFuncxOES = RuntimeHelper.downcall(Descriptors.FD_glAlphaFuncxOES);
-        public static final MethodHandle MH_glClearColorxOES = RuntimeHelper.downcall(Descriptors.FD_glClearColorxOES);
-        public static final MethodHandle MH_glClearDepthxOES = RuntimeHelper.downcall(Descriptors.FD_glClearDepthxOES);
-        public static final MethodHandle MH_glClipPlanexOES = RuntimeHelper.downcall(Descriptors.FD_glClipPlanexOES);
-        public static final MethodHandle MH_glColor4xOES = RuntimeHelper.downcall(Descriptors.FD_glColor4xOES);
-        public static final MethodHandle MH_glDepthRangexOES = RuntimeHelper.downcall(Descriptors.FD_glDepthRangexOES);
-        public static final MethodHandle MH_glFogxOES = RuntimeHelper.downcall(Descriptors.FD_glFogxOES);
-        public static final MethodHandle MH_glFogxvOES = RuntimeHelper.downcall(Descriptors.FD_glFogxvOES);
-        public static final MethodHandle MH_glFrustumxOES = RuntimeHelper.downcall(Descriptors.FD_glFrustumxOES);
-        public static final MethodHandle MH_glGetClipPlanexOES = RuntimeHelper.downcall(Descriptors.FD_glGetClipPlanexOES);
-        public static final MethodHandle MH_glGetFixedvOES = RuntimeHelper.downcall(Descriptors.FD_glGetFixedvOES);
-        public static final MethodHandle MH_glGetTexEnvxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetTexEnvxvOES);
-        public static final MethodHandle MH_glGetTexParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetTexParameterxvOES);
-        public static final MethodHandle MH_glLightModelxOES = RuntimeHelper.downcall(Descriptors.FD_glLightModelxOES);
-        public static final MethodHandle MH_glLightModelxvOES = RuntimeHelper.downcall(Descriptors.FD_glLightModelxvOES);
-        public static final MethodHandle MH_glLightxOES = RuntimeHelper.downcall(Descriptors.FD_glLightxOES);
-        public static final MethodHandle MH_glLightxvOES = RuntimeHelper.downcall(Descriptors.FD_glLightxvOES);
-        public static final MethodHandle MH_glLineWidthxOES = RuntimeHelper.downcall(Descriptors.FD_glLineWidthxOES);
-        public static final MethodHandle MH_glLoadMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glLoadMatrixxOES);
-        public static final MethodHandle MH_glMaterialxOES = RuntimeHelper.downcall(Descriptors.FD_glMaterialxOES);
-        public static final MethodHandle MH_glMaterialxvOES = RuntimeHelper.downcall(Descriptors.FD_glMaterialxvOES);
-        public static final MethodHandle MH_glMultMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glMultMatrixxOES);
-        public static final MethodHandle MH_glMultiTexCoord4xOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord4xOES);
-        public static final MethodHandle MH_glNormal3xOES = RuntimeHelper.downcall(Descriptors.FD_glNormal3xOES);
-        public static final MethodHandle MH_glOrthoxOES = RuntimeHelper.downcall(Descriptors.FD_glOrthoxOES);
-        public static final MethodHandle MH_glPointParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glPointParameterxvOES);
-        public static final MethodHandle MH_glPointSizexOES = RuntimeHelper.downcall(Descriptors.FD_glPointSizexOES);
-        public static final MethodHandle MH_glPolygonOffsetxOES = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetxOES);
-        public static final MethodHandle MH_glRotatexOES = RuntimeHelper.downcall(Descriptors.FD_glRotatexOES);
-        public static final MethodHandle MH_glScalexOES = RuntimeHelper.downcall(Descriptors.FD_glScalexOES);
-        public static final MethodHandle MH_glTexEnvxOES = RuntimeHelper.downcall(Descriptors.FD_glTexEnvxOES);
-        public static final MethodHandle MH_glTexEnvxvOES = RuntimeHelper.downcall(Descriptors.FD_glTexEnvxvOES);
-        public static final MethodHandle MH_glTexParameterxOES = RuntimeHelper.downcall(Descriptors.FD_glTexParameterxOES);
-        public static final MethodHandle MH_glTexParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glTexParameterxvOES);
-        public static final MethodHandle MH_glTranslatexOES = RuntimeHelper.downcall(Descriptors.FD_glTranslatexOES);
-        public static final MethodHandle MH_glGetLightxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetLightxvOES);
-        public static final MethodHandle MH_glGetMaterialxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetMaterialxvOES);
-        public static final MethodHandle MH_glPointParameterxOES = RuntimeHelper.downcall(Descriptors.FD_glPointParameterxOES);
-        public static final MethodHandle MH_glSampleCoveragexOES = RuntimeHelper.downcall(Descriptors.FD_glSampleCoveragexOES);
-        public static final MethodHandle MH_glAccumxOES = RuntimeHelper.downcall(Descriptors.FD_glAccumxOES);
-        public static final MethodHandle MH_glBitmapxOES = RuntimeHelper.downcall(Descriptors.FD_glBitmapxOES);
-        public static final MethodHandle MH_glBlendColorxOES = RuntimeHelper.downcall(Descriptors.FD_glBlendColorxOES);
-        public static final MethodHandle MH_glClearAccumxOES = RuntimeHelper.downcall(Descriptors.FD_glClearAccumxOES);
-        public static final MethodHandle MH_glColor3xOES = RuntimeHelper.downcall(Descriptors.FD_glColor3xOES);
-        public static final MethodHandle MH_glColor3xvOES = RuntimeHelper.downcall(Descriptors.FD_glColor3xvOES);
-        public static final MethodHandle MH_glColor4xvOES = RuntimeHelper.downcall(Descriptors.FD_glColor4xvOES);
-        public static final MethodHandle MH_glConvolutionParameterxOES = RuntimeHelper.downcall(Descriptors.FD_glConvolutionParameterxOES);
-        public static final MethodHandle MH_glConvolutionParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glConvolutionParameterxvOES);
-        public static final MethodHandle MH_glEvalCoord1xOES = RuntimeHelper.downcall(Descriptors.FD_glEvalCoord1xOES);
-        public static final MethodHandle MH_glEvalCoord1xvOES = RuntimeHelper.downcall(Descriptors.FD_glEvalCoord1xvOES);
-        public static final MethodHandle MH_glEvalCoord2xOES = RuntimeHelper.downcall(Descriptors.FD_glEvalCoord2xOES);
-        public static final MethodHandle MH_glEvalCoord2xvOES = RuntimeHelper.downcall(Descriptors.FD_glEvalCoord2xvOES);
-        public static final MethodHandle MH_glFeedbackBufferxOES = RuntimeHelper.downcall(Descriptors.FD_glFeedbackBufferxOES);
-        public static final MethodHandle MH_glGetConvolutionParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetConvolutionParameterxvOES);
-        public static final MethodHandle MH_glGetHistogramParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetHistogramParameterxvOES);
-        public static final MethodHandle MH_glGetLightxOES = RuntimeHelper.downcall(Descriptors.FD_glGetLightxOES);
-        public static final MethodHandle MH_glGetMapxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetMapxvOES);
-        public static final MethodHandle MH_glGetMaterialxOES = RuntimeHelper.downcall(Descriptors.FD_glGetMaterialxOES);
-        public static final MethodHandle MH_glGetPixelMapxv = RuntimeHelper.downcall(Descriptors.FD_glGetPixelMapxv);
-        public static final MethodHandle MH_glGetTexGenxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetTexGenxvOES);
-        public static final MethodHandle MH_glGetTexLevelParameterxvOES = RuntimeHelper.downcall(Descriptors.FD_glGetTexLevelParameterxvOES);
-        public static final MethodHandle MH_glIndexxOES = RuntimeHelper.downcall(Descriptors.FD_glIndexxOES);
-        public static final MethodHandle MH_glIndexxvOES = RuntimeHelper.downcall(Descriptors.FD_glIndexxvOES);
-        public static final MethodHandle MH_glLoadTransposeMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glLoadTransposeMatrixxOES);
-        public static final MethodHandle MH_glMap1xOES = RuntimeHelper.downcall(Descriptors.FD_glMap1xOES);
-        public static final MethodHandle MH_glMap2xOES = RuntimeHelper.downcall(Descriptors.FD_glMap2xOES);
-        public static final MethodHandle MH_glMapGrid1xOES = RuntimeHelper.downcall(Descriptors.FD_glMapGrid1xOES);
-        public static final MethodHandle MH_glMapGrid2xOES = RuntimeHelper.downcall(Descriptors.FD_glMapGrid2xOES);
-        public static final MethodHandle MH_glMultTransposeMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glMultTransposeMatrixxOES);
-        public static final MethodHandle MH_glMultiTexCoord1xOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord1xOES);
-        public static final MethodHandle MH_glMultiTexCoord1xvOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord1xvOES);
-        public static final MethodHandle MH_glMultiTexCoord2xOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord2xOES);
-        public static final MethodHandle MH_glMultiTexCoord2xvOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord2xvOES);
-        public static final MethodHandle MH_glMultiTexCoord3xOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord3xOES);
-        public static final MethodHandle MH_glMultiTexCoord3xvOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord3xvOES);
-        public static final MethodHandle MH_glMultiTexCoord4xvOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord4xvOES);
-        public static final MethodHandle MH_glNormal3xvOES = RuntimeHelper.downcall(Descriptors.FD_glNormal3xvOES);
-        public static final MethodHandle MH_glPassThroughxOES = RuntimeHelper.downcall(Descriptors.FD_glPassThroughxOES);
-        public static final MethodHandle MH_glPixelMapx = RuntimeHelper.downcall(Descriptors.FD_glPixelMapx);
-        public static final MethodHandle MH_glPixelStorex = RuntimeHelper.downcall(Descriptors.FD_glPixelStorex);
-        public static final MethodHandle MH_glPixelTransferxOES = RuntimeHelper.downcall(Descriptors.FD_glPixelTransferxOES);
-        public static final MethodHandle MH_glPixelZoomxOES = RuntimeHelper.downcall(Descriptors.FD_glPixelZoomxOES);
-        public static final MethodHandle MH_glPrioritizeTexturesxOES = RuntimeHelper.downcall(Descriptors.FD_glPrioritizeTexturesxOES);
-        public static final MethodHandle MH_glRasterPos2xOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos2xOES);
-        public static final MethodHandle MH_glRasterPos2xvOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos2xvOES);
-        public static final MethodHandle MH_glRasterPos3xOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos3xOES);
-        public static final MethodHandle MH_glRasterPos3xvOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos3xvOES);
-        public static final MethodHandle MH_glRasterPos4xOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos4xOES);
-        public static final MethodHandle MH_glRasterPos4xvOES = RuntimeHelper.downcall(Descriptors.FD_glRasterPos4xvOES);
-        public static final MethodHandle MH_glRectxOES = RuntimeHelper.downcall(Descriptors.FD_glRectxOES);
-        public static final MethodHandle MH_glRectxvOES = RuntimeHelper.downcall(Descriptors.FD_glRectxvOES);
-        public static final MethodHandle MH_glTexCoord1xOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord1xOES);
-        public static final MethodHandle MH_glTexCoord1xvOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord1xvOES);
-        public static final MethodHandle MH_glTexCoord2xOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord2xOES);
-        public static final MethodHandle MH_glTexCoord2xvOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord2xvOES);
-        public static final MethodHandle MH_glTexCoord3xOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord3xOES);
-        public static final MethodHandle MH_glTexCoord3xvOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord3xvOES);
-        public static final MethodHandle MH_glTexCoord4xOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord4xOES);
-        public static final MethodHandle MH_glTexCoord4xvOES = RuntimeHelper.downcall(Descriptors.FD_glTexCoord4xvOES);
-        public static final MethodHandle MH_glTexGenxOES = RuntimeHelper.downcall(Descriptors.FD_glTexGenxOES);
-        public static final MethodHandle MH_glTexGenxvOES = RuntimeHelper.downcall(Descriptors.FD_glTexGenxvOES);
-        public static final MethodHandle MH_glVertex2xOES = RuntimeHelper.downcall(Descriptors.FD_glVertex2xOES);
-        public static final MethodHandle MH_glVertex2xvOES = RuntimeHelper.downcall(Descriptors.FD_glVertex2xvOES);
-        public static final MethodHandle MH_glVertex3xOES = RuntimeHelper.downcall(Descriptors.FD_glVertex3xOES);
-        public static final MethodHandle MH_glVertex3xvOES = RuntimeHelper.downcall(Descriptors.FD_glVertex3xvOES);
-        public static final MethodHandle MH_glVertex4xOES = RuntimeHelper.downcall(Descriptors.FD_glVertex4xOES);
-        public static final MethodHandle MH_glVertex4xvOES = RuntimeHelper.downcall(Descriptors.FD_glVertex4xvOES);
+        public static final MethodHandle MH_glAlphaFuncxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearColorxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearDepthxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClipPlanexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColor4xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDepthRangexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFogxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFogxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFrustumxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetClipPlanexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFixedvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexEnvxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glLightModelxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLightModelxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glLightxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLightxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glLineWidthxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLoadMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMaterialxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMaterialxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoord4xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormal3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glOrthoxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPointParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPointSizexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPolygonOffsetxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRotatexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glScalexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexEnvxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexEnvxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexParameterxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTranslatexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetLightxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMaterialxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPointParameterxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSampleCoveragexOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glAccumxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBitmapxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBlendColorxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearAccumxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColor3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColor3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColor4xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glConvolutionParameterxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glConvolutionParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEvalCoord1xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEvalCoord1xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEvalCoord2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEvalCoord2xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFeedbackBufferxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetConvolutionParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetHistogramParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetLightxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMapxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetMaterialxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetPixelMapxv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexGenxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexLevelParameterxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIndexxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIndexxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glLoadTransposeMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMap1xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMap2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMapGrid1xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMapGrid2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultTransposeMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoord1xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoord1xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoord2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoord2xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoord3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoord3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoord4xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormal3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPassThroughxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelMapx = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPixelStorex = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelTransferxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelZoomxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPrioritizeTexturesxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glRasterPos2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRasterPos2xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glRasterPos3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRasterPos3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glRasterPos4xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRasterPos4xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glRectxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRectxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoord1xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoord1xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoord2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoord2xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoord3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoord3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoord4xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoord4xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexGenxOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexGenxvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertex2xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertex2xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertex3xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertex3xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertex4xOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertex4xvOES = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glAlphaFuncxOES;
         public final MemorySegment PFN_glClearColorxOES;
         public final MemorySegment PFN_glClearDepthxOES;
@@ -574,646 +353,967 @@ public final class GLOESFixedPoint {
         this.handles = new Handles(func);
     }
 
-    public void AlphaFuncxOES(@CType("GLenum") int func, @CType("GLfixed") int ref) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAlphaFuncxOES)) throw new SymbolNotFoundError("Symbol not found: glAlphaFuncxOES");
+    /// ```
+    /// void glAlphaFuncxOES((unsigned int) GLenum func, ((int32_t) khronos_int32_t) GLfixed ref);
+    /// ```
+    public void AlphaFuncxOES(int func, int ref) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFuncxOES)) throw new SymbolNotFoundError("Symbol not found: glAlphaFuncxOES");
         try { Handles.MH_glAlphaFuncxOES.invokeExact(handles.PFN_glAlphaFuncxOES, func, ref); }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaFuncxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AlphaFuncxOES", e); }
     }
 
-    public void ClearColorxOES(@CType("GLfixed") int red, @CType("GLfixed") int green, @CType("GLfixed") int blue, @CType("GLfixed") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearColorxOES)) throw new SymbolNotFoundError("Symbol not found: glClearColorxOES");
+    /// ```
+    /// void glClearColorxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
+    /// ```
+    public void ClearColorxOES(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearColorxOES)) throw new SymbolNotFoundError("Symbol not found: glClearColorxOES");
         try { Handles.MH_glClearColorxOES.invokeExact(handles.PFN_glClearColorxOES, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearColorxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearColorxOES", e); }
     }
 
-    public void ClearDepthxOES(@CType("GLfixed") int depth) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearDepthxOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthxOES");
+    /// ```
+    /// void glClearDepthxOES(((int32_t) khronos_int32_t) GLfixed depth);
+    /// ```
+    public void ClearDepthxOES(int depth) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthxOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthxOES");
         try { Handles.MH_glClearDepthxOES.invokeExact(handles.PFN_glClearDepthxOES, depth); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearDepthxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearDepthxOES", e); }
     }
 
-    public void ClipPlanexOES(@CType("GLenum") int plane, @CType("const GLfixed *") java.lang.foreign.MemorySegment equation) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanexOES");
+    /// ```
+    /// void glClipPlanexOES((unsigned int) GLenum plane, const GLfixed* equation);
+    /// ```
+    public void ClipPlanexOES(int plane, MemorySegment equation) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanexOES");
         try { Handles.MH_glClipPlanexOES.invokeExact(handles.PFN_glClipPlanexOES, plane, equation); }
-        catch (Throwable e) { throw new RuntimeException("error in glClipPlanexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClipPlanexOES", e); }
     }
 
-    public void Color4xOES(@CType("GLfixed") int red, @CType("GLfixed") int green, @CType("GLfixed") int blue, @CType("GLfixed") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColor4xOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xOES");
+    /// ```
+    /// void glColor4xOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
+    /// ```
+    public void Color4xOES(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColor4xOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xOES");
         try { Handles.MH_glColor4xOES.invokeExact(handles.PFN_glColor4xOES, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glColor4xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Color4xOES", e); }
     }
 
-    public void DepthRangexOES(@CType("GLfixed") int n, @CType("GLfixed") int f) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDepthRangexOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangexOES");
+    /// ```
+    /// void glDepthRangexOES(((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
+    /// ```
+    public void DepthRangexOES(int n, int f) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangexOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangexOES");
         try { Handles.MH_glDepthRangexOES.invokeExact(handles.PFN_glDepthRangexOES, n, f); }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthRangexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DepthRangexOES", e); }
     }
 
-    public void FogxOES(@CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFogxOES)) throw new SymbolNotFoundError("Symbol not found: glFogxOES");
+    /// ```
+    /// void glFogxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void FogxOES(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFogxOES)) throw new SymbolNotFoundError("Symbol not found: glFogxOES");
         try { Handles.MH_glFogxOES.invokeExact(handles.PFN_glFogxOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glFogxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FogxOES", e); }
     }
 
-    public void FogxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFogxvOES)) throw new SymbolNotFoundError("Symbol not found: glFogxvOES");
+    /// ```
+    /// void glFogxvOES((unsigned int) GLenum pname, const GLfixed* param);
+    /// ```
+    public void FogxvOES(int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFogxvOES)) throw new SymbolNotFoundError("Symbol not found: glFogxvOES");
         try { Handles.MH_glFogxvOES.invokeExact(handles.PFN_glFogxvOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glFogxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FogxvOES", e); }
     }
 
-    public void FrustumxOES(@CType("GLfixed") int l, @CType("GLfixed") int r, @CType("GLfixed") int b, @CType("GLfixed") int t, @CType("GLfixed") int n, @CType("GLfixed") int f) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFrustumxOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumxOES");
+    /// ```
+    /// void glFrustumxOES(((int32_t) khronos_int32_t) GLfixed l, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed b, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
+    /// ```
+    public void FrustumxOES(int l, int r, int b, int t, int n, int f) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrustumxOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumxOES");
         try { Handles.MH_glFrustumxOES.invokeExact(handles.PFN_glFrustumxOES, l, r, b, t, n, f); }
-        catch (Throwable e) { throw new RuntimeException("error in glFrustumxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FrustumxOES", e); }
     }
 
-    public void GetClipPlanexOES(@CType("GLenum") int plane, @CType("GLfixed *") java.lang.foreign.MemorySegment equation) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
+    /// ```
+    /// void glGetClipPlanexOES((unsigned int) GLenum plane, GLfixed* equation);
+    /// ```
+    public void GetClipPlanexOES(int plane, MemorySegment equation) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanexOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanexOES");
         try { Handles.MH_glGetClipPlanexOES.invokeExact(handles.PFN_glGetClipPlanexOES, plane, equation); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetClipPlanexOES", e); }
     }
 
-    public void GetFixedvOES(@CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetFixedvOES)) throw new SymbolNotFoundError("Symbol not found: glGetFixedvOES");
+    /// ```
+    /// void glGetFixedvOES((unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetFixedvOES(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFixedvOES)) throw new SymbolNotFoundError("Symbol not found: glGetFixedvOES");
         try { Handles.MH_glGetFixedvOES.invokeExact(handles.PFN_glGetFixedvOES, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFixedvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFixedvOES", e); }
     }
 
-    public void GetTexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
+    /// ```
+    /// void glGetTexEnvxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetTexEnvxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexEnvxvOES");
         try { Handles.MH_glGetTexEnvxvOES.invokeExact(handles.PFN_glGetTexEnvxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexEnvxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexEnvxvOES", e); }
     }
 
-    public void GetTexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
+    /// ```
+    /// void glGetTexParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetTexParameterxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterxvOES");
         try { Handles.MH_glGetTexParameterxvOES.invokeExact(handles.PFN_glGetTexParameterxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexParameterxvOES", e); }
     }
 
-    public void LightModelxOES(@CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLightModelxOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxOES");
+    /// ```
+    /// void glLightModelxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void LightModelxOES(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxOES");
         try { Handles.MH_glLightModelxOES.invokeExact(handles.PFN_glLightModelxOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glLightModelxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LightModelxOES", e); }
     }
 
-    public void LightModelxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLightModelxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxvOES");
+    /// ```
+    /// void glLightModelxvOES((unsigned int) GLenum pname, const GLfixed* param);
+    /// ```
+    public void LightModelxvOES(int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLightModelxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightModelxvOES");
         try { Handles.MH_glLightModelxvOES.invokeExact(handles.PFN_glLightModelxvOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glLightModelxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LightModelxvOES", e); }
     }
 
-    public void LightxOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLightxOES)) throw new SymbolNotFoundError("Symbol not found: glLightxOES");
+    /// ```
+    /// void glLightxOES((unsigned int) GLenum light, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void LightxOES(int light, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLightxOES)) throw new SymbolNotFoundError("Symbol not found: glLightxOES");
         try { Handles.MH_glLightxOES.invokeExact(handles.PFN_glLightxOES, light, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glLightxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LightxOES", e); }
     }
 
-    public void LightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightxvOES");
+    /// ```
+    /// void glLightxvOES((unsigned int) GLenum light, (unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void LightxvOES(int light, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glLightxvOES");
         try { Handles.MH_glLightxvOES.invokeExact(handles.PFN_glLightxvOES, light, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glLightxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LightxvOES", e); }
     }
 
-    public void LineWidthxOES(@CType("GLfixed") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLineWidthxOES)) throw new SymbolNotFoundError("Symbol not found: glLineWidthxOES");
+    /// ```
+    /// void glLineWidthxOES(((int32_t) khronos_int32_t) GLfixed width);
+    /// ```
+    public void LineWidthxOES(int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLineWidthxOES)) throw new SymbolNotFoundError("Symbol not found: glLineWidthxOES");
         try { Handles.MH_glLineWidthxOES.invokeExact(handles.PFN_glLineWidthxOES, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glLineWidthxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LineWidthxOES", e); }
     }
 
-    public void LoadMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLoadMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadMatrixxOES");
+    /// ```
+    /// void glLoadMatrixxOES(const GLfixed* m);
+    /// ```
+    public void LoadMatrixxOES(MemorySegment m) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLoadMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadMatrixxOES");
         try { Handles.MH_glLoadMatrixxOES.invokeExact(handles.PFN_glLoadMatrixxOES, m); }
-        catch (Throwable e) { throw new RuntimeException("error in glLoadMatrixxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LoadMatrixxOES", e); }
     }
 
-    public void MaterialxOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxOES");
+    /// ```
+    /// void glMaterialxOES((unsigned int) GLenum face, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void MaterialxOES(int face, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxOES");
         try { Handles.MH_glMaterialxOES.invokeExact(handles.PFN_glMaterialxOES, face, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glMaterialxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MaterialxOES", e); }
     }
 
-    public void MaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxvOES");
+    /// ```
+    /// void glMaterialxvOES((unsigned int) GLenum face, (unsigned int) GLenum pname, const GLfixed* param);
+    /// ```
+    public void MaterialxvOES(int face, int pname, MemorySegment param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glMaterialxvOES");
         try { Handles.MH_glMaterialxvOES.invokeExact(handles.PFN_glMaterialxvOES, face, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glMaterialxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MaterialxvOES", e); }
     }
 
-    public void MultMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultMatrixxOES");
+    /// ```
+    /// void glMultMatrixxOES(const GLfixed* m);
+    /// ```
+    public void MultMatrixxOES(MemorySegment m) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultMatrixxOES");
         try { Handles.MH_glMultMatrixxOES.invokeExact(handles.PFN_glMultMatrixxOES, m); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultMatrixxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultMatrixxOES", e); }
     }
 
-    public void MultiTexCoord4xOES(@CType("GLenum") int texture, @CType("GLfixed") int s, @CType("GLfixed") int t, @CType("GLfixed") int r, @CType("GLfixed") int q) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xOES");
+    /// ```
+    /// void glMultiTexCoord4xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed q);
+    /// ```
+    public void MultiTexCoord4xOES(int texture, int s, int t, int r, int q) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xOES");
         try { Handles.MH_glMultiTexCoord4xOES.invokeExact(handles.PFN_glMultiTexCoord4xOES, texture, s, t, r, q); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xOES", e); }
     }
 
-    public void Normal3xOES(@CType("GLfixed") int nx, @CType("GLfixed") int ny, @CType("GLfixed") int nz) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormal3xOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xOES");
+    /// ```
+    /// void glNormal3xOES(((int32_t) khronos_int32_t) GLfixed nx, ((int32_t) khronos_int32_t) GLfixed ny, ((int32_t) khronos_int32_t) GLfixed nz);
+    /// ```
+    public void Normal3xOES(int nx, int ny, int nz) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xOES");
         try { Handles.MH_glNormal3xOES.invokeExact(handles.PFN_glNormal3xOES, nx, ny, nz); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormal3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Normal3xOES", e); }
     }
 
-    public void OrthoxOES(@CType("GLfixed") int l, @CType("GLfixed") int r, @CType("GLfixed") int b, @CType("GLfixed") int t, @CType("GLfixed") int n, @CType("GLfixed") int f) {
-        if (Unmarshal.isNullPointer(handles.PFN_glOrthoxOES)) throw new SymbolNotFoundError("Symbol not found: glOrthoxOES");
+    /// ```
+    /// void glOrthoxOES(((int32_t) khronos_int32_t) GLfixed l, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed b, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed n, ((int32_t) khronos_int32_t) GLfixed f);
+    /// ```
+    public void OrthoxOES(int l, int r, int b, int t, int n, int f) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glOrthoxOES)) throw new SymbolNotFoundError("Symbol not found: glOrthoxOES");
         try { Handles.MH_glOrthoxOES.invokeExact(handles.PFN_glOrthoxOES, l, r, b, t, n, f); }
-        catch (Throwable e) { throw new RuntimeException("error in glOrthoxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in OrthoxOES", e); }
     }
 
-    public void PointParameterxvOES(@CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxvOES");
+    /// ```
+    /// void glPointParameterxvOES((unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void PointParameterxvOES(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxvOES");
         try { Handles.MH_glPointParameterxvOES.invokeExact(handles.PFN_glPointParameterxvOES, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterxvOES", e); }
     }
 
-    public void PointSizexOES(@CType("GLfixed") int size) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointSizexOES)) throw new SymbolNotFoundError("Symbol not found: glPointSizexOES");
+    /// ```
+    /// void glPointSizexOES(((int32_t) khronos_int32_t) GLfixed size);
+    /// ```
+    public void PointSizexOES(int size) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointSizexOES)) throw new SymbolNotFoundError("Symbol not found: glPointSizexOES");
         try { Handles.MH_glPointSizexOES.invokeExact(handles.PFN_glPointSizexOES, size); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointSizexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointSizexOES", e); }
     }
 
-    public void PolygonOffsetxOES(@CType("GLfixed") int factor, @CType("GLfixed") int units) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPolygonOffsetxOES)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetxOES");
+    /// ```
+    /// void glPolygonOffsetxOES(((int32_t) khronos_int32_t) GLfixed factor, ((int32_t) khronos_int32_t) GLfixed units);
+    /// ```
+    public void PolygonOffsetxOES(int factor, int units) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetxOES)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetxOES");
         try { Handles.MH_glPolygonOffsetxOES.invokeExact(handles.PFN_glPolygonOffsetxOES, factor, units); }
-        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetxOES", e); }
     }
 
-    public void RotatexOES(@CType("GLfixed") int angle, @CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRotatexOES)) throw new SymbolNotFoundError("Symbol not found: glRotatexOES");
+    /// ```
+    /// void glRotatexOES(((int32_t) khronos_int32_t) GLfixed angle, ((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
+    /// ```
+    public void RotatexOES(int angle, int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRotatexOES)) throw new SymbolNotFoundError("Symbol not found: glRotatexOES");
         try { Handles.MH_glRotatexOES.invokeExact(handles.PFN_glRotatexOES, angle, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glRotatexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RotatexOES", e); }
     }
 
-    public void ScalexOES(@CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glScalexOES)) throw new SymbolNotFoundError("Symbol not found: glScalexOES");
+    /// ```
+    /// void glScalexOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
+    /// ```
+    public void ScalexOES(int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glScalexOES)) throw new SymbolNotFoundError("Symbol not found: glScalexOES");
         try { Handles.MH_glScalexOES.invokeExact(handles.PFN_glScalexOES, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glScalexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ScalexOES", e); }
     }
 
-    public void TexEnvxOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexEnvxOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxOES");
+    /// ```
+    /// void glTexEnvxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void TexEnvxOES(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxOES");
         try { Handles.MH_glTexEnvxOES.invokeExact(handles.PFN_glTexEnvxOES, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexEnvxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexEnvxOES", e); }
     }
 
-    public void TexEnvxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxvOES");
+    /// ```
+    /// void glTexEnvxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void TexEnvxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexEnvxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexEnvxvOES");
         try { Handles.MH_glTexEnvxvOES.invokeExact(handles.PFN_glTexEnvxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexEnvxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexEnvxvOES", e); }
     }
 
-    public void TexParameterxOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxOES");
+    /// ```
+    /// void glTexParameterxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void TexParameterxOES(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxOES");
         try { Handles.MH_glTexParameterxOES.invokeExact(handles.PFN_glTexParameterxOES, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexParameterxOES", e); }
     }
 
-    public void TexParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxvOES");
+    /// ```
+    /// void glTexParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void TexParameterxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexParameterxvOES");
         try { Handles.MH_glTexParameterxvOES.invokeExact(handles.PFN_glTexParameterxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexParameterxvOES", e); }
     }
 
-    public void TranslatexOES(@CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTranslatexOES)) throw new SymbolNotFoundError("Symbol not found: glTranslatexOES");
+    /// ```
+    /// void glTranslatexOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
+    /// ```
+    public void TranslatexOES(int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTranslatexOES)) throw new SymbolNotFoundError("Symbol not found: glTranslatexOES");
         try { Handles.MH_glTranslatexOES.invokeExact(handles.PFN_glTranslatexOES, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glTranslatexOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TranslatexOES", e); }
     }
 
-    public void GetLightxvOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxvOES");
+    /// ```
+    /// void glGetLightxvOES((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetLightxvOES(int light, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxvOES");
         try { Handles.MH_glGetLightxvOES.invokeExact(handles.PFN_glGetLightxvOES, light, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetLightxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetLightxvOES", e); }
     }
 
-    public void GetMaterialxvOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
+    /// ```
+    /// void glGetMaterialxvOES((unsigned int) GLenum face, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetMaterialxvOES(int face, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxvOES");
         try { Handles.MH_glGetMaterialxvOES.invokeExact(handles.PFN_glGetMaterialxvOES, face, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMaterialxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMaterialxvOES", e); }
     }
 
-    public void PointParameterxOES(@CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxOES");
+    /// ```
+    /// void glPointParameterxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void PointParameterxOES(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glPointParameterxOES");
         try { Handles.MH_glPointParameterxOES.invokeExact(handles.PFN_glPointParameterxOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterxOES", e); }
     }
 
-    public void SampleCoveragexOES(@CType("GLclampx") int value, @CType("GLboolean") boolean invert) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSampleCoveragexOES)) throw new SymbolNotFoundError("Symbol not found: glSampleCoveragexOES");
-        try { Handles.MH_glSampleCoveragexOES.invokeExact(handles.PFN_glSampleCoveragexOES, value, invert); }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleCoveragexOES", e); }
+    /// ```
+    /// void glSampleCoveragexOES(((int32_t) khronos_int32_t) GLclampx value, GLboolean invert);
+    /// ```
+    public void SampleCoveragexOES(int value, boolean invert) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoveragexOES)) throw new SymbolNotFoundError("Symbol not found: glSampleCoveragexOES");
+        try { Handles.MH_glSampleCoveragexOES.invokeExact(handles.PFN_glSampleCoveragexOES, value, ((invert) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in SampleCoveragexOES", e); }
     }
 
-    public void AccumxOES(@CType("GLenum") int op, @CType("GLfixed") int value) {
-        if (Unmarshal.isNullPointer(handles.PFN_glAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glAccumxOES");
+    /// ```
+    /// void glAccumxOES((unsigned int) GLenum op, ((int32_t) khronos_int32_t) GLfixed value);
+    /// ```
+    public void AccumxOES(int op, int value) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glAccumxOES");
         try { Handles.MH_glAccumxOES.invokeExact(handles.PFN_glAccumxOES, op, value); }
-        catch (Throwable e) { throw new RuntimeException("error in glAccumxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in AccumxOES", e); }
     }
 
-    public void BitmapxOES(@CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLfixed") int xorig, @CType("GLfixed") int yorig, @CType("GLfixed") int xmove, @CType("GLfixed") int ymove, @CType("const GLubyte *") java.lang.foreign.MemorySegment bitmap) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBitmapxOES)) throw new SymbolNotFoundError("Symbol not found: glBitmapxOES");
+    /// ```
+    /// void glBitmapxOES((int) GLsizei width, (int) GLsizei height, ((int32_t) khronos_int32_t) GLfixed xorig, ((int32_t) khronos_int32_t) GLfixed yorig, ((int32_t) khronos_int32_t) GLfixed xmove, ((int32_t) khronos_int32_t) GLfixed ymove, const GLubyte* bitmap);
+    /// ```
+    public void BitmapxOES(int width, int height, int xorig, int yorig, int xmove, int ymove, MemorySegment bitmap) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBitmapxOES)) throw new SymbolNotFoundError("Symbol not found: glBitmapxOES");
         try { Handles.MH_glBitmapxOES.invokeExact(handles.PFN_glBitmapxOES, width, height, xorig, yorig, xmove, ymove, bitmap); }
-        catch (Throwable e) { throw new RuntimeException("error in glBitmapxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BitmapxOES", e); }
     }
 
-    public void BlendColorxOES(@CType("GLfixed") int red, @CType("GLfixed") int green, @CType("GLfixed") int blue, @CType("GLfixed") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendColorxOES)) throw new SymbolNotFoundError("Symbol not found: glBlendColorxOES");
+    /// ```
+    /// void glBlendColorxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
+    /// ```
+    public void BlendColorxOES(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorxOES)) throw new SymbolNotFoundError("Symbol not found: glBlendColorxOES");
         try { Handles.MH_glBlendColorxOES.invokeExact(handles.PFN_glBlendColorxOES, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendColorxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendColorxOES", e); }
     }
 
-    public void ClearAccumxOES(@CType("GLfixed") int red, @CType("GLfixed") int green, @CType("GLfixed") int blue, @CType("GLfixed") int alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glClearAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glClearAccumxOES");
+    /// ```
+    /// void glClearAccumxOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue, ((int32_t) khronos_int32_t) GLfixed alpha);
+    /// ```
+    public void ClearAccumxOES(int red, int green, int blue, int alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearAccumxOES)) throw new SymbolNotFoundError("Symbol not found: glClearAccumxOES");
         try { Handles.MH_glClearAccumxOES.invokeExact(handles.PFN_glClearAccumxOES, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glClearAccumxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ClearAccumxOES", e); }
     }
 
-    public void Color3xOES(@CType("GLfixed") int red, @CType("GLfixed") int green, @CType("GLfixed") int blue) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColor3xOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xOES");
+    /// ```
+    /// void glColor3xOES(((int32_t) khronos_int32_t) GLfixed red, ((int32_t) khronos_int32_t) GLfixed green, ((int32_t) khronos_int32_t) GLfixed blue);
+    /// ```
+    public void Color3xOES(int red, int green, int blue) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColor3xOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xOES");
         try { Handles.MH_glColor3xOES.invokeExact(handles.PFN_glColor3xOES, red, green, blue); }
-        catch (Throwable e) { throw new RuntimeException("error in glColor3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Color3xOES", e); }
     }
 
-    public void Color3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment components) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColor3xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xvOES");
+    /// ```
+    /// void glColor3xvOES(const GLfixed* components);
+    /// ```
+    public void Color3xvOES(MemorySegment components) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColor3xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor3xvOES");
         try { Handles.MH_glColor3xvOES.invokeExact(handles.PFN_glColor3xvOES, components); }
-        catch (Throwable e) { throw new RuntimeException("error in glColor3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Color3xvOES", e); }
     }
 
-    public void Color4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment components) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColor4xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xvOES");
+    /// ```
+    /// void glColor4xvOES(const GLfixed* components);
+    /// ```
+    public void Color4xvOES(MemorySegment components) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColor4xvOES)) throw new SymbolNotFoundError("Symbol not found: glColor4xvOES");
         try { Handles.MH_glColor4xvOES.invokeExact(handles.PFN_glColor4xvOES, components); }
-        catch (Throwable e) { throw new RuntimeException("error in glColor4xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Color4xvOES", e); }
     }
 
-    public void ConvolutionParameterxOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glConvolutionParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxOES");
+    /// ```
+    /// void glConvolutionParameterxOES((unsigned int) GLenum target, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void ConvolutionParameterxOES(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxOES");
         try { Handles.MH_glConvolutionParameterxOES.invokeExact(handles.PFN_glConvolutionParameterxOES, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxOES", e); }
     }
 
-    public void ConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
+    /// ```
+    /// void glConvolutionParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void ConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glConvolutionParameterxvOES");
         try { Handles.MH_glConvolutionParameterxvOES.invokeExact(handles.PFN_glConvolutionParameterxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glConvolutionParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ConvolutionParameterxvOES", e); }
     }
 
-    public void EvalCoord1xOES(@CType("GLfixed") int u) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xOES");
+    /// ```
+    /// void glEvalCoord1xOES(((int32_t) khronos_int32_t) GLfixed u);
+    /// ```
+    public void EvalCoord1xOES(int u) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xOES");
         try { Handles.MH_glEvalCoord1xOES.invokeExact(handles.PFN_glEvalCoord1xOES, u); }
-        catch (Throwable e) { throw new RuntimeException("error in glEvalCoord1xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xOES", e); }
     }
 
-    public void EvalCoord1xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xvOES");
+    /// ```
+    /// void glEvalCoord1xvOES(const GLfixed* coords);
+    /// ```
+    public void EvalCoord1xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord1xvOES");
         try { Handles.MH_glEvalCoord1xvOES.invokeExact(handles.PFN_glEvalCoord1xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glEvalCoord1xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EvalCoord1xvOES", e); }
     }
 
-    public void EvalCoord2xOES(@CType("GLfixed") int u, @CType("GLfixed") int v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xOES");
+    /// ```
+    /// void glEvalCoord2xOES(((int32_t) khronos_int32_t) GLfixed u, ((int32_t) khronos_int32_t) GLfixed v);
+    /// ```
+    public void EvalCoord2xOES(int u, int v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xOES");
         try { Handles.MH_glEvalCoord2xOES.invokeExact(handles.PFN_glEvalCoord2xOES, u, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glEvalCoord2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xOES", e); }
     }
 
-    public void EvalCoord2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEvalCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xvOES");
+    /// ```
+    /// void glEvalCoord2xvOES(const GLfixed* coords);
+    /// ```
+    public void EvalCoord2xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvalCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glEvalCoord2xvOES");
         try { Handles.MH_glEvalCoord2xvOES.invokeExact(handles.PFN_glEvalCoord2xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glEvalCoord2xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EvalCoord2xvOES", e); }
     }
 
-    public void FeedbackBufferxOES(@CType("GLsizei") int n, @CType("GLenum") int type, @CType("const GLfixed *") java.lang.foreign.MemorySegment buffer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new SymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
+    /// ```
+    /// void glFeedbackBufferxOES((int) GLsizei n, (unsigned int) GLenum type, const GLfixed* buffer);
+    /// ```
+    public void FeedbackBufferxOES(int n, int type, MemorySegment buffer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFeedbackBufferxOES)) throw new SymbolNotFoundError("Symbol not found: glFeedbackBufferxOES");
         try { Handles.MH_glFeedbackBufferxOES.invokeExact(handles.PFN_glFeedbackBufferxOES, n, type, buffer); }
-        catch (Throwable e) { throw new RuntimeException("error in glFeedbackBufferxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FeedbackBufferxOES", e); }
     }
 
-    public void GetConvolutionParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
+    /// ```
+    /// void glGetConvolutionParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetConvolutionParameterxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetConvolutionParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetConvolutionParameterxvOES");
         try { Handles.MH_glGetConvolutionParameterxvOES.invokeExact(handles.PFN_glGetConvolutionParameterxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetConvolutionParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetConvolutionParameterxvOES", e); }
     }
 
-    public void GetHistogramParameterxvOES(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
+    /// ```
+    /// void glGetHistogramParameterxvOES((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetHistogramParameterxvOES(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetHistogramParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetHistogramParameterxvOES");
         try { Handles.MH_glGetHistogramParameterxvOES.invokeExact(handles.PFN_glGetHistogramParameterxvOES, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetHistogramParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetHistogramParameterxvOES", e); }
     }
 
-    public void GetLightxOES(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetLightxOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxOES");
+    /// ```
+    /// void glGetLightxOES((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetLightxOES(int light, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetLightxOES)) throw new SymbolNotFoundError("Symbol not found: glGetLightxOES");
         try { Handles.MH_glGetLightxOES.invokeExact(handles.PFN_glGetLightxOES, light, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetLightxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetLightxOES", e); }
     }
 
-    public void GetMapxvOES(@CType("GLenum") int target, @CType("GLenum") int query, @CType("GLfixed *") java.lang.foreign.MemorySegment v) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetMapxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMapxvOES");
+    /// ```
+    /// void glGetMapxvOES((unsigned int) GLenum target, (unsigned int) GLenum query, GLfixed* v);
+    /// ```
+    public void GetMapxvOES(int target, int query, MemorySegment v) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetMapxvOES");
         try { Handles.MH_glGetMapxvOES.invokeExact(handles.PFN_glGetMapxvOES, target, query, v); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMapxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMapxvOES", e); }
     }
 
-    public void GetMaterialxOES(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxOES");
+    /// ```
+    /// void glGetMaterialxOES((unsigned int) GLenum face, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void GetMaterialxOES(int face, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMaterialxOES)) throw new SymbolNotFoundError("Symbol not found: glGetMaterialxOES");
         try { Handles.MH_glGetMaterialxOES.invokeExact(handles.PFN_glGetMaterialxOES, face, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMaterialxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetMaterialxOES", e); }
     }
 
-    public void GetPixelMapxv(@CType("GLenum") int map, @CType("GLint") int size, @CType("GLfixed *") java.lang.foreign.MemorySegment values) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new SymbolNotFoundError("Symbol not found: glGetPixelMapxv");
+    /// ```
+    /// void glGetPixelMapxv((unsigned int) GLenum map, (int) GLint size, GLfixed* values);
+    /// ```
+    public void GetPixelMapxv(int map, int size, MemorySegment values) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelMapxv)) throw new SymbolNotFoundError("Symbol not found: glGetPixelMapxv");
         try { Handles.MH_glGetPixelMapxv.invokeExact(handles.PFN_glGetPixelMapxv, map, size, values); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelMapxv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetPixelMapxv", e); }
     }
 
-    public void GetTexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
+    /// ```
+    /// void glGetTexGenxvOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetTexGenxvOES(int coord, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexGenxvOES");
         try { Handles.MH_glGetTexGenxvOES.invokeExact(handles.PFN_glGetTexGenxvOES, coord, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexGenxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexGenxvOES", e); }
     }
 
-    public void GetTexLevelParameterxvOES(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
+    /// ```
+    /// void glGetTexLevelParameterxvOES((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum pname, GLfixed* params);
+    /// ```
+    public void GetTexLevelParameterxvOES(int target, int level, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameterxvOES)) throw new SymbolNotFoundError("Symbol not found: glGetTexLevelParameterxvOES");
         try { Handles.MH_glGetTexLevelParameterxvOES.invokeExact(handles.PFN_glGetTexLevelParameterxvOES, target, level, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameterxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexLevelParameterxvOES", e); }
     }
 
-    public void IndexxOES(@CType("GLfixed") int component) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIndexxOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxOES");
+    /// ```
+    /// void glIndexxOES(((int32_t) khronos_int32_t) GLfixed component);
+    /// ```
+    public void IndexxOES(int component) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexxOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxOES");
         try { Handles.MH_glIndexxOES.invokeExact(handles.PFN_glIndexxOES, component); }
-        catch (Throwable e) { throw new RuntimeException("error in glIndexxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in IndexxOES", e); }
     }
 
-    public void IndexxvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment component) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIndexxvOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxvOES");
+    /// ```
+    /// void glIndexxvOES(const GLfixed* component);
+    /// ```
+    public void IndexxvOES(MemorySegment component) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexxvOES)) throw new SymbolNotFoundError("Symbol not found: glIndexxvOES");
         try { Handles.MH_glIndexxvOES.invokeExact(handles.PFN_glIndexxvOES, component); }
-        catch (Throwable e) { throw new RuntimeException("error in glIndexxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in IndexxvOES", e); }
     }
 
-    public void LoadTransposeMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(handles.PFN_glLoadTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixxOES");
+    /// ```
+    /// void glLoadTransposeMatrixxOES(const GLfixed* m);
+    /// ```
+    public void LoadTransposeMatrixxOES(MemorySegment m) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glLoadTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixxOES");
         try { Handles.MH_glLoadTransposeMatrixxOES.invokeExact(handles.PFN_glLoadTransposeMatrixxOES, m); }
-        catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in LoadTransposeMatrixxOES", e); }
     }
 
-    public void Map1xOES(@CType("GLenum") int target, @CType("GLfixed") int u1, @CType("GLfixed") int u2, @CType("GLint") int stride, @CType("GLint") int order, @CType("GLfixed") int points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMap1xOES)) throw new SymbolNotFoundError("Symbol not found: glMap1xOES");
+    /// ```
+    /// void glMap1xOES((unsigned int) GLenum target, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, (int) GLint stride, (int) GLint order, ((int32_t) khronos_int32_t) GLfixed points);
+    /// ```
+    public void Map1xOES(int target, int u1, int u2, int stride, int order, int points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMap1xOES)) throw new SymbolNotFoundError("Symbol not found: glMap1xOES");
         try { Handles.MH_glMap1xOES.invokeExact(handles.PFN_glMap1xOES, target, u1, u2, stride, order, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMap1xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Map1xOES", e); }
     }
 
-    public void Map2xOES(@CType("GLenum") int target, @CType("GLfixed") int u1, @CType("GLfixed") int u2, @CType("GLint") int ustride, @CType("GLint") int uorder, @CType("GLfixed") int v1, @CType("GLfixed") int v2, @CType("GLint") int vstride, @CType("GLint") int vorder, @CType("GLfixed") int points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMap2xOES)) throw new SymbolNotFoundError("Symbol not found: glMap2xOES");
+    /// ```
+    /// void glMap2xOES((unsigned int) GLenum target, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, (int) GLint ustride, (int) GLint uorder, ((int32_t) khronos_int32_t) GLfixed v1, ((int32_t) khronos_int32_t) GLfixed v2, (int) GLint vstride, (int) GLint vorder, ((int32_t) khronos_int32_t) GLfixed points);
+    /// ```
+    public void Map2xOES(int target, int u1, int u2, int ustride, int uorder, int v1, int v2, int vstride, int vorder, int points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMap2xOES)) throw new SymbolNotFoundError("Symbol not found: glMap2xOES");
         try { Handles.MH_glMap2xOES.invokeExact(handles.PFN_glMap2xOES, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMap2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Map2xOES", e); }
     }
 
-    public void MapGrid1xOES(@CType("GLint") int n, @CType("GLfixed") int u1, @CType("GLfixed") int u2) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapGrid1xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid1xOES");
+    /// ```
+    /// void glMapGrid1xOES((int) GLint n, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2);
+    /// ```
+    public void MapGrid1xOES(int n, int u1, int u2) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid1xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid1xOES");
         try { Handles.MH_glMapGrid1xOES.invokeExact(handles.PFN_glMapGrid1xOES, n, u1, u2); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapGrid1xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapGrid1xOES", e); }
     }
 
-    public void MapGrid2xOES(@CType("GLint") int n, @CType("GLfixed") int u1, @CType("GLfixed") int u2, @CType("GLfixed") int v1, @CType("GLfixed") int v2) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapGrid2xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid2xOES");
+    /// ```
+    /// void glMapGrid2xOES((int) GLint n, ((int32_t) khronos_int32_t) GLfixed u1, ((int32_t) khronos_int32_t) GLfixed u2, ((int32_t) khronos_int32_t) GLfixed v1, ((int32_t) khronos_int32_t) GLfixed v2);
+    /// ```
+    public void MapGrid2xOES(int n, int u1, int u2, int v1, int v2) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapGrid2xOES)) throw new SymbolNotFoundError("Symbol not found: glMapGrid2xOES");
         try { Handles.MH_glMapGrid2xOES.invokeExact(handles.PFN_glMapGrid2xOES, n, u1, u2, v1, v2); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapGrid2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapGrid2xOES", e); }
     }
 
-    public void MultTransposeMatrixxOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment m) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixxOES");
+    /// ```
+    /// void glMultTransposeMatrixxOES(const GLfixed* m);
+    /// ```
+    public void MultTransposeMatrixxOES(MemorySegment m) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultTransposeMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixxOES");
         try { Handles.MH_glMultTransposeMatrixxOES.invokeExact(handles.PFN_glMultTransposeMatrixxOES, m); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultTransposeMatrixxOES", e); }
     }
 
-    public void MultiTexCoord1xOES(@CType("GLenum") int texture, @CType("GLfixed") int s) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xOES");
+    /// ```
+    /// void glMultiTexCoord1xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s);
+    /// ```
+    public void MultiTexCoord1xOES(int texture, int s) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xOES");
         try { Handles.MH_glMultiTexCoord1xOES.invokeExact(handles.PFN_glMultiTexCoord1xOES, texture, s); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xOES", e); }
     }
 
-    public void MultiTexCoord1xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
+    /// ```
+    /// void glMultiTexCoord1xvOES((unsigned int) GLenum texture, const GLfixed* coords);
+    /// ```
+    public void MultiTexCoord1xvOES(int texture, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1xvOES");
         try { Handles.MH_glMultiTexCoord1xvOES.invokeExact(handles.PFN_glMultiTexCoord1xvOES, texture, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1xvOES", e); }
     }
 
-    public void MultiTexCoord2xOES(@CType("GLenum") int texture, @CType("GLfixed") int s, @CType("GLfixed") int t) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xOES");
+    /// ```
+    /// void glMultiTexCoord2xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t);
+    /// ```
+    public void MultiTexCoord2xOES(int texture, int s, int t) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xOES");
         try { Handles.MH_glMultiTexCoord2xOES.invokeExact(handles.PFN_glMultiTexCoord2xOES, texture, s, t); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xOES", e); }
     }
 
-    public void MultiTexCoord2xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
+    /// ```
+    /// void glMultiTexCoord2xvOES((unsigned int) GLenum texture, const GLfixed* coords);
+    /// ```
+    public void MultiTexCoord2xvOES(int texture, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2xvOES");
         try { Handles.MH_glMultiTexCoord2xvOES.invokeExact(handles.PFN_glMultiTexCoord2xvOES, texture, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2xvOES", e); }
     }
 
-    public void MultiTexCoord3xOES(@CType("GLenum") int texture, @CType("GLfixed") int s, @CType("GLfixed") int t, @CType("GLfixed") int r) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xOES");
+    /// ```
+    /// void glMultiTexCoord3xOES((unsigned int) GLenum texture, ((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r);
+    /// ```
+    public void MultiTexCoord3xOES(int texture, int s, int t, int r) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xOES");
         try { Handles.MH_glMultiTexCoord3xOES.invokeExact(handles.PFN_glMultiTexCoord3xOES, texture, s, t, r); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xOES", e); }
     }
 
-    public void MultiTexCoord3xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
+    /// ```
+    /// void glMultiTexCoord3xvOES((unsigned int) GLenum texture, const GLfixed* coords);
+    /// ```
+    public void MultiTexCoord3xvOES(int texture, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3xvOES");
         try { Handles.MH_glMultiTexCoord3xvOES.invokeExact(handles.PFN_glMultiTexCoord3xvOES, texture, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3xvOES", e); }
     }
 
-    public void MultiTexCoord4xvOES(@CType("GLenum") int texture, @CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
+    /// ```
+    /// void glMultiTexCoord4xvOES((unsigned int) GLenum texture, const GLfixed* coords);
+    /// ```
+    public void MultiTexCoord4xvOES(int texture, MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4xvOES");
         try { Handles.MH_glMultiTexCoord4xvOES.invokeExact(handles.PFN_glMultiTexCoord4xvOES, texture, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4xvOES", e); }
     }
 
-    public void Normal3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glNormal3xvOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xvOES");
+    /// ```
+    /// void glNormal3xvOES(const GLfixed* coords);
+    /// ```
+    public void Normal3xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormal3xvOES)) throw new SymbolNotFoundError("Symbol not found: glNormal3xvOES");
         try { Handles.MH_glNormal3xvOES.invokeExact(handles.PFN_glNormal3xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glNormal3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Normal3xvOES", e); }
     }
 
-    public void PassThroughxOES(@CType("GLfixed") int token) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPassThroughxOES)) throw new SymbolNotFoundError("Symbol not found: glPassThroughxOES");
+    /// ```
+    /// void glPassThroughxOES(((int32_t) khronos_int32_t) GLfixed token);
+    /// ```
+    public void PassThroughxOES(int token) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPassThroughxOES)) throw new SymbolNotFoundError("Symbol not found: glPassThroughxOES");
         try { Handles.MH_glPassThroughxOES.invokeExact(handles.PFN_glPassThroughxOES, token); }
-        catch (Throwable e) { throw new RuntimeException("error in glPassThroughxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PassThroughxOES", e); }
     }
 
-    public void PixelMapx(@CType("GLenum") int map, @CType("GLint") int size, @CType("const GLfixed *") java.lang.foreign.MemorySegment values) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelMapx)) throw new SymbolNotFoundError("Symbol not found: glPixelMapx");
+    /// ```
+    /// void glPixelMapx((unsigned int) GLenum map, (int) GLint size, const GLfixed* values);
+    /// ```
+    public void PixelMapx(int map, int size, MemorySegment values) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelMapx)) throw new SymbolNotFoundError("Symbol not found: glPixelMapx");
         try { Handles.MH_glPixelMapx.invokeExact(handles.PFN_glPixelMapx, map, size, values); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelMapx", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelMapx", e); }
     }
 
-    public void PixelStorex(@CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelStorex)) throw new SymbolNotFoundError("Symbol not found: glPixelStorex");
+    /// ```
+    /// void glPixelStorex((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void PixelStorex(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelStorex)) throw new SymbolNotFoundError("Symbol not found: glPixelStorex");
         try { Handles.MH_glPixelStorex.invokeExact(handles.PFN_glPixelStorex, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelStorex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelStorex", e); }
     }
 
-    public void PixelTransferxOES(@CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelTransferxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelTransferxOES");
+    /// ```
+    /// void glPixelTransferxOES((unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void PixelTransferxOES(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTransferxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelTransferxOES");
         try { Handles.MH_glPixelTransferxOES.invokeExact(handles.PFN_glPixelTransferxOES, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTransferxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelTransferxOES", e); }
     }
 
-    public void PixelZoomxOES(@CType("GLfixed") int xfactor, @CType("GLfixed") int yfactor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPixelZoomxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelZoomxOES");
+    /// ```
+    /// void glPixelZoomxOES(((int32_t) khronos_int32_t) GLfixed xfactor, ((int32_t) khronos_int32_t) GLfixed yfactor);
+    /// ```
+    public void PixelZoomxOES(int xfactor, int yfactor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelZoomxOES)) throw new SymbolNotFoundError("Symbol not found: glPixelZoomxOES");
         try { Handles.MH_glPixelZoomxOES.invokeExact(handles.PFN_glPixelZoomxOES, xfactor, yfactor); }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelZoomxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PixelZoomxOES", e); }
     }
 
-    public void PrioritizeTexturesxOES(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("const GLfixed *") java.lang.foreign.MemorySegment priorities) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
+    /// ```
+    /// void glPrioritizeTexturesxOES((int) GLsizei n, const GLuint* textures, const GLfixed* priorities);
+    /// ```
+    public void PrioritizeTexturesxOES(int n, MemorySegment textures, MemorySegment priorities) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesxOES)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesxOES");
         try { Handles.MH_glPrioritizeTexturesxOES.invokeExact(handles.PFN_glPrioritizeTexturesxOES, n, textures, priorities); }
-        catch (Throwable e) { throw new RuntimeException("error in glPrioritizeTexturesxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PrioritizeTexturesxOES", e); }
     }
 
-    public void RasterPos2xOES(@CType("GLfixed") int x, @CType("GLfixed") int y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos2xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xOES");
+    /// ```
+    /// void glRasterPos2xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y);
+    /// ```
+    public void RasterPos2xOES(int x, int y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xOES");
         try { Handles.MH_glRasterPos2xOES.invokeExact(handles.PFN_glRasterPos2xOES, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos2xOES", e); }
     }
 
-    public void RasterPos2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos2xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xvOES");
+    /// ```
+    /// void glRasterPos2xvOES(const GLfixed* coords);
+    /// ```
+    public void RasterPos2xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos2xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos2xvOES");
         try { Handles.MH_glRasterPos2xvOES.invokeExact(handles.PFN_glRasterPos2xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos2xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos2xvOES", e); }
     }
 
-    public void RasterPos3xOES(@CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos3xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xOES");
+    /// ```
+    /// void glRasterPos3xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
+    /// ```
+    public void RasterPos3xOES(int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xOES");
         try { Handles.MH_glRasterPos3xOES.invokeExact(handles.PFN_glRasterPos3xOES, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos3xOES", e); }
     }
 
-    public void RasterPos3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos3xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xvOES");
+    /// ```
+    /// void glRasterPos3xvOES(const GLfixed* coords);
+    /// ```
+    public void RasterPos3xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos3xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos3xvOES");
         try { Handles.MH_glRasterPos3xvOES.invokeExact(handles.PFN_glRasterPos3xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos3xvOES", e); }
     }
 
-    public void RasterPos4xOES(@CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z, @CType("GLfixed") int w) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos4xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xOES");
+    /// ```
+    /// void glRasterPos4xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z, ((int32_t) khronos_int32_t) GLfixed w);
+    /// ```
+    public void RasterPos4xOES(int x, int y, int z, int w) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xOES");
         try { Handles.MH_glRasterPos4xOES.invokeExact(handles.PFN_glRasterPos4xOES, x, y, z, w); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos4xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos4xOES", e); }
     }
 
-    public void RasterPos4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRasterPos4xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xvOES");
+    /// ```
+    /// void glRasterPos4xvOES(const GLfixed* coords);
+    /// ```
+    public void RasterPos4xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterPos4xvOES)) throw new SymbolNotFoundError("Symbol not found: glRasterPos4xvOES");
         try { Handles.MH_glRasterPos4xvOES.invokeExact(handles.PFN_glRasterPos4xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterPos4xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RasterPos4xvOES", e); }
     }
 
-    public void RectxOES(@CType("GLfixed") int x1, @CType("GLfixed") int y1, @CType("GLfixed") int x2, @CType("GLfixed") int y2) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRectxOES)) throw new SymbolNotFoundError("Symbol not found: glRectxOES");
+    /// ```
+    /// void glRectxOES(((int32_t) khronos_int32_t) GLfixed x1, ((int32_t) khronos_int32_t) GLfixed y1, ((int32_t) khronos_int32_t) GLfixed x2, ((int32_t) khronos_int32_t) GLfixed y2);
+    /// ```
+    public void RectxOES(int x1, int y1, int x2, int y2) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRectxOES)) throw new SymbolNotFoundError("Symbol not found: glRectxOES");
         try { Handles.MH_glRectxOES.invokeExact(handles.PFN_glRectxOES, x1, y1, x2, y2); }
-        catch (Throwable e) { throw new RuntimeException("error in glRectxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RectxOES", e); }
     }
 
-    public void RectxvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment v1, @CType("const GLfixed *") java.lang.foreign.MemorySegment v2) {
-        if (Unmarshal.isNullPointer(handles.PFN_glRectxvOES)) throw new SymbolNotFoundError("Symbol not found: glRectxvOES");
+    /// ```
+    /// void glRectxvOES(const GLfixed* v1, const GLfixed* v2);
+    /// ```
+    public void RectxvOES(MemorySegment v1, MemorySegment v2) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glRectxvOES)) throw new SymbolNotFoundError("Symbol not found: glRectxvOES");
         try { Handles.MH_glRectxvOES.invokeExact(handles.PFN_glRectxvOES, v1, v2); }
-        catch (Throwable e) { throw new RuntimeException("error in glRectxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in RectxvOES", e); }
     }
 
-    public void TexCoord1xOES(@CType("GLfixed") int s) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xOES");
+    /// ```
+    /// void glTexCoord1xOES(((int32_t) khronos_int32_t) GLfixed s);
+    /// ```
+    public void TexCoord1xOES(int s) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xOES");
         try { Handles.MH_glTexCoord1xOES.invokeExact(handles.PFN_glTexCoord1xOES, s); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord1xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord1xOES", e); }
     }
 
-    public void TexCoord1xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xvOES");
+    /// ```
+    /// void glTexCoord1xvOES(const GLfixed* coords);
+    /// ```
+    public void TexCoord1xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1xvOES");
         try { Handles.MH_glTexCoord1xvOES.invokeExact(handles.PFN_glTexCoord1xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord1xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord1xvOES", e); }
     }
 
-    public void TexCoord2xOES(@CType("GLfixed") int s, @CType("GLfixed") int t) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xOES");
+    /// ```
+    /// void glTexCoord2xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t);
+    /// ```
+    public void TexCoord2xOES(int s, int t) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xOES");
         try { Handles.MH_glTexCoord2xOES.invokeExact(handles.PFN_glTexCoord2xOES, s, t); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord2xOES", e); }
     }
 
-    public void TexCoord2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xvOES");
+    /// ```
+    /// void glTexCoord2xvOES(const GLfixed* coords);
+    /// ```
+    public void TexCoord2xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2xvOES");
         try { Handles.MH_glTexCoord2xvOES.invokeExact(handles.PFN_glTexCoord2xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord2xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord2xvOES", e); }
     }
 
-    public void TexCoord3xOES(@CType("GLfixed") int s, @CType("GLfixed") int t, @CType("GLfixed") int r) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xOES");
+    /// ```
+    /// void glTexCoord3xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r);
+    /// ```
+    public void TexCoord3xOES(int s, int t, int r) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xOES");
         try { Handles.MH_glTexCoord3xOES.invokeExact(handles.PFN_glTexCoord3xOES, s, t, r); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord3xOES", e); }
     }
 
-    public void TexCoord3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xvOES");
+    /// ```
+    /// void glTexCoord3xvOES(const GLfixed* coords);
+    /// ```
+    public void TexCoord3xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3xvOES");
         try { Handles.MH_glTexCoord3xvOES.invokeExact(handles.PFN_glTexCoord3xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord3xvOES", e); }
     }
 
-    public void TexCoord4xOES(@CType("GLfixed") int s, @CType("GLfixed") int t, @CType("GLfixed") int r, @CType("GLfixed") int q) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xOES");
+    /// ```
+    /// void glTexCoord4xOES(((int32_t) khronos_int32_t) GLfixed s, ((int32_t) khronos_int32_t) GLfixed t, ((int32_t) khronos_int32_t) GLfixed r, ((int32_t) khronos_int32_t) GLfixed q);
+    /// ```
+    public void TexCoord4xOES(int s, int t, int r, int q) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xOES");
         try { Handles.MH_glTexCoord4xOES.invokeExact(handles.PFN_glTexCoord4xOES, s, t, r, q); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord4xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord4xOES", e); }
     }
 
-    public void TexCoord4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xvOES");
+    /// ```
+    /// void glTexCoord4xvOES(const GLfixed* coords);
+    /// ```
+    public void TexCoord4xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4xvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4xvOES");
         try { Handles.MH_glTexCoord4xvOES.invokeExact(handles.PFN_glTexCoord4xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexCoord4xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexCoord4xvOES", e); }
     }
 
-    public void TexGenxOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("GLfixed") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexGenxOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxOES");
+    /// ```
+    /// void glTexGenxOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, ((int32_t) khronos_int32_t) GLfixed param);
+    /// ```
+    public void TexGenxOES(int coord, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxOES");
         try { Handles.MH_glTexGenxOES.invokeExact(handles.PFN_glTexGenxOES, coord, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexGenxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexGenxOES", e); }
     }
 
-    public void TexGenxvOES(@CType("GLenum") int coord, @CType("GLenum") int pname, @CType("const GLfixed *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxvOES");
+    /// ```
+    /// void glTexGenxvOES((unsigned int) GLenum coord, (unsigned int) GLenum pname, const GLfixed* params);
+    /// ```
+    public void TexGenxvOES(int coord, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexGenxvOES)) throw new SymbolNotFoundError("Symbol not found: glTexGenxvOES");
         try { Handles.MH_glTexGenxvOES.invokeExact(handles.PFN_glTexGenxvOES, coord, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glTexGenxvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TexGenxvOES", e); }
     }
 
-    public void Vertex2xOES(@CType("GLfixed") int x) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex2xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xOES");
+    /// ```
+    /// void glVertex2xOES(((int32_t) khronos_int32_t) GLfixed x);
+    /// ```
+    public void Vertex2xOES(int x) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xOES");
         try { Handles.MH_glVertex2xOES.invokeExact(handles.PFN_glVertex2xOES, x); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex2xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex2xOES", e); }
     }
 
-    public void Vertex2xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex2xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xvOES");
+    /// ```
+    /// void glVertex2xvOES(const GLfixed* coords);
+    /// ```
+    public void Vertex2xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2xvOES");
         try { Handles.MH_glVertex2xvOES.invokeExact(handles.PFN_glVertex2xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex2xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex2xvOES", e); }
     }
 
-    public void Vertex3xOES(@CType("GLfixed") int x, @CType("GLfixed") int y) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex3xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xOES");
+    /// ```
+    /// void glVertex3xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y);
+    /// ```
+    public void Vertex3xOES(int x, int y) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xOES");
         try { Handles.MH_glVertex3xOES.invokeExact(handles.PFN_glVertex3xOES, x, y); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex3xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex3xOES", e); }
     }
 
-    public void Vertex3xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex3xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xvOES");
+    /// ```
+    /// void glVertex3xvOES(const GLfixed* coords);
+    /// ```
+    public void Vertex3xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3xvOES");
         try { Handles.MH_glVertex3xvOES.invokeExact(handles.PFN_glVertex3xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex3xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex3xvOES", e); }
     }
 
-    public void Vertex4xOES(@CType("GLfixed") int x, @CType("GLfixed") int y, @CType("GLfixed") int z) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex4xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xOES");
+    /// ```
+    /// void glVertex4xOES(((int32_t) khronos_int32_t) GLfixed x, ((int32_t) khronos_int32_t) GLfixed y, ((int32_t) khronos_int32_t) GLfixed z);
+    /// ```
+    public void Vertex4xOES(int x, int y, int z) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xOES");
         try { Handles.MH_glVertex4xOES.invokeExact(handles.PFN_glVertex4xOES, x, y, z); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex4xOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex4xOES", e); }
     }
 
-    public void Vertex4xvOES(@CType("const GLfixed *") java.lang.foreign.MemorySegment coords) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertex4xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xvOES");
+    /// ```
+    /// void glVertex4xvOES(const GLfixed* coords);
+    /// ```
+    public void Vertex4xvOES(MemorySegment coords) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4xvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4xvOES");
         try { Handles.MH_glVertex4xvOES.invokeExact(handles.PFN_glVertex4xvOES, coords); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertex4xvOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in Vertex4xvOES", e); }
     }
 
 }

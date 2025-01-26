@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.android.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### consumer
-/// [VarHandle][#VH_consumer] - [Getter][#consumer()] - [Setter][#consumer(long)]
-/// ### producer
-/// [VarHandle][#VH_producer] - [Getter][#producer()] - [Setter][#producer(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkNativeBufferUsage2ANDROID {
+/// ```
+/// struct VkNativeBufferUsage2ANDROID {
 ///     uint64_t consumer;
 ///     uint64_t producer;
-/// } VkNativeBufferUsage2ANDROID;
+/// };
 /// ```
-public sealed class VkNativeBufferUsage2ANDROID extends Struct {
+public sealed class VkNativeBufferUsage2ANDROID extends GroupType {
     /// The struct layout of `VkNativeBufferUsage2ANDROID`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("consumer"),
         ValueLayout.JAVA_LONG.withName("producer")
     );
-    /// The [VarHandle] of `consumer` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `consumer`.
+    public static final long OFFSET_consumer = LAYOUT.byteOffset(PathElement.groupElement("consumer"));
+    /// The memory layout of `consumer`.
+    public static final MemoryLayout LAYOUT_consumer = LAYOUT.select(PathElement.groupElement("consumer"));
+    /// The [VarHandle] of `consumer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_consumer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("consumer"));
-    /// The [VarHandle] of `producer` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `producer`.
+    public static final long OFFSET_producer = LAYOUT.byteOffset(PathElement.groupElement("producer"));
+    /// The memory layout of `producer`.
+    public static final MemoryLayout LAYOUT_producer = LAYOUT.select(PathElement.groupElement("producer"));
+    /// The [VarHandle] of `producer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_producer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("producer"));
 
     /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkNativeBufferUsage2ANDROID extends Struct {
     /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkNativeBufferUsage2ANDROID of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkNativeBufferUsage2ANDROID(segment); }
-
-    /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkNativeBufferUsage2ANDROID ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkNativeBufferUsage2ANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkNativeBufferUsage2ANDROID ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkNativeBufferUsage2ANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkNativeBufferUsage2ANDROID` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkNativeBufferUsage2ANDROID extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkNativeBufferUsage2ANDROID` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkNativeBufferUsage2ANDROID extends Struct {
     /// @return the allocated `VkNativeBufferUsage2ANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkNativeBufferUsage2ANDROID` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkNativeBufferUsage2ANDROID`
-    public static VkNativeBufferUsage2ANDROID allocInit(SegmentAllocator allocator, @CType("uint64_t") long consumer, @CType("uint64_t") long producer) { return alloc(allocator).consumer(consumer).producer(producer); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkNativeBufferUsage2ANDROID extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `consumer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_consumer(MemorySegment segment, long index) { return (long) VH_consumer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long consumer(MemorySegment segment, long index) { return (long) VH_consumer.get(segment, 0L, index); }
     /// {@return `consumer`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_consumer(MemorySegment segment) { return VkNativeBufferUsage2ANDROID.get_consumer(segment, 0L); }
-    /// {@return `consumer`}
-    public @CType("uint64_t") long consumer() { return VkNativeBufferUsage2ANDROID.get_consumer(this.segment()); }
+    public long consumer() { return consumer(this.segment(), 0L); }
     /// Sets `consumer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_consumer(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_consumer.set(segment, 0L, index, value); }
-    /// Sets `consumer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_consumer(MemorySegment segment, @CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_consumer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void consumer(MemorySegment segment, long index, long value) { VH_consumer.set(segment, 0L, index, value); }
     /// Sets `consumer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkNativeBufferUsage2ANDROID consumer(@CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_consumer(this.segment(), value); return this; }
+    public VkNativeBufferUsage2ANDROID consumer(long value) { consumer(this.segment(), 0L, value); return this; }
 
     /// {@return `producer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_producer(MemorySegment segment, long index) { return (long) VH_producer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long producer(MemorySegment segment, long index) { return (long) VH_producer.get(segment, 0L, index); }
     /// {@return `producer`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_producer(MemorySegment segment) { return VkNativeBufferUsage2ANDROID.get_producer(segment, 0L); }
-    /// {@return `producer`}
-    public @CType("uint64_t") long producer() { return VkNativeBufferUsage2ANDROID.get_producer(this.segment()); }
+    public long producer() { return producer(this.segment(), 0L); }
     /// Sets `producer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_producer(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_producer.set(segment, 0L, index, value); }
-    /// Sets `producer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_producer(MemorySegment segment, @CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_producer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void producer(MemorySegment segment, long index, long value) { VH_producer.set(segment, 0L, index, value); }
     /// Sets `producer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkNativeBufferUsage2ANDROID producer(@CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_producer(this.segment(), value); return this; }
+    public VkNativeBufferUsage2ANDROID producer(long value) { producer(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkNativeBufferUsage2ANDROID].
     public static final class Buffer extends VkNativeBufferUsage2ANDROID {
@@ -171,22 +149,22 @@ public sealed class VkNativeBufferUsage2ANDROID extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `consumer` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long consumerAt(long index) { return VkNativeBufferUsage2ANDROID.get_consumer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long consumerAt(long index) { return consumer(this.segment(), index); }
         /// Sets `consumer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer consumerAt(long index, @CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_consumer(this.segment(), index, value); return this; }
+        public Buffer consumerAt(long index, long value) { consumer(this.segment(), index, value); return this; }
 
         /// {@return `producer` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long producerAt(long index) { return VkNativeBufferUsage2ANDROID.get_producer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long producerAt(long index) { return producer(this.segment(), index); }
         /// Sets `producer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer producerAt(long index, @CType("uint64_t") long value) { VkNativeBufferUsage2ANDROID.set_producer(this.segment(), index, value); return this; }
+        public Buffer producerAt(long index, long value) { producer(this.segment(), index, value); return this; }
 
     }
 }

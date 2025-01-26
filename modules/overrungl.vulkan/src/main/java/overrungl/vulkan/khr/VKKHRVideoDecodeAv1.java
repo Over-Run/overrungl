@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRVideoDecodeAv1 {
     public static final int VK_KHR_VIDEO_DECODE_AV1_SPEC_VERSION = 1;
@@ -33,6 +28,6 @@ public final class VKKHRVideoDecodeAv1 {
     public static final int VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR = 0x00000004;
     public static final int VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
 
-    private VKKHRVideoDecodeAv1() { }
+    private VKKHRVideoDecodeAv1() {}
 
 }

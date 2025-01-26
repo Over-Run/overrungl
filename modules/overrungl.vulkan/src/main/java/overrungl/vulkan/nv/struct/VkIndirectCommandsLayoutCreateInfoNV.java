@@ -15,49 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### pipelineBindPoint
-/// [VarHandle][#VH_pipelineBindPoint] - [Getter][#pipelineBindPoint()] - [Setter][#pipelineBindPoint(int)]
-/// ### tokenCount
-/// [VarHandle][#VH_tokenCount] - [Getter][#tokenCount()] - [Setter][#tokenCount(int)]
-/// ### pTokens
-/// [VarHandle][#VH_pTokens] - [Getter][#pTokens()] - [Setter][#pTokens(java.lang.foreign.MemorySegment)]
-/// ### streamCount
-/// [VarHandle][#VH_streamCount] - [Getter][#streamCount()] - [Setter][#streamCount(int)]
-/// ### pStreamStrides
-/// [VarHandle][#VH_pStreamStrides] - [Getter][#pStreamStrides()] - [Setter][#pStreamStrides(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkIndirectCommandsLayoutCreateInfoNV {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkIndirectCommandsLayoutUsageFlagsNV flags;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     uint32_t tokenCount;
-///     const VkIndirectCommandsLayoutTokenNV * pTokens;
-///     uint32_t streamCount;
-///     const uint32_t * pStreamStrides;
-/// } VkIndirectCommandsLayoutCreateInfoNV;
 /// ```
-public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
+/// struct VkIndirectCommandsLayoutCreateInfoNV {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkIndirectCommandsLayoutUsageFlagsNV flags;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
+///     uint32_t tokenCount;
+///     const VkIndirectCommandsLayoutTokenNV* pTokens;
+///     uint32_t streamCount;
+///     const uint32_t* pStreamStrides;
+/// };
+/// ```
+public sealed class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// The struct layout of `VkIndirectCommandsLayoutCreateInfoNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -67,21 +49,53 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
         ValueLayout.JAVA_INT.withName("streamCount"),
         ValueLayout.ADDRESS.withName("pStreamStrides")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `pipelineBindPoint` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `pipelineBindPoint`.
+    public static final long OFFSET_pipelineBindPoint = LAYOUT.byteOffset(PathElement.groupElement("pipelineBindPoint"));
+    /// The memory layout of `pipelineBindPoint`.
+    public static final MemoryLayout LAYOUT_pipelineBindPoint = LAYOUT.select(PathElement.groupElement("pipelineBindPoint"));
+    /// The [VarHandle] of `pipelineBindPoint` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pipelineBindPoint = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineBindPoint"));
-    /// The [VarHandle] of `tokenCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `tokenCount`.
+    public static final long OFFSET_tokenCount = LAYOUT.byteOffset(PathElement.groupElement("tokenCount"));
+    /// The memory layout of `tokenCount`.
+    public static final MemoryLayout LAYOUT_tokenCount = LAYOUT.select(PathElement.groupElement("tokenCount"));
+    /// The [VarHandle] of `tokenCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_tokenCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tokenCount"));
-    /// The [VarHandle] of `pTokens` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pTokens`.
+    public static final long OFFSET_pTokens = LAYOUT.byteOffset(PathElement.groupElement("pTokens"));
+    /// The memory layout of `pTokens`.
+    public static final MemoryLayout LAYOUT_pTokens = LAYOUT.select(PathElement.groupElement("pTokens"));
+    /// The [VarHandle] of `pTokens` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTokens = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTokens"));
-    /// The [VarHandle] of `streamCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `streamCount`.
+    public static final long OFFSET_streamCount = LAYOUT.byteOffset(PathElement.groupElement("streamCount"));
+    /// The memory layout of `streamCount`.
+    public static final MemoryLayout LAYOUT_streamCount = LAYOUT.select(PathElement.groupElement("streamCount"));
+    /// The [VarHandle] of `streamCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_streamCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("streamCount"));
-    /// The [VarHandle] of `pStreamStrides` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pStreamStrides`.
+    public static final long OFFSET_pStreamStrides = LAYOUT.byteOffset(PathElement.groupElement("pStreamStrides"));
+    /// The memory layout of `pStreamStrides`.
+    public static final MemoryLayout LAYOUT_pStreamStrides = LAYOUT.select(PathElement.groupElement("pStreamStrides"));
+    /// The [VarHandle] of `pStreamStrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStreamStrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStreamStrides"));
 
     /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
@@ -91,19 +105,14 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
     /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsLayoutCreateInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutCreateInfoNV(segment); }
-
-    /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsLayoutCreateInfoNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkIndirectCommandsLayoutCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkIndirectCommandsLayoutCreateInfoNV` with the given segment.
     ///
@@ -111,7 +120,7 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -124,11 +133,6 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
     /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
-    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkIndirectCommandsLayoutUsageFlagsNV") int flags, @CType("VkPipelineBindPoint") int pipelineBindPoint, @CType("uint32_t") int tokenCount, @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment pTokens, @CType("uint32_t") int streamCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pStreamStrides) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint).tokenCount(tokenCount).pTokens(pTokens).streamCount(streamCount).pStreamStrides(pStreamStrides); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -136,191 +140,135 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkIndirectCommandsLayoutCreateInfoNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV sType(@CType("VkStructureType") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_sType(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkIndirectCommandsLayoutCreateInfoNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkIndirectCommandsLayoutUsageFlagsNV") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkIndirectCommandsLayoutUsageFlagsNV") int get_flags(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkIndirectCommandsLayoutUsageFlagsNV") int flags() { return VkIndirectCommandsLayoutCreateInfoNV.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkIndirectCommandsLayoutUsageFlagsNV") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkIndirectCommandsLayoutUsageFlagsNV") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV flags(@CType("VkIndirectCommandsLayoutUsageFlagsNV") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_flags(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineBindPoint` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineBindPoint") int get_pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int pipelineBindPoint(MemorySegment segment, long index) { return (int) VH_pipelineBindPoint.get(segment, 0L, index); }
     /// {@return `pipelineBindPoint`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineBindPoint") int get_pipelineBindPoint(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_pipelineBindPoint(segment, 0L); }
-    /// {@return `pipelineBindPoint`}
-    public @CType("VkPipelineBindPoint") int pipelineBindPoint() { return VkIndirectCommandsLayoutCreateInfoNV.get_pipelineBindPoint(this.segment()); }
+    public int pipelineBindPoint() { return pipelineBindPoint(this.segment(), 0L); }
     /// Sets `pipelineBindPoint` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineBindPoint(MemorySegment segment, long index, @CType("VkPipelineBindPoint") int value) { VH_pipelineBindPoint.set(segment, 0L, index, value); }
-    /// Sets `pipelineBindPoint` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineBindPoint(MemorySegment segment, @CType("VkPipelineBindPoint") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_pipelineBindPoint(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineBindPoint(MemorySegment segment, long index, int value) { VH_pipelineBindPoint.set(segment, 0L, index, value); }
     /// Sets `pipelineBindPoint` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV pipelineBindPoint(@CType("VkPipelineBindPoint") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_pipelineBindPoint(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV pipelineBindPoint(int value) { pipelineBindPoint(this.segment(), 0L, value); return this; }
 
     /// {@return `tokenCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_tokenCount(MemorySegment segment, long index) { return (int) VH_tokenCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int tokenCount(MemorySegment segment, long index) { return (int) VH_tokenCount.get(segment, 0L, index); }
     /// {@return `tokenCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_tokenCount(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_tokenCount(segment, 0L); }
-    /// {@return `tokenCount`}
-    public @CType("uint32_t") int tokenCount() { return VkIndirectCommandsLayoutCreateInfoNV.get_tokenCount(this.segment()); }
+    public int tokenCount() { return tokenCount(this.segment(), 0L); }
     /// Sets `tokenCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_tokenCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_tokenCount.set(segment, 0L, index, value); }
-    /// Sets `tokenCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_tokenCount(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_tokenCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void tokenCount(MemorySegment segment, long index, int value) { VH_tokenCount.set(segment, 0L, index, value); }
     /// Sets `tokenCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV tokenCount(@CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_tokenCount(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV tokenCount(int value) { tokenCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pTokens` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment get_pTokens(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTokens.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pTokens(MemorySegment segment, long index) { return (MemorySegment) VH_pTokens.get(segment, 0L, index); }
     /// {@return `pTokens`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment get_pTokens(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_pTokens(segment, 0L); }
-    /// {@return `pTokens`}
-    public @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment pTokens() { return VkIndirectCommandsLayoutCreateInfoNV.get_pTokens(this.segment()); }
+    public MemorySegment pTokens() { return pTokens(this.segment(), 0L); }
     /// Sets `pTokens` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pTokens(MemorySegment segment, long index, @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment value) { VH_pTokens.set(segment, 0L, index, value); }
-    /// Sets `pTokens` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pTokens(MemorySegment segment, @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pTokens(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pTokens(MemorySegment segment, long index, MemorySegment value) { VH_pTokens.set(segment, 0L, index, value); }
     /// Sets `pTokens` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV pTokens(@CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pTokens(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV pTokens(MemorySegment value) { pTokens(this.segment(), 0L, value); return this; }
 
     /// {@return `streamCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_streamCount(MemorySegment segment, long index) { return (int) VH_streamCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int streamCount(MemorySegment segment, long index) { return (int) VH_streamCount.get(segment, 0L, index); }
     /// {@return `streamCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_streamCount(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_streamCount(segment, 0L); }
-    /// {@return `streamCount`}
-    public @CType("uint32_t") int streamCount() { return VkIndirectCommandsLayoutCreateInfoNV.get_streamCount(this.segment()); }
+    public int streamCount() { return streamCount(this.segment(), 0L); }
     /// Sets `streamCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_streamCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_streamCount.set(segment, 0L, index, value); }
-    /// Sets `streamCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_streamCount(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_streamCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void streamCount(MemorySegment segment, long index, int value) { VH_streamCount.set(segment, 0L, index, value); }
     /// Sets `streamCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV streamCount(@CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_streamCount(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV streamCount(int value) { streamCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pStreamStrides` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pStreamStrides(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStreamStrides.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pStreamStrides(MemorySegment segment, long index) { return (MemorySegment) VH_pStreamStrides.get(segment, 0L, index); }
     /// {@return `pStreamStrides`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pStreamStrides(MemorySegment segment) { return VkIndirectCommandsLayoutCreateInfoNV.get_pStreamStrides(segment, 0L); }
-    /// {@return `pStreamStrides`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pStreamStrides() { return VkIndirectCommandsLayoutCreateInfoNV.get_pStreamStrides(this.segment()); }
+    public MemorySegment pStreamStrides() { return pStreamStrides(this.segment(), 0L); }
     /// Sets `pStreamStrides` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pStreamStrides(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pStreamStrides.set(segment, 0L, index, value); }
-    /// Sets `pStreamStrides` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pStreamStrides(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pStreamStrides(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pStreamStrides(MemorySegment segment, long index, MemorySegment value) { VH_pStreamStrides.set(segment, 0L, index, value); }
     /// Sets `pStreamStrides` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsLayoutCreateInfoNV pStreamStrides(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pStreamStrides(this.segment(), value); return this; }
+    public VkIndirectCommandsLayoutCreateInfoNV pStreamStrides(MemorySegment value) { pStreamStrides(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkIndirectCommandsLayoutCreateInfoNV].
     public static final class Buffer extends VkIndirectCommandsLayoutCreateInfoNV {
@@ -345,76 +293,76 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkIndirectCommandsLayoutUsageFlagsNV") int flagsAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkIndirectCommandsLayoutUsageFlagsNV") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `pipelineBindPoint` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineBindPoint") int pipelineBindPointAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_pipelineBindPoint(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
         /// Sets `pipelineBindPoint` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineBindPointAt(long index, @CType("VkPipelineBindPoint") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_pipelineBindPoint(this.segment(), index, value); return this; }
+        public Buffer pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
 
         /// {@return `tokenCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int tokenCountAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_tokenCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int tokenCountAt(long index) { return tokenCount(this.segment(), index); }
         /// Sets `tokenCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer tokenCountAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_tokenCount(this.segment(), index, value); return this; }
+        public Buffer tokenCountAt(long index, int value) { tokenCount(this.segment(), index, value); return this; }
 
         /// {@return `pTokens` at the given index}
-        /// @param index the index
-        public @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment pTokensAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_pTokens(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pTokensAt(long index) { return pTokens(this.segment(), index); }
         /// Sets `pTokens` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pTokensAt(long index, @CType("const VkIndirectCommandsLayoutTokenNV *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pTokens(this.segment(), index, value); return this; }
+        public Buffer pTokensAt(long index, MemorySegment value) { pTokens(this.segment(), index, value); return this; }
 
         /// {@return `streamCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int streamCountAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_streamCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int streamCountAt(long index) { return streamCount(this.segment(), index); }
         /// Sets `streamCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer streamCountAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutCreateInfoNV.set_streamCount(this.segment(), index, value); return this; }
+        public Buffer streamCountAt(long index, int value) { streamCount(this.segment(), index, value); return this; }
 
         /// {@return `pStreamStrides` at the given index}
-        /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pStreamStridesAt(long index) { return VkIndirectCommandsLayoutCreateInfoNV.get_pStreamStrides(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pStreamStridesAt(long index) { return pStreamStrides(this.segment(), index); }
         /// Sets `pStreamStrides` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pStreamStridesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutCreateInfoNV.set_pStreamStrides(this.segment(), index, value); return this; }
+        public Buffer pStreamStridesAt(long index, MemorySegment value) { pStreamStrides(this.segment(), index, value); return this; }
 
     }
 }

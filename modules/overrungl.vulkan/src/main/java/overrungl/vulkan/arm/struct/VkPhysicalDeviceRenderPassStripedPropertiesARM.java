@@ -15,51 +15,53 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.arm.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### renderPassStripeGranularity
-/// [Byte offset][#OFFSET_renderPassStripeGranularity] - [Memory layout][#ML_renderPassStripeGranularity] - [Getter][#renderPassStripeGranularity()] - [Setter][#renderPassStripeGranularity(java.lang.foreign.MemorySegment)]
-/// ### maxRenderPassStripes
-/// [VarHandle][#VH_maxRenderPassStripes] - [Getter][#maxRenderPassStripes()] - [Setter][#maxRenderPassStripes(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRenderPassStripedPropertiesARM {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkExtent2D renderPassStripeGranularity;
-///     uint32_t maxRenderPassStripes;
-/// } VkPhysicalDeviceRenderPassStripedPropertiesARM;
 /// ```
-public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struct {
+/// struct VkPhysicalDeviceRenderPassStripedPropertiesARM {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (struct VkExtent2D) VkExtent2D renderPassStripeGranularity;
+///     uint32_t maxRenderPassStripes;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("renderPassStripeGranularity"),
         ValueLayout.JAVA_INT.withName("maxRenderPassStripes")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `renderPassStripeGranularity`.
     public static final long OFFSET_renderPassStripeGranularity = LAYOUT.byteOffset(PathElement.groupElement("renderPassStripeGranularity"));
     /// The memory layout of `renderPassStripeGranularity`.
-    public static final MemoryLayout ML_renderPassStripeGranularity = LAYOUT.select(PathElement.groupElement("renderPassStripeGranularity"));
-    /// The [VarHandle] of `maxRenderPassStripes` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_renderPassStripeGranularity = LAYOUT.select(PathElement.groupElement("renderPassStripeGranularity"));
+    /// The byte offset of `maxRenderPassStripes`.
+    public static final long OFFSET_maxRenderPassStripes = LAYOUT.byteOffset(PathElement.groupElement("maxRenderPassStripes"));
+    /// The memory layout of `maxRenderPassStripes`.
+    public static final MemoryLayout LAYOUT_maxRenderPassStripes = LAYOUT.select(PathElement.groupElement("maxRenderPassStripes"));
+    /// The [VarHandle] of `maxRenderPassStripes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRenderPassStripes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassStripes"));
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
@@ -69,19 +71,14 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struc
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRenderPassStripedPropertiesARM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment); }
-
-    /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRenderPassStripedPropertiesARM ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     ///
@@ -89,7 +86,7 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -102,11 +99,6 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struc
     /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
-    public static VkPhysicalDeviceRenderPassStripedPropertiesARM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExtent2D") java.lang.foreign.MemorySegment renderPassStripeGranularity, @CType("uint32_t") int maxRenderPassStripes) { return alloc(allocator).sType(sType).pNext(pNext).renderPassStripeGranularity(renderPassStripeGranularity).maxRenderPassStripes(maxRenderPassStripes); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -114,99 +106,71 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `renderPassStripeGranularity` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_renderPassStripeGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_renderPassStripeGranularity, index), ML_renderPassStripeGranularity); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment renderPassStripeGranularity(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_renderPassStripeGranularity, index), LAYOUT_renderPassStripeGranularity); }
     /// {@return `renderPassStripeGranularity`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_renderPassStripeGranularity(MemorySegment segment) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_renderPassStripeGranularity(segment, 0L); }
-    /// {@return `renderPassStripeGranularity`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment renderPassStripeGranularity() { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_renderPassStripeGranularity(this.segment()); }
+    public MemorySegment renderPassStripeGranularity() { return renderPassStripeGranularity(this.segment(), 0L); }
     /// Sets `renderPassStripeGranularity` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_renderPassStripeGranularity(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_renderPassStripeGranularity, index), ML_renderPassStripeGranularity.byteSize()); }
-    /// Sets `renderPassStripeGranularity` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_renderPassStripeGranularity(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_renderPassStripeGranularity(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void renderPassStripeGranularity(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_renderPassStripeGranularity, index), LAYOUT_renderPassStripeGranularity.byteSize()); }
     /// Sets `renderPassStripeGranularity` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM renderPassStripeGranularity(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_renderPassStripeGranularity(this.segment(), value); return this; }
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM renderPassStripeGranularity(MemorySegment value) { renderPassStripeGranularity(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRenderPassStripes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRenderPassStripes(MemorySegment segment, long index) { return (int) VH_maxRenderPassStripes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRenderPassStripes(MemorySegment segment, long index) { return (int) VH_maxRenderPassStripes.get(segment, 0L, index); }
     /// {@return `maxRenderPassStripes`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRenderPassStripes(MemorySegment segment) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_maxRenderPassStripes(segment, 0L); }
-    /// {@return `maxRenderPassStripes`}
-    public @CType("uint32_t") int maxRenderPassStripes() { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_maxRenderPassStripes(this.segment()); }
+    public int maxRenderPassStripes() { return maxRenderPassStripes(this.segment(), 0L); }
     /// Sets `maxRenderPassStripes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRenderPassStripes(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRenderPassStripes.set(segment, 0L, index, value); }
-    /// Sets `maxRenderPassStripes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRenderPassStripes(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_maxRenderPassStripes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRenderPassStripes(MemorySegment segment, long index, int value) { VH_maxRenderPassStripes.set(segment, 0L, index, value); }
     /// Sets `maxRenderPassStripes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM maxRenderPassStripes(@CType("uint32_t") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_maxRenderPassStripes(this.segment(), value); return this; }
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM maxRenderPassStripes(int value) { maxRenderPassStripes(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRenderPassStripedPropertiesARM].
     public static final class Buffer extends VkPhysicalDeviceRenderPassStripedPropertiesARM {
@@ -231,40 +195,40 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `renderPassStripeGranularity` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment renderPassStripeGranularityAt(long index) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_renderPassStripeGranularity(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment renderPassStripeGranularityAt(long index) { return renderPassStripeGranularity(this.segment(), index); }
         /// Sets `renderPassStripeGranularity` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer renderPassStripeGranularityAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_renderPassStripeGranularity(this.segment(), index, value); return this; }
+        public Buffer renderPassStripeGranularityAt(long index, MemorySegment value) { renderPassStripeGranularity(this.segment(), index, value); return this; }
 
         /// {@return `maxRenderPassStripes` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRenderPassStripesAt(long index) { return VkPhysicalDeviceRenderPassStripedPropertiesARM.get_maxRenderPassStripes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRenderPassStripesAt(long index) { return maxRenderPassStripes(this.segment(), index); }
         /// Sets `maxRenderPassStripes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRenderPassStripesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRenderPassStripedPropertiesARM.set_maxRenderPassStripes(this.segment(), index, value); return this; }
+        public Buffer maxRenderPassStripesAt(long index, int value) { maxRenderPassStripes(this.segment(), index, value); return this; }
 
     }
 }

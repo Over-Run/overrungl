@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.intel.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### shaderIntegerFunctions2
-/// [VarHandle][#VH_shaderIntegerFunctions2] - [Getter][#shaderIntegerFunctions2()] - [Setter][#shaderIntegerFunctions2(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 shaderIntegerFunctions2;
-/// } VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL;
 /// ```
-public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends Struct {
+/// struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 shaderIntegerFunctions2;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderIntegerFunctions2")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderIntegerFunctions2` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderIntegerFunctions2`.
+    public static final long OFFSET_shaderIntegerFunctions2 = LAYOUT.byteOffset(PathElement.groupElement("shaderIntegerFunctions2"));
+    /// The memory layout of `shaderIntegerFunctions2`.
+    public static final MemoryLayout LAYOUT_shaderIntegerFunctions2 = LAYOUT.select(PathElement.groupElement("shaderIntegerFunctions2"));
+    /// The [VarHandle] of `shaderIntegerFunctions2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderIntegerFunctions2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderIntegerFunctions2"));
 
     /// Creates `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends
     /// Creates `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment); }
-
-    /// Creates `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends
     /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderIntegerFunctions2) { return alloc(allocator).sType(sType).pNext(pNext).shaderIntegerFunctions2(shaderIntegerFunctions2); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL sType(@CType("VkStructureType") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderIntegerFunctions2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderIntegerFunctions2(MemorySegment segment, long index) { return (int) VH_shaderIntegerFunctions2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderIntegerFunctions2(MemorySegment segment, long index) { return (int) VH_shaderIntegerFunctions2.get(segment, 0L, index); }
     /// {@return `shaderIntegerFunctions2`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderIntegerFunctions2(MemorySegment segment) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_shaderIntegerFunctions2(segment, 0L); }
-    /// {@return `shaderIntegerFunctions2`}
-    public @CType("VkBool32") int shaderIntegerFunctions2() { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_shaderIntegerFunctions2(this.segment()); }
+    public int shaderIntegerFunctions2() { return shaderIntegerFunctions2(this.segment(), 0L); }
     /// Sets `shaderIntegerFunctions2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderIntegerFunctions2(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderIntegerFunctions2.set(segment, 0L, index, value); }
-    /// Sets `shaderIntegerFunctions2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderIntegerFunctions2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_shaderIntegerFunctions2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderIntegerFunctions2(MemorySegment segment, long index, int value) { VH_shaderIntegerFunctions2.set(segment, 0L, index, value); }
     /// Sets `shaderIntegerFunctions2` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL shaderIntegerFunctions2(@CType("VkBool32") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_shaderIntegerFunctions2(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL shaderIntegerFunctions2(int value) { shaderIntegerFunctions2(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL].
     public static final class Buffer extends VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderIntegerFunctions2` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderIntegerFunctions2At(long index) { return VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.get_shaderIntegerFunctions2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderIntegerFunctions2At(long index) { return shaderIntegerFunctions2(this.segment(), index); }
         /// Sets `shaderIntegerFunctions2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderIntegerFunctions2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL.set_shaderIntegerFunctions2(this.segment(), index, value); return this; }
+        public Buffer shaderIntegerFunctions2At(long index, int value) { shaderIntegerFunctions2(this.segment(), index, value); return this; }
 
     }
 }

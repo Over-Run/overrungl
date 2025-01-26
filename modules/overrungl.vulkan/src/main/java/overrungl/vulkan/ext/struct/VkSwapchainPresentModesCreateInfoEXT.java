@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### presentModeCount
-/// [VarHandle][#VH_presentModeCount] - [Getter][#presentModeCount()] - [Setter][#presentModeCount(int)]
-/// ### pPresentModes
-/// [VarHandle][#VH_pPresentModes] - [Getter][#pPresentModes()] - [Setter][#pPresentModes(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSwapchainPresentModesCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t presentModeCount;
-///     const VkPresentModeKHR * pPresentModes;
-/// } VkSwapchainPresentModesCreateInfoEXT;
 /// ```
-public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
+/// struct VkSwapchainPresentModesCreateInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t presentModeCount;
+///     const VkPresentModeKHR* pPresentModes;
+/// };
+/// ```
+public sealed class VkSwapchainPresentModesCreateInfoEXT extends GroupType {
     /// The struct layout of `VkSwapchainPresentModesCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("presentModeCount"),
         ValueLayout.ADDRESS.withName("pPresentModes")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `presentModeCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `presentModeCount`.
+    public static final long OFFSET_presentModeCount = LAYOUT.byteOffset(PathElement.groupElement("presentModeCount"));
+    /// The memory layout of `presentModeCount`.
+    public static final MemoryLayout LAYOUT_presentModeCount = LAYOUT.select(PathElement.groupElement("presentModeCount"));
+    /// The [VarHandle] of `presentModeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_presentModeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentModeCount"));
-    /// The [VarHandle] of `pPresentModes` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pPresentModes`.
+    public static final long OFFSET_pPresentModes = LAYOUT.byteOffset(PathElement.groupElement("pPresentModes"));
+    /// The memory layout of `pPresentModes`.
+    public static final MemoryLayout LAYOUT_pPresentModes = LAYOUT.select(PathElement.groupElement("pPresentModes"));
+    /// The [VarHandle] of `pPresentModes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPresentModes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPresentModes"));
 
     /// Creates `VkSwapchainPresentModesCreateInfoEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
     /// Creates `VkSwapchainPresentModesCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainPresentModesCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainPresentModesCreateInfoEXT(segment); }
-
-    /// Creates `VkSwapchainPresentModesCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSwapchainPresentModesCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainPresentModesCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainPresentModesCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSwapchainPresentModesCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentModesCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSwapchainPresentModesCreateInfoEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSwapchainPresentModesCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
     /// @return the allocated `VkSwapchainPresentModesCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSwapchainPresentModesCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSwapchainPresentModesCreateInfoEXT`
-    public static VkSwapchainPresentModesCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int presentModeCount, @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment pPresentModes) { return alloc(allocator).sType(sType).pNext(pNext).presentModeCount(presentModeCount).pPresentModes(pPresentModes); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSwapchainPresentModesCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSwapchainPresentModesCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSwapchainPresentModesCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentModesCreateInfoEXT sType(@CType("VkStructureType") int value) { VkSwapchainPresentModesCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkSwapchainPresentModesCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainPresentModesCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSwapchainPresentModesCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentModesCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSwapchainPresentModesCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `presentModeCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_presentModeCount(MemorySegment segment, long index) { return (int) VH_presentModeCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int presentModeCount(MemorySegment segment, long index) { return (int) VH_presentModeCount.get(segment, 0L, index); }
     /// {@return `presentModeCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_presentModeCount(MemorySegment segment) { return VkSwapchainPresentModesCreateInfoEXT.get_presentModeCount(segment, 0L); }
-    /// {@return `presentModeCount`}
-    public @CType("uint32_t") int presentModeCount() { return VkSwapchainPresentModesCreateInfoEXT.get_presentModeCount(this.segment()); }
+    public int presentModeCount() { return presentModeCount(this.segment(), 0L); }
     /// Sets `presentModeCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_presentModeCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_presentModeCount.set(segment, 0L, index, value); }
-    /// Sets `presentModeCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_presentModeCount(MemorySegment segment, @CType("uint32_t") int value) { VkSwapchainPresentModesCreateInfoEXT.set_presentModeCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void presentModeCount(MemorySegment segment, long index, int value) { VH_presentModeCount.set(segment, 0L, index, value); }
     /// Sets `presentModeCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentModesCreateInfoEXT presentModeCount(@CType("uint32_t") int value) { VkSwapchainPresentModesCreateInfoEXT.set_presentModeCount(this.segment(), value); return this; }
+    public VkSwapchainPresentModesCreateInfoEXT presentModeCount(int value) { presentModeCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pPresentModes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment get_pPresentModes(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPresentModes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPresentModes(MemorySegment segment, long index) { return (MemorySegment) VH_pPresentModes.get(segment, 0L, index); }
     /// {@return `pPresentModes`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment get_pPresentModes(MemorySegment segment) { return VkSwapchainPresentModesCreateInfoEXT.get_pPresentModes(segment, 0L); }
-    /// {@return `pPresentModes`}
-    public @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment pPresentModes() { return VkSwapchainPresentModesCreateInfoEXT.get_pPresentModes(this.segment()); }
+    public MemorySegment pPresentModes() { return pPresentModes(this.segment(), 0L); }
     /// Sets `pPresentModes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPresentModes(MemorySegment segment, long index, @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment value) { VH_pPresentModes.set(segment, 0L, index, value); }
-    /// Sets `pPresentModes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPresentModes(MemorySegment segment, @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pPresentModes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPresentModes(MemorySegment segment, long index, MemorySegment value) { VH_pPresentModes.set(segment, 0L, index, value); }
     /// Sets `pPresentModes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSwapchainPresentModesCreateInfoEXT pPresentModes(@CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pPresentModes(this.segment(), value); return this; }
+    public VkSwapchainPresentModesCreateInfoEXT pPresentModes(MemorySegment value) { pPresentModes(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSwapchainPresentModesCreateInfoEXT].
     public static final class Buffer extends VkSwapchainPresentModesCreateInfoEXT {
@@ -229,40 +197,40 @@ public sealed class VkSwapchainPresentModesCreateInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainPresentModesCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainPresentModesCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainPresentModesCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `presentModeCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int presentModeCountAt(long index) { return VkSwapchainPresentModesCreateInfoEXT.get_presentModeCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int presentModeCountAt(long index) { return presentModeCount(this.segment(), index); }
         /// Sets `presentModeCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer presentModeCountAt(long index, @CType("uint32_t") int value) { VkSwapchainPresentModesCreateInfoEXT.set_presentModeCount(this.segment(), index, value); return this; }
+        public Buffer presentModeCountAt(long index, int value) { presentModeCount(this.segment(), index, value); return this; }
 
         /// {@return `pPresentModes` at the given index}
-        /// @param index the index
-        public @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment pPresentModesAt(long index) { return VkSwapchainPresentModesCreateInfoEXT.get_pPresentModes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPresentModesAt(long index) { return pPresentModes(this.segment(), index); }
         /// Sets `pPresentModes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPresentModesAt(long index, @CType("const VkPresentModeKHR *") java.lang.foreign.MemorySegment value) { VkSwapchainPresentModesCreateInfoEXT.set_pPresentModes(this.segment(), index, value); return this; }
+        public Buffer pPresentModesAt(long index, MemorySegment value) { pPresentModes(this.segment(), index, value); return this; }
 
     }
 }

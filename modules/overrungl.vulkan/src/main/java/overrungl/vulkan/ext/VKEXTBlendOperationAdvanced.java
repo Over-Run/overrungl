@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OVERLAP_UNCORRELATED_EXT = 0;
@@ -79,6 +74,6 @@ public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OP_BLUE_EXT = 1000148045;
     public static final int VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT = 0x00080000;
 
-    private VKEXTBlendOperationAdvanced() { }
+    private VKEXTBlendOperationAdvanced() {}
 
 }

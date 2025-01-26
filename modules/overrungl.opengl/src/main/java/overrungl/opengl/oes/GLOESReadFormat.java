@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.oes;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLOESReadFormat {
     public static final int GL_IMPLEMENTATION_COLOR_READ_TYPE_OES = 0x8B9A;
     public static final int GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES = 0x8B9B;

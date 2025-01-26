@@ -18,12 +18,9 @@ package overrungl.nfd;
 
 import org.jetbrains.annotations.NotNull;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
 
-import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -40,8 +37,6 @@ import static overrungl.nfd.NFD.*;
  * @since 0.1.0
  */
 public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
-    /// The struct layout of `nfdpathsetenum_t`
-    public static final StructLayout STRUCT_LAYOUT = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
     private static final Iterator<String> EMPTY_ITERATOR = new Iterator<>() {
         @Override
         public boolean hasNext() {
@@ -85,7 +80,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
                 MemorySegment outPath = stack.allocate(ADDRESS);
                 int result = NFD_PathSet_EnumNext(segment, outPath);
                 if (result == NFD_ERROR) throw errorIterating();
-                nextPath = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                nextPath = NFD_NativeString(outPath.get(ADDRESS, 0));
                 if (nextPath != null) {
                     NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                 }
@@ -108,14 +103,14 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
 
     /**
      * Creates an enumerator from the given path set created with
-     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDFilterItem, String) NFD_OpenDialogMultiple}.
+     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, MemorySegment, int, MemorySegment) NFD_OpenDialogMultiple}.
      *
      * @param allocator the allocator of the enumerator.
      * @param pathSet   the path set.
      * @return the result and the enumerator.
      */
     public static Result fromPathSet(SegmentAllocator allocator, MemorySegment pathSet) {
-        MemorySegment struct = allocator.allocate(STRUCT_LAYOUT);
+        MemorySegment struct = NFDPathSetEnum.alloc(allocator).segment();
         int result = NFD_PathSet_GetEnum(pathSet, struct);
         return new Result(result == NFD_OKAY ?
             new NFDEnumerator(struct) :
@@ -136,7 +131,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
             int result = NFD_PathSet_EnumNext(segment, outPath);
             return switch (result) {
                 case NFD_OKAY -> {
-                    String path = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                    String path = NFD_NativeString(outPath.get(ADDRESS, 0));
                     if (path != null) {
                         NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                     }

@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### cooperativeMatrixWorkgroupScopeMaxWorkgroupSize
-/// [VarHandle][#VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize] - [Getter][#cooperativeMatrixWorkgroupScopeMaxWorkgroupSize()] - [Setter][#cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(int)]
-/// ### cooperativeMatrixFlexibleDimensionsMaxDimension
-/// [VarHandle][#VH_cooperativeMatrixFlexibleDimensionsMaxDimension] - [Getter][#cooperativeMatrixFlexibleDimensionsMaxDimension()] - [Setter][#cooperativeMatrixFlexibleDimensionsMaxDimension(int)]
-/// ### cooperativeMatrixWorkgroupScopeReservedSharedMemory
-/// [VarHandle][#VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory] - [Getter][#cooperativeMatrixWorkgroupScopeReservedSharedMemory()] - [Setter][#cooperativeMatrixWorkgroupScopeReservedSharedMemory(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
-///     VkStructureType sType;
-///     void * pNext;
+/// ```
+/// struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
+///     (int) VkStructureType sType;
+///     void* pNext;
 ///     uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
 ///     uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension;
 ///     uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory;
-/// } VkPhysicalDeviceCooperativeMatrix2PropertiesNV;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struct {
+public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrixFlexibleDimensionsMaxDimension"),
         ValueLayout.JAVA_INT.withName("cooperativeMatrixWorkgroupScopeReservedSharedMemory")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`.
+    public static final long OFFSET_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"));
+    /// The memory layout of `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`.
+    public static final MemoryLayout LAYOUT_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = LAYOUT.select(PathElement.groupElement("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"));
+    /// The [VarHandle] of `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixWorkgroupScopeMaxWorkgroupSize"));
-    /// The [VarHandle] of `cooperativeMatrixFlexibleDimensionsMaxDimension` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `cooperativeMatrixFlexibleDimensionsMaxDimension`.
+    public static final long OFFSET_cooperativeMatrixFlexibleDimensionsMaxDimension = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixFlexibleDimensionsMaxDimension"));
+    /// The memory layout of `cooperativeMatrixFlexibleDimensionsMaxDimension`.
+    public static final MemoryLayout LAYOUT_cooperativeMatrixFlexibleDimensionsMaxDimension = LAYOUT.select(PathElement.groupElement("cooperativeMatrixFlexibleDimensionsMaxDimension"));
+    /// The [VarHandle] of `cooperativeMatrixFlexibleDimensionsMaxDimension` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_cooperativeMatrixFlexibleDimensionsMaxDimension = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixFlexibleDimensionsMaxDimension"));
-    /// The [VarHandle] of `cooperativeMatrixWorkgroupScopeReservedSharedMemory` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `cooperativeMatrixWorkgroupScopeReservedSharedMemory`.
+    public static final long OFFSET_cooperativeMatrixWorkgroupScopeReservedSharedMemory = LAYOUT.byteOffset(PathElement.groupElement("cooperativeMatrixWorkgroupScopeReservedSharedMemory"));
+    /// The memory layout of `cooperativeMatrixWorkgroupScopeReservedSharedMemory`.
+    public static final MemoryLayout LAYOUT_cooperativeMatrixWorkgroupScopeReservedSharedMemory = LAYOUT.select(PathElement.groupElement("cooperativeMatrixWorkgroupScopeReservedSharedMemory"));
+    /// The [VarHandle] of `cooperativeMatrixWorkgroupScopeReservedSharedMemory` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixWorkgroupScopeReservedSharedMemory"));
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struc
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struc
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
-    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, @CType("uint32_t") int cooperativeMatrixFlexibleDimensionsMaxDimension, @CType("uint32_t") int cooperativeMatrixWorkgroupScopeReservedSharedMemory) { return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(cooperativeMatrixWorkgroupScopeMaxWorkgroupSize).cooperativeMatrixFlexibleDimensionsMaxDimension(cooperativeMatrixFlexibleDimensionsMaxDimension).cooperativeMatrixWorkgroupScopeReservedSharedMemory(cooperativeMatrixWorkgroupScopeReservedSharedMemory); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize.get(segment, 0L, index); }
     /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(segment, 0L); }
-    /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`}
-    public @CType("uint32_t") int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize() { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment()); }
+    public int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize() { return cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), 0L); }
     /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize.set(segment, 0L, index, value); }
-    /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(MemorySegment segment, long index, int value) { VH_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize.set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(int value) { cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), 0L, value); return this; }
 
     /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixFlexibleDimensionsMaxDimension.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixFlexibleDimensionsMaxDimension.get(segment, 0L, index); }
     /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixFlexibleDimensionsMaxDimension(segment, 0L); }
-    /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension`}
-    public @CType("uint32_t") int cooperativeMatrixFlexibleDimensionsMaxDimension() { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment()); }
+    public int cooperativeMatrixFlexibleDimensionsMaxDimension() { return cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), 0L); }
     /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_cooperativeMatrixFlexibleDimensionsMaxDimension.set(segment, 0L, index, value); }
-    /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixFlexibleDimensionsMaxDimension(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void cooperativeMatrixFlexibleDimensionsMaxDimension(MemorySegment segment, long index, int value) { VH_cooperativeMatrixFlexibleDimensionsMaxDimension.set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixFlexibleDimensionsMaxDimension(@CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixFlexibleDimensionsMaxDimension(int value) { cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), 0L, value); return this; }
 
     /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment, long index) { return (int) VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory.get(segment, 0L, index); }
     /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeReservedSharedMemory(segment, 0L); }
-    /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory`}
-    public @CType("uint32_t") int cooperativeMatrixWorkgroupScopeReservedSharedMemory() { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment()); }
+    public int cooperativeMatrixWorkgroupScopeReservedSharedMemory() { return cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), 0L); }
     /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory.set(segment, 0L, index, value); }
-    /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeReservedSharedMemory(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void cooperativeMatrixWorkgroupScopeReservedSharedMemory(MemorySegment segment, long index, int value) { VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory.set(segment, 0L, index, value); }
     /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeReservedSharedMemory(@CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), value); return this; }
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeReservedSharedMemory(int value) { cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceCooperativeMatrix2PropertiesNV].
     public static final class Buffer extends VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index) { return cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index); }
         /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index, value); return this; }
+        public Buffer cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index, int value) { cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index, value); return this; }
 
         /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index) { return cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index); }
         /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index, value); return this; }
+        public Buffer cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index, int value) { cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index, value); return this; }
 
         /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index) { return VkPhysicalDeviceCooperativeMatrix2PropertiesNV.get_cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index) { return cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index); }
         /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceCooperativeMatrix2PropertiesNV.set_cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index, value); return this; }
+        public Buffer cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index, int value) { cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index, value); return this; }
 
     }
 }

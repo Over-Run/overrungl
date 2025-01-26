@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVDescriptorPoolOverallocation {
     public static final int VK_NV_DESCRIPTOR_POOL_OVERALLOCATION_SPEC_VERSION = 1;
@@ -29,6 +24,6 @@ public final class VKNVDescriptorPoolOverallocation {
     public static final int VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV = 0x00000008;
     public static final int VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV = 0x00000010;
 
-    private VKNVDescriptorPoolOverallocation() { }
+    private VKNVDescriptorPoolOverallocation() {}
 
 }

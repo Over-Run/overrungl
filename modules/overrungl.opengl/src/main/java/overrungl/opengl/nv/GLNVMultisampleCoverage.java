@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVMultisampleCoverage {
     public static final int GL_SAMPLES_ARB = 0x80A9;
     public static final int GL_COLOR_SAMPLES_NV = 0x8E20;

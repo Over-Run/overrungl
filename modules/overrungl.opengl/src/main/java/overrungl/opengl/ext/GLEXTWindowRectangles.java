@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -32,15 +30,8 @@ public final class GLEXTWindowRectangles {
     public static final int GL_MAX_WINDOW_RECTANGLES_EXT = 0x8F14;
     public static final int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glWindowRectanglesEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glWindowRectanglesEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glWindowRectanglesEXT = RuntimeHelper.downcall(Descriptors.FD_glWindowRectanglesEXT);
+        public static final MethodHandle MH_glWindowRectanglesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowRectanglesEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glWindowRectanglesEXT = func.invoke("glWindowRectanglesEXT");
@@ -51,10 +42,13 @@ public final class GLEXTWindowRectangles {
         this.handles = new Handles(func);
     }
 
-    public void WindowRectanglesEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment box) {
-        if (Unmarshal.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new SymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
+    /// ```
+    /// void glWindowRectanglesEXT((unsigned int) GLenum mode, (int) GLsizei count, const GLint* box);
+    /// ```
+    public void WindowRectanglesEXT(int mode, int count, MemorySegment box) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new SymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
         try { Handles.MH_glWindowRectanglesEXT.invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowRectanglesEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in WindowRectanglesEXT", e); }
     }
 
 }

@@ -18,12 +18,10 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKKHRDeferredHostOperations {
+public final class VKKHRDeferredHostOperations {
     public static final int VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4;
     public static final String VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
     public static final int VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR = 1000268000;
@@ -31,73 +29,59 @@ public class VKKHRDeferredHostOperations {
     public static final int VK_THREAD_DONE_KHR = 1000268001;
     public static final int VK_OPERATION_DEFERRED_KHR = 1000268002;
     public static final int VK_OPERATION_NOT_DEFERRED_KHR = 1000268003;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateDeferredOperationKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDestroyDeferredOperationKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeferredOperationMaxConcurrencyKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeferredOperationResultKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkDeferredOperationJoinKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDeferredOperationKHR,
-            FD_vkDestroyDeferredOperationKHR,
-            FD_vkGetDeferredOperationMaxConcurrencyKHR,
-            FD_vkGetDeferredOperationResultKHR,
-            FD_vkDeferredOperationJoinKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDeferredOperationKHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateDeferredOperationKHR);
-        public static final MethodHandle MH_vkDestroyDeferredOperationKHR = RuntimeHelper.downcall(Descriptors.FD_vkDestroyDeferredOperationKHR);
-        public static final MethodHandle MH_vkGetDeferredOperationMaxConcurrencyKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeferredOperationMaxConcurrencyKHR);
-        public static final MethodHandle MH_vkGetDeferredOperationResultKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetDeferredOperationResultKHR);
-        public static final MethodHandle MH_vkDeferredOperationJoinKHR = RuntimeHelper.downcall(Descriptors.FD_vkDeferredOperationJoinKHR);
-        public final MemorySegment PFN_vkCreateDeferredOperationKHR;
-        public final MemorySegment PFN_vkDestroyDeferredOperationKHR;
-        public final MemorySegment PFN_vkGetDeferredOperationMaxConcurrencyKHR;
-        public final MemorySegment PFN_vkGetDeferredOperationResultKHR;
-        public final MemorySegment PFN_vkDeferredOperationJoinKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkCreateDeferredOperationKHR = func.invoke(device, "vkCreateDeferredOperationKHR");
-            PFN_vkDestroyDeferredOperationKHR = func.invoke(device, "vkDestroyDeferredOperationKHR");
-            PFN_vkGetDeferredOperationMaxConcurrencyKHR = func.invoke(device, "vkGetDeferredOperationMaxConcurrencyKHR");
-            PFN_vkGetDeferredOperationResultKHR = func.invoke(device, "vkGetDeferredOperationResultKHR");
-            PFN_vkDeferredOperationJoinKHR = func.invoke(device, "vkDeferredOperationJoinKHR");
-        }
+        public static final MethodHandle MH_vkCreateDeferredOperationKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDeferredOperationKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeferredOperationMaxConcurrencyKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetDeferredOperationResultKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkDeferredOperationJoinKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        private Handles() {}
     }
 
-    public VKKHRDeferredHostOperations(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRDeferredHostOperations() {}
 
-    public @CType("VkResult") int CreateDeferredOperationKHR(@CType("VkDevice") MemorySegment device, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkDeferredOperationKHR *") MemorySegment pDeferredOperation) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
-        try { return (int) Handles.MH_vkCreateDeferredOperationKHR.invokeExact(handles.PFN_vkCreateDeferredOperationKHR, device, pAllocator, pDeferredOperation); }
+    /// ```
+    /// (int) VkResult vkCreateDeferredOperationKHR((struct VkDevice*) VkDevice device, const VkAllocationCallbacks* pAllocator, VkDeferredOperationKHR* pDeferredOperation);
+    /// ```
+    public static int vkCreateDeferredOperationKHR(VkDevice device, MemorySegment pAllocator, MemorySegment pDeferredOperation) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
+        try { return (int) Handles.MH_vkCreateDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkCreateDeferredOperationKHR, device.segment(), pAllocator, pDeferredOperation); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDeferredOperationKHR", e); }
     }
 
-    public void DestroyDeferredOperationKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeferredOperationKHR") MemorySegment operation, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDestroyDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
-        try { Handles.MH_vkDestroyDeferredOperationKHR.invokeExact(handles.PFN_vkDestroyDeferredOperationKHR, device, operation, pAllocator); }
+    /// ```
+    /// void vkDestroyDeferredOperationKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public static void vkDestroyDeferredOperationKHR(VkDevice device, long operation, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
+        try { Handles.MH_vkDestroyDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkDestroyDeferredOperationKHR, device.segment(), operation, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDeferredOperationKHR", e); }
     }
 
-    public @CType("uint32_t") int GetDeferredOperationMaxConcurrencyKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeferredOperationKHR") MemorySegment operation) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
-        try { return (int) Handles.MH_vkGetDeferredOperationMaxConcurrencyKHR.invokeExact(handles.PFN_vkGetDeferredOperationMaxConcurrencyKHR, device, operation); }
+    /// ```
+    /// uint32_t vkGetDeferredOperationMaxConcurrencyKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// ```
+    public static int vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, long operation) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
+        try { return (int) Handles.MH_vkGetDeferredOperationMaxConcurrencyKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationMaxConcurrencyKHR", e); }
     }
 
-    public @CType("VkResult") int GetDeferredOperationResultKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeferredOperationKHR") MemorySegment operation) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeferredOperationResultKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
-        try { return (int) Handles.MH_vkGetDeferredOperationResultKHR.invokeExact(handles.PFN_vkGetDeferredOperationResultKHR, device, operation); }
+    /// ```
+    /// (int) VkResult vkGetDeferredOperationResultKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// ```
+    public static int vkGetDeferredOperationResultKHR(VkDevice device, long operation) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationResultKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
+        try { return (int) Handles.MH_vkGetDeferredOperationResultKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationResultKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationResultKHR", e); }
     }
 
-    public @CType("VkResult") int DeferredOperationJoinKHR(@CType("VkDevice") MemorySegment device, @CType("VkDeferredOperationKHR") MemorySegment operation) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkDeferredOperationJoinKHR)) throw new SymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");
-        try { return (int) Handles.MH_vkDeferredOperationJoinKHR.invokeExact(handles.PFN_vkDeferredOperationJoinKHR, device, operation); }
+    /// ```
+    /// (int) VkResult vkDeferredOperationJoinKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
+    /// ```
+    public static int vkDeferredOperationJoinKHR(VkDevice device, long operation) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDeferredOperationJoinKHR)) throw new SymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");
+        try { return (int) Handles.MH_vkDeferredOperationJoinKHR.invokeExact(device.capabilities().PFN_vkDeferredOperationJoinKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkDeferredOperationJoinKHR", e); }
     }
 

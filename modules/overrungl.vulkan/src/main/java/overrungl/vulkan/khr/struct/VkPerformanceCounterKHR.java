@@ -15,65 +15,72 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### unit
-/// [VarHandle][#VH_unit] - [Getter][#unit()] - [Setter][#unit(int)]
-/// ### scope
-/// [VarHandle][#VH_scope] - [Getter][#scope()] - [Setter][#scope(int)]
-/// ### storage
-/// [VarHandle][#VH_storage] - [Getter][#storage()] - [Setter][#storage(int)]
-/// ### uuid
-/// [Byte offset][#OFFSET_uuid] - [Memory layout][#ML_uuid] - [Getter][#uuid()] - [Setter][#uuid(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPerformanceCounterKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkPerformanceCounterUnitKHR unit;
-///     VkPerformanceCounterScopeKHR scope;
-///     VkPerformanceCounterStorageKHR storage;
-///     uint8_t[VK_UUID_SIZE] uuid;
-/// } VkPerformanceCounterKHR;
 /// ```
-public sealed class VkPerformanceCounterKHR extends Struct {
+/// struct VkPerformanceCounterKHR {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (int) VkPerformanceCounterUnitKHR unit;
+///     (int) VkPerformanceCounterScopeKHR scope;
+///     (int) VkPerformanceCounterStorageKHR storage;
+///     uint8_t uuid[16];
+/// };
+/// ```
+public sealed class VkPerformanceCounterKHR extends GroupType {
     /// The struct layout of `VkPerformanceCounterKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("unit"),
         ValueLayout.JAVA_INT.withName("scope"),
         ValueLayout.JAVA_INT.withName("storage"),
-        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("uuid")
+        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("uuid")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `unit` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `unit`.
+    public static final long OFFSET_unit = LAYOUT.byteOffset(PathElement.groupElement("unit"));
+    /// The memory layout of `unit`.
+    public static final MemoryLayout LAYOUT_unit = LAYOUT.select(PathElement.groupElement("unit"));
+    /// The [VarHandle] of `unit` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_unit = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unit"));
-    /// The [VarHandle] of `scope` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `scope`.
+    public static final long OFFSET_scope = LAYOUT.byteOffset(PathElement.groupElement("scope"));
+    /// The memory layout of `scope`.
+    public static final MemoryLayout LAYOUT_scope = LAYOUT.select(PathElement.groupElement("scope"));
+    /// The [VarHandle] of `scope` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_scope = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scope"));
-    /// The [VarHandle] of `storage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storage`.
+    public static final long OFFSET_storage = LAYOUT.byteOffset(PathElement.groupElement("storage"));
+    /// The memory layout of `storage`.
+    public static final MemoryLayout LAYOUT_storage = LAYOUT.select(PathElement.groupElement("storage"));
+    /// The [VarHandle] of `storage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storage"));
     /// The byte offset of `uuid`.
     public static final long OFFSET_uuid = LAYOUT.byteOffset(PathElement.groupElement("uuid"));
     /// The memory layout of `uuid`.
-    public static final MemoryLayout ML_uuid = LAYOUT.select(PathElement.groupElement("uuid"));
+    public static final MemoryLayout LAYOUT_uuid = LAYOUT.select(PathElement.groupElement("uuid"));
+    /// The [VarHandle] of `uuid` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_uuid = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uuid"), PathElement.sequenceElement());
 
     /// Creates `VkPerformanceCounterKHR` with the given segment.
     /// @param segment the memory segment
@@ -82,19 +89,14 @@ public sealed class VkPerformanceCounterKHR extends Struct {
     /// Creates `VkPerformanceCounterKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceCounterKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceCounterKHR(segment); }
-
-    /// Creates `VkPerformanceCounterKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPerformanceCounterKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceCounterKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceCounterKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPerformanceCounterKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPerformanceCounterKHR` with the given segment.
     ///
@@ -102,7 +104,7 @@ public sealed class VkPerformanceCounterKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -115,11 +117,6 @@ public sealed class VkPerformanceCounterKHR extends Struct {
     /// @return the allocated `VkPerformanceCounterKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPerformanceCounterKHR`
-    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPerformanceCounterUnitKHR") int unit, @CType("VkPerformanceCounterScopeKHR") int scope, @CType("VkPerformanceCounterStorageKHR") int storage, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment uuid) { return alloc(allocator).sType(sType).pNext(pNext).unit(unit).scope(scope).storage(storage).uuid(uuid); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -127,145 +124,122 @@ public sealed class VkPerformanceCounterKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPerformanceCounterKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPerformanceCounterKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPerformanceCounterKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR sType(@CType("VkStructureType") int value) { VkPerformanceCounterKHR.set_sType(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPerformanceCounterKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPerformanceCounterKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_pNext(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `unit` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPerformanceCounterUnitKHR") int get_unit(MemorySegment segment, long index) { return (int) VH_unit.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int unit(MemorySegment segment, long index) { return (int) VH_unit.get(segment, 0L, index); }
     /// {@return `unit`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPerformanceCounterUnitKHR") int get_unit(MemorySegment segment) { return VkPerformanceCounterKHR.get_unit(segment, 0L); }
-    /// {@return `unit`}
-    public @CType("VkPerformanceCounterUnitKHR") int unit() { return VkPerformanceCounterKHR.get_unit(this.segment()); }
+    public int unit() { return unit(this.segment(), 0L); }
     /// Sets `unit` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_unit(MemorySegment segment, long index, @CType("VkPerformanceCounterUnitKHR") int value) { VH_unit.set(segment, 0L, index, value); }
-    /// Sets `unit` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_unit(MemorySegment segment, @CType("VkPerformanceCounterUnitKHR") int value) { VkPerformanceCounterKHR.set_unit(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void unit(MemorySegment segment, long index, int value) { VH_unit.set(segment, 0L, index, value); }
     /// Sets `unit` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR unit(@CType("VkPerformanceCounterUnitKHR") int value) { VkPerformanceCounterKHR.set_unit(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR unit(int value) { unit(this.segment(), 0L, value); return this; }
 
     /// {@return `scope` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPerformanceCounterScopeKHR") int get_scope(MemorySegment segment, long index) { return (int) VH_scope.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int scope(MemorySegment segment, long index) { return (int) VH_scope.get(segment, 0L, index); }
     /// {@return `scope`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPerformanceCounterScopeKHR") int get_scope(MemorySegment segment) { return VkPerformanceCounterKHR.get_scope(segment, 0L); }
-    /// {@return `scope`}
-    public @CType("VkPerformanceCounterScopeKHR") int scope() { return VkPerformanceCounterKHR.get_scope(this.segment()); }
+    public int scope() { return scope(this.segment(), 0L); }
     /// Sets `scope` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_scope(MemorySegment segment, long index, @CType("VkPerformanceCounterScopeKHR") int value) { VH_scope.set(segment, 0L, index, value); }
-    /// Sets `scope` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_scope(MemorySegment segment, @CType("VkPerformanceCounterScopeKHR") int value) { VkPerformanceCounterKHR.set_scope(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void scope(MemorySegment segment, long index, int value) { VH_scope.set(segment, 0L, index, value); }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR scope(@CType("VkPerformanceCounterScopeKHR") int value) { VkPerformanceCounterKHR.set_scope(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR scope(int value) { scope(this.segment(), 0L, value); return this; }
 
     /// {@return `storage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPerformanceCounterStorageKHR") int get_storage(MemorySegment segment, long index) { return (int) VH_storage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storage(MemorySegment segment, long index) { return (int) VH_storage.get(segment, 0L, index); }
     /// {@return `storage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPerformanceCounterStorageKHR") int get_storage(MemorySegment segment) { return VkPerformanceCounterKHR.get_storage(segment, 0L); }
-    /// {@return `storage`}
-    public @CType("VkPerformanceCounterStorageKHR") int storage() { return VkPerformanceCounterKHR.get_storage(this.segment()); }
+    public int storage() { return storage(this.segment(), 0L); }
     /// Sets `storage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storage(MemorySegment segment, long index, @CType("VkPerformanceCounterStorageKHR") int value) { VH_storage.set(segment, 0L, index, value); }
-    /// Sets `storage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storage(MemorySegment segment, @CType("VkPerformanceCounterStorageKHR") int value) { VkPerformanceCounterKHR.set_storage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storage(MemorySegment segment, long index, int value) { VH_storage.set(segment, 0L, index, value); }
     /// Sets `storage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR storage(@CType("VkPerformanceCounterStorageKHR") int value) { VkPerformanceCounterKHR.set_storage(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR storage(int value) { storage(this.segment(), 0L, value); return this; }
 
     /// {@return `uuid` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_uuid(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_uuid, index), ML_uuid); }
-    /// {@return `uuid`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment uuid(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_uuid, index), LAYOUT_uuid); }
+    /// {@return `uuid` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_uuid(MemorySegment segment) { return VkPerformanceCounterKHR.get_uuid(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte uuid(MemorySegment segment, long index, long index0) { return (byte) VH_uuid.get(segment, 0L, index, index0); }
     /// {@return `uuid`}
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment uuid() { return VkPerformanceCounterKHR.get_uuid(this.segment()); }
+    public MemorySegment uuid() { return uuid(this.segment(), 0L); }
+    /// {@return `uuid`}
+    /// @param index0 the Index 0 of the array
+    public byte uuid(long index0) { return uuid(this.segment(), 0L, index0); }
     /// Sets `uuid` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_uuid(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_uuid, index), ML_uuid.byteSize()); }
-    /// Sets `uuid` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void uuid(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_uuid, index), LAYOUT_uuid.byteSize()); }
+    /// Sets `uuid` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_uuid(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_uuid(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void uuid(MemorySegment segment, long index, long index0, byte value) { VH_uuid.set(segment, 0L, index, index0, value); }
     /// Sets `uuid` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPerformanceCounterKHR uuid(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_uuid(this.segment(), value); return this; }
+    public VkPerformanceCounterKHR uuid(MemorySegment value) { uuid(this.segment(), 0L, value); return this; }
+    /// Sets `uuid` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterKHR uuid(long index0, byte value) { uuid(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [VkPerformanceCounterKHR].
     public static final class Buffer extends VkPerformanceCounterKHR {
@@ -290,58 +264,68 @@ public sealed class VkPerformanceCounterKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceCounterKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceCounterKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPerformanceCounterKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `unit` at the given index}
-        /// @param index the index
-        public @CType("VkPerformanceCounterUnitKHR") int unitAt(long index) { return VkPerformanceCounterKHR.get_unit(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int unitAt(long index) { return unit(this.segment(), index); }
         /// Sets `unit` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer unitAt(long index, @CType("VkPerformanceCounterUnitKHR") int value) { VkPerformanceCounterKHR.set_unit(this.segment(), index, value); return this; }
+        public Buffer unitAt(long index, int value) { unit(this.segment(), index, value); return this; }
 
         /// {@return `scope` at the given index}
-        /// @param index the index
-        public @CType("VkPerformanceCounterScopeKHR") int scopeAt(long index) { return VkPerformanceCounterKHR.get_scope(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int scopeAt(long index) { return scope(this.segment(), index); }
         /// Sets `scope` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer scopeAt(long index, @CType("VkPerformanceCounterScopeKHR") int value) { VkPerformanceCounterKHR.set_scope(this.segment(), index, value); return this; }
+        public Buffer scopeAt(long index, int value) { scope(this.segment(), index, value); return this; }
 
         /// {@return `storage` at the given index}
-        /// @param index the index
-        public @CType("VkPerformanceCounterStorageKHR") int storageAt(long index) { return VkPerformanceCounterKHR.get_storage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storageAt(long index) { return storage(this.segment(), index); }
         /// Sets `storage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storageAt(long index, @CType("VkPerformanceCounterStorageKHR") int value) { VkPerformanceCounterKHR.set_storage(this.segment(), index, value); return this; }
+        public Buffer storageAt(long index, int value) { storage(this.segment(), index, value); return this; }
 
         /// {@return `uuid` at the given index}
-        /// @param index the index
-        public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment uuidAt(long index) { return VkPerformanceCounterKHR.get_uuid(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment uuidAt(long index) { return uuid(this.segment(), index); }
+        /// {@return `uuid` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte uuidAt(long index, long index0) { return uuid(this.segment(), index, index0); }
         /// Sets `uuid` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer uuidAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterKHR.set_uuid(this.segment(), index, value); return this; }
+        public Buffer uuidAt(long index, MemorySegment value) { uuid(this.segment(), index, value); return this; }
+        /// Sets `uuid` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer uuidAt(long index, long index0, byte value) { uuid(this.segment(), index, index0, value); return this; }
 
     }
 }

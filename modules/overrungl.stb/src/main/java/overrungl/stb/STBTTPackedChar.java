@@ -15,38 +15,18 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### x0
-/// [VarHandle][#VH_x0] - [Getter][#x0()] - [Setter][#x0(short)]
-/// ### y0
-/// [VarHandle][#VH_y0] - [Getter][#y0()] - [Setter][#y0(short)]
-/// ### x1
-/// [VarHandle][#VH_x1] - [Getter][#x1()] - [Setter][#x1(short)]
-/// ### y1
-/// [VarHandle][#VH_y1] - [Getter][#y1()] - [Setter][#y1(short)]
-/// ### xoff
-/// [VarHandle][#VH_xoff] - [Getter][#xoff()] - [Setter][#xoff(float)]
-/// ### yoff
-/// [VarHandle][#VH_yoff] - [Getter][#yoff()] - [Setter][#yoff(float)]
-/// ### xadvance
-/// [VarHandle][#VH_xadvance] - [Getter][#xadvance()] - [Setter][#xadvance(float)]
-/// ### xoff2
-/// [VarHandle][#VH_xoff2] - [Getter][#xoff2()] - [Setter][#xoff2(float)]
-/// ### yoff2
-/// [VarHandle][#VH_yoff2] - [Getter][#yoff2()] - [Setter][#yoff2(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct stbtt_packedchar {
+/// ```
+/// struct STBTTPackedChar {
 ///     unsigned short x0;
 ///     unsigned short y0;
 ///     unsigned short x1;
@@ -56,11 +36,11 @@ import overrungl.util.*;
 ///     float xadvance;
 ///     float xoff2;
 ///     float yoff2;
-/// } STBTTPackedChar;
+/// };
 /// ```
-public sealed class STBTTPackedChar extends Struct {
-    /// The struct layout of `stbtt_packedchar`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+public sealed class STBTTPackedChar extends GroupType {
+    /// The struct layout of `STBTTPackedChar`.
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x0"),
         ValueLayout.JAVA_SHORT.withName("y0"),
         ValueLayout.JAVA_SHORT.withName("x1"),
@@ -71,23 +51,59 @@ public sealed class STBTTPackedChar extends Struct {
         ValueLayout.JAVA_FLOAT.withName("xoff2"),
         ValueLayout.JAVA_FLOAT.withName("yoff2")
     );
-    /// The [VarHandle] of `x0` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `x0`.
+    public static final long OFFSET_x0 = LAYOUT.byteOffset(PathElement.groupElement("x0"));
+    /// The memory layout of `x0`.
+    public static final MemoryLayout LAYOUT_x0 = LAYOUT.select(PathElement.groupElement("x0"));
+    /// The [VarHandle] of `x0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_x0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x0"));
-    /// The [VarHandle] of `y0` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `y0`.
+    public static final long OFFSET_y0 = LAYOUT.byteOffset(PathElement.groupElement("y0"));
+    /// The memory layout of `y0`.
+    public static final MemoryLayout LAYOUT_y0 = LAYOUT.select(PathElement.groupElement("y0"));
+    /// The [VarHandle] of `y0` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_y0 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y0"));
-    /// The [VarHandle] of `x1` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `x1`.
+    public static final long OFFSET_x1 = LAYOUT.byteOffset(PathElement.groupElement("x1"));
+    /// The memory layout of `x1`.
+    public static final MemoryLayout LAYOUT_x1 = LAYOUT.select(PathElement.groupElement("x1"));
+    /// The [VarHandle] of `x1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_x1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("x1"));
-    /// The [VarHandle] of `y1` of type `(MemorySegment base, long baseOffset, long index)short`.
+    /// The byte offset of `y1`.
+    public static final long OFFSET_y1 = LAYOUT.byteOffset(PathElement.groupElement("y1"));
+    /// The memory layout of `y1`.
+    public static final MemoryLayout LAYOUT_y1 = LAYOUT.select(PathElement.groupElement("y1"));
+    /// The [VarHandle] of `y1` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_y1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y1"));
-    /// The [VarHandle] of `xoff` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `xoff`.
+    public static final long OFFSET_xoff = LAYOUT.byteOffset(PathElement.groupElement("xoff"));
+    /// The memory layout of `xoff`.
+    public static final MemoryLayout LAYOUT_xoff = LAYOUT.select(PathElement.groupElement("xoff"));
+    /// The [VarHandle] of `xoff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_xoff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff"));
-    /// The [VarHandle] of `yoff` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `yoff`.
+    public static final long OFFSET_yoff = LAYOUT.byteOffset(PathElement.groupElement("yoff"));
+    /// The memory layout of `yoff`.
+    public static final MemoryLayout LAYOUT_yoff = LAYOUT.select(PathElement.groupElement("yoff"));
+    /// The [VarHandle] of `yoff` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_yoff = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff"));
-    /// The [VarHandle] of `xadvance` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `xadvance`.
+    public static final long OFFSET_xadvance = LAYOUT.byteOffset(PathElement.groupElement("xadvance"));
+    /// The memory layout of `xadvance`.
+    public static final MemoryLayout LAYOUT_xadvance = LAYOUT.select(PathElement.groupElement("xadvance"));
+    /// The [VarHandle] of `xadvance` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_xadvance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xadvance"));
-    /// The [VarHandle] of `xoff2` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `xoff2`.
+    public static final long OFFSET_xoff2 = LAYOUT.byteOffset(PathElement.groupElement("xoff2"));
+    /// The memory layout of `xoff2`.
+    public static final MemoryLayout LAYOUT_xoff2 = LAYOUT.select(PathElement.groupElement("xoff2"));
+    /// The [VarHandle] of `xoff2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_xoff2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xoff2"));
-    /// The [VarHandle] of `yoff2` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `yoff2`.
+    public static final long OFFSET_yoff2 = LAYOUT.byteOffset(PathElement.groupElement("yoff2"));
+    /// The memory layout of `yoff2`.
+    public static final MemoryLayout LAYOUT_yoff2 = LAYOUT.select(PathElement.groupElement("yoff2"));
+    /// The [VarHandle] of `yoff2` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_yoff2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff2"));
 
     /// Creates `STBTTPackedChar` with the given segment.
@@ -97,19 +113,14 @@ public sealed class STBTTPackedChar extends Struct {
     /// Creates `STBTTPackedChar` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTPackedChar of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTPackedChar(segment); }
-
-    /// Creates `STBTTPackedChar` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTTPackedChar` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTPackedChar ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTPackedChar(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static STBTTPackedChar ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackedChar(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `STBTTPackedChar` with the given segment.
     ///
@@ -117,7 +128,7 @@ public sealed class STBTTPackedChar extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBTTPackedChar` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -130,11 +141,6 @@ public sealed class STBTTPackedChar extends Struct {
     /// @return the allocated `STBTTPackedChar`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBTTPackedChar` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `STBTTPackedChar`
-    public static STBTTPackedChar allocInit(SegmentAllocator allocator, @CType("unsigned short") short x0, @CType("unsigned short") short y0, @CType("unsigned short") short x1, @CType("unsigned short") short y1, @CType("float") float xoff, @CType("float") float yoff, @CType("float") float xadvance, @CType("float") float xoff2, @CType("float") float yoff2) { return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff).yoff(yoff).xadvance(xadvance).xoff2(xoff2).yoff2(yoff2); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -142,214 +148,151 @@ public sealed class STBTTPackedChar extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("unsigned short") short get_x0(MemorySegment segment, long index) { return (short) VH_x0.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short x0(MemorySegment segment, long index) { return (short) VH_x0.get(segment, 0L, index); }
     /// {@return `x0`}
-    /// @param segment the segment of the struct
-    public static @CType("unsigned short") short get_x0(MemorySegment segment) { return STBTTPackedChar.get_x0(segment, 0L); }
-    /// {@return `x0`}
-    public @CType("unsigned short") short x0() { return STBTTPackedChar.get_x0(this.segment()); }
+    public short x0() { return x0(this.segment(), 0L); }
     /// Sets `x0` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_x0(MemorySegment segment, long index, @CType("unsigned short") short value) { VH_x0.set(segment, 0L, index, value); }
-    /// Sets `x0` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_x0(MemorySegment segment, @CType("unsigned short") short value) { STBTTPackedChar.set_x0(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void x0(MemorySegment segment, long index, short value) { VH_x0.set(segment, 0L, index, value); }
     /// Sets `x0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar x0(@CType("unsigned short") short value) { STBTTPackedChar.set_x0(this.segment(), value); return this; }
+    public STBTTPackedChar x0(short value) { x0(this.segment(), 0L, value); return this; }
 
     /// {@return `y0` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("unsigned short") short get_y0(MemorySegment segment, long index) { return (short) VH_y0.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short y0(MemorySegment segment, long index) { return (short) VH_y0.get(segment, 0L, index); }
     /// {@return `y0`}
-    /// @param segment the segment of the struct
-    public static @CType("unsigned short") short get_y0(MemorySegment segment) { return STBTTPackedChar.get_y0(segment, 0L); }
-    /// {@return `y0`}
-    public @CType("unsigned short") short y0() { return STBTTPackedChar.get_y0(this.segment()); }
+    public short y0() { return y0(this.segment(), 0L); }
     /// Sets `y0` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_y0(MemorySegment segment, long index, @CType("unsigned short") short value) { VH_y0.set(segment, 0L, index, value); }
-    /// Sets `y0` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_y0(MemorySegment segment, @CType("unsigned short") short value) { STBTTPackedChar.set_y0(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void y0(MemorySegment segment, long index, short value) { VH_y0.set(segment, 0L, index, value); }
     /// Sets `y0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar y0(@CType("unsigned short") short value) { STBTTPackedChar.set_y0(this.segment(), value); return this; }
+    public STBTTPackedChar y0(short value) { y0(this.segment(), 0L, value); return this; }
 
     /// {@return `x1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("unsigned short") short get_x1(MemorySegment segment, long index) { return (short) VH_x1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short x1(MemorySegment segment, long index) { return (short) VH_x1.get(segment, 0L, index); }
     /// {@return `x1`}
-    /// @param segment the segment of the struct
-    public static @CType("unsigned short") short get_x1(MemorySegment segment) { return STBTTPackedChar.get_x1(segment, 0L); }
-    /// {@return `x1`}
-    public @CType("unsigned short") short x1() { return STBTTPackedChar.get_x1(this.segment()); }
+    public short x1() { return x1(this.segment(), 0L); }
     /// Sets `x1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_x1(MemorySegment segment, long index, @CType("unsigned short") short value) { VH_x1.set(segment, 0L, index, value); }
-    /// Sets `x1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_x1(MemorySegment segment, @CType("unsigned short") short value) { STBTTPackedChar.set_x1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void x1(MemorySegment segment, long index, short value) { VH_x1.set(segment, 0L, index, value); }
     /// Sets `x1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar x1(@CType("unsigned short") short value) { STBTTPackedChar.set_x1(this.segment(), value); return this; }
+    public STBTTPackedChar x1(short value) { x1(this.segment(), 0L, value); return this; }
 
     /// {@return `y1` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("unsigned short") short get_y1(MemorySegment segment, long index) { return (short) VH_y1.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static short y1(MemorySegment segment, long index) { return (short) VH_y1.get(segment, 0L, index); }
     /// {@return `y1`}
-    /// @param segment the segment of the struct
-    public static @CType("unsigned short") short get_y1(MemorySegment segment) { return STBTTPackedChar.get_y1(segment, 0L); }
-    /// {@return `y1`}
-    public @CType("unsigned short") short y1() { return STBTTPackedChar.get_y1(this.segment()); }
+    public short y1() { return y1(this.segment(), 0L); }
     /// Sets `y1` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_y1(MemorySegment segment, long index, @CType("unsigned short") short value) { VH_y1.set(segment, 0L, index, value); }
-    /// Sets `y1` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_y1(MemorySegment segment, @CType("unsigned short") short value) { STBTTPackedChar.set_y1(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void y1(MemorySegment segment, long index, short value) { VH_y1.set(segment, 0L, index, value); }
     /// Sets `y1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar y1(@CType("unsigned short") short value) { STBTTPackedChar.set_y1(this.segment(), value); return this; }
+    public STBTTPackedChar y1(short value) { y1(this.segment(), 0L, value); return this; }
 
     /// {@return `xoff` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_xoff(MemorySegment segment, long index) { return (float) VH_xoff.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float xoff(MemorySegment segment, long index) { return (float) VH_xoff.get(segment, 0L, index); }
     /// {@return `xoff`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_xoff(MemorySegment segment) { return STBTTPackedChar.get_xoff(segment, 0L); }
-    /// {@return `xoff`}
-    public @CType("float") float xoff() { return STBTTPackedChar.get_xoff(this.segment()); }
+    public float xoff() { return xoff(this.segment(), 0L); }
     /// Sets `xoff` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_xoff(MemorySegment segment, long index, @CType("float") float value) { VH_xoff.set(segment, 0L, index, value); }
-    /// Sets `xoff` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_xoff(MemorySegment segment, @CType("float") float value) { STBTTPackedChar.set_xoff(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void xoff(MemorySegment segment, long index, float value) { VH_xoff.set(segment, 0L, index, value); }
     /// Sets `xoff` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar xoff(@CType("float") float value) { STBTTPackedChar.set_xoff(this.segment(), value); return this; }
+    public STBTTPackedChar xoff(float value) { xoff(this.segment(), 0L, value); return this; }
 
     /// {@return `yoff` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_yoff(MemorySegment segment, long index) { return (float) VH_yoff.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float yoff(MemorySegment segment, long index) { return (float) VH_yoff.get(segment, 0L, index); }
     /// {@return `yoff`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_yoff(MemorySegment segment) { return STBTTPackedChar.get_yoff(segment, 0L); }
-    /// {@return `yoff`}
-    public @CType("float") float yoff() { return STBTTPackedChar.get_yoff(this.segment()); }
+    public float yoff() { return yoff(this.segment(), 0L); }
     /// Sets `yoff` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_yoff(MemorySegment segment, long index, @CType("float") float value) { VH_yoff.set(segment, 0L, index, value); }
-    /// Sets `yoff` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_yoff(MemorySegment segment, @CType("float") float value) { STBTTPackedChar.set_yoff(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void yoff(MemorySegment segment, long index, float value) { VH_yoff.set(segment, 0L, index, value); }
     /// Sets `yoff` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar yoff(@CType("float") float value) { STBTTPackedChar.set_yoff(this.segment(), value); return this; }
+    public STBTTPackedChar yoff(float value) { yoff(this.segment(), 0L, value); return this; }
 
     /// {@return `xadvance` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_xadvance(MemorySegment segment, long index) { return (float) VH_xadvance.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float xadvance(MemorySegment segment, long index) { return (float) VH_xadvance.get(segment, 0L, index); }
     /// {@return `xadvance`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_xadvance(MemorySegment segment) { return STBTTPackedChar.get_xadvance(segment, 0L); }
-    /// {@return `xadvance`}
-    public @CType("float") float xadvance() { return STBTTPackedChar.get_xadvance(this.segment()); }
+    public float xadvance() { return xadvance(this.segment(), 0L); }
     /// Sets `xadvance` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_xadvance(MemorySegment segment, long index, @CType("float") float value) { VH_xadvance.set(segment, 0L, index, value); }
-    /// Sets `xadvance` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_xadvance(MemorySegment segment, @CType("float") float value) { STBTTPackedChar.set_xadvance(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void xadvance(MemorySegment segment, long index, float value) { VH_xadvance.set(segment, 0L, index, value); }
     /// Sets `xadvance` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar xadvance(@CType("float") float value) { STBTTPackedChar.set_xadvance(this.segment(), value); return this; }
+    public STBTTPackedChar xadvance(float value) { xadvance(this.segment(), 0L, value); return this; }
 
     /// {@return `xoff2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_xoff2(MemorySegment segment, long index) { return (float) VH_xoff2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float xoff2(MemorySegment segment, long index) { return (float) VH_xoff2.get(segment, 0L, index); }
     /// {@return `xoff2`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_xoff2(MemorySegment segment) { return STBTTPackedChar.get_xoff2(segment, 0L); }
-    /// {@return `xoff2`}
-    public @CType("float") float xoff2() { return STBTTPackedChar.get_xoff2(this.segment()); }
+    public float xoff2() { return xoff2(this.segment(), 0L); }
     /// Sets `xoff2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_xoff2(MemorySegment segment, long index, @CType("float") float value) { VH_xoff2.set(segment, 0L, index, value); }
-    /// Sets `xoff2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_xoff2(MemorySegment segment, @CType("float") float value) { STBTTPackedChar.set_xoff2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void xoff2(MemorySegment segment, long index, float value) { VH_xoff2.set(segment, 0L, index, value); }
     /// Sets `xoff2` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar xoff2(@CType("float") float value) { STBTTPackedChar.set_xoff2(this.segment(), value); return this; }
+    public STBTTPackedChar xoff2(float value) { xoff2(this.segment(), 0L, value); return this; }
 
     /// {@return `yoff2` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_yoff2(MemorySegment segment, long index) { return (float) VH_yoff2.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float yoff2(MemorySegment segment, long index) { return (float) VH_yoff2.get(segment, 0L, index); }
     /// {@return `yoff2`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_yoff2(MemorySegment segment) { return STBTTPackedChar.get_yoff2(segment, 0L); }
-    /// {@return `yoff2`}
-    public @CType("float") float yoff2() { return STBTTPackedChar.get_yoff2(this.segment()); }
+    public float yoff2() { return yoff2(this.segment(), 0L); }
     /// Sets `yoff2` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_yoff2(MemorySegment segment, long index, @CType("float") float value) { VH_yoff2.set(segment, 0L, index, value); }
-    /// Sets `yoff2` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_yoff2(MemorySegment segment, @CType("float") float value) { STBTTPackedChar.set_yoff2(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void yoff2(MemorySegment segment, long index, float value) { VH_yoff2.set(segment, 0L, index, value); }
     /// Sets `yoff2` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTPackedChar yoff2(@CType("float") float value) { STBTTPackedChar.set_yoff2(this.segment(), value); return this; }
+    public STBTTPackedChar yoff2(float value) { yoff2(this.segment(), 0L, value); return this; }
 
     /// A buffer of [STBTTPackedChar].
     public static final class Buffer extends STBTTPackedChar {
@@ -374,85 +317,85 @@ public sealed class STBTTPackedChar extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `x0` at the given index}
-        /// @param index the index
-        public @CType("unsigned short") short x0At(long index) { return STBTTPackedChar.get_x0(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short x0At(long index) { return x0(this.segment(), index); }
         /// Sets `x0` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer x0At(long index, @CType("unsigned short") short value) { STBTTPackedChar.set_x0(this.segment(), index, value); return this; }
+        public Buffer x0At(long index, short value) { x0(this.segment(), index, value); return this; }
 
         /// {@return `y0` at the given index}
-        /// @param index the index
-        public @CType("unsigned short") short y0At(long index) { return STBTTPackedChar.get_y0(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short y0At(long index) { return y0(this.segment(), index); }
         /// Sets `y0` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer y0At(long index, @CType("unsigned short") short value) { STBTTPackedChar.set_y0(this.segment(), index, value); return this; }
+        public Buffer y0At(long index, short value) { y0(this.segment(), index, value); return this; }
 
         /// {@return `x1` at the given index}
-        /// @param index the index
-        public @CType("unsigned short") short x1At(long index) { return STBTTPackedChar.get_x1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short x1At(long index) { return x1(this.segment(), index); }
         /// Sets `x1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer x1At(long index, @CType("unsigned short") short value) { STBTTPackedChar.set_x1(this.segment(), index, value); return this; }
+        public Buffer x1At(long index, short value) { x1(this.segment(), index, value); return this; }
 
         /// {@return `y1` at the given index}
-        /// @param index the index
-        public @CType("unsigned short") short y1At(long index) { return STBTTPackedChar.get_y1(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public short y1At(long index) { return y1(this.segment(), index); }
         /// Sets `y1` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer y1At(long index, @CType("unsigned short") short value) { STBTTPackedChar.set_y1(this.segment(), index, value); return this; }
+        public Buffer y1At(long index, short value) { y1(this.segment(), index, value); return this; }
 
         /// {@return `xoff` at the given index}
-        /// @param index the index
-        public @CType("float") float xoffAt(long index) { return STBTTPackedChar.get_xoff(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float xoffAt(long index) { return xoff(this.segment(), index); }
         /// Sets `xoff` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer xoffAt(long index, @CType("float") float value) { STBTTPackedChar.set_xoff(this.segment(), index, value); return this; }
+        public Buffer xoffAt(long index, float value) { xoff(this.segment(), index, value); return this; }
 
         /// {@return `yoff` at the given index}
-        /// @param index the index
-        public @CType("float") float yoffAt(long index) { return STBTTPackedChar.get_yoff(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float yoffAt(long index) { return yoff(this.segment(), index); }
         /// Sets `yoff` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer yoffAt(long index, @CType("float") float value) { STBTTPackedChar.set_yoff(this.segment(), index, value); return this; }
+        public Buffer yoffAt(long index, float value) { yoff(this.segment(), index, value); return this; }
 
         /// {@return `xadvance` at the given index}
-        /// @param index the index
-        public @CType("float") float xadvanceAt(long index) { return STBTTPackedChar.get_xadvance(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float xadvanceAt(long index) { return xadvance(this.segment(), index); }
         /// Sets `xadvance` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer xadvanceAt(long index, @CType("float") float value) { STBTTPackedChar.set_xadvance(this.segment(), index, value); return this; }
+        public Buffer xadvanceAt(long index, float value) { xadvance(this.segment(), index, value); return this; }
 
         /// {@return `xoff2` at the given index}
-        /// @param index the index
-        public @CType("float") float xoff2At(long index) { return STBTTPackedChar.get_xoff2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float xoff2At(long index) { return xoff2(this.segment(), index); }
         /// Sets `xoff2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer xoff2At(long index, @CType("float") float value) { STBTTPackedChar.set_xoff2(this.segment(), index, value); return this; }
+        public Buffer xoff2At(long index, float value) { xoff2(this.segment(), index, value); return this; }
 
         /// {@return `yoff2` at the given index}
-        /// @param index the index
-        public @CType("float") float yoff2At(long index) { return STBTTPackedChar.get_yoff2(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float yoff2At(long index) { return yoff2(this.segment(), index); }
         /// Sets `yoff2` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer yoff2At(long index, @CType("float") float value) { STBTTPackedChar.set_yoff2(this.segment(), index, value); return this; }
+        public Buffer yoff2At(long index, float value) { yoff2(this.segment(), index, value); return this; }
 
     }
 }

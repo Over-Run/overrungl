@@ -15,166 +15,70 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### minSubgroupSize
-/// [VarHandle][#VH_minSubgroupSize] - [Getter][#minSubgroupSize()] - [Setter][#minSubgroupSize(int)]
-/// ### maxSubgroupSize
-/// [VarHandle][#VH_maxSubgroupSize] - [Getter][#maxSubgroupSize()] - [Setter][#maxSubgroupSize(int)]
-/// ### maxComputeWorkgroupSubgroups
-/// [VarHandle][#VH_maxComputeWorkgroupSubgroups] - [Getter][#maxComputeWorkgroupSubgroups()] - [Setter][#maxComputeWorkgroupSubgroups(int)]
-/// ### requiredSubgroupSizeStages
-/// [VarHandle][#VH_requiredSubgroupSizeStages] - [Getter][#requiredSubgroupSizeStages()] - [Setter][#requiredSubgroupSizeStages(int)]
-/// ### maxInlineUniformBlockSize
-/// [VarHandle][#VH_maxInlineUniformBlockSize] - [Getter][#maxInlineUniformBlockSize()] - [Setter][#maxInlineUniformBlockSize(int)]
-/// ### maxPerStageDescriptorInlineUniformBlocks
-/// [VarHandle][#VH_maxPerStageDescriptorInlineUniformBlocks] - [Getter][#maxPerStageDescriptorInlineUniformBlocks()] - [Setter][#maxPerStageDescriptorInlineUniformBlocks(int)]
-/// ### maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks
-/// [VarHandle][#VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks] - [Getter][#maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks()] - [Setter][#maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(int)]
-/// ### maxDescriptorSetInlineUniformBlocks
-/// [VarHandle][#VH_maxDescriptorSetInlineUniformBlocks] - [Getter][#maxDescriptorSetInlineUniformBlocks()] - [Setter][#maxDescriptorSetInlineUniformBlocks(int)]
-/// ### maxDescriptorSetUpdateAfterBindInlineUniformBlocks
-/// [VarHandle][#VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks] - [Getter][#maxDescriptorSetUpdateAfterBindInlineUniformBlocks()] - [Setter][#maxDescriptorSetUpdateAfterBindInlineUniformBlocks(int)]
-/// ### maxInlineUniformTotalSize
-/// [VarHandle][#VH_maxInlineUniformTotalSize] - [Getter][#maxInlineUniformTotalSize()] - [Setter][#maxInlineUniformTotalSize(int)]
-/// ### integerDotProduct8BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProduct8BitUnsignedAccelerated] - [Getter][#integerDotProduct8BitUnsignedAccelerated()] - [Setter][#integerDotProduct8BitUnsignedAccelerated(int)]
-/// ### integerDotProduct8BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProduct8BitSignedAccelerated] - [Getter][#integerDotProduct8BitSignedAccelerated()] - [Setter][#integerDotProduct8BitSignedAccelerated(int)]
-/// ### integerDotProduct8BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProduct8BitMixedSignednessAccelerated] - [Getter][#integerDotProduct8BitMixedSignednessAccelerated()] - [Setter][#integerDotProduct8BitMixedSignednessAccelerated(int)]
-/// ### integerDotProduct4x8BitPackedUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProduct4x8BitPackedUnsignedAccelerated] - [Getter][#integerDotProduct4x8BitPackedUnsignedAccelerated()] - [Setter][#integerDotProduct4x8BitPackedUnsignedAccelerated(int)]
-/// ### integerDotProduct4x8BitPackedSignedAccelerated
-/// [VarHandle][#VH_integerDotProduct4x8BitPackedSignedAccelerated] - [Getter][#integerDotProduct4x8BitPackedSignedAccelerated()] - [Setter][#integerDotProduct4x8BitPackedSignedAccelerated(int)]
-/// ### integerDotProduct4x8BitPackedMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated] - [Getter][#integerDotProduct4x8BitPackedMixedSignednessAccelerated()] - [Setter][#integerDotProduct4x8BitPackedMixedSignednessAccelerated(int)]
-/// ### integerDotProduct16BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProduct16BitUnsignedAccelerated] - [Getter][#integerDotProduct16BitUnsignedAccelerated()] - [Setter][#integerDotProduct16BitUnsignedAccelerated(int)]
-/// ### integerDotProduct16BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProduct16BitSignedAccelerated] - [Getter][#integerDotProduct16BitSignedAccelerated()] - [Setter][#integerDotProduct16BitSignedAccelerated(int)]
-/// ### integerDotProduct16BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProduct16BitMixedSignednessAccelerated] - [Getter][#integerDotProduct16BitMixedSignednessAccelerated()] - [Setter][#integerDotProduct16BitMixedSignednessAccelerated(int)]
-/// ### integerDotProduct32BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProduct32BitUnsignedAccelerated] - [Getter][#integerDotProduct32BitUnsignedAccelerated()] - [Setter][#integerDotProduct32BitUnsignedAccelerated(int)]
-/// ### integerDotProduct32BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProduct32BitSignedAccelerated] - [Getter][#integerDotProduct32BitSignedAccelerated()] - [Setter][#integerDotProduct32BitSignedAccelerated(int)]
-/// ### integerDotProduct32BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProduct32BitMixedSignednessAccelerated] - [Getter][#integerDotProduct32BitMixedSignednessAccelerated()] - [Setter][#integerDotProduct32BitMixedSignednessAccelerated(int)]
-/// ### integerDotProduct64BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProduct64BitUnsignedAccelerated] - [Getter][#integerDotProduct64BitUnsignedAccelerated()] - [Setter][#integerDotProduct64BitUnsignedAccelerated(int)]
-/// ### integerDotProduct64BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProduct64BitSignedAccelerated] - [Getter][#integerDotProduct64BitSignedAccelerated()] - [Setter][#integerDotProduct64BitSignedAccelerated(int)]
-/// ### integerDotProduct64BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProduct64BitMixedSignednessAccelerated] - [Getter][#integerDotProduct64BitMixedSignednessAccelerated()] - [Setter][#integerDotProduct64BitMixedSignednessAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating8BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating8BitUnsignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating8BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating8BitSignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating8BitSignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated] - [Getter][#integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated] - [Getter][#integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating16BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating16BitUnsignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating16BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating16BitSignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating16BitSignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated] - [Getter][#integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating32BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating32BitUnsignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating32BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating32BitSignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating32BitSignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated] - [Getter][#integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating64BitUnsignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating64BitUnsignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating64BitSignedAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated] - [Getter][#integerDotProductAccumulatingSaturating64BitSignedAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating64BitSignedAccelerated(int)]
-/// ### integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated
-/// [VarHandle][#VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated] - [Getter][#integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated()] - [Setter][#integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(int)]
-/// ### storageTexelBufferOffsetAlignmentBytes
-/// [VarHandle][#VH_storageTexelBufferOffsetAlignmentBytes] - [Getter][#storageTexelBufferOffsetAlignmentBytes()] - [Setter][#storageTexelBufferOffsetAlignmentBytes(long)]
-/// ### storageTexelBufferOffsetSingleTexelAlignment
-/// [VarHandle][#VH_storageTexelBufferOffsetSingleTexelAlignment] - [Getter][#storageTexelBufferOffsetSingleTexelAlignment()] - [Setter][#storageTexelBufferOffsetSingleTexelAlignment(int)]
-/// ### uniformTexelBufferOffsetAlignmentBytes
-/// [VarHandle][#VH_uniformTexelBufferOffsetAlignmentBytes] - [Getter][#uniformTexelBufferOffsetAlignmentBytes()] - [Setter][#uniformTexelBufferOffsetAlignmentBytes(long)]
-/// ### uniformTexelBufferOffsetSingleTexelAlignment
-/// [VarHandle][#VH_uniformTexelBufferOffsetSingleTexelAlignment] - [Getter][#uniformTexelBufferOffsetSingleTexelAlignment()] - [Setter][#uniformTexelBufferOffsetSingleTexelAlignment(int)]
-/// ### maxBufferSize
-/// [VarHandle][#VH_maxBufferSize] - [Getter][#maxBufferSize()] - [Setter][#maxBufferSize(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceVulkan13Properties {
-///     VkStructureType sType;
-///     void * pNext;
+/// ```
+/// struct VkPhysicalDeviceVulkan13Properties {
+///     (int) VkStructureType sType;
+///     void* pNext;
 ///     uint32_t minSubgroupSize;
 ///     uint32_t maxSubgroupSize;
 ///     uint32_t maxComputeWorkgroupSubgroups;
-///     VkShaderStageFlags requiredSubgroupSizeStages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags requiredSubgroupSizeStages;
 ///     uint32_t maxInlineUniformBlockSize;
 ///     uint32_t maxPerStageDescriptorInlineUniformBlocks;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
 ///     uint32_t maxDescriptorSetInlineUniformBlocks;
 ///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
 ///     uint32_t maxInlineUniformTotalSize;
-///     VkBool32 integerDotProduct8BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct8BitSignedAccelerated;
-///     VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
-///     VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct16BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct16BitSignedAccelerated;
-///     VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct32BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct32BitSignedAccelerated;
-///     VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProduct64BitUnsignedAccelerated;
-///     VkBool32 integerDotProduct64BitSignedAccelerated;
-///     VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
-///     VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
-///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
-///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
-///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize maxBufferSize;
-/// } VkPhysicalDeviceVulkan13Properties;
+///     (uint32_t) VkBool32 integerDotProduct8BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct8BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct8BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct4x8BitPackedUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct4x8BitPackedSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct4x8BitPackedMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct16BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct16BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct16BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct32BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct32BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct32BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct64BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct64BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProduct64BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating8BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating8BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating16BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating16BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating32BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating32BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating64BitUnsignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating64BitSignedAccelerated;
+///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
+///     (uint64_t) VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
+///     (uint32_t) VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
+///     (uint64_t) VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
+///     (uint32_t) VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+///     (uint64_t) VkDeviceSize maxBufferSize;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
+public sealed class VkPhysicalDeviceVulkan13Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVulkan13Properties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("minSubgroupSize"),
@@ -223,99 +127,287 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
         ValueLayout.JAVA_INT.withName("uniformTexelBufferOffsetSingleTexelAlignment"),
         ValueLayout.JAVA_LONG.withName("maxBufferSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `minSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `minSubgroupSize`.
+    public static final long OFFSET_minSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("minSubgroupSize"));
+    /// The memory layout of `minSubgroupSize`.
+    public static final MemoryLayout LAYOUT_minSubgroupSize = LAYOUT.select(PathElement.groupElement("minSubgroupSize"));
+    /// The [VarHandle] of `minSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minSubgroupSize"));
-    /// The [VarHandle] of `maxSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxSubgroupSize`.
+    public static final long OFFSET_maxSubgroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxSubgroupSize"));
+    /// The memory layout of `maxSubgroupSize`.
+    public static final MemoryLayout LAYOUT_maxSubgroupSize = LAYOUT.select(PathElement.groupElement("maxSubgroupSize"));
+    /// The [VarHandle] of `maxSubgroupSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxSubgroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSubgroupSize"));
-    /// The [VarHandle] of `maxComputeWorkgroupSubgroups` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxComputeWorkgroupSubgroups`.
+    public static final long OFFSET_maxComputeWorkgroupSubgroups = LAYOUT.byteOffset(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
+    /// The memory layout of `maxComputeWorkgroupSubgroups`.
+    public static final MemoryLayout LAYOUT_maxComputeWorkgroupSubgroups = LAYOUT.select(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
+    /// The [VarHandle] of `maxComputeWorkgroupSubgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxComputeWorkgroupSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkgroupSubgroups"));
-    /// The [VarHandle] of `requiredSubgroupSizeStages` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `requiredSubgroupSizeStages`.
+    public static final long OFFSET_requiredSubgroupSizeStages = LAYOUT.byteOffset(PathElement.groupElement("requiredSubgroupSizeStages"));
+    /// The memory layout of `requiredSubgroupSizeStages`.
+    public static final MemoryLayout LAYOUT_requiredSubgroupSizeStages = LAYOUT.select(PathElement.groupElement("requiredSubgroupSizeStages"));
+    /// The [VarHandle] of `requiredSubgroupSizeStages` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_requiredSubgroupSizeStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("requiredSubgroupSizeStages"));
-    /// The [VarHandle] of `maxInlineUniformBlockSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxInlineUniformBlockSize`.
+    public static final long OFFSET_maxInlineUniformBlockSize = LAYOUT.byteOffset(PathElement.groupElement("maxInlineUniformBlockSize"));
+    /// The memory layout of `maxInlineUniformBlockSize`.
+    public static final MemoryLayout LAYOUT_maxInlineUniformBlockSize = LAYOUT.select(PathElement.groupElement("maxInlineUniformBlockSize"));
+    /// The [VarHandle] of `maxInlineUniformBlockSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxInlineUniformBlockSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformBlockSize"));
-    /// The [VarHandle] of `maxPerStageDescriptorInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxPerStageDescriptorInlineUniformBlocks`.
+    public static final long OFFSET_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
+    /// The memory layout of `maxPerStageDescriptorInlineUniformBlocks`.
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
+    /// The [VarHandle] of `maxPerStageDescriptorInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxPerStageDescriptorInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorInlineUniformBlocks"));
-    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`.
+    public static final long OFFSET_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
+    /// The memory layout of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`.
+    public static final MemoryLayout LAYOUT_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
+    /// The [VarHandle] of `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks"));
-    /// The [VarHandle] of `maxDescriptorSetInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxDescriptorSetInlineUniformBlocks`.
+    public static final long OFFSET_maxDescriptorSetInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
+    /// The memory layout of `maxDescriptorSetInlineUniformBlocks`.
+    public static final MemoryLayout LAYOUT_maxDescriptorSetInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
+    /// The [VarHandle] of `maxDescriptorSetInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxDescriptorSetInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetInlineUniformBlocks"));
-    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`.
+    public static final long OFFSET_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
+    /// The memory layout of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`.
+    public static final MemoryLayout LAYOUT_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.select(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
+    /// The [VarHandle] of `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
-    /// The [VarHandle] of `maxInlineUniformTotalSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxInlineUniformTotalSize`.
+    public static final long OFFSET_maxInlineUniformTotalSize = LAYOUT.byteOffset(PathElement.groupElement("maxInlineUniformTotalSize"));
+    /// The memory layout of `maxInlineUniformTotalSize`.
+    public static final MemoryLayout LAYOUT_maxInlineUniformTotalSize = LAYOUT.select(PathElement.groupElement("maxInlineUniformTotalSize"));
+    /// The [VarHandle] of `maxInlineUniformTotalSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxInlineUniformTotalSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformTotalSize"));
-    /// The [VarHandle] of `integerDotProduct8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct8BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProduct8BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProduct8BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct8BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct8BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct8BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProduct8BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
+    /// The memory layout of `integerDotProduct8BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct8BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct8BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct8BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProduct8BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProduct8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct8BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct8BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProduct4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct4x8BitPackedUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
+    /// The memory layout of `integerDotProduct4x8BitPackedUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct4x8BitPackedUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct4x8BitPackedSignedAccelerated`.
+    public static final long OFFSET_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
+    /// The memory layout of `integerDotProduct4x8BitPackedSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct4x8BitPackedSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct4x8BitPackedMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProduct4x8BitPackedMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProduct4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct4x8BitPackedMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProduct16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct16BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProduct16BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProduct16BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct16BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct16BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct16BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProduct16BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
+    /// The memory layout of `integerDotProduct16BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct16BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct16BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct16BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProduct16BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProduct16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct16BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct16BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProduct32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct32BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProduct32BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProduct32BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct32BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct32BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct32BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProduct32BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
+    /// The memory layout of `integerDotProduct32BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct32BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct32BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct32BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProduct32BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProduct32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct32BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct32BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProduct64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct64BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProduct64BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProduct64BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct64BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct64BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct64BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProduct64BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
+    /// The memory layout of `integerDotProduct64BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct64BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProduct64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct64BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProduct64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProduct64BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProduct64BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProduct64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProduct64BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProduct64BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating8BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating8BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating16BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating16BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating32BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating32BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitUnsignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating64BitSignedAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating64BitSignedAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitSignedAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitSignedAccelerated"));
-    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`.
+    public static final long OFFSET_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.byteOffset(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
+    /// The memory layout of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`.
+    public static final MemoryLayout LAYOUT_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.select(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
+    /// The [VarHandle] of `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
-    /// The [VarHandle] of `storageTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `storageTexelBufferOffsetAlignmentBytes`.
+    public static final long OFFSET_storageTexelBufferOffsetAlignmentBytes = LAYOUT.byteOffset(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
+    /// The memory layout of `storageTexelBufferOffsetAlignmentBytes`.
+    public static final MemoryLayout LAYOUT_storageTexelBufferOffsetAlignmentBytes = LAYOUT.select(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
+    /// The [VarHandle] of `storageTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storageTexelBufferOffsetAlignmentBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetAlignmentBytes"));
-    /// The [VarHandle] of `storageTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `storageTexelBufferOffsetSingleTexelAlignment`.
+    public static final long OFFSET_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.byteOffset(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
+    /// The memory layout of `storageTexelBufferOffsetSingleTexelAlignment`.
+    public static final MemoryLayout LAYOUT_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.select(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
+    /// The [VarHandle] of `storageTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_storageTexelBufferOffsetSingleTexelAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storageTexelBufferOffsetSingleTexelAlignment"));
-    /// The [VarHandle] of `uniformTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `uniformTexelBufferOffsetAlignmentBytes`.
+    public static final long OFFSET_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.byteOffset(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
+    /// The memory layout of `uniformTexelBufferOffsetAlignmentBytes`.
+    public static final MemoryLayout LAYOUT_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.select(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
+    /// The [VarHandle] of `uniformTexelBufferOffsetAlignmentBytes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_uniformTexelBufferOffsetAlignmentBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetAlignmentBytes"));
-    /// The [VarHandle] of `uniformTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `uniformTexelBufferOffsetSingleTexelAlignment`.
+    public static final long OFFSET_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.byteOffset(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
+    /// The memory layout of `uniformTexelBufferOffsetSingleTexelAlignment`.
+    public static final MemoryLayout LAYOUT_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.select(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
+    /// The [VarHandle] of `uniformTexelBufferOffsetSingleTexelAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_uniformTexelBufferOffsetSingleTexelAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uniformTexelBufferOffsetSingleTexelAlignment"));
-    /// The [VarHandle] of `maxBufferSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxBufferSize`.
+    public static final long OFFSET_maxBufferSize = LAYOUT.byteOffset(PathElement.groupElement("maxBufferSize"));
+    /// The memory layout of `maxBufferSize`.
+    public static final MemoryLayout LAYOUT_maxBufferSize = LAYOUT.select(PathElement.groupElement("maxBufferSize"));
+    /// The [VarHandle] of `maxBufferSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxBufferSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxBufferSize"));
 
     /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
@@ -325,19 +417,14 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
     /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan13Properties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Properties(segment); }
-
-    /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan13Properties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVulkan13Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan13Properties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceVulkan13Properties` with the given segment.
     ///
@@ -345,7 +432,7 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVulkan13Properties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -358,11 +445,6 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkan13Properties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVulkan13Properties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceVulkan13Properties`
-    public static VkPhysicalDeviceVulkan13Properties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int minSubgroupSize, @CType("uint32_t") int maxSubgroupSize, @CType("uint32_t") int maxComputeWorkgroupSubgroups, @CType("VkShaderStageFlags") int requiredSubgroupSizeStages, @CType("uint32_t") int maxInlineUniformBlockSize, @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocks, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, @CType("uint32_t") int maxDescriptorSetInlineUniformBlocks, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocks, @CType("uint32_t") int maxInlineUniformTotalSize, @CType("VkBool32") int integerDotProduct8BitUnsignedAccelerated, @CType("VkBool32") int integerDotProduct8BitSignedAccelerated, @CType("VkBool32") int integerDotProduct8BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProduct4x8BitPackedUnsignedAccelerated, @CType("VkBool32") int integerDotProduct4x8BitPackedSignedAccelerated, @CType("VkBool32") int integerDotProduct4x8BitPackedMixedSignednessAccelerated, @CType("VkBool32") int integerDotProduct16BitUnsignedAccelerated, @CType("VkBool32") int integerDotProduct16BitSignedAccelerated, @CType("VkBool32") int integerDotProduct16BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProduct32BitUnsignedAccelerated, @CType("VkBool32") int integerDotProduct32BitSignedAccelerated, @CType("VkBool32") int integerDotProduct32BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProduct64BitUnsignedAccelerated, @CType("VkBool32") int integerDotProduct64BitSignedAccelerated, @CType("VkBool32") int integerDotProduct64BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitSignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitSignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitSignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitSignedAccelerated, @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated, @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytes, @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignment, @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytes, @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignment, @CType("VkDeviceSize") long maxBufferSize) { return alloc(allocator).sType(sType).pNext(pNext).minSubgroupSize(minSubgroupSize).maxSubgroupSize(maxSubgroupSize).maxComputeWorkgroupSubgroups(maxComputeWorkgroupSubgroups).requiredSubgroupSizeStages(requiredSubgroupSizeStages).maxInlineUniformBlockSize(maxInlineUniformBlockSize).maxPerStageDescriptorInlineUniformBlocks(maxPerStageDescriptorInlineUniformBlocks).maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks).maxDescriptorSetInlineUniformBlocks(maxDescriptorSetInlineUniformBlocks).maxDescriptorSetUpdateAfterBindInlineUniformBlocks(maxDescriptorSetUpdateAfterBindInlineUniformBlocks).maxInlineUniformTotalSize(maxInlineUniformTotalSize).integerDotProduct8BitUnsignedAccelerated(integerDotProduct8BitUnsignedAccelerated).integerDotProduct8BitSignedAccelerated(integerDotProduct8BitSignedAccelerated).integerDotProduct8BitMixedSignednessAccelerated(integerDotProduct8BitMixedSignednessAccelerated).integerDotProduct4x8BitPackedUnsignedAccelerated(integerDotProduct4x8BitPackedUnsignedAccelerated).integerDotProduct4x8BitPackedSignedAccelerated(integerDotProduct4x8BitPackedSignedAccelerated).integerDotProduct4x8BitPackedMixedSignednessAccelerated(integerDotProduct4x8BitPackedMixedSignednessAccelerated).integerDotProduct16BitUnsignedAccelerated(integerDotProduct16BitUnsignedAccelerated).integerDotProduct16BitSignedAccelerated(integerDotProduct16BitSignedAccelerated).integerDotProduct16BitMixedSignednessAccelerated(integerDotProduct16BitMixedSignednessAccelerated).integerDotProduct32BitUnsignedAccelerated(integerDotProduct32BitUnsignedAccelerated).integerDotProduct32BitSignedAccelerated(integerDotProduct32BitSignedAccelerated).integerDotProduct32BitMixedSignednessAccelerated(integerDotProduct32BitMixedSignednessAccelerated).integerDotProduct64BitUnsignedAccelerated(integerDotProduct64BitUnsignedAccelerated).integerDotProduct64BitSignedAccelerated(integerDotProduct64BitSignedAccelerated).integerDotProduct64BitMixedSignednessAccelerated(integerDotProduct64BitMixedSignednessAccelerated).integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(integerDotProductAccumulatingSaturating8BitUnsignedAccelerated).integerDotProductAccumulatingSaturating8BitSignedAccelerated(integerDotProductAccumulatingSaturating8BitSignedAccelerated).integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated).integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated).integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated).integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated).integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(integerDotProductAccumulatingSaturating16BitUnsignedAccelerated).integerDotProductAccumulatingSaturating16BitSignedAccelerated(integerDotProductAccumulatingSaturating16BitSignedAccelerated).integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated).integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(integerDotProductAccumulatingSaturating32BitUnsignedAccelerated).integerDotProductAccumulatingSaturating32BitSignedAccelerated(integerDotProductAccumulatingSaturating32BitSignedAccelerated).integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated).integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(integerDotProductAccumulatingSaturating64BitUnsignedAccelerated).integerDotProductAccumulatingSaturating64BitSignedAccelerated(integerDotProductAccumulatingSaturating64BitSignedAccelerated).integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes).storageTexelBufferOffsetSingleTexelAlignment(storageTexelBufferOffsetSingleTexelAlignment).uniformTexelBufferOffsetAlignmentBytes(uniformTexelBufferOffsetAlignmentBytes).uniformTexelBufferOffsetSingleTexelAlignment(uniformTexelBufferOffsetSingleTexelAlignment).maxBufferSize(maxBufferSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -370,1088 +452,759 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVulkan13Properties.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Properties.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties sType(@CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Properties.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkan13Properties.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Properties.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Properties.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `minSubgroupSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_minSubgroupSize(MemorySegment segment, long index) { return (int) VH_minSubgroupSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int minSubgroupSize(MemorySegment segment, long index) { return (int) VH_minSubgroupSize.get(segment, 0L, index); }
     /// {@return `minSubgroupSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_minSubgroupSize(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_minSubgroupSize(segment, 0L); }
-    /// {@return `minSubgroupSize`}
-    public @CType("uint32_t") int minSubgroupSize() { return VkPhysicalDeviceVulkan13Properties.get_minSubgroupSize(this.segment()); }
+    public int minSubgroupSize() { return minSubgroupSize(this.segment(), 0L); }
     /// Sets `minSubgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minSubgroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_minSubgroupSize.set(segment, 0L, index, value); }
-    /// Sets `minSubgroupSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minSubgroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_minSubgroupSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minSubgroupSize(MemorySegment segment, long index, int value) { VH_minSubgroupSize.set(segment, 0L, index, value); }
     /// Sets `minSubgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties minSubgroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_minSubgroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties minSubgroupSize(int value) { minSubgroupSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxSubgroupSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxSubgroupSize(MemorySegment segment, long index) { return (int) VH_maxSubgroupSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxSubgroupSize(MemorySegment segment, long index) { return (int) VH_maxSubgroupSize.get(segment, 0L, index); }
     /// {@return `maxSubgroupSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxSubgroupSize(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxSubgroupSize(segment, 0L); }
-    /// {@return `maxSubgroupSize`}
-    public @CType("uint32_t") int maxSubgroupSize() { return VkPhysicalDeviceVulkan13Properties.get_maxSubgroupSize(this.segment()); }
+    public int maxSubgroupSize() { return maxSubgroupSize(this.segment(), 0L); }
     /// Sets `maxSubgroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxSubgroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxSubgroupSize.set(segment, 0L, index, value); }
-    /// Sets `maxSubgroupSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxSubgroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxSubgroupSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxSubgroupSize(MemorySegment segment, long index, int value) { VH_maxSubgroupSize.set(segment, 0L, index, value); }
     /// Sets `maxSubgroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxSubgroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxSubgroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxSubgroupSize(int value) { maxSubgroupSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxComputeWorkgroupSubgroups` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxComputeWorkgroupSubgroups(MemorySegment segment, long index) { return (int) VH_maxComputeWorkgroupSubgroups.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxComputeWorkgroupSubgroups(MemorySegment segment, long index) { return (int) VH_maxComputeWorkgroupSubgroups.get(segment, 0L, index); }
     /// {@return `maxComputeWorkgroupSubgroups`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxComputeWorkgroupSubgroups(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxComputeWorkgroupSubgroups(segment, 0L); }
-    /// {@return `maxComputeWorkgroupSubgroups`}
-    public @CType("uint32_t") int maxComputeWorkgroupSubgroups() { return VkPhysicalDeviceVulkan13Properties.get_maxComputeWorkgroupSubgroups(this.segment()); }
+    public int maxComputeWorkgroupSubgroups() { return maxComputeWorkgroupSubgroups(this.segment(), 0L); }
     /// Sets `maxComputeWorkgroupSubgroups` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxComputeWorkgroupSubgroups(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxComputeWorkgroupSubgroups.set(segment, 0L, index, value); }
-    /// Sets `maxComputeWorkgroupSubgroups` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxComputeWorkgroupSubgroups(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxComputeWorkgroupSubgroups(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxComputeWorkgroupSubgroups(MemorySegment segment, long index, int value) { VH_maxComputeWorkgroupSubgroups.set(segment, 0L, index, value); }
     /// Sets `maxComputeWorkgroupSubgroups` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxComputeWorkgroupSubgroups(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxComputeWorkgroupSubgroups(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxComputeWorkgroupSubgroups(int value) { maxComputeWorkgroupSubgroups(this.segment(), 0L, value); return this; }
 
     /// {@return `requiredSubgroupSizeStages` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkShaderStageFlags") int get_requiredSubgroupSizeStages(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSizeStages.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int requiredSubgroupSizeStages(MemorySegment segment, long index) { return (int) VH_requiredSubgroupSizeStages.get(segment, 0L, index); }
     /// {@return `requiredSubgroupSizeStages`}
-    /// @param segment the segment of the struct
-    public static @CType("VkShaderStageFlags") int get_requiredSubgroupSizeStages(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_requiredSubgroupSizeStages(segment, 0L); }
-    /// {@return `requiredSubgroupSizeStages`}
-    public @CType("VkShaderStageFlags") int requiredSubgroupSizeStages() { return VkPhysicalDeviceVulkan13Properties.get_requiredSubgroupSizeStages(this.segment()); }
+    public int requiredSubgroupSizeStages() { return requiredSubgroupSizeStages(this.segment(), 0L); }
     /// Sets `requiredSubgroupSizeStages` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_requiredSubgroupSizeStages(MemorySegment segment, long index, @CType("VkShaderStageFlags") int value) { VH_requiredSubgroupSizeStages.set(segment, 0L, index, value); }
-    /// Sets `requiredSubgroupSizeStages` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_requiredSubgroupSizeStages(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceVulkan13Properties.set_requiredSubgroupSizeStages(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void requiredSubgroupSizeStages(MemorySegment segment, long index, int value) { VH_requiredSubgroupSizeStages.set(segment, 0L, index, value); }
     /// Sets `requiredSubgroupSizeStages` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties requiredSubgroupSizeStages(@CType("VkShaderStageFlags") int value) { VkPhysicalDeviceVulkan13Properties.set_requiredSubgroupSizeStages(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties requiredSubgroupSizeStages(int value) { requiredSubgroupSizeStages(this.segment(), 0L, value); return this; }
 
     /// {@return `maxInlineUniformBlockSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxInlineUniformBlockSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformBlockSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxInlineUniformBlockSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformBlockSize.get(segment, 0L, index); }
     /// {@return `maxInlineUniformBlockSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxInlineUniformBlockSize(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformBlockSize(segment, 0L); }
-    /// {@return `maxInlineUniformBlockSize`}
-    public @CType("uint32_t") int maxInlineUniformBlockSize() { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformBlockSize(this.segment()); }
+    public int maxInlineUniformBlockSize() { return maxInlineUniformBlockSize(this.segment(), 0L); }
     /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxInlineUniformBlockSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxInlineUniformBlockSize.set(segment, 0L, index, value); }
-    /// Sets `maxInlineUniformBlockSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxInlineUniformBlockSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformBlockSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxInlineUniformBlockSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformBlockSize.set(segment, 0L, index, value); }
     /// Sets `maxInlineUniformBlockSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxInlineUniformBlockSize(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformBlockSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxInlineUniformBlockSize(int value) { maxInlineUniformBlockSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorInlineUniformBlocks.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorInlineUniformBlocks.get(segment, 0L, index); }
     /// {@return `maxPerStageDescriptorInlineUniformBlocks`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxPerStageDescriptorInlineUniformBlocks`}
-    public @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocks() { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorInlineUniformBlocks(this.segment()); }
+    public int maxPerStageDescriptorInlineUniformBlocks() { return maxPerStageDescriptorInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxPerStageDescriptorInlineUniformBlocks.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorInlineUniformBlocks(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorInlineUniformBlocks.set(segment, 0L, index, value); }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxPerStageDescriptorInlineUniformBlocks(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorInlineUniformBlocks(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxPerStageDescriptorInlineUniformBlocks(int value) { maxPerStageDescriptorInlineUniformBlocks(this.segment(), 0L, value); return this; }
 
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`}
-    public @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment()); }
+    public int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() { return maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(int value) { maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), 0L, value); return this; }
 
     /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetInlineUniformBlocks.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetInlineUniformBlocks.get(segment, 0L, index); }
     /// {@return `maxDescriptorSetInlineUniformBlocks`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxDescriptorSetInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxDescriptorSetInlineUniformBlocks`}
-    public @CType("uint32_t") int maxDescriptorSetInlineUniformBlocks() { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetInlineUniformBlocks(this.segment()); }
+    public int maxDescriptorSetInlineUniformBlocks() { return maxDescriptorSetInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxDescriptorSetInlineUniformBlocks.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxDescriptorSetInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetInlineUniformBlocks(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxDescriptorSetInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetInlineUniformBlocks.set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxDescriptorSetInlineUniformBlocks(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetInlineUniformBlocks(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxDescriptorSetInlineUniformBlocks(int value) { maxDescriptorSetInlineUniformBlocks(this.segment(), 0L, value); return this; }
 
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.get(segment, 0L, index); }
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`}
-    public @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment()); }
+    public int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() { return maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), 0L); }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, long index, int value) { VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks.set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxDescriptorSetUpdateAfterBindInlineUniformBlocks(int value) { maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), 0L, value); return this; }
 
     /// {@return `maxInlineUniformTotalSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxInlineUniformTotalSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformTotalSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxInlineUniformTotalSize(MemorySegment segment, long index) { return (int) VH_maxInlineUniformTotalSize.get(segment, 0L, index); }
     /// {@return `maxInlineUniformTotalSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxInlineUniformTotalSize(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformTotalSize(segment, 0L); }
-    /// {@return `maxInlineUniformTotalSize`}
-    public @CType("uint32_t") int maxInlineUniformTotalSize() { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformTotalSize(this.segment()); }
+    public int maxInlineUniformTotalSize() { return maxInlineUniformTotalSize(this.segment(), 0L); }
     /// Sets `maxInlineUniformTotalSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxInlineUniformTotalSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxInlineUniformTotalSize.set(segment, 0L, index, value); }
-    /// Sets `maxInlineUniformTotalSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxInlineUniformTotalSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformTotalSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxInlineUniformTotalSize(MemorySegment segment, long index, int value) { VH_maxInlineUniformTotalSize.set(segment, 0L, index, value); }
     /// Sets `maxInlineUniformTotalSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxInlineUniformTotalSize(@CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformTotalSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxInlineUniformTotalSize(int value) { maxInlineUniformTotalSize(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct8BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct8BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct8BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct8BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProduct8BitUnsignedAccelerated() { return integerDotProduct8BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct8BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitUnsignedAccelerated(int value) { integerDotProduct8BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct8BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct8BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct8BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct8BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitSignedAccelerated(this.segment()); }
+    public int integerDotProduct8BitSignedAccelerated() { return integerDotProduct8BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct8BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct8BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct8BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitSignedAccelerated(int value) { integerDotProduct8BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct8BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct8BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct8BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct8BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProduct8BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProduct8BitMixedSignednessAccelerated() { return integerDotProduct8BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct8BitMixedSignednessAccelerated(int value) { integerDotProduct8BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct4x8BitPackedUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment()); }
+    public int integerDotProduct4x8BitPackedUnsignedAccelerated() { return integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedUnsignedAccelerated(int value) { integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct4x8BitPackedSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct4x8BitPackedSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct4x8BitPackedSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedSignedAccelerated(this.segment()); }
+    public int integerDotProduct4x8BitPackedSignedAccelerated() { return integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedSignedAccelerated(int value) { integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProduct4x8BitPackedMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProduct4x8BitPackedMixedSignednessAccelerated() { return integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct4x8BitPackedMixedSignednessAccelerated(int value) { integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct16BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct16BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct16BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct16BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProduct16BitUnsignedAccelerated() { return integerDotProduct16BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct16BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitUnsignedAccelerated(int value) { integerDotProduct16BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct16BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct16BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct16BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct16BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitSignedAccelerated(this.segment()); }
+    public int integerDotProduct16BitSignedAccelerated() { return integerDotProduct16BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct16BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct16BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct16BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitSignedAccelerated(int value) { integerDotProduct16BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct16BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct16BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct16BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct16BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProduct16BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProduct16BitMixedSignednessAccelerated() { return integerDotProduct16BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct16BitMixedSignednessAccelerated(int value) { integerDotProduct16BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct32BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct32BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct32BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct32BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProduct32BitUnsignedAccelerated() { return integerDotProduct32BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct32BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitUnsignedAccelerated(int value) { integerDotProduct32BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct32BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct32BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct32BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct32BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitSignedAccelerated(this.segment()); }
+    public int integerDotProduct32BitSignedAccelerated() { return integerDotProduct32BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct32BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct32BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct32BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitSignedAccelerated(int value) { integerDotProduct32BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct32BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct32BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct32BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct32BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProduct32BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProduct32BitMixedSignednessAccelerated() { return integerDotProduct32BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct32BitMixedSignednessAccelerated(int value) { integerDotProduct32BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct64BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct64BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct64BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct64BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProduct64BitUnsignedAccelerated() { return integerDotProduct64BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct64BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitUnsignedAccelerated(int value) { integerDotProduct64BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct64BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct64BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct64BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProduct64BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitSignedAccelerated(this.segment()); }
+    public int integerDotProduct64BitSignedAccelerated() { return integerDotProduct64BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct64BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct64BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct64BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitSignedAccelerated(int value) { integerDotProduct64BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProduct64BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProduct64BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProduct64BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProduct64BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProduct64BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProduct64BitMixedSignednessAccelerated() { return integerDotProduct64BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProduct64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProduct64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProduct64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProduct64BitMixedSignednessAccelerated(int value) { integerDotProduct64BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating8BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(int value) { integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating8BitSignedAccelerated() { return integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating8BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitSignedAccelerated(int value) { integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(int value) { integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(int value) { integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating16BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(int value) { integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating16BitSignedAccelerated() { return integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating16BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitSignedAccelerated(int value) { integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating32BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(int value) { integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating32BitSignedAccelerated() { return integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating32BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitSignedAccelerated(int value) { integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating64BitUnsignedAccelerated() { return integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(int value) { integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitSignedAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitSignedAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating64BitSignedAccelerated() { return integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitSignedAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating64BitSignedAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitSignedAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitSignedAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitSignedAccelerated(int value) { integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index) { return (int) VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.get(segment, 0L, index); }
     /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(segment, 0L); }
-    /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated`}
-    public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated() { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment()); }
+    public int integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated() { return integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), 0L); }
     /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
-    /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(MemorySegment segment, long index, int value) { VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated.set(segment, 0L, index, value); }
     /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
     /// {@return `storageTexelBufferOffsetAlignmentBytes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_storageTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_storageTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
     /// {@return `storageTexelBufferOffsetAlignmentBytes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetAlignmentBytes(segment, 0L); }
-    /// {@return `storageTexelBufferOffsetAlignmentBytes`}
-    public @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytes() { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetAlignmentBytes(this.segment()); }
+    public long storageTexelBufferOffsetAlignmentBytes() { return storageTexelBufferOffsetAlignmentBytes(this.segment(), 0L); }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_storageTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
-    /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetAlignmentBytes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_storageTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties storageTexelBufferOffsetAlignmentBytes(@CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetAlignmentBytes(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties storageTexelBufferOffsetAlignmentBytes(long value) { storageTexelBufferOffsetAlignmentBytes(this.segment(), 0L, value); return this; }
 
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_storageTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_storageTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetSingleTexelAlignment(segment, 0L); }
-    /// {@return `storageTexelBufferOffsetSingleTexelAlignment`}
-    public @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignment() { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetSingleTexelAlignment(this.segment()); }
+    public int storageTexelBufferOffsetSingleTexelAlignment() { return storageTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L); }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_storageTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
-    /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetSingleTexelAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_storageTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties storageTexelBufferOffsetSingleTexelAlignment(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties storageTexelBufferOffsetSingleTexelAlignment(int value) { storageTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `uniformTexelBufferOffsetAlignmentBytes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_uniformTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index) { return (long) VH_uniformTexelBufferOffsetAlignmentBytes.get(segment, 0L, index); }
     /// {@return `uniformTexelBufferOffsetAlignmentBytes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetAlignmentBytes(segment, 0L); }
-    /// {@return `uniformTexelBufferOffsetAlignmentBytes`}
-    public @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytes() { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetAlignmentBytes(this.segment()); }
+    public long uniformTexelBufferOffsetAlignmentBytes() { return uniformTexelBufferOffsetAlignmentBytes(this.segment(), 0L); }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_uniformTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
-    /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetAlignmentBytes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, long index, long value) { VH_uniformTexelBufferOffsetAlignmentBytes.set(segment, 0L, index, value); }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties uniformTexelBufferOffsetAlignmentBytes(@CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetAlignmentBytes(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties uniformTexelBufferOffsetAlignmentBytes(long value) { uniformTexelBufferOffsetAlignmentBytes(this.segment(), 0L, value); return this; }
 
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_uniformTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index) { return (int) VH_uniformTexelBufferOffsetSingleTexelAlignment.get(segment, 0L, index); }
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetSingleTexelAlignment(segment, 0L); }
-    /// {@return `uniformTexelBufferOffsetSingleTexelAlignment`}
-    public @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignment() { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetSingleTexelAlignment(this.segment()); }
+    public int uniformTexelBufferOffsetSingleTexelAlignment() { return uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L); }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_uniformTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
-    /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetSingleTexelAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, long index, int value) { VH_uniformTexelBufferOffsetSingleTexelAlignment.set(segment, 0L, index, value); }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties uniformTexelBufferOffsetSingleTexelAlignment(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties uniformTexelBufferOffsetSingleTexelAlignment(int value) { uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `maxBufferSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxBufferSize(MemorySegment segment, long index) { return (long) VH_maxBufferSize.get(segment, 0L, index); }
     /// {@return `maxBufferSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_maxBufferSize(MemorySegment segment) { return VkPhysicalDeviceVulkan13Properties.get_maxBufferSize(segment, 0L); }
-    /// {@return `maxBufferSize`}
-    public @CType("VkDeviceSize") long maxBufferSize() { return VkPhysicalDeviceVulkan13Properties.get_maxBufferSize(this.segment()); }
+    public long maxBufferSize() { return maxBufferSize(this.segment(), 0L); }
     /// Sets `maxBufferSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxBufferSize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_maxBufferSize.set(segment, 0L, index, value); }
-    /// Sets `maxBufferSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxBufferSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_maxBufferSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxBufferSize(MemorySegment segment, long index, long value) { VH_maxBufferSize.set(segment, 0L, index, value); }
     /// Sets `maxBufferSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan13Properties maxBufferSize(@CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_maxBufferSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceVulkan13Properties maxBufferSize(long value) { maxBufferSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceVulkan13Properties].
     public static final class Buffer extends VkPhysicalDeviceVulkan13Properties {
@@ -1476,427 +1229,427 @@ public sealed class VkPhysicalDeviceVulkan13Properties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan13Properties.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan13Properties.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `minSubgroupSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int minSubgroupSizeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_minSubgroupSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int minSubgroupSizeAt(long index) { return minSubgroupSize(this.segment(), index); }
         /// Sets `minSubgroupSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minSubgroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_minSubgroupSize(this.segment(), index, value); return this; }
+        public Buffer minSubgroupSizeAt(long index, int value) { minSubgroupSize(this.segment(), index, value); return this; }
 
         /// {@return `maxSubgroupSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxSubgroupSizeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxSubgroupSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxSubgroupSizeAt(long index) { return maxSubgroupSize(this.segment(), index); }
         /// Sets `maxSubgroupSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxSubgroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxSubgroupSize(this.segment(), index, value); return this; }
+        public Buffer maxSubgroupSizeAt(long index, int value) { maxSubgroupSize(this.segment(), index, value); return this; }
 
         /// {@return `maxComputeWorkgroupSubgroups` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxComputeWorkgroupSubgroupsAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxComputeWorkgroupSubgroups(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxComputeWorkgroupSubgroupsAt(long index) { return maxComputeWorkgroupSubgroups(this.segment(), index); }
         /// Sets `maxComputeWorkgroupSubgroups` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxComputeWorkgroupSubgroupsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxComputeWorkgroupSubgroups(this.segment(), index, value); return this; }
+        public Buffer maxComputeWorkgroupSubgroupsAt(long index, int value) { maxComputeWorkgroupSubgroups(this.segment(), index, value); return this; }
 
         /// {@return `requiredSubgroupSizeStages` at the given index}
-        /// @param index the index
-        public @CType("VkShaderStageFlags") int requiredSubgroupSizeStagesAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_requiredSubgroupSizeStages(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int requiredSubgroupSizeStagesAt(long index) { return requiredSubgroupSizeStages(this.segment(), index); }
         /// Sets `requiredSubgroupSizeStages` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer requiredSubgroupSizeStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceVulkan13Properties.set_requiredSubgroupSizeStages(this.segment(), index, value); return this; }
+        public Buffer requiredSubgroupSizeStagesAt(long index, int value) { requiredSubgroupSizeStages(this.segment(), index, value); return this; }
 
         /// {@return `maxInlineUniformBlockSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxInlineUniformBlockSizeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformBlockSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxInlineUniformBlockSizeAt(long index) { return maxInlineUniformBlockSize(this.segment(), index); }
         /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxInlineUniformBlockSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformBlockSize(this.segment(), index, value); return this; }
+        public Buffer maxInlineUniformBlockSizeAt(long index, int value) { maxInlineUniformBlockSize(this.segment(), index, value); return this; }
 
         /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
         /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxPerStageDescriptorInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
+        public Buffer maxPerStageDescriptorInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
 
         /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
         /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
+        public Buffer maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
 
         /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxDescriptorSetInlineUniformBlocksAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxDescriptorSetInlineUniformBlocksAt(long index) { return maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
         /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxDescriptorSetInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
+        public Buffer maxDescriptorSetInlineUniformBlocksAt(long index, int value) { maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
 
         /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
         /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
+        public Buffer maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
 
         /// {@return `maxInlineUniformTotalSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxInlineUniformTotalSizeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxInlineUniformTotalSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxInlineUniformTotalSizeAt(long index) { return maxInlineUniformTotalSize(this.segment(), index); }
         /// Sets `maxInlineUniformTotalSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxInlineUniformTotalSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVulkan13Properties.set_maxInlineUniformTotalSize(this.segment(), index, value); return this; }
+        public Buffer maxInlineUniformTotalSizeAt(long index, int value) { maxInlineUniformTotalSize(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct8BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct8BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct8BitUnsignedAcceleratedAt(long index) { return integerDotProduct8BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct8BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct8BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct8BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct8BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct8BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct8BitSignedAcceleratedAt(long index) { return integerDotProduct8BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct8BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct8BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct8BitSignedAcceleratedAt(long index, int value) { integerDotProduct8BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct8BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct8BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct8BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct8BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct4x8BitPackedSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct4x8BitPackedSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct16BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct16BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct16BitUnsignedAcceleratedAt(long index) { return integerDotProduct16BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct16BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct16BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct16BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct16BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct16BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct16BitSignedAcceleratedAt(long index) { return integerDotProduct16BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct16BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct16BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct16BitSignedAcceleratedAt(long index, int value) { integerDotProduct16BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct16BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct16BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct16BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct16BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct32BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct32BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct32BitUnsignedAcceleratedAt(long index) { return integerDotProduct32BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct32BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct32BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct32BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct32BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct32BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct32BitSignedAcceleratedAt(long index) { return integerDotProduct32BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct32BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct32BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct32BitSignedAcceleratedAt(long index, int value) { integerDotProduct32BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct32BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct32BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct32BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct32BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct64BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct64BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct64BitUnsignedAcceleratedAt(long index) { return integerDotProduct64BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct64BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct64BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct64BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct64BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct64BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct64BitSignedAcceleratedAt(long index) { return integerDotProduct64BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct64BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct64BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct64BitSignedAcceleratedAt(long index, int value) { integerDotProduct64BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProduct64BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProduct64BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProduct64BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProduct64BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProduct64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index); }
         /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+        public Buffer integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
         /// {@return `storageTexelBufferOffsetAlignmentBytes` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetAlignmentBytes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long storageTexelBufferOffsetAlignmentBytesAt(long index) { return storageTexelBufferOffsetAlignmentBytes(this.segment(), index); }
         /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storageTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
+        public Buffer storageTexelBufferOffsetAlignmentBytesAt(long index, long value) { storageTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
 
         /// {@return `storageTexelBufferOffsetSingleTexelAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int storageTexelBufferOffsetSingleTexelAlignmentAt(long index) { return storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
         /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer storageTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
+        public Buffer storageTexelBufferOffsetSingleTexelAlignmentAt(long index, int value) { storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
 
         /// {@return `uniformTexelBufferOffsetAlignmentBytes` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long uniformTexelBufferOffsetAlignmentBytesAt(long index) { return uniformTexelBufferOffsetAlignmentBytes(this.segment(), index); }
         /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer uniformTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
+        public Buffer uniformTexelBufferOffsetAlignmentBytesAt(long index, long value) { uniformTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
 
         /// {@return `uniformTexelBufferOffsetSingleTexelAlignment` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int uniformTexelBufferOffsetSingleTexelAlignmentAt(long index) { return uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
         /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer uniformTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan13Properties.set_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
+        public Buffer uniformTexelBufferOffsetSingleTexelAlignmentAt(long index, int value) { uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
 
         /// {@return `maxBufferSize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long maxBufferSizeAt(long index) { return VkPhysicalDeviceVulkan13Properties.get_maxBufferSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxBufferSizeAt(long index) { return maxBufferSize(this.segment(), index); }
         /// Sets `maxBufferSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxBufferSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceVulkan13Properties.set_maxBufferSize(this.segment(), index, value); return this; }
+        public Buffer maxBufferSizeAt(long index, long value) { maxBufferSize(this.segment(), index, value); return this; }
 
     }
 }

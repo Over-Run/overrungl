@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRVideoEncodeH264 {
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR = 0x00000001;
@@ -75,6 +70,6 @@ public final class VKKHRVideoEncodeH264 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000038013;
     public static final int VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR = 0x00010000;
 
-    private VKKHRVideoEncodeH264() { }
+    private VKKHRVideoEncodeH264() {}
 
 }

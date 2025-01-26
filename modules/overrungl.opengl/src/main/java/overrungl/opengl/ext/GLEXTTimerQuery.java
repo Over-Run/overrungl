@@ -19,26 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTTimerQuery {
     public static final int GL_TIME_ELAPSED_EXT = 0x88BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetQueryObjecti64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetQueryObjectui64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetQueryObjecti64vEXT,
-            FD_glGetQueryObjectui64vEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjecti64vEXT);
-        public static final MethodHandle MH_glGetQueryObjectui64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjectui64vEXT);
+        public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectui64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetQueryObjecti64vEXT;
         public final MemorySegment PFN_glGetQueryObjectui64vEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -51,16 +40,22 @@ public final class GLEXTTimerQuery {
         this.handles = new Handles(func);
     }
 
-    public void GetQueryObjecti64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
+    /// ```
+    /// void glGetQueryObjecti64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint64* params);
+    /// ```
+    public void GetQueryObjecti64vEXT(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
         try { Handles.MH_glGetQueryObjecti64vEXT.invokeExact(handles.PFN_glGetQueryObjecti64vEXT, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64vEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64vEXT", e); }
     }
 
-    public void GetQueryObjectui64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
+    /// ```
+    /// void glGetQueryObjectui64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint64* params);
+    /// ```
+    public void GetQueryObjectui64vEXT(int id, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
         try { Handles.MH_glGetQueryObjectui64vEXT.invokeExact(handles.PFN_glGetQueryObjectui64vEXT, id, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64vEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64vEXT", e); }
     }
 
 }

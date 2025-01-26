@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLNVConservativeRaster {
     public static final int GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV = 0x9348;
     public static final int GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV = 0x9349;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSubpixelPrecisionBiasNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSubpixelPrecisionBiasNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSubpixelPrecisionBiasNV = RuntimeHelper.downcall(Descriptors.FD_glSubpixelPrecisionBiasNV);
+        public static final MethodHandle MH_glSubpixelPrecisionBiasNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSubpixelPrecisionBiasNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSubpixelPrecisionBiasNV = func.invoke("glSubpixelPrecisionBiasNV");
@@ -49,10 +40,13 @@ public final class GLNVConservativeRaster {
         this.handles = new Handles(func);
     }
 
-    public void SubpixelPrecisionBiasNV(@CType("GLuint") int xbits, @CType("GLuint") int ybits) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new SymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");
+    /// ```
+    /// void glSubpixelPrecisionBiasNV((unsigned int) GLuint xbits, (unsigned int) GLuint ybits);
+    /// ```
+    public void SubpixelPrecisionBiasNV(int xbits, int ybits) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new SymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");
         try { Handles.MH_glSubpixelPrecisionBiasNV.invokeExact(handles.PFN_glSubpixelPrecisionBiasNV, xbits, ybits); }
-        catch (Throwable e) { throw new RuntimeException("error in glSubpixelPrecisionBiasNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SubpixelPrecisionBiasNV", e); }
     }
 
 }

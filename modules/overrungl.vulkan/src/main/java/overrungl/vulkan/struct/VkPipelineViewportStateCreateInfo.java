@@ -15,46 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### viewportCount
-/// [VarHandle][#VH_viewportCount] - [Getter][#viewportCount()] - [Setter][#viewportCount(int)]
-/// ### pViewports
-/// [VarHandle][#VH_pViewports] - [Getter][#pViewports()] - [Setter][#pViewports(java.lang.foreign.MemorySegment)]
-/// ### scissorCount
-/// [VarHandle][#VH_scissorCount] - [Getter][#scissorCount()] - [Setter][#scissorCount(int)]
-/// ### pScissors
-/// [VarHandle][#VH_pScissors] - [Getter][#pScissors()] - [Setter][#pScissors(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineViewportStateCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkPipelineViewportStateCreateFlags flags;
-///     uint32_t viewportCount;
-///     const VkViewport * pViewports;
-///     uint32_t scissorCount;
-///     const VkRect2D * pScissors;
-/// } VkPipelineViewportStateCreateInfo;
 /// ```
-public sealed class VkPipelineViewportStateCreateInfo extends Struct {
+/// struct VkPipelineViewportStateCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkPipelineViewportStateCreateFlags flags;
+///     uint32_t viewportCount;
+///     const VkViewport* pViewports;
+///     uint32_t scissorCount;
+///     const VkRect2D* pScissors;
+/// };
+/// ```
+public sealed class VkPipelineViewportStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineViewportStateCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -63,19 +47,47 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
         ValueLayout.JAVA_INT.withName("scissorCount"),
         ValueLayout.ADDRESS.withName("pScissors")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `viewportCount`.
+    public static final long OFFSET_viewportCount = LAYOUT.byteOffset(PathElement.groupElement("viewportCount"));
+    /// The memory layout of `viewportCount`.
+    public static final MemoryLayout LAYOUT_viewportCount = LAYOUT.select(PathElement.groupElement("viewportCount"));
+    /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_viewportCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount"));
-    /// The [VarHandle] of `pViewports` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pViewports`.
+    public static final long OFFSET_pViewports = LAYOUT.byteOffset(PathElement.groupElement("pViewports"));
+    /// The memory layout of `pViewports`.
+    public static final MemoryLayout LAYOUT_pViewports = LAYOUT.select(PathElement.groupElement("pViewports"));
+    /// The [VarHandle] of `pViewports` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewports = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewports"));
-    /// The [VarHandle] of `scissorCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `scissorCount`.
+    public static final long OFFSET_scissorCount = LAYOUT.byteOffset(PathElement.groupElement("scissorCount"));
+    /// The memory layout of `scissorCount`.
+    public static final MemoryLayout LAYOUT_scissorCount = LAYOUT.select(PathElement.groupElement("scissorCount"));
+    /// The [VarHandle] of `scissorCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_scissorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("scissorCount"));
-    /// The [VarHandle] of `pScissors` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pScissors`.
+    public static final long OFFSET_pScissors = LAYOUT.byteOffset(PathElement.groupElement("pScissors"));
+    /// The memory layout of `pScissors`.
+    public static final MemoryLayout LAYOUT_pScissors = LAYOUT.select(PathElement.groupElement("pScissors"));
+    /// The [VarHandle] of `pScissors` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pScissors = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pScissors"));
 
     /// Creates `VkPipelineViewportStateCreateInfo` with the given segment.
@@ -85,19 +97,14 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
     /// Creates `VkPipelineViewportStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineViewportStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportStateCreateInfo(segment); }
-
-    /// Creates `VkPipelineViewportStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineViewportStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineViewportStateCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineViewportStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineViewportStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineViewportStateCreateInfo` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineViewportStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineViewportStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineViewportStateCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineViewportStateCreateInfo`
-    public static VkPipelineViewportStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineViewportStateCreateFlags") int flags, @CType("uint32_t") int viewportCount, @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewports, @CType("uint32_t") int scissorCount, @CType("const VkRect2D *") java.lang.foreign.MemorySegment pScissors) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).viewportCount(viewportCount).pViewports(pViewports).scissorCount(scissorCount).pScissors(pScissors); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineViewportStateCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineViewportStateCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineViewportStateCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineViewportStateCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineViewportStateCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineViewportStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineViewportStateCreateFlags") int flags() { return VkPipelineViewportStateCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineViewportStateCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineViewportStateCreateFlags") int value) { VkPipelineViewportStateCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo flags(@CType("VkPipelineViewportStateCreateFlags") int value) { VkPipelineViewportStateCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `viewportCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
     /// {@return `viewportCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_viewportCount(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_viewportCount(segment, 0L); }
-    /// {@return `viewportCount`}
-    public @CType("uint32_t") int viewportCount() { return VkPipelineViewportStateCreateInfo.get_viewportCount(this.segment()); }
+    public int viewportCount() { return viewportCount(this.segment(), 0L); }
     /// Sets `viewportCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_viewportCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_viewportCount.set(segment, 0L, index, value); }
-    /// Sets `viewportCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_viewportCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_viewportCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.set(segment, 0L, index, value); }
     /// Sets `viewportCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo viewportCount(@CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_viewportCount(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo viewportCount(int value) { viewportCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pViewports` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkViewport *") java.lang.foreign.MemorySegment get_pViewports(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pViewports.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pViewports(MemorySegment segment, long index) { return (MemorySegment) VH_pViewports.get(segment, 0L, index); }
     /// {@return `pViewports`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkViewport *") java.lang.foreign.MemorySegment get_pViewports(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_pViewports(segment, 0L); }
-    /// {@return `pViewports`}
-    public @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewports() { return VkPipelineViewportStateCreateInfo.get_pViewports(this.segment()); }
+    public MemorySegment pViewports() { return pViewports(this.segment(), 0L); }
     /// Sets `pViewports` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pViewports(MemorySegment segment, long index, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VH_pViewports.set(segment, 0L, index, value); }
-    /// Sets `pViewports` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pViewports(MemorySegment segment, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pViewports(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pViewports(MemorySegment segment, long index, MemorySegment value) { VH_pViewports.set(segment, 0L, index, value); }
     /// Sets `pViewports` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo pViewports(@CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pViewports(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo pViewports(MemorySegment value) { pViewports(this.segment(), 0L, value); return this; }
 
     /// {@return `scissorCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_scissorCount(MemorySegment segment, long index) { return (int) VH_scissorCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int scissorCount(MemorySegment segment, long index) { return (int) VH_scissorCount.get(segment, 0L, index); }
     /// {@return `scissorCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_scissorCount(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_scissorCount(segment, 0L); }
-    /// {@return `scissorCount`}
-    public @CType("uint32_t") int scissorCount() { return VkPipelineViewportStateCreateInfo.get_scissorCount(this.segment()); }
+    public int scissorCount() { return scissorCount(this.segment(), 0L); }
     /// Sets `scissorCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_scissorCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_scissorCount.set(segment, 0L, index, value); }
-    /// Sets `scissorCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_scissorCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_scissorCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void scissorCount(MemorySegment segment, long index, int value) { VH_scissorCount.set(segment, 0L, index, value); }
     /// Sets `scissorCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo scissorCount(@CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_scissorCount(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo scissorCount(int value) { scissorCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pScissors` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkRect2D *") java.lang.foreign.MemorySegment get_pScissors(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pScissors.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pScissors(MemorySegment segment, long index) { return (MemorySegment) VH_pScissors.get(segment, 0L, index); }
     /// {@return `pScissors`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkRect2D *") java.lang.foreign.MemorySegment get_pScissors(MemorySegment segment) { return VkPipelineViewportStateCreateInfo.get_pScissors(segment, 0L); }
-    /// {@return `pScissors`}
-    public @CType("const VkRect2D *") java.lang.foreign.MemorySegment pScissors() { return VkPipelineViewportStateCreateInfo.get_pScissors(this.segment()); }
+    public MemorySegment pScissors() { return pScissors(this.segment(), 0L); }
     /// Sets `pScissors` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pScissors(MemorySegment segment, long index, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VH_pScissors.set(segment, 0L, index, value); }
-    /// Sets `pScissors` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pScissors(MemorySegment segment, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pScissors(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pScissors(MemorySegment segment, long index, MemorySegment value) { VH_pScissors.set(segment, 0L, index, value); }
     /// Sets `pScissors` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportStateCreateInfo pScissors(@CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pScissors(this.segment(), value); return this; }
+    public VkPipelineViewportStateCreateInfo pScissors(MemorySegment value) { pScissors(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineViewportStateCreateInfo].
     public static final class Buffer extends VkPipelineViewportStateCreateInfo {
@@ -316,67 +269,67 @@ public sealed class VkPipelineViewportStateCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineViewportStateCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineViewportStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineViewportStateCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineViewportStateCreateFlags") int flagsAt(long index) { return VkPipelineViewportStateCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineViewportStateCreateFlags") int value) { VkPipelineViewportStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `viewportCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int viewportCountAt(long index) { return VkPipelineViewportStateCreateInfo.get_viewportCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int viewportCountAt(long index) { return viewportCount(this.segment(), index); }
         /// Sets `viewportCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer viewportCountAt(long index, @CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_viewportCount(this.segment(), index, value); return this; }
+        public Buffer viewportCountAt(long index, int value) { viewportCount(this.segment(), index, value); return this; }
 
         /// {@return `pViewports` at the given index}
-        /// @param index the index
-        public @CType("const VkViewport *") java.lang.foreign.MemorySegment pViewportsAt(long index) { return VkPipelineViewportStateCreateInfo.get_pViewports(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pViewportsAt(long index) { return pViewports(this.segment(), index); }
         /// Sets `pViewports` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pViewportsAt(long index, @CType("const VkViewport *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pViewports(this.segment(), index, value); return this; }
+        public Buffer pViewportsAt(long index, MemorySegment value) { pViewports(this.segment(), index, value); return this; }
 
         /// {@return `scissorCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int scissorCountAt(long index) { return VkPipelineViewportStateCreateInfo.get_scissorCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int scissorCountAt(long index) { return scissorCount(this.segment(), index); }
         /// Sets `scissorCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer scissorCountAt(long index, @CType("uint32_t") int value) { VkPipelineViewportStateCreateInfo.set_scissorCount(this.segment(), index, value); return this; }
+        public Buffer scissorCountAt(long index, int value) { scissorCount(this.segment(), index, value); return this; }
 
         /// {@return `pScissors` at the given index}
-        /// @param index the index
-        public @CType("const VkRect2D *") java.lang.foreign.MemorySegment pScissorsAt(long index) { return VkPipelineViewportStateCreateInfo.get_pScissors(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pScissorsAt(long index) { return pScissors(this.segment(), index); }
         /// Sets `pScissors` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pScissorsAt(long index, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineViewportStateCreateInfo.set_pScissors(this.segment(), index, value); return this; }
+        public Buffer pScissorsAt(long index, MemorySegment value) { pScissors(this.segment(), index, value); return this; }
 
     }
 }

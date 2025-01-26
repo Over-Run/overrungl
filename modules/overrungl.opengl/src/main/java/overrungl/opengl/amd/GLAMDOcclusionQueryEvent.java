@@ -19,8 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -32,15 +30,8 @@ public final class GLAMDOcclusionQueryEvent {
     public static final int GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = 0x00000008;
     public static final int GL_QUERY_ALL_EVENT_BITS_AMD = 0xFFFFFFFF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryObjectParameteruiAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glQueryObjectParameteruiAMD
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryObjectParameteruiAMD = RuntimeHelper.downcall(Descriptors.FD_glQueryObjectParameteruiAMD);
+        public static final MethodHandle MH_glQueryObjectParameteruiAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glQueryObjectParameteruiAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryObjectParameteruiAMD = func.invoke("glQueryObjectParameteruiAMD");
@@ -51,10 +42,13 @@ public final class GLAMDOcclusionQueryEvent {
         this.handles = new Handles(func);
     }
 
-    public void QueryObjectParameteruiAMD(@CType("GLenum") int target, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
+    /// ```
+    /// void glQueryObjectParameteruiAMD((unsigned int) GLenum target, (unsigned int) GLuint id, (unsigned int) GLenum pname, (unsigned int) GLuint param);
+    /// ```
+    public void QueryObjectParameteruiAMD(int target, int id, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
         try { Handles.MH_glQueryObjectParameteruiAMD.invokeExact(handles.PFN_glQueryObjectParameteruiAMD, target, id, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryObjectParameteruiAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueryObjectParameteruiAMD", e); }
     }
 
 }

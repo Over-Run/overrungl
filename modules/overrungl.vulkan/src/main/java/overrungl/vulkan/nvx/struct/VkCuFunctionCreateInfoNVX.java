@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nvx.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### module
-/// [VarHandle][#VH_module] - [Getter][#module()] - [Setter][#module(java.lang.foreign.MemorySegment)]
-/// ### pName
-/// [VarHandle][#VH_pName] - [Getter][#pName()] - [Setter][#pName(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkCuFunctionCreateInfoNVX {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkCuModuleNVX module;
-///     const char * pName;
-/// } VkCuFunctionCreateInfoNVX;
 /// ```
-public sealed class VkCuFunctionCreateInfoNVX extends Struct {
+/// struct VkCuFunctionCreateInfoNVX {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint64_t) VkCuModuleNVX module;
+///     const char* pName;
+/// };
+/// ```
+public sealed class VkCuFunctionCreateInfoNVX extends GroupType {
     /// The struct layout of `VkCuFunctionCreateInfoNVX`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("module"),
+        ValueLayout.JAVA_LONG.withName("module"),
         ValueLayout.ADDRESS.withName("pName")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `module` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `module`.
+    public static final long OFFSET_module = LAYOUT.byteOffset(PathElement.groupElement("module"));
+    /// The memory layout of `module`.
+    public static final MemoryLayout LAYOUT_module = LAYOUT.select(PathElement.groupElement("module"));
+    /// The [VarHandle] of `module` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_module = LAYOUT.arrayElementVarHandle(PathElement.groupElement("module"));
-    /// The [VarHandle] of `pName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pName`.
+    public static final long OFFSET_pName = LAYOUT.byteOffset(PathElement.groupElement("pName"));
+    /// The memory layout of `pName`.
+    public static final MemoryLayout LAYOUT_pName = LAYOUT.select(PathElement.groupElement("pName"));
+    /// The [VarHandle] of `pName` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pName"));
 
     /// Creates `VkCuFunctionCreateInfoNVX` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkCuFunctionCreateInfoNVX extends Struct {
     /// Creates `VkCuFunctionCreateInfoNVX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCuFunctionCreateInfoNVX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCuFunctionCreateInfoNVX(segment); }
-
-    /// Creates `VkCuFunctionCreateInfoNVX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCuFunctionCreateInfoNVX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCuFunctionCreateInfoNVX ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCuFunctionCreateInfoNVX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkCuFunctionCreateInfoNVX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCuFunctionCreateInfoNVX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkCuFunctionCreateInfoNVX` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkCuFunctionCreateInfoNVX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCuFunctionCreateInfoNVX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkCuFunctionCreateInfoNVX extends Struct {
     /// @return the allocated `VkCuFunctionCreateInfoNVX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCuFunctionCreateInfoNVX` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCuFunctionCreateInfoNVX`
-    public static VkCuFunctionCreateInfoNVX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment module, @CType("const char *") java.lang.foreign.MemorySegment pName) { return alloc(allocator).sType(sType).pNext(pNext).module(module).pName(pName); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkCuFunctionCreateInfoNVX extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCuFunctionCreateInfoNVX.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkCuFunctionCreateInfoNVX.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCuFunctionCreateInfoNVX.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuFunctionCreateInfoNVX sType(@CType("VkStructureType") int value) { VkCuFunctionCreateInfoNVX.set_sType(this.segment(), value); return this; }
+    public VkCuFunctionCreateInfoNVX sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCuFunctionCreateInfoNVX.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCuFunctionCreateInfoNVX.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuFunctionCreateInfoNVX pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pNext(this.segment(), value); return this; }
+    public VkCuFunctionCreateInfoNVX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `module` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment get_module(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_module.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long module(MemorySegment segment, long index) { return (long) VH_module.get(segment, 0L, index); }
     /// {@return `module`}
-    /// @param segment the segment of the struct
-    public static @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment get_module(MemorySegment segment) { return VkCuFunctionCreateInfoNVX.get_module(segment, 0L); }
-    /// {@return `module`}
-    public @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment module() { return VkCuFunctionCreateInfoNVX.get_module(this.segment()); }
+    public long module() { return module(this.segment(), 0L); }
     /// Sets `module` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_module(MemorySegment segment, long index, @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment value) { VH_module.set(segment, 0L, index, value); }
-    /// Sets `module` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_module(MemorySegment segment, @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_module(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void module(MemorySegment segment, long index, long value) { VH_module.set(segment, 0L, index, value); }
     /// Sets `module` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuFunctionCreateInfoNVX module(@CType("VkCuModuleNVX") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_module(this.segment(), value); return this; }
+    public VkCuFunctionCreateInfoNVX module(long value) { module(this.segment(), 0L, value); return this; }
 
     /// {@return `pName` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pName(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pName.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pName(MemorySegment segment, long index) { return (MemorySegment) VH_pName.get(segment, 0L, index); }
     /// {@return `pName`}
-    /// @param segment the segment of the struct
-    public static @CType("const char *") java.lang.foreign.MemorySegment get_pName(MemorySegment segment) { return VkCuFunctionCreateInfoNVX.get_pName(segment, 0L); }
-    /// {@return `pName`}
-    public @CType("const char *") java.lang.foreign.MemorySegment pName() { return VkCuFunctionCreateInfoNVX.get_pName(this.segment()); }
+    public MemorySegment pName() { return pName(this.segment(), 0L); }
     /// Sets `pName` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pName(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_pName.set(segment, 0L, index, value); }
-    /// Sets `pName` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pName(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pName(MemorySegment segment, long index, MemorySegment value) { VH_pName.set(segment, 0L, index, value); }
     /// Sets `pName` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCuFunctionCreateInfoNVX pName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pName(this.segment(), value); return this; }
+    public VkCuFunctionCreateInfoNVX pName(MemorySegment value) { pName(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkCuFunctionCreateInfoNVX].
     public static final class Buffer extends VkCuFunctionCreateInfoNVX {
@@ -229,40 +197,40 @@ public sealed class VkCuFunctionCreateInfoNVX extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkCuFunctionCreateInfoNVX.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCuFunctionCreateInfoNVX.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCuFunctionCreateInfoNVX.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `module` at the given index}
-        /// @param index the index
-        public @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment moduleAt(long index) { return VkCuFunctionCreateInfoNVX.get_module(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long moduleAt(long index) { return module(this.segment(), index); }
         /// Sets `module` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer moduleAt(long index, @CType("VkCuModuleNVX") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_module(this.segment(), index, value); return this; }
+        public Buffer moduleAt(long index, long value) { module(this.segment(), index, value); return this; }
 
         /// {@return `pName` at the given index}
-        /// @param index the index
-        public @CType("const char *") java.lang.foreign.MemorySegment pNameAt(long index) { return VkCuFunctionCreateInfoNVX.get_pName(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNameAt(long index) { return pName(this.segment(), index); }
         /// Sets `pName` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkCuFunctionCreateInfoNVX.set_pName(this.segment(), index, value); return this; }
+        public Buffer pNameAt(long index, MemorySegment value) { pName(this.segment(), index, value); return this; }
 
     }
 }

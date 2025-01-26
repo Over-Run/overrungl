@@ -15,59 +15,64 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### headerSize
-/// [VarHandle][#VH_headerSize] - [Getter][#headerSize()] - [Setter][#headerSize(int)]
-/// ### headerVersion
-/// [VarHandle][#VH_headerVersion] - [Getter][#headerVersion()] - [Setter][#headerVersion(int)]
-/// ### vendorID
-/// [VarHandle][#VH_vendorID] - [Getter][#vendorID()] - [Setter][#vendorID(int)]
-/// ### deviceID
-/// [VarHandle][#VH_deviceID] - [Getter][#deviceID()] - [Setter][#deviceID(int)]
-/// ### pipelineCacheUUID
-/// [Byte offset][#OFFSET_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID()] - [Setter][#pipelineCacheUUID(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineCacheHeaderVersionOne {
+/// ```
+/// struct VkPipelineCacheHeaderVersionOne {
 ///     uint32_t headerSize;
-///     VkPipelineCacheHeaderVersion headerVersion;
+///     (int) VkPipelineCacheHeaderVersion headerVersion;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
-///     uint8_t[VK_UUID_SIZE] pipelineCacheUUID;
-/// } VkPipelineCacheHeaderVersionOne;
+///     uint8_t pipelineCacheUUID[16];
+/// };
 /// ```
-public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
+public sealed class VkPipelineCacheHeaderVersionOne extends GroupType {
     /// The struct layout of `VkPipelineCacheHeaderVersionOne`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("headerSize"),
         ValueLayout.JAVA_INT.withName("headerVersion"),
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
-        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
+        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
     );
-    /// The [VarHandle] of `headerSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `headerSize`.
+    public static final long OFFSET_headerSize = LAYOUT.byteOffset(PathElement.groupElement("headerSize"));
+    /// The memory layout of `headerSize`.
+    public static final MemoryLayout LAYOUT_headerSize = LAYOUT.select(PathElement.groupElement("headerSize"));
+    /// The [VarHandle] of `headerSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_headerSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("headerSize"));
-    /// The [VarHandle] of `headerVersion` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `headerVersion`.
+    public static final long OFFSET_headerVersion = LAYOUT.byteOffset(PathElement.groupElement("headerVersion"));
+    /// The memory layout of `headerVersion`.
+    public static final MemoryLayout LAYOUT_headerVersion = LAYOUT.select(PathElement.groupElement("headerVersion"));
+    /// The [VarHandle] of `headerVersion` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_headerVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("headerVersion"));
-    /// The [VarHandle] of `vendorID` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vendorID`.
+    public static final long OFFSET_vendorID = LAYOUT.byteOffset(PathElement.groupElement("vendorID"));
+    /// The memory layout of `vendorID`.
+    public static final MemoryLayout LAYOUT_vendorID = LAYOUT.select(PathElement.groupElement("vendorID"));
+    /// The [VarHandle] of `vendorID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vendorID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vendorID"));
-    /// The [VarHandle] of `deviceID` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `deviceID`.
+    public static final long OFFSET_deviceID = LAYOUT.byteOffset(PathElement.groupElement("deviceID"));
+    /// The memory layout of `deviceID`.
+    public static final MemoryLayout LAYOUT_deviceID = LAYOUT.select(PathElement.groupElement("deviceID"));
+    /// The [VarHandle] of `deviceID` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID"));
     /// The byte offset of `pipelineCacheUUID`.
     public static final long OFFSET_pipelineCacheUUID = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheUUID"));
     /// The memory layout of `pipelineCacheUUID`.
-    public static final MemoryLayout ML_pipelineCacheUUID = LAYOUT.select(PathElement.groupElement("pipelineCacheUUID"));
+    public static final MemoryLayout LAYOUT_pipelineCacheUUID = LAYOUT.select(PathElement.groupElement("pipelineCacheUUID"));
+    /// The [VarHandle] of `pipelineCacheUUID` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_pipelineCacheUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement());
 
     /// Creates `VkPipelineCacheHeaderVersionOne` with the given segment.
     /// @param segment the memory segment
@@ -76,19 +81,14 @@ public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
     /// Creates `VkPipelineCacheHeaderVersionOne` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheHeaderVersionOne of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheHeaderVersionOne(segment); }
-
-    /// Creates `VkPipelineCacheHeaderVersionOne` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCacheHeaderVersionOne` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheHeaderVersionOne ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheHeaderVersionOne(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineCacheHeaderVersionOne ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheHeaderVersionOne(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineCacheHeaderVersionOne` with the given segment.
     ///
@@ -96,7 +96,7 @@ public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -109,11 +109,6 @@ public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
     /// @return the allocated `VkPipelineCacheHeaderVersionOne`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, @CType("uint32_t") int headerSize, @CType("VkPipelineCacheHeaderVersion") int headerVersion, @CType("uint32_t") int vendorID, @CType("uint32_t") int deviceID, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID) { return alloc(allocator).headerSize(headerSize).headerVersion(headerVersion).vendorID(vendorID).deviceID(deviceID).pipelineCacheUUID(pipelineCacheUUID); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -121,122 +116,106 @@ public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `headerSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_headerSize(MemorySegment segment, long index) { return (int) VH_headerSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int headerSize(MemorySegment segment, long index) { return (int) VH_headerSize.get(segment, 0L, index); }
     /// {@return `headerSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_headerSize(MemorySegment segment) { return VkPipelineCacheHeaderVersionOne.get_headerSize(segment, 0L); }
-    /// {@return `headerSize`}
-    public @CType("uint32_t") int headerSize() { return VkPipelineCacheHeaderVersionOne.get_headerSize(this.segment()); }
+    public int headerSize() { return headerSize(this.segment(), 0L); }
     /// Sets `headerSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_headerSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_headerSize.set(segment, 0L, index, value); }
-    /// Sets `headerSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_headerSize(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_headerSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void headerSize(MemorySegment segment, long index, int value) { VH_headerSize.set(segment, 0L, index, value); }
     /// Sets `headerSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheHeaderVersionOne headerSize(@CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_headerSize(this.segment(), value); return this; }
+    public VkPipelineCacheHeaderVersionOne headerSize(int value) { headerSize(this.segment(), 0L, value); return this; }
 
     /// {@return `headerVersion` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineCacheHeaderVersion") int get_headerVersion(MemorySegment segment, long index) { return (int) VH_headerVersion.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int headerVersion(MemorySegment segment, long index) { return (int) VH_headerVersion.get(segment, 0L, index); }
     /// {@return `headerVersion`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineCacheHeaderVersion") int get_headerVersion(MemorySegment segment) { return VkPipelineCacheHeaderVersionOne.get_headerVersion(segment, 0L); }
-    /// {@return `headerVersion`}
-    public @CType("VkPipelineCacheHeaderVersion") int headerVersion() { return VkPipelineCacheHeaderVersionOne.get_headerVersion(this.segment()); }
+    public int headerVersion() { return headerVersion(this.segment(), 0L); }
     /// Sets `headerVersion` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_headerVersion(MemorySegment segment, long index, @CType("VkPipelineCacheHeaderVersion") int value) { VH_headerVersion.set(segment, 0L, index, value); }
-    /// Sets `headerVersion` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_headerVersion(MemorySegment segment, @CType("VkPipelineCacheHeaderVersion") int value) { VkPipelineCacheHeaderVersionOne.set_headerVersion(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void headerVersion(MemorySegment segment, long index, int value) { VH_headerVersion.set(segment, 0L, index, value); }
     /// Sets `headerVersion` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheHeaderVersionOne headerVersion(@CType("VkPipelineCacheHeaderVersion") int value) { VkPipelineCacheHeaderVersionOne.set_headerVersion(this.segment(), value); return this; }
+    public VkPipelineCacheHeaderVersionOne headerVersion(int value) { headerVersion(this.segment(), 0L, value); return this; }
 
     /// {@return `vendorID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vendorID(MemorySegment segment, long index) { return (int) VH_vendorID.get(segment, 0L, index); }
     /// {@return `vendorID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_vendorID(MemorySegment segment) { return VkPipelineCacheHeaderVersionOne.get_vendorID(segment, 0L); }
-    /// {@return `vendorID`}
-    public @CType("uint32_t") int vendorID() { return VkPipelineCacheHeaderVersionOne.get_vendorID(this.segment()); }
+    public int vendorID() { return vendorID(this.segment(), 0L); }
     /// Sets `vendorID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vendorID(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_vendorID.set(segment, 0L, index, value); }
-    /// Sets `vendorID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vendorID(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_vendorID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vendorID(MemorySegment segment, long index, int value) { VH_vendorID.set(segment, 0L, index, value); }
     /// Sets `vendorID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheHeaderVersionOne vendorID(@CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_vendorID(this.segment(), value); return this; }
+    public VkPipelineCacheHeaderVersionOne vendorID(int value) { vendorID(this.segment(), 0L, value); return this; }
 
     /// {@return `deviceID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int deviceID(MemorySegment segment, long index) { return (int) VH_deviceID.get(segment, 0L, index); }
     /// {@return `deviceID`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_deviceID(MemorySegment segment) { return VkPipelineCacheHeaderVersionOne.get_deviceID(segment, 0L); }
-    /// {@return `deviceID`}
-    public @CType("uint32_t") int deviceID() { return VkPipelineCacheHeaderVersionOne.get_deviceID(this.segment()); }
+    public int deviceID() { return deviceID(this.segment(), 0L); }
     /// Sets `deviceID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceID(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_deviceID.set(segment, 0L, index, value); }
-    /// Sets `deviceID` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_deviceID(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_deviceID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void deviceID(MemorySegment segment, long index, int value) { VH_deviceID.set(segment, 0L, index, value); }
     /// Sets `deviceID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheHeaderVersionOne deviceID(@CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_deviceID(this.segment(), value); return this; }
+    public VkPipelineCacheHeaderVersionOne deviceID(int value) { deviceID(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineCacheUUID` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID); }
-    /// {@return `pipelineCacheUUID`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), LAYOUT_pipelineCacheUUID); }
+    /// {@return `pipelineCacheUUID` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment) { return VkPipelineCacheHeaderVersionOne.get_pipelineCacheUUID(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte pipelineCacheUUID(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineCacheUUID.get(segment, 0L, index, index0); }
     /// {@return `pipelineCacheUUID`}
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID() { return VkPipelineCacheHeaderVersionOne.get_pipelineCacheUUID(this.segment()); }
+    public MemorySegment pipelineCacheUUID() { return pipelineCacheUUID(this.segment(), 0L); }
+    /// {@return `pipelineCacheUUID`}
+    /// @param index0 the Index 0 of the array
+    public byte pipelineCacheUUID(long index0) { return pipelineCacheUUID(this.segment(), 0L, index0); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID.byteSize()); }
-    /// Sets `pipelineCacheUUID` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineCacheUUID(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), LAYOUT_pipelineCacheUUID.byteSize()); }
+    /// Sets `pipelineCacheUUID` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionOne.set_pipelineCacheUUID(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void pipelineCacheUUID(MemorySegment segment, long index, long index0, byte value) { VH_pipelineCacheUUID.set(segment, 0L, index, index0, value); }
     /// Sets `pipelineCacheUUID` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheHeaderVersionOne pipelineCacheUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionOne.set_pipelineCacheUUID(this.segment(), value); return this; }
+    public VkPipelineCacheHeaderVersionOne pipelineCacheUUID(MemorySegment value) { pipelineCacheUUID(this.segment(), 0L, value); return this; }
+    /// Sets `pipelineCacheUUID` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheHeaderVersionOne pipelineCacheUUID(long index0, byte value) { pipelineCacheUUID(this.segment(), 0L, index0, value); return this; }
 
     /// A buffer of [VkPipelineCacheHeaderVersionOne].
     public static final class Buffer extends VkPipelineCacheHeaderVersionOne {
@@ -261,49 +240,59 @@ public sealed class VkPipelineCacheHeaderVersionOne extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `headerSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int headerSizeAt(long index) { return VkPipelineCacheHeaderVersionOne.get_headerSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int headerSizeAt(long index) { return headerSize(this.segment(), index); }
         /// Sets `headerSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer headerSizeAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_headerSize(this.segment(), index, value); return this; }
+        public Buffer headerSizeAt(long index, int value) { headerSize(this.segment(), index, value); return this; }
 
         /// {@return `headerVersion` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineCacheHeaderVersion") int headerVersionAt(long index) { return VkPipelineCacheHeaderVersionOne.get_headerVersion(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int headerVersionAt(long index) { return headerVersion(this.segment(), index); }
         /// Sets `headerVersion` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer headerVersionAt(long index, @CType("VkPipelineCacheHeaderVersion") int value) { VkPipelineCacheHeaderVersionOne.set_headerVersion(this.segment(), index, value); return this; }
+        public Buffer headerVersionAt(long index, int value) { headerVersion(this.segment(), index, value); return this; }
 
         /// {@return `vendorID` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int vendorIDAt(long index) { return VkPipelineCacheHeaderVersionOne.get_vendorID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vendorIDAt(long index) { return vendorID(this.segment(), index); }
         /// Sets `vendorID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vendorIDAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_vendorID(this.segment(), index, value); return this; }
+        public Buffer vendorIDAt(long index, int value) { vendorID(this.segment(), index, value); return this; }
 
         /// {@return `deviceID` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int deviceIDAt(long index) { return VkPipelineCacheHeaderVersionOne.get_deviceID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int deviceIDAt(long index) { return deviceID(this.segment(), index); }
         /// Sets `deviceID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceIDAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionOne.set_deviceID(this.segment(), index, value); return this; }
+        public Buffer deviceIDAt(long index, int value) { deviceID(this.segment(), index, value); return this; }
 
         /// {@return `pipelineCacheUUID` at the given index}
-        /// @param index the index
-        public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index) { return VkPipelineCacheHeaderVersionOne.get_pipelineCacheUUID(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pipelineCacheUUIDAt(long index) { return pipelineCacheUUID(this.segment(), index); }
+        /// {@return `pipelineCacheUUID` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte pipelineCacheUUIDAt(long index, long index0) { return pipelineCacheUUID(this.segment(), index, index0); }
         /// Sets `pipelineCacheUUID` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineCacheUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionOne.set_pipelineCacheUUID(this.segment(), index, value); return this; }
+        public Buffer pipelineCacheUUIDAt(long index, MemorySegment value) { pipelineCacheUUID(this.segment(), index, value); return this; }
+        /// Sets `pipelineCacheUUID` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineCacheUUIDAt(long index, long index0, byte value) { pipelineCacheUUID(this.segment(), index, index0, value); return this; }
 
     }
 }

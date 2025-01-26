@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.openal;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*ALEventProcSOFT)((int) ALenum eventType, (unsigned int) ALuint object, (unsigned int) ALuint param, (int) ALsizei length, const ALchar* message, void* userParam);
+/// ```
 @FunctionalInterface
 public interface ALEventProcSOFT extends Upcall {
     /// The function descriptor.
-    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(ALEventProcSOFT.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(ALEventProcSOFT.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `ALEventProcSOFT`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, ALEventProcSOFT func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    void invoke(@CType("ALenum") int eventType, @CType("ALuint") int object, @CType("ALuint") int param, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam);
+    void invoke(int eventType, int object, int param, int length, MemorySegment message, MemorySegment userParam);
+
+    /// The target method of the upcall.
+    default void invoke_(int eventType, int object, int param, int length, MemorySegment message, MemorySegment userParam) {
+        invoke(eventType, object, param, length, message, userParam);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("ALenum") int eventType, @CType("ALuint") int object, @CType("ALuint") int param, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
-        try { HANDLE.invokeExact(stub, eventType, object, param, length, message, userParam); }
-        catch (Throwable e) { throw new RuntimeException("error in ALEventProcSOFT::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static ALEventProcSOFT wrap(MemorySegment stub) {
-        return (eventType, object, param, length, message, userParam) ->
-            invoke(stub, eventType, object, param, length, message, userParam);
-    }
 }

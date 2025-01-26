@@ -15,51 +15,53 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### components
-/// [Byte offset][#OFFSET_components] - [Memory layout][#ML_components] - [Getter][#components()] - [Setter][#components(java.lang.foreign.MemorySegment)]
-/// ### srgb
-/// [VarHandle][#VH_srgb] - [Getter][#srgb()] - [Setter][#srgb(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkComponentMapping components;
-///     VkBool32 srgb;
-/// } VkSamplerBorderColorComponentMappingCreateInfoEXT;
 /// ```
-public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends Struct {
+/// struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (struct VkComponentMapping) VkComponentMapping components;
+///     (uint32_t) VkBool32 srgb;
+/// };
+/// ```
+public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends GroupType {
     /// The struct layout of `VkSamplerBorderColorComponentMappingCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkComponentMapping.LAYOUT.withName("components"),
         ValueLayout.JAVA_INT.withName("srgb")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `components`.
     public static final long OFFSET_components = LAYOUT.byteOffset(PathElement.groupElement("components"));
     /// The memory layout of `components`.
-    public static final MemoryLayout ML_components = LAYOUT.select(PathElement.groupElement("components"));
-    /// The [VarHandle] of `srgb` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_components = LAYOUT.select(PathElement.groupElement("components"));
+    /// The byte offset of `srgb`.
+    public static final long OFFSET_srgb = LAYOUT.byteOffset(PathElement.groupElement("srgb"));
+    /// The memory layout of `srgb`.
+    public static final MemoryLayout LAYOUT_srgb = LAYOUT.select(PathElement.groupElement("srgb"));
+    /// The [VarHandle] of `srgb` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_srgb = LAYOUT.arrayElementVarHandle(PathElement.groupElement("srgb"));
 
     /// Creates `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment.
@@ -69,19 +71,14 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends St
     /// Creates `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerBorderColorComponentMappingCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment); }
-
-    /// Creates `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerBorderColorComponentMappingCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSamplerBorderColorComponentMappingCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerBorderColorComponentMappingCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment.
     ///
@@ -89,7 +86,7 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends St
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -102,11 +99,6 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends St
     /// @return the allocated `VkSamplerBorderColorComponentMappingCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerBorderColorComponentMappingCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSamplerBorderColorComponentMappingCreateInfoEXT`
-    public static VkSamplerBorderColorComponentMappingCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkComponentMapping") java.lang.foreign.MemorySegment components, @CType("VkBool32") int srgb) { return alloc(allocator).sType(sType).pNext(pNext).components(components).srgb(srgb); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -114,99 +106,71 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends St
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerBorderColorComponentMappingCreateInfoEXT sType(@CType("VkStructureType") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerBorderColorComponentMappingCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `components` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_components(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_components, index), ML_components); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment components(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_components, index), LAYOUT_components); }
     /// {@return `components`}
-    /// @param segment the segment of the struct
-    public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_components(MemorySegment segment) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_components(segment, 0L); }
-    /// {@return `components`}
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment components() { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_components(this.segment()); }
+    public MemorySegment components() { return components(this.segment(), 0L); }
     /// Sets `components` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_components(MemorySegment segment, long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_components, index), ML_components.byteSize()); }
-    /// Sets `components` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_components(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_components(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void components(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_components, index), LAYOUT_components.byteSize()); }
     /// Sets `components` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerBorderColorComponentMappingCreateInfoEXT components(@CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_components(this.segment(), value); return this; }
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT components(MemorySegment value) { components(this.segment(), 0L, value); return this; }
 
     /// {@return `srgb` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_srgb(MemorySegment segment, long index) { return (int) VH_srgb.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int srgb(MemorySegment segment, long index) { return (int) VH_srgb.get(segment, 0L, index); }
     /// {@return `srgb`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_srgb(MemorySegment segment) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_srgb(segment, 0L); }
-    /// {@return `srgb`}
-    public @CType("VkBool32") int srgb() { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_srgb(this.segment()); }
+    public int srgb() { return srgb(this.segment(), 0L); }
     /// Sets `srgb` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_srgb(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_srgb.set(segment, 0L, index, value); }
-    /// Sets `srgb` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_srgb(MemorySegment segment, @CType("VkBool32") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_srgb(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void srgb(MemorySegment segment, long index, int value) { VH_srgb.set(segment, 0L, index, value); }
     /// Sets `srgb` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSamplerBorderColorComponentMappingCreateInfoEXT srgb(@CType("VkBool32") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_srgb(this.segment(), value); return this; }
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT srgb(int value) { srgb(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSamplerBorderColorComponentMappingCreateInfoEXT].
     public static final class Buffer extends VkSamplerBorderColorComponentMappingCreateInfoEXT {
@@ -231,40 +195,40 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends St
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `components` at the given index}
-        /// @param index the index
-        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentsAt(long index) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_components(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment componentsAt(long index) { return components(this.segment(), index); }
         /// Sets `components` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer componentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_components(this.segment(), index, value); return this; }
+        public Buffer componentsAt(long index, MemorySegment value) { components(this.segment(), index, value); return this; }
 
         /// {@return `srgb` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int srgbAt(long index) { return VkSamplerBorderColorComponentMappingCreateInfoEXT.get_srgb(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int srgbAt(long index) { return srgb(this.segment(), index); }
         /// Sets `srgb` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer srgbAt(long index, @CType("VkBool32") int value) { VkSamplerBorderColorComponentMappingCreateInfoEXT.set_srgb(this.segment(), index, value); return this; }
+        public Buffer srgbAt(long index, int value) { srgb(this.segment(), index, value); return this; }
 
     }
 }

@@ -19,23 +19,14 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTSemaphoreFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glImportSemaphoreFdEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glImportSemaphoreFdEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glImportSemaphoreFdEXT = RuntimeHelper.downcall(Descriptors.FD_glImportSemaphoreFdEXT);
+        public static final MethodHandle MH_glImportSemaphoreFdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportSemaphoreFdEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportSemaphoreFdEXT = func.invoke("glImportSemaphoreFdEXT");
@@ -46,10 +37,13 @@ public final class GLEXTSemaphoreFd {
         this.handles = new Handles(func);
     }
 
-    public void ImportSemaphoreFdEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("GLint") int fd) {
-        if (Unmarshal.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");
+    /// ```
+    /// void glImportSemaphoreFdEXT((unsigned int) GLuint semaphore, (unsigned int) GLenum handleType, (int) GLint fd);
+    /// ```
+    public void ImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");
         try { Handles.MH_glImportSemaphoreFdEXT.invokeExact(handles.PFN_glImportSemaphoreFdEXT, semaphore, handleType, fd); }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreFdEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreFdEXT", e); }
     }
 
 }

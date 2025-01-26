@@ -16,9 +16,8 @@
 
 package overrungl.vulkan;
 
-import overrungl.util.Marshal;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 
@@ -26,14 +25,13 @@ import java.lang.foreign.MemorySegment;
 ///
 /// ## Example
 /// ```java
-/// VKLoadFunc func = GLFW::glfwGetInstanceProcAddress;
-/// pInstance = stack.allocate(ADDRESS);                           // VkInstance instance;
-/// vkCreateInstance(func, createInfo.segment(), NULL, pInstance); // vkCreateInstance(createInfo, NULL,
-/// instance = pInstance.get(ADDRESS, 0L);                         //     &instance);
-/// vk = new VK(instance, func);
+/// VK.create(GLFW::glfwGetInstanceProcAddress);
+/// pInstance = stack.allocate(ADDRESS);                     // VkInstance instance;
+/// vkCreateInstance(createInfo.segment(), NULL, pInstance); // vkCreateInstance(createInfo, NULL,
+/// instance = new VkInstance(pInstance.get(ADDRESS, 0L));   //     &instance);
+/// // disposing
+/// VK.destroy();
 ///```
-///
-/// ## Extensions
 ///
 ///
 /// @author squid233
@@ -53,7 +51,7 @@ public interface VKLoadFunc {
     /// @return the function pointer.
     default MemorySegment invoke(MemorySegment segment, String name) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return invoke(segment, Marshal.marshal(stack, name));
+            return invoke(segment, MemoryUtil.allocString(stack, name));
         }
     }
 
@@ -66,10 +64,10 @@ public interface VKLoadFunc {
     /// @return the function pointer.
     default MemorySegment invoke(MemorySegment segment, String name, String... aliases) {
         MemorySegment p = invoke(segment, name);
-        if (!Unmarshal.isNullPointer(p)) return p;
+        if (!MemoryUtil.isNullPointer(p)) return p;
         for (String alias : aliases) {
             MemorySegment p1 = invoke(segment, alias);
-            if (!Unmarshal.isNullPointer(p1)) return p1;
+            if (!MemoryUtil.isNullPointer(p1)) return p1;
             break;
         }
         return MemorySegment.NULL;

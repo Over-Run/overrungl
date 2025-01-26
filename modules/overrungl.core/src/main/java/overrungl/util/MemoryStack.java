@@ -274,7 +274,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment chars(char... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `byte`.
@@ -290,7 +290,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment bytes(byte... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `short`.
@@ -306,7 +306,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment shorts(short... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `int`.
@@ -322,7 +322,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment ints(int... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `long`.
@@ -338,7 +338,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment longs(long... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `float`.
@@ -354,7 +354,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment floats(float... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `double`.
@@ -370,7 +370,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment doubles(double... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     /// Allocates `MemorySegment`.
@@ -386,7 +386,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// @param values the values
     /// @return the allocated segment
     public MemorySegment addresses(MemorySegment... values) {
-        return Marshal.marshal(this, values);
+        return MemoryUtil.allocArray(this, values);
     }
 
     //@formatter:on

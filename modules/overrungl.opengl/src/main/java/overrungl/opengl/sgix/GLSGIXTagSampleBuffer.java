@@ -19,22 +19,13 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLSGIXTagSampleBuffer {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTagSampleBufferSGIX = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTagSampleBufferSGIX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTagSampleBufferSGIX = RuntimeHelper.downcall(Descriptors.FD_glTagSampleBufferSGIX);
+        public static final MethodHandle MH_glTagSampleBufferSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glTagSampleBufferSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTagSampleBufferSGIX = func.invoke("glTagSampleBufferSGIX");
@@ -45,10 +36,13 @@ public final class GLSGIXTagSampleBuffer {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glTagSampleBufferSGIX();
+    /// ```
     public void TagSampleBufferSGIX() {
-        if (Unmarshal.isNullPointer(handles.PFN_glTagSampleBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glTagSampleBufferSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTagSampleBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glTagSampleBufferSGIX");
         try { Handles.MH_glTagSampleBufferSGIX.invokeExact(handles.PFN_glTagSampleBufferSGIX); }
-        catch (Throwable e) { throw new RuntimeException("error in glTagSampleBufferSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TagSampleBufferSGIX", e); }
     }
 
 }

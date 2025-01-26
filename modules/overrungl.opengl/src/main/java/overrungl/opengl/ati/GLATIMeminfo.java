@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ati;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLATIMeminfo {
     public static final int GL_VBO_FREE_MEMORY_ATI = 0x87FB;
     public static final int GL_TEXTURE_FREE_MEMORY_ATI = 0x87FC;

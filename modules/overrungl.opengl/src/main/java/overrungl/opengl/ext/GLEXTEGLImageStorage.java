@@ -19,25 +19,14 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTEGLImageStorage {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glEGLImageTargetTexStorageEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEGLImageTargetTextureStorageEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glEGLImageTargetTexStorageEXT,
-            FD_glEGLImageTargetTextureStorageEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glEGLImageTargetTexStorageEXT = RuntimeHelper.downcall(Descriptors.FD_glEGLImageTargetTexStorageEXT);
-        public static final MethodHandle MH_glEGLImageTargetTextureStorageEXT = RuntimeHelper.downcall(Descriptors.FD_glEGLImageTargetTextureStorageEXT);
+        public static final MethodHandle MH_glEGLImageTargetTexStorageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEGLImageTargetTextureStorageEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glEGLImageTargetTexStorageEXT;
         public final MemorySegment PFN_glEGLImageTargetTextureStorageEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -49,16 +38,22 @@ public final class GLEXTEGLImageStorage {
         this.handles = new Handles(func);
     }
 
-    public void EGLImageTargetTexStorageEXT(@CType("GLenum") int target, @CType("GLeglImageOES") java.lang.foreign.MemorySegment image, @CType("const GLint *") java.lang.foreign.MemorySegment attrib_list) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
+    /// ```
+    /// void glEGLImageTargetTexStorageEXT((unsigned int) GLenum target, (void*) GLeglImageOES image, const GLint* attrib_list);
+    /// ```
+    public void EGLImageTargetTexStorageEXT(int target, MemorySegment image, MemorySegment attrib_list) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
         try { Handles.MH_glEGLImageTargetTexStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTexStorageEXT, target, image, attrib_list); }
-        catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTexStorageEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTexStorageEXT", e); }
     }
 
-    public void EGLImageTargetTextureStorageEXT(@CType("GLuint") int texture, @CType("GLeglImageOES") java.lang.foreign.MemorySegment image, @CType("const GLint *") java.lang.foreign.MemorySegment attrib_list) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
+    /// ```
+    /// void glEGLImageTargetTextureStorageEXT((unsigned int) GLuint texture, (void*) GLeglImageOES image, const GLint* attrib_list);
+    /// ```
+    public void EGLImageTargetTextureStorageEXT(int texture, MemorySegment image, MemorySegment attrib_list) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
         try { Handles.MH_glEGLImageTargetTextureStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTextureStorageEXT, texture, image, attrib_list); }
-        catch (Throwable e) { throw new RuntimeException("error in glEGLImageTargetTextureStorageEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTextureStorageEXT", e); }
     }
 
 }

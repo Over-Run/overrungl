@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.qnx.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### context
-/// [VarHandle][#VH_context] - [Getter][#context()] - [Setter][#context(java.lang.foreign.MemorySegment)]
-/// ### window
-/// [VarHandle][#VH_window] - [Getter][#window()] - [Setter][#window(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkScreenSurfaceCreateInfoQNX {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkScreenSurfaceCreateFlagsQNX flags;
+/// ```
+/// struct VkScreenSurfaceCreateInfoQNX {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkScreenSurfaceCreateFlagsQNX flags;
 ///     struct _screen_context * context;
 ///     struct _screen_window * window;
-/// } VkScreenSurfaceCreateInfoQNX;
+/// };
 /// ```
-public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
+public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// The struct layout of `VkScreenSurfaceCreateInfoQNX`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.ADDRESS.withName("context"),
         ValueLayout.ADDRESS.withName("window")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `context` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `context`.
+    public static final long OFFSET_context = LAYOUT.byteOffset(PathElement.groupElement("context"));
+    /// The memory layout of `context`.
+    public static final MemoryLayout LAYOUT_context = LAYOUT.select(PathElement.groupElement("context"));
+    /// The [VarHandle] of `context` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_context = LAYOUT.arrayElementVarHandle(PathElement.groupElement("context"));
-    /// The [VarHandle] of `window` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `window`.
+    public static final long OFFSET_window = LAYOUT.byteOffset(PathElement.groupElement("window"));
+    /// The memory layout of `window`.
+    public static final MemoryLayout LAYOUT_window = LAYOUT.select(PathElement.groupElement("window"));
+    /// The [VarHandle] of `window` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_window = LAYOUT.arrayElementVarHandle(PathElement.groupElement("window"));
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkScreenSurfaceCreateInfoQNX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment); }
-
-    /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkScreenSurfaceCreateInfoQNX ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkScreenSurfaceCreateInfoQNX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
     /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkScreenSurfaceCreateFlagsQNX") int flags, @CType("struct _screen_context *") java.lang.foreign.MemorySegment context, @CType("struct _screen_window *") java.lang.foreign.MemorySegment window) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).context(context).window(window); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkScreenSurfaceCreateInfoQNX.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkScreenSurfaceCreateInfoQNX.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkScreenSurfaceCreateInfoQNX.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkScreenSurfaceCreateInfoQNX sType(@CType("VkStructureType") int value) { VkScreenSurfaceCreateInfoQNX.set_sType(this.segment(), value); return this; }
+    public VkScreenSurfaceCreateInfoQNX sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkScreenSurfaceCreateInfoQNX.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkScreenSurfaceCreateInfoQNX.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkScreenSurfaceCreateInfoQNX pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_pNext(this.segment(), value); return this; }
+    public VkScreenSurfaceCreateInfoQNX pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkScreenSurfaceCreateFlagsQNX") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkScreenSurfaceCreateFlagsQNX") int get_flags(MemorySegment segment) { return VkScreenSurfaceCreateInfoQNX.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkScreenSurfaceCreateFlagsQNX") int flags() { return VkScreenSurfaceCreateInfoQNX.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkScreenSurfaceCreateFlagsQNX") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkScreenSurfaceCreateFlagsQNX") int value) { VkScreenSurfaceCreateInfoQNX.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkScreenSurfaceCreateInfoQNX flags(@CType("VkScreenSurfaceCreateFlagsQNX") int value) { VkScreenSurfaceCreateInfoQNX.set_flags(this.segment(), value); return this; }
+    public VkScreenSurfaceCreateInfoQNX flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `context` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("struct _screen_context *") java.lang.foreign.MemorySegment get_context(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_context.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment context(MemorySegment segment, long index) { return (MemorySegment) VH_context.get(segment, 0L, index); }
     /// {@return `context`}
-    /// @param segment the segment of the struct
-    public static @CType("struct _screen_context *") java.lang.foreign.MemorySegment get_context(MemorySegment segment) { return VkScreenSurfaceCreateInfoQNX.get_context(segment, 0L); }
-    /// {@return `context`}
-    public @CType("struct _screen_context *") java.lang.foreign.MemorySegment context() { return VkScreenSurfaceCreateInfoQNX.get_context(this.segment()); }
+    public MemorySegment context() { return context(this.segment(), 0L); }
     /// Sets `context` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_context(MemorySegment segment, long index, @CType("struct _screen_context *") java.lang.foreign.MemorySegment value) { VH_context.set(segment, 0L, index, value); }
-    /// Sets `context` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_context(MemorySegment segment, @CType("struct _screen_context *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_context(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void context(MemorySegment segment, long index, MemorySegment value) { VH_context.set(segment, 0L, index, value); }
     /// Sets `context` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkScreenSurfaceCreateInfoQNX context(@CType("struct _screen_context *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_context(this.segment(), value); return this; }
+    public VkScreenSurfaceCreateInfoQNX context(MemorySegment value) { context(this.segment(), 0L, value); return this; }
 
     /// {@return `window` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("struct _screen_window *") java.lang.foreign.MemorySegment get_window(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_window.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment window(MemorySegment segment, long index) { return (MemorySegment) VH_window.get(segment, 0L, index); }
     /// {@return `window`}
-    /// @param segment the segment of the struct
-    public static @CType("struct _screen_window *") java.lang.foreign.MemorySegment get_window(MemorySegment segment) { return VkScreenSurfaceCreateInfoQNX.get_window(segment, 0L); }
-    /// {@return `window`}
-    public @CType("struct _screen_window *") java.lang.foreign.MemorySegment window() { return VkScreenSurfaceCreateInfoQNX.get_window(this.segment()); }
+    public MemorySegment window() { return window(this.segment(), 0L); }
     /// Sets `window` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_window(MemorySegment segment, long index, @CType("struct _screen_window *") java.lang.foreign.MemorySegment value) { VH_window.set(segment, 0L, index, value); }
-    /// Sets `window` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_window(MemorySegment segment, @CType("struct _screen_window *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_window(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void window(MemorySegment segment, long index, MemorySegment value) { VH_window.set(segment, 0L, index, value); }
     /// Sets `window` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkScreenSurfaceCreateInfoQNX window(@CType("struct _screen_window *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_window(this.segment(), value); return this; }
+    public VkScreenSurfaceCreateInfoQNX window(MemorySegment value) { window(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkScreenSurfaceCreateInfoQNX].
     public static final class Buffer extends VkScreenSurfaceCreateInfoQNX {
@@ -258,49 +221,49 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkScreenSurfaceCreateInfoQNX.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkScreenSurfaceCreateInfoQNX.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkScreenSurfaceCreateInfoQNX.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkScreenSurfaceCreateFlagsQNX") int flagsAt(long index) { return VkScreenSurfaceCreateInfoQNX.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkScreenSurfaceCreateFlagsQNX") int value) { VkScreenSurfaceCreateInfoQNX.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `context` at the given index}
-        /// @param index the index
-        public @CType("struct _screen_context *") java.lang.foreign.MemorySegment contextAt(long index) { return VkScreenSurfaceCreateInfoQNX.get_context(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment contextAt(long index) { return context(this.segment(), index); }
         /// Sets `context` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer contextAt(long index, @CType("struct _screen_context *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_context(this.segment(), index, value); return this; }
+        public Buffer contextAt(long index, MemorySegment value) { context(this.segment(), index, value); return this; }
 
         /// {@return `window` at the given index}
-        /// @param index the index
-        public @CType("struct _screen_window *") java.lang.foreign.MemorySegment windowAt(long index) { return VkScreenSurfaceCreateInfoQNX.get_window(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment windowAt(long index) { return window(this.segment(), index); }
         /// Sets `window` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer windowAt(long index, @CType("struct _screen_window *") java.lang.foreign.MemorySegment value) { VkScreenSurfaceCreateInfoQNX.set_window(this.segment(), index, value); return this; }
+        public Buffer windowAt(long index, MemorySegment value) { window(this.segment(), index, value); return this; }
 
     }
 }

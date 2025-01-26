@@ -19,26 +19,15 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLNVRegisterCombiners2 {
     public static final int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glCombinerStageParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetCombinerStageParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCombinerStageParameterfvNV,
-            FD_glGetCombinerStageParameterfvNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glCombinerStageParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerStageParameterfvNV);
-        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glGetCombinerStageParameterfvNV);
+        public static final MethodHandle MH_glCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCombinerStageParameterfvNV;
         public final MemorySegment PFN_glGetCombinerStageParameterfvNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -51,16 +40,22 @@ public final class GLNVRegisterCombiners2 {
         this.handles = new Handles(func);
     }
 
-    public void CombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
+    /// ```
+    /// void glCombinerStageParameterfvNV((unsigned int) GLenum stage, (unsigned int) GLenum pname, const GLfloat* params);
+    /// ```
+    public void CombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
         try { Handles.MH_glCombinerStageParameterfvNV.invokeExact(handles.PFN_glCombinerStageParameterfvNV, stage, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glCombinerStageParameterfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CombinerStageParameterfvNV", e); }
     }
 
-    public void GetCombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
+    /// ```
+    /// void glGetCombinerStageParameterfvNV((unsigned int) GLenum stage, (unsigned int) GLenum pname, GLfloat* params);
+    /// ```
+    public void GetCombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
         try { Handles.MH_glGetCombinerStageParameterfvNV.invokeExact(handles.PFN_glGetCombinerStageParameterfvNV, stage, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCombinerStageParameterfvNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetCombinerStageParameterfvNV", e); }
     }
 
 }

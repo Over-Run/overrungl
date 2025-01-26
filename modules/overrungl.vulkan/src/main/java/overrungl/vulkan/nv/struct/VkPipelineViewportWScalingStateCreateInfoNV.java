@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### viewportWScalingEnable
-/// [VarHandle][#VH_viewportWScalingEnable] - [Getter][#viewportWScalingEnable()] - [Setter][#viewportWScalingEnable(int)]
-/// ### viewportCount
-/// [VarHandle][#VH_viewportCount] - [Getter][#viewportCount()] - [Setter][#viewportCount(int)]
-/// ### pViewportWScalings
-/// [VarHandle][#VH_pViewportWScalings] - [Getter][#pViewportWScalings()] - [Setter][#pViewportWScalings(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineViewportWScalingStateCreateInfoNV {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBool32 viewportWScalingEnable;
-///     uint32_t viewportCount;
-///     const VkViewportWScalingNV * pViewportWScalings;
-/// } VkPipelineViewportWScalingStateCreateInfoNV;
 /// ```
-public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
+/// struct VkPipelineViewportWScalingStateCreateInfoNV {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint32_t) VkBool32 viewportWScalingEnable;
+///     uint32_t viewportCount;
+///     const VkViewportWScalingNV* pViewportWScalings;
+/// };
+/// ```
+public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends GroupType {
     /// The struct layout of `VkPipelineViewportWScalingStateCreateInfoNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("viewportWScalingEnable"),
         ValueLayout.JAVA_INT.withName("viewportCount"),
         ValueLayout.ADDRESS.withName("pViewportWScalings")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `viewportWScalingEnable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `viewportWScalingEnable`.
+    public static final long OFFSET_viewportWScalingEnable = LAYOUT.byteOffset(PathElement.groupElement("viewportWScalingEnable"));
+    /// The memory layout of `viewportWScalingEnable`.
+    public static final MemoryLayout LAYOUT_viewportWScalingEnable = LAYOUT.select(PathElement.groupElement("viewportWScalingEnable"));
+    /// The [VarHandle] of `viewportWScalingEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_viewportWScalingEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportWScalingEnable"));
-    /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `viewportCount`.
+    public static final long OFFSET_viewportCount = LAYOUT.byteOffset(PathElement.groupElement("viewportCount"));
+    /// The memory layout of `viewportCount`.
+    public static final MemoryLayout LAYOUT_viewportCount = LAYOUT.select(PathElement.groupElement("viewportCount"));
+    /// The [VarHandle] of `viewportCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_viewportCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewportCount"));
-    /// The [VarHandle] of `pViewportWScalings` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pViewportWScalings`.
+    public static final long OFFSET_pViewportWScalings = LAYOUT.byteOffset(PathElement.groupElement("pViewportWScalings"));
+    /// The memory layout of `pViewportWScalings`.
+    public static final MemoryLayout LAYOUT_pViewportWScalings = LAYOUT.select(PathElement.groupElement("pViewportWScalings"));
+    /// The [VarHandle] of `pViewportWScalings` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pViewportWScalings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pViewportWScalings"));
 
     /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
     /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineViewportWScalingStateCreateInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportWScalingStateCreateInfoNV(segment); }
-
-    /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineViewportWScalingStateCreateInfoNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportWScalingStateCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineViewportWScalingStateCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineViewportWScalingStateCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
     /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
-    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int viewportWScalingEnable, @CType("uint32_t") int viewportCount, @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment pViewportWScalings) { return alloc(allocator).sType(sType).pNext(pNext).viewportWScalingEnable(viewportWScalingEnable).viewportCount(viewportCount).pViewportWScalings(pViewportWScalings); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineViewportWScalingStateCreateInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineViewportWScalingStateCreateInfoNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportWScalingStateCreateInfoNV sType(@CType("VkStructureType") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_sType(this.segment(), value); return this; }
+    public VkPipelineViewportWScalingStateCreateInfoNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineViewportWScalingStateCreateInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineViewportWScalingStateCreateInfoNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportWScalingStateCreateInfoNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pNext(this.segment(), value); return this; }
+    public VkPipelineViewportWScalingStateCreateInfoNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `viewportWScalingEnable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_viewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_viewportWScalingEnable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int viewportWScalingEnable(MemorySegment segment, long index) { return (int) VH_viewportWScalingEnable.get(segment, 0L, index); }
     /// {@return `viewportWScalingEnable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_viewportWScalingEnable(MemorySegment segment) { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportWScalingEnable(segment, 0L); }
-    /// {@return `viewportWScalingEnable`}
-    public @CType("VkBool32") int viewportWScalingEnable() { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportWScalingEnable(this.segment()); }
+    public int viewportWScalingEnable() { return viewportWScalingEnable(this.segment(), 0L); }
     /// Sets `viewportWScalingEnable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_viewportWScalingEnable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_viewportWScalingEnable.set(segment, 0L, index, value); }
-    /// Sets `viewportWScalingEnable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_viewportWScalingEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportWScalingEnable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void viewportWScalingEnable(MemorySegment segment, long index, int value) { VH_viewportWScalingEnable.set(segment, 0L, index, value); }
     /// Sets `viewportWScalingEnable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportWScalingStateCreateInfoNV viewportWScalingEnable(@CType("VkBool32") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportWScalingEnable(this.segment(), value); return this; }
+    public VkPipelineViewportWScalingStateCreateInfoNV viewportWScalingEnable(int value) { viewportWScalingEnable(this.segment(), 0L, value); return this; }
 
     /// {@return `viewportCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int viewportCount(MemorySegment segment, long index) { return (int) VH_viewportCount.get(segment, 0L, index); }
     /// {@return `viewportCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_viewportCount(MemorySegment segment) { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportCount(segment, 0L); }
-    /// {@return `viewportCount`}
-    public @CType("uint32_t") int viewportCount() { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportCount(this.segment()); }
+    public int viewportCount() { return viewportCount(this.segment(), 0L); }
     /// Sets `viewportCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_viewportCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_viewportCount.set(segment, 0L, index, value); }
-    /// Sets `viewportCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_viewportCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void viewportCount(MemorySegment segment, long index, int value) { VH_viewportCount.set(segment, 0L, index, value); }
     /// Sets `viewportCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportWScalingStateCreateInfoNV viewportCount(@CType("uint32_t") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportCount(this.segment(), value); return this; }
+    public VkPipelineViewportWScalingStateCreateInfoNV viewportCount(int value) { viewportCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pViewportWScalings` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment get_pViewportWScalings(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pViewportWScalings.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pViewportWScalings(MemorySegment segment, long index) { return (MemorySegment) VH_pViewportWScalings.get(segment, 0L, index); }
     /// {@return `pViewportWScalings`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment get_pViewportWScalings(MemorySegment segment) { return VkPipelineViewportWScalingStateCreateInfoNV.get_pViewportWScalings(segment, 0L); }
-    /// {@return `pViewportWScalings`}
-    public @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment pViewportWScalings() { return VkPipelineViewportWScalingStateCreateInfoNV.get_pViewportWScalings(this.segment()); }
+    public MemorySegment pViewportWScalings() { return pViewportWScalings(this.segment(), 0L); }
     /// Sets `pViewportWScalings` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pViewportWScalings(MemorySegment segment, long index, @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment value) { VH_pViewportWScalings.set(segment, 0L, index, value); }
-    /// Sets `pViewportWScalings` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pViewportWScalings(MemorySegment segment, @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pViewportWScalings(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pViewportWScalings(MemorySegment segment, long index, MemorySegment value) { VH_pViewportWScalings.set(segment, 0L, index, value); }
     /// Sets `pViewportWScalings` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineViewportWScalingStateCreateInfoNV pViewportWScalings(@CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pViewportWScalings(this.segment(), value); return this; }
+    public VkPipelineViewportWScalingStateCreateInfoNV pViewportWScalings(MemorySegment value) { pViewportWScalings(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineViewportWScalingStateCreateInfoNV].
     public static final class Buffer extends VkPipelineViewportWScalingStateCreateInfoNV {
@@ -258,49 +221,49 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineViewportWScalingStateCreateInfoNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineViewportWScalingStateCreateInfoNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `viewportWScalingEnable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int viewportWScalingEnableAt(long index) { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportWScalingEnable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int viewportWScalingEnableAt(long index) { return viewportWScalingEnable(this.segment(), index); }
         /// Sets `viewportWScalingEnable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer viewportWScalingEnableAt(long index, @CType("VkBool32") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportWScalingEnable(this.segment(), index, value); return this; }
+        public Buffer viewportWScalingEnableAt(long index, int value) { viewportWScalingEnable(this.segment(), index, value); return this; }
 
         /// {@return `viewportCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int viewportCountAt(long index) { return VkPipelineViewportWScalingStateCreateInfoNV.get_viewportCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int viewportCountAt(long index) { return viewportCount(this.segment(), index); }
         /// Sets `viewportCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer viewportCountAt(long index, @CType("uint32_t") int value) { VkPipelineViewportWScalingStateCreateInfoNV.set_viewportCount(this.segment(), index, value); return this; }
+        public Buffer viewportCountAt(long index, int value) { viewportCount(this.segment(), index, value); return this; }
 
         /// {@return `pViewportWScalings` at the given index}
-        /// @param index the index
-        public @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment pViewportWScalingsAt(long index) { return VkPipelineViewportWScalingStateCreateInfoNV.get_pViewportWScalings(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pViewportWScalingsAt(long index) { return pViewportWScalings(this.segment(), index); }
         /// Sets `pViewportWScalings` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pViewportWScalingsAt(long index, @CType("const VkViewportWScalingNV *") java.lang.foreign.MemorySegment value) { VkPipelineViewportWScalingStateCreateInfoNV.set_pViewportWScalings(this.segment(), index, value); return this; }
+        public Buffer pViewportWScalingsAt(long index, MemorySegment value) { pViewportWScalings(this.segment(), index, value); return this; }
 
     }
 }

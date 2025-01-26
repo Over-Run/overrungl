@@ -19,10 +19,11 @@ package overrungl.demo.nfd;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDFilterItem;
 import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
-import java.util.Map;
 
 import static overrungl.nfd.NFD.*;
 
@@ -39,19 +40,19 @@ public final class NFDTest {
         NFD_Init();
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            String[] outPath = new String[1];
+            MemorySegment pOutPath = stack.allocate(ValueLayout.ADDRESS);
+            String outPath;
 
             // prepare filters for the dialog
-            final var filterItem = NFDFilterItem.create(stack,
-                Map.entry("Source code", "java"),
-                Map.entry("Image file", "png,jpg"));
+            final var filterItem = setupFilterItem(stack);
 
             // show the dialog
-            final int result = NFD_OpenDialog(outPath, filterItem, null);
+            final int result = NFD_OpenDialog(pOutPath, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL);
+            outPath = NFD_NativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
 
             switch (result) {
                 case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
-                case NFD_OKAY -> System.out.println("Success! " + outPath[0]);
+                case NFD_OKAY -> System.out.println("Success! " + outPath);
                 case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
@@ -69,15 +70,12 @@ public final class NFDTest {
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
-            String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final var filterItem = NFDFilterItem.create(stack,
-                Map.entry("Source code", "java"),
-                Map.entry("Image file", "png,jpg"));
+            final var filterItem = setupFilterItem(stack);
 
             // show the dialog
-            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem, null);
+            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -85,11 +83,24 @@ public final class NFDTest {
                 case NFD_OKAY -> {
                     System.out.println("Success!");
 
-                    long[] pNumPaths = new long[1];
-                    NFD_PathSet_GetCount(outPaths, pNumPaths);
-                    for (long i = 0, numPaths = pNumPaths[0]; i < numPaths; i++) {
-                        NFD_PathSet_GetPath(outPaths, i, outPath);
-                        System.out.println("Path " + i + ": " + outPath[0]);
+                    long numPaths;
+                    try (MemoryStack stack1 = MemoryStack.pushLocal()) {
+                        MemorySegment pNumPaths = stack1.allocate(nfdpathsetsize_t);
+                        NFD_PathSet_GetCount(outPaths, pNumPaths);
+                        numPaths = MemoryUtil.wideningToLong(nfdpathsetsize_t, switch (nfdpathsetsize_t) {
+                            case ValueLayout.OfInt ofInt -> pNumPaths.get(ofInt, 0);
+                            case ValueLayout.OfLong ofLong -> pNumPaths.get(ofLong, 0);
+                            default -> throw new IllegalStateException("Unexpected value: " + nfdpathsetsize_t);
+                        });
+                    }
+                    for (long i = 0; i < numPaths; i++) {
+                        String outPath;
+                        try (MemoryStack stack1 = MemoryStack.pushLocal()) {
+                            var pOutPath = stack1.allocate(ValueLayout.ADDRESS);
+                            NFD_PathSet_GetPath(outPaths, i, pOutPath);
+                            outPath = NFD_NativeString(pOutPath.get(ValueLayout.ADDRESS, 0));
+                        }
+                        System.out.println("Path " + i + ": " + outPath);
                     }
 
                     // remember to free the path-set memory (since NFDResult::OKAY is returned)
@@ -114,12 +125,10 @@ public final class NFDTest {
             MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
 
             // prepare filters for the dialog
-            final var filterItem = NFDFilterItem.create(stack,
-                Map.entry("Source code", "java"),
-                Map.entry("Image file", "png,jpg"));
+            final var filterItem = setupFilterItem(stack);
 
             // show the dialog
-            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem, null);
+            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -153,13 +162,18 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         NFD_Init();
 
-        String[] outPath = new String[1];
+        String outPath;
 
         // show the dialog
-        final int result = NFD_PickFolder(outPath, null);
+        int result;
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment segment = stack.allocate(ValueLayout.ADDRESS);
+            result = NFD_PickFolder(segment, MemorySegment.NULL);
+            outPath = NFD_NativeString(segment.get(ValueLayout.ADDRESS, 0));
+        }
         switch (result) {
             case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
-            case NFD_OKAY -> System.out.println("Success! " + outPath[0]);
+            case NFD_OKAY -> System.out.println("Success! " + outPath);
             case NFD_CANCEL -> System.out.println("User pressed cancel.");
         }
 
@@ -175,18 +189,18 @@ public final class NFDTest {
         NFD_Init();
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            String[] savePath = new String[1];
+            String savePath;
 
             // prepare filters for the dialog
-            final var filterItem = NFDFilterItem.create(stack,
-                Map.entry("Source code", "java"),
-                Map.entry("Image file", "png,jpg"));
+            final var filterItem = setupFilterItem(stack);
 
             // show the dialog
-            final int result = NFD_SaveDialog(savePath, filterItem, null, "Untitled.java");
+            MemorySegment segment = stack.allocate(ValueLayout.ADDRESS);
+            final int result = NFD_SaveDialog(segment, filterItem.segment(), (int) filterItem.estimateCount(), MemorySegment.NULL, NFD_AllocString(stack, "Untitled.java"));
+            savePath = NFD_NativeString(segment.get(ValueLayout.ADDRESS, 0));
             switch (result) {
                 case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
-                case NFD_OKAY -> System.out.println("Success! " + savePath[0]);
+                case NFD_OKAY -> System.out.println("Success! " + savePath);
                 case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
@@ -201,5 +215,13 @@ public final class NFDTest {
         openDialogMultipleEnum();
         pickFolder();
         saveDialog();
+    }
+
+    private static NFDFilterItem setupFilterItem(SegmentAllocator allocator) {
+        return NFDFilterItem.alloc(allocator, 2)
+            .nameAt(0, NFD_AllocString(allocator, "Source code"))
+            .specAt(0, NFD_AllocString(allocator, "java"))
+            .nameAt(1, NFD_AllocString(allocator, "Image file"))
+            .specAt(1, NFD_AllocString(allocator, "png,jpg"));
     }
 }

@@ -16,18 +16,13 @@
 
 package overrungl.stb;
 
-import org.jetbrains.annotations.Nullable;
-import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.Marshal;
-import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-import java.util.List;
 
 /// [stb_easy_font.h](https://github.com/nothings/stb/blob/master/stb_easy_font.h)
 ///
@@ -38,95 +33,89 @@ public final class STBEasyFont {
     //@formatter:off
     //region Fields
     //endregion
-    /// Function descriptors.
-    public static final class Descriptors {
-        private Descriptors() { }
-        /// The function descriptor of `stb_easy_font_get_spacing`.
-        public static final FunctionDescriptor FD_stb_easy_font_get_spacing = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT);
-        /// The function descriptor of `stb_easy_font_spacing`.
-        public static final FunctionDescriptor FD_stb_easy_font_spacing = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        /// The function descriptor of `stb_easy_font_print`.
-        public static final FunctionDescriptor FD_stb_easy_font_print = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        /// The function descriptor of `stb_easy_font_width`.
-        public static final FunctionDescriptor FD_stb_easy_font_width = FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// The function descriptor of `stb_easy_font_height`.
-        public static final FunctionDescriptor FD_stb_easy_font_height = FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_stb_easy_font_get_spacing,
-            FD_stb_easy_font_spacing,
-            FD_stb_easy_font_print,
-            FD_stb_easy_font_width,
-            FD_stb_easy_font_height
-        );
-    }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `stb_easy_font_get_spacing`.
-        public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_get_spacing", Descriptors.FD_stb_easy_font_get_spacing);
+        public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stb_easy_font_spacing`.
-        public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_spacing", Descriptors.FD_stb_easy_font_spacing);
+        public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stb_easy_font_print`.
-        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_print", Descriptors.FD_stb_easy_font_print);
+        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stb_easy_font_width`.
-        public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_width", Descriptors.FD_stb_easy_font_width);
+        public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stb_easy_font_height`.
-        public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(STBInternal.lookup(), "stb_easy_font_height", Descriptors.FD_stb_easy_font_height);
+        public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The function address of `stb_easy_font_get_spacing`.
+        public final MemorySegment PFN_stb_easy_font_get_spacing;
+        /// The function address of `stb_easy_font_spacing`.
+        public final MemorySegment PFN_stb_easy_font_spacing;
+        /// The function address of `stb_easy_font_print`.
+        public final MemorySegment PFN_stb_easy_font_print;
+        /// The function address of `stb_easy_font_width`.
+        public final MemorySegment PFN_stb_easy_font_width;
+        /// The function address of `stb_easy_font_height`.
+        public final MemorySegment PFN_stb_easy_font_height;
+        private Handles() {
+            PFN_stb_easy_font_get_spacing = STBInternal.lookup().findOrThrow("stb_easy_font_get_spacing");
+            PFN_stb_easy_font_spacing = STBInternal.lookup().findOrThrow("stb_easy_font_spacing");
+            PFN_stb_easy_font_print = STBInternal.lookup().findOrThrow("stb_easy_font_print");
+            PFN_stb_easy_font_width = STBInternal.lookup().findOrThrow("stb_easy_font_width");
+            PFN_stb_easy_font_height = STBInternal.lookup().findOrThrow("stb_easy_font_height");
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
-    public static @CType("float") float stb_easy_font_get_spacing() {
-        try {
-            return (float) Handles.MH_stb_easy_font_get_spacing.invokeExact();
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
+    /// ```
+    /// float stb_easy_font_get_spacing();
+    /// ```
+    public static float stb_easy_font_get_spacing() {
+        try { return (float) Handles.MH_stb_easy_font_get_spacing.invokeExact(Handles.get().PFN_stb_easy_font_get_spacing); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
     }
 
-    public static void stb_easy_font_spacing(@CType("float") float spacing) {
-        try {
-            Handles.MH_stb_easy_font_spacing.invokeExact(spacing);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
+    /// ```
+    /// void stb_easy_font_spacing(float spacing);
+    /// ```
+    public static void stb_easy_font_spacing(float spacing) {
+        try { Handles.MH_stb_easy_font_spacing.invokeExact(Handles.get().PFN_stb_easy_font_spacing, spacing); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
     }
 
-    public static @CType("int") int stb_easy_font_print(@CType("float") float x, @CType("float") float y, @CType("char *") java.lang.foreign.MemorySegment text, @CType("unsigned char[4]") java.lang.foreign.MemorySegment color, @CType("void*") java.lang.foreign.MemorySegment vertex_buffer, @CType("int") int vbuf_size) {
-        try {
-            return (int) Handles.MH_stb_easy_font_print.invokeExact(x, y, text, color, vertex_buffer, vbuf_size);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
+    /// ```
+    /// int stb_easy_font_print(float x, float y, char* text, unsigned char color[4], void* vertex_buffer, int vbuf_size);
+    /// ```
+    public static int stb_easy_font_print(float x, float y, MemorySegment text, MemorySegment color, MemorySegment vertex_buffer, int vbuf_size) {
+        try { return (int) Handles.MH_stb_easy_font_print.invokeExact(Handles.get().PFN_stb_easy_font_print, x, y, text, color, vertex_buffer, vbuf_size); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
     }
 
-    public static @CType("int") int stb_easy_font_width(@CType("char *") java.lang.foreign.MemorySegment width) {
-        try {
-            return (int) Handles.MH_stb_easy_font_width.invokeExact(width);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
+    /// ```
+    /// int stb_easy_font_width(char* text);
+    /// ```
+    public static int stb_easy_font_width(MemorySegment text) {
+        try { return (int) Handles.MH_stb_easy_font_width.invokeExact(Handles.get().PFN_stb_easy_font_width, text); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
 
-    public static @CType("int") int stb_easy_font_width(java.lang.String width) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) Handles.MH_stb_easy_font_width.invokeExact(Marshal.marshal(__overrungl_stack, width));
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
-    }
-
-    public static @CType("int") int stb_easy_font_height(@CType("char *") java.lang.foreign.MemorySegment height) {
-        try {
-            return (int) Handles.MH_stb_easy_font_height.invokeExact(height);
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
-    }
-
-    public static @CType("int") int stb_easy_font_height(java.lang.String height) {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) Handles.MH_stb_easy_font_height.invokeExact(Marshal.marshal(__overrungl_stack, height));
-        } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
+    /// ```
+    /// int stb_easy_font_height(char* text);
+    /// ```
+    public static int stb_easy_font_height(MemorySegment text) {
+        try { return (int) Handles.MH_stb_easy_font_height.invokeExact(Handles.get().PFN_stb_easy_font_height, text); }
+        catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
 
     //@formatter:on
     //endregion ---[END GENERATOR END]---
 
     private STBEasyFont() {
-    }
-
-    /// Overloads [stb_easy_font_print][#stb_easy_font_print(float, float, MemorySegment, MemorySegment, MemorySegment, int)]
-    public static int stb_easy_font_print(float x, float y, String text, byte @Nullable [] color, MemorySegment vertex_buffer) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return stb_easy_font_print(x, y, Marshal.marshal(stack, text), Marshal.marshal(stack, color), vertex_buffer, Math.toIntExact(vertex_buffer.byteSize()));
-        }
     }
 }

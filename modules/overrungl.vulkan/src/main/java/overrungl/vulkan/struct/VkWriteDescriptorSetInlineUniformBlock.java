@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### dataSize
-/// [VarHandle][#VH_dataSize] - [Getter][#dataSize()] - [Setter][#dataSize(int)]
-/// ### pData
-/// [VarHandle][#VH_pData] - [Getter][#pData()] - [Setter][#pData(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkWriteDescriptorSetInlineUniformBlock {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t dataSize;
-///     const void * pData;
-/// } VkWriteDescriptorSetInlineUniformBlock;
 /// ```
-public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
+/// struct VkWriteDescriptorSetInlineUniformBlock {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t dataSize;
+///     const void* pData;
+/// };
+/// ```
+public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// The struct layout of `VkWriteDescriptorSetInlineUniformBlock`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dataSize`.
+    public static final long OFFSET_dataSize = LAYOUT.byteOffset(PathElement.groupElement("dataSize"));
+    /// The memory layout of `dataSize`.
+    public static final MemoryLayout LAYOUT_dataSize = LAYOUT.select(PathElement.groupElement("dataSize"));
+    /// The [VarHandle] of `dataSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dataSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dataSize"));
-    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pData`.
+    public static final long OFFSET_pData = LAYOUT.byteOffset(PathElement.groupElement("pData"));
+    /// The memory layout of `pData`.
+    public static final MemoryLayout LAYOUT_pData = LAYOUT.select(PathElement.groupElement("pData"));
+    /// The [VarHandle] of `pData` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkWriteDescriptorSetInlineUniformBlock of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment); }
-
-    /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkWriteDescriptorSetInlineUniformBlock ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkWriteDescriptorSetInlineUniformBlock ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
     /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int dataSize, @CType("const void *") java.lang.foreign.MemorySegment pData) { return alloc(allocator).sType(sType).pNext(pNext).dataSize(dataSize).pData(pData); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkWriteDescriptorSetInlineUniformBlock.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkWriteDescriptorSetInlineUniformBlock.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkWriteDescriptorSetInlineUniformBlock.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSetInlineUniformBlock sType(@CType("VkStructureType") int value) { VkWriteDescriptorSetInlineUniformBlock.set_sType(this.segment(), value); return this; }
+    public VkWriteDescriptorSetInlineUniformBlock sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkWriteDescriptorSetInlineUniformBlock.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkWriteDescriptorSetInlineUniformBlock.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSetInlineUniformBlock pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pNext(this.segment(), value); return this; }
+    public VkWriteDescriptorSetInlineUniformBlock pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `dataSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_dataSize(MemorySegment segment, long index) { return (int) VH_dataSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dataSize(MemorySegment segment, long index) { return (int) VH_dataSize.get(segment, 0L, index); }
     /// {@return `dataSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_dataSize(MemorySegment segment) { return VkWriteDescriptorSetInlineUniformBlock.get_dataSize(segment, 0L); }
-    /// {@return `dataSize`}
-    public @CType("uint32_t") int dataSize() { return VkWriteDescriptorSetInlineUniformBlock.get_dataSize(this.segment()); }
+    public int dataSize() { return dataSize(this.segment(), 0L); }
     /// Sets `dataSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dataSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_dataSize.set(segment, 0L, index, value); }
-    /// Sets `dataSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dataSize(MemorySegment segment, @CType("uint32_t") int value) { VkWriteDescriptorSetInlineUniformBlock.set_dataSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dataSize(MemorySegment segment, long index, int value) { VH_dataSize.set(segment, 0L, index, value); }
     /// Sets `dataSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSetInlineUniformBlock dataSize(@CType("uint32_t") int value) { VkWriteDescriptorSetInlineUniformBlock.set_dataSize(this.segment(), value); return this; }
+    public VkWriteDescriptorSetInlineUniformBlock dataSize(int value) { dataSize(this.segment(), 0L, value); return this; }
 
     /// {@return `pData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pData(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pData.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pData(MemorySegment segment, long index) { return (MemorySegment) VH_pData.get(segment, 0L, index); }
     /// {@return `pData`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pData(MemorySegment segment) { return VkWriteDescriptorSetInlineUniformBlock.get_pData(segment, 0L); }
-    /// {@return `pData`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pData() { return VkWriteDescriptorSetInlineUniformBlock.get_pData(this.segment()); }
+    public MemorySegment pData() { return pData(this.segment(), 0L); }
     /// Sets `pData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pData(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
-    /// Sets `pData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pData(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pData(MemorySegment segment, long index, MemorySegment value) { VH_pData.set(segment, 0L, index, value); }
     /// Sets `pData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkWriteDescriptorSetInlineUniformBlock pData(@CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pData(this.segment(), value); return this; }
+    public VkWriteDescriptorSetInlineUniformBlock pData(MemorySegment value) { pData(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkWriteDescriptorSetInlineUniformBlock].
     public static final class Buffer extends VkWriteDescriptorSetInlineUniformBlock {
@@ -229,40 +197,40 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkWriteDescriptorSetInlineUniformBlock.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkWriteDescriptorSetInlineUniformBlock.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkWriteDescriptorSetInlineUniformBlock.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `dataSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int dataSizeAt(long index) { return VkWriteDescriptorSetInlineUniformBlock.get_dataSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dataSizeAt(long index) { return dataSize(this.segment(), index); }
         /// Sets `dataSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dataSizeAt(long index, @CType("uint32_t") int value) { VkWriteDescriptorSetInlineUniformBlock.set_dataSize(this.segment(), index, value); return this; }
+        public Buffer dataSizeAt(long index, int value) { dataSize(this.segment(), index, value); return this; }
 
         /// {@return `pData` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pDataAt(long index) { return VkWriteDescriptorSetInlineUniformBlock.get_pData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pDataAt(long index) { return pData(this.segment(), index); }
         /// Sets `pData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pDataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteDescriptorSetInlineUniformBlock.set_pData(this.segment(), index, value); return this; }
+        public Buffer pDataAt(long index, MemorySegment value) { pData(this.segment(), index, value); return this; }
 
     }
 }

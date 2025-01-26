@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.img;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKIMGFormatPvrtc {
     public static final int VK_IMG_FORMAT_PVRTC_SPEC_VERSION = 1;
@@ -34,6 +29,6 @@ public final class VKIMGFormatPvrtc {
     public static final int VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006;
     public static final int VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007;
 
-    private VKIMGFormatPvrtc() { }
+    private VKIMGFormatPvrtc() {}
 
 }

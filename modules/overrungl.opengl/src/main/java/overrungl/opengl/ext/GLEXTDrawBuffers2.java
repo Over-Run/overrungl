@@ -19,37 +19,18 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTDrawBuffers2 {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorMaskIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN);
-        public static final FunctionDescriptor FD_glGetBooleanIndexedvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetIntegerIndexedvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glEnableIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDisableIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsEnabledIndexedEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorMaskIndexedEXT,
-            FD_glGetBooleanIndexedvEXT,
-            FD_glGetIntegerIndexedvEXT,
-            FD_glEnableIndexedEXT,
-            FD_glDisableIndexedEXT,
-            FD_glIsEnabledIndexedEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorMaskIndexedEXT = RuntimeHelper.downcall(Descriptors.FD_glColorMaskIndexedEXT);
-        public static final MethodHandle MH_glGetBooleanIndexedvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetBooleanIndexedvEXT);
-        public static final MethodHandle MH_glGetIntegerIndexedvEXT = RuntimeHelper.downcall(Descriptors.FD_glGetIntegerIndexedvEXT);
-        public static final MethodHandle MH_glEnableIndexedEXT = RuntimeHelper.downcall(Descriptors.FD_glEnableIndexedEXT);
-        public static final MethodHandle MH_glDisableIndexedEXT = RuntimeHelper.downcall(Descriptors.FD_glDisableIndexedEXT);
-        public static final MethodHandle MH_glIsEnabledIndexedEXT = RuntimeHelper.downcall(Descriptors.FD_glIsEnabledIndexedEXT);
+        public static final MethodHandle MH_glColorMaskIndexedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glGetBooleanIndexedvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetIntegerIndexedvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEnableIndexedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDisableIndexedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsEnabledIndexedEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glColorMaskIndexedEXT;
         public final MemorySegment PFN_glGetBooleanIndexedvEXT;
         public final MemorySegment PFN_glGetIntegerIndexedvEXT;
@@ -70,40 +51,58 @@ public final class GLEXTDrawBuffers2 {
         this.handles = new Handles(func);
     }
 
-    public void ColorMaskIndexedEXT(@CType("GLuint") int index, @CType("GLboolean") boolean r, @CType("GLboolean") boolean g, @CType("GLboolean") boolean b, @CType("GLboolean") boolean a) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColorMaskIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glColorMaskIndexedEXT");
-        try { Handles.MH_glColorMaskIndexedEXT.invokeExact(handles.PFN_glColorMaskIndexedEXT, index, r, g, b, a); }
-        catch (Throwable e) { throw new RuntimeException("error in glColorMaskIndexedEXT", e); }
+    /// ```
+    /// void glColorMaskIndexedEXT((unsigned int) GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+    /// ```
+    public void ColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorMaskIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glColorMaskIndexedEXT");
+        try { Handles.MH_glColorMaskIndexedEXT.invokeExact(handles.PFN_glColorMaskIndexedEXT, index, ((r) ? (byte)1 : (byte)0), ((g) ? (byte)1 : (byte)0), ((b) ? (byte)1 : (byte)0), ((a) ? (byte)1 : (byte)0)); }
+        catch (Throwable e) { throw new RuntimeException("error in ColorMaskIndexedEXT", e); }
     }
 
-    public void GetBooleanIndexedvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
+    /// ```
+    /// void glGetBooleanIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLboolean* data);
+    /// ```
+    public void GetBooleanIndexedvEXT(int target, int index, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
         try { Handles.MH_glGetBooleanIndexedvEXT.invokeExact(handles.PFN_glGetBooleanIndexedvEXT, target, index, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBooleanIndexedvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetBooleanIndexedvEXT", e); }
     }
 
-    public void GetIntegerIndexedvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
+    /// ```
+    /// void glGetIntegerIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* data);
+    /// ```
+    public void GetIntegerIndexedvEXT(int target, int index, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
         try { Handles.MH_glGetIntegerIndexedvEXT.invokeExact(handles.PFN_glGetIntegerIndexedvEXT, target, index, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetIntegerIndexedvEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetIntegerIndexedvEXT", e); }
     }
 
-    public void EnableIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
+    /// ```
+    /// void glEnableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
+    /// ```
+    public void EnableIndexedEXT(int target, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
         try { Handles.MH_glEnableIndexedEXT.invokeExact(handles.PFN_glEnableIndexedEXT, target, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glEnableIndexedEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EnableIndexedEXT", e); }
     }
 
-    public void DisableIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
+    /// ```
+    /// void glDisableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
+    /// ```
+    public void DisableIndexedEXT(int target, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
         try { Handles.MH_glDisableIndexedEXT.invokeExact(handles.PFN_glDisableIndexedEXT, target, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glDisableIndexedEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DisableIndexedEXT", e); }
     }
 
-    public @CType("GLboolean") boolean IsEnabledIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");
-        try { return (boolean) Handles.MH_glIsEnabledIndexedEXT.invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsEnabledIndexedEXT", e); }
+    /// ```
+    /// GLboolean glIsEnabledIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
+    /// ```
+    public boolean IsEnabledIndexedEXT(int target, int index) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");
+        try { return (((byte) Handles.MH_glIsEnabledIndexedEXT.invokeExact(handles.PFN_glIsEnabledIndexedEXT, target, index)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsEnabledIndexedEXT", e); }
     }
 
 }

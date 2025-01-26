@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.mesa;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLMESAYcbcrTexture {
     public static final int GL_UNSIGNED_SHORT_8_8_MESA = 0x85BA;
     public static final int GL_UNSIGNED_SHORT_8_8_REV_MESA = 0x85BB;

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### hasStdSPSOverrides
-/// [VarHandle][#VH_hasStdSPSOverrides] - [Getter][#hasStdSPSOverrides()] - [Setter][#hasStdSPSOverrides(int)]
-/// ### hasStdPPSOverrides
-/// [VarHandle][#VH_hasStdPPSOverrides] - [Getter][#hasStdPPSOverrides()] - [Setter][#hasStdPPSOverrides(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 hasStdSPSOverrides;
-///     VkBool32 hasStdPPSOverrides;
-/// } VkVideoEncodeH264SessionParametersFeedbackInfoKHR;
 /// ```
-public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Struct {
+/// struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 hasStdSPSOverrides;
+///     (uint32_t) VkBool32 hasStdPPSOverrides;
+/// };
+/// ```
+public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("hasStdSPSOverrides"),
         ValueLayout.JAVA_INT.withName("hasStdPPSOverrides")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `hasStdSPSOverrides` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `hasStdSPSOverrides`.
+    public static final long OFFSET_hasStdSPSOverrides = LAYOUT.byteOffset(PathElement.groupElement("hasStdSPSOverrides"));
+    /// The memory layout of `hasStdSPSOverrides`.
+    public static final MemoryLayout LAYOUT_hasStdSPSOverrides = LAYOUT.select(PathElement.groupElement("hasStdSPSOverrides"));
+    /// The [VarHandle] of `hasStdSPSOverrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hasStdSPSOverrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdSPSOverrides"));
-    /// The [VarHandle] of `hasStdPPSOverrides` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `hasStdPPSOverrides`.
+    public static final long OFFSET_hasStdPPSOverrides = LAYOUT.byteOffset(PathElement.groupElement("hasStdPPSOverrides"));
+    /// The memory layout of `hasStdPPSOverrides`.
+    public static final MemoryLayout LAYOUT_hasStdPPSOverrides = LAYOUT.select(PathElement.groupElement("hasStdPPSOverrides"));
+    /// The [VarHandle] of `hasStdPPSOverrides` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hasStdPPSOverrides = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hasStdPPSOverrides"));
 
     /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends St
     /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH264SessionParametersFeedbackInfoKHR(segment); }
-
-    /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH264SessionParametersFeedbackInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264SessionParametersFeedbackInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends St
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends St
     /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int hasStdSPSOverrides, @CType("VkBool32") int hasStdPPSOverrides) { return alloc(allocator).sType(sType).pNext(pNext).hasStdSPSOverrides(hasStdSPSOverrides).hasStdPPSOverrides(hasStdPPSOverrides); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends St
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR sType(@CType("VkStructureType") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `hasStdSPSOverrides` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_hasStdSPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdSPSOverrides.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int hasStdSPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdSPSOverrides.get(segment, 0L, index); }
     /// {@return `hasStdSPSOverrides`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_hasStdSPSOverrides(MemorySegment segment) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdSPSOverrides(segment, 0L); }
-    /// {@return `hasStdSPSOverrides`}
-    public @CType("VkBool32") int hasStdSPSOverrides() { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdSPSOverrides(this.segment()); }
+    public int hasStdSPSOverrides() { return hasStdSPSOverrides(this.segment(), 0L); }
     /// Sets `hasStdSPSOverrides` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_hasStdSPSOverrides(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_hasStdSPSOverrides.set(segment, 0L, index, value); }
-    /// Sets `hasStdSPSOverrides` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_hasStdSPSOverrides(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdSPSOverrides(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void hasStdSPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdSPSOverrides.set(segment, 0L, index, value); }
     /// Sets `hasStdSPSOverrides` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdSPSOverrides(@CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdSPSOverrides(this.segment(), value); return this; }
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdSPSOverrides(int value) { hasStdSPSOverrides(this.segment(), 0L, value); return this; }
 
     /// {@return `hasStdPPSOverrides` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_hasStdPPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdPPSOverrides.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int hasStdPPSOverrides(MemorySegment segment, long index) { return (int) VH_hasStdPPSOverrides.get(segment, 0L, index); }
     /// {@return `hasStdPPSOverrides`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_hasStdPPSOverrides(MemorySegment segment) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdPPSOverrides(segment, 0L); }
-    /// {@return `hasStdPPSOverrides`}
-    public @CType("VkBool32") int hasStdPPSOverrides() { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdPPSOverrides(this.segment()); }
+    public int hasStdPPSOverrides() { return hasStdPPSOverrides(this.segment(), 0L); }
     /// Sets `hasStdPPSOverrides` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_hasStdPPSOverrides(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_hasStdPPSOverrides.set(segment, 0L, index, value); }
-    /// Sets `hasStdPPSOverrides` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_hasStdPPSOverrides(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdPPSOverrides(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void hasStdPPSOverrides(MemorySegment segment, long index, int value) { VH_hasStdPPSOverrides.set(segment, 0L, index, value); }
     /// Sets `hasStdPPSOverrides` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdPPSOverrides(@CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdPPSOverrides(this.segment(), value); return this; }
+    public VkVideoEncodeH264SessionParametersFeedbackInfoKHR hasStdPPSOverrides(int value) { hasStdPPSOverrides(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkVideoEncodeH264SessionParametersFeedbackInfoKHR].
     public static final class Buffer extends VkVideoEncodeH264SessionParametersFeedbackInfoKHR {
@@ -229,40 +197,40 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends St
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `hasStdSPSOverrides` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int hasStdSPSOverridesAt(long index) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdSPSOverrides(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int hasStdSPSOverridesAt(long index) { return hasStdSPSOverrides(this.segment(), index); }
         /// Sets `hasStdSPSOverrides` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer hasStdSPSOverridesAt(long index, @CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdSPSOverrides(this.segment(), index, value); return this; }
+        public Buffer hasStdSPSOverridesAt(long index, int value) { hasStdSPSOverrides(this.segment(), index, value); return this; }
 
         /// {@return `hasStdPPSOverrides` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int hasStdPPSOverridesAt(long index) { return VkVideoEncodeH264SessionParametersFeedbackInfoKHR.get_hasStdPPSOverrides(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int hasStdPPSOverridesAt(long index) { return hasStdPPSOverrides(this.segment(), index); }
         /// Sets `hasStdPPSOverrides` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer hasStdPPSOverridesAt(long index, @CType("VkBool32") int value) { VkVideoEncodeH264SessionParametersFeedbackInfoKHR.set_hasStdPPSOverrides(this.segment(), index, value); return this; }
+        public Buffer hasStdPPSOverridesAt(long index, int value) { hasStdPPSOverrides(this.segment(), index, value); return this; }
 
     }
 }

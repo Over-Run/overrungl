@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTLegacyDithering {
     public static final int VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 2;
@@ -30,6 +25,6 @@ public final class VKEXTLegacyDithering {
     public static final int VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT = 0x00000008;
     public static final long VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT = 0x400000000L;
 
-    private VKEXTLegacyDithering() { }
+    private VKEXTLegacyDithering() {}
 
 }

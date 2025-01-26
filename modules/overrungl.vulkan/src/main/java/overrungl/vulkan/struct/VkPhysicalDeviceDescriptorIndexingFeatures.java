@@ -15,91 +15,45 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### shaderInputAttachmentArrayDynamicIndexing
-/// [VarHandle][#VH_shaderInputAttachmentArrayDynamicIndexing] - [Getter][#shaderInputAttachmentArrayDynamicIndexing()] - [Setter][#shaderInputAttachmentArrayDynamicIndexing(int)]
-/// ### shaderUniformTexelBufferArrayDynamicIndexing
-/// [VarHandle][#VH_shaderUniformTexelBufferArrayDynamicIndexing] - [Getter][#shaderUniformTexelBufferArrayDynamicIndexing()] - [Setter][#shaderUniformTexelBufferArrayDynamicIndexing(int)]
-/// ### shaderStorageTexelBufferArrayDynamicIndexing
-/// [VarHandle][#VH_shaderStorageTexelBufferArrayDynamicIndexing] - [Getter][#shaderStorageTexelBufferArrayDynamicIndexing()] - [Setter][#shaderStorageTexelBufferArrayDynamicIndexing(int)]
-/// ### shaderUniformBufferArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderUniformBufferArrayNonUniformIndexing] - [Getter][#shaderUniformBufferArrayNonUniformIndexing()] - [Setter][#shaderUniformBufferArrayNonUniformIndexing(int)]
-/// ### shaderSampledImageArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderSampledImageArrayNonUniformIndexing] - [Getter][#shaderSampledImageArrayNonUniformIndexing()] - [Setter][#shaderSampledImageArrayNonUniformIndexing(int)]
-/// ### shaderStorageBufferArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderStorageBufferArrayNonUniformIndexing] - [Getter][#shaderStorageBufferArrayNonUniformIndexing()] - [Setter][#shaderStorageBufferArrayNonUniformIndexing(int)]
-/// ### shaderStorageImageArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderStorageImageArrayNonUniformIndexing] - [Getter][#shaderStorageImageArrayNonUniformIndexing()] - [Setter][#shaderStorageImageArrayNonUniformIndexing(int)]
-/// ### shaderInputAttachmentArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderInputAttachmentArrayNonUniformIndexing] - [Getter][#shaderInputAttachmentArrayNonUniformIndexing()] - [Setter][#shaderInputAttachmentArrayNonUniformIndexing(int)]
-/// ### shaderUniformTexelBufferArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderUniformTexelBufferArrayNonUniformIndexing] - [Getter][#shaderUniformTexelBufferArrayNonUniformIndexing()] - [Setter][#shaderUniformTexelBufferArrayNonUniformIndexing(int)]
-/// ### shaderStorageTexelBufferArrayNonUniformIndexing
-/// [VarHandle][#VH_shaderStorageTexelBufferArrayNonUniformIndexing] - [Getter][#shaderStorageTexelBufferArrayNonUniformIndexing()] - [Setter][#shaderStorageTexelBufferArrayNonUniformIndexing(int)]
-/// ### descriptorBindingUniformBufferUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingUniformBufferUpdateAfterBind] - [Getter][#descriptorBindingUniformBufferUpdateAfterBind()] - [Setter][#descriptorBindingUniformBufferUpdateAfterBind(int)]
-/// ### descriptorBindingSampledImageUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingSampledImageUpdateAfterBind] - [Getter][#descriptorBindingSampledImageUpdateAfterBind()] - [Setter][#descriptorBindingSampledImageUpdateAfterBind(int)]
-/// ### descriptorBindingStorageImageUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingStorageImageUpdateAfterBind] - [Getter][#descriptorBindingStorageImageUpdateAfterBind()] - [Setter][#descriptorBindingStorageImageUpdateAfterBind(int)]
-/// ### descriptorBindingStorageBufferUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingStorageBufferUpdateAfterBind] - [Getter][#descriptorBindingStorageBufferUpdateAfterBind()] - [Setter][#descriptorBindingStorageBufferUpdateAfterBind(int)]
-/// ### descriptorBindingUniformTexelBufferUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingUniformTexelBufferUpdateAfterBind] - [Getter][#descriptorBindingUniformTexelBufferUpdateAfterBind()] - [Setter][#descriptorBindingUniformTexelBufferUpdateAfterBind(int)]
-/// ### descriptorBindingStorageTexelBufferUpdateAfterBind
-/// [VarHandle][#VH_descriptorBindingStorageTexelBufferUpdateAfterBind] - [Getter][#descriptorBindingStorageTexelBufferUpdateAfterBind()] - [Setter][#descriptorBindingStorageTexelBufferUpdateAfterBind(int)]
-/// ### descriptorBindingUpdateUnusedWhilePending
-/// [VarHandle][#VH_descriptorBindingUpdateUnusedWhilePending] - [Getter][#descriptorBindingUpdateUnusedWhilePending()] - [Setter][#descriptorBindingUpdateUnusedWhilePending(int)]
-/// ### descriptorBindingPartiallyBound
-/// [VarHandle][#VH_descriptorBindingPartiallyBound] - [Getter][#descriptorBindingPartiallyBound()] - [Setter][#descriptorBindingPartiallyBound(int)]
-/// ### descriptorBindingVariableDescriptorCount
-/// [VarHandle][#VH_descriptorBindingVariableDescriptorCount] - [Getter][#descriptorBindingVariableDescriptorCount()] - [Setter][#descriptorBindingVariableDescriptorCount(int)]
-/// ### runtimeDescriptorArray
-/// [VarHandle][#VH_runtimeDescriptorArray] - [Getter][#runtimeDescriptorArray()] - [Setter][#runtimeDescriptorArray(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceDescriptorIndexingFeatures {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexing;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexing;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUpdateUnusedWhilePending;
-///     VkBool32 descriptorBindingPartiallyBound;
-///     VkBool32 descriptorBindingVariableDescriptorCount;
-///     VkBool32 runtimeDescriptorArray;
-/// } VkPhysicalDeviceDescriptorIndexingFeatures;
 /// ```
-public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
+/// struct VkPhysicalDeviceDescriptorIndexingFeatures {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 shaderInputAttachmentArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderUniformBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderSampledImageArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageImageArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingSampledImageUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageImageUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingUpdateUnusedWhilePending;
+///     (uint32_t) VkBool32 descriptorBindingPartiallyBound;
+///     (uint32_t) VkBool32 descriptorBindingVariableDescriptorCount;
+///     (uint32_t) VkBool32 runtimeDescriptorArray;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDescriptorIndexingFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderInputAttachmentArrayDynamicIndexing"),
@@ -123,49 +77,137 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
         ValueLayout.JAVA_INT.withName("descriptorBindingVariableDescriptorCount"),
         ValueLayout.JAVA_INT.withName("runtimeDescriptorArray")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderInputAttachmentArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderInputAttachmentArrayDynamicIndexing`.
+    public static final long OFFSET_shaderInputAttachmentArrayDynamicIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderInputAttachmentArrayDynamicIndexing"));
+    /// The memory layout of `shaderInputAttachmentArrayDynamicIndexing`.
+    public static final MemoryLayout LAYOUT_shaderInputAttachmentArrayDynamicIndexing = LAYOUT.select(PathElement.groupElement("shaderInputAttachmentArrayDynamicIndexing"));
+    /// The [VarHandle] of `shaderInputAttachmentArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderInputAttachmentArrayDynamicIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderInputAttachmentArrayDynamicIndexing"));
-    /// The [VarHandle] of `shaderUniformTexelBufferArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderUniformTexelBufferArrayDynamicIndexing`.
+    public static final long OFFSET_shaderUniformTexelBufferArrayDynamicIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderUniformTexelBufferArrayDynamicIndexing"));
+    /// The memory layout of `shaderUniformTexelBufferArrayDynamicIndexing`.
+    public static final MemoryLayout LAYOUT_shaderUniformTexelBufferArrayDynamicIndexing = LAYOUT.select(PathElement.groupElement("shaderUniformTexelBufferArrayDynamicIndexing"));
+    /// The [VarHandle] of `shaderUniformTexelBufferArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderUniformTexelBufferArrayDynamicIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderUniformTexelBufferArrayDynamicIndexing"));
-    /// The [VarHandle] of `shaderStorageTexelBufferArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderStorageTexelBufferArrayDynamicIndexing`.
+    public static final long OFFSET_shaderStorageTexelBufferArrayDynamicIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageTexelBufferArrayDynamicIndexing"));
+    /// The memory layout of `shaderStorageTexelBufferArrayDynamicIndexing`.
+    public static final MemoryLayout LAYOUT_shaderStorageTexelBufferArrayDynamicIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageTexelBufferArrayDynamicIndexing"));
+    /// The [VarHandle] of `shaderStorageTexelBufferArrayDynamicIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderStorageTexelBufferArrayDynamicIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTexelBufferArrayDynamicIndexing"));
-    /// The [VarHandle] of `shaderUniformBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderUniformBufferArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderUniformBufferArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexing"));
+    /// The memory layout of `shaderUniformBufferArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderUniformBufferArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderUniformBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderUniformBufferArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderUniformBufferArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderSampledImageArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderSampledImageArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderSampledImageArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexing"));
+    /// The memory layout of `shaderSampledImageArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderSampledImageArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderSampledImageArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderSampledImageArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSampledImageArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderStorageBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderStorageBufferArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderStorageBufferArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexing"));
+    /// The memory layout of `shaderStorageBufferArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderStorageBufferArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderStorageBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderStorageBufferArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageBufferArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderStorageImageArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderStorageImageArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderStorageImageArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexing"));
+    /// The memory layout of `shaderStorageImageArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderStorageImageArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderStorageImageArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderStorageImageArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageImageArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderInputAttachmentArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderInputAttachmentArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderInputAttachmentArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexing"));
+    /// The memory layout of `shaderInputAttachmentArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderInputAttachmentArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderInputAttachmentArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderInputAttachmentArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderInputAttachmentArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderUniformTexelBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderUniformTexelBufferArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderUniformTexelBufferArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderUniformTexelBufferArrayNonUniformIndexing"));
+    /// The memory layout of `shaderUniformTexelBufferArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderUniformTexelBufferArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderUniformTexelBufferArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderUniformTexelBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderUniformTexelBufferArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderUniformTexelBufferArrayNonUniformIndexing"));
-    /// The [VarHandle] of `shaderStorageTexelBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderStorageTexelBufferArrayNonUniformIndexing`.
+    public static final long OFFSET_shaderStorageTexelBufferArrayNonUniformIndexing = LAYOUT.byteOffset(PathElement.groupElement("shaderStorageTexelBufferArrayNonUniformIndexing"));
+    /// The memory layout of `shaderStorageTexelBufferArrayNonUniformIndexing`.
+    public static final MemoryLayout LAYOUT_shaderStorageTexelBufferArrayNonUniformIndexing = LAYOUT.select(PathElement.groupElement("shaderStorageTexelBufferArrayNonUniformIndexing"));
+    /// The [VarHandle] of `shaderStorageTexelBufferArrayNonUniformIndexing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderStorageTexelBufferArrayNonUniformIndexing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStorageTexelBufferArrayNonUniformIndexing"));
-    /// The [VarHandle] of `descriptorBindingUniformBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingUniformBufferUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingUniformBufferUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingUniformBufferUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingUniformBufferUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingUniformBufferUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingUniformBufferUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingUniformBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingUniformBufferUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingUniformBufferUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingSampledImageUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingSampledImageUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingSampledImageUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingSampledImageUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingSampledImageUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingSampledImageUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingSampledImageUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingSampledImageUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingSampledImageUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingSampledImageUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingStorageImageUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingStorageImageUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingStorageImageUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingStorageImageUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingStorageImageUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingStorageImageUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingStorageImageUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingStorageImageUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingStorageImageUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingStorageImageUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingStorageBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingStorageBufferUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingStorageBufferUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingStorageBufferUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingStorageBufferUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingStorageBufferUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingStorageBufferUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingStorageBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingStorageBufferUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingStorageBufferUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingUniformTexelBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingUniformTexelBufferUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingUniformTexelBufferUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingUniformTexelBufferUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingUniformTexelBufferUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingUniformTexelBufferUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingUniformTexelBufferUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingUniformTexelBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingUniformTexelBufferUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingUniformTexelBufferUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingStorageTexelBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingStorageTexelBufferUpdateAfterBind`.
+    public static final long OFFSET_descriptorBindingStorageTexelBufferUpdateAfterBind = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingStorageTexelBufferUpdateAfterBind"));
+    /// The memory layout of `descriptorBindingStorageTexelBufferUpdateAfterBind`.
+    public static final MemoryLayout LAYOUT_descriptorBindingStorageTexelBufferUpdateAfterBind = LAYOUT.select(PathElement.groupElement("descriptorBindingStorageTexelBufferUpdateAfterBind"));
+    /// The [VarHandle] of `descriptorBindingStorageTexelBufferUpdateAfterBind` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingStorageTexelBufferUpdateAfterBind = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingStorageTexelBufferUpdateAfterBind"));
-    /// The [VarHandle] of `descriptorBindingUpdateUnusedWhilePending` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingUpdateUnusedWhilePending`.
+    public static final long OFFSET_descriptorBindingUpdateUnusedWhilePending = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingUpdateUnusedWhilePending"));
+    /// The memory layout of `descriptorBindingUpdateUnusedWhilePending`.
+    public static final MemoryLayout LAYOUT_descriptorBindingUpdateUnusedWhilePending = LAYOUT.select(PathElement.groupElement("descriptorBindingUpdateUnusedWhilePending"));
+    /// The [VarHandle] of `descriptorBindingUpdateUnusedWhilePending` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingUpdateUnusedWhilePending = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingUpdateUnusedWhilePending"));
-    /// The [VarHandle] of `descriptorBindingPartiallyBound` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingPartiallyBound`.
+    public static final long OFFSET_descriptorBindingPartiallyBound = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingPartiallyBound"));
+    /// The memory layout of `descriptorBindingPartiallyBound`.
+    public static final MemoryLayout LAYOUT_descriptorBindingPartiallyBound = LAYOUT.select(PathElement.groupElement("descriptorBindingPartiallyBound"));
+    /// The [VarHandle] of `descriptorBindingPartiallyBound` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingPartiallyBound = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingPartiallyBound"));
-    /// The [VarHandle] of `descriptorBindingVariableDescriptorCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorBindingVariableDescriptorCount`.
+    public static final long OFFSET_descriptorBindingVariableDescriptorCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorBindingVariableDescriptorCount"));
+    /// The memory layout of `descriptorBindingVariableDescriptorCount`.
+    public static final MemoryLayout LAYOUT_descriptorBindingVariableDescriptorCount = LAYOUT.select(PathElement.groupElement("descriptorBindingVariableDescriptorCount"));
+    /// The [VarHandle] of `descriptorBindingVariableDescriptorCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorBindingVariableDescriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBindingVariableDescriptorCount"));
-    /// The [VarHandle] of `runtimeDescriptorArray` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `runtimeDescriptorArray`.
+    public static final long OFFSET_runtimeDescriptorArray = LAYOUT.byteOffset(PathElement.groupElement("runtimeDescriptorArray"));
+    /// The memory layout of `runtimeDescriptorArray`.
+    public static final MemoryLayout LAYOUT_runtimeDescriptorArray = LAYOUT.select(PathElement.groupElement("runtimeDescriptorArray"));
+    /// The [VarHandle] of `runtimeDescriptorArray` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_runtimeDescriptorArray = LAYOUT.arrayElementVarHandle(PathElement.groupElement("runtimeDescriptorArray"));
 
     /// Creates `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment.
@@ -175,19 +217,14 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
     /// Creates `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDescriptorIndexingFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingFeatures(segment); }
-
-    /// Creates `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDescriptorIndexingFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceDescriptorIndexingFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorIndexingFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment.
     ///
@@ -195,7 +232,7 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -208,11 +245,6 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceDescriptorIndexingFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDescriptorIndexingFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDescriptorIndexingFeatures`
-    public static VkPhysicalDeviceDescriptorIndexingFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderInputAttachmentArrayDynamicIndexing, @CType("VkBool32") int shaderUniformTexelBufferArrayDynamicIndexing, @CType("VkBool32") int shaderStorageTexelBufferArrayDynamicIndexing, @CType("VkBool32") int shaderUniformBufferArrayNonUniformIndexing, @CType("VkBool32") int shaderSampledImageArrayNonUniformIndexing, @CType("VkBool32") int shaderStorageBufferArrayNonUniformIndexing, @CType("VkBool32") int shaderStorageImageArrayNonUniformIndexing, @CType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexing, @CType("VkBool32") int shaderUniformTexelBufferArrayNonUniformIndexing, @CType("VkBool32") int shaderStorageTexelBufferArrayNonUniformIndexing, @CType("VkBool32") int descriptorBindingUniformBufferUpdateAfterBind, @CType("VkBool32") int descriptorBindingSampledImageUpdateAfterBind, @CType("VkBool32") int descriptorBindingStorageImageUpdateAfterBind, @CType("VkBool32") int descriptorBindingStorageBufferUpdateAfterBind, @CType("VkBool32") int descriptorBindingUniformTexelBufferUpdateAfterBind, @CType("VkBool32") int descriptorBindingStorageTexelBufferUpdateAfterBind, @CType("VkBool32") int descriptorBindingUpdateUnusedWhilePending, @CType("VkBool32") int descriptorBindingPartiallyBound, @CType("VkBool32") int descriptorBindingVariableDescriptorCount, @CType("VkBool32") int runtimeDescriptorArray) { return alloc(allocator).sType(sType).pNext(pNext).shaderInputAttachmentArrayDynamicIndexing(shaderInputAttachmentArrayDynamicIndexing).shaderUniformTexelBufferArrayDynamicIndexing(shaderUniformTexelBufferArrayDynamicIndexing).shaderStorageTexelBufferArrayDynamicIndexing(shaderStorageTexelBufferArrayDynamicIndexing).shaderUniformBufferArrayNonUniformIndexing(shaderUniformBufferArrayNonUniformIndexing).shaderSampledImageArrayNonUniformIndexing(shaderSampledImageArrayNonUniformIndexing).shaderStorageBufferArrayNonUniformIndexing(shaderStorageBufferArrayNonUniformIndexing).shaderStorageImageArrayNonUniformIndexing(shaderStorageImageArrayNonUniformIndexing).shaderInputAttachmentArrayNonUniformIndexing(shaderInputAttachmentArrayNonUniformIndexing).shaderUniformTexelBufferArrayNonUniformIndexing(shaderUniformTexelBufferArrayNonUniformIndexing).shaderStorageTexelBufferArrayNonUniformIndexing(shaderStorageTexelBufferArrayNonUniformIndexing).descriptorBindingUniformBufferUpdateAfterBind(descriptorBindingUniformBufferUpdateAfterBind).descriptorBindingSampledImageUpdateAfterBind(descriptorBindingSampledImageUpdateAfterBind).descriptorBindingStorageImageUpdateAfterBind(descriptorBindingStorageImageUpdateAfterBind).descriptorBindingStorageBufferUpdateAfterBind(descriptorBindingStorageBufferUpdateAfterBind).descriptorBindingUniformTexelBufferUpdateAfterBind(descriptorBindingUniformTexelBufferUpdateAfterBind).descriptorBindingStorageTexelBufferUpdateAfterBind(descriptorBindingStorageTexelBufferUpdateAfterBind).descriptorBindingUpdateUnusedWhilePending(descriptorBindingUpdateUnusedWhilePending).descriptorBindingPartiallyBound(descriptorBindingPartiallyBound).descriptorBindingVariableDescriptorCount(descriptorBindingVariableDescriptorCount).runtimeDescriptorArray(runtimeDescriptorArray); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -220,513 +252,359 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderInputAttachmentArrayDynamicIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderInputAttachmentArrayDynamicIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderInputAttachmentArrayDynamicIndexing.get(segment, 0L, index); }
     /// {@return `shaderInputAttachmentArrayDynamicIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayDynamicIndexing(segment, 0L); }
-    /// {@return `shaderInputAttachmentArrayDynamicIndexing`}
-    public @CType("VkBool32") int shaderInputAttachmentArrayDynamicIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayDynamicIndexing(this.segment()); }
+    public int shaderInputAttachmentArrayDynamicIndexing() { return shaderInputAttachmentArrayDynamicIndexing(this.segment(), 0L); }
     /// Sets `shaderInputAttachmentArrayDynamicIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderInputAttachmentArrayDynamicIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderInputAttachmentArrayDynamicIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayDynamicIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderInputAttachmentArrayDynamicIndexing(MemorySegment segment, long index, int value) { VH_shaderInputAttachmentArrayDynamicIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderInputAttachmentArrayDynamicIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderInputAttachmentArrayDynamicIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayDynamicIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderInputAttachmentArrayDynamicIndexing(int value) { shaderInputAttachmentArrayDynamicIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderUniformTexelBufferArrayDynamicIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformTexelBufferArrayDynamicIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformTexelBufferArrayDynamicIndexing.get(segment, 0L, index); }
     /// {@return `shaderUniformTexelBufferArrayDynamicIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayDynamicIndexing(segment, 0L); }
-    /// {@return `shaderUniformTexelBufferArrayDynamicIndexing`}
-    public @CType("VkBool32") int shaderUniformTexelBufferArrayDynamicIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayDynamicIndexing(this.segment()); }
+    public int shaderUniformTexelBufferArrayDynamicIndexing() { return shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), 0L); }
     /// Sets `shaderUniformTexelBufferArrayDynamicIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderUniformTexelBufferArrayDynamicIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderUniformTexelBufferArrayDynamicIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayDynamicIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderUniformTexelBufferArrayDynamicIndexing(MemorySegment segment, long index, int value) { VH_shaderUniformTexelBufferArrayDynamicIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderUniformTexelBufferArrayDynamicIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformTexelBufferArrayDynamicIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformTexelBufferArrayDynamicIndexing(int value) { shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderStorageTexelBufferArrayDynamicIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTexelBufferArrayDynamicIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTexelBufferArrayDynamicIndexing.get(segment, 0L, index); }
     /// {@return `shaderStorageTexelBufferArrayDynamicIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayDynamicIndexing(segment, 0L); }
-    /// {@return `shaderStorageTexelBufferArrayDynamicIndexing`}
-    public @CType("VkBool32") int shaderStorageTexelBufferArrayDynamicIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayDynamicIndexing(this.segment()); }
+    public int shaderStorageTexelBufferArrayDynamicIndexing() { return shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageTexelBufferArrayDynamicIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderStorageTexelBufferArrayDynamicIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageTexelBufferArrayDynamicIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayDynamicIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderStorageTexelBufferArrayDynamicIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTexelBufferArrayDynamicIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderStorageTexelBufferArrayDynamicIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageTexelBufferArrayDynamicIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageTexelBufferArrayDynamicIndexing(int value) { shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderUniformBufferArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformBufferArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformBufferArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderUniformBufferArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformBufferArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderUniformBufferArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderUniformBufferArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformBufferArrayNonUniformIndexing(this.segment()); }
+    public int shaderUniformBufferArrayNonUniformIndexing() { return shaderUniformBufferArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderUniformBufferArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderUniformBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderUniformBufferArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformBufferArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderUniformBufferArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderUniformBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderUniformBufferArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformBufferArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformBufferArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformBufferArrayNonUniformIndexing(int value) { shaderUniformBufferArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderSampledImageArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderSampledImageArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderSampledImageArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderSampledImageArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderSampledImageArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderSampledImageArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderSampledImageArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderSampledImageArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderSampledImageArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderSampledImageArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderSampledImageArrayNonUniformIndexing(this.segment()); }
+    public int shaderSampledImageArrayNonUniformIndexing() { return shaderSampledImageArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderSampledImageArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderSampledImageArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderSampledImageArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderSampledImageArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderSampledImageArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderSampledImageArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderSampledImageArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderSampledImageArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderSampledImageArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderSampledImageArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderSampledImageArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderSampledImageArrayNonUniformIndexing(int value) { shaderSampledImageArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderStorageBufferArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageBufferArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageBufferArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderStorageBufferArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageBufferArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderStorageBufferArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderStorageBufferArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageBufferArrayNonUniformIndexing(this.segment()); }
+    public int shaderStorageBufferArrayNonUniformIndexing() { return shaderStorageBufferArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageBufferArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderStorageBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageBufferArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageBufferArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderStorageBufferArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderStorageBufferArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageBufferArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageBufferArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageBufferArrayNonUniformIndexing(int value) { shaderStorageBufferArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderStorageImageArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderStorageImageArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageImageArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderStorageImageArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageImageArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderStorageImageArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderStorageImageArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageImageArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderStorageImageArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderStorageImageArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageImageArrayNonUniformIndexing(this.segment()); }
+    public int shaderStorageImageArrayNonUniformIndexing() { return shaderStorageImageArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageImageArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderStorageImageArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderStorageImageArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageImageArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderStorageImageArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageImageArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderStorageImageArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageImageArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderStorageImageArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageImageArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageImageArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageImageArrayNonUniformIndexing(int value) { shaderStorageImageArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderInputAttachmentArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderInputAttachmentArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderInputAttachmentArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderInputAttachmentArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderInputAttachmentArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayNonUniformIndexing(this.segment()); }
+    public int shaderInputAttachmentArrayNonUniformIndexing() { return shaderInputAttachmentArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderInputAttachmentArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderInputAttachmentArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderInputAttachmentArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderInputAttachmentArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderInputAttachmentArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderInputAttachmentArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderInputAttachmentArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderInputAttachmentArrayNonUniformIndexing(int value) { shaderInputAttachmentArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderUniformTexelBufferArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformTexelBufferArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderUniformTexelBufferArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderUniformTexelBufferArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderUniformTexelBufferArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderUniformTexelBufferArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayNonUniformIndexing(this.segment()); }
+    public int shaderUniformTexelBufferArrayNonUniformIndexing() { return shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderUniformTexelBufferArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderUniformTexelBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderUniformTexelBufferArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderUniformTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderUniformTexelBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderUniformTexelBufferArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformTexelBufferArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderUniformTexelBufferArrayNonUniformIndexing(int value) { shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderStorageTexelBufferArrayNonUniformIndexing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTexelBufferArrayNonUniformIndexing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index) { return (int) VH_shaderStorageTexelBufferArrayNonUniformIndexing.get(segment, 0L, index); }
     /// {@return `shaderStorageTexelBufferArrayNonUniformIndexing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayNonUniformIndexing(segment, 0L); }
-    /// {@return `shaderStorageTexelBufferArrayNonUniformIndexing`}
-    public @CType("VkBool32") int shaderStorageTexelBufferArrayNonUniformIndexing() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayNonUniformIndexing(this.segment()); }
+    public int shaderStorageTexelBufferArrayNonUniformIndexing() { return shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), 0L); }
     /// Sets `shaderStorageTexelBufferArrayNonUniformIndexing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_shaderStorageTexelBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
-    /// Sets `shaderStorageTexelBufferArrayNonUniformIndexing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayNonUniformIndexing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderStorageTexelBufferArrayNonUniformIndexing(MemorySegment segment, long index, int value) { VH_shaderStorageTexelBufferArrayNonUniformIndexing.set(segment, 0L, index, value); }
     /// Sets `shaderStorageTexelBufferArrayNonUniformIndexing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageTexelBufferArrayNonUniformIndexing(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures shaderStorageTexelBufferArrayNonUniformIndexing(int value) { shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingUniformBufferUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingUniformBufferUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingUniformBufferUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingUniformBufferUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformBufferUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingUniformBufferUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingUniformBufferUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformBufferUpdateAfterBind(this.segment()); }
+    public int descriptorBindingUniformBufferUpdateAfterBind() { return descriptorBindingUniformBufferUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingUniformBufferUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingUniformBufferUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingUniformBufferUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformBufferUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingUniformBufferUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingUniformBufferUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingUniformBufferUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUniformBufferUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformBufferUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUniformBufferUpdateAfterBind(int value) { descriptorBindingUniformBufferUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingSampledImageUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingSampledImageUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingSampledImageUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingSampledImageUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingSampledImageUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingSampledImageUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingSampledImageUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingSampledImageUpdateAfterBind(this.segment()); }
+    public int descriptorBindingSampledImageUpdateAfterBind() { return descriptorBindingSampledImageUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingSampledImageUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingSampledImageUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingSampledImageUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingSampledImageUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingSampledImageUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingSampledImageUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingSampledImageUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingSampledImageUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingSampledImageUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingSampledImageUpdateAfterBind(int value) { descriptorBindingSampledImageUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingStorageImageUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageImageUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageImageUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingStorageImageUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageImageUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingStorageImageUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingStorageImageUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageImageUpdateAfterBind(this.segment()); }
+    public int descriptorBindingStorageImageUpdateAfterBind() { return descriptorBindingStorageImageUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingStorageImageUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingStorageImageUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingStorageImageUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageImageUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingStorageImageUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingStorageImageUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingStorageImageUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageImageUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageImageUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageImageUpdateAfterBind(int value) { descriptorBindingStorageImageUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingStorageBufferUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageBufferUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageBufferUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingStorageBufferUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageBufferUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingStorageBufferUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingStorageBufferUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageBufferUpdateAfterBind(this.segment()); }
+    public int descriptorBindingStorageBufferUpdateAfterBind() { return descriptorBindingStorageBufferUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingStorageBufferUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingStorageBufferUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingStorageBufferUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageBufferUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingStorageBufferUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingStorageBufferUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingStorageBufferUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageBufferUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageBufferUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageBufferUpdateAfterBind(int value) { descriptorBindingStorageBufferUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingUniformTexelBufferUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingUniformTexelBufferUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingUniformTexelBufferUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingUniformTexelBufferUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformTexelBufferUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingUniformTexelBufferUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingUniformTexelBufferUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment()); }
+    public int descriptorBindingUniformTexelBufferUpdateAfterBind() { return descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingUniformTexelBufferUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingUniformTexelBufferUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingUniformTexelBufferUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformTexelBufferUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingUniformTexelBufferUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingUniformTexelBufferUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingUniformTexelBufferUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUniformTexelBufferUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUniformTexelBufferUpdateAfterBind(int value) { descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingStorageTexelBufferUpdateAfterBind` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageTexelBufferUpdateAfterBind.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment, long index) { return (int) VH_descriptorBindingStorageTexelBufferUpdateAfterBind.get(segment, 0L, index); }
     /// {@return `descriptorBindingStorageTexelBufferUpdateAfterBind`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageTexelBufferUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingStorageTexelBufferUpdateAfterBind`}
-    public @CType("VkBool32") int descriptorBindingStorageTexelBufferUpdateAfterBind() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment()); }
+    public int descriptorBindingStorageTexelBufferUpdateAfterBind() { return descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), 0L); }
     /// Sets `descriptorBindingStorageTexelBufferUpdateAfterBind` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingStorageTexelBufferUpdateAfterBind.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingStorageTexelBufferUpdateAfterBind` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageTexelBufferUpdateAfterBind(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingStorageTexelBufferUpdateAfterBind(MemorySegment segment, long index, int value) { VH_descriptorBindingStorageTexelBufferUpdateAfterBind.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingStorageTexelBufferUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageTexelBufferUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingStorageTexelBufferUpdateAfterBind(int value) { descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingUpdateUnusedWhilePending` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingUpdateUnusedWhilePending(MemorySegment segment, long index) { return (int) VH_descriptorBindingUpdateUnusedWhilePending.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingUpdateUnusedWhilePending(MemorySegment segment, long index) { return (int) VH_descriptorBindingUpdateUnusedWhilePending.get(segment, 0L, index); }
     /// {@return `descriptorBindingUpdateUnusedWhilePending`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingUpdateUnusedWhilePending(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUpdateUnusedWhilePending(segment, 0L); }
-    /// {@return `descriptorBindingUpdateUnusedWhilePending`}
-    public @CType("VkBool32") int descriptorBindingUpdateUnusedWhilePending() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUpdateUnusedWhilePending(this.segment()); }
+    public int descriptorBindingUpdateUnusedWhilePending() { return descriptorBindingUpdateUnusedWhilePending(this.segment(), 0L); }
     /// Sets `descriptorBindingUpdateUnusedWhilePending` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingUpdateUnusedWhilePending(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingUpdateUnusedWhilePending.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingUpdateUnusedWhilePending` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingUpdateUnusedWhilePending(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUpdateUnusedWhilePending(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingUpdateUnusedWhilePending(MemorySegment segment, long index, int value) { VH_descriptorBindingUpdateUnusedWhilePending.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingUpdateUnusedWhilePending` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUpdateUnusedWhilePending(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUpdateUnusedWhilePending(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingUpdateUnusedWhilePending(int value) { descriptorBindingUpdateUnusedWhilePending(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingPartiallyBound` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingPartiallyBound(MemorySegment segment, long index) { return (int) VH_descriptorBindingPartiallyBound.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingPartiallyBound(MemorySegment segment, long index) { return (int) VH_descriptorBindingPartiallyBound.get(segment, 0L, index); }
     /// {@return `descriptorBindingPartiallyBound`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingPartiallyBound(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingPartiallyBound(segment, 0L); }
-    /// {@return `descriptorBindingPartiallyBound`}
-    public @CType("VkBool32") int descriptorBindingPartiallyBound() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingPartiallyBound(this.segment()); }
+    public int descriptorBindingPartiallyBound() { return descriptorBindingPartiallyBound(this.segment(), 0L); }
     /// Sets `descriptorBindingPartiallyBound` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingPartiallyBound(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingPartiallyBound.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingPartiallyBound` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingPartiallyBound(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingPartiallyBound(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingPartiallyBound(MemorySegment segment, long index, int value) { VH_descriptorBindingPartiallyBound.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingPartiallyBound` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingPartiallyBound(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingPartiallyBound(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingPartiallyBound(int value) { descriptorBindingPartiallyBound(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorBindingVariableDescriptorCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_descriptorBindingVariableDescriptorCount(MemorySegment segment, long index) { return (int) VH_descriptorBindingVariableDescriptorCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorBindingVariableDescriptorCount(MemorySegment segment, long index) { return (int) VH_descriptorBindingVariableDescriptorCount.get(segment, 0L, index); }
     /// {@return `descriptorBindingVariableDescriptorCount`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_descriptorBindingVariableDescriptorCount(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingVariableDescriptorCount(segment, 0L); }
-    /// {@return `descriptorBindingVariableDescriptorCount`}
-    public @CType("VkBool32") int descriptorBindingVariableDescriptorCount() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingVariableDescriptorCount(this.segment()); }
+    public int descriptorBindingVariableDescriptorCount() { return descriptorBindingVariableDescriptorCount(this.segment(), 0L); }
     /// Sets `descriptorBindingVariableDescriptorCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorBindingVariableDescriptorCount(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_descriptorBindingVariableDescriptorCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorBindingVariableDescriptorCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorBindingVariableDescriptorCount(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingVariableDescriptorCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorBindingVariableDescriptorCount(MemorySegment segment, long index, int value) { VH_descriptorBindingVariableDescriptorCount.set(segment, 0L, index, value); }
     /// Sets `descriptorBindingVariableDescriptorCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingVariableDescriptorCount(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingVariableDescriptorCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures descriptorBindingVariableDescriptorCount(int value) { descriptorBindingVariableDescriptorCount(this.segment(), 0L, value); return this; }
 
     /// {@return `runtimeDescriptorArray` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_runtimeDescriptorArray(MemorySegment segment, long index) { return (int) VH_runtimeDescriptorArray.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int runtimeDescriptorArray(MemorySegment segment, long index) { return (int) VH_runtimeDescriptorArray.get(segment, 0L, index); }
     /// {@return `runtimeDescriptorArray`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_runtimeDescriptorArray(MemorySegment segment) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_runtimeDescriptorArray(segment, 0L); }
-    /// {@return `runtimeDescriptorArray`}
-    public @CType("VkBool32") int runtimeDescriptorArray() { return VkPhysicalDeviceDescriptorIndexingFeatures.get_runtimeDescriptorArray(this.segment()); }
+    public int runtimeDescriptorArray() { return runtimeDescriptorArray(this.segment(), 0L); }
     /// Sets `runtimeDescriptorArray` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_runtimeDescriptorArray(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_runtimeDescriptorArray.set(segment, 0L, index, value); }
-    /// Sets `runtimeDescriptorArray` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_runtimeDescriptorArray(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_runtimeDescriptorArray(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void runtimeDescriptorArray(MemorySegment segment, long index, int value) { VH_runtimeDescriptorArray.set(segment, 0L, index, value); }
     /// Sets `runtimeDescriptorArray` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDescriptorIndexingFeatures runtimeDescriptorArray(@CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_runtimeDescriptorArray(this.segment(), value); return this; }
+    public VkPhysicalDeviceDescriptorIndexingFeatures runtimeDescriptorArray(int value) { runtimeDescriptorArray(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceDescriptorIndexingFeatures].
     public static final class Buffer extends VkPhysicalDeviceDescriptorIndexingFeatures {
@@ -751,202 +629,202 @@ public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderInputAttachmentArrayDynamicIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderInputAttachmentArrayDynamicIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayDynamicIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderInputAttachmentArrayDynamicIndexingAt(long index) { return shaderInputAttachmentArrayDynamicIndexing(this.segment(), index); }
         /// Sets `shaderInputAttachmentArrayDynamicIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderInputAttachmentArrayDynamicIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayDynamicIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderInputAttachmentArrayDynamicIndexingAt(long index, int value) { shaderInputAttachmentArrayDynamicIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderUniformTexelBufferArrayDynamicIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderUniformTexelBufferArrayDynamicIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderUniformTexelBufferArrayDynamicIndexingAt(long index) { return shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), index); }
         /// Sets `shaderUniformTexelBufferArrayDynamicIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderUniformTexelBufferArrayDynamicIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderUniformTexelBufferArrayDynamicIndexingAt(long index, int value) { shaderUniformTexelBufferArrayDynamicIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderStorageTexelBufferArrayDynamicIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderStorageTexelBufferArrayDynamicIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderStorageTexelBufferArrayDynamicIndexingAt(long index) { return shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), index); }
         /// Sets `shaderStorageTexelBufferArrayDynamicIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderStorageTexelBufferArrayDynamicIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderStorageTexelBufferArrayDynamicIndexingAt(long index, int value) { shaderStorageTexelBufferArrayDynamicIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderUniformBufferArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderUniformBufferArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformBufferArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderUniformBufferArrayNonUniformIndexingAt(long index) { return shaderUniformBufferArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderUniformBufferArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderUniformBufferArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderUniformBufferArrayNonUniformIndexingAt(long index, int value) { shaderUniformBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderSampledImageArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderSampledImageArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderSampledImageArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderSampledImageArrayNonUniformIndexingAt(long index) { return shaderSampledImageArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderSampledImageArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderSampledImageArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderSampledImageArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderSampledImageArrayNonUniformIndexingAt(long index, int value) { shaderSampledImageArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderStorageBufferArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderStorageBufferArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageBufferArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderStorageBufferArrayNonUniformIndexingAt(long index) { return shaderStorageBufferArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderStorageBufferArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderStorageBufferArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderStorageBufferArrayNonUniformIndexingAt(long index, int value) { shaderStorageBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderStorageImageArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderStorageImageArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageImageArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderStorageImageArrayNonUniformIndexingAt(long index) { return shaderStorageImageArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderStorageImageArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderStorageImageArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageImageArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderStorageImageArrayNonUniformIndexingAt(long index, int value) { shaderStorageImageArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderInputAttachmentArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderInputAttachmentArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderInputAttachmentArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderInputAttachmentArrayNonUniformIndexingAt(long index) { return shaderInputAttachmentArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderInputAttachmentArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderInputAttachmentArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderInputAttachmentArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderInputAttachmentArrayNonUniformIndexingAt(long index, int value) { shaderInputAttachmentArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderUniformTexelBufferArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderUniformTexelBufferArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderUniformTexelBufferArrayNonUniformIndexingAt(long index) { return shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderUniformTexelBufferArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderUniformTexelBufferArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderUniformTexelBufferArrayNonUniformIndexingAt(long index, int value) { shaderUniformTexelBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `shaderStorageTexelBufferArrayNonUniformIndexing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int shaderStorageTexelBufferArrayNonUniformIndexingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderStorageTexelBufferArrayNonUniformIndexingAt(long index) { return shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), index); }
         /// Sets `shaderStorageTexelBufferArrayNonUniformIndexing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderStorageTexelBufferArrayNonUniformIndexingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
+        public Buffer shaderStorageTexelBufferArrayNonUniformIndexingAt(long index, int value) { shaderStorageTexelBufferArrayNonUniformIndexing(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingUniformBufferUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingUniformBufferUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformBufferUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingUniformBufferUpdateAfterBindAt(long index) { return descriptorBindingUniformBufferUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingUniformBufferUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingUniformBufferUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformBufferUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingUniformBufferUpdateAfterBindAt(long index, int value) { descriptorBindingUniformBufferUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingSampledImageUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingSampledImageUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingSampledImageUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingSampledImageUpdateAfterBindAt(long index) { return descriptorBindingSampledImageUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingSampledImageUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingSampledImageUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingSampledImageUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingSampledImageUpdateAfterBindAt(long index, int value) { descriptorBindingSampledImageUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingStorageImageUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingStorageImageUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageImageUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingStorageImageUpdateAfterBindAt(long index) { return descriptorBindingStorageImageUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingStorageImageUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingStorageImageUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageImageUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingStorageImageUpdateAfterBindAt(long index, int value) { descriptorBindingStorageImageUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingStorageBufferUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingStorageBufferUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageBufferUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingStorageBufferUpdateAfterBindAt(long index) { return descriptorBindingStorageBufferUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingStorageBufferUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingStorageBufferUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageBufferUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingStorageBufferUpdateAfterBindAt(long index, int value) { descriptorBindingStorageBufferUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingUniformTexelBufferUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingUniformTexelBufferUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingUniformTexelBufferUpdateAfterBindAt(long index) { return descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingUniformTexelBufferUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingUniformTexelBufferUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingUniformTexelBufferUpdateAfterBindAt(long index, int value) { descriptorBindingUniformTexelBufferUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingStorageTexelBufferUpdateAfterBind` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingStorageTexelBufferUpdateAfterBindAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingStorageTexelBufferUpdateAfterBindAt(long index) { return descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), index); }
         /// Sets `descriptorBindingStorageTexelBufferUpdateAfterBind` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingStorageTexelBufferUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingStorageTexelBufferUpdateAfterBindAt(long index, int value) { descriptorBindingStorageTexelBufferUpdateAfterBind(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingUpdateUnusedWhilePending` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingUpdateUnusedWhilePendingAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingUpdateUnusedWhilePending(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingUpdateUnusedWhilePendingAt(long index) { return descriptorBindingUpdateUnusedWhilePending(this.segment(), index); }
         /// Sets `descriptorBindingUpdateUnusedWhilePending` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingUpdateUnusedWhilePendingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingUpdateUnusedWhilePending(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingUpdateUnusedWhilePendingAt(long index, int value) { descriptorBindingUpdateUnusedWhilePending(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingPartiallyBound` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingPartiallyBoundAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingPartiallyBound(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingPartiallyBoundAt(long index) { return descriptorBindingPartiallyBound(this.segment(), index); }
         /// Sets `descriptorBindingPartiallyBound` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingPartiallyBoundAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingPartiallyBound(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingPartiallyBoundAt(long index, int value) { descriptorBindingPartiallyBound(this.segment(), index, value); return this; }
 
         /// {@return `descriptorBindingVariableDescriptorCount` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int descriptorBindingVariableDescriptorCountAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_descriptorBindingVariableDescriptorCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorBindingVariableDescriptorCountAt(long index) { return descriptorBindingVariableDescriptorCount(this.segment(), index); }
         /// Sets `descriptorBindingVariableDescriptorCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorBindingVariableDescriptorCountAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_descriptorBindingVariableDescriptorCount(this.segment(), index, value); return this; }
+        public Buffer descriptorBindingVariableDescriptorCountAt(long index, int value) { descriptorBindingVariableDescriptorCount(this.segment(), index, value); return this; }
 
         /// {@return `runtimeDescriptorArray` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int runtimeDescriptorArrayAt(long index) { return VkPhysicalDeviceDescriptorIndexingFeatures.get_runtimeDescriptorArray(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int runtimeDescriptorArrayAt(long index) { return runtimeDescriptorArray(this.segment(), index); }
         /// Sets `runtimeDescriptorArray` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer runtimeDescriptorArrayAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorIndexingFeatures.set_runtimeDescriptorArray(this.segment(), index, value); return this; }
+        public Buffer runtimeDescriptorArrayAt(long index, int value) { runtimeDescriptorArray(this.segment(), index, value); return this; }
 
     }
 }

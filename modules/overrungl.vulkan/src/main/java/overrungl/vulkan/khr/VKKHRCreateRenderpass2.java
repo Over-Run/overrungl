@@ -18,78 +18,62 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-import static overrungl.vulkan.VK12.*;
-public class VKKHRCreateRenderpass2 {
+public final class VKKHRCreateRenderpass2 {
     public static final int VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1;
     public static final String VK_KHR_CREATE_RENDERPASS_2_EXTENSION_NAME = "VK_KHR_create_renderpass2";
-    public static final int VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2;
-    public static final int VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2;
-    public static final int VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2;
-    public static final int VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR = VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2;
-    public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2;
-    public static final int VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR = VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO;
-    public static final int VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR = VK_STRUCTURE_TYPE_SUBPASS_END_INFO;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCreateRenderPass2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBeginRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdNextSubpass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdEndRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateRenderPass2KHR,
-            FD_vkCmdBeginRenderPass2KHR,
-            FD_vkCmdNextSubpass2KHR,
-            FD_vkCmdEndRenderPass2KHR
-        );
-        private Descriptors() {}
-    }
+    public static final int VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR = 1000109000;
+    public static final int VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR = 1000109001;
+    public static final int VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR = 1000109002;
+    public static final int VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR = 1000109003;
+    public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2_KHR = 1000109004;
+    public static final int VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO_KHR = 1000109005;
+    public static final int VK_STRUCTURE_TYPE_SUBPASS_END_INFO_KHR = 1000109006;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCreateRenderPass2KHR);
-        public static final MethodHandle MH_vkCmdBeginRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdBeginRenderPass2KHR);
-        public static final MethodHandle MH_vkCmdNextSubpass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdNextSubpass2KHR);
-        public static final MethodHandle MH_vkCmdEndRenderPass2KHR = RuntimeHelper.downcall(Descriptors.FD_vkCmdEndRenderPass2KHR);
-        public final MemorySegment PFN_vkCreateRenderPass2KHR;
-        public final MemorySegment PFN_vkCmdBeginRenderPass2KHR;
-        public final MemorySegment PFN_vkCmdNextSubpass2KHR;
-        public final MemorySegment PFN_vkCmdEndRenderPass2KHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkCreateRenderPass2KHR = func.invoke(device, "vkCreateRenderPass2KHR", "vkCreateRenderPass2");
-            PFN_vkCmdBeginRenderPass2KHR = func.invoke(device, "vkCmdBeginRenderPass2KHR", "vkCmdBeginRenderPass2");
-            PFN_vkCmdNextSubpass2KHR = func.invoke(device, "vkCmdNextSubpass2KHR", "vkCmdNextSubpass2");
-            PFN_vkCmdEndRenderPass2KHR = func.invoke(device, "vkCmdEndRenderPass2KHR", "vkCmdEndRenderPass2");
-        }
+        public static final MethodHandle MH_vkCreateRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdNextSubpass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderPass2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKKHRCreateRenderpass2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRCreateRenderpass2() {}
 
-    public @CType("VkResult") int CreateRenderPass2KHR(@CType("VkDevice") MemorySegment device, @CType("const VkRenderPassCreateInfo2 *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkRenderPass *") MemorySegment pRenderPass) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCreateRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateRenderPass2KHR");
-        try { return (int) Handles.MH_vkCreateRenderPass2KHR.invokeExact(handles.PFN_vkCreateRenderPass2KHR, device, pCreateInfo, pAllocator, pRenderPass); }
+    /// ```
+    /// (int) VkResult vkCreateRenderPass2KHR((struct VkDevice*) VkDevice device, const VkRenderPassCreateInfo2* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass);
+    /// ```
+    public static int vkCreateRenderPass2KHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pRenderPass) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateRenderPass2KHR");
+        try { return (int) Handles.MH_vkCreateRenderPass2KHR.invokeExact(device.capabilities().PFN_vkCreateRenderPass2KHR, device.segment(), pCreateInfo, pAllocator, pRenderPass); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRenderPass2KHR", e); }
     }
 
-    public void CmdBeginRenderPass2KHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderPassBeginInfo *") MemorySegment pRenderPassBegin, @CType("const VkSubpassBeginInfo *") MemorySegment pSubpassBeginInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBeginRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2KHR");
-        try { Handles.MH_vkCmdBeginRenderPass2KHR.invokeExact(handles.PFN_vkCmdBeginRenderPass2KHR, commandBuffer, pRenderPassBegin, pSubpassBeginInfo); }
+    /// ```
+    /// void vkCmdBeginRenderPass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderPassBeginInfo* pRenderPassBegin, const VkSubpassBeginInfo* pSubpassBeginInfo);
+    /// ```
+    public static void vkCmdBeginRenderPass2KHR(VkCommandBuffer commandBuffer, MemorySegment pRenderPassBegin, MemorySegment pSubpassBeginInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2KHR");
+        try { Handles.MH_vkCmdBeginRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR, commandBuffer.segment(), pRenderPassBegin, pSubpassBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderPass2KHR", e); }
     }
 
-    public void CmdNextSubpass2KHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkSubpassBeginInfo *") MemorySegment pSubpassBeginInfo, @CType("const VkSubpassEndInfo *") MemorySegment pSubpassEndInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdNextSubpass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdNextSubpass2KHR");
-        try { Handles.MH_vkCmdNextSubpass2KHR.invokeExact(handles.PFN_vkCmdNextSubpass2KHR, commandBuffer, pSubpassBeginInfo, pSubpassEndInfo); }
+    /// ```
+    /// void vkCmdNextSubpass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassBeginInfo* pSubpassBeginInfo, const VkSubpassEndInfo* pSubpassEndInfo);
+    /// ```
+    public static void vkCmdNextSubpass2KHR(VkCommandBuffer commandBuffer, MemorySegment pSubpassBeginInfo, MemorySegment pSubpassEndInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdNextSubpass2KHR");
+        try { Handles.MH_vkCmdNextSubpass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR, commandBuffer.segment(), pSubpassBeginInfo, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdNextSubpass2KHR", e); }
     }
 
-    public void CmdEndRenderPass2KHR(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkSubpassEndInfo *") MemorySegment pSubpassEndInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdEndRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2KHR");
-        try { Handles.MH_vkCmdEndRenderPass2KHR.invokeExact(handles.PFN_vkCmdEndRenderPass2KHR, commandBuffer, pSubpassEndInfo); }
+    /// ```
+    /// void vkCmdEndRenderPass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassEndInfo* pSubpassEndInfo);
+    /// ```
+    public static void vkCmdEndRenderPass2KHR(VkCommandBuffer commandBuffer, MemorySegment pSubpassEndInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2KHR");
+        try { Handles.MH_vkCmdEndRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR, commandBuffer.segment(), pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderPass2KHR", e); }
     }
 

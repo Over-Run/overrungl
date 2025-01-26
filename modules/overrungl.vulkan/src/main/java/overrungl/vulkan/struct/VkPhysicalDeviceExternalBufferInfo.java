@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### usage
-/// [VarHandle][#VH_usage] - [Getter][#usage()] - [Setter][#usage(int)]
-/// ### handleType
-/// [VarHandle][#VH_handleType] - [Getter][#handleType()] - [Setter][#handleType(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceExternalBufferInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBufferCreateFlags flags;
-///     VkBufferUsageFlags usage;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
-/// } VkPhysicalDeviceExternalBufferInfo;
 /// ```
-public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
+/// struct VkPhysicalDeviceExternalBufferInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkBufferCreateFlags flags;
+///     ((uint32_t) VkFlags) VkBufferUsageFlags usage;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceExternalBufferInfo extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExternalBufferInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("usage"),
         ValueLayout.JAVA_INT.withName("handleType")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `usage`.
+    public static final long OFFSET_usage = LAYOUT.byteOffset(PathElement.groupElement("usage"));
+    /// The memory layout of `usage`.
+    public static final MemoryLayout LAYOUT_usage = LAYOUT.select(PathElement.groupElement("usage"));
+    /// The [VarHandle] of `usage` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_usage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usage"));
-    /// The [VarHandle] of `handleType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `handleType`.
+    public static final long OFFSET_handleType = LAYOUT.byteOffset(PathElement.groupElement("handleType"));
+    /// The memory layout of `handleType`.
+    public static final MemoryLayout LAYOUT_handleType = LAYOUT.select(PathElement.groupElement("handleType"));
+    /// The [VarHandle] of `handleType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_handleType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handleType"));
 
     /// Creates `VkPhysicalDeviceExternalBufferInfo` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
     /// Creates `VkPhysicalDeviceExternalBufferInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalBufferInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalBufferInfo(segment); }
-
-    /// Creates `VkPhysicalDeviceExternalBufferInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExternalBufferInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalBufferInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalBufferInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceExternalBufferInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalBufferInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceExternalBufferInfo` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
     /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
-    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBufferCreateFlags") int flags, @CType("VkBufferUsageFlags") int usage, @CType("VkExternalMemoryHandleTypeFlagBits") int handleType) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).usage(usage).handleType(handleType); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExternalBufferInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExternalBufferInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalBufferInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalBufferInfo sType(@CType("VkStructureType") int value) { VkPhysicalDeviceExternalBufferInfo.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalBufferInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExternalBufferInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExternalBufferInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalBufferInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalBufferInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalBufferInfo.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalBufferInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBufferCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBufferCreateFlags") int get_flags(MemorySegment segment) { return VkPhysicalDeviceExternalBufferInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkBufferCreateFlags") int flags() { return VkPhysicalDeviceExternalBufferInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkBufferCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkBufferCreateFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalBufferInfo flags(@CType("VkBufferCreateFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_flags(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalBufferInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `usage` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBufferUsageFlags") int get_usage(MemorySegment segment, long index) { return (int) VH_usage.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int usage(MemorySegment segment, long index) { return (int) VH_usage.get(segment, 0L, index); }
     /// {@return `usage`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBufferUsageFlags") int get_usage(MemorySegment segment) { return VkPhysicalDeviceExternalBufferInfo.get_usage(segment, 0L); }
-    /// {@return `usage`}
-    public @CType("VkBufferUsageFlags") int usage() { return VkPhysicalDeviceExternalBufferInfo.get_usage(this.segment()); }
+    public int usage() { return usage(this.segment(), 0L); }
     /// Sets `usage` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_usage(MemorySegment segment, long index, @CType("VkBufferUsageFlags") int value) { VH_usage.set(segment, 0L, index, value); }
-    /// Sets `usage` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_usage(MemorySegment segment, @CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_usage(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void usage(MemorySegment segment, long index, int value) { VH_usage.set(segment, 0L, index, value); }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalBufferInfo usage(@CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_usage(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalBufferInfo usage(int value) { usage(this.segment(), 0L, value); return this; }
 
     /// {@return `handleType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExternalMemoryHandleTypeFlagBits") int get_handleType(MemorySegment segment, long index) { return (int) VH_handleType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int handleType(MemorySegment segment, long index) { return (int) VH_handleType.get(segment, 0L, index); }
     /// {@return `handleType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExternalMemoryHandleTypeFlagBits") int get_handleType(MemorySegment segment) { return VkPhysicalDeviceExternalBufferInfo.get_handleType(segment, 0L); }
-    /// {@return `handleType`}
-    public @CType("VkExternalMemoryHandleTypeFlagBits") int handleType() { return VkPhysicalDeviceExternalBufferInfo.get_handleType(this.segment()); }
+    public int handleType() { return handleType(this.segment(), 0L); }
     /// Sets `handleType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_handleType(MemorySegment segment, long index, @CType("VkExternalMemoryHandleTypeFlagBits") int value) { VH_handleType.set(segment, 0L, index, value); }
-    /// Sets `handleType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_handleType(MemorySegment segment, @CType("VkExternalMemoryHandleTypeFlagBits") int value) { VkPhysicalDeviceExternalBufferInfo.set_handleType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void handleType(MemorySegment segment, long index, int value) { VH_handleType.set(segment, 0L, index, value); }
     /// Sets `handleType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalBufferInfo handleType(@CType("VkExternalMemoryHandleTypeFlagBits") int value) { VkPhysicalDeviceExternalBufferInfo.set_handleType(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalBufferInfo handleType(int value) { handleType(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceExternalBufferInfo].
     public static final class Buffer extends VkPhysicalDeviceExternalBufferInfo {
@@ -258,49 +221,49 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalBufferInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalBufferInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalBufferInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalBufferInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkBufferCreateFlags") int flagsAt(long index) { return VkPhysicalDeviceExternalBufferInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkBufferCreateFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `usage` at the given index}
-        /// @param index the index
-        public @CType("VkBufferUsageFlags") int usageAt(long index) { return VkPhysicalDeviceExternalBufferInfo.get_usage(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int usageAt(long index) { return usage(this.segment(), index); }
         /// Sets `usage` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer usageAt(long index, @CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExternalBufferInfo.set_usage(this.segment(), index, value); return this; }
+        public Buffer usageAt(long index, int value) { usage(this.segment(), index, value); return this; }
 
         /// {@return `handleType` at the given index}
-        /// @param index the index
-        public @CType("VkExternalMemoryHandleTypeFlagBits") int handleTypeAt(long index) { return VkPhysicalDeviceExternalBufferInfo.get_handleType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int handleTypeAt(long index) { return handleType(this.segment(), index); }
         /// Sets `handleType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer handleTypeAt(long index, @CType("VkExternalMemoryHandleTypeFlagBits") int value) { VkPhysicalDeviceExternalBufferInfo.set_handleType(this.segment(), index, value); return this; }
+        public Buffer handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
 
     }
 }

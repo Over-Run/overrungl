@@ -18,11 +18,9 @@
 package overrungl.vulkan;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-import java.util.*;
-public class VK14 extends VK13 {
+public final class VK14 {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_LOW = 128;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_MEDIUM = 256;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH = 512;
@@ -125,228 +123,199 @@ public class VK14 extends VK13 {
     public static final int VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY = 1000270009;
     public static final int VK_IMAGE_USAGE_HOST_TRANSFER_BIT = 0x00400000;
     public static final long VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT = 0x400000000000L;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkCmdSetLineStipple = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT);
-        public static final FunctionDescriptor FD_vkMapMemory2 = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkUnmapMemory2 = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBindIndexBuffer2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_vkGetRenderingAreaGranularity = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetDeviceImageSubresourceLayout = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetImageSubresourceLayout2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSet = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplate = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetRenderingAttachmentLocations = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdSetRenderingInputAttachmentIndices = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdBindDescriptorSets2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushConstants2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSet2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplate2 = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyMemoryToImage = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyImageToMemory = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkCopyImageToImage = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkTransitionImageLayout = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetLineStipple,
-            FD_vkMapMemory2,
-            FD_vkUnmapMemory2,
-            FD_vkCmdBindIndexBuffer2,
-            FD_vkGetRenderingAreaGranularity,
-            FD_vkGetDeviceImageSubresourceLayout,
-            FD_vkGetImageSubresourceLayout2,
-            FD_vkCmdPushDescriptorSet,
-            FD_vkCmdPushDescriptorSetWithTemplate,
-            FD_vkCmdSetRenderingAttachmentLocations,
-            FD_vkCmdSetRenderingInputAttachmentIndices,
-            FD_vkCmdBindDescriptorSets2,
-            FD_vkCmdPushConstants2,
-            FD_vkCmdPushDescriptorSet2,
-            FD_vkCmdPushDescriptorSetWithTemplate2,
-            FD_vkCopyMemoryToImage,
-            FD_vkCopyImageToMemory,
-            FD_vkCopyImageToImage,
-            FD_vkTransitionImageLayout
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetLineStipple = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetLineStipple);
-        public static final MethodHandle MH_vkMapMemory2 = RuntimeHelper.downcall(Descriptors.FD_vkMapMemory2);
-        public static final MethodHandle MH_vkUnmapMemory2 = RuntimeHelper.downcall(Descriptors.FD_vkUnmapMemory2);
-        public static final MethodHandle MH_vkCmdBindIndexBuffer2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindIndexBuffer2);
-        public static final MethodHandle MH_vkGetRenderingAreaGranularity = RuntimeHelper.downcall(Descriptors.FD_vkGetRenderingAreaGranularity);
-        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayout = RuntimeHelper.downcall(Descriptors.FD_vkGetDeviceImageSubresourceLayout);
-        public static final MethodHandle MH_vkGetImageSubresourceLayout2 = RuntimeHelper.downcall(Descriptors.FD_vkGetImageSubresourceLayout2);
-        public static final MethodHandle MH_vkCmdPushDescriptorSet = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSet);
-        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSetWithTemplate);
-        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocations = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingAttachmentLocations);
-        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndices = RuntimeHelper.downcall(Descriptors.FD_vkCmdSetRenderingInputAttachmentIndices);
-        public static final MethodHandle MH_vkCmdBindDescriptorSets2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdBindDescriptorSets2);
-        public static final MethodHandle MH_vkCmdPushConstants2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushConstants2);
-        public static final MethodHandle MH_vkCmdPushDescriptorSet2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSet2);
-        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate2 = RuntimeHelper.downcall(Descriptors.FD_vkCmdPushDescriptorSetWithTemplate2);
-        public static final MethodHandle MH_vkCopyMemoryToImage = RuntimeHelper.downcall(Descriptors.FD_vkCopyMemoryToImage);
-        public static final MethodHandle MH_vkCopyImageToMemory = RuntimeHelper.downcall(Descriptors.FD_vkCopyImageToMemory);
-        public static final MethodHandle MH_vkCopyImageToImage = RuntimeHelper.downcall(Descriptors.FD_vkCopyImageToImage);
-        public static final MethodHandle MH_vkTransitionImageLayout = RuntimeHelper.downcall(Descriptors.FD_vkTransitionImageLayout);
-        public final MemorySegment PFN_vkCmdSetLineStipple;
-        public final MemorySegment PFN_vkMapMemory2;
-        public final MemorySegment PFN_vkUnmapMemory2;
-        public final MemorySegment PFN_vkCmdBindIndexBuffer2;
-        public final MemorySegment PFN_vkGetRenderingAreaGranularity;
-        public final MemorySegment PFN_vkGetDeviceImageSubresourceLayout;
-        public final MemorySegment PFN_vkGetImageSubresourceLayout2;
-        public final MemorySegment PFN_vkCmdPushDescriptorSet;
-        public final MemorySegment PFN_vkCmdPushDescriptorSetWithTemplate;
-        public final MemorySegment PFN_vkCmdSetRenderingAttachmentLocations;
-        public final MemorySegment PFN_vkCmdSetRenderingInputAttachmentIndices;
-        public final MemorySegment PFN_vkCmdBindDescriptorSets2;
-        public final MemorySegment PFN_vkCmdPushConstants2;
-        public final MemorySegment PFN_vkCmdPushDescriptorSet2;
-        public final MemorySegment PFN_vkCmdPushDescriptorSetWithTemplate2;
-        public final MemorySegment PFN_vkCopyMemoryToImage;
-        public final MemorySegment PFN_vkCopyImageToMemory;
-        public final MemorySegment PFN_vkCopyImageToImage;
-        public final MemorySegment PFN_vkTransitionImageLayout;
-        private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCmdSetLineStipple = func.invoke(instance, "vkCmdSetLineStipple", "vkCmdSetLineStippleKHR", "vkCmdSetLineStippleEXT");
-            PFN_vkMapMemory2 = func.invoke(instance, "vkMapMemory2", "vkMapMemory2KHR");
-            PFN_vkUnmapMemory2 = func.invoke(instance, "vkUnmapMemory2", "vkUnmapMemory2KHR");
-            PFN_vkCmdBindIndexBuffer2 = func.invoke(instance, "vkCmdBindIndexBuffer2", "vkCmdBindIndexBuffer2KHR");
-            PFN_vkGetRenderingAreaGranularity = func.invoke(instance, "vkGetRenderingAreaGranularity", "vkGetRenderingAreaGranularityKHR");
-            PFN_vkGetDeviceImageSubresourceLayout = func.invoke(instance, "vkGetDeviceImageSubresourceLayout", "vkGetDeviceImageSubresourceLayoutKHR");
-            PFN_vkGetImageSubresourceLayout2 = func.invoke(instance, "vkGetImageSubresourceLayout2", "vkGetImageSubresourceLayout2KHR", "vkGetImageSubresourceLayout2EXT");
-            PFN_vkCmdPushDescriptorSet = func.invoke(instance, "vkCmdPushDescriptorSet", "vkCmdPushDescriptorSetKHR");
-            PFN_vkCmdPushDescriptorSetWithTemplate = func.invoke(instance, "vkCmdPushDescriptorSetWithTemplate", "vkCmdPushDescriptorSetWithTemplateKHR");
-            PFN_vkCmdSetRenderingAttachmentLocations = func.invoke(instance, "vkCmdSetRenderingAttachmentLocations", "vkCmdSetRenderingAttachmentLocationsKHR");
-            PFN_vkCmdSetRenderingInputAttachmentIndices = func.invoke(instance, "vkCmdSetRenderingInputAttachmentIndices", "vkCmdSetRenderingInputAttachmentIndicesKHR");
-            PFN_vkCmdBindDescriptorSets2 = func.invoke(instance, "vkCmdBindDescriptorSets2", "vkCmdBindDescriptorSets2KHR");
-            PFN_vkCmdPushConstants2 = func.invoke(instance, "vkCmdPushConstants2", "vkCmdPushConstants2KHR");
-            PFN_vkCmdPushDescriptorSet2 = func.invoke(instance, "vkCmdPushDescriptorSet2", "vkCmdPushDescriptorSet2KHR");
-            PFN_vkCmdPushDescriptorSetWithTemplate2 = func.invoke(instance, "vkCmdPushDescriptorSetWithTemplate2", "vkCmdPushDescriptorSetWithTemplate2KHR");
-            PFN_vkCopyMemoryToImage = func.invoke(instance, "vkCopyMemoryToImage", "vkCopyMemoryToImageEXT");
-            PFN_vkCopyImageToMemory = func.invoke(instance, "vkCopyImageToMemory", "vkCopyImageToMemoryEXT");
-            PFN_vkCopyImageToImage = func.invoke(instance, "vkCopyImageToImage", "vkCopyImageToImageEXT");
-            PFN_vkTransitionImageLayout = func.invoke(instance, "vkTransitionImageLayout", "vkTransitionImageLayoutEXT");
-        }
+        public static final MethodHandle MH_vkCmdSetLineStipple = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_vkMapMemory2 = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUnmapMemory2 = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindIndexBuffer2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetRenderingAreaGranularity = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayout = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSet = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocations = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndices = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorSets2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushConstants2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSet2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplate2 = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyMemoryToImage = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyImageToMemory = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyImageToImage = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkTransitionImageLayout = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VK14(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        super(instance, func);
-        this.handles = new Handles(instance, func);
-    }
+    private VK14() {}
 
-    public void CmdSetLineStipple(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("uint32_t") int lineStippleFactor, @CType("uint16_t") short lineStipplePattern) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetLineStipple)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStipple");
-        try { Handles.MH_vkCmdSetLineStipple.invokeExact(handles.PFN_vkCmdSetLineStipple, commandBuffer, lineStippleFactor, lineStipplePattern); }
+    /// ```
+    /// void vkCmdSetLineStipple((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
+    /// ```
+    public static void vkCmdSetLineStipple(VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStipple)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStipple");
+        try { Handles.MH_vkCmdSetLineStipple.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStipple, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStipple", e); }
     }
 
-    public @CType("VkResult") int MapMemory2(@CType("VkDevice") MemorySegment device, @CType("const VkMemoryMapInfo *") MemorySegment pMemoryMapInfo, @CType("void **") MemorySegment ppData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkMapMemory2)) throw new SymbolNotFoundError("Symbol not found: vkMapMemory2");
-        try { return (int) Handles.MH_vkMapMemory2.invokeExact(handles.PFN_vkMapMemory2, device, pMemoryMapInfo, ppData); }
+    /// ```
+    /// (int) VkResult vkMapMemory2((struct VkDevice*) VkDevice device, const VkMemoryMapInfo* pMemoryMapInfo, void** ppData);
+    /// ```
+    public static int vkMapMemory2(VkDevice device, MemorySegment pMemoryMapInfo, MemorySegment ppData) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMapMemory2)) throw new SymbolNotFoundError("Symbol not found: vkMapMemory2");
+        try { return (int) Handles.MH_vkMapMemory2.invokeExact(device.capabilities().PFN_vkMapMemory2, device.segment(), pMemoryMapInfo, ppData); }
         catch (Throwable e) { throw new RuntimeException("error in vkMapMemory2", e); }
     }
 
-    public @CType("VkResult") int UnmapMemory2(@CType("VkDevice") MemorySegment device, @CType("const VkMemoryUnmapInfo *") MemorySegment pMemoryUnmapInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkUnmapMemory2)) throw new SymbolNotFoundError("Symbol not found: vkUnmapMemory2");
-        try { return (int) Handles.MH_vkUnmapMemory2.invokeExact(handles.PFN_vkUnmapMemory2, device, pMemoryUnmapInfo); }
+    /// ```
+    /// (int) VkResult vkUnmapMemory2((struct VkDevice*) VkDevice device, const VkMemoryUnmapInfo* pMemoryUnmapInfo);
+    /// ```
+    public static int vkUnmapMemory2(VkDevice device, MemorySegment pMemoryUnmapInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUnmapMemory2)) throw new SymbolNotFoundError("Symbol not found: vkUnmapMemory2");
+        try { return (int) Handles.MH_vkUnmapMemory2.invokeExact(device.capabilities().PFN_vkUnmapMemory2, device.segment(), pMemoryUnmapInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkUnmapMemory2", e); }
     }
 
-    public void CmdBindIndexBuffer2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkBuffer") MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long size, @CType("VkIndexType") int indexType) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBindIndexBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2");
-        try { Handles.MH_vkCmdBindIndexBuffer2.invokeExact(handles.PFN_vkCmdBindIndexBuffer2, commandBuffer, buffer, offset, size, indexType); }
+    /// ```
+    /// void vkCmdBindIndexBuffer2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkDeviceSize size, (int) VkIndexType indexType);
+    /// ```
+    public static void vkCmdBindIndexBuffer2(VkCommandBuffer commandBuffer, long buffer, long offset, long size, int indexType) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2");
+        try { Handles.MH_vkCmdBindIndexBuffer2.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2, commandBuffer.segment(), buffer, offset, size, indexType); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindIndexBuffer2", e); }
     }
 
-    public void GetRenderingAreaGranularity(@CType("VkDevice") MemorySegment device, @CType("const VkRenderingAreaInfo *") MemorySegment pRenderingAreaInfo, @CType("VkExtent2D *") MemorySegment pGranularity) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetRenderingAreaGranularity)) throw new SymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularity");
-        try { Handles.MH_vkGetRenderingAreaGranularity.invokeExact(handles.PFN_vkGetRenderingAreaGranularity, device, pRenderingAreaInfo, pGranularity); }
+    /// ```
+    /// void vkGetRenderingAreaGranularity((struct VkDevice*) VkDevice device, const VkRenderingAreaInfo* pRenderingAreaInfo, VkExtent2D* pGranularity);
+    /// ```
+    public static void vkGetRenderingAreaGranularity(VkDevice device, MemorySegment pRenderingAreaInfo, MemorySegment pGranularity) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRenderingAreaGranularity)) throw new SymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularity");
+        try { Handles.MH_vkGetRenderingAreaGranularity.invokeExact(device.capabilities().PFN_vkGetRenderingAreaGranularity, device.segment(), pRenderingAreaInfo, pGranularity); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRenderingAreaGranularity", e); }
     }
 
-    public void GetDeviceImageSubresourceLayout(@CType("VkDevice") MemorySegment device, @CType("const VkDeviceImageSubresourceInfo *") MemorySegment pInfo, @CType("VkSubresourceLayout2 *") MemorySegment pLayout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetDeviceImageSubresourceLayout)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayout");
-        try { Handles.MH_vkGetDeviceImageSubresourceLayout.invokeExact(handles.PFN_vkGetDeviceImageSubresourceLayout, device, pInfo, pLayout); }
+    /// ```
+    /// void vkGetDeviceImageSubresourceLayout((struct VkDevice*) VkDevice device, const VkDeviceImageSubresourceInfo* pInfo, VkSubresourceLayout2* pLayout);
+    /// ```
+    public static void vkGetDeviceImageSubresourceLayout(VkDevice device, MemorySegment pInfo, MemorySegment pLayout) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSubresourceLayout)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayout");
+        try { Handles.MH_vkGetDeviceImageSubresourceLayout.invokeExact(device.capabilities().PFN_vkGetDeviceImageSubresourceLayout, device.segment(), pInfo, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSubresourceLayout", e); }
     }
 
-    public void GetImageSubresourceLayout2(@CType("VkDevice") MemorySegment device, @CType("VkImage") MemorySegment image, @CType("const VkImageSubresource2 *") MemorySegment pSubresource, @CType("VkSubresourceLayout2 *") MemorySegment pLayout) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetImageSubresourceLayout2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2");
-        try { Handles.MH_vkGetImageSubresourceLayout2.invokeExact(handles.PFN_vkGetImageSubresourceLayout2, device, image, pSubresource, pLayout); }
+    /// ```
+    /// void vkGetImageSubresourceLayout2((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
+    /// ```
+    public static void vkGetImageSubresourceLayout2(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2");
+        try { Handles.MH_vkGetImageSubresourceLayout2.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2, device.segment(), image, pSubresource, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2", e); }
     }
 
-    public void CmdPushDescriptorSet(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkPipelineBindPoint") int pipelineBindPoint, @CType("VkPipelineLayout") MemorySegment layout, @CType("uint32_t") int set, @CType("uint32_t") int descriptorWriteCount, @CType("const VkWriteDescriptorSet *") MemorySegment pDescriptorWrites) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdPushDescriptorSet)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet");
-        try { Handles.MH_vkCmdPushDescriptorSet.invokeExact(handles.PFN_vkCmdPushDescriptorSet, commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites); }
+    /// ```
+    /// void vkCmdPushDescriptorSet((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipelineLayout layout, uint32_t set, uint32_t descriptorWriteCount, const VkWriteDescriptorSet* pDescriptorWrites);
+    /// ```
+    public static void vkCmdPushDescriptorSet(VkCommandBuffer commandBuffer, int pipelineBindPoint, long layout, int set, int descriptorWriteCount, MemorySegment pDescriptorWrites) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet");
+        try { Handles.MH_vkCmdPushDescriptorSet.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet, commandBuffer.segment(), pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSet", e); }
     }
 
-    public void CmdPushDescriptorSetWithTemplate(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("VkDescriptorUpdateTemplate") MemorySegment descriptorUpdateTemplate, @CType("VkPipelineLayout") MemorySegment layout, @CType("uint32_t") int set, @CType("const void *") MemorySegment pData) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdPushDescriptorSetWithTemplate)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate");
-        try { Handles.MH_vkCmdPushDescriptorSetWithTemplate.invokeExact(handles.PFN_vkCmdPushDescriptorSetWithTemplate, commandBuffer, descriptorUpdateTemplate, layout, set, pData); }
+    /// ```
+    /// void vkCmdPushDescriptorSetWithTemplate((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDescriptorUpdateTemplate descriptorUpdateTemplate, (uint64_t) VkPipelineLayout layout, uint32_t set, const void* pData);
+    /// ```
+    public static void vkCmdPushDescriptorSetWithTemplate(VkCommandBuffer commandBuffer, long descriptorUpdateTemplate, long layout, int set, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate");
+        try { Handles.MH_vkCmdPushDescriptorSetWithTemplate.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate, commandBuffer.segment(), descriptorUpdateTemplate, layout, set, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSetWithTemplate", e); }
     }
 
-    public void CmdSetRenderingAttachmentLocations(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderingAttachmentLocationInfo *") MemorySegment pLocationInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetRenderingAttachmentLocations)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocations");
-        try { Handles.MH_vkCmdSetRenderingAttachmentLocations.invokeExact(handles.PFN_vkCmdSetRenderingAttachmentLocations, commandBuffer, pLocationInfo); }
+    /// ```
+    /// void vkCmdSetRenderingAttachmentLocations((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingAttachmentLocationInfo* pLocationInfo);
+    /// ```
+    public static void vkCmdSetRenderingAttachmentLocations(VkCommandBuffer commandBuffer, MemorySegment pLocationInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocations)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocations");
+        try { Handles.MH_vkCmdSetRenderingAttachmentLocations.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocations, commandBuffer.segment(), pLocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingAttachmentLocations", e); }
     }
 
-    public void CmdSetRenderingInputAttachmentIndices(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkRenderingInputAttachmentIndexInfo *") MemorySegment pInputAttachmentIndexInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdSetRenderingInputAttachmentIndices)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndices");
-        try { Handles.MH_vkCmdSetRenderingInputAttachmentIndices.invokeExact(handles.PFN_vkCmdSetRenderingInputAttachmentIndices, commandBuffer, pInputAttachmentIndexInfo); }
+    /// ```
+    /// void vkCmdSetRenderingInputAttachmentIndices((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
+    /// ```
+    public static void vkCmdSetRenderingInputAttachmentIndices(VkCommandBuffer commandBuffer, MemorySegment pInputAttachmentIndexInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndices)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndices");
+        try { Handles.MH_vkCmdSetRenderingInputAttachmentIndices.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndices, commandBuffer.segment(), pInputAttachmentIndexInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingInputAttachmentIndices", e); }
     }
 
-    public void CmdBindDescriptorSets2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkBindDescriptorSetsInfo *") MemorySegment pBindDescriptorSetsInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdBindDescriptorSets2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2");
-        try { Handles.MH_vkCmdBindDescriptorSets2.invokeExact(handles.PFN_vkCmdBindDescriptorSets2, commandBuffer, pBindDescriptorSetsInfo); }
+    /// ```
+    /// void vkCmdBindDescriptorSets2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo* pBindDescriptorSetsInfo);
+    /// ```
+    public static void vkCmdBindDescriptorSets2(VkCommandBuffer commandBuffer, MemorySegment pBindDescriptorSetsInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2");
+        try { Handles.MH_vkCmdBindDescriptorSets2.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2, commandBuffer.segment(), pBindDescriptorSetsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorSets2", e); }
     }
 
-    public void CmdPushConstants2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPushConstantsInfo *") MemorySegment pPushConstantsInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdPushConstants2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushConstants2");
-        try { Handles.MH_vkCmdPushConstants2.invokeExact(handles.PFN_vkCmdPushConstants2, commandBuffer, pPushConstantsInfo); }
+    /// ```
+    /// void vkCmdPushConstants2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushConstantsInfo* pPushConstantsInfo);
+    /// ```
+    public static void vkCmdPushConstants2(VkCommandBuffer commandBuffer, MemorySegment pPushConstantsInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushConstants2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushConstants2");
+        try { Handles.MH_vkCmdPushConstants2.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushConstants2, commandBuffer.segment(), pPushConstantsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushConstants2", e); }
     }
 
-    public void CmdPushDescriptorSet2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPushDescriptorSetInfo *") MemorySegment pPushDescriptorSetInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdPushDescriptorSet2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2");
-        try { Handles.MH_vkCmdPushDescriptorSet2.invokeExact(handles.PFN_vkCmdPushDescriptorSet2, commandBuffer, pPushDescriptorSetInfo); }
+    /// ```
+    /// void vkCmdPushDescriptorSet2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetInfo* pPushDescriptorSetInfo);
+    /// ```
+    public static void vkCmdPushDescriptorSet2(VkCommandBuffer commandBuffer, MemorySegment pPushDescriptorSetInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2");
+        try { Handles.MH_vkCmdPushDescriptorSet2.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2, commandBuffer.segment(), pPushDescriptorSetInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSet2", e); }
     }
 
-    public void CmdPushDescriptorSetWithTemplate2(@CType("VkCommandBuffer") MemorySegment commandBuffer, @CType("const VkPushDescriptorSetWithTemplateInfo *") MemorySegment pPushDescriptorSetWithTemplateInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCmdPushDescriptorSetWithTemplate2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2");
-        try { Handles.MH_vkCmdPushDescriptorSetWithTemplate2.invokeExact(handles.PFN_vkCmdPushDescriptorSetWithTemplate2, commandBuffer, pPushDescriptorSetWithTemplateInfo); }
+    /// ```
+    /// void vkCmdPushDescriptorSetWithTemplate2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetWithTemplateInfo* pPushDescriptorSetWithTemplateInfo);
+    /// ```
+    public static void vkCmdPushDescriptorSetWithTemplate2(VkCommandBuffer commandBuffer, MemorySegment pPushDescriptorSetWithTemplateInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2");
+        try { Handles.MH_vkCmdPushDescriptorSetWithTemplate2.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2, commandBuffer.segment(), pPushDescriptorSetWithTemplateInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSetWithTemplate2", e); }
     }
 
-    public @CType("VkResult") int CopyMemoryToImage(@CType("VkDevice") MemorySegment device, @CType("const VkCopyMemoryToImageInfo *") MemorySegment pCopyMemoryToImageInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCopyMemoryToImage)) throw new SymbolNotFoundError("Symbol not found: vkCopyMemoryToImage");
-        try { return (int) Handles.MH_vkCopyMemoryToImage.invokeExact(handles.PFN_vkCopyMemoryToImage, device, pCopyMemoryToImageInfo); }
+    /// ```
+    /// (int) VkResult vkCopyMemoryToImage((struct VkDevice*) VkDevice device, const VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
+    /// ```
+    public static int vkCopyMemoryToImage(VkDevice device, MemorySegment pCopyMemoryToImageInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMemoryToImage)) throw new SymbolNotFoundError("Symbol not found: vkCopyMemoryToImage");
+        try { return (int) Handles.MH_vkCopyMemoryToImage.invokeExact(device.capabilities().PFN_vkCopyMemoryToImage, device.segment(), pCopyMemoryToImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyMemoryToImage", e); }
     }
 
-    public @CType("VkResult") int CopyImageToMemory(@CType("VkDevice") MemorySegment device, @CType("const VkCopyImageToMemoryInfo *") MemorySegment pCopyImageToMemoryInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCopyImageToMemory)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToMemory");
-        try { return (int) Handles.MH_vkCopyImageToMemory.invokeExact(handles.PFN_vkCopyImageToMemory, device, pCopyImageToMemoryInfo); }
+    /// ```
+    /// (int) VkResult vkCopyImageToMemory((struct VkDevice*) VkDevice device, const VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
+    /// ```
+    public static int vkCopyImageToMemory(VkDevice device, MemorySegment pCopyImageToMemoryInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToMemory)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToMemory");
+        try { return (int) Handles.MH_vkCopyImageToMemory.invokeExact(device.capabilities().PFN_vkCopyImageToMemory, device.segment(), pCopyImageToMemoryInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyImageToMemory", e); }
     }
 
-    public @CType("VkResult") int CopyImageToImage(@CType("VkDevice") MemorySegment device, @CType("const VkCopyImageToImageInfo *") MemorySegment pCopyImageToImageInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkCopyImageToImage)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToImage");
-        try { return (int) Handles.MH_vkCopyImageToImage.invokeExact(handles.PFN_vkCopyImageToImage, device, pCopyImageToImageInfo); }
+    /// ```
+    /// (int) VkResult vkCopyImageToImage((struct VkDevice*) VkDevice device, const VkCopyImageToImageInfo* pCopyImageToImageInfo);
+    /// ```
+    public static int vkCopyImageToImage(VkDevice device, MemorySegment pCopyImageToImageInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToImage)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToImage");
+        try { return (int) Handles.MH_vkCopyImageToImage.invokeExact(device.capabilities().PFN_vkCopyImageToImage, device.segment(), pCopyImageToImageInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyImageToImage", e); }
     }
 
-    public @CType("VkResult") int TransitionImageLayout(@CType("VkDevice") MemorySegment device, @CType("uint32_t") int transitionCount, @CType("const VkHostImageLayoutTransitionInfo *") MemorySegment pTransitions) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkTransitionImageLayout)) throw new SymbolNotFoundError("Symbol not found: vkTransitionImageLayout");
-        try { return (int) Handles.MH_vkTransitionImageLayout.invokeExact(handles.PFN_vkTransitionImageLayout, device, transitionCount, pTransitions); }
+    /// ```
+    /// (int) VkResult vkTransitionImageLayout((struct VkDevice*) VkDevice device, uint32_t transitionCount, const VkHostImageLayoutTransitionInfo* pTransitions);
+    /// ```
+    public static int vkTransitionImageLayout(VkDevice device, int transitionCount, MemorySegment pTransitions) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTransitionImageLayout)) throw new SymbolNotFoundError("Symbol not found: vkTransitionImageLayout");
+        try { return (int) Handles.MH_vkTransitionImageLayout.invokeExact(device.capabilities().PFN_vkTransitionImageLayout, device.segment(), transitionCount, pTransitions); }
         catch (Throwable e) { throw new RuntimeException("error in vkTransitionImageLayout", e); }
     }
 

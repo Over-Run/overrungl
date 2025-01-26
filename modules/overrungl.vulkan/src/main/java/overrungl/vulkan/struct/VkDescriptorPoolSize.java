@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### type
-/// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(int)]
-/// ### descriptorCount
-/// [VarHandle][#VH_descriptorCount] - [Getter][#descriptorCount()] - [Setter][#descriptorCount(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDescriptorPoolSize {
-///     VkDescriptorType type;
-///     uint32_t descriptorCount;
-/// } VkDescriptorPoolSize;
 /// ```
-public sealed class VkDescriptorPoolSize extends Struct {
+/// struct VkDescriptorPoolSize {
+///     (int) VkDescriptorType type;
+///     uint32_t descriptorCount;
+/// };
+/// ```
+public sealed class VkDescriptorPoolSize extends GroupType {
     /// The struct layout of `VkDescriptorPoolSize`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("descriptorCount")
     );
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `type`.
+    public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
+    /// The memory layout of `type`.
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
+    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The [VarHandle] of `descriptorCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `descriptorCount`.
+    public static final long OFFSET_descriptorCount = LAYOUT.byteOffset(PathElement.groupElement("descriptorCount"));
+    /// The memory layout of `descriptorCount`.
+    public static final MemoryLayout LAYOUT_descriptorCount = LAYOUT.select(PathElement.groupElement("descriptorCount"));
+    /// The [VarHandle] of `descriptorCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorCount"));
 
     /// Creates `VkDescriptorPoolSize` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkDescriptorPoolSize extends Struct {
     /// Creates `VkDescriptorPoolSize` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorPoolSize of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorPoolSize(segment); }
-
-    /// Creates `VkDescriptorPoolSize` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorPoolSize` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorPoolSize ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorPoolSize(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDescriptorPoolSize ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolSize(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDescriptorPoolSize` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkDescriptorPoolSize extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorPoolSize` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkDescriptorPoolSize extends Struct {
     /// @return the allocated `VkDescriptorPoolSize`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorPoolSize` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDescriptorPoolSize`
-    public static VkDescriptorPoolSize allocInit(SegmentAllocator allocator, @CType("VkDescriptorType") int type, @CType("uint32_t") int descriptorCount) { return alloc(allocator).type(type).descriptorCount(descriptorCount); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkDescriptorPoolSize extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDescriptorType") int get_type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
     /// {@return `type`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDescriptorType") int get_type(MemorySegment segment) { return VkDescriptorPoolSize.get_type(segment, 0L); }
-    /// {@return `type`}
-    public @CType("VkDescriptorType") int type() { return VkDescriptorPoolSize.get_type(this.segment()); }
+    public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, long index, @CType("VkDescriptorType") int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, @CType("VkDescriptorType") int value) { VkDescriptorPoolSize.set_type(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorPoolSize type(@CType("VkDescriptorType") int value) { VkDescriptorPoolSize.set_type(this.segment(), value); return this; }
+    public VkDescriptorPoolSize type(int value) { type(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_descriptorCount(MemorySegment segment, long index) { return (int) VH_descriptorCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int descriptorCount(MemorySegment segment, long index) { return (int) VH_descriptorCount.get(segment, 0L, index); }
     /// {@return `descriptorCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_descriptorCount(MemorySegment segment) { return VkDescriptorPoolSize.get_descriptorCount(segment, 0L); }
-    /// {@return `descriptorCount`}
-    public @CType("uint32_t") int descriptorCount() { return VkDescriptorPoolSize.get_descriptorCount(this.segment()); }
+    public int descriptorCount() { return descriptorCount(this.segment(), 0L); }
     /// Sets `descriptorCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_descriptorCount.set(segment, 0L, index, value); }
-    /// Sets `descriptorCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorCount(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorPoolSize.set_descriptorCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorCount(MemorySegment segment, long index, int value) { VH_descriptorCount.set(segment, 0L, index, value); }
     /// Sets `descriptorCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorPoolSize descriptorCount(@CType("uint32_t") int value) { VkDescriptorPoolSize.set_descriptorCount(this.segment(), value); return this; }
+    public VkDescriptorPoolSize descriptorCount(int value) { descriptorCount(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDescriptorPoolSize].
     public static final class Buffer extends VkDescriptorPoolSize {
@@ -171,22 +149,22 @@ public sealed class VkDescriptorPoolSize extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `type` at the given index}
-        /// @param index the index
-        public @CType("VkDescriptorType") int typeAt(long index) { return VkDescriptorPoolSize.get_type(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int typeAt(long index) { return type(this.segment(), index); }
         /// Sets `type` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer typeAt(long index, @CType("VkDescriptorType") int value) { VkDescriptorPoolSize.set_type(this.segment(), index, value); return this; }
+        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
         /// {@return `descriptorCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int descriptorCountAt(long index) { return VkDescriptorPoolSize.get_descriptorCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int descriptorCountAt(long index) { return descriptorCount(this.segment(), index); }
         /// Sets `descriptorCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorCountAt(long index, @CType("uint32_t") int value) { VkDescriptorPoolSize.set_descriptorCount(this.segment(), index, value); return this; }
+        public Buffer descriptorCountAt(long index, int value) { descriptorCount(this.segment(), index, value); return this; }
 
     }
 }

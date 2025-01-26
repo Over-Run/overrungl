@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### dedicatedAllocationImageAliasing
-/// [VarHandle][#VH_dedicatedAllocationImageAliasing] - [Getter][#dedicatedAllocationImageAliasing()] - [Setter][#dedicatedAllocationImageAliasing(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 dedicatedAllocationImageAliasing;
-/// } VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV;
 /// ```
-public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV extends Struct {
+/// struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 dedicatedAllocationImageAliasing;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("dedicatedAllocationImageAliasing")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `dedicatedAllocationImageAliasing` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dedicatedAllocationImageAliasing`.
+    public static final long OFFSET_dedicatedAllocationImageAliasing = LAYOUT.byteOffset(PathElement.groupElement("dedicatedAllocationImageAliasing"));
+    /// The memory layout of `dedicatedAllocationImageAliasing`.
+    public static final MemoryLayout LAYOUT_dedicatedAllocationImageAliasing = LAYOUT.select(PathElement.groupElement("dedicatedAllocationImageAliasing"));
+    /// The [VarHandle] of `dedicatedAllocationImageAliasing` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dedicatedAllocationImageAliasing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dedicatedAllocationImageAliasing"));
 
     /// Creates `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV e
     /// Creates `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV e
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV e
     /// @return the allocated `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`
-    public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int dedicatedAllocationImageAliasing) { return alloc(allocator).sType(sType).pNext(pNext).dedicatedAllocationImageAliasing(dedicatedAllocationImageAliasing); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV e
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `dedicatedAllocationImageAliasing` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_dedicatedAllocationImageAliasing(MemorySegment segment, long index) { return (int) VH_dedicatedAllocationImageAliasing.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dedicatedAllocationImageAliasing(MemorySegment segment, long index) { return (int) VH_dedicatedAllocationImageAliasing.get(segment, 0L, index); }
     /// {@return `dedicatedAllocationImageAliasing`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_dedicatedAllocationImageAliasing(MemorySegment segment) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_dedicatedAllocationImageAliasing(segment, 0L); }
-    /// {@return `dedicatedAllocationImageAliasing`}
-    public @CType("VkBool32") int dedicatedAllocationImageAliasing() { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_dedicatedAllocationImageAliasing(this.segment()); }
+    public int dedicatedAllocationImageAliasing() { return dedicatedAllocationImageAliasing(this.segment(), 0L); }
     /// Sets `dedicatedAllocationImageAliasing` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dedicatedAllocationImageAliasing(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_dedicatedAllocationImageAliasing.set(segment, 0L, index, value); }
-    /// Sets `dedicatedAllocationImageAliasing` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dedicatedAllocationImageAliasing(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_dedicatedAllocationImageAliasing(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dedicatedAllocationImageAliasing(MemorySegment segment, long index, int value) { VH_dedicatedAllocationImageAliasing.set(segment, 0L, index, value); }
     /// Sets `dedicatedAllocationImageAliasing` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV dedicatedAllocationImageAliasing(@CType("VkBool32") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_dedicatedAllocationImageAliasing(this.segment(), value); return this; }
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV dedicatedAllocationImageAliasing(int value) { dedicatedAllocationImageAliasing(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV].
     public static final class Buffer extends VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV e
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `dedicatedAllocationImageAliasing` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int dedicatedAllocationImageAliasingAt(long index) { return VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.get_dedicatedAllocationImageAliasing(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dedicatedAllocationImageAliasingAt(long index) { return dedicatedAllocationImageAliasing(this.segment(), index); }
         /// Sets `dedicatedAllocationImageAliasing` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dedicatedAllocationImageAliasingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV.set_dedicatedAllocationImageAliasing(this.segment(), index, value); return this; }
+        public Buffer dedicatedAllocationImageAliasingAt(long index, int value) { dedicatedAllocationImageAliasing(this.segment(), index, value); return this; }
 
     }
 }

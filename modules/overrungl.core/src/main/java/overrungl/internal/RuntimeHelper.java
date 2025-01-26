@@ -121,32 +121,43 @@ public final class RuntimeHelper {
         return SymbolLookup.libraryLookup(uri, Arena.global());
     }
 
-    /// Finds the address of the symbol with the given symbol lookup and name.
-    ///
-    /// @param lookup     the symbol lookup
-    /// @param name       the name of the symbol
-    /// @param descriptor the function descriptor
-    /// @return the method handle bound to the found address
-    public static MethodHandle downcall(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
-        return LINKER.downcallHandle(lookup.findOrThrow(name), descriptor);
-    }
-
-    /// Finds the address of the symbol with the given symbol lookup and name.
-    ///
-    /// @param lookup     the symbol lookup
-    /// @param name       the name of the symbol
-    /// @param descriptor the function descriptor
-    /// @return the method handle bound to the found address; or `null` if not found
-    public static MethodHandle downcallOrNull(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
-        var opt = lookup.find(name);
-        return opt.isPresent() ? LINKER.downcallHandle(opt.get(), descriptor) : null;
-    }
-
     /// Creates a method handle without binding to a specific address.
     ///
     /// @param descriptor the function descriptor
     /// @return the method handle
     public static MethodHandle downcall(FunctionDescriptor descriptor) {
         return LINKER.downcallHandle(descriptor);
+    }
+
+    /// Converts upcall target name
+    ///
+    /// @param name       the original name
+    /// @param descriptor the descriptor
+    /// @return the converted name
+    public static String upcallTarget(String name, FunctionDescriptor descriptor) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(name);
+        builder.append(descriptor.returnLayout().map(RuntimeHelper::descriptorLayoutToChar).orElse('V'));
+        for (MemoryLayout argumentLayout : descriptor.argumentLayouts()) {
+            builder.append(descriptorLayoutToChar(argumentLayout));
+        }
+        return builder.toString();
+    }
+
+    private static char descriptorLayoutToChar(MemoryLayout layout) {
+        if (!(layout instanceof ValueLayout valueLayout)) {
+            throw new IllegalArgumentException("Not a value layout: " + layout);
+        }
+        return switch (valueLayout) {
+            case AddressLayout _ -> 'P';
+            case ValueLayout.OfBoolean _ -> 'Z';
+            case ValueLayout.OfChar _ -> 'C';
+            case ValueLayout.OfByte _ -> 'B';
+            case ValueLayout.OfShort _ -> 'S';
+            case ValueLayout.OfInt _ -> 'I';
+            case ValueLayout.OfLong _ -> 'J';
+            case ValueLayout.OfFloat _ -> 'F';
+            case ValueLayout.OfDouble _ -> 'D';
+        };
     }
 }

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgi;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIColorMatrix {
     public static final int GL_COLOR_MATRIX_SGI = 0x80B1;
     public static final int GL_COLOR_MATRIX_STACK_DEPTH_SGI = 0x80B2;

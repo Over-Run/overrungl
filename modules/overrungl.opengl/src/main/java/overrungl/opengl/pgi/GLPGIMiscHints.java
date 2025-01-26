@@ -19,8 +19,6 @@ package overrungl.opengl.pgi;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -46,15 +44,8 @@ public final class GLPGIMiscHints {
     public static final int GL_WIDE_LINE_HINT_PGI = 0x1A222;
     public static final int GL_BACK_NORMALS_HINT_PGI = 0x1A223;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glHintPGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glHintPGI
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glHintPGI = RuntimeHelper.downcall(Descriptors.FD_glHintPGI);
+        public static final MethodHandle MH_glHintPGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glHintPGI;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glHintPGI = func.invoke("glHintPGI");
@@ -65,10 +56,13 @@ public final class GLPGIMiscHints {
         this.handles = new Handles(func);
     }
 
-    public void HintPGI(@CType("GLenum") int target, @CType("GLint") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
+    /// ```
+    /// void glHintPGI((unsigned int) GLenum target, (int) GLint mode);
+    /// ```
+    public void HintPGI(int target, int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
         try { Handles.MH_glHintPGI.invokeExact(handles.PFN_glHintPGI, target, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glHintPGI", e); }
+        catch (Throwable e) { throw new RuntimeException("error in HintPGI", e); }
     }
 
 }

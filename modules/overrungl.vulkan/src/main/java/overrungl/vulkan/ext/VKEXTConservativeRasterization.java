@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTConservativeRasterization {
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT = 0;
@@ -31,6 +26,6 @@ public final class VKEXTConservativeRasterization {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT = 1000101000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT = 1000101001;
 
-    private VKEXTConservativeRasterization() { }
+    private VKEXTConservativeRasterization() {}
 
 }

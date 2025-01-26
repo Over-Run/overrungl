@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTRobustness2 {
     public static final int VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKEXTRobustness2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT = 1000286000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT = 1000286001;
 
-    private VKEXTRobustness2() { }
+    private VKEXTRobustness2() {}
 
 }

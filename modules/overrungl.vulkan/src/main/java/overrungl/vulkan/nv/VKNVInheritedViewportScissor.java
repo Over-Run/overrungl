@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVInheritedViewportScissor {
     public static final int VK_NV_INHERITED_VIEWPORT_SCISSOR_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKNVInheritedViewportScissor {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV = 1000278000;
     public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV = 1000278001;
 
-    private VKNVInheritedViewportScissor() { }
+    private VKNVInheritedViewportScissor() {}
 
 }

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTImageSlicedViewOf3d {
     public static final int VK_EXT_IMAGE_SLICED_VIEW_OF_3D_SPEC_VERSION = 1;
@@ -29,6 +24,6 @@ public final class VKEXTImageSlicedViewOf3d {
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT = 1000418001;
     public static final int VK_REMAINING_3D_SLICES_EXT = (~0);
 
-    private VKEXTImageSlicedViewOf3d() { }
+    private VKEXTImageSlicedViewOf3d() {}
 
 }

@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.amd.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### mode
-/// [VarHandle][#VH_mode] - [Getter][#mode()] - [Setter][#mode(int)]
-/// ### maxFPS
-/// [VarHandle][#VH_maxFPS] - [Getter][#maxFPS()] - [Setter][#maxFPS(int)]
-/// ### pPresentationInfo
-/// [VarHandle][#VH_pPresentationInfo] - [Getter][#pPresentationInfo()] - [Setter][#pPresentationInfo(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkAntiLagDataAMD {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkAntiLagModeAMD mode;
-///     uint32_t maxFPS;
-///     const VkAntiLagPresentationInfoAMD * pPresentationInfo;
-/// } VkAntiLagDataAMD;
 /// ```
-public sealed class VkAntiLagDataAMD extends Struct {
+/// struct VkAntiLagDataAMD {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (int) VkAntiLagModeAMD mode;
+///     uint32_t maxFPS;
+///     const VkAntiLagPresentationInfoAMD* pPresentationInfo;
+/// };
+/// ```
+public sealed class VkAntiLagDataAMD extends GroupType {
     /// The struct layout of `VkAntiLagDataAMD`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("mode"),
         ValueLayout.JAVA_INT.withName("maxFPS"),
         ValueLayout.ADDRESS.withName("pPresentationInfo")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `mode`.
+    public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
+    /// The memory layout of `mode`.
+    public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
+    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
-    /// The [VarHandle] of `maxFPS` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxFPS`.
+    public static final long OFFSET_maxFPS = LAYOUT.byteOffset(PathElement.groupElement("maxFPS"));
+    /// The memory layout of `maxFPS`.
+    public static final MemoryLayout LAYOUT_maxFPS = LAYOUT.select(PathElement.groupElement("maxFPS"));
+    /// The [VarHandle] of `maxFPS` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxFPS = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFPS"));
-    /// The [VarHandle] of `pPresentationInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pPresentationInfo`.
+    public static final long OFFSET_pPresentationInfo = LAYOUT.byteOffset(PathElement.groupElement("pPresentationInfo"));
+    /// The memory layout of `pPresentationInfo`.
+    public static final MemoryLayout LAYOUT_pPresentationInfo = LAYOUT.select(PathElement.groupElement("pPresentationInfo"));
+    /// The [VarHandle] of `pPresentationInfo` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPresentationInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPresentationInfo"));
 
     /// Creates `VkAntiLagDataAMD` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkAntiLagDataAMD extends Struct {
     /// Creates `VkAntiLagDataAMD` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAntiLagDataAMD of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAntiLagDataAMD(segment); }
-
-    /// Creates `VkAntiLagDataAMD` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAntiLagDataAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAntiLagDataAMD ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAntiLagDataAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkAntiLagDataAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAntiLagDataAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkAntiLagDataAMD` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkAntiLagDataAMD extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAntiLagDataAMD` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkAntiLagDataAMD extends Struct {
     /// @return the allocated `VkAntiLagDataAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAntiLagModeAMD") int mode, @CType("uint32_t") int maxFPS, @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment pPresentationInfo) { return alloc(allocator).sType(sType).pNext(pNext).mode(mode).maxFPS(maxFPS).pPresentationInfo(pPresentationInfo); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkAntiLagDataAMD extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAntiLagDataAMD.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkAntiLagDataAMD.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAntiLagDataAMD.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAntiLagDataAMD sType(@CType("VkStructureType") int value) { VkAntiLagDataAMD.set_sType(this.segment(), value); return this; }
+    public VkAntiLagDataAMD sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAntiLagDataAMD.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAntiLagDataAMD.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAntiLagDataAMD pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pNext(this.segment(), value); return this; }
+    public VkAntiLagDataAMD pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkAntiLagModeAMD") int get_mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
     /// {@return `mode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkAntiLagModeAMD") int get_mode(MemorySegment segment) { return VkAntiLagDataAMD.get_mode(segment, 0L); }
-    /// {@return `mode`}
-    public @CType("VkAntiLagModeAMD") int mode() { return VkAntiLagDataAMD.get_mode(this.segment()); }
+    public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, long index, @CType("VkAntiLagModeAMD") int value) { VH_mode.set(segment, 0L, index, value); }
-    /// Sets `mode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, @CType("VkAntiLagModeAMD") int value) { VkAntiLagDataAMD.set_mode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAntiLagDataAMD mode(@CType("VkAntiLagModeAMD") int value) { VkAntiLagDataAMD.set_mode(this.segment(), value); return this; }
+    public VkAntiLagDataAMD mode(int value) { mode(this.segment(), 0L, value); return this; }
 
     /// {@return `maxFPS` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxFPS(MemorySegment segment, long index) { return (int) VH_maxFPS.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxFPS(MemorySegment segment, long index) { return (int) VH_maxFPS.get(segment, 0L, index); }
     /// {@return `maxFPS`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxFPS(MemorySegment segment) { return VkAntiLagDataAMD.get_maxFPS(segment, 0L); }
-    /// {@return `maxFPS`}
-    public @CType("uint32_t") int maxFPS() { return VkAntiLagDataAMD.get_maxFPS(this.segment()); }
+    public int maxFPS() { return maxFPS(this.segment(), 0L); }
     /// Sets `maxFPS` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxFPS(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxFPS.set(segment, 0L, index, value); }
-    /// Sets `maxFPS` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxFPS(MemorySegment segment, @CType("uint32_t") int value) { VkAntiLagDataAMD.set_maxFPS(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxFPS(MemorySegment segment, long index, int value) { VH_maxFPS.set(segment, 0L, index, value); }
     /// Sets `maxFPS` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAntiLagDataAMD maxFPS(@CType("uint32_t") int value) { VkAntiLagDataAMD.set_maxFPS(this.segment(), value); return this; }
+    public VkAntiLagDataAMD maxFPS(int value) { maxFPS(this.segment(), 0L, value); return this; }
 
     /// {@return `pPresentationInfo` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment get_pPresentationInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPresentationInfo.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pPresentationInfo(MemorySegment segment, long index) { return (MemorySegment) VH_pPresentationInfo.get(segment, 0L, index); }
     /// {@return `pPresentationInfo`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment get_pPresentationInfo(MemorySegment segment) { return VkAntiLagDataAMD.get_pPresentationInfo(segment, 0L); }
-    /// {@return `pPresentationInfo`}
-    public @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment pPresentationInfo() { return VkAntiLagDataAMD.get_pPresentationInfo(this.segment()); }
+    public MemorySegment pPresentationInfo() { return pPresentationInfo(this.segment(), 0L); }
     /// Sets `pPresentationInfo` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPresentationInfo(MemorySegment segment, long index, @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment value) { VH_pPresentationInfo.set(segment, 0L, index, value); }
-    /// Sets `pPresentationInfo` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pPresentationInfo(MemorySegment segment, @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pPresentationInfo(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pPresentationInfo(MemorySegment segment, long index, MemorySegment value) { VH_pPresentationInfo.set(segment, 0L, index, value); }
     /// Sets `pPresentationInfo` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkAntiLagDataAMD pPresentationInfo(@CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pPresentationInfo(this.segment(), value); return this; }
+    public VkAntiLagDataAMD pPresentationInfo(MemorySegment value) { pPresentationInfo(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkAntiLagDataAMD].
     public static final class Buffer extends VkAntiLagDataAMD {
@@ -258,49 +221,49 @@ public sealed class VkAntiLagDataAMD extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkAntiLagDataAMD.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAntiLagDataAMD.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAntiLagDataAMD.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `mode` at the given index}
-        /// @param index the index
-        public @CType("VkAntiLagModeAMD") int modeAt(long index) { return VkAntiLagDataAMD.get_mode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int modeAt(long index) { return mode(this.segment(), index); }
         /// Sets `mode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer modeAt(long index, @CType("VkAntiLagModeAMD") int value) { VkAntiLagDataAMD.set_mode(this.segment(), index, value); return this; }
+        public Buffer modeAt(long index, int value) { mode(this.segment(), index, value); return this; }
 
         /// {@return `maxFPS` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxFPSAt(long index) { return VkAntiLagDataAMD.get_maxFPS(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxFPSAt(long index) { return maxFPS(this.segment(), index); }
         /// Sets `maxFPS` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxFPSAt(long index, @CType("uint32_t") int value) { VkAntiLagDataAMD.set_maxFPS(this.segment(), index, value); return this; }
+        public Buffer maxFPSAt(long index, int value) { maxFPS(this.segment(), index, value); return this; }
 
         /// {@return `pPresentationInfo` at the given index}
-        /// @param index the index
-        public @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment pPresentationInfoAt(long index) { return VkAntiLagDataAMD.get_pPresentationInfo(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pPresentationInfoAt(long index) { return pPresentationInfo(this.segment(), index); }
         /// Sets `pPresentationInfo` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPresentationInfoAt(long index, @CType("const VkAntiLagPresentationInfoAMD *") java.lang.foreign.MemorySegment value) { VkAntiLagDataAMD.set_pPresentationInfo(this.segment(), index, value); return this; }
+        public Buffer pPresentationInfoAt(long index, MemorySegment value) { pPresentationInfo(this.segment(), index, value); return this; }
 
     }
 }

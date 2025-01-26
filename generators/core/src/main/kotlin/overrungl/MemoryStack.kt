@@ -28,6 +28,7 @@ fun memoryStack() {
     val src = Files.readString(path)
     val sb = StringBuilder()
 
+    sb.append("    ")
     sb.appendLine(formatter_off)
 
     Type.entries.forEach {
@@ -51,13 +52,14 @@ fun memoryStack() {
                 |    /// @param values the values
                 |    /// @return the allocated segment
                 |    public MemorySegment ${it.methodName}(${it.typeName}... values) {
-                |        return Marshal.marshal(this, values);
+                |        return MemoryUtil.allocArray(this, values);
                 |    }
                 |
             """.trimMargin()
         )
     }
 
+    sb.append("    ")
     sb.appendLine(formatter_on)
 
     writeString(path, replaceCode(src, sb.toString()))

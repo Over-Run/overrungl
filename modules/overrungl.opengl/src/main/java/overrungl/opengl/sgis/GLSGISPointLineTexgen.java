@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgis;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGISPointLineTexgen {
     public static final int GL_EYE_DISTANCE_TO_POINT_SGIS = 0x81F0;
     public static final int GL_OBJECT_DISTANCE_TO_POINT_SGIS = 0x81F1;

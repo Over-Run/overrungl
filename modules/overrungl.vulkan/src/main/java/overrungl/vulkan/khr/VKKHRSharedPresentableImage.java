@@ -18,41 +18,29 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKKHRSharedPresentableImage {
+public final class VKKHRSharedPresentableImage {
     public static final int VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION = 1;
     public static final String VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME = "VK_KHR_shared_presentable_image";
     public static final int VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR = 1000111000;
     public static final int VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR = 1000111000;
     public static final int VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR = 1000111001;
     public static final int VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR = 1000111000;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetSwapchainStatusKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetSwapchainStatusKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetSwapchainStatusKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetSwapchainStatusKHR);
-        public final MemorySegment PFN_vkGetSwapchainStatusKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetSwapchainStatusKHR = func.invoke(device, "vkGetSwapchainStatusKHR");
-        }
+        public static final MethodHandle MH_vkGetSwapchainStatusKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        private Handles() {}
     }
 
-    public VKKHRSharedPresentableImage(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRSharedPresentableImage() {}
 
-    public @CType("VkResult") int GetSwapchainStatusKHR(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetSwapchainStatusKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");
-        try { return (int) Handles.MH_vkGetSwapchainStatusKHR.invokeExact(handles.PFN_vkGetSwapchainStatusKHR, device, swapchain); }
+    /// ```
+    /// (int) VkResult vkGetSwapchainStatusKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain);
+    /// ```
+    public static int vkGetSwapchainStatusKHR(VkDevice device, long swapchain) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainStatusKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");
+        try { return (int) Handles.MH_vkGetSwapchainStatusKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainStatusKHR, device.segment(), swapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainStatusKHR", e); }
     }
 

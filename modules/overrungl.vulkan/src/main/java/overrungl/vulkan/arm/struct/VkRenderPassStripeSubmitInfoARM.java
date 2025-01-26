@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.arm.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### stripeSemaphoreInfoCount
-/// [VarHandle][#VH_stripeSemaphoreInfoCount] - [Getter][#stripeSemaphoreInfoCount()] - [Setter][#stripeSemaphoreInfoCount(int)]
-/// ### pStripeSemaphoreInfos
-/// [VarHandle][#VH_pStripeSemaphoreInfos] - [Getter][#pStripeSemaphoreInfos()] - [Setter][#pStripeSemaphoreInfos(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRenderPassStripeSubmitInfoARM {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t stripeSemaphoreInfoCount;
-///     const VkSemaphoreSubmitInfo * pStripeSemaphoreInfos;
-/// } VkRenderPassStripeSubmitInfoARM;
 /// ```
-public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
+/// struct VkRenderPassStripeSubmitInfoARM {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t stripeSemaphoreInfoCount;
+///     const VkSemaphoreSubmitInfo* pStripeSemaphoreInfos;
+/// };
+/// ```
+public sealed class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// The struct layout of `VkRenderPassStripeSubmitInfoARM`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("stripeSemaphoreInfoCount"),
         ValueLayout.ADDRESS.withName("pStripeSemaphoreInfos")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `stripeSemaphoreInfoCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stripeSemaphoreInfoCount`.
+    public static final long OFFSET_stripeSemaphoreInfoCount = LAYOUT.byteOffset(PathElement.groupElement("stripeSemaphoreInfoCount"));
+    /// The memory layout of `stripeSemaphoreInfoCount`.
+    public static final MemoryLayout LAYOUT_stripeSemaphoreInfoCount = LAYOUT.select(PathElement.groupElement("stripeSemaphoreInfoCount"));
+    /// The [VarHandle] of `stripeSemaphoreInfoCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stripeSemaphoreInfoCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stripeSemaphoreInfoCount"));
-    /// The [VarHandle] of `pStripeSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pStripeSemaphoreInfos`.
+    public static final long OFFSET_pStripeSemaphoreInfos = LAYOUT.byteOffset(PathElement.groupElement("pStripeSemaphoreInfos"));
+    /// The memory layout of `pStripeSemaphoreInfos`.
+    public static final MemoryLayout LAYOUT_pStripeSemaphoreInfos = LAYOUT.select(PathElement.groupElement("pStripeSemaphoreInfos"));
+    /// The [VarHandle] of `pStripeSemaphoreInfos` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pStripeSemaphoreInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStripeSemaphoreInfos"));
 
     /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
     /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassStripeSubmitInfoARM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassStripeSubmitInfoARM(segment); }
-
-    /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassStripeSubmitInfoARM ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassStripeSubmitInfoARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRenderPassStripeSubmitInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassStripeSubmitInfoARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRenderPassStripeSubmitInfoARM` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
     /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
-    public static VkRenderPassStripeSubmitInfoARM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int stripeSemaphoreInfoCount, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pStripeSemaphoreInfos) { return alloc(allocator).sType(sType).pNext(pNext).stripeSemaphoreInfoCount(stripeSemaphoreInfoCount).pStripeSemaphoreInfos(pStripeSemaphoreInfos); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassStripeSubmitInfoARM.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkRenderPassStripeSubmitInfoARM.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassStripeSubmitInfoARM.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassStripeSubmitInfoARM sType(@CType("VkStructureType") int value) { VkRenderPassStripeSubmitInfoARM.set_sType(this.segment(), value); return this; }
+    public VkRenderPassStripeSubmitInfoARM sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassStripeSubmitInfoARM.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassStripeSubmitInfoARM.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassStripeSubmitInfoARM pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pNext(this.segment(), value); return this; }
+    public VkRenderPassStripeSubmitInfoARM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `stripeSemaphoreInfoCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_stripeSemaphoreInfoCount(MemorySegment segment, long index) { return (int) VH_stripeSemaphoreInfoCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stripeSemaphoreInfoCount(MemorySegment segment, long index) { return (int) VH_stripeSemaphoreInfoCount.get(segment, 0L, index); }
     /// {@return `stripeSemaphoreInfoCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_stripeSemaphoreInfoCount(MemorySegment segment) { return VkRenderPassStripeSubmitInfoARM.get_stripeSemaphoreInfoCount(segment, 0L); }
-    /// {@return `stripeSemaphoreInfoCount`}
-    public @CType("uint32_t") int stripeSemaphoreInfoCount() { return VkRenderPassStripeSubmitInfoARM.get_stripeSemaphoreInfoCount(this.segment()); }
+    public int stripeSemaphoreInfoCount() { return stripeSemaphoreInfoCount(this.segment(), 0L); }
     /// Sets `stripeSemaphoreInfoCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stripeSemaphoreInfoCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_stripeSemaphoreInfoCount.set(segment, 0L, index, value); }
-    /// Sets `stripeSemaphoreInfoCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stripeSemaphoreInfoCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassStripeSubmitInfoARM.set_stripeSemaphoreInfoCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stripeSemaphoreInfoCount(MemorySegment segment, long index, int value) { VH_stripeSemaphoreInfoCount.set(segment, 0L, index, value); }
     /// Sets `stripeSemaphoreInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassStripeSubmitInfoARM stripeSemaphoreInfoCount(@CType("uint32_t") int value) { VkRenderPassStripeSubmitInfoARM.set_stripeSemaphoreInfoCount(this.segment(), value); return this; }
+    public VkRenderPassStripeSubmitInfoARM stripeSemaphoreInfoCount(int value) { stripeSemaphoreInfoCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pStripeSemaphoreInfos` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pStripeSemaphoreInfos(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStripeSemaphoreInfos.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pStripeSemaphoreInfos(MemorySegment segment, long index) { return (MemorySegment) VH_pStripeSemaphoreInfos.get(segment, 0L, index); }
     /// {@return `pStripeSemaphoreInfos`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment get_pStripeSemaphoreInfos(MemorySegment segment) { return VkRenderPassStripeSubmitInfoARM.get_pStripeSemaphoreInfos(segment, 0L); }
-    /// {@return `pStripeSemaphoreInfos`}
-    public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pStripeSemaphoreInfos() { return VkRenderPassStripeSubmitInfoARM.get_pStripeSemaphoreInfos(this.segment()); }
+    public MemorySegment pStripeSemaphoreInfos() { return pStripeSemaphoreInfos(this.segment(), 0L); }
     /// Sets `pStripeSemaphoreInfos` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pStripeSemaphoreInfos(MemorySegment segment, long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VH_pStripeSemaphoreInfos.set(segment, 0L, index, value); }
-    /// Sets `pStripeSemaphoreInfos` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pStripeSemaphoreInfos(MemorySegment segment, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pStripeSemaphoreInfos(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pStripeSemaphoreInfos(MemorySegment segment, long index, MemorySegment value) { VH_pStripeSemaphoreInfos.set(segment, 0L, index, value); }
     /// Sets `pStripeSemaphoreInfos` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRenderPassStripeSubmitInfoARM pStripeSemaphoreInfos(@CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pStripeSemaphoreInfos(this.segment(), value); return this; }
+    public VkRenderPassStripeSubmitInfoARM pStripeSemaphoreInfos(MemorySegment value) { pStripeSemaphoreInfos(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRenderPassStripeSubmitInfoARM].
     public static final class Buffer extends VkRenderPassStripeSubmitInfoARM {
@@ -229,40 +197,40 @@ public sealed class VkRenderPassStripeSubmitInfoARM extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassStripeSubmitInfoARM.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassStripeSubmitInfoARM.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassStripeSubmitInfoARM.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `stripeSemaphoreInfoCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int stripeSemaphoreInfoCountAt(long index) { return VkRenderPassStripeSubmitInfoARM.get_stripeSemaphoreInfoCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stripeSemaphoreInfoCountAt(long index) { return stripeSemaphoreInfoCount(this.segment(), index); }
         /// Sets `stripeSemaphoreInfoCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stripeSemaphoreInfoCountAt(long index, @CType("uint32_t") int value) { VkRenderPassStripeSubmitInfoARM.set_stripeSemaphoreInfoCount(this.segment(), index, value); return this; }
+        public Buffer stripeSemaphoreInfoCountAt(long index, int value) { stripeSemaphoreInfoCount(this.segment(), index, value); return this; }
 
         /// {@return `pStripeSemaphoreInfos` at the given index}
-        /// @param index the index
-        public @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment pStripeSemaphoreInfosAt(long index) { return VkRenderPassStripeSubmitInfoARM.get_pStripeSemaphoreInfos(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pStripeSemaphoreInfosAt(long index) { return pStripeSemaphoreInfos(this.segment(), index); }
         /// Sets `pStripeSemaphoreInfos` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pStripeSemaphoreInfosAt(long index, @CType("const VkSemaphoreSubmitInfo *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeSubmitInfoARM.set_pStripeSemaphoreInfos(this.segment(), index, value); return this; }
+        public Buffer pStripeSemaphoreInfosAt(long index, MemorySegment value) { pStripeSemaphoreInfos(this.segment(), index, value); return this; }
 
     }
 }

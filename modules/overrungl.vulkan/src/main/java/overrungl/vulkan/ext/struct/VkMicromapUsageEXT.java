@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### count
-/// [VarHandle][#VH_count] - [Getter][#count()] - [Setter][#count(int)]
-/// ### subdivisionLevel
-/// [VarHandle][#VH_subdivisionLevel] - [Getter][#subdivisionLevel()] - [Setter][#subdivisionLevel(int)]
-/// ### format
-/// [VarHandle][#VH_format] - [Getter][#format()] - [Setter][#format(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkMicromapUsageEXT {
+/// ```
+/// struct VkMicromapUsageEXT {
 ///     uint32_t count;
 ///     uint32_t subdivisionLevel;
 ///     uint32_t format;
-/// } VkMicromapUsageEXT;
+/// };
 /// ```
-public sealed class VkMicromapUsageEXT extends Struct {
+public sealed class VkMicromapUsageEXT extends GroupType {
     /// The struct layout of `VkMicromapUsageEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("count"),
         ValueLayout.JAVA_INT.withName("subdivisionLevel"),
         ValueLayout.JAVA_INT.withName("format")
     );
-    /// The [VarHandle] of `count` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `count`.
+    public static final long OFFSET_count = LAYOUT.byteOffset(PathElement.groupElement("count"));
+    /// The memory layout of `count`.
+    public static final MemoryLayout LAYOUT_count = LAYOUT.select(PathElement.groupElement("count"));
+    /// The [VarHandle] of `count` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_count = LAYOUT.arrayElementVarHandle(PathElement.groupElement("count"));
-    /// The [VarHandle] of `subdivisionLevel` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subdivisionLevel`.
+    public static final long OFFSET_subdivisionLevel = LAYOUT.byteOffset(PathElement.groupElement("subdivisionLevel"));
+    /// The memory layout of `subdivisionLevel`.
+    public static final MemoryLayout LAYOUT_subdivisionLevel = LAYOUT.select(PathElement.groupElement("subdivisionLevel"));
+    /// The [VarHandle] of `subdivisionLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subdivisionLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subdivisionLevel"));
-    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `format`.
+    public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
+    /// The memory layout of `format`.
+    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
+    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
 
     /// Creates `VkMicromapUsageEXT` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkMicromapUsageEXT extends Struct {
     /// Creates `VkMicromapUsageEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapUsageEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapUsageEXT(segment); }
-
-    /// Creates `VkMicromapUsageEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMicromapUsageEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapUsageEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapUsageEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkMicromapUsageEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapUsageEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkMicromapUsageEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkMicromapUsageEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMicromapUsageEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkMicromapUsageEXT extends Struct {
     /// @return the allocated `VkMicromapUsageEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMicromapUsageEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMicromapUsageEXT`
-    public static VkMicromapUsageEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int count, @CType("uint32_t") int subdivisionLevel, @CType("uint32_t") int format) { return alloc(allocator).count(count).subdivisionLevel(subdivisionLevel).format(format); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkMicromapUsageEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_count(MemorySegment segment, long index) { return (int) VH_count.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int count(MemorySegment segment, long index) { return (int) VH_count.get(segment, 0L, index); }
     /// {@return `count`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_count(MemorySegment segment) { return VkMicromapUsageEXT.get_count(segment, 0L); }
-    /// {@return `count`}
-    public @CType("uint32_t") int count() { return VkMicromapUsageEXT.get_count(this.segment()); }
+    public int count() { return count(this.segment(), 0L); }
     /// Sets `count` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_count(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_count.set(segment, 0L, index, value); }
-    /// Sets `count` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_count(MemorySegment segment, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_count(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void count(MemorySegment segment, long index, int value) { VH_count.set(segment, 0L, index, value); }
     /// Sets `count` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapUsageEXT count(@CType("uint32_t") int value) { VkMicromapUsageEXT.set_count(this.segment(), value); return this; }
+    public VkMicromapUsageEXT count(int value) { count(this.segment(), 0L, value); return this; }
 
     /// {@return `subdivisionLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_subdivisionLevel(MemorySegment segment, long index) { return (int) VH_subdivisionLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subdivisionLevel(MemorySegment segment, long index) { return (int) VH_subdivisionLevel.get(segment, 0L, index); }
     /// {@return `subdivisionLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_subdivisionLevel(MemorySegment segment) { return VkMicromapUsageEXT.get_subdivisionLevel(segment, 0L); }
-    /// {@return `subdivisionLevel`}
-    public @CType("uint32_t") int subdivisionLevel() { return VkMicromapUsageEXT.get_subdivisionLevel(this.segment()); }
+    public int subdivisionLevel() { return subdivisionLevel(this.segment(), 0L); }
     /// Sets `subdivisionLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subdivisionLevel(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_subdivisionLevel.set(segment, 0L, index, value); }
-    /// Sets `subdivisionLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subdivisionLevel(MemorySegment segment, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_subdivisionLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subdivisionLevel(MemorySegment segment, long index, int value) { VH_subdivisionLevel.set(segment, 0L, index, value); }
     /// Sets `subdivisionLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapUsageEXT subdivisionLevel(@CType("uint32_t") int value) { VkMicromapUsageEXT.set_subdivisionLevel(this.segment(), value); return this; }
+    public VkMicromapUsageEXT subdivisionLevel(int value) { subdivisionLevel(this.segment(), 0L, value); return this; }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
     /// {@return `format`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_format(MemorySegment segment) { return VkMicromapUsageEXT.get_format(segment, 0L); }
-    /// {@return `format`}
-    public @CType("uint32_t") int format() { return VkMicromapUsageEXT.get_format(this.segment()); }
+    public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_format.set(segment, 0L, index, value); }
-    /// Sets `format` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_format(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapUsageEXT format(@CType("uint32_t") int value) { VkMicromapUsageEXT.set_format(this.segment(), value); return this; }
+    public VkMicromapUsageEXT format(int value) { format(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkMicromapUsageEXT].
     public static final class Buffer extends VkMicromapUsageEXT {
@@ -200,31 +173,31 @@ public sealed class VkMicromapUsageEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `count` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int countAt(long index) { return VkMicromapUsageEXT.get_count(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int countAt(long index) { return count(this.segment(), index); }
         /// Sets `count` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer countAt(long index, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_count(this.segment(), index, value); return this; }
+        public Buffer countAt(long index, int value) { count(this.segment(), index, value); return this; }
 
         /// {@return `subdivisionLevel` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int subdivisionLevelAt(long index) { return VkMicromapUsageEXT.get_subdivisionLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subdivisionLevelAt(long index) { return subdivisionLevel(this.segment(), index); }
         /// Sets `subdivisionLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subdivisionLevelAt(long index, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_subdivisionLevel(this.segment(), index, value); return this; }
+        public Buffer subdivisionLevelAt(long index, int value) { subdivisionLevel(this.segment(), index, value); return this; }
 
         /// {@return `format` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int formatAt(long index) { return VkMicromapUsageEXT.get_format(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int formatAt(long index) { return format(this.segment(), index); }
         /// Sets `format` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer formatAt(long index, @CType("uint32_t") int value) { VkMicromapUsageEXT.set_format(this.segment(), index, value); return this; }
+        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
     }
 }

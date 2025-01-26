@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTDepthClipControl {
     public static final int VK_EXT_DEPTH_CLIP_CONTROL_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKEXTDepthClipControl {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT = 1000355000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT = 1000355001;
 
-    private VKEXTDepthClipControl() { }
+    private VKEXTDepthClipControl() {}
 
 }

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### perStageDescriptorSet
-/// [VarHandle][#VH_perStageDescriptorSet] - [Getter][#perStageDescriptorSet()] - [Setter][#perStageDescriptorSet(int)]
-/// ### dynamicPipelineLayout
-/// [VarHandle][#VH_dynamicPipelineLayout] - [Getter][#dynamicPipelineLayout()] - [Setter][#dynamicPipelineLayout(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 perStageDescriptorSet;
-///     VkBool32 dynamicPipelineLayout;
-/// } VkPhysicalDevicePerStageDescriptorSetFeaturesNV;
 /// ```
-public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Struct {
+/// struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 perStageDescriptorSet;
+///     (uint32_t) VkBool32 dynamicPipelineLayout;
+/// };
+/// ```
+public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends GroupType {
     /// The struct layout of `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("perStageDescriptorSet"),
         ValueLayout.JAVA_INT.withName("dynamicPipelineLayout")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `perStageDescriptorSet` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `perStageDescriptorSet`.
+    public static final long OFFSET_perStageDescriptorSet = LAYOUT.byteOffset(PathElement.groupElement("perStageDescriptorSet"));
+    /// The memory layout of `perStageDescriptorSet`.
+    public static final MemoryLayout LAYOUT_perStageDescriptorSet = LAYOUT.select(PathElement.groupElement("perStageDescriptorSet"));
+    /// The [VarHandle] of `perStageDescriptorSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_perStageDescriptorSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("perStageDescriptorSet"));
-    /// The [VarHandle] of `dynamicPipelineLayout` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `dynamicPipelineLayout`.
+    public static final long OFFSET_dynamicPipelineLayout = LAYOUT.byteOffset(PathElement.groupElement("dynamicPipelineLayout"));
+    /// The memory layout of `dynamicPipelineLayout`.
+    public static final MemoryLayout LAYOUT_dynamicPipelineLayout = LAYOUT.select(PathElement.groupElement("dynamicPipelineLayout"));
+    /// The [VarHandle] of `dynamicPipelineLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dynamicPipelineLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicPipelineLayout"));
 
     /// Creates `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Stru
     /// Creates `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment); }
-
-    /// Creates `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Stru
     /// @return the allocated `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePerStageDescriptorSetFeaturesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`
-    public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int perStageDescriptorSet, @CType("VkBool32") int dynamicPipelineLayout) { return alloc(allocator).sType(sType).pNext(pNext).perStageDescriptorSet(perStageDescriptorSet).dynamicPipelineLayout(dynamicPipelineLayout); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Stru
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV sType(@CType("VkStructureType") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `perStageDescriptorSet` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_perStageDescriptorSet(MemorySegment segment, long index) { return (int) VH_perStageDescriptorSet.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int perStageDescriptorSet(MemorySegment segment, long index) { return (int) VH_perStageDescriptorSet.get(segment, 0L, index); }
     /// {@return `perStageDescriptorSet`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_perStageDescriptorSet(MemorySegment segment) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_perStageDescriptorSet(segment, 0L); }
-    /// {@return `perStageDescriptorSet`}
-    public @CType("VkBool32") int perStageDescriptorSet() { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_perStageDescriptorSet(this.segment()); }
+    public int perStageDescriptorSet() { return perStageDescriptorSet(this.segment(), 0L); }
     /// Sets `perStageDescriptorSet` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_perStageDescriptorSet(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_perStageDescriptorSet.set(segment, 0L, index, value); }
-    /// Sets `perStageDescriptorSet` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_perStageDescriptorSet(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_perStageDescriptorSet(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void perStageDescriptorSet(MemorySegment segment, long index, int value) { VH_perStageDescriptorSet.set(segment, 0L, index, value); }
     /// Sets `perStageDescriptorSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV perStageDescriptorSet(@CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_perStageDescriptorSet(this.segment(), value); return this; }
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV perStageDescriptorSet(int value) { perStageDescriptorSet(this.segment(), 0L, value); return this; }
 
     /// {@return `dynamicPipelineLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_dynamicPipelineLayout(MemorySegment segment, long index) { return (int) VH_dynamicPipelineLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int dynamicPipelineLayout(MemorySegment segment, long index) { return (int) VH_dynamicPipelineLayout.get(segment, 0L, index); }
     /// {@return `dynamicPipelineLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_dynamicPipelineLayout(MemorySegment segment) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_dynamicPipelineLayout(segment, 0L); }
-    /// {@return `dynamicPipelineLayout`}
-    public @CType("VkBool32") int dynamicPipelineLayout() { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_dynamicPipelineLayout(this.segment()); }
+    public int dynamicPipelineLayout() { return dynamicPipelineLayout(this.segment(), 0L); }
     /// Sets `dynamicPipelineLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dynamicPipelineLayout(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_dynamicPipelineLayout.set(segment, 0L, index, value); }
-    /// Sets `dynamicPipelineLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dynamicPipelineLayout(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_dynamicPipelineLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dynamicPipelineLayout(MemorySegment segment, long index, int value) { VH_dynamicPipelineLayout.set(segment, 0L, index, value); }
     /// Sets `dynamicPipelineLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV dynamicPipelineLayout(@CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_dynamicPipelineLayout(this.segment(), value); return this; }
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV dynamicPipelineLayout(int value) { dynamicPipelineLayout(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDevicePerStageDescriptorSetFeaturesNV].
     public static final class Buffer extends VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Stru
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `perStageDescriptorSet` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int perStageDescriptorSetAt(long index) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_perStageDescriptorSet(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int perStageDescriptorSetAt(long index) { return perStageDescriptorSet(this.segment(), index); }
         /// Sets `perStageDescriptorSet` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer perStageDescriptorSetAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_perStageDescriptorSet(this.segment(), index, value); return this; }
+        public Buffer perStageDescriptorSetAt(long index, int value) { perStageDescriptorSet(this.segment(), index, value); return this; }
 
         /// {@return `dynamicPipelineLayout` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int dynamicPipelineLayoutAt(long index) { return VkPhysicalDevicePerStageDescriptorSetFeaturesNV.get_dynamicPipelineLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int dynamicPipelineLayoutAt(long index) { return dynamicPipelineLayout(this.segment(), index); }
         /// Sets `dynamicPipelineLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dynamicPipelineLayoutAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePerStageDescriptorSetFeaturesNV.set_dynamicPipelineLayout(this.segment(), index, value); return this; }
+        public Buffer dynamicPipelineLayoutAt(long index, int value) { dynamicPipelineLayout(this.segment(), index, value); return this; }
 
     }
 }

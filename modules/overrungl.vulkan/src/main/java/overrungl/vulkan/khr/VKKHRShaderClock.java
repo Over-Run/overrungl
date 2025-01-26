@@ -16,17 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRShaderClock {
     public static final int VK_KHR_SHADER_CLOCK_SPEC_VERSION = 1;
     public static final String VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR = 1000181000;
 
-    private VKKHRShaderClock() { }
+    private VKKHRShaderClock() {}
 
 }

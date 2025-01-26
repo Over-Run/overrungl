@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXTextureLodBias {
     public static final int GL_TEXTURE_LOD_BIAS_S_SGIX = 0x818E;
     public static final int GL_TEXTURE_LOD_BIAS_T_SGIX = 0x818F;

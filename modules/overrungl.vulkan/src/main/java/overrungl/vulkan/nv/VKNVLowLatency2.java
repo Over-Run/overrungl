@@ -18,12 +18,10 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKNVLowLatency2 {
+public final class VKNVLowLatency2 {
     public static final int VK_LATENCY_MARKER_SIMULATION_START_NV = 0;
     public static final int VK_LATENCY_MARKER_SIMULATION_END_NV = 1;
     public static final int VK_LATENCY_MARKER_RENDERSUBMIT_START_NV = 2;
@@ -49,73 +47,59 @@ public class VKNVLowLatency2 {
     public static final int VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV = 1000505006;
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV = 1000505007;
     public static final int VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV = 1000505008;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkSetLatencySleepModeNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkLatencySleepNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkSetLatencyMarkerNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetLatencyTimingsNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkQueueNotifyOutOfBandNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetLatencySleepModeNV,
-            FD_vkLatencySleepNV,
-            FD_vkSetLatencyMarkerNV,
-            FD_vkGetLatencyTimingsNV,
-            FD_vkQueueNotifyOutOfBandNV
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLatencySleepModeNV = RuntimeHelper.downcall(Descriptors.FD_vkSetLatencySleepModeNV);
-        public static final MethodHandle MH_vkLatencySleepNV = RuntimeHelper.downcall(Descriptors.FD_vkLatencySleepNV);
-        public static final MethodHandle MH_vkSetLatencyMarkerNV = RuntimeHelper.downcall(Descriptors.FD_vkSetLatencyMarkerNV);
-        public static final MethodHandle MH_vkGetLatencyTimingsNV = RuntimeHelper.downcall(Descriptors.FD_vkGetLatencyTimingsNV);
-        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = RuntimeHelper.downcall(Descriptors.FD_vkQueueNotifyOutOfBandNV);
-        public final MemorySegment PFN_vkSetLatencySleepModeNV;
-        public final MemorySegment PFN_vkLatencySleepNV;
-        public final MemorySegment PFN_vkSetLatencyMarkerNV;
-        public final MemorySegment PFN_vkGetLatencyTimingsNV;
-        public final MemorySegment PFN_vkQueueNotifyOutOfBandNV;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkSetLatencySleepModeNV = func.invoke(device, "vkSetLatencySleepModeNV");
-            PFN_vkLatencySleepNV = func.invoke(device, "vkLatencySleepNV");
-            PFN_vkSetLatencyMarkerNV = func.invoke(device, "vkSetLatencyMarkerNV");
-            PFN_vkGetLatencyTimingsNV = func.invoke(device, "vkGetLatencyTimingsNV");
-            PFN_vkQueueNotifyOutOfBandNV = func.invoke(device, "vkQueueNotifyOutOfBandNV");
-        }
+        public static final MethodHandle MH_vkSetLatencySleepModeNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkLatencySleepNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetLatencyMarkerNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetLatencyTimingsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKNVLowLatency2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKNVLowLatency2() {}
 
-    public @CType("VkResult") int SetLatencySleepModeNV(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("const VkLatencySleepModeInfoNV *") MemorySegment pSleepModeInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetLatencySleepModeNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencySleepModeNV");
-        try { return (int) Handles.MH_vkSetLatencySleepModeNV.invokeExact(handles.PFN_vkSetLatencySleepModeNV, device, swapchain, pSleepModeInfo); }
+    /// ```
+    /// (int) VkResult vkSetLatencySleepModeNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkLatencySleepModeInfoNV* pSleepModeInfo);
+    /// ```
+    public static int vkSetLatencySleepModeNV(VkDevice device, long swapchain, MemorySegment pSleepModeInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencySleepModeNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencySleepModeNV");
+        try { return (int) Handles.MH_vkSetLatencySleepModeNV.invokeExact(device.capabilities().PFN_vkSetLatencySleepModeNV, device.segment(), swapchain, pSleepModeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencySleepModeNV", e); }
     }
 
-    public @CType("VkResult") int LatencySleepNV(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("const VkLatencySleepInfoNV *") MemorySegment pSleepInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkLatencySleepNV)) throw new SymbolNotFoundError("Symbol not found: vkLatencySleepNV");
-        try { return (int) Handles.MH_vkLatencySleepNV.invokeExact(handles.PFN_vkLatencySleepNV, device, swapchain, pSleepInfo); }
+    /// ```
+    /// (int) VkResult vkLatencySleepNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkLatencySleepInfoNV* pSleepInfo);
+    /// ```
+    public static int vkLatencySleepNV(VkDevice device, long swapchain, MemorySegment pSleepInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkLatencySleepNV)) throw new SymbolNotFoundError("Symbol not found: vkLatencySleepNV");
+        try { return (int) Handles.MH_vkLatencySleepNV.invokeExact(device.capabilities().PFN_vkLatencySleepNV, device.segment(), swapchain, pSleepInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkLatencySleepNV", e); }
     }
 
-    public void SetLatencyMarkerNV(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("const VkSetLatencyMarkerInfoNV *") MemorySegment pLatencyMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkSetLatencyMarkerNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencyMarkerNV");
-        try { Handles.MH_vkSetLatencyMarkerNV.invokeExact(handles.PFN_vkSetLatencyMarkerNV, device, swapchain, pLatencyMarkerInfo); }
+    /// ```
+    /// void vkSetLatencyMarkerNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkSetLatencyMarkerInfoNV* pLatencyMarkerInfo);
+    /// ```
+    public static void vkSetLatencyMarkerNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencyMarkerNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencyMarkerNV");
+        try { Handles.MH_vkSetLatencyMarkerNV.invokeExact(device.capabilities().PFN_vkSetLatencyMarkerNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencyMarkerNV", e); }
     }
 
-    public void GetLatencyTimingsNV(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("VkGetLatencyMarkerInfoNV *") MemorySegment pLatencyMarkerInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetLatencyTimingsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetLatencyTimingsNV");
-        try { Handles.MH_vkGetLatencyTimingsNV.invokeExact(handles.PFN_vkGetLatencyTimingsNV, device, swapchain, pLatencyMarkerInfo); }
+    /// ```
+    /// void vkGetLatencyTimingsNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
+    /// ```
+    public static void vkGetLatencyTimingsNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetLatencyTimingsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetLatencyTimingsNV");
+        try { Handles.MH_vkGetLatencyTimingsNV.invokeExact(device.capabilities().PFN_vkGetLatencyTimingsNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetLatencyTimingsNV", e); }
     }
 
-    public void QueueNotifyOutOfBandNV(@CType("VkQueue") MemorySegment queue, @CType("const VkOutOfBandQueueTypeInfoNV *") MemorySegment pQueueTypeInfo) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkQueueNotifyOutOfBandNV)) throw new SymbolNotFoundError("Symbol not found: vkQueueNotifyOutOfBandNV");
-        try { Handles.MH_vkQueueNotifyOutOfBandNV.invokeExact(handles.PFN_vkQueueNotifyOutOfBandNV, queue, pQueueTypeInfo); }
+    /// ```
+    /// void vkQueueNotifyOutOfBandNV((struct VkQueue*) VkQueue queue, const VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);
+    /// ```
+    public static void vkQueueNotifyOutOfBandNV(VkQueue queue, MemorySegment pQueueTypeInfo) {
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV)) throw new SymbolNotFoundError("Symbol not found: vkQueueNotifyOutOfBandNV");
+        try { Handles.MH_vkQueueNotifyOutOfBandNV.invokeExact(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV, queue.segment(), pQueueTypeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueNotifyOutOfBandNV", e); }
     }
 

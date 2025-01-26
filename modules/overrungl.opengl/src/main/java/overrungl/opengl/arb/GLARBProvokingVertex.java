@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,15 +28,8 @@ public final class GLARBProvokingVertex {
     public static final int GL_LAST_VERTEX_CONVENTION = 0x8E4E;
     public static final int GL_PROVOKING_VERTEX = 0x8E4F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glProvokingVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProvokingVertex
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glProvokingVertex = RuntimeHelper.downcall(Descriptors.FD_glProvokingVertex);
+        public static final MethodHandle MH_glProvokingVertex = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertex;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProvokingVertex = func.invoke("glProvokingVertex");
@@ -49,10 +40,13 @@ public final class GLARBProvokingVertex {
         this.handles = new Handles(func);
     }
 
-    public void ProvokingVertex(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glProvokingVertex)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertex");
+    /// ```
+    /// void glProvokingVertex((unsigned int) GLenum mode);
+    /// ```
+    public void ProvokingVertex(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertex)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertex");
         try { Handles.MH_glProvokingVertex.invokeExact(handles.PFN_glProvokingVertex, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glProvokingVertex", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ProvokingVertex", e); }
     }
 
 }

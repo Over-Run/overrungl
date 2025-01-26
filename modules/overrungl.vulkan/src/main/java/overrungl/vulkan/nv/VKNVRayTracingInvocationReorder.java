@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVRayTracingInvocationReorder {
     public static final int VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV = 0;
@@ -30,6 +25,6 @@ public final class VKNVRayTracingInvocationReorder {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV = 1000490000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV = 1000490001;
 
-    private VKNVRayTracingInvocationReorder() { }
+    private VKNVRayTracingInvocationReorder() {}
 
 }

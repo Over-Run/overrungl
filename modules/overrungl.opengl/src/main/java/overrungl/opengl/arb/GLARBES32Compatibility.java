@@ -19,8 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -29,15 +27,8 @@ public final class GLARBES32Compatibility {
     public static final int GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB = 0x9381;
     public static final int GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB = 0x9382;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glPrimitiveBoundingBoxARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPrimitiveBoundingBoxARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glPrimitiveBoundingBoxARB = RuntimeHelper.downcall(Descriptors.FD_glPrimitiveBoundingBoxARB);
+        public static final MethodHandle MH_glPrimitiveBoundingBoxARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPrimitiveBoundingBoxARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPrimitiveBoundingBoxARB = func.invoke("glPrimitiveBoundingBoxARB", "glPrimitiveBoundingBox");
@@ -48,10 +39,13 @@ public final class GLARBES32Compatibility {
         this.handles = new Handles(func);
     }
 
-    public void PrimitiveBoundingBoxARB(@CType("GLfloat") float minX, @CType("GLfloat") float minY, @CType("GLfloat") float minZ, @CType("GLfloat") float minW, @CType("GLfloat") float maxX, @CType("GLfloat") float maxY, @CType("GLfloat") float maxZ, @CType("GLfloat") float maxW) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");
+    /// ```
+    /// void glPrimitiveBoundingBoxARB(((float) khronos_float_t) GLfloat minX, ((float) khronos_float_t) GLfloat minY, ((float) khronos_float_t) GLfloat minZ, ((float) khronos_float_t) GLfloat minW, ((float) khronos_float_t) GLfloat maxX, ((float) khronos_float_t) GLfloat maxY, ((float) khronos_float_t) GLfloat maxZ, ((float) khronos_float_t) GLfloat maxW);
+    /// ```
+    public void PrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveBoundingBoxARB)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB");
         try { Handles.MH_glPrimitiveBoundingBoxARB.invokeExact(handles.PFN_glPrimitiveBoundingBoxARB, minX, minY, minZ, minW, maxX, maxY, maxZ, maxW); }
-        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveBoundingBoxARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PrimitiveBoundingBoxARB", e); }
     }
 
 }

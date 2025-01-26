@@ -15,39 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef int (*STBIIORead)(void* user, char* data, int size);
+/// ```
 @FunctionalInterface
 public interface STBIIORead extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(STBIIORead.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(STBIIORead.class, "invoke_", DESCRIPTOR);
+
+    /// Allocates `STBIIORead`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, STBIIORead func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    @CType("int") int invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size);
+    int invoke(MemorySegment user, MemorySegment data, int size);
+
+    /// The target method of the upcall.
+    default int invoke_(MemorySegment user, MemorySegment data, int size) {
+        return invoke(user, data, size);
+    }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size) {
-        try { return (int) HANDLE.invokeExact(stub, user, data, size); }
-        catch (Throwable e) { throw new RuntimeException("error in STBIIORead::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static STBIIORead wrap(MemorySegment stub) {
-        return (user, data, size) ->
-            invoke(stub, user, data, size);
-    }
 }

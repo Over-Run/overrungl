@@ -19,22 +19,13 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLOESQueryMatrix {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glQueryMatrixxOES = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glQueryMatrixxOES
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glQueryMatrixxOES);
+        public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryMatrixxOES;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryMatrixxOES = func.invoke("glQueryMatrixxOES");
@@ -45,10 +36,13 @@ public final class GLOESQueryMatrix {
         this.handles = new Handles(func);
     }
 
-    public @CType("GLbitfield") int QueryMatrixxOES(@CType("GLfixed *") java.lang.foreign.MemorySegment mantissa, @CType("GLint *") java.lang.foreign.MemorySegment exponent) {
-        if (Unmarshal.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
+    /// ```
+    /// (unsigned int) GLbitfield glQueryMatrixxOES(GLfixed* mantissa, GLint* exponent);
+    /// ```
+    public int QueryMatrixxOES(MemorySegment mantissa, MemorySegment exponent) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
         try { return (int) Handles.MH_glQueryMatrixxOES.invokeExact(handles.PFN_glQueryMatrixxOES, mantissa, exponent); }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryMatrixxOES", e); }
+        catch (Throwable e) { throw new RuntimeException("error in QueryMatrixxOES", e); }
     }
 
 }

@@ -16,22 +16,84 @@
 
 package overrungl.vulkan;
 
-import overrungl.annotation.CType;
+import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
 
 /**
- * The latest Vulkan functions.
+ * This class loads the Vulkan library into the JVM process.
  *
  * @author squid233
  * @since 0.1.0
  */
-public class VK extends VK14 {
-    /// Creates an instance of Vulkan functions.
-    ///
-    /// @param instance the `VkInstance`
-    /// @param func     the loading function
-    public VK(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-        super(instance, func);
+public final class VK {
+    private static VKLoadFunc loadFunc;
+    private static GlobalCommands globalCommands;
+
+    public static void create(VKLoadFunc func) {
+        if (loadFunc != null) {
+            throw new IllegalStateException("Vulkan has already been created.");
+        }
+        loadFunc = func;
+        globalCommands = new GlobalCommands(func);
+    }
+
+    public static void destroy() {
+        if (loadFunc == null) return;
+        loadFunc = null;
+        globalCommands = null;
+    }
+
+    public static VKLoadFunc functionLookup() {
+        return loadFunc;
+    }
+
+    static final class GlobalCommands {
+        final MemorySegment PFN_vkGetInstanceProcAddr;
+        final MemorySegment PFN_vkCreateInstance;
+        final MemorySegment PFN_vkEnumerateInstanceExtensionProperties;
+        final MemorySegment PFN_vkEnumerateInstanceLayerProperties;
+        final MemorySegment PFN_vkEnumerateInstanceVersion;
+
+        private GlobalCommands(VKLoadFunc func) {
+            PFN_vkGetInstanceProcAddr = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
+            if (MemoryUtil.isNullPointer(PFN_vkGetInstanceProcAddr)) {
+                throw exception();
+            }
+            PFN_vkCreateInstance = getFunctionAddress("vkCreateInstance");
+            PFN_vkEnumerateInstanceExtensionProperties = getFunctionAddress("vkEnumerateInstanceExtensionProperties");
+            PFN_vkEnumerateInstanceLayerProperties = getFunctionAddress("vkEnumerateInstanceLayerProperties");
+            PFN_vkEnumerateInstanceVersion = getFunctionAddress("PFN_vkEnumerateInstanceVersion", false);
+        }
+
+        private static IllegalArgumentException exception() {
+            return new IllegalArgumentException("A critical function is missing. Make sure that Vulkan is available.");
+        }
+
+        private MemorySegment getFunctionAddress(String name) {
+            return getFunctionAddress(name, true);
+        }
+
+        private MemorySegment getFunctionAddress(String name, boolean required) {
+            MemorySegment segment;
+            try (MemoryStack stack = MemoryStack.pushLocal()) {
+                segment = (MemorySegment) VK10.Handles.MH_vkGetInstanceProcAddr.invokeExact(
+                    PFN_vkGetInstanceProcAddr,
+                    MemorySegment.NULL,
+                    stack.allocateFrom(name)
+                );
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+            if (MemoryUtil.isNullPointer(segment) && required) {
+                throw exception();
+            }
+            return segment;
+        }
+    }
+
+    static GlobalCommands globalCommands() {
+        return globalCommands;
     }
 }

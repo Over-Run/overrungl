@@ -19,8 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -33,18 +31,9 @@ public final class GLAMDVertexShaderTessellator {
     public static final int GL_DISCRETE_AMD = 0x9006;
     public static final int GL_CONTINUOUS_AMD = 0x9007;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTessellationFactorAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glTessellationModeAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTessellationFactorAMD,
-            FD_glTessellationModeAMD
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(Descriptors.FD_glTessellationFactorAMD);
-        public static final MethodHandle MH_glTessellationModeAMD = RuntimeHelper.downcall(Descriptors.FD_glTessellationModeAMD);
+        public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTessellationModeAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTessellationFactorAMD;
         public final MemorySegment PFN_glTessellationModeAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -57,16 +46,22 @@ public final class GLAMDVertexShaderTessellator {
         this.handles = new Handles(func);
     }
 
-    public void TessellationFactorAMD(@CType("GLfloat") float factor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTessellationFactorAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationFactorAMD");
+    /// ```
+    /// void glTessellationFactorAMD(((float) khronos_float_t) GLfloat factor);
+    /// ```
+    public void TessellationFactorAMD(float factor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTessellationFactorAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationFactorAMD");
         try { Handles.MH_glTessellationFactorAMD.invokeExact(handles.PFN_glTessellationFactorAMD, factor); }
-        catch (Throwable e) { throw new RuntimeException("error in glTessellationFactorAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TessellationFactorAMD", e); }
     }
 
-    public void TessellationModeAMD(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTessellationModeAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationModeAMD");
+    /// ```
+    /// void glTessellationModeAMD((unsigned int) GLenum mode);
+    /// ```
+    public void TessellationModeAMD(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTessellationModeAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationModeAMD");
         try { Handles.MH_glTessellationModeAMD.invokeExact(handles.PFN_glTessellationModeAMD, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glTessellationModeAMD", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TessellationModeAMD", e); }
     }
 
 }

@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVDisplayStereo {
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV = 0;
@@ -32,6 +27,6 @@ public final class VKNVDisplayStereo {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV = 1000551000;
     public static final int VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV = 1000551001;
 
-    private VKNVDisplayStereo() { }
+    private VKNVDisplayStereo() {}
 
 }

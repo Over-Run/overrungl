@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.union;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### pPushConstant
-/// [VarHandle][#VH_pPushConstant] - [Getter][#pPushConstant()] - [Setter][#pPushConstant(java.lang.foreign.MemorySegment)]
-/// ### pVertexBuffer
-/// [VarHandle][#VH_pVertexBuffer] - [Getter][#pVertexBuffer()] - [Setter][#pVertexBuffer(java.lang.foreign.MemorySegment)]
-/// ### pIndexBuffer
-/// [VarHandle][#VH_pIndexBuffer] - [Getter][#pIndexBuffer()] - [Setter][#pIndexBuffer(java.lang.foreign.MemorySegment)]
-/// ### pExecutionSet
-/// [VarHandle][#VH_pExecutionSet] - [Getter][#pExecutionSet()] - [Setter][#pExecutionSet(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef union VkIndirectCommandsTokenDataEXT {
-///     const VkIndirectCommandsPushConstantTokenEXT * pPushConstant;
-///     const VkIndirectCommandsVertexBufferTokenEXT * pVertexBuffer;
-///     const VkIndirectCommandsIndexBufferTokenEXT * pIndexBuffer;
-///     const VkIndirectCommandsExecutionSetTokenEXT * pExecutionSet;
-/// } VkIndirectCommandsTokenDataEXT;
 /// ```
-public sealed class VkIndirectCommandsTokenDataEXT extends Union {
+/// union VkIndirectCommandsTokenDataEXT {
+///     const VkIndirectCommandsPushConstantTokenEXT* pPushConstant;
+///     const VkIndirectCommandsVertexBufferTokenEXT* pVertexBuffer;
+///     const VkIndirectCommandsIndexBufferTokenEXT* pIndexBuffer;
+///     const VkIndirectCommandsExecutionSetTokenEXT* pExecutionSet;
+/// };
+/// ```
+public sealed class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// The union layout of `VkIndirectCommandsTokenDataEXT`.
-    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pPushConstant"),
         ValueLayout.ADDRESS.withName("pVertexBuffer"),
         ValueLayout.ADDRESS.withName("pIndexBuffer"),
         ValueLayout.ADDRESS.withName("pExecutionSet")
     );
-    /// The [VarHandle] of `pPushConstant` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pPushConstant`.
+    public static final long OFFSET_pPushConstant = LAYOUT.byteOffset(PathElement.groupElement("pPushConstant"));
+    /// The memory layout of `pPushConstant`.
+    public static final MemoryLayout LAYOUT_pPushConstant = LAYOUT.select(PathElement.groupElement("pPushConstant"));
+    /// The [VarHandle] of `pPushConstant` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pPushConstant = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstant"));
-    /// The [VarHandle] of `pVertexBuffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pVertexBuffer`.
+    public static final long OFFSET_pVertexBuffer = LAYOUT.byteOffset(PathElement.groupElement("pVertexBuffer"));
+    /// The memory layout of `pVertexBuffer`.
+    public static final MemoryLayout LAYOUT_pVertexBuffer = LAYOUT.select(PathElement.groupElement("pVertexBuffer"));
+    /// The [VarHandle] of `pVertexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pVertexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVertexBuffer"));
-    /// The [VarHandle] of `pIndexBuffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pIndexBuffer`.
+    public static final long OFFSET_pIndexBuffer = LAYOUT.byteOffset(PathElement.groupElement("pIndexBuffer"));
+    /// The memory layout of `pIndexBuffer`.
+    public static final MemoryLayout LAYOUT_pIndexBuffer = LAYOUT.select(PathElement.groupElement("pIndexBuffer"));
+    /// The [VarHandle] of `pIndexBuffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pIndexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pIndexBuffer"));
-    /// The [VarHandle] of `pExecutionSet` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pExecutionSet`.
+    public static final long OFFSET_pExecutionSet = LAYOUT.byteOffset(PathElement.groupElement("pExecutionSet"));
+    /// The memory layout of `pExecutionSet`.
+    public static final MemoryLayout LAYOUT_pExecutionSet = LAYOUT.select(PathElement.groupElement("pExecutionSet"));
+    /// The [VarHandle] of `pExecutionSet` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pExecutionSet = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pExecutionSet"));
 
     /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkIndirectCommandsTokenDataEXT extends Union {
     /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsTokenDataEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsTokenDataEXT(segment); }
-
-    /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsTokenDataEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsTokenDataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkIndirectCommandsTokenDataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectCommandsTokenDataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkIndirectCommandsTokenDataEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkIndirectCommandsTokenDataEXT extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,99 +108,71 @@ public sealed class VkIndirectCommandsTokenDataEXT extends Union {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `pPushConstant` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment get_pPushConstant(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPushConstant.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static MemorySegment pPushConstant(MemorySegment segment, long index) { return (MemorySegment) VH_pPushConstant.get(segment, 0L, index); }
     /// {@return `pPushConstant`}
-    /// @param segment the segment of the union
-    public static @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment get_pPushConstant(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pPushConstant(segment, 0L); }
-    /// {@return `pPushConstant`}
-    public @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment pPushConstant() { return VkIndirectCommandsTokenDataEXT.get_pPushConstant(this.segment()); }
+    public MemorySegment pPushConstant() { return pPushConstant(this.segment(), 0L); }
     /// Sets `pPushConstant` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pPushConstant(MemorySegment segment, long index, @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pPushConstant.set(segment, 0L, index, value); }
-    /// Sets `pPushConstant` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_pPushConstant(MemorySegment segment, @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pPushConstant(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void pPushConstant(MemorySegment segment, long index, MemorySegment value) { VH_pPushConstant.set(segment, 0L, index, value); }
     /// Sets `pPushConstant` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsTokenDataEXT pPushConstant(@CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pPushConstant(this.segment(), value); return this; }
+    public VkIndirectCommandsTokenDataEXT pPushConstant(MemorySegment value) { pPushConstant(this.segment(), 0L, value); return this; }
 
     /// {@return `pVertexBuffer` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pVertexBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVertexBuffer.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static MemorySegment pVertexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pVertexBuffer.get(segment, 0L, index); }
     /// {@return `pVertexBuffer`}
-    /// @param segment the segment of the union
-    public static @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pVertexBuffer(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pVertexBuffer(segment, 0L); }
-    /// {@return `pVertexBuffer`}
-    public @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment pVertexBuffer() { return VkIndirectCommandsTokenDataEXT.get_pVertexBuffer(this.segment()); }
+    public MemorySegment pVertexBuffer() { return pVertexBuffer(this.segment(), 0L); }
     /// Sets `pVertexBuffer` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pVertexBuffer(MemorySegment segment, long index, @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pVertexBuffer.set(segment, 0L, index, value); }
-    /// Sets `pVertexBuffer` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_pVertexBuffer(MemorySegment segment, @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pVertexBuffer(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void pVertexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pVertexBuffer.set(segment, 0L, index, value); }
     /// Sets `pVertexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsTokenDataEXT pVertexBuffer(@CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pVertexBuffer(this.segment(), value); return this; }
+    public VkIndirectCommandsTokenDataEXT pVertexBuffer(MemorySegment value) { pVertexBuffer(this.segment(), 0L, value); return this; }
 
     /// {@return `pIndexBuffer` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pIndexBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pIndexBuffer.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static MemorySegment pIndexBuffer(MemorySegment segment, long index) { return (MemorySegment) VH_pIndexBuffer.get(segment, 0L, index); }
     /// {@return `pIndexBuffer`}
-    /// @param segment the segment of the union
-    public static @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pIndexBuffer(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pIndexBuffer(segment, 0L); }
-    /// {@return `pIndexBuffer`}
-    public @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment pIndexBuffer() { return VkIndirectCommandsTokenDataEXT.get_pIndexBuffer(this.segment()); }
+    public MemorySegment pIndexBuffer() { return pIndexBuffer(this.segment(), 0L); }
     /// Sets `pIndexBuffer` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pIndexBuffer(MemorySegment segment, long index, @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pIndexBuffer.set(segment, 0L, index, value); }
-    /// Sets `pIndexBuffer` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_pIndexBuffer(MemorySegment segment, @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pIndexBuffer(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void pIndexBuffer(MemorySegment segment, long index, MemorySegment value) { VH_pIndexBuffer.set(segment, 0L, index, value); }
     /// Sets `pIndexBuffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsTokenDataEXT pIndexBuffer(@CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pIndexBuffer(this.segment(), value); return this; }
+    public VkIndirectCommandsTokenDataEXT pIndexBuffer(MemorySegment value) { pIndexBuffer(this.segment(), 0L, value); return this; }
 
     /// {@return `pExecutionSet` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment get_pExecutionSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pExecutionSet.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static MemorySegment pExecutionSet(MemorySegment segment, long index) { return (MemorySegment) VH_pExecutionSet.get(segment, 0L, index); }
     /// {@return `pExecutionSet`}
-    /// @param segment the segment of the union
-    public static @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment get_pExecutionSet(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pExecutionSet(segment, 0L); }
-    /// {@return `pExecutionSet`}
-    public @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment pExecutionSet() { return VkIndirectCommandsTokenDataEXT.get_pExecutionSet(this.segment()); }
+    public MemorySegment pExecutionSet() { return pExecutionSet(this.segment(), 0L); }
     /// Sets `pExecutionSet` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pExecutionSet(MemorySegment segment, long index, @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pExecutionSet.set(segment, 0L, index, value); }
-    /// Sets `pExecutionSet` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_pExecutionSet(MemorySegment segment, @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pExecutionSet(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void pExecutionSet(MemorySegment segment, long index, MemorySegment value) { VH_pExecutionSet.set(segment, 0L, index, value); }
     /// Sets `pExecutionSet` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkIndirectCommandsTokenDataEXT pExecutionSet(@CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pExecutionSet(this.segment(), value); return this; }
+    public VkIndirectCommandsTokenDataEXT pExecutionSet(MemorySegment value) { pExecutionSet(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkIndirectCommandsTokenDataEXT].
     public static final class Buffer extends VkIndirectCommandsTokenDataEXT {
@@ -224,40 +197,40 @@ public sealed class VkIndirectCommandsTokenDataEXT extends Union {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `pPushConstant` at the given index}
-        /// @param index the index
-        public @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment pPushConstantAt(long index) { return VkIndirectCommandsTokenDataEXT.get_pPushConstant(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment pPushConstantAt(long index) { return pPushConstant(this.segment(), index); }
         /// Sets `pPushConstant` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pPushConstantAt(long index, @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pPushConstant(this.segment(), index, value); return this; }
+        public Buffer pPushConstantAt(long index, MemorySegment value) { pPushConstant(this.segment(), index, value); return this; }
 
         /// {@return `pVertexBuffer` at the given index}
-        /// @param index the index
-        public @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment pVertexBufferAt(long index) { return VkIndirectCommandsTokenDataEXT.get_pVertexBuffer(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment pVertexBufferAt(long index) { return pVertexBuffer(this.segment(), index); }
         /// Sets `pVertexBuffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pVertexBufferAt(long index, @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pVertexBuffer(this.segment(), index, value); return this; }
+        public Buffer pVertexBufferAt(long index, MemorySegment value) { pVertexBuffer(this.segment(), index, value); return this; }
 
         /// {@return `pIndexBuffer` at the given index}
-        /// @param index the index
-        public @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment pIndexBufferAt(long index) { return VkIndirectCommandsTokenDataEXT.get_pIndexBuffer(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment pIndexBufferAt(long index) { return pIndexBuffer(this.segment(), index); }
         /// Sets `pIndexBuffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pIndexBufferAt(long index, @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pIndexBuffer(this.segment(), index, value); return this; }
+        public Buffer pIndexBufferAt(long index, MemorySegment value) { pIndexBuffer(this.segment(), index, value); return this; }
 
         /// {@return `pExecutionSet` at the given index}
-        /// @param index the index
-        public @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment pExecutionSetAt(long index) { return VkIndirectCommandsTokenDataEXT.get_pExecutionSet(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment pExecutionSetAt(long index) { return pExecutionSet(this.segment(), index); }
         /// Sets `pExecutionSet` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pExecutionSetAt(long index, @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pExecutionSet(this.segment(), index, value); return this; }
+        public Buffer pExecutionSetAt(long index, MemorySegment value) { pExecutionSet(this.segment(), index, value); return this; }
 
     }
 }

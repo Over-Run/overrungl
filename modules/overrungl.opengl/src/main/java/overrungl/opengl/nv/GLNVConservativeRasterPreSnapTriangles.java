@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -29,15 +27,8 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     public static final int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
     public static final int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glConservativeRasterParameteriNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glConservativeRasterParameteriNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glConservativeRasterParameteriNV = RuntimeHelper.downcall(Descriptors.FD_glConservativeRasterParameteriNV);
+        public static final MethodHandle MH_glConservativeRasterParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glConservativeRasterParameteriNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glConservativeRasterParameteriNV = func.invoke("glConservativeRasterParameteriNV");
@@ -48,10 +39,13 @@ public final class GLNVConservativeRasterPreSnapTriangles {
         this.handles = new Handles(func);
     }
 
-    public void ConservativeRasterParameteriNV(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");
+    /// ```
+    /// void glConservativeRasterParameteriNV((unsigned int) GLenum pname, (int) GLint param);
+    /// ```
+    public void ConservativeRasterParameteriNV(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");
         try { Handles.MH_glConservativeRasterParameteriNV.invokeExact(handles.PFN_glConservativeRasterParameteriNV, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameteriNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ConservativeRasterParameteriNV", e); }
     }
 
 }

@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### codeSize
-/// [VarHandle][#VH_codeSize] - [Getter][#codeSize()] - [Setter][#codeSize(long)]
-/// ### codeOffset
-/// [VarHandle][#VH_codeOffset] - [Getter][#codeOffset()] - [Setter][#codeOffset(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineCacheStageValidationIndexEntry {
+/// ```
+/// struct VkPipelineCacheStageValidationIndexEntry {
 ///     uint64_t codeSize;
 ///     uint64_t codeOffset;
-/// } VkPipelineCacheStageValidationIndexEntry;
+/// };
 /// ```
-public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
+public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// The struct layout of `VkPipelineCacheStageValidationIndexEntry`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("codeSize"),
         ValueLayout.JAVA_LONG.withName("codeOffset")
     );
-    /// The [VarHandle] of `codeSize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `codeSize`.
+    public static final long OFFSET_codeSize = LAYOUT.byteOffset(PathElement.groupElement("codeSize"));
+    /// The memory layout of `codeSize`.
+    public static final MemoryLayout LAYOUT_codeSize = LAYOUT.select(PathElement.groupElement("codeSize"));
+    /// The [VarHandle] of `codeSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_codeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeSize"));
-    /// The [VarHandle] of `codeOffset` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `codeOffset`.
+    public static final long OFFSET_codeOffset = LAYOUT.byteOffset(PathElement.groupElement("codeOffset"));
+    /// The memory layout of `codeOffset`.
+    public static final MemoryLayout LAYOUT_codeOffset = LAYOUT.select(PathElement.groupElement("codeOffset"));
+    /// The [VarHandle] of `codeOffset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_codeOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeOffset"));
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheStageValidationIndexEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment); }
-
-    /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheStageValidationIndexEntry ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineCacheStageValidationIndexEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
     /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
-    public static VkPipelineCacheStageValidationIndexEntry allocInit(SegmentAllocator allocator, @CType("uint64_t") long codeSize, @CType("uint64_t") long codeOffset) { return alloc(allocator).codeSize(codeSize).codeOffset(codeOffset); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `codeSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_codeSize(MemorySegment segment, long index) { return (long) VH_codeSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long codeSize(MemorySegment segment, long index) { return (long) VH_codeSize.get(segment, 0L, index); }
     /// {@return `codeSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_codeSize(MemorySegment segment) { return VkPipelineCacheStageValidationIndexEntry.get_codeSize(segment, 0L); }
-    /// {@return `codeSize`}
-    public @CType("uint64_t") long codeSize() { return VkPipelineCacheStageValidationIndexEntry.get_codeSize(this.segment()); }
+    public long codeSize() { return codeSize(this.segment(), 0L); }
     /// Sets `codeSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_codeSize(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_codeSize.set(segment, 0L, index, value); }
-    /// Sets `codeSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_codeSize(MemorySegment segment, @CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void codeSize(MemorySegment segment, long index, long value) { VH_codeSize.set(segment, 0L, index, value); }
     /// Sets `codeSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheStageValidationIndexEntry codeSize(@CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeSize(this.segment(), value); return this; }
+    public VkPipelineCacheStageValidationIndexEntry codeSize(long value) { codeSize(this.segment(), 0L, value); return this; }
 
     /// {@return `codeOffset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_codeOffset(MemorySegment segment, long index) { return (long) VH_codeOffset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long codeOffset(MemorySegment segment, long index) { return (long) VH_codeOffset.get(segment, 0L, index); }
     /// {@return `codeOffset`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_codeOffset(MemorySegment segment) { return VkPipelineCacheStageValidationIndexEntry.get_codeOffset(segment, 0L); }
-    /// {@return `codeOffset`}
-    public @CType("uint64_t") long codeOffset() { return VkPipelineCacheStageValidationIndexEntry.get_codeOffset(this.segment()); }
+    public long codeOffset() { return codeOffset(this.segment(), 0L); }
     /// Sets `codeOffset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_codeOffset(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_codeOffset.set(segment, 0L, index, value); }
-    /// Sets `codeOffset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_codeOffset(MemorySegment segment, @CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeOffset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void codeOffset(MemorySegment segment, long index, long value) { VH_codeOffset.set(segment, 0L, index, value); }
     /// Sets `codeOffset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineCacheStageValidationIndexEntry codeOffset(@CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeOffset(this.segment(), value); return this; }
+    public VkPipelineCacheStageValidationIndexEntry codeOffset(long value) { codeOffset(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineCacheStageValidationIndexEntry].
     public static final class Buffer extends VkPipelineCacheStageValidationIndexEntry {
@@ -171,22 +149,22 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `codeSize` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long codeSizeAt(long index) { return VkPipelineCacheStageValidationIndexEntry.get_codeSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long codeSizeAt(long index) { return codeSize(this.segment(), index); }
         /// Sets `codeSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer codeSizeAt(long index, @CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeSize(this.segment(), index, value); return this; }
+        public Buffer codeSizeAt(long index, long value) { codeSize(this.segment(), index, value); return this; }
 
         /// {@return `codeOffset` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long codeOffsetAt(long index) { return VkPipelineCacheStageValidationIndexEntry.get_codeOffset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long codeOffsetAt(long index) { return codeOffset(this.segment(), index); }
         /// Sets `codeOffset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer codeOffsetAt(long index, @CType("uint64_t") long value) { VkPipelineCacheStageValidationIndexEntry.set_codeOffset(this.segment(), index, value); return this; }
+        public Buffer codeOffsetAt(long index, long value) { codeOffset(this.segment(), index, value); return this; }
 
     }
 }

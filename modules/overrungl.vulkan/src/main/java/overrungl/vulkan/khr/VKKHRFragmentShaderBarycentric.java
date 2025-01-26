@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRFragmentShaderBarycentric {
     public static final int VK_KHR_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION = 1;
@@ -28,6 +23,6 @@ public final class VKKHRFragmentShaderBarycentric {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR = 1000322000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR = 1000322000;
 
-    private VKKHRFragmentShaderBarycentric() { }
+    private VKKHRFragmentShaderBarycentric() {}
 
 }

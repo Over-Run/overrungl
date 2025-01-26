@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### globalPriority
-/// [VarHandle][#VH_globalPriority] - [Getter][#globalPriority()] - [Setter][#globalPriority(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDeviceQueueGlobalPriorityCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkQueueGlobalPriority globalPriority;
-/// } VkDeviceQueueGlobalPriorityCreateInfo;
 /// ```
-public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
+/// struct VkDeviceQueueGlobalPriorityCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (int) VkQueueGlobalPriority globalPriority;
+/// };
+/// ```
+public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends GroupType {
     /// The struct layout of `VkDeviceQueueGlobalPriorityCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("globalPriority")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `globalPriority` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `globalPriority`.
+    public static final long OFFSET_globalPriority = LAYOUT.byteOffset(PathElement.groupElement("globalPriority"));
+    /// The memory layout of `globalPriority`.
+    public static final MemoryLayout LAYOUT_globalPriority = LAYOUT.select(PathElement.groupElement("globalPriority"));
+    /// The [VarHandle] of `globalPriority` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_globalPriority = LAYOUT.arrayElementVarHandle(PathElement.groupElement("globalPriority"));
 
     /// Creates `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
     /// Creates `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceQueueGlobalPriorityCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceQueueGlobalPriorityCreateInfo(segment); }
-
-    /// Creates `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceQueueGlobalPriorityCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceQueueGlobalPriorityCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDeviceQueueGlobalPriorityCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceQueueGlobalPriorityCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
     /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceQueueGlobalPriorityCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfo`
-    public static VkDeviceQueueGlobalPriorityCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkQueueGlobalPriority") int globalPriority) { return alloc(allocator).sType(sType).pNext(pNext).globalPriority(globalPriority); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceQueueGlobalPriorityCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDeviceQueueGlobalPriorityCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceQueueGlobalPriorityCreateInfo sType(@CType("VkStructureType") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkDeviceQueueGlobalPriorityCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceQueueGlobalPriorityCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceQueueGlobalPriorityCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceQueueGlobalPriorityCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceQueueGlobalPriorityCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceQueueGlobalPriorityCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkDeviceQueueGlobalPriorityCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `globalPriority` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkQueueGlobalPriority") int get_globalPriority(MemorySegment segment, long index) { return (int) VH_globalPriority.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int globalPriority(MemorySegment segment, long index) { return (int) VH_globalPriority.get(segment, 0L, index); }
     /// {@return `globalPriority`}
-    /// @param segment the segment of the struct
-    public static @CType("VkQueueGlobalPriority") int get_globalPriority(MemorySegment segment) { return VkDeviceQueueGlobalPriorityCreateInfo.get_globalPriority(segment, 0L); }
-    /// {@return `globalPriority`}
-    public @CType("VkQueueGlobalPriority") int globalPriority() { return VkDeviceQueueGlobalPriorityCreateInfo.get_globalPriority(this.segment()); }
+    public int globalPriority() { return globalPriority(this.segment(), 0L); }
     /// Sets `globalPriority` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_globalPriority(MemorySegment segment, long index, @CType("VkQueueGlobalPriority") int value) { VH_globalPriority.set(segment, 0L, index, value); }
-    /// Sets `globalPriority` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_globalPriority(MemorySegment segment, @CType("VkQueueGlobalPriority") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_globalPriority(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void globalPriority(MemorySegment segment, long index, int value) { VH_globalPriority.set(segment, 0L, index, value); }
     /// Sets `globalPriority` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceQueueGlobalPriorityCreateInfo globalPriority(@CType("VkQueueGlobalPriority") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_globalPriority(this.segment(), value); return this; }
+    public VkDeviceQueueGlobalPriorityCreateInfo globalPriority(int value) { globalPriority(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDeviceQueueGlobalPriorityCreateInfo].
     public static final class Buffer extends VkDeviceQueueGlobalPriorityCreateInfo {
@@ -200,31 +173,31 @@ public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceQueueGlobalPriorityCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceQueueGlobalPriorityCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceQueueGlobalPriorityCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `globalPriority` at the given index}
-        /// @param index the index
-        public @CType("VkQueueGlobalPriority") int globalPriorityAt(long index) { return VkDeviceQueueGlobalPriorityCreateInfo.get_globalPriority(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int globalPriorityAt(long index) { return globalPriority(this.segment(), index); }
         /// Sets `globalPriority` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer globalPriorityAt(long index, @CType("VkQueueGlobalPriority") int value) { VkDeviceQueueGlobalPriorityCreateInfo.set_globalPriority(this.segment(), index, value); return this; }
+        public Buffer globalPriorityAt(long index, int value) { globalPriority(this.segment(), index, value); return this; }
 
     }
 }

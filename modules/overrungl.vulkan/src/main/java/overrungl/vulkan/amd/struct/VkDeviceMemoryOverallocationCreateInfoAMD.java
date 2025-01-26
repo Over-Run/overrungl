@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.amd.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### overallocationBehavior
-/// [VarHandle][#VH_overallocationBehavior] - [Getter][#overallocationBehavior()] - [Setter][#overallocationBehavior(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDeviceMemoryOverallocationCreateInfoAMD {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkMemoryOverallocationBehaviorAMD overallocationBehavior;
-/// } VkDeviceMemoryOverallocationCreateInfoAMD;
 /// ```
-public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
+/// struct VkDeviceMemoryOverallocationCreateInfoAMD {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (int) VkMemoryOverallocationBehaviorAMD overallocationBehavior;
+/// };
+/// ```
+public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends GroupType {
     /// The struct layout of `VkDeviceMemoryOverallocationCreateInfoAMD`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("overallocationBehavior")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `overallocationBehavior` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `overallocationBehavior`.
+    public static final long OFFSET_overallocationBehavior = LAYOUT.byteOffset(PathElement.groupElement("overallocationBehavior"));
+    /// The memory layout of `overallocationBehavior`.
+    public static final MemoryLayout LAYOUT_overallocationBehavior = LAYOUT.select(PathElement.groupElement("overallocationBehavior"));
+    /// The [VarHandle] of `overallocationBehavior` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_overallocationBehavior = LAYOUT.arrayElementVarHandle(PathElement.groupElement("overallocationBehavior"));
 
     /// Creates `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
     /// Creates `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceMemoryOverallocationCreateInfoAMD of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceMemoryOverallocationCreateInfoAMD(segment); }
-
-    /// Creates `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceMemoryOverallocationCreateInfoAMD ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceMemoryOverallocationCreateInfoAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDeviceMemoryOverallocationCreateInfoAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceMemoryOverallocationCreateInfoAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
     /// @return the allocated `VkDeviceMemoryOverallocationCreateInfoAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceMemoryOverallocationCreateInfoAMD` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDeviceMemoryOverallocationCreateInfoAMD`
-    public static VkDeviceMemoryOverallocationCreateInfoAMD allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkMemoryOverallocationBehaviorAMD") int overallocationBehavior) { return alloc(allocator).sType(sType).pNext(pNext).overallocationBehavior(overallocationBehavior); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDeviceMemoryOverallocationCreateInfoAMD.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceMemoryOverallocationCreateInfoAMD sType(@CType("VkStructureType") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_sType(this.segment(), value); return this; }
+    public VkDeviceMemoryOverallocationCreateInfoAMD sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceMemoryOverallocationCreateInfoAMD.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceMemoryOverallocationCreateInfoAMD pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_pNext(this.segment(), value); return this; }
+    public VkDeviceMemoryOverallocationCreateInfoAMD pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `overallocationBehavior` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMemoryOverallocationBehaviorAMD") int get_overallocationBehavior(MemorySegment segment, long index) { return (int) VH_overallocationBehavior.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int overallocationBehavior(MemorySegment segment, long index) { return (int) VH_overallocationBehavior.get(segment, 0L, index); }
     /// {@return `overallocationBehavior`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMemoryOverallocationBehaviorAMD") int get_overallocationBehavior(MemorySegment segment) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_overallocationBehavior(segment, 0L); }
-    /// {@return `overallocationBehavior`}
-    public @CType("VkMemoryOverallocationBehaviorAMD") int overallocationBehavior() { return VkDeviceMemoryOverallocationCreateInfoAMD.get_overallocationBehavior(this.segment()); }
+    public int overallocationBehavior() { return overallocationBehavior(this.segment(), 0L); }
     /// Sets `overallocationBehavior` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_overallocationBehavior(MemorySegment segment, long index, @CType("VkMemoryOverallocationBehaviorAMD") int value) { VH_overallocationBehavior.set(segment, 0L, index, value); }
-    /// Sets `overallocationBehavior` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_overallocationBehavior(MemorySegment segment, @CType("VkMemoryOverallocationBehaviorAMD") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_overallocationBehavior(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void overallocationBehavior(MemorySegment segment, long index, int value) { VH_overallocationBehavior.set(segment, 0L, index, value); }
     /// Sets `overallocationBehavior` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceMemoryOverallocationCreateInfoAMD overallocationBehavior(@CType("VkMemoryOverallocationBehaviorAMD") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_overallocationBehavior(this.segment(), value); return this; }
+    public VkDeviceMemoryOverallocationCreateInfoAMD overallocationBehavior(int value) { overallocationBehavior(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDeviceMemoryOverallocationCreateInfoAMD].
     public static final class Buffer extends VkDeviceMemoryOverallocationCreateInfoAMD {
@@ -200,31 +173,31 @@ public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `overallocationBehavior` at the given index}
-        /// @param index the index
-        public @CType("VkMemoryOverallocationBehaviorAMD") int overallocationBehaviorAt(long index) { return VkDeviceMemoryOverallocationCreateInfoAMD.get_overallocationBehavior(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int overallocationBehaviorAt(long index) { return overallocationBehavior(this.segment(), index); }
         /// Sets `overallocationBehavior` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer overallocationBehaviorAt(long index, @CType("VkMemoryOverallocationBehaviorAMD") int value) { VkDeviceMemoryOverallocationCreateInfoAMD.set_overallocationBehavior(this.segment(), index, value); return this; }
+        public Buffer overallocationBehaviorAt(long index, int value) { overallocationBehavior(this.segment(), index, value); return this; }
 
     }
 }

@@ -19,26 +19,15 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLMESAFramebufferFlipY {
     public static final int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFramebufferParameteriMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glGetFramebufferParameterivMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferParameteriMESA,
-            FD_glGetFramebufferParameterivMESA
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(Descriptors.FD_glFramebufferParameteriMESA);
-        public static final MethodHandle MH_glGetFramebufferParameterivMESA = RuntimeHelper.downcall(Descriptors.FD_glGetFramebufferParameterivMESA);
+        public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFramebufferParameterivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFramebufferParameteriMESA;
         public final MemorySegment PFN_glGetFramebufferParameterivMESA;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -51,16 +40,22 @@ public final class GLMESAFramebufferFlipY {
         this.handles = new Handles(func);
     }
 
-    public void FramebufferParameteriMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
+    /// ```
+    /// void glFramebufferParameteriMESA((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
+    /// ```
+    public void FramebufferParameteriMESA(int target, int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
         try { Handles.MH_glFramebufferParameteriMESA.invokeExact(handles.PFN_glFramebufferParameteriMESA, target, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteriMESA", e); }
     }
 
-    public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
+    /// ```
+    /// void glGetFramebufferParameterivMESA((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
+    /// ```
+    public void GetFramebufferParameterivMESA(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
         try { Handles.MH_glGetFramebufferParameterivMESA.invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivMESA", e); }
     }
 
 }

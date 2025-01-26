@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.qcom;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKQCOMImageProcessing {
     public static final int VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
@@ -38,6 +33,6 @@ public final class VKQCOMImageProcessing {
     public static final long VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM = 0x1000000000L;
     public static final long VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM = 0x2000000000L;
 
-    private VKQCOMImageProcessing() { }
+    private VKQCOMImageProcessing() {}
 
 }

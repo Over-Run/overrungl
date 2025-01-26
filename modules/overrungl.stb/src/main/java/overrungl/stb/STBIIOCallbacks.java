@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.stb;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### read
-/// [VarHandle][#VH_read] - [Getter][#read()] - [Setter][#read(java.lang.foreign.MemorySegment)]
-/// ### skip
-/// [VarHandle][#VH_skip] - [Getter][#skip()] - [Setter][#skip(java.lang.foreign.MemorySegment)]
-/// ### eof
-/// [VarHandle][#VH_eof] - [Getter][#eof()] - [Setter][#eof(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct stbi_io_callbacks {
-///     <FP int (*read)(void *user,char *data,int size)> read;
-///     <FP void (*skip)(void *user,int n)> skip;
-///     <FP int (*eof)(void *user)> eof;
-/// } STBIIOCallbacks;
 /// ```
-public sealed class STBIIOCallbacks extends Struct {
-    /// The struct layout of `stbi_io_callbacks`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+/// struct STBIIOCallbacks {
+///     (int (*STBIIORead)(void* user, char* data, int size)) stbi_io_callbacks$read read;
+///     (void (*STBIIOSkip)(void* user, int n)) stbi_io_callbacks$skip skip;
+///     ((int) STBbool (*STBIIOEof)(void* user)) stbi_io_callbacks$eof eof;
+/// };
+/// ```
+public sealed class STBIIOCallbacks extends GroupType {
+    /// The struct layout of `STBIIOCallbacks`.
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("read"),
         ValueLayout.ADDRESS.withName("skip"),
         ValueLayout.ADDRESS.withName("eof")
     );
-    /// The [VarHandle] of `read` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `read`.
+    public static final long OFFSET_read = LAYOUT.byteOffset(PathElement.groupElement("read"));
+    /// The memory layout of `read`.
+    public static final MemoryLayout LAYOUT_read = LAYOUT.select(PathElement.groupElement("read"));
+    /// The [VarHandle] of `read` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_read = LAYOUT.arrayElementVarHandle(PathElement.groupElement("read"));
-    /// The [VarHandle] of `skip` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `skip`.
+    public static final long OFFSET_skip = LAYOUT.byteOffset(PathElement.groupElement("skip"));
+    /// The memory layout of `skip`.
+    public static final MemoryLayout LAYOUT_skip = LAYOUT.select(PathElement.groupElement("skip"));
+    /// The [VarHandle] of `skip` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_skip = LAYOUT.arrayElementVarHandle(PathElement.groupElement("skip"));
-    /// The [VarHandle] of `eof` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `eof`.
+    public static final long OFFSET_eof = LAYOUT.byteOffset(PathElement.groupElement("eof"));
+    /// The memory layout of `eof`.
+    public static final MemoryLayout LAYOUT_eof = LAYOUT.select(PathElement.groupElement("eof"));
+    /// The [VarHandle] of `eof` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_eof = LAYOUT.arrayElementVarHandle(PathElement.groupElement("eof"));
 
     /// Creates `STBIIOCallbacks` with the given segment.
@@ -61,19 +65,14 @@ public sealed class STBIIOCallbacks extends Struct {
     /// Creates `STBIIOCallbacks` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBIIOCallbacks of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBIIOCallbacks(segment); }
-
-    /// Creates `STBIIOCallbacks` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBIIOCallbacks` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBIIOCallbacks ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBIIOCallbacks(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static STBIIOCallbacks ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBIIOCallbacks(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `STBIIOCallbacks` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class STBIIOCallbacks extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBIIOCallbacks` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class STBIIOCallbacks extends Struct {
     /// @return the allocated `STBIIOCallbacks`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBIIOCallbacks` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `STBIIOCallbacks`
-    public static STBIIOCallbacks allocInit(SegmentAllocator allocator, @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment read, @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment skip, @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment eof) { return alloc(allocator).read(read).skip(skip).eof(eof); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class STBIIOCallbacks extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `read` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment get_read(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_read.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment read(MemorySegment segment, long index) { return (MemorySegment) VH_read.get(segment, 0L, index); }
     /// {@return `read`}
-    /// @param segment the segment of the struct
-    public static @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment get_read(MemorySegment segment) { return STBIIOCallbacks.get_read(segment, 0L); }
-    /// {@return `read`}
-    public @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment read() { return STBIIOCallbacks.get_read(this.segment()); }
+    public MemorySegment read() { return read(this.segment(), 0L); }
     /// Sets `read` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_read(MemorySegment segment, long index, @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment value) { VH_read.set(segment, 0L, index, value); }
-    /// Sets `read` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_read(MemorySegment segment, @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_read(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void read(MemorySegment segment, long index, MemorySegment value) { VH_read.set(segment, 0L, index, value); }
     /// Sets `read` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIIOCallbacks read(@CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_read(this.segment(), value); return this; }
+    public STBIIOCallbacks read(MemorySegment value) { read(this.segment(), 0L, value); return this; }
 
     /// {@return `skip` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment get_skip(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_skip.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment skip(MemorySegment segment, long index) { return (MemorySegment) VH_skip.get(segment, 0L, index); }
     /// {@return `skip`}
-    /// @param segment the segment of the struct
-    public static @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment get_skip(MemorySegment segment) { return STBIIOCallbacks.get_skip(segment, 0L); }
-    /// {@return `skip`}
-    public @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment skip() { return STBIIOCallbacks.get_skip(this.segment()); }
+    public MemorySegment skip() { return skip(this.segment(), 0L); }
     /// Sets `skip` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_skip(MemorySegment segment, long index, @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment value) { VH_skip.set(segment, 0L, index, value); }
-    /// Sets `skip` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_skip(MemorySegment segment, @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_skip(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void skip(MemorySegment segment, long index, MemorySegment value) { VH_skip.set(segment, 0L, index, value); }
     /// Sets `skip` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIIOCallbacks skip(@CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_skip(this.segment(), value); return this; }
+    public STBIIOCallbacks skip(MemorySegment value) { skip(this.segment(), 0L, value); return this; }
 
     /// {@return `eof` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment get_eof(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_eof.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment eof(MemorySegment segment, long index) { return (MemorySegment) VH_eof.get(segment, 0L, index); }
     /// {@return `eof`}
-    /// @param segment the segment of the struct
-    public static @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment get_eof(MemorySegment segment) { return STBIIOCallbacks.get_eof(segment, 0L); }
-    /// {@return `eof`}
-    public @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment eof() { return STBIIOCallbacks.get_eof(this.segment()); }
+    public MemorySegment eof() { return eof(this.segment(), 0L); }
     /// Sets `eof` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_eof(MemorySegment segment, long index, @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment value) { VH_eof.set(segment, 0L, index, value); }
-    /// Sets `eof` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_eof(MemorySegment segment, @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_eof(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void eof(MemorySegment segment, long index, MemorySegment value) { VH_eof.set(segment, 0L, index, value); }
     /// Sets `eof` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBIIOCallbacks eof(@CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_eof(this.segment(), value); return this; }
+    public STBIIOCallbacks eof(MemorySegment value) { eof(this.segment(), 0L, value); return this; }
 
     /// A buffer of [STBIIOCallbacks].
     public static final class Buffer extends STBIIOCallbacks {
@@ -200,31 +173,31 @@ public sealed class STBIIOCallbacks extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `read` at the given index}
-        /// @param index the index
-        public @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment readAt(long index) { return STBIIOCallbacks.get_read(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment readAt(long index) { return read(this.segment(), index); }
         /// Sets `read` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer readAt(long index, @CType("<FP int (*read)(void *user,char *data,int size)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_read(this.segment(), index, value); return this; }
+        public Buffer readAt(long index, MemorySegment value) { read(this.segment(), index, value); return this; }
 
         /// {@return `skip` at the given index}
-        /// @param index the index
-        public @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment skipAt(long index) { return STBIIOCallbacks.get_skip(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment skipAt(long index) { return skip(this.segment(), index); }
         /// Sets `skip` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer skipAt(long index, @CType("<FP void (*skip)(void *user,int n)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_skip(this.segment(), index, value); return this; }
+        public Buffer skipAt(long index, MemorySegment value) { skip(this.segment(), index, value); return this; }
 
         /// {@return `eof` at the given index}
-        /// @param index the index
-        public @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment eofAt(long index) { return STBIIOCallbacks.get_eof(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment eofAt(long index) { return eof(this.segment(), index); }
         /// Sets `eof` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer eofAt(long index, @CType("<FP int (*eof)(void *user)>") java.lang.foreign.MemorySegment value) { STBIIOCallbacks.set_eof(this.segment(), index, value); return this; }
+        public Buffer eofAt(long index, MemorySegment value) { eof(this.segment(), index, value); return this; }
 
     }
 }

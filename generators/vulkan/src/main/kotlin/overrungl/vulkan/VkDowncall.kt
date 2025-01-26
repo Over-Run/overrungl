@@ -17,155 +17,72 @@
 package overrungl.vulkan
 
 import overrungl.gen.commentedFileHeader
+import overrungl.gen.file.DefinitionFunction
+import overrungl.gen.file.Interpreter
+import overrungl.gen.file.functionDescriptor
+import overrungl.gen.file.writeFunction
+import overrungl.gen.nativeImageDowncallDescriptors
 import overrungl.gen.writeString
 import kotlin.io.path.Path
+import kotlin.io.path.createParentDirectories
+
+data class VkFunction(val function: DefinitionFunction, val handlesInstance: String)
 
 class VkDowncall(
     private val packageName: String,
     private val className: String,
-    write: Boolean = true,
     action: VkDowncall.() -> Unit
 ) {
-    var modifier: String? = null
-    val imports = mutableSetOf<String>()
-    val extends = mutableListOf<String>()
     val fields = mutableListOf<VkDowncallField>()
-    val aliasFields = mutableListOf<VkDowncallField>()
-    val descriptorFields = mutableListOf<VkDowncallField>()
-    val handleFields = mutableListOf<VkDowncallField>()
-    val pfnFields = mutableListOf<VkDowncallField>()
-    val addedField = mutableSetOf<String>()
-    val methods = mutableListOf<VkDowncallMethod>()
-    var constructor: String? = null
-    var handlesConstructor: String? = null
+    private val handleFields = mutableListOf<VkDowncallField>()
+    private val pfnFields = mutableListOf<VkDowncallField>()
+    private val addedField = mutableSetOf<String>()
+    private val methods = mutableListOf<VkFunction>()
     var customCode: String? = null
 
     init {
         action(this)
-        if (write) {
-            write()
-        }
     }
 
-    fun addReqTypes(list: List<String>) {
+    fun addReqTypes(interpreter: Interpreter, list: List<String>) {
         list.forEach { reqType ->
-            vkEnums[reqType]?.also { enumType ->
-                val type = enumType.javaType()
-                enumType.enums.forEach { enum ->
-                    val name = enum.name
-                    if (enum.alias != null) {
-                        aliasFields.add(VkDowncallField(type, name, enum.alias))
-                    } else {
-                        if (!addedField.contains(name)) {
-                            fields.add(
-                                VkDowncallField(
-                                    type,
-                                    name,
-                                    enum.value
-                                        ?: if (enum.bitpos != null) "0x${"%08x".format(1L shl enum.bitpos.toInt())}${if (type == "long") "L" else ""}"
-                                        else error("both enum.value and enum.bitpos are null")
-                                )
-                            )
-                            addedField.add(name)
-                        }
-                    }
-                    vkEnumClass[name] = "$packageName.$className"
+            vkEnumTypeMapping[reqType]?.forEach {
+                val macro = interpreter.macros()[it]!!
+                if (!addedField.contains(macro.name)) {
+                    fields.add(VkDowncallField(macro.type, macro.name, macro.value))
+                    addedField.add(macro.name)
                 }
             }
         }
     }
 
-    fun addReqEnums(list: List<VkRequireEnum>) {
+    fun addReqEnums(interpreter: Interpreter, list: List<String>) {
         list.forEach { reqEnum ->
-            if (reqEnum.api != null && reqEnum.api == "vulkansc") return@forEach
-            val name = reqEnum.name
-            if (reqEnum.alias != null) {
-                val alias = reqEnum.alias
-                val enumType = vkEnums[reqEnum.extends]
-                val enumConstant = enumConstants[alias]
-                aliasFields.add(
-                    VkDowncallField(
-                        enumType?.javaType() ?: (enumConstant?.type ?: error(name)),
-                        name,
-                        alias
-                    )
-                )
-                if (enumType == null) {
-                    enumConstants[name] = VkEnumConstant(enumConstant!!.type, name, alias)
-                }
-            } else {
-                if (!addedField.contains(name)) {
-                    if (reqEnum.extends != null) {
-                        val enumType = vkEnums[reqEnum.extends]!!
-                        val type = enumType.javaType()
-                        val value = if (reqEnum.bitpos != null) {
-                            "0x${"%08x".format(1L shl reqEnum.bitpos.toInt())}${if (type == "long") "L" else ""}"
-                        } else if (reqEnum.offset != null) {
-                            buildString {
-                                if (reqEnum.dir != null) {
-                                    append(reqEnum.dir)
-                                }
-                                append(extBase + (reqEnum.extnumber!!.toInt() - 1) * extBlockSize + reqEnum.offset.toInt())
-                            }
-                        } else reqEnum.value ?: error(reqEnum.name)
-                        fields.add(VkDowncallField(type, name, value))
-                    } else if (reqEnum.value != null) {
-                        val value = reqEnum.value
-                        val type = if (value.contains('"')) "String" else "int"
-                        fields.add(VkDowncallField(type, name, value))
-                        enumConstants[name] = VkEnumConstant(type, name, value)
-                    } else {
-                        val enumConstant = enumConstants[name] ?: error(name)
-                        fields.add(
-                            VkDowncallField(
-                                enumConstant.type,
-                                name,
-                                enumConstant.value
-                            )
-                        )
-                    }
-                    addedField.add(name)
-                }
+            val macro = interpreter.macros()[reqEnum]!!
+            if (!addedField.contains(macro.name)) {
+                fields.add(VkDowncallField(macro.type, macro.name, macro.value))
+                addedField.add(macro.name)
             }
-            vkEnumClass.putIfAbsent(name, "$packageName.$className")
         }
     }
 
     fun addReqCommand(
+        interpreter: Interpreter,
         list: List<String>,
-        commandMap: Map<String, VkCommand>,
         commandAliasMap: Map<String, MutableList<String>>
     ) {
         list.forEach { reqCommand ->
-            val cmd = commandMap[reqCommand]
-                ?: commandMap[(commandAliasMap[reqCommand] ?: error(reqCommand)).find(commandMap::containsKey)]
+            val functions = interpreter.functions()
+            val cmd = functions[reqCommand]
+                ?: functions[(commandAliasMap[reqCommand] ?: error(reqCommand)).find(functions::containsKey)]
                 ?: error(reqCommand)
-            descriptorFields.add(
-                VkDowncallField(
-                    "FunctionDescriptor",
-                    "FD_$reqCommand",
-                    buildString {
-                        append("FunctionDescriptor.of")
-                        if (cmd.type.javaName == "void") {
-                            append("Void")
-                        }
-                        append("(")
-                        if (cmd.type.javaName != "void") {
-                            append(cmd.type.layout)
-                            if (cmd.params.isNotEmpty()) {
-                                append(", ")
-                            }
-                        }
-                        append(cmd.params.joinToString(", ") { it.type.layout.toString() })
-                        append(")")
-                    }
-                )
-            )
+            val descriptor = functionDescriptor(cmd)
+            nativeImageDowncallDescriptors.add(descriptor)
             handleFields.add(
                 VkDowncallField(
                     "MethodHandle",
                     "MH_${reqCommand}",
-                    "RuntimeHelper.downcall(Descriptors.FD_$reqCommand)"
+                    "RuntimeHelper.downcall($descriptor)"
                 )
             )
             pfnFields.add(
@@ -177,41 +94,54 @@ class VkDowncall(
                 )
             )
 
+            val first = cmd.parameters[0]
+            val function = cmd.copy(
+                name = reqCommand, entrypoint = reqCommand, parameters =
+                    if (first.type is VkDispatchableHandleIntermediate) cmd.parameters.toMutableList()
+                        .also {
+                            it[0] = first.copy(
+                                type = VkDispatchableHandle(
+                                    name = (first.type as VkDispatchableHandleIntermediate).name,
+                                    originalName = first.type.originalName
+                                )
+                            )
+                        }
+                    else cmd.parameters
+            )
             methods.add(
-                VkDowncallMethod(
-                    cmd.type,
-                    reqCommand,
-                    cmd.params.map { VkDowncallParam(it.type, it.name) }
+                VkFunction(
+                    function,
+                    handlesInstance =
+                        if (first.type is VkDispatchableHandleIntermediate) "${first.name}.capabilities()"
+                        else "VK.globalCommands()"
                 )
             )
+            if (first.type is VkDispatchableHandleIntermediate) {
+                when (val it = (first.type as VkDispatchableHandleIntermediate).name) {
+                    "VkInstance", "VkPhysicalDevice" -> instanceCommands.add(function.name)
+                    "VkDevice", "VkQueue", "VkCommandBuffer" -> deviceCommands.add(function.name)
+                    else -> error(it)
+                }
+            }
         }
     }
 
     fun write() {
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
-        sb.appendLine(
-            """
-                package $packageName;
-                import java.lang.foreign.*;
-                import java.lang.invoke.*;
-                import overrungl.annotation.*;
-                import overrungl.internal.RuntimeHelper;
-                import overrungl.util.*;
-            """.trimIndent()
-        )
+        sb.appendLine("package $packageName;")
+        if (handleFields.isNotEmpty()) {
+            sb.appendLine(
+                """
+                    import java.lang.foreign.*;
+                    import java.lang.invoke.*;
+                    import overrungl.internal.RuntimeHelper;
+                    import overrungl.util.*;
+                """.trimIndent()
+            )
+        }
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
-        if (descriptorFields.isNotEmpty()) sb.appendLine("import java.util.*;")
-        imports.sorted().forEach { sb.appendLine("import $it;") }
-        sb.append("public ")
-        if (modifier != null) {
-            sb.append("$modifier ")
-        }
-        sb.append("class $className")
-        if (extends.isNotEmpty()) {
-            sb.append(" extends ${extends.joinToString(", ")}")
-        }
-        sb.appendLine(" {")
+        sb.appendLine("public final class $className {")
 
         fun writeFields(list: List<VkDowncallField>, indent: Int) {
             list.forEach {
@@ -225,53 +155,23 @@ class VkDowncall(
             }
         }
         writeFields(fields, 4)
-        // write aliases later to avoid forward declaration
-        writeFields(aliasFields, 4)
         if (handleFields.isNotEmpty()) {
-            sb.appendLine("    private final Handles handles;")
-            sb.appendLine("    public static final class Descriptors {")
-            writeFields(descriptorFields, 8)
-            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
-            descriptorFields.forEachIndexed { index, it ->
-                sb.append("            ${it.name}")
-                if (index + 1 == descriptorFields.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
-            sb.appendLine("        private Descriptors() {}")
-            sb.appendLine("    }")
-
             sb.appendLine("    public static final class Handles {")
             writeFields(handleFields, 8)
-            writeFields(pfnFields, 8)
-            if (handlesConstructor != null) {
-                sb.appendLine(handlesConstructor!!.prependIndent("        "))
-            }
+            sb.appendLine("        private Handles() {}")
             sb.appendLine("    }")
         }
         sb.appendLine()
 
-        if (constructor != null) {
-            sb.appendLine(constructor!!.prependIndent("    "))
-        }
+        sb.appendLine(
+            """
+                |    private $className() {}
+            """.trimMargin()
+        )
         sb.appendLine()
 
         methods.forEach { m ->
-            sb.append("    public ${m.type.annotatedTypeName()} ${m.name.substring(2)}(")
-            sb.append(m.parameters.joinToString(", ") { "${it.type.annotatedTypeName()} ${it.name}" })
-            sb.appendLine(") {")
-            sb.appendLine("""        if (Unmarshal.isNullPointer(handles.PFN_${m.name})) throw new SymbolNotFoundError("Symbol not found: ${m.name}");""")
-            sb.append("        try { ")
-            if (m.type.javaName != "void") {
-                sb.append("return (${m.type.javaName}) ")
-            }
-            sb.appendLine("Handles.MH_${m.name}.invokeExact(handles.PFN_${m.name}, ${m.parameters.joinToString(", ") { it.name }}); }")
-            sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${m.name}", e); }""")
-            sb.appendLine("    }")
-            sb.appendLine()
+            writeFunction(sb, m.function, handlesInstance = m.handlesInstance)
         }
 
         if (customCode != null) {
@@ -281,7 +181,7 @@ class VkDowncall(
 
         sb.appendLine("}")
 
-        writeString(Path(packageName.replace('.', '/'), "$className.java"), sb.toString())
+        writeString(Path(packageName.replace('.', '/'), "$className.java").createParentDirectories(), sb.toString())
     }
 }
 
@@ -290,12 +190,4 @@ data class VkDowncallField(
     val name: String,
     val value: String?,
     val modifier: String? = "public static final"
-)
-
-data class VkDowncallParam(val type: VkType, val name: String)
-
-data class VkDowncallMethod(
-    val type: VkType,
-    val name: String,
-    val parameters: List<VkDowncallParam>,
 )

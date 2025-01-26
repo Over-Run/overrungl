@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.mesa.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### imageAlignmentControl
-/// [VarHandle][#VH_imageAlignmentControl] - [Getter][#imageAlignmentControl()] - [Setter][#imageAlignmentControl(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 imageAlignmentControl;
-/// } VkPhysicalDeviceImageAlignmentControlFeaturesMESA;
 /// ```
-public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends Struct {
+/// struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 imageAlignmentControl;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("imageAlignmentControl")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `imageAlignmentControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `imageAlignmentControl`.
+    public static final long OFFSET_imageAlignmentControl = LAYOUT.byteOffset(PathElement.groupElement("imageAlignmentControl"));
+    /// The memory layout of `imageAlignmentControl`.
+    public static final MemoryLayout LAYOUT_imageAlignmentControl = LAYOUT.select(PathElement.groupElement("imageAlignmentControl"));
+    /// The [VarHandle] of `imageAlignmentControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_imageAlignmentControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageAlignmentControl"));
 
     /// Creates `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends St
     /// Creates `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment); }
-
-    /// Creates `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends St
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends St
     /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int imageAlignmentControl) { return alloc(allocator).sType(sType).pNext(pNext).imageAlignmentControl(imageAlignmentControl); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends St
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA sType(@CType("VkStructureType") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `imageAlignmentControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_imageAlignmentControl(MemorySegment segment, long index) { return (int) VH_imageAlignmentControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int imageAlignmentControl(MemorySegment segment, long index) { return (int) VH_imageAlignmentControl.get(segment, 0L, index); }
     /// {@return `imageAlignmentControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_imageAlignmentControl(MemorySegment segment) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_imageAlignmentControl(segment, 0L); }
-    /// {@return `imageAlignmentControl`}
-    public @CType("VkBool32") int imageAlignmentControl() { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_imageAlignmentControl(this.segment()); }
+    public int imageAlignmentControl() { return imageAlignmentControl(this.segment(), 0L); }
     /// Sets `imageAlignmentControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_imageAlignmentControl(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_imageAlignmentControl.set(segment, 0L, index, value); }
-    /// Sets `imageAlignmentControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_imageAlignmentControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_imageAlignmentControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void imageAlignmentControl(MemorySegment segment, long index, int value) { VH_imageAlignmentControl.set(segment, 0L, index, value); }
     /// Sets `imageAlignmentControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA imageAlignmentControl(@CType("VkBool32") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_imageAlignmentControl(this.segment(), value); return this; }
+    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA imageAlignmentControl(int value) { imageAlignmentControl(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceImageAlignmentControlFeaturesMESA].
     public static final class Buffer extends VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends St
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `imageAlignmentControl` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int imageAlignmentControlAt(long index) { return VkPhysicalDeviceImageAlignmentControlFeaturesMESA.get_imageAlignmentControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int imageAlignmentControlAt(long index) { return imageAlignmentControl(this.segment(), index); }
         /// Sets `imageAlignmentControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer imageAlignmentControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageAlignmentControlFeaturesMESA.set_imageAlignmentControl(this.segment(), index, value); return this; }
+        public Buffer imageAlignmentControlAt(long index, int value) { imageAlignmentControl(this.segment(), index, value); return this; }
 
     }
 }

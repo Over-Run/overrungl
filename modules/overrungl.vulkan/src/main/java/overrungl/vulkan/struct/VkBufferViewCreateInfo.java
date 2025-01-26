@@ -15,67 +15,79 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### buffer
-/// [VarHandle][#VH_buffer] - [Getter][#buffer()] - [Setter][#buffer(java.lang.foreign.MemorySegment)]
-/// ### format
-/// [VarHandle][#VH_format] - [Getter][#format()] - [Setter][#format(int)]
-/// ### offset
-/// [VarHandle][#VH_offset] - [Getter][#offset()] - [Setter][#offset(long)]
-/// ### range
-/// [VarHandle][#VH_range] - [Getter][#range()] - [Setter][#range(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkBufferViewCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkBufferViewCreateFlags flags;
-///     VkBuffer buffer;
-///     VkFormat format;
-///     VkDeviceSize offset;
-///     VkDeviceSize range;
-/// } VkBufferViewCreateInfo;
 /// ```
-public sealed class VkBufferViewCreateInfo extends Struct {
+/// struct VkBufferViewCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkBufferViewCreateFlags flags;
+///     (uint64_t) VkBuffer buffer;
+///     (int) VkFormat format;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize range;
+/// };
+/// ```
+public sealed class VkBufferViewCreateInfo extends GroupType {
     /// The struct layout of `VkBufferViewCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
-        ValueLayout.ADDRESS.withName("buffer"),
+        ValueLayout.JAVA_LONG.withName("buffer"),
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_LONG.withName("offset"),
         ValueLayout.JAVA_LONG.withName("range")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `buffer`.
+    public static final long OFFSET_buffer = LAYOUT.byteOffset(PathElement.groupElement("buffer"));
+    /// The memory layout of `buffer`.
+    public static final MemoryLayout LAYOUT_buffer = LAYOUT.select(PathElement.groupElement("buffer"));
+    /// The [VarHandle] of `buffer` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
-    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `format`.
+    public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
+    /// The memory layout of `format`.
+    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
+    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
-    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `offset`.
+    public static final long OFFSET_offset = LAYOUT.byteOffset(PathElement.groupElement("offset"));
+    /// The memory layout of `offset`.
+    public static final MemoryLayout LAYOUT_offset = LAYOUT.select(PathElement.groupElement("offset"));
+    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
-    /// The [VarHandle] of `range` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `range`.
+    public static final long OFFSET_range = LAYOUT.byteOffset(PathElement.groupElement("range"));
+    /// The memory layout of `range`.
+    public static final MemoryLayout LAYOUT_range = LAYOUT.select(PathElement.groupElement("range"));
+    /// The [VarHandle] of `range` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_range = LAYOUT.arrayElementVarHandle(PathElement.groupElement("range"));
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
@@ -85,19 +97,14 @@ public sealed class VkBufferViewCreateInfo extends Struct {
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferViewCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment); }
-
-    /// Creates `VkBufferViewCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferViewCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkBufferViewCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     ///
@@ -105,7 +112,7 @@ public sealed class VkBufferViewCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBufferViewCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -118,11 +125,6 @@ public sealed class VkBufferViewCreateInfo extends Struct {
     /// @return the allocated `VkBufferViewCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBufferViewCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkBufferViewCreateInfo`
-    public static VkBufferViewCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBufferViewCreateFlags") int flags, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("VkFormat") int format, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long range) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).buffer(buffer).format(format).offset(offset).range(range); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -130,168 +132,119 @@ public sealed class VkBufferViewCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBufferViewCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkBufferViewCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBufferViewCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo sType(@CType("VkStructureType") int value) { VkBufferViewCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferViewCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferViewCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBufferViewCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBufferViewCreateFlags") int get_flags(MemorySegment segment) { return VkBufferViewCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkBufferViewCreateFlags") int flags() { return VkBufferViewCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkBufferViewCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkBufferViewCreateFlags") int value) { VkBufferViewCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo flags(@CType("VkBufferViewCreateFlags") int value) { VkBufferViewCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_buffer.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long buffer(MemorySegment segment, long index) { return (long) VH_buffer.get(segment, 0L, index); }
     /// {@return `buffer`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkBufferViewCreateInfo.get_buffer(segment, 0L); }
-    /// {@return `buffer`}
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkBufferViewCreateInfo.get_buffer(this.segment()); }
+    public long buffer() { return buffer(this.segment(), 0L); }
     /// Sets `buffer` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_buffer(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_buffer.set(segment, 0L, index, value); }
-    /// Sets `buffer` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_buffer(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void buffer(MemorySegment segment, long index, long value) { VH_buffer.set(segment, 0L, index, value); }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo buffer(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_buffer(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo buffer(long value) { buffer(this.segment(), 0L, value); return this; }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
     /// {@return `format`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkBufferViewCreateInfo.get_format(segment, 0L); }
-    /// {@return `format`}
-    public @CType("VkFormat") int format() { return VkBufferViewCreateInfo.get_format(this.segment()); }
+    public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_format.set(segment, 0L, index, value); }
-    /// Sets `format` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkBufferViewCreateInfo.set_format(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo format(@CType("VkFormat") int value) { VkBufferViewCreateInfo.set_format(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo format(int value) { format(this.segment(), 0L, value); return this; }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
     /// {@return `offset`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkBufferViewCreateInfo.get_offset(segment, 0L); }
-    /// {@return `offset`}
-    public @CType("VkDeviceSize") long offset() { return VkBufferViewCreateInfo.get_offset(this.segment()); }
+    public long offset() { return offset(this.segment(), 0L); }
     /// Sets `offset` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_offset.set(segment, 0L, index, value); }
-    /// Sets `offset` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_offset(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void offset(MemorySegment segment, long index, long value) { VH_offset.set(segment, 0L, index, value); }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo offset(@CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_offset(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo offset(long value) { offset(this.segment(), 0L, value); return this; }
 
     /// {@return `range` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_range(MemorySegment segment, long index) { return (long) VH_range.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long range(MemorySegment segment, long index) { return (long) VH_range.get(segment, 0L, index); }
     /// {@return `range`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_range(MemorySegment segment) { return VkBufferViewCreateInfo.get_range(segment, 0L); }
-    /// {@return `range`}
-    public @CType("VkDeviceSize") long range() { return VkBufferViewCreateInfo.get_range(this.segment()); }
+    public long range() { return range(this.segment(), 0L); }
     /// Sets `range` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_range(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_range.set(segment, 0L, index, value); }
-    /// Sets `range` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_range(MemorySegment segment, @CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_range(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void range(MemorySegment segment, long index, long value) { VH_range.set(segment, 0L, index, value); }
     /// Sets `range` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkBufferViewCreateInfo range(@CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_range(this.segment(), value); return this; }
+    public VkBufferViewCreateInfo range(long value) { range(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkBufferViewCreateInfo].
     public static final class Buffer extends VkBufferViewCreateInfo {
@@ -316,67 +269,67 @@ public sealed class VkBufferViewCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferViewCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferViewCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferViewCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkBufferViewCreateFlags") int flagsAt(long index) { return VkBufferViewCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkBufferViewCreateFlags") int value) { VkBufferViewCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `buffer` at the given index}
-        /// @param index the index
-        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkBufferViewCreateInfo.get_buffer(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long bufferAt(long index) { return buffer(this.segment(), index); }
         /// Sets `buffer` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkBufferViewCreateInfo.set_buffer(this.segment(), index, value); return this; }
+        public Buffer bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
 
         /// {@return `format` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int formatAt(long index) { return VkBufferViewCreateInfo.get_format(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int formatAt(long index) { return format(this.segment(), index); }
         /// Sets `format` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkBufferViewCreateInfo.set_format(this.segment(), index, value); return this; }
+        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
         /// {@return `offset` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long offsetAt(long index) { return VkBufferViewCreateInfo.get_offset(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long offsetAt(long index) { return offset(this.segment(), index); }
         /// Sets `offset` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer offsetAt(long index, @CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_offset(this.segment(), index, value); return this; }
+        public Buffer offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
 
         /// {@return `range` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long rangeAt(long index) { return VkBufferViewCreateInfo.get_range(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long rangeAt(long index) { return range(this.segment(), index); }
         /// Sets `range` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer rangeAt(long index, @CType("VkDeviceSize") long value) { VkBufferViewCreateInfo.set_range(this.segment(), index, value); return this; }
+        public Buffer rangeAt(long index, long value) { range(this.segment(), index, value); return this; }
 
     }
 }

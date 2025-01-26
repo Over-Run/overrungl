@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.union;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### deviceAddress
-/// [VarHandle][#VH_deviceAddress] - [Getter][#deviceAddress()] - [Setter][#deviceAddress(long)]
-/// ### hostAddress
-/// [VarHandle][#VH_hostAddress] - [Getter][#hostAddress()] - [Setter][#hostAddress(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef union VkDeviceOrHostAddressKHR {
-///     VkDeviceAddress deviceAddress;
-///     void * hostAddress;
-/// } VkDeviceOrHostAddressKHR;
 /// ```
-public sealed class VkDeviceOrHostAddressKHR extends Union {
+/// union VkDeviceOrHostAddressKHR {
+///     (uint64_t) VkDeviceAddress deviceAddress;
+///     void* hostAddress;
+/// };
+/// ```
+public sealed class VkDeviceOrHostAddressKHR extends GroupType {
     /// The union layout of `VkDeviceOrHostAddressKHR`.
-    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
         ValueLayout.ADDRESS.withName("hostAddress")
     );
-    /// The [VarHandle] of `deviceAddress` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `deviceAddress`.
+    public static final long OFFSET_deviceAddress = LAYOUT.byteOffset(PathElement.groupElement("deviceAddress"));
+    /// The memory layout of `deviceAddress`.
+    public static final MemoryLayout LAYOUT_deviceAddress = LAYOUT.select(PathElement.groupElement("deviceAddress"));
+    /// The [VarHandle] of `deviceAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_deviceAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceAddress"));
-    /// The [VarHandle] of `hostAddress` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `hostAddress`.
+    public static final long OFFSET_hostAddress = LAYOUT.byteOffset(PathElement.groupElement("hostAddress"));
+    /// The memory layout of `hostAddress`.
+    public static final MemoryLayout LAYOUT_hostAddress = LAYOUT.select(PathElement.groupElement("hostAddress"));
+    /// The [VarHandle] of `hostAddress` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_hostAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostAddress"));
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkDeviceOrHostAddressKHR extends Union {
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceOrHostAddressKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment); }
-
-    /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceOrHostAddressKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDeviceOrHostAddressKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkDeviceOrHostAddressKHR extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -95,53 +92,39 @@ public sealed class VkDeviceOrHostAddressKHR extends Union {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `deviceAddress` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("VkDeviceAddress") long get_deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static long deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get(segment, 0L, index); }
     /// {@return `deviceAddress`}
-    /// @param segment the segment of the union
-    public static @CType("VkDeviceAddress") long get_deviceAddress(MemorySegment segment) { return VkDeviceOrHostAddressKHR.get_deviceAddress(segment, 0L); }
-    /// {@return `deviceAddress`}
-    public @CType("VkDeviceAddress") long deviceAddress() { return VkDeviceOrHostAddressKHR.get_deviceAddress(this.segment()); }
+    public long deviceAddress() { return deviceAddress(this.segment(), 0L); }
     /// Sets `deviceAddress` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_deviceAddress(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_deviceAddress.set(segment, 0L, index, value); }
-    /// Sets `deviceAddress` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_deviceAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressKHR.set_deviceAddress(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void deviceAddress(MemorySegment segment, long index, long value) { VH_deviceAddress.set(segment, 0L, index, value); }
     /// Sets `deviceAddress` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceOrHostAddressKHR deviceAddress(@CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressKHR.set_deviceAddress(this.segment(), value); return this; }
+    public VkDeviceOrHostAddressKHR deviceAddress(long value) { deviceAddress(this.segment(), 0L, value); return this; }
 
     /// {@return `hostAddress` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_hostAddress(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_hostAddress.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static MemorySegment hostAddress(MemorySegment segment, long index) { return (MemorySegment) VH_hostAddress.get(segment, 0L, index); }
     /// {@return `hostAddress`}
-    /// @param segment the segment of the union
-    public static @CType("void *") java.lang.foreign.MemorySegment get_hostAddress(MemorySegment segment) { return VkDeviceOrHostAddressKHR.get_hostAddress(segment, 0L); }
-    /// {@return `hostAddress`}
-    public @CType("void *") java.lang.foreign.MemorySegment hostAddress() { return VkDeviceOrHostAddressKHR.get_hostAddress(this.segment()); }
+    public MemorySegment hostAddress() { return hostAddress(this.segment(), 0L); }
     /// Sets `hostAddress` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_hostAddress(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_hostAddress.set(segment, 0L, index, value); }
-    /// Sets `hostAddress` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_hostAddress(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressKHR.set_hostAddress(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void hostAddress(MemorySegment segment, long index, MemorySegment value) { VH_hostAddress.set(segment, 0L, index, value); }
     /// Sets `hostAddress` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDeviceOrHostAddressKHR hostAddress(@CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressKHR.set_hostAddress(this.segment(), value); return this; }
+    public VkDeviceOrHostAddressKHR hostAddress(MemorySegment value) { hostAddress(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDeviceOrHostAddressKHR].
     public static final class Buffer extends VkDeviceOrHostAddressKHR {
@@ -166,22 +149,22 @@ public sealed class VkDeviceOrHostAddressKHR extends Union {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `deviceAddress` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceAddress") long deviceAddressAt(long index) { return VkDeviceOrHostAddressKHR.get_deviceAddress(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
         /// Sets `deviceAddress` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer deviceAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressKHR.set_deviceAddress(this.segment(), index, value); return this; }
+        public Buffer deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
 
         /// {@return `hostAddress` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment hostAddressAt(long index) { return VkDeviceOrHostAddressKHR.get_hostAddress(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public MemorySegment hostAddressAt(long index) { return hostAddress(this.segment(), index); }
         /// Sets `hostAddress` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer hostAddressAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressKHR.set_hostAddress(this.segment(), index, value); return this; }
+        public Buffer hostAddressAt(long index, MemorySegment value) { hostAddress(this.segment(), index, value); return this; }
 
     }
 }

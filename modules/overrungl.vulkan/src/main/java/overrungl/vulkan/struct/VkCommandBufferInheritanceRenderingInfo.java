@@ -15,52 +15,32 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### viewMask
-/// [VarHandle][#VH_viewMask] - [Getter][#viewMask()] - [Setter][#viewMask(int)]
-/// ### colorAttachmentCount
-/// [VarHandle][#VH_colorAttachmentCount] - [Getter][#colorAttachmentCount()] - [Setter][#colorAttachmentCount(int)]
-/// ### pColorAttachmentFormats
-/// [VarHandle][#VH_pColorAttachmentFormats] - [Getter][#pColorAttachmentFormats()] - [Setter][#pColorAttachmentFormats(java.lang.foreign.MemorySegment)]
-/// ### depthAttachmentFormat
-/// [VarHandle][#VH_depthAttachmentFormat] - [Getter][#depthAttachmentFormat()] - [Setter][#depthAttachmentFormat(int)]
-/// ### stencilAttachmentFormat
-/// [VarHandle][#VH_stencilAttachmentFormat] - [Getter][#stencilAttachmentFormat()] - [Setter][#stencilAttachmentFormat(int)]
-/// ### rasterizationSamples
-/// [VarHandle][#VH_rasterizationSamples] - [Getter][#rasterizationSamples()] - [Setter][#rasterizationSamples(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkCommandBufferInheritanceRenderingInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkRenderingFlags flags;
+/// ```
+/// struct VkCommandBufferInheritanceRenderingInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkRenderingFlags flags;
 ///     uint32_t viewMask;
 ///     uint32_t colorAttachmentCount;
-///     const VkFormat * pColorAttachmentFormats;
-///     VkFormat depthAttachmentFormat;
-///     VkFormat stencilAttachmentFormat;
-///     VkSampleCountFlagBits rasterizationSamples;
-/// } VkCommandBufferInheritanceRenderingInfo;
+///     const VkFormat* pColorAttachmentFormats;
+///     (int) VkFormat depthAttachmentFormat;
+///     (int) VkFormat stencilAttachmentFormat;
+///     (int) VkSampleCountFlagBits rasterizationSamples;
+/// };
 /// ```
-public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
+public sealed class VkCommandBufferInheritanceRenderingInfo extends GroupType {
     /// The struct layout of `VkCommandBufferInheritanceRenderingInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -71,23 +51,59 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
         ValueLayout.JAVA_INT.withName("stencilAttachmentFormat"),
         ValueLayout.JAVA_INT.withName("rasterizationSamples")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `viewMask` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `viewMask`.
+    public static final long OFFSET_viewMask = LAYOUT.byteOffset(PathElement.groupElement("viewMask"));
+    /// The memory layout of `viewMask`.
+    public static final MemoryLayout LAYOUT_viewMask = LAYOUT.select(PathElement.groupElement("viewMask"));
+    /// The [VarHandle] of `viewMask` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_viewMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("viewMask"));
-    /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `colorAttachmentCount`.
+    public static final long OFFSET_colorAttachmentCount = LAYOUT.byteOffset(PathElement.groupElement("colorAttachmentCount"));
+    /// The memory layout of `colorAttachmentCount`.
+    public static final MemoryLayout LAYOUT_colorAttachmentCount = LAYOUT.select(PathElement.groupElement("colorAttachmentCount"));
+    /// The [VarHandle] of `colorAttachmentCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_colorAttachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorAttachmentCount"));
-    /// The [VarHandle] of `pColorAttachmentFormats` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pColorAttachmentFormats`.
+    public static final long OFFSET_pColorAttachmentFormats = LAYOUT.byteOffset(PathElement.groupElement("pColorAttachmentFormats"));
+    /// The memory layout of `pColorAttachmentFormats`.
+    public static final MemoryLayout LAYOUT_pColorAttachmentFormats = LAYOUT.select(PathElement.groupElement("pColorAttachmentFormats"));
+    /// The [VarHandle] of `pColorAttachmentFormats` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pColorAttachmentFormats = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorAttachmentFormats"));
-    /// The [VarHandle] of `depthAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthAttachmentFormat`.
+    public static final long OFFSET_depthAttachmentFormat = LAYOUT.byteOffset(PathElement.groupElement("depthAttachmentFormat"));
+    /// The memory layout of `depthAttachmentFormat`.
+    public static final MemoryLayout LAYOUT_depthAttachmentFormat = LAYOUT.select(PathElement.groupElement("depthAttachmentFormat"));
+    /// The [VarHandle] of `depthAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthAttachmentFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthAttachmentFormat"));
-    /// The [VarHandle] of `stencilAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stencilAttachmentFormat`.
+    public static final long OFFSET_stencilAttachmentFormat = LAYOUT.byteOffset(PathElement.groupElement("stencilAttachmentFormat"));
+    /// The memory layout of `stencilAttachmentFormat`.
+    public static final MemoryLayout LAYOUT_stencilAttachmentFormat = LAYOUT.select(PathElement.groupElement("stencilAttachmentFormat"));
+    /// The [VarHandle] of `stencilAttachmentFormat` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stencilAttachmentFormat = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilAttachmentFormat"));
-    /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `rasterizationSamples`.
+    public static final long OFFSET_rasterizationSamples = LAYOUT.byteOffset(PathElement.groupElement("rasterizationSamples"));
+    /// The memory layout of `rasterizationSamples`.
+    public static final MemoryLayout LAYOUT_rasterizationSamples = LAYOUT.select(PathElement.groupElement("rasterizationSamples"));
+    /// The [VarHandle] of `rasterizationSamples` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_rasterizationSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("rasterizationSamples"));
 
     /// Creates `VkCommandBufferInheritanceRenderingInfo` with the given segment.
@@ -97,19 +113,14 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
     /// Creates `VkCommandBufferInheritanceRenderingInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferInheritanceRenderingInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderingInfo(segment); }
-
-    /// Creates `VkCommandBufferInheritanceRenderingInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCommandBufferInheritanceRenderingInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferInheritanceRenderingInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderingInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkCommandBufferInheritanceRenderingInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderingInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkCommandBufferInheritanceRenderingInfo` with the given segment.
     ///
@@ -117,7 +128,7 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandBufferInheritanceRenderingInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -130,11 +141,6 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
     /// @return the allocated `VkCommandBufferInheritanceRenderingInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandBufferInheritanceRenderingInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkCommandBufferInheritanceRenderingInfo`
-    public static VkCommandBufferInheritanceRenderingInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRenderingFlags") int flags, @CType("uint32_t") int viewMask, @CType("uint32_t") int colorAttachmentCount, @CType("const VkFormat *") java.lang.foreign.MemorySegment pColorAttachmentFormats, @CType("VkFormat") int depthAttachmentFormat, @CType("VkFormat") int stencilAttachmentFormat, @CType("VkSampleCountFlagBits") int rasterizationSamples) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachmentFormats(pColorAttachmentFormats).depthAttachmentFormat(depthAttachmentFormat).stencilAttachmentFormat(stencilAttachmentFormat).rasterizationSamples(rasterizationSamples); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -142,214 +148,151 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkCommandBufferInheritanceRenderingInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandBufferInheritanceRenderingInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo sType(@CType("VkStructureType") int value) { VkCommandBufferInheritanceRenderingInfo.set_sType(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCommandBufferInheritanceRenderingInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pNext(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkRenderingFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkRenderingFlags") int get_flags(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkRenderingFlags") int flags() { return VkCommandBufferInheritanceRenderingInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkRenderingFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkRenderingFlags") int value) { VkCommandBufferInheritanceRenderingInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo flags(@CType("VkRenderingFlags") int value) { VkCommandBufferInheritanceRenderingInfo.set_flags(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `viewMask` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int viewMask(MemorySegment segment, long index) { return (int) VH_viewMask.get(segment, 0L, index); }
     /// {@return `viewMask`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_viewMask(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_viewMask(segment, 0L); }
-    /// {@return `viewMask`}
-    public @CType("uint32_t") int viewMask() { return VkCommandBufferInheritanceRenderingInfo.get_viewMask(this.segment()); }
+    public int viewMask() { return viewMask(this.segment(), 0L); }
     /// Sets `viewMask` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_viewMask(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_viewMask.set(segment, 0L, index, value); }
-    /// Sets `viewMask` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_viewMask(MemorySegment segment, @CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_viewMask(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void viewMask(MemorySegment segment, long index, int value) { VH_viewMask.set(segment, 0L, index, value); }
     /// Sets `viewMask` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo viewMask(@CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_viewMask(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo viewMask(int value) { viewMask(this.segment(), 0L, value); return this; }
 
     /// {@return `colorAttachmentCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int colorAttachmentCount(MemorySegment segment, long index) { return (int) VH_colorAttachmentCount.get(segment, 0L, index); }
     /// {@return `colorAttachmentCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_colorAttachmentCount(segment, 0L); }
-    /// {@return `colorAttachmentCount`}
-    public @CType("uint32_t") int colorAttachmentCount() { return VkCommandBufferInheritanceRenderingInfo.get_colorAttachmentCount(this.segment()); }
+    public int colorAttachmentCount() { return colorAttachmentCount(this.segment(), 0L); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_colorAttachmentCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
-    /// Sets `colorAttachmentCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_colorAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_colorAttachmentCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void colorAttachmentCount(MemorySegment segment, long index, int value) { VH_colorAttachmentCount.set(segment, 0L, index, value); }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo colorAttachmentCount(@CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_colorAttachmentCount(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo colorAttachmentCount(int value) { colorAttachmentCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pColorAttachmentFormats` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkFormat *") java.lang.foreign.MemorySegment get_pColorAttachmentFormats(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pColorAttachmentFormats.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pColorAttachmentFormats(MemorySegment segment, long index) { return (MemorySegment) VH_pColorAttachmentFormats.get(segment, 0L, index); }
     /// {@return `pColorAttachmentFormats`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkFormat *") java.lang.foreign.MemorySegment get_pColorAttachmentFormats(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_pColorAttachmentFormats(segment, 0L); }
-    /// {@return `pColorAttachmentFormats`}
-    public @CType("const VkFormat *") java.lang.foreign.MemorySegment pColorAttachmentFormats() { return VkCommandBufferInheritanceRenderingInfo.get_pColorAttachmentFormats(this.segment()); }
+    public MemorySegment pColorAttachmentFormats() { return pColorAttachmentFormats(this.segment(), 0L); }
     /// Sets `pColorAttachmentFormats` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pColorAttachmentFormats(MemorySegment segment, long index, @CType("const VkFormat *") java.lang.foreign.MemorySegment value) { VH_pColorAttachmentFormats.set(segment, 0L, index, value); }
-    /// Sets `pColorAttachmentFormats` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pColorAttachmentFormats(MemorySegment segment, @CType("const VkFormat *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pColorAttachmentFormats(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pColorAttachmentFormats(MemorySegment segment, long index, MemorySegment value) { VH_pColorAttachmentFormats.set(segment, 0L, index, value); }
     /// Sets `pColorAttachmentFormats` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo pColorAttachmentFormats(@CType("const VkFormat *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pColorAttachmentFormats(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo pColorAttachmentFormats(MemorySegment value) { pColorAttachmentFormats(this.segment(), 0L, value); return this; }
 
     /// {@return `depthAttachmentFormat` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_depthAttachmentFormat(MemorySegment segment, long index) { return (int) VH_depthAttachmentFormat.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthAttachmentFormat(MemorySegment segment, long index) { return (int) VH_depthAttachmentFormat.get(segment, 0L, index); }
     /// {@return `depthAttachmentFormat`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_depthAttachmentFormat(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_depthAttachmentFormat(segment, 0L); }
-    /// {@return `depthAttachmentFormat`}
-    public @CType("VkFormat") int depthAttachmentFormat() { return VkCommandBufferInheritanceRenderingInfo.get_depthAttachmentFormat(this.segment()); }
+    public int depthAttachmentFormat() { return depthAttachmentFormat(this.segment(), 0L); }
     /// Sets `depthAttachmentFormat` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthAttachmentFormat(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_depthAttachmentFormat.set(segment, 0L, index, value); }
-    /// Sets `depthAttachmentFormat` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthAttachmentFormat(MemorySegment segment, @CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_depthAttachmentFormat(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthAttachmentFormat(MemorySegment segment, long index, int value) { VH_depthAttachmentFormat.set(segment, 0L, index, value); }
     /// Sets `depthAttachmentFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo depthAttachmentFormat(@CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_depthAttachmentFormat(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo depthAttachmentFormat(int value) { depthAttachmentFormat(this.segment(), 0L, value); return this; }
 
     /// {@return `stencilAttachmentFormat` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_stencilAttachmentFormat(MemorySegment segment, long index) { return (int) VH_stencilAttachmentFormat.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stencilAttachmentFormat(MemorySegment segment, long index) { return (int) VH_stencilAttachmentFormat.get(segment, 0L, index); }
     /// {@return `stencilAttachmentFormat`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_stencilAttachmentFormat(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_stencilAttachmentFormat(segment, 0L); }
-    /// {@return `stencilAttachmentFormat`}
-    public @CType("VkFormat") int stencilAttachmentFormat() { return VkCommandBufferInheritanceRenderingInfo.get_stencilAttachmentFormat(this.segment()); }
+    public int stencilAttachmentFormat() { return stencilAttachmentFormat(this.segment(), 0L); }
     /// Sets `stencilAttachmentFormat` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stencilAttachmentFormat(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_stencilAttachmentFormat.set(segment, 0L, index, value); }
-    /// Sets `stencilAttachmentFormat` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stencilAttachmentFormat(MemorySegment segment, @CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_stencilAttachmentFormat(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stencilAttachmentFormat(MemorySegment segment, long index, int value) { VH_stencilAttachmentFormat.set(segment, 0L, index, value); }
     /// Sets `stencilAttachmentFormat` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo stencilAttachmentFormat(@CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_stencilAttachmentFormat(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo stencilAttachmentFormat(int value) { stencilAttachmentFormat(this.segment(), 0L, value); return this; }
 
     /// {@return `rasterizationSamples` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int rasterizationSamples(MemorySegment segment, long index) { return (int) VH_rasterizationSamples.get(segment, 0L, index); }
     /// {@return `rasterizationSamples`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment) { return VkCommandBufferInheritanceRenderingInfo.get_rasterizationSamples(segment, 0L); }
-    /// {@return `rasterizationSamples`}
-    public @CType("VkSampleCountFlagBits") int rasterizationSamples() { return VkCommandBufferInheritanceRenderingInfo.get_rasterizationSamples(this.segment()); }
+    public int rasterizationSamples() { return rasterizationSamples(this.segment(), 0L); }
     /// Sets `rasterizationSamples` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_rasterizationSamples(MemorySegment segment, long index, @CType("VkSampleCountFlagBits") int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
-    /// Sets `rasterizationSamples` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_rasterizationSamples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkCommandBufferInheritanceRenderingInfo.set_rasterizationSamples(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void rasterizationSamples(MemorySegment segment, long index, int value) { VH_rasterizationSamples.set(segment, 0L, index, value); }
     /// Sets `rasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(@CType("VkSampleCountFlagBits") int value) { VkCommandBufferInheritanceRenderingInfo.set_rasterizationSamples(this.segment(), value); return this; }
+    public VkCommandBufferInheritanceRenderingInfo rasterizationSamples(int value) { rasterizationSamples(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkCommandBufferInheritanceRenderingInfo].
     public static final class Buffer extends VkCommandBufferInheritanceRenderingInfo {
@@ -374,85 +317,85 @@ public sealed class VkCommandBufferInheritanceRenderingInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferInheritanceRenderingInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkRenderingFlags") int flagsAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkRenderingFlags") int value) { VkCommandBufferInheritanceRenderingInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `viewMask` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int viewMaskAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_viewMask(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int viewMaskAt(long index) { return viewMask(this.segment(), index); }
         /// Sets `viewMask` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer viewMaskAt(long index, @CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_viewMask(this.segment(), index, value); return this; }
+        public Buffer viewMaskAt(long index, int value) { viewMask(this.segment(), index, value); return this; }
 
         /// {@return `colorAttachmentCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_colorAttachmentCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
         /// Sets `colorAttachmentCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkCommandBufferInheritanceRenderingInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
+        public Buffer colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
 
         /// {@return `pColorAttachmentFormats` at the given index}
-        /// @param index the index
-        public @CType("const VkFormat *") java.lang.foreign.MemorySegment pColorAttachmentFormatsAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_pColorAttachmentFormats(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pColorAttachmentFormatsAt(long index) { return pColorAttachmentFormats(this.segment(), index); }
         /// Sets `pColorAttachmentFormats` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pColorAttachmentFormatsAt(long index, @CType("const VkFormat *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceRenderingInfo.set_pColorAttachmentFormats(this.segment(), index, value); return this; }
+        public Buffer pColorAttachmentFormatsAt(long index, MemorySegment value) { pColorAttachmentFormats(this.segment(), index, value); return this; }
 
         /// {@return `depthAttachmentFormat` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int depthAttachmentFormatAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_depthAttachmentFormat(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthAttachmentFormatAt(long index) { return depthAttachmentFormat(this.segment(), index); }
         /// Sets `depthAttachmentFormat` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthAttachmentFormatAt(long index, @CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_depthAttachmentFormat(this.segment(), index, value); return this; }
+        public Buffer depthAttachmentFormatAt(long index, int value) { depthAttachmentFormat(this.segment(), index, value); return this; }
 
         /// {@return `stencilAttachmentFormat` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int stencilAttachmentFormatAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_stencilAttachmentFormat(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stencilAttachmentFormatAt(long index) { return stencilAttachmentFormat(this.segment(), index); }
         /// Sets `stencilAttachmentFormat` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stencilAttachmentFormatAt(long index, @CType("VkFormat") int value) { VkCommandBufferInheritanceRenderingInfo.set_stencilAttachmentFormat(this.segment(), index, value); return this; }
+        public Buffer stencilAttachmentFormatAt(long index, int value) { stencilAttachmentFormat(this.segment(), index, value); return this; }
 
         /// {@return `rasterizationSamples` at the given index}
-        /// @param index the index
-        public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkCommandBufferInheritanceRenderingInfo.get_rasterizationSamples(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int rasterizationSamplesAt(long index) { return rasterizationSamples(this.segment(), index); }
         /// Sets `rasterizationSamples` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkCommandBufferInheritanceRenderingInfo.set_rasterizationSamples(this.segment(), index, value); return this; }
+        public Buffer rasterizationSamplesAt(long index, int value) { rasterizationSamples(this.segment(), index, value); return this; }
 
     }
 }

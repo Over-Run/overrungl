@@ -18,49 +18,36 @@
 package overrungl.vulkan.google;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKGOOGLEDisplayTiming {
+public final class VKGOOGLEDisplayTiming {
     public static final int VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
     public static final int VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE = 1000092000;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetRefreshCycleDurationGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPastPresentationTimingGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetRefreshCycleDurationGOOGLE,
-            FD_vkGetPastPresentationTimingGOOGLE
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetRefreshCycleDurationGOOGLE = RuntimeHelper.downcall(Descriptors.FD_vkGetRefreshCycleDurationGOOGLE);
-        public static final MethodHandle MH_vkGetPastPresentationTimingGOOGLE = RuntimeHelper.downcall(Descriptors.FD_vkGetPastPresentationTimingGOOGLE);
-        public final MemorySegment PFN_vkGetRefreshCycleDurationGOOGLE;
-        public final MemorySegment PFN_vkGetPastPresentationTimingGOOGLE;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetRefreshCycleDurationGOOGLE = func.invoke(device, "vkGetRefreshCycleDurationGOOGLE");
-            PFN_vkGetPastPresentationTimingGOOGLE = func.invoke(device, "vkGetPastPresentationTimingGOOGLE");
-        }
+        public static final MethodHandle MH_vkGetRefreshCycleDurationGOOGLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPastPresentationTimingGOOGLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKGOOGLEDisplayTiming(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKGOOGLEDisplayTiming() {}
 
-    public @CType("VkResult") int GetRefreshCycleDurationGOOGLE(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("VkRefreshCycleDurationGOOGLE *") MemorySegment pDisplayTimingProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetRefreshCycleDurationGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetRefreshCycleDurationGOOGLE");
-        try { return (int) Handles.MH_vkGetRefreshCycleDurationGOOGLE.invokeExact(handles.PFN_vkGetRefreshCycleDurationGOOGLE, device, swapchain, pDisplayTimingProperties); }
+    /// ```
+    /// (int) VkResult vkGetRefreshCycleDurationGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties);
+    /// ```
+    public static int vkGetRefreshCycleDurationGOOGLE(VkDevice device, long swapchain, MemorySegment pDisplayTimingProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetRefreshCycleDurationGOOGLE");
+        try { return (int) Handles.MH_vkGetRefreshCycleDurationGOOGLE.invokeExact(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE, device.segment(), swapchain, pDisplayTimingProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRefreshCycleDurationGOOGLE", e); }
     }
 
-    public @CType("VkResult") int GetPastPresentationTimingGOOGLE(@CType("VkDevice") MemorySegment device, @CType("VkSwapchainKHR") MemorySegment swapchain, @CType("uint32_t *") MemorySegment pPresentationTimingCount, @CType("VkPastPresentationTimingGOOGLE *") MemorySegment pPresentationTimings) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPastPresentationTimingGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetPastPresentationTimingGOOGLE");
-        try { return (int) Handles.MH_vkGetPastPresentationTimingGOOGLE.invokeExact(handles.PFN_vkGetPastPresentationTimingGOOGLE, device, swapchain, pPresentationTimingCount, pPresentationTimings); }
+    /// ```
+    /// (int) VkResult vkGetPastPresentationTimingGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint32_t* pPresentationTimingCount, VkPastPresentationTimingGOOGLE* pPresentationTimings);
+    /// ```
+    public static int vkGetPastPresentationTimingGOOGLE(VkDevice device, long swapchain, MemorySegment pPresentationTimingCount, MemorySegment pPresentationTimings) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetPastPresentationTimingGOOGLE");
+        try { return (int) Handles.MH_vkGetPastPresentationTimingGOOGLE.invokeExact(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE, device.segment(), swapchain, pPresentationTimingCount, pPresentationTimings); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPastPresentationTimingGOOGLE", e); }
     }
 

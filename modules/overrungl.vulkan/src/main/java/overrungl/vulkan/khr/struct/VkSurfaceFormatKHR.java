@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### format
-/// [VarHandle][#VH_format] - [Getter][#format()] - [Setter][#format(int)]
-/// ### colorSpace
-/// [VarHandle][#VH_colorSpace] - [Getter][#colorSpace()] - [Setter][#colorSpace(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSurfaceFormatKHR {
-///     VkFormat format;
-///     VkColorSpaceKHR colorSpace;
-/// } VkSurfaceFormatKHR;
 /// ```
-public sealed class VkSurfaceFormatKHR extends Struct {
+/// struct VkSurfaceFormatKHR {
+///     (int) VkFormat format;
+///     (int) VkColorSpaceKHR colorSpace;
+/// };
+/// ```
+public sealed class VkSurfaceFormatKHR extends GroupType {
     /// The struct layout of `VkSurfaceFormatKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("format"),
         ValueLayout.JAVA_INT.withName("colorSpace")
     );
-    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `format`.
+    public static final long OFFSET_format = LAYOUT.byteOffset(PathElement.groupElement("format"));
+    /// The memory layout of `format`.
+    public static final MemoryLayout LAYOUT_format = LAYOUT.select(PathElement.groupElement("format"));
+    /// The [VarHandle] of `format` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
-    /// The [VarHandle] of `colorSpace` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `colorSpace`.
+    public static final long OFFSET_colorSpace = LAYOUT.byteOffset(PathElement.groupElement("colorSpace"));
+    /// The memory layout of `colorSpace`.
+    public static final MemoryLayout LAYOUT_colorSpace = LAYOUT.select(PathElement.groupElement("colorSpace"));
+    /// The [VarHandle] of `colorSpace` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_colorSpace = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSpace"));
 
     /// Creates `VkSurfaceFormatKHR` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkSurfaceFormatKHR extends Struct {
     /// Creates `VkSurfaceFormatKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceFormatKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceFormatKHR(segment); }
-
-    /// Creates `VkSurfaceFormatKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSurfaceFormatKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceFormatKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceFormatKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSurfaceFormatKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceFormatKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSurfaceFormatKHR` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkSurfaceFormatKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSurfaceFormatKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkSurfaceFormatKHR extends Struct {
     /// @return the allocated `VkSurfaceFormatKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfaceFormatKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSurfaceFormatKHR`
-    public static VkSurfaceFormatKHR allocInit(SegmentAllocator allocator, @CType("VkFormat") int format, @CType("VkColorSpaceKHR") int colorSpace) { return alloc(allocator).format(format).colorSpace(colorSpace); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkSurfaceFormatKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkFormat") int get_format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int format(MemorySegment segment, long index) { return (int) VH_format.get(segment, 0L, index); }
     /// {@return `format`}
-    /// @param segment the segment of the struct
-    public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkSurfaceFormatKHR.get_format(segment, 0L); }
-    /// {@return `format`}
-    public @CType("VkFormat") int format() { return VkSurfaceFormatKHR.get_format(this.segment()); }
+    public int format() { return format(this.segment(), 0L); }
     /// Sets `format` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, long index, @CType("VkFormat") int value) { VH_format.set(segment, 0L, index, value); }
-    /// Sets `format` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkSurfaceFormatKHR.set_format(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void format(MemorySegment segment, long index, int value) { VH_format.set(segment, 0L, index, value); }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceFormatKHR format(@CType("VkFormat") int value) { VkSurfaceFormatKHR.set_format(this.segment(), value); return this; }
+    public VkSurfaceFormatKHR format(int value) { format(this.segment(), 0L, value); return this; }
 
     /// {@return `colorSpace` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkColorSpaceKHR") int get_colorSpace(MemorySegment segment, long index) { return (int) VH_colorSpace.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int colorSpace(MemorySegment segment, long index) { return (int) VH_colorSpace.get(segment, 0L, index); }
     /// {@return `colorSpace`}
-    /// @param segment the segment of the struct
-    public static @CType("VkColorSpaceKHR") int get_colorSpace(MemorySegment segment) { return VkSurfaceFormatKHR.get_colorSpace(segment, 0L); }
-    /// {@return `colorSpace`}
-    public @CType("VkColorSpaceKHR") int colorSpace() { return VkSurfaceFormatKHR.get_colorSpace(this.segment()); }
+    public int colorSpace() { return colorSpace(this.segment(), 0L); }
     /// Sets `colorSpace` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_colorSpace(MemorySegment segment, long index, @CType("VkColorSpaceKHR") int value) { VH_colorSpace.set(segment, 0L, index, value); }
-    /// Sets `colorSpace` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_colorSpace(MemorySegment segment, @CType("VkColorSpaceKHR") int value) { VkSurfaceFormatKHR.set_colorSpace(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void colorSpace(MemorySegment segment, long index, int value) { VH_colorSpace.set(segment, 0L, index, value); }
     /// Sets `colorSpace` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfaceFormatKHR colorSpace(@CType("VkColorSpaceKHR") int value) { VkSurfaceFormatKHR.set_colorSpace(this.segment(), value); return this; }
+    public VkSurfaceFormatKHR colorSpace(int value) { colorSpace(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSurfaceFormatKHR].
     public static final class Buffer extends VkSurfaceFormatKHR {
@@ -171,22 +149,22 @@ public sealed class VkSurfaceFormatKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `format` at the given index}
-        /// @param index the index
-        public @CType("VkFormat") int formatAt(long index) { return VkSurfaceFormatKHR.get_format(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int formatAt(long index) { return format(this.segment(), index); }
         /// Sets `format` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkSurfaceFormatKHR.set_format(this.segment(), index, value); return this; }
+        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
         /// {@return `colorSpace` at the given index}
-        /// @param index the index
-        public @CType("VkColorSpaceKHR") int colorSpaceAt(long index) { return VkSurfaceFormatKHR.get_colorSpace(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int colorSpaceAt(long index) { return colorSpace(this.segment(), index); }
         /// Sets `colorSpace` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer colorSpaceAt(long index, @CType("VkColorSpaceKHR") int value) { VkSurfaceFormatKHR.set_colorSpace(this.segment(), index, value); return this; }
+        public Buffer colorSpaceAt(long index, int value) { colorSpace(this.segment(), index, value); return this; }
 
     }
 }

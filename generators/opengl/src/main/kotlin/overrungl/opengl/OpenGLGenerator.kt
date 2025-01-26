@@ -16,18 +16,17 @@
 
 package overrungl.opengl
 
-import com.palantir.javapoet.TypeName
 import org.w3c.dom.Element
-import org.w3c.dom.Node
-import org.w3c.dom.Text
 import overrungl.gen.*
+import overrungl.gen.file.DefinitionFile
+import overrungl.gen.file.functionDescriptor
+import overrungl.gen.file.registerDefType
+import overrungl.gen.file.unsigned_char_boolean
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
 
-// gl.xml updated: 2025/01/01
-
-private val recordingErrorType = mutableSetOf<String>()
+// gl.xml updated: 2025/01/26
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -57,240 +56,6 @@ val featureExtends = mapOf(
     "4.6" to "45",
 )
 
-private fun useStack(code: String): String =
-    "try (var __stack = MemoryStack.pushLocal()) { $code }"
-
-enum class GLDataType(
-    val stackAlloc: String,
-    val segmentGet: String,
-) {
-    BOOLEAN("__stack.bytes((byte) 0)", "get(ValueLayout.JAVA_BOOLEAN, 0)"),
-    INTEGER("__stack.ints(0)", "get(ValueLayout.JAVA_INT, 0)"),
-    LONG("__stack.longs(0)", "get(ValueLayout.JAVA_LONG, 0)"),
-    FLOAT("__stack.floats(0)", "get(ValueLayout.JAVA_FLOAT, 0)"),
-    DOUBLE("__stack.doubles(0)", "get(ValueLayout.JAVA_DOUBLE, 0)"),
-}
-
-fun featureCustomCode(number: String): String? {
-    return when (number) {
-        "1.0" -> {
-            fun GetTypev(type: GLDataType, name: String, param: String): String =
-                useStack(
-                    "var p = ${type.stackAlloc}; $name($param, p); return p.${type.segmentGet};"
-                )
-            """
-                public boolean GetBooleanv(@CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.BOOLEAN,
-                    "GetBooleanv",
-                    "pname"
-                )
-            } }
-                public double GetDoublev(@CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.DOUBLE,
-                    "GetDoublev",
-                    "pname"
-                )
-            } }
-                public float GetFloatv(@CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.FLOAT,
-                    "GetFloatv",
-                    "pname"
-                )
-            } }
-                public int GetIntegerv(@CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.INTEGER,
-                    "GetIntegerv",
-                    "pname"
-                )
-            } }
-                public String GetString_(@CType("GLenum") int pname) { return Unmarshal.unmarshalAsString(GetString(pname)); }
-                public float GetTexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.FLOAT,
-                    "GetTexParameterfv",
-                    "target, pname"
-                )
-            } }
-                public int GetTexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.INTEGER,
-                    "GetTexParameteriv",
-                    "target, pname"
-                )
-            } }
-                public float GetTexLevelParameterfv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.FLOAT,
-                    "GetTexLevelParameterfv",
-                    "target, level, pname"
-                )
-            } }
-                public int GetTexLevelParameteriv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname) { ${
-                GetTypev(
-                    GLDataType.INTEGER,
-                    "GetTexLevelParameteriv",
-                    "target, level, pname"
-                )
-            } }
-            """.trimIndent()
-        }
-
-        "1.1" -> """
-            public void DeleteTextures(int texture) { ${useStack("DeleteTextures(1, __stack.ints(texture));")} }
-            public int GenTextures() { ${useStack("var p = __stack.ints(0); GenTextures(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-        """.trimIndent()
-
-        "1.5" -> """
-            public int GenQueries() { ${useStack("var p = __stack.ints(0); GenQueries(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public void DeleteQueries(int id) { ${useStack("DeleteQueries(1, __stack.ints(id));")} }
-            public int GetQueryiv(@CType("GLenum") int target, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetQueryiv(target, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public int GetQueryObjectiv(@CType("GLuint") int id, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetQueryObjectiv(id, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public int GetQueryObjectuiv(@CType("GLuint") int id, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetQueryObjectuiv(id, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public void DeleteBuffers(int buffer) { ${useStack("DeleteBuffers(1, __stack.ints(buffer));")} }
-            public int GenBuffers() { ${useStack("var p = __stack.ints(0); GenBuffers(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public void BufferData(@CType("GLenum") int target, @CType("const void *") MemorySegment data, @CType("GLenum") int usage) { BufferData(target, data.byteSize(), data, usage); }
-            public int GetBufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetBufferParameteriv(target, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-        """.trimIndent()
-
-        "2.0" -> """
-            public void BindAttribLocation(@CType("GLuint") int program, @CType("GLuint") int index, @CType("const GLchar *") String name) { ${
-            useStack(
-                "BindAttribLocation(program, index, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public int GetAttribLocation(@CType("GLuint") int program, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetAttribLocation(program, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public int GetProgramiv(@CType("GLuint") int program, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetProgramiv(program, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public String GetProgramInfoLog(@CType("GLuint") int program) { ${
-            useStack(
-                "int sz = GetProgramiv(program, GL_INFO_LOG_LENGTH); if (sz == 0) return null; var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetProgramInfoLog(program, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalAsString(p);"
-            )
-        } }
-            public int GetShaderiv(@CType("GLuint") int shader, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetShaderiv(shader, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public String GetShaderInfoLog(@CType("GLuint") int shader) { ${
-            useStack(
-                "int sz = GetShaderiv(shader, GL_INFO_LOG_LENGTH); if (sz == 0) return null; var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetShaderInfoLog(shader, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalAsString(p);"
-            )
-        } }
-            public int GetUniformLocation(@CType("GLuint") int program, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetUniformLocation(program, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public void ShaderSource(@CType("GLuint") int shader, String string) { ${useStack("ShaderSource(shader, 1, __stack.addresses(Marshal.marshal(__stack, string)), MemorySegment.NULL);")} }
-        """.trimIndent()
-
-        "3.0" -> """
-            public boolean GetBooleani_v(@CType("GLenum") int target, @CType("GLuint") int index) { ${useStack("var p = ${GLDataType.BOOLEAN.stackAlloc}; GetBooleani_v(target, index, p); return p.${GLDataType.BOOLEAN.segmentGet};")} }
-            public int GetIntegeri_v(@CType("GLenum") int target, @CType("GLuint") int index) { ${useStack("var p = ${GLDataType.INTEGER.stackAlloc}; GetIntegeri_v(target, index, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public void BindFragDataLocation(@CType("GLuint") int program, @CType("GLuint") int color, @CType("const GLchar *") String name) { ${
-            useStack(
-                "BindFragDataLocation(program, color, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public int GetFragDataLocation(@CType("GLuint") int program, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetFragDataLocation(program, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public String GetStringi_(@CType("GLenum") int name, @CType("GLuint") int index) { return Unmarshal.unmarshalAsString(GetStringi(name, index)); }
-            public void DeleteRenderbuffers(int renderbuffer) { ${useStack("DeleteRenderbuffers(1, __stack.ints(renderbuffer));")} }
-            public int GenRenderbuffers() { ${useStack("var p = __stack.ints(0); GenRenderbuffers(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public int GetRenderbufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname) { ${
-            useStack(
-                "var p = __stack.ints(0); GetRenderbufferParameteriv(target, pname, p); return p.${GLDataType.INTEGER.segmentGet};"
-            )
-        } }
-            public void DeleteFramebuffers(int framebuffer) { ${useStack("DeleteFramebuffers(1, __stack.ints(framebuffer));")} }
-            public int GenFramebuffers() { ${useStack("var p = __stack.ints(0); GenFramebuffers(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public int GetFramebufferAttachmentParameteriv(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLenum") int pname) { ${
-            useStack(
-                "var p = __stack.ints(0); GetFramebufferAttachmentParameteriv(target, attachment, pname, p); return p.${GLDataType.INTEGER.segmentGet};"
-            )
-        } }
-            public void DeleteVertexArrays(int array) { ${useStack("DeleteVertexArrays(1, __stack.ints(array));")} }
-            public int GenVertexArrays() { ${useStack("var p = __stack.ints(0); GenVertexArrays(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-        """.trimIndent()
-
-        "3.2" -> """
-            public long GetInteger64i_v(@CType("GLenum") int target, @CType("GLuint") int index) { ${useStack("var p = __stack.longs(0); GetInteger64i_v(target, index, p); return p.${GLDataType.LONG.segmentGet};")} }
-            public long GetBufferParameteri64v(@CType("GLenum") int target, @CType("GLenum") int pname) { ${useStack("var p = __stack.longs(0); GetBufferParameteri64v(target, pname, p); return p.${GLDataType.LONG.segmentGet};")} }
-        """.trimIndent()
-
-        "3.3" -> """
-            public int GetFragDataIndex(@CType("GLuint") int program, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetFragDataIndex(program, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public int GenSamplers() { ${useStack("var p = __stack.ints(0); GenSamplers(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public void DeleteSamplers(int sampler) { ${useStack("DeleteSamplers(1, __stack.ints(sampler));")} }
-        """.trimIndent()
-
-        "4.0" -> """
-            public int GetSubroutineUniformLocation(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetSubroutineUniformLocation(program, shadertype, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public int GetSubroutineIndex(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("const GLchar *") String name) { ${
-            useStack(
-                "return GetSubroutineIndex(program, shadertype, Marshal.marshal(__stack, name));"
-            )
-        } }
-            public void DeleteTransformFeedbacks(int id) { ${useStack("DeleteTransformFeedbacks(1, __stack.ints(id));")} }
-            public int GenTransformFeedbacks() { ${useStack("var p = __stack.ints(0); GenTransformFeedbacks(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-        """.trimIndent()
-
-        "4.1" -> """
-            public void DeleteProgramPipelines(int pipeline) { ${useStack("DeleteProgramPipelines(1, __stack.ints(pipeline));")} }
-            public int GenProgramPipelines() { ${useStack("var p = __stack.ints(0); GenProgramPipelines(1, p); return p.${GLDataType.INTEGER.segmentGet};")} }
-            public float GetFloati_v(@CType("GLenum") int target, @CType("GLuint") int index) { ${useStack("var p = ${GLDataType.FLOAT.stackAlloc}; GetFloati_v(target, index, p); return p.${GLDataType.FLOAT.segmentGet};")} }
-            public double GetDoublei_v(@CType("GLenum") int target, @CType("GLuint") int index) { ${useStack("var p = ${GLDataType.DOUBLE.stackAlloc}; GetDoublei_v(target, index, p); return p.${GLDataType.DOUBLE.segmentGet};")} }
-        """.trimIndent()
-
-        "4.3" -> """
-            public void DebugMessageCallback(Arena arena, @CType("GLDEBUGPROC") GLDebugProc callback, @CType("const void *") MemorySegment userParam) { DebugMessageCallback(Marshal.marshal(arena, callback), userParam); }
-        """.trimIndent()
-
-        "4.5" -> {
-            fun Create(name: String, target: Boolean = false) =
-                "public int Create$name(${if (target) """@CType("GLenum") int target""" else ""}) { ${useStack("var p = __stack.ints(0); Create$name(${if (target) "target, " else ""}1, p); return p.${GLDataType.INTEGER.segmentGet};")} }"
-            """
-                ${Create("TransformFeedbacks")}
-                ${Create("Buffers")}
-                public void NamedBufferData(@CType("GLuint") int buffer, @CType("const void *") MemorySegment data, @CType("GLenum") int usage) { NamedBufferData(buffer, data.byteSize(), data, usage); }
-                public int GetNamedBufferParameteriv(@CType("GLuint") int buffer, @CType("GLenum") int pname) { ${
-                useStack(
-                    "var p = ${GLDataType.INTEGER.stackAlloc}; GetNamedBufferParameteriv(buffer, pname, p); return p.${GLDataType.INTEGER.segmentGet};"
-                )
-            } }
-                public long GetNamedBufferParameteri64v(@CType("GLuint") int buffer, @CType("GLenum") int pname) { ${
-                useStack(
-                    "var p = ${GLDataType.LONG.stackAlloc}; GetNamedBufferParameteri64v(buffer, pname, p); return p.${GLDataType.LONG.segmentGet};"
-                )
-            } }
-                ${Create("Framebuffers")}
-                ${Create("Renderbuffers")}
-                ${Create("Textures", true)}
-                ${Create("VertexArrays")}
-                ${Create("Samplers")}
-                ${Create("ProgramPipelines")}
-                ${Create("Queries", true)}
-            """.trimIndent()
-        }
-
-        else -> null
-    }
-}
-
 fun isAOlder(a: String, b: String): Boolean {
     val splitA = a.split('.')
     val splitB = b.split('.')
@@ -303,182 +68,9 @@ fun isAOlder(a: String, b: String): Boolean {
     return minorA < minorB
 }
 
-fun readTypeFromNode(root: Node, dst: MutableList<GLTypeRef>): String? {
-    var name: String? = null
-    for (i in 0 until root.childNodes.length) {
-        when (val node = root.childNodes.item(i)) {
-            is Text -> {
-                if (node.wholeText.isNotBlank()) {
-                    dst.add(GLTypeRefLiteral(node.wholeText.trim()))
-                }
-            }
-
-            is Element -> {
-                when (node.tagName) {
-                    "ptype" -> dst.add(GLTypeRefPType(node.textContent.trim()))
-                    "name" -> name = node.textContent.trim()
-                }
-            }
-        }
-    }
-    return name
-}
-
-val typeMap = mutableMapOf<String, CustomTypeSpec>().also {
-    it["void"] = void
-    it["void *"] = void_ptr
-    it["void **"] = address c "void **"
-    it["const void **"] = address c "const void **"
-    it["const void *const*"] = address c "const void *const*"
-
-    it["GLhandleARB *"] = address c "GLhandleARB *"
-    it["GLenum *"] = jint_array c "GLenum *"
-    it["GLfixed *"] = jint_array c "GLfixed *"
-    it["GLsizei *"] = jint_array c "GLsizei *"
-    it["GLboolean *"] = address c "GLboolean *"
-    it["GLchar *"] = address c "GLchar *"
-    it["GLcharARB *"] = address c "GLcharARB *"
-    it["GLubyte *"] = jbyte_array c "GLubyte *"
-    it["GLushort *"] = jshort_array c "GLushort *"
-    it["GLint *"] = jint_array c "GLint *"
-    it["GLuint *"] = jint_array c "GLuint *"
-    it["GLint64 *"] = jlong_array c "GLint64 *"
-    it["GLuint64 *"] = jlong_array c "GLuint64 *"
-    it["GLint64EXT *"] = jlong_array c "GLint64EXT *"
-    it["GLuint64EXT *"] = jlong_array c "GLuint64EXT *"
-    it["GLfloat *"] = jfloat_array c "GLfloat *"
-    it["GLdouble *"] = jdouble_array c "GLdouble *"
-
-    it["const GLenum *"] = jint_array c "const GLenum *"
-    it["const GLfixed *"] = jint_array c "const GLfixed *"
-    it["const GLsizei *"] = jint_array c "const GLsizei *"
-    it["const GLchar *const*"] = address c "const GLchar *const*"
-    it["const GLcharARB *"] = address c "const GLcharARB *"
-    it["const GLcharARB **"] = address c "const GLcharARB **"
-    it["const GLboolean *"] = address c "const GLboolean *"
-    it["const GLboolean **"] = address c "const GLboolean **"
-    it["const GLbyte *"] = jbyte_array c "const GLbyte *"
-    it["const GLubyte *"] = jbyte_array c "const GLubyte *"
-    it["const GLshort *"] = jshort_array c "const GLshort *"
-    it["const GLushort *"] = jshort_array c "const GLushort *"
-    it["const GLhalfNV *"] = jshort_array c "const GLhalfNV *"
-    it["const GLint *"] = jint_array c "const GLint *"
-    it["const GLuint *"] = jint_array c "const GLuint *"
-    it["const GLint64 *"] = jlong_array c "const GLint64 *"
-    it["const GLuint64 *"] = jlong_array c "const GLuint64 *"
-    it["const GLint64EXT *"] = jlong_array c "const GLint64EXT *"
-    it["const GLuint64EXT *"] = jlong_array c "const GLuint64EXT *"
-    it["const GLintptr *"] = jlong_array c "const GLintptr *"
-    it["const GLsizeiptr *"] = jlong_array c "const GLsizeiptr *"
-    it["const GLvdpauSurfaceNV *"] = jlong_array c "const GLvdpauSurfaceNV *"
-    it["const GLfloat *"] = jfloat_array c "const GLfloat *"
-    it["const GLdouble *"] = jdouble_array c "const GLdouble *"
-    it["const GLclampf *"] = jfloat_array c "const GLclampf *"
-
-    it["struct _cl_context *"] = address c "struct _cl_context *"
-    it["struct _cl_event *"] = address c "struct _cl_event *"
-}
-
-fun ptype(type: CustomTypeSpec, name: String): CustomTypeSpec {
-    val spec = type c name
-    typeMap[name] = spec
-    return spec
-}
-
-fun computeRawType(type: GLType): String = type.tokens.joinToString(" ")
-fun computePType(type: GLType): CustomTypeSpec {
-    val rawType = computeRawType(type)
-    val res = typeMap[rawType]
-    if (res == null) {
-        recordingErrorType.add(rawType)
-        return int
-    } else {
-        return res
-    }
-}
-
-fun computeFunctionDescriptor(command: GLCommand): String {
-    val returnTypeSpec = computePType(command.type)
-    val paramTypeSpecs = command.params.map { computePType(it.type) }
-    return buildString {
-        append("FunctionDescriptor.of")
-        if (returnTypeSpec.carrier == TypeName.VOID) {
-            append("Void(")
-        } else {
-            append("(")
-            append(returnTypeSpec.layout!!)
-            if (paramTypeSpecs.isNotEmpty()) {
-                append(", ")
-            }
-        }
-        append(paramTypeSpecs.joinToString(", ") { it.layout!! })
-        append(")")
-    }
-}
-
-val khronos_int8_t = ptype(jbyte, "khronos_int8_t")
-val khronos_uint8_t = ptype(jbyte, "khronos_uint8_t")
-val khronos_int16_t = ptype(jshort, "khronos_int16_t")
-val khronos_uint16_t = ptype(jshort, "khronos_uint16_t")
-val khronos_int32_t = ptype(jint, "khronos_int32_t")
-val khronos_uint32_t = ptype(jint, "khronos_uint32_t")
-val khronos_int64_t = ptype(jlong, "khronos_int64_t")
-val khronos_uint64_t = ptype(jlong, "khronos_uint64_t")
-val khronos_intptr_t = ptype(jlong, "khronos_intptr_t")
-val khronos_uintptr_t = ptype(jlong, "khronos_uintptr_t")
-val khronos_ssize_t = ptype(jlong, "khronos_ssize_t")
-val khronos_usize_t = ptype(jlong, "khronos_usize_t")
-val khronos_float_t = ptype(jfloat, "khronos_float_t")
-
-val GLenum = ptype(uint, "GLenum")
-val GLboolean = ptype(/*uchar*/jboolean, "GLboolean")
-val GLbitfield = ptype(uint, "GLbitfield")
-val GLbyte = ptype(khronos_int8_t, "GLbyte")
-val GLubyte = ptype(khronos_uint8_t, "GLubyte")
-val GLshort = ptype(khronos_int16_t, "GLshort")
-val GLushort = ptype(khronos_uint16_t, "GLushort")
-val GLint = ptype(int, "GLint")
-val GLuint = ptype(uint, "GLuint")
-val GLclampx = ptype(khronos_int32_t, "GLclampx")
-val GLsizei = ptype(int, "GLsizei")
-val GLfloat = ptype(khronos_float_t, "GLfloat")
-val GLclampf = ptype(khronos_float_t, "GLclampf")
-val GLdouble = ptype(double, "GLdouble")
-val GLclampd = ptype(double, "GLclampd")
-val GLeglClientBufferEXT = ptype(address, "GLeglClientBufferEXT")
-val GLeglImageOES = ptype(address, "GLeglImageOES")
-val GLchar = ptype(char, "GLchar")
-val GLcharARB = ptype(char, "GLcharARB")
-
-/*
-   Note: this is defined as void* on __APPLE__
- */
-val GLhandleARB = ptype(uint, "GLhandleARB")
-
-val GLhalf = ptype(khronos_uint16_t, "GLhalf")
-val GLhalfARB = ptype(khronos_uint16_t, "GLhalfARB")
-val GLfixed = ptype(khronos_int32_t, "GLfixed")
-val GLintptr = ptype(khronos_intptr_t, "GLintptr")
-val GLintptrARB = ptype(khronos_intptr_t, "GLintptrARB")
-val GLsizeiptr = ptype(khronos_ssize_t, "GLsizeiptr")
-val GLsizeiptrARB = ptype(khronos_ssize_t, "GLsizeiptrARB")
-val GLint64 = ptype(khronos_int64_t, "GLint64")
-val GLint64EXT = ptype(khronos_int64_t, "GLint64EXT")
-val GLuint64 = ptype(khronos_uint64_t, "GLuint64")
-val GLuint64EXT = ptype(khronos_uint64_t, "GLuint64EXT")
-val GLsync = ptype(address, "GLsync")
-val GLDEBUGPROC = ptype(generateUpcallType(openglPackage, "GLDebugProc"), "GLDEBUGPROC")
-val GLDEBUGPROCARB = ptype(GLDEBUGPROC, "GLDEBUGPROCARB")
-val GLDEBUGPROCKHR = ptype(GLDEBUGPROC, "GLDEBUGPROCKHR")
-val GLDEBUGPROCAMD = ptype(generateUpcallType(extPackage("AMD"), "GLDebugProcAMD"), "GLDEBUGPROCAMD")
-val GLhalfNV = ptype(ushort, "GLhalfNV")
-val GLvdpauSurfaceNV = ptype(GLintptr, "GLvdpauSurfaceNV")
-val GLVULKANPROCNV = ptype(generateUpcallType(extPackage("NV"), "GLVulkanProcNV"), "GLVULKANPROCNV")
-
-val const_GLchar_ptr = ptype(address, "const GLchar *")
-val const_void_ptr = ptype(address, "const void *")
-
 fun main() {
+    registerDefType("GLboolean", unsigned_char_boolean.copy(originalName = "GLboolean"))
+
     val xmlFactory = DocumentBuilderFactory.newInstance()
     val xmlBuilder = xmlFactory.newDocumentBuilder()
     val document = ClassLoader.getSystemResourceAsStream("gl.xml")!!.use { xmlBuilder.parse(it) }
@@ -504,7 +96,9 @@ fun main() {
     }
 
     // commands
-    val commandMap = mutableMapOf<String, GLCommand>()
+    val commandsFileBuilder = StringBuilder()
+    commandsFileBuilder.appendLine(GENERATOR_NOTICE)
+    commandsFileBuilder.appendLine("""import "upcall.gen";""")
     val aliasMap = mutableMapOf<String, MutableList<String>>()
     root.getElementsByTagName("commands").also {
         for (i in 0 until it.length) {
@@ -514,18 +108,19 @@ fun main() {
                         if (command is Element && command.tagName == "command") {
                             // type and name
                             val proto = command.getElementsByTagName("proto").item(0) as Element
-                            val type = mutableListOf<GLTypeRef>()
-                            val name = readTypeFromNode(proto, type)
+                            val name = (proto.getElementsByTagName("name").item(0) as Element).textContent
+                            commandsFileBuilder.append("fn opt ${proto.textContent}(")
 
                             // parameters
-                            val paramsList = mutableListOf<GLCommandParam>()
                             val params = command.getElementsByTagName("param")
                             for (i1 in 0 until params.length) {
                                 val param = params.item(i1) as Element
-                                val paramType = mutableListOf<GLTypeRef>()
-                                val paramName = readTypeFromNode(param, paramType)
-                                paramsList.add(GLCommandParam(GLType(paramType), paramName!!))
+                                if (i1 > 0) {
+                                    commandsFileBuilder.append(", ")
+                                }
+                                commandsFileBuilder.append(param.textContent)
                             }
+                            commandsFileBuilder.appendLine(");")
 
                             // alias
                             val aliases = command.getElementsByTagName("alias")
@@ -534,13 +129,18 @@ fun main() {
                                 aliasMap.computeIfAbsent(alias.getAttribute("name")) { mutableListOf() }
                                     .add(name!!)
                             }
-
-                            commandMap[name!!] = GLCommand(GLType(type), name, paramsList)
                         }
                     }
                 }
             }
         }
+    }
+    val commandsFile: DefinitionFile
+    try {
+        commandsFile = DefinitionFile(rawSourceString = commandsFileBuilder.toString())
+    } catch (e: Exception) {
+        println(commandsFileBuilder)
+        throw e
     }
 
     // features
@@ -616,25 +216,17 @@ fun main() {
     }
 
     fun InstanceDowncall.addCommand(command: GLRequireCommand) {
-        val get = commandMap[command.name]!!
-
         // descriptor
-        descriptorFields.add(
-            InstanceDowncallField(
-                modifier = "public static final",
-                type = "FunctionDescriptor",
-                name = "FD_${get.name}",
-                value = computeFunctionDescriptor(get)
-            )
-        )
+        val descriptor = functionDescriptor(commandsFile.interpreter.functions()[command.name] ?: error(command.name))
+        nativeImageDowncallDescriptors.add(descriptor)
 
         // handle
         handleFields.add(
             InstanceDowncallField(
                 modifier = "public static final",
                 type = "MethodHandle",
-                name = "MH_${get.name}",
-                value = "RuntimeHelper.downcall(Descriptors.FD_${get.name})"
+                name = "MH_${command.name}",
+                value = "RuntimeHelper.downcall($descriptor)"
             )
         )
 
@@ -643,18 +235,12 @@ fun main() {
             InstanceDowncallField(
                 modifier = "public final",
                 type = "MemorySegment",
-                name = "PFN_${get.name}"
+                name = "PFN_${command.name}"
             )
         )
 
-        method(
-            InstanceDowncallMethod(
-                returnType = computePType(get.type),
-                name = get.name.substring(2),
-                params = get.params.map { InstanceDowncallParameter(computePType(it.type), it.name) },
-                entrypoint = get.name
-            )
-        )
+        method((commandsFile.interpreter.functions()[command.name] ?: error(command.name))
+            .copy(name = command.name.substring(2), entrypoint = command.name))
     }
 
     // core
@@ -674,9 +260,8 @@ fun main() {
                         if (i > 0) {
                             appendLine()
                         }
-                        val get = commandMap[command.name]!!
-                        append("""PFN_${get.name} = func.invoke("${get.name}"""")
-                        aliasMap[get.name]?.forEach { append(""", "$it"""") }
+                        append("""PFN_${command.name} = func.invoke("${command.name}"""")
+                        aliasMap[command.name]?.forEach { append(""", "$it"""") }
                         append(""");""")
                         i++
                         thisFeatureAddedCommand.add(command.name)
@@ -689,7 +274,6 @@ fun main() {
                 }
                 append("this.handles = new Handles(func);")
             }
-            customCode = featureCustomCode(feature.number)
 
             feature.coreForEach(removeEnums, GLRequire::enums) {
                 if (it.name !in featureAddedEnums) {
@@ -773,9 +357,8 @@ fun main() {
                                     if (index > 0) {
                                         appendLine()
                                     }
-                                    val get = commandMap[command.name]!!
-                                    append("""PFN_${get.name} = func.invoke("${get.name}"""")
-                                    aliasMap.entries.find { it.value.contains(get.name) }?.key?.also { append(""", "$it"""") }
+                                    append("""PFN_${command.name} = func.invoke("${command.name}"""")
+                                    aliasMap.entries.find { it.value.contains(command.name) }?.key?.also { append(""", "$it"""") }
                                     append(");")
                                 }
                             }
@@ -811,6 +394,7 @@ fun main() {
                     |
                     |    requires transitive overrungl.core;
                     |    requires static org.jetbrains.annotations;
+                    |    requires org.graalvm.nativeimage;
                 """.trimMargin()
             )
             appendLine("}")
@@ -870,98 +454,13 @@ fun main() {
         appendLine("}")
     })
 
-    upcall()
+    DefinitionFile("struct.gen").compileStructs(openglPackage)
+    DefinitionFile("upcall.gen").compileUpcalls(openglPackage)
 
-    if (recordingErrorType.isNotEmpty()) {
-        System.err.println("Recorded error types")
-        recordingErrorType.forEach {
-            System.err.println(it)
-        }
-    }
-}
-
-// Define special upcall
-fun upcall() {
-    Upcall(openglPackage, "GLDebugProc") {
-        interfaceMethod = "invoke"(
-            void,
-            GLenum("source"),
-            GLenum("type"),
-            GLuint("id"),
-            GLenum("severity"),
-            (string_u8 c const_GLchar_ptr.cType)("message"),
-            const_void_ptr("userParam")
-        )
-        targetMethod = "invoke"(
-            void,
-            GLenum("source"),
-            GLenum("type"),
-            GLuint("id"),
-            GLenum("severity"),
-            GLsizei("length"),
-            const_GLchar_ptr("message"),
-            const_void_ptr("userParam"),
-            code = "invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message), userParam);"
-        )
-        wrapperCode = """
-            return (source, type, id, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
-                var seg = Marshal.marshal(stack, message);
-                invoke(stub, source, type, id, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
-            } };
-        """.trimIndent()
-    }
-
-    Upcall(extPackage("AMD"), "GLDebugProcAMD") {
-        interfaceMethod = "invoke"(
-            void,
-            GLuint("id"),
-            GLenum("category"),
-            GLenum("severity"),
-            (string_u8 c const_GLchar_ptr.cType)("message"),
-            void_ptr("userParam")
-        )
-        targetMethod = "invoke"(
-            void,
-            GLuint("id"),
-            GLenum("category"),
-            GLenum("severity"),
-            GLsizei("length"),
-            const_GLchar_ptr("message"),
-            void_ptr("userParam"),
-            code = "invoke(id, category, severity, Unmarshal.unmarshalAsString(message), userParam);"
-        )
-        wrapperCode = """
-            return (id, category, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
-                var seg = Marshal.marshal(stack, message);
-                invoke(stub, id, category, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
-            } };
-        """.trimIndent()
-    }
-
-    Upcall(extPackage("NV"), "GLVulkanProcNV") {
-        targetMethod = "invoke"(void)
-    }
+    writeNativeImageRegistration(openglPackage)
 }
 
 data class GLEnum(val name: String, val value: String, val type: String?)
-
-sealed interface GLTypeRef
-data class GLType(val tokens: List<GLTypeRef>)
-
-data class GLTypeRefLiteral(val text: String) : GLTypeRef {
-    override fun toString(): String {
-        return text
-    }
-}
-
-data class GLTypeRefPType(val name: String) : GLTypeRef {
-    override fun toString(): String {
-        return name
-    }
-}
-
-data class GLCommandParam(val type: GLType, val name: String)
-data class GLCommand(val type: GLType, val name: String, val params: List<GLCommandParam>)
 
 interface GLRequireEntry {
     val name: String

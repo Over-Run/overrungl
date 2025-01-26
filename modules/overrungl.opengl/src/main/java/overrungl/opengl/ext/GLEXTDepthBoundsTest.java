@@ -19,8 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -28,15 +26,8 @@ public final class GLEXTDepthBoundsTest {
     public static final int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
     public static final int GL_DEPTH_BOUNDS_EXT = 0x8891;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glDepthBoundsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDepthBoundsEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glDepthBoundsEXT = RuntimeHelper.downcall(Descriptors.FD_glDepthBoundsEXT);
+        public static final MethodHandle MH_glDepthBoundsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
         public final MemorySegment PFN_glDepthBoundsEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDepthBoundsEXT = func.invoke("glDepthBoundsEXT");
@@ -47,10 +38,13 @@ public final class GLEXTDepthBoundsTest {
         this.handles = new Handles(func);
     }
 
-    public void DepthBoundsEXT(@CType("GLclampd") double zmin, @CType("GLclampd") double zmax) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
+    /// ```
+    /// void glDepthBoundsEXT((double) GLclampd zmin, (double) GLclampd zmax);
+    /// ```
+    public void DepthBoundsEXT(double zmin, double zmax) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
         try { Handles.MH_glDepthBoundsEXT.invokeExact(handles.PFN_glDepthBoundsEXT, zmin, zmax); }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DepthBoundsEXT", e); }
     }
 
 }

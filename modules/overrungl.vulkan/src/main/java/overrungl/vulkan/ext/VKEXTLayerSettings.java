@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTLayerSettings {
     public static final int VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0;
@@ -35,6 +30,6 @@ public final class VKEXTLayerSettings {
     public static final String VK_EXT_LAYER_SETTINGS_EXTENSION_NAME = "VK_EXT_layer_settings";
     public static final int VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT = 1000496000;
 
-    private VKEXTLayerSettings() { }
+    private VKEXTLayerSettings() {}
 
 }

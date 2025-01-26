@@ -19,25 +19,14 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTFramebufferBlitLayers {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlitFramebufferLayersEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glBlitFramebufferLayerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlitFramebufferLayersEXT,
-            FD_glBlitFramebufferLayerEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlitFramebufferLayersEXT = RuntimeHelper.downcall(Descriptors.FD_glBlitFramebufferLayersEXT);
-        public static final MethodHandle MH_glBlitFramebufferLayerEXT = RuntimeHelper.downcall(Descriptors.FD_glBlitFramebufferLayerEXT);
+        public static final MethodHandle MH_glBlitFramebufferLayersEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlitFramebufferLayerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlitFramebufferLayersEXT;
         public final MemorySegment PFN_glBlitFramebufferLayerEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -50,16 +39,22 @@ public final class GLEXTFramebufferBlitLayers {
         this.handles = new Handles(func);
     }
 
-    public void BlitFramebufferLayersEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlitFramebufferLayersEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayersEXT");
+    /// ```
+    /// void glBlitFramebufferLayersEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
+    /// ```
+    public void BlitFramebufferLayersEXT(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebufferLayersEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayersEXT");
         try { Handles.MH_glBlitFramebufferLayersEXT.invokeExact(handles.PFN_glBlitFramebufferLayersEXT, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayersEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlitFramebufferLayersEXT", e); }
     }
 
-    public void BlitFramebufferLayerEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int srcLayer, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLint") int dstLayer, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlitFramebufferLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayerEXT");
+    /// ```
+    /// void glBlitFramebufferLayerEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint srcLayer, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (int) GLint dstLayer, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
+    /// ```
+    public void BlitFramebufferLayerEXT(int srcX0, int srcY0, int srcX1, int srcY1, int srcLayer, int dstX0, int dstY0, int dstX1, int dstY1, int dstLayer, int mask, int filter) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebufferLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayerEXT");
         try { Handles.MH_glBlitFramebufferLayerEXT.invokeExact(handles.PFN_glBlitFramebufferLayerEXT, srcX0, srcY0, srcX1, srcY1, srcLayer, dstX0, dstY0, dstX1, dstY1, dstLayer, mask, filter); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayerEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlitFramebufferLayerEXT", e); }
     }
 
 }

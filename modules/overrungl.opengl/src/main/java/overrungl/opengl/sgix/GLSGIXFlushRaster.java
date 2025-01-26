@@ -19,22 +19,13 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLSGIXFlushRaster {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFlushRasterSGIX = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFlushRasterSGIX
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFlushRasterSGIX = RuntimeHelper.downcall(Descriptors.FD_glFlushRasterSGIX);
+        public static final MethodHandle MH_glFlushRasterSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFlushRasterSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFlushRasterSGIX = func.invoke("glFlushRasterSGIX");
@@ -45,10 +36,13 @@ public final class GLSGIXFlushRaster {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glFlushRasterSGIX();
+    /// ```
     public void FlushRasterSGIX() {
-        if (Unmarshal.isNullPointer(handles.PFN_glFlushRasterSGIX)) throw new SymbolNotFoundError("Symbol not found: glFlushRasterSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushRasterSGIX)) throw new SymbolNotFoundError("Symbol not found: glFlushRasterSGIX");
         try { Handles.MH_glFlushRasterSGIX.invokeExact(handles.PFN_glFlushRasterSGIX); }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushRasterSGIX", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FlushRasterSGIX", e); }
     }
 
 }

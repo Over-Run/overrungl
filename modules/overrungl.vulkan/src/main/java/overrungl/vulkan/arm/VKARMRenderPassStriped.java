@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.arm;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKARMRenderPassStriped {
     public static final int VK_ARM_RENDER_PASS_STRIPED_SPEC_VERSION = 1;
@@ -31,6 +26,6 @@ public final class VKARMRenderPassStriped {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM = 1000424003;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM = 1000424004;
 
-    private VKARMRenderPassStriped() { }
+    private VKARMRenderPassStriped() {}
 
 }

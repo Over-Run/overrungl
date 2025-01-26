@@ -15,55 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### conservativeRasterizationMode
-/// [VarHandle][#VH_conservativeRasterizationMode] - [Getter][#conservativeRasterizationMode()] - [Setter][#conservativeRasterizationMode(int)]
-/// ### extraPrimitiveOverestimationSize
-/// [VarHandle][#VH_extraPrimitiveOverestimationSize] - [Getter][#extraPrimitiveOverestimationSize()] - [Setter][#extraPrimitiveOverestimationSize(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
-///     VkConservativeRasterizationModeEXT conservativeRasterizationMode;
-///     float extraPrimitiveOverestimationSize;
-/// } VkPipelineRasterizationConservativeStateCreateInfoEXT;
 /// ```
-public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extends Struct {
+/// struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
+///     (int) VkConservativeRasterizationModeEXT conservativeRasterizationMode;
+///     float extraPrimitiveOverestimationSize;
+/// };
+/// ```
+public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extends GroupType {
     /// The struct layout of `VkPipelineRasterizationConservativeStateCreateInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("conservativeRasterizationMode"),
         ValueLayout.JAVA_FLOAT.withName("extraPrimitiveOverestimationSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `conservativeRasterizationMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `conservativeRasterizationMode`.
+    public static final long OFFSET_conservativeRasterizationMode = LAYOUT.byteOffset(PathElement.groupElement("conservativeRasterizationMode"));
+    /// The memory layout of `conservativeRasterizationMode`.
+    public static final MemoryLayout LAYOUT_conservativeRasterizationMode = LAYOUT.select(PathElement.groupElement("conservativeRasterizationMode"));
+    /// The [VarHandle] of `conservativeRasterizationMode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_conservativeRasterizationMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("conservativeRasterizationMode"));
-    /// The [VarHandle] of `extraPrimitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `extraPrimitiveOverestimationSize`.
+    public static final long OFFSET_extraPrimitiveOverestimationSize = LAYOUT.byteOffset(PathElement.groupElement("extraPrimitiveOverestimationSize"));
+    /// The memory layout of `extraPrimitiveOverestimationSize`.
+    public static final MemoryLayout LAYOUT_extraPrimitiveOverestimationSize = LAYOUT.select(PathElement.groupElement("extraPrimitiveOverestimationSize"));
+    /// The [VarHandle] of `extraPrimitiveOverestimationSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_extraPrimitiveOverestimationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extraPrimitiveOverestimationSize"));
 
     /// Creates `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment.
@@ -73,19 +81,14 @@ public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extend
     /// Creates `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRasterizationConservativeStateCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment); }
-
-    /// Creates `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRasterizationConservativeStateCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineRasterizationConservativeStateCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationConservativeStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment.
     ///
@@ -93,7 +96,7 @@ public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +109,6 @@ public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extend
     /// @return the allocated `VkPipelineRasterizationConservativeStateCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineRasterizationConservativeStateCreateInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineRasterizationConservativeStateCreateInfoEXT`
-    public static VkPipelineRasterizationConservativeStateCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int flags, @CType("VkConservativeRasterizationModeEXT") int conservativeRasterizationMode, @CType("float") float extraPrimitiveOverestimationSize) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).conservativeRasterizationMode(conservativeRasterizationMode).extraPrimitiveOverestimationSize(extraPrimitiveOverestimationSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,122 +116,87 @@ public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extend
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT sType(@CType("VkStructureType") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int flags() { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(@CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_flags(this.segment(), value); return this; }
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `conservativeRasterizationMode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkConservativeRasterizationModeEXT") int get_conservativeRasterizationMode(MemorySegment segment, long index) { return (int) VH_conservativeRasterizationMode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int conservativeRasterizationMode(MemorySegment segment, long index) { return (int) VH_conservativeRasterizationMode.get(segment, 0L, index); }
     /// {@return `conservativeRasterizationMode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkConservativeRasterizationModeEXT") int get_conservativeRasterizationMode(MemorySegment segment) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_conservativeRasterizationMode(segment, 0L); }
-    /// {@return `conservativeRasterizationMode`}
-    public @CType("VkConservativeRasterizationModeEXT") int conservativeRasterizationMode() { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_conservativeRasterizationMode(this.segment()); }
+    public int conservativeRasterizationMode() { return conservativeRasterizationMode(this.segment(), 0L); }
     /// Sets `conservativeRasterizationMode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_conservativeRasterizationMode(MemorySegment segment, long index, @CType("VkConservativeRasterizationModeEXT") int value) { VH_conservativeRasterizationMode.set(segment, 0L, index, value); }
-    /// Sets `conservativeRasterizationMode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_conservativeRasterizationMode(MemorySegment segment, @CType("VkConservativeRasterizationModeEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_conservativeRasterizationMode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void conservativeRasterizationMode(MemorySegment segment, long index, int value) { VH_conservativeRasterizationMode.set(segment, 0L, index, value); }
     /// Sets `conservativeRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT conservativeRasterizationMode(@CType("VkConservativeRasterizationModeEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_conservativeRasterizationMode(this.segment(), value); return this; }
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT conservativeRasterizationMode(int value) { conservativeRasterizationMode(this.segment(), 0L, value); return this; }
 
     /// {@return `extraPrimitiveOverestimationSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_extraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_extraPrimitiveOverestimationSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float extraPrimitiveOverestimationSize(MemorySegment segment, long index) { return (float) VH_extraPrimitiveOverestimationSize.get(segment, 0L, index); }
     /// {@return `extraPrimitiveOverestimationSize`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_extraPrimitiveOverestimationSize(MemorySegment segment) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_extraPrimitiveOverestimationSize(segment, 0L); }
-    /// {@return `extraPrimitiveOverestimationSize`}
-    public @CType("float") float extraPrimitiveOverestimationSize() { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_extraPrimitiveOverestimationSize(this.segment()); }
+    public float extraPrimitiveOverestimationSize() { return extraPrimitiveOverestimationSize(this.segment(), 0L); }
     /// Sets `extraPrimitiveOverestimationSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_extraPrimitiveOverestimationSize(MemorySegment segment, long index, @CType("float") float value) { VH_extraPrimitiveOverestimationSize.set(segment, 0L, index, value); }
-    /// Sets `extraPrimitiveOverestimationSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_extraPrimitiveOverestimationSize(MemorySegment segment, @CType("float") float value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_extraPrimitiveOverestimationSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void extraPrimitiveOverestimationSize(MemorySegment segment, long index, float value) { VH_extraPrimitiveOverestimationSize.set(segment, 0L, index, value); }
     /// Sets `extraPrimitiveOverestimationSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineRasterizationConservativeStateCreateInfoEXT extraPrimitiveOverestimationSize(@CType("float") float value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_extraPrimitiveOverestimationSize(this.segment(), value); return this; }
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT extraPrimitiveOverestimationSize(float value) { extraPrimitiveOverestimationSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineRasterizationConservativeStateCreateInfoEXT].
     public static final class Buffer extends VkPipelineRasterizationConservativeStateCreateInfoEXT {
@@ -258,49 +221,49 @@ public sealed class VkPipelineRasterizationConservativeStateCreateInfoEXT extend
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int flagsAt(long index) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineRasterizationConservativeStateCreateFlagsEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `conservativeRasterizationMode` at the given index}
-        /// @param index the index
-        public @CType("VkConservativeRasterizationModeEXT") int conservativeRasterizationModeAt(long index) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_conservativeRasterizationMode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int conservativeRasterizationModeAt(long index) { return conservativeRasterizationMode(this.segment(), index); }
         /// Sets `conservativeRasterizationMode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer conservativeRasterizationModeAt(long index, @CType("VkConservativeRasterizationModeEXT") int value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_conservativeRasterizationMode(this.segment(), index, value); return this; }
+        public Buffer conservativeRasterizationModeAt(long index, int value) { conservativeRasterizationMode(this.segment(), index, value); return this; }
 
         /// {@return `extraPrimitiveOverestimationSize` at the given index}
-        /// @param index the index
-        public @CType("float") float extraPrimitiveOverestimationSizeAt(long index) { return VkPipelineRasterizationConservativeStateCreateInfoEXT.get_extraPrimitiveOverestimationSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float extraPrimitiveOverestimationSizeAt(long index) { return extraPrimitiveOverestimationSize(this.segment(), index); }
         /// Sets `extraPrimitiveOverestimationSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer extraPrimitiveOverestimationSizeAt(long index, @CType("float") float value) { VkPipelineRasterizationConservativeStateCreateInfoEXT.set_extraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
+        public Buffer extraPrimitiveOverestimationSizeAt(long index, float value) { extraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
 
     }
 }

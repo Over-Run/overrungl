@@ -19,22 +19,13 @@ package overrungl.opengl.gremedy;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLGREMEDYFrameTerminator {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glFrameTerminatorGREMEDY = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFrameTerminatorGREMEDY
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glFrameTerminatorGREMEDY = RuntimeHelper.downcall(Descriptors.FD_glFrameTerminatorGREMEDY);
+        public static final MethodHandle MH_glFrameTerminatorGREMEDY = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFrameTerminatorGREMEDY;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFrameTerminatorGREMEDY = func.invoke("glFrameTerminatorGREMEDY");
@@ -45,10 +36,13 @@ public final class GLGREMEDYFrameTerminator {
         this.handles = new Handles(func);
     }
 
+    /// ```
+    /// void glFrameTerminatorGREMEDY();
+    /// ```
     public void FrameTerminatorGREMEDY() {
-        if (Unmarshal.isNullPointer(handles.PFN_glFrameTerminatorGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrameTerminatorGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
         try { Handles.MH_glFrameTerminatorGREMEDY.invokeExact(handles.PFN_glFrameTerminatorGREMEDY); }
-        catch (Throwable e) { throw new RuntimeException("error in glFrameTerminatorGREMEDY", e); }
+        catch (Throwable e) { throw new RuntimeException("error in FrameTerminatorGREMEDY", e); }
     }
 
 }

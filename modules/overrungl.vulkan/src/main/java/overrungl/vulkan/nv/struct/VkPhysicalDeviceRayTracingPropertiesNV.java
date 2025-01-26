@@ -15,42 +15,20 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### shaderGroupHandleSize
-/// [VarHandle][#VH_shaderGroupHandleSize] - [Getter][#shaderGroupHandleSize()] - [Setter][#shaderGroupHandleSize(int)]
-/// ### maxRecursionDepth
-/// [VarHandle][#VH_maxRecursionDepth] - [Getter][#maxRecursionDepth()] - [Setter][#maxRecursionDepth(int)]
-/// ### maxShaderGroupStride
-/// [VarHandle][#VH_maxShaderGroupStride] - [Getter][#maxShaderGroupStride()] - [Setter][#maxShaderGroupStride(int)]
-/// ### shaderGroupBaseAlignment
-/// [VarHandle][#VH_shaderGroupBaseAlignment] - [Getter][#shaderGroupBaseAlignment()] - [Setter][#shaderGroupBaseAlignment(int)]
-/// ### maxGeometryCount
-/// [VarHandle][#VH_maxGeometryCount] - [Getter][#maxGeometryCount()] - [Setter][#maxGeometryCount(long)]
-/// ### maxInstanceCount
-/// [VarHandle][#VH_maxInstanceCount] - [Getter][#maxInstanceCount()] - [Setter][#maxInstanceCount(long)]
-/// ### maxTriangleCount
-/// [VarHandle][#VH_maxTriangleCount] - [Getter][#maxTriangleCount()] - [Setter][#maxTriangleCount(long)]
-/// ### maxDescriptorSetAccelerationStructures
-/// [VarHandle][#VH_maxDescriptorSetAccelerationStructures] - [Getter][#maxDescriptorSetAccelerationStructures()] - [Setter][#maxDescriptorSetAccelerationStructures(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceRayTracingPropertiesNV {
-///     VkStructureType sType;
-///     void * pNext;
+/// ```
+/// struct VkPhysicalDeviceRayTracingPropertiesNV {
+///     (int) VkStructureType sType;
+///     void* pNext;
 ///     uint32_t shaderGroupHandleSize;
 ///     uint32_t maxRecursionDepth;
 ///     uint32_t maxShaderGroupStride;
@@ -59,11 +37,11 @@ import overrungl.util.*;
 ///     uint64_t maxInstanceCount;
 ///     uint64_t maxTriangleCount;
 ///     uint32_t maxDescriptorSetAccelerationStructures;
-/// } VkPhysicalDeviceRayTracingPropertiesNV;
+/// };
 /// ```
-public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
+public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRayTracingPropertiesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shaderGroupHandleSize"),
@@ -75,25 +53,65 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
         ValueLayout.JAVA_LONG.withName("maxTriangleCount"),
         ValueLayout.JAVA_INT.withName("maxDescriptorSetAccelerationStructures")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `shaderGroupHandleSize` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupHandleSize`.
+    public static final long OFFSET_shaderGroupHandleSize = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupHandleSize"));
+    /// The memory layout of `shaderGroupHandleSize`.
+    public static final MemoryLayout LAYOUT_shaderGroupHandleSize = LAYOUT.select(PathElement.groupElement("shaderGroupHandleSize"));
+    /// The [VarHandle] of `shaderGroupHandleSize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupHandleSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupHandleSize"));
-    /// The [VarHandle] of `maxRecursionDepth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxRecursionDepth`.
+    public static final long OFFSET_maxRecursionDepth = LAYOUT.byteOffset(PathElement.groupElement("maxRecursionDepth"));
+    /// The memory layout of `maxRecursionDepth`.
+    public static final MemoryLayout LAYOUT_maxRecursionDepth = LAYOUT.select(PathElement.groupElement("maxRecursionDepth"));
+    /// The [VarHandle] of `maxRecursionDepth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxRecursionDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRecursionDepth"));
-    /// The [VarHandle] of `maxShaderGroupStride` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxShaderGroupStride`.
+    public static final long OFFSET_maxShaderGroupStride = LAYOUT.byteOffset(PathElement.groupElement("maxShaderGroupStride"));
+    /// The memory layout of `maxShaderGroupStride`.
+    public static final MemoryLayout LAYOUT_maxShaderGroupStride = LAYOUT.select(PathElement.groupElement("maxShaderGroupStride"));
+    /// The [VarHandle] of `maxShaderGroupStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxShaderGroupStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxShaderGroupStride"));
-    /// The [VarHandle] of `shaderGroupBaseAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `shaderGroupBaseAlignment`.
+    public static final long OFFSET_shaderGroupBaseAlignment = LAYOUT.byteOffset(PathElement.groupElement("shaderGroupBaseAlignment"));
+    /// The memory layout of `shaderGroupBaseAlignment`.
+    public static final MemoryLayout LAYOUT_shaderGroupBaseAlignment = LAYOUT.select(PathElement.groupElement("shaderGroupBaseAlignment"));
+    /// The [VarHandle] of `shaderGroupBaseAlignment` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_shaderGroupBaseAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderGroupBaseAlignment"));
-    /// The [VarHandle] of `maxGeometryCount` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxGeometryCount`.
+    public static final long OFFSET_maxGeometryCount = LAYOUT.byteOffset(PathElement.groupElement("maxGeometryCount"));
+    /// The memory layout of `maxGeometryCount`.
+    public static final MemoryLayout LAYOUT_maxGeometryCount = LAYOUT.select(PathElement.groupElement("maxGeometryCount"));
+    /// The [VarHandle] of `maxGeometryCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxGeometryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxGeometryCount"));
-    /// The [VarHandle] of `maxInstanceCount` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxInstanceCount`.
+    public static final long OFFSET_maxInstanceCount = LAYOUT.byteOffset(PathElement.groupElement("maxInstanceCount"));
+    /// The memory layout of `maxInstanceCount`.
+    public static final MemoryLayout LAYOUT_maxInstanceCount = LAYOUT.select(PathElement.groupElement("maxInstanceCount"));
+    /// The [VarHandle] of `maxInstanceCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxInstanceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInstanceCount"));
-    /// The [VarHandle] of `maxTriangleCount` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `maxTriangleCount`.
+    public static final long OFFSET_maxTriangleCount = LAYOUT.byteOffset(PathElement.groupElement("maxTriangleCount"));
+    /// The memory layout of `maxTriangleCount`.
+    public static final MemoryLayout LAYOUT_maxTriangleCount = LAYOUT.select(PathElement.groupElement("maxTriangleCount"));
+    /// The [VarHandle] of `maxTriangleCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxTriangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTriangleCount"));
-    /// The [VarHandle] of `maxDescriptorSetAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxDescriptorSetAccelerationStructures`.
+    public static final long OFFSET_maxDescriptorSetAccelerationStructures = LAYOUT.byteOffset(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
+    /// The memory layout of `maxDescriptorSetAccelerationStructures`.
+    public static final MemoryLayout LAYOUT_maxDescriptorSetAccelerationStructures = LAYOUT.select(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
+    /// The [VarHandle] of `maxDescriptorSetAccelerationStructures` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxDescriptorSetAccelerationStructures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetAccelerationStructures"));
 
     /// Creates `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment.
@@ -103,19 +121,14 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
     /// Creates `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingPropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPropertiesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingPropertiesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceRayTracingPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment.
     ///
@@ -123,7 +136,7 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -136,11 +149,6 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
-    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int shaderGroupHandleSize, @CType("uint32_t") int maxRecursionDepth, @CType("uint32_t") int maxShaderGroupStride, @CType("uint32_t") int shaderGroupBaseAlignment, @CType("uint64_t") long maxGeometryCount, @CType("uint64_t") long maxInstanceCount, @CType("uint64_t") long maxTriangleCount, @CType("uint32_t") int maxDescriptorSetAccelerationStructures) { return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount).maxTriangleCount(maxTriangleCount).maxDescriptorSetAccelerationStructures(maxDescriptorSetAccelerationStructures); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -148,237 +156,167 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRayTracingPropertiesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceRayTracingPropertiesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingPropertiesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingPropertiesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupHandleSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupHandleSize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleSize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupHandleSize(MemorySegment segment, long index) { return (int) VH_shaderGroupHandleSize.get(segment, 0L, index); }
     /// {@return `shaderGroupHandleSize`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupHandleSize(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupHandleSize(segment, 0L); }
-    /// {@return `shaderGroupHandleSize`}
-    public @CType("uint32_t") int shaderGroupHandleSize() { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupHandleSize(this.segment()); }
+    public int shaderGroupHandleSize() { return shaderGroupHandleSize(this.segment(), 0L); }
     /// Sets `shaderGroupHandleSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupHandleSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupHandleSize.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupHandleSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupHandleSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupHandleSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupHandleSize(MemorySegment segment, long index, int value) { VH_shaderGroupHandleSize.set(segment, 0L, index, value); }
     /// Sets `shaderGroupHandleSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupHandleSize(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupHandleSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupHandleSize(int value) { shaderGroupHandleSize(this.segment(), 0L, value); return this; }
 
     /// {@return `maxRecursionDepth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxRecursionDepth(MemorySegment segment, long index) { return (int) VH_maxRecursionDepth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxRecursionDepth(MemorySegment segment, long index) { return (int) VH_maxRecursionDepth.get(segment, 0L, index); }
     /// {@return `maxRecursionDepth`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxRecursionDepth(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxRecursionDepth(segment, 0L); }
-    /// {@return `maxRecursionDepth`}
-    public @CType("uint32_t") int maxRecursionDepth() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxRecursionDepth(this.segment()); }
+    public int maxRecursionDepth() { return maxRecursionDepth(this.segment(), 0L); }
     /// Sets `maxRecursionDepth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxRecursionDepth(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxRecursionDepth.set(segment, 0L, index, value); }
-    /// Sets `maxRecursionDepth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxRecursionDepth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxRecursionDepth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxRecursionDepth(MemorySegment segment, long index, int value) { VH_maxRecursionDepth.set(segment, 0L, index, value); }
     /// Sets `maxRecursionDepth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxRecursionDepth(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxRecursionDepth(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxRecursionDepth(int value) { maxRecursionDepth(this.segment(), 0L, value); return this; }
 
     /// {@return `maxShaderGroupStride` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxShaderGroupStride(MemorySegment segment, long index) { return (int) VH_maxShaderGroupStride.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxShaderGroupStride(MemorySegment segment, long index) { return (int) VH_maxShaderGroupStride.get(segment, 0L, index); }
     /// {@return `maxShaderGroupStride`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxShaderGroupStride(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxShaderGroupStride(segment, 0L); }
-    /// {@return `maxShaderGroupStride`}
-    public @CType("uint32_t") int maxShaderGroupStride() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxShaderGroupStride(this.segment()); }
+    public int maxShaderGroupStride() { return maxShaderGroupStride(this.segment(), 0L); }
     /// Sets `maxShaderGroupStride` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxShaderGroupStride(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxShaderGroupStride.set(segment, 0L, index, value); }
-    /// Sets `maxShaderGroupStride` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxShaderGroupStride(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxShaderGroupStride(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxShaderGroupStride(MemorySegment segment, long index, int value) { VH_maxShaderGroupStride.set(segment, 0L, index, value); }
     /// Sets `maxShaderGroupStride` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxShaderGroupStride(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxShaderGroupStride(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxShaderGroupStride(int value) { maxShaderGroupStride(this.segment(), 0L, value); return this; }
 
     /// {@return `shaderGroupBaseAlignment` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_shaderGroupBaseAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupBaseAlignment.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int shaderGroupBaseAlignment(MemorySegment segment, long index) { return (int) VH_shaderGroupBaseAlignment.get(segment, 0L, index); }
     /// {@return `shaderGroupBaseAlignment`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_shaderGroupBaseAlignment(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupBaseAlignment(segment, 0L); }
-    /// {@return `shaderGroupBaseAlignment`}
-    public @CType("uint32_t") int shaderGroupBaseAlignment() { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupBaseAlignment(this.segment()); }
+    public int shaderGroupBaseAlignment() { return shaderGroupBaseAlignment(this.segment(), 0L); }
     /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_shaderGroupBaseAlignment(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_shaderGroupBaseAlignment.set(segment, 0L, index, value); }
-    /// Sets `shaderGroupBaseAlignment` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_shaderGroupBaseAlignment(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupBaseAlignment(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void shaderGroupBaseAlignment(MemorySegment segment, long index, int value) { VH_shaderGroupBaseAlignment.set(segment, 0L, index, value); }
     /// Sets `shaderGroupBaseAlignment` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupBaseAlignment(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupBaseAlignment(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV shaderGroupBaseAlignment(int value) { shaderGroupBaseAlignment(this.segment(), 0L, value); return this; }
 
     /// {@return `maxGeometryCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_maxGeometryCount(MemorySegment segment, long index) { return (long) VH_maxGeometryCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxGeometryCount(MemorySegment segment, long index) { return (long) VH_maxGeometryCount.get(segment, 0L, index); }
     /// {@return `maxGeometryCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_maxGeometryCount(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxGeometryCount(segment, 0L); }
-    /// {@return `maxGeometryCount`}
-    public @CType("uint64_t") long maxGeometryCount() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxGeometryCount(this.segment()); }
+    public long maxGeometryCount() { return maxGeometryCount(this.segment(), 0L); }
     /// Sets `maxGeometryCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxGeometryCount(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_maxGeometryCount.set(segment, 0L, index, value); }
-    /// Sets `maxGeometryCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxGeometryCount(MemorySegment segment, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxGeometryCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxGeometryCount(MemorySegment segment, long index, long value) { VH_maxGeometryCount.set(segment, 0L, index, value); }
     /// Sets `maxGeometryCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxGeometryCount(@CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxGeometryCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxGeometryCount(long value) { maxGeometryCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxInstanceCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_maxInstanceCount(MemorySegment segment, long index) { return (long) VH_maxInstanceCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxInstanceCount(MemorySegment segment, long index) { return (long) VH_maxInstanceCount.get(segment, 0L, index); }
     /// {@return `maxInstanceCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_maxInstanceCount(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxInstanceCount(segment, 0L); }
-    /// {@return `maxInstanceCount`}
-    public @CType("uint64_t") long maxInstanceCount() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxInstanceCount(this.segment()); }
+    public long maxInstanceCount() { return maxInstanceCount(this.segment(), 0L); }
     /// Sets `maxInstanceCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxInstanceCount(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_maxInstanceCount.set(segment, 0L, index, value); }
-    /// Sets `maxInstanceCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxInstanceCount(MemorySegment segment, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxInstanceCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxInstanceCount(MemorySegment segment, long index, long value) { VH_maxInstanceCount.set(segment, 0L, index, value); }
     /// Sets `maxInstanceCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxInstanceCount(@CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxInstanceCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxInstanceCount(long value) { maxInstanceCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxTriangleCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_maxTriangleCount(MemorySegment segment, long index) { return (long) VH_maxTriangleCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long maxTriangleCount(MemorySegment segment, long index) { return (long) VH_maxTriangleCount.get(segment, 0L, index); }
     /// {@return `maxTriangleCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_maxTriangleCount(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxTriangleCount(segment, 0L); }
-    /// {@return `maxTriangleCount`}
-    public @CType("uint64_t") long maxTriangleCount() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxTriangleCount(this.segment()); }
+    public long maxTriangleCount() { return maxTriangleCount(this.segment(), 0L); }
     /// Sets `maxTriangleCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxTriangleCount(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_maxTriangleCount.set(segment, 0L, index, value); }
-    /// Sets `maxTriangleCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxTriangleCount(MemorySegment segment, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxTriangleCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxTriangleCount(MemorySegment segment, long index, long value) { VH_maxTriangleCount.set(segment, 0L, index, value); }
     /// Sets `maxTriangleCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxTriangleCount(@CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxTriangleCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxTriangleCount(long value) { maxTriangleCount(this.segment(), 0L, value); return this; }
 
     /// {@return `maxDescriptorSetAccelerationStructures` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxDescriptorSetAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetAccelerationStructures.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxDescriptorSetAccelerationStructures(MemorySegment segment, long index) { return (int) VH_maxDescriptorSetAccelerationStructures.get(segment, 0L, index); }
     /// {@return `maxDescriptorSetAccelerationStructures`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxDescriptorSetAccelerationStructures(MemorySegment segment) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxDescriptorSetAccelerationStructures(segment, 0L); }
-    /// {@return `maxDescriptorSetAccelerationStructures`}
-    public @CType("uint32_t") int maxDescriptorSetAccelerationStructures() { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxDescriptorSetAccelerationStructures(this.segment()); }
+    public int maxDescriptorSetAccelerationStructures() { return maxDescriptorSetAccelerationStructures(this.segment(), 0L); }
     /// Sets `maxDescriptorSetAccelerationStructures` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxDescriptorSetAccelerationStructures(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxDescriptorSetAccelerationStructures.set(segment, 0L, index, value); }
-    /// Sets `maxDescriptorSetAccelerationStructures` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxDescriptorSetAccelerationStructures(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxDescriptorSetAccelerationStructures(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxDescriptorSetAccelerationStructures(MemorySegment segment, long index, int value) { VH_maxDescriptorSetAccelerationStructures.set(segment, 0L, index, value); }
     /// Sets `maxDescriptorSetAccelerationStructures` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceRayTracingPropertiesNV maxDescriptorSetAccelerationStructures(@CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxDescriptorSetAccelerationStructures(this.segment(), value); return this; }
+    public VkPhysicalDeviceRayTracingPropertiesNV maxDescriptorSetAccelerationStructures(int value) { maxDescriptorSetAccelerationStructures(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceRayTracingPropertiesNV].
     public static final class Buffer extends VkPhysicalDeviceRayTracingPropertiesNV {
@@ -403,94 +341,94 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingPropertiesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupHandleSize` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupHandleSizeAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupHandleSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupHandleSizeAt(long index) { return shaderGroupHandleSize(this.segment(), index); }
         /// Sets `shaderGroupHandleSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupHandleSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupHandleSize(this.segment(), index, value); return this; }
+        public Buffer shaderGroupHandleSizeAt(long index, int value) { shaderGroupHandleSize(this.segment(), index, value); return this; }
 
         /// {@return `maxRecursionDepth` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxRecursionDepthAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxRecursionDepth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxRecursionDepthAt(long index) { return maxRecursionDepth(this.segment(), index); }
         /// Sets `maxRecursionDepth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxRecursionDepthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxRecursionDepth(this.segment(), index, value); return this; }
+        public Buffer maxRecursionDepthAt(long index, int value) { maxRecursionDepth(this.segment(), index, value); return this; }
 
         /// {@return `maxShaderGroupStride` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxShaderGroupStrideAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxShaderGroupStride(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxShaderGroupStrideAt(long index) { return maxShaderGroupStride(this.segment(), index); }
         /// Sets `maxShaderGroupStride` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxShaderGroupStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxShaderGroupStride(this.segment(), index, value); return this; }
+        public Buffer maxShaderGroupStrideAt(long index, int value) { maxShaderGroupStride(this.segment(), index, value); return this; }
 
         /// {@return `shaderGroupBaseAlignment` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int shaderGroupBaseAlignmentAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_shaderGroupBaseAlignment(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int shaderGroupBaseAlignmentAt(long index) { return shaderGroupBaseAlignment(this.segment(), index); }
         /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer shaderGroupBaseAlignmentAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_shaderGroupBaseAlignment(this.segment(), index, value); return this; }
+        public Buffer shaderGroupBaseAlignmentAt(long index, int value) { shaderGroupBaseAlignment(this.segment(), index, value); return this; }
 
         /// {@return `maxGeometryCount` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long maxGeometryCountAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxGeometryCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxGeometryCountAt(long index) { return maxGeometryCount(this.segment(), index); }
         /// Sets `maxGeometryCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxGeometryCountAt(long index, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxGeometryCount(this.segment(), index, value); return this; }
+        public Buffer maxGeometryCountAt(long index, long value) { maxGeometryCount(this.segment(), index, value); return this; }
 
         /// {@return `maxInstanceCount` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long maxInstanceCountAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxInstanceCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxInstanceCountAt(long index) { return maxInstanceCount(this.segment(), index); }
         /// Sets `maxInstanceCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxInstanceCountAt(long index, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxInstanceCount(this.segment(), index, value); return this; }
+        public Buffer maxInstanceCountAt(long index, long value) { maxInstanceCount(this.segment(), index, value); return this; }
 
         /// {@return `maxTriangleCount` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long maxTriangleCountAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxTriangleCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long maxTriangleCountAt(long index) { return maxTriangleCount(this.segment(), index); }
         /// Sets `maxTriangleCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxTriangleCountAt(long index, @CType("uint64_t") long value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxTriangleCount(this.segment(), index, value); return this; }
+        public Buffer maxTriangleCountAt(long index, long value) { maxTriangleCount(this.segment(), index, value); return this; }
 
         /// {@return `maxDescriptorSetAccelerationStructures` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxDescriptorSetAccelerationStructuresAt(long index) { return VkPhysicalDeviceRayTracingPropertiesNV.get_maxDescriptorSetAccelerationStructures(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxDescriptorSetAccelerationStructuresAt(long index) { return maxDescriptorSetAccelerationStructures(this.segment(), index); }
         /// Sets `maxDescriptorSetAccelerationStructures` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxDescriptorSetAccelerationStructuresAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceRayTracingPropertiesNV.set_maxDescriptorSetAccelerationStructures(this.segment(), index, value); return this; }
+        public Buffer maxDescriptorSetAccelerationStructuresAt(long index, int value) { maxDescriptorSetAccelerationStructures(this.segment(), index, value); return this; }
 
     }
 }

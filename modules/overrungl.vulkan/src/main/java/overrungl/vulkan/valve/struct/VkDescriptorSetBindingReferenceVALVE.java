@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.valve.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### descriptorSetLayout
-/// [VarHandle][#VH_descriptorSetLayout] - [Getter][#descriptorSetLayout()] - [Setter][#descriptorSetLayout(java.lang.foreign.MemorySegment)]
-/// ### binding
-/// [VarHandle][#VH_binding] - [Getter][#binding()] - [Setter][#binding(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDescriptorSetBindingReferenceVALVE {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkDescriptorSetLayout descriptorSetLayout;
-///     uint32_t binding;
-/// } VkDescriptorSetBindingReferenceVALVE;
 /// ```
-public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
+/// struct VkDescriptorSetBindingReferenceVALVE {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (uint64_t) VkDescriptorSetLayout descriptorSetLayout;
+///     uint32_t binding;
+/// };
+/// ```
+public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// The struct layout of `VkDescriptorSetBindingReferenceVALVE`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.ADDRESS.withName("descriptorSetLayout"),
+        ValueLayout.JAVA_LONG.withName("descriptorSetLayout"),
         ValueLayout.JAVA_INT.withName("binding")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `descriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `descriptorSetLayout`.
+    public static final long OFFSET_descriptorSetLayout = LAYOUT.byteOffset(PathElement.groupElement("descriptorSetLayout"));
+    /// The memory layout of `descriptorSetLayout`.
+    public static final MemoryLayout LAYOUT_descriptorSetLayout = LAYOUT.select(PathElement.groupElement("descriptorSetLayout"));
+    /// The [VarHandle] of `descriptorSetLayout` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_descriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorSetLayout"));
-    /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `binding`.
+    public static final long OFFSET_binding = LAYOUT.byteOffset(PathElement.groupElement("binding"));
+    /// The memory layout of `binding`.
+    public static final MemoryLayout LAYOUT_binding = LAYOUT.select(PathElement.groupElement("binding"));
+    /// The [VarHandle] of `binding` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetBindingReferenceVALVE of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment); }
-
-    /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetBindingReferenceVALVE ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDescriptorSetBindingReferenceVALVE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
     /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
-    public static VkDescriptorSetBindingReferenceVALVE allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment descriptorSetLayout, @CType("uint32_t") int binding) { return alloc(allocator).sType(sType).pNext(pNext).descriptorSetLayout(descriptorSetLayout).binding(binding); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDescriptorSetBindingReferenceVALVE.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkDescriptorSetBindingReferenceVALVE.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDescriptorSetBindingReferenceVALVE.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorSetBindingReferenceVALVE sType(@CType("VkStructureType") int value) { VkDescriptorSetBindingReferenceVALVE.set_sType(this.segment(), value); return this; }
+    public VkDescriptorSetBindingReferenceVALVE sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDescriptorSetBindingReferenceVALVE.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDescriptorSetBindingReferenceVALVE.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorSetBindingReferenceVALVE pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_pNext(this.segment(), value); return this; }
+    public VkDescriptorSetBindingReferenceVALVE pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `descriptorSetLayout` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment get_descriptorSetLayout(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_descriptorSetLayout.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long descriptorSetLayout(MemorySegment segment, long index) { return (long) VH_descriptorSetLayout.get(segment, 0L, index); }
     /// {@return `descriptorSetLayout`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment get_descriptorSetLayout(MemorySegment segment) { return VkDescriptorSetBindingReferenceVALVE.get_descriptorSetLayout(segment, 0L); }
-    /// {@return `descriptorSetLayout`}
-    public @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment descriptorSetLayout() { return VkDescriptorSetBindingReferenceVALVE.get_descriptorSetLayout(this.segment()); }
+    public long descriptorSetLayout() { return descriptorSetLayout(this.segment(), 0L); }
     /// Sets `descriptorSetLayout` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_descriptorSetLayout(MemorySegment segment, long index, @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment value) { VH_descriptorSetLayout.set(segment, 0L, index, value); }
-    /// Sets `descriptorSetLayout` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_descriptorSetLayout(MemorySegment segment, @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_descriptorSetLayout(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void descriptorSetLayout(MemorySegment segment, long index, long value) { VH_descriptorSetLayout.set(segment, 0L, index, value); }
     /// Sets `descriptorSetLayout` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorSetBindingReferenceVALVE descriptorSetLayout(@CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_descriptorSetLayout(this.segment(), value); return this; }
+    public VkDescriptorSetBindingReferenceVALVE descriptorSetLayout(long value) { descriptorSetLayout(this.segment(), 0L, value); return this; }
 
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int binding(MemorySegment segment, long index) { return (int) VH_binding.get(segment, 0L, index); }
     /// {@return `binding`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_binding(MemorySegment segment) { return VkDescriptorSetBindingReferenceVALVE.get_binding(segment, 0L); }
-    /// {@return `binding`}
-    public @CType("uint32_t") int binding() { return VkDescriptorSetBindingReferenceVALVE.get_binding(this.segment()); }
+    public int binding() { return binding(this.segment(), 0L); }
     /// Sets `binding` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_binding(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_binding.set(segment, 0L, index, value); }
-    /// Sets `binding` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_binding(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorSetBindingReferenceVALVE.set_binding(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void binding(MemorySegment segment, long index, int value) { VH_binding.set(segment, 0L, index, value); }
     /// Sets `binding` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDescriptorSetBindingReferenceVALVE binding(@CType("uint32_t") int value) { VkDescriptorSetBindingReferenceVALVE.set_binding(this.segment(), value); return this; }
+    public VkDescriptorSetBindingReferenceVALVE binding(int value) { binding(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDescriptorSetBindingReferenceVALVE].
     public static final class Buffer extends VkDescriptorSetBindingReferenceVALVE {
@@ -229,40 +197,40 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorSetBindingReferenceVALVE.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorSetBindingReferenceVALVE.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorSetBindingReferenceVALVE.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `descriptorSetLayout` at the given index}
-        /// @param index the index
-        public @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment descriptorSetLayoutAt(long index) { return VkDescriptorSetBindingReferenceVALVE.get_descriptorSetLayout(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
         /// Sets `descriptorSetLayout` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer descriptorSetLayoutAt(long index, @CType("VkDescriptorSetLayout") java.lang.foreign.MemorySegment value) { VkDescriptorSetBindingReferenceVALVE.set_descriptorSetLayout(this.segment(), index, value); return this; }
+        public Buffer descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
 
         /// {@return `binding` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int bindingAt(long index) { return VkDescriptorSetBindingReferenceVALVE.get_binding(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int bindingAt(long index) { return binding(this.segment(), index); }
         /// Sets `binding` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer bindingAt(long index, @CType("uint32_t") int value) { VkDescriptorSetBindingReferenceVALVE.set_binding(this.segment(), index, value); return this; }
+        public Buffer bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
 
     }
 }

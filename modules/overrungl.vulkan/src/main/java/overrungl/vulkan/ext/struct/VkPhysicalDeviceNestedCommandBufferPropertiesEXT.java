@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### maxCommandBufferNestingLevel
-/// [VarHandle][#VH_maxCommandBufferNestingLevel] - [Getter][#maxCommandBufferNestingLevel()] - [Setter][#maxCommandBufferNestingLevel(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT {
-///     VkStructureType sType;
-///     void * pNext;
-///     uint32_t maxCommandBufferNestingLevel;
-/// } VkPhysicalDeviceNestedCommandBufferPropertiesEXT;
 /// ```
-public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Struct {
+/// struct VkPhysicalDeviceNestedCommandBufferPropertiesEXT {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     uint32_t maxCommandBufferNestingLevel;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceNestedCommandBufferPropertiesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxCommandBufferNestingLevel")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `maxCommandBufferNestingLevel` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `maxCommandBufferNestingLevel`.
+    public static final long OFFSET_maxCommandBufferNestingLevel = LAYOUT.byteOffset(PathElement.groupElement("maxCommandBufferNestingLevel"));
+    /// The memory layout of `maxCommandBufferNestingLevel`.
+    public static final MemoryLayout LAYOUT_maxCommandBufferNestingLevel = LAYOUT.select(PathElement.groupElement("maxCommandBufferNestingLevel"));
+    /// The [VarHandle] of `maxCommandBufferNestingLevel` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxCommandBufferNestingLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCommandBufferNestingLevel"));
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Str
     /// Creates `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceNestedCommandBufferPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment); }
-
-    /// Creates `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceNestedCommandBufferPropertiesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceNestedCommandBufferPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Str
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Str
     /// @return the allocated `VkPhysicalDeviceNestedCommandBufferPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferPropertiesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferPropertiesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxCommandBufferNestingLevel) { return alloc(allocator).sType(sType).pNext(pNext).maxCommandBufferNestingLevel(maxCommandBufferNestingLevel); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Str
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT sType(@CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `maxCommandBufferNestingLevel` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_maxCommandBufferNestingLevel(MemorySegment segment, long index) { return (int) VH_maxCommandBufferNestingLevel.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int maxCommandBufferNestingLevel(MemorySegment segment, long index) { return (int) VH_maxCommandBufferNestingLevel.get(segment, 0L, index); }
     /// {@return `maxCommandBufferNestingLevel`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxCommandBufferNestingLevel(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_maxCommandBufferNestingLevel(segment, 0L); }
-    /// {@return `maxCommandBufferNestingLevel`}
-    public @CType("uint32_t") int maxCommandBufferNestingLevel() { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_maxCommandBufferNestingLevel(this.segment()); }
+    public int maxCommandBufferNestingLevel() { return maxCommandBufferNestingLevel(this.segment(), 0L); }
     /// Sets `maxCommandBufferNestingLevel` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxCommandBufferNestingLevel(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxCommandBufferNestingLevel.set(segment, 0L, index, value); }
-    /// Sets `maxCommandBufferNestingLevel` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxCommandBufferNestingLevel(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_maxCommandBufferNestingLevel(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxCommandBufferNestingLevel(MemorySegment segment, long index, int value) { VH_maxCommandBufferNestingLevel.set(segment, 0L, index, value); }
     /// Sets `maxCommandBufferNestingLevel` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT maxCommandBufferNestingLevel(@CType("uint32_t") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_maxCommandBufferNestingLevel(this.segment(), value); return this; }
+    public VkPhysicalDeviceNestedCommandBufferPropertiesEXT maxCommandBufferNestingLevel(int value) { maxCommandBufferNestingLevel(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceNestedCommandBufferPropertiesEXT].
     public static final class Buffer extends VkPhysicalDeviceNestedCommandBufferPropertiesEXT {
@@ -200,31 +173,31 @@ public sealed class VkPhysicalDeviceNestedCommandBufferPropertiesEXT extends Str
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `maxCommandBufferNestingLevel` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int maxCommandBufferNestingLevelAt(long index) { return VkPhysicalDeviceNestedCommandBufferPropertiesEXT.get_maxCommandBufferNestingLevel(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int maxCommandBufferNestingLevelAt(long index) { return maxCommandBufferNestingLevel(this.segment(), index); }
         /// Sets `maxCommandBufferNestingLevel` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxCommandBufferNestingLevelAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceNestedCommandBufferPropertiesEXT.set_maxCommandBufferNestingLevel(this.segment(), index, value); return this; }
+        public Buffer maxCommandBufferNestingLevelAt(long index, int value) { maxCommandBufferNestingLevel(this.segment(), index, value); return this; }
 
     }
 }

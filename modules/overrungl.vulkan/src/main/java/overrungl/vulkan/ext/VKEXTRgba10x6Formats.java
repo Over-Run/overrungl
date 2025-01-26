@@ -16,17 +16,12 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTRgba10x6Formats {
     public static final int VK_EXT_RGBA10X6_FORMATS_SPEC_VERSION = 1;
     public static final String VK_EXT_RGBA10X6_FORMATS_EXTENSION_NAME = "VK_EXT_rgba10x6_formats";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT = 1000344000;
 
-    private VKEXTRgba10x6Formats() { }
+    private VKEXTRgba10x6Formats() {}
 
 }

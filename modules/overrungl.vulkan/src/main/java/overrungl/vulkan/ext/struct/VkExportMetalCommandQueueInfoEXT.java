@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### queue
-/// [VarHandle][#VH_queue] - [Getter][#queue()] - [Setter][#queue(java.lang.foreign.MemorySegment)]
-/// ### mtlCommandQueue
-/// [VarHandle][#VH_mtlCommandQueue] - [Getter][#mtlCommandQueue()] - [Setter][#mtlCommandQueue(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkExportMetalCommandQueueInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkQueue queue;
-///     MTLCommandQueue_id mtlCommandQueue;
-/// } VkExportMetalCommandQueueInfoEXT;
 /// ```
-public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
+/// struct VkExportMetalCommandQueueInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (struct VkQueue*) VkQueue queue;
+///     (void*) MTLCommandQueue_id mtlCommandQueue;
+/// };
+/// ```
+public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// The struct layout of `VkExportMetalCommandQueueInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("queue"),
         ValueLayout.ADDRESS.withName("mtlCommandQueue")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `queue` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `queue`.
+    public static final long OFFSET_queue = LAYOUT.byteOffset(PathElement.groupElement("queue"));
+    /// The memory layout of `queue`.
+    public static final MemoryLayout LAYOUT_queue = LAYOUT.select(PathElement.groupElement("queue"));
+    /// The [VarHandle] of `queue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_queue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queue"));
-    /// The [VarHandle] of `mtlCommandQueue` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `mtlCommandQueue`.
+    public static final long OFFSET_mtlCommandQueue = LAYOUT.byteOffset(PathElement.groupElement("mtlCommandQueue"));
+    /// The memory layout of `mtlCommandQueue`.
+    public static final MemoryLayout LAYOUT_mtlCommandQueue = LAYOUT.select(PathElement.groupElement("mtlCommandQueue"));
+    /// The [VarHandle] of `mtlCommandQueue` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mtlCommandQueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlCommandQueue"));
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalCommandQueueInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment); }
-
-    /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalCommandQueueInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkExportMetalCommandQueueInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
     /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
-    public static VkExportMetalCommandQueueInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkQueue") java.lang.foreign.MemorySegment queue, @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment mtlCommandQueue) { return alloc(allocator).sType(sType).pNext(pNext).queue(queue).mtlCommandQueue(mtlCommandQueue); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMetalCommandQueueInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkExportMetalCommandQueueInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMetalCommandQueueInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalCommandQueueInfoEXT sType(@CType("VkStructureType") int value) { VkExportMetalCommandQueueInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkExportMetalCommandQueueInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalCommandQueueInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMetalCommandQueueInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalCommandQueueInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkExportMetalCommandQueueInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `queue` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkQueue") java.lang.foreign.MemorySegment get_queue(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_queue.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment queue(MemorySegment segment, long index) { return (MemorySegment) VH_queue.get(segment, 0L, index); }
     /// {@return `queue`}
-    /// @param segment the segment of the struct
-    public static @CType("VkQueue") java.lang.foreign.MemorySegment get_queue(MemorySegment segment) { return VkExportMetalCommandQueueInfoEXT.get_queue(segment, 0L); }
-    /// {@return `queue`}
-    public @CType("VkQueue") java.lang.foreign.MemorySegment queue() { return VkExportMetalCommandQueueInfoEXT.get_queue(this.segment()); }
+    public MemorySegment queue() { return queue(this.segment(), 0L); }
     /// Sets `queue` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_queue(MemorySegment segment, long index, @CType("VkQueue") java.lang.foreign.MemorySegment value) { VH_queue.set(segment, 0L, index, value); }
-    /// Sets `queue` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_queue(MemorySegment segment, @CType("VkQueue") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_queue(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void queue(MemorySegment segment, long index, MemorySegment value) { VH_queue.set(segment, 0L, index, value); }
     /// Sets `queue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalCommandQueueInfoEXT queue(@CType("VkQueue") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_queue(this.segment(), value); return this; }
+    public VkExportMetalCommandQueueInfoEXT queue(MemorySegment value) { queue(this.segment(), 0L, value); return this; }
 
     /// {@return `mtlCommandQueue` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment get_mtlCommandQueue(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_mtlCommandQueue.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment mtlCommandQueue(MemorySegment segment, long index) { return (MemorySegment) VH_mtlCommandQueue.get(segment, 0L, index); }
     /// {@return `mtlCommandQueue`}
-    /// @param segment the segment of the struct
-    public static @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment get_mtlCommandQueue(MemorySegment segment) { return VkExportMetalCommandQueueInfoEXT.get_mtlCommandQueue(segment, 0L); }
-    /// {@return `mtlCommandQueue`}
-    public @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment mtlCommandQueue() { return VkExportMetalCommandQueueInfoEXT.get_mtlCommandQueue(this.segment()); }
+    public MemorySegment mtlCommandQueue() { return mtlCommandQueue(this.segment(), 0L); }
     /// Sets `mtlCommandQueue` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mtlCommandQueue(MemorySegment segment, long index, @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment value) { VH_mtlCommandQueue.set(segment, 0L, index, value); }
-    /// Sets `mtlCommandQueue` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mtlCommandQueue(MemorySegment segment, @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_mtlCommandQueue(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mtlCommandQueue(MemorySegment segment, long index, MemorySegment value) { VH_mtlCommandQueue.set(segment, 0L, index, value); }
     /// Sets `mtlCommandQueue` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(@CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_mtlCommandQueue(this.segment(), value); return this; }
+    public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(MemorySegment value) { mtlCommandQueue(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkExportMetalCommandQueueInfoEXT].
     public static final class Buffer extends VkExportMetalCommandQueueInfoEXT {
@@ -229,40 +197,40 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalCommandQueueInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalCommandQueueInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalCommandQueueInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `queue` at the given index}
-        /// @param index the index
-        public @CType("VkQueue") java.lang.foreign.MemorySegment queueAt(long index) { return VkExportMetalCommandQueueInfoEXT.get_queue(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment queueAt(long index) { return queue(this.segment(), index); }
         /// Sets `queue` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer queueAt(long index, @CType("VkQueue") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_queue(this.segment(), index, value); return this; }
+        public Buffer queueAt(long index, MemorySegment value) { queue(this.segment(), index, value); return this; }
 
         /// {@return `mtlCommandQueue` at the given index}
-        /// @param index the index
-        public @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment mtlCommandQueueAt(long index) { return VkExportMetalCommandQueueInfoEXT.get_mtlCommandQueue(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment mtlCommandQueueAt(long index) { return mtlCommandQueue(this.segment(), index); }
         /// Sets `mtlCommandQueue` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer mtlCommandQueueAt(long index, @CType("MTLCommandQueue_id") java.lang.foreign.MemorySegment value) { VkExportMetalCommandQueueInfoEXT.set_mtlCommandQueue(this.segment(), index, value); return this; }
+        public Buffer mtlCommandQueueAt(long index, MemorySegment value) { mtlCommandQueue(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,44 +15,43 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.glfw;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
+import overrungl.internal.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
+/// ```
+/// typedef void (*GLFWCursorEnterFun)(GLFWwindow* window, (int) GLFWboolean entered);
+/// ```
 @FunctionalInterface
 public interface GLFWCursorEnterFun extends Upcall {
     /// The function descriptor.
     FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
     /// The method handle of the target method.
-    MethodHandle HANDLE = Upcall.findTarget(GLFWCursorEnterFun.class, "invoke", DESCRIPTOR);
+    MethodHandle HANDLE = Upcall.findTarget(GLFWCursorEnterFun.class, "invoke_", DESCRIPTOR);
 
-    /// The interface target method of the upcall.
-    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean entered);
+    /// Allocates `GLFWCursorEnterFun`.
+    /// @param arena the arena
+    /// @param func  the function
+    /// @return the upcall stub
+    static MemorySegment alloc(Arena arena, GLFWCursorEnterFun func) {
+        if (func == null) return MemorySegment.NULL;
+        return func.stub(arena);
+    }
 
     /// The target method of the upcall.
-    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
-        invoke(window, entered != GLFW.GLFW_FALSE);
+    void invoke(MemorySegment window, boolean entered);
+
+    /// The target method of the upcall.
+    default void invoke_(MemorySegment window, int entered) {
+        invoke(window, ((entered) != 0));
     }
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    /// A static invoker of the target method.
-    /// @param stub the upcall stub
-    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
-        try { HANDLE.invokeExact(stub, window, entered); }
-        catch (Throwable e) { throw new RuntimeException("error in GLFWCursorEnterFun::invoke (static invoker)", e); }
-    }
-
-    /// A wrapper for the target method.
-    /// @param stub the upcall stub
-    /// @return an instance that wraps the static invoker
-    static GLFWCursorEnterFun wrap(MemorySegment stub) {
-        return (window, entered) ->
-            invoke(stub, window, entered ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE);
-    }
 }

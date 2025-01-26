@@ -19,23 +19,14 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBES31Compatibility {
     public static final int GL_BACK = 0x0405;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glMemoryBarrierByRegion = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMemoryBarrierByRegion
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glMemoryBarrierByRegion = RuntimeHelper.downcall(Descriptors.FD_glMemoryBarrierByRegion);
+        public static final MethodHandle MH_glMemoryBarrierByRegion = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMemoryBarrierByRegion;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glMemoryBarrierByRegion = func.invoke("glMemoryBarrierByRegion");
@@ -46,10 +37,13 @@ public final class GLARBES31Compatibility {
         this.handles = new Handles(func);
     }
 
-    public void MemoryBarrierByRegion(@CType("GLbitfield") int barriers) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
+    /// ```
+    /// void glMemoryBarrierByRegion((unsigned int) GLbitfield barriers);
+    /// ```
+    public void MemoryBarrierByRegion(int barriers) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
         try { Handles.MH_glMemoryBarrierByRegion.invokeExact(handles.PFN_glMemoryBarrierByRegion, barriers); }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierByRegion", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MemoryBarrierByRegion", e); }
     }
 
 }

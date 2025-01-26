@@ -19,25 +19,14 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLEXTColorSubtable {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glColorSubTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glCopyColorSubTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorSubTableEXT,
-            FD_glCopyColorSubTableEXT
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glColorSubTableEXT = RuntimeHelper.downcall(Descriptors.FD_glColorSubTableEXT);
-        public static final MethodHandle MH_glCopyColorSubTableEXT = RuntimeHelper.downcall(Descriptors.FD_glCopyColorSubTableEXT);
+        public static final MethodHandle MH_glColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCopyColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glColorSubTableEXT;
         public final MemorySegment PFN_glCopyColorSubTableEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -50,16 +39,22 @@ public final class GLEXTColorSubtable {
         this.handles = new Handles(func);
     }
 
-    public void ColorSubTableEXT(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLsizei") int count, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (Unmarshal.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorSubTableEXT");
+    /// ```
+    /// void glColorSubTableEXT((unsigned int) GLenum target, (int) GLsizei start, (int) GLsizei count, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
+    /// ```
+    public void ColorSubTableEXT(int target, int start, int count, int format, int type, MemorySegment data) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorSubTableEXT");
         try { Handles.MH_glColorSubTableEXT.invokeExact(handles.PFN_glColorSubTableEXT, target, start, count, format, type, data); }
-        catch (Throwable e) { throw new RuntimeException("error in glColorSubTableEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ColorSubTableEXT", e); }
     }
 
-    public void CopyColorSubTableEXT(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        if (Unmarshal.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");
+    /// ```
+    /// void glCopyColorSubTableEXT((unsigned int) GLenum target, (int) GLsizei start, (int) GLint x, (int) GLint y, (int) GLsizei width);
+    /// ```
+    public void CopyColorSubTableEXT(int target, int start, int x, int y, int width) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");
         try { Handles.MH_glCopyColorSubTableEXT.invokeExact(handles.PFN_glCopyColorSubTableEXT, target, start, x, y, width); }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyColorSubTableEXT", e); }
+        catch (Throwable e) { throw new RuntimeException("error in CopyColorSubTableEXT", e); }
     }
 
 }

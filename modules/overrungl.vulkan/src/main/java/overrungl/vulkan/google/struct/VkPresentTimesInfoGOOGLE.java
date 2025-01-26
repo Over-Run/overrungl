@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.google.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### swapchainCount
-/// [VarHandle][#VH_swapchainCount] - [Getter][#swapchainCount()] - [Setter][#swapchainCount(int)]
-/// ### pTimes
-/// [VarHandle][#VH_pTimes] - [Getter][#pTimes()] - [Setter][#pTimes(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPresentTimesInfoGOOGLE {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t swapchainCount;
-///     const VkPresentTimeGOOGLE * pTimes;
-/// } VkPresentTimesInfoGOOGLE;
 /// ```
-public sealed class VkPresentTimesInfoGOOGLE extends Struct {
+/// struct VkPresentTimesInfoGOOGLE {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t swapchainCount;
+///     const VkPresentTimeGOOGLE* pTimes;
+/// };
+/// ```
+public sealed class VkPresentTimesInfoGOOGLE extends GroupType {
     /// The struct layout of `VkPresentTimesInfoGOOGLE`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("swapchainCount"),
         ValueLayout.ADDRESS.withName("pTimes")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `swapchainCount`.
+    public static final long OFFSET_swapchainCount = LAYOUT.byteOffset(PathElement.groupElement("swapchainCount"));
+    /// The memory layout of `swapchainCount`.
+    public static final MemoryLayout LAYOUT_swapchainCount = LAYOUT.select(PathElement.groupElement("swapchainCount"));
+    /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
-    /// The [VarHandle] of `pTimes` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pTimes`.
+    public static final long OFFSET_pTimes = LAYOUT.byteOffset(PathElement.groupElement("pTimes"));
+    /// The memory layout of `pTimes`.
+    public static final MemoryLayout LAYOUT_pTimes = LAYOUT.select(PathElement.groupElement("pTimes"));
+    /// The [VarHandle] of `pTimes` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pTimes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTimes"));
 
     /// Creates `VkPresentTimesInfoGOOGLE` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPresentTimesInfoGOOGLE extends Struct {
     /// Creates `VkPresentTimesInfoGOOGLE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPresentTimesInfoGOOGLE of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPresentTimesInfoGOOGLE(segment); }
-
-    /// Creates `VkPresentTimesInfoGOOGLE` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPresentTimesInfoGOOGLE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPresentTimesInfoGOOGLE ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPresentTimesInfoGOOGLE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPresentTimesInfoGOOGLE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentTimesInfoGOOGLE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPresentTimesInfoGOOGLE` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPresentTimesInfoGOOGLE extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPresentTimesInfoGOOGLE extends Struct {
     /// @return the allocated `VkPresentTimesInfoGOOGLE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPresentTimesInfoGOOGLE`
-    public static VkPresentTimesInfoGOOGLE allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int swapchainCount, @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment pTimes) { return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pTimes(pTimes); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPresentTimesInfoGOOGLE extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPresentTimesInfoGOOGLE.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPresentTimesInfoGOOGLE.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPresentTimesInfoGOOGLE.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentTimesInfoGOOGLE sType(@CType("VkStructureType") int value) { VkPresentTimesInfoGOOGLE.set_sType(this.segment(), value); return this; }
+    public VkPresentTimesInfoGOOGLE sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPresentTimesInfoGOOGLE.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPresentTimesInfoGOOGLE.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentTimesInfoGOOGLE pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pNext(this.segment(), value); return this; }
+    public VkPresentTimesInfoGOOGLE pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `swapchainCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_swapchainCount(MemorySegment segment, long index) { return (int) VH_swapchainCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int swapchainCount(MemorySegment segment, long index) { return (int) VH_swapchainCount.get(segment, 0L, index); }
     /// {@return `swapchainCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_swapchainCount(MemorySegment segment) { return VkPresentTimesInfoGOOGLE.get_swapchainCount(segment, 0L); }
-    /// {@return `swapchainCount`}
-    public @CType("uint32_t") int swapchainCount() { return VkPresentTimesInfoGOOGLE.get_swapchainCount(this.segment()); }
+    public int swapchainCount() { return swapchainCount(this.segment(), 0L); }
     /// Sets `swapchainCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_swapchainCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_swapchainCount.set(segment, 0L, index, value); }
-    /// Sets `swapchainCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_swapchainCount(MemorySegment segment, @CType("uint32_t") int value) { VkPresentTimesInfoGOOGLE.set_swapchainCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void swapchainCount(MemorySegment segment, long index, int value) { VH_swapchainCount.set(segment, 0L, index, value); }
     /// Sets `swapchainCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentTimesInfoGOOGLE swapchainCount(@CType("uint32_t") int value) { VkPresentTimesInfoGOOGLE.set_swapchainCount(this.segment(), value); return this; }
+    public VkPresentTimesInfoGOOGLE swapchainCount(int value) { swapchainCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pTimes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment get_pTimes(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pTimes.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pTimes(MemorySegment segment, long index) { return (MemorySegment) VH_pTimes.get(segment, 0L, index); }
     /// {@return `pTimes`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment get_pTimes(MemorySegment segment) { return VkPresentTimesInfoGOOGLE.get_pTimes(segment, 0L); }
-    /// {@return `pTimes`}
-    public @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment pTimes() { return VkPresentTimesInfoGOOGLE.get_pTimes(this.segment()); }
+    public MemorySegment pTimes() { return pTimes(this.segment(), 0L); }
     /// Sets `pTimes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pTimes(MemorySegment segment, long index, @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment value) { VH_pTimes.set(segment, 0L, index, value); }
-    /// Sets `pTimes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pTimes(MemorySegment segment, @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pTimes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pTimes(MemorySegment segment, long index, MemorySegment value) { VH_pTimes.set(segment, 0L, index, value); }
     /// Sets `pTimes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentTimesInfoGOOGLE pTimes(@CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pTimes(this.segment(), value); return this; }
+    public VkPresentTimesInfoGOOGLE pTimes(MemorySegment value) { pTimes(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPresentTimesInfoGOOGLE].
     public static final class Buffer extends VkPresentTimesInfoGOOGLE {
@@ -229,40 +197,40 @@ public sealed class VkPresentTimesInfoGOOGLE extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPresentTimesInfoGOOGLE.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPresentTimesInfoGOOGLE.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPresentTimesInfoGOOGLE.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `swapchainCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int swapchainCountAt(long index) { return VkPresentTimesInfoGOOGLE.get_swapchainCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int swapchainCountAt(long index) { return swapchainCount(this.segment(), index); }
         /// Sets `swapchainCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer swapchainCountAt(long index, @CType("uint32_t") int value) { VkPresentTimesInfoGOOGLE.set_swapchainCount(this.segment(), index, value); return this; }
+        public Buffer swapchainCountAt(long index, int value) { swapchainCount(this.segment(), index, value); return this; }
 
         /// {@return `pTimes` at the given index}
-        /// @param index the index
-        public @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment pTimesAt(long index) { return VkPresentTimesInfoGOOGLE.get_pTimes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pTimesAt(long index) { return pTimes(this.segment(), index); }
         /// Sets `pTimes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pTimesAt(long index, @CType("const VkPresentTimeGOOGLE *") java.lang.foreign.MemorySegment value) { VkPresentTimesInfoGOOGLE.set_pTimes(this.segment(), index, value); return this; }
+        public Buffer pTimesAt(long index, MemorySegment value) { pTimes(this.segment(), index, value); return this; }
 
     }
 }

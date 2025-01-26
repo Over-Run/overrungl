@@ -15,52 +15,54 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### sampleCounts
-/// [VarHandle][#VH_sampleCounts] - [Getter][#sampleCounts()] - [Setter][#sampleCounts(int)]
-/// ### fragmentSize
-/// [Byte offset][#OFFSET_fragmentSize] - [Memory layout][#ML_fragmentSize] - [Getter][#fragmentSize()] - [Setter][#fragmentSize(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceFragmentShadingRateKHR {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkSampleCountFlags sampleCounts;
-///     VkExtent2D fragmentSize;
-/// } VkPhysicalDeviceFragmentShadingRateKHR;
 /// ```
-public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
+/// struct VkPhysicalDeviceFragmentShadingRateKHR {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     ((uint32_t) VkFlags) VkSampleCountFlags sampleCounts;
+///     (struct VkExtent2D) VkExtent2D fragmentSize;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFragmentShadingRateKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("sampleCounts"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("fragmentSize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `sampleCounts` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sampleCounts`.
+    public static final long OFFSET_sampleCounts = LAYOUT.byteOffset(PathElement.groupElement("sampleCounts"));
+    /// The memory layout of `sampleCounts`.
+    public static final MemoryLayout LAYOUT_sampleCounts = LAYOUT.select(PathElement.groupElement("sampleCounts"));
+    /// The [VarHandle] of `sampleCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sampleCounts"));
     /// The byte offset of `fragmentSize`.
     public static final long OFFSET_fragmentSize = LAYOUT.byteOffset(PathElement.groupElement("fragmentSize"));
     /// The memory layout of `fragmentSize`.
-    public static final MemoryLayout ML_fragmentSize = LAYOUT.select(PathElement.groupElement("fragmentSize"));
+    public static final MemoryLayout LAYOUT_fragmentSize = LAYOUT.select(PathElement.groupElement("fragmentSize"));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment.
     /// @param segment the memory segment
@@ -69,19 +71,14 @@ public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
     /// Creates `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRateKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateKHR(segment); }
-
-    /// Creates `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRateKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceFragmentShadingRateKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment.
     ///
@@ -89,7 +86,7 @@ public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -102,11 +99,6 @@ public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateKHR`
-    public static VkPhysicalDeviceFragmentShadingRateKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSampleCountFlags") int sampleCounts, @CType("VkExtent2D") java.lang.foreign.MemorySegment fragmentSize) { return alloc(allocator).sType(sType).pNext(pNext).sampleCounts(sampleCounts).fragmentSize(fragmentSize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -114,99 +106,71 @@ public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFragmentShadingRateKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateKHR sType(@CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFragmentShadingRateKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `sampleCounts` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkSampleCountFlags") int get_sampleCounts(MemorySegment segment, long index) { return (int) VH_sampleCounts.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sampleCounts(MemorySegment segment, long index) { return (int) VH_sampleCounts.get(segment, 0L, index); }
     /// {@return `sampleCounts`}
-    /// @param segment the segment of the struct
-    public static @CType("VkSampleCountFlags") int get_sampleCounts(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateKHR.get_sampleCounts(segment, 0L); }
-    /// {@return `sampleCounts`}
-    public @CType("VkSampleCountFlags") int sampleCounts() { return VkPhysicalDeviceFragmentShadingRateKHR.get_sampleCounts(this.segment()); }
+    public int sampleCounts() { return sampleCounts(this.segment(), 0L); }
     /// Sets `sampleCounts` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sampleCounts(MemorySegment segment, long index, @CType("VkSampleCountFlags") int value) { VH_sampleCounts.set(segment, 0L, index, value); }
-    /// Sets `sampleCounts` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sampleCounts(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sampleCounts(MemorySegment segment, long index, int value) { VH_sampleCounts.set(segment, 0L, index, value); }
     /// Sets `sampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(@CType("VkSampleCountFlags") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sampleCounts(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateKHR sampleCounts(int value) { sampleCounts(this.segment(), 0L, value); return this; }
 
     /// {@return `fragmentSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_fragmentSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fragmentSize, index), ML_fragmentSize); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment fragmentSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_fragmentSize, index), LAYOUT_fragmentSize); }
     /// {@return `fragmentSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_fragmentSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateKHR.get_fragmentSize(segment, 0L); }
-    /// {@return `fragmentSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment fragmentSize() { return VkPhysicalDeviceFragmentShadingRateKHR.get_fragmentSize(this.segment()); }
+    public MemorySegment fragmentSize() { return fragmentSize(this.segment(), 0L); }
     /// Sets `fragmentSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_fragmentSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fragmentSize, index), ML_fragmentSize.byteSize()); }
-    /// Sets `fragmentSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_fragmentSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_fragmentSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void fragmentSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_fragmentSize, index), LAYOUT_fragmentSize.byteSize()); }
     /// Sets `fragmentSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateKHR fragmentSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_fragmentSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceFragmentShadingRateKHR fragmentSize(MemorySegment value) { fragmentSize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceFragmentShadingRateKHR].
     public static final class Buffer extends VkPhysicalDeviceFragmentShadingRateKHR {
@@ -231,40 +195,40 @@ public sealed class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentShadingRateKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRateKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `sampleCounts` at the given index}
-        /// @param index the index
-        public @CType("VkSampleCountFlags") int sampleCountsAt(long index) { return VkPhysicalDeviceFragmentShadingRateKHR.get_sampleCounts(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sampleCountsAt(long index) { return sampleCounts(this.segment(), index); }
         /// Sets `sampleCounts` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceFragmentShadingRateKHR.set_sampleCounts(this.segment(), index, value); return this; }
+        public Buffer sampleCountsAt(long index, int value) { sampleCounts(this.segment(), index, value); return this; }
 
         /// {@return `fragmentSize` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment fragmentSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRateKHR.get_fragmentSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment fragmentSizeAt(long index) { return fragmentSize(this.segment(), index); }
         /// Sets `fragmentSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer fragmentSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateKHR.set_fragmentSize(this.segment(), index, value); return this; }
+        public Buffer fragmentSizeAt(long index, MemorySegment value) { fragmentSize(this.segment(), index, value); return this; }
 
     }
 }

@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.nv.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### sciBufImport
-/// [VarHandle][#VH_sciBufImport] - [Getter][#sciBufImport()] - [Setter][#sciBufImport(int)]
-/// ### sciBufExport
-/// [VarHandle][#VH_sciBufExport] - [Getter][#sciBufExport()] - [Setter][#sciBufExport(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceExternalMemorySciBufFeaturesNV {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 sciBufImport;
-///     VkBool32 sciBufExport;
-/// } VkPhysicalDeviceExternalMemorySciBufFeaturesNV;
 /// ```
-public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struct {
+/// struct VkPhysicalDeviceExternalMemorySciBufFeaturesNV {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 sciBufImport;
+///     (uint32_t) VkBool32 sciBufExport;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExternalMemorySciBufFeaturesNV`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("sciBufImport"),
         ValueLayout.JAVA_INT.withName("sciBufExport")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `sciBufImport` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sciBufImport`.
+    public static final long OFFSET_sciBufImport = LAYOUT.byteOffset(PathElement.groupElement("sciBufImport"));
+    /// The memory layout of `sciBufImport`.
+    public static final MemoryLayout LAYOUT_sciBufImport = LAYOUT.select(PathElement.groupElement("sciBufImport"));
+    /// The [VarHandle] of `sciBufImport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sciBufImport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciBufImport"));
-    /// The [VarHandle] of `sciBufExport` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sciBufExport`.
+    public static final long OFFSET_sciBufExport = LAYOUT.byteOffset(PathElement.groupElement("sciBufExport"));
+    /// The memory layout of `sciBufExport`.
+    public static final MemoryLayout LAYOUT_sciBufExport = LAYOUT.select(PathElement.groupElement("sciBufExport"));
+    /// The [VarHandle] of `sciBufExport` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sciBufExport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciBufExport"));
 
     /// Creates `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struc
     /// Creates `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalMemorySciBufFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment); }
-
-    /// Creates `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalMemorySciBufFeaturesNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceExternalMemorySciBufFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemorySciBufFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struc
     /// @return the allocated `VkPhysicalDeviceExternalMemorySciBufFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalMemorySciBufFeaturesNV` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceExternalMemorySciBufFeaturesNV`
-    public static VkPhysicalDeviceExternalMemorySciBufFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int sciBufImport, @CType("VkBool32") int sciBufExport) { return alloc(allocator).sType(sType).pNext(pNext).sciBufImport(sciBufImport).sciBufExport(sciBufExport); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struc
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sType(@CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `sciBufImport` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_sciBufImport(MemorySegment segment, long index) { return (int) VH_sciBufImport.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sciBufImport(MemorySegment segment, long index) { return (int) VH_sciBufImport.get(segment, 0L, index); }
     /// {@return `sciBufImport`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_sciBufImport(MemorySegment segment) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufImport(segment, 0L); }
-    /// {@return `sciBufImport`}
-    public @CType("VkBool32") int sciBufImport() { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufImport(this.segment()); }
+    public int sciBufImport() { return sciBufImport(this.segment(), 0L); }
     /// Sets `sciBufImport` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sciBufImport(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_sciBufImport.set(segment, 0L, index, value); }
-    /// Sets `sciBufImport` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sciBufImport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufImport(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sciBufImport(MemorySegment segment, long index, int value) { VH_sciBufImport.set(segment, 0L, index, value); }
     /// Sets `sciBufImport` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufImport(@CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufImport(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufImport(int value) { sciBufImport(this.segment(), 0L, value); return this; }
 
     /// {@return `sciBufExport` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_sciBufExport(MemorySegment segment, long index) { return (int) VH_sciBufExport.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sciBufExport(MemorySegment segment, long index) { return (int) VH_sciBufExport.get(segment, 0L, index); }
     /// {@return `sciBufExport`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_sciBufExport(MemorySegment segment) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufExport(segment, 0L); }
-    /// {@return `sciBufExport`}
-    public @CType("VkBool32") int sciBufExport() { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufExport(this.segment()); }
+    public int sciBufExport() { return sciBufExport(this.segment(), 0L); }
     /// Sets `sciBufExport` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sciBufExport(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_sciBufExport.set(segment, 0L, index, value); }
-    /// Sets `sciBufExport` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sciBufExport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufExport(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sciBufExport(MemorySegment segment, long index, int value) { VH_sciBufExport.set(segment, 0L, index, value); }
     /// Sets `sciBufExport` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufExport(@CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufExport(this.segment(), value); return this; }
+    public VkPhysicalDeviceExternalMemorySciBufFeaturesNV sciBufExport(int value) { sciBufExport(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceExternalMemorySciBufFeaturesNV].
     public static final class Buffer extends VkPhysicalDeviceExternalMemorySciBufFeaturesNV {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends Struc
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `sciBufImport` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int sciBufImportAt(long index) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufImport(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sciBufImportAt(long index) { return sciBufImport(this.segment(), index); }
         /// Sets `sciBufImport` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sciBufImportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufImport(this.segment(), index, value); return this; }
+        public Buffer sciBufImportAt(long index, int value) { sciBufImport(this.segment(), index, value); return this; }
 
         /// {@return `sciBufExport` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int sciBufExportAt(long index) { return VkPhysicalDeviceExternalMemorySciBufFeaturesNV.get_sciBufExport(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sciBufExportAt(long index) { return sciBufExport(this.segment(), index); }
         /// Sets `sciBufExport` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sciBufExportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemorySciBufFeaturesNV.set_sciBufExport(this.segment(), index, value); return this; }
+        public Buffer sciBufExportAt(long index, int value) { sciBufExport(this.segment(), index, value); return this; }
 
     }
 }

@@ -19,22 +19,13 @@ package overrungl.opengl.ingr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLINGRBlendFuncSeparate {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendFuncSeparateINGR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendFuncSeparateINGR
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncSeparateINGR = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparateINGR);
+        public static final MethodHandle MH_glBlendFuncSeparateINGR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparateINGR;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glBlendFuncSeparateINGR = func.invoke("glBlendFuncSeparateINGR", "glBlendFuncSeparate");
@@ -45,10 +36,13 @@ public final class GLINGRBlendFuncSeparate {
         this.handles = new Handles(func);
     }
 
-    public void BlendFuncSeparateINGR(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncSeparateINGR)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR");
+    /// ```
+    /// void glBlendFuncSeparateINGR((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
+    /// ```
+    public void BlendFuncSeparateINGR(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateINGR)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR");
         try { Handles.MH_glBlendFuncSeparateINGR.invokeExact(handles.PFN_glBlendFuncSeparateINGR, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateINGR", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateINGR", e); }
     }
 
 }

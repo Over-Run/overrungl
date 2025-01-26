@@ -15,70 +15,42 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### type
-/// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(int)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### mode
-/// [VarHandle][#VH_mode] - [Getter][#mode()] - [Setter][#mode(int)]
-/// ### dstMicromap
-/// [VarHandle][#VH_dstMicromap] - [Getter][#dstMicromap()] - [Setter][#dstMicromap(java.lang.foreign.MemorySegment)]
-/// ### usageCountsCount
-/// [VarHandle][#VH_usageCountsCount] - [Getter][#usageCountsCount()] - [Setter][#usageCountsCount(int)]
-/// ### pUsageCounts
-/// [VarHandle][#VH_pUsageCounts] - [Getter][#pUsageCounts()] - [Setter][#pUsageCounts(java.lang.foreign.MemorySegment)]
-/// ### ppUsageCounts
-/// [VarHandle][#VH_ppUsageCounts] - [Getter][#ppUsageCounts()] - [Setter][#ppUsageCounts(java.lang.foreign.MemorySegment)]
-/// ### data
-/// [Byte offset][#OFFSET_data] - [Memory layout][#ML_data] - [Getter][#data()] - [Setter][#data(java.lang.foreign.MemorySegment)]
-/// ### scratchData
-/// [Byte offset][#OFFSET_scratchData] - [Memory layout][#ML_scratchData] - [Getter][#scratchData()] - [Setter][#scratchData(java.lang.foreign.MemorySegment)]
-/// ### triangleArray
-/// [Byte offset][#OFFSET_triangleArray] - [Memory layout][#ML_triangleArray] - [Getter][#triangleArray()] - [Setter][#triangleArray(java.lang.foreign.MemorySegment)]
-/// ### triangleArrayStride
-/// [VarHandle][#VH_triangleArrayStride] - [Getter][#triangleArrayStride()] - [Setter][#triangleArrayStride(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkMicromapBuildInfoEXT {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkMicromapTypeEXT type;
-///     VkBuildMicromapFlagsEXT flags;
-///     VkBuildMicromapModeEXT mode;
-///     VkMicromapEXT dstMicromap;
-///     uint32_t usageCountsCount;
-///     const VkMicromapUsageEXT * pUsageCounts;
-///     const VkMicromapUsageEXT * const* ppUsageCounts;
-///     VkDeviceOrHostAddressConstKHR data;
-///     VkDeviceOrHostAddressKHR scratchData;
-///     VkDeviceOrHostAddressConstKHR triangleArray;
-///     VkDeviceSize triangleArrayStride;
-/// } VkMicromapBuildInfoEXT;
 /// ```
-public sealed class VkMicromapBuildInfoEXT extends Struct {
+/// struct VkMicromapBuildInfoEXT {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (int) VkMicromapTypeEXT type;
+///     ((uint32_t) VkFlags) VkBuildMicromapFlagsEXT flags;
+///     (int) VkBuildMicromapModeEXT mode;
+///     (uint64_t) VkMicromapEXT dstMicromap;
+///     uint32_t usageCountsCount;
+///     const VkMicromapUsageEXT* pUsageCounts;
+///     const VkMicromapUsageEXT* const * ppUsageCounts;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR data;
+///     (union VkDeviceOrHostAddressKHR) VkDeviceOrHostAddressKHR scratchData;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR triangleArray;
+///     (uint64_t) VkDeviceSize triangleArrayStride;
+/// };
+/// ```
+public sealed class VkMicromapBuildInfoEXT extends GroupType {
     /// The struct layout of `VkMicromapBuildInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("type"),
         ValueLayout.JAVA_INT.withName("flags"),
         ValueLayout.JAVA_INT.withName("mode"),
-        ValueLayout.ADDRESS.withName("dstMicromap"),
+        ValueLayout.JAVA_LONG.withName("dstMicromap"),
         ValueLayout.JAVA_INT.withName("usageCountsCount"),
         ValueLayout.ADDRESS.withName("pUsageCounts"),
         ValueLayout.ADDRESS.withName("ppUsageCounts"),
@@ -87,37 +59,77 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
         overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.LAYOUT.withName("triangleArray"),
         ValueLayout.JAVA_LONG.withName("triangleArrayStride")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `type`.
+    public static final long OFFSET_type = LAYOUT.byteOffset(PathElement.groupElement("type"));
+    /// The memory layout of `type`.
+    public static final MemoryLayout LAYOUT_type = LAYOUT.select(PathElement.groupElement("type"));
+    /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_type = LAYOUT.arrayElementVarHandle(PathElement.groupElement("type"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `mode`.
+    public static final long OFFSET_mode = LAYOUT.byteOffset(PathElement.groupElement("mode"));
+    /// The memory layout of `mode`.
+    public static final MemoryLayout LAYOUT_mode = LAYOUT.select(PathElement.groupElement("mode"));
+    /// The [VarHandle] of `mode` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_mode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mode"));
-    /// The [VarHandle] of `dstMicromap` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `dstMicromap`.
+    public static final long OFFSET_dstMicromap = LAYOUT.byteOffset(PathElement.groupElement("dstMicromap"));
+    /// The memory layout of `dstMicromap`.
+    public static final MemoryLayout LAYOUT_dstMicromap = LAYOUT.select(PathElement.groupElement("dstMicromap"));
+    /// The [VarHandle] of `dstMicromap` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_dstMicromap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstMicromap"));
-    /// The [VarHandle] of `usageCountsCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `usageCountsCount`.
+    public static final long OFFSET_usageCountsCount = LAYOUT.byteOffset(PathElement.groupElement("usageCountsCount"));
+    /// The memory layout of `usageCountsCount`.
+    public static final MemoryLayout LAYOUT_usageCountsCount = LAYOUT.select(PathElement.groupElement("usageCountsCount"));
+    /// The [VarHandle] of `usageCountsCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_usageCountsCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("usageCountsCount"));
-    /// The [VarHandle] of `pUsageCounts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pUsageCounts`.
+    public static final long OFFSET_pUsageCounts = LAYOUT.byteOffset(PathElement.groupElement("pUsageCounts"));
+    /// The memory layout of `pUsageCounts`.
+    public static final MemoryLayout LAYOUT_pUsageCounts = LAYOUT.select(PathElement.groupElement("pUsageCounts"));
+    /// The [VarHandle] of `pUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUsageCounts"));
-    /// The [VarHandle] of `ppUsageCounts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `ppUsageCounts`.
+    public static final long OFFSET_ppUsageCounts = LAYOUT.byteOffset(PathElement.groupElement("ppUsageCounts"));
+    /// The memory layout of `ppUsageCounts`.
+    public static final MemoryLayout LAYOUT_ppUsageCounts = LAYOUT.select(PathElement.groupElement("ppUsageCounts"));
+    /// The [VarHandle] of `ppUsageCounts` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_ppUsageCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppUsageCounts"));
     /// The byte offset of `data`.
     public static final long OFFSET_data = LAYOUT.byteOffset(PathElement.groupElement("data"));
     /// The memory layout of `data`.
-    public static final MemoryLayout ML_data = LAYOUT.select(PathElement.groupElement("data"));
+    public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
     /// The byte offset of `scratchData`.
     public static final long OFFSET_scratchData = LAYOUT.byteOffset(PathElement.groupElement("scratchData"));
     /// The memory layout of `scratchData`.
-    public static final MemoryLayout ML_scratchData = LAYOUT.select(PathElement.groupElement("scratchData"));
+    public static final MemoryLayout LAYOUT_scratchData = LAYOUT.select(PathElement.groupElement("scratchData"));
     /// The byte offset of `triangleArray`.
     public static final long OFFSET_triangleArray = LAYOUT.byteOffset(PathElement.groupElement("triangleArray"));
     /// The memory layout of `triangleArray`.
-    public static final MemoryLayout ML_triangleArray = LAYOUT.select(PathElement.groupElement("triangleArray"));
-    /// The [VarHandle] of `triangleArrayStride` of type `(MemorySegment base, long baseOffset, long index)long`.
+    public static final MemoryLayout LAYOUT_triangleArray = LAYOUT.select(PathElement.groupElement("triangleArray"));
+    /// The byte offset of `triangleArrayStride`.
+    public static final long OFFSET_triangleArrayStride = LAYOUT.byteOffset(PathElement.groupElement("triangleArrayStride"));
+    /// The memory layout of `triangleArrayStride`.
+    public static final MemoryLayout LAYOUT_triangleArrayStride = LAYOUT.select(PathElement.groupElement("triangleArrayStride"));
+    /// The [VarHandle] of `triangleArrayStride` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_triangleArrayStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("triangleArrayStride"));
 
     /// Creates `VkMicromapBuildInfoEXT` with the given segment.
@@ -127,19 +139,14 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
     /// Creates `VkMicromapBuildInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapBuildInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapBuildInfoEXT(segment); }
-
-    /// Creates `VkMicromapBuildInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMicromapBuildInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapBuildInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapBuildInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkMicromapBuildInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapBuildInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkMicromapBuildInfoEXT` with the given segment.
     ///
@@ -147,7 +154,7 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMicromapBuildInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -160,11 +167,6 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
     /// @return the allocated `VkMicromapBuildInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMicromapBuildInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMicromapBuildInfoEXT`
-    public static VkMicromapBuildInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkMicromapTypeEXT") int type, @CType("VkBuildMicromapFlagsEXT") int flags, @CType("VkBuildMicromapModeEXT") int mode, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dstMicromap, @CType("uint32_t") int usageCountsCount, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCounts, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCounts, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment data, @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment scratchData, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment triangleArray, @CType("VkDeviceSize") long triangleArrayStride) { return alloc(allocator).sType(sType).pNext(pNext).type(type).flags(flags).mode(mode).dstMicromap(dstMicromap).usageCountsCount(usageCountsCount).pUsageCounts(pUsageCounts).ppUsageCounts(ppUsageCounts).data(data).scratchData(scratchData).triangleArray(triangleArray).triangleArrayStride(triangleArrayStride); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -172,306 +174,215 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkMicromapBuildInfoEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkMicromapBuildInfoEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT sType(@CType("VkStructureType") int value) { VkMicromapBuildInfoEXT.set_sType(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkMicromapBuildInfoEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pNext(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMicromapTypeEXT") int get_type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int type(MemorySegment segment, long index) { return (int) VH_type.get(segment, 0L, index); }
     /// {@return `type`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMicromapTypeEXT") int get_type(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_type(segment, 0L); }
-    /// {@return `type`}
-    public @CType("VkMicromapTypeEXT") int type() { return VkMicromapBuildInfoEXT.get_type(this.segment()); }
+    public int type() { return type(this.segment(), 0L); }
     /// Sets `type` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, long index, @CType("VkMicromapTypeEXT") int value) { VH_type.set(segment, 0L, index, value); }
-    /// Sets `type` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_type(MemorySegment segment, @CType("VkMicromapTypeEXT") int value) { VkMicromapBuildInfoEXT.set_type(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void type(MemorySegment segment, long index, int value) { VH_type.set(segment, 0L, index, value); }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT type(@CType("VkMicromapTypeEXT") int value) { VkMicromapBuildInfoEXT.set_type(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT type(int value) { type(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBuildMicromapFlagsEXT") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBuildMicromapFlagsEXT") int get_flags(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkBuildMicromapFlagsEXT") int flags() { return VkMicromapBuildInfoEXT.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkBuildMicromapFlagsEXT") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkBuildMicromapFlagsEXT") int value) { VkMicromapBuildInfoEXT.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT flags(@CType("VkBuildMicromapFlagsEXT") int value) { VkMicromapBuildInfoEXT.set_flags(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBuildMicromapModeEXT") int get_mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int mode(MemorySegment segment, long index) { return (int) VH_mode.get(segment, 0L, index); }
     /// {@return `mode`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBuildMicromapModeEXT") int get_mode(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_mode(segment, 0L); }
-    /// {@return `mode`}
-    public @CType("VkBuildMicromapModeEXT") int mode() { return VkMicromapBuildInfoEXT.get_mode(this.segment()); }
+    public int mode() { return mode(this.segment(), 0L); }
     /// Sets `mode` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, long index, @CType("VkBuildMicromapModeEXT") int value) { VH_mode.set(segment, 0L, index, value); }
-    /// Sets `mode` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_mode(MemorySegment segment, @CType("VkBuildMicromapModeEXT") int value) { VkMicromapBuildInfoEXT.set_mode(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void mode(MemorySegment segment, long index, int value) { VH_mode.set(segment, 0L, index, value); }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT mode(@CType("VkBuildMicromapModeEXT") int value) { VkMicromapBuildInfoEXT.set_mode(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT mode(int value) { mode(this.segment(), 0L, value); return this; }
 
     /// {@return `dstMicromap` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_dstMicromap(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_dstMicromap.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long dstMicromap(MemorySegment segment, long index) { return (long) VH_dstMicromap.get(segment, 0L, index); }
     /// {@return `dstMicromap`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMicromapEXT") java.lang.foreign.MemorySegment get_dstMicromap(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_dstMicromap(segment, 0L); }
-    /// {@return `dstMicromap`}
-    public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dstMicromap() { return VkMicromapBuildInfoEXT.get_dstMicromap(this.segment()); }
+    public long dstMicromap() { return dstMicromap(this.segment(), 0L); }
     /// Sets `dstMicromap` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_dstMicromap(MemorySegment segment, long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VH_dstMicromap.set(segment, 0L, index, value); }
-    /// Sets `dstMicromap` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_dstMicromap(MemorySegment segment, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_dstMicromap(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void dstMicromap(MemorySegment segment, long index, long value) { VH_dstMicromap.set(segment, 0L, index, value); }
     /// Sets `dstMicromap` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT dstMicromap(@CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_dstMicromap(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT dstMicromap(long value) { dstMicromap(this.segment(), 0L, value); return this; }
 
     /// {@return `usageCountsCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_usageCountsCount(MemorySegment segment, long index) { return (int) VH_usageCountsCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int usageCountsCount(MemorySegment segment, long index) { return (int) VH_usageCountsCount.get(segment, 0L, index); }
     /// {@return `usageCountsCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_usageCountsCount(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_usageCountsCount(segment, 0L); }
-    /// {@return `usageCountsCount`}
-    public @CType("uint32_t") int usageCountsCount() { return VkMicromapBuildInfoEXT.get_usageCountsCount(this.segment()); }
+    public int usageCountsCount() { return usageCountsCount(this.segment(), 0L); }
     /// Sets `usageCountsCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_usageCountsCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_usageCountsCount.set(segment, 0L, index, value); }
-    /// Sets `usageCountsCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_usageCountsCount(MemorySegment segment, @CType("uint32_t") int value) { VkMicromapBuildInfoEXT.set_usageCountsCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void usageCountsCount(MemorySegment segment, long index, int value) { VH_usageCountsCount.set(segment, 0L, index, value); }
     /// Sets `usageCountsCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT usageCountsCount(@CType("uint32_t") int value) { VkMicromapBuildInfoEXT.set_usageCountsCount(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT usageCountsCount(int value) { usageCountsCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pUsageCounts` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment get_pUsageCounts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pUsageCounts.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_pUsageCounts.get(segment, 0L, index); }
     /// {@return `pUsageCounts`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment get_pUsageCounts(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_pUsageCounts(segment, 0L); }
-    /// {@return `pUsageCounts`}
-    public @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCounts() { return VkMicromapBuildInfoEXT.get_pUsageCounts(this.segment()); }
+    public MemorySegment pUsageCounts() { return pUsageCounts(this.segment(), 0L); }
     /// Sets `pUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VH_pUsageCounts.set(segment, 0L, index, value); }
-    /// Sets `pUsageCounts` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pUsageCounts(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_pUsageCounts.set(segment, 0L, index, value); }
     /// Sets `pUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT pUsageCounts(@CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pUsageCounts(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT pUsageCounts(MemorySegment value) { pUsageCounts(this.segment(), 0L, value); return this; }
 
     /// {@return `ppUsageCounts` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment get_ppUsageCounts(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_ppUsageCounts.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment ppUsageCounts(MemorySegment segment, long index) { return (MemorySegment) VH_ppUsageCounts.get(segment, 0L, index); }
     /// {@return `ppUsageCounts`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment get_ppUsageCounts(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_ppUsageCounts(segment, 0L); }
-    /// {@return `ppUsageCounts`}
-    public @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCounts() { return VkMicromapBuildInfoEXT.get_ppUsageCounts(this.segment()); }
+    public MemorySegment ppUsageCounts() { return ppUsageCounts(this.segment(), 0L); }
     /// Sets `ppUsageCounts` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_ppUsageCounts(MemorySegment segment, long index, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VH_ppUsageCounts.set(segment, 0L, index, value); }
-    /// Sets `ppUsageCounts` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_ppUsageCounts(MemorySegment segment, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_ppUsageCounts(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void ppUsageCounts(MemorySegment segment, long index, MemorySegment value) { VH_ppUsageCounts.set(segment, 0L, index, value); }
     /// Sets `ppUsageCounts` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT ppUsageCounts(@CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_ppUsageCounts(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT ppUsageCounts(MemorySegment value) { ppUsageCounts(this.segment(), 0L, value); return this; }
 
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_data(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_data, index), ML_data); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment data(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_data, index), LAYOUT_data); }
     /// {@return `data`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_data(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_data(segment, 0L); }
-    /// {@return `data`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment data() { return VkMicromapBuildInfoEXT.get_data(this.segment()); }
+    public MemorySegment data() { return data(this.segment(), 0L); }
     /// Sets `data` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_data(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_data, index), ML_data.byteSize()); }
-    /// Sets `data` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_data(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_data(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void data(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_data, index), LAYOUT_data.byteSize()); }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT data(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_data(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT data(MemorySegment value) { data(this.segment(), 0L, value); return this; }
 
     /// {@return `scratchData` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment get_scratchData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_scratchData, index), ML_scratchData); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment scratchData(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_scratchData, index), LAYOUT_scratchData); }
     /// {@return `scratchData`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment get_scratchData(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_scratchData(segment, 0L); }
-    /// {@return `scratchData`}
-    public @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment scratchData() { return VkMicromapBuildInfoEXT.get_scratchData(this.segment()); }
+    public MemorySegment scratchData() { return scratchData(this.segment(), 0L); }
     /// Sets `scratchData` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_scratchData(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_scratchData, index), ML_scratchData.byteSize()); }
-    /// Sets `scratchData` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_scratchData(MemorySegment segment, @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_scratchData(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void scratchData(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_scratchData, index), LAYOUT_scratchData.byteSize()); }
     /// Sets `scratchData` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT scratchData(@CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_scratchData(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT scratchData(MemorySegment value) { scratchData(this.segment(), 0L, value); return this; }
 
     /// {@return `triangleArray` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_triangleArray(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_triangleArray, index), ML_triangleArray); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment triangleArray(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_triangleArray, index), LAYOUT_triangleArray); }
     /// {@return `triangleArray`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_triangleArray(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_triangleArray(segment, 0L); }
-    /// {@return `triangleArray`}
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment triangleArray() { return VkMicromapBuildInfoEXT.get_triangleArray(this.segment()); }
+    public MemorySegment triangleArray() { return triangleArray(this.segment(), 0L); }
     /// Sets `triangleArray` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_triangleArray(MemorySegment segment, long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_triangleArray, index), ML_triangleArray.byteSize()); }
-    /// Sets `triangleArray` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_triangleArray(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_triangleArray(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void triangleArray(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_triangleArray, index), LAYOUT_triangleArray.byteSize()); }
     /// Sets `triangleArray` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT triangleArray(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_triangleArray(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT triangleArray(MemorySegment value) { triangleArray(this.segment(), 0L, value); return this; }
 
     /// {@return `triangleArrayStride` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_triangleArrayStride(MemorySegment segment, long index) { return (long) VH_triangleArrayStride.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long triangleArrayStride(MemorySegment segment, long index) { return (long) VH_triangleArrayStride.get(segment, 0L, index); }
     /// {@return `triangleArrayStride`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_triangleArrayStride(MemorySegment segment) { return VkMicromapBuildInfoEXT.get_triangleArrayStride(segment, 0L); }
-    /// {@return `triangleArrayStride`}
-    public @CType("VkDeviceSize") long triangleArrayStride() { return VkMicromapBuildInfoEXT.get_triangleArrayStride(this.segment()); }
+    public long triangleArrayStride() { return triangleArrayStride(this.segment(), 0L); }
     /// Sets `triangleArrayStride` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_triangleArrayStride(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_triangleArrayStride.set(segment, 0L, index, value); }
-    /// Sets `triangleArrayStride` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_triangleArrayStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMicromapBuildInfoEXT.set_triangleArrayStride(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void triangleArrayStride(MemorySegment segment, long index, long value) { VH_triangleArrayStride.set(segment, 0L, index, value); }
     /// Sets `triangleArrayStride` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMicromapBuildInfoEXT triangleArrayStride(@CType("VkDeviceSize") long value) { VkMicromapBuildInfoEXT.set_triangleArrayStride(this.segment(), value); return this; }
+    public VkMicromapBuildInfoEXT triangleArrayStride(long value) { triangleArrayStride(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkMicromapBuildInfoEXT].
     public static final class Buffer extends VkMicromapBuildInfoEXT {
@@ -496,121 +407,121 @@ public sealed class VkMicromapBuildInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkMicromapBuildInfoEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkMicromapBuildInfoEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMicromapBuildInfoEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `type` at the given index}
-        /// @param index the index
-        public @CType("VkMicromapTypeEXT") int typeAt(long index) { return VkMicromapBuildInfoEXT.get_type(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int typeAt(long index) { return type(this.segment(), index); }
         /// Sets `type` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer typeAt(long index, @CType("VkMicromapTypeEXT") int value) { VkMicromapBuildInfoEXT.set_type(this.segment(), index, value); return this; }
+        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkBuildMicromapFlagsEXT") int flagsAt(long index) { return VkMicromapBuildInfoEXT.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkBuildMicromapFlagsEXT") int value) { VkMicromapBuildInfoEXT.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `mode` at the given index}
-        /// @param index the index
-        public @CType("VkBuildMicromapModeEXT") int modeAt(long index) { return VkMicromapBuildInfoEXT.get_mode(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int modeAt(long index) { return mode(this.segment(), index); }
         /// Sets `mode` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer modeAt(long index, @CType("VkBuildMicromapModeEXT") int value) { VkMicromapBuildInfoEXT.set_mode(this.segment(), index, value); return this; }
+        public Buffer modeAt(long index, int value) { mode(this.segment(), index, value); return this; }
 
         /// {@return `dstMicromap` at the given index}
-        /// @param index the index
-        public @CType("VkMicromapEXT") java.lang.foreign.MemorySegment dstMicromapAt(long index) { return VkMicromapBuildInfoEXT.get_dstMicromap(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long dstMicromapAt(long index) { return dstMicromap(this.segment(), index); }
         /// Sets `dstMicromap` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dstMicromapAt(long index, @CType("VkMicromapEXT") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_dstMicromap(this.segment(), index, value); return this; }
+        public Buffer dstMicromapAt(long index, long value) { dstMicromap(this.segment(), index, value); return this; }
 
         /// {@return `usageCountsCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int usageCountsCountAt(long index) { return VkMicromapBuildInfoEXT.get_usageCountsCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int usageCountsCountAt(long index) { return usageCountsCount(this.segment(), index); }
         /// Sets `usageCountsCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer usageCountsCountAt(long index, @CType("uint32_t") int value) { VkMicromapBuildInfoEXT.set_usageCountsCount(this.segment(), index, value); return this; }
+        public Buffer usageCountsCountAt(long index, int value) { usageCountsCount(this.segment(), index, value); return this; }
 
         /// {@return `pUsageCounts` at the given index}
-        /// @param index the index
-        public @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment pUsageCountsAt(long index) { return VkMicromapBuildInfoEXT.get_pUsageCounts(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pUsageCountsAt(long index) { return pUsageCounts(this.segment(), index); }
         /// Sets `pUsageCounts` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pUsageCountsAt(long index, @CType("const VkMicromapUsageEXT *") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_pUsageCounts(this.segment(), index, value); return this; }
+        public Buffer pUsageCountsAt(long index, MemorySegment value) { pUsageCounts(this.segment(), index, value); return this; }
 
         /// {@return `ppUsageCounts` at the given index}
-        /// @param index the index
-        public @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment ppUsageCountsAt(long index) { return VkMicromapBuildInfoEXT.get_ppUsageCounts(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment ppUsageCountsAt(long index) { return ppUsageCounts(this.segment(), index); }
         /// Sets `ppUsageCounts` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer ppUsageCountsAt(long index, @CType("const VkMicromapUsageEXT * const*") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_ppUsageCounts(this.segment(), index, value); return this; }
+        public Buffer ppUsageCountsAt(long index, MemorySegment value) { ppUsageCounts(this.segment(), index, value); return this; }
 
         /// {@return `data` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment dataAt(long index) { return VkMicromapBuildInfoEXT.get_data(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment dataAt(long index) { return data(this.segment(), index); }
         /// Sets `data` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer dataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_data(this.segment(), index, value); return this; }
+        public Buffer dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
 
         /// {@return `scratchData` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment scratchDataAt(long index) { return VkMicromapBuildInfoEXT.get_scratchData(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment scratchDataAt(long index) { return scratchData(this.segment(), index); }
         /// Sets `scratchData` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer scratchDataAt(long index, @CType("VkDeviceOrHostAddressKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_scratchData(this.segment(), index, value); return this; }
+        public Buffer scratchDataAt(long index, MemorySegment value) { scratchData(this.segment(), index, value); return this; }
 
         /// {@return `triangleArray` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment triangleArrayAt(long index) { return VkMicromapBuildInfoEXT.get_triangleArray(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment triangleArrayAt(long index) { return triangleArray(this.segment(), index); }
         /// Sets `triangleArray` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer triangleArrayAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkMicromapBuildInfoEXT.set_triangleArray(this.segment(), index, value); return this; }
+        public Buffer triangleArrayAt(long index, MemorySegment value) { triangleArray(this.segment(), index, value); return this; }
 
         /// {@return `triangleArrayStride` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long triangleArrayStrideAt(long index) { return VkMicromapBuildInfoEXT.get_triangleArrayStride(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long triangleArrayStrideAt(long index) { return triangleArrayStride(this.segment(), index); }
         /// Sets `triangleArrayStride` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer triangleArrayStrideAt(long index, @CType("VkDeviceSize") long value) { VkMicromapBuildInfoEXT.set_triangleArrayStride(this.segment(), index, value); return this; }
+        public Buffer triangleArrayStrideAt(long index, long value) { triangleArrayStride(this.segment(), index, value); return this; }
 
     }
 }

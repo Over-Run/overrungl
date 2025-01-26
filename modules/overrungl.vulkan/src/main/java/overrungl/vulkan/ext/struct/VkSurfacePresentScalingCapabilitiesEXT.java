@@ -15,46 +15,30 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### supportedPresentScaling
-/// [VarHandle][#VH_supportedPresentScaling] - [Getter][#supportedPresentScaling()] - [Setter][#supportedPresentScaling(int)]
-/// ### supportedPresentGravityX
-/// [VarHandle][#VH_supportedPresentGravityX] - [Getter][#supportedPresentGravityX()] - [Setter][#supportedPresentGravityX(int)]
-/// ### supportedPresentGravityY
-/// [VarHandle][#VH_supportedPresentGravityY] - [Getter][#supportedPresentGravityY()] - [Setter][#supportedPresentGravityY(int)]
-/// ### minScaledImageExtent
-/// [Byte offset][#OFFSET_minScaledImageExtent] - [Memory layout][#ML_minScaledImageExtent] - [Getter][#minScaledImageExtent()] - [Setter][#minScaledImageExtent(java.lang.foreign.MemorySegment)]
-/// ### maxScaledImageExtent
-/// [Byte offset][#OFFSET_maxScaledImageExtent] - [Memory layout][#ML_maxScaledImageExtent] - [Getter][#maxScaledImageExtent()] - [Setter][#maxScaledImageExtent(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkSurfacePresentScalingCapabilitiesEXT {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkPresentScalingFlagsEXT supportedPresentScaling;
-///     VkPresentGravityFlagsEXT supportedPresentGravityX;
-///     VkPresentGravityFlagsEXT supportedPresentGravityY;
-///     VkExtent2D minScaledImageExtent;
-///     VkExtent2D maxScaledImageExtent;
-/// } VkSurfacePresentScalingCapabilitiesEXT;
 /// ```
-public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
+/// struct VkSurfacePresentScalingCapabilitiesEXT {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     ((uint32_t) VkFlags) VkPresentScalingFlagsEXT supportedPresentScaling;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityX;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityY;
+///     (struct VkExtent2D) VkExtent2D minScaledImageExtent;
+///     (struct VkExtent2D) VkExtent2D maxScaledImageExtent;
+/// };
+/// ```
+public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
     /// The struct layout of `VkSurfacePresentScalingCapabilitiesEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("supportedPresentScaling"),
@@ -63,24 +47,44 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("minScaledImageExtent"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("maxScaledImageExtent")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `supportedPresentScaling` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedPresentScaling`.
+    public static final long OFFSET_supportedPresentScaling = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentScaling"));
+    /// The memory layout of `supportedPresentScaling`.
+    public static final MemoryLayout LAYOUT_supportedPresentScaling = LAYOUT.select(PathElement.groupElement("supportedPresentScaling"));
+    /// The [VarHandle] of `supportedPresentScaling` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedPresentScaling = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentScaling"));
-    /// The [VarHandle] of `supportedPresentGravityX` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedPresentGravityX`.
+    public static final long OFFSET_supportedPresentGravityX = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentGravityX"));
+    /// The memory layout of `supportedPresentGravityX`.
+    public static final MemoryLayout LAYOUT_supportedPresentGravityX = LAYOUT.select(PathElement.groupElement("supportedPresentGravityX"));
+    /// The [VarHandle] of `supportedPresentGravityX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedPresentGravityX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityX"));
-    /// The [VarHandle] of `supportedPresentGravityY` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `supportedPresentGravityY`.
+    public static final long OFFSET_supportedPresentGravityY = LAYOUT.byteOffset(PathElement.groupElement("supportedPresentGravityY"));
+    /// The memory layout of `supportedPresentGravityY`.
+    public static final MemoryLayout LAYOUT_supportedPresentGravityY = LAYOUT.select(PathElement.groupElement("supportedPresentGravityY"));
+    /// The [VarHandle] of `supportedPresentGravityY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_supportedPresentGravityY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedPresentGravityY"));
     /// The byte offset of `minScaledImageExtent`.
     public static final long OFFSET_minScaledImageExtent = LAYOUT.byteOffset(PathElement.groupElement("minScaledImageExtent"));
     /// The memory layout of `minScaledImageExtent`.
-    public static final MemoryLayout ML_minScaledImageExtent = LAYOUT.select(PathElement.groupElement("minScaledImageExtent"));
+    public static final MemoryLayout LAYOUT_minScaledImageExtent = LAYOUT.select(PathElement.groupElement("minScaledImageExtent"));
     /// The byte offset of `maxScaledImageExtent`.
     public static final long OFFSET_maxScaledImageExtent = LAYOUT.byteOffset(PathElement.groupElement("maxScaledImageExtent"));
     /// The memory layout of `maxScaledImageExtent`.
-    public static final MemoryLayout ML_maxScaledImageExtent = LAYOUT.select(PathElement.groupElement("maxScaledImageExtent"));
+    public static final MemoryLayout LAYOUT_maxScaledImageExtent = LAYOUT.select(PathElement.groupElement("maxScaledImageExtent"));
 
     /// Creates `VkSurfacePresentScalingCapabilitiesEXT` with the given segment.
     /// @param segment the memory segment
@@ -89,19 +93,14 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// Creates `VkSurfacePresentScalingCapabilitiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfacePresentScalingCapabilitiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfacePresentScalingCapabilitiesEXT(segment); }
-
-    /// Creates `VkSurfacePresentScalingCapabilitiesEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSurfacePresentScalingCapabilitiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfacePresentScalingCapabilitiesEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfacePresentScalingCapabilitiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSurfacePresentScalingCapabilitiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfacePresentScalingCapabilitiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkSurfacePresentScalingCapabilitiesEXT` with the given segment.
     ///
@@ -109,7 +108,7 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -122,11 +121,6 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
-    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPresentScalingFlagsEXT") int supportedPresentScaling, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityX, @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityY, @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtent) { return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY).minScaledImageExtent(minScaledImageExtent).maxScaledImageExtent(maxScaledImageExtent); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -134,168 +128,119 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkSurfacePresentScalingCapabilitiesEXT.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT sType(@CType("VkStructureType") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_sType(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedPresentScaling` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentScalingFlagsEXT") int get_supportedPresentScaling(MemorySegment segment, long index) { return (int) VH_supportedPresentScaling.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedPresentScaling(MemorySegment segment, long index) { return (int) VH_supportedPresentScaling.get(segment, 0L, index); }
     /// {@return `supportedPresentScaling`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentScalingFlagsEXT") int get_supportedPresentScaling(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentScaling(segment, 0L); }
-    /// {@return `supportedPresentScaling`}
-    public @CType("VkPresentScalingFlagsEXT") int supportedPresentScaling() { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentScaling(this.segment()); }
+    public int supportedPresentScaling() { return supportedPresentScaling(this.segment(), 0L); }
     /// Sets `supportedPresentScaling` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedPresentScaling(MemorySegment segment, long index, @CType("VkPresentScalingFlagsEXT") int value) { VH_supportedPresentScaling.set(segment, 0L, index, value); }
-    /// Sets `supportedPresentScaling` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedPresentScaling(MemorySegment segment, @CType("VkPresentScalingFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentScaling(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedPresentScaling(MemorySegment segment, long index, int value) { VH_supportedPresentScaling.set(segment, 0L, index, value); }
     /// Sets `supportedPresentScaling` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(@CType("VkPresentScalingFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentScaling(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentScaling(int value) { supportedPresentScaling(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedPresentGravityX` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentGravityFlagsEXT") int get_supportedPresentGravityX(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityX.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedPresentGravityX(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityX.get(segment, 0L, index); }
     /// {@return `supportedPresentGravityX`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentGravityFlagsEXT") int get_supportedPresentGravityX(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityX(segment, 0L); }
-    /// {@return `supportedPresentGravityX`}
-    public @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityX() { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityX(this.segment()); }
+    public int supportedPresentGravityX() { return supportedPresentGravityX(this.segment(), 0L); }
     /// Sets `supportedPresentGravityX` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedPresentGravityX(MemorySegment segment, long index, @CType("VkPresentGravityFlagsEXT") int value) { VH_supportedPresentGravityX.set(segment, 0L, index, value); }
-    /// Sets `supportedPresentGravityX` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedPresentGravityX(MemorySegment segment, @CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityX(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedPresentGravityX(MemorySegment segment, long index, int value) { VH_supportedPresentGravityX.set(segment, 0L, index, value); }
     /// Sets `supportedPresentGravityX` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(@CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityX(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityX(int value) { supportedPresentGravityX(this.segment(), 0L, value); return this; }
 
     /// {@return `supportedPresentGravityY` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPresentGravityFlagsEXT") int get_supportedPresentGravityY(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityY.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int supportedPresentGravityY(MemorySegment segment, long index) { return (int) VH_supportedPresentGravityY.get(segment, 0L, index); }
     /// {@return `supportedPresentGravityY`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPresentGravityFlagsEXT") int get_supportedPresentGravityY(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityY(segment, 0L); }
-    /// {@return `supportedPresentGravityY`}
-    public @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityY() { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityY(this.segment()); }
+    public int supportedPresentGravityY() { return supportedPresentGravityY(this.segment(), 0L); }
     /// Sets `supportedPresentGravityY` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_supportedPresentGravityY(MemorySegment segment, long index, @CType("VkPresentGravityFlagsEXT") int value) { VH_supportedPresentGravityY.set(segment, 0L, index, value); }
-    /// Sets `supportedPresentGravityY` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_supportedPresentGravityY(MemorySegment segment, @CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityY(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void supportedPresentGravityY(MemorySegment segment, long index, int value) { VH_supportedPresentGravityY.set(segment, 0L, index, value); }
     /// Sets `supportedPresentGravityY` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(@CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityY(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT supportedPresentGravityY(int value) { supportedPresentGravityY(this.segment(), 0L, value); return this; }
 
     /// {@return `minScaledImageExtent` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment minScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_minScaledImageExtent, index), LAYOUT_minScaledImageExtent); }
     /// {@return `minScaledImageExtent`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(segment, 0L); }
-    /// {@return `minScaledImageExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment()); }
+    public MemorySegment minScaledImageExtent() { return minScaledImageExtent(this.segment(), 0L); }
     /// Sets `minScaledImageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minScaledImageExtent, index), ML_minScaledImageExtent.byteSize()); }
-    /// Sets `minScaledImageExtent` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minScaledImageExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_minScaledImageExtent, index), LAYOUT_minScaledImageExtent.byteSize()); }
     /// Sets `minScaledImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(MemorySegment value) { minScaledImageExtent(this.segment(), 0L, value); return this; }
 
     /// {@return `maxScaledImageExtent` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment maxScaledImageExtent(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxScaledImageExtent, index), LAYOUT_maxScaledImageExtent); }
     /// {@return `maxScaledImageExtent`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxScaledImageExtent(MemorySegment segment) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(segment, 0L); }
-    /// {@return `maxScaledImageExtent`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtent() { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment()); }
+    public MemorySegment maxScaledImageExtent() { return maxScaledImageExtent(this.segment(), 0L); }
     /// Sets `maxScaledImageExtent` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxScaledImageExtent(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxScaledImageExtent, index), ML_maxScaledImageExtent.byteSize()); }
-    /// Sets `maxScaledImageExtent` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxScaledImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxScaledImageExtent(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxScaledImageExtent, index), LAYOUT_maxScaledImageExtent.byteSize()); }
     /// Sets `maxScaledImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), value); return this; }
+    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(MemorySegment value) { maxScaledImageExtent(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkSurfacePresentScalingCapabilitiesEXT].
     public static final class Buffer extends VkSurfacePresentScalingCapabilitiesEXT {
@@ -320,67 +265,67 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `supportedPresentScaling` at the given index}
-        /// @param index the index
-        public @CType("VkPresentScalingFlagsEXT") int supportedPresentScalingAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentScaling(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedPresentScalingAt(long index) { return supportedPresentScaling(this.segment(), index); }
         /// Sets `supportedPresentScaling` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedPresentScalingAt(long index, @CType("VkPresentScalingFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentScaling(this.segment(), index, value); return this; }
+        public Buffer supportedPresentScalingAt(long index, int value) { supportedPresentScaling(this.segment(), index, value); return this; }
 
         /// {@return `supportedPresentGravityX` at the given index}
-        /// @param index the index
-        public @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityXAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityX(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedPresentGravityXAt(long index) { return supportedPresentGravityX(this.segment(), index); }
         /// Sets `supportedPresentGravityX` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedPresentGravityXAt(long index, @CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityX(this.segment(), index, value); return this; }
+        public Buffer supportedPresentGravityXAt(long index, int value) { supportedPresentGravityX(this.segment(), index, value); return this; }
 
         /// {@return `supportedPresentGravityY` at the given index}
-        /// @param index the index
-        public @CType("VkPresentGravityFlagsEXT") int supportedPresentGravityYAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_supportedPresentGravityY(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int supportedPresentGravityYAt(long index) { return supportedPresentGravityY(this.segment(), index); }
         /// Sets `supportedPresentGravityY` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer supportedPresentGravityYAt(long index, @CType("VkPresentGravityFlagsEXT") int value) { VkSurfacePresentScalingCapabilitiesEXT.set_supportedPresentGravityY(this.segment(), index, value); return this; }
+        public Buffer supportedPresentGravityYAt(long index, int value) { supportedPresentGravityY(this.segment(), index, value); return this; }
 
         /// {@return `minScaledImageExtent` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_minScaledImageExtent(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment minScaledImageExtentAt(long index) { return minScaledImageExtent(this.segment(), index); }
         /// Sets `minScaledImageExtent` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minScaledImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_minScaledImageExtent(this.segment(), index, value); return this; }
+        public Buffer minScaledImageExtentAt(long index, MemorySegment value) { minScaledImageExtent(this.segment(), index, value); return this; }
 
         /// {@return `maxScaledImageExtent` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxScaledImageExtentAt(long index) { return VkSurfacePresentScalingCapabilitiesEXT.get_maxScaledImageExtent(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment maxScaledImageExtentAt(long index) { return maxScaledImageExtent(this.segment(), index); }
         /// Sets `maxScaledImageExtent` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxScaledImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfacePresentScalingCapabilitiesEXT.set_maxScaledImageExtent(this.segment(), index, value); return this; }
+        public Buffer maxScaledImageExtentAt(long index, MemorySegment value) { maxScaledImageExtent(this.segment(), index, value); return this; }
 
     }
 }

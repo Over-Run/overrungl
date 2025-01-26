@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### subgroupSizeControl
-/// [VarHandle][#VH_subgroupSizeControl] - [Getter][#subgroupSizeControl()] - [Setter][#subgroupSizeControl(int)]
-/// ### computeFullSubgroups
-/// [VarHandle][#VH_computeFullSubgroups] - [Getter][#computeFullSubgroups()] - [Setter][#computeFullSubgroups(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceSubgroupSizeControlFeatures {
-///     VkStructureType sType;
-///     void * pNext;
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
-/// } VkPhysicalDeviceSubgroupSizeControlFeatures;
 /// ```
-public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
+/// struct VkPhysicalDeviceSubgroupSizeControlFeatures {
+///     (int) VkStructureType sType;
+///     void* pNext;
+///     (uint32_t) VkBool32 subgroupSizeControl;
+///     (uint32_t) VkBool32 computeFullSubgroups;
+/// };
+/// ```
+public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceSubgroupSizeControlFeatures`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("subgroupSizeControl"),
         ValueLayout.JAVA_INT.withName("computeFullSubgroups")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `subgroupSizeControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `subgroupSizeControl`.
+    public static final long OFFSET_subgroupSizeControl = LAYOUT.byteOffset(PathElement.groupElement("subgroupSizeControl"));
+    /// The memory layout of `subgroupSizeControl`.
+    public static final MemoryLayout LAYOUT_subgroupSizeControl = LAYOUT.select(PathElement.groupElement("subgroupSizeControl"));
+    /// The [VarHandle] of `subgroupSizeControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_subgroupSizeControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("subgroupSizeControl"));
-    /// The [VarHandle] of `computeFullSubgroups` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `computeFullSubgroups`.
+    public static final long OFFSET_computeFullSubgroups = LAYOUT.byteOffset(PathElement.groupElement("computeFullSubgroups"));
+    /// The memory layout of `computeFullSubgroups`.
+    public static final MemoryLayout LAYOUT_computeFullSubgroups = LAYOUT.select(PathElement.groupElement("computeFullSubgroups"));
+    /// The [VarHandle] of `computeFullSubgroups` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_computeFullSubgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeFullSubgroups"));
 
     /// Creates `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
     /// Creates `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubgroupSizeControlFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlFeatures(segment); }
-
-    /// Creates `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubgroupSizeControlFeatures ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceSubgroupSizeControlFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubgroupSizeControlFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -100,11 +101,6 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeatures` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeatures`
-    public static VkPhysicalDeviceSubgroupSizeControlFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int subgroupSizeControl, @CType("VkBool32") int computeFullSubgroups) { return alloc(allocator).sType(sType).pNext(pNext).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -112,99 +108,71 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlFeatures sType(@CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_sType(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlFeatures sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlFeatures pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_pNext(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlFeatures pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `subgroupSizeControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_subgroupSizeControl(MemorySegment segment, long index) { return (int) VH_subgroupSizeControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int subgroupSizeControl(MemorySegment segment, long index) { return (int) VH_subgroupSizeControl.get(segment, 0L, index); }
     /// {@return `subgroupSizeControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_subgroupSizeControl(MemorySegment segment) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_subgroupSizeControl(segment, 0L); }
-    /// {@return `subgroupSizeControl`}
-    public @CType("VkBool32") int subgroupSizeControl() { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_subgroupSizeControl(this.segment()); }
+    public int subgroupSizeControl() { return subgroupSizeControl(this.segment(), 0L); }
     /// Sets `subgroupSizeControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_subgroupSizeControl(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_subgroupSizeControl.set(segment, 0L, index, value); }
-    /// Sets `subgroupSizeControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_subgroupSizeControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_subgroupSizeControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void subgroupSizeControl(MemorySegment segment, long index, int value) { VH_subgroupSizeControl.set(segment, 0L, index, value); }
     /// Sets `subgroupSizeControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlFeatures subgroupSizeControl(@CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_subgroupSizeControl(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlFeatures subgroupSizeControl(int value) { subgroupSizeControl(this.segment(), 0L, value); return this; }
 
     /// {@return `computeFullSubgroups` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_computeFullSubgroups(MemorySegment segment, long index) { return (int) VH_computeFullSubgroups.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int computeFullSubgroups(MemorySegment segment, long index) { return (int) VH_computeFullSubgroups.get(segment, 0L, index); }
     /// {@return `computeFullSubgroups`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_computeFullSubgroups(MemorySegment segment) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_computeFullSubgroups(segment, 0L); }
-    /// {@return `computeFullSubgroups`}
-    public @CType("VkBool32") int computeFullSubgroups() { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_computeFullSubgroups(this.segment()); }
+    public int computeFullSubgroups() { return computeFullSubgroups(this.segment(), 0L); }
     /// Sets `computeFullSubgroups` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_computeFullSubgroups(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_computeFullSubgroups.set(segment, 0L, index, value); }
-    /// Sets `computeFullSubgroups` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_computeFullSubgroups(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_computeFullSubgroups(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void computeFullSubgroups(MemorySegment segment, long index, int value) { VH_computeFullSubgroups.set(segment, 0L, index, value); }
     /// Sets `computeFullSubgroups` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceSubgroupSizeControlFeatures computeFullSubgroups(@CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_computeFullSubgroups(this.segment(), value); return this; }
+    public VkPhysicalDeviceSubgroupSizeControlFeatures computeFullSubgroups(int value) { computeFullSubgroups(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceSubgroupSizeControlFeatures].
     public static final class Buffer extends VkPhysicalDeviceSubgroupSizeControlFeatures {
@@ -229,40 +197,40 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `subgroupSizeControl` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int subgroupSizeControlAt(long index) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_subgroupSizeControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int subgroupSizeControlAt(long index) { return subgroupSizeControl(this.segment(), index); }
         /// Sets `subgroupSizeControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer subgroupSizeControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_subgroupSizeControl(this.segment(), index, value); return this; }
+        public Buffer subgroupSizeControlAt(long index, int value) { subgroupSizeControl(this.segment(), index, value); return this; }
 
         /// {@return `computeFullSubgroups` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int computeFullSubgroupsAt(long index) { return VkPhysicalDeviceSubgroupSizeControlFeatures.get_computeFullSubgroups(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int computeFullSubgroupsAt(long index) { return computeFullSubgroups(this.segment(), index); }
         /// Sets `computeFullSubgroups` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer computeFullSubgroupsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSubgroupSizeControlFeatures.set_computeFullSubgroups(this.segment(), index, value); return this; }
+        public Buffer computeFullSubgroupsAt(long index, int value) { computeFullSubgroups(this.segment(), index, value); return this; }
 
     }
 }

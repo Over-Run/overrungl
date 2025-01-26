@@ -19,23 +19,14 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLARBInstancedArrays {
     public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glVertexAttribDivisorARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribDivisorARB
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribDivisorARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribDivisorARB);
+        public static final MethodHandle MH_glVertexAttribDivisorARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribDivisorARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVertexAttribDivisorARB = func.invoke("glVertexAttribDivisorARB", "glVertexAttribDivisor");
@@ -46,10 +37,13 @@ public final class GLARBInstancedArrays {
         this.handles = new Handles(func);
     }
 
-    public void VertexAttribDivisorARB(@CType("GLuint") int index, @CType("GLuint") int divisor) {
-        if (Unmarshal.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
+    /// ```
+    /// void glVertexAttribDivisorARB((unsigned int) GLuint index, (unsigned int) GLuint divisor);
+    /// ```
+    public void VertexAttribDivisorARB(int index, int divisor) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
         try { Handles.MH_glVertexAttribDivisorARB.invokeExact(handles.PFN_glVertexAttribDivisorARB, index, divisor); }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribDivisorARB", e); }
+        catch (Throwable e) { throw new RuntimeException("error in VertexAttribDivisorARB", e); }
     }
 
 }

@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.sgix;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLSGIXBlendAlphaMinmax {
     public static final int GL_ALPHA_MIN_SGIX = 0x8320;
     public static final int GL_ALPHA_MAX_SGIX = 0x8321;

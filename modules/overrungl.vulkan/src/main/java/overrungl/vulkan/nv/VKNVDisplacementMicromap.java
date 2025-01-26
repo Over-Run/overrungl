@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.nv;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVDisplacementMicromap {
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = 1;
@@ -35,6 +30,6 @@ public final class VKNVDisplacementMicromap {
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_NV = 0x00000200;
     public static final int VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV = 1000397000;
 
-    private VKNVDisplacementMicromap() { }
+    private VKNVDisplacementMicromap() {}
 
 }

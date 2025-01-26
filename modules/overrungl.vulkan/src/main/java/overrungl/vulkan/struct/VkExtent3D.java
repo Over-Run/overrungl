@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### width
-/// [VarHandle][#VH_width] - [Getter][#width()] - [Setter][#width(int)]
-/// ### height
-/// [VarHandle][#VH_height] - [Getter][#height()] - [Setter][#height(int)]
-/// ### depth
-/// [VarHandle][#VH_depth] - [Getter][#depth()] - [Setter][#depth(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkExtent3D {
+/// ```
+/// struct VkExtent3D {
 ///     uint32_t width;
 ///     uint32_t height;
 ///     uint32_t depth;
-/// } VkExtent3D;
+/// };
 /// ```
-public sealed class VkExtent3D extends Struct {
+public sealed class VkExtent3D extends GroupType {
     /// The struct layout of `VkExtent3D`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("depth")
     );
-    /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `width`.
+    public static final long OFFSET_width = LAYOUT.byteOffset(PathElement.groupElement("width"));
+    /// The memory layout of `width`.
+    public static final MemoryLayout LAYOUT_width = LAYOUT.select(PathElement.groupElement("width"));
+    /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
-    /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `height`.
+    public static final long OFFSET_height = LAYOUT.byteOffset(PathElement.groupElement("height"));
+    /// The memory layout of `height`.
+    public static final MemoryLayout LAYOUT_height = LAYOUT.select(PathElement.groupElement("height"));
+    /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
-    /// The [VarHandle] of `depth` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depth`.
+    public static final long OFFSET_depth = LAYOUT.byteOffset(PathElement.groupElement("depth"));
+    /// The memory layout of `depth`.
+    public static final MemoryLayout LAYOUT_depth = LAYOUT.select(PathElement.groupElement("depth"));
+    /// The [VarHandle] of `depth` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
 
     /// Creates `VkExtent3D` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkExtent3D extends Struct {
     /// Creates `VkExtent3D` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExtent3D of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExtent3D(segment); }
-
-    /// Creates `VkExtent3D` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExtent3D` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExtent3D ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExtent3D(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkExtent3D ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExtent3D(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkExtent3D` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkExtent3D extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExtent3D` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkExtent3D extends Struct {
     /// @return the allocated `VkExtent3D`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExtent3D` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkExtent3D`
-    public static VkExtent3D allocInit(SegmentAllocator allocator, @CType("uint32_t") int width, @CType("uint32_t") int height, @CType("uint32_t") int depth) { return alloc(allocator).width(width).height(height).depth(depth); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkExtent3D extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
     /// {@return `width`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_width(MemorySegment segment) { return VkExtent3D.get_width(segment, 0L); }
-    /// {@return `width`}
-    public @CType("uint32_t") int width() { return VkExtent3D.get_width(this.segment()); }
+    public int width() { return width(this.segment(), 0L); }
     /// Sets `width` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_width(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_width.set(segment, 0L, index, value); }
-    /// Sets `width` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_width(MemorySegment segment, @CType("uint32_t") int value) { VkExtent3D.set_width(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void width(MemorySegment segment, long index, int value) { VH_width.set(segment, 0L, index, value); }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExtent3D width(@CType("uint32_t") int value) { VkExtent3D.set_width(this.segment(), value); return this; }
+    public VkExtent3D width(int value) { width(this.segment(), 0L, value); return this; }
 
     /// {@return `height` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
     /// {@return `height`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_height(MemorySegment segment) { return VkExtent3D.get_height(segment, 0L); }
-    /// {@return `height`}
-    public @CType("uint32_t") int height() { return VkExtent3D.get_height(this.segment()); }
+    public int height() { return height(this.segment(), 0L); }
     /// Sets `height` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_height(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_height.set(segment, 0L, index, value); }
-    /// Sets `height` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_height(MemorySegment segment, @CType("uint32_t") int value) { VkExtent3D.set_height(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void height(MemorySegment segment, long index, int value) { VH_height.set(segment, 0L, index, value); }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExtent3D height(@CType("uint32_t") int value) { VkExtent3D.set_height(this.segment(), value); return this; }
+    public VkExtent3D height(int value) { height(this.segment(), 0L, value); return this; }
 
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_depth(MemorySegment segment, long index) { return (int) VH_depth.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depth(MemorySegment segment, long index) { return (int) VH_depth.get(segment, 0L, index); }
     /// {@return `depth`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_depth(MemorySegment segment) { return VkExtent3D.get_depth(segment, 0L); }
-    /// {@return `depth`}
-    public @CType("uint32_t") int depth() { return VkExtent3D.get_depth(this.segment()); }
+    public int depth() { return depth(this.segment(), 0L); }
     /// Sets `depth` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depth(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_depth.set(segment, 0L, index, value); }
-    /// Sets `depth` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depth(MemorySegment segment, @CType("uint32_t") int value) { VkExtent3D.set_depth(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depth(MemorySegment segment, long index, int value) { VH_depth.set(segment, 0L, index, value); }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkExtent3D depth(@CType("uint32_t") int value) { VkExtent3D.set_depth(this.segment(), value); return this; }
+    public VkExtent3D depth(int value) { depth(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkExtent3D].
     public static final class Buffer extends VkExtent3D {
@@ -200,31 +173,31 @@ public sealed class VkExtent3D extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `width` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int widthAt(long index) { return VkExtent3D.get_width(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int widthAt(long index) { return width(this.segment(), index); }
         /// Sets `width` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer widthAt(long index, @CType("uint32_t") int value) { VkExtent3D.set_width(this.segment(), index, value); return this; }
+        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
         /// {@return `height` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int heightAt(long index) { return VkExtent3D.get_height(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int heightAt(long index) { return height(this.segment(), index); }
         /// Sets `height` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer heightAt(long index, @CType("uint32_t") int value) { VkExtent3D.set_height(this.segment(), index, value); return this; }
+        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
         /// {@return `depth` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int depthAt(long index) { return VkExtent3D.get_depth(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthAt(long index) { return depth(this.segment(), index); }
         /// Sets `depth` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthAt(long index, @CType("uint32_t") int value) { VkExtent3D.set_depth(this.segment(), index, value); return this; }
+        public Buffer depthAt(long index, int value) { depth(this.segment(), index, value); return this; }
 
     }
 }

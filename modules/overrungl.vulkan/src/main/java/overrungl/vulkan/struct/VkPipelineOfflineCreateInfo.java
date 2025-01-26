@@ -15,58 +15,63 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### pipelineIdentifier
-/// [Byte offset][#OFFSET_pipelineIdentifier] - [Memory layout][#ML_pipelineIdentifier] - [Getter][#pipelineIdentifier()] - [Setter][#pipelineIdentifier(java.lang.foreign.MemorySegment)]
-/// ### matchControl
-/// [VarHandle][#VH_matchControl] - [Getter][#matchControl()] - [Setter][#matchControl(int)]
-/// ### poolEntrySize
-/// [VarHandle][#VH_poolEntrySize] - [Getter][#poolEntrySize()] - [Setter][#poolEntrySize(long)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineOfflineCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint8_t[VK_UUID_SIZE] pipelineIdentifier;
-///     VkPipelineMatchControl matchControl;
-///     VkDeviceSize poolEntrySize;
-/// } VkPipelineOfflineCreateInfo;
 /// ```
-public sealed class VkPipelineOfflineCreateInfo extends Struct {
+/// struct VkPipelineOfflineCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint8_t pipelineIdentifier[16];
+///     (int) VkPipelineMatchControl matchControl;
+///     (uint64_t) VkDeviceSize poolEntrySize;
+/// };
+/// ```
+public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineOfflineCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(VK_UUID_SIZE, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
+        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
         ValueLayout.JAVA_INT.withName("matchControl"),
         ValueLayout.JAVA_LONG.withName("poolEntrySize")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `pipelineIdentifier`.
     public static final long OFFSET_pipelineIdentifier = LAYOUT.byteOffset(PathElement.groupElement("pipelineIdentifier"));
     /// The memory layout of `pipelineIdentifier`.
-    public static final MemoryLayout ML_pipelineIdentifier = LAYOUT.select(PathElement.groupElement("pipelineIdentifier"));
-    /// The [VarHandle] of `matchControl` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_pipelineIdentifier = LAYOUT.select(PathElement.groupElement("pipelineIdentifier"));
+    /// The [VarHandle] of `pipelineIdentifier` of type `(MemorySegment base, long baseOffset, long index, long index0)MemorySegment`.
+    public static final VarHandle VH_pipelineIdentifier = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement());
+    /// The byte offset of `matchControl`.
+    public static final long OFFSET_matchControl = LAYOUT.byteOffset(PathElement.groupElement("matchControl"));
+    /// The memory layout of `matchControl`.
+    public static final MemoryLayout LAYOUT_matchControl = LAYOUT.select(PathElement.groupElement("matchControl"));
+    /// The [VarHandle] of `matchControl` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_matchControl = LAYOUT.arrayElementVarHandle(PathElement.groupElement("matchControl"));
-    /// The [VarHandle] of `poolEntrySize` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `poolEntrySize`.
+    public static final long OFFSET_poolEntrySize = LAYOUT.byteOffset(PathElement.groupElement("poolEntrySize"));
+    /// The memory layout of `poolEntrySize`.
+    public static final MemoryLayout LAYOUT_poolEntrySize = LAYOUT.select(PathElement.groupElement("poolEntrySize"));
+    /// The [VarHandle] of `poolEntrySize` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_poolEntrySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolEntrySize"));
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
@@ -76,19 +81,14 @@ public sealed class VkPipelineOfflineCreateInfo extends Struct {
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineOfflineCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment); }
-
-    /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineOfflineCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineOfflineCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     ///
@@ -96,7 +96,7 @@ public sealed class VkPipelineOfflineCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -109,11 +109,6 @@ public sealed class VkPipelineOfflineCreateInfo extends Struct {
     /// @return the allocated `VkPipelineOfflineCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifier, @CType("VkPipelineMatchControl") int matchControl, @CType("VkDeviceSize") long poolEntrySize) { return alloc(allocator).sType(sType).pNext(pNext).pipelineIdentifier(pipelineIdentifier).matchControl(matchControl).poolEntrySize(poolEntrySize); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -121,122 +116,106 @@ public sealed class VkPipelineOfflineCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineOfflineCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineOfflineCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineOfflineCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineOfflineCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineOfflineCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineOfflineCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineOfflineCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineOfflineCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineOfflineCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineOfflineCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `pipelineIdentifier` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineIdentifier, index), ML_pipelineIdentifier); }
-    /// {@return `pipelineIdentifier`}
+    /// @param index the index of the struct buffer
+    public static MemorySegment pipelineIdentifier(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineIdentifier, index), LAYOUT_pipelineIdentifier); }
+    /// {@return `pipelineIdentifier` at the given index}
     /// @param segment the segment of the struct
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment) { return VkPipelineOfflineCreateInfo.get_pipelineIdentifier(segment, 0L); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    public static byte pipelineIdentifier(MemorySegment segment, long index, long index0) { return (byte) VH_pipelineIdentifier.get(segment, 0L, index, index0); }
     /// {@return `pipelineIdentifier`}
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifier() { return VkPipelineOfflineCreateInfo.get_pipelineIdentifier(this.segment()); }
+    public MemorySegment pipelineIdentifier() { return pipelineIdentifier(this.segment(), 0L); }
+    /// {@return `pipelineIdentifier`}
+    /// @param index0 the Index 0 of the array
+    public byte pipelineIdentifier(long index0) { return pipelineIdentifier(this.segment(), 0L, index0); }
     /// Sets `pipelineIdentifier` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pipelineIdentifier(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineIdentifier, index), ML_pipelineIdentifier.byteSize()); }
-    /// Sets `pipelineIdentifier` with the given value.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pipelineIdentifier(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineIdentifier, index), LAYOUT_pipelineIdentifier.byteSize()); }
+    /// Sets `pipelineIdentifier` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pipelineIdentifier(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pipelineIdentifier(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    public static void pipelineIdentifier(MemorySegment segment, long index, long index0, byte value) { VH_pipelineIdentifier.set(segment, 0L, index, index0, value); }
     /// Sets `pipelineIdentifier` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineOfflineCreateInfo pipelineIdentifier(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pipelineIdentifier(this.segment(), value); return this; }
+    public VkPipelineOfflineCreateInfo pipelineIdentifier(MemorySegment value) { pipelineIdentifier(this.segment(), 0L, value); return this; }
+    /// Sets `pipelineIdentifier` with the given value.
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo pipelineIdentifier(long index0, byte value) { pipelineIdentifier(this.segment(), 0L, index0, value); return this; }
 
     /// {@return `matchControl` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineMatchControl") int get_matchControl(MemorySegment segment, long index) { return (int) VH_matchControl.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int matchControl(MemorySegment segment, long index) { return (int) VH_matchControl.get(segment, 0L, index); }
     /// {@return `matchControl`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineMatchControl") int get_matchControl(MemorySegment segment) { return VkPipelineOfflineCreateInfo.get_matchControl(segment, 0L); }
-    /// {@return `matchControl`}
-    public @CType("VkPipelineMatchControl") int matchControl() { return VkPipelineOfflineCreateInfo.get_matchControl(this.segment()); }
+    public int matchControl() { return matchControl(this.segment(), 0L); }
     /// Sets `matchControl` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_matchControl(MemorySegment segment, long index, @CType("VkPipelineMatchControl") int value) { VH_matchControl.set(segment, 0L, index, value); }
-    /// Sets `matchControl` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_matchControl(MemorySegment segment, @CType("VkPipelineMatchControl") int value) { VkPipelineOfflineCreateInfo.set_matchControl(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void matchControl(MemorySegment segment, long index, int value) { VH_matchControl.set(segment, 0L, index, value); }
     /// Sets `matchControl` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineOfflineCreateInfo matchControl(@CType("VkPipelineMatchControl") int value) { VkPipelineOfflineCreateInfo.set_matchControl(this.segment(), value); return this; }
+    public VkPipelineOfflineCreateInfo matchControl(int value) { matchControl(this.segment(), 0L, value); return this; }
 
     /// {@return `poolEntrySize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkDeviceSize") long get_poolEntrySize(MemorySegment segment, long index) { return (long) VH_poolEntrySize.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long poolEntrySize(MemorySegment segment, long index) { return (long) VH_poolEntrySize.get(segment, 0L, index); }
     /// {@return `poolEntrySize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkDeviceSize") long get_poolEntrySize(MemorySegment segment) { return VkPipelineOfflineCreateInfo.get_poolEntrySize(segment, 0L); }
-    /// {@return `poolEntrySize`}
-    public @CType("VkDeviceSize") long poolEntrySize() { return VkPipelineOfflineCreateInfo.get_poolEntrySize(this.segment()); }
+    public long poolEntrySize() { return poolEntrySize(this.segment(), 0L); }
     /// Sets `poolEntrySize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_poolEntrySize(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_poolEntrySize.set(segment, 0L, index, value); }
-    /// Sets `poolEntrySize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_poolEntrySize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPipelineOfflineCreateInfo.set_poolEntrySize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void poolEntrySize(MemorySegment segment, long index, long value) { VH_poolEntrySize.set(segment, 0L, index, value); }
     /// Sets `poolEntrySize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineOfflineCreateInfo poolEntrySize(@CType("VkDeviceSize") long value) { VkPipelineOfflineCreateInfo.set_poolEntrySize(this.segment(), value); return this; }
+    public VkPipelineOfflineCreateInfo poolEntrySize(long value) { poolEntrySize(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineOfflineCreateInfo].
     public static final class Buffer extends VkPipelineOfflineCreateInfo {
@@ -261,49 +240,59 @@ public sealed class VkPipelineOfflineCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineOfflineCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineOfflineCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineOfflineCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `pipelineIdentifier` at the given index}
-        /// @param index the index
-        public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifierAt(long index) { return VkPipelineOfflineCreateInfo.get_pipelineIdentifier(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pipelineIdentifierAt(long index) { return pipelineIdentifier(this.segment(), index); }
+        /// {@return `pipelineIdentifier` at the given index}
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        public byte pipelineIdentifierAt(long index, long index0) { return pipelineIdentifier(this.segment(), index, index0); }
         /// Sets `pipelineIdentifier` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pipelineIdentifierAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineOfflineCreateInfo.set_pipelineIdentifier(this.segment(), index, value); return this; }
+        public Buffer pipelineIdentifierAt(long index, MemorySegment value) { pipelineIdentifier(this.segment(), index, value); return this; }
+        /// Sets `pipelineIdentifier` with the given value at the given index.
+        /// @param index the index of the struct buffer
+        /// @param index0 the Index 0 of the array
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineIdentifierAt(long index, long index0, byte value) { pipelineIdentifier(this.segment(), index, index0, value); return this; }
 
         /// {@return `matchControl` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineMatchControl") int matchControlAt(long index) { return VkPipelineOfflineCreateInfo.get_matchControl(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int matchControlAt(long index) { return matchControl(this.segment(), index); }
         /// Sets `matchControl` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer matchControlAt(long index, @CType("VkPipelineMatchControl") int value) { VkPipelineOfflineCreateInfo.set_matchControl(this.segment(), index, value); return this; }
+        public Buffer matchControlAt(long index, int value) { matchControl(this.segment(), index, value); return this; }
 
         /// {@return `poolEntrySize` at the given index}
-        /// @param index the index
-        public @CType("VkDeviceSize") long poolEntrySizeAt(long index) { return VkPipelineOfflineCreateInfo.get_poolEntrySize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long poolEntrySizeAt(long index) { return poolEntrySize(this.segment(), index); }
         /// Sets `poolEntrySize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer poolEntrySizeAt(long index, @CType("VkDeviceSize") long value) { VkPipelineOfflineCreateInfo.set_poolEntrySize(this.segment(), index, value); return this; }
+        public Buffer poolEntrySizeAt(long index, long value) { poolEntrySize(this.segment(), index, value); return this; }
 
     }
 }

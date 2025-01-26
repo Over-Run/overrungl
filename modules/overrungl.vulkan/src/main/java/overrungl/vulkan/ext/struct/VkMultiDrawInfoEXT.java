@@ -15,37 +15,39 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### firstVertex
-/// [VarHandle][#VH_firstVertex] - [Getter][#firstVertex()] - [Setter][#firstVertex(int)]
-/// ### vertexCount
-/// [VarHandle][#VH_vertexCount] - [Getter][#vertexCount()] - [Setter][#vertexCount(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkMultiDrawInfoEXT {
+/// ```
+/// struct VkMultiDrawInfoEXT {
 ///     uint32_t firstVertex;
 ///     uint32_t vertexCount;
-/// } VkMultiDrawInfoEXT;
+/// };
 /// ```
-public sealed class VkMultiDrawInfoEXT extends Struct {
+public sealed class VkMultiDrawInfoEXT extends GroupType {
     /// The struct layout of `VkMultiDrawInfoEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("firstVertex"),
         ValueLayout.JAVA_INT.withName("vertexCount")
     );
-    /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `firstVertex`.
+    public static final long OFFSET_firstVertex = LAYOUT.byteOffset(PathElement.groupElement("firstVertex"));
+    /// The memory layout of `firstVertex`.
+    public static final MemoryLayout LAYOUT_firstVertex = LAYOUT.select(PathElement.groupElement("firstVertex"));
+    /// The [VarHandle] of `firstVertex` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_firstVertex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstVertex"));
-    /// The [VarHandle] of `vertexCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `vertexCount`.
+    public static final long OFFSET_vertexCount = LAYOUT.byteOffset(PathElement.groupElement("vertexCount"));
+    /// The memory layout of `vertexCount`.
+    public static final MemoryLayout LAYOUT_vertexCount = LAYOUT.select(PathElement.groupElement("vertexCount"));
+    /// The [VarHandle] of `vertexCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_vertexCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vertexCount"));
 
     /// Creates `VkMultiDrawInfoEXT` with the given segment.
@@ -55,19 +57,14 @@ public sealed class VkMultiDrawInfoEXT extends Struct {
     /// Creates `VkMultiDrawInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMultiDrawInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMultiDrawInfoEXT(segment); }
-
-    /// Creates `VkMultiDrawInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMultiDrawInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMultiDrawInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMultiDrawInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkMultiDrawInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMultiDrawInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkMultiDrawInfoEXT` with the given segment.
     ///
@@ -75,7 +72,7 @@ public sealed class VkMultiDrawInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMultiDrawInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -88,11 +85,6 @@ public sealed class VkMultiDrawInfoEXT extends Struct {
     /// @return the allocated `VkMultiDrawInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMultiDrawInfoEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkMultiDrawInfoEXT`
-    public static VkMultiDrawInfoEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int firstVertex, @CType("uint32_t") int vertexCount) { return alloc(allocator).firstVertex(firstVertex).vertexCount(vertexCount); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -100,53 +92,39 @@ public sealed class VkMultiDrawInfoEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `firstVertex` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int firstVertex(MemorySegment segment, long index) { return (int) VH_firstVertex.get(segment, 0L, index); }
     /// {@return `firstVertex`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_firstVertex(MemorySegment segment) { return VkMultiDrawInfoEXT.get_firstVertex(segment, 0L); }
-    /// {@return `firstVertex`}
-    public @CType("uint32_t") int firstVertex() { return VkMultiDrawInfoEXT.get_firstVertex(this.segment()); }
+    public int firstVertex() { return firstVertex(this.segment(), 0L); }
     /// Sets `firstVertex` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_firstVertex(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_firstVertex.set(segment, 0L, index, value); }
-    /// Sets `firstVertex` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_firstVertex(MemorySegment segment, @CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_firstVertex(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void firstVertex(MemorySegment segment, long index, int value) { VH_firstVertex.set(segment, 0L, index, value); }
     /// Sets `firstVertex` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMultiDrawInfoEXT firstVertex(@CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_firstVertex(this.segment(), value); return this; }
+    public VkMultiDrawInfoEXT firstVertex(int value) { firstVertex(this.segment(), 0L, value); return this; }
 
     /// {@return `vertexCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int vertexCount(MemorySegment segment, long index) { return (int) VH_vertexCount.get(segment, 0L, index); }
     /// {@return `vertexCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_vertexCount(MemorySegment segment) { return VkMultiDrawInfoEXT.get_vertexCount(segment, 0L); }
-    /// {@return `vertexCount`}
-    public @CType("uint32_t") int vertexCount() { return VkMultiDrawInfoEXT.get_vertexCount(this.segment()); }
+    public int vertexCount() { return vertexCount(this.segment(), 0L); }
     /// Sets `vertexCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_vertexCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_vertexCount.set(segment, 0L, index, value); }
-    /// Sets `vertexCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_vertexCount(MemorySegment segment, @CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_vertexCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void vertexCount(MemorySegment segment, long index, int value) { VH_vertexCount.set(segment, 0L, index, value); }
     /// Sets `vertexCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkMultiDrawInfoEXT vertexCount(@CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_vertexCount(this.segment(), value); return this; }
+    public VkMultiDrawInfoEXT vertexCount(int value) { vertexCount(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkMultiDrawInfoEXT].
     public static final class Buffer extends VkMultiDrawInfoEXT {
@@ -171,22 +149,22 @@ public sealed class VkMultiDrawInfoEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `firstVertex` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int firstVertexAt(long index) { return VkMultiDrawInfoEXT.get_firstVertex(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int firstVertexAt(long index) { return firstVertex(this.segment(), index); }
         /// Sets `firstVertex` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer firstVertexAt(long index, @CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_firstVertex(this.segment(), index, value); return this; }
+        public Buffer firstVertexAt(long index, int value) { firstVertex(this.segment(), index, value); return this; }
 
         /// {@return `vertexCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int vertexCountAt(long index) { return VkMultiDrawInfoEXT.get_vertexCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int vertexCountAt(long index) { return vertexCount(this.segment(), index); }
         /// Sets `vertexCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer vertexCountAt(long index, @CType("uint32_t") int value) { VkMultiDrawInfoEXT.set_vertexCount(this.segment(), index, value); return this; }
+        public Buffer vertexCountAt(long index, int value) { vertexCount(this.segment(), index, value); return this; }
 
     }
 }

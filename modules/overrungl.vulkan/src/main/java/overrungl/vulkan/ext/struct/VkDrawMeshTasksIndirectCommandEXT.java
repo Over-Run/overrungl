@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.ext.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### groupCountX
-/// [VarHandle][#VH_groupCountX] - [Getter][#groupCountX()] - [Setter][#groupCountX(int)]
-/// ### groupCountY
-/// [VarHandle][#VH_groupCountY] - [Getter][#groupCountY()] - [Setter][#groupCountY(int)]
-/// ### groupCountZ
-/// [VarHandle][#VH_groupCountZ] - [Getter][#groupCountZ()] - [Setter][#groupCountZ(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkDrawMeshTasksIndirectCommandEXT {
+/// ```
+/// struct VkDrawMeshTasksIndirectCommandEXT {
 ///     uint32_t groupCountX;
 ///     uint32_t groupCountY;
 ///     uint32_t groupCountZ;
-/// } VkDrawMeshTasksIndirectCommandEXT;
+/// };
 /// ```
-public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
+public sealed class VkDrawMeshTasksIndirectCommandEXT extends GroupType {
     /// The struct layout of `VkDrawMeshTasksIndirectCommandEXT`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("groupCountX"),
         ValueLayout.JAVA_INT.withName("groupCountY"),
         ValueLayout.JAVA_INT.withName("groupCountZ")
     );
-    /// The [VarHandle] of `groupCountX` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `groupCountX`.
+    public static final long OFFSET_groupCountX = LAYOUT.byteOffset(PathElement.groupElement("groupCountX"));
+    /// The memory layout of `groupCountX`.
+    public static final MemoryLayout LAYOUT_groupCountX = LAYOUT.select(PathElement.groupElement("groupCountX"));
+    /// The [VarHandle] of `groupCountX` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_groupCountX = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupCountX"));
-    /// The [VarHandle] of `groupCountY` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `groupCountY`.
+    public static final long OFFSET_groupCountY = LAYOUT.byteOffset(PathElement.groupElement("groupCountY"));
+    /// The memory layout of `groupCountY`.
+    public static final MemoryLayout LAYOUT_groupCountY = LAYOUT.select(PathElement.groupElement("groupCountY"));
+    /// The [VarHandle] of `groupCountY` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_groupCountY = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupCountY"));
-    /// The [VarHandle] of `groupCountZ` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `groupCountZ`.
+    public static final long OFFSET_groupCountZ = LAYOUT.byteOffset(PathElement.groupElement("groupCountZ"));
+    /// The memory layout of `groupCountZ`.
+    public static final MemoryLayout LAYOUT_groupCountZ = LAYOUT.select(PathElement.groupElement("groupCountZ"));
+    /// The [VarHandle] of `groupCountZ` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_groupCountZ = LAYOUT.arrayElementVarHandle(PathElement.groupElement("groupCountZ"));
 
     /// Creates `VkDrawMeshTasksIndirectCommandEXT` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
     /// Creates `VkDrawMeshTasksIndirectCommandEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawMeshTasksIndirectCommandEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandEXT(segment); }
-
-    /// Creates `VkDrawMeshTasksIndirectCommandEXT` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDrawMeshTasksIndirectCommandEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawMeshTasksIndirectCommandEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDrawMeshTasksIndirectCommandEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawMeshTasksIndirectCommandEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkDrawMeshTasksIndirectCommandEXT` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDrawMeshTasksIndirectCommandEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
     /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrawMeshTasksIndirectCommandEXT` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
-    public static VkDrawMeshTasksIndirectCommandEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int groupCountX, @CType("uint32_t") int groupCountY, @CType("uint32_t") int groupCountZ) { return alloc(allocator).groupCountX(groupCountX).groupCountY(groupCountY).groupCountZ(groupCountZ); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `groupCountX` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_groupCountX(MemorySegment segment, long index) { return (int) VH_groupCountX.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int groupCountX(MemorySegment segment, long index) { return (int) VH_groupCountX.get(segment, 0L, index); }
     /// {@return `groupCountX`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_groupCountX(MemorySegment segment) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountX(segment, 0L); }
-    /// {@return `groupCountX`}
-    public @CType("uint32_t") int groupCountX() { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountX(this.segment()); }
+    public int groupCountX() { return groupCountX(this.segment(), 0L); }
     /// Sets `groupCountX` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_groupCountX(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_groupCountX.set(segment, 0L, index, value); }
-    /// Sets `groupCountX` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_groupCountX(MemorySegment segment, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountX(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void groupCountX(MemorySegment segment, long index, int value) { VH_groupCountX.set(segment, 0L, index, value); }
     /// Sets `groupCountX` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDrawMeshTasksIndirectCommandEXT groupCountX(@CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountX(this.segment(), value); return this; }
+    public VkDrawMeshTasksIndirectCommandEXT groupCountX(int value) { groupCountX(this.segment(), 0L, value); return this; }
 
     /// {@return `groupCountY` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_groupCountY(MemorySegment segment, long index) { return (int) VH_groupCountY.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int groupCountY(MemorySegment segment, long index) { return (int) VH_groupCountY.get(segment, 0L, index); }
     /// {@return `groupCountY`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_groupCountY(MemorySegment segment) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountY(segment, 0L); }
-    /// {@return `groupCountY`}
-    public @CType("uint32_t") int groupCountY() { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountY(this.segment()); }
+    public int groupCountY() { return groupCountY(this.segment(), 0L); }
     /// Sets `groupCountY` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_groupCountY(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_groupCountY.set(segment, 0L, index, value); }
-    /// Sets `groupCountY` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_groupCountY(MemorySegment segment, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountY(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void groupCountY(MemorySegment segment, long index, int value) { VH_groupCountY.set(segment, 0L, index, value); }
     /// Sets `groupCountY` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDrawMeshTasksIndirectCommandEXT groupCountY(@CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountY(this.segment(), value); return this; }
+    public VkDrawMeshTasksIndirectCommandEXT groupCountY(int value) { groupCountY(this.segment(), 0L, value); return this; }
 
     /// {@return `groupCountZ` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_groupCountZ(MemorySegment segment, long index) { return (int) VH_groupCountZ.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int groupCountZ(MemorySegment segment, long index) { return (int) VH_groupCountZ.get(segment, 0L, index); }
     /// {@return `groupCountZ`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_groupCountZ(MemorySegment segment) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountZ(segment, 0L); }
-    /// {@return `groupCountZ`}
-    public @CType("uint32_t") int groupCountZ() { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountZ(this.segment()); }
+    public int groupCountZ() { return groupCountZ(this.segment(), 0L); }
     /// Sets `groupCountZ` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_groupCountZ(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_groupCountZ.set(segment, 0L, index, value); }
-    /// Sets `groupCountZ` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_groupCountZ(MemorySegment segment, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountZ(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void groupCountZ(MemorySegment segment, long index, int value) { VH_groupCountZ.set(segment, 0L, index, value); }
     /// Sets `groupCountZ` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDrawMeshTasksIndirectCommandEXT groupCountZ(@CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountZ(this.segment(), value); return this; }
+    public VkDrawMeshTasksIndirectCommandEXT groupCountZ(int value) { groupCountZ(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkDrawMeshTasksIndirectCommandEXT].
     public static final class Buffer extends VkDrawMeshTasksIndirectCommandEXT {
@@ -200,31 +173,31 @@ public sealed class VkDrawMeshTasksIndirectCommandEXT extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `groupCountX` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int groupCountXAt(long index) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountX(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int groupCountXAt(long index) { return groupCountX(this.segment(), index); }
         /// Sets `groupCountX` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer groupCountXAt(long index, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountX(this.segment(), index, value); return this; }
+        public Buffer groupCountXAt(long index, int value) { groupCountX(this.segment(), index, value); return this; }
 
         /// {@return `groupCountY` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int groupCountYAt(long index) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountY(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int groupCountYAt(long index) { return groupCountY(this.segment(), index); }
         /// Sets `groupCountY` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer groupCountYAt(long index, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountY(this.segment(), index, value); return this; }
+        public Buffer groupCountYAt(long index, int value) { groupCountY(this.segment(), index, value); return this; }
 
         /// {@return `groupCountZ` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int groupCountZAt(long index) { return VkDrawMeshTasksIndirectCommandEXT.get_groupCountZ(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int groupCountZAt(long index) { return groupCountZ(this.segment(), index); }
         /// Sets `groupCountZ` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer groupCountZAt(long index, @CType("uint32_t") int value) { VkDrawMeshTasksIndirectCommandEXT.set_groupCountZ(this.segment(), index, value); return this; }
+        public Buffer groupCountZAt(long index, int value) { groupCountZ(this.segment(), index, value); return this; }
 
     }
 }

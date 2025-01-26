@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.khr;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRVideoMaintenance1 {
     public static final int VK_KHR_VIDEO_MAINTENANCE_1_SPEC_VERSION = 1;
@@ -31,6 +26,6 @@ public final class VKKHRVideoMaintenance1 {
     public static final int VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR = 0x00000040;
     public static final int VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR = 0x00000004;
 
-    private VKKHRVideoMaintenance1() { }
+    private VKKHRVideoMaintenance1() {}
 
 }

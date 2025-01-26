@@ -16,9 +16,9 @@
 
 package overrungl.opengl
 
-import com.palantir.javapoet.TypeName
-import overrungl.gen.CustomTypeSpec
 import overrungl.gen.commentedFileHeader
+import overrungl.gen.file.DefinitionFunction
+import overrungl.gen.file.writeFunction
 import overrungl.gen.writeString
 import kotlin.io.path.Path
 
@@ -32,13 +32,11 @@ class InstanceDowncall(
     var constructorParam: String? = null
     var handlesConstructorCode: String? = null
     var constructorCode: String? = null
-    var customCode: String? = null
     private val extends = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
-    val descriptorFields = mutableListOf<InstanceDowncallField>()
     val handleFields = mutableListOf<InstanceDowncallField>()
     val pfnFields = mutableListOf<InstanceDowncallField>()
-    private val methods = mutableListOf<InstanceDowncallMethod>()
+    private val methods = mutableListOf<DefinitionFunction>()
 
     init {
         action()
@@ -54,7 +52,7 @@ class InstanceDowncall(
             fields.add(field)
     }
 
-    fun method(method: InstanceDowncallMethod) {
+    fun method(method: DefinitionFunction) {
         methods.add(method)
     }
 
@@ -63,20 +61,20 @@ class InstanceDowncall(
         val sb = StringBuilder()
 
         sb.appendLine(commentedFileHeader)
-        sb.append(
-            """
-                package $packageName;
+        sb.appendLine("package $packageName;")
+        sb.appendLine()
+        if (handleFields.isNotEmpty()) {
+            sb.appendLine(
+                """
+                    import java.lang.foreign.*;
+                    import java.lang.invoke.*;
+                    import overrungl.internal.RuntimeHelper;
+                    import overrungl.util.*;
 
-                import java.lang.foreign.*;
-                import java.lang.invoke.*;
-                import java.util.*;
-                import overrungl.annotation.*;
-                import overrungl.internal.RuntimeHelper;
-                import overrungl.util.*;
-
-                public
-            """.trimIndent()
-        )
+                """.trimIndent()
+            )
+        }
+        sb.append("public")
         if (modifier != null) {
             sb.append(" ")
             sb.append(modifier)
@@ -103,22 +101,6 @@ class InstanceDowncall(
             }
         }
         writeFields(fields, 4)
-        if (descriptorFields.isNotEmpty()) {
-            sb.appendLine("    public static final class Descriptors {")
-            sb.appendLine("        private Descriptors() {}")
-            writeFields(descriptorFields, 8)
-            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
-            descriptorFields.forEachIndexed { index, it ->
-                sb.append("            ${it.name}")
-                if (index + 1 == descriptorFields.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
-            sb.appendLine("    }")
-        }
         if (handleFields.isNotEmpty()) {
             sb.appendLine("    public static final class Handles {")
             writeFields(handleFields, 8)
@@ -155,29 +137,7 @@ class InstanceDowncall(
 
         // methods
         methods.forEach { m ->
-            sb.append("    public ${m.returnType.carrierWithC()} ${m.name}(")
-            sb.append(m.params.joinToString(", ") { p -> "${p.type.carrierWithC()} ${p.name}" })
-            sb.appendLine(") {")
-
-            sb.appendLine("""        if (Unmarshal.isNullPointer(handles.PFN_${m.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
-            sb.append("        try { ")
-            if (m.returnType.carrier != TypeName.VOID) {
-                sb.append("return (${m.returnType.carrier}) ")
-            }
-            sb.append("Handles.MH_${m.entrypoint}.invokeExact(handles.PFN_${m.entrypoint}")
-            m.params.forEach {
-                sb.append(", ${it.name}")
-            }
-            sb.appendLine("); }")
-            sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
-
-            sb.appendLine("    }")
-            sb.appendLine()
-        }
-
-        if (customCode != null) {
-            sb.appendLine("    // --- OverrunGL custom code ---")
-            sb.appendLine(customCode!!.prependIndent("    "))
+            writeFunction(sb, m, handlesInstance = "handles", staticMethod = false)
         }
 
         sb.appendLine("}")
@@ -191,16 +151,4 @@ data class InstanceDowncallField(
     val type: String,
     val name: String,
     val value: String? = null,
-)
-
-data class InstanceDowncallParameter(
-    val type: CustomTypeSpec,
-    val name: String,
-)
-
-data class InstanceDowncallMethod(
-    val returnType: CustomTypeSpec,
-    val name: String,
-    val params: List<InstanceDowncallParameter>,
-    val entrypoint: String,
 )

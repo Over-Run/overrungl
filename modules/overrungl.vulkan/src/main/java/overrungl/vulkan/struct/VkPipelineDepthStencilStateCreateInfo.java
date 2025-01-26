@@ -15,61 +15,35 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
-/// ### depthTestEnable
-/// [VarHandle][#VH_depthTestEnable] - [Getter][#depthTestEnable()] - [Setter][#depthTestEnable(int)]
-/// ### depthWriteEnable
-/// [VarHandle][#VH_depthWriteEnable] - [Getter][#depthWriteEnable()] - [Setter][#depthWriteEnable(int)]
-/// ### depthCompareOp
-/// [VarHandle][#VH_depthCompareOp] - [Getter][#depthCompareOp()] - [Setter][#depthCompareOp(int)]
-/// ### depthBoundsTestEnable
-/// [VarHandle][#VH_depthBoundsTestEnable] - [Getter][#depthBoundsTestEnable()] - [Setter][#depthBoundsTestEnable(int)]
-/// ### stencilTestEnable
-/// [VarHandle][#VH_stencilTestEnable] - [Getter][#stencilTestEnable()] - [Setter][#stencilTestEnable(int)]
-/// ### front
-/// [Byte offset][#OFFSET_front] - [Memory layout][#ML_front] - [Getter][#front()] - [Setter][#front(java.lang.foreign.MemorySegment)]
-/// ### back
-/// [Byte offset][#OFFSET_back] - [Memory layout][#ML_back] - [Getter][#back()] - [Setter][#back(java.lang.foreign.MemorySegment)]
-/// ### minDepthBounds
-/// [VarHandle][#VH_minDepthBounds] - [Getter][#minDepthBounds()] - [Setter][#minDepthBounds(float)]
-/// ### maxDepthBounds
-/// [VarHandle][#VH_maxDepthBounds] - [Getter][#maxDepthBounds()] - [Setter][#maxDepthBounds(float)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPipelineDepthStencilStateCreateInfo {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkPipelineDepthStencilStateCreateFlags flags;
-///     VkBool32 depthTestEnable;
-///     VkBool32 depthWriteEnable;
-///     VkCompareOp depthCompareOp;
-///     VkBool32 depthBoundsTestEnable;
-///     VkBool32 stencilTestEnable;
-///     VkStencilOpState front;
-///     VkStencilOpState back;
+/// ```
+/// struct VkPipelineDepthStencilStateCreateInfo {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     ((uint32_t) VkFlags) VkPipelineDepthStencilStateCreateFlags flags;
+///     (uint32_t) VkBool32 depthTestEnable;
+///     (uint32_t) VkBool32 depthWriteEnable;
+///     (int) VkCompareOp depthCompareOp;
+///     (uint32_t) VkBool32 depthBoundsTestEnable;
+///     (uint32_t) VkBool32 stencilTestEnable;
+///     (struct VkStencilOpState) VkStencilOpState front;
+///     (struct VkStencilOpState) VkStencilOpState back;
 ///     float minDepthBounds;
 ///     float maxDepthBounds;
-/// } VkPipelineDepthStencilStateCreateInfo;
+/// };
 /// ```
-public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
+public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineDepthStencilStateCreateInfo`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
@@ -83,33 +57,73 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
         ValueLayout.JAVA_FLOAT.withName("minDepthBounds"),
         ValueLayout.JAVA_FLOAT.withName("maxDepthBounds")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
-    /// The [VarHandle] of `depthTestEnable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthTestEnable`.
+    public static final long OFFSET_depthTestEnable = LAYOUT.byteOffset(PathElement.groupElement("depthTestEnable"));
+    /// The memory layout of `depthTestEnable`.
+    public static final MemoryLayout LAYOUT_depthTestEnable = LAYOUT.select(PathElement.groupElement("depthTestEnable"));
+    /// The [VarHandle] of `depthTestEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthTestEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthTestEnable"));
-    /// The [VarHandle] of `depthWriteEnable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthWriteEnable`.
+    public static final long OFFSET_depthWriteEnable = LAYOUT.byteOffset(PathElement.groupElement("depthWriteEnable"));
+    /// The memory layout of `depthWriteEnable`.
+    public static final MemoryLayout LAYOUT_depthWriteEnable = LAYOUT.select(PathElement.groupElement("depthWriteEnable"));
+    /// The [VarHandle] of `depthWriteEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthWriteEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthWriteEnable"));
-    /// The [VarHandle] of `depthCompareOp` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthCompareOp`.
+    public static final long OFFSET_depthCompareOp = LAYOUT.byteOffset(PathElement.groupElement("depthCompareOp"));
+    /// The memory layout of `depthCompareOp`.
+    public static final MemoryLayout LAYOUT_depthCompareOp = LAYOUT.select(PathElement.groupElement("depthCompareOp"));
+    /// The [VarHandle] of `depthCompareOp` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthCompareOp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthCompareOp"));
-    /// The [VarHandle] of `depthBoundsTestEnable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `depthBoundsTestEnable`.
+    public static final long OFFSET_depthBoundsTestEnable = LAYOUT.byteOffset(PathElement.groupElement("depthBoundsTestEnable"));
+    /// The memory layout of `depthBoundsTestEnable`.
+    public static final MemoryLayout LAYOUT_depthBoundsTestEnable = LAYOUT.select(PathElement.groupElement("depthBoundsTestEnable"));
+    /// The [VarHandle] of `depthBoundsTestEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_depthBoundsTestEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBoundsTestEnable"));
-    /// The [VarHandle] of `stencilTestEnable` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `stencilTestEnable`.
+    public static final long OFFSET_stencilTestEnable = LAYOUT.byteOffset(PathElement.groupElement("stencilTestEnable"));
+    /// The memory layout of `stencilTestEnable`.
+    public static final MemoryLayout LAYOUT_stencilTestEnable = LAYOUT.select(PathElement.groupElement("stencilTestEnable"));
+    /// The [VarHandle] of `stencilTestEnable` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_stencilTestEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stencilTestEnable"));
     /// The byte offset of `front`.
     public static final long OFFSET_front = LAYOUT.byteOffset(PathElement.groupElement("front"));
     /// The memory layout of `front`.
-    public static final MemoryLayout ML_front = LAYOUT.select(PathElement.groupElement("front"));
+    public static final MemoryLayout LAYOUT_front = LAYOUT.select(PathElement.groupElement("front"));
     /// The byte offset of `back`.
     public static final long OFFSET_back = LAYOUT.byteOffset(PathElement.groupElement("back"));
     /// The memory layout of `back`.
-    public static final MemoryLayout ML_back = LAYOUT.select(PathElement.groupElement("back"));
-    /// The [VarHandle] of `minDepthBounds` of type `(MemorySegment base, long baseOffset, long index)float`.
+    public static final MemoryLayout LAYOUT_back = LAYOUT.select(PathElement.groupElement("back"));
+    /// The byte offset of `minDepthBounds`.
+    public static final long OFFSET_minDepthBounds = LAYOUT.byteOffset(PathElement.groupElement("minDepthBounds"));
+    /// The memory layout of `minDepthBounds`.
+    public static final MemoryLayout LAYOUT_minDepthBounds = LAYOUT.select(PathElement.groupElement("minDepthBounds"));
+    /// The [VarHandle] of `minDepthBounds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_minDepthBounds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minDepthBounds"));
-    /// The [VarHandle] of `maxDepthBounds` of type `(MemorySegment base, long baseOffset, long index)float`.
+    /// The byte offset of `maxDepthBounds`.
+    public static final long OFFSET_maxDepthBounds = LAYOUT.byteOffset(PathElement.groupElement("maxDepthBounds"));
+    /// The memory layout of `maxDepthBounds`.
+    public static final MemoryLayout LAYOUT_maxDepthBounds = LAYOUT.select(PathElement.groupElement("maxDepthBounds"));
+    /// The [VarHandle] of `maxDepthBounds` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_maxDepthBounds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepthBounds"));
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
@@ -119,19 +133,14 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineDepthStencilStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment); }
-
-    /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineDepthStencilStateCreateInfo ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineDepthStencilStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     ///
@@ -139,7 +148,7 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -152,11 +161,6 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
-    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineDepthStencilStateCreateFlags") int flags, @CType("VkBool32") int depthTestEnable, @CType("VkBool32") int depthWriteEnable, @CType("VkCompareOp") int depthCompareOp, @CType("VkBool32") int depthBoundsTestEnable, @CType("VkBool32") int stencilTestEnable, @CType("VkStencilOpState") java.lang.foreign.MemorySegment front, @CType("VkStencilOpState") java.lang.foreign.MemorySegment back, @CType("float") float minDepthBounds, @CType("float") float maxDepthBounds) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable).front(front).back(back).minDepthBounds(minDepthBounds).maxDepthBounds(maxDepthBounds); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -164,283 +168,199 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPipelineDepthStencilStateCreateInfo.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineDepthStencilStateCreateInfo.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo sType(@CType("VkStructureType") int value) { VkPipelineDepthStencilStateCreateInfo.set_sType(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineDepthStencilStateCreateInfo.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_pNext(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkPipelineDepthStencilStateCreateFlags") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkPipelineDepthStencilStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkPipelineDepthStencilStateCreateFlags") int flags() { return VkPipelineDepthStencilStateCreateInfo.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineDepthStencilStateCreateFlags") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkPipelineDepthStencilStateCreateFlags") int value) { VkPipelineDepthStencilStateCreateInfo.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo flags(@CType("VkPipelineDepthStencilStateCreateFlags") int value) { VkPipelineDepthStencilStateCreateInfo.set_flags(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// {@return `depthTestEnable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthTestEnable(MemorySegment segment, long index) { return (int) VH_depthTestEnable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthTestEnable(MemorySegment segment, long index) { return (int) VH_depthTestEnable.get(segment, 0L, index); }
     /// {@return `depthTestEnable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthTestEnable(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_depthTestEnable(segment, 0L); }
-    /// {@return `depthTestEnable`}
-    public @CType("VkBool32") int depthTestEnable() { return VkPipelineDepthStencilStateCreateInfo.get_depthTestEnable(this.segment()); }
+    public int depthTestEnable() { return depthTestEnable(this.segment(), 0L); }
     /// Sets `depthTestEnable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthTestEnable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthTestEnable.set(segment, 0L, index, value); }
-    /// Sets `depthTestEnable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthTestEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthTestEnable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthTestEnable(MemorySegment segment, long index, int value) { VH_depthTestEnable.set(segment, 0L, index, value); }
     /// Sets `depthTestEnable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo depthTestEnable(@CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthTestEnable(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo depthTestEnable(int value) { depthTestEnable(this.segment(), 0L, value); return this; }
 
     /// {@return `depthWriteEnable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthWriteEnable(MemorySegment segment, long index) { return (int) VH_depthWriteEnable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthWriteEnable(MemorySegment segment, long index) { return (int) VH_depthWriteEnable.get(segment, 0L, index); }
     /// {@return `depthWriteEnable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthWriteEnable(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_depthWriteEnable(segment, 0L); }
-    /// {@return `depthWriteEnable`}
-    public @CType("VkBool32") int depthWriteEnable() { return VkPipelineDepthStencilStateCreateInfo.get_depthWriteEnable(this.segment()); }
+    public int depthWriteEnable() { return depthWriteEnable(this.segment(), 0L); }
     /// Sets `depthWriteEnable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthWriteEnable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthWriteEnable.set(segment, 0L, index, value); }
-    /// Sets `depthWriteEnable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthWriteEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthWriteEnable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthWriteEnable(MemorySegment segment, long index, int value) { VH_depthWriteEnable.set(segment, 0L, index, value); }
     /// Sets `depthWriteEnable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo depthWriteEnable(@CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthWriteEnable(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo depthWriteEnable(int value) { depthWriteEnable(this.segment(), 0L, value); return this; }
 
     /// {@return `depthCompareOp` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkCompareOp") int get_depthCompareOp(MemorySegment segment, long index) { return (int) VH_depthCompareOp.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthCompareOp(MemorySegment segment, long index) { return (int) VH_depthCompareOp.get(segment, 0L, index); }
     /// {@return `depthCompareOp`}
-    /// @param segment the segment of the struct
-    public static @CType("VkCompareOp") int get_depthCompareOp(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_depthCompareOp(segment, 0L); }
-    /// {@return `depthCompareOp`}
-    public @CType("VkCompareOp") int depthCompareOp() { return VkPipelineDepthStencilStateCreateInfo.get_depthCompareOp(this.segment()); }
+    public int depthCompareOp() { return depthCompareOp(this.segment(), 0L); }
     /// Sets `depthCompareOp` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthCompareOp(MemorySegment segment, long index, @CType("VkCompareOp") int value) { VH_depthCompareOp.set(segment, 0L, index, value); }
-    /// Sets `depthCompareOp` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthCompareOp(MemorySegment segment, @CType("VkCompareOp") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthCompareOp(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthCompareOp(MemorySegment segment, long index, int value) { VH_depthCompareOp.set(segment, 0L, index, value); }
     /// Sets `depthCompareOp` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo depthCompareOp(@CType("VkCompareOp") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthCompareOp(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo depthCompareOp(int value) { depthCompareOp(this.segment(), 0L, value); return this; }
 
     /// {@return `depthBoundsTestEnable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_depthBoundsTestEnable(MemorySegment segment, long index) { return (int) VH_depthBoundsTestEnable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int depthBoundsTestEnable(MemorySegment segment, long index) { return (int) VH_depthBoundsTestEnable.get(segment, 0L, index); }
     /// {@return `depthBoundsTestEnable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_depthBoundsTestEnable(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_depthBoundsTestEnable(segment, 0L); }
-    /// {@return `depthBoundsTestEnable`}
-    public @CType("VkBool32") int depthBoundsTestEnable() { return VkPipelineDepthStencilStateCreateInfo.get_depthBoundsTestEnable(this.segment()); }
+    public int depthBoundsTestEnable() { return depthBoundsTestEnable(this.segment(), 0L); }
     /// Sets `depthBoundsTestEnable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_depthBoundsTestEnable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_depthBoundsTestEnable.set(segment, 0L, index, value); }
-    /// Sets `depthBoundsTestEnable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_depthBoundsTestEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthBoundsTestEnable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void depthBoundsTestEnable(MemorySegment segment, long index, int value) { VH_depthBoundsTestEnable.set(segment, 0L, index, value); }
     /// Sets `depthBoundsTestEnable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo depthBoundsTestEnable(@CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthBoundsTestEnable(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo depthBoundsTestEnable(int value) { depthBoundsTestEnable(this.segment(), 0L, value); return this; }
 
     /// {@return `stencilTestEnable` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkBool32") int get_stencilTestEnable(MemorySegment segment, long index) { return (int) VH_stencilTestEnable.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int stencilTestEnable(MemorySegment segment, long index) { return (int) VH_stencilTestEnable.get(segment, 0L, index); }
     /// {@return `stencilTestEnable`}
-    /// @param segment the segment of the struct
-    public static @CType("VkBool32") int get_stencilTestEnable(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_stencilTestEnable(segment, 0L); }
-    /// {@return `stencilTestEnable`}
-    public @CType("VkBool32") int stencilTestEnable() { return VkPipelineDepthStencilStateCreateInfo.get_stencilTestEnable(this.segment()); }
+    public int stencilTestEnable() { return stencilTestEnable(this.segment(), 0L); }
     /// Sets `stencilTestEnable` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_stencilTestEnable(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_stencilTestEnable.set(segment, 0L, index, value); }
-    /// Sets `stencilTestEnable` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_stencilTestEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_stencilTestEnable(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void stencilTestEnable(MemorySegment segment, long index, int value) { VH_stencilTestEnable.set(segment, 0L, index, value); }
     /// Sets `stencilTestEnable` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo stencilTestEnable(@CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_stencilTestEnable(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo stencilTestEnable(int value) { stencilTestEnable(this.segment(), 0L, value); return this; }
 
     /// {@return `front` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStencilOpState") java.lang.foreign.MemorySegment get_front(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_front, index), ML_front); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment front(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_front, index), LAYOUT_front); }
     /// {@return `front`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStencilOpState") java.lang.foreign.MemorySegment get_front(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_front(segment, 0L); }
-    /// {@return `front`}
-    public @CType("VkStencilOpState") java.lang.foreign.MemorySegment front() { return VkPipelineDepthStencilStateCreateInfo.get_front(this.segment()); }
+    public MemorySegment front() { return front(this.segment(), 0L); }
     /// Sets `front` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_front(MemorySegment segment, long index, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_front, index), ML_front.byteSize()); }
-    /// Sets `front` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_front(MemorySegment segment, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_front(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void front(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_front, index), LAYOUT_front.byteSize()); }
     /// Sets `front` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo front(@CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_front(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo front(MemorySegment value) { front(this.segment(), 0L, value); return this; }
 
     /// {@return `back` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStencilOpState") java.lang.foreign.MemorySegment get_back(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_back, index), ML_back); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment back(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_back, index), LAYOUT_back); }
     /// {@return `back`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStencilOpState") java.lang.foreign.MemorySegment get_back(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_back(segment, 0L); }
-    /// {@return `back`}
-    public @CType("VkStencilOpState") java.lang.foreign.MemorySegment back() { return VkPipelineDepthStencilStateCreateInfo.get_back(this.segment()); }
+    public MemorySegment back() { return back(this.segment(), 0L); }
     /// Sets `back` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_back(MemorySegment segment, long index, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_back, index), ML_back.byteSize()); }
-    /// Sets `back` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_back(MemorySegment segment, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_back(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void back(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_back, index), LAYOUT_back.byteSize()); }
     /// Sets `back` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo back(@CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_back(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo back(MemorySegment value) { back(this.segment(), 0L, value); return this; }
 
     /// {@return `minDepthBounds` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_minDepthBounds(MemorySegment segment, long index) { return (float) VH_minDepthBounds.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float minDepthBounds(MemorySegment segment, long index) { return (float) VH_minDepthBounds.get(segment, 0L, index); }
     /// {@return `minDepthBounds`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_minDepthBounds(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_minDepthBounds(segment, 0L); }
-    /// {@return `minDepthBounds`}
-    public @CType("float") float minDepthBounds() { return VkPipelineDepthStencilStateCreateInfo.get_minDepthBounds(this.segment()); }
+    public float minDepthBounds() { return minDepthBounds(this.segment(), 0L); }
     /// Sets `minDepthBounds` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_minDepthBounds(MemorySegment segment, long index, @CType("float") float value) { VH_minDepthBounds.set(segment, 0L, index, value); }
-    /// Sets `minDepthBounds` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_minDepthBounds(MemorySegment segment, @CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_minDepthBounds(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void minDepthBounds(MemorySegment segment, long index, float value) { VH_minDepthBounds.set(segment, 0L, index, value); }
     /// Sets `minDepthBounds` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo minDepthBounds(@CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_minDepthBounds(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo minDepthBounds(float value) { minDepthBounds(this.segment(), 0L, value); return this; }
 
     /// {@return `maxDepthBounds` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("float") float get_maxDepthBounds(MemorySegment segment, long index) { return (float) VH_maxDepthBounds.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static float maxDepthBounds(MemorySegment segment, long index) { return (float) VH_maxDepthBounds.get(segment, 0L, index); }
     /// {@return `maxDepthBounds`}
-    /// @param segment the segment of the struct
-    public static @CType("float") float get_maxDepthBounds(MemorySegment segment) { return VkPipelineDepthStencilStateCreateInfo.get_maxDepthBounds(segment, 0L); }
-    /// {@return `maxDepthBounds`}
-    public @CType("float") float maxDepthBounds() { return VkPipelineDepthStencilStateCreateInfo.get_maxDepthBounds(this.segment()); }
+    public float maxDepthBounds() { return maxDepthBounds(this.segment(), 0L); }
     /// Sets `maxDepthBounds` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_maxDepthBounds(MemorySegment segment, long index, @CType("float") float value) { VH_maxDepthBounds.set(segment, 0L, index, value); }
-    /// Sets `maxDepthBounds` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_maxDepthBounds(MemorySegment segment, @CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_maxDepthBounds(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void maxDepthBounds(MemorySegment segment, long index, float value) { VH_maxDepthBounds.set(segment, 0L, index, value); }
     /// Sets `maxDepthBounds` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineDepthStencilStateCreateInfo maxDepthBounds(@CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_maxDepthBounds(this.segment(), value); return this; }
+    public VkPipelineDepthStencilStateCreateInfo maxDepthBounds(float value) { maxDepthBounds(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineDepthStencilStateCreateInfo].
     public static final class Buffer extends VkPipelineDepthStencilStateCreateInfo {
@@ -465,112 +385,112 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineDepthStencilStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkPipelineDepthStencilStateCreateFlags") int flagsAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkPipelineDepthStencilStateCreateFlags") int value) { VkPipelineDepthStencilStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
         /// {@return `depthTestEnable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthTestEnableAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_depthTestEnable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthTestEnableAt(long index) { return depthTestEnable(this.segment(), index); }
         /// Sets `depthTestEnable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthTestEnableAt(long index, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthTestEnable(this.segment(), index, value); return this; }
+        public Buffer depthTestEnableAt(long index, int value) { depthTestEnable(this.segment(), index, value); return this; }
 
         /// {@return `depthWriteEnable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthWriteEnableAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_depthWriteEnable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthWriteEnableAt(long index) { return depthWriteEnable(this.segment(), index); }
         /// Sets `depthWriteEnable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthWriteEnableAt(long index, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthWriteEnable(this.segment(), index, value); return this; }
+        public Buffer depthWriteEnableAt(long index, int value) { depthWriteEnable(this.segment(), index, value); return this; }
 
         /// {@return `depthCompareOp` at the given index}
-        /// @param index the index
-        public @CType("VkCompareOp") int depthCompareOpAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_depthCompareOp(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthCompareOpAt(long index) { return depthCompareOp(this.segment(), index); }
         /// Sets `depthCompareOp` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthCompareOpAt(long index, @CType("VkCompareOp") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthCompareOp(this.segment(), index, value); return this; }
+        public Buffer depthCompareOpAt(long index, int value) { depthCompareOp(this.segment(), index, value); return this; }
 
         /// {@return `depthBoundsTestEnable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int depthBoundsTestEnableAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_depthBoundsTestEnable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int depthBoundsTestEnableAt(long index) { return depthBoundsTestEnable(this.segment(), index); }
         /// Sets `depthBoundsTestEnable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer depthBoundsTestEnableAt(long index, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_depthBoundsTestEnable(this.segment(), index, value); return this; }
+        public Buffer depthBoundsTestEnableAt(long index, int value) { depthBoundsTestEnable(this.segment(), index, value); return this; }
 
         /// {@return `stencilTestEnable` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int stencilTestEnableAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_stencilTestEnable(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int stencilTestEnableAt(long index) { return stencilTestEnable(this.segment(), index); }
         /// Sets `stencilTestEnable` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer stencilTestEnableAt(long index, @CType("VkBool32") int value) { VkPipelineDepthStencilStateCreateInfo.set_stencilTestEnable(this.segment(), index, value); return this; }
+        public Buffer stencilTestEnableAt(long index, int value) { stencilTestEnable(this.segment(), index, value); return this; }
 
         /// {@return `front` at the given index}
-        /// @param index the index
-        public @CType("VkStencilOpState") java.lang.foreign.MemorySegment frontAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_front(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment frontAt(long index) { return front(this.segment(), index); }
         /// Sets `front` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer frontAt(long index, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_front(this.segment(), index, value); return this; }
+        public Buffer frontAt(long index, MemorySegment value) { front(this.segment(), index, value); return this; }
 
         /// {@return `back` at the given index}
-        /// @param index the index
-        public @CType("VkStencilOpState") java.lang.foreign.MemorySegment backAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_back(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment backAt(long index) { return back(this.segment(), index); }
         /// Sets `back` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer backAt(long index, @CType("VkStencilOpState") java.lang.foreign.MemorySegment value) { VkPipelineDepthStencilStateCreateInfo.set_back(this.segment(), index, value); return this; }
+        public Buffer backAt(long index, MemorySegment value) { back(this.segment(), index, value); return this; }
 
         /// {@return `minDepthBounds` at the given index}
-        /// @param index the index
-        public @CType("float") float minDepthBoundsAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_minDepthBounds(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float minDepthBoundsAt(long index) { return minDepthBounds(this.segment(), index); }
         /// Sets `minDepthBounds` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer minDepthBoundsAt(long index, @CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_minDepthBounds(this.segment(), index, value); return this; }
+        public Buffer minDepthBoundsAt(long index, float value) { minDepthBounds(this.segment(), index, value); return this; }
 
         /// {@return `maxDepthBounds` at the given index}
-        /// @param index the index
-        public @CType("float") float maxDepthBoundsAt(long index) { return VkPipelineDepthStencilStateCreateInfo.get_maxDepthBounds(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public float maxDepthBoundsAt(long index) { return maxDepthBounds(this.segment(), index); }
         /// Sets `maxDepthBounds` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer maxDepthBoundsAt(long index, @CType("float") float value) { VkPipelineDepthStencilStateCreateInfo.set_maxDepthBounds(this.segment(), index, value); return this; }
+        public Buffer maxDepthBoundsAt(long index, float value) { maxDepthBounds(this.segment(), index, value); return this; }
 
     }
 }

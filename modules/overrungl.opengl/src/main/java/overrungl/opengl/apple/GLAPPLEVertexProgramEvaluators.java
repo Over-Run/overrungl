@@ -19,8 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -36,33 +34,14 @@ public final class GLAPPLEVertexProgramEvaluators {
     public static final int GL_VERTEX_ATTRIB_MAP2_ORDER_APPLE = 0x8A08;
     public static final int GL_VERTEX_ATTRIB_MAP2_DOMAIN_APPLE = 0x8A09;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glEnableVertexAttribAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glDisableVertexAttribAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glIsVertexAttribEnabledAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMapVertexAttrib1dAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMapVertexAttrib1fAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMapVertexAttrib2dAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glMapVertexAttrib2fAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glEnableVertexAttribAPPLE,
-            FD_glDisableVertexAttribAPPLE,
-            FD_glIsVertexAttribEnabledAPPLE,
-            FD_glMapVertexAttrib1dAPPLE,
-            FD_glMapVertexAttrib1fAPPLE,
-            FD_glMapVertexAttrib2dAPPLE,
-            FD_glMapVertexAttrib2fAPPLE
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glEnableVertexAttribAPPLE = RuntimeHelper.downcall(Descriptors.FD_glEnableVertexAttribAPPLE);
-        public static final MethodHandle MH_glDisableVertexAttribAPPLE = RuntimeHelper.downcall(Descriptors.FD_glDisableVertexAttribAPPLE);
-        public static final MethodHandle MH_glIsVertexAttribEnabledAPPLE = RuntimeHelper.downcall(Descriptors.FD_glIsVertexAttribEnabledAPPLE);
-        public static final MethodHandle MH_glMapVertexAttrib1dAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMapVertexAttrib1dAPPLE);
-        public static final MethodHandle MH_glMapVertexAttrib1fAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMapVertexAttrib1fAPPLE);
-        public static final MethodHandle MH_glMapVertexAttrib2dAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMapVertexAttrib2dAPPLE);
-        public static final MethodHandle MH_glMapVertexAttrib2fAPPLE = RuntimeHelper.downcall(Descriptors.FD_glMapVertexAttrib2fAPPLE);
+        public static final MethodHandle MH_glEnableVertexAttribAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDisableVertexAttribAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsVertexAttribEnabledAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMapVertexAttrib1dAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMapVertexAttrib1fAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMapVertexAttrib2dAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMapVertexAttrib2fAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glEnableVertexAttribAPPLE;
         public final MemorySegment PFN_glDisableVertexAttribAPPLE;
         public final MemorySegment PFN_glIsVertexAttribEnabledAPPLE;
@@ -85,46 +64,67 @@ public final class GLAPPLEVertexProgramEvaluators {
         this.handles = new Handles(func);
     }
 
-    public void EnableVertexAttribAPPLE(@CType("GLuint") int index, @CType("GLenum") int pname) {
-        if (Unmarshal.isNullPointer(handles.PFN_glEnableVertexAttribAPPLE)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexAttribAPPLE");
+    /// ```
+    /// void glEnableVertexAttribAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
+    /// ```
+    public void EnableVertexAttribAPPLE(int index, int pname) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexAttribAPPLE)) throw new SymbolNotFoundError("Symbol not found: glEnableVertexAttribAPPLE");
         try { Handles.MH_glEnableVertexAttribAPPLE.invokeExact(handles.PFN_glEnableVertexAttribAPPLE, index, pname); }
-        catch (Throwable e) { throw new RuntimeException("error in glEnableVertexAttribAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in EnableVertexAttribAPPLE", e); }
     }
 
-    public void DisableVertexAttribAPPLE(@CType("GLuint") int index, @CType("GLenum") int pname) {
-        if (Unmarshal.isNullPointer(handles.PFN_glDisableVertexAttribAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexAttribAPPLE");
+    /// ```
+    /// void glDisableVertexAttribAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
+    /// ```
+    public void DisableVertexAttribAPPLE(int index, int pname) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexAttribAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDisableVertexAttribAPPLE");
         try { Handles.MH_glDisableVertexAttribAPPLE.invokeExact(handles.PFN_glDisableVertexAttribAPPLE, index, pname); }
-        catch (Throwable e) { throw new RuntimeException("error in glDisableVertexAttribAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in DisableVertexAttribAPPLE", e); }
     }
 
-    public @CType("GLboolean") boolean IsVertexAttribEnabledAPPLE(@CType("GLuint") int index, @CType("GLenum") int pname) {
-        if (Unmarshal.isNullPointer(handles.PFN_glIsVertexAttribEnabledAPPLE)) throw new SymbolNotFoundError("Symbol not found: glIsVertexAttribEnabledAPPLE");
-        try { return (boolean) Handles.MH_glIsVertexAttribEnabledAPPLE.invokeExact(handles.PFN_glIsVertexAttribEnabledAPPLE, index, pname); }
-        catch (Throwable e) { throw new RuntimeException("error in glIsVertexAttribEnabledAPPLE", e); }
+    /// ```
+    /// GLboolean glIsVertexAttribEnabledAPPLE((unsigned int) GLuint index, (unsigned int) GLenum pname);
+    /// ```
+    public boolean IsVertexAttribEnabledAPPLE(int index, int pname) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexAttribEnabledAPPLE)) throw new SymbolNotFoundError("Symbol not found: glIsVertexAttribEnabledAPPLE");
+        try { return (((byte) Handles.MH_glIsVertexAttribEnabledAPPLE.invokeExact(handles.PFN_glIsVertexAttribEnabledAPPLE, index, pname)) != 0); }
+        catch (Throwable e) { throw new RuntimeException("error in IsVertexAttribEnabledAPPLE", e); }
     }
 
-    public void MapVertexAttrib1dAPPLE(@CType("GLuint") int index, @CType("GLuint") int size, @CType("GLdouble") double u1, @CType("GLdouble") double u2, @CType("GLint") int stride, @CType("GLint") int order, @CType("const GLdouble *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapVertexAttrib1dAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib1dAPPLE");
+    /// ```
+    /// void glMapVertexAttrib1dAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, (double) GLdouble u1, (double) GLdouble u2, (int) GLint stride, (int) GLint order, const GLdouble* points);
+    /// ```
+    public void MapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib1dAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib1dAPPLE");
         try { Handles.MH_glMapVertexAttrib1dAPPLE.invokeExact(handles.PFN_glMapVertexAttrib1dAPPLE, index, size, u1, u2, stride, order, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapVertexAttrib1dAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib1dAPPLE", e); }
     }
 
-    public void MapVertexAttrib1fAPPLE(@CType("GLuint") int index, @CType("GLuint") int size, @CType("GLfloat") float u1, @CType("GLfloat") float u2, @CType("GLint") int stride, @CType("GLint") int order, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapVertexAttrib1fAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib1fAPPLE");
+    /// ```
+    /// void glMapVertexAttrib1fAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, ((float) khronos_float_t) GLfloat u1, ((float) khronos_float_t) GLfloat u2, (int) GLint stride, (int) GLint order, const GLfloat* points);
+    /// ```
+    public void MapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib1fAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib1fAPPLE");
         try { Handles.MH_glMapVertexAttrib1fAPPLE.invokeExact(handles.PFN_glMapVertexAttrib1fAPPLE, index, size, u1, u2, stride, order, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapVertexAttrib1fAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib1fAPPLE", e); }
     }
 
-    public void MapVertexAttrib2dAPPLE(@CType("GLuint") int index, @CType("GLuint") int size, @CType("GLdouble") double u1, @CType("GLdouble") double u2, @CType("GLint") int ustride, @CType("GLint") int uorder, @CType("GLdouble") double v1, @CType("GLdouble") double v2, @CType("GLint") int vstride, @CType("GLint") int vorder, @CType("const GLdouble *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapVertexAttrib2dAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib2dAPPLE");
+    /// ```
+    /// void glMapVertexAttrib2dAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, (double) GLdouble u1, (double) GLdouble u2, (int) GLint ustride, (int) GLint uorder, (double) GLdouble v1, (double) GLdouble v2, (int) GLint vstride, (int) GLint vorder, const GLdouble* points);
+    /// ```
+    public void MapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib2dAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib2dAPPLE");
         try { Handles.MH_glMapVertexAttrib2dAPPLE.invokeExact(handles.PFN_glMapVertexAttrib2dAPPLE, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapVertexAttrib2dAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib2dAPPLE", e); }
     }
 
-    public void MapVertexAttrib2fAPPLE(@CType("GLuint") int index, @CType("GLuint") int size, @CType("GLfloat") float u1, @CType("GLfloat") float u2, @CType("GLint") int ustride, @CType("GLint") int uorder, @CType("GLfloat") float v1, @CType("GLfloat") float v2, @CType("GLint") int vstride, @CType("GLint") int vorder, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMapVertexAttrib2fAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib2fAPPLE");
+    /// ```
+    /// void glMapVertexAttrib2fAPPLE((unsigned int) GLuint index, (unsigned int) GLuint size, ((float) khronos_float_t) GLfloat u1, ((float) khronos_float_t) GLfloat u2, (int) GLint ustride, (int) GLint uorder, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2, (int) GLint vstride, (int) GLint vorder, const GLfloat* points);
+    /// ```
+    public void MapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapVertexAttrib2fAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMapVertexAttrib2fAPPLE");
         try { Handles.MH_glMapVertexAttrib2fAPPLE.invokeExact(handles.PFN_glMapVertexAttrib2fAPPLE, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glMapVertexAttrib2fAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MapVertexAttrib2fAPPLE", e); }
     }
 
 }

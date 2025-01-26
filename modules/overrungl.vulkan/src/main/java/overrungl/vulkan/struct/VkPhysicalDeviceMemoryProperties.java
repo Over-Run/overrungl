@@ -15,56 +15,52 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import static overrungl.vulkan.VK10.*;
-import static overrungl.vulkan.VK10.*;
 
-/// ## Members
-/// ### memoryTypeCount
-/// [VarHandle][#VH_memoryTypeCount] - [Getter][#memoryTypeCount()] - [Setter][#memoryTypeCount(int)]
-/// ### memoryTypes
-/// [Byte offset][#OFFSET_memoryTypes] - [Memory layout][#ML_memoryTypes] - [Getter][#memoryTypes()] - [Setter][#memoryTypes(java.lang.foreign.MemorySegment)]
-/// ### memoryHeapCount
-/// [VarHandle][#VH_memoryHeapCount] - [Getter][#memoryHeapCount()] - [Setter][#memoryHeapCount(int)]
-/// ### memoryHeaps
-/// [Byte offset][#OFFSET_memoryHeaps] - [Memory layout][#ML_memoryHeaps] - [Getter][#memoryHeaps()] - [Setter][#memoryHeaps(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPhysicalDeviceMemoryProperties {
-///     uint32_t memoryTypeCount;
-///     VkMemoryType[VK_MAX_MEMORY_TYPES] memoryTypes;
-///     uint32_t memoryHeapCount;
-///     VkMemoryHeap[VK_MAX_MEMORY_HEAPS] memoryHeaps;
-/// } VkPhysicalDeviceMemoryProperties;
 /// ```
-public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
+/// struct VkPhysicalDeviceMemoryProperties {
+///     uint32_t memoryTypeCount;
+///     (struct VkMemoryType) VkMemoryType memoryTypes[32];
+///     uint32_t memoryHeapCount;
+///     (struct VkMemoryHeap) VkMemoryHeap memoryHeaps[16];
+/// };
+/// ```
+public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMemoryProperties`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memoryTypeCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_TYPES, VkMemoryType.LAYOUT).withName("memoryTypes"),
+        MemoryLayout.sequenceLayout(32L, overrungl.vulkan.struct.VkMemoryType.LAYOUT).withName("memoryTypes"),
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),
-        MemoryLayout.sequenceLayout(VK_MAX_MEMORY_HEAPS, VkMemoryHeap.LAYOUT).withName("memoryHeaps")
+        MemoryLayout.sequenceLayout(16L, overrungl.vulkan.struct.VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
-    /// The [VarHandle] of `memoryTypeCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `memoryTypeCount`.
+    public static final long OFFSET_memoryTypeCount = LAYOUT.byteOffset(PathElement.groupElement("memoryTypeCount"));
+    /// The memory layout of `memoryTypeCount`.
+    public static final MemoryLayout LAYOUT_memoryTypeCount = LAYOUT.select(PathElement.groupElement("memoryTypeCount"));
+    /// The [VarHandle] of `memoryTypeCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memoryTypeCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryTypeCount"));
     /// The byte offset of `memoryTypes`.
     public static final long OFFSET_memoryTypes = LAYOUT.byteOffset(PathElement.groupElement("memoryTypes"));
     /// The memory layout of `memoryTypes`.
-    public static final MemoryLayout ML_memoryTypes = LAYOUT.select(PathElement.groupElement("memoryTypes"));
-    /// The [VarHandle] of `memoryHeapCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_memoryTypes = LAYOUT.select(PathElement.groupElement("memoryTypes"));
+    /// The byte offset of `memoryHeapCount`.
+    public static final long OFFSET_memoryHeapCount = LAYOUT.byteOffset(PathElement.groupElement("memoryHeapCount"));
+    /// The memory layout of `memoryHeapCount`.
+    public static final MemoryLayout LAYOUT_memoryHeapCount = LAYOUT.select(PathElement.groupElement("memoryHeapCount"));
+    /// The [VarHandle] of `memoryHeapCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_memoryHeapCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("memoryHeapCount"));
     /// The byte offset of `memoryHeaps`.
     public static final long OFFSET_memoryHeaps = LAYOUT.byteOffset(PathElement.groupElement("memoryHeaps"));
     /// The memory layout of `memoryHeaps`.
-    public static final MemoryLayout ML_memoryHeaps = LAYOUT.select(PathElement.groupElement("memoryHeaps"));
+    public static final MemoryLayout LAYOUT_memoryHeaps = LAYOUT.select(PathElement.groupElement("memoryHeaps"));
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     /// @param segment the memory segment
@@ -73,19 +69,14 @@ public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMemoryProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment); }
-
-    /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMemoryProperties ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceMemoryProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     ///
@@ -93,7 +84,7 @@ public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -106,11 +97,6 @@ public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceMemoryProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties allocInit(SegmentAllocator allocator, @CType("uint32_t") int memoryTypeCount, @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment memoryTypes, @CType("uint32_t") int memoryHeapCount, @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment memoryHeaps) { return alloc(allocator).memoryTypeCount(memoryTypeCount).memoryTypes(memoryTypes).memoryHeapCount(memoryHeapCount).memoryHeaps(memoryHeaps); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -118,99 +104,71 @@ public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `memoryTypeCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_memoryTypeCount(MemorySegment segment, long index) { return (int) VH_memoryTypeCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memoryTypeCount(MemorySegment segment, long index) { return (int) VH_memoryTypeCount.get(segment, 0L, index); }
     /// {@return `memoryTypeCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_memoryTypeCount(MemorySegment segment) { return VkPhysicalDeviceMemoryProperties.get_memoryTypeCount(segment, 0L); }
-    /// {@return `memoryTypeCount`}
-    public @CType("uint32_t") int memoryTypeCount() { return VkPhysicalDeviceMemoryProperties.get_memoryTypeCount(this.segment()); }
+    public int memoryTypeCount() { return memoryTypeCount(this.segment(), 0L); }
     /// Sets `memoryTypeCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryTypeCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_memoryTypeCount.set(segment, 0L, index, value); }
-    /// Sets `memoryTypeCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryTypeCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryTypeCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryTypeCount(MemorySegment segment, long index, int value) { VH_memoryTypeCount.set(segment, 0L, index, value); }
     /// Sets `memoryTypeCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMemoryProperties memoryTypeCount(@CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryTypeCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceMemoryProperties memoryTypeCount(int value) { memoryTypeCount(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryTypes` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment get_memoryTypes(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_memoryTypes, index), ML_memoryTypes); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment memoryTypes(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_memoryTypes, index), LAYOUT_memoryTypes); }
     /// {@return `memoryTypes`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment get_memoryTypes(MemorySegment segment) { return VkPhysicalDeviceMemoryProperties.get_memoryTypes(segment, 0L); }
-    /// {@return `memoryTypes`}
-    public @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment memoryTypes() { return VkPhysicalDeviceMemoryProperties.get_memoryTypes(this.segment()); }
+    public MemorySegment memoryTypes() { return memoryTypes(this.segment(), 0L); }
     /// Sets `memoryTypes` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryTypes(MemorySegment segment, long index, @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_memoryTypes, index), ML_memoryTypes.byteSize()); }
-    /// Sets `memoryTypes` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryTypes(MemorySegment segment, @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryTypes(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryTypes(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_memoryTypes, index), LAYOUT_memoryTypes.byteSize()); }
     /// Sets `memoryTypes` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMemoryProperties memoryTypes(@CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryTypes(this.segment(), value); return this; }
+    public VkPhysicalDeviceMemoryProperties memoryTypes(MemorySegment value) { memoryTypes(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryHeapCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_memoryHeapCount(MemorySegment segment, long index) { return (int) VH_memoryHeapCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int memoryHeapCount(MemorySegment segment, long index) { return (int) VH_memoryHeapCount.get(segment, 0L, index); }
     /// {@return `memoryHeapCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_memoryHeapCount(MemorySegment segment) { return VkPhysicalDeviceMemoryProperties.get_memoryHeapCount(segment, 0L); }
-    /// {@return `memoryHeapCount`}
-    public @CType("uint32_t") int memoryHeapCount() { return VkPhysicalDeviceMemoryProperties.get_memoryHeapCount(this.segment()); }
+    public int memoryHeapCount() { return memoryHeapCount(this.segment(), 0L); }
     /// Sets `memoryHeapCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryHeapCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_memoryHeapCount.set(segment, 0L, index, value); }
-    /// Sets `memoryHeapCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryHeapCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryHeapCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryHeapCount(MemorySegment segment, long index, int value) { VH_memoryHeapCount.set(segment, 0L, index, value); }
     /// Sets `memoryHeapCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMemoryProperties memoryHeapCount(@CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryHeapCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceMemoryProperties memoryHeapCount(int value) { memoryHeapCount(this.segment(), 0L, value); return this; }
 
     /// {@return `memoryHeaps` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment get_memoryHeaps(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_memoryHeaps, index), ML_memoryHeaps); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment memoryHeaps(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_memoryHeaps, index), LAYOUT_memoryHeaps); }
     /// {@return `memoryHeaps`}
-    /// @param segment the segment of the struct
-    public static @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment get_memoryHeaps(MemorySegment segment) { return VkPhysicalDeviceMemoryProperties.get_memoryHeaps(segment, 0L); }
-    /// {@return `memoryHeaps`}
-    public @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment memoryHeaps() { return VkPhysicalDeviceMemoryProperties.get_memoryHeaps(this.segment()); }
+    public MemorySegment memoryHeaps() { return memoryHeaps(this.segment(), 0L); }
     /// Sets `memoryHeaps` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_memoryHeaps(MemorySegment segment, long index, @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_memoryHeaps, index), ML_memoryHeaps.byteSize()); }
-    /// Sets `memoryHeaps` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_memoryHeaps(MemorySegment segment, @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryHeaps(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void memoryHeaps(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_memoryHeaps, index), LAYOUT_memoryHeaps.byteSize()); }
     /// Sets `memoryHeaps` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMemoryProperties memoryHeaps(@CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryHeaps(this.segment(), value); return this; }
+    public VkPhysicalDeviceMemoryProperties memoryHeaps(MemorySegment value) { memoryHeaps(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPhysicalDeviceMemoryProperties].
     public static final class Buffer extends VkPhysicalDeviceMemoryProperties {
@@ -235,40 +193,40 @@ public sealed class VkPhysicalDeviceMemoryProperties extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `memoryTypeCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int memoryTypeCountAt(long index) { return VkPhysicalDeviceMemoryProperties.get_memoryTypeCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memoryTypeCountAt(long index) { return memoryTypeCount(this.segment(), index); }
         /// Sets `memoryTypeCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryTypeCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryTypeCount(this.segment(), index, value); return this; }
+        public Buffer memoryTypeCountAt(long index, int value) { memoryTypeCount(this.segment(), index, value); return this; }
 
         /// {@return `memoryTypes` at the given index}
-        /// @param index the index
-        public @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment memoryTypesAt(long index) { return VkPhysicalDeviceMemoryProperties.get_memoryTypes(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment memoryTypesAt(long index) { return memoryTypes(this.segment(), index); }
         /// Sets `memoryTypes` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryTypesAt(long index, @CType("VkMemoryType[VK_MAX_MEMORY_TYPES]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryTypes(this.segment(), index, value); return this; }
+        public Buffer memoryTypesAt(long index, MemorySegment value) { memoryTypes(this.segment(), index, value); return this; }
 
         /// {@return `memoryHeapCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int memoryHeapCountAt(long index) { return VkPhysicalDeviceMemoryProperties.get_memoryHeapCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int memoryHeapCountAt(long index) { return memoryHeapCount(this.segment(), index); }
         /// Sets `memoryHeapCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryHeapCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMemoryProperties.set_memoryHeapCount(this.segment(), index, value); return this; }
+        public Buffer memoryHeapCountAt(long index, int value) { memoryHeapCount(this.segment(), index, value); return this; }
 
         /// {@return `memoryHeaps` at the given index}
-        /// @param index the index
-        public @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment memoryHeapsAt(long index) { return VkPhysicalDeviceMemoryProperties.get_memoryHeaps(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment memoryHeapsAt(long index) { return memoryHeaps(this.segment(), index); }
         /// Sets `memoryHeaps` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer memoryHeapsAt(long index, @CType("VkMemoryHeap[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryProperties.set_memoryHeaps(this.segment(), index, value); return this; }
+        public Buffer memoryHeapsAt(long index, MemorySegment value) { memoryHeaps(this.segment(), index, value); return this; }
 
     }
 }

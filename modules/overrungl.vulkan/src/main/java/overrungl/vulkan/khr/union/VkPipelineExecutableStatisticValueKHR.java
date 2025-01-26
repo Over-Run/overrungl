@@ -15,49 +15,55 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.union;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### b32
-/// [VarHandle][#VH_b32] - [Getter][#b32()] - [Setter][#b32(int)]
-/// ### i64
-/// [VarHandle][#VH_i64] - [Getter][#i64()] - [Setter][#i64(long)]
-/// ### u64
-/// [VarHandle][#VH_u64] - [Getter][#u64()] - [Setter][#u64(long)]
-/// ### f64
-/// [VarHandle][#VH_f64] - [Getter][#f64()] - [Setter][#f64(double)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef union VkPipelineExecutableStatisticValueKHR {
-///     VkBool32 b32;
+/// ```
+/// union VkPipelineExecutableStatisticValueKHR {
+///     (uint32_t) VkBool32 b32;
 ///     int64_t i64;
 ///     uint64_t u64;
 ///     double f64;
-/// } VkPipelineExecutableStatisticValueKHR;
+/// };
 /// ```
-public sealed class VkPipelineExecutableStatisticValueKHR extends Union {
+public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// The union layout of `VkPipelineExecutableStatisticValueKHR`.
-    public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
+    public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("b32"),
         ValueLayout.JAVA_LONG.withName("i64"),
         ValueLayout.JAVA_LONG.withName("u64"),
         ValueLayout.JAVA_DOUBLE.withName("f64")
     );
-    /// The [VarHandle] of `b32` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `b32`.
+    public static final long OFFSET_b32 = LAYOUT.byteOffset(PathElement.groupElement("b32"));
+    /// The memory layout of `b32`.
+    public static final MemoryLayout LAYOUT_b32 = LAYOUT.select(PathElement.groupElement("b32"));
+    /// The [VarHandle] of `b32` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_b32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("b32"));
-    /// The [VarHandle] of `i64` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `i64`.
+    public static final long OFFSET_i64 = LAYOUT.byteOffset(PathElement.groupElement("i64"));
+    /// The memory layout of `i64`.
+    public static final MemoryLayout LAYOUT_i64 = LAYOUT.select(PathElement.groupElement("i64"));
+    /// The [VarHandle] of `i64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_i64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("i64"));
-    /// The [VarHandle] of `u64` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `u64`.
+    public static final long OFFSET_u64 = LAYOUT.byteOffset(PathElement.groupElement("u64"));
+    /// The memory layout of `u64`.
+    public static final MemoryLayout LAYOUT_u64 = LAYOUT.select(PathElement.groupElement("u64"));
+    /// The [VarHandle] of `u64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_u64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("u64"));
-    /// The [VarHandle] of `f64` of type `(MemorySegment base, long baseOffset, long index)double`.
+    /// The byte offset of `f64`.
+    public static final long OFFSET_f64 = LAYOUT.byteOffset(PathElement.groupElement("f64"));
+    /// The memory layout of `f64`.
+    public static final MemoryLayout LAYOUT_f64 = LAYOUT.select(PathElement.groupElement("f64"));
+    /// The [VarHandle] of `f64` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_f64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("f64"));
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
@@ -67,19 +73,14 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends Union {
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutableStatisticValueKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment); }
-
-    /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutableStatisticValueKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPipelineExecutableStatisticValueKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     ///
@@ -87,7 +88,7 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,99 +108,71 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends Union {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `b32` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("VkBool32") int get_b32(MemorySegment segment, long index) { return (int) VH_b32.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static int b32(MemorySegment segment, long index) { return (int) VH_b32.get(segment, 0L, index); }
     /// {@return `b32`}
-    /// @param segment the segment of the union
-    public static @CType("VkBool32") int get_b32(MemorySegment segment) { return VkPipelineExecutableStatisticValueKHR.get_b32(segment, 0L); }
-    /// {@return `b32`}
-    public @CType("VkBool32") int b32() { return VkPipelineExecutableStatisticValueKHR.get_b32(this.segment()); }
+    public int b32() { return b32(this.segment(), 0L); }
     /// Sets `b32` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_b32(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_b32.set(segment, 0L, index, value); }
-    /// Sets `b32` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_b32(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineExecutableStatisticValueKHR.set_b32(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void b32(MemorySegment segment, long index, int value) { VH_b32.set(segment, 0L, index, value); }
     /// Sets `b32` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutableStatisticValueKHR b32(@CType("VkBool32") int value) { VkPipelineExecutableStatisticValueKHR.set_b32(this.segment(), value); return this; }
+    public VkPipelineExecutableStatisticValueKHR b32(int value) { b32(this.segment(), 0L, value); return this; }
 
     /// {@return `i64` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("int64_t") long get_i64(MemorySegment segment, long index) { return (long) VH_i64.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static long i64(MemorySegment segment, long index) { return (long) VH_i64.get(segment, 0L, index); }
     /// {@return `i64`}
-    /// @param segment the segment of the union
-    public static @CType("int64_t") long get_i64(MemorySegment segment) { return VkPipelineExecutableStatisticValueKHR.get_i64(segment, 0L); }
-    /// {@return `i64`}
-    public @CType("int64_t") long i64() { return VkPipelineExecutableStatisticValueKHR.get_i64(this.segment()); }
+    public long i64() { return i64(this.segment(), 0L); }
     /// Sets `i64` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_i64(MemorySegment segment, long index, @CType("int64_t") long value) { VH_i64.set(segment, 0L, index, value); }
-    /// Sets `i64` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_i64(MemorySegment segment, @CType("int64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_i64(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void i64(MemorySegment segment, long index, long value) { VH_i64.set(segment, 0L, index, value); }
     /// Sets `i64` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutableStatisticValueKHR i64(@CType("int64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_i64(this.segment(), value); return this; }
+    public VkPipelineExecutableStatisticValueKHR i64(long value) { i64(this.segment(), 0L, value); return this; }
 
     /// {@return `u64` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("uint64_t") long get_u64(MemorySegment segment, long index) { return (long) VH_u64.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static long u64(MemorySegment segment, long index) { return (long) VH_u64.get(segment, 0L, index); }
     /// {@return `u64`}
-    /// @param segment the segment of the union
-    public static @CType("uint64_t") long get_u64(MemorySegment segment) { return VkPipelineExecutableStatisticValueKHR.get_u64(segment, 0L); }
-    /// {@return `u64`}
-    public @CType("uint64_t") long u64() { return VkPipelineExecutableStatisticValueKHR.get_u64(this.segment()); }
+    public long u64() { return u64(this.segment(), 0L); }
     /// Sets `u64` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_u64(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_u64.set(segment, 0L, index, value); }
-    /// Sets `u64` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_u64(MemorySegment segment, @CType("uint64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_u64(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void u64(MemorySegment segment, long index, long value) { VH_u64.set(segment, 0L, index, value); }
     /// Sets `u64` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutableStatisticValueKHR u64(@CType("uint64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_u64(this.segment(), value); return this; }
+    public VkPipelineExecutableStatisticValueKHR u64(long value) { u64(this.segment(), 0L, value); return this; }
 
     /// {@return `f64` at the given index}
     /// @param segment the segment of the union
-    /// @param index   the index
-    public static @CType("double") double get_f64(MemorySegment segment, long index) { return (double) VH_f64.get(segment, 0L, index); }
+    /// @param index the index of the union buffer
+    public static double f64(MemorySegment segment, long index) { return (double) VH_f64.get(segment, 0L, index); }
     /// {@return `f64`}
-    /// @param segment the segment of the union
-    public static @CType("double") double get_f64(MemorySegment segment) { return VkPipelineExecutableStatisticValueKHR.get_f64(segment, 0L); }
-    /// {@return `f64`}
-    public @CType("double") double f64() { return VkPipelineExecutableStatisticValueKHR.get_f64(this.segment()); }
+    public double f64() { return f64(this.segment(), 0L); }
     /// Sets `f64` with the given value at the given index.
     /// @param segment the segment of the union
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_f64(MemorySegment segment, long index, @CType("double") double value) { VH_f64.set(segment, 0L, index, value); }
-    /// Sets `f64` with the given value.
-    /// @param segment the segment of the union
-    /// @param value   the value
-    public static void set_f64(MemorySegment segment, @CType("double") double value) { VkPipelineExecutableStatisticValueKHR.set_f64(segment, 0L, value); }
+    /// @param index the index of the union buffer
+    /// @param value the value
+    public static void f64(MemorySegment segment, long index, double value) { VH_f64.set(segment, 0L, index, value); }
     /// Sets `f64` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineExecutableStatisticValueKHR f64(@CType("double") double value) { VkPipelineExecutableStatisticValueKHR.set_f64(this.segment(), value); return this; }
+    public VkPipelineExecutableStatisticValueKHR f64(double value) { f64(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPipelineExecutableStatisticValueKHR].
     public static final class Buffer extends VkPipelineExecutableStatisticValueKHR {
@@ -224,40 +197,40 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends Union {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `b32` at the given index}
-        /// @param index the index
-        public @CType("VkBool32") int b32At(long index) { return VkPipelineExecutableStatisticValueKHR.get_b32(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public int b32At(long index) { return b32(this.segment(), index); }
         /// Sets `b32` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer b32At(long index, @CType("VkBool32") int value) { VkPipelineExecutableStatisticValueKHR.set_b32(this.segment(), index, value); return this; }
+        public Buffer b32At(long index, int value) { b32(this.segment(), index, value); return this; }
 
         /// {@return `i64` at the given index}
-        /// @param index the index
-        public @CType("int64_t") long i64At(long index) { return VkPipelineExecutableStatisticValueKHR.get_i64(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public long i64At(long index) { return i64(this.segment(), index); }
         /// Sets `i64` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer i64At(long index, @CType("int64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_i64(this.segment(), index, value); return this; }
+        public Buffer i64At(long index, long value) { i64(this.segment(), index, value); return this; }
 
         /// {@return `u64` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long u64At(long index) { return VkPipelineExecutableStatisticValueKHR.get_u64(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public long u64At(long index) { return u64(this.segment(), index); }
         /// Sets `u64` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer u64At(long index, @CType("uint64_t") long value) { VkPipelineExecutableStatisticValueKHR.set_u64(this.segment(), index, value); return this; }
+        public Buffer u64At(long index, long value) { u64(this.segment(), index, value); return this; }
 
         /// {@return `f64` at the given index}
-        /// @param index the index
-        public @CType("double") double f64At(long index) { return VkPipelineExecutableStatisticValueKHR.get_f64(this.segment(), index); }
+        /// @param index the index of the union buffer
+        public double f64At(long index) { return f64(this.segment(), index); }
         /// Sets `f64` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the union buffer
         /// @param value the value
         /// @return `this`
-        public Buffer f64At(long index, @CType("double") double value) { VkPipelineExecutableStatisticValueKHR.set_f64(this.segment(), index, value); return this; }
+        public Buffer f64At(long index, double value) { f64(this.segment(), index, value); return this; }
 
     }
 }

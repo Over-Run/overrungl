@@ -18,13 +18,18 @@ package overrungl.vulkan
 
 import org.w3c.dom.Element
 import org.w3c.dom.Text
-import overrungl.gen.*
+import overrungl.gen.GENERATOR_NOTICE
+import overrungl.gen.commentedFileHeader
+import overrungl.gen.file.*
+import overrungl.gen.writeNativeImageRegistration
+import overrungl.gen.writeString
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
+import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-01-08
-// video.xml: 2025-01-09
+// vk.xml: 2025-01-26
+// video.xml: 2025-01-26
 
 const val vulkanPackage = "overrungl.vulkan"
 
@@ -33,16 +38,49 @@ const val extBlockSize = 1000
 
 val vkApiVersionRegex = Regex("VK_API_VERSION_\\d+_\\d+")
 
-val vkExtends = mapOf(
-    "1.1" to "10",
-    "1.2" to "11",
-    "1.3" to "12",
-    "1.4" to "13",
-)
+val vkEnumTypeMapping = mutableMapOf<String, MutableList<String>>()
+val vkEnumTypeRawType = mutableMapOf<String, String>()
+val vkEnumRawType = mutableMapOf<String, String>()
+val vkEnumValueMap = mutableMapOf<String, String>()
 
-fun videoXML(xmlBuilder: DocumentBuilder) {
+val instanceCommands = mutableListOf<String>()
+val deviceCommands = mutableListOf<String>()
+
+data class VkDispatchableHandleIntermediate(
+    val name: String,
+    override val originalName: String = "struct $name*"
+) : DefinitionType {
+    override val javaType: String = "MemorySegment"
+    override val memoryLayout: DefTypeMemoryLayout = PointerLayout
+    override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
+
+data class VkDispatchableHandle(
+    val name: String,
+    override val originalName: String = "struct $name*"
+) : DefinitionType {
+    override val javaType: String = name
+    override val memoryLayout: DefTypeMemoryLayout = PointerLayout
+    override val processor: DefTypeProcessor = object : DefTypeProcessor {
+        override fun processDowncall(originalValue: String): String {
+            return "$originalValue.segment()"
+        }
+
+        override fun processUpcall(originalValue: String): String {
+            return "new $name($originalValue)"
+        }
+    }
+
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
+
+fun videoXML(xmlBuilder: DocumentBuilder): String {
     val document = ClassLoader.getSystemResourceAsStream("video.xml")!!.use { xmlBuilder.parse(it) }
     val root = document.documentElement
+
+    val videoBuilder = StringBuilder()
+    val structBuilder = StringBuilder()
 
     val defineMap = mapOf(
         "VK_MAKE_VIDEO_STD_VERSION" to """
@@ -57,39 +95,36 @@ fun videoXML(xmlBuilder: DocumentBuilder) {
         "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
         "VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);"
     )
-    val enumMap = mutableMapOf<String, MutableList<VkEnum>>()
+    val enumMap = mutableMapOf<String, MutableList<Pair<String, String>>>()
     val typeNodeList = (root.getElementsByTagName("types").item(0) as Element).getElementsByTagName("type")
     for (i in 0 until typeNodeList.length) {
         val typeNode = typeNodeList.item(i) as Element
         when (val category = typeNode.getAttribute("category")) {
             "enum" -> {
                 val name = typeNode.getAttribute("name")
-                typedef(int, name)
                 enumMap[name] = mutableListOf()
+                videoBuilder.appendLine("using $name = int;")
             }
 
             "struct" -> {
                 val name = typeNode.getAttribute("name")
-                Struct("$vulkanPackage.video", name, cType = name) {
-                    val memberNodeList = typeNode.getElementsByTagName("member")
-                    for (i1 in 0 until memberNodeList.length) {
-                        val memberNode = memberNodeList.item(i1) as Element
-                        val childNodeList = memberNode.childNodes
-                        val memberType = mutableListOf<VkTypeComponent>()
-                        var memberName: String? = null
-                        for (i2 in 0 until childNodeList.length) {
-                            when (val childNode = childNodeList.item(i2)) {
-                                is Text -> memberType.add(VkTypeLiteral(childNode.wholeText.trim()))
-                                is Element -> when (childNode.tagName) {
-                                    "type" -> memberType.add(VkTypeResolving(childNode.textContent))
-                                    "name" -> memberName = childNode.textContent
-                                }
+                structBuilder.appendLine("""using $name = struct $name { package "$vulkanPackage.video";""")
+                val memberNodeList = typeNode.getElementsByTagName("member")
+                for (i1 in 0 until memberNodeList.length) {
+                    val memberNode = memberNodeList.item(i1) as Element
+                    val childNodeList = memberNode.childNodes
+                    for (i2 in 0 until childNodeList.length) {
+                        structBuilder.append("  ")
+                        when (val childNode = childNodeList.item(i2)) {
+                            is Text -> structBuilder.append(childNode.wholeText)
+                            is Element -> if (childNode.tagName != "comment") {
+                                structBuilder.append(childNode.textContent)
                             }
                         }
-                        resolveType(memberType).toCustomTypeSpec()(memberName!!)
                     }
+                    structBuilder.appendLine(";")
                 }
-                typedef(VkType(name, address.javaName, "$name.LAYOUT", true), name)
+                structBuilder.appendLine("};")
             }
 
             "", "define", "include" -> {}
@@ -97,36 +132,47 @@ fun videoXML(xmlBuilder: DocumentBuilder) {
         }
     }
 
+    val enumBuilder = StringBuilder()
     val enumsNodeList = root.getElementsByTagName("enums")
     for (i in 0 until enumsNodeList.length) {
         val enumsNode = enumsNodeList.item(i) as Element
-        val list = enumMap[enumsNode.getAttribute("name")]!!
+        val name = enumsNode.getAttribute("name")
+        enumBuilder.appendLine("using $name = enum {")
+        val list = enumMap[name]!!
         val enumNodeList = enumsNode.getElementsByTagName("enum")
         for (i1 in 0 until enumNodeList.length) {
             val enumNode = enumNodeList.item(i1) as Element
-            val name = enumNode.getAttribute("name")
+            val enumName = enumNode.getAttribute("name")
             if (enumNode.hasAttribute("alias")) {
-                list.add(VkEnum(name, value = enumNode.getAttribute("alias"), bitpos = null, alias = null))
+                val alias = enumNode.getAttribute("alias")
+                val value = vkEnumValueMap[alias]!!
+                list.add(enumName to value)
+                vkEnumValueMap[enumName] = value
+                enumBuilder.appendLine("  $enumName = $value,")
             } else {
-                list.add(VkEnum(name, value = enumNode.getAttribute("value"), bitpos = null, alias = null))
+                val value = enumNode.getAttribute("value")
+                list.add(enumName to value)
+                vkEnumValueMap[enumName] = value
+                enumBuilder.appendLine("  $enumName = $value,")
             }
         }
+        enumBuilder.appendLine("};")
     }
 
     val extensionNodeList =
         (root.getElementsByTagName("extensions").item(0) as Element).getElementsByTagName("extension")
     for (i in 0 until extensionNodeList.length) {
         val extensionNode = extensionNodeList.item(i) as Element
-        val name = extensionNode.getAttribute("name")
+        val className = extensionNode.getAttribute("name")
             .split('_')
             .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-        writeString(Path("overrungl/vulkan/video/$name.java"), buildString {
+        writeString(Path("overrungl/vulkan/video/$className.java").createParentDirectories(), buildString {
             appendLine(commentedFileHeader)
             appendLine("package overrungl.vulkan.video;")
-            if (name != "VulkanVideoCodecsCommon") {
+            if (className != "VulkanVideoCodecsCommon") {
                 appendLine("import static overrungl.vulkan.video.VulkanVideoCodecsCommon.*;")
             }
-            appendLine("public final class $name {")
+            appendLine("public final class $className {")
             val requireNodeList = extensionNode.getElementsByTagName("require")
             for (i1 in 0 until requireNodeList.length) {
                 val requireNode = requireNodeList.item(i1) as Element
@@ -139,36 +185,44 @@ fun videoXML(xmlBuilder: DocumentBuilder) {
                                 val typeName = childNode.getAttribute("name")
                                 if (defineMap.containsKey(typeName)) appendLine(defineMap[typeName]!!.prependIndent("    "))
                                 else if (enumMap.containsKey(typeName)) {
-                                    enumMap[typeName]!!.forEach { appendLine("    public static final int ${it.name} = ${it.value};") }
+                                    enumMap[typeName]!!.forEach { (name, value) ->
+                                        appendLine("    public static final int $name = $value;")
+                                    }
                                 }
                             }
 
                             "enum" -> {
                                 val value = childNode.getAttribute("value")
                                 val type = if (value.contains('"')) "String" else "int"
+                                val name = childNode.getAttribute("name")
                                 appendLine(
-                                    "    public static final $type ${childNode.getAttribute("name")} = $value;"
+                                    "    public static final $type $name = $value;"
                                 )
+                                enumBuilder.appendLine("#define $name $value")
                             }
                         }
                     }
                 }
             }
-            appendLine("    private $name() { }")
+            appendLine("    private $className() { }")
             appendLine("}")
         })
     }
+
+    videoBuilder.appendLine(enumBuilder)
+    videoBuilder.appendLine(structBuilder)
+    return videoBuilder.toString()
 }
 
 /**
  * @author squid233
  * @since 0.1.0
  */
-fun main() {
+fun main(args: Array<String>) {
     val xmlFactory = DocumentBuilderFactory.newInstance()
     val xmlBuilder = xmlFactory.newDocumentBuilder()
 
-    videoXML(xmlBuilder)
+    val videoFile = videoXML(xmlBuilder)
 
     val document = ClassLoader.getSystemResourceAsStream("vk.xml")!!.use { xmlBuilder.parse(it) }
     val root = document.documentElement
@@ -183,70 +237,118 @@ fun main() {
     }
 
     // types
+    val typesFileBuilder = StringBuilder()
+    typesFileBuilder.appendLine(GENERATOR_NOTICE)
+    typesFileBuilder.appendLine(
+        """
+            import "x11.gen";
+            import "windows.gen";
+            using xcb_connection_t = struct xcb_connection_t;
+            using xcb_visualid_t = uint32_t;
+            using xcb_window_t = uint32_t;
+            using IDirectFB = void*;
+            using IDirectFBSurface = void*;
+            using zx_handle_t = int32_t;
+            using GgpStreamDescriptor = uint32_t;
+            using GgpFrameToken = uint64_t;
+            using NvSciSyncAttrList = struct NvSciSyncAttrListRec*;
+            using NvSciSyncObj = struct NvSciSyncObjRec*;
+            using NvSciSyncFence = struct NvSciSyncFence;
+            using NvSciBufAttrList = struct NvSciBufAttrListRec*;
+            using NvSciBufObj = struct NvSciBufObjRefRec*;
+
+            using CAMetalLayer = void;
+            using MTLDevice_id = void*;
+            using MTLCommandQueue_id = void*;
+            using MTLBuffer_id = void*;
+            using MTLTexture_id = void*;
+            using MTLSharedEvent_id = void*;
+            using IOSurfaceRef = struct __IOSurface*;
+            using VkSampleMask = uint32_t;
+            using VkBool32 = uint32_t;
+            using VkFlags = uint32_t;
+            using VkFlags64 = uint64_t;
+            using VkDeviceSize = uint64_t;
+            using VkDeviceAddress = uint64_t;
+            using VkRemoteAddressNV = void*;
+
+        """.trimIndent()
+    )
+    typesFileBuilder.appendLine(videoFile)
+    val upcallBuilder = StringBuilder()
+    val structBuilder = StringBuilder()
     val defineVkVersion = mutableMapOf<String, String>()
     val addedStructPackages = mutableSetOf<String>()
-    val vkStructMap = mutableMapOf<String, VkStruct>()
-    val vkFuncPointerMap = mutableMapOf<String, VkFuncPointer>()
     val typeNodeList = (root.getElementsByTagName("types").item(0) as Element).getElementsByTagName("type")
     for (i in 0 until typeNodeList.length) {
         val typeNode = typeNodeList.item(i) as Element
         when (val category = typeNode.getAttribute("category")) {
             "bitmask" -> {
                 if (typeNode.hasAttribute("name") && typeNode.hasAttribute("alias")) {
-                    typedef(
-                        findType(VkTypeResolving(typeNode.getAttribute("alias"))),
-                        typeNode.getAttribute("name")
-                    )
+                    val name = typeNode.getAttribute("name")
+                    val alias = typeNode.getAttribute("alias")
+                    typesFileBuilder.appendLine("using $name = $alias;")
                 } else {
-                    typedef(
-                        findType(VkTypeResolving(typeNode.getElementsByTagName("type").item(0).textContent)),
-                        typeNode.getElementsByTagName("name").item(0).textContent
-                    )
+                    val type = typeNode.getElementsByTagName("type").item(0).textContent
+                    val name = typeNode.getElementsByTagName("name").item(0).textContent
+                    typesFileBuilder.appendLine("using $name = $type;")
                 }
             }
 
             "handle" -> {
                 if (typeNode.hasAttribute("name") && typeNode.hasAttribute("alias")) {
-                    typedef(
-                        findType(VkTypeResolving(typeNode.getAttribute("alias"))),
-                        typeNode.getAttribute("name")
-                    )
+                    val name = typeNode.getAttribute("name")
+                    val alias = typeNode.getAttribute("alias")
+                    typesFileBuilder.appendLine("using $name = $alias;")
                 } else {
-                    typedef(
-                        address,
-                        typeNode.getElementsByTagName("name").item(0).textContent
-                    )
+                    val name = typeNode.getElementsByTagName("name").item(0).textContent
+                    when (val type = typeNode.getElementsByTagName("type").item(0).textContent) {
+                        "VK_DEFINE_HANDLE" -> {
+                            typesFileBuilder.appendLine("using $name = java $name;")
+                            registerDefType(
+                                name,
+                                VkDispatchableHandleIntermediate(name)
+                            )
+                        }
+
+                        "VK_DEFINE_NON_DISPATCHABLE_HANDLE" -> typesFileBuilder.appendLine("using $name = uint64_t;")
+                        else -> error(type)
+                    }
                 }
             }
 
             "enum" -> {
                 val name = typeNode.getAttribute("name")
                 if (typeNode.hasAttribute("alias")) {
-                    typedef(
-                        findType(VkTypeResolving(typeNode.getAttribute("alias"))),
-                        name
-                    )
+                    val alias = typeNode.getAttribute("alias")
+                    typesFileBuilder.appendLine("using $name = $alias;")
                 } else {
-                    typedef(int, name)
+                    typesFileBuilder.appendLine("using $name = int;")
                 }
             }
 
             "funcpointer" -> {
-                val pfn = VkFuncPointerParser(VkFuncPointerLexer(typeNode.textContent).parse()).parse()
-                vkFuncPointerMap[pfn.name] = pfn
-                typedef(VkType(pfn.name, address.javaName, address.layout, false), pfn.name)
+                val upcallName = (typeNode.getElementsByTagName("name").item(0) as Element).textContent
+                val originalDef = typeNode.textContent
+                upcallBuilder.appendLine(
+                    originalDef
+                        .replaceRange(
+                            originalDef.indexOf('('),
+                            originalDef.indexOf(')') + 1,
+                            upcallName.substringAfter("PFN_").replaceFirstChar(Char::uppercaseChar)
+                        )
+                        .replace("typedef", "using $upcallName = upcall")
+                        .replace("(void)", "()")
+                )
             }
 
             "struct", "union" -> {
                 val name = typeNode.getAttribute("name")
                 if (typeNode.hasAttribute("alias")) {
-                    typedef(
-                        VkType(name, address.javaName, "${typeNode.getAttribute("alias")}.LAYOUT", true),
-                        name
-                    )
+                    val alias = typeNode.getAttribute("alias")
+                    structBuilder.appendLine("using $name = $alias;")
                 } else {
                     val vendor = vendors.find { name.endsWith(it) }
-                    val union = category == "union"
                     val packageName: String
                     if (vendor != null) {
                         val lowercase = vendor.lowercase()
@@ -255,8 +357,7 @@ fun main() {
                         packageName = "$vulkanPackage.$category"
                     }
                     addedStructPackages.add(packageName)
-                    val usedEnums = mutableSetOf<String>()
-                    val members = mutableListOf<VkStructMember>()
+                    structBuilder.appendLine("""using $name = $category $name { package "$packageName";""")
                     val memberNodeList = typeNode.getElementsByTagName("member")
                     for (i1 in 0 until memberNodeList.length) {
                         val memberNode = memberNodeList.item(i1) as Element
@@ -264,54 +365,18 @@ fun main() {
                             continue
                         }
                         val childNodeList = memberNode.childNodes
-                        val typeComp = mutableListOf<VkTypeComponent>()
-                        var memberName: String? = null
-                        var fixedSize: String? = null
-                        // scan until name
-                        var nameIndex = 0
+                        structBuilder.append("  ")
                         for (i2 in 0 until childNodeList.length) {
                             when (val node = childNodeList.item(i2)) {
-                                is Text -> typeComp.add(VkTypeLiteral(node.wholeText.trim()))
-                                is Element -> {
-                                    if (node.tagName == "name") {
-                                        memberName = node.textContent
-                                        nameIndex = i2
-                                        break
-                                    } else if (node.tagName == "type") {
-                                        typeComp.add(VkTypeResolving(node.textContent))
-                                    }
+                                is Text -> structBuilder.append(node.wholeText)
+                                is Element -> if (node.tagName != "comment") {
+                                    structBuilder.append(node.textContent)
                                 }
                             }
                         }
-                        nameIndex++
-                        if (nameIndex < childNodeList.length) {
-                            // scan fixed size array
-                            val sb = StringBuilder()
-                            for (i2 in nameIndex until childNodeList.length) {
-                                when (val node = childNodeList.item(i2)) {
-                                    is Text -> sb.append(node.wholeText.trim())
-                                    is Element -> {
-                                        if (node.tagName != "comment") {
-                                            sb.append(node.textContent)
-                                        }
-                                    }
-                                }
-                            }
-                            if (sb.startsWith("[")) {
-                                fixedSize = sb.split('[', ']')[1]
-                            }
-                        }
-                        members.add(VkStructMember(typeComp, memberName!!, fixedSize))
-                        if (fixedSize != null && fixedSize.startsWith("VK_")) {
-                            usedEnums.add(fixedSize)
-                        }
+                        structBuilder.appendLine(";")
                     }
-                    val struct = VkStruct(packageName, name, union = union, members, usedEnums)
-                    vkStructMap[name] = struct
-                    typedef(
-                        VkType(name, address.javaName, "$name.LAYOUT", struct = true),
-                        name
-                    )
+                    structBuilder.appendLine("};")
                 }
             }
 
@@ -360,88 +425,69 @@ fun main() {
         }
     }
 
-    val vkStructSpecMap = mutableMapOf<String, Struct>()
-    fun structToStruct(it: VkStruct) {
-        val struct = Struct(it.packageName, it.name, cType = it.name, union = it.union) {
-            it.members.forEach { member ->
-                val type = resolveType(member.type, it.name)
-                val fixedSize = member.fixedSize
-                if (fixedSize != null) {
-                    if (fixedSize.startsWith("VK_")) {
-                        imports.add("static ${vkEnumClass[fixedSize]}.*")
-                    }
-                    fixedSize(type.toCustomTypeSpec(), member.name, fixedSize)
-                } else if (type.struct) {
-                    vkStructSpecMap[type.originalName]!!.byValue(member.name)
-                } else {
-                    type.toCustomTypeSpec()(member.name)
-                }
-            }
-        }
-        vkStructSpecMap[it.name] = struct
-    }
-    // generate upcalls
-    vkFuncPointerMap.values.forEach {
-        Upcall("$vulkanPackage.upcall", it.name.substringAfter("PFN_").replaceFirstChar(Char::uppercaseChar)) {
-            targetMethod = "invoke"(
-                returnType = resolveType(it.type).toCustomTypeSpec(),
-                parameters =
-                    if (it.params.size == 1
-                        && it.params.first().let { p -> p.type.isEmpty() && p.name == "void" }
-                    ) arrayOf()
-                    else it.params.map { p ->
-                        UpcallMethodParameter(
-                            resolveType(p.type).toCustomTypeSpec(),
-                            p.name
-                        )
-                    }.toTypedArray()
-            )
-        }
-    }
-
     // enums
+    val enumsBuilder = StringBuilder()
     root.getElementsByTagName("enums").also { enumsNodeList ->
         for (i in 0 until enumsNodeList.length) {
             val enumsNode = enumsNodeList.item(i) as Element
-            when (enumsNode.getAttribute("type")) {
+            when (val enumsNodeType = enumsNode.getAttribute("type")) {
                 "constants" -> {
                     enumsNode.getElementsByTagName("enum").also { enumNodeList ->
                         for (i1 in 0 until enumNodeList.length) {
                             val node = enumNodeList.item(i1) as Element
+                            val type = node.getAttribute("type")
                             val name = node.getAttribute("name")
-                            enumConstants[name] = VkEnumConstant(
-                                resolveType(listOf(VkTypeResolving(node.getAttribute("type")))).javaName,
-                                name,
-                                node.getAttribute("value")
-                                    .replace("U)", ")")
-                                    .replace("ULL)", "L)")
+                            val value = node.getAttribute("value")
+                                .replace("U)", ")")
+                                .replace("ULL)", "L)")
+                            val javaType = findBuiltinType(type)!!.javaType
+                            vkEnumRawType[name] = javaType
+                            vkEnumValueMap[name] = value
+                            enumsBuilder.appendLine(
+                                "#defineAs $javaType $name $value"
                             )
                         }
                     }
                 }
 
                 "enum", "bitmask" -> {
+                    val enumsNodeName = enumsNode.getAttribute("name")
                     enumsNode.getElementsByTagName("enum").also { enumNodeList ->
-                        val list = mutableListOf<VkEnum>()
+                        val type = if (enumsNode.hasAttribute("bitwidth")) "long" else "int"
+                        val list = mutableListOf<String>()
+                        vkEnumTypeRawType[enumsNodeName] = type
                         for (i1 in 0 until enumNodeList.length) {
                             val node = enumNodeList.item(i1) as Element
                             val name = node.getAttribute("name")
-                            list.add(
-                                VkEnum(
-                                    name,
-                                    node.findAttribute("value"),
-                                    node.findAttribute("bitpos"),
-                                    node.findAttribute("alias")
-                                )
-                            )
+                            when (enumsNodeType) {
+                                "enum" -> {
+                                    val value = if (node.hasAttribute("alias")) {
+                                        vkEnumValueMap[node.getAttribute("alias")]!!
+                                    } else {
+                                        node.getAttribute("value")
+                                    }
+                                    vkEnumValueMap[name] = value
+                                    enumsBuilder.appendLine("#define $name $value")
+                                }
+
+                                "bitmask" -> {
+                                    val value = if (node.hasAttribute("alias")) {
+                                        vkEnumValueMap[node.getAttribute("alias")]!!
+                                    } else if (node.hasAttribute("bitpos")) {
+                                        "0x${
+                                            "%08x".format(1L shl node.getAttribute("bitpos").toInt())
+                                        }${if (type == "long") "L" else ""}"
+                                    } else if (node.hasAttribute("value")) {
+                                        node.getAttribute("value")
+                                    } else error(name)
+                                    vkEnumValueMap[name] = value!!
+                                    enumsBuilder.appendLine("#defineAs $type $name $value")
+                                }
+                            }
+                            vkEnumRawType[name] = type
+                            list.add(name)
                         }
-                        val enumsNodeName = enumsNode.getAttribute("name")
-                        vkEnums[enumsNodeName] = VkEnumType(
-                            enumsNodeName,
-                            enumsNode.getAttribute("type"),
-                            enumsNode.findAttribute("bitwidth"),
-                            list
-                        )
+                        vkEnumTypeMapping[enumsNodeName] = list
                     }
                 }
             }
@@ -449,8 +495,8 @@ fun main() {
     }
 
     // commands
+    val commandBuilder = StringBuilder()
     val commandAliasMap = mutableMapOf<String, MutableList<String>>()
-    val commandMap = mutableMapOf<String, VkCommand>()
     val commandNodeList = (root.getElementsByTagName("commands").item(0) as Element).getElementsByTagName("command")
     for (i in 0 until commandNodeList.length) {
         val commandNode = commandNodeList.item(i) as Element
@@ -460,62 +506,145 @@ fun main() {
             commandAliasMap.computeIfAbsent(alias) { mutableListOf() }.add(name)
             commandAliasMap.computeIfAbsent(name) { mutableListOf() }.add(alias)
         } else {
-            val proto = commandNode.getElementsByTagName("proto").item(0)
-            var name: String? = null
-            val protoTypeList = mutableListOf<VkTypeComponent>()
-            for (i1 in 0 until proto.childNodes.length) {
-                when (val node = proto.childNodes.item(i1)) {
-                    is Text -> protoTypeList.add(VkTypeLiteral(node.wholeText.trim()))
-                    is Element -> {
-                        if (node.tagName == "name") {
-                            name = node.textContent
-                        } else {
-                            protoTypeList.add(VkTypeResolving(node.textContent))
-                        }
-                    }
-                }
-            }
-            val type = resolveType(protoTypeList)
+            val proto = commandNode.getElementsByTagName("proto").item(0) as Element
+            commandBuilder.append("fn opt ${proto.textContent}(")
 
-            val params = mutableListOf<VkCommandParam>()
             val childNodeList = commandNode.childNodes
+            var writeParamCount = 0
             for (i1 in 0 until childNodeList.length) {
                 val paramNode = childNodeList.item(i1)
                 if (paramNode !is Element || paramNode.tagName != "param")
                     continue
                 if (paramNode.hasAttribute("api") && paramNode.getAttribute("api") == "vulkansc")
                     continue
-                var paramName: String? = null
-                val paramTypeList = mutableListOf<VkTypeComponent>()
-                for (i2 in 0 until paramNode.childNodes.length) {
-                    when (val node = paramNode.childNodes.item(i2)) {
-                        is Text -> paramTypeList.add(VkTypeLiteral(node.wholeText.trim()))
-                        is Element -> {
-                            if (node.tagName == "name") {
-                                paramName = node.textContent
-                            } else {
-                                paramTypeList.add(VkTypeResolving(node.textContent))
+                if (writeParamCount > 0) {
+                    commandBuilder.append(", ")
+                }
+                commandBuilder.append(paramNode.textContent)
+                writeParamCount++
+            }
+            commandBuilder.appendLine(");")
+        }
+    }
+
+    fun addExtEnum(childNode: Element, extNumber: String, skipAlias: Boolean) {
+        if (childNode.hasAttribute("api") && childNode.getAttribute("api") == "vulkansc")
+            return
+        val name = childNode.getAttribute("name")
+        if (childNode.hasAttribute("extends")) {
+            val type = vkEnumTypeRawType[childNode.getAttribute("extends")]!!
+            val value = if (childNode.hasAttribute("bitpos")) {
+                "0x${
+                    "%08x".format(1L shl childNode.getAttribute("bitpos").toInt())
+                }${if (type == "long") "L" else ""}"
+            } else if (childNode.hasAttribute("offset")) {
+                buildString {
+                    if (childNode.hasAttribute("dir")) {
+                        append(childNode.getAttribute("dir"))
+                    }
+                    append(
+                        extBase + (extNumber.toInt() - 1) * extBlockSize
+                            + childNode.getAttribute("offset").toInt()
+                    )
+                }
+            } else if (childNode.hasAttribute("value")) {
+                childNode.getAttribute("value")
+            } else if (childNode.hasAttribute("alias")) {
+                vkEnumValueMap[childNode.getAttribute("alias")] ?: if (skipAlias) return else error(name)
+            } else error(name)
+            vkEnumRawType[name] = type
+            vkEnumValueMap[name] = value
+            enumsBuilder.appendLine("#defineAs $type $name $value")
+        } else if (childNode.hasAttribute("value")) {
+            val value = childNode.getAttribute("value")
+            val type = if (value.contains('"')) "String" else "int"
+            vkEnumRawType[name] = type
+            vkEnumValueMap[name] = value
+            enumsBuilder.appendLine("#defineAs $type $name $value")
+        } else if (childNode.hasAttribute("alias")) {
+            val alias = childNode.getAttribute("alias")
+            val value = vkEnumValueMap[alias] ?: if (skipAlias) return else error(name)
+            val type = vkEnumRawType[alias] ?: if (skipAlias) return else error(name)
+            vkEnumRawType[name] = type
+            vkEnumValueMap[name] = value
+            enumsBuilder.appendLine("#defineAs $type $name $value")
+        }
+    }
+
+    val featureNodeList = root.getElementsByTagName("feature")
+    for (b in 0..1) {
+        for (i in 0 until featureNodeList.length) {
+            val featureNode = featureNodeList.item(i) as Element
+            if (featureNode.hasAttribute("api") && featureNode.getAttribute("api").split(',').contains("vulkan")) {
+                val requireNodeList = featureNode.getElementsByTagName("require")
+                for (i1 in 0 until requireNodeList.length) {
+                    val requireNode = requireNodeList.item(i1) as Element
+                    val childNodeList = requireNode.childNodes
+                    for (i2 in 0 until childNodeList.length) {
+                        val childNode = childNodeList.item(i2)
+                        if (childNode is Element) {
+                            when (childNode.tagName) {
+                                "enum" -> {
+                                    addExtEnum(childNode, childNode.getAttribute("extnumber"), skipAlias = b == 0)
+                                }
                             }
                         }
                     }
                 }
-                val paramType = resolveType(paramTypeList)
-                params.add(VkCommandParam(paramType, paramName!!))
             }
-
-            commandMap[name!!] = VkCommand(type, name, params)
         }
     }
 
+    val extensionNodeList =
+        (root.getElementsByTagName("extensions").item(0) as Element).getElementsByTagName("extension")
+    for (b in 0..1) {
+        for (i in 0 until extensionNodeList.length) {
+            val extensionNode = extensionNodeList.item(i) as Element
+            if (extensionNode.getAttribute("supported").split(',').contains("vulkan")) {
+                val extNumber = extensionNode.getAttribute("number")
+                val requireNodeList = extensionNode.getElementsByTagName("require")
+                for (i1 in 0 until requireNodeList.length) {
+                    val requireNode = requireNodeList.item(i1) as Element
+                    for (i2 in 0 until requireNode.childNodes.length) {
+                        val childNode = requireNode.childNodes.item(i2)
+                        if (childNode is Element) {
+                            when (childNode.tagName) {
+                                "enum" -> {
+                                    addExtEnum(childNode, extNumber, skipAlias = b == 0)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    typesFileBuilder.appendLine(enumsBuilder)
+    typesFileBuilder.appendLine(upcallBuilder)
+    typesFileBuilder.appendLine(structBuilder)
+    typesFileBuilder.appendLine(commandBuilder)
+    val typesFile = typesFileBuilder.toString()
+    // generate
+    val definitionFile: DefinitionFile
+    try {
+        definitionFile = DefinitionFile(rawSourceString = typesFile)
+        definitionFile.compileUpcalls("overrungl.vulkan.upcall")
+        definitionFile.compileStructs("overrungl.vulkan.struct")
+    } catch (e: Exception) {
+        writeString(Path(args[0], "run/types.gen").createParentDirectories(), typesFile)
+        throw e
+    }
+
     // feature
-    val featureNodeList = root.getElementsByTagName("feature")
+    val vkDowncalls = mutableListOf<VkDowncall>()
     for (i in 0 until featureNodeList.length) {
         val featureNode = featureNodeList.item(i) as Element
         if (featureNode.hasAttribute("api") && featureNode.getAttribute("api").split(',').contains("vulkan")) {
             val featureNumber = featureNode.getAttribute("number")
             val featureReqTypes = mutableListOf<String>()
             val featureReqCommands = mutableListOf<String>()
-            val featureReqEnums = mutableListOf<VkRequireEnum>()
+            val featureReqEnums = mutableListOf<String>()
             val requireNodeList = featureNode.getElementsByTagName("require")
             for (i1 in 0 until requireNodeList.length) {
                 val requireNode = requireNodeList.item(i1) as Element
@@ -529,19 +658,7 @@ fun main() {
                             "enum" -> {
                                 if (childNode.hasAttribute("api") && childNode.getAttribute("api") == "vulkansc")
                                     continue
-                                featureReqEnums.add(
-                                    VkRequireEnum(
-                                        extends = childNode.findAttribute("extends"),
-                                        name = childNode.getAttribute("name"),
-                                        extnumber = childNode.findAttribute("extnumber"),
-                                        offset = childNode.findAttribute("offset"),
-                                        dir = childNode.findAttribute("dir"),
-                                        bitpos = childNode.findAttribute("bitpos"),
-                                        value = childNode.findAttribute("value"),
-                                        alias = childNode.findAttribute("alias"),
-                                        api = childNode.findAttribute("api"),
-                                    )
-                                )
+                                featureReqEnums.add(childNode.getAttribute("name"))
                             }
                         }
                     }
@@ -549,9 +666,7 @@ fun main() {
             }
 
             val className = "VK${featureNumber.replace(".", "")}"
-            VkDowncall(vulkanPackage, className) {
-                vkExtends[featureNumber]?.also { extends.add("VK$it") }
-
+            vkDowncalls += VkDowncall(vulkanPackage, className) {
                 if (featureNumber == "1.0") {
                     defineVkVersion.forEach { (k, v) ->
                         fields.add(
@@ -560,32 +675,13 @@ fun main() {
                     }
                 }
 
-                addReqTypes(featureReqTypes)
-                addReqEnums(featureReqEnums)
-                addReqCommand(featureReqCommands, commandMap, commandAliasMap)
-
-                constructor = buildString {
-                    appendLine("""public $className(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {""")
-                    if (vkExtends.containsKey(featureNumber)) {
-                        appendLine("    super(instance, func);")
-                    }
-                    appendLine("    this.handles = new Handles(instance, func);")
-                    append("}")
-                }
-
-                handlesConstructor = buildString {
-                    appendLine("""private Handles(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {""")
-                    featureReqCommands.forEach { command ->
-                        append("""    PFN_$command = func.invoke(instance, "$command"""")
-                        commandAliasMap[command]?.onEach { append(""", "$it"""") }
-                        appendLine(");")
-                    }
-                    append("}")
-                }
+                addReqTypes(interpreter = definitionFile.interpreter, featureReqTypes)
+                addReqEnums(interpreter = definitionFile.interpreter, featureReqEnums)
+                addReqCommand(interpreter = definitionFile.interpreter, featureReqCommands, commandAliasMap)
 
                 if (featureNumber == "1.0") {
                     customCode = """
-                        public static final MemorySegment VK_NULL_HANDLE = MemorySegment.NULL;
+                        public static final long VK_NULL_HANDLE = 0L;
 
                         public static int VK_MAKE_API_VERSION(int variant, int major, int minor, int patch) {
                             return (variant << 29) | (major << 22) | (minor << 12) | patch;
@@ -594,34 +690,6 @@ fun main() {
                         public static int VK_API_VERSION_MAJOR(int version) { return (version >> 22) & 0x7F; }
                         public static int VK_API_VERSION_MINOR(int version) { return (version >> 12) & 0x3FF; }
                         public static int VK_API_VERSION_PATCH(int version) { return version & 0xFFF; }
-
-                        public static @CType("VkResult") int vkEnumerateInstanceExtensionProperties(VKLoadFunc func, @CType("const char *") MemorySegment pLayerName, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkExtensionProperties *") MemorySegment pProperties) {
-                            var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceExtensionProperties");
-                            if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceExtensionProperties");
-                            try { return (int) Handles.MH_vkEnumerateInstanceExtensionProperties.invokeExact(p, pLayerName, pPropertyCount, pProperties); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceExtensionProperties", e); }
-                        }
-
-                        public static @CType("VkResult") int vkEnumerateInstanceLayerProperties(VKLoadFunc func, @CType("uint32_t *") MemorySegment pPropertyCount, @CType("VkLayerProperties *") MemorySegment pProperties) {
-                            var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceLayerProperties");
-                            if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceLayerProperties");
-                            try { return (int) Handles.MH_vkEnumerateInstanceLayerProperties.invokeExact(p, pPropertyCount, pProperties); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceLayerProperties", e); }
-                        }
-
-                        public static @CType("VkResult") int vkCreateInstance(VKLoadFunc func, @CType("const VkInstanceCreateInfo *") MemorySegment pCreateInfo, @CType("const VkAllocationCallbacks *") MemorySegment pAllocator, @CType("VkInstance *") MemorySegment pInstance) {
-                            var p = func.invoke(MemorySegment.NULL, "vkCreateInstance");
-                            if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkCreateInstance");
-                            try { return (int) Handles.MH_vkCreateInstance.invokeExact(p, pCreateInfo, pAllocator, pInstance); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkCreateInstance", e); }
-                        }
-
-                        public static @CType("PFN_vkVoidFunction") MemorySegment vkGetInstanceProcAddr(VKLoadFunc func, @CType("VkInstance") MemorySegment instance, @CType("const char *") MemorySegment pName) {
-                            var p = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
-                            if (Unmarshal.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkGetInstanceProcAddr");
-                            try { return (MemorySegment) Handles.MH_vkGetInstanceProcAddr.invokeExact(p, instance, pName); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkGetInstanceProcAddr", e); }
-                        }
                     """.trimIndent()
                 }
             }
@@ -629,8 +697,6 @@ fun main() {
     }
 
     // extensions
-    val extensionNodeList =
-        (root.getElementsByTagName("extensions").item(0) as Element).getElementsByTagName("extension")
     val extensionVendors = mutableSetOf<String>()
     val extensionDowncalls = mutableMapOf<String, VkDowncall>()
     for (i in 0 until extensionNodeList.length) {
@@ -640,8 +706,6 @@ fun main() {
             val extName = rawName
                 .split('_')
                 .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-            val extType = extensionNode.getAttribute("type")
-            val extNumber = extensionNode.getAttribute("number")
             val extVendor = rawName
                 .substringAfter("VK_")
                 .substringBefore('_')
@@ -650,7 +714,7 @@ fun main() {
 
             val extReqTypes = mutableListOf<String>()
             val extReqCommands = mutableListOf<String>()
-            val extReqEnums = mutableListOf<VkRequireEnum>()
+            val extReqEnums = mutableListOf<String>()
             val requireNodeList = extensionNode.getElementsByTagName("require")
             for (i1 in 0 until requireNodeList.length) {
                 val requireNode = requireNodeList.item(i1) as Element
@@ -660,114 +724,50 @@ fun main() {
                         when (childNode.tagName) {
                             "type" -> extReqTypes.add(childNode.getAttribute("name"))
                             "command" -> extReqCommands.add(childNode.getAttribute("name"))
-                            "enum" -> extReqEnums.add(
-                                VkRequireEnum(
-                                    extends = childNode.findAttribute("extends"),
-                                    name = childNode.getAttribute("name"),
-                                    extnumber = extNumber,
-                                    offset = childNode.findAttribute("offset"),
-                                    dir = childNode.findAttribute("dir"),
-                                    bitpos = childNode.findAttribute("bitpos"),
-                                    value = childNode.findAttribute("value"),
-                                    alias = childNode.findAttribute("alias"),
-                                    api = childNode.findAttribute("api"),
-                                )
-                            )
+                            "enum" -> extReqEnums.add(childNode.getAttribute("name"))
                         }
                     }
                 }
             }
 
-            val downcall = VkDowncall("$vulkanPackage.$extVendor", extName, write = false) {
-                addReqTypes(extReqTypes)
-                addReqEnums(extReqEnums)
-                addReqCommand(extReqCommands, commandMap, commandAliasMap)
-
-                if (extReqCommands.isEmpty()) {
-                    modifier = "final"
-                    constructor = "private $extName() { }"
-                } else {
-                    constructor = buildString {
-                        append("public $extName(")
-                        when (extType) {
-                            "device" -> append("""@CType("VkDevice") MemorySegment device""")
-                            "instance" -> append("""@CType("VkInstance") MemorySegment instance""")
-                        }
-                        appendLine(", VKLoadFunc func) {")
-                        appendLine(
-                            "    this.handles = new Handles(${
-                                when (extType) {
-                                    "device" -> "device"
-                                    "instance" -> "instance"
-                                    else -> error(extType)
-                                }
-                            }, func);"
-                        )
-                        append("}")
-                    }
-
-                    handlesConstructor = buildString {
-                        append("private Handles(")
-                        when (extType) {
-                            "device" -> append("""@CType("VkDevice") MemorySegment device""")
-                            "instance" -> append("""@CType("VkInstance") MemorySegment instance""")
-                        }
-                        appendLine(", VKLoadFunc func) {")
-                        extReqCommands.forEach { command ->
-                            append("""    PFN_$command = func.invoke($extType, "$command"""")
-                            commandAliasMap[command]?.onEach { append(""", "$it"""") }
-                            appendLine(");")
-                        }
-                        append("}")
-                    }
-                }
+            val downcall = VkDowncall("$vulkanPackage.$extVendor", extName) {
+                addReqTypes(interpreter = definitionFile.interpreter, extReqTypes)
+                addReqEnums(interpreter = definitionFile.interpreter, extReqEnums)
+                addReqCommand(interpreter = definitionFile.interpreter, extReqCommands, commandAliasMap)
             }
             extensionDowncalls[rawName] = downcall
         }
     }
-    for (i in 0 until extensionNodeList.length) {
-        val extensionNode = extensionNodeList.item(i) as Element
-        if (extensionNode.getAttribute("supported").split(',').contains("vulkan")) {
-            val rawName = extensionNode.getAttribute("name")
-            val requireNodeList = extensionNode.getElementsByTagName("require")
-            for (i1 in 0 until requireNodeList.length) {
-                val requireNode = requireNodeList.item(i1) as Element
-                for (i2 in 0 until requireNode.childNodes.length) {
-                    val childNode = requireNode.childNodes.item(i2)
-                    if (childNode is Element) {
-                        when (childNode.tagName) {
-                            "enum" -> {
-                                if (childNode.hasAttribute("api") && childNode.getAttribute("api") == "vulkansc") continue
-                                if (childNode.hasAttribute("alias")) {
-                                    val alias = childNode.getAttribute("alias")
-                                    (vkEnumClass[alias] ?: error("${childNode.getAttribute("name")}: $alias")).also {
-                                        extensionDowncalls[rawName]!!.imports.add("static $it.*")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    extensionDowncalls.values.forEach(VkDowncall::write)
 
-    // generate structs
-    // scan dependencies
-    vkStructMap.values.forEach {
-        it.members.forEach { member ->
-            val type = resolveType(member.type, it.name)
-            if (type.struct) {
-                structToStruct(vkStructMap[type.originalName]!!)
+    vkDowncalls.forEach { it.write() }
+    extensionDowncalls.values.forEach { it.write() }
+
+    fun writeCapabilities(type: String, param: String, commandList: List<String>) {
+        writeString(Path("overrungl/vulkan/VKCapabilities$type.java"), buildString {
+            val commands = commandList.distinct()
+            appendLine(commentedFileHeader)
+            appendLine(
+                """
+                package $vulkanPackage;
+                import java.lang.foreign.*;
+                public final class VKCapabilities$type {
+            """.trimIndent()
+            )
+            commands.forEach {
+                appendLine("    public final MemorySegment PFN_$it;")
             }
-        }
+            appendLine("    public VKCapabilities$type(MemorySegment $param, VKLoadFunc func) {")
+            commands.forEach { cmd ->
+                append("""        PFN_$cmd = func.invoke($param, "$cmd"""")
+                commandAliasMap[cmd]?.onEach { append(""", "$it"""") }
+                appendLine(");")
+            }
+            appendLine("    }")
+            appendLine("}")
+        })
     }
-    vkStructMap.values.forEach {
-        if (!vkStructSpecMap.containsKey(it.name)) {
-            structToStruct(it)
-        }
-    }
+    writeCapabilities("Instance", "instance", instanceCommands)
+    writeCapabilities("Device", "device", deviceCommands)
 
     // module-info.java
     writeString(Path("module-info.java"), buildString {
@@ -782,16 +782,10 @@ fun main() {
         appendLine("    exports $vulkanPackage.video;")
         appendLine()
         appendLine("    requires transitive overrungl.core;")
+        appendLine("    requires org.graalvm.nativeimage;")
         appendLine("}")
         appendLine()
     })
 
-    if (recordingErrorType.isNotEmpty()) {
-        System.err.println("Recorded error types:")
-        recordingErrorType.forEach {
-            System.err.println(it)
-        }
-    }
+    writeNativeImageRegistration(vulkanPackage)
 }
-
-fun Element.findAttribute(name: String): String? = if (hasAttribute(name)) getAttribute(name) else null

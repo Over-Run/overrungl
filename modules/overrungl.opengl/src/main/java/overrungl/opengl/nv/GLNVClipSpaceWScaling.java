@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -29,15 +27,8 @@ public final class GLNVClipSpaceWScaling {
     public static final int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
     public static final int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glViewportPositionWScaleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glViewportPositionWScaleNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glViewportPositionWScaleNV = RuntimeHelper.downcall(Descriptors.FD_glViewportPositionWScaleNV);
+        public static final MethodHandle MH_glViewportPositionWScaleNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glViewportPositionWScaleNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glViewportPositionWScaleNV = func.invoke("glViewportPositionWScaleNV");
@@ -48,10 +39,13 @@ public final class GLNVClipSpaceWScaling {
         this.handles = new Handles(func);
     }
 
-    public void ViewportPositionWScaleNV(@CType("GLuint") int index, @CType("GLfloat") float xcoeff, @CType("GLfloat") float ycoeff) {
-        if (Unmarshal.isNullPointer(handles.PFN_glViewportPositionWScaleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");
+    /// ```
+    /// void glViewportPositionWScaleNV((unsigned int) GLuint index, ((float) khronos_float_t) GLfloat xcoeff, ((float) khronos_float_t) GLfloat ycoeff);
+    /// ```
+    public void ViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glViewportPositionWScaleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");
         try { Handles.MH_glViewportPositionWScaleNV.invokeExact(handles.PFN_glViewportPositionWScaleNV, index, xcoeff, ycoeff); }
-        catch (Throwable e) { throw new RuntimeException("error in glViewportPositionWScaleNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in ViewportPositionWScaleNV", e); }
     }
 
 }

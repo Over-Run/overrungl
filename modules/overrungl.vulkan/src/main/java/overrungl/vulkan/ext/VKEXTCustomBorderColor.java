@@ -16,11 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.vulkan.ext;
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTCustomBorderColor {
     public static final int VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION = 12;
@@ -31,6 +26,6 @@ public final class VKEXTCustomBorderColor {
     public static final int VK_BORDER_COLOR_FLOAT_CUSTOM_EXT = 1000287003;
     public static final int VK_BORDER_COLOR_INT_CUSTOM_EXT = 1000287004;
 
-    private VKEXTCustomBorderColor() { }
+    private VKEXTCustomBorderColor() {}
 
 }

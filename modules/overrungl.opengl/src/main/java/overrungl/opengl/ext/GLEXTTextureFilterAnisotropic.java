@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTTextureFilterAnisotropic {
     public static final int GL_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
     public static final int GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FF;

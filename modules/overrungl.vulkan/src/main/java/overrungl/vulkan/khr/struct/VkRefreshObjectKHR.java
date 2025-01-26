@@ -15,43 +15,47 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### objectType
-/// [VarHandle][#VH_objectType] - [Getter][#objectType()] - [Setter][#objectType(int)]
-/// ### objectHandle
-/// [VarHandle][#VH_objectHandle] - [Getter][#objectHandle()] - [Setter][#objectHandle(long)]
-/// ### flags
-/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkRefreshObjectKHR {
-///     VkObjectType objectType;
-///     uint64_t objectHandle;
-///     VkRefreshObjectFlagsKHR flags;
-/// } VkRefreshObjectKHR;
 /// ```
-public sealed class VkRefreshObjectKHR extends Struct {
+/// struct VkRefreshObjectKHR {
+///     (int) VkObjectType objectType;
+///     uint64_t objectHandle;
+///     ((uint32_t) VkFlags) VkRefreshObjectFlagsKHR flags;
+/// };
+/// ```
+public sealed class VkRefreshObjectKHR extends GroupType {
     /// The struct layout of `VkRefreshObjectKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("objectType"),
         ValueLayout.JAVA_LONG.withName("objectHandle"),
         ValueLayout.JAVA_INT.withName("flags")
     );
-    /// The [VarHandle] of `objectType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `objectType`.
+    public static final long OFFSET_objectType = LAYOUT.byteOffset(PathElement.groupElement("objectType"));
+    /// The memory layout of `objectType`.
+    public static final MemoryLayout LAYOUT_objectType = LAYOUT.select(PathElement.groupElement("objectType"));
+    /// The [VarHandle] of `objectType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_objectType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectType"));
-    /// The [VarHandle] of `objectHandle` of type `(MemorySegment base, long baseOffset, long index)long`.
+    /// The byte offset of `objectHandle`.
+    public static final long OFFSET_objectHandle = LAYOUT.byteOffset(PathElement.groupElement("objectHandle"));
+    /// The memory layout of `objectHandle`.
+    public static final MemoryLayout LAYOUT_objectHandle = LAYOUT.select(PathElement.groupElement("objectHandle"));
+    /// The [VarHandle] of `objectHandle` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_objectHandle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("objectHandle"));
-    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `flags`.
+    public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));
+    /// The memory layout of `flags`.
+    public static final MemoryLayout LAYOUT_flags = LAYOUT.select(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
     /// Creates `VkRefreshObjectKHR` with the given segment.
@@ -61,19 +65,14 @@ public sealed class VkRefreshObjectKHR extends Struct {
     /// Creates `VkRefreshObjectKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRefreshObjectKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRefreshObjectKHR(segment); }
-
-    /// Creates `VkRefreshObjectKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRefreshObjectKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRefreshObjectKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRefreshObjectKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkRefreshObjectKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRefreshObjectKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkRefreshObjectKHR` with the given segment.
     ///
@@ -81,7 +80,7 @@ public sealed class VkRefreshObjectKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRefreshObjectKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -94,11 +93,6 @@ public sealed class VkRefreshObjectKHR extends Struct {
     /// @return the allocated `VkRefreshObjectKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRefreshObjectKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkRefreshObjectKHR`
-    public static VkRefreshObjectKHR allocInit(SegmentAllocator allocator, @CType("VkObjectType") int objectType, @CType("uint64_t") long objectHandle, @CType("VkRefreshObjectFlagsKHR") int flags) { return alloc(allocator).objectType(objectType).objectHandle(objectHandle).flags(flags); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -106,76 +100,55 @@ public sealed class VkRefreshObjectKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `objectType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkObjectType") int get_objectType(MemorySegment segment, long index) { return (int) VH_objectType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int objectType(MemorySegment segment, long index) { return (int) VH_objectType.get(segment, 0L, index); }
     /// {@return `objectType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkObjectType") int get_objectType(MemorySegment segment) { return VkRefreshObjectKHR.get_objectType(segment, 0L); }
-    /// {@return `objectType`}
-    public @CType("VkObjectType") int objectType() { return VkRefreshObjectKHR.get_objectType(this.segment()); }
+    public int objectType() { return objectType(this.segment(), 0L); }
     /// Sets `objectType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_objectType(MemorySegment segment, long index, @CType("VkObjectType") int value) { VH_objectType.set(segment, 0L, index, value); }
-    /// Sets `objectType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_objectType(MemorySegment segment, @CType("VkObjectType") int value) { VkRefreshObjectKHR.set_objectType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void objectType(MemorySegment segment, long index, int value) { VH_objectType.set(segment, 0L, index, value); }
     /// Sets `objectType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRefreshObjectKHR objectType(@CType("VkObjectType") int value) { VkRefreshObjectKHR.set_objectType(this.segment(), value); return this; }
+    public VkRefreshObjectKHR objectType(int value) { objectType(this.segment(), 0L, value); return this; }
 
     /// {@return `objectHandle` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint64_t") long get_objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static long objectHandle(MemorySegment segment, long index) { return (long) VH_objectHandle.get(segment, 0L, index); }
     /// {@return `objectHandle`}
-    /// @param segment the segment of the struct
-    public static @CType("uint64_t") long get_objectHandle(MemorySegment segment) { return VkRefreshObjectKHR.get_objectHandle(segment, 0L); }
-    /// {@return `objectHandle`}
-    public @CType("uint64_t") long objectHandle() { return VkRefreshObjectKHR.get_objectHandle(this.segment()); }
+    public long objectHandle() { return objectHandle(this.segment(), 0L); }
     /// Sets `objectHandle` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_objectHandle(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_objectHandle.set(segment, 0L, index, value); }
-    /// Sets `objectHandle` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_objectHandle(MemorySegment segment, @CType("uint64_t") long value) { VkRefreshObjectKHR.set_objectHandle(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void objectHandle(MemorySegment segment, long index, long value) { VH_objectHandle.set(segment, 0L, index, value); }
     /// Sets `objectHandle` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRefreshObjectKHR objectHandle(@CType("uint64_t") long value) { VkRefreshObjectKHR.set_objectHandle(this.segment(), value); return this; }
+    public VkRefreshObjectKHR objectHandle(long value) { objectHandle(this.segment(), 0L, value); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkRefreshObjectFlagsKHR") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
     /// {@return `flags`}
-    /// @param segment the segment of the struct
-    public static @CType("VkRefreshObjectFlagsKHR") int get_flags(MemorySegment segment) { return VkRefreshObjectKHR.get_flags(segment, 0L); }
-    /// {@return `flags`}
-    public @CType("VkRefreshObjectFlagsKHR") int flags() { return VkRefreshObjectKHR.get_flags(this.segment()); }
+    public int flags() { return flags(this.segment(), 0L); }
     /// Sets `flags` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, long index, @CType("VkRefreshObjectFlagsKHR") int value) { VH_flags.set(segment, 0L, index, value); }
-    /// Sets `flags` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_flags(MemorySegment segment, @CType("VkRefreshObjectFlagsKHR") int value) { VkRefreshObjectKHR.set_flags(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void flags(MemorySegment segment, long index, int value) { VH_flags.set(segment, 0L, index, value); }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkRefreshObjectKHR flags(@CType("VkRefreshObjectFlagsKHR") int value) { VkRefreshObjectKHR.set_flags(this.segment(), value); return this; }
+    public VkRefreshObjectKHR flags(int value) { flags(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkRefreshObjectKHR].
     public static final class Buffer extends VkRefreshObjectKHR {
@@ -200,31 +173,31 @@ public sealed class VkRefreshObjectKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `objectType` at the given index}
-        /// @param index the index
-        public @CType("VkObjectType") int objectTypeAt(long index) { return VkRefreshObjectKHR.get_objectType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int objectTypeAt(long index) { return objectType(this.segment(), index); }
         /// Sets `objectType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer objectTypeAt(long index, @CType("VkObjectType") int value) { VkRefreshObjectKHR.set_objectType(this.segment(), index, value); return this; }
+        public Buffer objectTypeAt(long index, int value) { objectType(this.segment(), index, value); return this; }
 
         /// {@return `objectHandle` at the given index}
-        /// @param index the index
-        public @CType("uint64_t") long objectHandleAt(long index) { return VkRefreshObjectKHR.get_objectHandle(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public long objectHandleAt(long index) { return objectHandle(this.segment(), index); }
         /// Sets `objectHandle` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer objectHandleAt(long index, @CType("uint64_t") long value) { VkRefreshObjectKHR.set_objectHandle(this.segment(), index, value); return this; }
+        public Buffer objectHandleAt(long index, long value) { objectHandle(this.segment(), index, value); return this; }
 
         /// {@return `flags` at the given index}
-        /// @param index the index
-        public @CType("VkRefreshObjectFlagsKHR") int flagsAt(long index) { return VkRefreshObjectKHR.get_flags(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int flagsAt(long index) { return flags(this.segment(), index); }
         /// Sets `flags` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer flagsAt(long index, @CType("VkRefreshObjectFlagsKHR") int value) { VkRefreshObjectKHR.set_flags(this.segment(), index, value); return this; }
+        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
     }
 }

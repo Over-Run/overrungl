@@ -15,59 +15,59 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.qcom.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### filterCenter
-/// [Byte offset][#OFFSET_filterCenter] - [Memory layout][#ML_filterCenter] - [Getter][#filterCenter()] - [Setter][#filterCenter(java.lang.foreign.MemorySegment)]
-/// ### filterSize
-/// [Byte offset][#OFFSET_filterSize] - [Memory layout][#ML_filterSize] - [Getter][#filterSize()] - [Setter][#filterSize(java.lang.foreign.MemorySegment)]
-/// ### numPhases
-/// [VarHandle][#VH_numPhases] - [Getter][#numPhases()] - [Setter][#numPhases(int)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkImageViewSampleWeightCreateInfoQCOM {
-///     VkStructureType sType;
-///     const void * pNext;
-///     VkOffset2D filterCenter;
-///     VkExtent2D filterSize;
-///     uint32_t numPhases;
-/// } VkImageViewSampleWeightCreateInfoQCOM;
 /// ```
-public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
+/// struct VkImageViewSampleWeightCreateInfoQCOM {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     (struct VkOffset2D) VkOffset2D filterCenter;
+///     (struct VkExtent2D) VkExtent2D filterSize;
+///     uint32_t numPhases;
+/// };
+/// ```
+public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// The struct layout of `VkImageViewSampleWeightCreateInfoQCOM`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("filterCenter"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("filterSize"),
         ValueLayout.JAVA_INT.withName("numPhases")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The byte offset of `filterCenter`.
     public static final long OFFSET_filterCenter = LAYOUT.byteOffset(PathElement.groupElement("filterCenter"));
     /// The memory layout of `filterCenter`.
-    public static final MemoryLayout ML_filterCenter = LAYOUT.select(PathElement.groupElement("filterCenter"));
+    public static final MemoryLayout LAYOUT_filterCenter = LAYOUT.select(PathElement.groupElement("filterCenter"));
     /// The byte offset of `filterSize`.
     public static final long OFFSET_filterSize = LAYOUT.byteOffset(PathElement.groupElement("filterSize"));
     /// The memory layout of `filterSize`.
-    public static final MemoryLayout ML_filterSize = LAYOUT.select(PathElement.groupElement("filterSize"));
-    /// The [VarHandle] of `numPhases` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final MemoryLayout LAYOUT_filterSize = LAYOUT.select(PathElement.groupElement("filterSize"));
+    /// The byte offset of `numPhases`.
+    public static final long OFFSET_numPhases = LAYOUT.byteOffset(PathElement.groupElement("numPhases"));
+    /// The memory layout of `numPhases`.
+    public static final MemoryLayout LAYOUT_numPhases = LAYOUT.select(PathElement.groupElement("numPhases"));
+    /// The [VarHandle] of `numPhases` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_numPhases = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhases"));
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
@@ -77,19 +77,14 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewSampleWeightCreateInfoQCOM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment); }
-
-    /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewSampleWeightCreateInfoQCOM ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkImageViewSampleWeightCreateInfoQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     ///
@@ -97,7 +92,7 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -110,11 +105,6 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
     /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkOffset2D") java.lang.foreign.MemorySegment filterCenter, @CType("VkExtent2D") java.lang.foreign.MemorySegment filterSize, @CType("uint32_t") int numPhases) { return alloc(allocator).sType(sType).pNext(pNext).filterCenter(filterCenter).filterSize(filterSize).numPhases(numPhases); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -122,122 +112,87 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageViewSampleWeightCreateInfoQCOM.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkImageViewSampleWeightCreateInfoQCOM.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewSampleWeightCreateInfoQCOM sType(@CType("VkStructureType") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_sType(this.segment(), value); return this; }
+    public VkImageViewSampleWeightCreateInfoQCOM sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageViewSampleWeightCreateInfoQCOM.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageViewSampleWeightCreateInfoQCOM.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewSampleWeightCreateInfoQCOM pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_pNext(this.segment(), value); return this; }
+    public VkImageViewSampleWeightCreateInfoQCOM pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `filterCenter` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_filterCenter(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_filterCenter, index), ML_filterCenter); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment filterCenter(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_filterCenter, index), LAYOUT_filterCenter); }
     /// {@return `filterCenter`}
-    /// @param segment the segment of the struct
-    public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_filterCenter(MemorySegment segment) { return VkImageViewSampleWeightCreateInfoQCOM.get_filterCenter(segment, 0L); }
-    /// {@return `filterCenter`}
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment filterCenter() { return VkImageViewSampleWeightCreateInfoQCOM.get_filterCenter(this.segment()); }
+    public MemorySegment filterCenter() { return filterCenter(this.segment(), 0L); }
     /// Sets `filterCenter` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_filterCenter(MemorySegment segment, long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_filterCenter, index), ML_filterCenter.byteSize()); }
-    /// Sets `filterCenter` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_filterCenter(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterCenter(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void filterCenter(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_filterCenter, index), LAYOUT_filterCenter.byteSize()); }
     /// Sets `filterCenter` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewSampleWeightCreateInfoQCOM filterCenter(@CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterCenter(this.segment(), value); return this; }
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenter(MemorySegment value) { filterCenter(this.segment(), 0L, value); return this; }
 
     /// {@return `filterSize` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_filterSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_filterSize, index), ML_filterSize); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment filterSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_filterSize, index), LAYOUT_filterSize); }
     /// {@return `filterSize`}
-    /// @param segment the segment of the struct
-    public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_filterSize(MemorySegment segment) { return VkImageViewSampleWeightCreateInfoQCOM.get_filterSize(segment, 0L); }
-    /// {@return `filterSize`}
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment filterSize() { return VkImageViewSampleWeightCreateInfoQCOM.get_filterSize(this.segment()); }
+    public MemorySegment filterSize() { return filterSize(this.segment(), 0L); }
     /// Sets `filterSize` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_filterSize(MemorySegment segment, long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_filterSize, index), ML_filterSize.byteSize()); }
-    /// Sets `filterSize` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_filterSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterSize(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void filterSize(MemorySegment segment, long index, MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_filterSize, index), LAYOUT_filterSize.byteSize()); }
     /// Sets `filterSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewSampleWeightCreateInfoQCOM filterSize(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterSize(this.segment(), value); return this; }
+    public VkImageViewSampleWeightCreateInfoQCOM filterSize(MemorySegment value) { filterSize(this.segment(), 0L, value); return this; }
 
     /// {@return `numPhases` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_numPhases(MemorySegment segment, long index) { return (int) VH_numPhases.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int numPhases(MemorySegment segment, long index) { return (int) VH_numPhases.get(segment, 0L, index); }
     /// {@return `numPhases`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_numPhases(MemorySegment segment) { return VkImageViewSampleWeightCreateInfoQCOM.get_numPhases(segment, 0L); }
-    /// {@return `numPhases`}
-    public @CType("uint32_t") int numPhases() { return VkImageViewSampleWeightCreateInfoQCOM.get_numPhases(this.segment()); }
+    public int numPhases() { return numPhases(this.segment(), 0L); }
     /// Sets `numPhases` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_numPhases(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_numPhases.set(segment, 0L, index, value); }
-    /// Sets `numPhases` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_numPhases(MemorySegment segment, @CType("uint32_t") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_numPhases(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void numPhases(MemorySegment segment, long index, int value) { VH_numPhases.set(segment, 0L, index, value); }
     /// Sets `numPhases` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkImageViewSampleWeightCreateInfoQCOM numPhases(@CType("uint32_t") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_numPhases(this.segment(), value); return this; }
+    public VkImageViewSampleWeightCreateInfoQCOM numPhases(int value) { numPhases(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkImageViewSampleWeightCreateInfoQCOM].
     public static final class Buffer extends VkImageViewSampleWeightCreateInfoQCOM {
@@ -262,49 +217,49 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewSampleWeightCreateInfoQCOM.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageViewSampleWeightCreateInfoQCOM.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `filterCenter` at the given index}
-        /// @param index the index
-        public @CType("VkOffset2D") java.lang.foreign.MemorySegment filterCenterAt(long index) { return VkImageViewSampleWeightCreateInfoQCOM.get_filterCenter(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment filterCenterAt(long index) { return filterCenter(this.segment(), index); }
         /// Sets `filterCenter` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer filterCenterAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterCenter(this.segment(), index, value); return this; }
+        public Buffer filterCenterAt(long index, MemorySegment value) { filterCenter(this.segment(), index, value); return this; }
 
         /// {@return `filterSize` at the given index}
-        /// @param index the index
-        public @CType("VkExtent2D") java.lang.foreign.MemorySegment filterSizeAt(long index) { return VkImageViewSampleWeightCreateInfoQCOM.get_filterSize(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment filterSizeAt(long index) { return filterSize(this.segment(), index); }
         /// Sets `filterSize` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer filterSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkImageViewSampleWeightCreateInfoQCOM.set_filterSize(this.segment(), index, value); return this; }
+        public Buffer filterSizeAt(long index, MemorySegment value) { filterSize(this.segment(), index, value); return this; }
 
         /// {@return `numPhases` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int numPhasesAt(long index) { return VkImageViewSampleWeightCreateInfoQCOM.get_numPhases(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int numPhasesAt(long index) { return numPhases(this.segment(), index); }
         /// Sets `numPhases` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer numPhasesAt(long index, @CType("uint32_t") int value) { VkImageViewSampleWeightCreateInfoQCOM.set_numPhases(this.segment(), index, value); return this; }
+        public Buffer numPhasesAt(long index, int value) { numPhases(this.segment(), index, value); return this; }
 
     }
 }

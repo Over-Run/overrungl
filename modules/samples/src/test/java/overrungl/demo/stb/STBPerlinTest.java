@@ -16,6 +16,8 @@
 
 package overrungl.demo.stb;
 
+import overrungl.util.MemoryUtil;
+
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -41,7 +43,7 @@ public final class STBPerlinTest {
                 buf.set(ValueLayout.JAVA_BYTE, y * HEIGHT + x, (byte) ((noise[y][x] + 1f) * .5f * 255f));
             }
         }
-        stbi_write_png(fileName, WIDTH, HEIGHT, STBI_grey, buf, WIDTH);
+        stbi_write_png(MemoryUtil.allocString(fileName), WIDTH, HEIGHT, STBI_grey, buf, WIDTH);
     }
 
     public static void main(String[] args) {

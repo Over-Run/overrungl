@@ -15,49 +15,31 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
+//@formatter:off
 package overrungl.vulkan.khr.struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// ## Members
-/// ### sType
-/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
-/// ### pNext
-/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
-/// ### waitSemaphoreCount
-/// [VarHandle][#VH_waitSemaphoreCount] - [Getter][#waitSemaphoreCount()] - [Setter][#waitSemaphoreCount(int)]
-/// ### pWaitSemaphores
-/// [VarHandle][#VH_pWaitSemaphores] - [Getter][#pWaitSemaphores()] - [Setter][#pWaitSemaphores(java.lang.foreign.MemorySegment)]
-/// ### swapchainCount
-/// [VarHandle][#VH_swapchainCount] - [Getter][#swapchainCount()] - [Setter][#swapchainCount(int)]
-/// ### pSwapchains
-/// [VarHandle][#VH_pSwapchains] - [Getter][#pSwapchains()] - [Setter][#pSwapchains(java.lang.foreign.MemorySegment)]
-/// ### pImageIndices
-/// [VarHandle][#VH_pImageIndices] - [Getter][#pImageIndices()] - [Setter][#pImageIndices(java.lang.foreign.MemorySegment)]
-/// ### pResults
-/// [VarHandle][#VH_pResults] - [Getter][#pResults()] - [Setter][#pResults(java.lang.foreign.MemorySegment)]
 /// ## Layout
-/// [Java definition][#LAYOUT]
-/// ```c
-/// typedef struct VkPresentInfoKHR {
-///     VkStructureType sType;
-///     const void * pNext;
-///     uint32_t waitSemaphoreCount;
-///     const VkSemaphore * pWaitSemaphores;
-///     uint32_t swapchainCount;
-///     const VkSwapchainKHR * pSwapchains;
-///     const uint32_t * pImageIndices;
-///     VkResult * pResults;
-/// } VkPresentInfoKHR;
 /// ```
-public sealed class VkPresentInfoKHR extends Struct {
+/// struct VkPresentInfoKHR {
+///     (int) VkStructureType sType;
+///     const void* pNext;
+///     uint32_t waitSemaphoreCount;
+///     const VkSemaphore* pWaitSemaphores;
+///     uint32_t swapchainCount;
+///     const VkSwapchainKHR* pSwapchains;
+///     const uint32_t* pImageIndices;
+///     VkResult* pResults;
+/// };
+/// ```
+public sealed class VkPresentInfoKHR extends GroupType {
     /// The struct layout of `VkPresentInfoKHR`.
-    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("waitSemaphoreCount"),
@@ -67,21 +49,53 @@ public sealed class VkPresentInfoKHR extends Struct {
         ValueLayout.ADDRESS.withName("pImageIndices"),
         ValueLayout.ADDRESS.withName("pResults")
     );
-    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `sType`.
+    public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));
+    /// The memory layout of `sType`.
+    public static final MemoryLayout LAYOUT_sType = LAYOUT.select(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
-    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pNext`.
+    public static final long OFFSET_pNext = LAYOUT.byteOffset(PathElement.groupElement("pNext"));
+    /// The memory layout of `pNext`.
+    public static final MemoryLayout LAYOUT_pNext = LAYOUT.select(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `waitSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `waitSemaphoreCount`.
+    public static final long OFFSET_waitSemaphoreCount = LAYOUT.byteOffset(PathElement.groupElement("waitSemaphoreCount"));
+    /// The memory layout of `waitSemaphoreCount`.
+    public static final MemoryLayout LAYOUT_waitSemaphoreCount = LAYOUT.select(PathElement.groupElement("waitSemaphoreCount"));
+    /// The [VarHandle] of `waitSemaphoreCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_waitSemaphoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("waitSemaphoreCount"));
-    /// The [VarHandle] of `pWaitSemaphores` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pWaitSemaphores`.
+    public static final long OFFSET_pWaitSemaphores = LAYOUT.byteOffset(PathElement.groupElement("pWaitSemaphores"));
+    /// The memory layout of `pWaitSemaphores`.
+    public static final MemoryLayout LAYOUT_pWaitSemaphores = LAYOUT.select(PathElement.groupElement("pWaitSemaphores"));
+    /// The [VarHandle] of `pWaitSemaphores` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pWaitSemaphores = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pWaitSemaphores"));
-    /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    /// The byte offset of `swapchainCount`.
+    public static final long OFFSET_swapchainCount = LAYOUT.byteOffset(PathElement.groupElement("swapchainCount"));
+    /// The memory layout of `swapchainCount`.
+    public static final MemoryLayout LAYOUT_swapchainCount = LAYOUT.select(PathElement.groupElement("swapchainCount"));
+    /// The [VarHandle] of `swapchainCount` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_swapchainCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapchainCount"));
-    /// The [VarHandle] of `pSwapchains` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pSwapchains`.
+    public static final long OFFSET_pSwapchains = LAYOUT.byteOffset(PathElement.groupElement("pSwapchains"));
+    /// The memory layout of `pSwapchains`.
+    public static final MemoryLayout LAYOUT_pSwapchains = LAYOUT.select(PathElement.groupElement("pSwapchains"));
+    /// The [VarHandle] of `pSwapchains` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pSwapchains = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSwapchains"));
-    /// The [VarHandle] of `pImageIndices` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pImageIndices`.
+    public static final long OFFSET_pImageIndices = LAYOUT.byteOffset(PathElement.groupElement("pImageIndices"));
+    /// The memory layout of `pImageIndices`.
+    public static final MemoryLayout LAYOUT_pImageIndices = LAYOUT.select(PathElement.groupElement("pImageIndices"));
+    /// The [VarHandle] of `pImageIndices` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pImageIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageIndices"));
-    /// The [VarHandle] of `pResults` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    /// The byte offset of `pResults`.
+    public static final long OFFSET_pResults = LAYOUT.byteOffset(PathElement.groupElement("pResults"));
+    /// The memory layout of `pResults`.
+    public static final MemoryLayout LAYOUT_pResults = LAYOUT.select(PathElement.groupElement("pResults"));
+    /// The [VarHandle] of `pResults` of type `(MemorySegment base, long baseOffset, long index)MemorySegment`.
     public static final VarHandle VH_pResults = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pResults"));
 
     /// Creates `VkPresentInfoKHR` with the given segment.
@@ -91,19 +105,14 @@ public sealed class VkPresentInfoKHR extends Struct {
     /// Creates `VkPresentInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPresentInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPresentInfoKHR(segment); }
-
-    /// Creates `VkPresentInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPresentInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPresentInfoKHR ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPresentInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPresentInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
 
     /// Creates `VkPresentInfoKHR` with the given segment.
     ///
@@ -111,7 +120,7 @@ public sealed class VkPresentInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPresentInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -124,11 +133,6 @@ public sealed class VkPresentInfoKHR extends Struct {
     /// @return the allocated `VkPresentInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentInfoKHR` with the given segment allocator and the initializing arguments.
-    /// @param allocator the segment allocator
-    /// @return the allocated `VkPresentInfoKHR`
-    public static VkPresentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int waitSemaphoreCount, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphores, @CType("uint32_t") int swapchainCount, @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment pSwapchains, @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndices, @CType("VkResult *") java.lang.foreign.MemorySegment pResults) { return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphores(pWaitSemaphores).swapchainCount(swapchainCount).pSwapchains(pSwapchains).pImageIndices(pImageIndices).pResults(pResults); }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
@@ -136,191 +140,135 @@ public sealed class VkPresentInfoKHR extends Struct {
 
     /// Converts this instance to a buffer.
     /// @return the buffer
-    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
     /// {@return `sType`}
-    /// @param segment the segment of the struct
-    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPresentInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType`}
-    public @CType("VkStructureType") int sType() { return VkPresentInfoKHR.get_sType(this.segment()); }
+    public int sType() { return sType(this.segment(), 0L); }
     /// Sets `sType` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
-    /// Sets `sType` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPresentInfoKHR.set_sType(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void sType(MemorySegment segment, long index, int value) { VH_sType.set(segment, 0L, index, value); }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR sType(@CType("VkStructureType") int value) { VkPresentInfoKHR.set_sType(this.segment(), value); return this; }
+    public VkPresentInfoKHR sType(int value) { sType(this.segment(), 0L, value); return this; }
 
     /// {@return `pNext` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pNext(MemorySegment segment, long index) { return (MemorySegment) VH_pNext.get(segment, 0L, index); }
     /// {@return `pNext`}
-    /// @param segment the segment of the struct
-    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPresentInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext`}
-    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPresentInfoKHR.get_pNext(this.segment()); }
+    public MemorySegment pNext() { return pNext(this.segment(), 0L); }
     /// Sets `pNext` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
-    /// Sets `pNext` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pNext(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pNext(MemorySegment segment, long index, MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pNext(this.segment(), value); return this; }
+    public VkPresentInfoKHR pNext(MemorySegment value) { pNext(this.segment(), 0L, value); return this; }
 
     /// {@return `waitSemaphoreCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_waitSemaphoreCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int waitSemaphoreCount(MemorySegment segment, long index) { return (int) VH_waitSemaphoreCount.get(segment, 0L, index); }
     /// {@return `waitSemaphoreCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_waitSemaphoreCount(MemorySegment segment) { return VkPresentInfoKHR.get_waitSemaphoreCount(segment, 0L); }
-    /// {@return `waitSemaphoreCount`}
-    public @CType("uint32_t") int waitSemaphoreCount() { return VkPresentInfoKHR.get_waitSemaphoreCount(this.segment()); }
+    public int waitSemaphoreCount() { return waitSemaphoreCount(this.segment(), 0L); }
     /// Sets `waitSemaphoreCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_waitSemaphoreCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_waitSemaphoreCount.set(segment, 0L, index, value); }
-    /// Sets `waitSemaphoreCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_waitSemaphoreCount(MemorySegment segment, @CType("uint32_t") int value) { VkPresentInfoKHR.set_waitSemaphoreCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void waitSemaphoreCount(MemorySegment segment, long index, int value) { VH_waitSemaphoreCount.set(segment, 0L, index, value); }
     /// Sets `waitSemaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR waitSemaphoreCount(@CType("uint32_t") int value) { VkPresentInfoKHR.set_waitSemaphoreCount(this.segment(), value); return this; }
+    public VkPresentInfoKHR waitSemaphoreCount(int value) { waitSemaphoreCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pWaitSemaphores` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSemaphore *") java.lang.foreign.MemorySegment get_pWaitSemaphores(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pWaitSemaphores.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pWaitSemaphores(MemorySegment segment, long index) { return (MemorySegment) VH_pWaitSemaphores.get(segment, 0L, index); }
     /// {@return `pWaitSemaphores`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSemaphore *") java.lang.foreign.MemorySegment get_pWaitSemaphores(MemorySegment segment) { return VkPresentInfoKHR.get_pWaitSemaphores(segment, 0L); }
-    /// {@return `pWaitSemaphores`}
-    public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphores() { return VkPresentInfoKHR.get_pWaitSemaphores(this.segment()); }
+    public MemorySegment pWaitSemaphores() { return pWaitSemaphores(this.segment(), 0L); }
     /// Sets `pWaitSemaphores` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pWaitSemaphores(MemorySegment segment, long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VH_pWaitSemaphores.set(segment, 0L, index, value); }
-    /// Sets `pWaitSemaphores` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pWaitSemaphores(MemorySegment segment, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pWaitSemaphores(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pWaitSemaphores(MemorySegment segment, long index, MemorySegment value) { VH_pWaitSemaphores.set(segment, 0L, index, value); }
     /// Sets `pWaitSemaphores` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR pWaitSemaphores(@CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pWaitSemaphores(this.segment(), value); return this; }
+    public VkPresentInfoKHR pWaitSemaphores(MemorySegment value) { pWaitSemaphores(this.segment(), 0L, value); return this; }
 
     /// {@return `swapchainCount` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("uint32_t") int get_swapchainCount(MemorySegment segment, long index) { return (int) VH_swapchainCount.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static int swapchainCount(MemorySegment segment, long index) { return (int) VH_swapchainCount.get(segment, 0L, index); }
     /// {@return `swapchainCount`}
-    /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_swapchainCount(MemorySegment segment) { return VkPresentInfoKHR.get_swapchainCount(segment, 0L); }
-    /// {@return `swapchainCount`}
-    public @CType("uint32_t") int swapchainCount() { return VkPresentInfoKHR.get_swapchainCount(this.segment()); }
+    public int swapchainCount() { return swapchainCount(this.segment(), 0L); }
     /// Sets `swapchainCount` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_swapchainCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_swapchainCount.set(segment, 0L, index, value); }
-    /// Sets `swapchainCount` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_swapchainCount(MemorySegment segment, @CType("uint32_t") int value) { VkPresentInfoKHR.set_swapchainCount(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void swapchainCount(MemorySegment segment, long index, int value) { VH_swapchainCount.set(segment, 0L, index, value); }
     /// Sets `swapchainCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR swapchainCount(@CType("uint32_t") int value) { VkPresentInfoKHR.set_swapchainCount(this.segment(), value); return this; }
+    public VkPresentInfoKHR swapchainCount(int value) { swapchainCount(this.segment(), 0L, value); return this; }
 
     /// {@return `pSwapchains` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment get_pSwapchains(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSwapchains.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pSwapchains(MemorySegment segment, long index) { return (MemorySegment) VH_pSwapchains.get(segment, 0L, index); }
     /// {@return `pSwapchains`}
-    /// @param segment the segment of the struct
-    public static @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment get_pSwapchains(MemorySegment segment) { return VkPresentInfoKHR.get_pSwapchains(segment, 0L); }
-    /// {@return `pSwapchains`}
-    public @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment pSwapchains() { return VkPresentInfoKHR.get_pSwapchains(this.segment()); }
+    public MemorySegment pSwapchains() { return pSwapchains(this.segment(), 0L); }
     /// Sets `pSwapchains` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pSwapchains(MemorySegment segment, long index, @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment value) { VH_pSwapchains.set(segment, 0L, index, value); }
-    /// Sets `pSwapchains` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pSwapchains(MemorySegment segment, @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pSwapchains(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pSwapchains(MemorySegment segment, long index, MemorySegment value) { VH_pSwapchains.set(segment, 0L, index, value); }
     /// Sets `pSwapchains` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR pSwapchains(@CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pSwapchains(this.segment(), value); return this; }
+    public VkPresentInfoKHR pSwapchains(MemorySegment value) { pSwapchains(this.segment(), 0L, value); return this; }
 
     /// {@return `pImageIndices` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pImageIndices(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pImageIndices.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pImageIndices(MemorySegment segment, long index) { return (MemorySegment) VH_pImageIndices.get(segment, 0L, index); }
     /// {@return `pImageIndices`}
-    /// @param segment the segment of the struct
-    public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pImageIndices(MemorySegment segment) { return VkPresentInfoKHR.get_pImageIndices(segment, 0L); }
-    /// {@return `pImageIndices`}
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndices() { return VkPresentInfoKHR.get_pImageIndices(this.segment()); }
+    public MemorySegment pImageIndices() { return pImageIndices(this.segment(), 0L); }
     /// Sets `pImageIndices` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pImageIndices(MemorySegment segment, long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VH_pImageIndices.set(segment, 0L, index, value); }
-    /// Sets `pImageIndices` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pImageIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pImageIndices(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pImageIndices(MemorySegment segment, long index, MemorySegment value) { VH_pImageIndices.set(segment, 0L, index, value); }
     /// Sets `pImageIndices` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR pImageIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pImageIndices(this.segment(), value); return this; }
+    public VkPresentInfoKHR pImageIndices(MemorySegment value) { pImageIndices(this.segment(), 0L, value); return this; }
 
     /// {@return `pResults` at the given index}
     /// @param segment the segment of the struct
-    /// @param index   the index
-    public static @CType("VkResult *") java.lang.foreign.MemorySegment get_pResults(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pResults.get(segment, 0L, index); }
+    /// @param index the index of the struct buffer
+    public static MemorySegment pResults(MemorySegment segment, long index) { return (MemorySegment) VH_pResults.get(segment, 0L, index); }
     /// {@return `pResults`}
-    /// @param segment the segment of the struct
-    public static @CType("VkResult *") java.lang.foreign.MemorySegment get_pResults(MemorySegment segment) { return VkPresentInfoKHR.get_pResults(segment, 0L); }
-    /// {@return `pResults`}
-    public @CType("VkResult *") java.lang.foreign.MemorySegment pResults() { return VkPresentInfoKHR.get_pResults(this.segment()); }
+    public MemorySegment pResults() { return pResults(this.segment(), 0L); }
     /// Sets `pResults` with the given value at the given index.
     /// @param segment the segment of the struct
-    /// @param index   the index
-    /// @param value   the value
-    public static void set_pResults(MemorySegment segment, long index, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VH_pResults.set(segment, 0L, index, value); }
-    /// Sets `pResults` with the given value.
-    /// @param segment the segment of the struct
-    /// @param value   the value
-    public static void set_pResults(MemorySegment segment, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pResults(segment, 0L, value); }
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    public static void pResults(MemorySegment segment, long index, MemorySegment value) { VH_pResults.set(segment, 0L, index, value); }
     /// Sets `pResults` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPresentInfoKHR pResults(@CType("VkResult *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pResults(this.segment(), value); return this; }
+    public VkPresentInfoKHR pResults(MemorySegment value) { pResults(this.segment(), 0L, value); return this; }
 
     /// A buffer of [VkPresentInfoKHR].
     public static final class Buffer extends VkPresentInfoKHR {
@@ -345,76 +293,76 @@ public sealed class VkPresentInfoKHR extends Struct {
         public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
         /// {@return `sType` at the given index}
-        /// @param index the index
-        public @CType("VkStructureType") int sTypeAt(long index) { return VkPresentInfoKHR.get_sType(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int sTypeAt(long index) { return sType(this.segment(), index); }
         /// Sets `sType` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPresentInfoKHR.set_sType(this.segment(), index, value); return this; }
+        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
         /// {@return `pNext` at the given index}
-        /// @param index the index
-        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPresentInfoKHR.get_pNext(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
         /// Sets `pNext` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pNext(this.segment(), index, value); return this; }
+        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
         /// {@return `waitSemaphoreCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int waitSemaphoreCountAt(long index) { return VkPresentInfoKHR.get_waitSemaphoreCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int waitSemaphoreCountAt(long index) { return waitSemaphoreCount(this.segment(), index); }
         /// Sets `waitSemaphoreCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer waitSemaphoreCountAt(long index, @CType("uint32_t") int value) { VkPresentInfoKHR.set_waitSemaphoreCount(this.segment(), index, value); return this; }
+        public Buffer waitSemaphoreCountAt(long index, int value) { waitSemaphoreCount(this.segment(), index, value); return this; }
 
         /// {@return `pWaitSemaphores` at the given index}
-        /// @param index the index
-        public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphoresAt(long index) { return VkPresentInfoKHR.get_pWaitSemaphores(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pWaitSemaphoresAt(long index) { return pWaitSemaphores(this.segment(), index); }
         /// Sets `pWaitSemaphores` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pWaitSemaphoresAt(long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pWaitSemaphores(this.segment(), index, value); return this; }
+        public Buffer pWaitSemaphoresAt(long index, MemorySegment value) { pWaitSemaphores(this.segment(), index, value); return this; }
 
         /// {@return `swapchainCount` at the given index}
-        /// @param index the index
-        public @CType("uint32_t") int swapchainCountAt(long index) { return VkPresentInfoKHR.get_swapchainCount(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public int swapchainCountAt(long index) { return swapchainCount(this.segment(), index); }
         /// Sets `swapchainCount` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer swapchainCountAt(long index, @CType("uint32_t") int value) { VkPresentInfoKHR.set_swapchainCount(this.segment(), index, value); return this; }
+        public Buffer swapchainCountAt(long index, int value) { swapchainCount(this.segment(), index, value); return this; }
 
         /// {@return `pSwapchains` at the given index}
-        /// @param index the index
-        public @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment pSwapchainsAt(long index) { return VkPresentInfoKHR.get_pSwapchains(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pSwapchainsAt(long index) { return pSwapchains(this.segment(), index); }
         /// Sets `pSwapchains` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pSwapchainsAt(long index, @CType("const VkSwapchainKHR *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pSwapchains(this.segment(), index, value); return this; }
+        public Buffer pSwapchainsAt(long index, MemorySegment value) { pSwapchains(this.segment(), index, value); return this; }
 
         /// {@return `pImageIndices` at the given index}
-        /// @param index the index
-        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pImageIndicesAt(long index) { return VkPresentInfoKHR.get_pImageIndices(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pImageIndicesAt(long index) { return pImageIndices(this.segment(), index); }
         /// Sets `pImageIndices` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pImageIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pImageIndices(this.segment(), index, value); return this; }
+        public Buffer pImageIndicesAt(long index, MemorySegment value) { pImageIndices(this.segment(), index, value); return this; }
 
         /// {@return `pResults` at the given index}
-        /// @param index the index
-        public @CType("VkResult *") java.lang.foreign.MemorySegment pResultsAt(long index) { return VkPresentInfoKHR.get_pResults(this.segment(), index); }
+        /// @param index the index of the struct buffer
+        public MemorySegment pResultsAt(long index) { return pResults(this.segment(), index); }
         /// Sets `pResults` with the given value at the given index.
-        /// @param index the index
+        /// @param index the index of the struct buffer
         /// @param value the value
         /// @return `this`
-        public Buffer pResultsAt(long index, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VkPresentInfoKHR.set_pResults(this.segment(), index, value); return this; }
+        public Buffer pResultsAt(long index, MemorySegment value) { pResults(this.segment(), index, value); return this; }
 
     }
 }

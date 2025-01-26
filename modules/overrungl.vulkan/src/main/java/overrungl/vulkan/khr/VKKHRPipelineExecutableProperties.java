@@ -18,12 +18,10 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
-public class VKKHRPipelineExecutableProperties {
+public final class VKKHRPipelineExecutableProperties {
     public static final int VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR = 0;
     public static final int VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR = 1;
     public static final int VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR = 2;
@@ -38,51 +36,39 @@ public class VKKHRPipelineExecutableProperties {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR = 1000269005;
     public static final int VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR = 0x00000040;
     public static final int VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR = 0x00000080;
-    private final Handles handles;
-    public static final class Descriptors {
-        public static final FunctionDescriptor FD_vkGetPipelineExecutablePropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineExecutableStatisticsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_vkGetPipelineExecutableInternalRepresentationsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPipelineExecutablePropertiesKHR,
-            FD_vkGetPipelineExecutableStatisticsKHR,
-            FD_vkGetPipelineExecutableInternalRepresentationsKHR
-        );
-        private Descriptors() {}
-    }
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPipelineExecutablePropertiesKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutablePropertiesKHR);
-        public static final MethodHandle MH_vkGetPipelineExecutableStatisticsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutableStatisticsKHR);
-        public static final MethodHandle MH_vkGetPipelineExecutableInternalRepresentationsKHR = RuntimeHelper.downcall(Descriptors.FD_vkGetPipelineExecutableInternalRepresentationsKHR);
-        public final MemorySegment PFN_vkGetPipelineExecutablePropertiesKHR;
-        public final MemorySegment PFN_vkGetPipelineExecutableStatisticsKHR;
-        public final MemorySegment PFN_vkGetPipelineExecutableInternalRepresentationsKHR;
-        private Handles(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPipelineExecutablePropertiesKHR = func.invoke(device, "vkGetPipelineExecutablePropertiesKHR");
-            PFN_vkGetPipelineExecutableStatisticsKHR = func.invoke(device, "vkGetPipelineExecutableStatisticsKHR");
-            PFN_vkGetPipelineExecutableInternalRepresentationsKHR = func.invoke(device, "vkGetPipelineExecutableInternalRepresentationsKHR");
-        }
+        public static final MethodHandle MH_vkGetPipelineExecutablePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineExecutableStatisticsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPipelineExecutableInternalRepresentationsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        private Handles() {}
     }
 
-    public VKKHRPipelineExecutableProperties(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRPipelineExecutableProperties() {}
 
-    public @CType("VkResult") int GetPipelineExecutablePropertiesKHR(@CType("VkDevice") MemorySegment device, @CType("const VkPipelineInfoKHR *") MemorySegment pPipelineInfo, @CType("uint32_t *") MemorySegment pExecutableCount, @CType("VkPipelineExecutablePropertiesKHR *") MemorySegment pProperties) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPipelineExecutablePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutablePropertiesKHR");
-        try { return (int) Handles.MH_vkGetPipelineExecutablePropertiesKHR.invokeExact(handles.PFN_vkGetPipelineExecutablePropertiesKHR, device, pPipelineInfo, pExecutableCount, pProperties); }
+    /// ```
+    /// (int) VkResult vkGetPipelineExecutablePropertiesKHR((struct VkDevice*) VkDevice device, const VkPipelineInfoKHR* pPipelineInfo, uint32_t* pExecutableCount, VkPipelineExecutablePropertiesKHR* pProperties);
+    /// ```
+    public static int vkGetPipelineExecutablePropertiesKHR(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pExecutableCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutablePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutablePropertiesKHR");
+        try { return (int) Handles.MH_vkGetPipelineExecutablePropertiesKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutablePropertiesKHR, device.segment(), pPipelineInfo, pExecutableCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutablePropertiesKHR", e); }
     }
 
-    public @CType("VkResult") int GetPipelineExecutableStatisticsKHR(@CType("VkDevice") MemorySegment device, @CType("const VkPipelineExecutableInfoKHR *") MemorySegment pExecutableInfo, @CType("uint32_t *") MemorySegment pStatisticCount, @CType("VkPipelineExecutableStatisticKHR *") MemorySegment pStatistics) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPipelineExecutableStatisticsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableStatisticsKHR");
-        try { return (int) Handles.MH_vkGetPipelineExecutableStatisticsKHR.invokeExact(handles.PFN_vkGetPipelineExecutableStatisticsKHR, device, pExecutableInfo, pStatisticCount, pStatistics); }
+    /// ```
+    /// (int) VkResult vkGetPipelineExecutableStatisticsKHR((struct VkDevice*) VkDevice device, const VkPipelineExecutableInfoKHR* pExecutableInfo, uint32_t* pStatisticCount, VkPipelineExecutableStatisticKHR* pStatistics);
+    /// ```
+    public static int vkGetPipelineExecutableStatisticsKHR(VkDevice device, MemorySegment pExecutableInfo, MemorySegment pStatisticCount, MemorySegment pStatistics) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableStatisticsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableStatisticsKHR");
+        try { return (int) Handles.MH_vkGetPipelineExecutableStatisticsKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutableStatisticsKHR, device.segment(), pExecutableInfo, pStatisticCount, pStatistics); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutableStatisticsKHR", e); }
     }
 
-    public @CType("VkResult") int GetPipelineExecutableInternalRepresentationsKHR(@CType("VkDevice") MemorySegment device, @CType("const VkPipelineExecutableInfoKHR *") MemorySegment pExecutableInfo, @CType("uint32_t *") MemorySegment pInternalRepresentationCount, @CType("VkPipelineExecutableInternalRepresentationKHR *") MemorySegment pInternalRepresentations) {
-        if (Unmarshal.isNullPointer(handles.PFN_vkGetPipelineExecutableInternalRepresentationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableInternalRepresentationsKHR");
-        try { return (int) Handles.MH_vkGetPipelineExecutableInternalRepresentationsKHR.invokeExact(handles.PFN_vkGetPipelineExecutableInternalRepresentationsKHR, device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations); }
+    /// ```
+    /// (int) VkResult vkGetPipelineExecutableInternalRepresentationsKHR((struct VkDevice*) VkDevice device, const VkPipelineExecutableInfoKHR* pExecutableInfo, uint32_t* pInternalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* pInternalRepresentations);
+    /// ```
+    public static int vkGetPipelineExecutableInternalRepresentationsKHR(VkDevice device, MemorySegment pExecutableInfo, MemorySegment pInternalRepresentationCount, MemorySegment pInternalRepresentations) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableInternalRepresentationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableInternalRepresentationsKHR");
+        try { return (int) Handles.MH_vkGetPipelineExecutableInternalRepresentationsKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutableInternalRepresentationsKHR, device.segment(), pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutableInternalRepresentationsKHR", e); }
     }
 

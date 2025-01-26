@@ -1,0 +1,134 @@
+// nfd.h
+
+using nfdu8char_t = char;
+
+using nfdnchar_t = java nfdnchar_t;
+
+using nfdpathset_t = void;
+using nfdpathsetenum_t = struct NFDPathSetEnum {
+    void* ptr;
+};
+
+using nfdfiltersize_t = unsigned int;
+
+using nfdresult_t = enum {
+    NFD_ERROR,
+    NFD_OKAY,
+    NFD_CANCEL
+};
+
+using nfdnfilteritem_t = struct NFDFilterItem {
+    const nfdnchar_t* name;
+    const nfdnchar_t* spec;
+};
+
+enum {
+    NFD_WINDOW_HANDLE_TYPE_UNSET = 0,
+    NFD_WINDOW_HANDLE_TYPE_WINDOWS = 1,
+    NFD_WINDOW_HANDLE_TYPE_COCOA = 2,
+    NFD_WINDOW_HANDLE_TYPE_X11 = 3,
+};
+using nfdwindowhandle_t = struct NFDWindowHandle {
+    size_t type;
+    void* handle;
+};
+
+using nfdversion_t = size_t;
+
+using nfdopendialognargs_t = struct NFDOpenDialogArgs {
+    const nfdnfilteritem_t* filterList;
+    nfdfiltersize_t filterCount;
+    const nfdnchar_t* defaultPath;
+    nfdwindowhandle_t parentWindow;
+};
+
+using nfdsavedialognargs_t = struct NFDSaveDialogArgs {
+    const nfdnfilteritem_t* filterList;
+    nfdfiltersize_t filterCount;
+    const nfdnchar_t* defaultPath;
+    const nfdnchar_t* defaultName;
+    nfdwindowhandle_t parentWindow;
+};
+
+using nfdpickfoldernargs_t = struct NFDPickFolderArgs {
+    const nfdnchar_t* defaultPath;
+    nfdwindowhandle_t parentWindow;
+};
+
+#define NFD_INTERFACE_VERSION 1
+
+fn void NFD_FreePath(nfdnchar_t* filePath) @NFD_FreePathN;
+fn nfdresult_t NFD_Init();
+fn void NFD_Quit();
+
+fn nfdresult_t NFD_OpenDialog(nfdnchar_t** outPath,
+                              const nfdnfilteritem_t* filterList,
+                              nfdfiltersize_t filterCount,
+                              const nfdnchar_t* defaultPath) @NFD_OpenDialogN;
+fn nfdresult_t NFD_OpenDialog_With_Impl(nfdversion_t version,
+                                        nfdnchar_t** outPath,
+                                        const nfdopendialognargs_t* args) @NFD_OpenDialogN_With_Impl;
+fn nfdresult_t NFD_OpenDialog_With(nfdnchar_t** outPath,
+                                   const nfdopendialognargs_t* args) {
+    "return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
+}
+
+fn nfdresult_t NFD_OpenDialogMultiple(const nfdpathset_t** outPaths,
+                                      const nfdnfilteritem_t* filterList,
+                                      nfdfiltersize_t filterCount,
+                                      const nfdnchar_t* defaultPath) @NFD_OpenDialogMultipleN;
+fn nfdresult_t NFD_OpenDialogMultiple_With_Impl(nfdversion_t version,
+                                                const nfdpathset_t** outPaths,
+                                                const nfdopendialognargs_t* args) @NFD_OpenDialogMultipleN_With_Impl;
+fn nfdresult_t NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths,
+                                           const nfdopendialognargs_t* args) {
+    "return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
+}
+
+fn nfdresult_t NFD_SaveDialog(nfdnchar_t** outPath,
+                              const nfdnfilteritem_t* filterList,
+                              nfdfiltersize_t filterCount,
+                              const nfdnchar_t* defaultPath,
+                              const nfdnchar_t* defaultName) @NFD_SaveDialogN;
+fn nfdresult_t NFD_SaveDialog_With_Impl(nfdversion_t version,
+                                        nfdnchar_t** outPath,
+                                        const nfdsavedialognargs_t* args) @NFD_SaveDialogN_With_Impl;
+fn nfdresult_t NFD_SaveDialog_With(nfdnchar_t** outPath,
+                                   const nfdsavedialognargs_t* args) {
+    "return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
+}
+
+fn nfdresult_t NFD_PickFolder(nfdnchar_t** outPath, const nfdnchar_t* defaultPath) @NFD_PickFolderN;
+fn nfdresult_t NFD_PickFolder_With_Impl(nfdversion_t version,
+                                        nfdnchar_t** outPath,
+                                        const nfdpickfoldernargs_t* args) @NFD_PickFolderN_With_Impl;
+fn nfdresult_t NFD_PickFolder_With(nfdnchar_t** outPath,
+                                   const nfdpickfoldernargs_t* args) {
+    "return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
+}
+
+fn nfdresult_t NFD_PickFolderMultiple(const nfdpathset_t** outPaths,
+                                      const nfdnchar_t* defaultPath) @NFD_PickFolderMultipleN;
+fn nfdresult_t NFD_PickFolderMultiple_With_Impl(nfdversion_t version,
+                                                const nfdpathset_t** outPaths,
+                                                const nfdpickfoldernargs_t* args) @NFD_PickFolderMultipleN_With_Impl;
+fn nfdresult_t NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths,
+                                           const nfdpickfoldernargs_t* args) {
+    "return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
+}
+
+fn const char* NFD_GetError();
+fn void NFD_ClearError();
+
+using nfdpathsetsize_t = java nfdpathsetsize_t;
+
+fn nfdresult_t NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
+fn nfdresult_t NFD_PathSet_GetPath(const nfdpathset_t* pathSet,
+                                   nfdpathsetsize_t index,
+                                   nfdnchar_t** outPath) @NFD_PathSet_GetPathN;
+fn void NFD_PathSet_FreePath(const nfdnchar_t* filePath) @NFD_PathSet_FreePathN;
+fn nfdresult_t NFD_PathSet_GetEnum(const nfdpathset_t* pathSet,
+                                   nfdpathsetenum_t* outEnumerator);
+fn void NFD_PathSet_FreeEnum(nfdpathsetenum_t* enumerator);
+fn nfdresult_t NFD_PathSet_EnumNext(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath) @NFD_PathSet_EnumNextN;
+fn void NFD_PathSet_Free(const nfdpathset_t* pathSet);

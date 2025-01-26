@@ -19,8 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -32,18 +30,9 @@ public final class GLAPPLETextureRange {
     public static final int GL_STORAGE_CACHED_APPLE = 0x85BE;
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glTextureRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetTexParameterPointervAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTextureRangeAPPLE,
-            FD_glGetTexParameterPointervAPPLE
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glTextureRangeAPPLE);
-        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGetTexParameterPointervAPPLE);
+        public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTextureRangeAPPLE;
         public final MemorySegment PFN_glGetTexParameterPointervAPPLE;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -56,16 +45,22 @@ public final class GLAPPLETextureRange {
         this.handles = new Handles(func);
     }
 
-    public void TextureRangeAPPLE(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (Unmarshal.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
+    /// ```
+    /// void glTextureRangeAPPLE((unsigned int) GLenum target, (int) GLsizei length, const void* pointer);
+    /// ```
+    public void TextureRangeAPPLE(int target, int length, MemorySegment pointer) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
         try { Handles.MH_glTextureRangeAPPLE.invokeExact(handles.PFN_glTextureRangeAPPLE, target, length, pointer); }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in TextureRangeAPPLE", e); }
     }
 
-    public void GetTexParameterPointervAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
+    /// ```
+    /// void glGetTexParameterPointervAPPLE((unsigned int) GLenum target, (unsigned int) GLenum pname, void** params);
+    /// ```
+    public void GetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
         try { Handles.MH_glGetTexParameterPointervAPPLE.invokeExact(handles.PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetTexParameterPointervAPPLE", e); }
     }
 
 }

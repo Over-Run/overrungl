@@ -19,8 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -53,39 +51,16 @@ public class GL14 extends GL13 {
     public static final int GL_MIN = 0x8007;
     public static final int GL_MAX = 0x8008;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glBlendFuncSeparate = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawArrays = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glMultiDrawElements = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPointParameterf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glPointParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glPointParameteri = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final FunctionDescriptor FD_glPointParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glBlendColor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final FunctionDescriptor FD_glBlendEquation = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendFuncSeparate,
-            FD_glMultiDrawArrays,
-            FD_glMultiDrawElements,
-            FD_glPointParameterf,
-            FD_glPointParameterfv,
-            FD_glPointParameteri,
-            FD_glPointParameteriv,
-            FD_glBlendColor,
-            FD_glBlendEquation
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glBlendFuncSeparate = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparate);
-        public static final MethodHandle MH_glMultiDrawArrays = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArrays);
-        public static final MethodHandle MH_glMultiDrawElements = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawElements);
-        public static final MethodHandle MH_glPointParameterf = RuntimeHelper.downcall(Descriptors.FD_glPointParameterf);
-        public static final MethodHandle MH_glPointParameterfv = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfv);
-        public static final MethodHandle MH_glPointParameteri = RuntimeHelper.downcall(Descriptors.FD_glPointParameteri);
-        public static final MethodHandle MH_glPointParameteriv = RuntimeHelper.downcall(Descriptors.FD_glPointParameteriv);
-        public static final MethodHandle MH_glBlendColor = RuntimeHelper.downcall(Descriptors.FD_glBlendColor);
-        public static final MethodHandle MH_glBlendEquation = RuntimeHelper.downcall(Descriptors.FD_glBlendEquation);
+        public static final MethodHandle MH_glBlendFuncSeparate = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPointParameterf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPointParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPointParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBlendColor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glBlendEquation = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBlendFuncSeparate;
         public final MemorySegment PFN_glMultiDrawArrays;
         public final MemorySegment PFN_glMultiDrawElements;
@@ -113,58 +88,85 @@ public class GL14 extends GL13 {
         this.handles = new Handles(func);
     }
 
-    public void BlendFuncSeparate(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendFuncSeparate)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparate");
+    /// ```
+    /// void glBlendFuncSeparate((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
+    /// ```
+    public void BlendFuncSeparate(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparate)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparate");
         try { Handles.MH_glBlendFuncSeparate.invokeExact(handles.PFN_glBlendFuncSeparate, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparate", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparate", e); }
     }
 
-    public void MultiDrawArrays(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int drawcount) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArrays");
+    /// ```
+    /// void glMultiDrawArrays((unsigned int) GLenum mode, const GLint* first, const GLsizei* count, (int) GLsizei drawcount);
+    /// ```
+    public void MultiDrawArrays(int mode, MemorySegment first, MemorySegment count, int drawcount) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArrays");
         try { Handles.MH_glMultiDrawArrays.invokeExact(handles.PFN_glMultiDrawArrays, mode, first, count, drawcount); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArrays", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawArrays", e); }
     }
 
-    public void MultiDrawElements(@CType("GLenum") int mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int drawcount) {
-        if (Unmarshal.isNullPointer(handles.PFN_glMultiDrawElements)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElements");
+    /// ```
+    /// void glMultiDrawElements((unsigned int) GLenum mode, const GLsizei* count, (unsigned int) GLenum type, const void* const * indices, (int) GLsizei drawcount);
+    /// ```
+    public void MultiDrawElements(int mode, MemorySegment count, int type, MemorySegment indices, int drawcount) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElements)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElements");
         try { Handles.MH_glMultiDrawElements.invokeExact(handles.PFN_glMultiDrawElements, mode, count, type, indices, drawcount); }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElements", e); }
+        catch (Throwable e) { throw new RuntimeException("error in MultiDrawElements", e); }
     }
 
-    public void PointParameterf(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterf)) throw new SymbolNotFoundError("Symbol not found: glPointParameterf");
+    /// ```
+    /// void glPointParameterf((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
+    /// ```
+    public void PointParameterf(int pname, float param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterf)) throw new SymbolNotFoundError("Symbol not found: glPointParameterf");
         try { Handles.MH_glPointParameterf.invokeExact(handles.PFN_glPointParameterf, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterf", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterf", e); }
     }
 
-    public void PointParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfv");
+    /// ```
+    /// void glPointParameterfv((unsigned int) GLenum pname, const GLfloat* params);
+    /// ```
+    public void PointParameterfv(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfv");
         try { Handles.MH_glPointParameterfv.invokeExact(handles.PFN_glPointParameterfv, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameterfv", e); }
     }
 
-    public void PointParameteri(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameteri)) throw new SymbolNotFoundError("Symbol not found: glPointParameteri");
+    /// ```
+    /// void glPointParameteri((unsigned int) GLenum pname, (int) GLint param);
+    /// ```
+    public void PointParameteri(int pname, int param) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteri)) throw new SymbolNotFoundError("Symbol not found: glPointParameteri");
         try { Handles.MH_glPointParameteri.invokeExact(handles.PFN_glPointParameteri, pname, param); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameteri", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameteri", e); }
     }
 
-    public void PointParameteriv(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glPointParameteriv)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriv");
+    /// ```
+    /// void glPointParameteriv((unsigned int) GLenum pname, const GLint* params);
+    /// ```
+    public void PointParameteriv(int pname, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriv)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriv");
         try { Handles.MH_glPointParameteriv.invokeExact(handles.PFN_glPointParameteriv, pname, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameteriv", e); }
+        catch (Throwable e) { throw new RuntimeException("error in PointParameteriv", e); }
     }
 
-    public void BlendColor(@CType("GLfloat") float red, @CType("GLfloat") float green, @CType("GLfloat") float blue, @CType("GLfloat") float alpha) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendColor)) throw new SymbolNotFoundError("Symbol not found: glBlendColor");
+    /// ```
+    /// void glBlendColor(((float) khronos_float_t) GLfloat red, ((float) khronos_float_t) GLfloat green, ((float) khronos_float_t) GLfloat blue, ((float) khronos_float_t) GLfloat alpha);
+    /// ```
+    public void BlendColor(float red, float green, float blue, float alpha) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendColor)) throw new SymbolNotFoundError("Symbol not found: glBlendColor");
         try { Handles.MH_glBlendColor.invokeExact(handles.PFN_glBlendColor, red, green, blue, alpha); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendColor", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendColor", e); }
     }
 
-    public void BlendEquation(@CType("GLenum") int mode) {
-        if (Unmarshal.isNullPointer(handles.PFN_glBlendEquation)) throw new SymbolNotFoundError("Symbol not found: glBlendEquation");
+    /// ```
+    /// void glBlendEquation((unsigned int) GLenum mode);
+    /// ```
+    public void BlendEquation(int mode) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquation)) throw new SymbolNotFoundError("Symbol not found: glBlendEquation");
         try { Handles.MH_glBlendEquation.invokeExact(handles.PFN_glBlendEquation, mode); }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquation", e); }
+        catch (Throwable e) { throw new RuntimeException("error in BlendEquation", e); }
     }
 
 }

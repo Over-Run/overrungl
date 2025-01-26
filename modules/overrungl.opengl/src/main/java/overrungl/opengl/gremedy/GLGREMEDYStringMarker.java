@@ -19,22 +19,13 @@ package overrungl.opengl.gremedy;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
 public final class GLGREMEDYStringMarker {
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glStringMarkerGREMEDY = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glStringMarkerGREMEDY
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glStringMarkerGREMEDY = RuntimeHelper.downcall(Descriptors.FD_glStringMarkerGREMEDY);
+        public static final MethodHandle MH_glStringMarkerGREMEDY = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glStringMarkerGREMEDY;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glStringMarkerGREMEDY = func.invoke("glStringMarkerGREMEDY");
@@ -45,10 +36,13 @@ public final class GLGREMEDYStringMarker {
         this.handles = new Handles(func);
     }
 
-    public void StringMarkerGREMEDY(@CType("GLsizei") int len, @CType("const void *") java.lang.foreign.MemorySegment string) {
-        if (Unmarshal.isNullPointer(handles.PFN_glStringMarkerGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glStringMarkerGREMEDY");
+    /// ```
+    /// void glStringMarkerGREMEDY((int) GLsizei len, const void* string);
+    /// ```
+    public void StringMarkerGREMEDY(int len, MemorySegment string) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glStringMarkerGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glStringMarkerGREMEDY");
         try { Handles.MH_glStringMarkerGREMEDY.invokeExact(handles.PFN_glStringMarkerGREMEDY, len, string); }
-        catch (Throwable e) { throw new RuntimeException("error in glStringMarkerGREMEDY", e); }
+        catch (Throwable e) { throw new RuntimeException("error in StringMarkerGREMEDY", e); }
     }
 
 }

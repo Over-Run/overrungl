@@ -19,8 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -33,15 +31,8 @@ public final class GLNVInternalformatSampleQuery {
     public static final int GL_SUPERSAMPLE_SCALE_Y_NV = 0x9373;
     public static final int GL_CONFORMANT_NV = 0x9374;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glGetInternalformatSampleivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetInternalformatSampleivNV
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformatSampleivNV = RuntimeHelper.downcall(Descriptors.FD_glGetInternalformatSampleivNV);
+        public static final MethodHandle MH_glGetInternalformatSampleivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformatSampleivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformatSampleivNV = func.invoke("glGetInternalformatSampleivNV");
@@ -52,10 +43,13 @@ public final class GLNVInternalformatSampleQuery {
         this.handles = new Handles(func);
     }
 
-    public void GetInternalformatSampleivNV(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int samples, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
+    /// ```
+    /// void glGetInternalformatSampleivNV((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei samples, (unsigned int) GLenum pname, (int) GLsizei count, GLint* params);
+    /// ```
+    public void GetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, MemorySegment params) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
         try { Handles.MH_glGetInternalformatSampleivNV.invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformatSampleivNV", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetInternalformatSampleivNV", e); }
     }
 
 }

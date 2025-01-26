@@ -19,8 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
@@ -30,18 +28,9 @@ public final class GLSGISSharpenTexture {
     public static final int GL_LINEAR_SHARPEN_COLOR_SGIS = 0x80AF;
     public static final int GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS = 0x80B0;
     private final Handles handles;
-    public static final class Descriptors {
-        private Descriptors() {}
-        public static final FunctionDescriptor FD_glSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final FunctionDescriptor FD_glGetSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSharpenTexFuncSGIS,
-            FD_glGetSharpenTexFuncSGIS
-        );
-    }
     public static final class Handles {
-        public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glSharpenTexFuncSGIS);
-        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glGetSharpenTexFuncSGIS);
+        public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSharpenTexFuncSGIS;
         public final MemorySegment PFN_glGetSharpenTexFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -54,16 +43,22 @@ public final class GLSGISSharpenTexture {
         this.handles = new Handles(func);
     }
 
-    public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
+    /// ```
+    /// void glSharpenTexFuncSGIS((unsigned int) GLenum target, (int) GLsizei n, const GLfloat* points);
+    /// ```
+    public void SharpenTexFuncSGIS(int target, int n, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
         try { Handles.MH_glSharpenTexFuncSGIS.invokeExact(handles.PFN_glSharpenTexFuncSGIS, target, n, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in SharpenTexFuncSGIS", e); }
     }
 
-    public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (Unmarshal.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
+    /// ```
+    /// void glGetSharpenTexFuncSGIS((unsigned int) GLenum target, GLfloat* points);
+    /// ```
+    public void GetSharpenTexFuncSGIS(int target, MemorySegment points) {
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
         try { Handles.MH_glGetSharpenTexFuncSGIS.invokeExact(handles.PFN_glGetSharpenTexFuncSGIS, target, points); }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
+        catch (Throwable e) { throw new RuntimeException("error in GetSharpenTexFuncSGIS", e); }
     }
 
 }

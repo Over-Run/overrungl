@@ -16,10 +16,8 @@
 
 package overrungl.demo.glfw;
 
-import overrungl.glfw.GLFWCallbacks;
-import overrungl.glfw.GLFWErrorCallback;
-import overrungl.glfw.GLFWGamepadState;
-import overrungl.util.Unmarshal;
+import overrungl.glfw.*;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -34,34 +32,36 @@ import static overrungl.glfw.GLFW.*;
  * @since 0.1.0
  */
 public final class GLFWJoystickTest {
+    private Arena windowArena;
     private MemorySegment window;
 
     public void run() {
         init();
         loop();
 
-        GLFWCallbacks.free(window);
         glfwDestroyWindow(window);
+        windowArena.close();
 
         glfwTerminate();
         glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init() {
-        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint().stub(Arena.global()));
         if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        window = glfwCreateWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
-        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
+        windowArena = Arena.ofConfined();
+        window = glfwCreateWindow(200, 100, MemoryUtil.allocString("Holder"), MemorySegment.NULL, MemorySegment.NULL);
+        if (MemoryUtil.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
+        glfwSetKeyCallback(window, GLFWKeyFun.alloc(windowArena, (_, key, _, action, _) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                 glfwSetWindowShouldClose(window, true);
             }
-        });
-        glfwSetJoystickCallback((jid, event) -> {
+        }));
+        glfwSetJoystickCallback(GLFWJoystickFun.alloc(Arena.global(), (jid, event) -> {
             switch (event) {
                 case GLFW_CONNECTED -> {
                     boolean isGamepad = glfwJoystickIsGamepad(jid);
@@ -70,7 +70,7 @@ public final class GLFWJoystickTest {
                 }
                 case GLFW_DISCONNECTED -> System.out.println("Joystick " + jid + " has disconnected");
             }
-        });
+        }));
 
         glfwShowWindow(window);
     }
@@ -86,7 +86,7 @@ public final class GLFWJoystickTest {
                     if (glfwJoystickPresent(i)) {
                         if (glfwJoystickIsGamepad(i)) {
                             var state = states[i];
-                            if (glfwGetGamepadState(i, state)) {
+                            if (glfwGetGamepadState(i, state.segment())) {
                                 System.out.printf("""
                                         Get gamepad state for [jid=%d,name=%s] successful:
                                         Buttons: [A(Cross)=%d, B(Circle)=%d, X(Square)=%d, Y(Triangle)=%d,
