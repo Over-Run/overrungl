@@ -38,9 +38,11 @@ abstract class VkDispatchableHandleDevice implements Addressable {
         return segment;
     }
 
+    /// @return the [VKCapabilitiesDevice] instance associated with this dispatchable handle.
     public VKCapabilitiesDevice capabilities() {
         return capabilities;
     }
 
+    /// @return the [VKCapabilitiesInstance] instance associated with this dispatchable handle.
     public abstract VKCapabilitiesInstance capabilitiesInstance();
 }

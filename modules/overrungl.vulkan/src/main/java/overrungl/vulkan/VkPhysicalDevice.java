@@ -19,12 +19,18 @@ package overrungl.vulkan;
 import java.lang.foreign.MemorySegment;
 
 /**
+ * Wraps a Vulkan physical device handle.
+ *
  * @author squid233
  * @since 0.1.0
  */
 public class VkPhysicalDevice extends VkDispatchableHandleInstance {
     private final VkInstance instance;
 
+    /// Creates a `VkPhysicalDevice` using the specified segment and Vulkan instance.
+    ///
+    /// @param segment  the `VkDevice` segment
+    /// @param instance the Vulkan instance from which the physical device was enumerated
     public VkPhysicalDevice(MemorySegment segment, VkInstance instance) {
         super(segment, instance.capabilities());
         this.instance = instance;

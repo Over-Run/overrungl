@@ -21,12 +21,18 @@ import overrungl.util.MemoryStack;
 import java.lang.foreign.MemorySegment;
 
 /**
+ * Wraps a Vulkan device dispatchable handle.
+ *
  * @author squid233
  * @since 0.1.0
  */
 public class VkDevice extends VkDispatchableHandleDevice {
     private final VkPhysicalDevice physicalDevice;
 
+    /// Creates a `VkDevice` instance for the specified segment.
+    ///
+    /// @param segment        the `VkDevice` segment
+    /// @param physicalDevice the physical device used to create the `VkDevice`
     public VkDevice(MemorySegment segment, VkPhysicalDevice physicalDevice) {
         super(segment, getDeviceCapabilities(segment, physicalDevice));
         this.physicalDevice = physicalDevice;

@@ -25,12 +25,19 @@ import java.lang.foreign.MemorySegment;
  * This class loads the Vulkan library into the JVM process.
  *
  * @author squid233
+ * @see VKLoadFunc
  * @since 0.1.0
  */
 public final class VK {
     private static VKLoadFunc loadFunc;
     private static GlobalCommands globalCommands;
 
+    private VK() {
+    }
+
+    /// Loads necessary functions for Vulkan to create [VkInstance] with the given loading function.
+    ///
+    /// @param func a function that returns an address of a Vulkan function specified with the given name. this can be `GLFW::glfwGetInstanceProcAddress`
     public static void create(VKLoadFunc func) {
         if (loadFunc != null) {
             throw new IllegalStateException("Vulkan has already been created.");
@@ -39,12 +46,14 @@ public final class VK {
         globalCommands = new GlobalCommands(func);
     }
 
+    /// Removes loaded functions.
     public static void destroy() {
         if (loadFunc == null) return;
         loadFunc = null;
         globalCommands = null;
     }
 
+    /// {@return the function for which Vulkan function is acquired}
     public static VKLoadFunc functionLookup() {
         return loadFunc;
     }

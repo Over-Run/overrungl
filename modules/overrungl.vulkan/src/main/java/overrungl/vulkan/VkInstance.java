@@ -19,10 +19,15 @@ package overrungl.vulkan;
 import java.lang.foreign.MemorySegment;
 
 /**
+ * Wraps a Vulkan instance handle.
+ *
  * @author squid233
  * @since 0.1.0
  */
 public class VkInstance extends VkDispatchableHandleInstance {
+    /// Creates a `VkInstance` instance for the specified segment.
+    ///
+    /// @param segment the `VkInstance` segment
     public VkInstance(MemorySegment segment) {
         super(segment, getInstanceCapabilities(segment));
     }

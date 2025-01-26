@@ -21,6 +21,8 @@ import overrungl.util.Addressable;
 import java.lang.foreign.MemorySegment;
 
 /**
+ * Base class for Vulkan dispatchable handles.
+ *
  * @author squid233
  * @since 0.1.0
  */
@@ -38,6 +40,7 @@ abstract class VkDispatchableHandleInstance implements Addressable {
         return segment;
     }
 
+    /// @return the {@link VKCapabilitiesInstance} instance associated with this dispatchable handle.
     public VKCapabilitiesInstance capabilities() {
         return capabilities;
     }

@@ -1,3 +1,5 @@
+import org.jreleaser.model.Active
+
 /*
  * MIT License
  *
@@ -17,7 +19,7 @@
 plugins {
     `java-platform`
     `maven-publish`
-    signing
+    id("org.jreleaser") version "1.16.0"
 }
 
 val projGroupId: String by rootProject
@@ -77,26 +79,31 @@ publishing.publications {
     }
 }
 
-// You have to add `OSSRH_USERNAME`, `OSSRH_PASSWORD`, `signing.keyId`,
-// `signing.password` and `signing.secretKeyRingFile` to
-// GRADLE_USER_HOME/gradle.properties
 publishing.repositories {
     maven {
-        name = "OSSRH"
-        credentials {
-            username = project.findProperty("OSSRH_USERNAME").toString()
-            password = project.findProperty("OSSRH_PASSWORD").toString()
-        }
-        url = uri(
-            if (projVersion.endsWith("-SNAPSHOT"))
-                "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-            else "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-        )
+        setUrl(layout.buildDirectory.dir("staging-deploy"))
     }
     mavenLocal()
 }
 
-signing {
-    if (!projVersion.endsWith("-SNAPSHOT") && System.getProperty("gpg.signing", "true").toBoolean())
-        sign(publishing.publications)
+// check https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_gradle
+jreleaser {
+    signing {
+        active = Active.ALWAYS
+        armored = true
+    }
+    deploy {
+        release {
+            github.enabled = false
+        }
+        maven {
+            mavenCentral {
+                create("sonatype") {
+                    active = Active.ALWAYS
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+        }
+    }
 }
