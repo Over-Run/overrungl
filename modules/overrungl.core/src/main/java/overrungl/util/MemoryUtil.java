@@ -28,7 +28,30 @@ import static overrungl.util.CanonicalTypes.SIZE_T;
 
 /// Utilities of memory segment.
 ///
-/// TODO: Add documentation
+/// ## C memory allocator
+///
+/// This class supports C-style memory allocation via [malloc][#malloc(long)], [calloc][#calloc(long, long)]
+/// and [free][#free(MemorySegment)].
+///
+/// ## Null-safe allocator
+///
+/// This class adds null-safe allocating methods for [String] and arrays.
+/// For `null` values, those methods return [NULL][MemorySegment#NULL].
+///
+/// ## Reinterpreting string
+///
+/// This class provides `nativeString` methods to get a string from a zero-length memory segment.
+///
+/// ## Copying
+///
+/// This class provides `copy` methods to copy content from a memory segment to an array.
+///
+/// ## Widening and narrowing
+///
+/// This class adds `wideningTo*` and `narrowing*` methods to converts a value
+/// whose byte size varies between platforms.
+///
+/// The memory layouts of those values are often canonical layouts defined in [CanonicalTypes].
 ///
 /// @author squid233
 /// @since 0.1.0
