@@ -66,7 +66,7 @@ public final class GLARBGeometryShader4 {
     }
 
     /// ```
-    /// void glProgramParameteriARB(GLuint program, GLenum pname, GLint value);
+    /// void glProgramParameteriARB((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void ProgramParameteriARB(int program, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriARB)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriARB");
@@ -75,7 +75,7 @@ public final class GLARBGeometryShader4 {
     }
 
     /// ```
-    /// void glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level);
+    /// void glFramebufferTextureARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTextureARB(int target, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureARB");
@@ -84,7 +84,7 @@ public final class GLARBGeometryShader4 {
     }
 
     /// ```
-    /// void glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+    /// void glFramebufferTextureLayerARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
     public void FramebufferTextureLayerARB(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerARB");
@@ -93,7 +93,7 @@ public final class GLARBGeometryShader4 {
     }
 
     /// ```
-    /// void glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+    /// void glFramebufferTextureFaceARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```
     public void FramebufferTextureFaceARB(int target, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceARB");

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceMemoryOpaqueCaptureAddressInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceMemory memory;
+///     (uint64_t) VkDeviceMemory memory;
 /// };
 /// ```
 public sealed class VkDeviceMemoryOpaqueCaptureAddressInfo extends GroupType {

@@ -21,6 +21,6 @@ public final class VKAMDShaderExplicitVertexParameter {
     public static final int VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
 
-    private VKAMDShaderExplicitVertexParameter() { }
+    private VKAMDShaderExplicitVertexParameter() {}
 
 }

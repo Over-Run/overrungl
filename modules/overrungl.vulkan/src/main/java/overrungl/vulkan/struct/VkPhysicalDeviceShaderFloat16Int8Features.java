@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderFloat16Int8Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderFloat16;
-///     VkBool32 shaderInt8;
+///     (uint32_t) VkBool32 shaderFloat16;
+///     (uint32_t) VkBool32 shaderInt8;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType {

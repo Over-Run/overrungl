@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags;
+///     ((uint32_t) VkFlags) VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags;
 /// };
 /// ```
 public sealed class VkQueryPoolVideoEncodeFeedbackCreateInfoKHR extends GroupType {

@@ -22,6 +22,6 @@ public final class VKKHRSwapchainMutableFormat {
     public static final String VK_KHR_SWAPCHAIN_MUTABLE_FORMAT_EXTENSION_NAME = "VK_KHR_swapchain_mutable_format";
     public static final int VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR = 0x00000004;
 
-    private VKKHRSwapchainMutableFormat() { }
+    private VKKHRSwapchainMutableFormat() {}
 
 }

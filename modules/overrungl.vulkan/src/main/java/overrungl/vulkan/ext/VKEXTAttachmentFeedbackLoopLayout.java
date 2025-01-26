@@ -27,6 +27,6 @@ public final class VKEXTAttachmentFeedbackLoopLayout {
     public static final int VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = 0x04000000;
     public static final int VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT = 0x00000008;
 
-    private VKEXTAttachmentFeedbackLoopLayout() { }
+    private VKEXTAttachmentFeedbackLoopLayout() {}
 
 }

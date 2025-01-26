@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalMemoryProperties {
-///     VkExternalMemoryFeatureFlags externalMemoryFeatures;
-///     VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes;
-///     VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalMemoryFeatureFlags externalMemoryFeatures;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
 /// };
 /// ```
 public sealed class VkExternalMemoryProperties extends GroupType {

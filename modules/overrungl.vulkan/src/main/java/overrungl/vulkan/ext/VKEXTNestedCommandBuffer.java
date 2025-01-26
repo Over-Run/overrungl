@@ -25,6 +25,6 @@ public final class VKEXTNestedCommandBuffer {
     public static final int VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT = 1000562000;
     public static final int VK_RENDERING_CONTENTS_INLINE_BIT_EXT = 0x00000010;
 
-    private VKEXTNestedCommandBuffer() { }
+    private VKEXTNestedCommandBuffer() {}
 
 }

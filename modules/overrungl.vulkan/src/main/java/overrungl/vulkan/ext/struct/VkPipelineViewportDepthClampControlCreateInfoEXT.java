@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportDepthClampControlCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDepthClampModeEXT depthClampMode;
+///     (int) VkDepthClampModeEXT depthClampMode;
 ///     const VkDepthClampRangeEXT* pDepthClampRange;
 /// };
 /// ```

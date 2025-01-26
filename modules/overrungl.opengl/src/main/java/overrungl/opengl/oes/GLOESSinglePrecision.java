@@ -52,7 +52,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glClearDepthfOES(GLclampf depth);
+    /// void glClearDepthfOES(((float) khronos_float_t) GLclampf depth);
     /// ```
     public void ClearDepthfOES(float depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthfOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthfOES");
@@ -61,7 +61,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glClipPlanefOES(GLenum plane, const GLfloat* equation);
+    /// void glClipPlanefOES((unsigned int) GLenum plane, const GLfloat* equation);
     /// ```
     public void ClipPlanefOES(int plane, MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES");
@@ -70,7 +70,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glDepthRangefOES(GLclampf n, GLclampf f);
+    /// void glDepthRangefOES(((float) khronos_float_t) GLclampf n, ((float) khronos_float_t) GLclampf f);
     /// ```
     public void DepthRangefOES(float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangefOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangefOES");
@@ -79,7 +79,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+    /// void glFrustumfOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
     public void FrustumfOES(float l, float r, float b, float t, float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrustumfOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumfOES");
@@ -88,7 +88,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glGetClipPlanefOES(GLenum plane, GLfloat* equation);
+    /// void glGetClipPlanefOES((unsigned int) GLenum plane, GLfloat* equation);
     /// ```
     public void GetClipPlanefOES(int plane, MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
@@ -97,7 +97,7 @@ public final class GLOESSinglePrecision {
     }
 
     /// ```
-    /// void glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+    /// void glOrthofOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
     public void OrthofOES(float l, float r, float b, float t, float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glOrthofOES)) throw new SymbolNotFoundError("Symbol not found: glOrthofOES");

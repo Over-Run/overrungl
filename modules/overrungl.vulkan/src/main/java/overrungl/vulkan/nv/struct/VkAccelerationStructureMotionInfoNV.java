@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureMotionInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t maxInstances;
-///     VkAccelerationStructureMotionInfoFlagsNV flags;
+///     ((uint32_t) VkFlags) VkAccelerationStructureMotionInfoFlagsNV flags;
 /// };
 /// ```
 public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {

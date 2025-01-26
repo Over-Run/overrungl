@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeSessionParametersGetInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoSessionParametersKHR videoSessionParameters;
+///     (uint64_t) VkVideoSessionParametersKHR videoSessionParameters;
 /// };
 /// ```
 public sealed class VkVideoEncodeSessionParametersGetInfoKHR extends GroupType {

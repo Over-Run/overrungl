@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferDeviceAddressCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceAddress deviceAddress;
 /// };
 /// ```
 public sealed class VkBufferDeviceAddressCreateInfoEXT extends GroupType {

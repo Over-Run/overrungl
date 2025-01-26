@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLinearColorAttachmentFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 linearColorAttachment;
+///     (uint32_t) VkBool32 linearColorAttachment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceLinearColorAttachmentFeaturesNV extends GroupType {

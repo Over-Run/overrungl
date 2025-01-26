@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1ProfileInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     StdVideoAV1Profile stdProfile;
+///     (int) StdVideoAV1Profile stdProfile;
 /// };
 /// ```
 public sealed class VkVideoEncodeAV1ProfileInfoKHR extends GroupType {

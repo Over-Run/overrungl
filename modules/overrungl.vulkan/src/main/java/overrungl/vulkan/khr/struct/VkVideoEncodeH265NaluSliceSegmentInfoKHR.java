@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265NaluSliceSegmentInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     int32_t constantQp;
 ///     const StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMetalSharedEventInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     MTLSharedEvent_id mtlSharedEvent;
+///     (void*) MTLSharedEvent_id mtlSharedEvent;
 /// };
 /// ```
 public sealed class VkImportMetalSharedEventInfoEXT extends GroupType {

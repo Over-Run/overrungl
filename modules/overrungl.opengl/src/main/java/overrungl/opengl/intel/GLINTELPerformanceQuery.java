@@ -84,7 +84,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glBeginPerfQueryINTEL(GLuint queryHandle);
+    /// void glBeginPerfQueryINTEL((unsigned int) GLuint queryHandle);
     /// ```
     public void BeginPerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginPerfQueryINTEL)) throw new SymbolNotFoundError("Symbol not found: glBeginPerfQueryINTEL");
@@ -93,7 +93,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glCreatePerfQueryINTEL(GLuint queryId, GLuint* queryHandle);
+    /// void glCreatePerfQueryINTEL((unsigned int) GLuint queryId, GLuint* queryHandle);
     /// ```
     public void CreatePerfQueryINTEL(int queryId, MemorySegment queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreatePerfQueryINTEL)) throw new SymbolNotFoundError("Symbol not found: glCreatePerfQueryINTEL");
@@ -102,7 +102,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glDeletePerfQueryINTEL(GLuint queryHandle);
+    /// void glDeletePerfQueryINTEL((unsigned int) GLuint queryHandle);
     /// ```
     public void DeletePerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeletePerfQueryINTEL)) throw new SymbolNotFoundError("Symbol not found: glDeletePerfQueryINTEL");
@@ -111,7 +111,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glEndPerfQueryINTEL(GLuint queryHandle);
+    /// void glEndPerfQueryINTEL((unsigned int) GLuint queryHandle);
     /// ```
     public void EndPerfQueryINTEL(int queryHandle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndPerfQueryINTEL)) throw new SymbolNotFoundError("Symbol not found: glEndPerfQueryINTEL");
@@ -129,7 +129,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glGetNextPerfQueryIdINTEL(GLuint queryId, GLuint* nextQueryId);
+    /// void glGetNextPerfQueryIdINTEL((unsigned int) GLuint queryId, GLuint* nextQueryId);
     /// ```
     public void GetNextPerfQueryIdINTEL(int queryId, MemorySegment nextQueryId) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNextPerfQueryIdINTEL)) throw new SymbolNotFoundError("Symbol not found: glGetNextPerfQueryIdINTEL");
@@ -138,7 +138,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glGetPerfCounterInfoINTEL(GLuint queryId, GLuint counterId, GLuint counterNameLength, GLchar* counterName, GLuint counterDescLength, GLchar* counterDesc, GLuint* counterOffset, GLuint* counterDataSize, GLuint* counterTypeEnum, GLuint* counterDataTypeEnum, GLuint64* rawCounterMaxValue);
+    /// void glGetPerfCounterInfoINTEL((unsigned int) GLuint queryId, (unsigned int) GLuint counterId, (unsigned int) GLuint counterNameLength, GLchar* counterName, (unsigned int) GLuint counterDescLength, GLchar* counterDesc, GLuint* counterOffset, GLuint* counterDataSize, GLuint* counterTypeEnum, GLuint* counterDataTypeEnum, GLuint64* rawCounterMaxValue);
     /// ```
     public void GetPerfCounterInfoINTEL(int queryId, int counterId, int counterNameLength, MemorySegment counterName, int counterDescLength, MemorySegment counterDesc, MemorySegment counterOffset, MemorySegment counterDataSize, MemorySegment counterTypeEnum, MemorySegment counterDataTypeEnum, MemorySegment rawCounterMaxValue) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfCounterInfoINTEL)) throw new SymbolNotFoundError("Symbol not found: glGetPerfCounterInfoINTEL");
@@ -147,7 +147,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, void* data, GLuint* bytesWritten);
+    /// void glGetPerfQueryDataINTEL((unsigned int) GLuint queryHandle, (unsigned int) GLuint flags, (int) GLsizei dataSize, void* data, GLuint* bytesWritten);
     /// ```
     public void GetPerfQueryDataINTEL(int queryHandle, int flags, int dataSize, MemorySegment data, MemorySegment bytesWritten) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfQueryDataINTEL)) throw new SymbolNotFoundError("Symbol not found: glGetPerfQueryDataINTEL");
@@ -165,7 +165,7 @@ public final class GLINTELPerformanceQuery {
     }
 
     /// ```
-    /// void glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar* queryName, GLuint* dataSize, GLuint* noCounters, GLuint* noInstances, GLuint* capsMask);
+    /// void glGetPerfQueryInfoINTEL((unsigned int) GLuint queryId, (unsigned int) GLuint queryNameLength, GLchar* queryName, GLuint* dataSize, GLuint* noCounters, GLuint* noInstances, GLuint* capsMask);
     /// ```
     public void GetPerfQueryInfoINTEL(int queryId, int queryNameLength, MemorySegment queryName, MemorySegment dataSize, MemorySegment noCounters, MemorySegment noInstances, MemorySegment capsMask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfQueryInfoINTEL)) throw new SymbolNotFoundError("Symbol not found: glGetPerfQueryInfoINTEL");

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalMemoryImageCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlags handleTypes;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlags handleTypes;
 /// };
 /// ```
 public sealed class VkExternalMemoryImageCreateInfo extends GroupType {

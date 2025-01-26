@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265ShortTermRefPicSet {
-///     StdVideoH265ShortTermRefPicSetFlags flags;
+///     (struct StdVideoH265ShortTermRefPicSetFlags) StdVideoH265ShortTermRefPicSetFlags flags;
 ///     uint32_t delta_idx_minus1;
 ///     uint16_t use_delta_flag;
 ///     uint16_t abs_delta_rps_minus1;

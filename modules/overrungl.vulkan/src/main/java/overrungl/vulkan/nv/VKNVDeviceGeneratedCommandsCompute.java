@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVDeviceGeneratedCommandsCompute {
+public final class VKNVDeviceGeneratedCommandsCompute {
     public static final int VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION = 2;
     public static final String VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_EXTENSION_NAME = "VK_NV_device_generated_commands_compute";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV = 1000428000;
@@ -30,50 +30,40 @@ public class VKNVDeviceGeneratedCommandsCompute {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV = 1000428003;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV = 1000428004;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV = 0x00000080;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPipelineIndirectMemoryRequirementsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdUpdatePipelineIndirectBufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetPipelineIndirectDeviceAddressNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPipelineIndirectMemoryRequirementsNV;
-        public final MemorySegment PFN_vkCmdUpdatePipelineIndirectBufferNV;
-        public final MemorySegment PFN_vkGetPipelineIndirectDeviceAddressNV;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPipelineIndirectMemoryRequirementsNV = func.invoke(device, "vkGetPipelineIndirectMemoryRequirementsNV");
-            PFN_vkCmdUpdatePipelineIndirectBufferNV = func.invoke(device, "vkCmdUpdatePipelineIndirectBufferNV");
-            PFN_vkGetPipelineIndirectDeviceAddressNV = func.invoke(device, "vkGetPipelineIndirectDeviceAddressNV");
-        }
+        private Handles() {}
     }
 
-    public VKNVDeviceGeneratedCommandsCompute(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKNVDeviceGeneratedCommandsCompute() {}
 
     /// ```
-    /// void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, const VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetPipelineIndirectMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkComputePipelineCreateInfo* pCreateInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public void GetPipelineIndirectMemoryRequirementsNV(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPipelineIndirectMemoryRequirementsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineIndirectMemoryRequirementsNV");
-        try { Handles.MH_vkGetPipelineIndirectMemoryRequirementsNV.invokeExact(handles.PFN_vkGetPipelineIndirectMemoryRequirementsNV, device, pCreateInfo, pMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPipelineIndirectMemoryRequirementsNV", e); }
+    public static void vkGetPipelineIndirectMemoryRequirementsNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectMemoryRequirementsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineIndirectMemoryRequirementsNV");
+        try { Handles.MH_vkGetPipelineIndirectMemoryRequirementsNV.invokeExact(device.capabilities().PFN_vkGetPipelineIndirectMemoryRequirementsNV, device.segment(), pCreateInfo, pMemoryRequirements); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineIndirectMemoryRequirementsNV", e); }
     }
 
     /// ```
-    /// void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline);
+    /// void vkCmdUpdatePipelineIndirectBufferNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipeline pipeline);
     /// ```
-    public void CmdUpdatePipelineIndirectBufferNV(MemorySegment commandBuffer, int pipelineBindPoint, long pipeline) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdUpdatePipelineIndirectBufferNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdUpdatePipelineIndirectBufferNV");
-        try { Handles.MH_vkCmdUpdatePipelineIndirectBufferNV.invokeExact(handles.PFN_vkCmdUpdatePipelineIndirectBufferNV, commandBuffer, pipelineBindPoint, pipeline); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdUpdatePipelineIndirectBufferNV", e); }
+    public static void vkCmdUpdatePipelineIndirectBufferNV(VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdUpdatePipelineIndirectBufferNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdUpdatePipelineIndirectBufferNV");
+        try { Handles.MH_vkCmdUpdatePipelineIndirectBufferNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdUpdatePipelineIndirectBufferNV, commandBuffer.segment(), pipelineBindPoint, pipeline); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdUpdatePipelineIndirectBufferNV", e); }
     }
 
     /// ```
-    /// VkDeviceAddress vkGetPipelineIndirectDeviceAddressNV(VkDevice device, const VkPipelineIndirectDeviceAddressInfoNV* pInfo);
+    /// (uint64_t) VkDeviceAddress vkGetPipelineIndirectDeviceAddressNV((struct VkDevice*) VkDevice device, const VkPipelineIndirectDeviceAddressInfoNV* pInfo);
     /// ```
-    public long GetPipelineIndirectDeviceAddressNV(MemorySegment device, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPipelineIndirectDeviceAddressNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineIndirectDeviceAddressNV");
-        try { return (long) Handles.MH_vkGetPipelineIndirectDeviceAddressNV.invokeExact(handles.PFN_vkGetPipelineIndirectDeviceAddressNV, device, pInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPipelineIndirectDeviceAddressNV", e); }
+    public static long vkGetPipelineIndirectDeviceAddressNV(VkDevice device, MemorySegment pInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineIndirectDeviceAddressNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineIndirectDeviceAddressNV");
+        try { return (long) Handles.MH_vkGetPipelineIndirectDeviceAddressNV.invokeExact(device.capabilities().PFN_vkGetPipelineIndirectDeviceAddressNV, device.segment(), pInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineIndirectDeviceAddressNV", e); }
     }
 
 }

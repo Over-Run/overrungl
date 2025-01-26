@@ -23,6 +23,6 @@ public final class VKNVPerStageDescriptorSet {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV = 1000516000;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV = 0x00000040;
 
-    private VKNVPerStageDescriptorSet() { }
+    private VKNVPerStageDescriptorSet() {}
 
 }

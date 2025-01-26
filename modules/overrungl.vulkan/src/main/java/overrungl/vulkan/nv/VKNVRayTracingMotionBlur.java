@@ -30,6 +30,6 @@ public final class VKNVRayTracingMotionBlur {
     public static final int VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV = 0x00000004;
     public static final int VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV = 0x00100000;
 
-    private VKNVRayTracingMotionBlur() { }
+    private VKNVRayTracingMotionBlur() {}
 
 }

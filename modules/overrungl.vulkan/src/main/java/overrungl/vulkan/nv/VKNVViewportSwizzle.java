@@ -30,6 +30,6 @@ public final class VKNVViewportSwizzle {
     public static final String VK_NV_VIEWPORT_SWIZZLE_EXTENSION_NAME = "VK_NV_viewport_swizzle";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV = 1000098000;
 
-    private VKNVViewportSwizzle() { }
+    private VKNVViewportSwizzle() {}
 
 }

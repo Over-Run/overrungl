@@ -23,6 +23,6 @@ public final class VKEXTLegacyVertexAttributes {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT = 1000495000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT = 1000495001;
 
-    private VKEXTLegacyVertexAttributes() { }
+    private VKEXTLegacyVertexAttributes() {}
 
 }

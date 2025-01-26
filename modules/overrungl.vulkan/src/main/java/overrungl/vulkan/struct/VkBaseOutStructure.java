@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBaseOutStructure {
-///     VkStructureType sType;
-///     VkBaseOutStructure * pNext;
+///     (int) VkStructureType sType;
+///     struct VkBaseOutStructure * pNext;
 /// };
 /// ```
 public sealed class VkBaseOutStructure extends GroupType {

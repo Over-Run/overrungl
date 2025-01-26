@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfaceCapabilities2EXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t minImageCount;
 ///     uint32_t maxImageCount;
-///     VkExtent2D currentExtent;
-///     VkExtent2D minImageExtent;
-///     VkExtent2D maxImageExtent;
+///     (struct VkExtent2D) VkExtent2D currentExtent;
+///     (struct VkExtent2D) VkExtent2D minImageExtent;
+///     (struct VkExtent2D) VkExtent2D maxImageExtent;
 ///     uint32_t maxImageArrayLayers;
-///     VkSurfaceTransformFlagsKHR supportedTransforms;
-///     VkSurfaceTransformFlagBitsKHR currentTransform;
-///     VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
-///     VkImageUsageFlags supportedUsageFlags;
-///     VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
+///     ((uint32_t) VkFlags) VkSurfaceTransformFlagsKHR supportedTransforms;
+///     (int) VkSurfaceTransformFlagBitsKHR currentTransform;
+///     ((uint32_t) VkFlags) VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
+///     ((uint32_t) VkFlags) VkImageUsageFlags supportedUsageFlags;
+///     ((uint32_t) VkFlags) VkSurfaceCounterFlagsEXT supportedSurfaceCounters;
 /// };
 /// ```
 public sealed class VkSurfaceCapabilities2EXT extends GroupType {

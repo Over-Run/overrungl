@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceNestedCommandBufferFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 nestedCommandBuffer;
-///     VkBool32 nestedCommandBufferRendering;
-///     VkBool32 nestedCommandBufferSimultaneousUse;
+///     (uint32_t) VkBool32 nestedCommandBuffer;
+///     (uint32_t) VkBool32 nestedCommandBufferRendering;
+///     (uint32_t) VkBool32 nestedCommandBufferSimultaneousUse;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupType {

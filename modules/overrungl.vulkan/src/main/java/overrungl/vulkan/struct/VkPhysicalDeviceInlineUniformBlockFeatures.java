@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceInlineUniformBlockFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 inlineUniformBlock;
-///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     (uint32_t) VkBool32 inlineUniformBlock;
+///     (uint32_t) VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceInlineUniformBlockFeatures extends GroupType {

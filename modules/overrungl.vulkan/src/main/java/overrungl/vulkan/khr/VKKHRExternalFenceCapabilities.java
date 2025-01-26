@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRExternalFenceCapabilities {
+public final class VKKHRExternalFenceCapabilities {
     public static final int VK_KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_FENCE_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_fence_capabilities";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO_KHR = 1000112000;
@@ -34,26 +34,20 @@ public class VKKHRExternalFenceCapabilities {
     public static final int VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR = 0x00000008;
     public static final int VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT_KHR = 0x00000001;
     public static final int VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT_KHR = 0x00000002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceExternalFencePropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalFencePropertiesKHR", "vkGetPhysicalDeviceExternalFenceProperties");
-        }
+        private Handles() {}
     }
 
-    public VKKHRExternalFenceCapabilities(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKKHRExternalFenceCapabilities() {}
 
     /// ```
-    /// void vkGetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties);
+    /// void vkGetPhysicalDeviceExternalFencePropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties);
     /// ```
-    public void GetPhysicalDeviceExternalFencePropertiesKHR(MemorySegment physicalDevice, MemorySegment pExternalFenceInfo, MemorySegment pExternalFenceProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalFencePropertiesKHR");
-        try { Handles.MH_vkGetPhysicalDeviceExternalFencePropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR, physicalDevice, pExternalFenceInfo, pExternalFenceProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceExternalFencePropertiesKHR", e); }
+    public static void vkGetPhysicalDeviceExternalFencePropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalFenceInfo, MemorySegment pExternalFenceProperties) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalFencePropertiesKHR");
+        try { Handles.MH_vkGetPhysicalDeviceExternalFencePropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalFencePropertiesKHR, physicalDevice.segment(), pExternalFenceInfo, pExternalFenceProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalFencePropertiesKHR", e); }
     }
 
 }

@@ -38,7 +38,7 @@ public final class GLEXTMemoryObjectFd {
     }
 
     /// ```
-    /// void glImportMemoryFdEXT(GLuint memory, GLuint64 size, GLenum handleType, GLint fd);
+    /// void glImportMemoryFdEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, (int) GLint fd);
     /// ```
     public void ImportMemoryFdEXT(int memory, long size, int handleType, int fd) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");

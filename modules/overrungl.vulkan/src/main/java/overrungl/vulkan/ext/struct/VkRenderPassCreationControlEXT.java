@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassCreationControlEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 disallowMerging;
+///     (uint32_t) VkBool32 disallowMerging;
 /// };
 /// ```
 public sealed class VkRenderPassCreationControlEXT extends GroupType {

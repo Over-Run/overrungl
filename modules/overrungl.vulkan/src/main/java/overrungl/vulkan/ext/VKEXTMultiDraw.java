@@ -21,43 +21,35 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTMultiDraw {
+public final class VKEXTMultiDraw {
     public static final int VK_EXT_MULTI_DRAW_SPEC_VERSION = 1;
     public static final String VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT = 1000392000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT = 1000392001;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdDrawMultiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdDrawMultiIndexedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCmdDrawMultiEXT;
-        public final MemorySegment PFN_vkCmdDrawMultiIndexedEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdDrawMultiEXT = func.invoke(device, "vkCmdDrawMultiEXT");
-            PFN_vkCmdDrawMultiIndexedEXT = func.invoke(device, "vkCmdDrawMultiIndexedEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTMultiDraw(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTMultiDraw() {}
 
     /// ```
-    /// void vkCmdDrawMultiEXT(VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawInfoEXT* pVertexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride);
+    /// void vkCmdDrawMultiEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawInfoEXT* pVertexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride);
     /// ```
-    public void CmdDrawMultiEXT(MemorySegment commandBuffer, int drawCount, MemorySegment pVertexInfo, int instanceCount, int firstInstance, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDrawMultiEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiEXT");
-        try { Handles.MH_vkCmdDrawMultiEXT.invokeExact(handles.PFN_vkCmdDrawMultiEXT, commandBuffer, drawCount, pVertexInfo, instanceCount, firstInstance, stride); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdDrawMultiEXT", e); }
+    public static void vkCmdDrawMultiEXT(VkCommandBuffer commandBuffer, int drawCount, MemorySegment pVertexInfo, int instanceCount, int firstInstance, int stride) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiEXT");
+        try { Handles.MH_vkCmdDrawMultiEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMultiEXT, commandBuffer.segment(), drawCount, pVertexInfo, instanceCount, firstInstance, stride); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMultiEXT", e); }
     }
 
     /// ```
-    /// void vkCmdDrawMultiIndexedEXT(VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawIndexedInfoEXT* pIndexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride, const int32_t* pVertexOffset);
+    /// void vkCmdDrawMultiIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawIndexedInfoEXT* pIndexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride, const int32_t* pVertexOffset);
     /// ```
-    public void CmdDrawMultiIndexedEXT(MemorySegment commandBuffer, int drawCount, MemorySegment pIndexInfo, int instanceCount, int firstInstance, int stride, MemorySegment pVertexOffset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDrawMultiIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiIndexedEXT");
-        try { Handles.MH_vkCmdDrawMultiIndexedEXT.invokeExact(handles.PFN_vkCmdDrawMultiIndexedEXT, commandBuffer, drawCount, pIndexInfo, instanceCount, firstInstance, stride, pVertexOffset); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdDrawMultiIndexedEXT", e); }
+    public static void vkCmdDrawMultiIndexedEXT(VkCommandBuffer commandBuffer, int drawCount, MemorySegment pIndexInfo, int instanceCount, int firstInstance, int stride, MemorySegment pVertexOffset) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiIndexedEXT");
+        try { Handles.MH_vkCmdDrawMultiIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMultiIndexedEXT, commandBuffer.segment(), drawCount, pIndexInfo, instanceCount, firstInstance, stride, pVertexOffset); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMultiIndexedEXT", e); }
     }
 
 }

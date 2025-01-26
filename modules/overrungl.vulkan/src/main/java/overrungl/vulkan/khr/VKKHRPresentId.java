@@ -23,6 +23,6 @@ public final class VKKHRPresentId {
     public static final int VK_STRUCTURE_TYPE_PRESENT_ID_KHR = 1000294000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR = 1000294001;
 
-    private VKKHRPresentId() { }
+    private VKKHRPresentId() {}
 
 }

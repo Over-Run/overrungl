@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRenderPassStripedPropertiesARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D renderPassStripeGranularity;
+///     (struct VkExtent2D) VkExtent2D renderPassStripeGranularity;
 ///     uint32_t maxRenderPassStripes;
 /// };
 /// ```

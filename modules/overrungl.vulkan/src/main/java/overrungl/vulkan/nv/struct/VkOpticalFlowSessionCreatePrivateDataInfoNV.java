@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOpticalFlowSessionCreatePrivateDataInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t id;
 ///     uint32_t size;

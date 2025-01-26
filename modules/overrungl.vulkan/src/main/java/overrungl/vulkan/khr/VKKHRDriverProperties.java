@@ -36,6 +36,6 @@ public final class VKKHRDriverProperties {
     public static final int VK_DRIVER_ID_GGP_PROPRIETARY_KHR = 11;
     public static final int VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR = 12;
 
-    private VKKHRDriverProperties() { }
+    private VKKHRDriverProperties() {}
 
 }

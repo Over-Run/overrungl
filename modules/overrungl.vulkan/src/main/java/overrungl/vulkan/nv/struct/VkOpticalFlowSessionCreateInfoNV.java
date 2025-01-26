@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOpticalFlowSessionCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t width;
 ///     uint32_t height;
-///     VkFormat imageFormat;
-///     VkFormat flowVectorFormat;
-///     VkFormat costFormat;
-///     VkOpticalFlowGridSizeFlagsNV outputGridSize;
-///     VkOpticalFlowGridSizeFlagsNV hintGridSize;
-///     VkOpticalFlowPerformanceLevelNV performanceLevel;
-///     VkOpticalFlowSessionCreateFlagsNV flags;
+///     (int) VkFormat imageFormat;
+///     (int) VkFormat flowVectorFormat;
+///     (int) VkFormat costFormat;
+///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV outputGridSize;
+///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV hintGridSize;
+///     (int) VkOpticalFlowPerformanceLevelNV performanceLevel;
+///     ((uint32_t) VkFlags) VkOpticalFlowSessionCreateFlagsNV flags;
 /// };
 /// ```
 public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {

@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkVertexInputAttributeDescription {
 ///     uint32_t location;
 ///     uint32_t binding;
-///     VkFormat format;
+///     (int) VkFormat format;
 ///     uint32_t offset;
 /// };
 /// ```

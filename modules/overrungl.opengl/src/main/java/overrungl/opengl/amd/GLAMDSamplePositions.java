@@ -38,7 +38,7 @@ public final class GLAMDSamplePositions {
     }
 
     /// ```
-    /// void glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat* val);
+    /// void glSetMultisamplefvAMD((unsigned int) GLenum pname, (unsigned int) GLuint index, const GLfloat* val);
     /// ```
     public void SetMultisamplefvAMD(int pname, int index, MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetMultisamplefvAMD)) throw new SymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD");

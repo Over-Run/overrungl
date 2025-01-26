@@ -41,7 +41,7 @@ public final class GLARBProvokingVertex {
     }
 
     /// ```
-    /// void glProvokingVertex(GLenum mode);
+    /// void glProvokingVertex((unsigned int) GLenum mode);
     /// ```
     public void ProvokingVertex(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertex)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertex");

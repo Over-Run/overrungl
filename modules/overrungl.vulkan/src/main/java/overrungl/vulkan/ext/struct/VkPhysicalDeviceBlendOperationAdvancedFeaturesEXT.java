@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 advancedBlendCoherentOperations;
+///     (uint32_t) VkBool32 advancedBlendCoherentOperations;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT extends GroupType {

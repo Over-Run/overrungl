@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainPresentModesCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t presentModeCount;
 ///     const VkPresentModeKHR* pPresentModes;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkProtectedSubmitInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 protectedSubmit;
+///     (uint32_t) VkBool32 protectedSubmit;
 /// };
 /// ```
 public sealed class VkProtectedSubmitInfo extends GroupType {

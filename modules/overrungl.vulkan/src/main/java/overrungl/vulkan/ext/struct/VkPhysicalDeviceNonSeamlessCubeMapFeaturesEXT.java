@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 nonSeamlessCubeMap;
+///     (uint32_t) VkBool32 nonSeamlessCubeMap;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT extends GroupType {

@@ -39,7 +39,7 @@ public final class GLEXTStencilTwoSide {
     }
 
     /// ```
-    /// void glActiveStencilFaceEXT(GLenum face);
+    /// void glActiveStencilFaceEXT((unsigned int) GLenum face);
     /// ```
     public void ActiveStencilFaceEXT(int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveStencilFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT");

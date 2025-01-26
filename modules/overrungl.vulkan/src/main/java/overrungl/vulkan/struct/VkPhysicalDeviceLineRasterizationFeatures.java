@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLineRasterizationFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 rectangularLines;
-///     VkBool32 bresenhamLines;
-///     VkBool32 smoothLines;
-///     VkBool32 stippledRectangularLines;
-///     VkBool32 stippledBresenhamLines;
-///     VkBool32 stippledSmoothLines;
+///     (uint32_t) VkBool32 rectangularLines;
+///     (uint32_t) VkBool32 bresenhamLines;
+///     (uint32_t) VkBool32 smoothLines;
+///     (uint32_t) VkBool32 stippledRectangularLines;
+///     (uint32_t) VkBool32 stippledBresenhamLines;
+///     (uint32_t) VkBool32 stippledSmoothLines;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceLineRasterizationFeatures extends GroupType {

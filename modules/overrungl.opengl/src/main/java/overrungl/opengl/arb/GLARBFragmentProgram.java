@@ -169,7 +169,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramStringARB(GLenum target, GLenum format, GLsizei len, const void* string);
+    /// void glProgramStringARB((unsigned int) GLenum target, (unsigned int) GLenum format, (int) GLsizei len, const void* string);
     /// ```
     public void ProgramStringARB(int target, int format, int len, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glProgramStringARB");
@@ -178,7 +178,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glBindProgramARB(GLenum target, GLuint program);
+    /// void glBindProgramARB((unsigned int) GLenum target, (unsigned int) GLuint program);
     /// ```
     public void BindProgramARB(int target, int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindProgramARB)) throw new SymbolNotFoundError("Symbol not found: glBindProgramARB");
@@ -187,7 +187,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glDeleteProgramsARB(GLsizei n, const GLuint* programs);
+    /// void glDeleteProgramsARB((int) GLsizei n, const GLuint* programs);
     /// ```
     public void DeleteProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteProgramsARB");
@@ -196,7 +196,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGenProgramsARB(GLsizei n, GLuint* programs);
+    /// void glGenProgramsARB((int) GLsizei n, GLuint* programs);
     /// ```
     public void GenProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenProgramsARB)) throw new SymbolNotFoundError("Symbol not found: glGenProgramsARB");
@@ -205,7 +205,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+    /// void glProgramEnvParameter4dARB((unsigned int) GLenum target, (unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
     public void ProgramEnvParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dARB");
@@ -214,7 +214,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble* params);
+    /// void glProgramEnvParameter4dvARB((unsigned int) GLenum target, (unsigned int) GLuint index, const GLdouble* params);
     /// ```
     public void ProgramEnvParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4dvARB");
@@ -223,7 +223,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+    /// void glProgramEnvParameter4fARB((unsigned int) GLenum target, (unsigned int) GLuint index, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat w);
     /// ```
     public void ProgramEnvParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fARB");
@@ -232,7 +232,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat* params);
+    /// void glProgramEnvParameter4fvARB((unsigned int) GLenum target, (unsigned int) GLuint index, const GLfloat* params);
     /// ```
     public void ProgramEnvParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameter4fvARB");
@@ -241,7 +241,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+    /// void glProgramLocalParameter4dARB((unsigned int) GLenum target, (unsigned int) GLuint index, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
     public void ProgramLocalParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dARB");
@@ -250,7 +250,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble* params);
+    /// void glProgramLocalParameter4dvARB((unsigned int) GLenum target, (unsigned int) GLuint index, const GLdouble* params);
     /// ```
     public void ProgramLocalParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4dvARB");
@@ -259,7 +259,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+    /// void glProgramLocalParameter4fARB((unsigned int) GLenum target, (unsigned int) GLuint index, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat w);
     /// ```
     public void ProgramLocalParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fARB");
@@ -268,7 +268,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat* params);
+    /// void glProgramLocalParameter4fvARB((unsigned int) GLenum target, (unsigned int) GLuint index, const GLfloat* params);
     /// ```
     public void ProgramLocalParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fvARB)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameter4fvARB");
@@ -277,7 +277,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble* params);
+    /// void glGetProgramEnvParameterdvARB((unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* params);
     /// ```
     public void GetProgramEnvParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterdvARB");
@@ -286,7 +286,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat* params);
+    /// void glGetProgramEnvParameterfvARB((unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* params);
     /// ```
     public void GetProgramEnvParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterfvARB");
@@ -295,7 +295,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble* params);
+    /// void glGetProgramLocalParameterdvARB((unsigned int) GLenum target, (unsigned int) GLuint index, GLdouble* params);
     /// ```
     public void GetProgramLocalParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterdvARB");
@@ -304,7 +304,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat* params);
+    /// void glGetProgramLocalParameterfvARB((unsigned int) GLenum target, (unsigned int) GLuint index, GLfloat* params);
     /// ```
     public void GetProgramLocalParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterfvARB");
@@ -313,7 +313,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramivARB(GLenum target, GLenum pname, GLint* params);
+    /// void glGetProgramivARB((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetProgramivARB(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramivARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramivARB");
@@ -322,7 +322,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// void glGetProgramStringARB(GLenum target, GLenum pname, void* string);
+    /// void glGetProgramStringARB((unsigned int) GLenum target, (unsigned int) GLenum pname, void* string);
     /// ```
     public void GetProgramStringARB(int target, int pname, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramStringARB)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStringARB");
@@ -331,7 +331,7 @@ public final class GLARBFragmentProgram {
     }
 
     /// ```
-    /// GLboolean glIsProgramARB(GLuint program);
+    /// GLboolean glIsProgramARB((unsigned int) GLuint program);
     /// ```
     public boolean IsProgramARB(int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsProgramARB)) throw new SymbolNotFoundError("Symbol not found: glIsProgramARB");

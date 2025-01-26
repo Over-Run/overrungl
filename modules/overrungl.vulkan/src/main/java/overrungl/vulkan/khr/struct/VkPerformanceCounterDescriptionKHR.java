@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPerformanceCounterDescriptionKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPerformanceCounterDescriptionFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkPerformanceCounterDescriptionFlagsKHR flags;
 ///     char name[256];
 ///     char category[256];
 ///     char description[256];

@@ -27,29 +27,29 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkan14Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 globalPriorityQuery;
-///     VkBool32 shaderSubgroupRotate;
-///     VkBool32 shaderSubgroupRotateClustered;
-///     VkBool32 shaderFloatControls2;
-///     VkBool32 shaderExpectAssume;
-///     VkBool32 rectangularLines;
-///     VkBool32 bresenhamLines;
-///     VkBool32 smoothLines;
-///     VkBool32 stippledRectangularLines;
-///     VkBool32 stippledBresenhamLines;
-///     VkBool32 stippledSmoothLines;
-///     VkBool32 vertexAttributeInstanceRateDivisor;
-///     VkBool32 vertexAttributeInstanceRateZeroDivisor;
-///     VkBool32 indexTypeUint8;
-///     VkBool32 dynamicRenderingLocalRead;
-///     VkBool32 maintenance5;
-///     VkBool32 maintenance6;
-///     VkBool32 pipelineProtectedAccess;
-///     VkBool32 pipelineRobustness;
-///     VkBool32 hostImageCopy;
-///     VkBool32 pushDescriptor;
+///     (uint32_t) VkBool32 globalPriorityQuery;
+///     (uint32_t) VkBool32 shaderSubgroupRotate;
+///     (uint32_t) VkBool32 shaderSubgroupRotateClustered;
+///     (uint32_t) VkBool32 shaderFloatControls2;
+///     (uint32_t) VkBool32 shaderExpectAssume;
+///     (uint32_t) VkBool32 rectangularLines;
+///     (uint32_t) VkBool32 bresenhamLines;
+///     (uint32_t) VkBool32 smoothLines;
+///     (uint32_t) VkBool32 stippledRectangularLines;
+///     (uint32_t) VkBool32 stippledBresenhamLines;
+///     (uint32_t) VkBool32 stippledSmoothLines;
+///     (uint32_t) VkBool32 vertexAttributeInstanceRateDivisor;
+///     (uint32_t) VkBool32 vertexAttributeInstanceRateZeroDivisor;
+///     (uint32_t) VkBool32 indexTypeUint8;
+///     (uint32_t) VkBool32 dynamicRenderingLocalRead;
+///     (uint32_t) VkBool32 maintenance5;
+///     (uint32_t) VkBool32 maintenance6;
+///     (uint32_t) VkBool32 pipelineProtectedAccess;
+///     (uint32_t) VkBool32 pipelineRobustness;
+///     (uint32_t) VkBool32 hostImageCopy;
+///     (uint32_t) VkBool32 pushDescriptor;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkan14Features extends GroupType {

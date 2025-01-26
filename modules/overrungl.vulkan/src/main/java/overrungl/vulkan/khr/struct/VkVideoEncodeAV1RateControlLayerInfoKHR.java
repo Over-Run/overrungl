@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1RateControlLayerInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 useMinQIndex;
-///     VkVideoEncodeAV1QIndexKHR minQIndex;
-///     VkBool32 useMaxQIndex;
-///     VkVideoEncodeAV1QIndexKHR maxQIndex;
-///     VkBool32 useMaxFrameSize;
-///     VkVideoEncodeAV1FrameSizeKHR maxFrameSize;
+///     (uint32_t) VkBool32 useMinQIndex;
+///     (struct VkVideoEncodeAV1QIndexKHR) VkVideoEncodeAV1QIndexKHR minQIndex;
+///     (uint32_t) VkBool32 useMaxQIndex;
+///     (struct VkVideoEncodeAV1QIndexKHR) VkVideoEncodeAV1QIndexKHR maxQIndex;
+///     (uint32_t) VkBool32 useMaxFrameSize;
+///     (struct VkVideoEncodeAV1FrameSizeKHR) VkVideoEncodeAV1FrameSizeKHR maxFrameSize;
 /// };
 /// ```
 public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {

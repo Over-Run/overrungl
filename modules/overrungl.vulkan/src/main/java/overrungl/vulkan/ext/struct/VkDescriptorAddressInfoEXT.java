@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorAddressInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceAddress address;
-///     VkDeviceSize range;
-///     VkFormat format;
+///     (uint64_t) VkDeviceAddress address;
+///     (uint64_t) VkDeviceSize range;
+///     (int) VkFormat format;
 /// };
 /// ```
 public sealed class VkDescriptorAddressInfoEXT extends GroupType {

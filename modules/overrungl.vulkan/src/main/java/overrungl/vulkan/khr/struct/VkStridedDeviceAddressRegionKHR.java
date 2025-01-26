@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkStridedDeviceAddressRegionKHR {
-///     VkDeviceAddress deviceAddress;
-///     VkDeviceSize stride;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceSize stride;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkStridedDeviceAddressRegionKHR extends GroupType {

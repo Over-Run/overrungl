@@ -22,6 +22,6 @@ public final class VKKHRDepthClampZeroOne {
     public static final String VK_KHR_DEPTH_CLAMP_ZERO_ONE_EXTENSION_NAME = "VK_KHR_depth_clamp_zero_one";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR = 1000604000;
 
-    private VKKHRDepthClampZeroOne() { }
+    private VKKHRDepthClampZeroOne() {}
 
 }

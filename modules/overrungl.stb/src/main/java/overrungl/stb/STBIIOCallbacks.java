@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct STBIIOCallbacks {
-///     stbi_io_callbacks$read read;
-///     stbi_io_callbacks$skip skip;
-///     stbi_io_callbacks$eof eof;
+///     (int (*STBIIORead)(void* user, char* data, int size)) stbi_io_callbacks$read read;
+///     (void (*STBIIOSkip)(void* user, int n)) stbi_io_callbacks$skip skip;
+///     ((int) STBbool (*STBIIOEof)(void* user)) stbi_io_callbacks$eof eof;
 /// };
 /// ```
 public sealed class STBIIOCallbacks extends GroupType {

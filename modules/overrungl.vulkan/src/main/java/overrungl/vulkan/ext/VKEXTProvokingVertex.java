@@ -26,6 +26,6 @@ public final class VKEXTProvokingVertex {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT = 1000254001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT = 1000254002;
 
-    private VKEXTProvokingVertex() { }
+    private VKEXTProvokingVertex() {}
 
 }

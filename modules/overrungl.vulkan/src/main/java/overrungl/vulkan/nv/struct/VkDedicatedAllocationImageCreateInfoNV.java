@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDedicatedAllocationImageCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 dedicatedAllocation;
+///     (uint32_t) VkBool32 dedicatedAllocation;
 /// };
 /// ```
 public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {

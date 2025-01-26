@@ -51,7 +51,7 @@ public final class GLARBSampleLocations {
     }
 
     /// ```
-    /// void glFramebufferSampleLocationsfvARB(GLenum target, GLuint start, GLsizei count, const GLfloat* v);
+    /// void glFramebufferSampleLocationsfvARB((unsigned int) GLenum target, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void FramebufferSampleLocationsfvARB(int target, int start, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB");
@@ -60,7 +60,7 @@ public final class GLARBSampleLocations {
     }
 
     /// ```
-    /// void glNamedFramebufferSampleLocationsfvARB(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat* v);
+    /// void glNamedFramebufferSampleLocationsfvARB((unsigned int) GLuint framebuffer, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void NamedFramebufferSampleLocationsfvARB(int framebuffer, int start, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB");

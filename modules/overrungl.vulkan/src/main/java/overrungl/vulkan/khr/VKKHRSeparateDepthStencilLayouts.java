@@ -28,6 +28,6 @@ public final class VKKHRSeparateDepthStencilLayouts {
     public static final int VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR = 1000241002;
     public static final int VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR = 1000241003;
 
-    private VKKHRSeparateDepthStencilLayouts() { }
+    private VKKHRSeparateDepthStencilLayouts() {}
 
 }

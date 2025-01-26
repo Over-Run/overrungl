@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderStatisticsInfoAMD {
-///     VkShaderStageFlags shaderStageMask;
-///     VkShaderResourceUsageAMD resourceUsage;
+///     ((uint32_t) VkFlags) VkShaderStageFlags shaderStageMask;
+///     (struct VkShaderResourceUsageAMD) VkShaderResourceUsageAMD resourceUsage;
 ///     uint32_t numPhysicalVgprs;
 ///     uint32_t numPhysicalSgprs;
 ///     uint32_t numAvailableVgprs;

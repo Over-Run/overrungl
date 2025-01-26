@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TimingInfo {
-///     StdVideoAV1TimingInfoFlags flags;
+///     (struct StdVideoAV1TimingInfoFlags) StdVideoAV1TimingInfoFlags flags;
 ///     uint32_t num_units_in_display_tick;
 ///     uint32_t time_scale;
 ///     uint32_t num_ticks_per_picture_minus_1;

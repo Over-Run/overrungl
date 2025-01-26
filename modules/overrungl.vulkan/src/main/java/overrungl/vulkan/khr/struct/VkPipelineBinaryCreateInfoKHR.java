@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineBinaryCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const VkPipelineBinaryKeysAndDataKHR* pKeysAndDataInfo;
-///     VkPipeline pipeline;
+///     (uint64_t) VkPipeline pipeline;
 ///     const VkPipelineCreateInfoKHR* pPipelineCreateInfo;
 /// };
 /// ```

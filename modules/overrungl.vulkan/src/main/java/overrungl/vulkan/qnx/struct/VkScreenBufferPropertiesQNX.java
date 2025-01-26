@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkScreenBufferPropertiesQNX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize allocationSize;
+///     (uint64_t) VkDeviceSize allocationSize;
 ///     uint32_t memoryTypeBits;
 /// };
 /// ```

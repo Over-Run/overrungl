@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalCommandQueueInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkQueue queue;
-///     MTLCommandQueue_id mtlCommandQueue;
+///     (struct VkQueue*) VkQueue queue;
+///     (void*) MTLCommandQueue_id mtlCommandQueue;
 /// };
 /// ```
 public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {

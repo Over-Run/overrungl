@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264SessionParametersFeedbackInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hasStdSPSOverrides;
-///     VkBool32 hasStdPPSOverrides;
+///     (uint32_t) VkBool32 hasStdSPSOverrides;
+///     (uint32_t) VkBool32 hasStdPPSOverrides;
 /// };
 /// ```
 public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends GroupType {

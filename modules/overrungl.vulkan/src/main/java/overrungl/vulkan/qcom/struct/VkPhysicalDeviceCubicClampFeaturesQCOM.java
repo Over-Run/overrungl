@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCubicClampFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 cubicRangeClamp;
+///     (uint32_t) VkBool32 cubicRangeClamp;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCubicClampFeaturesQCOM extends GroupType {

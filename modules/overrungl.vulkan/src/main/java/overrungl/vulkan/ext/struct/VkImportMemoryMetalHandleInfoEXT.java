@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMemoryMetalHandleInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
 ///     void* handle;
 /// };
 /// ```

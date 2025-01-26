@@ -70,7 +70,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glBeginTransformFeedbackEXT(GLenum primitiveMode);
+    /// void glBeginTransformFeedbackEXT((unsigned int) GLenum primitiveMode);
     /// ```
     public void BeginTransformFeedbackEXT(int primitiveMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: glBeginTransformFeedbackEXT");
@@ -88,7 +88,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferRangeEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+    /// void glBindBufferRangeEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void BindBufferRangeEXT(int target, int index, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRangeEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRangeEXT");
@@ -97,7 +97,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferOffsetEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+    /// void glBindBufferOffsetEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
     public void BindBufferOffsetEXT(int target, int index, int buffer, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferOffsetEXT");
@@ -106,7 +106,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferBaseEXT(GLenum target, GLuint index, GLuint buffer);
+    /// void glBindBufferBaseEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer);
     /// ```
     public void BindBufferBaseEXT(int target, int index, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBaseEXT)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBaseEXT");
@@ -115,7 +115,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackVaryingsEXT(GLuint program, GLsizei count, const GLchar* const * varyings, GLenum bufferMode);
+    /// void glTransformFeedbackVaryingsEXT((unsigned int) GLuint program, (int) GLsizei count, const GLchar* const * varyings, (unsigned int) GLenum bufferMode);
     /// ```
     public void TransformFeedbackVaryingsEXT(int program, int count, MemorySegment varyings, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackVaryingsEXT)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsEXT");
@@ -124,7 +124,7 @@ public final class GLEXTTransformFeedback {
     }
 
     /// ```
-    /// void glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
+    /// void glGetTransformFeedbackVaryingEXT((unsigned int) GLuint program, (unsigned int) GLuint index, (int) GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
     /// ```
     public void GetTransformFeedbackVaryingEXT(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingEXT)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingEXT");

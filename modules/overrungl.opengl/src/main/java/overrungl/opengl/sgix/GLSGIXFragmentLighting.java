@@ -108,7 +108,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentColorMaterialSGIX(GLenum face, GLenum mode);
+    /// void glFragmentColorMaterialSGIX((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```
     public void FragmentColorMaterialSGIX(int face, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentColorMaterialSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentColorMaterialSGIX");
@@ -117,7 +117,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightfSGIX(GLenum light, GLenum pname, GLfloat param);
+    /// void glFragmentLightfSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void FragmentLightfSGIX(int light, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfSGIX");
@@ -126,7 +126,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightfvSGIX(GLenum light, GLenum pname, const GLfloat* params);
+    /// void glFragmentLightfvSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void FragmentLightfvSGIX(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightfvSGIX");
@@ -135,7 +135,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightiSGIX(GLenum light, GLenum pname, GLint param);
+    /// void glFragmentLightiSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FragmentLightiSGIX(int light, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightiSGIX");
@@ -144,7 +144,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightivSGIX(GLenum light, GLenum pname, const GLint* params);
+    /// void glFragmentLightivSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void FragmentLightivSGIX(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightivSGIX");
@@ -153,7 +153,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightModelfSGIX(GLenum pname, GLfloat param);
+    /// void glFragmentLightModelfSGIX((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void FragmentLightModelfSGIX(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightModelfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfSGIX");
@@ -162,7 +162,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightModelfvSGIX(GLenum pname, const GLfloat* params);
+    /// void glFragmentLightModelfvSGIX((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void FragmentLightModelfvSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightModelfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfvSGIX");
@@ -171,7 +171,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightModeliSGIX(GLenum pname, GLint param);
+    /// void glFragmentLightModeliSGIX((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FragmentLightModeliSGIX(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightModeliSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModeliSGIX");
@@ -180,7 +180,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentLightModelivSGIX(GLenum pname, const GLint* params);
+    /// void glFragmentLightModelivSGIX((unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void FragmentLightModelivSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentLightModelivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelivSGIX");
@@ -189,7 +189,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentMaterialfSGIX(GLenum face, GLenum pname, GLfloat param);
+    /// void glFragmentMaterialfSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void FragmentMaterialfSGIX(int face, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentMaterialfSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfSGIX");
@@ -198,7 +198,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentMaterialfvSGIX(GLenum face, GLenum pname, const GLfloat* params);
+    /// void glFragmentMaterialfvSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void FragmentMaterialfvSGIX(int face, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfvSGIX");
@@ -207,7 +207,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentMaterialiSGIX(GLenum face, GLenum pname, GLint param);
+    /// void glFragmentMaterialiSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FragmentMaterialiSGIX(int face, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentMaterialiSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialiSGIX");
@@ -216,7 +216,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glFragmentMaterialivSGIX(GLenum face, GLenum pname, const GLint* params);
+    /// void glFragmentMaterialivSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void FragmentMaterialivSGIX(int face, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialivSGIX");
@@ -225,7 +225,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glGetFragmentLightfvSGIX(GLenum light, GLenum pname, GLfloat* params);
+    /// void glGetFragmentLightfvSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetFragmentLightfvSGIX(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragmentLightfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightfvSGIX");
@@ -234,7 +234,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glGetFragmentLightivSGIX(GLenum light, GLenum pname, GLint* params);
+    /// void glGetFragmentLightivSGIX((unsigned int) GLenum light, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFragmentLightivSGIX(int light, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragmentLightivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightivSGIX");
@@ -243,7 +243,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glGetFragmentMaterialfvSGIX(GLenum face, GLenum pname, GLfloat* params);
+    /// void glGetFragmentMaterialfvSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetFragmentMaterialfvSGIX(int face, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragmentMaterialfvSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialfvSGIX");
@@ -252,7 +252,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint* params);
+    /// void glGetFragmentMaterialivSGIX((unsigned int) GLenum face, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFragmentMaterialivSGIX(int face, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragmentMaterialivSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialivSGIX");
@@ -261,7 +261,7 @@ public final class GLSGIXFragmentLighting {
     }
 
     /// ```
-    /// void glLightEnviSGIX(GLenum pname, GLint param);
+    /// void glLightEnviSGIX((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void LightEnviSGIX(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLightEnviSGIX)) throw new SymbolNotFoundError("Symbol not found: glLightEnviSGIX");

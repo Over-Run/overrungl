@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryAllocateFlagsInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMemoryAllocateFlags flags;
+///     ((uint32_t) VkFlags) VkMemoryAllocateFlags flags;
 ///     uint32_t deviceMask;
 /// };
 /// ```

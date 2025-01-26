@@ -35,6 +35,6 @@ public final class VKKHRMaintenance2 {
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR = 0;
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR = 1;
 
-    private VKKHRMaintenance2() { }
+    private VKKHRMaintenance2() {}
 
 }

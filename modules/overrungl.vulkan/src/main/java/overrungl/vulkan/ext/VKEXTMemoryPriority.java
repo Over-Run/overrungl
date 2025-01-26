@@ -23,6 +23,6 @@ public final class VKEXTMemoryPriority {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT = 1000238000;
     public static final int VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT = 1000238001;
 
-    private VKEXTMemoryPriority() { }
+    private VKEXTMemoryPriority() {}
 
 }

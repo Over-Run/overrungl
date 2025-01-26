@@ -27,6 +27,6 @@ public final class VKNVFramebufferMixedSamples {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV = 1000152000;
     public static final int VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV = 1000136008;
 
-    private VKNVFramebufferMixedSamples() { }
+    private VKNVFramebufferMixedSamples() {}
 
 }

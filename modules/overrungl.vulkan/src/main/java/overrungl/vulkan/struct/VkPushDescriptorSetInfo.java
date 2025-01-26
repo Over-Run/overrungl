@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPushDescriptorSetInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stageFlags;
+///     (uint64_t) VkPipelineLayout layout;
 ///     uint32_t set;
 ///     uint32_t descriptorWriteCount;
 ///     const VkWriteDescriptorSet* pDescriptorWrites;

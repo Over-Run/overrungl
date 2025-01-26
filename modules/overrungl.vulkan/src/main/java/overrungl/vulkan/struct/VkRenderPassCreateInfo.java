@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRenderPassCreateFlags flags;
+///     ((uint32_t) VkFlags) VkRenderPassCreateFlags flags;
 ///     uint32_t attachmentCount;
 ///     const VkAttachmentDescription* pAttachments;
 ///     uint32_t subpassCount;

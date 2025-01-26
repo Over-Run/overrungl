@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 screenBufferImport;
+///     (uint32_t) VkBool32 screenBufferImport;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends GroupType {

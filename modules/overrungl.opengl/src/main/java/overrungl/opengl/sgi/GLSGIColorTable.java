@@ -71,7 +71,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void* table);
+    /// void glColorTableSGI((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* table);
     /// ```
     public void ColorTableSGI(int target, int internalformat, int width, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableSGI");
@@ -80,7 +80,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glColorTableParameterfvSGI(GLenum target, GLenum pname, const GLfloat* params);
+    /// void glColorTableParameterfvSGI((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void ColorTableParameterfvSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableParameterfvSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameterfvSGI");
@@ -89,7 +89,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glColorTableParameterivSGI(GLenum target, GLenum pname, const GLint* params);
+    /// void glColorTableParameterivSGI((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void ColorTableParameterivSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableParameterivSGI)) throw new SymbolNotFoundError("Symbol not found: glColorTableParameterivSGI");
@@ -98,7 +98,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+    /// void glCopyColorTableSGI((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
     public void CopyColorTableSGI(int target, int internalformat, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorTableSGI)) throw new SymbolNotFoundError("Symbol not found: glCopyColorTableSGI");
@@ -107,7 +107,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glGetColorTableSGI(GLenum target, GLenum format, GLenum type, void* table);
+    /// void glGetColorTableSGI((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, void* table);
     /// ```
     public void GetColorTableSGI(int target, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableSGI");
@@ -116,7 +116,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glGetColorTableParameterfvSGI(GLenum target, GLenum pname, GLfloat* params);
+    /// void glGetColorTableParameterfvSGI((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetColorTableParameterfvSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterfvSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvSGI");
@@ -125,7 +125,7 @@ public final class GLSGIColorTable {
     }
 
     /// ```
-    /// void glGetColorTableParameterivSGI(GLenum target, GLenum pname, GLint* params);
+    /// void glGetColorTableParameterivSGI((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetColorTableParameterivSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterivSGI)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivSGI");

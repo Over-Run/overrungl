@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureSRTMotionInstanceNV {
-///     VkSRTDataNV transformT0;
-///     VkSRTDataNV transformT1;
+///     (struct VkSRTDataNV) VkSRTDataNV transformT0;
+///     (struct VkSRTDataNV) VkSRTDataNV transformT1;
 ///     uint32_t instanceCustomIndex;
 ///     uint32_t mask;
 ///     uint32_t instanceShaderBindingTableRecordOffset;
-///     VkGeometryInstanceFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags;
 ///     uint64_t accelerationStructureReference;
 /// };
 /// ```

@@ -27,20 +27,20 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkan11Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 storageBuffer16BitAccess;
-///     VkBool32 uniformAndStorageBuffer16BitAccess;
-///     VkBool32 storagePushConstant16;
-///     VkBool32 storageInputOutput16;
-///     VkBool32 multiview;
-///     VkBool32 multiviewGeometryShader;
-///     VkBool32 multiviewTessellationShader;
-///     VkBool32 variablePointersStorageBuffer;
-///     VkBool32 variablePointers;
-///     VkBool32 protectedMemory;
-///     VkBool32 samplerYcbcrConversion;
-///     VkBool32 shaderDrawParameters;
+///     (uint32_t) VkBool32 storageBuffer16BitAccess;
+///     (uint32_t) VkBool32 uniformAndStorageBuffer16BitAccess;
+///     (uint32_t) VkBool32 storagePushConstant16;
+///     (uint32_t) VkBool32 storageInputOutput16;
+///     (uint32_t) VkBool32 multiview;
+///     (uint32_t) VkBool32 multiviewGeometryShader;
+///     (uint32_t) VkBool32 multiviewTessellationShader;
+///     (uint32_t) VkBool32 variablePointersStorageBuffer;
+///     (uint32_t) VkBool32 variablePointers;
+///     (uint32_t) VkBool32 protectedMemory;
+///     (uint32_t) VkBool32 samplerYcbcrConversion;
+///     (uint32_t) VkBool32 shaderDrawParameters;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkan11Features extends GroupType {

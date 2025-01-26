@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDynamicRenderingLocalReadFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 dynamicRenderingLocalRead;
+///     (uint32_t) VkBool32 dynamicRenderingLocalRead;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDynamicRenderingLocalReadFeatures extends GroupType {

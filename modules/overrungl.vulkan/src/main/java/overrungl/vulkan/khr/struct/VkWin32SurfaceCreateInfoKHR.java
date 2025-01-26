@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkWin32SurfaceCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkWin32SurfaceCreateFlagsKHR flags;
-///     HINSTANCE hinstance;
-///     HWND hwnd;
+///     ((uint32_t) VkFlags) VkWin32SurfaceCreateFlagsKHR flags;
+///     (void*) HINSTANCE hinstance;
+///     (void*) HWND hwnd;
 /// };
 /// ```
 public sealed class VkWin32SurfaceCreateInfoKHR extends GroupType {

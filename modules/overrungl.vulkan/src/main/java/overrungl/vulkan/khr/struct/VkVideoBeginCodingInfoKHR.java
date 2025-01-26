@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoBeginCodingInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoBeginCodingFlagsKHR flags;
-///     VkVideoSessionKHR videoSession;
-///     VkVideoSessionParametersKHR videoSessionParameters;
+///     ((uint32_t) VkFlags) VkVideoBeginCodingFlagsKHR flags;
+///     (uint64_t) VkVideoSessionKHR videoSession;
+///     (uint64_t) VkVideoSessionParametersKHR videoSessionParameters;
 ///     uint32_t referenceSlotCount;
 ///     const VkVideoReferenceSlotInfoKHR* pReferenceSlots;
 /// };

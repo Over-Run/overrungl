@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264PictureInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t naluSliceEntryCount;
 ///     const VkVideoEncodeH264NaluSliceInfoKHR* pNaluSliceEntries;
 ///     const StdVideoEncodeH264PictureInfo* pStdPictureInfo;
-///     VkBool32 generatePrefixNalu;
+///     (uint32_t) VkBool32 generatePrefixNalu;
 /// };
 /// ```
 public sealed class VkVideoEncodeH264PictureInfoKHR extends GroupType {

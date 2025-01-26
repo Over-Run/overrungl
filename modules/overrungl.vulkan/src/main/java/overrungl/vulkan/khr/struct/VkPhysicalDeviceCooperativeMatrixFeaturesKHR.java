@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCooperativeMatrixFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 cooperativeMatrix;
-///     VkBool32 cooperativeMatrixRobustBufferAccess;
+///     (uint32_t) VkBool32 cooperativeMatrix;
+///     (uint32_t) VkBool32 cooperativeMatrixRobustBufferAccess;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends GroupType {

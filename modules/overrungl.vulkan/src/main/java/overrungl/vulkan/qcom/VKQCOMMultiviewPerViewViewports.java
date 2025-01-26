@@ -22,6 +22,6 @@ public final class VKQCOMMultiviewPerViewViewports {
     public static final String VK_QCOM_MULTIVIEW_PER_VIEW_VIEWPORTS_EXTENSION_NAME = "VK_QCOM_multiview_per_view_viewports";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM = 1000488000;
 
-    private VKQCOMMultiviewPerViewViewports() { }
+    private VKQCOMMultiviewPerViewViewports() {}
 
 }

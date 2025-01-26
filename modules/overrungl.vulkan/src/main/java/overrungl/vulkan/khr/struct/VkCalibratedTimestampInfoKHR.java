@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCalibratedTimestampInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkTimeDomainKHR timeDomain;
+///     (int) VkTimeDomainKHR timeDomain;
 /// };
 /// ```
 public sealed class VkCalibratedTimestampInfoKHR extends GroupType {

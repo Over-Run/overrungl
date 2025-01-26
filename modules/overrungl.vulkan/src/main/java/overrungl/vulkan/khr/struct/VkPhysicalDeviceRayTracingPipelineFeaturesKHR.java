@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 rayTracingPipeline;
-///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
-///     VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
-///     VkBool32 rayTracingPipelineTraceRaysIndirect;
-///     VkBool32 rayTraversalPrimitiveCulling;
+///     (uint32_t) VkBool32 rayTracingPipeline;
+///     (uint32_t) VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplay;
+///     (uint32_t) VkBool32 rayTracingPipelineShaderGroupHandleCaptureReplayMixed;
+///     (uint32_t) VkBool32 rayTracingPipelineTraceRaysIndirect;
+///     (uint32_t) VkBool32 rayTraversalPrimitiveCulling;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupType {

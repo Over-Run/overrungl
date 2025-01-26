@@ -26,20 +26,18 @@ import overrungl.gen.writeString
 import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
+data class VkFunction(val function: DefinitionFunction, val handlesInstance: String)
+
 class VkDowncall(
     private val packageName: String,
     private val className: String,
     action: VkDowncall.() -> Unit
 ) {
-    var modifier: String? = null
-    val extends = mutableListOf<String>()
     val fields = mutableListOf<VkDowncallField>()
     private val handleFields = mutableListOf<VkDowncallField>()
     private val pfnFields = mutableListOf<VkDowncallField>()
     private val addedField = mutableSetOf<String>()
-    private val methods = mutableListOf<DefinitionFunction>()
-    var constructor: String? = null
-    var handlesConstructor: String? = null
+    private val methods = mutableListOf<VkFunction>()
     var customCode: String? = null
 
     init {
@@ -96,7 +94,35 @@ class VkDowncall(
                 )
             )
 
-            methods.add(cmd.copy(name = reqCommand.substring(2), entrypoint = reqCommand))
+            val first = cmd.parameters[0]
+            val function = cmd.copy(
+                name = reqCommand, entrypoint = reqCommand, parameters =
+                    if (first.type is VkDispatchableHandleIntermediate) cmd.parameters.toMutableList()
+                        .also {
+                            it[0] = first.copy(
+                                type = VkDispatchableHandle(
+                                    name = (first.type as VkDispatchableHandleIntermediate).name,
+                                    originalName = first.type.originalName
+                                )
+                            )
+                        }
+                    else cmd.parameters
+            )
+            methods.add(
+                VkFunction(
+                    function,
+                    handlesInstance =
+                        if (first.type is VkDispatchableHandleIntermediate) "${first.name}.capabilities()"
+                        else "VK.globalCommands()"
+                )
+            )
+            if (first.type is VkDispatchableHandleIntermediate) {
+                when (val it = (first.type as VkDispatchableHandleIntermediate).name) {
+                    "VkInstance", "VkPhysicalDevice" -> instanceCommands.add(function.name)
+                    "VkDevice", "VkQueue", "VkCommandBuffer" -> deviceCommands.add(function.name)
+                    else -> error(it)
+                }
+            }
         }
     }
 
@@ -115,15 +141,7 @@ class VkDowncall(
             )
         }
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
-        sb.append("public ")
-        if (modifier != null) {
-            sb.append("$modifier ")
-        }
-        sb.append("class $className")
-        if (extends.isNotEmpty()) {
-            sb.append(" extends ${extends.joinToString(", ")}")
-        }
-        sb.appendLine(" {")
+        sb.appendLine("public final class $className {")
 
         fun writeFields(list: List<VkDowncallField>, indent: Int) {
             list.forEach {
@@ -138,24 +156,22 @@ class VkDowncall(
         }
         writeFields(fields, 4)
         if (handleFields.isNotEmpty()) {
-            sb.appendLine("    private final Handles handles;")
             sb.appendLine("    public static final class Handles {")
             writeFields(handleFields, 8)
-            writeFields(pfnFields, 8)
-            if (handlesConstructor != null) {
-                sb.appendLine(handlesConstructor!!.prependIndent("        "))
-            }
+            sb.appendLine("        private Handles() {}")
             sb.appendLine("    }")
         }
         sb.appendLine()
 
-        if (constructor != null) {
-            sb.appendLine(constructor!!.prependIndent("    "))
-        }
+        sb.appendLine(
+            """
+                |    private $className() {}
+            """.trimMargin()
+        )
         sb.appendLine()
 
         methods.forEach { m ->
-            writeFunction(sb, m, handlesInstance = "handles", staticMethod = false)
+            writeFunction(sb, m.function, handlesInstance = m.handlesInstance)
         }
 
         if (customCode != null) {

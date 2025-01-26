@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMetalSurfaceCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMetalSurfaceCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkMetalSurfaceCreateFlagsEXT flags;
 ///     const CAMetalLayer* pLayer;
 /// };
 /// ```

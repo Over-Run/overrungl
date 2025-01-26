@@ -402,7 +402,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_hdr_from_callbacks(stbi_io_callbacks const * clbk, void* user);
+    /// (int) STBbool stbi_is_hdr_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
     public static boolean stbi_is_hdr_from_callbacks(MemorySegment clbk, MemorySegment user) {
         try { return (((int) Handles.MH_stbi_is_hdr_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_hdr_from_callbacks, clbk, user)) != 0); }
@@ -410,7 +410,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_hdr_from_memory(stbi_uc const * buffer, int len);
+    /// (int) STBbool stbi_is_hdr_from_memory(stbi_uc const * buffer, int len);
     /// ```
     public static boolean stbi_is_hdr_from_memory(MemorySegment buffer, int len) {
         try { return (((int) Handles.MH_stbi_is_hdr_from_memory.invokeExact(Handles.get().PFN_stbi_is_hdr_from_memory, buffer, len)) != 0); }
@@ -418,7 +418,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_hdr(char const * filename);
+    /// (int) STBbool stbi_is_hdr(char const * filename);
     /// ```
     public static boolean stbi_is_hdr(MemorySegment filename) {
         try { return (((int) Handles.MH_stbi_is_hdr.invokeExact(Handles.get().PFN_stbi_is_hdr, filename)) != 0); }
@@ -426,7 +426,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_hdr_from_file(FILE* f);
+    /// (int) STBbool stbi_is_hdr_from_file(FILE* f);
     /// ```
     public static boolean stbi_is_hdr_from_file(MemorySegment f) {
         try { return (((int) Handles.MH_stbi_is_hdr_from_file.invokeExact(Handles.get().PFN_stbi_is_hdr_from_file, f)) != 0); }
@@ -450,7 +450,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_info_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* comp);
+    /// (int) STBbool stbi_info_from_memory(stbi_uc const * buffer, int len, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_memory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment comp) {
         try { return (((int) Handles.MH_stbi_info_from_memory.invokeExact(Handles.get().PFN_stbi_info_from_memory, buffer, len, x, y, comp)) != 0); }
@@ -458,7 +458,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_info_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* comp);
+    /// (int) STBbool stbi_info_from_callbacks(stbi_io_callbacks const * clbk, void* user, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_callbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment comp) {
         try { return (((int) Handles.MH_stbi_info_from_callbacks.invokeExact(Handles.get().PFN_stbi_info_from_callbacks, clbk, user, x, y, comp)) != 0); }
@@ -466,7 +466,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_16_bit_from_memory(stbi_uc const * buffer, int len);
+    /// (int) STBbool stbi_is_16_bit_from_memory(stbi_uc const * buffer, int len);
     /// ```
     public static boolean stbi_is_16_bit_from_memory(MemorySegment buffer, int len) {
         try { return (((int) Handles.MH_stbi_is_16_bit_from_memory.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_memory, buffer, len)) != 0); }
@@ -474,7 +474,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_16_bit_from_callbacks(stbi_io_callbacks const * clbk, void* user);
+    /// (int) STBbool stbi_is_16_bit_from_callbacks(stbi_io_callbacks const * clbk, void* user);
     /// ```
     public static boolean stbi_is_16_bit_from_callbacks(MemorySegment clbk, MemorySegment user) {
         try { return (((int) Handles.MH_stbi_is_16_bit_from_callbacks.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_callbacks, clbk, user)) != 0); }
@@ -482,7 +482,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_info(char const * filename, int* x, int* y, int* comp);
+    /// (int) STBbool stbi_info(char const * filename, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment comp) {
         try { return (((int) Handles.MH_stbi_info.invokeExact(Handles.get().PFN_stbi_info, filename, x, y, comp)) != 0); }
@@ -490,7 +490,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_info_from_file(FILE* f, int* x, int* y, int* comp);
+    /// (int) STBbool stbi_info_from_file(FILE* f, int* x, int* y, int* comp);
     /// ```
     public static boolean stbi_info_from_file(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment comp) {
         try { return (((int) Handles.MH_stbi_info_from_file.invokeExact(Handles.get().PFN_stbi_info_from_file, f, x, y, comp)) != 0); }
@@ -498,7 +498,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_16_bit(char const * filename);
+    /// (int) STBbool stbi_is_16_bit(char const * filename);
     /// ```
     public static boolean stbi_is_16_bit(MemorySegment filename) {
         try { return (((int) Handles.MH_stbi_is_16_bit.invokeExact(Handles.get().PFN_stbi_is_16_bit, filename)) != 0); }
@@ -506,7 +506,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// STBbool stbi_is_16_bit_from_file(FILE* f);
+    /// (int) STBbool stbi_is_16_bit_from_file(FILE* f);
     /// ```
     public static boolean stbi_is_16_bit_from_file(MemorySegment f) {
         try { return (((int) Handles.MH_stbi_is_16_bit_from_file.invokeExact(Handles.get().PFN_stbi_is_16_bit_from_file, f)) != 0); }
@@ -514,7 +514,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_set_unpremultiply_on_load(STBbool flag_true_if_should_unpremultiply);
+    /// void stbi_set_unpremultiply_on_load((int) STBbool flag_true_if_should_unpremultiply);
     /// ```
     public static void stbi_set_unpremultiply_on_load(boolean flag_true_if_should_unpremultiply) {
         try { Handles.MH_stbi_set_unpremultiply_on_load.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load, ((flag_true_if_should_unpremultiply) ? 1 : 0)); }
@@ -522,7 +522,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_convert_iphone_png_to_rgb(STBbool flag_true_if_should_convert);
+    /// void stbi_convert_iphone_png_to_rgb((int) STBbool flag_true_if_should_convert);
     /// ```
     public static void stbi_convert_iphone_png_to_rgb(boolean flag_true_if_should_convert) {
         try { Handles.MH_stbi_convert_iphone_png_to_rgb.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb, ((flag_true_if_should_convert) ? 1 : 0)); }
@@ -530,7 +530,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_set_flip_vertically_on_load(STBbool flag_true_if_should_flip);
+    /// void stbi_set_flip_vertically_on_load((int) STBbool flag_true_if_should_flip);
     /// ```
     public static void stbi_set_flip_vertically_on_load(boolean flag_true_if_should_flip) {
         try { Handles.MH_stbi_set_flip_vertically_on_load.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load, ((flag_true_if_should_flip) ? 1 : 0)); }
@@ -538,7 +538,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_set_unpremultiply_on_load_thread(STBbool flag_true_if_should_unpremultiply);
+    /// void stbi_set_unpremultiply_on_load_thread((int) STBbool flag_true_if_should_unpremultiply);
     /// ```
     public static void stbi_set_unpremultiply_on_load_thread(boolean flag_true_if_should_unpremultiply) {
         try { Handles.MH_stbi_set_unpremultiply_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_unpremultiply_on_load_thread, ((flag_true_if_should_unpremultiply) ? 1 : 0)); }
@@ -546,7 +546,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_convert_iphone_png_to_rgb_thread(STBbool flag_true_if_should_convert);
+    /// void stbi_convert_iphone_png_to_rgb_thread((int) STBbool flag_true_if_should_convert);
     /// ```
     public static void stbi_convert_iphone_png_to_rgb_thread(boolean flag_true_if_should_convert) {
         try { Handles.MH_stbi_convert_iphone_png_to_rgb_thread.invokeExact(Handles.get().PFN_stbi_convert_iphone_png_to_rgb_thread, ((flag_true_if_should_convert) ? 1 : 0)); }
@@ -554,7 +554,7 @@ public final class STBImage {
     }
 
     /// ```
-    /// void stbi_set_flip_vertically_on_load_thread(STBbool flag_true_if_should_flip);
+    /// void stbi_set_flip_vertically_on_load_thread((int) STBbool flag_true_if_should_flip);
     /// ```
     public static void stbi_set_flip_vertically_on_load_thread(boolean flag_true_if_should_flip) {
         try { Handles.MH_stbi_set_flip_vertically_on_load_thread.invokeExact(Handles.get().PFN_stbi_set_flip_vertically_on_load_thread, ((flag_true_if_should_flip) ? 1 : 0)); }

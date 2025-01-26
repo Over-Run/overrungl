@@ -183,9 +183,16 @@ class Interpreter {
                                 error("unknown type ${expression.name} at ${expression.token}")
                             }
                         } else {
-                            UndeterminedType(find.withName(expression.name), true)
+                            UndeterminedType(find, true)
                         }
-                    }.let { it.copy(type = it.type.withName(expression.name)) }
+                    }.let {
+                        it.copy(type = it.type.withName(buildString {
+                            if (it.type.originalName != expression.name) {
+                                append("(${it.type.originalName}) ")
+                            }
+                            append(expression.name)
+                        }))
+                    }
                 }
 
                 is GroupTypeExpression -> {
@@ -194,9 +201,10 @@ class Interpreter {
                     }
                     val name = expression.name.lexeme
                     var complete = true
-                    originalNameComp.append(name)
+                    val originalName = "${expression.kind.typedef} $name"
+                    originalNameComp.append(originalName)
                     val t = GroupLayoutType(
-                        name,
+                        originalName,
                         name,
                         expression.opaque,
                         expression.members.map {

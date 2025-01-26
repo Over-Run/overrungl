@@ -60,7 +60,7 @@ public final class GLAMDDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
+    /// void glDebugMessageEnableAMD((unsigned int) GLenum category, (unsigned int) GLenum severity, (int) GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
     public void DebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageEnableAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
@@ -69,7 +69,7 @@ public final class GLAMDDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar* buf);
+    /// void glDebugMessageInsertAMD((unsigned int) GLenum category, (unsigned int) GLenum severity, (unsigned int) GLuint id, (int) GLsizei length, const GLchar* buf);
     /// ```
     public void DebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
@@ -78,7 +78,7 @@ public final class GLAMDDebugOutput {
     }
 
     /// ```
-    /// void glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, void* userParam);
+    /// void glDebugMessageCallbackAMD((void (*GLDebugProcAMD)((unsigned int) GLuint id, (unsigned int) GLenum category, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, void* userParam)) GLDEBUGPROCAMD callback, void* userParam);
     /// ```
     public void DebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
@@ -87,7 +87,7 @@ public final class GLAMDDebugOutput {
     }
 
     /// ```
-    /// GLuint glGetDebugMessageLogAMD(GLuint count, GLsizei bufSize, GLenum* categories, GLenum* severities, GLuint* ids, GLsizei* lengths, GLchar* message);
+    /// (unsigned int) GLuint glGetDebugMessageLogAMD((unsigned int) GLuint count, (int) GLsizei bufSize, GLenum* categories, GLenum* severities, GLuint* ids, GLsizei* lengths, GLchar* message);
     /// ```
     public int GetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogAMD)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");

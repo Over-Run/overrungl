@@ -60,7 +60,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// void glGenFencesAPPLE(GLsizei n, GLuint* fences);
+    /// void glGenFencesAPPLE((int) GLsizei n, GLuint* fences);
     /// ```
     public void GenFencesAPPLE(int n, MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGenFencesAPPLE");
@@ -69,7 +69,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// void glDeleteFencesAPPLE(GLsizei n, const GLuint* fences);
+    /// void glDeleteFencesAPPLE((int) GLsizei n, const GLuint* fences);
     /// ```
     public void DeleteFencesAPPLE(int n, MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFencesAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesAPPLE");
@@ -78,7 +78,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// void glSetFenceAPPLE(GLuint fence);
+    /// void glSetFenceAPPLE((unsigned int) GLuint fence);
     /// ```
     public void SetFenceAPPLE(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetFenceAPPLE)) throw new SymbolNotFoundError("Symbol not found: glSetFenceAPPLE");
@@ -87,7 +87,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// GLboolean glIsFenceAPPLE(GLuint fence);
+    /// GLboolean glIsFenceAPPLE((unsigned int) GLuint fence);
     /// ```
     public boolean IsFenceAPPLE(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsFenceAPPLE)) throw new SymbolNotFoundError("Symbol not found: glIsFenceAPPLE");
@@ -96,7 +96,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// GLboolean glTestFenceAPPLE(GLuint fence);
+    /// GLboolean glTestFenceAPPLE((unsigned int) GLuint fence);
     /// ```
     public boolean TestFenceAPPLE(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTestFenceAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTestFenceAPPLE");
@@ -105,7 +105,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// void glFinishFenceAPPLE(GLuint fence);
+    /// void glFinishFenceAPPLE((unsigned int) GLuint fence);
     /// ```
     public void FinishFenceAPPLE(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinishFenceAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFinishFenceAPPLE");
@@ -114,7 +114,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// GLboolean glTestObjectAPPLE(GLenum object, GLuint name);
+    /// GLboolean glTestObjectAPPLE((unsigned int) GLenum object, (unsigned int) GLuint name);
     /// ```
     public boolean TestObjectAPPLE(int object, int name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTestObjectAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTestObjectAPPLE");
@@ -123,7 +123,7 @@ public final class GLAPPLEFence {
     }
 
     /// ```
-    /// void glFinishObjectAPPLE(GLenum object, GLint name);
+    /// void glFinishObjectAPPLE((unsigned int) GLenum object, (int) GLint name);
     /// ```
     public void FinishObjectAPPLE(int object, int name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinishObjectAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFinishObjectAPPLE");

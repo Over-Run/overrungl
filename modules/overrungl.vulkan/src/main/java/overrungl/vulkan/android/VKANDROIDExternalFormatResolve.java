@@ -25,6 +25,6 @@ public final class VKANDROIDExternalFormatResolve {
     public static final int VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID = 1000468002;
     public static final int VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID = 0x00000010;
 
-    private VKANDROIDExternalFormatResolve() { }
+    private VKANDROIDExternalFormatResolve() {}
 
 }

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseMemoryBind {
-///     VkDeviceSize resourceOffset;
-///     VkDeviceSize size;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags;
+///     (uint64_t) VkDeviceSize resourceOffset;
+///     (uint64_t) VkDeviceSize size;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize memoryOffset;
+///     ((uint32_t) VkFlags) VkSparseMemoryBindFlags flags;
 /// };
 /// ```
 public sealed class VkSparseMemoryBind extends GroupType {

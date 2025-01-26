@@ -74,6 +74,6 @@ public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OP_BLUE_EXT = 1000148045;
     public static final int VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT = 0x00080000;
 
-    private VKEXTBlendOperationAdvanced() { }
+    private VKEXTBlendOperationAdvanced() {}
 
 }

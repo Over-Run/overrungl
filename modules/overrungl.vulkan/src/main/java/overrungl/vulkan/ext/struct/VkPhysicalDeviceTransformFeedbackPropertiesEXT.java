@@ -27,18 +27,18 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxTransformFeedbackStreams;
 ///     uint32_t maxTransformFeedbackBuffers;
-///     VkDeviceSize maxTransformFeedbackBufferSize;
+///     (uint64_t) VkDeviceSize maxTransformFeedbackBufferSize;
 ///     uint32_t maxTransformFeedbackStreamDataSize;
 ///     uint32_t maxTransformFeedbackBufferDataSize;
 ///     uint32_t maxTransformFeedbackBufferDataStride;
-///     VkBool32 transformFeedbackQueries;
-///     VkBool32 transformFeedbackStreamsLinesTriangles;
-///     VkBool32 transformFeedbackRasterizationStreamSelect;
-///     VkBool32 transformFeedbackDraw;
+///     (uint32_t) VkBool32 transformFeedbackQueries;
+///     (uint32_t) VkBool32 transformFeedbackStreamsLinesTriangles;
+///     (uint32_t) VkBool32 transformFeedbackRasterizationStreamSelect;
+///     (uint32_t) VkBool32 transformFeedbackDraw;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends GroupType {

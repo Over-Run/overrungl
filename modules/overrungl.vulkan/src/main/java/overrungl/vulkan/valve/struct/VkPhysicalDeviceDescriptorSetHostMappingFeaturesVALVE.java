@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 descriptorSetHostMapping;
+///     (uint32_t) VkBool32 descriptorSetHostMapping;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE extends GroupType {

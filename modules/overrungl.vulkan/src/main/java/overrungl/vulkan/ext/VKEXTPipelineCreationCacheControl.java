@@ -27,6 +27,6 @@ public final class VKEXTPipelineCreationCacheControl {
     public static final int VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT = 1000297000;
     public static final int VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT = 0x00000001;
 
-    private VKEXTPipelineCreationCacheControl() { }
+    private VKEXTPipelineCreationCacheControl() {}
 
 }

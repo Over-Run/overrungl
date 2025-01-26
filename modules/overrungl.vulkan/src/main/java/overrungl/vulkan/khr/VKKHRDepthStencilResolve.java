@@ -28,6 +28,6 @@ public final class VKKHRDepthStencilResolve {
     public static final int VK_RESOLVE_MODE_MIN_BIT_KHR = 0x00000004;
     public static final int VK_RESOLVE_MODE_MAX_BIT_KHR = 0x00000008;
 
-    private VKKHRDepthStencilResolve() { }
+    private VKKHRDepthStencilResolve() {}
 
 }

@@ -106,7 +106,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightbvARB(GLint size, const GLbyte* weights);
+    /// void glWeightbvARB((int) GLint size, const GLbyte* weights);
     /// ```
     public void WeightbvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightbvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightbvARB");
@@ -115,7 +115,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightsvARB(GLint size, const GLshort* weights);
+    /// void glWeightsvARB((int) GLint size, const GLshort* weights);
     /// ```
     public void WeightsvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightsvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightsvARB");
@@ -124,7 +124,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightivARB(GLint size, const GLint* weights);
+    /// void glWeightivARB((int) GLint size, const GLint* weights);
     /// ```
     public void WeightivARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightivARB)) throw new SymbolNotFoundError("Symbol not found: glWeightivARB");
@@ -133,7 +133,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightfvARB(GLint size, const GLfloat* weights);
+    /// void glWeightfvARB((int) GLint size, const GLfloat* weights);
     /// ```
     public void WeightfvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightfvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightfvARB");
@@ -142,7 +142,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightdvARB(GLint size, const GLdouble* weights);
+    /// void glWeightdvARB((int) GLint size, const GLdouble* weights);
     /// ```
     public void WeightdvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightdvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightdvARB");
@@ -151,7 +151,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightubvARB(GLint size, const GLubyte* weights);
+    /// void glWeightubvARB((int) GLint size, const GLubyte* weights);
     /// ```
     public void WeightubvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightubvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightubvARB");
@@ -160,7 +160,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightusvARB(GLint size, const GLushort* weights);
+    /// void glWeightusvARB((int) GLint size, const GLushort* weights);
     /// ```
     public void WeightusvARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightusvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightusvARB");
@@ -169,7 +169,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightuivARB(GLint size, const GLuint* weights);
+    /// void glWeightuivARB((int) GLint size, const GLuint* weights);
     /// ```
     public void WeightuivARB(int size, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightuivARB)) throw new SymbolNotFoundError("Symbol not found: glWeightuivARB");
@@ -178,7 +178,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const void* pointer);
+    /// void glWeightPointerARB((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
     public void WeightPointerARB(int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightPointerARB)) throw new SymbolNotFoundError("Symbol not found: glWeightPointerARB");
@@ -187,7 +187,7 @@ public final class GLARBVertexBlend {
     }
 
     /// ```
-    /// void glVertexBlendARB(GLint count);
+    /// void glVertexBlendARB((int) GLint count);
     /// ```
     public void VertexBlendARB(int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendARB)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendARB");

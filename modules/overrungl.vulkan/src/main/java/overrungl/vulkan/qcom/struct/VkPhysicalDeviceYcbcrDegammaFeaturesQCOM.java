@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceYcbcrDegammaFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 ycbcrDegamma;
+///     (uint32_t) VkBool32 ycbcrDegamma;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceYcbcrDegammaFeaturesQCOM extends GroupType {

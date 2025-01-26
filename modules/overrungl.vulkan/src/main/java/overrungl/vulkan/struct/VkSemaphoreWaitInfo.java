@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSemaphoreWaitInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphoreWaitFlags flags;
+///     ((uint32_t) VkFlags) VkSemaphoreWaitFlags flags;
 ///     uint32_t semaphoreCount;
 ///     const VkSemaphore* pSemaphores;
 ///     const uint64_t* pValues;

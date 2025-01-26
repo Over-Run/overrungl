@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineColorBlendAttachmentState {
-///     VkBool32 blendEnable;
-///     VkBlendFactor srcColorBlendFactor;
-///     VkBlendFactor dstColorBlendFactor;
-///     VkBlendOp colorBlendOp;
-///     VkBlendFactor srcAlphaBlendFactor;
-///     VkBlendFactor dstAlphaBlendFactor;
-///     VkBlendOp alphaBlendOp;
-///     VkColorComponentFlags colorWriteMask;
+///     (uint32_t) VkBool32 blendEnable;
+///     (int) VkBlendFactor srcColorBlendFactor;
+///     (int) VkBlendFactor dstColorBlendFactor;
+///     (int) VkBlendOp colorBlendOp;
+///     (int) VkBlendFactor srcAlphaBlendFactor;
+///     (int) VkBlendFactor dstAlphaBlendFactor;
+///     (int) VkBlendOp alphaBlendOp;
+///     ((uint32_t) VkFlags) VkColorComponentFlags colorWriteMask;
 /// };
 /// ```
 public sealed class VkPipelineColorBlendAttachmentState extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeneratedCommandsMemoryRequirementsInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline;
-///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
+///     (uint64_t) VkPipeline pipeline;
+///     (uint64_t) VkIndirectCommandsLayoutNV indirectCommandsLayout;
 ///     uint32_t maxSequencesCount;
 /// };
 /// ```

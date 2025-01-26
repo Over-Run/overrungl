@@ -95,7 +95,7 @@ public final class GLEXTShaderImageLoadStore {
     }
 
     /// ```
-    /// void glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
+    /// void glBindImageTextureEXT((unsigned int) GLuint index, (unsigned int) GLuint texture, (int) GLint level, GLboolean layered, (int) GLint layer, (unsigned int) GLenum access, (int) GLint format);
     /// ```
     public void BindImageTextureEXT(int index, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT");
@@ -104,7 +104,7 @@ public final class GLEXTShaderImageLoadStore {
     }
 
     /// ```
-    /// void glMemoryBarrierEXT(GLbitfield barriers);
+    /// void glMemoryBarrierEXT((unsigned int) GLbitfield barriers);
     /// ```
     public void MemoryBarrierEXT(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT");

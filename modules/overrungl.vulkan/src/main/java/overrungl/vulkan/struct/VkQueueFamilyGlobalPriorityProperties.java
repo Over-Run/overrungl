@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyGlobalPriorityProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t priorityCount;
-///     VkQueueGlobalPriority priorities[16];
+///     (int) VkQueueGlobalPriority priorities[16];
 /// };
 /// ```
 public sealed class VkQueueFamilyGlobalPriorityProperties extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t formatConstraintsCount;
 ///     const VkImageFormatConstraintsInfoFUCHSIA* pFormatConstraints;
-///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
-///     VkImageConstraintsInfoFlagsFUCHSIA flags;
+///     (struct VkBufferCollectionConstraintsInfoFUCHSIA) VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
+///     ((uint32_t) VkFlags) VkImageConstraintsInfoFlagsFUCHSIA flags;
 /// };
 /// ```
 public sealed class VkImageConstraintsInfoFUCHSIA extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance6Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     (uint32_t) VkBool32 blockTexelViewCompatibleMultipleLayers;
 ///     uint32_t maxCombinedImageSamplerDescriptorCount;
-///     VkBool32 fragmentShadingRateClampCombinerInputs;
+///     (uint32_t) VkBool32 fragmentShadingRateClampCombinerInputs;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMaintenance6Properties extends GroupType {

@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH264SequenceParameterSetVui {
-///     StdVideoH264SpsVuiFlags flags;
-///     StdVideoH264AspectRatioIdc aspect_ratio_idc;
+///     (struct StdVideoH264SpsVuiFlags) StdVideoH264SpsVuiFlags flags;
+///     (int) StdVideoH264AspectRatioIdc aspect_ratio_idc;
 ///     uint16_t sar_width;
 ///     uint16_t sar_height;
 ///     uint8_t video_format;

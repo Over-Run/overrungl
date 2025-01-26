@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFragmentShadingRateTypeNV shadingRateType;
-///     VkFragmentShadingRateNV shadingRate;
-///     VkFragmentShadingRateCombinerOpKHR combinerOps[2];
+///     (int) VkFragmentShadingRateTypeNV shadingRateType;
+///     (int) VkFragmentShadingRateNV shadingRate;
+///     (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2];
 /// };
 /// ```
 public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends GroupType {

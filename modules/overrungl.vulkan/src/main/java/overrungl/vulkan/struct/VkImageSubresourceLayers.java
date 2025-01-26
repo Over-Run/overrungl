@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageSubresourceLayers {
-///     VkImageAspectFlags aspectMask;
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
 ///     uint32_t mipLevel;
 ///     uint32_t baseArrayLayer;
 ///     uint32_t layerCount;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkHdrVividDynamicMetadataHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     size_t dynamicMetadataSize;
 ///     const void* pDynamicMetadata;

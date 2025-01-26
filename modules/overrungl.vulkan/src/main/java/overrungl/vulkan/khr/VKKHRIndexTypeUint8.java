@@ -23,6 +23,6 @@ public final class VKKHRIndexTypeUint8 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR = 1000265000;
     public static final int VK_INDEX_TYPE_UINT8_KHR = 1000265000;
 
-    private VKKHRIndexTypeUint8() { }
+    private VKKHRIndexTypeUint8() {}
 
 }

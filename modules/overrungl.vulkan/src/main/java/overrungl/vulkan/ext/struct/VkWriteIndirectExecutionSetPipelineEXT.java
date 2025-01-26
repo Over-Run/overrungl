@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkWriteIndirectExecutionSetPipelineEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t index;
-///     VkPipeline pipeline;
+///     (uint64_t) VkPipeline pipeline;
 /// };
 /// ```
 public sealed class VkWriteIndirectExecutionSetPipelineEXT extends GroupType {

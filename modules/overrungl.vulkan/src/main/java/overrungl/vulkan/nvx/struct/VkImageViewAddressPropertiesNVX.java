@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewAddressPropertiesNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceAddress deviceAddress;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkImageViewAddressPropertiesNVX extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 bufferDeviceAddress;
-///     VkBool32 bufferDeviceAddressCaptureReplay;
-///     VkBool32 bufferDeviceAddressMultiDevice;
+///     (uint32_t) VkBool32 bufferDeviceAddress;
+///     (uint32_t) VkBool32 bufferDeviceAddressCaptureReplay;
+///     (uint32_t) VkBool32 bufferDeviceAddressMultiDevice;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineOfflineCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint8_t pipelineIdentifier[16];
-///     VkPipelineMatchControl matchControl;
-///     VkDeviceSize poolEntrySize;
+///     (int) VkPipelineMatchControl matchControl;
+///     (uint64_t) VkDeviceSize poolEntrySize;
 /// };
 /// ```
 public sealed class VkPipelineOfflineCreateInfo extends GroupType {

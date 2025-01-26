@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureGeometryMotionTrianglesDataNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceOrHostAddressConstKHR vertexData;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR vertexData;
 /// };
 /// ```
 public sealed class VkAccelerationStructureGeometryMotionTrianglesDataNV extends GroupType {

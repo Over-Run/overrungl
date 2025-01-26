@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMemoryDecompressionPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkMemoryDecompressionMethodFlagsNV decompressionMethods;
+///     ((uint64_t) VkFlags64) VkMemoryDecompressionMethodFlagsNV decompressionMethods;
 ///     uint64_t maxDecompressionIndirectCount;
 /// };
 /// ```

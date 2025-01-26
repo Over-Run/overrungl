@@ -21,31 +21,25 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVClipSpaceWScaling {
+public final class VKNVClipSpaceWScaling {
     public static final int VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1;
     public static final String VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME = "VK_NV_clip_space_w_scaling";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000;
     public static final int VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetViewportWScalingNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCmdSetViewportWScalingNV;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdSetViewportWScalingNV = func.invoke(device, "vkCmdSetViewportWScalingNV");
-        }
+        private Handles() {}
     }
 
-    public VKNVClipSpaceWScaling(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKNVClipSpaceWScaling() {}
 
     /// ```
-    /// void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportWScalingNV* pViewportWScalings);
+    /// void vkCmdSetViewportWScalingNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportWScalingNV* pViewportWScalings);
     /// ```
-    public void CmdSetViewportWScalingNV(MemorySegment commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportWScalings) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetViewportWScalingNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
-        try { Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(handles.PFN_vkCmdSetViewportWScalingNV, commandBuffer, firstViewport, viewportCount, pViewportWScalings); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetViewportWScalingNV", e); }
+    public static void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportWScalings) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
+        try { Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportWScalings); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWScalingNV", e); }
     }
 
 }

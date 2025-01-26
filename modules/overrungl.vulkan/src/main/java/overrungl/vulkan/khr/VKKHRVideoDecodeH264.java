@@ -31,6 +31,6 @@ public final class VKKHRVideoDecodeH264 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006;
     public static final int VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR = 0x00000001;
 
-    private VKKHRVideoDecodeH264() { }
+    private VKKHRVideoDecodeH264() {}
 
 }

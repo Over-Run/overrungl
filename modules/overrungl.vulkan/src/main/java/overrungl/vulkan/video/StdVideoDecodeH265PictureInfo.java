@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH265PictureInfo {
-///     StdVideoDecodeH265PictureInfoFlags flags;
+///     (struct StdVideoDecodeH265PictureInfoFlags) StdVideoDecodeH265PictureInfoFlags flags;
 ///     uint8_t sps_video_parameter_set_id;
 ///     uint8_t pps_seq_parameter_set_id;
 ///     uint8_t pps_pic_parameter_set_id;

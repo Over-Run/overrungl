@@ -56,7 +56,7 @@ public final class GLEXTVertexWeighting {
     }
 
     /// ```
-    /// void glVertexWeightfEXT(GLfloat weight);
+    /// void glVertexWeightfEXT(((float) khronos_float_t) GLfloat weight);
     /// ```
     public void VertexWeightfEXT(float weight) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeightfEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightfEXT");
@@ -74,7 +74,7 @@ public final class GLEXTVertexWeighting {
     }
 
     /// ```
-    /// void glVertexWeightPointerEXT(GLint size, GLenum type, GLsizei stride, const void* pointer);
+    /// void glVertexWeightPointerEXT((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
     public void VertexWeightPointerEXT(int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexWeightPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexWeightPointerEXT");

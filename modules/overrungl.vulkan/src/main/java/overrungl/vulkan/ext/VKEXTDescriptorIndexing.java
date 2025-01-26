@@ -33,6 +33,6 @@ public final class VKEXTDescriptorIndexing {
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT = 0x00000002;
     public static final int VK_ERROR_FRAGMENTATION_EXT = -1000161000;
 
-    private VKEXTDescriptorIndexing() { }
+    private VKEXTDescriptorIndexing() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalObjectCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExportMetalObjectTypeFlagBitsEXT exportObjectType;
+///     (int) VkExportMetalObjectTypeFlagBitsEXT exportObjectType;
 /// };
 /// ```
 public sealed class VkExportMetalObjectCreateInfoEXT extends GroupType {

@@ -24,6 +24,6 @@ public final class VKKHRShaderSubgroupRotate {
     public static final int VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR = 0x00000200;
     public static final int VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR = 0x00000400;
 
-    private VKKHRShaderSubgroupRotate() { }
+    private VKKHRShaderSubgroupRotate() {}
 
 }

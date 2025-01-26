@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRenderPass renderPass;
+///     (uint64_t) VkRenderPass renderPass;
 ///     uint32_t subpass;
-///     VkFramebuffer framebuffer;
-///     VkBool32 occlusionQueryEnable;
-///     VkQueryControlFlags queryFlags;
-///     VkQueryPipelineStatisticFlags pipelineStatistics;
+///     (uint64_t) VkFramebuffer framebuffer;
+///     (uint32_t) VkBool32 occlusionQueryEnable;
+///     ((uint32_t) VkFlags) VkQueryControlFlags queryFlags;
+///     ((uint32_t) VkFlags) VkQueryPipelineStatisticFlags pipelineStatistics;
 /// };
 /// ```
 public sealed class VkCommandBufferInheritanceInfo extends GroupType {

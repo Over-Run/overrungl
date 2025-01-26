@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAttachmentDescriptionStencilLayout {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkImageLayout stencilInitialLayout;
-///     VkImageLayout stencilFinalLayout;
+///     (int) VkImageLayout stencilInitialLayout;
+///     (int) VkImageLayout stencilFinalLayout;
 /// };
 /// ```
 public sealed class VkAttachmentDescriptionStencilLayout extends GroupType {

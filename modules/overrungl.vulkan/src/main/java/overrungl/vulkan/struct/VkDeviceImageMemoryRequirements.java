@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceImageMemoryRequirements {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const VkImageCreateInfo* pCreateInfo;
-///     VkImageAspectFlagBits planeAspect;
+///     (int) VkImageAspectFlagBits planeAspect;
 /// };
 /// ```
 public sealed class VkDeviceImageMemoryRequirements extends GroupType {

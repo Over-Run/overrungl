@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1ColorConfig {
-///     StdVideoAV1ColorConfigFlags flags;
+///     (struct StdVideoAV1ColorConfigFlags) StdVideoAV1ColorConfigFlags flags;
 ///     uint8_t BitDepth;
 ///     uint8_t subsampling_x;
 ///     uint8_t subsampling_y;
 ///     uint8_t reserved1;
-///     StdVideoAV1ColorPrimaries color_primaries;
-///     StdVideoAV1TransferCharacteristics transfer_characteristics;
-///     StdVideoAV1MatrixCoefficients matrix_coefficients;
-///     StdVideoAV1ChromaSamplePosition chroma_sample_position;
+///     (int) StdVideoAV1ColorPrimaries color_primaries;
+///     (int) StdVideoAV1TransferCharacteristics transfer_characteristics;
+///     (int) StdVideoAV1MatrixCoefficients matrix_coefficients;
+///     (int) StdVideoAV1ChromaSamplePosition chroma_sample_position;
 /// };
 /// ```
 public sealed class StdVideoAV1ColorConfig extends GroupType {

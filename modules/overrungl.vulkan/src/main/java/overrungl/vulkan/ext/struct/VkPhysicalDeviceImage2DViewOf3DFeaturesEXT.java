@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImage2DViewOf3DFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 image2DViewOf3D;
-///     VkBool32 sampler2DViewOf3D;
+///     (uint32_t) VkBool32 image2DViewOf3D;
+///     (uint32_t) VkBool32 sampler2DViewOf3D;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubresourceLayout {
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
-///     VkDeviceSize rowPitch;
-///     VkDeviceSize arrayPitch;
-///     VkDeviceSize depthPitch;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize size;
+///     (uint64_t) VkDeviceSize rowPitch;
+///     (uint64_t) VkDeviceSize arrayPitch;
+///     (uint64_t) VkDeviceSize depthPitch;
 /// };
 /// ```
 public sealed class VkSubresourceLayout extends GroupType {

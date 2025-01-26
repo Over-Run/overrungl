@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCoverageReductionModeFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 coverageReductionMode;
+///     (uint32_t) VkBool32 coverageReductionMode;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCoverageReductionModeFeaturesNV extends GroupType {

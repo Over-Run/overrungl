@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainLatencyCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 latencyModeEnable;
+///     (uint32_t) VkBool32 latencyModeEnable;
 /// };
 /// ```
 public sealed class VkSwapchainLatencyCreateInfoNV extends GroupType {

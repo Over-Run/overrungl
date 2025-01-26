@@ -50,7 +50,7 @@ public final class GLAMDFramebufferSamplePositions {
     }
 
     /// ```
-    /// void glFramebufferSamplePositionsfvAMD(GLenum target, GLuint numsamples, GLuint pixelindex, const GLfloat* values);
+    /// void glFramebufferSamplePositionsfvAMD((unsigned int) GLenum target, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, const GLfloat* values);
     /// ```
     public void FramebufferSamplePositionsfvAMD(int target, int numsamples, int pixelindex, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSamplePositionsfvAMD)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSamplePositionsfvAMD");
@@ -59,7 +59,7 @@ public final class GLAMDFramebufferSamplePositions {
     }
 
     /// ```
-    /// void glNamedFramebufferSamplePositionsfvAMD(GLuint framebuffer, GLuint numsamples, GLuint pixelindex, const GLfloat* values);
+    /// void glNamedFramebufferSamplePositionsfvAMD((unsigned int) GLuint framebuffer, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, const GLfloat* values);
     /// ```
     public void NamedFramebufferSamplePositionsfvAMD(int framebuffer, int numsamples, int pixelindex, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSamplePositionsfvAMD)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSamplePositionsfvAMD");
@@ -68,7 +68,7 @@ public final class GLAMDFramebufferSamplePositions {
     }
 
     /// ```
-    /// void glGetFramebufferParameterfvAMD(GLenum target, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat* values);
+    /// void glGetFramebufferParameterfvAMD((unsigned int) GLenum target, (unsigned int) GLenum pname, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, (int) GLsizei size, GLfloat* values);
     /// ```
     public void GetFramebufferParameterfvAMD(int target, int pname, int numsamples, int pixelindex, int size, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterfvAMD)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterfvAMD");
@@ -77,7 +77,7 @@ public final class GLAMDFramebufferSamplePositions {
     }
 
     /// ```
-    /// void glGetNamedFramebufferParameterfvAMD(GLuint framebuffer, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat* values);
+    /// void glGetNamedFramebufferParameterfvAMD((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, (int) GLsizei size, GLfloat* values);
     /// ```
     public void GetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numsamples, int pixelindex, int size, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterfvAMD)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterfvAMD");

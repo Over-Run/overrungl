@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceGroupSubmitInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t waitSemaphoreCount;
 ///     const uint32_t* pWaitSemaphoreDeviceIndices;

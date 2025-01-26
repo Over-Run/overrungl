@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize heapBudget[16];
-///     VkDeviceSize heapUsage[16];
+///     (uint64_t) VkDeviceSize heapBudget[16];
+///     (uint64_t) VkDeviceSize heapUsage[16];
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType {

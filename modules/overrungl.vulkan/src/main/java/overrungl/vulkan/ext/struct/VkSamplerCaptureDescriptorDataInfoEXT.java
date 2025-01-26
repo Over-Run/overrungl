@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerCaptureDescriptorDataInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSampler sampler;
+///     (uint64_t) VkSampler sampler;
 /// };
 /// ```
 public sealed class VkSamplerCaptureDescriptorDataInfoEXT extends GroupType {

@@ -31,6 +31,6 @@ public final class VKEXTGraphicsPipelineLibrary {
     public static final int VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT = 0x00000400;
     public static final int VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT = 0x00000002;
 
-    private VKEXTGraphicsPipelineLibrary() { }
+    private VKEXTGraphicsPipelineLibrary() {}
 
 }

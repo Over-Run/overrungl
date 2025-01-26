@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferMemoryRequirementsInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBuffer buffer;
+///     (uint64_t) VkBuffer buffer;
 /// };
 /// ```
 public sealed class VkBufferMemoryRequirementsInfo2 extends GroupType {

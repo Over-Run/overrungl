@@ -26,6 +26,6 @@ public final class VKEXTSubgroupSizeControl {
     public static final int VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT = 0x00000001;
     public static final int VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT = 0x00000002;
 
-    private VKEXTSubgroupSizeControl() { }
+    private VKEXTSubgroupSizeControl() {}
 
 }

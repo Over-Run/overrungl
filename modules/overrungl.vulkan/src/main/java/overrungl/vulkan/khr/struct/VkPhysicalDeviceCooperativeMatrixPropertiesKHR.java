@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCooperativeMatrixPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkShaderStageFlags cooperativeMatrixSupportedStages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags cooperativeMatrixSupportedStages;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCooperativeMatrixPropertiesKHR extends GroupType {

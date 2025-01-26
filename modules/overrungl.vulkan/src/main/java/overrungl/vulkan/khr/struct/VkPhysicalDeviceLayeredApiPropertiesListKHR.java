@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLayeredApiPropertiesListKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t layeredApiCount;
 ///     VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis;

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationDepthClipStateCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
-///     VkBool32 depthClipEnable;
+///     ((uint32_t) VkFlags) VkPipelineRasterizationDepthClipStateCreateFlagsEXT flags;
+///     (uint32_t) VkBool32 depthClipEnable;
 /// };
 /// ```
 public sealed class VkPipelineRasterizationDepthClipStateCreateInfoEXT extends GroupType {

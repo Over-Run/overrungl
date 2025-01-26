@@ -24,6 +24,6 @@ public final class VKNVDescriptorPoolOverallocation {
     public static final int VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV = 0x00000008;
     public static final int VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV = 0x00000010;
 
-    private VKNVDescriptorPoolOverallocation() { }
+    private VKNVDescriptorPoolOverallocation() {}
 
 }

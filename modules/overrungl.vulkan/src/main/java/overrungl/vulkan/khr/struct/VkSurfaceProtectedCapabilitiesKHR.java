@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfaceProtectedCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 supportsProtected;
+///     (uint32_t) VkBool32 supportsProtected;
 /// };
 /// ```
 public sealed class VkSurfaceProtectedCapabilitiesKHR extends GroupType {

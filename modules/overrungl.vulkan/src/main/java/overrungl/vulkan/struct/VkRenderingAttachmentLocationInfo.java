@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingAttachmentLocationInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t colorAttachmentCount;
 ///     const uint32_t* pColorAttachmentLocations;

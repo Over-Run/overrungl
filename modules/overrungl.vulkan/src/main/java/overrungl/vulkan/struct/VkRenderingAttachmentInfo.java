@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingAttachmentInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageView imageView;
-///     VkImageLayout imageLayout;
-///     VkResolveModeFlagBits resolveMode;
-///     VkImageView resolveImageView;
-///     VkImageLayout resolveImageLayout;
-///     VkAttachmentLoadOp loadOp;
-///     VkAttachmentStoreOp storeOp;
-///     VkClearValue clearValue;
+///     (uint64_t) VkImageView imageView;
+///     (int) VkImageLayout imageLayout;
+///     (int) VkResolveModeFlagBits resolveMode;
+///     (uint64_t) VkImageView resolveImageView;
+///     (int) VkImageLayout resolveImageLayout;
+///     (int) VkAttachmentLoadOp loadOp;
+///     (int) VkAttachmentStoreOp storeOp;
+///     (union VkClearValue) VkClearValue clearValue;
 /// };
 /// ```
 public sealed class VkRenderingAttachmentInfo extends GroupType {

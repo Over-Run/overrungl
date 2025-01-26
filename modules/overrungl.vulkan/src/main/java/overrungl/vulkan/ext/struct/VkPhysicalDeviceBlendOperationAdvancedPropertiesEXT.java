@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t advancedBlendMaxColorAttachments;
-///     VkBool32 advancedBlendIndependentBlend;
-///     VkBool32 advancedBlendNonPremultipliedSrcColor;
-///     VkBool32 advancedBlendNonPremultipliedDstColor;
-///     VkBool32 advancedBlendCorrelatedOverlap;
-///     VkBool32 advancedBlendAllOperations;
+///     (uint32_t) VkBool32 advancedBlendIndependentBlend;
+///     (uint32_t) VkBool32 advancedBlendNonPremultipliedSrcColor;
+///     (uint32_t) VkBool32 advancedBlendNonPremultipliedDstColor;
+///     (uint32_t) VkBool32 advancedBlendCorrelatedOverlap;
+///     (uint32_t) VkBool32 advancedBlendAllOperations;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends GroupType {

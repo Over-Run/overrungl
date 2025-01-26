@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPropertiesKHR {
-///     VkDisplayKHR display;
+///     (uint64_t) VkDisplayKHR display;
 ///     const char* displayName;
-///     VkExtent2D physicalDimensions;
-///     VkExtent2D physicalResolution;
-///     VkSurfaceTransformFlagsKHR supportedTransforms;
-///     VkBool32 planeReorderPossible;
-///     VkBool32 persistentContent;
+///     (struct VkExtent2D) VkExtent2D physicalDimensions;
+///     (struct VkExtent2D) VkExtent2D physicalResolution;
+///     ((uint32_t) VkFlags) VkSurfaceTransformFlagsKHR supportedTransforms;
+///     (uint32_t) VkBool32 planeReorderPossible;
+///     (uint32_t) VkBool32 persistentContent;
 /// };
 /// ```
 public sealed class VkDisplayPropertiesKHR extends GroupType {

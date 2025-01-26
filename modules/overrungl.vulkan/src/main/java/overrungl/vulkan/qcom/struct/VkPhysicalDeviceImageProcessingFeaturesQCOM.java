@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageProcessingFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 textureSampleWeighted;
-///     VkBool32 textureBoxFilter;
-///     VkBool32 textureBlockMatch;
+///     (uint32_t) VkBool32 textureSampleWeighted;
+///     (uint32_t) VkBool32 textureBoxFilter;
+///     (uint32_t) VkBool32 textureBlockMatch;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageProcessingFeaturesQCOM extends GroupType {

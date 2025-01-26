@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 deviceGeneratedCommands;
-///     VkBool32 dynamicGeneratedPipelineLayout;
+///     (uint32_t) VkBool32 deviceGeneratedCommands;
+///     (uint32_t) VkBool32 dynamicGeneratedPipelineLayout;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends GroupType {

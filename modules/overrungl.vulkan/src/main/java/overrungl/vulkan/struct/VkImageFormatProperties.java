@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageFormatProperties {
-///     VkExtent3D maxExtent;
+///     (struct VkExtent3D) VkExtent3D maxExtent;
 ///     uint32_t maxMipLevels;
 ///     uint32_t maxArrayLayers;
-///     VkSampleCountFlags sampleCounts;
-///     VkDeviceSize maxResourceSize;
+///     ((uint32_t) VkFlags) VkSampleCountFlags sampleCounts;
+///     (uint64_t) VkDeviceSize maxResourceSize;
 /// };
 /// ```
 public sealed class VkImageFormatProperties extends GroupType {

@@ -23,6 +23,6 @@ public final class VKKHRDedicatedAllocation {
     public static final int VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR = 1000127000;
     public static final int VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR = 1000127001;
 
-    private VKKHRDedicatedAllocation() { }
+    private VKKHRDedicatedAllocation() {}
 
 }

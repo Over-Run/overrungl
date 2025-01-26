@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportShadingRateImageStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 shadingRateImageEnable;
+///     (uint32_t) VkBool32 shadingRateImageEnable;
 ///     uint32_t viewportCount;
 ///     const VkShadingRatePaletteNV* pShadingRatePalettes;
 /// };

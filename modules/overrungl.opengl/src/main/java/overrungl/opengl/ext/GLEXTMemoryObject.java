@@ -99,7 +99,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glGetUnsignedBytevEXT(GLenum pname, GLubyte* data);
+    /// void glGetUnsignedBytevEXT((unsigned int) GLenum pname, GLubyte* data);
     /// ```
     public void GetUnsignedBytevEXT(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytevEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT");
@@ -108,7 +108,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glGetUnsignedBytei_vEXT(GLenum target, GLuint index, GLubyte* data);
+    /// void glGetUnsignedBytei_vEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLubyte* data);
     /// ```
     public void GetUnsignedBytei_vEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUnsignedBytei_vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT");
@@ -117,7 +117,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glDeleteMemoryObjectsEXT(GLsizei n, const GLuint* memoryObjects);
+    /// void glDeleteMemoryObjectsEXT((int) GLsizei n, const GLuint* memoryObjects);
     /// ```
     public void DeleteMemoryObjectsEXT(int n, MemorySegment memoryObjects) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteMemoryObjectsEXT");
@@ -126,7 +126,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// GLboolean glIsMemoryObjectEXT(GLuint memoryObject);
+    /// GLboolean glIsMemoryObjectEXT((unsigned int) GLuint memoryObject);
     /// ```
     public boolean IsMemoryObjectEXT(int memoryObject) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsMemoryObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glIsMemoryObjectEXT");
@@ -135,7 +135,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glCreateMemoryObjectsEXT(GLsizei n, GLuint* memoryObjects);
+    /// void glCreateMemoryObjectsEXT((int) GLsizei n, GLuint* memoryObjects);
     /// ```
     public void CreateMemoryObjectsEXT(int n, MemorySegment memoryObjects) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateMemoryObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: glCreateMemoryObjectsEXT");
@@ -144,7 +144,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, const GLint* params);
+    /// void glMemoryObjectParameterivEXT((unsigned int) GLuint memoryObject, (unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void MemoryObjectParameterivEXT(int memoryObject, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryObjectParameterivEXT");
@@ -153,7 +153,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glGetMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, GLint* params);
+    /// void glGetMemoryObjectParameterivEXT((unsigned int) GLuint memoryObject, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetMemoryObjectParameterivEXT(int memoryObject, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMemoryObjectParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectParameterivEXT");
@@ -162,7 +162,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTexStorageMem2DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset);
+    /// void glTexStorageMem2DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TexStorageMem2DEXT(int target, int levels, int internalFormat, int width, int height, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DEXT");
@@ -171,7 +171,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTexStorageMem2DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+    /// void glTexStorageMem2DMultisampleEXT((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TexStorageMem2DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem2DMultisampleEXT");
@@ -180,7 +180,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTexStorageMem3DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset);
+    /// void glTexStorageMem3DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TexStorageMem3DEXT(int target, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DEXT");
@@ -189,7 +189,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTexStorageMem3DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+    /// void glTexStorageMem3DMultisampleEXT((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TexStorageMem3DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem3DMultisampleEXT");
@@ -198,7 +198,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset);
+    /// void glBufferStorageMemEXT((unsigned int) GLenum target, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void BufferStorageMemEXT(int target, long size, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glBufferStorageMemEXT");
@@ -207,7 +207,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTextureStorageMem2DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset);
+    /// void glTextureStorageMem2DEXT((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TextureStorageMem2DEXT(int texture, int levels, int internalFormat, int width, int height, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DEXT");
@@ -216,7 +216,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTextureStorageMem2DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+    /// void glTextureStorageMem2DMultisampleEXT((unsigned int) GLuint texture, (int) GLsizei samples, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TextureStorageMem2DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem2DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem2DMultisampleEXT");
@@ -225,7 +225,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTextureStorageMem3DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset);
+    /// void glTextureStorageMem3DEXT((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TextureStorageMem3DEXT(int texture, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem3DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DEXT");
@@ -234,7 +234,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTextureStorageMem3DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+    /// void glTextureStorageMem3DMultisampleEXT((unsigned int) GLuint texture, (int) GLsizei samples, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TextureStorageMem3DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem3DMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem3DMultisampleEXT");
@@ -243,7 +243,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset);
+    /// void glNamedBufferStorageMemEXT((unsigned int) GLuint buffer, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void NamedBufferStorageMemEXT(int buffer, long size, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferStorageMemEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferStorageMemEXT");
@@ -252,7 +252,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTexStorageMem1DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset);
+    /// void glTexStorageMem1DEXT((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TexStorageMem1DEXT(int target, int levels, int internalFormat, int width, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexStorageMem1DEXT");
@@ -261,7 +261,7 @@ public final class GLEXTMemoryObject {
     }
 
     /// ```
-    /// void glTextureStorageMem1DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset);
+    /// void glTextureStorageMem1DEXT((unsigned int) GLuint texture, (int) GLsizei levels, (unsigned int) GLenum internalFormat, (int) GLsizei width, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset);
     /// ```
     public void TextureStorageMem1DEXT(int texture, int levels, int internalFormat, int width, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageMem1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageMem1DEXT");

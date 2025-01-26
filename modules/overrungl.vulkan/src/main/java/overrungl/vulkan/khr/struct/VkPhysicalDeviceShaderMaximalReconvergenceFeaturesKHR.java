@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderMaximalReconvergence;
+///     (uint32_t) VkBool32 shaderMaximalReconvergence;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR extends GroupType {

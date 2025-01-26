@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubgroupSizeControlFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
+///     (uint32_t) VkBool32 subgroupSizeControl;
+///     (uint32_t) VkBool32 computeFullSubgroups;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSubgroupSizeControlFeatures extends GroupType {

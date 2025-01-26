@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
+public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5;
     public static final String VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID = 0x00000400;
@@ -32,38 +32,30 @@ public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004;
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID = 1000129005;
     public static final int VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID = 1000129006;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetAndroidHardwareBufferPropertiesANDROID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetMemoryAndroidHardwareBufferANDROID = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetAndroidHardwareBufferPropertiesANDROID;
-        public final MemorySegment PFN_vkGetMemoryAndroidHardwareBufferANDROID;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetAndroidHardwareBufferPropertiesANDROID = func.invoke(device, "vkGetAndroidHardwareBufferPropertiesANDROID");
-            PFN_vkGetMemoryAndroidHardwareBufferANDROID = func.invoke(device, "vkGetMemoryAndroidHardwareBufferANDROID");
-        }
+        private Handles() {}
     }
 
-    public VKANDROIDExternalMemoryAndroidHardwareBuffer(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKANDROIDExternalMemoryAndroidHardwareBuffer() {}
 
     /// ```
-    /// VkResult vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, const AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
+    /// (int) VkResult vkGetAndroidHardwareBufferPropertiesANDROID((struct VkDevice*) VkDevice device, const struct AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
     /// ```
-    public int GetAndroidHardwareBufferPropertiesANDROID(MemorySegment device, MemorySegment buffer, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
-        try { return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(handles.PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device, buffer, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetAndroidHardwareBufferPropertiesANDROID", e); }
+    public static int vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
+        try { return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device.segment(), buffer, pProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetAndroidHardwareBufferPropertiesANDROID", e); }
     }
 
     /// ```
-    /// VkResult vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, AHardwareBuffer ** pBuffer);
+    /// (int) VkResult vkGetMemoryAndroidHardwareBufferANDROID((struct VkDevice*) VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, struct AHardwareBuffer ** pBuffer);
     /// ```
-    public int GetMemoryAndroidHardwareBufferANDROID(MemorySegment device, MemorySegment pInfo, MemorySegment pBuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
-        try { return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(handles.PFN_vkGetMemoryAndroidHardwareBufferANDROID, device, pInfo, pBuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in GetMemoryAndroidHardwareBufferANDROID", e); }
+    public static int vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, MemorySegment pInfo, MemorySegment pBuffer) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
+        try { return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID, device.segment(), pInfo, pBuffer); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryAndroidHardwareBufferANDROID", e); }
     }
 
 }

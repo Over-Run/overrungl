@@ -52,7 +52,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint* buffers);
+    /// void glBindBuffersBase((unsigned int) GLenum target, (unsigned int) GLuint first, (int) GLsizei count, const GLuint* buffers);
     /// ```
     public void BindBuffersBase(int target, int first, int count, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBuffersBase)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersBase");
@@ -61,7 +61,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizeiptr* sizes);
+    /// void glBindBuffersRange((unsigned int) GLenum target, (unsigned int) GLuint first, (int) GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizeiptr* sizes);
     /// ```
     public void BindBuffersRange(int target, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment sizes) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBuffersRange)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersRange");
@@ -70,7 +70,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindTextures(GLuint first, GLsizei count, const GLuint* textures);
+    /// void glBindTextures((unsigned int) GLuint first, (int) GLsizei count, const GLuint* textures);
     /// ```
     public void BindTextures(int first, int count, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTextures)) throw new SymbolNotFoundError("Symbol not found: glBindTextures");
@@ -79,7 +79,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindSamplers(GLuint first, GLsizei count, const GLuint* samplers);
+    /// void glBindSamplers((unsigned int) GLuint first, (int) GLsizei count, const GLuint* samplers);
     /// ```
     public void BindSamplers(int first, int count, MemorySegment samplers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindSamplers)) throw new SymbolNotFoundError("Symbol not found: glBindSamplers");
@@ -88,7 +88,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindImageTextures(GLuint first, GLsizei count, const GLuint* textures);
+    /// void glBindImageTextures((unsigned int) GLuint first, (int) GLsizei count, const GLuint* textures);
     /// ```
     public void BindImageTextures(int first, int count, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTextures)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextures");
@@ -97,7 +97,7 @@ public final class GLARBMultiBind {
     }
 
     /// ```
-    /// void glBindVertexBuffers(GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
+    /// void glBindVertexBuffers((unsigned int) GLuint first, (int) GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides);
     /// ```
     public void BindVertexBuffers(int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexBuffers)) throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffers");

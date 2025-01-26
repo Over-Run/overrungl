@@ -79,6 +79,6 @@ public final class VKKHRVideoEncodeH265 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000039014;
     public static final int VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR = 0x00020000;
 
-    private VKKHRVideoEncodeH265() { }
+    private VKKHRVideoEncodeH265() {}
 
 }

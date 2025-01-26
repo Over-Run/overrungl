@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 cudaKernelLaunchFeatures;
+///     (uint32_t) VkBool32 cudaKernelLaunchFeatures;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCudaKernelLaunchFeaturesNV extends GroupType {

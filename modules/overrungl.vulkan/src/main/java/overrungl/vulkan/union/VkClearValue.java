@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// union VkClearValue {
-///     VkClearColorValue color;
-///     VkClearDepthStencilValue depthStencil;
+///     (union VkClearColorValue) VkClearColorValue color;
+///     (struct VkClearDepthStencilValue) VkClearDepthStencilValue depthStencil;
 /// };
 /// ```
 public sealed class VkClearValue extends GroupType {

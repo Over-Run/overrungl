@@ -121,7 +121,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glActiveTexture(GLenum texture);
+    /// void glActiveTexture((unsigned int) GLenum texture);
     /// ```
     public void ActiveTexture(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveTexture)) throw new SymbolNotFoundError("Symbol not found: glActiveTexture");
@@ -130,7 +130,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glSampleCoverage(GLfloat value, GLboolean invert);
+    /// void glSampleCoverage(((float) khronos_float_t) GLfloat value, GLboolean invert);
     /// ```
     public void SampleCoverage(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverage)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverage");
@@ -139,7 +139,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void* data);
+    /// void glCompressedTexImage3D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage3D(int target, int level, int internalformat, int width, int height, int depth, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage3D");
@@ -148,7 +148,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void* data);
+    /// void glCompressedTexImage2D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage2D(int target, int level, int internalformat, int width, int height, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage2D");
@@ -157,7 +157,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void* data);
+    /// void glCompressedTexImage1D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLint border, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexImage1D(int target, int level, int internalformat, int width, int border, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexImage1D");
@@ -166,7 +166,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void* data);
+    /// void glCompressedTexSubImage3D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage3D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage3D");
@@ -175,7 +175,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void* data);
+    /// void glCompressedTexSubImage2D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage2D");
@@ -184,7 +184,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void* data);
+    /// void glCompressedTexSubImage1D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (int) GLsizei imageSize, const void* data);
     /// ```
     public void CompressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompressedTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCompressedTexSubImage1D");
@@ -193,7 +193,7 @@ public class GL13 extends GL12 {
     }
 
     /// ```
-    /// void glGetCompressedTexImage(GLenum target, GLint level, void* img);
+    /// void glGetCompressedTexImage((unsigned int) GLenum target, (int) GLint level, void* img);
     /// ```
     public void GetCompressedTexImage(int target, int level, MemorySegment img) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCompressedTexImage)) throw new SymbolNotFoundError("Symbol not found: glGetCompressedTexImage");

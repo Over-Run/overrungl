@@ -40,7 +40,7 @@ public final class GLEXTFramebufferBlitLayers {
     }
 
     /// ```
-    /// void glBlitFramebufferLayersEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+    /// void glBlitFramebufferLayersEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```
     public void BlitFramebufferLayersEXT(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebufferLayersEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayersEXT");
@@ -49,7 +49,7 @@ public final class GLEXTFramebufferBlitLayers {
     }
 
     /// ```
-    /// void glBlitFramebufferLayerEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint srcLayer, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLint dstLayer, GLbitfield mask, GLenum filter);
+    /// void glBlitFramebufferLayerEXT((int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint srcLayer, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (int) GLint dstLayer, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```
     public void BlitFramebufferLayerEXT(int srcX0, int srcY0, int srcX1, int srcY1, int srcLayer, int dstX0, int dstY0, int dstX1, int dstY1, int dstLayer, int mask, int filter) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebufferLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayerEXT");

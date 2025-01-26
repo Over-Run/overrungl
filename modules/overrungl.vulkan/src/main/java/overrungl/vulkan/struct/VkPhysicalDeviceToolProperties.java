@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceToolProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     char name[256];
 ///     char version[256];
-///     VkToolPurposeFlags purposes;
+///     ((uint32_t) VkFlags) VkToolPurposeFlags purposes;
 ///     char description[256];
 ///     char layer[256];
 /// };

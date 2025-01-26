@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxWorkGroupCount[3];
 ///     uint32_t maxWorkGroupSize[3];
 ///     uint32_t maxOutputClusterCount;
-///     VkDeviceSize indirectBufferOffsetAlignment;
+///     (uint64_t) VkDeviceSize indirectBufferOffsetAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends GroupType {

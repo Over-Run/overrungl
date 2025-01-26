@@ -26,6 +26,6 @@ public final class VKKHRVideoMaintenance2 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586002;
     public static final int VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR = 1000586003;
 
-    private VKKHRVideoMaintenance2() { }
+    private VKKHRVideoMaintenance2() {}
 
 }

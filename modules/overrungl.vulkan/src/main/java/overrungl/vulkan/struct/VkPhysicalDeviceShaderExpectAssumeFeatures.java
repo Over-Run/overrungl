@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderExpectAssumeFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderExpectAssume;
+///     (uint32_t) VkBool32 shaderExpectAssume;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderExpectAssumeFeatures extends GroupType {

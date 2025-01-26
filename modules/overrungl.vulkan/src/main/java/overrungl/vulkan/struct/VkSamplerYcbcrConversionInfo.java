@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerYcbcrConversionInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSamplerYcbcrConversion conversion;
+///     (uint64_t) VkSamplerYcbcrConversion conversion;
 /// };
 /// ```
 public sealed class VkSamplerYcbcrConversionInfo extends GroupType {

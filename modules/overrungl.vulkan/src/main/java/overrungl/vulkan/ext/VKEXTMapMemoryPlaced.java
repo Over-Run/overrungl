@@ -26,6 +26,6 @@ public final class VKEXTMapMemoryPlaced {
     public static final int VK_MEMORY_MAP_PLACED_BIT_EXT = 0x00000001;
     public static final int VK_MEMORY_UNMAP_RESERVE_BIT_EXT = 0x00000001;
 
-    private VKEXTMapMemoryPlaced() { }
+    private VKEXTMapMemoryPlaced() {}
 
 }

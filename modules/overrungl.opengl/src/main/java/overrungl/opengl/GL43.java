@@ -428,7 +428,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void* data);
+    /// void glClearBufferData((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
     public void ClearBufferData(int target, int internalformat, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferData");
@@ -437,7 +437,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data);
+    /// void glClearBufferSubData((unsigned int) GLenum target, (unsigned int) GLenum internalformat, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
     public void ClearBufferSubData(int target, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData");
@@ -446,7 +446,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+    /// void glDispatchCompute((unsigned int) GLuint num_groups_x, (unsigned int) GLuint num_groups_y, (unsigned int) GLuint num_groups_z);
     /// ```
     public void DispatchCompute(int num_groups_x, int num_groups_y, int num_groups_z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
@@ -455,7 +455,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glDispatchComputeIndirect(GLintptr indirect);
+    /// void glDispatchComputeIndirect(((signed long long) khronos_intptr_t) GLintptr indirect);
     /// ```
     public void DispatchComputeIndirect(long indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
@@ -464,7 +464,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+    /// void glCopyImageSubData((unsigned int) GLuint srcName, (unsigned int) GLenum srcTarget, (int) GLint srcLevel, (int) GLint srcX, (int) GLint srcY, (int) GLint srcZ, (unsigned int) GLuint dstName, (unsigned int) GLenum dstTarget, (int) GLint dstLevel, (int) GLint dstX, (int) GLint dstY, (int) GLint dstZ, (int) GLsizei srcWidth, (int) GLsizei srcHeight, (int) GLsizei srcDepth);
     /// ```
     public void CopyImageSubData(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyImageSubData)) throw new SymbolNotFoundError("Symbol not found: glCopyImageSubData");
@@ -473,7 +473,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
+    /// void glFramebufferParameteri((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FramebufferParameteri(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri");
@@ -482,7 +482,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint* params);
+    /// void glGetFramebufferParameteriv((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
@@ -491,7 +491,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint64* params);
+    /// void glGetInternalformati64v((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLenum pname, (int) GLsizei count, GLint64* params);
     /// ```
     public void GetInternalformati64v(int target, int internalformat, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformati64v)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v");
@@ -500,7 +500,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+    /// void glInvalidateTexSubImage((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
     public void InvalidateTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glInvalidateTexSubImage");
@@ -509,7 +509,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateTexImage(GLuint texture, GLint level);
+    /// void glInvalidateTexImage((unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void InvalidateTexImage(int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexImage)) throw new SymbolNotFoundError("Symbol not found: glInvalidateTexImage");
@@ -518,7 +518,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
+    /// void glInvalidateBufferSubData((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
     public void InvalidateBufferSubData(int buffer, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferSubData");
@@ -527,7 +527,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateBufferData(GLuint buffer);
+    /// void glInvalidateBufferData((unsigned int) GLuint buffer);
     /// ```
     public void InvalidateBufferData(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferData");
@@ -536,7 +536,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum* attachments);
+    /// void glInvalidateFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments);
     /// ```
     public void InvalidateFramebuffer(int target, int numAttachments, MemorySegment attachments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateFramebuffer");
@@ -545,7 +545,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum* attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+    /// void glInvalidateSubFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void InvalidateSubFramebuffer(int target, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateSubFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer");
@@ -554,7 +554,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glMultiDrawArraysIndirect(GLenum mode, const void* indirect, GLsizei drawcount, GLsizei stride);
+    /// void glMultiDrawArraysIndirect((unsigned int) GLenum mode, const void* indirect, (int) GLsizei drawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirect(int mode, MemorySegment indirect, int drawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirect");
@@ -563,7 +563,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glMultiDrawElementsIndirect(GLenum mode, GLenum type, const void* indirect, GLsizei drawcount, GLsizei stride);
+    /// void glMultiDrawElementsIndirect((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei drawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirect(int mode, int type, MemorySegment indirect, int drawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirect");
@@ -572,7 +572,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint* params);
+    /// void glGetProgramInterfaceiv((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetProgramInterfaceiv(int program, int programInterface, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramInterfaceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramInterfaceiv");
@@ -581,7 +581,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// GLuint glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar* name);
+    /// (unsigned int) GLuint glGetProgramResourceIndex((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceIndex(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceIndex");
@@ -590,7 +590,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei* length, GLchar* name);
+    /// void glGetProgramResourceName((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLuint index, (int) GLsizei bufSize, GLsizei* length, GLchar* name);
     /// ```
     public void GetProgramResourceName(int program, int programInterface, int index, int bufSize, MemorySegment length, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceName)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceName");
@@ -599,7 +599,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum* props, GLsizei count, GLsizei* length, GLint* params);
+    /// void glGetProgramResourceiv((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLuint index, (int) GLsizei propCount, const GLenum* props, (int) GLsizei count, GLsizei* length, GLint* params);
     /// ```
     public void GetProgramResourceiv(int program, int programInterface, int index, int propCount, MemorySegment props, int count, MemorySegment length, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceiv");
@@ -608,7 +608,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// GLint glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar* name);
+    /// (int) GLint glGetProgramResourceLocation((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocation(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocation)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocation");
@@ -617,7 +617,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// GLint glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar* name);
+    /// (int) GLint glGetProgramResourceLocationIndex((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocationIndex(int program, int programInterface, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocationIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocationIndex");
@@ -626,7 +626,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+    /// void glShaderStorageBlockBinding((unsigned int) GLuint program, (unsigned int) GLuint storageBlockIndex, (unsigned int) GLuint storageBlockBinding);
     /// ```
     public void ShaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderStorageBlockBinding)) throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding");
@@ -635,7 +635,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+    /// void glTexBufferRange((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void TexBufferRange(int target, int internalformat, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTexBufferRange");
@@ -644,7 +644,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+    /// void glTexStorage2DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedsamplelocations);
     /// ```
     public void TexStorage2DMultisample(int target, int samples, int internalformat, int width, int height, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2DMultisample");
@@ -653,7 +653,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+    /// void glTexStorage3DMultisample((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedsamplelocations);
     /// ```
     public void TexStorage3DMultisample(int target, int samples, int internalformat, int width, int height, int depth, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3DMultisample)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3DMultisample");
@@ -662,7 +662,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+    /// void glTextureView((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLuint origtexture, (unsigned int) GLenum internalformat, (unsigned int) GLuint minlevel, (unsigned int) GLuint numlevels, (unsigned int) GLuint minlayer, (unsigned int) GLuint numlayers);
     /// ```
     public void TextureView(int texture, int target, int origtexture, int internalformat, int minlevel, int numlevels, int minlayer, int numlayers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureView)) throw new SymbolNotFoundError("Symbol not found: glTextureView");
@@ -671,7 +671,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+    /// void glBindVertexBuffer((unsigned int) GLuint bindingindex, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, (int) GLsizei stride);
     /// ```
     public void BindVertexBuffer(int bindingindex, int buffer, long offset, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexBuffer)) throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffer");
@@ -680,7 +680,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+    /// void glVertexAttribFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribFormat(int attribindex, int size, int type, boolean normalized, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormat");
@@ -689,7 +689,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+    /// void glVertexAttribIFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribIFormat(int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormat");
@@ -698,7 +698,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+    /// void glVertexAttribLFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribLFormat(int attribindex, int size, int type, int relativeoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribLFormat");
@@ -707,7 +707,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
+    /// void glVertexAttribBinding((unsigned int) GLuint attribindex, (unsigned int) GLuint bindingindex);
     /// ```
     public void VertexAttribBinding(int attribindex, int bindingindex) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribBinding)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribBinding");
@@ -716,7 +716,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glVertexBindingDivisor(GLuint bindingindex, GLuint divisor);
+    /// void glVertexBindingDivisor((unsigned int) GLuint bindingindex, (unsigned int) GLuint divisor);
     /// ```
     public void VertexBindingDivisor(int bindingindex, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBindingDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexBindingDivisor");
@@ -725,7 +725,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled);
+    /// void glDebugMessageControl((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLenum severity, (int) GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
     public void DebugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageControl)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageControl");
@@ -734,7 +734,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* buf);
+    /// void glDebugMessageInsert((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* buf);
     /// ```
     public void DebugMessageInsert(int source, int type, int id, int severity, int length, MemorySegment buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsert)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsert");
@@ -743,7 +743,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glDebugMessageCallback(GLDEBUGPROC callback, const void* userParam);
+    /// void glDebugMessageCallback((void (*GLDebugProc)((unsigned int) GLenum source, (unsigned int) GLenum type, (unsigned int) GLuint id, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, const void* userParam)) GLDEBUGPROC callback, const void* userParam);
     /// ```
     public void DebugMessageCallback(MemorySegment callback, MemorySegment userParam) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallback)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallback");
@@ -752,7 +752,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// GLuint glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
+    /// (unsigned int) GLuint glGetDebugMessageLog((unsigned int) GLuint count, (int) GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
     /// ```
     public int GetDebugMessageLog(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLog)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLog");
@@ -761,7 +761,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar* message);
+    /// void glPushDebugGroup((unsigned int) GLenum source, (unsigned int) GLuint id, (int) GLsizei length, const GLchar* message);
     /// ```
     public void PushDebugGroup(int source, int id, int length, MemorySegment message) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPushDebugGroup)) throw new SymbolNotFoundError("Symbol not found: glPushDebugGroup");
@@ -779,7 +779,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar* label);
+    /// void glObjectLabel((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei length, const GLchar* label);
     /// ```
     public void ObjectLabel(int identifier, int name, int length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectLabel)) throw new SymbolNotFoundError("Symbol not found: glObjectLabel");
@@ -788,7 +788,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei* length, GLchar* label);
+    /// void glGetObjectLabel((unsigned int) GLenum identifier, (unsigned int) GLuint name, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
     public void GetObjectLabel(int identifier, int name, int bufSize, MemorySegment length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabel)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabel");
@@ -797,7 +797,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glObjectPtrLabel(const void* ptr, GLsizei length, const GLchar* label);
+    /// void glObjectPtrLabel(const void* ptr, (int) GLsizei length, const GLchar* label);
     /// ```
     public void ObjectPtrLabel(MemorySegment ptr, int length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectPtrLabel)) throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabel");
@@ -806,7 +806,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetObjectPtrLabel(const void* ptr, GLsizei bufSize, GLsizei* length, GLchar* label);
+    /// void glGetObjectPtrLabel(const void* ptr, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
     public void GetObjectPtrLabel(MemorySegment ptr, int bufSize, MemorySegment length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectPtrLabel)) throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabel");
@@ -815,7 +815,7 @@ public class GL43 extends GL42 {
     }
 
     /// ```
-    /// void glGetPointerv(GLenum pname, void** params);
+    /// void glGetPointerv((unsigned int) GLenum pname, void** params);
     /// ```
     public void GetPointerv(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPointerv)) throw new SymbolNotFoundError("Symbol not found: glGetPointerv");

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeH265InlineSessionParametersInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const StdVideoH265VideoParameterSet* pStdVPS;
 ///     const StdVideoH265SequenceParameterSet* pStdSPS;

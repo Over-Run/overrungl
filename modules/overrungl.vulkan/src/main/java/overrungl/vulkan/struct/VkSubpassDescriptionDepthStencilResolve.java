@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassDescriptionDepthStencilResolve {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkResolveModeFlagBits depthResolveMode;
-///     VkResolveModeFlagBits stencilResolveMode;
+///     (int) VkResolveModeFlagBits depthResolveMode;
+///     (int) VkResolveModeFlagBits stencilResolveMode;
 ///     const VkAttachmentReference2* pDepthStencilResolveAttachment;
 /// };
 /// ```

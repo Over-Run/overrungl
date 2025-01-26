@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPerformanceConfigurationAcquireInfoINTEL {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPerformanceConfigurationTypeINTEL type;
+///     (int) VkPerformanceConfigurationTypeINTEL type;
 /// };
 /// ```
 public sealed class VkPerformanceConfigurationAcquireInfoINTEL extends GroupType {

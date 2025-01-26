@@ -37,7 +37,7 @@ public final class GLSGIXIglooInterface {
     }
 
     /// ```
-    /// void glIglooInterfaceSGIX(GLenum pname, const void* params);
+    /// void glIglooInterfaceSGIX((unsigned int) GLenum pname, const void* params);
     /// ```
     public void IglooInterfaceSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIglooInterfaceSGIX)) throw new SymbolNotFoundError("Symbol not found: glIglooInterfaceSGIX");

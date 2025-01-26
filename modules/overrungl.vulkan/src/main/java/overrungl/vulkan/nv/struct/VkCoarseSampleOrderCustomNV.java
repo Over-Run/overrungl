@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCoarseSampleOrderCustomNV {
-///     VkShadingRatePaletteEntryNV shadingRate;
+///     (int) VkShadingRatePaletteEntryNV shadingRate;
 ///     uint32_t sampleCount;
 ///     uint32_t sampleLocationCount;
 ///     const VkCoarseSampleLocationNV* pSampleLocations;

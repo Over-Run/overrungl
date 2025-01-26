@@ -23,6 +23,6 @@ public final class VKGOOGLEHlslFunctionality1 {
     public static final int VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_HLSL_FUNCTIONALITY1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1";
 
-    private VKGOOGLEHlslFunctionality1() { }
+    private VKGOOGLEHlslFunctionality1() {}
 
 }

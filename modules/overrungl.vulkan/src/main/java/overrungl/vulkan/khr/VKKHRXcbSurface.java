@@ -21,42 +21,34 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRXcbSurface {
+public final class VKKHRXcbSurface {
     public static final int VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface";
     public static final int VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR = 1000005000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateXcbSurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceXcbPresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public final MemorySegment PFN_vkCreateXcbSurfaceKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCreateXcbSurfaceKHR = func.invoke(instance, "vkCreateXcbSurfaceKHR");
-            PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR = func.invoke(instance, "vkGetPhysicalDeviceXcbPresentationSupportKHR");
-        }
+        private Handles() {}
     }
 
-    public VKKHRXcbSurface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKKHRXcbSurface() {}
 
     /// ```
-    /// VkResult vkCreateXcbSurfaceKHR(VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// (int) VkResult vkCreateXcbSurfaceKHR((struct VkInstance*) VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public int CreateXcbSurfaceKHR(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateXcbSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
-        try { return (int) Handles.MH_vkCreateXcbSurfaceKHR.invokeExact(handles.PFN_vkCreateXcbSurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateXcbSurfaceKHR", e); }
+    public static int vkCreateXcbSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXcbSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
+        try { return (int) Handles.MH_vkCreateXcbSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateXcbSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateXcbSurfaceKHR", e); }
     }
 
     /// ```
-    /// VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, xcb_visualid_t visual_id);
+    /// (uint32_t) VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, (uint32_t) xcb_visualid_t visual_id);
     /// ```
-    public int GetPhysicalDeviceXcbPresentationSupportKHR(MemorySegment physicalDevice, int queueFamilyIndex, MemorySegment connection, int visual_id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceXcbPresentationSupportKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR, physicalDevice, queueFamilyIndex, connection, visual_id); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceXcbPresentationSupportKHR", e); }
+    public static int vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment connection, int visual_id) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceXcbPresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, connection, visual_id); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceXcbPresentationSupportKHR", e); }
     }
 
 }

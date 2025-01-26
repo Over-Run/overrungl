@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMemoryHostPointerInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
 ///     void* pHostPointer;
 /// };
 /// ```

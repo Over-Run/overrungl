@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkSurfaceTransformFlagBitsKHR transform;
-///     VkRect2D renderArea;
+///     (int) VkSurfaceTransformFlagBitsKHR transform;
+///     (struct VkRect2D) VkRect2D renderArea;
 /// };
 /// ```
 public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extends GroupType {

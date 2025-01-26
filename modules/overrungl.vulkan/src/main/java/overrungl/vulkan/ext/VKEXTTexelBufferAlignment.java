@@ -23,6 +23,6 @@ public final class VKEXTTexelBufferAlignment {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT = 1000281000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT = 1000281001;
 
-    private VKEXTTexelBufferAlignment() { }
+    private VKEXTTexelBufferAlignment() {}
 
 }

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineIndirectDeviceAddressInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
+///     (uint64_t) VkPipeline pipeline;
 /// };
 /// ```
 public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {

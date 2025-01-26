@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGraphicsPipelineCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineCreateFlags flags;
 ///     uint32_t stageCount;
 ///     const VkPipelineShaderStageCreateInfo* pStages;
 ///     const VkPipelineVertexInputStateCreateInfo* pVertexInputState;
@@ -41,10 +41,10 @@ import overrungl.util.*;
 ///     const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState;
 ///     const VkPipelineColorBlendStateCreateInfo* pColorBlendState;
 ///     const VkPipelineDynamicStateCreateInfo* pDynamicState;
-///     VkPipelineLayout layout;
-///     VkRenderPass renderPass;
+///     (uint64_t) VkPipelineLayout layout;
+///     (uint64_t) VkRenderPass renderPass;
 ///     uint32_t subpass;
-///     VkPipeline basePipelineHandle;
+///     (uint64_t) VkPipeline basePipelineHandle;
 ///     int32_t basePipelineIndex;
 /// };
 /// ```

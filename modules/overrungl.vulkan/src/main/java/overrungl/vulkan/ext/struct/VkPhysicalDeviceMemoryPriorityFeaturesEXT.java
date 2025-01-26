@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMemoryPriorityFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 memoryPriority;
+///     (uint32_t) VkBool32 memoryPriority;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMemoryPriorityFeaturesEXT extends GroupType {

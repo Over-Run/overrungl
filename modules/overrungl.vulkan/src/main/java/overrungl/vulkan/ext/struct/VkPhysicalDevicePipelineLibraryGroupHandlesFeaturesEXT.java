@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 pipelineLibraryGroupHandles;
+///     (uint32_t) VkBool32 pipelineLibraryGroupHandles;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT extends GroupType {

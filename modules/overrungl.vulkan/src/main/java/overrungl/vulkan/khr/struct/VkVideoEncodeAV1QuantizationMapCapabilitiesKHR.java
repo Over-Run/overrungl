@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1QuantizationMapCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     int32_t minQIndexDelta;
 ///     int32_t maxQIndexDelta;

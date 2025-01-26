@@ -20,8 +20,7 @@ import org.w3c.dom.Element
 import org.w3c.dom.Text
 import overrungl.gen.GENERATOR_NOTICE
 import overrungl.gen.commentedFileHeader
-import overrungl.gen.file.DefinitionFile
-import overrungl.gen.file.findBuiltinType
+import overrungl.gen.file.*
 import overrungl.gen.writeNativeImageRegistration
 import overrungl.gen.writeString
 import javax.xml.parsers.DocumentBuilder
@@ -39,17 +38,42 @@ const val extBlockSize = 1000
 
 val vkApiVersionRegex = Regex("VK_API_VERSION_\\d+_\\d+")
 
-val vkExtends = mapOf(
-    "1.1" to "10",
-    "1.2" to "11",
-    "1.3" to "12",
-    "1.4" to "13",
-)
-
 val vkEnumTypeMapping = mutableMapOf<String, MutableList<String>>()
 val vkEnumTypeRawType = mutableMapOf<String, String>()
 val vkEnumRawType = mutableMapOf<String, String>()
 val vkEnumValueMap = mutableMapOf<String, String>()
+
+val instanceCommands = mutableListOf<String>()
+val deviceCommands = mutableListOf<String>()
+
+data class VkDispatchableHandleIntermediate(
+    val name: String,
+    override val originalName: String = "struct $name*"
+) : DefinitionType {
+    override val javaType: String = "MemorySegment"
+    override val memoryLayout: DefTypeMemoryLayout = PointerLayout
+    override val processor: DefTypeProcessor = IdentityProcessor
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
+
+data class VkDispatchableHandle(
+    val name: String,
+    override val originalName: String = "struct $name*"
+) : DefinitionType {
+    override val javaType: String = name
+    override val memoryLayout: DefTypeMemoryLayout = PointerLayout
+    override val processor: DefTypeProcessor = object : DefTypeProcessor {
+        override fun processDowncall(originalValue: String): String {
+            return "$originalValue.segment()"
+        }
+
+        override fun processUpcall(originalValue: String): String {
+            return "new $name($originalValue)"
+        }
+    }
+
+    override fun withName(originalName: String): DefinitionType = copy(originalName = originalName)
+}
 
 fun videoXML(xmlBuilder: DocumentBuilder): String {
     val document = ClassLoader.getSystemResourceAsStream("video.xml")!!.use { xmlBuilder.parse(it) }
@@ -278,9 +302,15 @@ fun main(args: Array<String>) {
                     typesFileBuilder.appendLine("using $name = $alias;")
                 } else {
                     val name = typeNode.getElementsByTagName("name").item(0).textContent
-                    val type = typeNode.getElementsByTagName("type").item(0).textContent
-                    when (type) {
-                        "VK_DEFINE_HANDLE" -> typesFileBuilder.appendLine("using $name = struct $name*;")
+                    when (val type = typeNode.getElementsByTagName("type").item(0).textContent) {
+                        "VK_DEFINE_HANDLE" -> {
+                            typesFileBuilder.appendLine("using $name = java $name;")
+                            registerDefType(
+                                name,
+                                VkDispatchableHandleIntermediate(name)
+                            )
+                        }
+
                         "VK_DEFINE_NON_DISPATCHABLE_HANDLE" -> typesFileBuilder.appendLine("using $name = uint64_t;")
                         else -> error(type)
                     }
@@ -637,8 +667,6 @@ fun main(args: Array<String>) {
 
             val className = "VK${featureNumber.replace(".", "")}"
             vkDowncalls += VkDowncall(vulkanPackage, className) {
-                vkExtends[featureNumber]?.also { extends.add("VK$it") }
-
                 if (featureNumber == "1.0") {
                     defineVkVersion.forEach { (k, v) ->
                         fields.add(
@@ -651,25 +679,6 @@ fun main(args: Array<String>) {
                 addReqEnums(interpreter = definitionFile.interpreter, featureReqEnums)
                 addReqCommand(interpreter = definitionFile.interpreter, featureReqCommands, commandAliasMap)
 
-                constructor = buildString {
-                    appendLine("""public $className(MemorySegment instance, VKLoadFunc func) {""")
-                    if (vkExtends.containsKey(featureNumber)) {
-                        appendLine("    super(instance, func);")
-                    }
-                    appendLine("    this.handles = new Handles(instance, func);")
-                    append("}")
-                }
-
-                handlesConstructor = buildString {
-                    appendLine("""private Handles(MemorySegment instance, VKLoadFunc func) {""")
-                    featureReqCommands.forEach { command ->
-                        append("""    PFN_$command = func.invoke(instance, "$command"""")
-                        commandAliasMap[command]?.onEach { append(""", "$it"""") }
-                        appendLine(");")
-                    }
-                    append("}")
-                }
-
                 if (featureNumber == "1.0") {
                     customCode = """
                         public static final long VK_NULL_HANDLE = 0L;
@@ -681,46 +690,6 @@ fun main(args: Array<String>) {
                         public static int VK_API_VERSION_MAJOR(int version) { return (version >> 22) & 0x7F; }
                         public static int VK_API_VERSION_MINOR(int version) { return (version >> 12) & 0x3FF; }
                         public static int VK_API_VERSION_PATCH(int version) { return version & 0xFFF; }
-
-                        /// ```
-                        /// VkResult vkEnumerateInstanceExtensionProperties(const char* pLayerName, uint32_t* pPropertyCount, VkExtensionProperties* pProperties);
-                        /// ```
-                        public static int vkEnumerateInstanceExtensionProperties(VKLoadFunc func, MemorySegment pLayerName, MemorySegment pPropertyCount, MemorySegment pProperties) {
-                            var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceExtensionProperties");
-                            if (MemoryUtil.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceExtensionProperties");
-                            try { return (int) Handles.MH_vkEnumerateInstanceExtensionProperties.invokeExact(p, pLayerName, pPropertyCount, pProperties); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceExtensionProperties", e); }
-                        }
-
-                        /// ```
-                        /// VkResult vkEnumerateInstanceLayerProperties(uint32_t* pPropertyCount, VkLayerProperties* pProperties);
-                        /// ```
-                        public static int vkEnumerateInstanceLayerProperties(VKLoadFunc func, MemorySegment pPropertyCount, MemorySegment pProperties) {
-                            var p = func.invoke(MemorySegment.NULL, "vkEnumerateInstanceLayerProperties");
-                            if (MemoryUtil.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkEnumerateInstanceLayerProperties");
-                            try { return (int) Handles.MH_vkEnumerateInstanceLayerProperties.invokeExact(p, pPropertyCount, pProperties); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkEnumerateInstanceLayerProperties", e); }
-                        }
-
-                        /// ```
-                        /// VkResult vkCreateInstance(const VkInstanceCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkInstance* pInstance);
-                        /// ```
-                        public static int vkCreateInstance(VKLoadFunc func, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pInstance) {
-                            var p = func.invoke(MemorySegment.NULL, "vkCreateInstance");
-                            if (MemoryUtil.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkCreateInstance");
-                            try { return (int) Handles.MH_vkCreateInstance.invokeExact(p, pCreateInfo, pAllocator, pInstance); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkCreateInstance", e); }
-                        }
-
-                        /// ```
-                        /// PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, const char* pName);
-                        /// ```
-                        public static MemorySegment vkGetInstanceProcAddr(VKLoadFunc func, MemorySegment instance, MemorySegment pName) {
-                            var p = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
-                            if (MemoryUtil.isNullPointer(p)) throw new SymbolNotFoundError("Symbol not found: vkGetInstanceProcAddr");
-                            try { return (MemorySegment) Handles.MH_vkGetInstanceProcAddr.invokeExact(p, instance, pName); }
-                            catch (Throwable e) { throw new RuntimeException("error in vkGetInstanceProcAddr", e); }
-                        }
                     """.trimIndent()
                 }
             }
@@ -737,7 +706,6 @@ fun main(args: Array<String>) {
             val extName = rawName
                 .split('_')
                 .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-            val extType = extensionNode.getAttribute("type")
             val extVendor = rawName
                 .substringAfter("VK_")
                 .substringBefore('_')
@@ -766,45 +734,6 @@ fun main(args: Array<String>) {
                 addReqTypes(interpreter = definitionFile.interpreter, extReqTypes)
                 addReqEnums(interpreter = definitionFile.interpreter, extReqEnums)
                 addReqCommand(interpreter = definitionFile.interpreter, extReqCommands, commandAliasMap)
-
-                if (extReqCommands.isEmpty()) {
-                    modifier = "final"
-                    constructor = "private $extName() { }"
-                } else {
-                    constructor = buildString {
-                        append("public $extName(")
-                        when (extType) {
-                            "device" -> append("""MemorySegment device""")
-                            "instance" -> append("""MemorySegment instance""")
-                        }
-                        appendLine(", VKLoadFunc func) {")
-                        appendLine(
-                            "    this.handles = new Handles(${
-                                when (extType) {
-                                    "device" -> "device"
-                                    "instance" -> "instance"
-                                    else -> error(extType)
-                                }
-                            }, func);"
-                        )
-                        append("}")
-                    }
-
-                    handlesConstructor = buildString {
-                        append("private Handles(")
-                        when (extType) {
-                            "device" -> append("""MemorySegment device""")
-                            "instance" -> append("""MemorySegment instance""")
-                        }
-                        appendLine(", VKLoadFunc func) {")
-                        extReqCommands.forEach { command ->
-                            append("""    PFN_$command = func.invoke($extType, "$command"""")
-                            commandAliasMap[command]?.onEach { append(""", "$it"""") }
-                            appendLine(");")
-                        }
-                        append("}")
-                    }
-                }
             }
             extensionDowncalls[rawName] = downcall
         }
@@ -812,6 +741,33 @@ fun main(args: Array<String>) {
 
     vkDowncalls.forEach { it.write() }
     extensionDowncalls.values.forEach { it.write() }
+
+    fun writeCapabilities(type: String, param: String, commandList: List<String>) {
+        writeString(Path("overrungl/vulkan/VKCapabilities$type.java"), buildString {
+            val commands = commandList.distinct()
+            appendLine(commentedFileHeader)
+            appendLine(
+                """
+                package $vulkanPackage;
+                import java.lang.foreign.*;
+                public final class VKCapabilities$type {
+            """.trimIndent()
+            )
+            commands.forEach {
+                appendLine("    public final MemorySegment PFN_$it;")
+            }
+            appendLine("    public VKCapabilities$type(MemorySegment $param, VKLoadFunc func) {")
+            commands.forEach { cmd ->
+                append("""        PFN_$cmd = func.invoke($param, "$cmd"""")
+                commandAliasMap[cmd]?.onEach { append(""", "$it"""") }
+                appendLine(");")
+            }
+            appendLine("    }")
+            appendLine("}")
+        })
+    }
+    writeCapabilities("Instance", "instance", instanceCommands)
+    writeCapabilities("Device", "device", deviceCommands)
 
     // module-info.java
     writeString(Path("module-info.java"), buildString {
@@ -833,5 +789,3 @@ fun main(args: Array<String>) {
 
     writeNativeImageRegistration(vulkanPackage)
 }
-
-fun Element.findAttribute(name: String): String? = if (hasAttribute(name)) getAttribute(name) else null

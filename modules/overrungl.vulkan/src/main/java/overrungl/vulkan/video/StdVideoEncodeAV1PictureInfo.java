@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1PictureInfo {
-///     StdVideoEncodeAV1PictureInfoFlags flags;
-///     StdVideoAV1FrameType frame_type;
+///     (struct StdVideoEncodeAV1PictureInfoFlags) StdVideoEncodeAV1PictureInfoFlags flags;
+///     (int) StdVideoAV1FrameType frame_type;
 ///     uint32_t frame_presentation_time;
 ///     uint32_t current_frame_id;
 ///     uint8_t order_hint;
@@ -37,8 +37,8 @@ import overrungl.util.*;
 ///     uint8_t coded_denom;
 ///     uint16_t render_width_minus_1;
 ///     uint16_t render_height_minus_1;
-///     StdVideoAV1InterpolationFilter interpolation_filter;
-///     StdVideoAV1TxMode TxMode;
+///     (int) StdVideoAV1InterpolationFilter interpolation_filter;
+///     (int) StdVideoAV1TxMode TxMode;
 ///     uint8_t delta_q_res;
 ///     uint8_t delta_lf_res;
 ///     uint8_t ref_order_hint[8];

@@ -54,7 +54,7 @@ public final class GLATIDrawBuffers {
     }
 
     /// ```
-    /// void glDrawBuffersATI(GLsizei n, const GLenum* bufs);
+    /// void glDrawBuffersATI((int) GLsizei n, const GLenum* bufs);
     /// ```
     public void DrawBuffersATI(int n, MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersATI");

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceGlobalPriorityQueryFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 globalPriorityQuery;
+///     (uint32_t) VkBool32 globalPriorityQuery;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceGlobalPriorityQueryFeatures extends GroupType {

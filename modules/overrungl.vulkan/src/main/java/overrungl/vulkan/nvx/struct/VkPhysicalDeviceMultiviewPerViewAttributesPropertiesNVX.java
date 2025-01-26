@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 perViewPositionAllComponents;
+///     (uint32_t) VkBool32 perViewPositionAllComponents;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX extends GroupType {

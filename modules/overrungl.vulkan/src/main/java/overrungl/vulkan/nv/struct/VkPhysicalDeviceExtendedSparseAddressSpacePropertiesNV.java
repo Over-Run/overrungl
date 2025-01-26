@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize extendedSparseAddressSpaceSize;
-///     VkImageUsageFlags extendedSparseImageUsageFlags;
-///     VkBufferUsageFlags extendedSparseBufferUsageFlags;
+///     (uint64_t) VkDeviceSize extendedSparseAddressSpaceSize;
+///     ((uint32_t) VkFlags) VkImageUsageFlags extendedSparseImageUsageFlags;
+///     ((uint32_t) VkFlags) VkBufferUsageFlags extendedSparseBufferUsageFlags;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extends GroupType {

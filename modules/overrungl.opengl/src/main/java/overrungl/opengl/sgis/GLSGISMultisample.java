@@ -56,7 +56,7 @@ public final class GLSGISMultisample {
     }
 
     /// ```
-    /// void glSampleMaskSGIS(GLclampf value, GLboolean invert);
+    /// void glSampleMaskSGIS(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
     public void SampleMaskSGIS(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
@@ -65,7 +65,7 @@ public final class GLSGISMultisample {
     }
 
     /// ```
-    /// void glSamplePatternSGIS(GLenum pattern);
+    /// void glSamplePatternSGIS((unsigned int) GLenum pattern);
     /// ```
     public void SamplePatternSGIS(int pattern) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");

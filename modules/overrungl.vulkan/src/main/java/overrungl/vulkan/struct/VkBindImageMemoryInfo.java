@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindImageMemoryInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
+///     (uint64_t) VkImage image;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize memoryOffset;
 /// };
 /// ```
 public sealed class VkBindImageMemoryInfo extends GroupType {

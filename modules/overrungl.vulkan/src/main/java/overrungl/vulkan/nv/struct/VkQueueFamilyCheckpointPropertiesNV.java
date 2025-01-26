@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyCheckpointPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPipelineStageFlags checkpointExecutionStageMask;
+///     ((uint32_t) VkFlags) VkPipelineStageFlags checkpointExecutionStageMask;
 /// };
 /// ```
 public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {

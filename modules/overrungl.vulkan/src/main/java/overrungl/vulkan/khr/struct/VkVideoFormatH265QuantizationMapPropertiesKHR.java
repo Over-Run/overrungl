@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoFormatH265QuantizationMapPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265CtbSizeFlagsKHR compatibleCtbSizes;
 /// };
 /// ```
 public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends GroupType {

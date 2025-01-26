@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMemoryWin32HandleInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const SECURITY_ATTRIBUTES* pAttributes;
-///     DWORD dwAccess;
+///     (unsigned long) DWORD dwAccess;
 /// };
 /// ```
 public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {

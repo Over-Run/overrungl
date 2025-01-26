@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureTrianglesOpacityMicromapEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexBuffer;
-///     VkDeviceSize indexStride;
+///     (int) VkIndexType indexType;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR indexBuffer;
+///     (uint64_t) VkDeviceSize indexStride;
 ///     uint32_t baseTriangle;
 ///     uint32_t usageCountsCount;
 ///     const VkMicromapUsageEXT* pUsageCounts;
 ///     const VkMicromapUsageEXT* const * ppUsageCounts;
-///     VkMicromapEXT micromap;
+///     (uint64_t) VkMicromapEXT micromap;
 /// };
 /// ```
 public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends GroupType {

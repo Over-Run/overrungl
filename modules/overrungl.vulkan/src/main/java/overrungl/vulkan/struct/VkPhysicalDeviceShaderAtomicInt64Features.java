@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderAtomicInt64Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderBufferInt64Atomics;
-///     VkBool32 shaderSharedInt64Atomics;
+///     (uint32_t) VkBool32 shaderBufferInt64Atomics;
+///     (uint32_t) VkBool32 shaderSharedInt64Atomics;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderAtomicInt64Features extends GroupType {

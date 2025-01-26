@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRobustnessCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineRobustnessBufferBehavior storageBuffers;
-///     VkPipelineRobustnessBufferBehavior uniformBuffers;
-///     VkPipelineRobustnessBufferBehavior vertexInputs;
-///     VkPipelineRobustnessImageBehavior images;
+///     (int) VkPipelineRobustnessBufferBehavior storageBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior uniformBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior vertexInputs;
+///     (int) VkPipelineRobustnessImageBehavior images;
 /// };
 /// ```
 public sealed class VkPipelineRobustnessCreateInfo extends GroupType {

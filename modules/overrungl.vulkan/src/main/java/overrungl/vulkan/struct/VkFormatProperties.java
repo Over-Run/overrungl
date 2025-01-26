@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFormatProperties {
-///     VkFormatFeatureFlags linearTilingFeatures;
-///     VkFormatFeatureFlags optimalTilingFeatures;
-///     VkFormatFeatureFlags bufferFeatures;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags linearTilingFeatures;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags optimalTilingFeatures;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags bufferFeatures;
 /// };
 /// ```
 public sealed class VkFormatProperties extends GroupType {

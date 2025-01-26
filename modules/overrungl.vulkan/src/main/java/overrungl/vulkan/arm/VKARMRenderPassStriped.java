@@ -26,6 +26,6 @@ public final class VKARMRenderPassStriped {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM = 1000424003;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM = 1000424004;
 
-    private VKARMRenderPassStriped() { }
+    private VKARMRenderPassStriped() {}
 
 }

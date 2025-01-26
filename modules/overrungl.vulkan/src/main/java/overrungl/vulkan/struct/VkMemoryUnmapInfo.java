@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryUnmapInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMemoryUnmapFlags flags;
-///     VkDeviceMemory memory;
+///     ((uint32_t) VkFlags) VkMemoryUnmapFlags flags;
+///     (uint64_t) VkDeviceMemory memory;
 /// };
 /// ```
 public sealed class VkMemoryUnmapInfo extends GroupType {

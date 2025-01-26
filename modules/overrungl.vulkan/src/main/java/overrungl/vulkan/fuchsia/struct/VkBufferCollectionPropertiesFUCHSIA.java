@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferCollectionPropertiesFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t memoryTypeBits;
 ///     uint32_t bufferCount;
 ///     uint32_t createInfoIndex;
 ///     uint64_t sysmemPixelFormat;
-///     VkFormatFeatureFlags formatFeatures;
-///     VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
-///     VkComponentMapping samplerYcbcrConversionComponents;
-///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
-///     VkSamplerYcbcrRange suggestedYcbcrRange;
-///     VkChromaLocation suggestedXChromaOffset;
-///     VkChromaLocation suggestedYChromaOffset;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags formatFeatures;
+///     (struct VkSysmemColorSpaceFUCHSIA) VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
+///     (struct VkComponentMapping) VkComponentMapping samplerYcbcrConversionComponents;
+///     (int) VkSamplerYcbcrModelConversion suggestedYcbcrModel;
+///     (int) VkSamplerYcbcrRange suggestedYcbcrRange;
+///     (int) VkChromaLocation suggestedXChromaOffset;
+///     (int) VkChromaLocation suggestedYChromaOffset;
 /// };
 /// ```
 public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {

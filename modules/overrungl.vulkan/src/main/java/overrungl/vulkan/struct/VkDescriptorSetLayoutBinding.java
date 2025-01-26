@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ```
 /// struct VkDescriptorSetLayoutBinding {
 ///     uint32_t binding;
-///     VkDescriptorType descriptorType;
+///     (int) VkDescriptorType descriptorType;
 ///     uint32_t descriptorCount;
-///     VkShaderStageFlags stageFlags;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stageFlags;
 ///     const VkSampler* pImmutableSamplers;
 /// };
 /// ```

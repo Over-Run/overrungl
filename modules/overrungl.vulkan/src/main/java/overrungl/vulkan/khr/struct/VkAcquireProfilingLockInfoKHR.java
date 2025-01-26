@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAcquireProfilingLockInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAcquireProfilingLockFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkAcquireProfilingLockFlagsKHR flags;
 ///     uint64_t timeout;
 /// };
 /// ```

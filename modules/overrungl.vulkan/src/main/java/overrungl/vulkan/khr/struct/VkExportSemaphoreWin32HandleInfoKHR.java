@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportSemaphoreWin32HandleInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const SECURITY_ATTRIBUTES* pAttributes;
-///     DWORD dwAccess;
-///     LPCWSTR name;
+///     (unsigned long) DWORD dwAccess;
+///     (const wchar_t*) LPCWSTR name;
 /// };
 /// ```
 public sealed class VkExportSemaphoreWin32HandleInfoKHR extends GroupType {

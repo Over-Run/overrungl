@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 dedicatedAllocationImageAliasing;
+///     (uint32_t) VkBool32 dedicatedAllocationImageAliasing;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV extends GroupType {

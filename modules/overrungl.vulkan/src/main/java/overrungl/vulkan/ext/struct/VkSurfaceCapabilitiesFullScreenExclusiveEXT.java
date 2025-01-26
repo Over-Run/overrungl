@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfaceCapabilitiesFullScreenExclusiveEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 fullScreenExclusiveSupported;
+///     (uint32_t) VkBool32 fullScreenExclusiveSupported;
 /// };
 /// ```
 public sealed class VkSurfaceCapabilitiesFullScreenExclusiveEXT extends GroupType {

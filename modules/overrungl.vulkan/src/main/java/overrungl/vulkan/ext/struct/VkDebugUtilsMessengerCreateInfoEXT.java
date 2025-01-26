@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDebugUtilsMessengerCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDebugUtilsMessengerCreateFlagsEXT flags;
-///     VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
-///     VkDebugUtilsMessageTypeFlagsEXT messageType;
-///     PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback;
+///     ((uint32_t) VkFlags) VkDebugUtilsMessengerCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
+///     ((uint32_t) VkFlags) VkDebugUtilsMessageTypeFlagsEXT messageType;
+///     ((uint32_t) VkBool32 (*VkDebugUtilsMessengerCallbackEXT)((int) VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, ((uint32_t) VkFlags) VkDebugUtilsMessageTypeFlagsEXT messageTypes, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData)) PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback;
 ///     void* pUserData;
 /// };
 /// ```

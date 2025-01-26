@@ -149,7 +149,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+    /// void glVertexAttribP1ui((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint value);
     /// ```
     public void VertexAttribP1ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1ui");
@@ -158,7 +158,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
+    /// void glVertexAttribP1uiv((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, const GLuint* value);
     /// ```
     public void VertexAttribP1uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
@@ -167,7 +167,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+    /// void glVertexAttribP2ui((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint value);
     /// ```
     public void VertexAttribP2ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2ui");
@@ -176,7 +176,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
+    /// void glVertexAttribP2uiv((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, const GLuint* value);
     /// ```
     public void VertexAttribP2uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
@@ -185,7 +185,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+    /// void glVertexAttribP3ui((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint value);
     /// ```
     public void VertexAttribP3ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3ui");
@@ -194,7 +194,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
+    /// void glVertexAttribP3uiv((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, const GLuint* value);
     /// ```
     public void VertexAttribP3uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
@@ -203,7 +203,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
+    /// void glVertexAttribP4ui((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint value);
     /// ```
     public void VertexAttribP4ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4ui)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4ui");
@@ -212,7 +212,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint* value);
+    /// void glVertexAttribP4uiv((unsigned int) GLuint index, (unsigned int) GLenum type, GLboolean normalized, const GLuint* value);
     /// ```
     public void VertexAttribP4uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
@@ -221,7 +221,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP2ui(GLenum type, GLuint value);
+    /// void glVertexP2ui((unsigned int) GLenum type, (unsigned int) GLuint value);
     /// ```
     public void VertexP2ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP2ui)) throw new SymbolNotFoundError("Symbol not found: glVertexP2ui");
@@ -230,7 +230,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP2uiv(GLenum type, const GLuint* value);
+    /// void glVertexP2uiv((unsigned int) GLenum type, const GLuint* value);
     /// ```
     public void VertexP2uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP2uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP2uiv");
@@ -239,7 +239,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP3ui(GLenum type, GLuint value);
+    /// void glVertexP3ui((unsigned int) GLenum type, (unsigned int) GLuint value);
     /// ```
     public void VertexP3ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP3ui)) throw new SymbolNotFoundError("Symbol not found: glVertexP3ui");
@@ -248,7 +248,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP3uiv(GLenum type, const GLuint* value);
+    /// void glVertexP3uiv((unsigned int) GLenum type, const GLuint* value);
     /// ```
     public void VertexP3uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP3uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP3uiv");
@@ -257,7 +257,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP4ui(GLenum type, GLuint value);
+    /// void glVertexP4ui((unsigned int) GLenum type, (unsigned int) GLuint value);
     /// ```
     public void VertexP4ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP4ui)) throw new SymbolNotFoundError("Symbol not found: glVertexP4ui");
@@ -266,7 +266,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glVertexP4uiv(GLenum type, const GLuint* value);
+    /// void glVertexP4uiv((unsigned int) GLenum type, const GLuint* value);
     /// ```
     public void VertexP4uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP4uiv)) throw new SymbolNotFoundError("Symbol not found: glVertexP4uiv");
@@ -275,7 +275,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP1ui(GLenum type, GLuint coords);
+    /// void glTexCoordP1ui((unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void TexCoordP1ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP1ui)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP1ui");
@@ -284,7 +284,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP1uiv(GLenum type, const GLuint* coords);
+    /// void glTexCoordP1uiv((unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void TexCoordP1uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP1uiv");
@@ -293,7 +293,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP2ui(GLenum type, GLuint coords);
+    /// void glTexCoordP2ui((unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void TexCoordP2ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP2ui)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP2ui");
@@ -302,7 +302,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP2uiv(GLenum type, const GLuint* coords);
+    /// void glTexCoordP2uiv((unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void TexCoordP2uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP2uiv");
@@ -311,7 +311,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP3ui(GLenum type, GLuint coords);
+    /// void glTexCoordP3ui((unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void TexCoordP3ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP3ui)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP3ui");
@@ -320,7 +320,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP3uiv(GLenum type, const GLuint* coords);
+    /// void glTexCoordP3uiv((unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void TexCoordP3uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP3uiv");
@@ -329,7 +329,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP4ui(GLenum type, GLuint coords);
+    /// void glTexCoordP4ui((unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void TexCoordP4ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP4ui)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP4ui");
@@ -338,7 +338,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glTexCoordP4uiv(GLenum type, const GLuint* coords);
+    /// void glTexCoordP4uiv((unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void TexCoordP4uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glTexCoordP4uiv");
@@ -347,7 +347,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords);
+    /// void glMultiTexCoordP1ui((unsigned int) GLenum texture, (unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void MultiTexCoordP1ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP1ui)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP1ui");
@@ -356,7 +356,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint* coords);
+    /// void glMultiTexCoordP1uiv((unsigned int) GLenum texture, (unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void MultiTexCoordP1uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP1uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP1uiv");
@@ -365,7 +365,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords);
+    /// void glMultiTexCoordP2ui((unsigned int) GLenum texture, (unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void MultiTexCoordP2ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP2ui)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP2ui");
@@ -374,7 +374,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint* coords);
+    /// void glMultiTexCoordP2uiv((unsigned int) GLenum texture, (unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void MultiTexCoordP2uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP2uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP2uiv");
@@ -383,7 +383,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords);
+    /// void glMultiTexCoordP3ui((unsigned int) GLenum texture, (unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void MultiTexCoordP3ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP3ui)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP3ui");
@@ -392,7 +392,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint* coords);
+    /// void glMultiTexCoordP3uiv((unsigned int) GLenum texture, (unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void MultiTexCoordP3uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP3uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP3uiv");
@@ -401,7 +401,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords);
+    /// void glMultiTexCoordP4ui((unsigned int) GLenum texture, (unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void MultiTexCoordP4ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP4ui)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP4ui");
@@ -410,7 +410,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint* coords);
+    /// void glMultiTexCoordP4uiv((unsigned int) GLenum texture, (unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void MultiTexCoordP4uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP4uiv)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoordP4uiv");
@@ -419,7 +419,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glNormalP3ui(GLenum type, GLuint coords);
+    /// void glNormalP3ui((unsigned int) GLenum type, (unsigned int) GLuint coords);
     /// ```
     public void NormalP3ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalP3ui)) throw new SymbolNotFoundError("Symbol not found: glNormalP3ui");
@@ -428,7 +428,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glNormalP3uiv(GLenum type, const GLuint* coords);
+    /// void glNormalP3uiv((unsigned int) GLenum type, const GLuint* coords);
     /// ```
     public void NormalP3uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalP3uiv)) throw new SymbolNotFoundError("Symbol not found: glNormalP3uiv");
@@ -437,7 +437,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glColorP3ui(GLenum type, GLuint color);
+    /// void glColorP3ui((unsigned int) GLenum type, (unsigned int) GLuint color);
     /// ```
     public void ColorP3ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP3ui)) throw new SymbolNotFoundError("Symbol not found: glColorP3ui");
@@ -446,7 +446,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glColorP3uiv(GLenum type, const GLuint* color);
+    /// void glColorP3uiv((unsigned int) GLenum type, const GLuint* color);
     /// ```
     public void ColorP3uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP3uiv");
@@ -455,7 +455,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glColorP4ui(GLenum type, GLuint color);
+    /// void glColorP4ui((unsigned int) GLenum type, (unsigned int) GLuint color);
     /// ```
     public void ColorP4ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP4ui)) throw new SymbolNotFoundError("Symbol not found: glColorP4ui");
@@ -464,7 +464,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glColorP4uiv(GLenum type, const GLuint* color);
+    /// void glColorP4uiv((unsigned int) GLenum type, const GLuint* color);
     /// ```
     public void ColorP4uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP4uiv)) throw new SymbolNotFoundError("Symbol not found: glColorP4uiv");
@@ -473,7 +473,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glSecondaryColorP3ui(GLenum type, GLuint color);
+    /// void glSecondaryColorP3ui((unsigned int) GLenum type, (unsigned int) GLuint color);
     /// ```
     public void SecondaryColorP3ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorP3ui)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorP3ui");
@@ -482,7 +482,7 @@ public final class GLARBVertexType2101010Rev {
     }
 
     /// ```
-    /// void glSecondaryColorP3uiv(GLenum type, const GLuint* color);
+    /// void glSecondaryColorP3uiv((unsigned int) GLenum type, const GLuint* color);
     /// ```
     public void SecondaryColorP3uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorP3uiv)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorP3uiv");

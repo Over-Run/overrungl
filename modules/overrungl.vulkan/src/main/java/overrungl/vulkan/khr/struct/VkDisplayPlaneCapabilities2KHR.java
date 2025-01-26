@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPlaneCapabilities2KHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDisplayPlaneCapabilitiesKHR capabilities;
+///     (struct VkDisplayPlaneCapabilitiesKHR) VkDisplayPlaneCapabilitiesKHR capabilities;
 /// };
 /// ```
 public sealed class VkDisplayPlaneCapabilities2KHR extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkStreamDescriptorSurfaceCreateInfoGGP {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkStreamDescriptorSurfaceCreateFlagsGGP flags;
-///     GgpStreamDescriptor streamDescriptor;
+///     ((uint32_t) VkFlags) VkStreamDescriptorSurfaceCreateFlagsGGP flags;
+///     (uint32_t) GgpStreamDescriptor streamDescriptor;
 /// };
 /// ```
 public sealed class VkStreamDescriptorSurfaceCreateInfoGGP extends GroupType {

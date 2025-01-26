@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkColorBlendEquationEXT {
-///     VkBlendFactor srcColorBlendFactor;
-///     VkBlendFactor dstColorBlendFactor;
-///     VkBlendOp colorBlendOp;
-///     VkBlendFactor srcAlphaBlendFactor;
-///     VkBlendFactor dstAlphaBlendFactor;
-///     VkBlendOp alphaBlendOp;
+///     (int) VkBlendFactor srcColorBlendFactor;
+///     (int) VkBlendFactor dstColorBlendFactor;
+///     (int) VkBlendOp colorBlendOp;
+///     (int) VkBlendFactor srcAlphaBlendFactor;
+///     (int) VkBlendFactor dstAlphaBlendFactor;
+///     (int) VkBlendOp alphaBlendOp;
 /// };
 /// ```
 public sealed class VkColorBlendEquationEXT extends GroupType {

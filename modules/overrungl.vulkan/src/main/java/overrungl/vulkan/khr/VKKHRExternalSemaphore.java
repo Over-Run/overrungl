@@ -23,6 +23,6 @@ public final class VKKHRExternalSemaphore {
     public static final int VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO_KHR = 1000077000;
     public static final int VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR = 0x00000001;
 
-    private VKKHRExternalSemaphore() { }
+    private VKKHRExternalSemaphore() {}
 
 }

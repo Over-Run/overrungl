@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAttachmentReference2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t attachment;
-///     VkImageLayout layout;
-///     VkImageAspectFlags aspectMask;
+///     (int) VkImageLayout layout;
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
 /// };
 /// ```
 public sealed class VkAttachmentReference2 extends GroupType {

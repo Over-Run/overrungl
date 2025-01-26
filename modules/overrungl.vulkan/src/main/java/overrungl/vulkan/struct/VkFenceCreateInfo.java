@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFenceCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFenceCreateFlags flags;
+///     ((uint32_t) VkFlags) VkFenceCreateFlags flags;
 /// };
 /// ```
 public sealed class VkFenceCreateInfo extends GroupType {

@@ -77,7 +77,7 @@ public final class GLARBTessellationShader {
     }
 
     /// ```
-    /// void glPatchParameteri(GLenum pname, GLint value);
+    /// void glPatchParameteri((unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void PatchParameteri(int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameteri)) throw new SymbolNotFoundError("Symbol not found: glPatchParameteri");
@@ -86,7 +86,7 @@ public final class GLARBTessellationShader {
     }
 
     /// ```
-    /// void glPatchParameterfv(GLenum pname, const GLfloat* values);
+    /// void glPatchParameterfv((unsigned int) GLenum pname, const GLfloat* values);
     /// ```
     public void PatchParameterfv(int pname, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPatchParameterfv");

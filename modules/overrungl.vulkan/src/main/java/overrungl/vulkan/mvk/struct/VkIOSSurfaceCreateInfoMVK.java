@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIOSSurfaceCreateInfoMVK {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkIOSSurfaceCreateFlagsMVK flags;
+///     ((uint32_t) VkFlags) VkIOSSurfaceCreateFlagsMVK flags;
 ///     const void* pView;
 /// };
 /// ```

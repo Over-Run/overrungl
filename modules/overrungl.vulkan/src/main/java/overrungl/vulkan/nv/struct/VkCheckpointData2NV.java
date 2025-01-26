@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCheckpointData2NV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPipelineStageFlags2 stage;
+///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage;
 ///     void* pCheckpointMarker;
 /// };
 /// ```

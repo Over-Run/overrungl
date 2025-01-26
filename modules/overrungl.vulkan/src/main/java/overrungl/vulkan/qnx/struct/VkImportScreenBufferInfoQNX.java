@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportScreenBufferInfoQNX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     _screen_buffer * buffer;
+///     struct _screen_buffer * buffer;
 /// };
 /// ```
 public sealed class VkImportScreenBufferInfoQNX extends GroupType {

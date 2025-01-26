@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetAllocateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorPool descriptorPool;
+///     (uint64_t) VkDescriptorPool descriptorPool;
 ///     uint32_t descriptorSetCount;
 ///     const VkDescriptorSetLayout* pSetLayouts;
 /// };

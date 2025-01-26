@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFrameBoundaryFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 frameBoundary;
+///     (uint32_t) VkBool32 frameBoundary;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFrameBoundaryFeaturesEXT extends GroupType {

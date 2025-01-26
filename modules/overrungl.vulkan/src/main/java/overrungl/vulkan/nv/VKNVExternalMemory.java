@@ -23,6 +23,6 @@ public final class VKNVExternalMemory {
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV = 1000056000;
     public static final int VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV = 1000056001;
 
-    private VKNVExternalMemory() { }
+    private VKNVExternalMemory() {}
 
 }

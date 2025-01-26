@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSemaphoreSignalInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
+///     (uint64_t) VkSemaphore semaphore;
 ///     uint64_t value;
 /// };
 /// ```

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineTessellationStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineTessellationStateCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineTessellationStateCreateFlags flags;
 ///     uint32_t patchControlPoints;
 /// };
 /// ```

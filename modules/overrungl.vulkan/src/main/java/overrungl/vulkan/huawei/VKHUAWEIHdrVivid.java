@@ -23,6 +23,6 @@ public final class VKHUAWEIHdrVivid {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI = 1000590000;
     public static final int VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI = 1000590001;
 
-    private VKHUAWEIHdrVivid() { }
+    private VKHUAWEIHdrVivid() {}
 
 }

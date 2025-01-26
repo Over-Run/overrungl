@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderTileImagePropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderTileImageCoherentReadAccelerated;
-///     VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
-///     VkBool32 shaderTileImageReadFromHelperInvocation;
+///     (uint32_t) VkBool32 shaderTileImageCoherentReadAccelerated;
+///     (uint32_t) VkBool32 shaderTileImageReadSampleFromPixelRateInvocation;
+///     (uint32_t) VkBool32 shaderTileImageReadFromHelperInvocation;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupType {

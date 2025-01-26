@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkHostImageCopyDevicePerformanceQuery {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 optimalDeviceAccess;
-///     VkBool32 identicalMemoryLayout;
+///     (uint32_t) VkBool32 optimalDeviceAccess;
+///     (uint32_t) VkBool32 identicalMemoryLayout;
 /// };
 /// ```
 public sealed class VkHostImageCopyDevicePerformanceQuery extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageCompressionControlFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 imageCompressionControl;
+///     (uint32_t) VkBool32 imageCompressionControl;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageCompressionControlFeaturesEXT extends GroupType {

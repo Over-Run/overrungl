@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSemaphoreSubmitInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
+///     (uint64_t) VkSemaphore semaphore;
 ///     uint64_t value;
-///     VkPipelineStageFlags2 stageMask;
+///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 stageMask;
 ///     uint32_t deviceIndex;
 /// };
 /// ```

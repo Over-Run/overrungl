@@ -39,7 +39,7 @@ public final class GLARBSampleShading {
     }
 
     /// ```
-    /// void glMinSampleShadingARB(GLfloat value);
+    /// void glMinSampleShadingARB(((float) khronos_float_t) GLfloat value);
     /// ```
     public void MinSampleShadingARB(float value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");

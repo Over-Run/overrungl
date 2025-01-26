@@ -49,7 +49,7 @@ public final class GLAPPLEObjectPurgeable {
     }
 
     /// ```
-    /// GLenum glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
+    /// (unsigned int) GLenum glObjectPurgeableAPPLE((unsigned int) GLenum objectType, (unsigned int) GLuint name, (unsigned int) GLenum option);
     /// ```
     public int ObjectPurgeableAPPLE(int objectType, int name, int option) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectPurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectPurgeableAPPLE");
@@ -58,7 +58,7 @@ public final class GLAPPLEObjectPurgeable {
     }
 
     /// ```
-    /// GLenum glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
+    /// (unsigned int) GLenum glObjectUnpurgeableAPPLE((unsigned int) GLenum objectType, (unsigned int) GLuint name, (unsigned int) GLenum option);
     /// ```
     public int ObjectUnpurgeableAPPLE(int objectType, int name, int option) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectUnpurgeableAPPLE)) throw new SymbolNotFoundError("Symbol not found: glObjectUnpurgeableAPPLE");
@@ -67,7 +67,7 @@ public final class GLAPPLEObjectPurgeable {
     }
 
     /// ```
-    /// void glGetObjectParameterivAPPLE(GLenum objectType, GLuint name, GLenum pname, GLint* params);
+    /// void glGetObjectParameterivAPPLE((unsigned int) GLenum objectType, (unsigned int) GLuint name, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetObjectParameterivAPPLE(int objectType, int name, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterivAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE");

@@ -20,7 +20,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-public class VK13 extends VK12 {
+public final class VK13 {
     public static final int VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT = 0x00000001;
     public static final int VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT = 0x00000002;
     public static final int VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT = 0x00000004;
@@ -209,7 +209,6 @@ public class VK13 extends VK12 {
     public static final int VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS = 1000413002;
     public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS = 1000413003;
     public static final int VK_IMAGE_ASPECT_NONE = 0;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceToolProperties = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCreatePrivateDataSlot = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -248,420 +247,342 @@ public class VK13 extends VK12 {
         public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDeviceImageMemoryRequirements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceToolProperties;
-        public final MemorySegment PFN_vkCreatePrivateDataSlot;
-        public final MemorySegment PFN_vkDestroyPrivateDataSlot;
-        public final MemorySegment PFN_vkSetPrivateData;
-        public final MemorySegment PFN_vkGetPrivateData;
-        public final MemorySegment PFN_vkCmdSetEvent2;
-        public final MemorySegment PFN_vkCmdResetEvent2;
-        public final MemorySegment PFN_vkCmdWaitEvents2;
-        public final MemorySegment PFN_vkCmdPipelineBarrier2;
-        public final MemorySegment PFN_vkCmdWriteTimestamp2;
-        public final MemorySegment PFN_vkQueueSubmit2;
-        public final MemorySegment PFN_vkCmdCopyBuffer2;
-        public final MemorySegment PFN_vkCmdCopyImage2;
-        public final MemorySegment PFN_vkCmdCopyBufferToImage2;
-        public final MemorySegment PFN_vkCmdCopyImageToBuffer2;
-        public final MemorySegment PFN_vkCmdBlitImage2;
-        public final MemorySegment PFN_vkCmdResolveImage2;
-        public final MemorySegment PFN_vkCmdBeginRendering;
-        public final MemorySegment PFN_vkCmdEndRendering;
-        public final MemorySegment PFN_vkCmdSetCullMode;
-        public final MemorySegment PFN_vkCmdSetFrontFace;
-        public final MemorySegment PFN_vkCmdSetPrimitiveTopology;
-        public final MemorySegment PFN_vkCmdSetViewportWithCount;
-        public final MemorySegment PFN_vkCmdSetScissorWithCount;
-        public final MemorySegment PFN_vkCmdBindVertexBuffers2;
-        public final MemorySegment PFN_vkCmdSetDepthTestEnable;
-        public final MemorySegment PFN_vkCmdSetDepthWriteEnable;
-        public final MemorySegment PFN_vkCmdSetDepthCompareOp;
-        public final MemorySegment PFN_vkCmdSetDepthBoundsTestEnable;
-        public final MemorySegment PFN_vkCmdSetStencilTestEnable;
-        public final MemorySegment PFN_vkCmdSetStencilOp;
-        public final MemorySegment PFN_vkCmdSetRasterizerDiscardEnable;
-        public final MemorySegment PFN_vkCmdSetDepthBiasEnable;
-        public final MemorySegment PFN_vkCmdSetPrimitiveRestartEnable;
-        public final MemorySegment PFN_vkGetDeviceBufferMemoryRequirements;
-        public final MemorySegment PFN_vkGetDeviceImageMemoryRequirements;
-        public final MemorySegment PFN_vkGetDeviceImageSparseMemoryRequirements;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceToolProperties = func.invoke(instance, "vkGetPhysicalDeviceToolProperties", "vkGetPhysicalDeviceToolPropertiesEXT");
-            PFN_vkCreatePrivateDataSlot = func.invoke(instance, "vkCreatePrivateDataSlot", "vkCreatePrivateDataSlotEXT");
-            PFN_vkDestroyPrivateDataSlot = func.invoke(instance, "vkDestroyPrivateDataSlot", "vkDestroyPrivateDataSlotEXT");
-            PFN_vkSetPrivateData = func.invoke(instance, "vkSetPrivateData", "vkSetPrivateDataEXT");
-            PFN_vkGetPrivateData = func.invoke(instance, "vkGetPrivateData", "vkGetPrivateDataEXT");
-            PFN_vkCmdSetEvent2 = func.invoke(instance, "vkCmdSetEvent2", "vkCmdSetEvent2KHR");
-            PFN_vkCmdResetEvent2 = func.invoke(instance, "vkCmdResetEvent2", "vkCmdResetEvent2KHR");
-            PFN_vkCmdWaitEvents2 = func.invoke(instance, "vkCmdWaitEvents2", "vkCmdWaitEvents2KHR");
-            PFN_vkCmdPipelineBarrier2 = func.invoke(instance, "vkCmdPipelineBarrier2", "vkCmdPipelineBarrier2KHR");
-            PFN_vkCmdWriteTimestamp2 = func.invoke(instance, "vkCmdWriteTimestamp2", "vkCmdWriteTimestamp2KHR");
-            PFN_vkQueueSubmit2 = func.invoke(instance, "vkQueueSubmit2", "vkQueueSubmit2KHR");
-            PFN_vkCmdCopyBuffer2 = func.invoke(instance, "vkCmdCopyBuffer2", "vkCmdCopyBuffer2KHR");
-            PFN_vkCmdCopyImage2 = func.invoke(instance, "vkCmdCopyImage2", "vkCmdCopyImage2KHR");
-            PFN_vkCmdCopyBufferToImage2 = func.invoke(instance, "vkCmdCopyBufferToImage2", "vkCmdCopyBufferToImage2KHR");
-            PFN_vkCmdCopyImageToBuffer2 = func.invoke(instance, "vkCmdCopyImageToBuffer2", "vkCmdCopyImageToBuffer2KHR");
-            PFN_vkCmdBlitImage2 = func.invoke(instance, "vkCmdBlitImage2", "vkCmdBlitImage2KHR");
-            PFN_vkCmdResolveImage2 = func.invoke(instance, "vkCmdResolveImage2", "vkCmdResolveImage2KHR");
-            PFN_vkCmdBeginRendering = func.invoke(instance, "vkCmdBeginRendering", "vkCmdBeginRenderingKHR");
-            PFN_vkCmdEndRendering = func.invoke(instance, "vkCmdEndRendering", "vkCmdEndRenderingKHR");
-            PFN_vkCmdSetCullMode = func.invoke(instance, "vkCmdSetCullMode", "vkCmdSetCullModeEXT");
-            PFN_vkCmdSetFrontFace = func.invoke(instance, "vkCmdSetFrontFace", "vkCmdSetFrontFaceEXT");
-            PFN_vkCmdSetPrimitiveTopology = func.invoke(instance, "vkCmdSetPrimitiveTopology", "vkCmdSetPrimitiveTopologyEXT");
-            PFN_vkCmdSetViewportWithCount = func.invoke(instance, "vkCmdSetViewportWithCount", "vkCmdSetViewportWithCountEXT");
-            PFN_vkCmdSetScissorWithCount = func.invoke(instance, "vkCmdSetScissorWithCount", "vkCmdSetScissorWithCountEXT");
-            PFN_vkCmdBindVertexBuffers2 = func.invoke(instance, "vkCmdBindVertexBuffers2", "vkCmdBindVertexBuffers2EXT");
-            PFN_vkCmdSetDepthTestEnable = func.invoke(instance, "vkCmdSetDepthTestEnable", "vkCmdSetDepthTestEnableEXT");
-            PFN_vkCmdSetDepthWriteEnable = func.invoke(instance, "vkCmdSetDepthWriteEnable", "vkCmdSetDepthWriteEnableEXT");
-            PFN_vkCmdSetDepthCompareOp = func.invoke(instance, "vkCmdSetDepthCompareOp", "vkCmdSetDepthCompareOpEXT");
-            PFN_vkCmdSetDepthBoundsTestEnable = func.invoke(instance, "vkCmdSetDepthBoundsTestEnable", "vkCmdSetDepthBoundsTestEnableEXT");
-            PFN_vkCmdSetStencilTestEnable = func.invoke(instance, "vkCmdSetStencilTestEnable", "vkCmdSetStencilTestEnableEXT");
-            PFN_vkCmdSetStencilOp = func.invoke(instance, "vkCmdSetStencilOp", "vkCmdSetStencilOpEXT");
-            PFN_vkCmdSetRasterizerDiscardEnable = func.invoke(instance, "vkCmdSetRasterizerDiscardEnable", "vkCmdSetRasterizerDiscardEnableEXT");
-            PFN_vkCmdSetDepthBiasEnable = func.invoke(instance, "vkCmdSetDepthBiasEnable", "vkCmdSetDepthBiasEnableEXT");
-            PFN_vkCmdSetPrimitiveRestartEnable = func.invoke(instance, "vkCmdSetPrimitiveRestartEnable", "vkCmdSetPrimitiveRestartEnableEXT");
-            PFN_vkGetDeviceBufferMemoryRequirements = func.invoke(instance, "vkGetDeviceBufferMemoryRequirements", "vkGetDeviceBufferMemoryRequirementsKHR");
-            PFN_vkGetDeviceImageMemoryRequirements = func.invoke(instance, "vkGetDeviceImageMemoryRequirements", "vkGetDeviceImageMemoryRequirementsKHR");
-            PFN_vkGetDeviceImageSparseMemoryRequirements = func.invoke(instance, "vkGetDeviceImageSparseMemoryRequirements", "vkGetDeviceImageSparseMemoryRequirementsKHR");
-        }
+        private Handles() {}
     }
 
-    public VK13(MemorySegment instance, VKLoadFunc func) {
-        super(instance, func);
-        this.handles = new Handles(instance, func);
+    private VK13() {}
+
+    /// ```
+    /// (int) VkResult vkGetPhysicalDeviceToolProperties((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
+    /// ```
+    public static int vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolProperties");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceToolProperties.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolProperties, physicalDevice.segment(), pToolCount, pToolProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceToolProperties", e); }
     }
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceToolProperties(VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
+    /// (int) VkResult vkCreatePrivateDataSlot((struct VkDevice*) VkDevice device, const VkPrivateDataSlotCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPrivateDataSlot* pPrivateDataSlot);
     /// ```
-    public int GetPhysicalDeviceToolProperties(MemorySegment physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceToolProperties)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolProperties");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceToolProperties.invokeExact(handles.PFN_vkGetPhysicalDeviceToolProperties, physicalDevice, pToolCount, pToolProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceToolProperties", e); }
+    public static int vkCreatePrivateDataSlot(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pPrivateDataSlot) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePrivateDataSlot)) throw new SymbolNotFoundError("Symbol not found: vkCreatePrivateDataSlot");
+        try { return (int) Handles.MH_vkCreatePrivateDataSlot.invokeExact(device.capabilities().PFN_vkCreatePrivateDataSlot, device.segment(), pCreateInfo, pAllocator, pPrivateDataSlot); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreatePrivateDataSlot", e); }
     }
 
     /// ```
-    /// VkResult vkCreatePrivateDataSlot(VkDevice device, const VkPrivateDataSlotCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPrivateDataSlot* pPrivateDataSlot);
+    /// void vkDestroyPrivateDataSlot((struct VkDevice*) VkDevice device, (uint64_t) VkPrivateDataSlot privateDataSlot, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public int CreatePrivateDataSlot(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pPrivateDataSlot) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreatePrivateDataSlot)) throw new SymbolNotFoundError("Symbol not found: vkCreatePrivateDataSlot");
-        try { return (int) Handles.MH_vkCreatePrivateDataSlot.invokeExact(handles.PFN_vkCreatePrivateDataSlot, device, pCreateInfo, pAllocator, pPrivateDataSlot); }
-        catch (Throwable e) { throw new RuntimeException("error in CreatePrivateDataSlot", e); }
+    public static void vkDestroyPrivateDataSlot(VkDevice device, long privateDataSlot, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPrivateDataSlot)) throw new SymbolNotFoundError("Symbol not found: vkDestroyPrivateDataSlot");
+        try { Handles.MH_vkDestroyPrivateDataSlot.invokeExact(device.capabilities().PFN_vkDestroyPrivateDataSlot, device.segment(), privateDataSlot, pAllocator); }
+        catch (Throwable e) { throw new RuntimeException("error in vkDestroyPrivateDataSlot", e); }
     }
 
     /// ```
-    /// void vkDestroyPrivateDataSlot(VkDevice device, VkPrivateDataSlot privateDataSlot, const VkAllocationCallbacks* pAllocator);
+    /// (int) VkResult vkSetPrivateData((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t data);
     /// ```
-    public void DestroyPrivateDataSlot(MemorySegment device, long privateDataSlot, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyPrivateDataSlot)) throw new SymbolNotFoundError("Symbol not found: vkDestroyPrivateDataSlot");
-        try { Handles.MH_vkDestroyPrivateDataSlot.invokeExact(handles.PFN_vkDestroyPrivateDataSlot, device, privateDataSlot, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in DestroyPrivateDataSlot", e); }
+    public static int vkSetPrivateData(VkDevice device, int objectType, long objectHandle, long privateDataSlot, long data) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetPrivateData)) throw new SymbolNotFoundError("Symbol not found: vkSetPrivateData");
+        try { return (int) Handles.MH_vkSetPrivateData.invokeExact(device.capabilities().PFN_vkSetPrivateData, device.segment(), objectType, objectHandle, privateDataSlot, data); }
+        catch (Throwable e) { throw new RuntimeException("error in vkSetPrivateData", e); }
     }
 
     /// ```
-    /// VkResult vkSetPrivateData(VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data);
+    /// void vkGetPrivateData((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t* pData);
     /// ```
-    public int SetPrivateData(MemorySegment device, int objectType, long objectHandle, long privateDataSlot, long data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkSetPrivateData)) throw new SymbolNotFoundError("Symbol not found: vkSetPrivateData");
-        try { return (int) Handles.MH_vkSetPrivateData.invokeExact(handles.PFN_vkSetPrivateData, device, objectType, objectHandle, privateDataSlot, data); }
-        catch (Throwable e) { throw new RuntimeException("error in SetPrivateData", e); }
+    public static void vkGetPrivateData(VkDevice device, int objectType, long objectHandle, long privateDataSlot, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPrivateData)) throw new SymbolNotFoundError("Symbol not found: vkGetPrivateData");
+        try { Handles.MH_vkGetPrivateData.invokeExact(device.capabilities().PFN_vkGetPrivateData, device.segment(), objectType, objectHandle, privateDataSlot, pData); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPrivateData", e); }
     }
 
     /// ```
-    /// void vkGetPrivateData(VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t* pData);
+    /// void vkCmdSetEvent2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, const VkDependencyInfo* pDependencyInfo);
     /// ```
-    public void GetPrivateData(MemorySegment device, int objectType, long objectHandle, long privateDataSlot, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPrivateData)) throw new SymbolNotFoundError("Symbol not found: vkGetPrivateData");
-        try { Handles.MH_vkGetPrivateData.invokeExact(handles.PFN_vkGetPrivateData, device, objectType, objectHandle, privateDataSlot, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPrivateData", e); }
+    public static void vkCmdSetEvent2(VkCommandBuffer commandBuffer, long event, MemorySegment pDependencyInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetEvent2)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetEvent2");
+        try { Handles.MH_vkCmdSetEvent2.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetEvent2, commandBuffer.segment(), event, pDependencyInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetEvent2", e); }
     }
 
     /// ```
-    /// void vkCmdSetEvent2(VkCommandBuffer commandBuffer, VkEvent event, const VkDependencyInfo* pDependencyInfo);
+    /// void vkCmdResetEvent2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkEvent event, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stageMask);
     /// ```
-    public void CmdSetEvent2(MemorySegment commandBuffer, long event, MemorySegment pDependencyInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetEvent2)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetEvent2");
-        try { Handles.MH_vkCmdSetEvent2.invokeExact(handles.PFN_vkCmdSetEvent2, commandBuffer, event, pDependencyInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetEvent2", e); }
+    public static void vkCmdResetEvent2(VkCommandBuffer commandBuffer, long event, long stageMask) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResetEvent2)) throw new SymbolNotFoundError("Symbol not found: vkCmdResetEvent2");
+        try { Handles.MH_vkCmdResetEvent2.invokeExact(commandBuffer.capabilities().PFN_vkCmdResetEvent2, commandBuffer.segment(), event, stageMask); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdResetEvent2", e); }
     }
 
     /// ```
-    /// void vkCmdResetEvent2(VkCommandBuffer commandBuffer, VkEvent event, VkPipelineStageFlags2 stageMask);
+    /// void vkCmdWaitEvents2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t eventCount, const VkEvent* pEvents, const VkDependencyInfo* pDependencyInfos);
     /// ```
-    public void CmdResetEvent2(MemorySegment commandBuffer, long event, long stageMask) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdResetEvent2)) throw new SymbolNotFoundError("Symbol not found: vkCmdResetEvent2");
-        try { Handles.MH_vkCmdResetEvent2.invokeExact(handles.PFN_vkCmdResetEvent2, commandBuffer, event, stageMask); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdResetEvent2", e); }
+    public static void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, int eventCount, MemorySegment pEvents, MemorySegment pDependencyInfos) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWaitEvents2)) throw new SymbolNotFoundError("Symbol not found: vkCmdWaitEvents2");
+        try { Handles.MH_vkCmdWaitEvents2.invokeExact(commandBuffer.capabilities().PFN_vkCmdWaitEvents2, commandBuffer.segment(), eventCount, pEvents, pDependencyInfos); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdWaitEvents2", e); }
     }
 
     /// ```
-    /// void vkCmdWaitEvents2(VkCommandBuffer commandBuffer, uint32_t eventCount, const VkEvent* pEvents, const VkDependencyInfo* pDependencyInfos);
+    /// void vkCmdPipelineBarrier2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDependencyInfo* pDependencyInfo);
     /// ```
-    public void CmdWaitEvents2(MemorySegment commandBuffer, int eventCount, MemorySegment pEvents, MemorySegment pDependencyInfos) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdWaitEvents2)) throw new SymbolNotFoundError("Symbol not found: vkCmdWaitEvents2");
-        try { Handles.MH_vkCmdWaitEvents2.invokeExact(handles.PFN_vkCmdWaitEvents2, commandBuffer, eventCount, pEvents, pDependencyInfos); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdWaitEvents2", e); }
+    public static void vkCmdPipelineBarrier2(VkCommandBuffer commandBuffer, MemorySegment pDependencyInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPipelineBarrier2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPipelineBarrier2");
+        try { Handles.MH_vkCmdPipelineBarrier2.invokeExact(commandBuffer.capabilities().PFN_vkCmdPipelineBarrier2, commandBuffer.segment(), pDependencyInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdPipelineBarrier2", e); }
     }
 
     /// ```
-    /// void vkCmdPipelineBarrier2(VkCommandBuffer commandBuffer, const VkDependencyInfo* pDependencyInfo);
+    /// void vkCmdWriteTimestamp2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage, (uint64_t) VkQueryPool queryPool, uint32_t query);
     /// ```
-    public void CmdPipelineBarrier2(MemorySegment commandBuffer, MemorySegment pDependencyInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdPipelineBarrier2)) throw new SymbolNotFoundError("Symbol not found: vkCmdPipelineBarrier2");
-        try { Handles.MH_vkCmdPipelineBarrier2.invokeExact(handles.PFN_vkCmdPipelineBarrier2, commandBuffer, pDependencyInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdPipelineBarrier2", e); }
+    public static void vkCmdWriteTimestamp2(VkCommandBuffer commandBuffer, long stage, long queryPool, int query) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteTimestamp2)) throw new SymbolNotFoundError("Symbol not found: vkCmdWriteTimestamp2");
+        try { Handles.MH_vkCmdWriteTimestamp2.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteTimestamp2, commandBuffer.segment(), stage, queryPool, query); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteTimestamp2", e); }
     }
 
     /// ```
-    /// void vkCmdWriteTimestamp2(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint32_t query);
+    /// (int) VkResult vkQueueSubmit2((struct VkQueue*) VkQueue queue, uint32_t submitCount, const VkSubmitInfo2* pSubmits, (uint64_t) VkFence fence);
     /// ```
-    public void CmdWriteTimestamp2(MemorySegment commandBuffer, long stage, long queryPool, int query) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdWriteTimestamp2)) throw new SymbolNotFoundError("Symbol not found: vkCmdWriteTimestamp2");
-        try { Handles.MH_vkCmdWriteTimestamp2.invokeExact(handles.PFN_vkCmdWriteTimestamp2, commandBuffer, stage, queryPool, query); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdWriteTimestamp2", e); }
+    public static int vkQueueSubmit2(VkQueue queue, int submitCount, MemorySegment pSubmits, long fence) {
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSubmit2)) throw new SymbolNotFoundError("Symbol not found: vkQueueSubmit2");
+        try { return (int) Handles.MH_vkQueueSubmit2.invokeExact(queue.capabilities().PFN_vkQueueSubmit2, queue.segment(), submitCount, pSubmits, fence); }
+        catch (Throwable e) { throw new RuntimeException("error in vkQueueSubmit2", e); }
     }
 
     /// ```
-    /// VkResult vkQueueSubmit2(VkQueue queue, uint32_t submitCount, const VkSubmitInfo2* pSubmits, VkFence fence);
+    /// void vkCmdCopyBuffer2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyBufferInfo2* pCopyBufferInfo);
     /// ```
-    public int QueueSubmit2(MemorySegment queue, int submitCount, MemorySegment pSubmits, long fence) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkQueueSubmit2)) throw new SymbolNotFoundError("Symbol not found: vkQueueSubmit2");
-        try { return (int) Handles.MH_vkQueueSubmit2.invokeExact(handles.PFN_vkQueueSubmit2, queue, submitCount, pSubmits, fence); }
-        catch (Throwable e) { throw new RuntimeException("error in QueueSubmit2", e); }
+    public static void vkCmdCopyBuffer2(VkCommandBuffer commandBuffer, MemorySegment pCopyBufferInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBuffer2");
+        try { Handles.MH_vkCmdCopyBuffer2.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2, commandBuffer.segment(), pCopyBufferInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBuffer2", e); }
     }
 
     /// ```
-    /// void vkCmdCopyBuffer2(VkCommandBuffer commandBuffer, const VkCopyBufferInfo2* pCopyBufferInfo);
+    /// void vkCmdCopyImage2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyImageInfo2* pCopyImageInfo);
     /// ```
-    public void CmdCopyBuffer2(MemorySegment commandBuffer, MemorySegment pCopyBufferInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBuffer2");
-        try { Handles.MH_vkCmdCopyBuffer2.invokeExact(handles.PFN_vkCmdCopyBuffer2, commandBuffer, pCopyBufferInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyBuffer2", e); }
+    public static void vkCmdCopyImage2(VkCommandBuffer commandBuffer, MemorySegment pCopyImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImage2");
+        try { Handles.MH_vkCmdCopyImage2.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImage2, commandBuffer.segment(), pCopyImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImage2", e); }
     }
 
     /// ```
-    /// void vkCmdCopyImage2(VkCommandBuffer commandBuffer, const VkCopyImageInfo2* pCopyImageInfo);
+    /// void vkCmdCopyBufferToImage2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyBufferToImageInfo2* pCopyBufferToImageInfo);
     /// ```
-    public void CmdCopyImage2(MemorySegment commandBuffer, MemorySegment pCopyImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImage2");
-        try { Handles.MH_vkCmdCopyImage2.invokeExact(handles.PFN_vkCmdCopyImage2, commandBuffer, pCopyImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyImage2", e); }
+    public static void vkCmdCopyBufferToImage2(VkCommandBuffer commandBuffer, MemorySegment pCopyBufferToImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBufferToImage2");
+        try { Handles.MH_vkCmdCopyBufferToImage2.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2, commandBuffer.segment(), pCopyBufferToImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBufferToImage2", e); }
     }
 
     /// ```
-    /// void vkCmdCopyBufferToImage2(VkCommandBuffer commandBuffer, const VkCopyBufferToImageInfo2* pCopyBufferToImageInfo);
+    /// void vkCmdCopyImageToBuffer2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyImageToBufferInfo2* pCopyImageToBufferInfo);
     /// ```
-    public void CmdCopyBufferToImage2(MemorySegment commandBuffer, MemorySegment pCopyBufferToImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyBufferToImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBufferToImage2");
-        try { Handles.MH_vkCmdCopyBufferToImage2.invokeExact(handles.PFN_vkCmdCopyBufferToImage2, commandBuffer, pCopyBufferToImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyBufferToImage2", e); }
+    public static void vkCmdCopyImageToBuffer2(VkCommandBuffer commandBuffer, MemorySegment pCopyImageToBufferInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImageToBuffer2");
+        try { Handles.MH_vkCmdCopyImageToBuffer2.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2, commandBuffer.segment(), pCopyImageToBufferInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImageToBuffer2", e); }
     }
 
     /// ```
-    /// void vkCmdCopyImageToBuffer2(VkCommandBuffer commandBuffer, const VkCopyImageToBufferInfo2* pCopyImageToBufferInfo);
+    /// void vkCmdBlitImage2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBlitImageInfo2* pBlitImageInfo);
     /// ```
-    public void CmdCopyImageToBuffer2(MemorySegment commandBuffer, MemorySegment pCopyImageToBufferInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyImageToBuffer2)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImageToBuffer2");
-        try { Handles.MH_vkCmdCopyImageToBuffer2.invokeExact(handles.PFN_vkCmdCopyImageToBuffer2, commandBuffer, pCopyImageToBufferInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyImageToBuffer2", e); }
+    public static void vkCmdBlitImage2(VkCommandBuffer commandBuffer, MemorySegment pBlitImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBlitImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBlitImage2");
+        try { Handles.MH_vkCmdBlitImage2.invokeExact(commandBuffer.capabilities().PFN_vkCmdBlitImage2, commandBuffer.segment(), pBlitImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdBlitImage2", e); }
     }
 
     /// ```
-    /// void vkCmdBlitImage2(VkCommandBuffer commandBuffer, const VkBlitImageInfo2* pBlitImageInfo);
+    /// void vkCmdResolveImage2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkResolveImageInfo2* pResolveImageInfo);
     /// ```
-    public void CmdBlitImage2(MemorySegment commandBuffer, MemorySegment pBlitImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBlitImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBlitImage2");
-        try { Handles.MH_vkCmdBlitImage2.invokeExact(handles.PFN_vkCmdBlitImage2, commandBuffer, pBlitImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdBlitImage2", e); }
+    public static void vkCmdResolveImage2(VkCommandBuffer commandBuffer, MemorySegment pResolveImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResolveImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdResolveImage2");
+        try { Handles.MH_vkCmdResolveImage2.invokeExact(commandBuffer.capabilities().PFN_vkCmdResolveImage2, commandBuffer.segment(), pResolveImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdResolveImage2", e); }
     }
 
     /// ```
-    /// void vkCmdResolveImage2(VkCommandBuffer commandBuffer, const VkResolveImageInfo2* pResolveImageInfo);
+    /// void vkCmdBeginRendering((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
     /// ```
-    public void CmdResolveImage2(MemorySegment commandBuffer, MemorySegment pResolveImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdResolveImage2)) throw new SymbolNotFoundError("Symbol not found: vkCmdResolveImage2");
-        try { Handles.MH_vkCmdResolveImage2.invokeExact(handles.PFN_vkCmdResolveImage2, commandBuffer, pResolveImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdResolveImage2", e); }
+    public static void vkCmdBeginRendering(VkCommandBuffer commandBuffer, MemorySegment pRenderingInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRendering)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRendering");
+        try { Handles.MH_vkCmdBeginRendering.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRendering, commandBuffer.segment(), pRenderingInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRendering", e); }
     }
 
     /// ```
-    /// void vkCmdBeginRendering(VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
+    /// void vkCmdEndRendering((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
-    public void CmdBeginRendering(MemorySegment commandBuffer, MemorySegment pRenderingInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBeginRendering)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRendering");
-        try { Handles.MH_vkCmdBeginRendering.invokeExact(handles.PFN_vkCmdBeginRendering, commandBuffer, pRenderingInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdBeginRendering", e); }
+    public static void vkCmdEndRendering(VkCommandBuffer commandBuffer) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRendering)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRendering");
+        try { Handles.MH_vkCmdEndRendering.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRendering, commandBuffer.segment()); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRendering", e); }
     }
 
     /// ```
-    /// void vkCmdEndRendering(VkCommandBuffer commandBuffer);
+    /// void vkCmdSetCullMode((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkCullModeFlags cullMode);
     /// ```
-    public void CmdEndRendering(MemorySegment commandBuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdEndRendering)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRendering");
-        try { Handles.MH_vkCmdEndRendering.invokeExact(handles.PFN_vkCmdEndRendering, commandBuffer); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdEndRendering", e); }
+    public static void vkCmdSetCullMode(VkCommandBuffer commandBuffer, int cullMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCullMode)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCullMode");
+        try { Handles.MH_vkCmdSetCullMode.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCullMode, commandBuffer.segment(), cullMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCullMode", e); }
     }
 
     /// ```
-    /// void vkCmdSetCullMode(VkCommandBuffer commandBuffer, VkCullModeFlags cullMode);
+    /// void vkCmdSetFrontFace((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkFrontFace frontFace);
     /// ```
-    public void CmdSetCullMode(MemorySegment commandBuffer, int cullMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCullMode)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCullMode");
-        try { Handles.MH_vkCmdSetCullMode.invokeExact(handles.PFN_vkCmdSetCullMode, commandBuffer, cullMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCullMode", e); }
+    public static void vkCmdSetFrontFace(VkCommandBuffer commandBuffer, int frontFace) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetFrontFace)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetFrontFace");
+        try { Handles.MH_vkCmdSetFrontFace.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetFrontFace, commandBuffer.segment(), frontFace); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetFrontFace", e); }
     }
 
     /// ```
-    /// void vkCmdSetFrontFace(VkCommandBuffer commandBuffer, VkFrontFace frontFace);
+    /// void vkCmdSetPrimitiveTopology((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPrimitiveTopology primitiveTopology);
     /// ```
-    public void CmdSetFrontFace(MemorySegment commandBuffer, int frontFace) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetFrontFace)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetFrontFace");
-        try { Handles.MH_vkCmdSetFrontFace.invokeExact(handles.PFN_vkCmdSetFrontFace, commandBuffer, frontFace); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetFrontFace", e); }
+    public static void vkCmdSetPrimitiveTopology(VkCommandBuffer commandBuffer, int primitiveTopology) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveTopology)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveTopology");
+        try { Handles.MH_vkCmdSetPrimitiveTopology.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveTopology, commandBuffer.segment(), primitiveTopology); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPrimitiveTopology", e); }
     }
 
     /// ```
-    /// void vkCmdSetPrimitiveTopology(VkCommandBuffer commandBuffer, VkPrimitiveTopology primitiveTopology);
+    /// void vkCmdSetViewportWithCount((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t viewportCount, const VkViewport* pViewports);
     /// ```
-    public void CmdSetPrimitiveTopology(MemorySegment commandBuffer, int primitiveTopology) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPrimitiveTopology)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveTopology");
-        try { Handles.MH_vkCmdSetPrimitiveTopology.invokeExact(handles.PFN_vkCmdSetPrimitiveTopology, commandBuffer, primitiveTopology); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetPrimitiveTopology", e); }
+    public static void vkCmdSetViewportWithCount(VkCommandBuffer commandBuffer, int viewportCount, MemorySegment pViewports) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWithCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWithCount");
+        try { Handles.MH_vkCmdSetViewportWithCount.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWithCount, commandBuffer.segment(), viewportCount, pViewports); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWithCount", e); }
     }
 
     /// ```
-    /// void vkCmdSetViewportWithCount(VkCommandBuffer commandBuffer, uint32_t viewportCount, const VkViewport* pViewports);
+    /// void vkCmdSetScissorWithCount((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t scissorCount, const VkRect2D* pScissors);
     /// ```
-    public void CmdSetViewportWithCount(MemorySegment commandBuffer, int viewportCount, MemorySegment pViewports) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetViewportWithCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWithCount");
-        try { Handles.MH_vkCmdSetViewportWithCount.invokeExact(handles.PFN_vkCmdSetViewportWithCount, commandBuffer, viewportCount, pViewports); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetViewportWithCount", e); }
+    public static void vkCmdSetScissorWithCount(VkCommandBuffer commandBuffer, int scissorCount, MemorySegment pScissors) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetScissorWithCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetScissorWithCount");
+        try { Handles.MH_vkCmdSetScissorWithCount.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetScissorWithCount, commandBuffer.segment(), scissorCount, pScissors); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetScissorWithCount", e); }
     }
 
     /// ```
-    /// void vkCmdSetScissorWithCount(VkCommandBuffer commandBuffer, uint32_t scissorCount, const VkRect2D* pScissors);
+    /// void vkCmdBindVertexBuffers2((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes, const VkDeviceSize* pStrides);
     /// ```
-    public void CmdSetScissorWithCount(MemorySegment commandBuffer, int scissorCount, MemorySegment pScissors) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetScissorWithCount)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetScissorWithCount");
-        try { Handles.MH_vkCmdSetScissorWithCount.invokeExact(handles.PFN_vkCmdSetScissorWithCount, commandBuffer, scissorCount, pScissors); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetScissorWithCount", e); }
+    public static void vkCmdBindVertexBuffers2(VkCommandBuffer commandBuffer, int firstBinding, int bindingCount, MemorySegment pBuffers, MemorySegment pOffsets, MemorySegment pSizes, MemorySegment pStrides) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindVertexBuffers2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindVertexBuffers2");
+        try { Handles.MH_vkCmdBindVertexBuffers2.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindVertexBuffers2, commandBuffer.segment(), firstBinding, bindingCount, pBuffers, pOffsets, pSizes, pStrides); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdBindVertexBuffers2", e); }
     }
 
     /// ```
-    /// void vkCmdBindVertexBuffers2(VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes, const VkDeviceSize* pStrides);
+    /// void vkCmdSetDepthTestEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthTestEnable);
     /// ```
-    public void CmdBindVertexBuffers2(MemorySegment commandBuffer, int firstBinding, int bindingCount, MemorySegment pBuffers, MemorySegment pOffsets, MemorySegment pSizes, MemorySegment pStrides) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBindVertexBuffers2)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindVertexBuffers2");
-        try { Handles.MH_vkCmdBindVertexBuffers2.invokeExact(handles.PFN_vkCmdBindVertexBuffers2, commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes, pStrides); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdBindVertexBuffers2", e); }
+    public static void vkCmdSetDepthTestEnable(VkCommandBuffer commandBuffer, int depthTestEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthTestEnable");
+        try { Handles.MH_vkCmdSetDepthTestEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthTestEnable, commandBuffer.segment(), depthTestEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthTestEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthTestEnable(VkCommandBuffer commandBuffer, VkBool32 depthTestEnable);
+    /// void vkCmdSetDepthWriteEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthWriteEnable);
     /// ```
-    public void CmdSetDepthTestEnable(MemorySegment commandBuffer, int depthTestEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthTestEnable");
-        try { Handles.MH_vkCmdSetDepthTestEnable.invokeExact(handles.PFN_vkCmdSetDepthTestEnable, commandBuffer, depthTestEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthTestEnable", e); }
+    public static void vkCmdSetDepthWriteEnable(VkCommandBuffer commandBuffer, int depthWriteEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthWriteEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthWriteEnable");
+        try { Handles.MH_vkCmdSetDepthWriteEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthWriteEnable, commandBuffer.segment(), depthWriteEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthWriteEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthWriteEnable(VkCommandBuffer commandBuffer, VkBool32 depthWriteEnable);
+    /// void vkCmdSetDepthCompareOp((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCompareOp depthCompareOp);
     /// ```
-    public void CmdSetDepthWriteEnable(MemorySegment commandBuffer, int depthWriteEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthWriteEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthWriteEnable");
-        try { Handles.MH_vkCmdSetDepthWriteEnable.invokeExact(handles.PFN_vkCmdSetDepthWriteEnable, commandBuffer, depthWriteEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthWriteEnable", e); }
+    public static void vkCmdSetDepthCompareOp(VkCommandBuffer commandBuffer, int depthCompareOp) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthCompareOp)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthCompareOp");
+        try { Handles.MH_vkCmdSetDepthCompareOp.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthCompareOp, commandBuffer.segment(), depthCompareOp); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthCompareOp", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthCompareOp(VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp);
+    /// void vkCmdSetDepthBoundsTestEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthBoundsTestEnable);
     /// ```
-    public void CmdSetDepthCompareOp(MemorySegment commandBuffer, int depthCompareOp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthCompareOp)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthCompareOp");
-        try { Handles.MH_vkCmdSetDepthCompareOp.invokeExact(handles.PFN_vkCmdSetDepthCompareOp, commandBuffer, depthCompareOp); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthCompareOp", e); }
+    public static void vkCmdSetDepthBoundsTestEnable(VkCommandBuffer commandBuffer, int depthBoundsTestEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBoundsTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBoundsTestEnable");
+        try { Handles.MH_vkCmdSetDepthBoundsTestEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthBoundsTestEnable, commandBuffer.segment(), depthBoundsTestEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthBoundsTestEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthBoundsTestEnable(VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable);
+    /// void vkCmdSetStencilTestEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 stencilTestEnable);
     /// ```
-    public void CmdSetDepthBoundsTestEnable(MemorySegment commandBuffer, int depthBoundsTestEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthBoundsTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBoundsTestEnable");
-        try { Handles.MH_vkCmdSetDepthBoundsTestEnable.invokeExact(handles.PFN_vkCmdSetDepthBoundsTestEnable, commandBuffer, depthBoundsTestEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthBoundsTestEnable", e); }
+    public static void vkCmdSetStencilTestEnable(VkCommandBuffer commandBuffer, int stencilTestEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetStencilTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetStencilTestEnable");
+        try { Handles.MH_vkCmdSetStencilTestEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetStencilTestEnable, commandBuffer.segment(), stencilTestEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetStencilTestEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetStencilTestEnable(VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable);
+    /// void vkCmdSetStencilOp((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkStencilFaceFlags faceMask, (int) VkStencilOp failOp, (int) VkStencilOp passOp, (int) VkStencilOp depthFailOp, (int) VkCompareOp compareOp);
     /// ```
-    public void CmdSetStencilTestEnable(MemorySegment commandBuffer, int stencilTestEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetStencilTestEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetStencilTestEnable");
-        try { Handles.MH_vkCmdSetStencilTestEnable.invokeExact(handles.PFN_vkCmdSetStencilTestEnable, commandBuffer, stencilTestEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetStencilTestEnable", e); }
+    public static void vkCmdSetStencilOp(VkCommandBuffer commandBuffer, int faceMask, int failOp, int passOp, int depthFailOp, int compareOp) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetStencilOp)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetStencilOp");
+        try { Handles.MH_vkCmdSetStencilOp.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetStencilOp, commandBuffer.segment(), faceMask, failOp, passOp, depthFailOp, compareOp); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetStencilOp", e); }
     }
 
     /// ```
-    /// void vkCmdSetStencilOp(VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp);
+    /// void vkCmdSetRasterizerDiscardEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 rasterizerDiscardEnable);
     /// ```
-    public void CmdSetStencilOp(MemorySegment commandBuffer, int faceMask, int failOp, int passOp, int depthFailOp, int compareOp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetStencilOp)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetStencilOp");
-        try { Handles.MH_vkCmdSetStencilOp.invokeExact(handles.PFN_vkCmdSetStencilOp, commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetStencilOp", e); }
+    public static void vkCmdSetRasterizerDiscardEnable(VkCommandBuffer commandBuffer, int rasterizerDiscardEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizerDiscardEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizerDiscardEnable");
+        try { Handles.MH_vkCmdSetRasterizerDiscardEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRasterizerDiscardEnable, commandBuffer.segment(), rasterizerDiscardEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRasterizerDiscardEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetRasterizerDiscardEnable(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable);
+    /// void vkCmdSetDepthBiasEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthBiasEnable);
     /// ```
-    public void CmdSetRasterizerDiscardEnable(MemorySegment commandBuffer, int rasterizerDiscardEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRasterizerDiscardEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizerDiscardEnable");
-        try { Handles.MH_vkCmdSetRasterizerDiscardEnable.invokeExact(handles.PFN_vkCmdSetRasterizerDiscardEnable, commandBuffer, rasterizerDiscardEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetRasterizerDiscardEnable", e); }
+    public static void vkCmdSetDepthBiasEnable(VkCommandBuffer commandBuffer, int depthBiasEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBiasEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBiasEnable");
+        try { Handles.MH_vkCmdSetDepthBiasEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthBiasEnable, commandBuffer.segment(), depthBiasEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthBiasEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthBiasEnable(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable);
+    /// void vkCmdSetPrimitiveRestartEnable((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 primitiveRestartEnable);
     /// ```
-    public void CmdSetDepthBiasEnable(MemorySegment commandBuffer, int depthBiasEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthBiasEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBiasEnable");
-        try { Handles.MH_vkCmdSetDepthBiasEnable.invokeExact(handles.PFN_vkCmdSetDepthBiasEnable, commandBuffer, depthBiasEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthBiasEnable", e); }
+    public static void vkCmdSetPrimitiveRestartEnable(VkCommandBuffer commandBuffer, int primitiveRestartEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveRestartEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveRestartEnable");
+        try { Handles.MH_vkCmdSetPrimitiveRestartEnable.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveRestartEnable, commandBuffer.segment(), primitiveRestartEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPrimitiveRestartEnable", e); }
     }
 
     /// ```
-    /// void vkCmdSetPrimitiveRestartEnable(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable);
+    /// void vkGetDeviceBufferMemoryRequirements((struct VkDevice*) VkDevice device, const VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public void CmdSetPrimitiveRestartEnable(MemorySegment commandBuffer, int primitiveRestartEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPrimitiveRestartEnable)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveRestartEnable");
-        try { Handles.MH_vkCmdSetPrimitiveRestartEnable.invokeExact(handles.PFN_vkCmdSetPrimitiveRestartEnable, commandBuffer, primitiveRestartEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetPrimitiveRestartEnable", e); }
+    public static void vkGetDeviceBufferMemoryRequirements(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirements");
+        try { Handles.MH_vkGetDeviceBufferMemoryRequirements.invokeExact(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirements, device.segment(), pInfo, pMemoryRequirements); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceBufferMemoryRequirements", e); }
     }
 
     /// ```
-    /// void vkGetDeviceBufferMemoryRequirements(VkDevice device, const VkDeviceBufferMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDeviceImageMemoryRequirements((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
-    public void GetDeviceBufferMemoryRequirements(MemorySegment device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceBufferMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirements");
-        try { Handles.MH_vkGetDeviceBufferMemoryRequirements.invokeExact(handles.PFN_vkGetDeviceBufferMemoryRequirements, device, pInfo, pMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDeviceBufferMemoryRequirements", e); }
+    public static void vkGetDeviceImageMemoryRequirements(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirements");
+        try { Handles.MH_vkGetDeviceImageMemoryRequirements.invokeExact(device.capabilities().PFN_vkGetDeviceImageMemoryRequirements, device.segment(), pInfo, pMemoryRequirements); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageMemoryRequirements", e); }
     }
 
     /// ```
-    /// void vkGetDeviceImageMemoryRequirements(VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, VkMemoryRequirements2* pMemoryRequirements);
+    /// void vkGetDeviceImageSparseMemoryRequirements((struct VkDevice*) VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
     /// ```
-    public void GetDeviceImageMemoryRequirements(MemorySegment device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceImageMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirements");
-        try { Handles.MH_vkGetDeviceImageMemoryRequirements.invokeExact(handles.PFN_vkGetDeviceImageMemoryRequirements, device, pInfo, pMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDeviceImageMemoryRequirements", e); }
-    }
-
-    /// ```
-    /// void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, const VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
-    /// ```
-    public void GetDeviceImageSparseMemoryRequirements(MemorySegment device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceImageSparseMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirements");
-        try { Handles.MH_vkGetDeviceImageSparseMemoryRequirements.invokeExact(handles.PFN_vkGetDeviceImageSparseMemoryRequirements, device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDeviceImageSparseMemoryRequirements", e); }
+    public static void vkGetDeviceImageSparseMemoryRequirements(VkDevice device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirements)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirements");
+        try { Handles.MH_vkGetDeviceImageSparseMemoryRequirements.invokeExact(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirements, device.segment(), pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSparseMemoryRequirements", e); }
     }
 
 }

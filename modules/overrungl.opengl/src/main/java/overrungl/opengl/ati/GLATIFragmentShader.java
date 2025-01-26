@@ -180,7 +180,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// GLuint glGenFragmentShadersATI(GLuint range);
+    /// (unsigned int) GLuint glGenFragmentShadersATI((unsigned int) GLuint range);
     /// ```
     public int GenFragmentShadersATI(int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFragmentShadersATI)) throw new SymbolNotFoundError("Symbol not found: glGenFragmentShadersATI");
@@ -189,7 +189,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glBindFragmentShaderATI(GLuint id);
+    /// void glBindFragmentShaderATI((unsigned int) GLuint id);
     /// ```
     public void BindFragmentShaderATI(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glBindFragmentShaderATI");
@@ -198,7 +198,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glDeleteFragmentShaderATI(GLuint id);
+    /// void glDeleteFragmentShaderATI((unsigned int) GLuint id);
     /// ```
     public void DeleteFragmentShaderATI(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glDeleteFragmentShaderATI");
@@ -225,7 +225,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle);
+    /// void glPassTexCoordATI((unsigned int) GLuint dst, (unsigned int) GLuint coord, (unsigned int) GLenum swizzle);
     /// ```
     public void PassTexCoordATI(int dst, int coord, int swizzle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPassTexCoordATI)) throw new SymbolNotFoundError("Symbol not found: glPassTexCoordATI");
@@ -234,7 +234,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
+    /// void glSampleMapATI((unsigned int) GLuint dst, (unsigned int) GLuint interp, (unsigned int) GLenum swizzle);
     /// ```
     public void SampleMapATI(int dst, int interp, int swizzle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMapATI)) throw new SymbolNotFoundError("Symbol not found: glSampleMapATI");
@@ -243,7 +243,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+    /// void glColorFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
     public void ColorFragmentOp1ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp1ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp1ATI");
@@ -252,7 +252,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+    /// void glColorFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
     public void ColorFragmentOp2ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp2ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp2ATI");
@@ -261,7 +261,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+    /// void glColorFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
     public void ColorFragmentOp3ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp3ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp3ATI");
@@ -270,7 +270,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+    /// void glAlphaFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
     public void AlphaFragmentOp1ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp1ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp1ATI");
@@ -279,7 +279,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+    /// void glAlphaFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
     public void AlphaFragmentOp2ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp2ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp2ATI");
@@ -288,7 +288,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+    /// void glAlphaFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
     public void AlphaFragmentOp3ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp3ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp3ATI");
@@ -297,7 +297,7 @@ public final class GLATIFragmentShader {
     }
 
     /// ```
-    /// void glSetFragmentShaderConstantATI(GLuint dst, const GLfloat* value);
+    /// void glSetFragmentShaderConstantATI((unsigned int) GLuint dst, const GLfloat* value);
     /// ```
     public void SetFragmentShaderConstantATI(int dst, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new SymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");

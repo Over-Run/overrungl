@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindPipelineIndirectCommandNV {
-///     VkDeviceAddress pipelineAddress;
+///     (uint64_t) VkDeviceAddress pipelineAddress;
 /// };
 /// ```
 public sealed class VkBindPipelineIndirectCommandNV extends GroupType {

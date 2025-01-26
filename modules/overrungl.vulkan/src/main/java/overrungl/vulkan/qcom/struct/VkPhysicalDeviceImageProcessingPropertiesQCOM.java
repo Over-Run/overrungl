@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageProcessingPropertiesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxWeightFilterPhases;
-///     VkExtent2D maxWeightFilterDimension;
-///     VkExtent2D maxBlockMatchRegion;
-///     VkExtent2D maxBoxFilterBlockSize;
+///     (struct VkExtent2D) VkExtent2D maxWeightFilterDimension;
+///     (struct VkExtent2D) VkExtent2D maxBlockMatchRegion;
+///     (struct VkExtent2D) VkExtent2D maxBoxFilterBlockSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupType {

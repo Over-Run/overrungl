@@ -51,7 +51,7 @@ public final class GLNVPrimitiveRestart {
     }
 
     /// ```
-    /// void glPrimitiveRestartIndexNV(GLuint index);
+    /// void glPrimitiveRestartIndexNV((unsigned int) GLuint index);
     /// ```
     public void PrimitiveRestartIndexNV(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartIndexNV)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV");

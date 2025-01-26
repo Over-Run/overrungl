@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkShaderCreateFlagsEXT flags;
-///     VkShaderStageFlagBits stage;
-///     VkShaderStageFlags nextStage;
-///     VkShaderCodeTypeEXT codeType;
+///     ((uint32_t) VkFlags) VkShaderCreateFlagsEXT flags;
+///     (int) VkShaderStageFlagBits stage;
+///     ((uint32_t) VkFlags) VkShaderStageFlags nextStage;
+///     (int) VkShaderCodeTypeEXT codeType;
 ///     size_t codeSize;
 ///     const void* pCode;
 ///     const char* pName;

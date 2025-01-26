@@ -76,7 +76,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glBindShadingRateImageNV(GLuint texture);
+    /// void glBindShadingRateImageNV((unsigned int) GLuint texture);
     /// ```
     public void BindShadingRateImageNV(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindShadingRateImageNV)) throw new SymbolNotFoundError("Symbol not found: glBindShadingRateImageNV");
@@ -85,7 +85,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glGetShadingRateImagePaletteNV(GLuint viewport, GLuint entry, GLenum* rate);
+    /// void glGetShadingRateImagePaletteNV((unsigned int) GLuint viewport, (unsigned int) GLuint entry, GLenum* rate);
     /// ```
     public void GetShadingRateImagePaletteNV(int viewport, int entry, MemorySegment rate) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateImagePaletteNV");
@@ -94,7 +94,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glGetShadingRateSampleLocationivNV(GLenum rate, GLuint samples, GLuint index, GLint* location);
+    /// void glGetShadingRateSampleLocationivNV((unsigned int) GLenum rate, (unsigned int) GLuint samples, (unsigned int) GLuint index, GLint* location);
     /// ```
     public void GetShadingRateSampleLocationivNV(int rate, int samples, int index, MemorySegment location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateSampleLocationivNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateSampleLocationivNV");
@@ -112,7 +112,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glShadingRateImagePaletteNV(GLuint viewport, GLuint first, GLsizei count, const GLenum* rates);
+    /// void glShadingRateImagePaletteNV((unsigned int) GLuint viewport, (unsigned int) GLuint first, (int) GLsizei count, const GLenum* rates);
     /// ```
     public void ShadingRateImagePaletteNV(int viewport, int first, int count, MemorySegment rates) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateImagePaletteNV");
@@ -121,7 +121,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glShadingRateSampleOrderNV(GLenum order);
+    /// void glShadingRateSampleOrderNV((unsigned int) GLenum order);
     /// ```
     public void ShadingRateSampleOrderNV(int order) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateSampleOrderNV");
@@ -130,7 +130,7 @@ public final class GLNVShadingRateImage {
     }
 
     /// ```
-    /// void glShadingRateSampleOrderCustomNV(GLenum rate, GLuint samples, const GLint* locations);
+    /// void glShadingRateSampleOrderCustomNV((unsigned int) GLenum rate, (unsigned int) GLuint samples, const GLint* locations);
     /// ```
     public void ShadingRateSampleOrderCustomNV(int rate, int samples, MemorySegment locations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderCustomNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateSampleOrderCustomNV");

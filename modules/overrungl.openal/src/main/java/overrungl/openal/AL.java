@@ -481,7 +481,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alEnable(ALenum capability);
+    /// void alEnable((int) ALenum capability);
     /// ```
     public static void alEnable(int capability) {
         try { Handles.MH_alEnable.invokeExact(Handles.get().PFN_alEnable, capability); }
@@ -489,7 +489,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDisable(ALenum capability);
+    /// void alDisable((int) ALenum capability);
     /// ```
     public static void alDisable(int capability) {
         try { Handles.MH_alDisable.invokeExact(Handles.get().PFN_alDisable, capability); }
@@ -497,7 +497,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALboolean alIsEnabled(ALenum capability);
+    /// ALboolean alIsEnabled((int) ALenum capability);
     /// ```
     public static boolean alIsEnabled(int capability) {
         try { return (((byte) Handles.MH_alIsEnabled.invokeExact(Handles.get().PFN_alIsEnabled, capability)) != 0); }
@@ -505,7 +505,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDopplerFactor(ALfloat value);
+    /// void alDopplerFactor((float) ALfloat value);
     /// ```
     public static void alDopplerFactor(float value) {
         try { Handles.MH_alDopplerFactor.invokeExact(Handles.get().PFN_alDopplerFactor, value); }
@@ -513,7 +513,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDopplerVelocity(ALfloat value);
+    /// void alDopplerVelocity((float) ALfloat value);
     /// ```
     public static void alDopplerVelocity(float value) {
         try { Handles.MH_alDopplerVelocity.invokeExact(Handles.get().PFN_alDopplerVelocity, value); }
@@ -521,7 +521,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSpeedOfSound(ALfloat value);
+    /// void alSpeedOfSound((float) ALfloat value);
     /// ```
     public static void alSpeedOfSound(float value) {
         try { Handles.MH_alSpeedOfSound.invokeExact(Handles.get().PFN_alSpeedOfSound, value); }
@@ -529,7 +529,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDistanceModel(ALenum distanceModel);
+    /// void alDistanceModel((int) ALenum distanceModel);
     /// ```
     public static void alDistanceModel(int distanceModel) {
         try { Handles.MH_alDistanceModel.invokeExact(Handles.get().PFN_alDistanceModel, distanceModel); }
@@ -537,7 +537,7 @@ public final class AL {
     }
 
     /// ```
-    /// const ALchar* alGetString(ALenum param);
+    /// const ALchar* alGetString((int) ALenum param);
     /// ```
     public static MemorySegment alGetString(int param) {
         try { return (MemorySegment) Handles.MH_alGetString.invokeExact(Handles.get().PFN_alGetString, param); }
@@ -545,7 +545,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBooleanv(ALenum param, ALboolean* values);
+    /// void alGetBooleanv((int) ALenum param, ALboolean* values);
     /// ```
     public static void alGetBooleanv(int param, MemorySegment values) {
         try { Handles.MH_alGetBooleanv.invokeExact(Handles.get().PFN_alGetBooleanv, param, values); }
@@ -553,7 +553,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetIntegerv(ALenum param, ALint* values);
+    /// void alGetIntegerv((int) ALenum param, ALint* values);
     /// ```
     public static void alGetIntegerv(int param, MemorySegment values) {
         try { Handles.MH_alGetIntegerv.invokeExact(Handles.get().PFN_alGetIntegerv, param, values); }
@@ -561,7 +561,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetFloatv(ALenum param, ALfloat* values);
+    /// void alGetFloatv((int) ALenum param, ALfloat* values);
     /// ```
     public static void alGetFloatv(int param, MemorySegment values) {
         try { Handles.MH_alGetFloatv.invokeExact(Handles.get().PFN_alGetFloatv, param, values); }
@@ -569,7 +569,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetDoublev(ALenum param, ALdouble* values);
+    /// void alGetDoublev((int) ALenum param, ALdouble* values);
     /// ```
     public static void alGetDoublev(int param, MemorySegment values) {
         try { Handles.MH_alGetDoublev.invokeExact(Handles.get().PFN_alGetDoublev, param, values); }
@@ -577,7 +577,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALboolean alGetBoolean(ALenum param);
+    /// ALboolean alGetBoolean((int) ALenum param);
     /// ```
     public static boolean alGetBoolean(int param) {
         try { return (((byte) Handles.MH_alGetBoolean.invokeExact(Handles.get().PFN_alGetBoolean, param)) != 0); }
@@ -585,7 +585,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALint alGetInteger(ALenum param);
+    /// (int) ALint alGetInteger((int) ALenum param);
     /// ```
     public static int alGetInteger(int param) {
         try { return (int) Handles.MH_alGetInteger.invokeExact(Handles.get().PFN_alGetInteger, param); }
@@ -593,7 +593,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALfloat alGetFloat(ALenum param);
+    /// (float) ALfloat alGetFloat((int) ALenum param);
     /// ```
     public static float alGetFloat(int param) {
         try { return (float) Handles.MH_alGetFloat.invokeExact(Handles.get().PFN_alGetFloat, param); }
@@ -601,7 +601,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALdouble alGetDouble(ALenum param);
+    /// (double) ALdouble alGetDouble((int) ALenum param);
     /// ```
     public static double alGetDouble(int param) {
         try { return (double) Handles.MH_alGetDouble.invokeExact(Handles.get().PFN_alGetDouble, param); }
@@ -609,7 +609,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALenum alGetError();
+    /// (int) ALenum alGetError();
     /// ```
     public static int alGetError() {
         try { return (int) Handles.MH_alGetError.invokeExact(Handles.get().PFN_alGetError); }
@@ -633,7 +633,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALenum alGetEnumValue(const ALchar* ename);
+    /// (int) ALenum alGetEnumValue(const ALchar* ename);
     /// ```
     public static int alGetEnumValue(MemorySegment ename) {
         try { return (int) Handles.MH_alGetEnumValue.invokeExact(Handles.get().PFN_alGetEnumValue, ename); }
@@ -641,7 +641,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListenerf(ALenum param, ALfloat value);
+    /// void alListenerf((int) ALenum param, (float) ALfloat value);
     /// ```
     public static void alListenerf(int param, float value) {
         try { Handles.MH_alListenerf.invokeExact(Handles.get().PFN_alListenerf, param, value); }
@@ -649,7 +649,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListener3f(ALenum param, ALfloat value1, ALfloat value2, ALfloat value3);
+    /// void alListener3f((int) ALenum param, (float) ALfloat value1, (float) ALfloat value2, (float) ALfloat value3);
     /// ```
     public static void alListener3f(int param, float value1, float value2, float value3) {
         try { Handles.MH_alListener3f.invokeExact(Handles.get().PFN_alListener3f, param, value1, value2, value3); }
@@ -657,7 +657,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListenerfv(ALenum param, const ALfloat* values);
+    /// void alListenerfv((int) ALenum param, const ALfloat* values);
     /// ```
     public static void alListenerfv(int param, MemorySegment values) {
         try { Handles.MH_alListenerfv.invokeExact(Handles.get().PFN_alListenerfv, param, values); }
@@ -665,7 +665,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListeneri(ALenum param, ALint value);
+    /// void alListeneri((int) ALenum param, (int) ALint value);
     /// ```
     public static void alListeneri(int param, int value) {
         try { Handles.MH_alListeneri.invokeExact(Handles.get().PFN_alListeneri, param, value); }
@@ -673,7 +673,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListener3i(ALenum param, ALint value1, ALint value2, ALint value3);
+    /// void alListener3i((int) ALenum param, (int) ALint value1, (int) ALint value2, (int) ALint value3);
     /// ```
     public static void alListener3i(int param, int value1, int value2, int value3) {
         try { Handles.MH_alListener3i.invokeExact(Handles.get().PFN_alListener3i, param, value1, value2, value3); }
@@ -681,7 +681,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alListeneriv(ALenum param, const ALint* values);
+    /// void alListeneriv((int) ALenum param, const ALint* values);
     /// ```
     public static void alListeneriv(int param, MemorySegment values) {
         try { Handles.MH_alListeneriv.invokeExact(Handles.get().PFN_alListeneriv, param, values); }
@@ -689,7 +689,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListenerf(ALenum param, ALfloat* value);
+    /// void alGetListenerf((int) ALenum param, ALfloat* value);
     /// ```
     public static void alGetListenerf(int param, MemorySegment value) {
         try { Handles.MH_alGetListenerf.invokeExact(Handles.get().PFN_alGetListenerf, param, value); }
@@ -697,7 +697,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListener3f(ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// void alGetListener3f((int) ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetListener3f(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetListener3f.invokeExact(Handles.get().PFN_alGetListener3f, param, value1, value2, value3); }
@@ -705,7 +705,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListenerfv(ALenum param, ALfloat* values);
+    /// void alGetListenerfv((int) ALenum param, ALfloat* values);
     /// ```
     public static void alGetListenerfv(int param, MemorySegment values) {
         try { Handles.MH_alGetListenerfv.invokeExact(Handles.get().PFN_alGetListenerfv, param, values); }
@@ -713,7 +713,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListeneri(ALenum param, ALint* value);
+    /// void alGetListeneri((int) ALenum param, ALint* value);
     /// ```
     public static void alGetListeneri(int param, MemorySegment value) {
         try { Handles.MH_alGetListeneri.invokeExact(Handles.get().PFN_alGetListeneri, param, value); }
@@ -721,7 +721,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListener3i(ALenum param, ALint* value1, ALint* value2, ALint* value3);
+    /// void alGetListener3i((int) ALenum param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetListener3i(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetListener3i.invokeExact(Handles.get().PFN_alGetListener3i, param, value1, value2, value3); }
@@ -729,7 +729,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetListeneriv(ALenum param, ALint* values);
+    /// void alGetListeneriv((int) ALenum param, ALint* values);
     /// ```
     public static void alGetListeneriv(int param, MemorySegment values) {
         try { Handles.MH_alGetListeneriv.invokeExact(Handles.get().PFN_alGetListeneriv, param, values); }
@@ -737,7 +737,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGenSources(ALsizei n, ALuint* sources);
+    /// void alGenSources((int) ALsizei n, ALuint* sources);
     /// ```
     public static void alGenSources(int n, MemorySegment sources) {
         try { Handles.MH_alGenSources.invokeExact(Handles.get().PFN_alGenSources, n, sources); }
@@ -745,7 +745,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDeleteSources(ALsizei n, const ALuint* sources);
+    /// void alDeleteSources((int) ALsizei n, const ALuint* sources);
     /// ```
     public static void alDeleteSources(int n, MemorySegment sources) {
         try { Handles.MH_alDeleteSources.invokeExact(Handles.get().PFN_alDeleteSources, n, sources); }
@@ -753,7 +753,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALboolean alIsSource(ALuint source);
+    /// ALboolean alIsSource((unsigned int) ALuint source);
     /// ```
     public static boolean alIsSource(int source) {
         try { return (((byte) Handles.MH_alIsSource.invokeExact(Handles.get().PFN_alIsSource, source)) != 0); }
@@ -761,7 +761,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcef(ALuint source, ALenum param, ALfloat value);
+    /// void alSourcef((unsigned int) ALuint source, (int) ALenum param, (float) ALfloat value);
     /// ```
     public static void alSourcef(int source, int param, float value) {
         try { Handles.MH_alSourcef.invokeExact(Handles.get().PFN_alSourcef, source, param, value); }
@@ -769,7 +769,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSource3f(ALuint source, ALenum param, ALfloat value1, ALfloat value2, ALfloat value3);
+    /// void alSource3f((unsigned int) ALuint source, (int) ALenum param, (float) ALfloat value1, (float) ALfloat value2, (float) ALfloat value3);
     /// ```
     public static void alSource3f(int source, int param, float value1, float value2, float value3) {
         try { Handles.MH_alSource3f.invokeExact(Handles.get().PFN_alSource3f, source, param, value1, value2, value3); }
@@ -777,7 +777,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcefv(ALuint source, ALenum param, const ALfloat* values);
+    /// void alSourcefv((unsigned int) ALuint source, (int) ALenum param, const ALfloat* values);
     /// ```
     public static void alSourcefv(int source, int param, MemorySegment values) {
         try { Handles.MH_alSourcefv.invokeExact(Handles.get().PFN_alSourcefv, source, param, values); }
@@ -785,7 +785,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcei(ALuint source, ALenum param, ALint value);
+    /// void alSourcei((unsigned int) ALuint source, (int) ALenum param, (int) ALint value);
     /// ```
     public static void alSourcei(int source, int param, int value) {
         try { Handles.MH_alSourcei.invokeExact(Handles.get().PFN_alSourcei, source, param, value); }
@@ -793,7 +793,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSource3i(ALuint source, ALenum param, ALint value1, ALint value2, ALint value3);
+    /// void alSource3i((unsigned int) ALuint source, (int) ALenum param, (int) ALint value1, (int) ALint value2, (int) ALint value3);
     /// ```
     public static void alSource3i(int source, int param, int value1, int value2, int value3) {
         try { Handles.MH_alSource3i.invokeExact(Handles.get().PFN_alSource3i, source, param, value1, value2, value3); }
@@ -801,7 +801,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceiv(ALuint source, ALenum param, const ALint* values);
+    /// void alSourceiv((unsigned int) ALuint source, (int) ALenum param, const ALint* values);
     /// ```
     public static void alSourceiv(int source, int param, MemorySegment values) {
         try { Handles.MH_alSourceiv.invokeExact(Handles.get().PFN_alSourceiv, source, param, values); }
@@ -809,7 +809,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSourcef(ALuint source, ALenum param, ALfloat* value);
+    /// void alGetSourcef((unsigned int) ALuint source, (int) ALenum param, ALfloat* value);
     /// ```
     public static void alGetSourcef(int source, int param, MemorySegment value) {
         try { Handles.MH_alGetSourcef.invokeExact(Handles.get().PFN_alGetSourcef, source, param, value); }
@@ -817,7 +817,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSource3f(ALuint source, ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// void alGetSource3f((unsigned int) ALuint source, (int) ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetSource3f(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetSource3f.invokeExact(Handles.get().PFN_alGetSource3f, source, param, value1, value2, value3); }
@@ -825,7 +825,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSourcefv(ALuint source, ALenum param, ALfloat* values);
+    /// void alGetSourcefv((unsigned int) ALuint source, (int) ALenum param, ALfloat* values);
     /// ```
     public static void alGetSourcefv(int source, int param, MemorySegment values) {
         try { Handles.MH_alGetSourcefv.invokeExact(Handles.get().PFN_alGetSourcefv, source, param, values); }
@@ -833,7 +833,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSourcei(ALuint source, ALenum param, ALint* value);
+    /// void alGetSourcei((unsigned int) ALuint source, (int) ALenum param, ALint* value);
     /// ```
     public static void alGetSourcei(int source, int param, MemorySegment value) {
         try { Handles.MH_alGetSourcei.invokeExact(Handles.get().PFN_alGetSourcei, source, param, value); }
@@ -841,7 +841,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSource3i(ALuint source, ALenum param, ALint* value1, ALint* value2, ALint* value3);
+    /// void alGetSource3i((unsigned int) ALuint source, (int) ALenum param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetSource3i(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetSource3i.invokeExact(Handles.get().PFN_alGetSource3i, source, param, value1, value2, value3); }
@@ -849,7 +849,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetSourceiv(ALuint source, ALenum param, ALint* values);
+    /// void alGetSourceiv((unsigned int) ALuint source, (int) ALenum param, ALint* values);
     /// ```
     public static void alGetSourceiv(int source, int param, MemorySegment values) {
         try { Handles.MH_alGetSourceiv.invokeExact(Handles.get().PFN_alGetSourceiv, source, param, values); }
@@ -857,7 +857,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcePlay(ALuint source);
+    /// void alSourcePlay((unsigned int) ALuint source);
     /// ```
     public static void alSourcePlay(int source) {
         try { Handles.MH_alSourcePlay.invokeExact(Handles.get().PFN_alSourcePlay, source); }
@@ -865,7 +865,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceStop(ALuint source);
+    /// void alSourceStop((unsigned int) ALuint source);
     /// ```
     public static void alSourceStop(int source) {
         try { Handles.MH_alSourceStop.invokeExact(Handles.get().PFN_alSourceStop, source); }
@@ -873,7 +873,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceRewind(ALuint source);
+    /// void alSourceRewind((unsigned int) ALuint source);
     /// ```
     public static void alSourceRewind(int source) {
         try { Handles.MH_alSourceRewind.invokeExact(Handles.get().PFN_alSourceRewind, source); }
@@ -881,7 +881,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcePause(ALuint source);
+    /// void alSourcePause((unsigned int) ALuint source);
     /// ```
     public static void alSourcePause(int source) {
         try { Handles.MH_alSourcePause.invokeExact(Handles.get().PFN_alSourcePause, source); }
@@ -889,7 +889,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcePlayv(ALsizei n, const ALuint* sources);
+    /// void alSourcePlayv((int) ALsizei n, const ALuint* sources);
     /// ```
     public static void alSourcePlayv(int n, MemorySegment sources) {
         try { Handles.MH_alSourcePlayv.invokeExact(Handles.get().PFN_alSourcePlayv, n, sources); }
@@ -897,7 +897,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceStopv(ALsizei n, const ALuint* sources);
+    /// void alSourceStopv((int) ALsizei n, const ALuint* sources);
     /// ```
     public static void alSourceStopv(int n, MemorySegment sources) {
         try { Handles.MH_alSourceStopv.invokeExact(Handles.get().PFN_alSourceStopv, n, sources); }
@@ -905,7 +905,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceRewindv(ALsizei n, const ALuint* sources);
+    /// void alSourceRewindv((int) ALsizei n, const ALuint* sources);
     /// ```
     public static void alSourceRewindv(int n, MemorySegment sources) {
         try { Handles.MH_alSourceRewindv.invokeExact(Handles.get().PFN_alSourceRewindv, n, sources); }
@@ -913,7 +913,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourcePausev(ALsizei n, const ALuint* sources);
+    /// void alSourcePausev((int) ALsizei n, const ALuint* sources);
     /// ```
     public static void alSourcePausev(int n, MemorySegment sources) {
         try { Handles.MH_alSourcePausev.invokeExact(Handles.get().PFN_alSourcePausev, n, sources); }
@@ -921,7 +921,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceQueueBuffers(ALuint source, ALsizei nb, const ALuint* buffers);
+    /// void alSourceQueueBuffers((unsigned int) ALuint source, (int) ALsizei nb, const ALuint* buffers);
     /// ```
     public static void alSourceQueueBuffers(int source, int nb, MemorySegment buffers) {
         try { Handles.MH_alSourceQueueBuffers.invokeExact(Handles.get().PFN_alSourceQueueBuffers, source, nb, buffers); }
@@ -929,7 +929,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alSourceUnqueueBuffers(ALuint source, ALsizei nb, ALuint* buffers);
+    /// void alSourceUnqueueBuffers((unsigned int) ALuint source, (int) ALsizei nb, ALuint* buffers);
     /// ```
     public static void alSourceUnqueueBuffers(int source, int nb, MemorySegment buffers) {
         try { Handles.MH_alSourceUnqueueBuffers.invokeExact(Handles.get().PFN_alSourceUnqueueBuffers, source, nb, buffers); }
@@ -937,7 +937,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGenBuffers(ALsizei n, ALuint* buffers);
+    /// void alGenBuffers((int) ALsizei n, ALuint* buffers);
     /// ```
     public static void alGenBuffers(int n, MemorySegment buffers) {
         try { Handles.MH_alGenBuffers.invokeExact(Handles.get().PFN_alGenBuffers, n, buffers); }
@@ -945,7 +945,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alDeleteBuffers(ALsizei n, const ALuint* buffers);
+    /// void alDeleteBuffers((int) ALsizei n, const ALuint* buffers);
     /// ```
     public static void alDeleteBuffers(int n, MemorySegment buffers) {
         try { Handles.MH_alDeleteBuffers.invokeExact(Handles.get().PFN_alDeleteBuffers, n, buffers); }
@@ -953,7 +953,7 @@ public final class AL {
     }
 
     /// ```
-    /// ALboolean alIsBuffer(ALuint buffer);
+    /// ALboolean alIsBuffer((unsigned int) ALuint buffer);
     /// ```
     public static boolean alIsBuffer(int buffer) {
         try { return (((byte) Handles.MH_alIsBuffer.invokeExact(Handles.get().PFN_alIsBuffer, buffer)) != 0); }
@@ -961,7 +961,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBufferData(ALuint buffer, ALenum format, const ALvoid* data, ALsizei size, ALsizei samplerate);
+    /// void alBufferData((unsigned int) ALuint buffer, (int) ALenum format, const ALvoid* data, (int) ALsizei size, (int) ALsizei samplerate);
     /// ```
     public static void alBufferData(int buffer, int format, MemorySegment data, int size, int samplerate) {
         try { Handles.MH_alBufferData.invokeExact(Handles.get().PFN_alBufferData, buffer, format, data, size, samplerate); }
@@ -969,7 +969,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBufferf(ALuint buffer, ALenum param, ALfloat value);
+    /// void alBufferf((unsigned int) ALuint buffer, (int) ALenum param, (float) ALfloat value);
     /// ```
     public static void alBufferf(int buffer, int param, float value) {
         try { Handles.MH_alBufferf.invokeExact(Handles.get().PFN_alBufferf, buffer, param, value); }
@@ -977,7 +977,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBuffer3f(ALuint buffer, ALenum param, ALfloat value1, ALfloat value2, ALfloat value3);
+    /// void alBuffer3f((unsigned int) ALuint buffer, (int) ALenum param, (float) ALfloat value1, (float) ALfloat value2, (float) ALfloat value3);
     /// ```
     public static void alBuffer3f(int buffer, int param, float value1, float value2, float value3) {
         try { Handles.MH_alBuffer3f.invokeExact(Handles.get().PFN_alBuffer3f, buffer, param, value1, value2, value3); }
@@ -985,7 +985,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBufferfv(ALuint buffer, ALenum param, const ALfloat* values);
+    /// void alBufferfv((unsigned int) ALuint buffer, (int) ALenum param, const ALfloat* values);
     /// ```
     public static void alBufferfv(int buffer, int param, MemorySegment values) {
         try { Handles.MH_alBufferfv.invokeExact(Handles.get().PFN_alBufferfv, buffer, param, values); }
@@ -993,7 +993,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBufferi(ALuint buffer, ALenum param, ALint value);
+    /// void alBufferi((unsigned int) ALuint buffer, (int) ALenum param, (int) ALint value);
     /// ```
     public static void alBufferi(int buffer, int param, int value) {
         try { Handles.MH_alBufferi.invokeExact(Handles.get().PFN_alBufferi, buffer, param, value); }
@@ -1001,7 +1001,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBuffer3i(ALuint buffer, ALenum param, ALint value1, ALint value2, ALint value3);
+    /// void alBuffer3i((unsigned int) ALuint buffer, (int) ALenum param, (int) ALint value1, (int) ALint value2, (int) ALint value3);
     /// ```
     public static void alBuffer3i(int buffer, int param, int value1, int value2, int value3) {
         try { Handles.MH_alBuffer3i.invokeExact(Handles.get().PFN_alBuffer3i, buffer, param, value1, value2, value3); }
@@ -1009,7 +1009,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alBufferiv(ALuint buffer, ALenum param, const ALint* values);
+    /// void alBufferiv((unsigned int) ALuint buffer, (int) ALenum param, const ALint* values);
     /// ```
     public static void alBufferiv(int buffer, int param, MemorySegment values) {
         try { Handles.MH_alBufferiv.invokeExact(Handles.get().PFN_alBufferiv, buffer, param, values); }
@@ -1017,7 +1017,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBufferf(ALuint buffer, ALenum param, ALfloat* value);
+    /// void alGetBufferf((unsigned int) ALuint buffer, (int) ALenum param, ALfloat* value);
     /// ```
     public static void alGetBufferf(int buffer, int param, MemorySegment value) {
         try { Handles.MH_alGetBufferf.invokeExact(Handles.get().PFN_alGetBufferf, buffer, param, value); }
@@ -1025,7 +1025,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBuffer3f(ALuint buffer, ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
+    /// void alGetBuffer3f((unsigned int) ALuint buffer, (int) ALenum param, ALfloat* value1, ALfloat* value2, ALfloat* value3);
     /// ```
     public static void alGetBuffer3f(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetBuffer3f.invokeExact(Handles.get().PFN_alGetBuffer3f, buffer, param, value1, value2, value3); }
@@ -1033,7 +1033,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBufferfv(ALuint buffer, ALenum param, ALfloat* values);
+    /// void alGetBufferfv((unsigned int) ALuint buffer, (int) ALenum param, ALfloat* values);
     /// ```
     public static void alGetBufferfv(int buffer, int param, MemorySegment values) {
         try { Handles.MH_alGetBufferfv.invokeExact(Handles.get().PFN_alGetBufferfv, buffer, param, values); }
@@ -1041,7 +1041,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBufferi(ALuint buffer, ALenum param, ALint* value);
+    /// void alGetBufferi((unsigned int) ALuint buffer, (int) ALenum param, ALint* value);
     /// ```
     public static void alGetBufferi(int buffer, int param, MemorySegment value) {
         try { Handles.MH_alGetBufferi.invokeExact(Handles.get().PFN_alGetBufferi, buffer, param, value); }
@@ -1049,7 +1049,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBuffer3i(ALuint buffer, ALenum param, ALint* value1, ALint* value2, ALint* value3);
+    /// void alGetBuffer3i((unsigned int) ALuint buffer, (int) ALenum param, ALint* value1, ALint* value2, ALint* value3);
     /// ```
     public static void alGetBuffer3i(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try { Handles.MH_alGetBuffer3i.invokeExact(Handles.get().PFN_alGetBuffer3i, buffer, param, value1, value2, value3); }
@@ -1057,7 +1057,7 @@ public final class AL {
     }
 
     /// ```
-    /// void alGetBufferiv(ALuint buffer, ALenum param, ALint* values);
+    /// void alGetBufferiv((unsigned int) ALuint buffer, (int) ALenum param, ALint* values);
     /// ```
     public static void alGetBufferiv(int buffer, int param, MemorySegment values) {
         try { Handles.MH_alGetBufferiv.invokeExact(Handles.get().PFN_alGetBufferiv, buffer, param, values); }

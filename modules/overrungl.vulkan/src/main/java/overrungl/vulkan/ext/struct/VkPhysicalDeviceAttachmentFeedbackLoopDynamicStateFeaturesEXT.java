@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 attachmentFeedbackLoopDynamicState;
+///     (uint32_t) VkBool32 attachmentFeedbackLoopDynamicState;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT extends GroupType {

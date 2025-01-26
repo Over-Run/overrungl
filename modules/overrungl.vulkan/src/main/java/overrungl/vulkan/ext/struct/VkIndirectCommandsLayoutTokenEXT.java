@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsLayoutTokenEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkIndirectCommandsTokenTypeEXT type;
-///     VkIndirectCommandsTokenDataEXT data;
+///     (int) VkIndirectCommandsTokenTypeEXT type;
+///     (union VkIndirectCommandsTokenDataEXT) VkIndirectCommandsTokenDataEXT data;
 ///     uint32_t offset;
 /// };
 /// ```

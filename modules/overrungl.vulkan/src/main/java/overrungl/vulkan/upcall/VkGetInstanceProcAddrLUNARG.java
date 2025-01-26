@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef PFN_vkVoidFunction (*VkGetInstanceProcAddrLUNARG)(VkInstance instance, const char* pName);
+/// typedef (void (*VkVoidFunction)()) PFN_vkVoidFunction (*VkGetInstanceProcAddrLUNARG)((struct VkInstance*) VkInstance instance, const char* pName);
 /// ```
 @FunctionalInterface
 public interface VkGetInstanceProcAddrLUNARG extends Upcall {

@@ -75,7 +75,7 @@ data class SizingProcessor(val memoryLayout: String, val suffix: String) : DefTy
 }
 
 
-sealed interface DefinitionType {
+interface DefinitionType {
     val originalName: String
     val javaType: String
     val memoryLayout: DefTypeMemoryLayout

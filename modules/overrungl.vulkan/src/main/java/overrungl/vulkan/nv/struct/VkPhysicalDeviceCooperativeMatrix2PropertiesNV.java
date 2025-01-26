@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
 ///     uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension;

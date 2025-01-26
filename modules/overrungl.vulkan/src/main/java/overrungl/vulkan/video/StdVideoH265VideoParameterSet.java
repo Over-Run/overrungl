@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265VideoParameterSet {
-///     StdVideoH265VpsFlags flags;
+///     (struct StdVideoH265VpsFlags) StdVideoH265VpsFlags flags;
 ///     uint8_t vps_video_parameter_set_id;
 ///     uint8_t vps_max_sub_layers_minus1;
 ///     uint8_t reserved1;

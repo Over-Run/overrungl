@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1QualityLevelPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
+///     ((uint32_t) VkFlags) VkVideoEncodeAV1RateControlFlagsKHR preferredRateControlFlags;
 ///     uint32_t preferredGopFrameCount;
 ///     uint32_t preferredKeyFramePeriod;
 ///     uint32_t preferredConsecutiveBipredictiveFrameCount;
 ///     uint32_t preferredTemporalLayerCount;
-///     VkVideoEncodeAV1QIndexKHR preferredConstantQIndex;
+///     (struct VkVideoEncodeAV1QIndexKHR) VkVideoEncodeAV1QIndexKHR preferredConstantQIndex;
 ///     uint32_t preferredMaxSingleReferenceCount;
 ///     uint32_t preferredSingleReferenceNameMask;
 ///     uint32_t preferredMaxUnidirectionalCompoundReferenceCount;

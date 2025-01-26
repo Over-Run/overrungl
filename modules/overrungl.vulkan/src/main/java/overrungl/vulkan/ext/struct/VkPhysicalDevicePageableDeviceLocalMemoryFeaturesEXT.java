@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 pageableDeviceLocalMemory;
+///     (uint32_t) VkBool32 pageableDeviceLocalMemory;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends GroupType {

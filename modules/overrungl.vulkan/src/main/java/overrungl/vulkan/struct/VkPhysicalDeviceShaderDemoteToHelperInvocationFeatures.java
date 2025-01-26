@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderDemoteToHelperInvocation;
+///     (uint32_t) VkBool32 shaderDemoteToHelperInvocation;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures extends GroupType {

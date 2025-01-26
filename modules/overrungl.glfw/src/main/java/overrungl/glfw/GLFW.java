@@ -998,7 +998,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwInit();
+    /// (int) GLFWboolean glfwInit();
     /// ```
     public static boolean glfwInit() {
         try { return (((int) Handles.MH_glfwInit.invokeExact(Handles.get().PFN_glfwInit)) != 0); }
@@ -1030,7 +1030,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// void glfwInitVulkanLoader(PFN_vkGetInstanceProcAddr loader);
+    /// void glfwInitVulkanLoader((void*) PFN_vkGetInstanceProcAddr loader);
     /// ```
     public static void glfwInitVulkanLoader(MemorySegment loader) {
         try { Handles.MH_glfwInitVulkanLoader.invokeExact(Handles.get().PFN_glfwInitVulkanLoader, loader); }
@@ -1062,7 +1062,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWerrorfun glfwSetErrorCallback(GLFWerrorfun callback);
+    /// (void (*GLFWErrorFun)(int error_code, const char* description)) GLFWerrorfun glfwSetErrorCallback((void (*GLFWErrorFun)(int error_code, const char* description)) GLFWerrorfun callback);
     /// ```
     public static MemorySegment glfwSetErrorCallback(MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetErrorCallback.invokeExact(Handles.get().PFN_glfwSetErrorCallback, callback); }
@@ -1078,7 +1078,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwPlatformSupported(int platform);
+    /// (int) GLFWboolean glfwPlatformSupported(int platform);
     /// ```
     public static boolean glfwPlatformSupported(int platform) {
         try { return (((int) Handles.MH_glfwPlatformSupported.invokeExact(Handles.get().PFN_glfwPlatformSupported, platform)) != 0); }
@@ -1158,7 +1158,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWmonitorfun glfwSetMonitorCallback(GLFWmonitorfun callback);
+    /// (void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event)) GLFWmonitorfun glfwSetMonitorCallback((void (*GLFWMonitorFun)(GLFWmonitor* monitor, int event)) GLFWmonitorfun callback);
     /// ```
     public static MemorySegment glfwSetMonitorCallback(MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetMonitorCallback.invokeExact(Handles.get().PFN_glfwSetMonitorCallback, callback); }
@@ -1246,7 +1246,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwWindowShouldClose(GLFWwindow* window);
+    /// (int) GLFWboolean glfwWindowShouldClose(GLFWwindow* window);
     /// ```
     public static boolean glfwWindowShouldClose(MemorySegment window) {
         try { return (((int) Handles.MH_glfwWindowShouldClose.invokeExact(Handles.get().PFN_glfwWindowShouldClose, window)) != 0); }
@@ -1254,7 +1254,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// void glfwSetWindowShouldClose(GLFWwindow* window, GLFWboolean value);
+    /// void glfwSetWindowShouldClose(GLFWwindow* window, (int) GLFWboolean value);
     /// ```
     public static void glfwSetWindowShouldClose(MemorySegment window, boolean value) {
         try { Handles.MH_glfwSetWindowShouldClose.invokeExact(Handles.get().PFN_glfwSetWindowShouldClose, window, ((value) ? 1 : 0)); }
@@ -1478,7 +1478,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowposfun glfwSetWindowPosCallback(GLFWwindow* window, GLFWwindowposfun callback);
+    /// (void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos)) GLFWwindowposfun glfwSetWindowPosCallback(GLFWwindow* window, (void (*GLFWWindowPosFun)(GLFWwindow* window, int xpos, int ypos)) GLFWwindowposfun callback);
     /// ```
     public static MemorySegment glfwSetWindowPosCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowPosCallback.invokeExact(Handles.get().PFN_glfwSetWindowPosCallback, window, callback); }
@@ -1486,7 +1486,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowsizefun glfwSetWindowSizeCallback(GLFWwindow* window, GLFWwindowsizefun callback);
+    /// (void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height)) GLFWwindowsizefun glfwSetWindowSizeCallback(GLFWwindow* window, (void (*GLFWWindowSizeFun)(GLFWwindow* window, int width, int height)) GLFWwindowsizefun callback);
     /// ```
     public static MemorySegment glfwSetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowSizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowSizeCallback, window, callback); }
@@ -1494,7 +1494,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowclosefun glfwSetWindowCloseCallback(GLFWwindow* window, GLFWwindowclosefun callback);
+    /// (void (*GLFWWindowCloseFun)(GLFWwindow* window)) GLFWwindowclosefun glfwSetWindowCloseCallback(GLFWwindow* window, (void (*GLFWWindowCloseFun)(GLFWwindow* window)) GLFWwindowclosefun callback);
     /// ```
     public static MemorySegment glfwSetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowCloseCallback.invokeExact(Handles.get().PFN_glfwSetWindowCloseCallback, window, callback); }
@@ -1502,7 +1502,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowrefreshfun glfwSetWindowRefreshCallback(GLFWwindow* window, GLFWwindowrefreshfun callback);
+    /// (void (*GLFWWindowRefreshFun)(GLFWwindow* window)) GLFWwindowrefreshfun glfwSetWindowRefreshCallback(GLFWwindow* window, (void (*GLFWWindowRefreshFun)(GLFWwindow* window)) GLFWwindowrefreshfun callback);
     /// ```
     public static MemorySegment glfwSetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowRefreshCallback.invokeExact(Handles.get().PFN_glfwSetWindowRefreshCallback, window, callback); }
@@ -1510,7 +1510,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowfocusfun glfwSetWindowFocusCallback(GLFWwindow* window, GLFWwindowfocusfun callback);
+    /// (void (*GLFWWindowFocusFun)(GLFWwindow* window, (int) GLFWboolean focused)) GLFWwindowfocusfun glfwSetWindowFocusCallback(GLFWwindow* window, (void (*GLFWWindowFocusFun)(GLFWwindow* window, (int) GLFWboolean focused)) GLFWwindowfocusfun callback);
     /// ```
     public static MemorySegment glfwSetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowFocusCallback.invokeExact(Handles.get().PFN_glfwSetWindowFocusCallback, window, callback); }
@@ -1518,7 +1518,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowiconifyfun glfwSetWindowIconifyCallback(GLFWwindow* window, GLFWwindowiconifyfun callback);
+    /// (void (*GLFWWindowIconifyFun)(GLFWwindow* window, (int) GLFWboolean iconified)) GLFWwindowiconifyfun glfwSetWindowIconifyCallback(GLFWwindow* window, (void (*GLFWWindowIconifyFun)(GLFWwindow* window, (int) GLFWboolean iconified)) GLFWwindowiconifyfun callback);
     /// ```
     public static MemorySegment glfwSetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowIconifyCallback.invokeExact(Handles.get().PFN_glfwSetWindowIconifyCallback, window, callback); }
@@ -1526,7 +1526,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowmaximizefun glfwSetWindowMaximizeCallback(GLFWwindow* window, GLFWwindowmaximizefun callback);
+    /// (void (*GLFWWindowMaximizeFun)(GLFWwindow* window, (int) GLFWboolean maximized)) GLFWwindowmaximizefun glfwSetWindowMaximizeCallback(GLFWwindow* window, (void (*GLFWWindowMaximizeFun)(GLFWwindow* window, (int) GLFWboolean maximized)) GLFWwindowmaximizefun callback);
     /// ```
     public static MemorySegment glfwSetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowMaximizeCallback.invokeExact(Handles.get().PFN_glfwSetWindowMaximizeCallback, window, callback); }
@@ -1534,7 +1534,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWframebuffersizefun glfwSetFramebufferSizeCallback(GLFWwindow* window, GLFWframebuffersizefun callback);
+    /// (void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height)) GLFWframebuffersizefun glfwSetFramebufferSizeCallback(GLFWwindow* window, (void (*GLFWFramebufferSizeFun)(GLFWwindow* window, int width, int height)) GLFWframebuffersizefun callback);
     /// ```
     public static MemorySegment glfwSetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetFramebufferSizeCallback.invokeExact(Handles.get().PFN_glfwSetFramebufferSizeCallback, window, callback); }
@@ -1542,7 +1542,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback(GLFWwindow* window, GLFWwindowcontentscalefun callback);
+    /// (void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale)) GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback(GLFWwindow* window, (void (*GLFWWindowContentScaleFun)(GLFWwindow* window, float xscale, float yscale)) GLFWwindowcontentscalefun callback);
     /// ```
     public static MemorySegment glfwSetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetWindowContentScaleCallback.invokeExact(Handles.get().PFN_glfwSetWindowContentScaleCallback, window, callback); }
@@ -1598,7 +1598,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwRawMouseMotionSupported();
+    /// (int) GLFWboolean glfwRawMouseMotionSupported();
     /// ```
     public static boolean glfwRawMouseMotionSupported() {
         try { return (((int) Handles.MH_glfwRawMouseMotionSupported.invokeExact(Handles.get().PFN_glfwRawMouseMotionSupported)) != 0); }
@@ -1686,7 +1686,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWkeyfun glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun callback);
+    /// (void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods)) GLFWkeyfun glfwSetKeyCallback(GLFWwindow* window, (void (*GLFWKeyFun)(GLFWwindow* window, int key, int scancode, int action, int mods)) GLFWkeyfun callback);
     /// ```
     public static MemorySegment glfwSetKeyCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetKeyCallback.invokeExact(Handles.get().PFN_glfwSetKeyCallback, window, callback); }
@@ -1694,7 +1694,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWcharfun glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback);
+    /// (void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint)) GLFWcharfun glfwSetCharCallback(GLFWwindow* window, (void (*GLFWCharFun)(GLFWwindow* window, unsigned int codepoint)) GLFWcharfun callback);
     /// ```
     public static MemorySegment glfwSetCharCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetCharCallback.invokeExact(Handles.get().PFN_glfwSetCharCallback, window, callback); }
@@ -1702,7 +1702,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWmousebuttonfun glfwSetMouseButtonCallback(GLFWwindow* window, GLFWmousebuttonfun callback);
+    /// (void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods)) GLFWmousebuttonfun glfwSetMouseButtonCallback(GLFWwindow* window, (void (*GLFWMouseButtonFun)(GLFWwindow* window, int button, int action, int mods)) GLFWmousebuttonfun callback);
     /// ```
     public static MemorySegment glfwSetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetMouseButtonCallback.invokeExact(Handles.get().PFN_glfwSetMouseButtonCallback, window, callback); }
@@ -1710,7 +1710,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWcursorposfun glfwSetCursorPosCallback(GLFWwindow* window, GLFWcursorposfun callback);
+    /// (void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos)) GLFWcursorposfun glfwSetCursorPosCallback(GLFWwindow* window, (void (*GLFWCursorPosFun)(GLFWwindow* window, double xpos, double ypos)) GLFWcursorposfun callback);
     /// ```
     public static MemorySegment glfwSetCursorPosCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetCursorPosCallback.invokeExact(Handles.get().PFN_glfwSetCursorPosCallback, window, callback); }
@@ -1718,7 +1718,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWcursorenterfun glfwSetCursorEnterCallback(GLFWwindow* window, GLFWcursorenterfun callback);
+    /// (void (*GLFWCursorEnterFun)(GLFWwindow* window, (int) GLFWboolean entered)) GLFWcursorenterfun glfwSetCursorEnterCallback(GLFWwindow* window, (void (*GLFWCursorEnterFun)(GLFWwindow* window, (int) GLFWboolean entered)) GLFWcursorenterfun callback);
     /// ```
     public static MemorySegment glfwSetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetCursorEnterCallback.invokeExact(Handles.get().PFN_glfwSetCursorEnterCallback, window, callback); }
@@ -1726,7 +1726,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWscrollfun glfwSetScrollCallback(GLFWwindow* window, GLFWscrollfun callback);
+    /// (void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset)) GLFWscrollfun glfwSetScrollCallback(GLFWwindow* window, (void (*GLFWScrollFun)(GLFWwindow* window, double xoffset, double yoffset)) GLFWscrollfun callback);
     /// ```
     public static MemorySegment glfwSetScrollCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetScrollCallback.invokeExact(Handles.get().PFN_glfwSetScrollCallback, window, callback); }
@@ -1734,7 +1734,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWdropfun glfwSetDropCallback(GLFWwindow* window, GLFWdropfun callback);
+    /// (void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths)) GLFWdropfun glfwSetDropCallback(GLFWwindow* window, (void (*GLFWDropFun)(GLFWwindow* window, int path_count, const char** paths)) GLFWdropfun callback);
     /// ```
     public static MemorySegment glfwSetDropCallback(MemorySegment window, MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetDropCallback.invokeExact(Handles.get().PFN_glfwSetDropCallback, window, callback); }
@@ -1742,7 +1742,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwJoystickPresent(int jid);
+    /// (int) GLFWboolean glfwJoystickPresent(int jid);
     /// ```
     public static boolean glfwJoystickPresent(int jid) {
         try { return (((int) Handles.MH_glfwJoystickPresent.invokeExact(Handles.get().PFN_glfwJoystickPresent, jid)) != 0); }
@@ -1806,7 +1806,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwJoystickIsGamepad(int jid);
+    /// (int) GLFWboolean glfwJoystickIsGamepad(int jid);
     /// ```
     public static boolean glfwJoystickIsGamepad(int jid) {
         try { return (((int) Handles.MH_glfwJoystickIsGamepad.invokeExact(Handles.get().PFN_glfwJoystickIsGamepad, jid)) != 0); }
@@ -1814,7 +1814,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWjoystickfun glfwSetJoystickCallback(GLFWjoystickfun callback);
+    /// (void (*GLFWJoystickFun)(int jid, int event)) GLFWjoystickfun glfwSetJoystickCallback((void (*GLFWJoystickFun)(int jid, int event)) GLFWjoystickfun callback);
     /// ```
     public static MemorySegment glfwSetJoystickCallback(MemorySegment callback) {
         try { return (MemorySegment) Handles.MH_glfwSetJoystickCallback.invokeExact(Handles.get().PFN_glfwSetJoystickCallback, callback); }
@@ -1822,7 +1822,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwUpdateGamepadMappings(const char* string);
+    /// (int) GLFWboolean glfwUpdateGamepadMappings(const char* string);
     /// ```
     public static boolean glfwUpdateGamepadMappings(MemorySegment string) {
         try { return (((int) Handles.MH_glfwUpdateGamepadMappings.invokeExact(Handles.get().PFN_glfwUpdateGamepadMappings, string)) != 0); }
@@ -1838,7 +1838,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwGetGamepadState(int jid, GLFWgamepadstate* state);
+    /// (int) GLFWboolean glfwGetGamepadState(int jid, GLFWgamepadstate* state);
     /// ```
     public static boolean glfwGetGamepadState(int jid, MemorySegment state) {
         try { return (((int) Handles.MH_glfwGetGamepadState.invokeExact(Handles.get().PFN_glfwGetGamepadState, jid, state)) != 0); }
@@ -1926,7 +1926,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwExtensionSupported(const char* extension);
+    /// (int) GLFWboolean glfwExtensionSupported(const char* extension);
     /// ```
     public static boolean glfwExtensionSupported(MemorySegment extension) {
         try { return (((int) Handles.MH_glfwExtensionSupported.invokeExact(Handles.get().PFN_glfwExtensionSupported, extension)) != 0); }
@@ -1934,7 +1934,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWglproc glfwGetProcAddress(const char* procname);
+    /// (void*) GLFWglproc glfwGetProcAddress(const char* procname);
     /// ```
     public static MemorySegment glfwGetProcAddress(MemorySegment procname) {
         try { return (MemorySegment) Handles.MH_glfwGetProcAddress.invokeExact(Handles.get().PFN_glfwGetProcAddress, procname); }
@@ -1942,7 +1942,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwVulkanSupported();
+    /// (int) GLFWboolean glfwVulkanSupported();
     /// ```
     public static boolean glfwVulkanSupported() {
         try { return (((int) Handles.MH_glfwVulkanSupported.invokeExact(Handles.get().PFN_glfwVulkanSupported)) != 0); }
@@ -1958,7 +1958,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWvkproc glfwGetInstanceProcAddress(VkInstance instance, const char* procname);
+    /// (void*) GLFWvkproc glfwGetInstanceProcAddress((void*) VkInstance instance, const char* procname);
     /// ```
     public static MemorySegment glfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procname) {
         try { return (MemorySegment) Handles.MH_glfwGetInstanceProcAddress.invokeExact(Handles.get().PFN_glfwGetInstanceProcAddress, instance, procname); }
@@ -1966,7 +1966,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// GLFWboolean glfwGetPhysicalDevicePresentationSupport(VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily);
+    /// (int) GLFWboolean glfwGetPhysicalDevicePresentationSupport((void*) VkInstance instance, (void*) VkPhysicalDevice device, uint32_t queuefamily);
     /// ```
     public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queuefamily) {
         try { return (((int) Handles.MH_glfwGetPhysicalDevicePresentationSupport.invokeExact(Handles.get().PFN_glfwGetPhysicalDevicePresentationSupport, instance, device, queuefamily)) != 0); }
@@ -1974,7 +1974,7 @@ public final class GLFW {
     }
 
     /// ```
-    /// VkResult glfwCreateWindowSurface(VkInstance instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
+    /// (int) VkResult glfwCreateWindowSurface((void*) VkInstance instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface);
     /// ```
     public static int glfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
         try { return (int) Handles.MH_glfwCreateWindowSurface.invokeExact(Handles.get().PFN_glfwCreateWindowSurface, instance, window, allocator, surface); }

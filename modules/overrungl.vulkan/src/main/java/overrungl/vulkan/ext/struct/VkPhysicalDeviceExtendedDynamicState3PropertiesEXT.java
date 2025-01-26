@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExtendedDynamicState3PropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 dynamicPrimitiveTopologyUnrestricted;
+///     (uint32_t) VkBool32 dynamicPrimitiveTopologyUnrestricted;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends GroupType {

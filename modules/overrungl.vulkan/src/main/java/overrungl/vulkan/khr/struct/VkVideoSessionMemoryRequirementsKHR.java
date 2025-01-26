@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoSessionMemoryRequirementsKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t memoryBindIndex;
-///     VkMemoryRequirements memoryRequirements;
+///     (struct VkMemoryRequirements) VkMemoryRequirements memoryRequirements;
 /// };
 /// ```
 public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {

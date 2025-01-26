@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1FilmGrain {
-///     StdVideoAV1FilmGrainFlags flags;
+///     (struct StdVideoAV1FilmGrainFlags) StdVideoAV1FilmGrainFlags flags;
 ///     uint8_t grain_scaling_minus_8;
 ///     uint8_t ar_coeff_lag;
 ///     uint8_t ar_coeff_shift_minus_6;

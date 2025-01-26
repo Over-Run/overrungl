@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineSampleLocationsStateCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 sampleLocationsEnable;
-///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+///     (uint32_t) VkBool32 sampleLocationsEnable;
+///     (struct VkSampleLocationsInfoEXT) VkSampleLocationsInfoEXT sampleLocationsInfo;
 /// };
 /// ```
 public sealed class VkPipelineSampleLocationsStateCreateInfoEXT extends GroupType {

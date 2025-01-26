@@ -28,6 +28,6 @@ public final class VKARMRasterizationOrderAttachmentAccess {
     public static final int VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM = 0x00000020;
     public static final int VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM = 0x00000040;
 
-    private VKARMRasterizationOrderAttachmentAccess() { }
+    private VKARMRasterizationOrderAttachmentAccess() {}
 
 }

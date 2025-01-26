@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindIndexBufferIndirectCommandNV {
-///     VkDeviceAddress bufferAddress;
+///     (uint64_t) VkDeviceAddress bufferAddress;
 ///     uint32_t size;
-///     VkIndexType indexType;
+///     (int) VkIndexType indexType;
 /// };
 /// ```
 public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {

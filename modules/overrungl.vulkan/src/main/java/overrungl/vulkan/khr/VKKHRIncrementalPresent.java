@@ -22,6 +22,6 @@ public final class VKKHRIncrementalPresent {
     public static final String VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present";
     public static final int VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR = 1000084000;
 
-    private VKKHRIncrementalPresent() { }
+    private VKKHRIncrementalPresent() {}
 
 }

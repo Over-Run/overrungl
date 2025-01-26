@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyImageToMemoryInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkHostImageCopyFlags flags;
-///     VkImage srcImage;
-///     VkImageLayout srcImageLayout;
+///     ((uint32_t) VkFlags) VkHostImageCopyFlags flags;
+///     (uint64_t) VkImage srcImage;
+///     (int) VkImageLayout srcImageLayout;
 ///     uint32_t regionCount;
 ///     const VkImageToMemoryCopy* pRegions;
 /// };

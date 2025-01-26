@@ -26,6 +26,6 @@ public final class VKEXTCustomBorderColor {
     public static final int VK_BORDER_COLOR_FLOAT_CUSTOM_EXT = 1000287003;
     public static final int VK_BORDER_COLOR_INT_CUSTOM_EXT = 1000287004;
 
-    private VKEXTCustomBorderColor() { }
+    private VKEXTCustomBorderColor() {}
 
 }

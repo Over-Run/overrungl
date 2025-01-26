@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkLatencySurfaceCapabilitiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t presentModeCount;
 ///     VkPresentModeKHR* pPresentModes;

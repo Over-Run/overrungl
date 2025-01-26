@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceHostQueryResetFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hostQueryReset;
+///     (uint32_t) VkBool32 hostQueryReset;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {

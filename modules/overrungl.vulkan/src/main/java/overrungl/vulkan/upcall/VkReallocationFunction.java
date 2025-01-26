@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void* (*VkReallocationFunction)(void* pUserData, void* pOriginal, size_t size, size_t alignment, VkSystemAllocationScope allocationScope);
+/// typedef void* (*VkReallocationFunction)(void* pUserData, void* pOriginal, size_t size, size_t alignment, (int) VkSystemAllocationScope allocationScope);
 /// ```
 @FunctionalInterface
 public interface VkReallocationFunction extends Upcall {

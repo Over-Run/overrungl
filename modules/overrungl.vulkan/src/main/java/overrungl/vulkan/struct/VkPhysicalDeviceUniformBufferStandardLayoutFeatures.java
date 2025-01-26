@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 uniformBufferStandardLayout;
+///     (uint32_t) VkBool32 uniformBufferStandardLayout;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceUniformBufferStandardLayoutFeatures extends GroupType {

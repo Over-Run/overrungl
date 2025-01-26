@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 swapchainMaintenance1;
+///     (uint32_t) VkBool32 swapchainMaintenance1;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT extends GroupType {

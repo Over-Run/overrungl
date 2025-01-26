@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 ycbcr2plane444Formats;
+///     (uint32_t) VkBool32 ycbcr2plane444Formats;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT extends GroupType {

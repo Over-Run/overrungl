@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkAttachmentReference {
 ///     uint32_t attachment;
-///     VkImageLayout layout;
+///     (int) VkImageLayout layout;
 /// };
 /// ```
 public sealed class VkAttachmentReference extends GroupType {

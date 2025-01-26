@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCoverageToColorStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCoverageToColorStateCreateFlagsNV flags;
-///     VkBool32 coverageToColorEnable;
+///     ((uint32_t) VkFlags) VkPipelineCoverageToColorStateCreateFlagsNV flags;
+///     (uint32_t) VkBool32 coverageToColorEnable;
 ///     uint32_t coverageToColorLocation;
 /// };
 /// ```

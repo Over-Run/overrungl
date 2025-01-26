@@ -26,6 +26,6 @@ public final class VKEXTMutableDescriptorType {
     public static final int VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT = 0x00000004;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT = 0x00000004;
 
-    private VKEXTMutableDescriptorType() { }
+    private VKEXTMutableDescriptorType() {}
 
 }

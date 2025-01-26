@@ -46,7 +46,7 @@ public final class GLARBMapBufferRange {
     }
 
     /// ```
-    /// void* glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+    /// void* glMapBufferRange((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length, (unsigned int) GLbitfield access);
     /// ```
     public MemorySegment MapBufferRange(int target, long offset, long length, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapBufferRange");
@@ -55,7 +55,7 @@ public final class GLARBMapBufferRange {
     }
 
     /// ```
-    /// void glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
+    /// void glFlushMappedBufferRange((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
     public void FlushMappedBufferRange(int target, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange");

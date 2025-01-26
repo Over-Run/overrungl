@@ -46,7 +46,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationiARB(GLuint buf, GLenum mode);
+    /// void glBlendEquationiARB((unsigned int) GLuint buf, (unsigned int) GLenum mode);
     /// ```
     public void BlendEquationiARB(int buf, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationiARB");
@@ -55,7 +55,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+    /// void glBlendEquationSeparateiARB((unsigned int) GLuint buf, (unsigned int) GLenum modeRGB, (unsigned int) GLenum modeAlpha);
     /// ```
     public void BlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB");
@@ -64,7 +64,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
+    /// void glBlendFunciARB((unsigned int) GLuint buf, (unsigned int) GLenum src, (unsigned int) GLenum dst);
     /// ```
     public void BlendFunciARB(int buf, int src, int dst) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFunciARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFunciARB");
@@ -73,7 +73,7 @@ public final class GLARBDrawBuffersBlend {
     }
 
     /// ```
-    /// void glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+    /// void glBlendFuncSeparateiARB((unsigned int) GLuint buf, (unsigned int) GLenum srcRGB, (unsigned int) GLenum dstRGB, (unsigned int) GLenum srcAlpha, (unsigned int) GLenum dstAlpha);
     /// ```
     public void BlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateiARB)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB");

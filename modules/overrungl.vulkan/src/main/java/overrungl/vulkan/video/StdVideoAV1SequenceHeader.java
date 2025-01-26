@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1SequenceHeader {
-///     StdVideoAV1SequenceHeaderFlags flags;
-///     StdVideoAV1Profile seq_profile;
+///     (struct StdVideoAV1SequenceHeaderFlags) StdVideoAV1SequenceHeaderFlags flags;
+///     (int) StdVideoAV1Profile seq_profile;
 ///     uint8_t frame_width_bits_minus_1;
 ///     uint8_t frame_height_bits_minus_1;
 ///     uint16_t max_frame_width_minus_1;

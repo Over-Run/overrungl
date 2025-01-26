@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRSamplerYcbcrConversion {
+public final class VKKHRSamplerYcbcrConversion {
     public static final int VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION = 14;
     public static final String VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME = "VK_KHR_sampler_ycbcr_conversion";
     public static final int VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR = 1000156000;
@@ -87,38 +87,30 @@ public class VKKHRSamplerYcbcrConversion {
     public static final int VK_CHROMA_LOCATION_MIDPOINT_KHR = 1;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT = 1000156000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT = 1000156000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCreateSamplerYcbcrConversionKHR;
-        public final MemorySegment PFN_vkDestroySamplerYcbcrConversionKHR;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCreateSamplerYcbcrConversionKHR = func.invoke(device, "vkCreateSamplerYcbcrConversionKHR", "vkCreateSamplerYcbcrConversion");
-            PFN_vkDestroySamplerYcbcrConversionKHR = func.invoke(device, "vkDestroySamplerYcbcrConversionKHR", "vkDestroySamplerYcbcrConversion");
-        }
+        private Handles() {}
     }
 
-    public VKKHRSamplerYcbcrConversion(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKKHRSamplerYcbcrConversion() {}
 
     /// ```
-    /// VkResult vkCreateSamplerYcbcrConversionKHR(VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
+    /// (int) VkResult vkCreateSamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
     /// ```
-    public int CreateSamplerYcbcrConversionKHR(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pYcbcrConversion) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateSamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
-        try { return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(handles.PFN_vkCreateSamplerYcbcrConversionKHR, device, pCreateInfo, pAllocator, pYcbcrConversion); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateSamplerYcbcrConversionKHR", e); }
+    public static int vkCreateSamplerYcbcrConversionKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pYcbcrConversion) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
+        try { return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR, device.segment(), pCreateInfo, pAllocator, pYcbcrConversion); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateSamplerYcbcrConversionKHR", e); }
     }
 
     /// ```
-    /// void vkDestroySamplerYcbcrConversionKHR(VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
+    /// void vkDestroySamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public void DestroySamplerYcbcrConversionKHR(MemorySegment device, long ycbcrConversion, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroySamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
-        try { Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(handles.PFN_vkDestroySamplerYcbcrConversionKHR, device, ycbcrConversion, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in DestroySamplerYcbcrConversionKHR", e); }
+    public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, long ycbcrConversion, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
+        try { Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR, device.segment(), ycbcrConversion, pAllocator); }
+        catch (Throwable e) { throw new RuntimeException("error in vkDestroySamplerYcbcrConversionKHR", e); }
     }
 
 }

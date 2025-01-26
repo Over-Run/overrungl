@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 imageAlignmentControl;
+///     (uint32_t) VkBool32 imageAlignmentControl;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends GroupType {

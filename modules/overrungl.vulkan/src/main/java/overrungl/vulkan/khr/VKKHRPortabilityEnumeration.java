@@ -22,6 +22,6 @@ public final class VKKHRPortabilityEnumeration {
     public static final String VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME = "VK_KHR_portability_enumeration";
     public static final int VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR = 0x00000001;
 
-    private VKKHRPortabilityEnumeration() { }
+    private VKKHRPortabilityEnumeration() {}
 
 }

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRobustness2FeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 robustBufferAccess2;
-///     VkBool32 robustImageAccess2;
-///     VkBool32 nullDescriptor;
+///     (uint32_t) VkBool32 robustBufferAccess2;
+///     (uint32_t) VkBool32 robustImageAccess2;
+///     (uint32_t) VkBool32 nullDescriptor;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRobustness2FeaturesEXT extends GroupType {

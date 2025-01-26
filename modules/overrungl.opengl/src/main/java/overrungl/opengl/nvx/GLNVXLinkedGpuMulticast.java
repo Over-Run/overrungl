@@ -45,7 +45,7 @@ public final class GLNVXLinkedGpuMulticast {
     }
 
     /// ```
-    /// void glLGPUNamedBufferSubDataNVX(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void* data);
+    /// void glLGPUNamedBufferSubDataNVX((unsigned int) GLbitfield gpuMask, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data);
     /// ```
     public void LGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUNamedBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
@@ -54,7 +54,7 @@ public final class GLNVXLinkedGpuMulticast {
     }
 
     /// ```
-    /// void glLGPUCopyImageSubDataNVX(GLuint sourceGpu, GLbitfield destinationGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srxY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+    /// void glLGPUCopyImageSubDataNVX((unsigned int) GLuint sourceGpu, (unsigned int) GLbitfield destinationGpuMask, (unsigned int) GLuint srcName, (unsigned int) GLenum srcTarget, (int) GLint srcLevel, (int) GLint srcX, (int) GLint srxY, (int) GLint srcZ, (unsigned int) GLuint dstName, (unsigned int) GLenum dstTarget, (int) GLint dstLevel, (int) GLint dstX, (int) GLint dstY, (int) GLint dstZ, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
     public void LGPUCopyImageSubDataNVX(int sourceGpu, int destinationGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLGPUCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX");

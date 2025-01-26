@@ -23,6 +23,6 @@ public final class VKKHRShaderFloat16Int8 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES_KHR = 1000082000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR = 1000082000;
 
-    private VKKHRShaderFloat16Int8() { }
+    private VKKHRShaderFloat16Int8() {}
 
 }

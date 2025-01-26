@@ -25,6 +25,6 @@ public final class VKKHRMultiview {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR = 1000053002;
     public static final int VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR = 0x00000002;
 
-    private VKKHRMultiview() { }
+    private VKKHRMultiview() {}
 
 }

@@ -94,7 +94,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glDrawMeshTasksNV(GLuint first, GLuint count);
+    /// void glDrawMeshTasksNV((unsigned int) GLuint first, (unsigned int) GLuint count);
     /// ```
     public void DrawMeshTasksNV(int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
@@ -103,7 +103,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glDrawMeshTasksIndirectNV(GLintptr indirect);
+    /// void glDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect);
     /// ```
     public void DrawMeshTasksIndirectNV(long indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
@@ -112,7 +112,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride);
+    /// void glMultiDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect, (int) GLsizei drawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
@@ -121,7 +121,7 @@ public final class GLNVMeshShader {
     }
 
     /// ```
-    /// void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+    /// void glMultiDrawMeshTasksIndirectCountNV(((signed long long) khronos_intptr_t) GLintptr indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264ReferenceListsInfo {
-///     StdVideoEncodeH264ReferenceListsInfoFlags flags;
+///     (struct StdVideoEncodeH264ReferenceListsInfoFlags) StdVideoEncodeH264ReferenceListsInfoFlags flags;
 ///     uint8_t num_ref_idx_l0_active_minus1;
 ///     uint8_t num_ref_idx_l1_active_minus1;
 ///     uint8_t RefPicList0[32];

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceMemoryOverallocationCreateInfoAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMemoryOverallocationBehaviorAMD overallocationBehavior;
+///     (int) VkMemoryOverallocationBehaviorAMD overallocationBehavior;
 /// };
 /// ```
 public sealed class VkDeviceMemoryOverallocationCreateInfoAMD extends GroupType {

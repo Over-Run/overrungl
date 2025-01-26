@@ -33,6 +33,6 @@ public final class VKKHRMaintenance7 {
     public static final int VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = 1000562000;
     public static final int VK_RENDERING_CONTENTS_INLINE_BIT_KHR = 0x00000010;
 
-    private VKKHRMaintenance7() { }
+    private VKKHRMaintenance7() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImagelessFramebufferFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 imagelessFramebuffer;
+///     (uint32_t) VkBool32 imagelessFramebuffer;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImagelessFramebufferFeatures extends GroupType {

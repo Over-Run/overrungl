@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoCodingControlInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoCodingControlFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkVideoCodingControlFlagsKHR flags;
 /// };
 /// ```
 public sealed class VkVideoCodingControlInfoKHR extends GroupType {

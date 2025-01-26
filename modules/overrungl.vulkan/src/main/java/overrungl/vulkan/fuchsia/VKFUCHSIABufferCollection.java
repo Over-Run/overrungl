@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKFUCHSIABufferCollection {
+public final class VKFUCHSIABufferCollection {
     public static final int VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA = 0x00000001;
     public static final int VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA = 0x00000002;
     public static final int VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA = 0x00000004;
@@ -41,74 +41,60 @@ public class VKFUCHSIABufferCollection {
     public static final int VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA = 1000366008;
     public static final int VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA = 1000366009;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT = 1000366000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkSetBufferCollectionImageConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkSetBufferCollectionBufferConstraintsFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyBufferCollectionFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetBufferCollectionPropertiesFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCreateBufferCollectionFUCHSIA;
-        public final MemorySegment PFN_vkSetBufferCollectionImageConstraintsFUCHSIA;
-        public final MemorySegment PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA;
-        public final MemorySegment PFN_vkDestroyBufferCollectionFUCHSIA;
-        public final MemorySegment PFN_vkGetBufferCollectionPropertiesFUCHSIA;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCreateBufferCollectionFUCHSIA = func.invoke(device, "vkCreateBufferCollectionFUCHSIA");
-            PFN_vkSetBufferCollectionImageConstraintsFUCHSIA = func.invoke(device, "vkSetBufferCollectionImageConstraintsFUCHSIA");
-            PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA = func.invoke(device, "vkSetBufferCollectionBufferConstraintsFUCHSIA");
-            PFN_vkDestroyBufferCollectionFUCHSIA = func.invoke(device, "vkDestroyBufferCollectionFUCHSIA");
-            PFN_vkGetBufferCollectionPropertiesFUCHSIA = func.invoke(device, "vkGetBufferCollectionPropertiesFUCHSIA");
-        }
+        private Handles() {}
     }
 
-    public VKFUCHSIABufferCollection(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKFUCHSIABufferCollection() {}
+
+    /// ```
+    /// (int) VkResult vkCreateBufferCollectionFUCHSIA((struct VkDevice*) VkDevice device, const VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkBufferCollectionFUCHSIA* pCollection);
+    /// ```
+    public static int vkCreateBufferCollectionFUCHSIA(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pCollection) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateBufferCollectionFUCHSIA");
+        try { return (int) Handles.MH_vkCreateBufferCollectionFUCHSIA.invokeExact(device.capabilities().PFN_vkCreateBufferCollectionFUCHSIA, device.segment(), pCreateInfo, pAllocator, pCollection); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateBufferCollectionFUCHSIA", e); }
     }
 
     /// ```
-    /// VkResult vkCreateBufferCollectionFUCHSIA(VkDevice device, const VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkBufferCollectionFUCHSIA* pCollection);
+    /// (int) VkResult vkSetBufferCollectionImageConstraintsFUCHSIA((struct VkDevice*) VkDevice device, (uint64_t) VkBufferCollectionFUCHSIA collection, const VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo);
     /// ```
-    public int CreateBufferCollectionFUCHSIA(MemorySegment device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pCollection) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateBufferCollectionFUCHSIA");
-        try { return (int) Handles.MH_vkCreateBufferCollectionFUCHSIA.invokeExact(handles.PFN_vkCreateBufferCollectionFUCHSIA, device, pCreateInfo, pAllocator, pCollection); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateBufferCollectionFUCHSIA", e); }
+    public static int vkSetBufferCollectionImageConstraintsFUCHSIA(VkDevice device, long collection, MemorySegment pImageConstraintsInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetBufferCollectionImageConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionImageConstraintsFUCHSIA");
+        try { return (int) Handles.MH_vkSetBufferCollectionImageConstraintsFUCHSIA.invokeExact(device.capabilities().PFN_vkSetBufferCollectionImageConstraintsFUCHSIA, device.segment(), collection, pImageConstraintsInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkSetBufferCollectionImageConstraintsFUCHSIA", e); }
     }
 
     /// ```
-    /// VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo);
+    /// (int) VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA((struct VkDevice*) VkDevice device, (uint64_t) VkBufferCollectionFUCHSIA collection, const VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo);
     /// ```
-    public int SetBufferCollectionImageConstraintsFUCHSIA(MemorySegment device, long collection, MemorySegment pImageConstraintsInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionImageConstraintsFUCHSIA");
-        try { return (int) Handles.MH_vkSetBufferCollectionImageConstraintsFUCHSIA.invokeExact(handles.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA, device, collection, pImageConstraintsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in SetBufferCollectionImageConstraintsFUCHSIA", e); }
+    public static int vkSetBufferCollectionBufferConstraintsFUCHSIA(VkDevice device, long collection, MemorySegment pBufferConstraintsInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionBufferConstraintsFUCHSIA");
+        try { return (int) Handles.MH_vkSetBufferCollectionBufferConstraintsFUCHSIA.invokeExact(device.capabilities().PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA, device.segment(), collection, pBufferConstraintsInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkSetBufferCollectionBufferConstraintsFUCHSIA", e); }
     }
 
     /// ```
-    /// VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo);
+    /// void vkDestroyBufferCollectionFUCHSIA((struct VkDevice*) VkDevice device, (uint64_t) VkBufferCollectionFUCHSIA collection, const VkAllocationCallbacks* pAllocator);
     /// ```
-    public int SetBufferCollectionBufferConstraintsFUCHSIA(MemorySegment device, long collection, MemorySegment pBufferConstraintsInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkSetBufferCollectionBufferConstraintsFUCHSIA");
-        try { return (int) Handles.MH_vkSetBufferCollectionBufferConstraintsFUCHSIA.invokeExact(handles.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA, device, collection, pBufferConstraintsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in SetBufferCollectionBufferConstraintsFUCHSIA", e); }
+    public static void vkDestroyBufferCollectionFUCHSIA(VkDevice device, long collection, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkDestroyBufferCollectionFUCHSIA");
+        try { Handles.MH_vkDestroyBufferCollectionFUCHSIA.invokeExact(device.capabilities().PFN_vkDestroyBufferCollectionFUCHSIA, device.segment(), collection, pAllocator); }
+        catch (Throwable e) { throw new RuntimeException("error in vkDestroyBufferCollectionFUCHSIA", e); }
     }
 
     /// ```
-    /// void vkDestroyBufferCollectionFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, const VkAllocationCallbacks* pAllocator);
+    /// (int) VkResult vkGetBufferCollectionPropertiesFUCHSIA((struct VkDevice*) VkDevice device, (uint64_t) VkBufferCollectionFUCHSIA collection, VkBufferCollectionPropertiesFUCHSIA* pProperties);
     /// ```
-    public void DestroyBufferCollectionFUCHSIA(MemorySegment device, long collection, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroyBufferCollectionFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkDestroyBufferCollectionFUCHSIA");
-        try { Handles.MH_vkDestroyBufferCollectionFUCHSIA.invokeExact(handles.PFN_vkDestroyBufferCollectionFUCHSIA, device, collection, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in DestroyBufferCollectionFUCHSIA", e); }
-    }
-
-    /// ```
-    /// VkResult vkGetBufferCollectionPropertiesFUCHSIA(VkDevice device, VkBufferCollectionFUCHSIA collection, VkBufferCollectionPropertiesFUCHSIA* pProperties);
-    /// ```
-    public int GetBufferCollectionPropertiesFUCHSIA(MemorySegment device, long collection, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetBufferCollectionPropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferCollectionPropertiesFUCHSIA");
-        try { return (int) Handles.MH_vkGetBufferCollectionPropertiesFUCHSIA.invokeExact(handles.PFN_vkGetBufferCollectionPropertiesFUCHSIA, device, collection, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetBufferCollectionPropertiesFUCHSIA", e); }
+    public static int vkGetBufferCollectionPropertiesFUCHSIA(VkDevice device, long collection, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferCollectionPropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferCollectionPropertiesFUCHSIA");
+        try { return (int) Handles.MH_vkGetBufferCollectionPropertiesFUCHSIA.invokeExact(device.capabilities().PFN_vkGetBufferCollectionPropertiesFUCHSIA, device.segment(), collection, pProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetBufferCollectionPropertiesFUCHSIA", e); }
     }
 
 }

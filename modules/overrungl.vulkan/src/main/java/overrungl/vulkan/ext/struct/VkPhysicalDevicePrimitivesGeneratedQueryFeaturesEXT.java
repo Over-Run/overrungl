@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 primitivesGeneratedQuery;
-///     VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
-///     VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
+///     (uint32_t) VkBool32 primitivesGeneratedQuery;
+///     (uint32_t) VkBool32 primitivesGeneratedQueryWithRasterizerDiscard;
+///     (uint32_t) VkBool32 primitivesGeneratedQueryWithNonZeroStreams;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends GroupType {

@@ -21,42 +21,34 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQNXScreenSurface {
+public final class VKQNXScreenSurface {
     public static final int VK_QNX_SCREEN_SURFACE_SPEC_VERSION = 1;
     public static final String VK_QNX_SCREEN_SURFACE_EXTENSION_NAME = "VK_QNX_screen_surface";
     public static final int VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX = 1000378000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateScreenSurfaceQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceScreenPresentationSupportQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCreateScreenSurfaceQNX;
-        public final MemorySegment PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCreateScreenSurfaceQNX = func.invoke(instance, "vkCreateScreenSurfaceQNX");
-            PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX = func.invoke(instance, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
-        }
+        private Handles() {}
     }
 
-    public VKQNXScreenSurface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKQNXScreenSurface() {}
 
     /// ```
-    /// VkResult vkCreateScreenSurfaceQNX(VkInstance instance, const VkScreenSurfaceCreateInfoQNX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// (int) VkResult vkCreateScreenSurfaceQNX((struct VkInstance*) VkInstance instance, const VkScreenSurfaceCreateInfoQNX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public int CreateScreenSurfaceQNX(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateScreenSurfaceQNX)) throw new SymbolNotFoundError("Symbol not found: vkCreateScreenSurfaceQNX");
-        try { return (int) Handles.MH_vkCreateScreenSurfaceQNX.invokeExact(handles.PFN_vkCreateScreenSurfaceQNX, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateScreenSurfaceQNX", e); }
+    public static int vkCreateScreenSurfaceQNX(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateScreenSurfaceQNX)) throw new SymbolNotFoundError("Symbol not found: vkCreateScreenSurfaceQNX");
+        try { return (int) Handles.MH_vkCreateScreenSurfaceQNX.invokeExact(instance.capabilities().PFN_vkCreateScreenSurfaceQNX, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateScreenSurfaceQNX", e); }
     }
 
     /// ```
-    /// VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, _screen_window * window);
+    /// (uint32_t) VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct _screen_window * window);
     /// ```
-    public int GetPhysicalDeviceScreenPresentationSupportQNX(MemorySegment physicalDevice, int queueFamilyIndex, MemorySegment window) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceScreenPresentationSupportQNX");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceScreenPresentationSupportQNX.invokeExact(handles.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX, physicalDevice, queueFamilyIndex, window); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceScreenPresentationSupportQNX", e); }
+    public static int vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment window) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceScreenPresentationSupportQNX");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceScreenPresentationSupportQNX.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX, physicalDevice.segment(), queueFamilyIndex, window); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceScreenPresentationSupportQNX", e); }
     }
 
 }

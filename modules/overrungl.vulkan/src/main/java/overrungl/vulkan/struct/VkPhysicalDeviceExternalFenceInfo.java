@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalFenceInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalFenceHandleTypeFlagBits handleType;
+///     (int) VkExternalFenceHandleTypeFlagBits handleType;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalFenceInfo extends GroupType {

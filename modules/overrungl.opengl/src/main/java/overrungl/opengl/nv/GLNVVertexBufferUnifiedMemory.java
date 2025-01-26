@@ -95,7 +95,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
+    /// void glBufferAddressRangeNV((unsigned int) GLenum pname, (unsigned int) GLuint index, ((uint64_t) khronos_uint64_t) GLuint64EXT address, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
     public void BufferAddressRangeNV(int pname, int index, long address, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferAddressRangeNV)) throw new SymbolNotFoundError("Symbol not found: glBufferAddressRangeNV");
@@ -104,7 +104,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glVertexFormatNV(GLint size, GLenum type, GLsizei stride);
+    /// void glVertexFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void VertexFormatNV(int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexFormatNV");
@@ -113,7 +113,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glNormalFormatNV(GLenum type, GLsizei stride);
+    /// void glNormalFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void NormalFormatNV(int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalFormatNV)) throw new SymbolNotFoundError("Symbol not found: glNormalFormatNV");
@@ -122,7 +122,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glColorFormatNV(GLint size, GLenum type, GLsizei stride);
+    /// void glColorFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void ColorFormatNV(int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glColorFormatNV");
@@ -131,7 +131,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glIndexFormatNV(GLenum type, GLsizei stride);
+    /// void glIndexFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void IndexFormatNV(int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexFormatNV)) throw new SymbolNotFoundError("Symbol not found: glIndexFormatNV");
@@ -140,7 +140,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glTexCoordFormatNV(GLint size, GLenum type, GLsizei stride);
+    /// void glTexCoordFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void TexCoordFormatNV(int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glTexCoordFormatNV");
@@ -149,7 +149,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glEdgeFlagFormatNV(GLsizei stride);
+    /// void glEdgeFlagFormatNV((int) GLsizei stride);
     /// ```
     public void EdgeFlagFormatNV(int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEdgeFlagFormatNV)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagFormatNV");
@@ -158,7 +158,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glSecondaryColorFormatNV(GLint size, GLenum type, GLsizei stride);
+    /// void glSecondaryColorFormatNV((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void SecondaryColorFormatNV(int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorFormatNV)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorFormatNV");
@@ -167,7 +167,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glFogCoordFormatNV(GLenum type, GLsizei stride);
+    /// void glFogCoordFormatNV((unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void FogCoordFormatNV(int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordFormatNV)) throw new SymbolNotFoundError("Symbol not found: glFogCoordFormatNV");
@@ -176,7 +176,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glVertexAttribFormatNV(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
+    /// void glVertexAttribFormatNV((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (int) GLsizei stride);
     /// ```
     public void VertexAttribFormatNV(int index, int size, int type, boolean normalized, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormatNV");
@@ -185,7 +185,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glVertexAttribIFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
+    /// void glVertexAttribIFormatNV((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride);
     /// ```
     public void VertexAttribIFormatNV(int index, int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIFormatNV)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormatNV");
@@ -194,7 +194,7 @@ public final class GLNVVertexBufferUnifiedMemory {
     }
 
     /// ```
-    /// void glGetIntegerui64i_vNV(GLenum value, GLuint index, GLuint64EXT* result);
+    /// void glGetIntegerui64i_vNV((unsigned int) GLenum value, (unsigned int) GLuint index, GLuint64EXT* result);
     /// ```
     public void GetIntegerui64i_vNV(int value, int index, MemorySegment result) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerui64i_vNV)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64i_vNV");

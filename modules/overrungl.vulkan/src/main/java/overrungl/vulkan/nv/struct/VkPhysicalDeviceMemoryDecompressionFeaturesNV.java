@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMemoryDecompressionFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 memoryDecompression;
+///     (uint32_t) VkBool32 memoryDecompression;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMemoryDecompressionFeaturesNV extends GroupType {

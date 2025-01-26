@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseImageOpaqueMemoryBindInfo {
-///     VkImage image;
+///     (uint64_t) VkImage image;
 ///     uint32_t bindCount;
 ///     const VkSparseMemoryBind* pBinds;
 /// };

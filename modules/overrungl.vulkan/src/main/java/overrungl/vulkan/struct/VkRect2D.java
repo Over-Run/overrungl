@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRect2D {
-///     VkOffset2D offset;
-///     VkExtent2D extent;
+///     (struct VkOffset2D) VkOffset2D offset;
+///     (struct VkExtent2D) VkExtent2D extent;
 /// };
 /// ```
 public sealed class VkRect2D extends GroupType {

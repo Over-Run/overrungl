@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePerStageDescriptorSetFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 perStageDescriptorSet;
-///     VkBool32 dynamicPipelineLayout;
+///     (uint32_t) VkBool32 perStageDescriptorSet;
+///     (uint32_t) VkBool32 dynamicPipelineLayout;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends GroupType {

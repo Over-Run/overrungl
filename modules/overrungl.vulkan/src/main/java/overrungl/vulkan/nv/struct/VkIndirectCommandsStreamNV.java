@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsStreamNV {
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
 /// };
 /// ```
 public sealed class VkIndirectCommandsStreamNV extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceQueueInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceQueueCreateFlags flags;
+///     ((uint32_t) VkFlags) VkDeviceQueueCreateFlags flags;
 ///     uint32_t queueFamilyIndex;
 ///     uint32_t queueIndex;
 /// };

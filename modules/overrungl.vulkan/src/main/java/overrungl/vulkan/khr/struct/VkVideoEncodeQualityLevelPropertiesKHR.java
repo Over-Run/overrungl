@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeQualityLevelPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeRateControlModeFlagBitsKHR preferredRateControlMode;
+///     (int) VkVideoEncodeRateControlModeFlagBitsKHR preferredRateControlMode;
 ///     uint32_t preferredRateControlLayerCount;
 /// };
 /// ```

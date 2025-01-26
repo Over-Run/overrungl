@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassBeginInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSubpassContents contents;
+///     (int) VkSubpassContents contents;
 /// };
 /// ```
 public sealed class VkSubpassBeginInfo extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubgroupSizeControlProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t minSubgroupSize;
 ///     uint32_t maxSubgroupSize;
 ///     uint32_t maxComputeWorkgroupSubgroups;
-///     VkShaderStageFlags requiredSubgroupSizeStages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags requiredSubgroupSizeStages;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSubgroupSizeControlProperties extends GroupType {

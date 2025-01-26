@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalIOSurfaceInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
-///     IOSurfaceRef ioSurface;
+///     (uint64_t) VkImage image;
+///     (struct __IOSurface *) IOSurfaceRef ioSurface;
 /// };
 /// ```
 public sealed class VkExportMetalIOSurfaceInfoEXT extends GroupType {

@@ -47,7 +47,7 @@ public final class GLARBVertexArrayObject {
     }
 
     /// ```
-    /// void glBindVertexArray(GLuint array);
+    /// void glBindVertexArray((unsigned int) GLuint array);
     /// ```
     public void BindVertexArray(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexArray)) throw new SymbolNotFoundError("Symbol not found: glBindVertexArray");
@@ -56,7 +56,7 @@ public final class GLARBVertexArrayObject {
     }
 
     /// ```
-    /// void glDeleteVertexArrays(GLsizei n, const GLuint* arrays);
+    /// void glDeleteVertexArrays((int) GLsizei n, const GLuint* arrays);
     /// ```
     public void DeleteVertexArrays(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArrays");
@@ -65,7 +65,7 @@ public final class GLARBVertexArrayObject {
     }
 
     /// ```
-    /// void glGenVertexArrays(GLsizei n, GLuint* arrays);
+    /// void glGenVertexArrays((int) GLsizei n, GLuint* arrays);
     /// ```
     public void GenVertexArrays(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glGenVertexArrays");
@@ -74,7 +74,7 @@ public final class GLARBVertexArrayObject {
     }
 
     /// ```
-    /// GLboolean glIsVertexArray(GLuint array);
+    /// GLboolean glIsVertexArray((unsigned int) GLuint array);
     /// ```
     public boolean IsVertexArray(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexArray)) throw new SymbolNotFoundError("Symbol not found: glIsVertexArray");

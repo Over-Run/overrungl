@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1Quantization {
-///     StdVideoAV1QuantizationFlags flags;
+///     (struct StdVideoAV1QuantizationFlags) StdVideoAV1QuantizationFlags flags;
 ///     uint8_t base_q_idx;
 ///     int8_t DeltaQYDc;
 ///     int8_t DeltaQUDc;

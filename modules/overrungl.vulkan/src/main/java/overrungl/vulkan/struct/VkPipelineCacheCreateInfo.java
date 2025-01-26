@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCacheCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCacheCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineCacheCreateFlags flags;
 ///     size_t initialDataSize;
 ///     const void* pInitialData;
 /// };

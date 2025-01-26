@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueryPoolPerformanceQueryCreateInfoINTEL {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkQueryPoolSamplingModeINTEL performanceCountersSampling;
+///     (int) VkQueryPoolSamplingModeINTEL performanceCountersSampling;
 /// };
 /// ```
 public sealed class VkQueryPoolPerformanceQueryCreateInfoINTEL extends GroupType {

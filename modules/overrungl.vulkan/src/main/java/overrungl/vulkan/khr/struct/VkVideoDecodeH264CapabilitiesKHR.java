@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeH264CapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     StdVideoH264LevelIdc maxLevelIdc;
-///     VkOffset2D fieldOffsetGranularity;
+///     (int) StdVideoH264LevelIdc maxLevelIdc;
+///     (struct VkOffset2D) VkOffset2D fieldOffsetGranularity;
 /// };
 /// ```
 public sealed class VkVideoDecodeH264CapabilitiesKHR extends GroupType {

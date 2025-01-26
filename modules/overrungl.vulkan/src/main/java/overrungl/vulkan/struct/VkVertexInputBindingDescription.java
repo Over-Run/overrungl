@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkVertexInputBindingDescription {
 ///     uint32_t binding;
 ///     uint32_t stride;
-///     VkVertexInputRate inputRate;
+///     (int) VkVertexInputRate inputRate;
 /// };
 /// ```
 public sealed class VkVertexInputBindingDescription extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetBindingReferenceVALVE {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorSetLayout descriptorSetLayout;
+///     (uint64_t) VkDescriptorSetLayout descriptorSetLayout;
 ///     uint32_t binding;
 /// };
 /// ```

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 relaxedLineRasterization;
+///     (uint32_t) VkBool32 relaxedLineRasterization;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG extends GroupType {

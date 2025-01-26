@@ -24,6 +24,6 @@ public final class VKKHRVertexAttributeDivisor {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR = 1000190001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR = 1000190002;
 
-    private VKKHRVertexAttributeDivisor() { }
+    private VKKHRVertexAttributeDivisor() {}
 
 }

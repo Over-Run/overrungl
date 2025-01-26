@@ -26,6 +26,6 @@ public final class VKEXTYcbcr2plane444Formats {
     public static final int VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16_EXT = 1000330002;
     public static final int VK_FORMAT_G16_B16R16_2PLANE_444_UNORM_EXT = 1000330003;
 
-    private VKEXTYcbcr2plane444Formats() { }
+    private VKEXTYcbcr2plane444Formats() {}
 
 }

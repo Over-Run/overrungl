@@ -23,6 +23,6 @@ public final class VKEXTNonSeamlessCubeMap {
     public static final int VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT = 0x00000004;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT = 1000422000;
 
-    private VKEXTNonSeamlessCubeMap() { }
+    private VKEXTNonSeamlessCubeMap() {}
 
 }

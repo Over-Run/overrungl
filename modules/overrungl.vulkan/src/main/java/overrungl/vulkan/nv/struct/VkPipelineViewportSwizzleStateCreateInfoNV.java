@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportSwizzleStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineViewportSwizzleStateCreateFlagsNV flags;
+///     ((uint32_t) VkFlags) VkPipelineViewportSwizzleStateCreateFlagsNV flags;
 ///     uint32_t viewportCount;
 ///     const VkViewportSwizzleNV* pViewportSwizzles;
 /// };

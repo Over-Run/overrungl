@@ -43,7 +43,7 @@ public final class GLSGISFogFunction {
     }
 
     /// ```
-    /// void glFogFuncSGIS(GLsizei n, const GLfloat* points);
+    /// void glFogFuncSGIS((int) GLsizei n, const GLfloat* points);
     /// ```
     public void FogFuncSGIS(int n, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glFogFuncSGIS");

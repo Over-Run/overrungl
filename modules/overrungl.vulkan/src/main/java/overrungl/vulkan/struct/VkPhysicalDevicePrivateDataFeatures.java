@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePrivateDataFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 privateData;
+///     (uint32_t) VkBool32 privateData;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePrivateDataFeatures extends GroupType {

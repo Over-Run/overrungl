@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorIndexingProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxUpdateAfterBindDescriptorsInAllPools;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
-///     VkBool32 robustBufferAccessUpdateAfterBind;
-///     VkBool32 quadDivergentImplicitLod;
+///     (uint32_t) VkBool32 shaderUniformBufferArrayNonUniformIndexingNative;
+///     (uint32_t) VkBool32 shaderSampledImageArrayNonUniformIndexingNative;
+///     (uint32_t) VkBool32 shaderStorageBufferArrayNonUniformIndexingNative;
+///     (uint32_t) VkBool32 shaderStorageImageArrayNonUniformIndexingNative;
+///     (uint32_t) VkBool32 shaderInputAttachmentArrayNonUniformIndexingNative;
+///     (uint32_t) VkBool32 robustBufferAccessUpdateAfterBind;
+///     (uint32_t) VkBool32 quadDivergentImplicitLod;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindSamplers;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindUniformBuffers;
 ///     uint32_t maxPerStageDescriptorUpdateAfterBindStorageBuffers;

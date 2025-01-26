@@ -57,7 +57,7 @@ public final class GLEXTMultisample {
     }
 
     /// ```
-    /// void glSampleMaskEXT(GLclampf value, GLboolean invert);
+    /// void glSampleMaskEXT(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
     public void SampleMaskEXT(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT");
@@ -66,7 +66,7 @@ public final class GLEXTMultisample {
     }
 
     /// ```
-    /// void glSamplePatternEXT(GLenum pattern);
+    /// void glSamplePatternEXT((unsigned int) GLenum pattern);
     /// ```
     public void SamplePatternEXT(int pattern) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternEXT)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT");

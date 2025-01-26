@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingFragmentDensityMapAttachmentInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageView imageView;
-///     VkImageLayout imageLayout;
+///     (uint64_t) VkImageView imageView;
+///     (int) VkImageLayout imageLayout;
 /// };
 /// ```
 public sealed class VkRenderingFragmentDensityMapAttachmentInfoEXT extends GroupType {

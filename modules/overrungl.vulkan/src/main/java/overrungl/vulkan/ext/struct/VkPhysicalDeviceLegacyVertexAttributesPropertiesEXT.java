@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 nativeUnalignedPerformance;
+///     (uint32_t) VkBool32 nativeUnalignedPerformance;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends GroupType {

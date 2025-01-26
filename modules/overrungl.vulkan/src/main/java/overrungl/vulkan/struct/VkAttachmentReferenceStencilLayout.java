@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAttachmentReferenceStencilLayout {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkImageLayout stencilLayout;
+///     (int) VkImageLayout stencilLayout;
 /// };
 /// ```
 public sealed class VkAttachmentReferenceStencilLayout extends GroupType {

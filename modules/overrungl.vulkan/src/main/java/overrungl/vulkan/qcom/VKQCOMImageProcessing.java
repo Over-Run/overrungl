@@ -33,6 +33,6 @@ public final class VKQCOMImageProcessing {
     public static final long VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM = 0x1000000000L;
     public static final long VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM = 0x2000000000L;
 
-    private VKQCOMImageProcessing() { }
+    private VKQCOMImageProcessing() {}
 
 }

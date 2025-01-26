@@ -32,6 +32,6 @@ public final class VKEXTPipelineRobustness {
     public static final int VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_EXT = 2;
     public static final int VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2_EXT = 3;
 
-    private VKEXTPipelineRobustness() { }
+    private VKEXTPipelineRobustness() {}
 
 }

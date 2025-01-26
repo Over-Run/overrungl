@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOpticalFlowExecuteInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkOpticalFlowExecuteFlagsNV flags;
+///     ((uint32_t) VkFlags) VkOpticalFlowExecuteFlagsNV flags;
 ///     uint32_t regionCount;
 ///     const VkRect2D* pRegions;
 /// };

@@ -90,7 +90,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+    /// void glProgramLocalParameterI4iNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
     public void ProgramLocalParameterI4iNV(int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4iNV");
@@ -99,7 +99,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint* params);
+    /// void glProgramLocalParameterI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLint* params);
     /// ```
     public void ProgramLocalParameterI4ivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4ivNV");
@@ -108,7 +108,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint* params);
+    /// void glProgramLocalParametersI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLint* params);
     /// ```
     public void ProgramLocalParametersI4ivNV(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4ivNV");
@@ -117,7 +117,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+    /// void glProgramLocalParameterI4uiNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
     /// ```
     public void ProgramLocalParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uiNV");
@@ -126,7 +126,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint* params);
+    /// void glProgramLocalParameterI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLuint* params);
     /// ```
     public void ProgramLocalParameterI4uivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameterI4uivNV");
@@ -135,7 +135,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint* params);
+    /// void glProgramLocalParametersI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLuint* params);
     /// ```
     public void ProgramLocalParametersI4uivNV(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParametersI4uivNV");
@@ -144,7 +144,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+    /// void glProgramEnvParameterI4iNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
     public void ProgramEnvParameterI4iNV(int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4iNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4iNV");
@@ -153,7 +153,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint* params);
+    /// void glProgramEnvParameterI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLint* params);
     /// ```
     public void ProgramEnvParameterI4ivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4ivNV");
@@ -162,7 +162,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint* params);
+    /// void glProgramEnvParametersI4ivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLint* params);
     /// ```
     public void ProgramEnvParametersI4ivNV(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParametersI4ivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4ivNV");
@@ -171,7 +171,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+    /// void glProgramEnvParameterI4uiNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
     /// ```
     public void ProgramEnvParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4uiNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uiNV");
@@ -180,7 +180,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint* params);
+    /// void glProgramEnvParameterI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, const GLuint* params);
     /// ```
     public void ProgramEnvParameterI4uivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameterI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameterI4uivNV");
@@ -189,7 +189,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint* params);
+    /// void glProgramEnvParametersI4uivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLuint* params);
     /// ```
     public void ProgramEnvParametersI4uivNV(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParametersI4uivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParametersI4uivNV");
@@ -198,7 +198,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint* params);
+    /// void glGetProgramLocalParameterIivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* params);
     /// ```
     public void GetProgramLocalParameterIivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIivNV");
@@ -207,7 +207,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint* params);
+    /// void glGetProgramLocalParameterIuivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* params);
     /// ```
     public void GetProgramLocalParameterIuivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramLocalParameterIuivNV");
@@ -216,7 +216,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint* params);
+    /// void glGetProgramEnvParameterIivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* params);
     /// ```
     public void GetProgramEnvParameterIivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterIivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIivNV");
@@ -225,7 +225,7 @@ public final class GLNVGpuProgram4 {
     }
 
     /// ```
-    /// void glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint* params);
+    /// void glGetProgramEnvParameterIuivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* params);
     /// ```
     public void GetProgramEnvParameterIuivNV(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterIuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramEnvParameterIuivNV");

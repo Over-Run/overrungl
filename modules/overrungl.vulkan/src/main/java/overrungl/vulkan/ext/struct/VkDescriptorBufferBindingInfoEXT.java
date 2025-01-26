@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorBufferBindingInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceAddress address;
-///     VkBufferUsageFlags usage;
+///     (uint64_t) VkDeviceAddress address;
+///     ((uint32_t) VkFlags) VkBufferUsageFlags usage;
 /// };
 /// ```
 public sealed class VkDescriptorBufferBindingInfoEXT extends GroupType {

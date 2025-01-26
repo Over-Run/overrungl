@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePerformanceQueryPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 allowCommandBufferQueryCopies;
+///     (uint32_t) VkBool32 allowCommandBufferQueryCopies;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePerformanceQueryPropertiesKHR extends GroupType {

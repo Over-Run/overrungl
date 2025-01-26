@@ -49,7 +49,7 @@ public final class GLEXTMemoryObjectWin32 {
     }
 
     /// ```
-    /// void glImportMemoryWin32HandleEXT(GLuint memory, GLuint64 size, GLenum handleType, void* handle);
+    /// void glImportMemoryWin32HandleEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, void* handle);
     /// ```
     public void ImportMemoryWin32HandleEXT(int memory, long size, int handleType, MemorySegment handle) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
@@ -58,7 +58,7 @@ public final class GLEXTMemoryObjectWin32 {
     }
 
     /// ```
-    /// void glImportMemoryWin32NameEXT(GLuint memory, GLuint64 size, GLenum handleType, const void* name);
+    /// void glImportMemoryWin32NameEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, const void* name);
     /// ```
     public void ImportMemoryWin32NameEXT(int memory, long size, int handleType, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");

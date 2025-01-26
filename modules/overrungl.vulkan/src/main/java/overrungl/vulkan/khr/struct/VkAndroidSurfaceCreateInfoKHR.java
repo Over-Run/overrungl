@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAndroidSurfaceCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAndroidSurfaceCreateFlagsKHR flags;
-///     ANativeWindow * window;
+///     ((uint32_t) VkFlags) VkAndroidSurfaceCreateFlagsKHR flags;
+///     struct ANativeWindow * window;
 /// };
 /// ```
 public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {

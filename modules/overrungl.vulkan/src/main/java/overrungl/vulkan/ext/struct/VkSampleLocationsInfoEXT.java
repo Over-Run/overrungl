@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSampleLocationsInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSampleCountFlagBits sampleLocationsPerPixel;
-///     VkExtent2D sampleLocationGridSize;
+///     (int) VkSampleCountFlagBits sampleLocationsPerPixel;
+///     (struct VkExtent2D) VkExtent2D sampleLocationGridSize;
 ///     uint32_t sampleLocationsCount;
 ///     const VkSampleLocationEXT* pSampleLocations;
 /// };

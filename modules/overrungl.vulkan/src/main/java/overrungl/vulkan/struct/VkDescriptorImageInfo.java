@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorImageInfo {
-///     VkSampler sampler;
-///     VkImageView imageView;
-///     VkImageLayout imageLayout;
+///     (uint64_t) VkSampler sampler;
+///     (uint64_t) VkImageView imageView;
+///     (int) VkImageLayout imageLayout;
 /// };
 /// ```
 public sealed class VkDescriptorImageInfo extends GroupType {

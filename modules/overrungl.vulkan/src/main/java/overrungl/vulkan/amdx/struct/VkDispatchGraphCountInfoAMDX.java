@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkDispatchGraphCountInfoAMDX {
 ///     uint32_t count;
-///     VkDeviceOrHostAddressConstAMDX infos;
+///     (union VkDeviceOrHostAddressConstAMDX) VkDeviceOrHostAddressConstAMDX infos;
 ///     uint64_t stride;
 /// };
 /// ```

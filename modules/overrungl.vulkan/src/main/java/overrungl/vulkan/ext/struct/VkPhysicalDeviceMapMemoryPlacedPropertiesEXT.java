@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMapMemoryPlacedPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize minPlacedMemoryMapAlignment;
+///     (uint64_t) VkDeviceSize minPlacedMemoryMapAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMapMemoryPlacedPropertiesEXT extends GroupType {

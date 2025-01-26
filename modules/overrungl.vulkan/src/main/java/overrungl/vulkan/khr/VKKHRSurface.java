@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRSurface {
+public final class VKKHRSurface {
     public static final int VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001;
     public static final int VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 0x00000002;
     public static final int VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = 0x00000004;
@@ -46,74 +46,60 @@ public class VKKHRSurface {
     public static final int VK_ERROR_SURFACE_LOST_KHR = -1000000000;
     public static final int VK_ERROR_NATIVE_WINDOW_IN_USE_KHR = -1000000001;
     public static final int VK_OBJECT_TYPE_SURFACE_KHR = 1000000000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkDestroySurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceFormatsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkDestroySurfaceKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceSupportKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceFormatsKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceSurfacePresentModesKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkDestroySurfaceKHR = func.invoke(instance, "vkDestroySurfaceKHR");
-            PFN_vkGetPhysicalDeviceSurfaceSupportKHR = func.invoke(instance, "vkGetPhysicalDeviceSurfaceSupportKHR");
-            PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = func.invoke(instance, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-            PFN_vkGetPhysicalDeviceSurfaceFormatsKHR = func.invoke(instance, "vkGetPhysicalDeviceSurfaceFormatsKHR");
-            PFN_vkGetPhysicalDeviceSurfacePresentModesKHR = func.invoke(instance, "vkGetPhysicalDeviceSurfacePresentModesKHR");
-        }
+        private Handles() {}
     }
 
-    public VKKHRSurface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
+    private VKKHRSurface() {}
+
+    /// ```
+    /// void vkDestroySurfaceKHR((struct VkInstance*) VkInstance instance, (uint64_t) VkSurfaceKHR surface, const VkAllocationCallbacks* pAllocator);
+    /// ```
+    public static void vkDestroySurfaceKHR(VkInstance instance, long surface, MemorySegment pAllocator) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroySurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySurfaceKHR");
+        try { Handles.MH_vkDestroySurfaceKHR.invokeExact(instance.capabilities().PFN_vkDestroySurfaceKHR, instance.segment(), surface, pAllocator); }
+        catch (Throwable e) { throw new RuntimeException("error in vkDestroySurfaceKHR", e); }
     }
 
     /// ```
-    /// void vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, const VkAllocationCallbacks* pAllocator);
+    /// (int) VkResult vkGetPhysicalDeviceSurfaceSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, (uint64_t) VkSurfaceKHR surface, VkBool32* pSupported);
     /// ```
-    public void DestroySurfaceKHR(MemorySegment instance, long surface, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkDestroySurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySurfaceKHR");
-        try { Handles.MH_vkDestroySurfaceKHR.invokeExact(handles.PFN_vkDestroySurfaceKHR, instance, surface, pAllocator); }
-        catch (Throwable e) { throw new RuntimeException("error in DestroySurfaceKHR", e); }
+    public static int vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, long surface, MemorySegment pSupported) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceSupportKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceSupportKHR, physicalDevice.segment(), queueFamilyIndex, surface, pSupported); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfaceSupportKHR", e); }
     }
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceSurfaceSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, VkSurfaceKHR surface, VkBool32* pSupported);
+    /// (int) VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities);
     /// ```
-    public int GetPhysicalDeviceSurfaceSupportKHR(MemorySegment physicalDevice, int queueFamilyIndex, long surface, MemorySegment pSupported) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfaceSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceSupportKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceSupportKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfaceSupportKHR, physicalDevice, queueFamilyIndex, surface, pSupported); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfaceSupportKHR", e); }
+    public static int vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, long surface, MemorySegment pSurfaceCapabilities) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceCapabilitiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR, physicalDevice.segment(), surface, pSurfaceCapabilities); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfaceCapabilitiesKHR", e); }
     }
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities);
+    /// (int) VkResult vkGetPhysicalDeviceSurfaceFormatsKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats);
     /// ```
-    public int GetPhysicalDeviceSurfaceCapabilitiesKHR(MemorySegment physicalDevice, long surface, MemorySegment pSurfaceCapabilities) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceCapabilitiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR, physicalDevice, surface, pSurfaceCapabilities); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfaceCapabilitiesKHR", e); }
+    public static int vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, long surface, MemorySegment pSurfaceFormatCount, MemorySegment pSurfaceFormats) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormatsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceFormatsKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceFormatsKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceFormatsKHR, physicalDevice.segment(), surface, pSurfaceFormatCount, pSurfaceFormats); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfaceFormatsKHR", e); }
     }
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats);
+    /// (int) VkResult vkGetPhysicalDeviceSurfacePresentModesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);
     /// ```
-    public int GetPhysicalDeviceSurfaceFormatsKHR(MemorySegment physicalDevice, long surface, MemorySegment pSurfaceFormatCount, MemorySegment pSurfaceFormats) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfaceFormatsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceFormatsKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceFormatsKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfaceFormatsKHR, physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfaceFormatsKHR", e); }
-    }
-
-    /// ```
-    /// VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes);
-    /// ```
-    public int GetPhysicalDeviceSurfacePresentModesKHR(MemorySegment physicalDevice, long surface, MemorySegment pPresentModeCount, MemorySegment pPresentModes) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfacePresentModesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModesKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfacePresentModesKHR, physicalDevice, surface, pPresentModeCount, pPresentModes); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfacePresentModesKHR", e); }
+    public static int vkGetPhysicalDeviceSurfacePresentModesKHR(VkPhysicalDevice physicalDevice, long surface, MemorySegment pPresentModeCount, MemorySegment pPresentModes) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModesKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfacePresentModesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModesKHR, physicalDevice.segment(), surface, pPresentModeCount, pPresentModes); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfacePresentModesKHR", e); }
     }
 
 }

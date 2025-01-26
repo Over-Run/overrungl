@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDevicePipelineBinaryInternalCacheControlKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 disableInternalCache;
+///     (uint32_t) VkBool32 disableInternalCache;
 /// };
 /// ```
 public sealed class VkDevicePipelineBinaryInternalCacheControlKHR extends GroupType {

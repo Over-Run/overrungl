@@ -23,6 +23,6 @@ public final class VKNVExtendedSparseAddressSpace {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV = 1000492000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV = 1000492001;
 
-    private VKNVExtendedSparseAddressSpace() { }
+    private VKNVExtendedSparseAddressSpace() {}
 
 }

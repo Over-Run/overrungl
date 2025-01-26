@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyProperties {
-///     VkQueueFlags queueFlags;
+///     ((uint32_t) VkFlags) VkQueueFlags queueFlags;
 ///     uint32_t queueCount;
 ///     uint32_t timestampValidBits;
-///     VkExtent3D minImageTransferGranularity;
+///     (struct VkExtent3D) VkExtent3D minImageTransferGranularity;
 /// };
 /// ```
 public sealed class VkQueueFamilyProperties extends GroupType {

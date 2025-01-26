@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceIndexTypeUint8Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 indexTypeUint8;
+///     (uint32_t) VkBool32 indexTypeUint8;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceIndexTypeUint8Features extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassDescription2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSubpassDescriptionFlags flags;
-///     VkPipelineBindPoint pipelineBindPoint;
+///     ((uint32_t) VkFlags) VkSubpassDescriptionFlags flags;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
 ///     uint32_t viewMask;
 ///     uint32_t inputAttachmentCount;
 ///     const VkAttachmentReference2* pInputAttachments;

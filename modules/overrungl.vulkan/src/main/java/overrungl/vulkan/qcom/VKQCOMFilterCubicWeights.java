@@ -28,6 +28,6 @@ public final class VKQCOMFilterCubicWeights {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM = 1000519001;
     public static final int VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM = 1000519002;
 
-    private VKQCOMFilterCubicWeights() { }
+    private VKQCOMFilterCubicWeights() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyProperties2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkQueueFamilyProperties queueFamilyProperties;
+///     (struct VkQueueFamilyProperties) VkQueueFamilyProperties queueFamilyProperties;
 /// };
 /// ```
 public sealed class VkQueueFamilyProperties2 extends GroupType {

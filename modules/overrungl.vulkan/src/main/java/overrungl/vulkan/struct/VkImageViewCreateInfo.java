@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageViewCreateFlags flags;
-///     VkImage image;
-///     VkImageViewType viewType;
-///     VkFormat format;
-///     VkComponentMapping components;
-///     VkImageSubresourceRange subresourceRange;
+///     ((uint32_t) VkFlags) VkImageViewCreateFlags flags;
+///     (uint64_t) VkImage image;
+///     (int) VkImageViewType viewType;
+///     (int) VkFormat format;
+///     (struct VkComponentMapping) VkComponentMapping components;
+///     (struct VkImageSubresourceRange) VkImageSubresourceRange subresourceRange;
 /// };
 /// ```
 public sealed class VkImageViewCreateInfo extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFormatProperties2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormatProperties formatProperties;
+///     (struct VkFormatProperties) VkFormatProperties formatProperties;
 /// };
 /// ```
 public sealed class VkFormatProperties2 extends GroupType {

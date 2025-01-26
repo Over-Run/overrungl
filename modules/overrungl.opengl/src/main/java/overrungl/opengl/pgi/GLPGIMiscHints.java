@@ -57,7 +57,7 @@ public final class GLPGIMiscHints {
     }
 
     /// ```
-    /// void glHintPGI(GLenum target, GLint mode);
+    /// void glHintPGI((unsigned int) GLenum target, (int) GLint mode);
     /// ```
     public void HintPGI(int target, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");

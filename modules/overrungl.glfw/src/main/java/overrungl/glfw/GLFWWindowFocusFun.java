@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLFWWindowFocusFun)(GLFWwindow* window, GLFWboolean focused);
+/// typedef void (*GLFWWindowFocusFun)(GLFWwindow* window, (int) GLFWboolean focused);
 /// ```
 @FunctionalInterface
 public interface GLFWWindowFocusFun extends Upcall {

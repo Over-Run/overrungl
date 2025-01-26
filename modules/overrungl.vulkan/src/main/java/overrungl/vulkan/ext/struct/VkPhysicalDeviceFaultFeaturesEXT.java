@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFaultFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 deviceFault;
-///     VkBool32 deviceFaultVendorBinary;
+///     (uint32_t) VkBool32 deviceFault;
+///     (uint32_t) VkBool32 deviceFaultVendorBinary;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFaultFeaturesEXT extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 multiviewPerViewRenderAreas;
+///     (uint32_t) VkBool32 multiviewPerViewRenderAreas;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM extends GroupType {

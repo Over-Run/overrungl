@@ -24,6 +24,6 @@ public final class VKEXTImageSlicedViewOf3d {
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT = 1000418001;
     public static final int VK_REMAINING_3D_SLICES_EXT = (~0);
 
-    private VKEXTImageSlicedViewOf3d() { }
+    private VKEXTImageSlicedViewOf3d() {}
 
 }

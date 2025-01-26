@@ -205,7 +205,7 @@ public final class STBVorbis {
     }
 
     /// ```
-    /// stb_vorbis_info stb_vorbis_get_info(stb_vorbis* f);
+    /// (struct STBVorbisInfo) stb_vorbis_info stb_vorbis_get_info(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_info(SegmentAllocator __allocator, MemorySegment f) {
         try { return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f); }
@@ -213,7 +213,7 @@ public final class STBVorbis {
     }
 
     /// ```
-    /// stb_vorbis_comment stb_vorbis_get_comment(stb_vorbis* f);
+    /// (struct STBVorbisComment) stb_vorbis_comment stb_vorbis_get_comment(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_comment(SegmentAllocator __allocator, MemorySegment f) {
         try { return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f); }

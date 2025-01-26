@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVariablePointersFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 variablePointersStorageBuffer;
-///     VkBool32 variablePointers;
+///     (uint32_t) VkBool32 variablePointersStorageBuffer;
+///     (uint32_t) VkBool32 variablePointers;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {

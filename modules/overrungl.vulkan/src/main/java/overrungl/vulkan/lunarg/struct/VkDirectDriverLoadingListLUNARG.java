@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDirectDriverLoadingListLUNARG {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDirectDriverLoadingModeLUNARG mode;
+///     (int) VkDirectDriverLoadingModeLUNARG mode;
 ///     uint32_t driverCount;
 ///     const VkDirectDriverLoadingInfoLUNARG* pDrivers;
 /// };

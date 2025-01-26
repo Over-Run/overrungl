@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkSampleCountFlagBits maxFragmentShadingRateInvocationCount;
+///     (int) VkSampleCountFlagBits maxFragmentShadingRateInvocationCount;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV extends GroupType {

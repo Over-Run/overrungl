@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectExecutionSetPipelineInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipeline initialPipeline;
+///     (uint64_t) VkPipeline initialPipeline;
 ///     uint32_t maxPipelineCount;
 /// };
 /// ```

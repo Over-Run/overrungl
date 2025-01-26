@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTransformFeedbackFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 transformFeedback;
-///     VkBool32 geometryStreams;
+///     (uint32_t) VkBool32 transformFeedback;
+///     (uint32_t) VkBool32 geometryStreams;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupType {

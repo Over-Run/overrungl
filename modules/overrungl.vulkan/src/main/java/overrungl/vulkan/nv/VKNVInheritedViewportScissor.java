@@ -23,6 +23,6 @@ public final class VKNVInheritedViewportScissor {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV = 1000278000;
     public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_VIEWPORT_SCISSOR_INFO_NV = 1000278001;
 
-    private VKNVInheritedViewportScissor() { }
+    private VKNVInheritedViewportScissor() {}
 
 }

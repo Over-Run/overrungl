@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSetDescriptorBufferOffsetsInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkShaderStageFlags stageFlags;
-///     VkPipelineLayout layout;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stageFlags;
+///     (uint64_t) VkPipelineLayout layout;
 ///     uint32_t firstSet;
 ///     uint32_t setCount;
 ///     const uint32_t* pBufferIndices;

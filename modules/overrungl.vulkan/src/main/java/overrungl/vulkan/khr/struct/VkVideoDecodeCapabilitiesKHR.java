@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoDecodeCapabilityFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkVideoDecodeCapabilityFlagsKHR flags;
 /// };
 /// ```
 public sealed class VkVideoDecodeCapabilitiesKHR extends GroupType {

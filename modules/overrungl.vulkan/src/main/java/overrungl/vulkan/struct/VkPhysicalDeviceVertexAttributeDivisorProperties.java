@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVertexAttributeDivisorProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxVertexAttribDivisor;
-///     VkBool32 supportsNonZeroFirstInstance;
+///     (uint32_t) VkBool32 supportsNonZeroFirstInstance;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVertexAttributeDivisorProperties extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineInputAssemblyStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineInputAssemblyStateCreateFlags flags;
-///     VkPrimitiveTopology topology;
-///     VkBool32 primitiveRestartEnable;
+///     ((uint32_t) VkFlags) VkPipelineInputAssemblyStateCreateFlags flags;
+///     (int) VkPrimitiveTopology topology;
+///     (uint32_t) VkBool32 primitiveRestartEnable;
 /// };
 /// ```
 public sealed class VkPipelineInputAssemblyStateCreateInfo extends GroupType {

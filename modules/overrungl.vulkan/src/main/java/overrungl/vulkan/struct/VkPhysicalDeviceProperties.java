@@ -31,11 +31,11 @@ import overrungl.util.*;
 ///     uint32_t driverVersion;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
-///     VkPhysicalDeviceType deviceType;
+///     (int) VkPhysicalDeviceType deviceType;
 ///     char deviceName[256];
 ///     uint8_t pipelineCacheUUID[16];
-///     VkPhysicalDeviceLimits limits;
-///     VkPhysicalDeviceSparseProperties sparseProperties;
+///     (struct VkPhysicalDeviceLimits) VkPhysicalDeviceLimits limits;
+///     (struct VkPhysicalDeviceSparseProperties) VkPhysicalDeviceSparseProperties sparseProperties;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceProperties extends GroupType {

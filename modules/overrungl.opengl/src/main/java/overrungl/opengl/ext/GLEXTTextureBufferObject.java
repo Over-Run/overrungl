@@ -42,7 +42,7 @@ public final class GLEXTTextureBufferObject {
     }
 
     /// ```
-    /// void glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer);
+    /// void glTexBufferEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
     public void TexBufferEXT(int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT");

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationLineStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkLineRasterizationMode lineRasterizationMode;
-///     VkBool32 stippledLineEnable;
+///     (int) VkLineRasterizationMode lineRasterizationMode;
+///     (uint32_t) VkBool32 stippledLineEnable;
 ///     uint32_t lineStippleFactor;
 ///     uint16_t lineStipplePattern;
 /// };

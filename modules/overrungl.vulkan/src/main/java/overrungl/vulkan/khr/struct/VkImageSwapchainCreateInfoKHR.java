@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageSwapchainCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSwapchainKHR swapchain;
+///     (uint64_t) VkSwapchainKHR swapchain;
 /// };
 /// ```
 public sealed class VkImageSwapchainCreateInfoKHR extends GroupType {

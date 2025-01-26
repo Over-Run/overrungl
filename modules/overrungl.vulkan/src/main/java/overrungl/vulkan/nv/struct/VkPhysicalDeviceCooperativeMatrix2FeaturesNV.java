@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 cooperativeMatrixWorkgroupScope;
-///     VkBool32 cooperativeMatrixFlexibleDimensions;
-///     VkBool32 cooperativeMatrixReductions;
-///     VkBool32 cooperativeMatrixConversions;
-///     VkBool32 cooperativeMatrixPerElementOperations;
-///     VkBool32 cooperativeMatrixTensorAddressing;
-///     VkBool32 cooperativeMatrixBlockLoads;
+///     (uint32_t) VkBool32 cooperativeMatrixWorkgroupScope;
+///     (uint32_t) VkBool32 cooperativeMatrixFlexibleDimensions;
+///     (uint32_t) VkBool32 cooperativeMatrixReductions;
+///     (uint32_t) VkBool32 cooperativeMatrixConversions;
+///     (uint32_t) VkBool32 cooperativeMatrixPerElementOperations;
+///     (uint32_t) VkBool32 cooperativeMatrixTensorAddressing;
+///     (uint32_t) VkBool32 cooperativeMatrixBlockLoads;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends GroupType {

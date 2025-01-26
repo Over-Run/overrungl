@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTexelBufferAlignmentProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
-///     VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
-///     VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
-///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
+///     (uint64_t) VkDeviceSize storageTexelBufferOffsetAlignmentBytes;
+///     (uint32_t) VkBool32 storageTexelBufferOffsetSingleTexelAlignment;
+///     (uint64_t) VkDeviceSize uniformTexelBufferOffsetAlignmentBytes;
+///     (uint32_t) VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTexelBufferAlignmentProperties extends GroupType {

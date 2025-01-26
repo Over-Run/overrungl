@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderModuleCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkShaderModuleCreateFlags flags;
+///     ((uint32_t) VkFlags) VkShaderModuleCreateFlags flags;
 ///     size_t codeSize;
 ///     const uint32_t* pCode;
 /// };

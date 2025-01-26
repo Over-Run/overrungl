@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkWriteDescriptorSetAccelerationStructureKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t accelerationStructureCount;
 ///     const VkAccelerationStructureKHR* pAccelerationStructures;

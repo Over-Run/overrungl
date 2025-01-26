@@ -46,7 +46,7 @@ public final class GLAPPLETextureRange {
     }
 
     /// ```
-    /// void glTextureRangeAPPLE(GLenum target, GLsizei length, const void* pointer);
+    /// void glTextureRangeAPPLE((unsigned int) GLenum target, (int) GLsizei length, const void* pointer);
     /// ```
     public void TextureRangeAPPLE(int target, int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
@@ -55,7 +55,7 @@ public final class GLAPPLETextureRange {
     }
 
     /// ```
-    /// void glGetTexParameterPointervAPPLE(GLenum target, GLenum pname, void** params);
+    /// void glGetTexParameterPointervAPPLE((unsigned int) GLenum target, (unsigned int) GLenum pname, void** params);
     /// ```
     public void GetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");

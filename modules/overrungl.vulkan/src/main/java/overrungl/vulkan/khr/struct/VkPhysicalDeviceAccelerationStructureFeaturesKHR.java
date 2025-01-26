@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAccelerationStructureFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 accelerationStructure;
-///     VkBool32 accelerationStructureCaptureReplay;
-///     VkBool32 accelerationStructureIndirectBuild;
-///     VkBool32 accelerationStructureHostCommands;
-///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
+///     (uint32_t) VkBool32 accelerationStructure;
+///     (uint32_t) VkBool32 accelerationStructureCaptureReplay;
+///     (uint32_t) VkBool32 accelerationStructureIndirectBuild;
+///     (uint32_t) VkBool32 accelerationStructureHostCommands;
+///     (uint32_t) VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends GroupType {

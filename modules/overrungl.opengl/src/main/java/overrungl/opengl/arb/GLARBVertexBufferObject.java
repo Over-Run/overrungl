@@ -98,7 +98,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glBindBufferARB(GLenum target, GLuint buffer);
+    /// void glBindBufferARB((unsigned int) GLenum target, (unsigned int) GLuint buffer);
     /// ```
     public void BindBufferARB(int target, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferARB)) throw new SymbolNotFoundError("Symbol not found: glBindBufferARB");
@@ -107,7 +107,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glDeleteBuffersARB(GLsizei n, const GLuint* buffers);
+    /// void glDeleteBuffersARB((int) GLsizei n, const GLuint* buffers);
     /// ```
     public void DeleteBuffersARB(int n, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteBuffersARB");
@@ -116,7 +116,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glGenBuffersARB(GLsizei n, GLuint* buffers);
+    /// void glGenBuffersARB((int) GLsizei n, GLuint* buffers);
     /// ```
     public void GenBuffersARB(int n, MemorySegment buffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glGenBuffersARB");
@@ -125,7 +125,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// GLboolean glIsBufferARB(GLuint buffer);
+    /// GLboolean glIsBufferARB((unsigned int) GLuint buffer);
     /// ```
     public boolean IsBufferARB(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsBufferARB)) throw new SymbolNotFoundError("Symbol not found: glIsBufferARB");
@@ -134,7 +134,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glBufferDataARB(GLenum target, GLsizeiptrARB size, const void* data, GLenum usage);
+    /// void glBufferDataARB((unsigned int) GLenum target, ((signed long long) khronos_ssize_t) GLsizeiptrARB size, const void* data, (unsigned int) GLenum usage);
     /// ```
     public void BufferDataARB(int target, long size, MemorySegment data, int usage) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferDataARB)) throw new SymbolNotFoundError("Symbol not found: glBufferDataARB");
@@ -143,7 +143,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void* data);
+    /// void glBufferSubDataARB((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptrARB offset, ((signed long long) khronos_ssize_t) GLsizeiptrARB size, const void* data);
     /// ```
     public void BufferSubDataARB(int target, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferSubDataARB)) throw new SymbolNotFoundError("Symbol not found: glBufferSubDataARB");
@@ -152,7 +152,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glGetBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, void* data);
+    /// void glGetBufferSubDataARB((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptrARB offset, ((signed long long) khronos_ssize_t) GLsizeiptrARB size, void* data);
     /// ```
     public void GetBufferSubDataARB(int target, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferSubDataARB)) throw new SymbolNotFoundError("Symbol not found: glGetBufferSubDataARB");
@@ -161,7 +161,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void* glMapBufferARB(GLenum target, GLenum access);
+    /// void* glMapBufferARB((unsigned int) GLenum target, (unsigned int) GLenum access);
     /// ```
     public MemorySegment MapBufferARB(int target, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMapBufferARB)) throw new SymbolNotFoundError("Symbol not found: glMapBufferARB");
@@ -170,7 +170,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// GLboolean glUnmapBufferARB(GLenum target);
+    /// GLboolean glUnmapBufferARB((unsigned int) GLenum target);
     /// ```
     public boolean UnmapBufferARB(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUnmapBufferARB)) throw new SymbolNotFoundError("Symbol not found: glUnmapBufferARB");
@@ -179,7 +179,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glGetBufferParameterivARB(GLenum target, GLenum pname, GLint* params);
+    /// void glGetBufferParameterivARB((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetBufferParameterivARB(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameterivARB)) throw new SymbolNotFoundError("Symbol not found: glGetBufferParameterivARB");
@@ -188,7 +188,7 @@ public final class GLARBVertexBufferObject {
     }
 
     /// ```
-    /// void glGetBufferPointervARB(GLenum target, GLenum pname, void** params);
+    /// void glGetBufferPointervARB((unsigned int) GLenum target, (unsigned int) GLenum pname, void** params);
     /// ```
     public void GetBufferPointervARB(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferPointervARB)) throw new SymbolNotFoundError("Symbol not found: glGetBufferPointervARB");

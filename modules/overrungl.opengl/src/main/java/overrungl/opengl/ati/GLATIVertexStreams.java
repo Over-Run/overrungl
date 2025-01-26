@@ -179,7 +179,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1sATI(GLenum stream, GLshort x);
+    /// void glVertexStream1sATI((unsigned int) GLenum stream, ((signed short) khronos_int16_t) GLshort x);
     /// ```
     public void VertexStream1sATI(int stream, short x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1sATI");
@@ -188,7 +188,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1svATI(GLenum stream, const GLshort* coords);
+    /// void glVertexStream1svATI((unsigned int) GLenum stream, const GLshort* coords);
     /// ```
     public void VertexStream1svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1svATI");
@@ -197,7 +197,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1iATI(GLenum stream, GLint x);
+    /// void glVertexStream1iATI((unsigned int) GLenum stream, (int) GLint x);
     /// ```
     public void VertexStream1iATI(int stream, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1iATI");
@@ -206,7 +206,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1ivATI(GLenum stream, const GLint* coords);
+    /// void glVertexStream1ivATI((unsigned int) GLenum stream, const GLint* coords);
     /// ```
     public void VertexStream1ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1ivATI");
@@ -215,7 +215,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1fATI(GLenum stream, GLfloat x);
+    /// void glVertexStream1fATI((unsigned int) GLenum stream, ((float) khronos_float_t) GLfloat x);
     /// ```
     public void VertexStream1fATI(int stream, float x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fATI");
@@ -224,7 +224,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1fvATI(GLenum stream, const GLfloat* coords);
+    /// void glVertexStream1fvATI((unsigned int) GLenum stream, const GLfloat* coords);
     /// ```
     public void VertexStream1fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1fvATI");
@@ -233,7 +233,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1dATI(GLenum stream, GLdouble x);
+    /// void glVertexStream1dATI((unsigned int) GLenum stream, (double) GLdouble x);
     /// ```
     public void VertexStream1dATI(int stream, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dATI");
@@ -242,7 +242,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream1dvATI(GLenum stream, const GLdouble* coords);
+    /// void glVertexStream1dvATI((unsigned int) GLenum stream, const GLdouble* coords);
     /// ```
     public void VertexStream1dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream1dvATI");
@@ -251,7 +251,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2sATI(GLenum stream, GLshort x, GLshort y);
+    /// void glVertexStream2sATI((unsigned int) GLenum stream, ((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y);
     /// ```
     public void VertexStream2sATI(int stream, short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2sATI");
@@ -260,7 +260,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2svATI(GLenum stream, const GLshort* coords);
+    /// void glVertexStream2svATI((unsigned int) GLenum stream, const GLshort* coords);
     /// ```
     public void VertexStream2svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2svATI");
@@ -269,7 +269,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2iATI(GLenum stream, GLint x, GLint y);
+    /// void glVertexStream2iATI((unsigned int) GLenum stream, (int) GLint x, (int) GLint y);
     /// ```
     public void VertexStream2iATI(int stream, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2iATI");
@@ -278,7 +278,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2ivATI(GLenum stream, const GLint* coords);
+    /// void glVertexStream2ivATI((unsigned int) GLenum stream, const GLint* coords);
     /// ```
     public void VertexStream2ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2ivATI");
@@ -287,7 +287,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2fATI(GLenum stream, GLfloat x, GLfloat y);
+    /// void glVertexStream2fATI((unsigned int) GLenum stream, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y);
     /// ```
     public void VertexStream2fATI(int stream, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fATI");
@@ -296,7 +296,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2fvATI(GLenum stream, const GLfloat* coords);
+    /// void glVertexStream2fvATI((unsigned int) GLenum stream, const GLfloat* coords);
     /// ```
     public void VertexStream2fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2fvATI");
@@ -305,7 +305,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2dATI(GLenum stream, GLdouble x, GLdouble y);
+    /// void glVertexStream2dATI((unsigned int) GLenum stream, (double) GLdouble x, (double) GLdouble y);
     /// ```
     public void VertexStream2dATI(int stream, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dATI");
@@ -314,7 +314,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream2dvATI(GLenum stream, const GLdouble* coords);
+    /// void glVertexStream2dvATI((unsigned int) GLenum stream, const GLdouble* coords);
     /// ```
     public void VertexStream2dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream2dvATI");
@@ -323,7 +323,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z);
+    /// void glVertexStream3sATI((unsigned int) GLenum stream, ((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y, ((signed short) khronos_int16_t) GLshort z);
     /// ```
     public void VertexStream3sATI(int stream, short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3sATI");
@@ -332,7 +332,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3svATI(GLenum stream, const GLshort* coords);
+    /// void glVertexStream3svATI((unsigned int) GLenum stream, const GLshort* coords);
     /// ```
     public void VertexStream3svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3svATI");
@@ -341,7 +341,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3iATI(GLenum stream, GLint x, GLint y, GLint z);
+    /// void glVertexStream3iATI((unsigned int) GLenum stream, (int) GLint x, (int) GLint y, (int) GLint z);
     /// ```
     public void VertexStream3iATI(int stream, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3iATI");
@@ -350,7 +350,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3ivATI(GLenum stream, const GLint* coords);
+    /// void glVertexStream3ivATI((unsigned int) GLenum stream, const GLint* coords);
     /// ```
     public void VertexStream3ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3ivATI");
@@ -359,7 +359,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+    /// void glVertexStream3fATI((unsigned int) GLenum stream, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void VertexStream3fATI(int stream, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fATI");
@@ -368,7 +368,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3fvATI(GLenum stream, const GLfloat* coords);
+    /// void glVertexStream3fvATI((unsigned int) GLenum stream, const GLfloat* coords);
     /// ```
     public void VertexStream3fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3fvATI");
@@ -377,7 +377,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+    /// void glVertexStream3dATI((unsigned int) GLenum stream, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void VertexStream3dATI(int stream, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dATI");
@@ -386,7 +386,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream3dvATI(GLenum stream, const GLdouble* coords);
+    /// void glVertexStream3dvATI((unsigned int) GLenum stream, const GLdouble* coords);
     /// ```
     public void VertexStream3dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream3dvATI");
@@ -395,7 +395,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4sATI(GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
+    /// void glVertexStream4sATI((unsigned int) GLenum stream, ((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y, ((signed short) khronos_int16_t) GLshort z, ((signed short) khronos_int16_t) GLshort w);
     /// ```
     public void VertexStream4sATI(int stream, short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4sATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4sATI");
@@ -404,7 +404,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4svATI(GLenum stream, const GLshort* coords);
+    /// void glVertexStream4svATI((unsigned int) GLenum stream, const GLshort* coords);
     /// ```
     public void VertexStream4svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4svATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4svATI");
@@ -413,7 +413,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4iATI(GLenum stream, GLint x, GLint y, GLint z, GLint w);
+    /// void glVertexStream4iATI((unsigned int) GLenum stream, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
     public void VertexStream4iATI(int stream, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4iATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4iATI");
@@ -422,7 +422,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4ivATI(GLenum stream, const GLint* coords);
+    /// void glVertexStream4ivATI((unsigned int) GLenum stream, const GLint* coords);
     /// ```
     public void VertexStream4ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4ivATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4ivATI");
@@ -431,7 +431,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+    /// void glVertexStream4fATI((unsigned int) GLenum stream, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat w);
     /// ```
     public void VertexStream4fATI(int stream, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fATI");
@@ -440,7 +440,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4fvATI(GLenum stream, const GLfloat* coords);
+    /// void glVertexStream4fvATI((unsigned int) GLenum stream, const GLfloat* coords);
     /// ```
     public void VertexStream4fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4fvATI");
@@ -449,7 +449,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+    /// void glVertexStream4dATI((unsigned int) GLenum stream, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
     public void VertexStream4dATI(int stream, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dATI");
@@ -458,7 +458,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexStream4dvATI(GLenum stream, const GLdouble* coords);
+    /// void glVertexStream4dvATI((unsigned int) GLenum stream, const GLdouble* coords);
     /// ```
     public void VertexStream4dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dvATI)) throw new SymbolNotFoundError("Symbol not found: glVertexStream4dvATI");
@@ -467,7 +467,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3bATI(GLenum stream, GLbyte nx, GLbyte ny, GLbyte nz);
+    /// void glNormalStream3bATI((unsigned int) GLenum stream, ((signed char) khronos_int8_t) GLbyte nx, ((signed char) khronos_int8_t) GLbyte ny, ((signed char) khronos_int8_t) GLbyte nz);
     /// ```
     public void NormalStream3bATI(int stream, byte nx, byte ny, byte nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bATI");
@@ -476,7 +476,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3bvATI(GLenum stream, const GLbyte* coords);
+    /// void glNormalStream3bvATI((unsigned int) GLenum stream, const GLbyte* coords);
     /// ```
     public void NormalStream3bvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3bvATI");
@@ -485,7 +485,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3sATI(GLenum stream, GLshort nx, GLshort ny, GLshort nz);
+    /// void glNormalStream3sATI((unsigned int) GLenum stream, ((signed short) khronos_int16_t) GLshort nx, ((signed short) khronos_int16_t) GLshort ny, ((signed short) khronos_int16_t) GLshort nz);
     /// ```
     public void NormalStream3sATI(int stream, short nx, short ny, short nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3sATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3sATI");
@@ -494,7 +494,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3svATI(GLenum stream, const GLshort* coords);
+    /// void glNormalStream3svATI((unsigned int) GLenum stream, const GLshort* coords);
     /// ```
     public void NormalStream3svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3svATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3svATI");
@@ -503,7 +503,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3iATI(GLenum stream, GLint nx, GLint ny, GLint nz);
+    /// void glNormalStream3iATI((unsigned int) GLenum stream, (int) GLint nx, (int) GLint ny, (int) GLint nz);
     /// ```
     public void NormalStream3iATI(int stream, int nx, int ny, int nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3iATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3iATI");
@@ -512,7 +512,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3ivATI(GLenum stream, const GLint* coords);
+    /// void glNormalStream3ivATI((unsigned int) GLenum stream, const GLint* coords);
     /// ```
     public void NormalStream3ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3ivATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3ivATI");
@@ -521,7 +521,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3fATI(GLenum stream, GLfloat nx, GLfloat ny, GLfloat nz);
+    /// void glNormalStream3fATI((unsigned int) GLenum stream, ((float) khronos_float_t) GLfloat nx, ((float) khronos_float_t) GLfloat ny, ((float) khronos_float_t) GLfloat nz);
     /// ```
     public void NormalStream3fATI(int stream, float nx, float ny, float nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fATI");
@@ -530,7 +530,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3fvATI(GLenum stream, const GLfloat* coords);
+    /// void glNormalStream3fvATI((unsigned int) GLenum stream, const GLfloat* coords);
     /// ```
     public void NormalStream3fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3fvATI");
@@ -539,7 +539,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3dATI(GLenum stream, GLdouble nx, GLdouble ny, GLdouble nz);
+    /// void glNormalStream3dATI((unsigned int) GLenum stream, (double) GLdouble nx, (double) GLdouble ny, (double) GLdouble nz);
     /// ```
     public void NormalStream3dATI(int stream, double nx, double ny, double nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dATI");
@@ -548,7 +548,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glNormalStream3dvATI(GLenum stream, const GLdouble* coords);
+    /// void glNormalStream3dvATI((unsigned int) GLenum stream, const GLdouble* coords);
     /// ```
     public void NormalStream3dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dvATI)) throw new SymbolNotFoundError("Symbol not found: glNormalStream3dvATI");
@@ -557,7 +557,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glClientActiveVertexStreamATI(GLenum stream);
+    /// void glClientActiveVertexStreamATI((unsigned int) GLenum stream);
     /// ```
     public void ClientActiveVertexStreamATI(int stream) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientActiveVertexStreamATI)) throw new SymbolNotFoundError("Symbol not found: glClientActiveVertexStreamATI");
@@ -566,7 +566,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexBlendEnviATI(GLenum pname, GLint param);
+    /// void glVertexBlendEnviATI((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void VertexBlendEnviATI(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnviATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnviATI");
@@ -575,7 +575,7 @@ public final class GLATIVertexStreams {
     }
 
     /// ```
-    /// void glVertexBlendEnvfATI(GLenum pname, GLfloat param);
+    /// void glVertexBlendEnvfATI((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void VertexBlendEnvfATI(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnvfATI)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendEnvfATI");

@@ -27,6 +27,6 @@ public final class VKNVDisplayStereo {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV = 1000551000;
     public static final int VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV = 1000551001;
 
-    private VKNVDisplayStereo() { }
+    private VKNVDisplayStereo() {}
 
 }

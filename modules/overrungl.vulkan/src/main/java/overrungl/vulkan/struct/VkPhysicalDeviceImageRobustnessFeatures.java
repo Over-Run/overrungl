@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageRobustnessFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 robustImageAccess;
+///     (uint32_t) VkBool32 robustImageAccess;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageRobustnessFeatures extends GroupType {

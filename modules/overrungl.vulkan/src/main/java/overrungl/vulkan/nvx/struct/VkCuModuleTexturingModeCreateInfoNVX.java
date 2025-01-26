@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCuModuleTexturingModeCreateInfoNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 use64bitTexturing;
+///     (uint32_t) VkBool32 use64bitTexturing;
 /// };
 /// ```
 public sealed class VkCuModuleTexturingModeCreateInfoNVX extends GroupType {

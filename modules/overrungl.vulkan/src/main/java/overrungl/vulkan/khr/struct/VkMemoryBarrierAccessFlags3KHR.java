@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryBarrierAccessFlags3KHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccessFlags3KHR srcAccessMask3;
-///     VkAccessFlags3KHR dstAccessMask3;
+///     ((uint64_t) VkFlags64) VkAccessFlags3KHR srcAccessMask3;
+///     ((uint64_t) VkFlags64) VkAccessFlags3KHR dstAccessMask3;
 /// };
 /// ```
 public sealed class VkMemoryBarrierAccessFlags3KHR extends GroupType {

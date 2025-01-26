@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDXShaderEnqueue {
+public final class VKAMDXShaderEnqueue {
     public static final int VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 2;
     public static final String VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME = "VK_AMDX_shader_enqueue";
     public static final int VK_SHADER_INDEX_UNUSED_AMDX = (~0);
@@ -34,7 +34,6 @@ public class VKAMDXShaderEnqueue {
     public static final int VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX = 1000134000;
     public static final long VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = 0x02000000L;
     public static final long VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX = 0x100000000L;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateExecutionGraphPipelinesAMDX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetExecutionGraphPipelineScratchSizeAMDX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
@@ -43,89 +42,72 @@ public class VKAMDXShaderEnqueue {
         public static final MethodHandle MH_vkCmdDispatchGraphAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdDispatchGraphIndirectAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdDispatchGraphIndirectCountAMDX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public final MemorySegment PFN_vkCreateExecutionGraphPipelinesAMDX;
-        public final MemorySegment PFN_vkGetExecutionGraphPipelineScratchSizeAMDX;
-        public final MemorySegment PFN_vkGetExecutionGraphPipelineNodeIndexAMDX;
-        public final MemorySegment PFN_vkCmdInitializeGraphScratchMemoryAMDX;
-        public final MemorySegment PFN_vkCmdDispatchGraphAMDX;
-        public final MemorySegment PFN_vkCmdDispatchGraphIndirectAMDX;
-        public final MemorySegment PFN_vkCmdDispatchGraphIndirectCountAMDX;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCreateExecutionGraphPipelinesAMDX = func.invoke(device, "vkCreateExecutionGraphPipelinesAMDX");
-            PFN_vkGetExecutionGraphPipelineScratchSizeAMDX = func.invoke(device, "vkGetExecutionGraphPipelineScratchSizeAMDX");
-            PFN_vkGetExecutionGraphPipelineNodeIndexAMDX = func.invoke(device, "vkGetExecutionGraphPipelineNodeIndexAMDX");
-            PFN_vkCmdInitializeGraphScratchMemoryAMDX = func.invoke(device, "vkCmdInitializeGraphScratchMemoryAMDX");
-            PFN_vkCmdDispatchGraphAMDX = func.invoke(device, "vkCmdDispatchGraphAMDX");
-            PFN_vkCmdDispatchGraphIndirectAMDX = func.invoke(device, "vkCmdDispatchGraphIndirectAMDX");
-            PFN_vkCmdDispatchGraphIndirectCountAMDX = func.invoke(device, "vkCmdDispatchGraphIndirectCountAMDX");
-        }
+        private Handles() {}
     }
 
-    public VKAMDXShaderEnqueue(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKAMDXShaderEnqueue() {}
+
+    /// ```
+    /// (int) VkResult vkCreateExecutionGraphPipelinesAMDX((struct VkDevice*) VkDevice device, (uint64_t) VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+    /// ```
+    public static int vkCreateExecutionGraphPipelinesAMDX(VkDevice device, long pipelineCache, int createInfoCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pPipelines) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateExecutionGraphPipelinesAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCreateExecutionGraphPipelinesAMDX");
+        try { return (int) Handles.MH_vkCreateExecutionGraphPipelinesAMDX.invokeExact(device.capabilities().PFN_vkCreateExecutionGraphPipelinesAMDX, device.segment(), pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateExecutionGraphPipelinesAMDX", e); }
     }
 
     /// ```
-    /// VkResult vkCreateExecutionGraphPipelinesAMDX(VkDevice device, VkPipelineCache pipelineCache, uint32_t createInfoCount, const VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines);
+    /// (int) VkResult vkGetExecutionGraphPipelineScratchSizeAMDX((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo);
     /// ```
-    public int CreateExecutionGraphPipelinesAMDX(MemorySegment device, long pipelineCache, int createInfoCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pPipelines) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateExecutionGraphPipelinesAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCreateExecutionGraphPipelinesAMDX");
-        try { return (int) Handles.MH_vkCreateExecutionGraphPipelinesAMDX.invokeExact(handles.PFN_vkCreateExecutionGraphPipelinesAMDX, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateExecutionGraphPipelinesAMDX", e); }
+    public static int vkGetExecutionGraphPipelineScratchSizeAMDX(VkDevice device, long executionGraph, MemorySegment pSizeInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetExecutionGraphPipelineScratchSizeAMDX)) throw new SymbolNotFoundError("Symbol not found: vkGetExecutionGraphPipelineScratchSizeAMDX");
+        try { return (int) Handles.MH_vkGetExecutionGraphPipelineScratchSizeAMDX.invokeExact(device.capabilities().PFN_vkGetExecutionGraphPipelineScratchSizeAMDX, device.segment(), executionGraph, pSizeInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetExecutionGraphPipelineScratchSizeAMDX", e); }
     }
 
     /// ```
-    /// VkResult vkGetExecutionGraphPipelineScratchSizeAMDX(VkDevice device, VkPipeline executionGraph, VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo);
+    /// (int) VkResult vkGetExecutionGraphPipelineNodeIndexAMDX((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline executionGraph, const VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint32_t* pNodeIndex);
     /// ```
-    public int GetExecutionGraphPipelineScratchSizeAMDX(MemorySegment device, long executionGraph, MemorySegment pSizeInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX)) throw new SymbolNotFoundError("Symbol not found: vkGetExecutionGraphPipelineScratchSizeAMDX");
-        try { return (int) Handles.MH_vkGetExecutionGraphPipelineScratchSizeAMDX.invokeExact(handles.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX, device, executionGraph, pSizeInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in GetExecutionGraphPipelineScratchSizeAMDX", e); }
+    public static int vkGetExecutionGraphPipelineNodeIndexAMDX(VkDevice device, long executionGraph, MemorySegment pNodeInfo, MemorySegment pNodeIndex) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetExecutionGraphPipelineNodeIndexAMDX)) throw new SymbolNotFoundError("Symbol not found: vkGetExecutionGraphPipelineNodeIndexAMDX");
+        try { return (int) Handles.MH_vkGetExecutionGraphPipelineNodeIndexAMDX.invokeExact(device.capabilities().PFN_vkGetExecutionGraphPipelineNodeIndexAMDX, device.segment(), executionGraph, pNodeInfo, pNodeIndex); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetExecutionGraphPipelineNodeIndexAMDX", e); }
     }
 
     /// ```
-    /// VkResult vkGetExecutionGraphPipelineNodeIndexAMDX(VkDevice device, VkPipeline executionGraph, const VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint32_t* pNodeIndex);
+    /// void vkCmdInitializeGraphScratchMemoryAMDX((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkPipeline executionGraph, (uint64_t) VkDeviceAddress scratch, (uint64_t) VkDeviceSize scratchSize);
     /// ```
-    public int GetExecutionGraphPipelineNodeIndexAMDX(MemorySegment device, long executionGraph, MemorySegment pNodeInfo, MemorySegment pNodeIndex) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX)) throw new SymbolNotFoundError("Symbol not found: vkGetExecutionGraphPipelineNodeIndexAMDX");
-        try { return (int) Handles.MH_vkGetExecutionGraphPipelineNodeIndexAMDX.invokeExact(handles.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX, device, executionGraph, pNodeInfo, pNodeIndex); }
-        catch (Throwable e) { throw new RuntimeException("error in GetExecutionGraphPipelineNodeIndexAMDX", e); }
+    public static void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, long executionGraph, long scratch, long scratchSize) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdInitializeGraphScratchMemoryAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdInitializeGraphScratchMemoryAMDX");
+        try { Handles.MH_vkCmdInitializeGraphScratchMemoryAMDX.invokeExact(commandBuffer.capabilities().PFN_vkCmdInitializeGraphScratchMemoryAMDX, commandBuffer.segment(), executionGraph, scratch, scratchSize); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdInitializeGraphScratchMemoryAMDX", e); }
     }
 
     /// ```
-    /// void vkCmdInitializeGraphScratchMemoryAMDX(VkCommandBuffer commandBuffer, VkPipeline executionGraph, VkDeviceAddress scratch, VkDeviceSize scratchSize);
+    /// void vkCmdDispatchGraphAMDX((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress scratch, (uint64_t) VkDeviceSize scratchSize, const VkDispatchGraphCountInfoAMDX* pCountInfo);
     /// ```
-    public void CmdInitializeGraphScratchMemoryAMDX(MemorySegment commandBuffer, long executionGraph, long scratch, long scratchSize) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdInitializeGraphScratchMemoryAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdInitializeGraphScratchMemoryAMDX");
-        try { Handles.MH_vkCmdInitializeGraphScratchMemoryAMDX.invokeExact(handles.PFN_vkCmdInitializeGraphScratchMemoryAMDX, commandBuffer, executionGraph, scratch, scratchSize); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdInitializeGraphScratchMemoryAMDX", e); }
+    public static void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, long scratch, long scratchSize, MemorySegment pCountInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchGraphAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphAMDX");
+        try { Handles.MH_vkCmdDispatchGraphAMDX.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchGraphAMDX, commandBuffer.segment(), scratch, scratchSize, pCountInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchGraphAMDX", e); }
     }
 
     /// ```
-    /// void vkCmdDispatchGraphAMDX(VkCommandBuffer commandBuffer, VkDeviceAddress scratch, VkDeviceSize scratchSize, const VkDispatchGraphCountInfoAMDX* pCountInfo);
+    /// void vkCmdDispatchGraphIndirectAMDX((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress scratch, (uint64_t) VkDeviceSize scratchSize, const VkDispatchGraphCountInfoAMDX* pCountInfo);
     /// ```
-    public void CmdDispatchGraphAMDX(MemorySegment commandBuffer, long scratch, long scratchSize, MemorySegment pCountInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDispatchGraphAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphAMDX");
-        try { Handles.MH_vkCmdDispatchGraphAMDX.invokeExact(handles.PFN_vkCmdDispatchGraphAMDX, commandBuffer, scratch, scratchSize, pCountInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdDispatchGraphAMDX", e); }
+    public static void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, long scratch, long scratchSize, MemorySegment pCountInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchGraphIndirectAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphIndirectAMDX");
+        try { Handles.MH_vkCmdDispatchGraphIndirectAMDX.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchGraphIndirectAMDX, commandBuffer.segment(), scratch, scratchSize, pCountInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchGraphIndirectAMDX", e); }
     }
 
     /// ```
-    /// void vkCmdDispatchGraphIndirectAMDX(VkCommandBuffer commandBuffer, VkDeviceAddress scratch, VkDeviceSize scratchSize, const VkDispatchGraphCountInfoAMDX* pCountInfo);
+    /// void vkCmdDispatchGraphIndirectCountAMDX((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress scratch, (uint64_t) VkDeviceSize scratchSize, (uint64_t) VkDeviceAddress countInfo);
     /// ```
-    public void CmdDispatchGraphIndirectAMDX(MemorySegment commandBuffer, long scratch, long scratchSize, MemorySegment pCountInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDispatchGraphIndirectAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphIndirectAMDX");
-        try { Handles.MH_vkCmdDispatchGraphIndirectAMDX.invokeExact(handles.PFN_vkCmdDispatchGraphIndirectAMDX, commandBuffer, scratch, scratchSize, pCountInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdDispatchGraphIndirectAMDX", e); }
-    }
-
-    /// ```
-    /// void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, VkDeviceAddress scratch, VkDeviceSize scratchSize, VkDeviceAddress countInfo);
-    /// ```
-    public void CmdDispatchGraphIndirectCountAMDX(MemorySegment commandBuffer, long scratch, long scratchSize, long countInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdDispatchGraphIndirectCountAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphIndirectCountAMDX");
-        try { Handles.MH_vkCmdDispatchGraphIndirectCountAMDX.invokeExact(handles.PFN_vkCmdDispatchGraphIndirectCountAMDX, commandBuffer, scratch, scratchSize, countInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdDispatchGraphIndirectCountAMDX", e); }
+    public static void vkCmdDispatchGraphIndirectCountAMDX(VkCommandBuffer commandBuffer, long scratch, long scratchSize, long countInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDispatchGraphIndirectCountAMDX)) throw new SymbolNotFoundError("Symbol not found: vkCmdDispatchGraphIndirectCountAMDX");
+        try { Handles.MH_vkCmdDispatchGraphIndirectCountAMDX.invokeExact(commandBuffer.capabilities().PFN_vkCmdDispatchGraphIndirectCountAMDX, commandBuffer.segment(), scratch, scratchSize, countInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdDispatchGraphIndirectCountAMDX", e); }
     }
 
 }

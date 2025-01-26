@@ -37,7 +37,7 @@ public final class GL3DFXTbuffer {
     }
 
     /// ```
-    /// void glTbufferMask3DFX(GLuint mask);
+    /// void glTbufferMask3DFX((unsigned int) GLuint mask);
     /// ```
     public void TbufferMask3DFX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTbufferMask3DFX)) throw new SymbolNotFoundError("Symbol not found: glTbufferMask3DFX");

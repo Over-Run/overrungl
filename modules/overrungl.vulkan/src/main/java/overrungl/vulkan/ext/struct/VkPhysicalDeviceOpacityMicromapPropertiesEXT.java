@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceOpacityMicromapPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxOpacity2StateSubdivisionLevel;
 ///     uint32_t maxOpacity4StateSubdivisionLevel;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint64_t shaderCoreMask;
 ///     uint32_t shaderCoreCount;

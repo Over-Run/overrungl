@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDirectDriverLoadingInfoLUNARG {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDirectDriverLoadingFlagsLUNARG flags;
-///     PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
+///     ((uint32_t) VkFlags) VkDirectDriverLoadingFlagsLUNARG flags;
+///     ((void (*VkVoidFunction)()) PFN_vkVoidFunction (*VkGetInstanceProcAddrLUNARG)((struct VkInstance*) VkInstance instance, const char* pName)) PFN_vkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr;
 /// };
 /// ```
 public sealed class VkDirectDriverLoadingInfoLUNARG extends GroupType {

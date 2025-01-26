@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureTypeNV type;
-///     VkBuildAccelerationStructureFlagsNV flags;
+///     ((int) VkAccelerationStructureTypeKHR) VkAccelerationStructureTypeNV type;
+///     (((uint32_t) VkFlags) VkBuildAccelerationStructureFlagsKHR) VkBuildAccelerationStructureFlagsNV flags;
 ///     uint32_t instanceCount;
 ///     uint32_t geometryCount;
 ///     const VkGeometryNV* pGeometries;

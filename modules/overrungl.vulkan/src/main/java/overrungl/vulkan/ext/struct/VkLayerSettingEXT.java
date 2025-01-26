@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkLayerSettingEXT {
 ///     const char* pLayerName;
 ///     const char* pSettingName;
-///     VkLayerSettingTypeEXT type;
+///     (int) VkLayerSettingTypeEXT type;
 ///     uint32_t valueCount;
 ///     const void* pValues;
 /// };

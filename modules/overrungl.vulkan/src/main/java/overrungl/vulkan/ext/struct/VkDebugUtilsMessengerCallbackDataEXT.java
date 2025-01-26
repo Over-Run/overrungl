@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDebugUtilsMessengerCallbackDataEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkDebugUtilsMessengerCallbackDataFlagsEXT flags;
 ///     const char* pMessageIdName;
 ///     int32_t messageIdNumber;
 ///     const char* pMessage;

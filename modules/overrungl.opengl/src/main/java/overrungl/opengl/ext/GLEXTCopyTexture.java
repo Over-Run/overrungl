@@ -49,7 +49,7 @@ public final class GLEXTCopyTexture {
     }
 
     /// ```
-    /// void glCopyTexImage1DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+    /// void glCopyTexImage1DEXT((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
     public void CopyTexImage1DEXT(int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage1DEXT");
@@ -58,7 +58,7 @@ public final class GLEXTCopyTexture {
     }
 
     /// ```
-    /// void glCopyTexImage2DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+    /// void glCopyTexImage2DEXT((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
     public void CopyTexImage2DEXT(int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage2DEXT");
@@ -67,7 +67,7 @@ public final class GLEXTCopyTexture {
     }
 
     /// ```
-    /// void glCopyTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+    /// void glCopyTexSubImage1DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
     public void CopyTexSubImage1DEXT(int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage1DEXT");
@@ -76,7 +76,7 @@ public final class GLEXTCopyTexture {
     }
 
     /// ```
-    /// void glCopyTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+    /// void glCopyTexSubImage2DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void CopyTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage2DEXT");
@@ -85,7 +85,7 @@ public final class GLEXTCopyTexture {
     }
 
     /// ```
-    /// void glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+    /// void glCopyTexSubImage3DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void CopyTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage3DEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3DEXT");

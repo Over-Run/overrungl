@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseImageMemoryRequirements {
-///     VkSparseImageFormatProperties formatProperties;
+///     (struct VkSparseImageFormatProperties) VkSparseImageFormatProperties formatProperties;
 ///     uint32_t imageMipTailFirstLod;
-///     VkDeviceSize imageMipTailSize;
-///     VkDeviceSize imageMipTailOffset;
-///     VkDeviceSize imageMipTailStride;
+///     (uint64_t) VkDeviceSize imageMipTailSize;
+///     (uint64_t) VkDeviceSize imageMipTailOffset;
+///     (uint64_t) VkDeviceSize imageMipTailStride;
 /// };
 /// ```
 public sealed class VkSparseImageMemoryRequirements extends GroupType {

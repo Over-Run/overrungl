@@ -74,7 +74,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glShaderBinary(GLsizei count, const GLuint* shaders, GLenum binaryFormat, const void* binary, GLsizei length);
+    /// void glShaderBinary((int) GLsizei count, const GLuint* shaders, (unsigned int) GLenum binaryFormat, const void* binary, (int) GLsizei length);
     /// ```
     public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new SymbolNotFoundError("Symbol not found: glShaderBinary");
@@ -83,7 +83,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint* range, GLint* precision);
+    /// void glGetShaderPrecisionFormat((unsigned int) GLenum shadertype, (unsigned int) GLenum precisiontype, GLint* range, GLint* precision);
     /// ```
     public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new SymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
@@ -92,7 +92,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glDepthRangef(GLfloat n, GLfloat f);
+    /// void glDepthRangef(((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
     public void DepthRangef(float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangef)) throw new SymbolNotFoundError("Symbol not found: glDepthRangef");
@@ -101,7 +101,7 @@ public final class GLARBES2Compatibility {
     }
 
     /// ```
-    /// void glClearDepthf(GLfloat d);
+    /// void glClearDepthf(((float) khronos_float_t) GLfloat d);
     /// ```
     public void ClearDepthf(float d) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthf)) throw new SymbolNotFoundError("Symbol not found: glClearDepthf");

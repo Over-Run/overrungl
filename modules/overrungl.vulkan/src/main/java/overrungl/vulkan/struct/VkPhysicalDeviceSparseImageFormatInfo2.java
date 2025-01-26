@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSparseImageFormatInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFormat format;
-///     VkImageType type;
-///     VkSampleCountFlagBits samples;
-///     VkImageUsageFlags usage;
-///     VkImageTiling tiling;
+///     (int) VkFormat format;
+///     (int) VkImageType type;
+///     (int) VkSampleCountFlagBits samples;
+///     ((uint32_t) VkFlags) VkImageUsageFlags usage;
+///     (int) VkImageTiling tiling;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSparseImageFormatInfo2 extends GroupType {

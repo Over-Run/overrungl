@@ -39,7 +39,7 @@ public final class GLNVFragmentCoverageToColor {
     }
 
     /// ```
-    /// void glFragmentCoverageColorNV(GLuint color);
+    /// void glFragmentCoverageColorNV((unsigned int) GLuint color);
     /// ```
     public void FragmentCoverageColorNV(int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");

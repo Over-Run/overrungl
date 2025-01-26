@@ -26,6 +26,6 @@ public final class VKKHRImagelessFramebuffer {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR = 1000108003;
     public static final int VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR = 0x00000001;
 
-    private VKKHRImagelessFramebuffer() { }
+    private VKKHRImagelessFramebuffer() {}
 
 }

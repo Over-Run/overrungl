@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferCopy {
-///     VkDeviceSize srcOffset;
-///     VkDeviceSize dstOffset;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceSize srcOffset;
+///     (uint64_t) VkDeviceSize dstOffset;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkBufferCopy extends GroupType {

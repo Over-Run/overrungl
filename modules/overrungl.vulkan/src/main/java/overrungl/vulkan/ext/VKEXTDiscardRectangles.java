@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDiscardRectangles {
+public final class VKEXTDiscardRectangles {
     public static final int VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT = 0;
     public static final int VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT = 1;
     public static final int VK_EXT_DISCARD_RECTANGLES_SPEC_VERSION = 2;
@@ -31,50 +31,40 @@ public class VKEXTDiscardRectangles {
     public static final int VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT = 1000099000;
     public static final int VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT = 1000099001;
     public static final int VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT = 1000099002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetDiscardRectangleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdSetDiscardRectangleEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetDiscardRectangleModeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public final MemorySegment PFN_vkCmdSetDiscardRectangleEXT;
-        public final MemorySegment PFN_vkCmdSetDiscardRectangleEnableEXT;
-        public final MemorySegment PFN_vkCmdSetDiscardRectangleModeEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdSetDiscardRectangleEXT = func.invoke(device, "vkCmdSetDiscardRectangleEXT");
-            PFN_vkCmdSetDiscardRectangleEnableEXT = func.invoke(device, "vkCmdSetDiscardRectangleEnableEXT");
-            PFN_vkCmdSetDiscardRectangleModeEXT = func.invoke(device, "vkCmdSetDiscardRectangleModeEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTDiscardRectangles(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTDiscardRectangles() {}
 
     /// ```
-    /// void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, uint32_t firstDiscardRectangle, uint32_t discardRectangleCount, const VkRect2D* pDiscardRectangles);
+    /// void vkCmdSetDiscardRectangleEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstDiscardRectangle, uint32_t discardRectangleCount, const VkRect2D* pDiscardRectangles);
     /// ```
-    public void CmdSetDiscardRectangleEXT(MemorySegment commandBuffer, int firstDiscardRectangle, int discardRectangleCount, MemorySegment pDiscardRectangles) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDiscardRectangleEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleEXT");
-        try { Handles.MH_vkCmdSetDiscardRectangleEXT.invokeExact(handles.PFN_vkCmdSetDiscardRectangleEXT, commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDiscardRectangleEXT", e); }
+    public static void vkCmdSetDiscardRectangleEXT(VkCommandBuffer commandBuffer, int firstDiscardRectangle, int discardRectangleCount, MemorySegment pDiscardRectangles) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleEXT");
+        try { Handles.MH_vkCmdSetDiscardRectangleEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleEXT, commandBuffer.segment(), firstDiscardRectangle, discardRectangleCount, pDiscardRectangles); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDiscardRectangleEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDiscardRectangleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 discardRectangleEnable);
+    /// void vkCmdSetDiscardRectangleEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 discardRectangleEnable);
     /// ```
-    public void CmdSetDiscardRectangleEnableEXT(MemorySegment commandBuffer, int discardRectangleEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDiscardRectangleEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleEnableEXT");
-        try { Handles.MH_vkCmdSetDiscardRectangleEnableEXT.invokeExact(handles.PFN_vkCmdSetDiscardRectangleEnableEXT, commandBuffer, discardRectangleEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDiscardRectangleEnableEXT", e); }
+    public static void vkCmdSetDiscardRectangleEnableEXT(VkCommandBuffer commandBuffer, int discardRectangleEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleEnableEXT");
+        try { Handles.MH_vkCmdSetDiscardRectangleEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleEnableEXT, commandBuffer.segment(), discardRectangleEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDiscardRectangleEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDiscardRectangleModeEXT(VkCommandBuffer commandBuffer, VkDiscardRectangleModeEXT discardRectangleMode);
+    /// void vkCmdSetDiscardRectangleModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkDiscardRectangleModeEXT discardRectangleMode);
     /// ```
-    public void CmdSetDiscardRectangleModeEXT(MemorySegment commandBuffer, int discardRectangleMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDiscardRectangleModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleModeEXT");
-        try { Handles.MH_vkCmdSetDiscardRectangleModeEXT.invokeExact(handles.PFN_vkCmdSetDiscardRectangleModeEXT, commandBuffer, discardRectangleMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDiscardRectangleModeEXT", e); }
+    public static void vkCmdSetDiscardRectangleModeEXT(VkCommandBuffer commandBuffer, int discardRectangleMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDiscardRectangleModeEXT");
+        try { Handles.MH_vkCmdSetDiscardRectangleModeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDiscardRectangleModeEXT, commandBuffer.segment(), discardRectangleMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDiscardRectangleModeEXT", e); }
     }
 
 }

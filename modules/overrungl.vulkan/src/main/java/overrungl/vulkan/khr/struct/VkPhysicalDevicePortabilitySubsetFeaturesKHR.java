@@ -27,23 +27,23 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePortabilitySubsetFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 constantAlphaColorBlendFactors;
-///     VkBool32 events;
-///     VkBool32 imageViewFormatReinterpretation;
-///     VkBool32 imageViewFormatSwizzle;
-///     VkBool32 imageView2DOn3DImage;
-///     VkBool32 multisampleArrayImage;
-///     VkBool32 mutableComparisonSamplers;
-///     VkBool32 pointPolygons;
-///     VkBool32 samplerMipLodBias;
-///     VkBool32 separateStencilMaskRef;
-///     VkBool32 shaderSampleRateInterpolationFunctions;
-///     VkBool32 tessellationIsolines;
-///     VkBool32 tessellationPointMode;
-///     VkBool32 triangleFans;
-///     VkBool32 vertexAttributeAccessBeyondStride;
+///     (uint32_t) VkBool32 constantAlphaColorBlendFactors;
+///     (uint32_t) VkBool32 events;
+///     (uint32_t) VkBool32 imageViewFormatReinterpretation;
+///     (uint32_t) VkBool32 imageViewFormatSwizzle;
+///     (uint32_t) VkBool32 imageView2DOn3DImage;
+///     (uint32_t) VkBool32 multisampleArrayImage;
+///     (uint32_t) VkBool32 mutableComparisonSamplers;
+///     (uint32_t) VkBool32 pointPolygons;
+///     (uint32_t) VkBool32 samplerMipLodBias;
+///     (uint32_t) VkBool32 separateStencilMaskRef;
+///     (uint32_t) VkBool32 shaderSampleRateInterpolationFunctions;
+///     (uint32_t) VkBool32 tessellationIsolines;
+///     (uint32_t) VkBool32 tessellationPointMode;
+///     (uint32_t) VkBool32 triangleFans;
+///     (uint32_t) VkBool32 vertexAttributeAccessBeyondStride;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceAddressBindingCallbackDataEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceAddressBindingFlagsEXT flags;
-///     VkDeviceAddress baseAddress;
-///     VkDeviceSize size;
-///     VkDeviceAddressBindingTypeEXT bindingType;
+///     ((uint32_t) VkFlags) VkDeviceAddressBindingFlagsEXT flags;
+///     (uint64_t) VkDeviceAddress baseAddress;
+///     (uint64_t) VkDeviceSize size;
+///     (int) VkDeviceAddressBindingTypeEXT bindingType;
 /// };
 /// ```
 public sealed class VkDeviceAddressBindingCallbackDataEXT extends GroupType {

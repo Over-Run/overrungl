@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeAV1ReferenceInfo {
-///     StdVideoDecodeAV1ReferenceInfoFlags flags;
+///     (struct StdVideoDecodeAV1ReferenceInfoFlags) StdVideoDecodeAV1ReferenceInfoFlags flags;
 ///     uint8_t frame_type;
 ///     uint8_t RefFrameSignBias;
 ///     uint8_t OrderHint;

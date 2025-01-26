@@ -41,12 +41,12 @@ import overrungl.util.*;
 ///     int svg;
 ///     int index_map;
 ///     int indexToLocFormat;
-///     stbtt__buf cff;
-///     stbtt__buf charstrings;
-///     stbtt__buf gsubrs;
-///     stbtt__buf subrs;
-///     stbtt__buf fontdicts;
-///     stbtt__buf fdselect;
+///     (struct STBTT__buf) stbtt__buf cff;
+///     (struct STBTT__buf) stbtt__buf charstrings;
+///     (struct STBTT__buf) stbtt__buf gsubrs;
+///     (struct STBTT__buf) stbtt__buf subrs;
+///     (struct STBTT__buf) stbtt__buf fontdicts;
+///     (struct STBTT__buf) stbtt__buf fdselect;
 /// };
 /// ```
 public sealed class STBTTFontInfo extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExclusiveScissorFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 exclusiveScissor;
+///     (uint32_t) VkBool32 exclusiveScissor;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExclusiveScissorFeaturesNV extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDrmPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hasPrimary;
-///     VkBool32 hasRender;
+///     (uint32_t) VkBool32 hasPrimary;
+///     (uint32_t) VkBool32 hasRender;
 ///     int64_t primaryMajor;
 ///     int64_t primaryMinor;
 ///     int64_t renderMajor;

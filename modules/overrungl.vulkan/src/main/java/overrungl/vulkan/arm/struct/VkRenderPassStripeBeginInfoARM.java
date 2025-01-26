@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassStripeBeginInfoARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t stripeInfoCount;
 ///     const VkRenderPassStripeInfoARM* pStripeInfos;

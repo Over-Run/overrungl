@@ -25,6 +25,6 @@ public final class VKKHRShaderFloatControls {
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL_KHR = 1;
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE_KHR = 2;
 
-    private VKKHRShaderFloatControls() { }
+    private VKKHRShaderFloatControls() {}
 
 }

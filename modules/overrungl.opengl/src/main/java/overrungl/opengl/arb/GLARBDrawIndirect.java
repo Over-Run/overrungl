@@ -42,7 +42,7 @@ public final class GLARBDrawIndirect {
     }
 
     /// ```
-    /// void glDrawArraysIndirect(GLenum mode, const void* indirect);
+    /// void glDrawArraysIndirect((unsigned int) GLenum mode, const void* indirect);
     /// ```
     public void DrawArraysIndirect(int mode, MemorySegment indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect");
@@ -51,7 +51,7 @@ public final class GLARBDrawIndirect {
     }
 
     /// ```
-    /// void glDrawElementsIndirect(GLenum mode, GLenum type, const void* indirect);
+    /// void glDrawElementsIndirect((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect);
     /// ```
     public void DrawElementsIndirect(int mode, int type, MemorySegment indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect");

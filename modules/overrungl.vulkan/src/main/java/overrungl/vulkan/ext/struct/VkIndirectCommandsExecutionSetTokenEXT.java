@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsExecutionSetTokenEXT {
-///     VkIndirectExecutionSetInfoTypeEXT type;
-///     VkShaderStageFlags shaderStages;
+///     (int) VkIndirectExecutionSetInfoTypeEXT type;
+///     ((uint32_t) VkFlags) VkShaderStageFlags shaderStages;
 /// };
 /// ```
 public sealed class VkIndirectCommandsExecutionSetTokenEXT extends GroupType {

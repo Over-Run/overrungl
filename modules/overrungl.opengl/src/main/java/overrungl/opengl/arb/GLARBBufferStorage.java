@@ -46,7 +46,7 @@ public final class GLARBBufferStorage {
     }
 
     /// ```
-    /// void glBufferStorage(GLenum target, GLsizeiptr size, const void* data, GLbitfield flags);
+    /// void glBufferStorage((unsigned int) GLenum target, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data, (unsigned int) GLbitfield flags);
     /// ```
     public void BufferStorage(int target, long size, MemorySegment data, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");

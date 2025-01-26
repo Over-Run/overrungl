@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t perViewRenderAreaCount;
 ///     const VkRect2D* pPerViewRenderAreas;

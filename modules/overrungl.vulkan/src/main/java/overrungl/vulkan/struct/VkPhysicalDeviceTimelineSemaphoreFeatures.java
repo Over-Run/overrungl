@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTimelineSemaphoreFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 timelineSemaphore;
+///     (uint32_t) VkBool32 timelineSemaphore;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTimelineSemaphoreFeatures extends GroupType {

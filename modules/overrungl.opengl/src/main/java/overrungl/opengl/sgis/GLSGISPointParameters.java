@@ -44,7 +44,7 @@ public final class GLSGISPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfSGIS(GLenum pname, GLfloat param);
+    /// void glPointParameterfSGIS((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PointParameterfSGIS(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
@@ -53,7 +53,7 @@ public final class GLSGISPointParameters {
     }
 
     /// ```
-    /// void glPointParameterfvSGIS(GLenum pname, const GLfloat* params);
+    /// void glPointParameterfvSGIS((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");

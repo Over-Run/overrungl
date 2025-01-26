@@ -21,30 +21,24 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKMVKMacosSurface {
+public final class VKMVKMacosSurface {
     public static final int VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3;
     public static final String VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
     public static final int VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK = 1000123000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateMacOSSurfaceMVK = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCreateMacOSSurfaceMVK;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCreateMacOSSurfaceMVK = func.invoke(instance, "vkCreateMacOSSurfaceMVK");
-        }
+        private Handles() {}
     }
 
-    public VKMVKMacosSurface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKMVKMacosSurface() {}
 
     /// ```
-    /// VkResult vkCreateMacOSSurfaceMVK(VkInstance instance, const VkMacOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// (int) VkResult vkCreateMacOSSurfaceMVK((struct VkInstance*) VkInstance instance, const VkMacOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public int CreateMacOSSurfaceMVK(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateMacOSSurfaceMVK)) throw new SymbolNotFoundError("Symbol not found: vkCreateMacOSSurfaceMVK");
-        try { return (int) Handles.MH_vkCreateMacOSSurfaceMVK.invokeExact(handles.PFN_vkCreateMacOSSurfaceMVK, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateMacOSSurfaceMVK", e); }
+    public static int vkCreateMacOSSurfaceMVK(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateMacOSSurfaceMVK)) throw new SymbolNotFoundError("Symbol not found: vkCreateMacOSSurfaceMVK");
+        try { return (int) Handles.MH_vkCreateMacOSSurfaceMVK.invokeExact(instance.capabilities().PFN_vkCreateMacOSSurfaceMVK, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateMacOSSurfaceMVK", e); }
     }
 
 }

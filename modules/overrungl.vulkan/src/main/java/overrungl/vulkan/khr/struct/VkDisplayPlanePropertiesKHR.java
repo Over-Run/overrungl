@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPlanePropertiesKHR {
-///     VkDisplayKHR currentDisplay;
+///     (uint64_t) VkDisplayKHR currentDisplay;
 ///     uint32_t currentStackIndex;
 /// };
 /// ```

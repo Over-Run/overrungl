@@ -23,6 +23,6 @@ public final class VKEXTIndexTypeUint8 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT = 1000265000;
     public static final int VK_INDEX_TYPE_UINT8_EXT = 1000265000;
 
-    private VKEXTIndexTypeUint8() { }
+    private VKEXTIndexTypeUint8() {}
 
 }

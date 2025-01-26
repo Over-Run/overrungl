@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMetalTextureInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageAspectFlagBits plane;
-///     MTLTexture_id mtlTexture;
+///     (int) VkImageAspectFlagBits plane;
+///     (void*) MTLTexture_id mtlTexture;
 /// };
 /// ```
 public sealed class VkImportMetalTextureInfoEXT extends GroupType {

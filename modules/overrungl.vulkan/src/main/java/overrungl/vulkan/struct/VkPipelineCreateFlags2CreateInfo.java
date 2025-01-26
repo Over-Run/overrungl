@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCreateFlags2CreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCreateFlags2 flags;
+///     ((uint64_t) VkFlags64) VkPipelineCreateFlags2 flags;
 /// };
 /// ```
 public sealed class VkPipelineCreateFlags2CreateInfo extends GroupType {

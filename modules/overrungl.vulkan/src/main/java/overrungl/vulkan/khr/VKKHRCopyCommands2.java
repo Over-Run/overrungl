@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRCopyCommands2 {
+public final class VKKHRCopyCommands2 {
     public static final int VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1;
     public static final String VK_KHR_COPY_COMMANDS_2_EXTENSION_NAME = "VK_KHR_copy_commands2";
     public static final int VK_STRUCTURE_TYPE_COPY_BUFFER_INFO_2_KHR = 1000337000;
@@ -35,7 +35,6 @@ public class VKKHRCopyCommands2 {
     public static final int VK_STRUCTURE_TYPE_IMAGE_BLIT_2_KHR = 1000337008;
     public static final int VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2_KHR = 1000337009;
     public static final int VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2_KHR = 1000337010;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdCopyBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdCopyImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
@@ -43,78 +42,63 @@ public class VKKHRCopyCommands2 {
         public static final MethodHandle MH_vkCmdCopyImageToBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdBlitImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCmdResolveImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCmdCopyBuffer2KHR;
-        public final MemorySegment PFN_vkCmdCopyImage2KHR;
-        public final MemorySegment PFN_vkCmdCopyBufferToImage2KHR;
-        public final MemorySegment PFN_vkCmdCopyImageToBuffer2KHR;
-        public final MemorySegment PFN_vkCmdBlitImage2KHR;
-        public final MemorySegment PFN_vkCmdResolveImage2KHR;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdCopyBuffer2KHR = func.invoke(device, "vkCmdCopyBuffer2KHR", "vkCmdCopyBuffer2");
-            PFN_vkCmdCopyImage2KHR = func.invoke(device, "vkCmdCopyImage2KHR", "vkCmdCopyImage2");
-            PFN_vkCmdCopyBufferToImage2KHR = func.invoke(device, "vkCmdCopyBufferToImage2KHR", "vkCmdCopyBufferToImage2");
-            PFN_vkCmdCopyImageToBuffer2KHR = func.invoke(device, "vkCmdCopyImageToBuffer2KHR", "vkCmdCopyImageToBuffer2");
-            PFN_vkCmdBlitImage2KHR = func.invoke(device, "vkCmdBlitImage2KHR", "vkCmdBlitImage2");
-            PFN_vkCmdResolveImage2KHR = func.invoke(device, "vkCmdResolveImage2KHR", "vkCmdResolveImage2");
-        }
+        private Handles() {}
     }
 
-    public VKKHRCopyCommands2(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKKHRCopyCommands2() {}
+
+    /// ```
+    /// void vkCmdCopyBuffer2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyBufferInfo2* pCopyBufferInfo);
+    /// ```
+    public static void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, MemorySegment pCopyBufferInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBuffer2KHR");
+        try { Handles.MH_vkCmdCopyBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBuffer2KHR, commandBuffer.segment(), pCopyBufferInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBuffer2KHR", e); }
     }
 
     /// ```
-    /// void vkCmdCopyBuffer2KHR(VkCommandBuffer commandBuffer, const VkCopyBufferInfo2* pCopyBufferInfo);
+    /// void vkCmdCopyImage2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyImageInfo2* pCopyImageInfo);
     /// ```
-    public void CmdCopyBuffer2KHR(MemorySegment commandBuffer, MemorySegment pCopyBufferInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBuffer2KHR");
-        try { Handles.MH_vkCmdCopyBuffer2KHR.invokeExact(handles.PFN_vkCmdCopyBuffer2KHR, commandBuffer, pCopyBufferInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyBuffer2KHR", e); }
+    public static void vkCmdCopyImage2KHR(VkCommandBuffer commandBuffer, MemorySegment pCopyImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImage2KHR");
+        try { Handles.MH_vkCmdCopyImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImage2KHR, commandBuffer.segment(), pCopyImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImage2KHR", e); }
     }
 
     /// ```
-    /// void vkCmdCopyImage2KHR(VkCommandBuffer commandBuffer, const VkCopyImageInfo2* pCopyImageInfo);
+    /// void vkCmdCopyBufferToImage2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyBufferToImageInfo2* pCopyBufferToImageInfo);
     /// ```
-    public void CmdCopyImage2KHR(MemorySegment commandBuffer, MemorySegment pCopyImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImage2KHR");
-        try { Handles.MH_vkCmdCopyImage2KHR.invokeExact(handles.PFN_vkCmdCopyImage2KHR, commandBuffer, pCopyImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyImage2KHR", e); }
+    public static void vkCmdCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, MemorySegment pCopyBufferToImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBufferToImage2KHR");
+        try { Handles.MH_vkCmdCopyBufferToImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyBufferToImage2KHR, commandBuffer.segment(), pCopyBufferToImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyBufferToImage2KHR", e); }
     }
 
     /// ```
-    /// void vkCmdCopyBufferToImage2KHR(VkCommandBuffer commandBuffer, const VkCopyBufferToImageInfo2* pCopyBufferToImageInfo);
+    /// void vkCmdCopyImageToBuffer2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCopyImageToBufferInfo2* pCopyImageToBufferInfo);
     /// ```
-    public void CmdCopyBufferToImage2KHR(MemorySegment commandBuffer, MemorySegment pCopyBufferToImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyBufferToImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyBufferToImage2KHR");
-        try { Handles.MH_vkCmdCopyBufferToImage2KHR.invokeExact(handles.PFN_vkCmdCopyBufferToImage2KHR, commandBuffer, pCopyBufferToImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyBufferToImage2KHR", e); }
+    public static void vkCmdCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, MemorySegment pCopyImageToBufferInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImageToBuffer2KHR");
+        try { Handles.MH_vkCmdCopyImageToBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyImageToBuffer2KHR, commandBuffer.segment(), pCopyImageToBufferInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyImageToBuffer2KHR", e); }
     }
 
     /// ```
-    /// void vkCmdCopyImageToBuffer2KHR(VkCommandBuffer commandBuffer, const VkCopyImageToBufferInfo2* pCopyImageToBufferInfo);
+    /// void vkCmdBlitImage2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBlitImageInfo2* pBlitImageInfo);
     /// ```
-    public void CmdCopyImageToBuffer2KHR(MemorySegment commandBuffer, MemorySegment pCopyImageToBufferInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdCopyImageToBuffer2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyImageToBuffer2KHR");
-        try { Handles.MH_vkCmdCopyImageToBuffer2KHR.invokeExact(handles.PFN_vkCmdCopyImageToBuffer2KHR, commandBuffer, pCopyImageToBufferInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdCopyImageToBuffer2KHR", e); }
+    public static void vkCmdBlitImage2KHR(VkCommandBuffer commandBuffer, MemorySegment pBlitImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBlitImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBlitImage2KHR");
+        try { Handles.MH_vkCmdBlitImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBlitImage2KHR, commandBuffer.segment(), pBlitImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdBlitImage2KHR", e); }
     }
 
     /// ```
-    /// void vkCmdBlitImage2KHR(VkCommandBuffer commandBuffer, const VkBlitImageInfo2* pBlitImageInfo);
+    /// void vkCmdResolveImage2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkResolveImageInfo2* pResolveImageInfo);
     /// ```
-    public void CmdBlitImage2KHR(MemorySegment commandBuffer, MemorySegment pBlitImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdBlitImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBlitImage2KHR");
-        try { Handles.MH_vkCmdBlitImage2KHR.invokeExact(handles.PFN_vkCmdBlitImage2KHR, commandBuffer, pBlitImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdBlitImage2KHR", e); }
-    }
-
-    /// ```
-    /// void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, const VkResolveImageInfo2* pResolveImageInfo);
-    /// ```
-    public void CmdResolveImage2KHR(MemorySegment commandBuffer, MemorySegment pResolveImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdResolveImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdResolveImage2KHR");
-        try { Handles.MH_vkCmdResolveImage2KHR.invokeExact(handles.PFN_vkCmdResolveImage2KHR, commandBuffer, pResolveImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdResolveImage2KHR", e); }
+    public static void vkCmdResolveImage2KHR(VkCommandBuffer commandBuffer, MemorySegment pResolveImageInfo) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdResolveImage2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdResolveImage2KHR");
+        try { Handles.MH_vkCmdResolveImage2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdResolveImage2KHR, commandBuffer.segment(), pResolveImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdResolveImage2KHR", e); }
     }
 
 }

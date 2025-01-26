@@ -27,25 +27,25 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D minFragmentShadingRateAttachmentTexelSize;
-///     VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
+///     (struct VkExtent2D) VkExtent2D minFragmentShadingRateAttachmentTexelSize;
+///     (struct VkExtent2D) VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
 ///     uint32_t maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
-///     VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
-///     VkBool32 layeredShadingRateAttachments;
-///     VkBool32 fragmentShadingRateNonTrivialCombinerOps;
-///     VkExtent2D maxFragmentSize;
+///     (uint32_t) VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
+///     (uint32_t) VkBool32 layeredShadingRateAttachments;
+///     (uint32_t) VkBool32 fragmentShadingRateNonTrivialCombinerOps;
+///     (struct VkExtent2D) VkExtent2D maxFragmentSize;
 ///     uint32_t maxFragmentSizeAspectRatio;
 ///     uint32_t maxFragmentShadingRateCoverageSamples;
-///     VkSampleCountFlagBits maxFragmentShadingRateRasterizationSamples;
-///     VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
-///     VkBool32 fragmentShadingRateWithSampleMask;
-///     VkBool32 fragmentShadingRateWithShaderSampleMask;
-///     VkBool32 fragmentShadingRateWithConservativeRasterization;
-///     VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
-///     VkBool32 fragmentShadingRateWithCustomSampleLocations;
-///     VkBool32 fragmentShadingRateStrictMultiplyCombiner;
+///     (int) VkSampleCountFlagBits maxFragmentShadingRateRasterizationSamples;
+///     (uint32_t) VkBool32 fragmentShadingRateWithShaderDepthStencilWrites;
+///     (uint32_t) VkBool32 fragmentShadingRateWithSampleMask;
+///     (uint32_t) VkBool32 fragmentShadingRateWithShaderSampleMask;
+///     (uint32_t) VkBool32 fragmentShadingRateWithConservativeRasterization;
+///     (uint32_t) VkBool32 fragmentShadingRateWithFragmentShaderInterlock;
+///     (uint32_t) VkBool32 fragmentShadingRateWithCustomSampleLocations;
+///     (uint32_t) VkBool32 fragmentShadingRateStrictMultiplyCombiner;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends GroupType {

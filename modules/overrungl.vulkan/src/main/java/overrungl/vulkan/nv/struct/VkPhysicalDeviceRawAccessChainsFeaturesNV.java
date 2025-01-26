@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRawAccessChainsFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderRawAccessChains;
+///     (uint32_t) VkBool32 shaderRawAccessChains;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRawAccessChainsFeaturesNV extends GroupType {

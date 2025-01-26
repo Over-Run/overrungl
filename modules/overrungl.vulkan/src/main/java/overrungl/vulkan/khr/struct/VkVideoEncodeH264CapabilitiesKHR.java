@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264CapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeH264CapabilityFlagsKHR flags;
-///     StdVideoH264LevelIdc maxLevelIdc;
+///     ((uint32_t) VkFlags) VkVideoEncodeH264CapabilityFlagsKHR flags;
+///     (int) StdVideoH264LevelIdc maxLevelIdc;
 ///     uint32_t maxSliceCount;
 ///     uint32_t maxPPictureL0ReferenceCount;
 ///     uint32_t maxBPictureL0ReferenceCount;
 ///     uint32_t maxL1ReferenceCount;
 ///     uint32_t maxTemporalLayerCount;
-///     VkBool32 expectDyadicTemporalLayerPattern;
+///     (uint32_t) VkBool32 expectDyadicTemporalLayerPattern;
 ///     int32_t minQp;
 ///     int32_t maxQp;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeH264StdFlagsKHR stdSyntaxFlags;
+///     (uint32_t) VkBool32 prefersGopRemainingFrames;
+///     (uint32_t) VkBool32 requiresGopRemainingFrames;
+///     ((uint32_t) VkFlags) VkVideoEncodeH264StdFlagsKHR stdSyntaxFlags;
 /// };
 /// ```
 public sealed class VkVideoEncodeH264CapabilitiesKHR extends GroupType {

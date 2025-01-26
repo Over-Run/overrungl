@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageMemoryBarrier {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
-///     VkImageLayout oldLayout;
-///     VkImageLayout newLayout;
+///     ((uint32_t) VkFlags) VkAccessFlags srcAccessMask;
+///     ((uint32_t) VkFlags) VkAccessFlags dstAccessMask;
+///     (int) VkImageLayout oldLayout;
+///     (int) VkImageLayout newLayout;
 ///     uint32_t srcQueueFamilyIndex;
 ///     uint32_t dstQueueFamilyIndex;
-///     VkImage image;
-///     VkImageSubresourceRange subresourceRange;
+///     (uint64_t) VkImage image;
+///     (struct VkImageSubresourceRange) VkImageSubresourceRange subresourceRange;
 /// };
 /// ```
 public sealed class VkImageMemoryBarrier extends GroupType {

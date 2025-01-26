@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportSemaphoreZirconHandleInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags;
-///     VkExternalSemaphoreHandleTypeFlagBits handleType;
-///     zx_handle_t zirconHandle;
+///     (uint64_t) VkSemaphore semaphore;
+///     ((uint32_t) VkFlags) VkSemaphoreImportFlags flags;
+///     (int) VkExternalSemaphoreHandleTypeFlagBits handleType;
+///     (int32_t) zx_handle_t zirconHandle;
 /// };
 /// ```
 public sealed class VkImportSemaphoreZirconHandleInfoFUCHSIA extends GroupType {

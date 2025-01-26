@@ -23,6 +23,6 @@ public final class VKQCOMYcbcrDegamma {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM = 1000520000;
     public static final int VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM = 1000520001;
 
-    private VKQCOMYcbcrDegamma() { }
+    private VKQCOMYcbcrDegamma() {}
 
 }

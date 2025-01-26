@@ -50,7 +50,7 @@ public final class GLAPPLEVertexArrayRange {
     }
 
     /// ```
-    /// void glVertexArrayRangeAPPLE(GLsizei length, void* pointer);
+    /// void glVertexArrayRangeAPPLE((int) GLsizei length, void* pointer);
     /// ```
     public void VertexArrayRangeAPPLE(int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeAPPLE");
@@ -59,7 +59,7 @@ public final class GLAPPLEVertexArrayRange {
     }
 
     /// ```
-    /// void glFlushVertexArrayRangeAPPLE(GLsizei length, void* pointer);
+    /// void glFlushVertexArrayRangeAPPLE((int) GLsizei length, void* pointer);
     /// ```
     public void FlushVertexArrayRangeAPPLE(int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushVertexArrayRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeAPPLE");
@@ -68,7 +68,7 @@ public final class GLAPPLEVertexArrayRange {
     }
 
     /// ```
-    /// void glVertexArrayParameteriAPPLE(GLenum pname, GLint param);
+    /// void glVertexArrayParameteriAPPLE((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void VertexArrayParameteriAPPLE(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayParameteriAPPLE");

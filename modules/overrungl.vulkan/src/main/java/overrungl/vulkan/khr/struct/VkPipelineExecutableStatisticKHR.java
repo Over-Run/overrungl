@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineExecutableStatisticKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     char name[256];
 ///     char description[256];
-///     VkPipelineExecutableStatisticFormatKHR format;
-///     VkPipelineExecutableStatisticValueKHR value;
+///     (int) VkPipelineExecutableStatisticFormatKHR format;
+///     (union VkPipelineExecutableStatisticValueKHR) VkPipelineExecutableStatisticValueKHR value;
 /// };
 /// ```
 public sealed class VkPipelineExecutableStatisticKHR extends GroupType {

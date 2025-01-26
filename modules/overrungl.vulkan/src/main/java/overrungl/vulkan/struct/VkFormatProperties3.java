@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFormatProperties3 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormatFeatureFlags2 linearTilingFeatures;
-///     VkFormatFeatureFlags2 optimalTilingFeatures;
-///     VkFormatFeatureFlags2 bufferFeatures;
+///     ((uint64_t) VkFlags64) VkFormatFeatureFlags2 linearTilingFeatures;
+///     ((uint64_t) VkFlags64) VkFormatFeatureFlags2 optimalTilingFeatures;
+///     ((uint64_t) VkFlags64) VkFormatFeatureFlags2 bufferFeatures;
 /// };
 /// ```
 public sealed class VkFormatProperties3 extends GroupType {

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 fragmentShadingRateEnums;
-///     VkBool32 supersampleFragmentShadingRates;
-///     VkBool32 noInvocationFragmentShadingRates;
+///     (uint32_t) VkBool32 fragmentShadingRateEnums;
+///     (uint32_t) VkBool32 supersampleFragmentShadingRates;
+///     (uint32_t) VkBool32 noInvocationFragmentShadingRates;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends GroupType {

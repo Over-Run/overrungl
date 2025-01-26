@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCornerSampledImageFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 cornerSampledImage;
+///     (uint32_t) VkBool32 cornerSampledImage;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCornerSampledImageFeaturesNV extends GroupType {

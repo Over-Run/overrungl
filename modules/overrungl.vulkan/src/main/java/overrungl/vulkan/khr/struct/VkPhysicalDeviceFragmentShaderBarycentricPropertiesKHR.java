@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
+///     (uint32_t) VkBool32 triStripVertexOrderIndependentOfProvokingVertex;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR extends GroupType {

@@ -21,44 +21,36 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKVALVEDescriptorSetHostMapping {
+public final class VKVALVEDescriptorSetHostMapping {
     public static final int VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_SPEC_VERSION = 1;
     public static final String VK_VALVE_DESCRIPTOR_SET_HOST_MAPPING_EXTENSION_NAME = "VK_VALVE_descriptor_set_host_mapping";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE = 1000420000;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE = 1000420001;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE = 1000420002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE;
-        public final MemorySegment PFN_vkGetDescriptorSetHostMappingVALVE;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE = func.invoke(device, "vkGetDescriptorSetLayoutHostMappingInfoVALVE");
-            PFN_vkGetDescriptorSetHostMappingVALVE = func.invoke(device, "vkGetDescriptorSetHostMappingVALVE");
-        }
+        private Handles() {}
     }
 
-    public VKVALVEDescriptorSetHostMapping(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKVALVEDescriptorSetHostMapping() {}
 
     /// ```
-    /// void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, const VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
+    /// void vkGetDescriptorSetLayoutHostMappingInfoVALVE((struct VkDevice*) VkDevice device, const VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
     /// ```
-    public void GetDescriptorSetLayoutHostMappingInfoVALVE(MemorySegment device, MemorySegment pBindingReference, MemorySegment pHostMapping) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
-        try { Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(handles.PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device, pBindingReference, pHostMapping); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDescriptorSetLayoutHostMappingInfoVALVE", e); }
+    public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, MemorySegment pBindingReference, MemorySegment pHostMapping) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
+        try { Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device.segment(), pBindingReference, pHostMapping); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutHostMappingInfoVALVE", e); }
     }
 
     /// ```
-    /// void vkGetDescriptorSetHostMappingVALVE(VkDevice device, VkDescriptorSet descriptorSet, void** ppData);
+    /// void vkGetDescriptorSetHostMappingVALVE((struct VkDevice*) VkDevice device, (uint64_t) VkDescriptorSet descriptorSet, void** ppData);
     /// ```
-    public void GetDescriptorSetHostMappingVALVE(MemorySegment device, long descriptorSet, MemorySegment ppData) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDescriptorSetHostMappingVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
-        try { Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(handles.PFN_vkGetDescriptorSetHostMappingVALVE, device, descriptorSet, ppData); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDescriptorSetHostMappingVALVE", e); }
+    public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, long descriptorSet, MemorySegment ppData) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
+        try { Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE, device.segment(), descriptorSet, ppData); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetHostMappingVALVE", e); }
     }
 
 }

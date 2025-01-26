@@ -36,6 +36,6 @@ public final class VKEXTTextureCompressionAstcHdr {
     public static final int VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT = 1000066012;
     public static final int VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT = 1000066013;
 
-    private VKEXTTextureCompressionAstcHdr() { }
+    private VKEXTTextureCompressionAstcHdr() {}
 
 }

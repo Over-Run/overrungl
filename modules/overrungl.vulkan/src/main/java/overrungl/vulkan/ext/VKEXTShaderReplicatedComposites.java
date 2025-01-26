@@ -22,6 +22,6 @@ public final class VKEXTShaderReplicatedComposites {
     public static final String VK_EXT_SHADER_REPLICATED_COMPOSITES_EXTENSION_NAME = "VK_EXT_shader_replicated_composites";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = 1000564000;
 
-    private VKEXTShaderReplicatedComposites() { }
+    private VKEXTShaderReplicatedComposites() {}
 
 }

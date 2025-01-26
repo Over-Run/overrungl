@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 presentModeFifoLatestReady;
+///     (uint32_t) VkBool32 presentModeFifoLatestReady;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT extends GroupType {

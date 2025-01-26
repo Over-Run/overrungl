@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*ALDebugProcEXT)(ALenum source, ALenum type, ALuint id, ALenum severity, ALsizei length, const ALchar* message, void* userParam);
+/// typedef void (*ALDebugProcEXT)((int) ALenum source, (int) ALenum type, (unsigned int) ALuint id, (int) ALenum severity, (int) ALsizei length, const ALchar* message, void* userParam);
 /// ```
 @FunctionalInterface
 public interface ALDebugProcEXT extends Upcall {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMemoryAllocateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagsNV handleTypes;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV handleTypes;
 /// };
 /// ```
 public sealed class VkExportMemoryAllocateInfoNV extends GroupType {

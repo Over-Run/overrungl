@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevice8BitStorageFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 storageBuffer8BitAccess;
-///     VkBool32 uniformAndStorageBuffer8BitAccess;
-///     VkBool32 storagePushConstant8;
+///     (uint32_t) VkBool32 storageBuffer8BitAccess;
+///     (uint32_t) VkBool32 uniformAndStorageBuffer8BitAccess;
+///     (uint32_t) VkBool32 storagePushConstant8;
 /// };
 /// ```
 public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {

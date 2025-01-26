@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsIndexBufferTokenEXT {
-///     VkIndirectCommandsInputModeFlagBitsEXT mode;
+///     (int) VkIndirectCommandsInputModeFlagBitsEXT mode;
 /// };
 /// ```
 public sealed class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {

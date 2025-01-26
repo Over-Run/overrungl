@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAndroidHardwareBufferFormatPropertiesANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormat format;
+///     (int) VkFormat format;
 ///     uint64_t externalFormat;
-///     VkFormatFeatureFlags formatFeatures;
-///     VkComponentMapping samplerYcbcrConversionComponents;
-///     VkSamplerYcbcrModelConversion suggestedYcbcrModel;
-///     VkSamplerYcbcrRange suggestedYcbcrRange;
-///     VkChromaLocation suggestedXChromaOffset;
-///     VkChromaLocation suggestedYChromaOffset;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags formatFeatures;
+///     (struct VkComponentMapping) VkComponentMapping samplerYcbcrConversionComponents;
+///     (int) VkSamplerYcbcrModelConversion suggestedYcbcrModel;
+///     (int) VkSamplerYcbcrRange suggestedYcbcrRange;
+///     (int) VkChromaLocation suggestedXChromaOffset;
+///     (int) VkChromaLocation suggestedYChromaOffset;
 /// };
 /// ```
 public sealed class VkAndroidHardwareBufferFormatPropertiesANDROID extends GroupType {

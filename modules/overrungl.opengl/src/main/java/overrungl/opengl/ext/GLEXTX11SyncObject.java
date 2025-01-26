@@ -38,7 +38,7 @@ public final class GLEXTX11SyncObject {
     }
 
     /// ```
-    /// GLsync glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
+    /// (struct __GLsync *) GLsync glImportSyncEXT((unsigned int) GLenum external_sync_type, ((signed long long) khronos_intptr_t) GLintptr external_sync, (unsigned int) GLbitfield flags);
     /// ```
     public MemorySegment ImportSyncEXT(int external_sync_type, long external_sync, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSyncEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSyncEXT");

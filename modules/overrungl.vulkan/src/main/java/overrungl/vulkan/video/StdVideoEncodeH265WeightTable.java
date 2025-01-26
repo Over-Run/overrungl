@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265WeightTable {
-///     StdVideoEncodeH265WeightTableFlags flags;
+///     (struct StdVideoEncodeH265WeightTableFlags) StdVideoEncodeH265WeightTableFlags flags;
 ///     uint8_t luma_log2_weight_denom;
 ///     int8_t delta_chroma_log2_weight_denom;
 ///     int8_t delta_luma_weight_l0[15];

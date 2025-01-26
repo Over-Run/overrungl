@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDAntiLag {
+public final class VKAMDAntiLag {
     public static final int VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD = 0;
     public static final int VK_ANTI_LAG_MODE_ON_AMD = 1;
     public static final int VK_ANTI_LAG_MODE_OFF_AMD = 2;
@@ -32,26 +32,20 @@ public class VKAMDAntiLag {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD = 1000476000;
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = 1000476001;
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = 1000476002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkAntiLagUpdateAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkAntiLagUpdateAMD;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkAntiLagUpdateAMD = func.invoke(device, "vkAntiLagUpdateAMD");
-        }
+        private Handles() {}
     }
 
-    public VKAMDAntiLag(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKAMDAntiLag() {}
 
     /// ```
-    /// void vkAntiLagUpdateAMD(VkDevice device, const VkAntiLagDataAMD* pData);
+    /// void vkAntiLagUpdateAMD((struct VkDevice*) VkDevice device, const VkAntiLagDataAMD* pData);
     /// ```
-    public void AntiLagUpdateAMD(MemorySegment device, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkAntiLagUpdateAMD)) throw new SymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
-        try { Handles.MH_vkAntiLagUpdateAMD.invokeExact(handles.PFN_vkAntiLagUpdateAMD, device, pData); }
-        catch (Throwable e) { throw new RuntimeException("error in AntiLagUpdateAMD", e); }
+    public static void vkAntiLagUpdateAMD(VkDevice device, MemorySegment pData) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAntiLagUpdateAMD)) throw new SymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
+        try { Handles.MH_vkAntiLagUpdateAMD.invokeExact(device.capabilities().PFN_vkAntiLagUpdateAMD, device.segment(), pData); }
+        catch (Throwable e) { throw new RuntimeException("error in vkAntiLagUpdateAMD", e); }
     }
 
 }

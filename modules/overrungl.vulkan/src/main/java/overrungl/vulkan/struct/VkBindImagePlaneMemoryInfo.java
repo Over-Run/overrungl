@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindImagePlaneMemoryInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageAspectFlagBits planeAspect;
+///     (int) VkImageAspectFlagBits planeAspect;
 /// };
 /// ```
 public sealed class VkBindImagePlaneMemoryInfo extends GroupType {

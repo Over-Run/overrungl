@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoDecodeFlagsKHR flags;
-///     VkBuffer srcBuffer;
-///     VkDeviceSize srcBufferOffset;
-///     VkDeviceSize srcBufferRange;
-///     VkVideoPictureResourceInfoKHR dstPictureResource;
+///     ((uint32_t) VkFlags) VkVideoDecodeFlagsKHR flags;
+///     (uint64_t) VkBuffer srcBuffer;
+///     (uint64_t) VkDeviceSize srcBufferOffset;
+///     (uint64_t) VkDeviceSize srcBufferRange;
+///     (struct VkVideoPictureResourceInfoKHR) VkVideoPictureResourceInfoKHR dstPictureResource;
 ///     const VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot;
 ///     uint32_t referenceSlotCount;
 ///     const VkVideoReferenceSlotInfoKHR* pReferenceSlots;

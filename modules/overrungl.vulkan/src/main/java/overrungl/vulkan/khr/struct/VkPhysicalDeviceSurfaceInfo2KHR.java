@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSurfaceInfo2KHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSurfaceKHR surface;
+///     (uint64_t) VkSurfaceKHR surface;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayEventInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplayEventTypeEXT displayEvent;
+///     (int) VkDisplayEventTypeEXT displayEvent;
 /// };
 /// ```
 public sealed class VkDisplayEventInfoEXT extends GroupType {

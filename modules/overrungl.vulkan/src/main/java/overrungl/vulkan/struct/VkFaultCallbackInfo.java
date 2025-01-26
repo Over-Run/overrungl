@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFaultCallbackInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t faultCount;
 ///     VkFaultData* pFaults;
-///     PFN_vkFaultCallbackFunction pfnFaultCallback;
+///     (void (*VkFaultCallbackFunction)((uint32_t) VkBool32 unrecordedFaults, uint32_t faultCount, const VkFaultData* pFaults)) PFN_vkFaultCallbackFunction pfnFaultCallback;
 /// };
 /// ```
 public sealed class VkFaultCallbackInfo extends GroupType {

@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMicromapCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMicromapCreateFlagsEXT createFlags;
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
-///     VkMicromapTypeEXT type;
-///     VkDeviceAddress deviceAddress;
+///     ((uint32_t) VkFlags) VkMicromapCreateFlagsEXT createFlags;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize size;
+///     (int) VkMicromapTypeEXT type;
+///     (uint64_t) VkDeviceAddress deviceAddress;
 /// };
 /// ```
 public sealed class VkMicromapCreateInfoEXT extends GroupType {

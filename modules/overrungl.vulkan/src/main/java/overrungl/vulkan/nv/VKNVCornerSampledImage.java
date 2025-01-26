@@ -23,6 +23,6 @@ public final class VKNVCornerSampledImage {
     public static final int VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV = 0x00002000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV = 1000050000;
 
-    private VKNVCornerSampledImage() { }
+    private VKNVCornerSampledImage() {}
 
 }

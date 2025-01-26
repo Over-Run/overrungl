@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance5Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
-///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
-///     VkBool32 depthStencilSwizzleOneSupport;
-///     VkBool32 polygonModePointSize;
-///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
-///     VkBool32 nonStrictWideLinesUseParallelogram;
+///     (uint32_t) VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+///     (uint32_t) VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+///     (uint32_t) VkBool32 depthStencilSwizzleOneSupport;
+///     (uint32_t) VkBool32 polygonModePointSize;
+///     (uint32_t) VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+///     (uint32_t) VkBool32 nonStrictWideLinesUseParallelogram;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {

@@ -101,7 +101,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform1d(GLint location, GLdouble x);
+    /// void glUniform1d((int) GLint location, (double) GLdouble x);
     /// ```
     public void Uniform1d(int location, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1d)) throw new SymbolNotFoundError("Symbol not found: glUniform1d");
@@ -110,7 +110,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform2d(GLint location, GLdouble x, GLdouble y);
+    /// void glUniform2d((int) GLint location, (double) GLdouble x, (double) GLdouble y);
     /// ```
     public void Uniform2d(int location, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2d)) throw new SymbolNotFoundError("Symbol not found: glUniform2d");
@@ -119,7 +119,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z);
+    /// void glUniform3d((int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void Uniform3d(int location, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3d)) throw new SymbolNotFoundError("Symbol not found: glUniform3d");
@@ -128,7 +128,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+    /// void glUniform4d((int) GLint location, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
     public void Uniform4d(int location, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4d)) throw new SymbolNotFoundError("Symbol not found: glUniform4d");
@@ -137,7 +137,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform1dv(GLint location, GLsizei count, const GLdouble* value);
+    /// void glUniform1dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
     public void Uniform1dv(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1dv)) throw new SymbolNotFoundError("Symbol not found: glUniform1dv");
@@ -146,7 +146,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform2dv(GLint location, GLsizei count, const GLdouble* value);
+    /// void glUniform2dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
     public void Uniform2dv(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2dv)) throw new SymbolNotFoundError("Symbol not found: glUniform2dv");
@@ -155,7 +155,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform3dv(GLint location, GLsizei count, const GLdouble* value);
+    /// void glUniform3dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
     public void Uniform3dv(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3dv)) throw new SymbolNotFoundError("Symbol not found: glUniform3dv");
@@ -164,7 +164,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniform4dv(GLint location, GLsizei count, const GLdouble* value);
+    /// void glUniform4dv((int) GLint location, (int) GLsizei count, const GLdouble* value);
     /// ```
     public void Uniform4dv(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4dv)) throw new SymbolNotFoundError("Symbol not found: glUniform4dv");
@@ -173,7 +173,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2dv");
@@ -182,7 +182,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix3dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3dv");
@@ -191,7 +191,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix4dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4dv");
@@ -200,7 +200,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix2x3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix2x3dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x3dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x3dv");
@@ -209,7 +209,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix2x4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix2x4dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2x4dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2x4dv");
@@ -218,7 +218,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix3x2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix3x2dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x2dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x2dv");
@@ -227,7 +227,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix3x4dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix3x4dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3x4dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3x4dv");
@@ -236,7 +236,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix4x2dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix4x2dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x2dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x2dv");
@@ -245,7 +245,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble* value);
+    /// void glUniformMatrix4x3dv((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLdouble* value);
     /// ```
     public void UniformMatrix4x3dv(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4x3dv)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4x3dv");
@@ -254,7 +254,7 @@ public final class GLARBGpuShaderFp64 {
     }
 
     /// ```
-    /// void glGetUniformdv(GLuint program, GLint location, GLdouble* params);
+    /// void glGetUniformdv((unsigned int) GLuint program, (int) GLint location, GLdouble* params);
     /// ```
     public void GetUniformdv(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformdv)) throw new SymbolNotFoundError("Symbol not found: glGetUniformdv");

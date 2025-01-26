@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyVideoPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoCodecOperationFlagsKHR videoCodecOperations;
+///     ((uint32_t) VkFlags) VkVideoCodecOperationFlagsKHR videoCodecOperations;
 /// };
 /// ```
 public sealed class VkQueueFamilyVideoPropertiesKHR extends GroupType {

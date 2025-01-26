@@ -24,6 +24,6 @@ public final class VKEXTGlobalPriorityQuery {
     public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT = 1000388001;
     public static final int VK_MAX_GLOBAL_PRIORITY_SIZE_EXT = 16;
 
-    private VKEXTGlobalPriorityQuery() { }
+    private VKEXTGlobalPriorityQuery() {}
 
 }

@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCopy2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageSubresourceLayers srcSubresource;
-///     VkOffset3D srcOffset;
-///     VkImageSubresourceLayers dstSubresource;
-///     VkOffset3D dstOffset;
-///     VkExtent3D extent;
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers srcSubresource;
+///     (struct VkOffset3D) VkOffset3D srcOffset;
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers dstSubresource;
+///     (struct VkOffset3D) VkOffset3D dstOffset;
+///     (struct VkExtent3D) VkExtent3D extent;
 /// };
 /// ```
 public sealed class VkImageCopy2 extends GroupType {

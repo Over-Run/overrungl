@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDedicatedAllocationMemoryAllocateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
-///     VkBuffer buffer;
+///     (uint64_t) VkImage image;
+///     (uint64_t) VkBuffer buffer;
 /// };
 /// ```
 public sealed class VkDedicatedAllocationMemoryAllocateInfoNV extends GroupType {

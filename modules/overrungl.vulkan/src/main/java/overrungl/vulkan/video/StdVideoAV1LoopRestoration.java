@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1LoopRestoration {
-///     StdVideoAV1FrameRestorationType FrameRestorationType[3];
+///     (int) StdVideoAV1FrameRestorationType FrameRestorationType[3];
 ///     uint16_t LoopRestorationSize[3];
 /// };
 /// ```

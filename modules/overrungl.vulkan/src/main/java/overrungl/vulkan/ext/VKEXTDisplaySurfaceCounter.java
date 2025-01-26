@@ -21,33 +21,27 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDisplaySurfaceCounter {
+public final class VKEXTDisplaySurfaceCounter {
     public static final int VK_SURFACE_COUNTER_VBLANK_BIT_EXT = 0x00000001;
     public static final int VK_SURFACE_COUNTER_VBLANK_EXT = 0x00000001;
     public static final int VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION = 1;
     public static final String VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME = "VK_EXT_display_surface_counter";
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT = 1000090000;
     public static final int VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES2_EXT = 1000090000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceSurfaceCapabilities2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT = func.invoke(instance, "vkGetPhysicalDeviceSurfaceCapabilities2EXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTDisplaySurfaceCounter(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKEXTDisplaySurfaceCounter() {}
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilities2EXT* pSurfaceCapabilities);
+    /// (int) VkResult vkGetPhysicalDeviceSurfaceCapabilities2EXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkSurfaceKHR surface, VkSurfaceCapabilities2EXT* pSurfaceCapabilities);
     /// ```
-    public int GetPhysicalDeviceSurfaceCapabilities2EXT(MemorySegment physicalDevice, long surface, MemorySegment pSurfaceCapabilities) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilities2EXT");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceCapabilities2EXT.invokeExact(handles.PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT, physicalDevice, surface, pSurfaceCapabilities); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceSurfaceCapabilities2EXT", e); }
+    public static int vkGetPhysicalDeviceSurfaceCapabilities2EXT(VkPhysicalDevice physicalDevice, long surface, MemorySegment pSurfaceCapabilities) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfaceCapabilities2EXT");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfaceCapabilities2EXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfaceCapabilities2EXT, physicalDevice.segment(), surface, pSurfaceCapabilities); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfaceCapabilities2EXT", e); }
     }
 
 }

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCoverageModulationStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCoverageModulationStateCreateFlagsNV flags;
-///     VkCoverageModulationModeNV coverageModulationMode;
-///     VkBool32 coverageModulationTableEnable;
+///     ((uint32_t) VkFlags) VkPipelineCoverageModulationStateCreateFlagsNV flags;
+///     (int) VkCoverageModulationModeNV coverageModulationMode;
+///     (uint32_t) VkBool32 coverageModulationTableEnable;
 ///     uint32_t coverageModulationTableCount;
 ///     const float* pCoverageModulationTable;
 /// };

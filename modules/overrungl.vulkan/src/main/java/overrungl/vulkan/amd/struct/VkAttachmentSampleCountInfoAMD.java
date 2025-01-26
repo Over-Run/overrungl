@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAttachmentSampleCountInfoAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t colorAttachmentCount;
 ///     const VkSampleCountFlagBits* pColorAttachmentSamples;
-///     VkSampleCountFlagBits depthStencilAttachmentSamples;
+///     (int) VkSampleCountFlagBits depthStencilAttachmentSamples;
 /// };
 /// ```
 public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {

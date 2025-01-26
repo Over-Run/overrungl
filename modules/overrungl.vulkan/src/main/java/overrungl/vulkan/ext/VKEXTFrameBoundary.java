@@ -24,6 +24,6 @@ public final class VKEXTFrameBoundary {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT = 1000375000;
     public static final int VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT = 1000375001;
 
-    private VKEXTFrameBoundary() { }
+    private VKEXTFrameBoundary() {}
 
 }

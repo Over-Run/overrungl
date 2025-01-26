@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPowerInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplayPowerStateEXT powerState;
+///     (int) VkDisplayPowerStateEXT powerState;
 /// };
 /// ```
 public sealed class VkDisplayPowerInfoEXT extends GroupType {

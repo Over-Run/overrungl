@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize minImportedHostPointerAlignment;
+///     (uint64_t) VkDeviceSize minImportedHostPointerAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalMemoryHostPropertiesEXT extends GroupType {

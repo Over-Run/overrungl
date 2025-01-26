@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferBeginInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCommandBufferUsageFlags flags;
+///     ((uint32_t) VkFlags) VkCommandBufferUsageFlags flags;
 ///     const VkCommandBufferInheritanceInfo* pInheritanceInfo;
 /// };
 /// ```

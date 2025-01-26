@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPerformanceValueINTEL {
-///     VkPerformanceValueTypeINTEL type;
-///     VkPerformanceValueDataINTEL data;
+///     (int) VkPerformanceValueTypeINTEL type;
+///     (union VkPerformanceValueDataINTEL) VkPerformanceValueDataINTEL data;
 /// };
 /// ```
 public sealed class VkPerformanceValueINTEL extends GroupType {

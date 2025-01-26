@@ -150,7 +150,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform1i64ARB(GLint location, GLint64 x);
+    /// void glUniform1i64ARB((int) GLint location, ((int64_t) khronos_int64_t) GLint64 x);
     /// ```
     public void Uniform1i64ARB(int location, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1i64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64ARB");
@@ -159,7 +159,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform2i64ARB(GLint location, GLint64 x, GLint64 y);
+    /// void glUniform2i64ARB((int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y);
     /// ```
     public void Uniform2i64ARB(int location, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2i64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64ARB");
@@ -168,7 +168,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform3i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z);
+    /// void glUniform3i64ARB((int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y, ((int64_t) khronos_int64_t) GLint64 z);
     /// ```
     public void Uniform3i64ARB(int location, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3i64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64ARB");
@@ -177,7 +177,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform4i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
+    /// void glUniform4i64ARB((int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y, ((int64_t) khronos_int64_t) GLint64 z, ((int64_t) khronos_int64_t) GLint64 w);
     /// ```
     public void Uniform4i64ARB(int location, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4i64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64ARB");
@@ -186,7 +186,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform1i64vARB(GLint location, GLsizei count, const GLint64* value);
+    /// void glUniform1i64vARB((int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void Uniform1i64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1i64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1i64vARB");
@@ -195,7 +195,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform2i64vARB(GLint location, GLsizei count, const GLint64* value);
+    /// void glUniform2i64vARB((int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void Uniform2i64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2i64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2i64vARB");
@@ -204,7 +204,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform3i64vARB(GLint location, GLsizei count, const GLint64* value);
+    /// void glUniform3i64vARB((int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void Uniform3i64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3i64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3i64vARB");
@@ -213,7 +213,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform4i64vARB(GLint location, GLsizei count, const GLint64* value);
+    /// void glUniform4i64vARB((int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void Uniform4i64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4i64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4i64vARB");
@@ -222,7 +222,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform1ui64ARB(GLint location, GLuint64 x);
+    /// void glUniform1ui64ARB((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x);
     /// ```
     public void Uniform1ui64ARB(int location, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64ARB");
@@ -231,7 +231,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform2ui64ARB(GLint location, GLuint64 x, GLuint64 y);
+    /// void glUniform2ui64ARB((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y);
     /// ```
     public void Uniform2ui64ARB(int location, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64ARB");
@@ -240,7 +240,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform3ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
+    /// void glUniform3ui64ARB((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y, ((uint64_t) khronos_uint64_t) GLuint64 z);
     /// ```
     public void Uniform3ui64ARB(int location, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64ARB");
@@ -249,7 +249,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform4ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
+    /// void glUniform4ui64ARB((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y, ((uint64_t) khronos_uint64_t) GLuint64 z, ((uint64_t) khronos_uint64_t) GLuint64 w);
     /// ```
     public void Uniform4ui64ARB(int location, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64ARB");
@@ -258,7 +258,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform1ui64vARB(GLint location, GLsizei count, const GLuint64* value);
+    /// void glUniform1ui64vARB((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void Uniform1ui64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1ui64vARB");
@@ -267,7 +267,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform2ui64vARB(GLint location, GLsizei count, const GLuint64* value);
+    /// void glUniform2ui64vARB((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void Uniform2ui64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2ui64vARB");
@@ -276,7 +276,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform3ui64vARB(GLint location, GLsizei count, const GLuint64* value);
+    /// void glUniform3ui64vARB((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void Uniform3ui64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3ui64vARB");
@@ -285,7 +285,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glUniform4ui64vARB(GLint location, GLsizei count, const GLuint64* value);
+    /// void glUniform4ui64vARB((int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void Uniform4ui64vARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4ui64vARB");
@@ -294,7 +294,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glGetUniformi64vARB(GLuint program, GLint location, GLint64* params);
+    /// void glGetUniformi64vARB((unsigned int) GLuint program, (int) GLint location, GLint64* params);
     /// ```
     public void GetUniformi64vARB(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformi64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformi64vARB");
@@ -303,7 +303,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glGetUniformui64vARB(GLuint program, GLint location, GLuint64* params);
+    /// void glGetUniformui64vARB((unsigned int) GLuint program, (int) GLint location, GLuint64* params);
     /// ```
     public void GetUniformui64vARB(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformui64vARB");
@@ -312,7 +312,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glGetnUniformi64vARB(GLuint program, GLint location, GLsizei bufSize, GLint64* params);
+    /// void glGetnUniformi64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLint64* params);
     /// ```
     public void GetnUniformi64vARB(int program, int location, int bufSize, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformi64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformi64vARB");
@@ -321,7 +321,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glGetnUniformui64vARB(GLuint program, GLint location, GLsizei bufSize, GLuint64* params);
+    /// void glGetnUniformui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLuint64* params);
     /// ```
     public void GetnUniformui64vARB(int program, int location, int bufSize, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformui64vARB");
@@ -330,7 +330,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform1i64ARB(GLuint program, GLint location, GLint64 x);
+    /// void glProgramUniform1i64ARB((unsigned int) GLuint program, (int) GLint location, ((int64_t) khronos_int64_t) GLint64 x);
     /// ```
     public void ProgramUniform1i64ARB(int program, int location, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1i64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64ARB");
@@ -339,7 +339,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform2i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y);
+    /// void glProgramUniform2i64ARB((unsigned int) GLuint program, (int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y);
     /// ```
     public void ProgramUniform2i64ARB(int program, int location, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2i64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64ARB");
@@ -348,7 +348,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform3i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z);
+    /// void glProgramUniform3i64ARB((unsigned int) GLuint program, (int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y, ((int64_t) khronos_int64_t) GLint64 z);
     /// ```
     public void ProgramUniform3i64ARB(int program, int location, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3i64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64ARB");
@@ -357,7 +357,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform4i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w);
+    /// void glProgramUniform4i64ARB((unsigned int) GLuint program, (int) GLint location, ((int64_t) khronos_int64_t) GLint64 x, ((int64_t) khronos_int64_t) GLint64 y, ((int64_t) khronos_int64_t) GLint64 z, ((int64_t) khronos_int64_t) GLint64 w);
     /// ```
     public void ProgramUniform4i64ARB(int program, int location, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4i64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64ARB");
@@ -366,7 +366,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform1i64vARB(GLuint program, GLint location, GLsizei count, const GLint64* value);
+    /// void glProgramUniform1i64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void ProgramUniform1i64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1i64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1i64vARB");
@@ -375,7 +375,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform2i64vARB(GLuint program, GLint location, GLsizei count, const GLint64* value);
+    /// void glProgramUniform2i64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void ProgramUniform2i64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2i64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2i64vARB");
@@ -384,7 +384,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform3i64vARB(GLuint program, GLint location, GLsizei count, const GLint64* value);
+    /// void glProgramUniform3i64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void ProgramUniform3i64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3i64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3i64vARB");
@@ -393,7 +393,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform4i64vARB(GLuint program, GLint location, GLsizei count, const GLint64* value);
+    /// void glProgramUniform4i64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLint64* value);
     /// ```
     public void ProgramUniform4i64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4i64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4i64vARB");
@@ -402,7 +402,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform1ui64ARB(GLuint program, GLint location, GLuint64 x);
+    /// void glProgramUniform1ui64ARB((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x);
     /// ```
     public void ProgramUniform1ui64ARB(int program, int location, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64ARB");
@@ -411,7 +411,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform2ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y);
+    /// void glProgramUniform2ui64ARB((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y);
     /// ```
     public void ProgramUniform2ui64ARB(int program, int location, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64ARB");
@@ -420,7 +420,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform3ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z);
+    /// void glProgramUniform3ui64ARB((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y, ((uint64_t) khronos_uint64_t) GLuint64 z);
     /// ```
     public void ProgramUniform3ui64ARB(int program, int location, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64ARB");
@@ -429,7 +429,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform4ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w);
+    /// void glProgramUniform4ui64ARB((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64 x, ((uint64_t) khronos_uint64_t) GLuint64 y, ((uint64_t) khronos_uint64_t) GLuint64 z, ((uint64_t) khronos_uint64_t) GLuint64 w);
     /// ```
     public void ProgramUniform4ui64ARB(int program, int location, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64ARB");
@@ -438,7 +438,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform1ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64* value);
+    /// void glProgramUniform1ui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void ProgramUniform1ui64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform1ui64vARB");
@@ -447,7 +447,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform2ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64* value);
+    /// void glProgramUniform2ui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void ProgramUniform2ui64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform2ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform2ui64vARB");
@@ -456,7 +456,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform3ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64* value);
+    /// void glProgramUniform3ui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void ProgramUniform3ui64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform3ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform3ui64vARB");
@@ -465,7 +465,7 @@ public final class GLARBGpuShaderInt64 {
     }
 
     /// ```
-    /// void glProgramUniform4ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64* value);
+    /// void glProgramUniform4ui64vARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64* value);
     /// ```
     public void ProgramUniform4ui64vARB(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniform4ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniform4ui64vARB");

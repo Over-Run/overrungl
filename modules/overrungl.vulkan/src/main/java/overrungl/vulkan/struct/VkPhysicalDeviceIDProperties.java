@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceIDProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint8_t deviceUUID[16];
 ///     uint8_t driverUUID[16];
 ///     uint8_t deviceLUID[8];
 ///     uint32_t deviceNodeMask;
-///     VkBool32 deviceLUIDValid;
+///     (uint32_t) VkBool32 deviceLUIDValid;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceIDProperties extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyDescriptorSet {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorSet srcSet;
+///     (uint64_t) VkDescriptorSet srcSet;
 ///     uint32_t srcBinding;
 ///     uint32_t srcArrayElement;
-///     VkDescriptorSet dstSet;
+///     (uint64_t) VkDescriptorSet dstSet;
 ///     uint32_t dstBinding;
 ///     uint32_t dstArrayElement;
 ///     uint32_t descriptorCount;

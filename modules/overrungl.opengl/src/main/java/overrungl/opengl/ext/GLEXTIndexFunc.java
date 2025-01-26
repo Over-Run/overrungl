@@ -40,7 +40,7 @@ public final class GLEXTIndexFunc {
     }
 
     /// ```
-    /// void glIndexFuncEXT(GLenum func, GLclampf ref);
+    /// void glIndexFuncEXT((unsigned int) GLenum func, ((float) khronos_float_t) GLclampf ref);
     /// ```
     public void IndexFuncEXT(int func, float ref) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");

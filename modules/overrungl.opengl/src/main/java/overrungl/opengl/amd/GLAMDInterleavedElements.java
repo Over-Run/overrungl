@@ -46,7 +46,7 @@ public final class GLAMDInterleavedElements {
     }
 
     /// ```
-    /// void glVertexAttribParameteriAMD(GLuint index, GLenum pname, GLint param);
+    /// void glVertexAttribParameteriAMD((unsigned int) GLuint index, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void VertexAttribParameteriAMD(int index, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");

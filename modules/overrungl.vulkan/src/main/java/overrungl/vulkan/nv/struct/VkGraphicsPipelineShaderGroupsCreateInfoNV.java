@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGraphicsPipelineShaderGroupsCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t groupCount;
 ///     const VkGraphicsShaderGroupCreateInfoNV* pGroups;

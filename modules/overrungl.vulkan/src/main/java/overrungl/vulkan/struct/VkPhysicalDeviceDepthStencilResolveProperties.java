@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDepthStencilResolveProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkResolveModeFlags supportedDepthResolveModes;
-///     VkResolveModeFlags supportedStencilResolveModes;
-///     VkBool32 independentResolveNone;
-///     VkBool32 independentResolve;
+///     ((uint32_t) VkFlags) VkResolveModeFlags supportedDepthResolveModes;
+///     ((uint32_t) VkFlags) VkResolveModeFlags supportedStencilResolveModes;
+///     (uint32_t) VkBool32 independentResolveNone;
+///     (uint32_t) VkBool32 independentResolve;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDepthStencilResolveProperties extends GroupType {

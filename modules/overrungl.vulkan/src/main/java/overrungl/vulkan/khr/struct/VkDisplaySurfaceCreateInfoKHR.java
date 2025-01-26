@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplaySurfaceCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplaySurfaceCreateFlagsKHR flags;
-///     VkDisplayModeKHR displayMode;
+///     ((uint32_t) VkFlags) VkDisplaySurfaceCreateFlagsKHR flags;
+///     (uint64_t) VkDisplayModeKHR displayMode;
 ///     uint32_t planeIndex;
 ///     uint32_t planeStackIndex;
-///     VkSurfaceTransformFlagBitsKHR transform;
+///     (int) VkSurfaceTransformFlagBitsKHR transform;
 ///     float globalAlpha;
-///     VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
-///     VkExtent2D imageExtent;
+///     (int) VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
+///     (struct VkExtent2D) VkExtent2D imageExtent;
 /// };
 /// ```
 public sealed class VkDisplaySurfaceCreateInfoKHR extends GroupType {

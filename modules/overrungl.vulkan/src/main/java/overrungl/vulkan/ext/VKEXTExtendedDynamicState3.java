@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTExtendedDynamicState3 {
+public final class VKEXTExtendedDynamicState3 {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_3_SPEC_VERSION = 2;
     public static final String VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME = "VK_EXT_extended_dynamic_state3";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT = 1000455000;
@@ -57,7 +57,6 @@ public class VKEXTExtendedDynamicState3 {
     public static final int VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV = 1000455030;
     public static final int VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV = 1000455031;
     public static final int VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV = 1000455032;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetDepthClampEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetPolygonModeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
@@ -90,353 +89,288 @@ public class VKEXTExtendedDynamicState3 {
         public static final MethodHandle MH_vkCmdSetShadingRateImageEnableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetRepresentativeFragmentTestEnableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetCoverageReductionModeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public final MemorySegment PFN_vkCmdSetDepthClampEnableEXT;
-        public final MemorySegment PFN_vkCmdSetPolygonModeEXT;
-        public final MemorySegment PFN_vkCmdSetRasterizationSamplesEXT;
-        public final MemorySegment PFN_vkCmdSetSampleMaskEXT;
-        public final MemorySegment PFN_vkCmdSetAlphaToCoverageEnableEXT;
-        public final MemorySegment PFN_vkCmdSetAlphaToOneEnableEXT;
-        public final MemorySegment PFN_vkCmdSetLogicOpEnableEXT;
-        public final MemorySegment PFN_vkCmdSetColorBlendEnableEXT;
-        public final MemorySegment PFN_vkCmdSetColorBlendEquationEXT;
-        public final MemorySegment PFN_vkCmdSetColorWriteMaskEXT;
-        public final MemorySegment PFN_vkCmdSetTessellationDomainOriginEXT;
-        public final MemorySegment PFN_vkCmdSetRasterizationStreamEXT;
-        public final MemorySegment PFN_vkCmdSetConservativeRasterizationModeEXT;
-        public final MemorySegment PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT;
-        public final MemorySegment PFN_vkCmdSetDepthClipEnableEXT;
-        public final MemorySegment PFN_vkCmdSetSampleLocationsEnableEXT;
-        public final MemorySegment PFN_vkCmdSetColorBlendAdvancedEXT;
-        public final MemorySegment PFN_vkCmdSetProvokingVertexModeEXT;
-        public final MemorySegment PFN_vkCmdSetLineRasterizationModeEXT;
-        public final MemorySegment PFN_vkCmdSetLineStippleEnableEXT;
-        public final MemorySegment PFN_vkCmdSetDepthClipNegativeOneToOneEXT;
-        public final MemorySegment PFN_vkCmdSetViewportWScalingEnableNV;
-        public final MemorySegment PFN_vkCmdSetViewportSwizzleNV;
-        public final MemorySegment PFN_vkCmdSetCoverageToColorEnableNV;
-        public final MemorySegment PFN_vkCmdSetCoverageToColorLocationNV;
-        public final MemorySegment PFN_vkCmdSetCoverageModulationModeNV;
-        public final MemorySegment PFN_vkCmdSetCoverageModulationTableEnableNV;
-        public final MemorySegment PFN_vkCmdSetCoverageModulationTableNV;
-        public final MemorySegment PFN_vkCmdSetShadingRateImageEnableNV;
-        public final MemorySegment PFN_vkCmdSetRepresentativeFragmentTestEnableNV;
-        public final MemorySegment PFN_vkCmdSetCoverageReductionModeNV;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdSetDepthClampEnableEXT = func.invoke(device, "vkCmdSetDepthClampEnableEXT");
-            PFN_vkCmdSetPolygonModeEXT = func.invoke(device, "vkCmdSetPolygonModeEXT");
-            PFN_vkCmdSetRasterizationSamplesEXT = func.invoke(device, "vkCmdSetRasterizationSamplesEXT");
-            PFN_vkCmdSetSampleMaskEXT = func.invoke(device, "vkCmdSetSampleMaskEXT");
-            PFN_vkCmdSetAlphaToCoverageEnableEXT = func.invoke(device, "vkCmdSetAlphaToCoverageEnableEXT");
-            PFN_vkCmdSetAlphaToOneEnableEXT = func.invoke(device, "vkCmdSetAlphaToOneEnableEXT");
-            PFN_vkCmdSetLogicOpEnableEXT = func.invoke(device, "vkCmdSetLogicOpEnableEXT");
-            PFN_vkCmdSetColorBlendEnableEXT = func.invoke(device, "vkCmdSetColorBlendEnableEXT");
-            PFN_vkCmdSetColorBlendEquationEXT = func.invoke(device, "vkCmdSetColorBlendEquationEXT");
-            PFN_vkCmdSetColorWriteMaskEXT = func.invoke(device, "vkCmdSetColorWriteMaskEXT");
-            PFN_vkCmdSetTessellationDomainOriginEXT = func.invoke(device, "vkCmdSetTessellationDomainOriginEXT");
-            PFN_vkCmdSetRasterizationStreamEXT = func.invoke(device, "vkCmdSetRasterizationStreamEXT");
-            PFN_vkCmdSetConservativeRasterizationModeEXT = func.invoke(device, "vkCmdSetConservativeRasterizationModeEXT");
-            PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT = func.invoke(device, "vkCmdSetExtraPrimitiveOverestimationSizeEXT");
-            PFN_vkCmdSetDepthClipEnableEXT = func.invoke(device, "vkCmdSetDepthClipEnableEXT");
-            PFN_vkCmdSetSampleLocationsEnableEXT = func.invoke(device, "vkCmdSetSampleLocationsEnableEXT");
-            PFN_vkCmdSetColorBlendAdvancedEXT = func.invoke(device, "vkCmdSetColorBlendAdvancedEXT");
-            PFN_vkCmdSetProvokingVertexModeEXT = func.invoke(device, "vkCmdSetProvokingVertexModeEXT");
-            PFN_vkCmdSetLineRasterizationModeEXT = func.invoke(device, "vkCmdSetLineRasterizationModeEXT");
-            PFN_vkCmdSetLineStippleEnableEXT = func.invoke(device, "vkCmdSetLineStippleEnableEXT");
-            PFN_vkCmdSetDepthClipNegativeOneToOneEXT = func.invoke(device, "vkCmdSetDepthClipNegativeOneToOneEXT");
-            PFN_vkCmdSetViewportWScalingEnableNV = func.invoke(device, "vkCmdSetViewportWScalingEnableNV");
-            PFN_vkCmdSetViewportSwizzleNV = func.invoke(device, "vkCmdSetViewportSwizzleNV");
-            PFN_vkCmdSetCoverageToColorEnableNV = func.invoke(device, "vkCmdSetCoverageToColorEnableNV");
-            PFN_vkCmdSetCoverageToColorLocationNV = func.invoke(device, "vkCmdSetCoverageToColorLocationNV");
-            PFN_vkCmdSetCoverageModulationModeNV = func.invoke(device, "vkCmdSetCoverageModulationModeNV");
-            PFN_vkCmdSetCoverageModulationTableEnableNV = func.invoke(device, "vkCmdSetCoverageModulationTableEnableNV");
-            PFN_vkCmdSetCoverageModulationTableNV = func.invoke(device, "vkCmdSetCoverageModulationTableNV");
-            PFN_vkCmdSetShadingRateImageEnableNV = func.invoke(device, "vkCmdSetShadingRateImageEnableNV");
-            PFN_vkCmdSetRepresentativeFragmentTestEnableNV = func.invoke(device, "vkCmdSetRepresentativeFragmentTestEnableNV");
-            PFN_vkCmdSetCoverageReductionModeNV = func.invoke(device, "vkCmdSetCoverageReductionModeNV");
-        }
+        private Handles() {}
     }
 
-    public VKEXTExtendedDynamicState3(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKEXTExtendedDynamicState3() {}
+
+    /// ```
+    /// void vkCmdSetDepthClampEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthClampEnable);
+    /// ```
+    public static void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, int depthClampEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClampEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClampEnableEXT");
+        try { Handles.MH_vkCmdSetDepthClampEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthClampEnableEXT, commandBuffer.segment(), depthClampEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthClampEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthClampEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClampEnable);
+    /// void vkCmdSetPolygonModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPolygonMode polygonMode);
     /// ```
-    public void CmdSetDepthClampEnableEXT(MemorySegment commandBuffer, int depthClampEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthClampEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClampEnableEXT");
-        try { Handles.MH_vkCmdSetDepthClampEnableEXT.invokeExact(handles.PFN_vkCmdSetDepthClampEnableEXT, commandBuffer, depthClampEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthClampEnableEXT", e); }
+    public static void vkCmdSetPolygonModeEXT(VkCommandBuffer commandBuffer, int polygonMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPolygonModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPolygonModeEXT");
+        try { Handles.MH_vkCmdSetPolygonModeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPolygonModeEXT, commandBuffer.segment(), polygonMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPolygonModeEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetPolygonModeEXT(VkCommandBuffer commandBuffer, VkPolygonMode polygonMode);
+    /// void vkCmdSetRasterizationSamplesEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkSampleCountFlagBits rasterizationSamples);
     /// ```
-    public void CmdSetPolygonModeEXT(MemorySegment commandBuffer, int polygonMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPolygonModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPolygonModeEXT");
-        try { Handles.MH_vkCmdSetPolygonModeEXT.invokeExact(handles.PFN_vkCmdSetPolygonModeEXT, commandBuffer, polygonMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetPolygonModeEXT", e); }
+    public static void vkCmdSetRasterizationSamplesEXT(VkCommandBuffer commandBuffer, int rasterizationSamples) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizationSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizationSamplesEXT");
+        try { Handles.MH_vkCmdSetRasterizationSamplesEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRasterizationSamplesEXT, commandBuffer.segment(), rasterizationSamples); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRasterizationSamplesEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetRasterizationSamplesEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits rasterizationSamples);
+    /// void vkCmdSetSampleMaskEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkSampleCountFlagBits samples, const VkSampleMask* pSampleMask);
     /// ```
-    public void CmdSetRasterizationSamplesEXT(MemorySegment commandBuffer, int rasterizationSamples) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRasterizationSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizationSamplesEXT");
-        try { Handles.MH_vkCmdSetRasterizationSamplesEXT.invokeExact(handles.PFN_vkCmdSetRasterizationSamplesEXT, commandBuffer, rasterizationSamples); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetRasterizationSamplesEXT", e); }
+    public static void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, int samples, MemorySegment pSampleMask) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetSampleMaskEXT");
+        try { Handles.MH_vkCmdSetSampleMaskEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetSampleMaskEXT, commandBuffer.segment(), samples, pSampleMask); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetSampleMaskEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetSampleMaskEXT(VkCommandBuffer commandBuffer, VkSampleCountFlagBits samples, const VkSampleMask* pSampleMask);
+    /// void vkCmdSetAlphaToCoverageEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 alphaToCoverageEnable);
     /// ```
-    public void CmdSetSampleMaskEXT(MemorySegment commandBuffer, int samples, MemorySegment pSampleMask) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetSampleMaskEXT");
-        try { Handles.MH_vkCmdSetSampleMaskEXT.invokeExact(handles.PFN_vkCmdSetSampleMaskEXT, commandBuffer, samples, pSampleMask); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetSampleMaskEXT", e); }
+    public static void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, int alphaToCoverageEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAlphaToCoverageEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAlphaToCoverageEnableEXT");
+        try { Handles.MH_vkCmdSetAlphaToCoverageEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetAlphaToCoverageEnableEXT, commandBuffer.segment(), alphaToCoverageEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetAlphaToCoverageEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetAlphaToCoverageEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToCoverageEnable);
+    /// void vkCmdSetAlphaToOneEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 alphaToOneEnable);
     /// ```
-    public void CmdSetAlphaToCoverageEnableEXT(MemorySegment commandBuffer, int alphaToCoverageEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetAlphaToCoverageEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAlphaToCoverageEnableEXT");
-        try { Handles.MH_vkCmdSetAlphaToCoverageEnableEXT.invokeExact(handles.PFN_vkCmdSetAlphaToCoverageEnableEXT, commandBuffer, alphaToCoverageEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetAlphaToCoverageEnableEXT", e); }
+    public static void vkCmdSetAlphaToOneEnableEXT(VkCommandBuffer commandBuffer, int alphaToOneEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAlphaToOneEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAlphaToOneEnableEXT");
+        try { Handles.MH_vkCmdSetAlphaToOneEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetAlphaToOneEnableEXT, commandBuffer.segment(), alphaToOneEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetAlphaToOneEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetAlphaToOneEnableEXT(VkCommandBuffer commandBuffer, VkBool32 alphaToOneEnable);
+    /// void vkCmdSetLogicOpEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 logicOpEnable);
     /// ```
-    public void CmdSetAlphaToOneEnableEXT(MemorySegment commandBuffer, int alphaToOneEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetAlphaToOneEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAlphaToOneEnableEXT");
-        try { Handles.MH_vkCmdSetAlphaToOneEnableEXT.invokeExact(handles.PFN_vkCmdSetAlphaToOneEnableEXT, commandBuffer, alphaToOneEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetAlphaToOneEnableEXT", e); }
+    public static void vkCmdSetLogicOpEnableEXT(VkCommandBuffer commandBuffer, int logicOpEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEnableEXT");
+        try { Handles.MH_vkCmdSetLogicOpEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEnableEXT, commandBuffer.segment(), logicOpEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLogicOpEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetLogicOpEnableEXT(VkCommandBuffer commandBuffer, VkBool32 logicOpEnable);
+    /// void vkCmdSetColorBlendEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkBool32* pColorBlendEnables);
     /// ```
-    public void CmdSetLogicOpEnableEXT(MemorySegment commandBuffer, int logicOpEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetLogicOpEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEnableEXT");
-        try { Handles.MH_vkCmdSetLogicOpEnableEXT.invokeExact(handles.PFN_vkCmdSetLogicOpEnableEXT, commandBuffer, logicOpEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetLogicOpEnableEXT", e); }
+    public static void vkCmdSetColorBlendEnableEXT(VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendEnables) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEnableEXT");
+        try { Handles.MH_vkCmdSetColorBlendEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEnableEXT, commandBuffer.segment(), firstAttachment, attachmentCount, pColorBlendEnables); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorBlendEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetColorBlendEnableEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkBool32* pColorBlendEnables);
+    /// void vkCmdSetColorBlendEquationEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendEquationEXT* pColorBlendEquations);
     /// ```
-    public void CmdSetColorBlendEnableEXT(MemorySegment commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendEnables) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorBlendEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEnableEXT");
-        try { Handles.MH_vkCmdSetColorBlendEnableEXT.invokeExact(handles.PFN_vkCmdSetColorBlendEnableEXT, commandBuffer, firstAttachment, attachmentCount, pColorBlendEnables); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorBlendEnableEXT", e); }
+    public static void vkCmdSetColorBlendEquationEXT(VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendEquations) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEquationEXT");
+        try { Handles.MH_vkCmdSetColorBlendEquationEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorBlendEquationEXT, commandBuffer.segment(), firstAttachment, attachmentCount, pColorBlendEquations); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorBlendEquationEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetColorBlendEquationEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendEquationEXT* pColorBlendEquations);
+    /// void vkCmdSetColorWriteMaskEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorComponentFlags* pColorWriteMasks);
     /// ```
-    public void CmdSetColorBlendEquationEXT(MemorySegment commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendEquations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendEquationEXT");
-        try { Handles.MH_vkCmdSetColorBlendEquationEXT.invokeExact(handles.PFN_vkCmdSetColorBlendEquationEXT, commandBuffer, firstAttachment, attachmentCount, pColorBlendEquations); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorBlendEquationEXT", e); }
+    public static void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorWriteMasks) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteMaskEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteMaskEXT");
+        try { Handles.MH_vkCmdSetColorWriteMaskEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorWriteMaskEXT, commandBuffer.segment(), firstAttachment, attachmentCount, pColorWriteMasks); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorWriteMaskEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetColorWriteMaskEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorComponentFlags* pColorWriteMasks);
+    /// void vkCmdSetTessellationDomainOriginEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkTessellationDomainOrigin domainOrigin);
     /// ```
-    public void CmdSetColorWriteMaskEXT(MemorySegment commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorWriteMasks) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorWriteMaskEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteMaskEXT");
-        try { Handles.MH_vkCmdSetColorWriteMaskEXT.invokeExact(handles.PFN_vkCmdSetColorWriteMaskEXT, commandBuffer, firstAttachment, attachmentCount, pColorWriteMasks); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorWriteMaskEXT", e); }
+    public static void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, int domainOrigin) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetTessellationDomainOriginEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetTessellationDomainOriginEXT");
+        try { Handles.MH_vkCmdSetTessellationDomainOriginEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetTessellationDomainOriginEXT, commandBuffer.segment(), domainOrigin); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetTessellationDomainOriginEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetTessellationDomainOriginEXT(VkCommandBuffer commandBuffer, VkTessellationDomainOrigin domainOrigin);
+    /// void vkCmdSetRasterizationStreamEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t rasterizationStream);
     /// ```
-    public void CmdSetTessellationDomainOriginEXT(MemorySegment commandBuffer, int domainOrigin) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetTessellationDomainOriginEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetTessellationDomainOriginEXT");
-        try { Handles.MH_vkCmdSetTessellationDomainOriginEXT.invokeExact(handles.PFN_vkCmdSetTessellationDomainOriginEXT, commandBuffer, domainOrigin); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetTessellationDomainOriginEXT", e); }
+    public static void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, int rasterizationStream) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizationStreamEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizationStreamEXT");
+        try { Handles.MH_vkCmdSetRasterizationStreamEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRasterizationStreamEXT, commandBuffer.segment(), rasterizationStream); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRasterizationStreamEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetRasterizationStreamEXT(VkCommandBuffer commandBuffer, uint32_t rasterizationStream);
+    /// void vkCmdSetConservativeRasterizationModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkConservativeRasterizationModeEXT conservativeRasterizationMode);
     /// ```
-    public void CmdSetRasterizationStreamEXT(MemorySegment commandBuffer, int rasterizationStream) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRasterizationStreamEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizationStreamEXT");
-        try { Handles.MH_vkCmdSetRasterizationStreamEXT.invokeExact(handles.PFN_vkCmdSetRasterizationStreamEXT, commandBuffer, rasterizationStream); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetRasterizationStreamEXT", e); }
+    public static void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, int conservativeRasterizationMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetConservativeRasterizationModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetConservativeRasterizationModeEXT");
+        try { Handles.MH_vkCmdSetConservativeRasterizationModeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetConservativeRasterizationModeEXT, commandBuffer.segment(), conservativeRasterizationMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetConservativeRasterizationModeEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetConservativeRasterizationModeEXT(VkCommandBuffer commandBuffer, VkConservativeRasterizationModeEXT conservativeRasterizationMode);
+    /// void vkCmdSetExtraPrimitiveOverestimationSizeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize);
     /// ```
-    public void CmdSetConservativeRasterizationModeEXT(MemorySegment commandBuffer, int conservativeRasterizationMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetConservativeRasterizationModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetConservativeRasterizationModeEXT");
-        try { Handles.MH_vkCmdSetConservativeRasterizationModeEXT.invokeExact(handles.PFN_vkCmdSetConservativeRasterizationModeEXT, commandBuffer, conservativeRasterizationMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetConservativeRasterizationModeEXT", e); }
+    public static void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExtraPrimitiveOverestimationSizeEXT");
+        try { Handles.MH_vkCmdSetExtraPrimitiveOverestimationSizeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT, commandBuffer.segment(), extraPrimitiveOverestimationSize); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExtraPrimitiveOverestimationSizeEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetExtraPrimitiveOverestimationSizeEXT(VkCommandBuffer commandBuffer, float extraPrimitiveOverestimationSize);
+    /// void vkCmdSetDepthClipEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthClipEnable);
     /// ```
-    public void CmdSetExtraPrimitiveOverestimationSizeEXT(MemorySegment commandBuffer, float extraPrimitiveOverestimationSize) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExtraPrimitiveOverestimationSizeEXT");
-        try { Handles.MH_vkCmdSetExtraPrimitiveOverestimationSizeEXT.invokeExact(handles.PFN_vkCmdSetExtraPrimitiveOverestimationSizeEXT, commandBuffer, extraPrimitiveOverestimationSize); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetExtraPrimitiveOverestimationSizeEXT", e); }
+    public static void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, int depthClipEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClipEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClipEnableEXT");
+        try { Handles.MH_vkCmdSetDepthClipEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthClipEnableEXT, commandBuffer.segment(), depthClipEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthClipEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthClipEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthClipEnable);
+    /// void vkCmdSetSampleLocationsEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 sampleLocationsEnable);
     /// ```
-    public void CmdSetDepthClipEnableEXT(MemorySegment commandBuffer, int depthClipEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthClipEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClipEnableEXT");
-        try { Handles.MH_vkCmdSetDepthClipEnableEXT.invokeExact(handles.PFN_vkCmdSetDepthClipEnableEXT, commandBuffer, depthClipEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthClipEnableEXT", e); }
+    public static void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, int sampleLocationsEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEnableEXT");
+        try { Handles.MH_vkCmdSetSampleLocationsEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEnableEXT, commandBuffer.segment(), sampleLocationsEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetSampleLocationsEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetSampleLocationsEnableEXT(VkCommandBuffer commandBuffer, VkBool32 sampleLocationsEnable);
+    /// void vkCmdSetColorBlendAdvancedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendAdvancedEXT* pColorBlendAdvanced);
     /// ```
-    public void CmdSetSampleLocationsEnableEXT(MemorySegment commandBuffer, int sampleLocationsEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetSampleLocationsEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEnableEXT");
-        try { Handles.MH_vkCmdSetSampleLocationsEnableEXT.invokeExact(handles.PFN_vkCmdSetSampleLocationsEnableEXT, commandBuffer, sampleLocationsEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetSampleLocationsEnableEXT", e); }
+    public static void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendAdvanced) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorBlendAdvancedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendAdvancedEXT");
+        try { Handles.MH_vkCmdSetColorBlendAdvancedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorBlendAdvancedEXT, commandBuffer.segment(), firstAttachment, attachmentCount, pColorBlendAdvanced); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorBlendAdvancedEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetColorBlendAdvancedEXT(VkCommandBuffer commandBuffer, uint32_t firstAttachment, uint32_t attachmentCount, const VkColorBlendAdvancedEXT* pColorBlendAdvanced);
+    /// void vkCmdSetProvokingVertexModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkProvokingVertexModeEXT provokingVertexMode);
     /// ```
-    public void CmdSetColorBlendAdvancedEXT(MemorySegment commandBuffer, int firstAttachment, int attachmentCount, MemorySegment pColorBlendAdvanced) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorBlendAdvancedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorBlendAdvancedEXT");
-        try { Handles.MH_vkCmdSetColorBlendAdvancedEXT.invokeExact(handles.PFN_vkCmdSetColorBlendAdvancedEXT, commandBuffer, firstAttachment, attachmentCount, pColorBlendAdvanced); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorBlendAdvancedEXT", e); }
+    public static void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, int provokingVertexMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetProvokingVertexModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetProvokingVertexModeEXT");
+        try { Handles.MH_vkCmdSetProvokingVertexModeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetProvokingVertexModeEXT, commandBuffer.segment(), provokingVertexMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetProvokingVertexModeEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetProvokingVertexModeEXT(VkCommandBuffer commandBuffer, VkProvokingVertexModeEXT provokingVertexMode);
+    /// void vkCmdSetLineRasterizationModeEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((int) VkLineRasterizationMode) VkLineRasterizationModeEXT lineRasterizationMode);
     /// ```
-    public void CmdSetProvokingVertexModeEXT(MemorySegment commandBuffer, int provokingVertexMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetProvokingVertexModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetProvokingVertexModeEXT");
-        try { Handles.MH_vkCmdSetProvokingVertexModeEXT.invokeExact(handles.PFN_vkCmdSetProvokingVertexModeEXT, commandBuffer, provokingVertexMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetProvokingVertexModeEXT", e); }
+    public static void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, int lineRasterizationMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineRasterizationModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineRasterizationModeEXT");
+        try { Handles.MH_vkCmdSetLineRasterizationModeEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineRasterizationModeEXT, commandBuffer.segment(), lineRasterizationMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineRasterizationModeEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetLineRasterizationModeEXT(VkCommandBuffer commandBuffer, VkLineRasterizationModeEXT lineRasterizationMode);
+    /// void vkCmdSetLineStippleEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 stippledLineEnable);
     /// ```
-    public void CmdSetLineRasterizationModeEXT(MemorySegment commandBuffer, int lineRasterizationMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetLineRasterizationModeEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineRasterizationModeEXT");
-        try { Handles.MH_vkCmdSetLineRasterizationModeEXT.invokeExact(handles.PFN_vkCmdSetLineRasterizationModeEXT, commandBuffer, lineRasterizationMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetLineRasterizationModeEXT", e); }
+    public static void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, int stippledLineEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleEnableEXT");
+        try { Handles.MH_vkCmdSetLineStippleEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEnableEXT, commandBuffer.segment(), stippledLineEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStippleEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetLineStippleEnableEXT(VkCommandBuffer commandBuffer, VkBool32 stippledLineEnable);
+    /// void vkCmdSetDepthClipNegativeOneToOneEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 negativeOneToOne);
     /// ```
-    public void CmdSetLineStippleEnableEXT(MemorySegment commandBuffer, int stippledLineEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetLineStippleEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleEnableEXT");
-        try { Handles.MH_vkCmdSetLineStippleEnableEXT.invokeExact(handles.PFN_vkCmdSetLineStippleEnableEXT, commandBuffer, stippledLineEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetLineStippleEnableEXT", e); }
+    public static void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, int negativeOneToOne) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthClipNegativeOneToOneEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClipNegativeOneToOneEXT");
+        try { Handles.MH_vkCmdSetDepthClipNegativeOneToOneEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthClipNegativeOneToOneEXT, commandBuffer.segment(), negativeOneToOne); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthClipNegativeOneToOneEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthClipNegativeOneToOneEXT(VkCommandBuffer commandBuffer, VkBool32 negativeOneToOne);
+    /// void vkCmdSetViewportWScalingEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 viewportWScalingEnable);
     /// ```
-    public void CmdSetDepthClipNegativeOneToOneEXT(MemorySegment commandBuffer, int negativeOneToOne) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthClipNegativeOneToOneEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthClipNegativeOneToOneEXT");
-        try { Handles.MH_vkCmdSetDepthClipNegativeOneToOneEXT.invokeExact(handles.PFN_vkCmdSetDepthClipNegativeOneToOneEXT, commandBuffer, negativeOneToOne); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthClipNegativeOneToOneEXT", e); }
+    public static void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, int viewportWScalingEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingEnableNV");
+        try { Handles.MH_vkCmdSetViewportWScalingEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingEnableNV, commandBuffer.segment(), viewportWScalingEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWScalingEnableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetViewportWScalingEnableNV(VkCommandBuffer commandBuffer, VkBool32 viewportWScalingEnable);
+    /// void vkCmdSetViewportSwizzleNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportSwizzleNV* pViewportSwizzles);
     /// ```
-    public void CmdSetViewportWScalingEnableNV(MemorySegment commandBuffer, int viewportWScalingEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetViewportWScalingEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingEnableNV");
-        try { Handles.MH_vkCmdSetViewportWScalingEnableNV.invokeExact(handles.PFN_vkCmdSetViewportWScalingEnableNV, commandBuffer, viewportWScalingEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetViewportWScalingEnableNV", e); }
+    public static void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportSwizzles) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportSwizzleNV");
+        try { Handles.MH_vkCmdSetViewportSwizzleNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportSwizzleNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportSwizzles); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportSwizzleNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetViewportSwizzleNV(VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportSwizzleNV* pViewportSwizzles);
+    /// void vkCmdSetCoverageToColorEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 coverageToColorEnable);
     /// ```
-    public void CmdSetViewportSwizzleNV(MemorySegment commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportSwizzles) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportSwizzleNV");
-        try { Handles.MH_vkCmdSetViewportSwizzleNV.invokeExact(handles.PFN_vkCmdSetViewportSwizzleNV, commandBuffer, firstViewport, viewportCount, pViewportSwizzles); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetViewportSwizzleNV", e); }
+    public static void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, int coverageToColorEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorEnableNV");
+        try { Handles.MH_vkCmdSetCoverageToColorEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorEnableNV, commandBuffer.segment(), coverageToColorEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageToColorEnableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetCoverageToColorEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageToColorEnable);
+    /// void vkCmdSetCoverageToColorLocationNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t coverageToColorLocation);
     /// ```
-    public void CmdSetCoverageToColorEnableNV(MemorySegment commandBuffer, int coverageToColorEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageToColorEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorEnableNV");
-        try { Handles.MH_vkCmdSetCoverageToColorEnableNV.invokeExact(handles.PFN_vkCmdSetCoverageToColorEnableNV, commandBuffer, coverageToColorEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageToColorEnableNV", e); }
+    public static void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, int coverageToColorLocation) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorLocationNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorLocationNV");
+        try { Handles.MH_vkCmdSetCoverageToColorLocationNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageToColorLocationNV, commandBuffer.segment(), coverageToColorLocation); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageToColorLocationNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetCoverageToColorLocationNV(VkCommandBuffer commandBuffer, uint32_t coverageToColorLocation);
+    /// void vkCmdSetCoverageModulationModeNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoverageModulationModeNV coverageModulationMode);
     /// ```
-    public void CmdSetCoverageToColorLocationNV(MemorySegment commandBuffer, int coverageToColorLocation) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageToColorLocationNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageToColorLocationNV");
-        try { Handles.MH_vkCmdSetCoverageToColorLocationNV.invokeExact(handles.PFN_vkCmdSetCoverageToColorLocationNV, commandBuffer, coverageToColorLocation); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageToColorLocationNV", e); }
+    public static void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, int coverageModulationMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationModeNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationModeNV");
+        try { Handles.MH_vkCmdSetCoverageModulationModeNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationModeNV, commandBuffer.segment(), coverageModulationMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageModulationModeNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetCoverageModulationModeNV(VkCommandBuffer commandBuffer, VkCoverageModulationModeNV coverageModulationMode);
+    /// void vkCmdSetCoverageModulationTableEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 coverageModulationTableEnable);
     /// ```
-    public void CmdSetCoverageModulationModeNV(MemorySegment commandBuffer, int coverageModulationMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageModulationModeNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationModeNV");
-        try { Handles.MH_vkCmdSetCoverageModulationModeNV.invokeExact(handles.PFN_vkCmdSetCoverageModulationModeNV, commandBuffer, coverageModulationMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageModulationModeNV", e); }
+    public static void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, int coverageModulationTableEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableEnableNV");
+        try { Handles.MH_vkCmdSetCoverageModulationTableEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableEnableNV, commandBuffer.segment(), coverageModulationTableEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageModulationTableEnableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetCoverageModulationTableEnableNV(VkCommandBuffer commandBuffer, VkBool32 coverageModulationTableEnable);
+    /// void vkCmdSetCoverageModulationTableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t coverageModulationTableCount, const float* pCoverageModulationTable);
     /// ```
-    public void CmdSetCoverageModulationTableEnableNV(MemorySegment commandBuffer, int coverageModulationTableEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageModulationTableEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableEnableNV");
-        try { Handles.MH_vkCmdSetCoverageModulationTableEnableNV.invokeExact(handles.PFN_vkCmdSetCoverageModulationTableEnableNV, commandBuffer, coverageModulationTableEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageModulationTableEnableNV", e); }
+    public static void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, int coverageModulationTableCount, MemorySegment pCoverageModulationTable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableNV");
+        try { Handles.MH_vkCmdSetCoverageModulationTableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageModulationTableNV, commandBuffer.segment(), coverageModulationTableCount, pCoverageModulationTable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageModulationTableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetCoverageModulationTableNV(VkCommandBuffer commandBuffer, uint32_t coverageModulationTableCount, const float* pCoverageModulationTable);
+    /// void vkCmdSetShadingRateImageEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 shadingRateImageEnable);
     /// ```
-    public void CmdSetCoverageModulationTableNV(MemorySegment commandBuffer, int coverageModulationTableCount, MemorySegment pCoverageModulationTable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageModulationTableNV");
-        try { Handles.MH_vkCmdSetCoverageModulationTableNV.invokeExact(handles.PFN_vkCmdSetCoverageModulationTableNV, commandBuffer, coverageModulationTableCount, pCoverageModulationTable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageModulationTableNV", e); }
+    public static void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, int shadingRateImageEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetShadingRateImageEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetShadingRateImageEnableNV");
+        try { Handles.MH_vkCmdSetShadingRateImageEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetShadingRateImageEnableNV, commandBuffer.segment(), shadingRateImageEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetShadingRateImageEnableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetShadingRateImageEnableNV(VkCommandBuffer commandBuffer, VkBool32 shadingRateImageEnable);
+    /// void vkCmdSetRepresentativeFragmentTestEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 representativeFragmentTestEnable);
     /// ```
-    public void CmdSetShadingRateImageEnableNV(MemorySegment commandBuffer, int shadingRateImageEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetShadingRateImageEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetShadingRateImageEnableNV");
-        try { Handles.MH_vkCmdSetShadingRateImageEnableNV.invokeExact(handles.PFN_vkCmdSetShadingRateImageEnableNV, commandBuffer, shadingRateImageEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetShadingRateImageEnableNV", e); }
+    public static void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, int representativeFragmentTestEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRepresentativeFragmentTestEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRepresentativeFragmentTestEnableNV");
+        try { Handles.MH_vkCmdSetRepresentativeFragmentTestEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRepresentativeFragmentTestEnableNV, commandBuffer.segment(), representativeFragmentTestEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRepresentativeFragmentTestEnableNV", e); }
     }
 
     /// ```
-    /// void vkCmdSetRepresentativeFragmentTestEnableNV(VkCommandBuffer commandBuffer, VkBool32 representativeFragmentTestEnable);
+    /// void vkCmdSetCoverageReductionModeNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoverageReductionModeNV coverageReductionMode);
     /// ```
-    public void CmdSetRepresentativeFragmentTestEnableNV(MemorySegment commandBuffer, int representativeFragmentTestEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRepresentativeFragmentTestEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRepresentativeFragmentTestEnableNV");
-        try { Handles.MH_vkCmdSetRepresentativeFragmentTestEnableNV.invokeExact(handles.PFN_vkCmdSetRepresentativeFragmentTestEnableNV, commandBuffer, representativeFragmentTestEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetRepresentativeFragmentTestEnableNV", e); }
-    }
-
-    /// ```
-    /// void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, VkCoverageReductionModeNV coverageReductionMode);
-    /// ```
-    public void CmdSetCoverageReductionModeNV(MemorySegment commandBuffer, int coverageReductionMode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetCoverageReductionModeNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageReductionModeNV");
-        try { Handles.MH_vkCmdSetCoverageReductionModeNV.invokeExact(handles.PFN_vkCmdSetCoverageReductionModeNV, commandBuffer, coverageReductionMode); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetCoverageReductionModeNV", e); }
+    public static void vkCmdSetCoverageReductionModeNV(VkCommandBuffer commandBuffer, int coverageReductionMode) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoverageReductionModeNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoverageReductionModeNV");
+        try { Handles.MH_vkCmdSetCoverageReductionModeNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoverageReductionModeNV, commandBuffer.segment(), coverageReductionMode); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoverageReductionModeNV", e); }
     }
 
 }

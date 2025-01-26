@@ -23,6 +23,6 @@ public final class VKSECAmigoProfiling {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC = 1000485000;
     public static final int VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC = 1000485001;
 
-    private VKSECAmigoProfiling() { }
+    private VKSECAmigoProfiling() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkShaderModuleValidationCacheCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkValidationCacheEXT validationCache;
+///     (uint64_t) VkValidationCacheEXT validationCache;
 /// };
 /// ```
 public sealed class VkShaderModuleValidationCacheCreateInfoEXT extends GroupType {

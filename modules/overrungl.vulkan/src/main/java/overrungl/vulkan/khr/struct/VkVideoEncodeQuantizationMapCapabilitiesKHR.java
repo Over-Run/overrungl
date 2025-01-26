@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeQuantizationMapCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D maxQuantizationMapExtent;
+///     (struct VkExtent2D) VkExtent2D maxQuantizationMapExtent;
 /// };
 /// ```
 public sealed class VkVideoEncodeQuantizationMapCapabilitiesKHR extends GroupType {

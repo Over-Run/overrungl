@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeometryAABBNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBuffer aabbData;
+///     (uint64_t) VkBuffer aabbData;
 ///     uint32_t numAABBs;
 ///     uint32_t stride;
-///     VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize offset;
 /// };
 /// ```
 public sealed class VkGeometryAABBNV extends GroupType {

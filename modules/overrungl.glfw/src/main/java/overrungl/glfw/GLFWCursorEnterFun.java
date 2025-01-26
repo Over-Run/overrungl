@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLFWCursorEnterFun)(GLFWwindow* window, GLFWboolean entered);
+/// typedef void (*GLFWCursorEnterFun)(GLFWwindow* window, (int) GLFWboolean entered);
 /// ```
 @FunctionalInterface
 public interface GLFWCursorEnterFun extends Upcall {

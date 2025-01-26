@@ -21,33 +21,27 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRDeviceGroupCreation {
+public final class VKKHRDeviceGroupCreation {
     public static final int VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1;
     public static final String VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME = "VK_KHR_device_group_creation";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR = 1000070000;
     public static final int VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO_KHR = 1000070001;
     public static final int VK_MAX_DEVICE_GROUP_SIZE_KHR = 32;
     public static final int VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = 0x00000002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkEnumeratePhysicalDeviceGroupsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkEnumeratePhysicalDeviceGroupsKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkEnumeratePhysicalDeviceGroupsKHR = func.invoke(instance, "vkEnumeratePhysicalDeviceGroupsKHR", "vkEnumeratePhysicalDeviceGroups");
-        }
+        private Handles() {}
     }
 
-    public VKKHRDeviceGroupCreation(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKKHRDeviceGroupCreation() {}
 
     /// ```
-    /// VkResult vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
+    /// (int) VkResult vkEnumeratePhysicalDeviceGroupsKHR((struct VkInstance*) VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
     /// ```
-    public int EnumeratePhysicalDeviceGroupsKHR(MemorySegment instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkEnumeratePhysicalDeviceGroupsKHR)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroupsKHR");
-        try { return (int) Handles.MH_vkEnumeratePhysicalDeviceGroupsKHR.invokeExact(handles.PFN_vkEnumeratePhysicalDeviceGroupsKHR, instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in EnumeratePhysicalDeviceGroupsKHR", e); }
+    public static int vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroupsKHR");
+        try { return (int) Handles.MH_vkEnumeratePhysicalDeviceGroupsKHR.invokeExact(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR, instance.segment(), pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceGroupsKHR", e); }
     }
 
 }

@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoCapabilityFlagsKHR flags;
-///     VkDeviceSize minBitstreamBufferOffsetAlignment;
-///     VkDeviceSize minBitstreamBufferSizeAlignment;
-///     VkExtent2D pictureAccessGranularity;
-///     VkExtent2D minCodedExtent;
-///     VkExtent2D maxCodedExtent;
+///     ((uint32_t) VkFlags) VkVideoCapabilityFlagsKHR flags;
+///     (uint64_t) VkDeviceSize minBitstreamBufferOffsetAlignment;
+///     (uint64_t) VkDeviceSize minBitstreamBufferSizeAlignment;
+///     (struct VkExtent2D) VkExtent2D pictureAccessGranularity;
+///     (struct VkExtent2D) VkExtent2D minCodedExtent;
+///     (struct VkExtent2D) VkExtent2D maxCodedExtent;
 ///     uint32_t maxDpbSlots;
 ///     uint32_t maxActiveReferencePictures;
-///     VkExtensionProperties stdHeaderVersion;
+///     (struct VkExtensionProperties) VkExtensionProperties stdHeaderVersion;
 /// };
 /// ```
 public sealed class VkVideoCapabilitiesKHR extends GroupType {

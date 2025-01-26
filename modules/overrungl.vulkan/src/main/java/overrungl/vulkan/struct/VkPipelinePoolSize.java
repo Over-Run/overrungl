@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelinePoolSize {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceSize poolEntrySize;
+///     (uint64_t) VkDeviceSize poolEntrySize;
 ///     uint32_t poolEntryCount;
 /// };
 /// ```

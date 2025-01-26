@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseImageMemoryBind {
-///     VkImageSubresource subresource;
-///     VkOffset3D offset;
-///     VkExtent3D extent;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
-///     VkSparseMemoryBindFlags flags;
+///     (struct VkImageSubresource) VkImageSubresource subresource;
+///     (struct VkOffset3D) VkOffset3D offset;
+///     (struct VkExtent3D) VkExtent3D extent;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize memoryOffset;
+///     ((uint32_t) VkFlags) VkSparseMemoryBindFlags flags;
 /// };
 /// ```
 public sealed class VkSparseImageMemoryBind extends GroupType {

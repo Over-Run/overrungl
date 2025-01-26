@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMultiviewFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 multiview;
-///     VkBool32 multiviewGeometryShader;
-///     VkBool32 multiviewTessellationShader;
+///     (uint32_t) VkBool32 multiview;
+///     (uint32_t) VkBool32 multiviewGeometryShader;
+///     (uint32_t) VkBool32 multiviewTessellationShader;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {

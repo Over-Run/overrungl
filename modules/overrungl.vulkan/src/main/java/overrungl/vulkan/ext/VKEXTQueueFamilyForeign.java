@@ -22,6 +22,6 @@ public final class VKEXTQueueFamilyForeign {
     public static final String VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign";
     public static final int VK_QUEUE_FAMILY_FOREIGN_EXT = (~2);
 
-    private VKEXTQueueFamilyForeign() { }
+    private VKEXTQueueFamilyForeign() {}
 
 }

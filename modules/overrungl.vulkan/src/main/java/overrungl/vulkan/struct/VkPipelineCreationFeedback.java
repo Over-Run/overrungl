@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCreationFeedback {
-///     VkPipelineCreationFeedbackFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineCreationFeedbackFlags flags;
 ///     uint64_t duration;
 /// };
 /// ```

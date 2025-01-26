@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     float primitiveOverestimationSize;
 ///     float maxExtraPrimitiveOverestimationSize;
 ///     float extraPrimitiveOverestimationSizeGranularity;
-///     VkBool32 primitiveUnderestimation;
-///     VkBool32 conservativePointAndLineRasterization;
-///     VkBool32 degenerateTrianglesRasterized;
-///     VkBool32 degenerateLinesRasterized;
-///     VkBool32 fullyCoveredFragmentShaderInputVariable;
-///     VkBool32 conservativeRasterizationPostDepthCoverage;
+///     (uint32_t) VkBool32 primitiveUnderestimation;
+///     (uint32_t) VkBool32 conservativePointAndLineRasterization;
+///     (uint32_t) VkBool32 degenerateTrianglesRasterized;
+///     (uint32_t) VkBool32 degenerateLinesRasterized;
+///     (uint32_t) VkBool32 fullyCoveredFragmentShaderInputVariable;
+///     (uint32_t) VkBool32 conservativeRasterizationPostDepthCoverage;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceConservativeRasterizationPropertiesEXT extends GroupType {

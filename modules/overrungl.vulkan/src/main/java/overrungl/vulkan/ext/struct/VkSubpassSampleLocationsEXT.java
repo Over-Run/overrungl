@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkSubpassSampleLocationsEXT {
 ///     uint32_t subpassIndex;
-///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+///     (struct VkSampleLocationsInfoEXT) VkSampleLocationsInfoEXT sampleLocationsInfo;
 /// };
 /// ```
 public sealed class VkSubpassSampleLocationsEXT extends GroupType {

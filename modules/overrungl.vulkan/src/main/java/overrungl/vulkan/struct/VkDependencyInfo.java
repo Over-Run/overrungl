@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDependencyInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDependencyFlags dependencyFlags;
+///     ((uint32_t) VkFlags) VkDependencyFlags dependencyFlags;
 ///     uint32_t memoryBarrierCount;
 ///     const VkMemoryBarrier2* pMemoryBarriers;
 ///     uint32_t bufferMemoryBarrierCount;

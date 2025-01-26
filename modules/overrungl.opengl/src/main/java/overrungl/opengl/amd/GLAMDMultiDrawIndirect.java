@@ -40,7 +40,7 @@ public final class GLAMDMultiDrawIndirect {
     }
 
     /// ```
-    /// void glMultiDrawArraysIndirectAMD(GLenum mode, const void* indirect, GLsizei primcount, GLsizei stride);
+    /// void glMultiDrawArraysIndirectAMD((unsigned int) GLenum mode, const void* indirect, (int) GLsizei primcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirectAMD(int mode, MemorySegment indirect, int primcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectAMD");
@@ -49,7 +49,7 @@ public final class GLAMDMultiDrawIndirect {
     }
 
     /// ```
-    /// void glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void* indirect, GLsizei primcount, GLsizei stride);
+    /// void glMultiDrawElementsIndirectAMD((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei primcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirectAMD(int mode, int type, MemorySegment indirect, int primcount, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectAMD");

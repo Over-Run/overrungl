@@ -29,11 +29,11 @@ import overrungl.util.*;
 /// struct VkSubpassDependency {
 ///     uint32_t srcSubpass;
 ///     uint32_t dstSubpass;
-///     VkPipelineStageFlags srcStageMask;
-///     VkPipelineStageFlags dstStageMask;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
-///     VkDependencyFlags dependencyFlags;
+///     ((uint32_t) VkFlags) VkPipelineStageFlags srcStageMask;
+///     ((uint32_t) VkFlags) VkPipelineStageFlags dstStageMask;
+///     ((uint32_t) VkFlags) VkAccessFlags srcAccessMask;
+///     ((uint32_t) VkFlags) VkAccessFlags dstAccessMask;
+///     ((uint32_t) VkFlags) VkDependencyFlags dependencyFlags;
 /// };
 /// ```
 public sealed class VkSubpassDependency extends GroupType {

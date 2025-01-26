@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 workgroupMemoryExplicitLayout;
-///     VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
-///     VkBool32 workgroupMemoryExplicitLayout8BitAccess;
-///     VkBool32 workgroupMemoryExplicitLayout16BitAccess;
+///     (uint32_t) VkBool32 workgroupMemoryExplicitLayout;
+///     (uint32_t) VkBool32 workgroupMemoryExplicitLayoutScalarBlockLayout;
+///     (uint32_t) VkBool32 workgroupMemoryExplicitLayout8BitAccess;
+///     (uint32_t) VkBool32 workgroupMemoryExplicitLayout16BitAccess;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR extends GroupType {

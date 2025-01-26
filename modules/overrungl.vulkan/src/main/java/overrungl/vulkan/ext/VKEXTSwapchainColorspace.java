@@ -36,6 +36,6 @@ public final class VKEXTSwapchainColorspace {
     public static final int VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT = 1000104014;
     public static final int VK_COLOR_SPACE_DCI_P3_LINEAR_EXT = 1000104003;
 
-    private VKEXTSwapchainColorspace() { }
+    private VKEXTSwapchainColorspace() {}
 
 }

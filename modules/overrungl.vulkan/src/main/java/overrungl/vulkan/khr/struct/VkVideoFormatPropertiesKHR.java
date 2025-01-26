@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoFormatPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormat format;
-///     VkComponentMapping componentMapping;
-///     VkImageCreateFlags imageCreateFlags;
-///     VkImageType imageType;
-///     VkImageTiling imageTiling;
-///     VkImageUsageFlags imageUsageFlags;
+///     (int) VkFormat format;
+///     (struct VkComponentMapping) VkComponentMapping componentMapping;
+///     ((uint32_t) VkFlags) VkImageCreateFlags imageCreateFlags;
+///     (int) VkImageType imageType;
+///     (int) VkImageTiling imageTiling;
+///     ((uint32_t) VkFlags) VkImageUsageFlags imageUsageFlags;
 /// };
 /// ```
 public sealed class VkVideoFormatPropertiesKHR extends GroupType {

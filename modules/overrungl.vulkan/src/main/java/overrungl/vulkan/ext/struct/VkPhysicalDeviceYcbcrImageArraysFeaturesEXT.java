@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 ycbcrImageArrays;
+///     (uint32_t) VkBool32 ycbcrImageArrays;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT extends GroupType {

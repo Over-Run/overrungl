@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplaySurfaceStereoCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplaySurfaceStereoTypeNV stereoType;
+///     (int) VkDisplaySurfaceStereoTypeNV stereoType;
 /// };
 /// ```
 public sealed class VkDisplaySurfaceStereoCreateInfoNV extends GroupType {

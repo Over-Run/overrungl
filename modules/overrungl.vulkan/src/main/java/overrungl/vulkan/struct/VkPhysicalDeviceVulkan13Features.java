@@ -27,23 +27,23 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkan13Features {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 robustImageAccess;
-///     VkBool32 inlineUniformBlock;
-///     VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
-///     VkBool32 pipelineCreationCacheControl;
-///     VkBool32 privateData;
-///     VkBool32 shaderDemoteToHelperInvocation;
-///     VkBool32 shaderTerminateInvocation;
-///     VkBool32 subgroupSizeControl;
-///     VkBool32 computeFullSubgroups;
-///     VkBool32 synchronization2;
-///     VkBool32 textureCompressionASTC_HDR;
-///     VkBool32 shaderZeroInitializeWorkgroupMemory;
-///     VkBool32 dynamicRendering;
-///     VkBool32 shaderIntegerDotProduct;
-///     VkBool32 maintenance4;
+///     (uint32_t) VkBool32 robustImageAccess;
+///     (uint32_t) VkBool32 inlineUniformBlock;
+///     (uint32_t) VkBool32 descriptorBindingInlineUniformBlockUpdateAfterBind;
+///     (uint32_t) VkBool32 pipelineCreationCacheControl;
+///     (uint32_t) VkBool32 privateData;
+///     (uint32_t) VkBool32 shaderDemoteToHelperInvocation;
+///     (uint32_t) VkBool32 shaderTerminateInvocation;
+///     (uint32_t) VkBool32 subgroupSizeControl;
+///     (uint32_t) VkBool32 computeFullSubgroups;
+///     (uint32_t) VkBool32 synchronization2;
+///     (uint32_t) VkBool32 textureCompressionASTC_HDR;
+///     (uint32_t) VkBool32 shaderZeroInitializeWorkgroupMemory;
+///     (uint32_t) VkBool32 dynamicRendering;
+///     (uint32_t) VkBool32 shaderIntegerDotProduct;
+///     (uint32_t) VkBool32 maintenance4;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkan13Features extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandPoolCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCommandPoolCreateFlags flags;
+///     ((uint32_t) VkFlags) VkCommandPoolCreateFlags flags;
 ///     uint32_t queueFamilyIndex;
 /// };
 /// ```

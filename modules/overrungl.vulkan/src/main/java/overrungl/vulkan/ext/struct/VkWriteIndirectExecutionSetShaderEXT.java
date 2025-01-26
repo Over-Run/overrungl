@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkWriteIndirectExecutionSetShaderEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t index;
-///     VkShaderEXT shader;
+///     (uint64_t) VkShaderEXT shader;
 /// };
 /// ```
 public sealed class VkWriteIndirectExecutionSetShaderEXT extends GroupType {

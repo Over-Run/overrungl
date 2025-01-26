@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMapMemoryPlacedFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 memoryMapPlaced;
-///     VkBool32 memoryMapRangePlaced;
-///     VkBool32 memoryUnmapReserve;
+///     (uint32_t) VkBool32 memoryMapPlaced;
+///     (uint32_t) VkBool32 memoryMapRangePlaced;
+///     (uint32_t) VkBool32 memoryUnmapReserve;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType {

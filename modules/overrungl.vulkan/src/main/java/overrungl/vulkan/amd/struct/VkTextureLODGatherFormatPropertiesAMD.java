@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkTextureLODGatherFormatPropertiesAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 supportsTextureGatherLODBiasAMD;
+///     (uint32_t) VkBool32 supportsTextureGatherLODBiasAMD;
 /// };
 /// ```
 public sealed class VkTextureLODGatherFormatPropertiesAMD extends GroupType {

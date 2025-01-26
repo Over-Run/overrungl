@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264RefPicMarkingEntry {
-///     StdVideoH264MemMgmtControlOp memory_management_control_operation;
+///     (int) StdVideoH264MemMgmtControlOp memory_management_control_operation;
 ///     uint16_t difference_of_pic_nums_minus1;
 ///     uint16_t long_term_pic_num;
 ///     uint16_t long_term_frame_idx;

@@ -58,7 +58,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
+    /// void glPresentFrameKeyedNV((unsigned int) GLuint video_slot, ((uint64_t) khronos_uint64_t) GLuint64EXT minPresentTime, (unsigned int) GLuint beginPresentTimeId, (unsigned int) GLuint presentDurationId, (unsigned int) GLenum type, (unsigned int) GLenum target0, (unsigned int) GLuint fill0, (unsigned int) GLuint key0, (unsigned int) GLenum target1, (unsigned int) GLuint fill1, (unsigned int) GLuint key1);
     /// ```
     public void PresentFrameKeyedNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int key0, int target1, int fill1, int key1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPresentFrameKeyedNV)) throw new SymbolNotFoundError("Symbol not found: glPresentFrameKeyedNV");
@@ -67,7 +67,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
+    /// void glPresentFrameDualFillNV((unsigned int) GLuint video_slot, ((uint64_t) khronos_uint64_t) GLuint64EXT minPresentTime, (unsigned int) GLuint beginPresentTimeId, (unsigned int) GLuint presentDurationId, (unsigned int) GLenum type, (unsigned int) GLenum target0, (unsigned int) GLuint fill0, (unsigned int) GLenum target1, (unsigned int) GLuint fill1, (unsigned int) GLenum target2, (unsigned int) GLuint fill2, (unsigned int) GLenum target3, (unsigned int) GLuint fill3);
     /// ```
     public void PresentFrameDualFillNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int target1, int fill1, int target2, int fill2, int target3, int fill3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPresentFrameDualFillNV)) throw new SymbolNotFoundError("Symbol not found: glPresentFrameDualFillNV");
@@ -76,7 +76,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glGetVideoivNV(GLuint video_slot, GLenum pname, GLint* params);
+    /// void glGetVideoivNV((unsigned int) GLuint video_slot, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetVideoivNV(int video_slot, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoivNV");
@@ -85,7 +85,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint* params);
+    /// void glGetVideouivNV((unsigned int) GLuint video_slot, (unsigned int) GLenum pname, GLuint* params);
     /// ```
     public void GetVideouivNV(int video_slot, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideouivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideouivNV");
@@ -94,7 +94,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT* params);
+    /// void glGetVideoi64vNV((unsigned int) GLuint video_slot, (unsigned int) GLenum pname, GLint64EXT* params);
     /// ```
     public void GetVideoi64vNV(int video_slot, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoi64vNV");
@@ -103,7 +103,7 @@ public final class GLNVPresentVideo {
     }
 
     /// ```
-    /// void glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT* params);
+    /// void glGetVideoui64vNV((unsigned int) GLuint video_slot, (unsigned int) GLenum pname, GLuint64EXT* params);
     /// ```
     public void GetVideoui64vNV(int video_slot, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVideoui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoui64vNV");

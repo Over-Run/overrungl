@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceColorWriteEnableFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 colorWriteEnable;
+///     (uint32_t) VkBool32 colorWriteEnable;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceColorWriteEnableFeaturesEXT extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderSubgroupRotateFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderSubgroupRotate;
-///     VkBool32 shaderSubgroupRotateClustered;
+///     (uint32_t) VkBool32 shaderSubgroupRotate;
+///     (uint32_t) VkBool32 shaderSubgroupRotateClustered;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderSubgroupRotateFeatures extends GroupType {

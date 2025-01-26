@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceOpticalFlowPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
-///     VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
-///     VkBool32 hintSupported;
-///     VkBool32 costSupported;
-///     VkBool32 bidirectionalFlowSupported;
-///     VkBool32 globalFlowSupported;
+///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV supportedOutputGridSizes;
+///     ((uint32_t) VkFlags) VkOpticalFlowGridSizeFlagsNV supportedHintGridSizes;
+///     (uint32_t) VkBool32 hintSupported;
+///     (uint32_t) VkBool32 costSupported;
+///     (uint32_t) VkBool32 bidirectionalFlowSupported;
+///     (uint32_t) VkBool32 globalFlowSupported;
 ///     uint32_t minWidth;
 ///     uint32_t minHeight;
 ///     uint32_t maxWidth;

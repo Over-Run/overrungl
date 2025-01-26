@@ -443,7 +443,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLuint glGenPathsNV(GLsizei range);
+    /// (unsigned int) GLuint glGenPathsNV((int) GLsizei range);
     /// ```
     public int GenPathsNV(int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenPathsNV)) throw new SymbolNotFoundError("Symbol not found: glGenPathsNV");
@@ -452,7 +452,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glDeletePathsNV(GLuint path, GLsizei range);
+    /// void glDeletePathsNV((unsigned int) GLuint path, (int) GLsizei range);
     /// ```
     public void DeletePathsNV(int path, int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeletePathsNV)) throw new SymbolNotFoundError("Symbol not found: glDeletePathsNV");
@@ -461,7 +461,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLboolean glIsPathNV(GLuint path);
+    /// GLboolean glIsPathNV((unsigned int) GLuint path);
     /// ```
     public boolean IsPathNV(int path) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPathNV");
@@ -470,7 +470,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte* commands, GLsizei numCoords, GLenum coordType, const void* coords);
+    /// void glPathCommandsNV((unsigned int) GLuint path, (int) GLsizei numCommands, const GLubyte* commands, (int) GLsizei numCoords, (unsigned int) GLenum coordType, const void* coords);
     /// ```
     public void PathCommandsNV(int path, int numCommands, MemorySegment commands, int numCoords, int coordType, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCommandsNV");
@@ -479,7 +479,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const void* coords);
+    /// void glPathCoordsNV((unsigned int) GLuint path, (int) GLsizei numCoords, (unsigned int) GLenum coordType, const void* coords);
     /// ```
     public void PathCoordsNV(int path, int numCoords, int coordType, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoordsNV");
@@ -488,7 +488,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte* commands, GLsizei numCoords, GLenum coordType, const void* coords);
+    /// void glPathSubCommandsNV((unsigned int) GLuint path, (int) GLsizei commandStart, (int) GLsizei commandsToDelete, (int) GLsizei numCommands, const GLubyte* commands, (int) GLsizei numCoords, (unsigned int) GLenum coordType, const void* coords);
     /// ```
     public void PathSubCommandsNV(int path, int commandStart, int commandsToDelete, int numCommands, MemorySegment commands, int numCoords, int coordType, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathSubCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCommandsNV");
@@ -497,7 +497,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const void* coords);
+    /// void glPathSubCoordsNV((unsigned int) GLuint path, (int) GLsizei coordStart, (int) GLsizei numCoords, (unsigned int) GLenum coordType, const void* coords);
     /// ```
     public void PathSubCoordsNV(int path, int coordStart, int numCoords, int coordType, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathSubCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glPathSubCoordsNV");
@@ -506,7 +506,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathStringNV(GLuint path, GLenum format, GLsizei length, const void* pathString);
+    /// void glPathStringNV((unsigned int) GLuint path, (unsigned int) GLenum format, (int) GLsizei length, const void* pathString);
     /// ```
     public void PathStringNV(int path, int format, int length, MemorySegment pathString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathStringNV)) throw new SymbolNotFoundError("Symbol not found: glPathStringNV");
@@ -515,7 +515,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const void* fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const void* charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+    /// void glPathGlyphsNV((unsigned int) GLuint firstPathName, (unsigned int) GLenum fontTarget, const void* fontName, (unsigned int) GLbitfield fontStyle, (int) GLsizei numGlyphs, (unsigned int) GLenum type, const void* charcodes, (unsigned int) GLenum handleMissingGlyphs, (unsigned int) GLuint pathParameterTemplate, ((float) khronos_float_t) GLfloat emScale);
     /// ```
     public void PathGlyphsNV(int firstPathName, int fontTarget, MemorySegment fontName, int fontStyle, int numGlyphs, int type, MemorySegment charcodes, int handleMissingGlyphs, int pathParameterTemplate, float emScale) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathGlyphsNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphsNV");
@@ -524,7 +524,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const void* fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+    /// void glPathGlyphRangeNV((unsigned int) GLuint firstPathName, (unsigned int) GLenum fontTarget, const void* fontName, (unsigned int) GLbitfield fontStyle, (unsigned int) GLuint firstGlyph, (int) GLsizei numGlyphs, (unsigned int) GLenum handleMissingGlyphs, (unsigned int) GLuint pathParameterTemplate, ((float) khronos_float_t) GLfloat emScale);
     /// ```
     public void PathGlyphRangeNV(int firstPathName, int fontTarget, MemorySegment fontName, int fontStyle, int firstGlyph, int numGlyphs, int handleMissingGlyphs, int pathParameterTemplate, float emScale) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathGlyphRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphRangeNV");
@@ -533,7 +533,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint* paths, const GLfloat* weights);
+    /// void glWeightPathsNV((unsigned int) GLuint resultPath, (int) GLsizei numPaths, const GLuint* paths, const GLfloat* weights);
     /// ```
     public void WeightPathsNV(int resultPath, int numPaths, MemorySegment paths, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWeightPathsNV)) throw new SymbolNotFoundError("Symbol not found: glWeightPathsNV");
@@ -542,7 +542,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glCopyPathNV(GLuint resultPath, GLuint srcPath);
+    /// void glCopyPathNV((unsigned int) GLuint resultPath, (unsigned int) GLuint srcPath);
     /// ```
     public void CopyPathNV(int resultPath, int srcPath) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyPathNV)) throw new SymbolNotFoundError("Symbol not found: glCopyPathNV");
@@ -551,7 +551,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
+    /// void glInterpolatePathsNV((unsigned int) GLuint resultPath, (unsigned int) GLuint pathA, (unsigned int) GLuint pathB, ((float) khronos_float_t) GLfloat weight);
     /// ```
     public void InterpolatePathsNV(int resultPath, int pathA, int pathB, float weight) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInterpolatePathsNV)) throw new SymbolNotFoundError("Symbol not found: glInterpolatePathsNV");
@@ -560,7 +560,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat* transformValues);
+    /// void glTransformPathNV((unsigned int) GLuint resultPath, (unsigned int) GLuint srcPath, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void TransformPathNV(int resultPath, int srcPath, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformPathNV)) throw new SymbolNotFoundError("Symbol not found: glTransformPathNV");
@@ -569,7 +569,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathParameterivNV(GLuint path, GLenum pname, const GLint* value);
+    /// void glPathParameterivNV((unsigned int) GLuint path, (unsigned int) GLenum pname, const GLint* value);
     /// ```
     public void PathParameterivNV(int path, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterivNV");
@@ -578,7 +578,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathParameteriNV(GLuint path, GLenum pname, GLint value);
+    /// void glPathParameteriNV((unsigned int) GLuint path, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void PathParameteriNV(int path, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameteriNV");
@@ -587,7 +587,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat* value);
+    /// void glPathParameterfvNV((unsigned int) GLuint path, (unsigned int) GLenum pname, const GLfloat* value);
     /// ```
     public void PathParameterfvNV(int path, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfvNV");
@@ -596,7 +596,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathParameterfNV(GLuint path, GLenum pname, GLfloat value);
+    /// void glPathParameterfNV((unsigned int) GLuint path, (unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat value);
     /// ```
     public void PathParameterfNV(int path, int pname, float value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glPathParameterfNV");
@@ -605,7 +605,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat* dashArray);
+    /// void glPathDashArrayNV((unsigned int) GLuint path, (int) GLsizei dashCount, const GLfloat* dashArray);
     /// ```
     public void PathDashArrayNV(int path, int dashCount, MemorySegment dashArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathDashArrayNV");
@@ -614,7 +614,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask);
+    /// void glPathStencilFuncNV((unsigned int) GLenum func, (int) GLint ref, (unsigned int) GLuint mask);
     /// ```
     public void PathStencilFuncNV(int func, int ref, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathStencilFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilFuncNV");
@@ -623,7 +623,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units);
+    /// void glPathStencilDepthOffsetNV(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units);
     /// ```
     public void PathStencilDepthOffsetNV(float factor, float units) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathStencilDepthOffsetNV)) throw new SymbolNotFoundError("Symbol not found: glPathStencilDepthOffsetNV");
@@ -632,7 +632,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask);
+    /// void glStencilFillPathNV((unsigned int) GLuint path, (unsigned int) GLenum fillMode, (unsigned int) GLuint mask);
     /// ```
     public void StencilFillPathNV(int path, int fillMode, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathNV");
@@ -641,7 +641,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask);
+    /// void glStencilStrokePathNV((unsigned int) GLuint path, (int) GLint reference, (unsigned int) GLuint mask);
     /// ```
     public void StencilStrokePathNV(int path, int reference, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathNV");
@@ -650,7 +650,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat* transformValues);
+    /// void glStencilFillPathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (unsigned int) GLenum fillMode, (unsigned int) GLuint mask, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void StencilFillPathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int fillMode, int mask, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilFillPathInstancedNV");
@@ -659,7 +659,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat* transformValues);
+    /// void glStencilStrokePathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (int) GLint reference, (unsigned int) GLuint mask, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void StencilStrokePathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int reference, int mask, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilStrokePathInstancedNV");
@@ -668,7 +668,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathCoverDepthFuncNV(GLenum func);
+    /// void glPathCoverDepthFuncNV((unsigned int) GLenum func);
     /// ```
     public void PathCoverDepthFuncNV(int func) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathCoverDepthFuncNV)) throw new SymbolNotFoundError("Symbol not found: glPathCoverDepthFuncNV");
@@ -677,7 +677,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glCoverFillPathNV(GLuint path, GLenum coverMode);
+    /// void glCoverFillPathNV((unsigned int) GLuint path, (unsigned int) GLenum coverMode);
     /// ```
     public void CoverFillPathNV(int path, int coverMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathNV");
@@ -686,7 +686,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glCoverStrokePathNV(GLuint path, GLenum coverMode);
+    /// void glCoverStrokePathNV((unsigned int) GLuint path, (unsigned int) GLenum coverMode);
     /// ```
     public void CoverStrokePathNV(int path, int coverMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathNV");
@@ -695,7 +695,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat* transformValues);
+    /// void glCoverFillPathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (unsigned int) GLenum coverMode, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void CoverFillPathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int coverMode, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverFillPathInstancedNV");
@@ -704,7 +704,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat* transformValues);
+    /// void glCoverStrokePathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (unsigned int) GLenum coverMode, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void CoverStrokePathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int coverMode, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glCoverStrokePathInstancedNV");
@@ -713,7 +713,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathParameterivNV(GLuint path, GLenum pname, GLint* value);
+    /// void glGetPathParameterivNV((unsigned int) GLuint path, (unsigned int) GLenum pname, GLint* value);
     /// ```
     public void GetPathParameterivNV(int path, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterivNV");
@@ -722,7 +722,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathParameterfvNV(GLuint path, GLenum pname, GLfloat* value);
+    /// void glGetPathParameterfvNV((unsigned int) GLuint path, (unsigned int) GLenum pname, GLfloat* value);
     /// ```
     public void GetPathParameterfvNV(int path, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathParameterfvNV");
@@ -731,7 +731,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathCommandsNV(GLuint path, GLubyte* commands);
+    /// void glGetPathCommandsNV((unsigned int) GLuint path, GLubyte* commands);
     /// ```
     public void GetPathCommandsNV(int path, MemorySegment commands) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathCommandsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCommandsNV");
@@ -740,7 +740,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathCoordsNV(GLuint path, GLfloat* coords);
+    /// void glGetPathCoordsNV((unsigned int) GLuint path, GLfloat* coords);
     /// ```
     public void GetPathCoordsNV(int path, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathCoordsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathCoordsNV");
@@ -749,7 +749,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathDashArrayNV(GLuint path, GLfloat* dashArray);
+    /// void glGetPathDashArrayNV((unsigned int) GLuint path, GLfloat* dashArray);
     /// ```
     public void GetPathDashArrayNV(int path, MemorySegment dashArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathDashArrayNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathDashArrayNV");
@@ -758,7 +758,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLsizei stride, GLfloat* metrics);
+    /// void glGetPathMetricsNV((unsigned int) GLbitfield metricQueryMask, (int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (int) GLsizei stride, GLfloat* metrics);
     /// ```
     public void GetPathMetricsNV(int metricQueryMask, int numPaths, int pathNameType, MemorySegment paths, int pathBase, int stride, MemorySegment metrics) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathMetricsNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricsNV");
@@ -767,7 +767,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint firstPathName, GLsizei numPaths, GLsizei stride, GLfloat* metrics);
+    /// void glGetPathMetricRangeNV((unsigned int) GLbitfield metricQueryMask, (unsigned int) GLuint firstPathName, (int) GLsizei numPaths, (int) GLsizei stride, GLfloat* metrics);
     /// ```
     public void GetPathMetricRangeNV(int metricQueryMask, int firstPathName, int numPaths, int stride, MemorySegment metrics) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathMetricRangeNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathMetricRangeNV");
@@ -776,7 +776,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat* returnedSpacing);
+    /// void glGetPathSpacingNV((unsigned int) GLenum pathListMode, (int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, ((float) khronos_float_t) GLfloat advanceScale, ((float) khronos_float_t) GLfloat kerningScale, (unsigned int) GLenum transformType, GLfloat* returnedSpacing);
     /// ```
     public void GetPathSpacingNV(int pathListMode, int numPaths, int pathNameType, MemorySegment paths, int pathBase, float advanceScale, float kerningScale, int transformType, MemorySegment returnedSpacing) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathSpacingNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathSpacingNV");
@@ -785,7 +785,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLboolean glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y);
+    /// GLboolean glIsPointInFillPathNV((unsigned int) GLuint path, (unsigned int) GLuint mask, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y);
     /// ```
     public boolean IsPointInFillPathNV(int path, int mask, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsPointInFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInFillPathNV");
@@ -794,7 +794,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLboolean glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y);
+    /// GLboolean glIsPointInStrokePathNV((unsigned int) GLuint path, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y);
     /// ```
     public boolean IsPointInStrokePathNV(int path, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsPointInStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glIsPointInStrokePathNV");
@@ -803,7 +803,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLfloat glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments);
+    /// ((float) khronos_float_t) GLfloat glGetPathLengthNV((unsigned int) GLuint path, (int) GLsizei startSegment, (int) GLsizei numSegments);
     /// ```
     public float GetPathLengthNV(int path, int startSegment, int numSegments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathLengthNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathLengthNV");
@@ -812,7 +812,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLboolean glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat* x, GLfloat* y, GLfloat* tangentX, GLfloat* tangentY);
+    /// GLboolean glPointAlongPathNV((unsigned int) GLuint path, (int) GLsizei startSegment, (int) GLsizei numSegments, ((float) khronos_float_t) GLfloat distance, GLfloat* x, GLfloat* y, GLfloat* tangentX, GLfloat* tangentY);
     /// ```
     public boolean PointAlongPathNV(int path, int startSegment, int numSegments, float distance, MemorySegment x, MemorySegment y, MemorySegment tangentX, MemorySegment tangentY) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointAlongPathNV)) throw new SymbolNotFoundError("Symbol not found: glPointAlongPathNV");
@@ -821,7 +821,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoad3x2fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixLoad3x2fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixLoad3x2fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoad3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x2fNV");
@@ -830,7 +830,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoad3x3fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixLoad3x3fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixLoad3x3fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoad3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoad3x3fNV");
@@ -839,7 +839,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoadTranspose3x3fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixLoadTranspose3x3fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixLoadTranspose3x3fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTranspose3x3fNV");
@@ -848,7 +848,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMult3x2fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixMult3x2fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixMult3x2fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMult3x2fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x2fNV");
@@ -857,7 +857,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMult3x3fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixMult3x3fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixMult3x3fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMult3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMult3x3fNV");
@@ -866,7 +866,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMultTranspose3x3fNV(GLenum matrixMode, const GLfloat* m);
+    /// void glMatrixMultTranspose3x3fNV((unsigned int) GLenum matrixMode, const GLfloat* m);
     /// ```
     public void MatrixMultTranspose3x3fNV(int matrixMode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTranspose3x3fNV)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTranspose3x3fNV");
@@ -875,7 +875,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilThenCoverFillPathNV(GLuint path, GLenum fillMode, GLuint mask, GLenum coverMode);
+    /// void glStencilThenCoverFillPathNV((unsigned int) GLuint path, (unsigned int) GLenum fillMode, (unsigned int) GLuint mask, (unsigned int) GLenum coverMode);
     /// ```
     public void StencilThenCoverFillPathNV(int path, int fillMode, int mask, int coverMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilThenCoverFillPathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathNV");
@@ -884,7 +884,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilThenCoverStrokePathNV(GLuint path, GLint reference, GLuint mask, GLenum coverMode);
+    /// void glStencilThenCoverStrokePathNV((unsigned int) GLuint path, (int) GLint reference, (unsigned int) GLuint mask, (unsigned int) GLenum coverMode);
     /// ```
     public void StencilThenCoverStrokePathNV(int path, int reference, int mask, int coverMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilThenCoverStrokePathNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathNV");
@@ -893,7 +893,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilThenCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat* transformValues);
+    /// void glStencilThenCoverFillPathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (unsigned int) GLenum fillMode, (unsigned int) GLuint mask, (unsigned int) GLenum coverMode, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void StencilThenCoverFillPathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int fillMode, int mask, int coverMode, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilThenCoverFillPathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverFillPathInstancedNV");
@@ -902,7 +902,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glStencilThenCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void* paths, GLuint pathBase, GLint reference, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat* transformValues);
+    /// void glStencilThenCoverStrokePathInstancedNV((int) GLsizei numPaths, (unsigned int) GLenum pathNameType, const void* paths, (unsigned int) GLuint pathBase, (int) GLint reference, (unsigned int) GLuint mask, (unsigned int) GLenum coverMode, (unsigned int) GLenum transformType, const GLfloat* transformValues);
     /// ```
     public void StencilThenCoverStrokePathInstancedNV(int numPaths, int pathNameType, MemorySegment paths, int pathBase, int reference, int mask, int coverMode, int transformType, MemorySegment transformValues) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilThenCoverStrokePathInstancedNV)) throw new SymbolNotFoundError("Symbol not found: glStencilThenCoverStrokePathInstancedNV");
@@ -911,7 +911,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLenum glPathGlyphIndexRangeNV(GLenum fontTarget, const void* fontName, GLbitfield fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint* baseAndCount);
+    /// (unsigned int) GLenum glPathGlyphIndexRangeNV((unsigned int) GLenum fontTarget, const void* fontName, (unsigned int) GLbitfield fontStyle, (unsigned int) GLuint pathParameterTemplate, ((float) khronos_float_t) GLfloat emScale, GLuint* baseAndCount);
     /// ```
     public int PathGlyphIndexRangeNV(int fontTarget, MemorySegment fontName, int fontStyle, int pathParameterTemplate, float emScale, MemorySegment baseAndCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathGlyphIndexRangeNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexRangeNV");
@@ -920,7 +920,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLenum glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, const void* fontName, GLbitfield fontStyle, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+    /// (unsigned int) GLenum glPathGlyphIndexArrayNV((unsigned int) GLuint firstPathName, (unsigned int) GLenum fontTarget, const void* fontName, (unsigned int) GLbitfield fontStyle, (unsigned int) GLuint firstGlyphIndex, (int) GLsizei numGlyphs, (unsigned int) GLuint pathParameterTemplate, ((float) khronos_float_t) GLfloat emScale);
     /// ```
     public int PathGlyphIndexArrayNV(int firstPathName, int fontTarget, MemorySegment fontName, int fontStyle, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathGlyphIndexArrayNV");
@@ -929,7 +929,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// GLenum glPathMemoryGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, GLsizeiptr fontSize, const void* fontData, GLsizei faceIndex, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+    /// (unsigned int) GLenum glPathMemoryGlyphIndexArrayNV((unsigned int) GLuint firstPathName, (unsigned int) GLenum fontTarget, ((signed long long) khronos_ssize_t) GLsizeiptr fontSize, const void* fontData, (int) GLsizei faceIndex, (unsigned int) GLuint firstGlyphIndex, (int) GLsizei numGlyphs, (unsigned int) GLuint pathParameterTemplate, ((float) khronos_float_t) GLfloat emScale);
     /// ```
     public int PathMemoryGlyphIndexArrayNV(int firstPathName, int fontTarget, long fontSize, MemorySegment fontData, int faceIndex, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathMemoryGlyphIndexArrayNV)) throw new SymbolNotFoundError("Symbol not found: glPathMemoryGlyphIndexArrayNV");
@@ -938,7 +938,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glProgramPathFragmentInputGenNV(GLuint program, GLint location, GLenum genMode, GLint components, const GLfloat* coeffs);
+    /// void glProgramPathFragmentInputGenNV((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLenum genMode, (int) GLint components, const GLfloat* coeffs);
     /// ```
     public void ProgramPathFragmentInputGenNV(int program, int location, int genMode, int components, MemorySegment coeffs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramPathFragmentInputGenNV)) throw new SymbolNotFoundError("Symbol not found: glProgramPathFragmentInputGenNV");
@@ -947,7 +947,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum* props, GLsizei count, GLsizei* length, GLfloat* params);
+    /// void glGetProgramResourcefvNV((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLuint index, (int) GLsizei propCount, const GLenum* props, (int) GLsizei count, GLsizei* length, GLfloat* params);
     /// ```
     public void GetProgramResourcefvNV(int program, int programInterface, int index, int propCount, MemorySegment props, int count, MemorySegment length, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourcefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourcefvNV");
@@ -956,7 +956,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat* coeffs);
+    /// void glPathColorGenNV((unsigned int) GLenum color, (unsigned int) GLenum genMode, (unsigned int) GLenum colorFormat, const GLfloat* coeffs);
     /// ```
     public void PathColorGenNV(int color, int genMode, int colorFormat, MemorySegment coeffs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathColorGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathColorGenNV");
@@ -965,7 +965,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat* coeffs);
+    /// void glPathTexGenNV((unsigned int) GLenum texCoordSet, (unsigned int) GLenum genMode, (int) GLint components, const GLfloat* coeffs);
     /// ```
     public void PathTexGenNV(int texCoordSet, int genMode, int components, MemorySegment coeffs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathTexGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathTexGenNV");
@@ -974,7 +974,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glPathFogGenNV(GLenum genMode);
+    /// void glPathFogGenNV((unsigned int) GLenum genMode);
     /// ```
     public void PathFogGenNV(int genMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPathFogGenNV)) throw new SymbolNotFoundError("Symbol not found: glPathFogGenNV");
@@ -983,7 +983,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathColorGenivNV(GLenum color, GLenum pname, GLint* value);
+    /// void glGetPathColorGenivNV((unsigned int) GLenum color, (unsigned int) GLenum pname, GLint* value);
     /// ```
     public void GetPathColorGenivNV(int color, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathColorGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenivNV");
@@ -992,7 +992,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat* value);
+    /// void glGetPathColorGenfvNV((unsigned int) GLenum color, (unsigned int) GLenum pname, GLfloat* value);
     /// ```
     public void GetPathColorGenfvNV(int color, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathColorGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathColorGenfvNV");
@@ -1001,7 +1001,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint* value);
+    /// void glGetPathTexGenivNV((unsigned int) GLenum texCoordSet, (unsigned int) GLenum pname, GLint* value);
     /// ```
     public void GetPathTexGenivNV(int texCoordSet, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathTexGenivNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenivNV");
@@ -1010,7 +1010,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat* value);
+    /// void glGetPathTexGenfvNV((unsigned int) GLenum texCoordSet, (unsigned int) GLenum pname, GLfloat* value);
     /// ```
     public void GetPathTexGenfvNV(int texCoordSet, int pname, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPathTexGenfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetPathTexGenfvNV");
@@ -1019,7 +1019,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+    /// void glMatrixFrustumEXT((unsigned int) GLenum mode, (double) GLdouble left, (double) GLdouble right, (double) GLdouble bottom, (double) GLdouble top, (double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
     public void MatrixFrustumEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixFrustumEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixFrustumEXT");
@@ -1028,7 +1028,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoadIdentityEXT(GLenum mode);
+    /// void glMatrixLoadIdentityEXT((unsigned int) GLenum mode);
     /// ```
     public void MatrixLoadIdentityEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadIdentityEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadIdentityEXT");
@@ -1037,7 +1037,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoadTransposefEXT(GLenum mode, const GLfloat* m);
+    /// void glMatrixLoadTransposefEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixLoadTransposefEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposefEXT");
@@ -1046,7 +1046,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoadTransposedEXT(GLenum mode, const GLdouble* m);
+    /// void glMatrixLoadTransposedEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixLoadTransposedEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadTransposedEXT");
@@ -1055,7 +1055,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoadfEXT(GLenum mode, const GLfloat* m);
+    /// void glMatrixLoadfEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixLoadfEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoadfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoadfEXT");
@@ -1064,7 +1064,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixLoaddEXT(GLenum mode, const GLdouble* m);
+    /// void glMatrixLoaddEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixLoaddEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixLoaddEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixLoaddEXT");
@@ -1073,7 +1073,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMultTransposefEXT(GLenum mode, const GLfloat* m);
+    /// void glMatrixMultTransposefEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixMultTransposefEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposefEXT");
@@ -1082,7 +1082,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMultTransposedEXT(GLenum mode, const GLdouble* m);
+    /// void glMatrixMultTransposedEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixMultTransposedEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultTransposedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultTransposedEXT");
@@ -1091,7 +1091,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMultfEXT(GLenum mode, const GLfloat* m);
+    /// void glMatrixMultfEXT((unsigned int) GLenum mode, const GLfloat* m);
     /// ```
     public void MatrixMultfEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultfEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultfEXT");
@@ -1100,7 +1100,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixMultdEXT(GLenum mode, const GLdouble* m);
+    /// void glMatrixMultdEXT((unsigned int) GLenum mode, const GLdouble* m);
     /// ```
     public void MatrixMultdEXT(int mode, MemorySegment m) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixMultdEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixMultdEXT");
@@ -1109,7 +1109,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+    /// void glMatrixOrthoEXT((unsigned int) GLenum mode, (double) GLdouble left, (double) GLdouble right, (double) GLdouble bottom, (double) GLdouble top, (double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
     public void MatrixOrthoEXT(int mode, double left, double right, double bottom, double top, double zNear, double zFar) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixOrthoEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixOrthoEXT");
@@ -1118,7 +1118,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixPopEXT(GLenum mode);
+    /// void glMatrixPopEXT((unsigned int) GLenum mode);
     /// ```
     public void MatrixPopEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPopEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPopEXT");
@@ -1127,7 +1127,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixPushEXT(GLenum mode);
+    /// void glMatrixPushEXT((unsigned int) GLenum mode);
     /// ```
     public void MatrixPushEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixPushEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixPushEXT");
@@ -1136,7 +1136,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+    /// void glMatrixRotatefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat angle, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void MatrixRotatefEXT(int mode, float angle, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatefEXT");
@@ -1145,7 +1145,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+    /// void glMatrixRotatedEXT((unsigned int) GLenum mode, (double) GLdouble angle, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void MatrixRotatedEXT(int mode, double angle, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixRotatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixRotatedEXT");
@@ -1154,7 +1154,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+    /// void glMatrixScalefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void MatrixScalefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScalefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScalefEXT");
@@ -1163,7 +1163,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+    /// void glMatrixScaledEXT((unsigned int) GLenum mode, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void MatrixScaledEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixScaledEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixScaledEXT");
@@ -1172,7 +1172,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+    /// void glMatrixTranslatefEXT((unsigned int) GLenum mode, ((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void MatrixTranslatefEXT(int mode, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatefEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatefEXT");
@@ -1181,7 +1181,7 @@ public final class GLNVPathRendering {
     }
 
     /// ```
-    /// void glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+    /// void glMatrixTranslatedEXT((unsigned int) GLenum mode, (double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void MatrixTranslatedEXT(int mode, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMatrixTranslatedEXT)) throw new SymbolNotFoundError("Symbol not found: glMatrixTranslatedEXT");

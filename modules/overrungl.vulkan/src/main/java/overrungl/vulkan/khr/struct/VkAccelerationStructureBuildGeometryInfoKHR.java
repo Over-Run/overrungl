@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureBuildGeometryInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureTypeKHR type;
-///     VkBuildAccelerationStructureFlagsKHR flags;
-///     VkBuildAccelerationStructureModeKHR mode;
-///     VkAccelerationStructureKHR srcAccelerationStructure;
-///     VkAccelerationStructureKHR dstAccelerationStructure;
+///     (int) VkAccelerationStructureTypeKHR type;
+///     ((uint32_t) VkFlags) VkBuildAccelerationStructureFlagsKHR flags;
+///     (int) VkBuildAccelerationStructureModeKHR mode;
+///     (uint64_t) VkAccelerationStructureKHR srcAccelerationStructure;
+///     (uint64_t) VkAccelerationStructureKHR dstAccelerationStructure;
 ///     uint32_t geometryCount;
 ///     const VkAccelerationStructureGeometryKHR* pGeometries;
 ///     const VkAccelerationStructureGeometryKHR* const * ppGeometries;
-///     VkDeviceOrHostAddressKHR scratchData;
+///     (union VkDeviceOrHostAddressKHR) VkDeviceOrHostAddressKHR scratchData;
 /// };
 /// ```
 public sealed class VkAccelerationStructureBuildGeometryInfoKHR extends GroupType {

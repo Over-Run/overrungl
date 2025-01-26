@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportSemaphoreFdInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags;
-///     VkExternalSemaphoreHandleTypeFlagBits handleType;
+///     (uint64_t) VkSemaphore semaphore;
+///     ((uint32_t) VkFlags) VkSemaphoreImportFlags flags;
+///     (int) VkExternalSemaphoreHandleTypeFlagBits handleType;
 ///     int fd;
 /// };
 /// ```

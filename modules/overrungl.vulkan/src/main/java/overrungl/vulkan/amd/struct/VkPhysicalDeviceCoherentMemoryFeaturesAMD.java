@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCoherentMemoryFeaturesAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 deviceCoherentMemory;
+///     (uint32_t) VkBool32 deviceCoherentMemory;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCoherentMemoryFeaturesAMD extends GroupType {

@@ -27,24 +27,24 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSamplerCreateFlags flags;
-///     VkFilter magFilter;
-///     VkFilter minFilter;
-///     VkSamplerMipmapMode mipmapMode;
-///     VkSamplerAddressMode addressModeU;
-///     VkSamplerAddressMode addressModeV;
-///     VkSamplerAddressMode addressModeW;
+///     ((uint32_t) VkFlags) VkSamplerCreateFlags flags;
+///     (int) VkFilter magFilter;
+///     (int) VkFilter minFilter;
+///     (int) VkSamplerMipmapMode mipmapMode;
+///     (int) VkSamplerAddressMode addressModeU;
+///     (int) VkSamplerAddressMode addressModeV;
+///     (int) VkSamplerAddressMode addressModeW;
 ///     float mipLodBias;
-///     VkBool32 anisotropyEnable;
+///     (uint32_t) VkBool32 anisotropyEnable;
 ///     float maxAnisotropy;
-///     VkBool32 compareEnable;
-///     VkCompareOp compareOp;
+///     (uint32_t) VkBool32 compareEnable;
+///     (int) VkCompareOp compareOp;
 ///     float minLod;
 ///     float maxLod;
-///     VkBorderColor borderColor;
-///     VkBool32 unnormalizedCoordinates;
+///     (int) VkBorderColor borderColor;
+///     (uint32_t) VkBool32 unnormalizedCoordinates;
 /// };
 /// ```
 public sealed class VkSamplerCreateInfo extends GroupType {

@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBlitImageInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage srcImage;
-///     VkImageLayout srcImageLayout;
-///     VkImage dstImage;
-///     VkImageLayout dstImageLayout;
+///     (uint64_t) VkImage srcImage;
+///     (int) VkImageLayout srcImageLayout;
+///     (uint64_t) VkImage dstImage;
+///     (int) VkImageLayout dstImageLayout;
 ///     uint32_t regionCount;
 ///     const VkImageBlit2* pRegions;
-///     VkFilter filter;
+///     (int) VkFilter filter;
 /// };
 /// ```
 public sealed class VkBlitImageInfo2 extends GroupType {

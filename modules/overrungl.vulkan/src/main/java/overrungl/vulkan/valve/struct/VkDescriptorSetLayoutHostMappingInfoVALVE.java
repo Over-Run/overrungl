@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetLayoutHostMappingInfoVALVE {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     size_t descriptorOffset;
 ///     uint32_t descriptorSize;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMetalIOSurfaceInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     IOSurfaceRef ioSurface;
+///     (struct __IOSurface *) IOSurfaceRef ioSurface;
 /// };
 /// ```
 public sealed class VkImportMetalIOSurfaceInfoEXT extends GroupType {

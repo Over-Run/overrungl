@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassStripeInfoARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRect2D stripeArea;
+///     (struct VkRect2D) VkRect2D stripeArea;
 /// };
 /// ```
 public sealed class VkRenderPassStripeInfoARM extends GroupType {

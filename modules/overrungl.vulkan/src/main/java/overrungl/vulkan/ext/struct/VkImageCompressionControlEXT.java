@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCompressionControlEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageCompressionFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkImageCompressionFlagsEXT flags;
 ///     uint32_t compressionControlPlaneCount;
 ///     VkImageCompressionFixedRateFlagsEXT* pFixedRateFlags;
 /// };

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalSharedEventInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
-///     VkEvent event;
-///     MTLSharedEvent_id mtlSharedEvent;
+///     (uint64_t) VkSemaphore semaphore;
+///     (uint64_t) VkEvent event;
+///     (void*) MTLSharedEvent_id mtlSharedEvent;
 /// };
 /// ```
 public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {

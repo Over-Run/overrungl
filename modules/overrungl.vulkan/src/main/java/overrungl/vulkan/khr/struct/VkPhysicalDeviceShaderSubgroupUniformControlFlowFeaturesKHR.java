@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderSubgroupUniformControlFlow;
+///     (uint32_t) VkBool32 shaderSubgroupUniformControlFlow;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR extends GroupType {

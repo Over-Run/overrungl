@@ -27,24 +27,24 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureTrianglesDisplacementMicromapNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormat displacementBiasAndScaleFormat;
-///     VkFormat displacementVectorFormat;
-///     VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
-///     VkDeviceSize displacementBiasAndScaleStride;
-///     VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
-///     VkDeviceSize displacementVectorStride;
-///     VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
-///     VkDeviceSize displacedMicromapPrimitiveFlagsStride;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexBuffer;
-///     VkDeviceSize indexStride;
+///     (int) VkFormat displacementBiasAndScaleFormat;
+///     (int) VkFormat displacementVectorFormat;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
+///     (uint64_t) VkDeviceSize displacementBiasAndScaleStride;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
+///     (uint64_t) VkDeviceSize displacementVectorStride;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
+///     (uint64_t) VkDeviceSize displacedMicromapPrimitiveFlagsStride;
+///     (int) VkIndexType indexType;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR indexBuffer;
+///     (uint64_t) VkDeviceSize indexStride;
 ///     uint32_t baseTriangle;
 ///     uint32_t usageCountsCount;
 ///     const VkMicromapUsageEXT* pUsageCounts;
 ///     const VkMicromapUsageEXT* const * ppUsageCounts;
-///     VkMicromapEXT micromap;
+///     (uint64_t) VkMicromapEXT micromap;
 /// };
 /// ```
 public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV extends GroupType {

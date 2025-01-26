@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkValidationCacheCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkValidationCacheCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkValidationCacheCreateFlagsEXT flags;
 ///     size_t initialDataSize;
 ///     const void* pInitialData;
 /// };

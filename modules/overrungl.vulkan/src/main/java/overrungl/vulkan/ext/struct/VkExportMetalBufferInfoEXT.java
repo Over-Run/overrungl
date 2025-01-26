@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalBufferInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceMemory memory;
-///     MTLBuffer_id mtlBuffer;
+///     (uint64_t) VkDeviceMemory memory;
+///     (void*) MTLBuffer_id mtlBuffer;
 /// };
 /// ```
 public sealed class VkExportMetalBufferInfoEXT extends GroupType {

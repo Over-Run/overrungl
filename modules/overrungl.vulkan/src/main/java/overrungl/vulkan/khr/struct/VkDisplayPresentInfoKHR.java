@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPresentInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRect2D srcRect;
-///     VkRect2D dstRect;
-///     VkBool32 persistent;
+///     (struct VkRect2D) VkRect2D srcRect;
+///     (struct VkRect2D) VkRect2D dstRect;
+///     (uint32_t) VkBool32 persistent;
 /// };
 /// ```
 public sealed class VkDisplayPresentInfoKHR extends GroupType {

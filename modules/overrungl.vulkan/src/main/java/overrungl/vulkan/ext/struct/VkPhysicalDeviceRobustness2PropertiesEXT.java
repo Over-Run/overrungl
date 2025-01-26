@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRobustness2PropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize robustStorageBufferAccessSizeAlignment;
-///     VkDeviceSize robustUniformBufferAccessSizeAlignment;
+///     (uint64_t) VkDeviceSize robustStorageBufferAccessSizeAlignment;
+///     (uint64_t) VkDeviceSize robustUniformBufferAccessSizeAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRobustness2PropertiesEXT extends GroupType {

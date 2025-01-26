@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevice16BitStorageFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 storageBuffer16BitAccess;
-///     VkBool32 uniformAndStorageBuffer16BitAccess;
-///     VkBool32 storagePushConstant16;
-///     VkBool32 storageInputOutput16;
+///     (uint32_t) VkBool32 storageBuffer16BitAccess;
+///     (uint32_t) VkBool32 uniformAndStorageBuffer16BitAccess;
+///     (uint32_t) VkBool32 storagePushConstant16;
+///     (uint32_t) VkBool32 storageInputOutput16;
 /// };
 /// ```
 public sealed class VkPhysicalDevice16BitStorageFeatures extends GroupType {

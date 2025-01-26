@@ -27,28 +27,28 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorIndexingFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderInputAttachmentArrayDynamicIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
-///     VkBool32 shaderUniformBufferArrayNonUniformIndexing;
-///     VkBool32 shaderSampledImageArrayNonUniformIndexing;
-///     VkBool32 shaderStorageBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageImageArrayNonUniformIndexing;
-///     VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
-///     VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
-///     VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
-///     VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingSampledImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageImageUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
-///     VkBool32 descriptorBindingUpdateUnusedWhilePending;
-///     VkBool32 descriptorBindingPartiallyBound;
-///     VkBool32 descriptorBindingVariableDescriptorCount;
-///     VkBool32 runtimeDescriptorArray;
+///     (uint32_t) VkBool32 shaderInputAttachmentArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderUniformTexelBufferArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderStorageTexelBufferArrayDynamicIndexing;
+///     (uint32_t) VkBool32 shaderUniformBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderSampledImageArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageImageArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderInputAttachmentArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderUniformTexelBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 shaderStorageTexelBufferArrayNonUniformIndexing;
+///     (uint32_t) VkBool32 descriptorBindingUniformBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingSampledImageUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageImageUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingUniformTexelBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingStorageTexelBufferUpdateAfterBind;
+///     (uint32_t) VkBool32 descriptorBindingUpdateUnusedWhilePending;
+///     (uint32_t) VkBool32 descriptorBindingPartiallyBound;
+///     (uint32_t) VkBool32 descriptorBindingVariableDescriptorCount;
+///     (uint32_t) VkBool32 runtimeDescriptorArray;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDescriptorIndexingFeatures extends GroupType {

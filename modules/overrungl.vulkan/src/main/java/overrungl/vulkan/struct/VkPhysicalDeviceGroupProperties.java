@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceGroupProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t physicalDeviceCount;
-///     VkPhysicalDevice physicalDevices[32];
-///     VkBool32 subsetAllocation;
+///     (struct VkPhysicalDevice*) VkPhysicalDevice physicalDevices[32];
+///     (uint32_t) VkBool32 subsetAllocation;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceGroupProperties extends GroupType {

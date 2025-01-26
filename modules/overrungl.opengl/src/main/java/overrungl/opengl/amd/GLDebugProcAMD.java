@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*GLDebugProcAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar* message, void* userParam);
+/// typedef void (*GLDebugProcAMD)((unsigned int) GLuint id, (unsigned int) GLenum category, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, void* userParam);
 /// ```
 @FunctionalInterface
 public interface GLDebugProcAMD extends Upcall {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceProvokingVertexPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 provokingVertexModePerPipeline;
-///     VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
+///     (uint32_t) VkBool32 provokingVertexModePerPipeline;
+///     (uint32_t) VkBool32 transformFeedbackPreservesTriangleFanProvokingVertex;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceProvokingVertexPropertiesEXT extends GroupType {

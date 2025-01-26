@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeneratedCommandsInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkShaderStageFlags shaderStages;
-///     VkIndirectExecutionSetEXT indirectExecutionSet;
-///     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
-///     VkDeviceAddress indirectAddress;
-///     VkDeviceSize indirectAddressSize;
-///     VkDeviceAddress preprocessAddress;
-///     VkDeviceSize preprocessSize;
+///     ((uint32_t) VkFlags) VkShaderStageFlags shaderStages;
+///     (uint64_t) VkIndirectExecutionSetEXT indirectExecutionSet;
+///     (uint64_t) VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+///     (uint64_t) VkDeviceAddress indirectAddress;
+///     (uint64_t) VkDeviceSize indirectAddressSize;
+///     (uint64_t) VkDeviceAddress preprocessAddress;
+///     (uint64_t) VkDeviceSize preprocessSize;
 ///     uint32_t maxSequenceCount;
-///     VkDeviceAddress sequenceCountAddress;
+///     (uint64_t) VkDeviceAddress sequenceCountAddress;
 ///     uint32_t maxDrawCount;
 /// };
 /// ```

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t fragmentDensityOffsetCount;
 ///     const VkOffset2D* pFragmentDensityOffsets;

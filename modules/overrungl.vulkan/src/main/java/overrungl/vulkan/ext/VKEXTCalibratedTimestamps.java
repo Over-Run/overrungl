@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTCalibratedTimestamps {
+public final class VKEXTCalibratedTimestamps {
     public static final int VK_EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION = 2;
     public static final String VK_EXT_CALIBRATED_TIMESTAMPS_EXTENSION_NAME = "VK_EXT_calibrated_timestamps";
     public static final int VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT = 1000543000;
@@ -29,38 +29,30 @@ public class VKEXTCalibratedTimestamps {
     public static final int VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT = 1;
     public static final int VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT = 2;
     public static final int VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT = 3;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetCalibratedTimestampsEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT;
-        public final MemorySegment PFN_vkGetCalibratedTimestampsEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT = func.invoke(device, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT", "vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
-            PFN_vkGetCalibratedTimestampsEXT = func.invoke(device, "vkGetCalibratedTimestampsEXT", "vkGetCalibratedTimestampsKHR");
-        }
+        private Handles() {}
     }
 
-    public VKEXTCalibratedTimestamps(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTCalibratedTimestamps() {}
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, uint32_t* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains);
+    /// (int) VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains);
     /// ```
-    public int GetPhysicalDeviceCalibrateableTimeDomainsEXT(MemorySegment physicalDevice, MemorySegment pTimeDomainCount, MemorySegment pTimeDomains) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT.invokeExact(handles.PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT, physicalDevice, pTimeDomainCount, pTimeDomains); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceCalibrateableTimeDomainsEXT", e); }
+    public static int vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(VkPhysicalDevice physicalDevice, MemorySegment pTimeDomainCount, MemorySegment pTimeDomains) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT, physicalDevice.segment(), pTimeDomainCount, pTimeDomains); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCalibrateableTimeDomainsEXT", e); }
     }
 
     /// ```
-    /// VkResult vkGetCalibratedTimestampsEXT(VkDevice device, uint32_t timestampCount, const VkCalibratedTimestampInfoKHR* pTimestampInfos, uint64_t* pTimestamps, uint64_t* pMaxDeviation);
+    /// (int) VkResult vkGetCalibratedTimestampsEXT((struct VkDevice*) VkDevice device, uint32_t timestampCount, const VkCalibratedTimestampInfoKHR* pTimestampInfos, uint64_t* pTimestamps, uint64_t* pMaxDeviation);
     /// ```
-    public int GetCalibratedTimestampsEXT(MemorySegment device, int timestampCount, MemorySegment pTimestampInfos, MemorySegment pTimestamps, MemorySegment pMaxDeviation) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetCalibratedTimestampsEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsEXT");
-        try { return (int) Handles.MH_vkGetCalibratedTimestampsEXT.invokeExact(handles.PFN_vkGetCalibratedTimestampsEXT, device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation); }
-        catch (Throwable e) { throw new RuntimeException("error in GetCalibratedTimestampsEXT", e); }
+    public static int vkGetCalibratedTimestampsEXT(VkDevice device, int timestampCount, MemorySegment pTimestampInfos, MemorySegment pTimestamps, MemorySegment pMaxDeviation) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetCalibratedTimestampsEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsEXT");
+        try { return (int) Handles.MH_vkGetCalibratedTimestampsEXT.invokeExact(device.capabilities().PFN_vkGetCalibratedTimestampsEXT, device.segment(), timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetCalibratedTimestampsEXT", e); }
     }
 
 }

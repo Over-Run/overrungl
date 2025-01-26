@@ -23,6 +23,6 @@ public final class VKARMShaderCoreBuiltins {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM = 1000497000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM = 1000497001;
 
-    private VKARMShaderCoreBuiltins() { }
+    private VKARMShaderCoreBuiltins() {}
 
 }

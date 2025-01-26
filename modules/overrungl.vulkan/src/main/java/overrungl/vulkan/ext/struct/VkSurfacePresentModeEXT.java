@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfacePresentModeEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPresentModeKHR presentMode;
+///     (int) VkPresentModeKHR presentMode;
 /// };
 /// ```
 public sealed class VkSurfacePresentModeEXT extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceFaultAddressInfoEXT {
-///     VkDeviceFaultAddressTypeEXT addressType;
-///     VkDeviceAddress reportedAddress;
-///     VkDeviceSize addressPrecision;
+///     (int) VkDeviceFaultAddressTypeEXT addressType;
+///     (uint64_t) VkDeviceAddress reportedAddress;
+///     (uint64_t) VkDeviceSize addressPrecision;
 /// };
 /// ```
 public sealed class VkDeviceFaultAddressInfoEXT extends GroupType {

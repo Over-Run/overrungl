@@ -28,6 +28,6 @@ public final class VKKHRVideoDecodeAv1 {
     public static final int VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR = 0x00000004;
     public static final int VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR = 7;
 
-    private VKKHRVideoDecodeAv1() { }
+    private VKKHRVideoDecodeAv1() {}
 
 }

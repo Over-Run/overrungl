@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBaseInStructure {
-///     VkStructureType sType;
-///     const VkBaseInStructure * pNext;
+///     (int) VkStructureType sType;
+///     const struct VkBaseInStructure * pNext;
 /// };
 /// ```
 public sealed class VkBaseInStructure extends GroupType {

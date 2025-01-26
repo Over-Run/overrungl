@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPerformanceCounterKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPerformanceCounterUnitKHR unit;
-///     VkPerformanceCounterScopeKHR scope;
-///     VkPerformanceCounterStorageKHR storage;
+///     (int) VkPerformanceCounterUnitKHR unit;
+///     (int) VkPerformanceCounterScopeKHR scope;
+///     (int) VkPerformanceCounterStorageKHR storage;
 ///     uint8_t uuid[16];
 /// };
 /// ```

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorGetInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorType type;
-///     VkDescriptorDataEXT data;
+///     (int) VkDescriptorType type;
+///     (union VkDescriptorDataEXT) VkDescriptorDataEXT data;
 /// };
 /// ```
 public sealed class VkDescriptorGetInfoEXT extends GroupType {

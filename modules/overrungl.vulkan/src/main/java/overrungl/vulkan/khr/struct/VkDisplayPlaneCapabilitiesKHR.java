@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPlaneCapabilitiesKHR {
-///     VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
-///     VkOffset2D minSrcPosition;
-///     VkOffset2D maxSrcPosition;
-///     VkExtent2D minSrcExtent;
-///     VkExtent2D maxSrcExtent;
-///     VkOffset2D minDstPosition;
-///     VkOffset2D maxDstPosition;
-///     VkExtent2D minDstExtent;
-///     VkExtent2D maxDstExtent;
+///     ((uint32_t) VkFlags) VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
+///     (struct VkOffset2D) VkOffset2D minSrcPosition;
+///     (struct VkOffset2D) VkOffset2D maxSrcPosition;
+///     (struct VkExtent2D) VkExtent2D minSrcExtent;
+///     (struct VkExtent2D) VkExtent2D maxSrcExtent;
+///     (struct VkOffset2D) VkOffset2D minDstPosition;
+///     (struct VkOffset2D) VkOffset2D maxDstPosition;
+///     (struct VkExtent2D) VkExtent2D minDstExtent;
+///     (struct VkExtent2D) VkExtent2D maxDstExtent;
 /// };
 /// ```
 public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {

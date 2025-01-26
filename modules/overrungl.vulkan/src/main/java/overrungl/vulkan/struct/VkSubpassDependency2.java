@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassDependency2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t srcSubpass;
 ///     uint32_t dstSubpass;
-///     VkPipelineStageFlags srcStageMask;
-///     VkPipelineStageFlags dstStageMask;
-///     VkAccessFlags srcAccessMask;
-///     VkAccessFlags dstAccessMask;
-///     VkDependencyFlags dependencyFlags;
+///     ((uint32_t) VkFlags) VkPipelineStageFlags srcStageMask;
+///     ((uint32_t) VkFlags) VkPipelineStageFlags dstStageMask;
+///     ((uint32_t) VkFlags) VkAccessFlags srcAccessMask;
+///     ((uint32_t) VkFlags) VkAccessFlags dstAccessMask;
+///     ((uint32_t) VkFlags) VkDependencyFlags dependencyFlags;
 ///     int32_t viewOffset;
 /// };
 /// ```

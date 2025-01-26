@@ -23,6 +23,6 @@ public final class VKEXTLoadStoreOpNone {
     public static final int VK_ATTACHMENT_LOAD_OP_NONE_EXT = 1000400000;
     public static final int VK_ATTACHMENT_STORE_OP_NONE_EXT = 1000301000;
 
-    private VKEXTLoadStoreOpNone() { }
+    private VKEXTLoadStoreOpNone() {}
 
 }

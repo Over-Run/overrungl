@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineTessellationDomainOriginStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkTessellationDomainOrigin domainOrigin;
+///     (int) VkTessellationDomainOrigin domainOrigin;
 /// };
 /// ```
 public sealed class VkPipelineTessellationDomainOriginStateCreateInfo extends GroupType {

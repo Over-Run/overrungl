@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTBufferDeviceAddress {
+public final class VKEXTBufferDeviceAddress {
     public static final int VK_EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 2;
     public static final String VK_EXT_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_EXT_buffer_device_address";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT = 1000244000;
@@ -31,26 +31,20 @@ public class VKEXTBufferDeviceAddress {
     public static final int VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT = 0x00020000;
     public static final int VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = 0x00000010;
     public static final int VK_ERROR_INVALID_DEVICE_ADDRESS_EXT = -1000257000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetBufferDeviceAddressEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetBufferDeviceAddressEXT = func.invoke(device, "vkGetBufferDeviceAddressEXT", "vkGetBufferDeviceAddress");
-        }
+        private Handles() {}
     }
 
-    public VKEXTBufferDeviceAddress(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTBufferDeviceAddress() {}
 
     /// ```
-    /// VkDeviceAddress vkGetBufferDeviceAddressEXT(VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
+    /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressEXT((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
-    public long GetBufferDeviceAddressEXT(MemorySegment device, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetBufferDeviceAddressEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
-        try { return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(handles.PFN_vkGetBufferDeviceAddressEXT, device, pInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in GetBufferDeviceAddressEXT", e); }
+    public static long vkGetBufferDeviceAddressEXT(VkDevice device, MemorySegment pInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
+        try { return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressEXT, device.segment(), pInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressEXT", e); }
     }
 
 }

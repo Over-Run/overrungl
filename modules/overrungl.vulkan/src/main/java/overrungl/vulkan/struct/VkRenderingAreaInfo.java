@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingAreaInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t viewMask;
 ///     uint32_t colorAttachmentCount;
 ///     const VkFormat* pColorAttachmentFormats;
-///     VkFormat depthAttachmentFormat;
-///     VkFormat stencilAttachmentFormat;
+///     (int) VkFormat depthAttachmentFormat;
+///     (int) VkFormat stencilAttachmentFormat;
 /// };
 /// ```
 public sealed class VkRenderingAreaInfo extends GroupType {

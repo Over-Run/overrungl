@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineShaderStageCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineShaderStageCreateFlags flags;
-///     VkShaderStageFlagBits stage;
-///     VkShaderModule module;
+///     ((uint32_t) VkFlags) VkPipelineShaderStageCreateFlags flags;
+///     (int) VkShaderStageFlagBits stage;
+///     (uint64_t) VkShaderModule module;
 ///     const char* pName;
 ///     const VkSpecializationInfo* pSpecializationInfo;
 /// };

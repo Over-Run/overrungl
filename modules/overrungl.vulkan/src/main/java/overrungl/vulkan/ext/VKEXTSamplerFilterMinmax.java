@@ -27,6 +27,6 @@ public final class VKEXTSamplerFilterMinmax {
     public static final int VK_SAMPLER_REDUCTION_MODE_MIN_EXT = 1;
     public static final int VK_SAMPLER_REDUCTION_MODE_MAX_EXT = 2;
 
-    private VKEXTSamplerFilterMinmax() { }
+    private VKEXTSamplerFilterMinmax() {}
 
 }

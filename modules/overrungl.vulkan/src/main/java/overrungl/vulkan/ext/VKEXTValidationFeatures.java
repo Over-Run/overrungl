@@ -35,6 +35,6 @@ public final class VKEXTValidationFeatures {
     public static final String VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
     public static final int VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT = 1000247000;
 
-    private VKEXTValidationFeatures() { }
+    private VKEXTValidationFeatures() {}
 
 }

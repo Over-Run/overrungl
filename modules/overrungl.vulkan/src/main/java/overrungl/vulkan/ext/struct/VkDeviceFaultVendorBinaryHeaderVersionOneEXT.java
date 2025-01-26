@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkDeviceFaultVendorBinaryHeaderVersionOneEXT {
 ///     uint32_t headerSize;
-///     VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
+///     (int) VkDeviceFaultVendorBinaryHeaderVersionEXT headerVersion;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
 ///     uint32_t driverVersion;

@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportFenceWin32HandleInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFence fence;
-///     VkFenceImportFlags flags;
-///     VkExternalFenceHandleTypeFlagBits handleType;
-///     HANDLE handle;
-///     LPCWSTR name;
+///     (uint64_t) VkFence fence;
+///     ((uint32_t) VkFlags) VkFenceImportFlags flags;
+///     (int) VkExternalFenceHandleTypeFlagBits handleType;
+///     (void*) HANDLE handle;
+///     (const wchar_t*) LPCWSTR name;
 /// };
 /// ```
 public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {

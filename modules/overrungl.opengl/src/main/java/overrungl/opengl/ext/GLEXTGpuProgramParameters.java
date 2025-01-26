@@ -40,7 +40,7 @@ public final class GLEXTGpuProgramParameters {
     }
 
     /// ```
-    /// void glProgramEnvParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat* params);
+    /// void glProgramEnvParameters4fvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLfloat* params);
     /// ```
     public void ProgramEnvParameters4fvEXT(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
@@ -49,7 +49,7 @@ public final class GLEXTGpuProgramParameters {
     }
 
     /// ```
-    /// void glProgramLocalParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat* params);
+    /// void glProgramLocalParameters4fvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLfloat* params);
     /// ```
     public void ProgramLocalParameters4fvEXT(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");

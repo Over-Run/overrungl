@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceASTCDecodeFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 decodeModeSharedExponent;
+///     (uint32_t) VkBool32 decodeModeSharedExponent;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceASTCDecodeFeaturesEXT extends GroupType {

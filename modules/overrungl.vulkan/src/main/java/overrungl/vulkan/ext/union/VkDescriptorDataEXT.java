@@ -36,7 +36,7 @@ import overrungl.util.*;
 ///     const VkDescriptorAddressInfoEXT* pStorageTexelBuffer;
 ///     const VkDescriptorAddressInfoEXT* pUniformBuffer;
 ///     const VkDescriptorAddressInfoEXT* pStorageBuffer;
-///     VkDeviceAddress accelerationStructure;
+///     (uint64_t) VkDeviceAddress accelerationStructure;
 /// };
 /// ```
 public sealed class VkDescriptorDataEXT extends GroupType {

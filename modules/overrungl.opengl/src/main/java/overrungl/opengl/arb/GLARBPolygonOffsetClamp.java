@@ -38,7 +38,7 @@ public final class GLARBPolygonOffsetClamp {
     }
 
     /// ```
-    /// void glPolygonOffsetClamp(GLfloat factor, GLfloat units, GLfloat clamp);
+    /// void glPolygonOffsetClamp(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
     /// ```
     public void PolygonOffsetClamp(float factor, float units, float clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");

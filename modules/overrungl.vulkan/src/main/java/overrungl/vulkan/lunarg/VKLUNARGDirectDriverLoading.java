@@ -25,6 +25,6 @@ public final class VKLUNARGDirectDriverLoading {
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG = 1000459000;
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG = 1000459001;
 
-    private VKLUNARGDirectDriverLoading() { }
+    private VKLUNARGDirectDriverLoading() {}
 
 }

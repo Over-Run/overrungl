@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportSemaphoreSciSyncInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     NvSciSyncAttrList pAttributes;
+///     (struct NvSciSyncAttrListRec *) NvSciSyncAttrList pAttributes;
 /// };
 /// ```
 public sealed class VkExportSemaphoreSciSyncInfoNV extends GroupType {

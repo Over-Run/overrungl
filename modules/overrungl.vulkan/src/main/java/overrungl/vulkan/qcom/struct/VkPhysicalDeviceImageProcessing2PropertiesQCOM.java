@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageProcessing2PropertiesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D maxBlockMatchWindow;
+///     (struct VkExtent2D) VkExtent2D maxBlockMatchWindow;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends GroupType {

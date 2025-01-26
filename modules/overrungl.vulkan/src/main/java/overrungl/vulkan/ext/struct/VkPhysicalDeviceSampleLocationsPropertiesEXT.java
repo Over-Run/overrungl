@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSampleLocationsPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkSampleCountFlags sampleLocationSampleCounts;
-///     VkExtent2D maxSampleLocationGridSize;
+///     ((uint32_t) VkFlags) VkSampleCountFlags sampleLocationSampleCounts;
+///     (struct VkExtent2D) VkExtent2D maxSampleLocationGridSize;
 ///     float sampleLocationCoordinateRange[2];
 ///     uint32_t sampleLocationSubPixelBits;
-///     VkBool32 variableSampleLocations;
+///     (uint32_t) VkBool32 variableSampleLocations;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupType {

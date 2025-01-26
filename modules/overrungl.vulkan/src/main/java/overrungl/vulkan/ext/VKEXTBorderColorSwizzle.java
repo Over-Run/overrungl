@@ -23,6 +23,6 @@ public final class VKEXTBorderColorSwizzle {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT = 1000411000;
     public static final int VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT = 1000411001;
 
-    private VKEXTBorderColorSwizzle() { }
+    private VKEXTBorderColorSwizzle() {}
 
 }

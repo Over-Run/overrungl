@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef STBbool (*STBIIOEof)(void* user);
+/// typedef (int) STBbool (*STBIIOEof)(void* user);
 /// ```
 @FunctionalInterface
 public interface STBIIOEof extends Upcall {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferAllocateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCommandPool commandPool;
-///     VkCommandBufferLevel level;
+///     (uint64_t) VkCommandPool commandPool;
+///     (int) VkCommandBufferLevel level;
 ///     uint32_t commandBufferCount;
 /// };
 /// ```

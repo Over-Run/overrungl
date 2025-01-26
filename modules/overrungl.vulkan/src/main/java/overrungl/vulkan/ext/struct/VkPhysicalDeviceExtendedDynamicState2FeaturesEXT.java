@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 extendedDynamicState2;
-///     VkBool32 extendedDynamicState2LogicOp;
-///     VkBool32 extendedDynamicState2PatchControlPoints;
+///     (uint32_t) VkBool32 extendedDynamicState2;
+///     (uint32_t) VkBool32 extendedDynamicState2LogicOp;
+///     (uint32_t) VkBool32 extendedDynamicState2PatchControlPoints;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends GroupType {

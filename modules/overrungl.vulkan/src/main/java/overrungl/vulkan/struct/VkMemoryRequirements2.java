@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryRequirements2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkMemoryRequirements memoryRequirements;
+///     (struct VkMemoryRequirements) VkMemoryRequirements memoryRequirements;
 /// };
 /// ```
 public sealed class VkMemoryRequirements2 extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoPictureResourceInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkOffset2D codedOffset;
-///     VkExtent2D codedExtent;
+///     (struct VkOffset2D) VkOffset2D codedOffset;
+///     (struct VkExtent2D) VkExtent2D codedExtent;
 ///     uint32_t baseArrayLayer;
-///     VkImageView imageViewBinding;
+///     (uint64_t) VkImageView imageViewBinding;
 /// };
 /// ```
 public sealed class VkVideoPictureResourceInfoKHR extends GroupType {

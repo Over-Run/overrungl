@@ -52,7 +52,7 @@ public final class GLAPPLEElementArray {
     }
 
     /// ```
-    /// void glElementPointerAPPLE(GLenum type, const void* pointer);
+    /// void glElementPointerAPPLE((unsigned int) GLenum type, const void* pointer);
     /// ```
     public void ElementPointerAPPLE(int type, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glElementPointerAPPLE)) throw new SymbolNotFoundError("Symbol not found: glElementPointerAPPLE");
@@ -61,7 +61,7 @@ public final class GLAPPLEElementArray {
     }
 
     /// ```
-    /// void glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count);
+    /// void glDrawElementArrayAPPLE((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count);
     /// ```
     public void DrawElementArrayAPPLE(int mode, int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDrawElementArrayAPPLE");
@@ -70,7 +70,7 @@ public final class GLAPPLEElementArray {
     }
 
     /// ```
-    /// void glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
+    /// void glDrawRangeElementArrayAPPLE((unsigned int) GLenum mode, (unsigned int) GLuint start, (unsigned int) GLuint end, (int) GLint first, (int) GLsizei count);
     /// ```
     public void DrawRangeElementArrayAPPLE(int mode, int start, int end, int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementArrayAPPLE");
@@ -79,7 +79,7 @@ public final class GLAPPLEElementArray {
     }
 
     /// ```
-    /// void glMultiDrawElementArrayAPPLE(GLenum mode, const GLint* first, const GLsizei* count, GLsizei primcount);
+    /// void glMultiDrawElementArrayAPPLE((unsigned int) GLenum mode, const GLint* first, const GLsizei* count, (int) GLsizei primcount);
     /// ```
     public void MultiDrawElementArrayAPPLE(int mode, MemorySegment first, MemorySegment count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementArrayAPPLE");
@@ -88,7 +88,7 @@ public final class GLAPPLEElementArray {
     }
 
     /// ```
-    /// void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint* first, const GLsizei* count, GLsizei primcount);
+    /// void glMultiDrawRangeElementArrayAPPLE((unsigned int) GLenum mode, (unsigned int) GLuint start, (unsigned int) GLuint end, const GLint* first, const GLsizei* count, (int) GLsizei primcount);
     /// ```
     public void MultiDrawRangeElementArrayAPPLE(int mode, int start, int end, MemorySegment first, MemorySegment count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawRangeElementArrayAPPLE)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawRangeElementArrayAPPLE");

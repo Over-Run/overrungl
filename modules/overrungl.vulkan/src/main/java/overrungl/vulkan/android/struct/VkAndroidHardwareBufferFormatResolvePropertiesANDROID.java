@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFormat colorAttachmentFormat;
+///     (int) VkFormat colorAttachmentFormat;
 /// };
 /// ```
 public sealed class VkAndroidHardwareBufferFormatResolvePropertiesANDROID extends GroupType {

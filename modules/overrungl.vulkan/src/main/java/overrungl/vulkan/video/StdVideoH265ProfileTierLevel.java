@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265ProfileTierLevel {
-///     StdVideoH265ProfileTierLevelFlags flags;
-///     StdVideoH265ProfileIdc general_profile_idc;
-///     StdVideoH265LevelIdc general_level_idc;
+///     (struct StdVideoH265ProfileTierLevelFlags) StdVideoH265ProfileTierLevelFlags flags;
+///     (int) StdVideoH265ProfileIdc general_profile_idc;
+///     (int) StdVideoH265LevelIdc general_level_idc;
 /// };
 /// ```
 public sealed class StdVideoH265ProfileTierLevel extends GroupType {

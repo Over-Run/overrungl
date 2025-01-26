@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*ALFoldbackCallback)(ALenum event, ALsizei blockIndex);
+/// typedef void (*ALFoldbackCallback)((int) ALenum event, (int) ALsizei blockIndex);
 /// ```
 @FunctionalInterface
 public interface ALFoldbackCallback extends Upcall {

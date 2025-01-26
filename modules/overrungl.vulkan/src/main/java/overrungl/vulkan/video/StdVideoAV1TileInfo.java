@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TileInfo {
-///     StdVideoAV1TileInfoFlags flags;
+///     (struct StdVideoAV1TileInfoFlags) StdVideoAV1TileInfoFlags flags;
 ///     uint8_t TileCols;
 ///     uint8_t TileRows;
 ///     uint16_t context_update_tile_id;

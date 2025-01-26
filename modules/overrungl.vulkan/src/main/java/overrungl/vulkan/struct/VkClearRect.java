@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkClearRect {
-///     VkRect2D rect;
+///     (struct VkRect2D) VkRect2D rect;
 ///     uint32_t baseArrayLayer;
 ///     uint32_t layerCount;
 /// };

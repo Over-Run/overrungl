@@ -21,32 +21,26 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTColorWriteEnable {
+public final class VKEXTColorWriteEnable {
     public static final int VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1;
     public static final String VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT = 1000381000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = 1000381001;
     public static final int VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT = 1000381000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetColorWriteEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCmdSetColorWriteEnableEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdSetColorWriteEnableEXT = func.invoke(device, "vkCmdSetColorWriteEnableEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTColorWriteEnable(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTColorWriteEnable() {}
 
     /// ```
-    /// void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
+    /// void vkCmdSetColorWriteEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
     /// ```
-    public void CmdSetColorWriteEnableEXT(MemorySegment commandBuffer, int attachmentCount, MemorySegment pColorWriteEnables) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
-        try { Handles.MH_vkCmdSetColorWriteEnableEXT.invokeExact(handles.PFN_vkCmdSetColorWriteEnableEXT, commandBuffer, attachmentCount, pColorWriteEnables); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetColorWriteEnableEXT", e); }
+    public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, int attachmentCount, MemorySegment pColorWriteEnables) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
+        try { Handles.MH_vkCmdSetColorWriteEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT, commandBuffer.segment(), attachmentCount, pColorWriteEnables); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorWriteEnableEXT", e); }
     }
 
 }

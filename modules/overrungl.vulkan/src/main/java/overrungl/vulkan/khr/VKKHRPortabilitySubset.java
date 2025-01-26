@@ -23,6 +23,6 @@ public final class VKKHRPortabilitySubset {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR = 1000163000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR = 1000163001;
 
-    private VKKHRPortabilitySubset() { }
+    private VKKHRPortabilitySubset() {}
 
 }

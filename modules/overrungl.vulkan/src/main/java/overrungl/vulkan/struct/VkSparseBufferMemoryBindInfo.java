@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseBufferMemoryBindInfo {
-///     VkBuffer buffer;
+///     (uint64_t) VkBuffer buffer;
 ///     uint32_t bindCount;
 ///     const VkSparseMemoryBind* pBinds;
 /// };

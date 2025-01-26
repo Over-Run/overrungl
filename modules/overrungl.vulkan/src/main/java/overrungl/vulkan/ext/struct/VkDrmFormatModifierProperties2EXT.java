@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkDrmFormatModifierProperties2EXT {
 ///     uint64_t drmFormatModifier;
 ///     uint32_t drmFormatModifierPlaneCount;
-///     VkFormatFeatureFlags2 drmFormatModifierTilingFeatures;
+///     ((uint64_t) VkFlags64) VkFormatFeatureFlags2 drmFormatModifierTilingFeatures;
 /// };
 /// ```
 public sealed class VkDrmFormatModifierProperties2EXT extends GroupType {

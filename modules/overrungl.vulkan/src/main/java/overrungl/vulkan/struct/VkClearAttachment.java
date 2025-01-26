@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkClearAttachment {
-///     VkImageAspectFlags aspectMask;
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
 ///     uint32_t colorAttachment;
-///     VkClearValue clearValue;
+///     (union VkClearValue) VkClearValue clearValue;
 /// };
 /// ```
 public sealed class VkClearAttachment extends GroupType {

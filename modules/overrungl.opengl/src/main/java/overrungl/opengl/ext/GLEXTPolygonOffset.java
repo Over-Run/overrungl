@@ -40,7 +40,7 @@ public final class GLEXTPolygonOffset {
     }
 
     /// ```
-    /// void glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
+    /// void glPolygonOffsetEXT(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat bias);
     /// ```
     public void PolygonOffsetEXT(float factor, float bias) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetEXT");

@@ -23,6 +23,6 @@ public final class VKKHRShaderIntegerDotProduct {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR = 1000280000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES_KHR = 1000280001;
 
-    private VKKHRShaderIntegerDotProduct() { }
+    private VKKHRShaderIntegerDotProduct() {}
 
 }

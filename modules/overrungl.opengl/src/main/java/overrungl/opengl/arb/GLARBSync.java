@@ -70,7 +70,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// GLsync glFenceSync(GLenum condition, GLbitfield flags);
+    /// (struct __GLsync *) GLsync glFenceSync((unsigned int) GLenum condition, (unsigned int) GLbitfield flags);
     /// ```
     public MemorySegment FenceSync(int condition, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFenceSync)) throw new SymbolNotFoundError("Symbol not found: glFenceSync");
@@ -79,7 +79,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// GLboolean glIsSync(GLsync sync);
+    /// GLboolean glIsSync((struct __GLsync *) GLsync sync);
     /// ```
     public boolean IsSync(MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsSync)) throw new SymbolNotFoundError("Symbol not found: glIsSync");
@@ -88,7 +88,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// void glDeleteSync(GLsync sync);
+    /// void glDeleteSync((struct __GLsync *) GLsync sync);
     /// ```
     public void DeleteSync(MemorySegment sync) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteSync)) throw new SymbolNotFoundError("Symbol not found: glDeleteSync");
@@ -97,7 +97,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// GLenum glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
+    /// (unsigned int) GLenum glClientWaitSync((struct __GLsync *) GLsync sync, (unsigned int) GLbitfield flags, ((uint64_t) khronos_uint64_t) GLuint64 timeout);
     /// ```
     public int ClientWaitSync(MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientWaitSync)) throw new SymbolNotFoundError("Symbol not found: glClientWaitSync");
@@ -106,7 +106,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
+    /// void glWaitSync((struct __GLsync *) GLsync sync, (unsigned int) GLbitfield flags, ((uint64_t) khronos_uint64_t) GLuint64 timeout);
     /// ```
     public void WaitSync(MemorySegment sync, int flags, long timeout) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSync)) throw new SymbolNotFoundError("Symbol not found: glWaitSync");
@@ -115,7 +115,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// void glGetInteger64v(GLenum pname, GLint64* data);
+    /// void glGetInteger64v((unsigned int) GLenum pname, GLint64* data);
     /// ```
     public void GetInteger64v(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInteger64v)) throw new SymbolNotFoundError("Symbol not found: glGetInteger64v");
@@ -124,7 +124,7 @@ public final class GLARBSync {
     }
 
     /// ```
-    /// void glGetSynciv(GLsync sync, GLenum pname, GLsizei count, GLsizei* length, GLint* values);
+    /// void glGetSynciv((struct __GLsync *) GLsync sync, (unsigned int) GLenum pname, (int) GLsizei count, GLsizei* length, GLint* values);
     /// ```
     public void GetSynciv(MemorySegment sync, int pname, int count, MemorySegment length, MemorySegment values) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSynciv)) throw new SymbolNotFoundError("Symbol not found: glGetSynciv");

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalSemaphoreInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalSemaphoreHandleTypeFlagBits handleType;
+///     (int) VkExternalSemaphoreHandleTypeFlagBits handleType;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalSemaphoreInfo extends GroupType {

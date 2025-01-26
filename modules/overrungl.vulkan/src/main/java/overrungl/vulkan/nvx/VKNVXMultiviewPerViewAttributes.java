@@ -25,6 +25,6 @@ public final class VKNVXMultiviewPerViewAttributes {
     public static final int VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX = 0x00000002;
     public static final int VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX = 1000097009;
 
-    private VKNVXMultiviewPerViewAttributes() { }
+    private VKNVXMultiviewPerViewAttributes() {}
 
 }

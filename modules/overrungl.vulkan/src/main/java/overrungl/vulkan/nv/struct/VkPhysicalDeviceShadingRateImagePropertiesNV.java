@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShadingRateImagePropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D shadingRateTexelSize;
+///     (struct VkExtent2D) VkExtent2D shadingRateTexelSize;
 ///     uint32_t shadingRatePaletteSize;
 ///     uint32_t shadingRateMaxCoarseSamples;
 /// };

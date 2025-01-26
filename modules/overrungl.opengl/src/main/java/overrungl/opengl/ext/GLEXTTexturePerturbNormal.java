@@ -39,7 +39,7 @@ public final class GLEXTTexturePerturbNormal {
     }
 
     /// ```
-    /// void glTextureNormalEXT(GLenum mode);
+    /// void glTextureNormalEXT((unsigned int) GLenum mode);
     /// ```
     public void TextureNormalEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureNormalEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureNormalEXT");

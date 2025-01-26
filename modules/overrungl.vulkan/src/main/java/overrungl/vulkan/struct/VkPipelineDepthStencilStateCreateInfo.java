@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineDepthStencilStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineDepthStencilStateCreateFlags flags;
-///     VkBool32 depthTestEnable;
-///     VkBool32 depthWriteEnable;
-///     VkCompareOp depthCompareOp;
-///     VkBool32 depthBoundsTestEnable;
-///     VkBool32 stencilTestEnable;
-///     VkStencilOpState front;
-///     VkStencilOpState back;
+///     ((uint32_t) VkFlags) VkPipelineDepthStencilStateCreateFlags flags;
+///     (uint32_t) VkBool32 depthTestEnable;
+///     (uint32_t) VkBool32 depthWriteEnable;
+///     (int) VkCompareOp depthCompareOp;
+///     (uint32_t) VkBool32 depthBoundsTestEnable;
+///     (uint32_t) VkBool32 stencilTestEnable;
+///     (struct VkStencilOpState) VkStencilOpState front;
+///     (struct VkStencilOpState) VkStencilOpState back;
 ///     float minDepthBounds;
 ///     float maxDepthBounds;
 /// };

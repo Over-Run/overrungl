@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassFragmentDensityMapCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAttachmentReference fragmentDensityMapAttachment;
+///     (struct VkAttachmentReference) VkAttachmentReference fragmentDensityMapAttachment;
 /// };
 /// ```
 public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends GroupType {

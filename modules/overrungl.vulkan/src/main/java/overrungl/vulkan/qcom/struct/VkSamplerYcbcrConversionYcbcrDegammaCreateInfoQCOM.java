@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 enableYDegamma;
-///     VkBool32 enableCbCrDegamma;
+///     (uint32_t) VkBool32 enableYDegamma;
+///     (uint32_t) VkBool32 enableCbCrDegamma;
 /// };
 /// ```
 public sealed class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends GroupType {

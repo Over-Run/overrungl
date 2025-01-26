@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderTerminateInvocationFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderTerminateInvocation;
+///     (uint32_t) VkBool32 shaderTerminateInvocation;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends GroupType {

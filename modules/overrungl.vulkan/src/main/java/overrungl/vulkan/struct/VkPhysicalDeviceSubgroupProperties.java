@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubgroupProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t subgroupSize;
-///     VkShaderStageFlags supportedStages;
-///     VkSubgroupFeatureFlags supportedOperations;
-///     VkBool32 quadOperationsInAllStages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags supportedStages;
+///     ((uint32_t) VkFlags) VkSubgroupFeatureFlags supportedOperations;
+///     (uint32_t) VkBool32 quadOperationsInAllStages;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSubgroupProperties extends GroupType {

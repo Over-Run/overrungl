@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureDeviceAddressInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureKHR accelerationStructure;
+///     (uint64_t) VkAccelerationStructureKHR accelerationStructure;
 /// };
 /// ```
 public sealed class VkAccelerationStructureDeviceAddressInfoKHR extends GroupType {

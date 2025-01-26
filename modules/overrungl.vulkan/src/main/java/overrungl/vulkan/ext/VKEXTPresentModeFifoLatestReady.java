@@ -23,6 +23,6 @@ public final class VKEXTPresentModeFifoLatestReady {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT = 1000361000;
     public static final int VK_PRESENT_MODE_FIFO_LATEST_READY_EXT = 1000361000;
 
-    private VKEXTPresentModeFifoLatestReady() { }
+    private VKEXTPresentModeFifoLatestReady() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkViSurfaceCreateInfoNN {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkViSurfaceCreateFlagsNN flags;
+///     ((uint32_t) VkFlags) VkViSurfaceCreateFlagsNN flags;
 ///     void* window;
 /// };
 /// ```

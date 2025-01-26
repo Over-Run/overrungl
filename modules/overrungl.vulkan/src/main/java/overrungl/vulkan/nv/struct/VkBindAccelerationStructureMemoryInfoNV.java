@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindAccelerationStructureMemoryInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureNV accelerationStructure;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
+///     (uint64_t) VkAccelerationStructureNV accelerationStructure;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize memoryOffset;
 ///     uint32_t deviceIndexCount;
 ///     const uint32_t* pDeviceIndices;
 /// };

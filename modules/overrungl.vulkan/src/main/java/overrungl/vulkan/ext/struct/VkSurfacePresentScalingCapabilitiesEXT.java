@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfacePresentScalingCapabilitiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPresentScalingFlagsEXT supportedPresentScaling;
-///     VkPresentGravityFlagsEXT supportedPresentGravityX;
-///     VkPresentGravityFlagsEXT supportedPresentGravityY;
-///     VkExtent2D minScaledImageExtent;
-///     VkExtent2D maxScaledImageExtent;
+///     ((uint32_t) VkFlags) VkPresentScalingFlagsEXT supportedPresentScaling;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityX;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityY;
+///     (struct VkExtent2D) VkExtent2D minScaledImageExtent;
+///     (struct VkExtent2D) VkExtent2D maxScaledImageExtent;
 /// };
 /// ```
 public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {

@@ -23,6 +23,6 @@ public final class VKEXTRobustness2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT = 1000286000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT = 1000286001;
 
-    private VKEXTRobustness2() { }
+    private VKEXTRobustness2() {}
 
 }

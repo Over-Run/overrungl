@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 primitiveTopologyListRestart;
-///     VkBool32 primitiveTopologyPatchListRestart;
+///     (uint32_t) VkBool32 primitiveTopologyListRestart;
+///     (uint32_t) VkBool32 primitiveTopologyPatchListRestart;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT extends GroupType {

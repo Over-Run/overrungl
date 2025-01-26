@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFramebufferCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFramebufferCreateFlags flags;
-///     VkRenderPass renderPass;
+///     ((uint32_t) VkFlags) VkFramebufferCreateFlags flags;
+///     (uint64_t) VkRenderPass renderPass;
 ///     uint32_t attachmentCount;
 ///     const VkImageView* pAttachments;
 ///     uint32_t width;

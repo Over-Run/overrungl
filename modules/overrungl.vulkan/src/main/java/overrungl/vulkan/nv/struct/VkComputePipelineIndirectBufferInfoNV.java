@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkComputePipelineIndirectBufferInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceAddress deviceAddress;
-///     VkDeviceSize size;
-///     VkDeviceAddress pipelineDeviceAddressCaptureReplay;
+///     (uint64_t) VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceSize size;
+///     (uint64_t) VkDeviceAddress pipelineDeviceAddressCaptureReplay;
 /// };
 /// ```
 public sealed class VkComputePipelineIndirectBufferInfoNV extends GroupType {

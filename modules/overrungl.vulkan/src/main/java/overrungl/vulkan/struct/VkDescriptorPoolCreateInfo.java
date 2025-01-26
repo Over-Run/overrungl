@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorPoolCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorPoolCreateFlags flags;
+///     ((uint32_t) VkFlags) VkDescriptorPoolCreateFlags flags;
 ///     uint32_t maxSets;
 ///     uint32_t poolSizeCount;
 ///     const VkDescriptorPoolSize* pPoolSizes;

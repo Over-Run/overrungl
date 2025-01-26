@@ -24,6 +24,6 @@ public final class VKNVDedicatedAllocation {
     public static final int VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV = 1000026001;
     public static final int VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV = 1000026002;
 
-    private VKNVDedicatedAllocation() { }
+    private VKNVDedicatedAllocation() {}
 
 }

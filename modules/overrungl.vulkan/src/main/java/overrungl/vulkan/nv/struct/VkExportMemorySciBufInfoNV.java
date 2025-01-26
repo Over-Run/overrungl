@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMemorySciBufInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     NvSciBufAttrList pAttributes;
+///     (struct NvSciBufAttrListRec *) NvSciBufAttrList pAttributes;
 /// };
 /// ```
 public sealed class VkExportMemorySciBufInfoNV extends GroupType {

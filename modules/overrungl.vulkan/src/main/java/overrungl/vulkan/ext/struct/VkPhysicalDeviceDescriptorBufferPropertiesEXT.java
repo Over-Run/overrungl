@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorBufferPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 combinedImageSamplerDescriptorSingleArray;
-///     VkBool32 bufferlessPushDescriptors;
-///     VkBool32 allowSamplerImageViewPostSubmitCreation;
-///     VkDeviceSize descriptorBufferOffsetAlignment;
+///     (uint32_t) VkBool32 combinedImageSamplerDescriptorSingleArray;
+///     (uint32_t) VkBool32 bufferlessPushDescriptors;
+///     (uint32_t) VkBool32 allowSamplerImageViewPostSubmitCreation;
+///     (uint64_t) VkDeviceSize descriptorBufferOffsetAlignment;
 ///     uint32_t maxDescriptorBufferBindings;
 ///     uint32_t maxResourceDescriptorBufferBindings;
 ///     uint32_t maxSamplerDescriptorBufferBindings;
@@ -57,11 +57,11 @@ import overrungl.util.*;
 ///     size_t robustStorageBufferDescriptorSize;
 ///     size_t inputAttachmentDescriptorSize;
 ///     size_t accelerationStructureDescriptorSize;
-///     VkDeviceSize maxSamplerDescriptorBufferRange;
-///     VkDeviceSize maxResourceDescriptorBufferRange;
-///     VkDeviceSize samplerDescriptorBufferAddressSpaceSize;
-///     VkDeviceSize resourceDescriptorBufferAddressSpaceSize;
-///     VkDeviceSize descriptorBufferAddressSpaceSize;
+///     (uint64_t) VkDeviceSize maxSamplerDescriptorBufferRange;
+///     (uint64_t) VkDeviceSize maxResourceDescriptorBufferRange;
+///     (uint64_t) VkDeviceSize samplerDescriptorBufferAddressSpaceSize;
+///     (uint64_t) VkDeviceSize resourceDescriptorBufferAddressSpaceSize;
+///     (uint64_t) VkDeviceSize descriptorBufferAddressSpaceSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupType {

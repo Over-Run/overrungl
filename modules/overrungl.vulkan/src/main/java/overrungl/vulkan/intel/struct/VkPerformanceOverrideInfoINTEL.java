@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPerformanceOverrideInfoINTEL {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPerformanceOverrideTypeINTEL type;
-///     VkBool32 enable;
+///     (int) VkPerformanceOverrideTypeINTEL type;
+///     (uint32_t) VkBool32 enable;
 ///     uint64_t parameter;
 /// };
 /// ```

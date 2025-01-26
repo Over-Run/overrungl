@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectExecutionSetCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkIndirectExecutionSetInfoTypeEXT type;
-///     VkIndirectExecutionSetInfoEXT info;
+///     (int) VkIndirectExecutionSetInfoTypeEXT type;
+///     (union VkIndirectExecutionSetInfoEXT) VkIndirectExecutionSetInfoEXT info;
 /// };
 /// ```
 public sealed class VkIndirectExecutionSetCreateInfoEXT extends GroupType {

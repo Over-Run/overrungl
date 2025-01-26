@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265HrdParameters {
-///     StdVideoH265HrdFlags flags;
+///     (struct StdVideoH265HrdFlags) StdVideoH265HrdFlags flags;
 ///     uint8_t tick_divisor_minus2;
 ///     uint8_t du_cpb_removal_delay_increment_length_minus1;
 ///     uint8_t dpb_output_delay_du_length_minus1;

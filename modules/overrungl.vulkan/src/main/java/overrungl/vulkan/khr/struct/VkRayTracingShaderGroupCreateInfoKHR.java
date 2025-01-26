@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRayTracingShaderGroupCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRayTracingShaderGroupTypeKHR type;
+///     (int) VkRayTracingShaderGroupTypeKHR type;
 ///     uint32_t generalShader;
 ///     uint32_t closestHitShader;
 ///     uint32_t anyHitShader;

@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeometryTrianglesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBuffer vertexData;
-///     VkDeviceSize vertexOffset;
+///     (uint64_t) VkBuffer vertexData;
+///     (uint64_t) VkDeviceSize vertexOffset;
 ///     uint32_t vertexCount;
-///     VkDeviceSize vertexStride;
-///     VkFormat vertexFormat;
-///     VkBuffer indexData;
-///     VkDeviceSize indexOffset;
+///     (uint64_t) VkDeviceSize vertexStride;
+///     (int) VkFormat vertexFormat;
+///     (uint64_t) VkBuffer indexData;
+///     (uint64_t) VkDeviceSize indexOffset;
 ///     uint32_t indexCount;
-///     VkIndexType indexType;
-///     VkBuffer transformData;
-///     VkDeviceSize transformOffset;
+///     (int) VkIndexType indexType;
+///     (uint64_t) VkBuffer transformData;
+///     (uint64_t) VkDeviceSize transformOffset;
 /// };
 /// ```
 public sealed class VkGeometryTrianglesNV extends GroupType {

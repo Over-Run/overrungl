@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCoarseSampleOrderTypeNV sampleOrderType;
+///     (int) VkCoarseSampleOrderTypeNV sampleOrderType;
 ///     uint32_t customSampleOrderCount;
 ///     const VkCoarseSampleOrderCustomNV* pCustomSampleOrders;
 /// };

@@ -41,7 +41,7 @@ public final class GLNVAlphaToCoverageDitherControl {
     }
 
     /// ```
-    /// void glAlphaToCoverageDitherControlNV(GLenum mode);
+    /// void glAlphaToCoverageDitherControlNV((unsigned int) GLenum mode);
     /// ```
     public void AlphaToCoverageDitherControlNV(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");

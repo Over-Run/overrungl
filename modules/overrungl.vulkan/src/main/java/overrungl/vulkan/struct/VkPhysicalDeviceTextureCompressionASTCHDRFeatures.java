@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 textureCompressionASTC_HDR;
+///     (uint32_t) VkBool32 textureCompressionASTC_HDR;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTextureCompressionASTCHDRFeatures extends GroupType {

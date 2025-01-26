@@ -39,7 +39,7 @@ public final class GLEXTEGLImageStorage {
     }
 
     /// ```
-    /// void glEGLImageTargetTexStorageEXT(GLenum target, GLeglImageOES image, const GLint* attrib_list);
+    /// void glEGLImageTargetTexStorageEXT((unsigned int) GLenum target, (void*) GLeglImageOES image, const GLint* attrib_list);
     /// ```
     public void EGLImageTargetTexStorageEXT(int target, MemorySegment image, MemorySegment attrib_list) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
@@ -48,7 +48,7 @@ public final class GLEXTEGLImageStorage {
     }
 
     /// ```
-    /// void glEGLImageTargetTextureStorageEXT(GLuint texture, GLeglImageOES image, const GLint* attrib_list);
+    /// void glEGLImageTargetTextureStorageEXT((unsigned int) GLuint texture, (void*) GLeglImageOES image, const GLint* attrib_list);
     /// ```
     public void EGLImageTargetTextureStorageEXT(int texture, MemorySegment image, MemorySegment attrib_list) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");

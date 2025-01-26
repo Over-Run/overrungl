@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageFormatConstraintsInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageCreateInfo imageCreateInfo;
-///     VkFormatFeatureFlags requiredFormatFeatures;
-///     VkImageFormatConstraintsFlagsFUCHSIA flags;
+///     (struct VkImageCreateInfo) VkImageCreateInfo imageCreateInfo;
+///     ((uint32_t) VkFlags) VkFormatFeatureFlags requiredFormatFeatures;
+///     ((uint32_t) VkFlags) VkImageFormatConstraintsFlagsFUCHSIA flags;
 ///     uint64_t sysmemPixelFormat;
 ///     uint32_t colorSpaceCount;
 ///     const VkSysmemColorSpaceFUCHSIA* pColorSpaces;

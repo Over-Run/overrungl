@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineDiscardRectangleStateCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
-///     VkDiscardRectangleModeEXT discardRectangleMode;
+///     ((uint32_t) VkFlags) VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
+///     (int) VkDiscardRectangleModeEXT discardRectangleMode;
 ///     uint32_t discardRectangleCount;
 ///     const VkRect2D* pDiscardRectangles;
 /// };

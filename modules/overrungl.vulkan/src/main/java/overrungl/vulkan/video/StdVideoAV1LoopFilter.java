@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1LoopFilter {
-///     StdVideoAV1LoopFilterFlags flags;
+///     (struct StdVideoAV1LoopFilterFlags) StdVideoAV1LoopFilterFlags flags;
 ///     uint8_t loop_filter_level[4];
 ///     uint8_t loop_filter_sharpness;
 ///     uint8_t update_ref_delta;

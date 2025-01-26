@@ -183,7 +183,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_Init();
+    /// (int) nfdresult_t NFD_Init();
     /// ```
     public static int NFD_Init() {
         try { return (int) Handles.MH_NFD_Init.invokeExact(Handles.get().PFN_NFD_Init); }
@@ -199,7 +199,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
+    /// (int) nfdresult_t NFD_OpenDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, (unsigned int) nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_OpenDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_OpenDialogN.invokeExact(Handles.get().PFN_NFD_OpenDialogN, outPath, filterList, filterCount, defaultPath); }
@@ -207,7 +207,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialogN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// (int) nfdresult_t NFD_OpenDialogN_With_Impl((size_t) nfdversion_t version, nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_OpenDialogN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -215,14 +215,14 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
+    /// (int) nfdresult_t NFD_OpenDialog_With(nfdnchar_t** outPath, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
+    /// (int) nfdresult_t NFD_OpenDialogMultipleN(const nfdpathset_t** outPaths, const nfdnfilteritem_t* filterList, (unsigned int) nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_OpenDialogMultiple(MemorySegment outPaths, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_OpenDialogMultipleN.invokeExact(Handles.get().PFN_NFD_OpenDialogMultipleN, outPaths, filterList, filterCount, defaultPath); }
@@ -230,7 +230,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialogMultipleN_With_Impl(nfdversion_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// (int) nfdresult_t NFD_OpenDialogMultipleN_With_Impl((size_t) nfdversion_t version, const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialogMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try { return (int) Handles.MH_NFD_OpenDialogMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_OpenDialogMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
@@ -238,14 +238,14 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
+    /// (int) nfdresult_t NFD_OpenDialogMultiple_With(const nfdpathset_t** outPaths, const nfdopendialognargs_t* args);
     /// ```
     public static int NFD_OpenDialogMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
     }
 
     /// ```
-    /// nfdresult_t NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
+    /// (int) nfdresult_t NFD_SaveDialogN(nfdnchar_t** outPath, const nfdnfilteritem_t* filterList, (unsigned int) nfdfiltersize_t filterCount, const nfdnchar_t* defaultPath, const nfdnchar_t* defaultName);
     /// ```
     public static int NFD_SaveDialog(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName) {
         try { return (int) Handles.MH_NFD_SaveDialogN.invokeExact(Handles.get().PFN_NFD_SaveDialogN, outPath, filterList, filterCount, defaultPath, defaultName); }
@@ -253,7 +253,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_SaveDialogN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// (int) nfdresult_t NFD_SaveDialogN_With_Impl((size_t) nfdversion_t version, nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
     public static int NFD_SaveDialog_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_SaveDialogN_With_Impl.invoke(Handles.get().PFN_NFD_SaveDialogN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -261,14 +261,14 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
+    /// (int) nfdresult_t NFD_SaveDialog_With(nfdnchar_t** outPath, const nfdsavedialognargs_t* args);
     /// ```
     public static int NFD_SaveDialog_With(MemorySegment outPath, MemorySegment args) {
         return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
+    /// (int) nfdresult_t NFD_PickFolderN(nfdnchar_t** outPath, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_PickFolder(MemorySegment outPath, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_PickFolderN.invokeExact(Handles.get().PFN_NFD_PickFolderN, outPath, defaultPath); }
@@ -276,7 +276,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolderN_With_Impl(nfdversion_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// (int) nfdresult_t NFD_PickFolderN_With_Impl((size_t) nfdversion_t version, nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolder_With_Impl(long version, MemorySegment outPath, MemorySegment args) {
         try { return (int) Handles.MH_NFD_PickFolderN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPath, args); }
@@ -284,14 +284,14 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
+    /// (int) nfdresult_t NFD_PickFolder_With(nfdnchar_t** outPath, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolder_With(MemorySegment outPath, MemorySegment args) {
         return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
+    /// (int) nfdresult_t NFD_PickFolderMultipleN(const nfdpathset_t** outPaths, const nfdnchar_t* defaultPath);
     /// ```
     public static int NFD_PickFolderMultiple(MemorySegment outPaths, MemorySegment defaultPath) {
         try { return (int) Handles.MH_NFD_PickFolderMultipleN.invokeExact(Handles.get().PFN_NFD_PickFolderMultipleN, outPaths, defaultPath); }
@@ -299,7 +299,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolderMultipleN_With_Impl(nfdversion_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// (int) nfdresult_t NFD_PickFolderMultipleN_With_Impl((size_t) nfdversion_t version, const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolderMultiple_With_Impl(long version, MemorySegment outPaths, MemorySegment args) {
         try { return (int) Handles.MH_NFD_PickFolderMultipleN_With_Impl.invoke(Handles.get().PFN_NFD_PickFolderMultipleN_With_Impl, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, version), outPaths, args); }
@@ -307,7 +307,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
+    /// (int) nfdresult_t NFD_PickFolderMultiple_With(const nfdpathset_t** outPaths, const nfdpickfoldernargs_t* args);
     /// ```
     public static int NFD_PickFolderMultiple_With(MemorySegment outPaths, MemorySegment args) {
         return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);
@@ -330,7 +330,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
+    /// (int) nfdresult_t NFD_PathSet_GetCount(const nfdpathset_t* pathSet, nfdpathsetsize_t* count);
     /// ```
     public static int NFD_PathSet_GetCount(MemorySegment pathSet, MemorySegment count) {
         try { return (int) Handles.MH_NFD_PathSet_GetCount.invokeExact(Handles.get().PFN_NFD_PathSet_GetCount, pathSet, count); }
@@ -338,7 +338,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, nfdpathsetsize_t index, nfdnchar_t** outPath);
+    /// (int) nfdresult_t NFD_PathSet_GetPathN(const nfdpathset_t* pathSet, (size_t) nfdpathsetsize_t index, nfdnchar_t** outPath);
     /// ```
     public static int NFD_PathSet_GetPath(MemorySegment pathSet, long index, MemorySegment outPath) {
         try { return (int) Handles.MH_NFD_PathSet_GetPathN.invoke(Handles.get().PFN_NFD_PathSet_GetPathN, pathSet, MemoryUtil.narrowingLong(NFDInternal.nfdpathsetsize_t, index), outPath); }
@@ -354,7 +354,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
+    /// (int) nfdresult_t NFD_PathSet_GetEnum(const nfdpathset_t* pathSet, nfdpathsetenum_t* outEnumerator);
     /// ```
     public static int NFD_PathSet_GetEnum(MemorySegment pathSet, MemorySegment outEnumerator) {
         try { return (int) Handles.MH_NFD_PathSet_GetEnum.invokeExact(Handles.get().PFN_NFD_PathSet_GetEnum, pathSet, outEnumerator); }
@@ -370,7 +370,7 @@ public final class NFD {
     }
 
     /// ```
-    /// nfdresult_t NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
+    /// (int) nfdresult_t NFD_PathSet_EnumNextN(nfdpathsetenum_t* enumerator, nfdnchar_t** outPath);
     /// ```
     public static int NFD_PathSet_EnumNext(MemorySegment enumerator, MemorySegment outPath) {
         try { return (int) Handles.MH_NFD_PathSet_EnumNextN.invokeExact(Handles.get().PFN_NFD_PathSet_EnumNextN, enumerator, outPath); }

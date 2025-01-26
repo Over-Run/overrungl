@@ -28,10 +28,10 @@ import overrungl.util.*;
 /// ```
 /// struct STBRPRect {
 ///     int id;
-///     stbrp_coord w;
-///     stbrp_coord h;
-///     stbrp_coord x;
-///     stbrp_coord y;
+///     (int) stbrp_coord w;
+///     (int) stbrp_coord h;
+///     (int) stbrp_coord x;
+///     (int) stbrp_coord y;
 ///     int was_packed;
 /// };
 /// ```

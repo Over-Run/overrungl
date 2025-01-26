@@ -43,7 +43,7 @@ public final class GLNVQueryResource {
     }
 
     /// ```
-    /// GLint glQueryResourceNV(GLenum queryType, GLint tagId, GLuint count, GLint* buffer);
+    /// (int) GLint glQueryResourceNV((unsigned int) GLenum queryType, (int) GLint tagId, (unsigned int) GLuint count, GLint* buffer);
     /// ```
     public int QueryResourceNV(int queryType, int tagId, int count, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");

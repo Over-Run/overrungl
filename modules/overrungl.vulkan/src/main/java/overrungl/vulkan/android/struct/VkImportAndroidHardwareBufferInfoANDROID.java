@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportAndroidHardwareBufferInfoANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     AHardwareBuffer * buffer;
+///     struct AHardwareBuffer * buffer;
 /// };
 /// ```
 public sealed class VkImportAndroidHardwareBufferInfoANDROID extends GroupType {

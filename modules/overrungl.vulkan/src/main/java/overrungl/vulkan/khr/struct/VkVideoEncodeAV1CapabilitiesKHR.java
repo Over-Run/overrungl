@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1CapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeAV1CapabilityFlagsKHR flags;
-///     StdVideoAV1Level maxLevel;
-///     VkExtent2D codedPictureAlignment;
-///     VkExtent2D maxTiles;
-///     VkExtent2D minTileSize;
-///     VkExtent2D maxTileSize;
-///     VkVideoEncodeAV1SuperblockSizeFlagsKHR superblockSizes;
+///     ((uint32_t) VkFlags) VkVideoEncodeAV1CapabilityFlagsKHR flags;
+///     (int) StdVideoAV1Level maxLevel;
+///     (struct VkExtent2D) VkExtent2D codedPictureAlignment;
+///     (struct VkExtent2D) VkExtent2D maxTiles;
+///     (struct VkExtent2D) VkExtent2D minTileSize;
+///     (struct VkExtent2D) VkExtent2D maxTileSize;
+///     ((uint32_t) VkFlags) VkVideoEncodeAV1SuperblockSizeFlagsKHR superblockSizes;
 ///     uint32_t maxSingleReferenceCount;
 ///     uint32_t singleReferenceNameMask;
 ///     uint32_t maxUnidirectionalCompoundReferenceCount;
@@ -50,9 +50,9 @@ import overrungl.util.*;
 ///     uint32_t maxOperatingPoints;
 ///     uint32_t minQIndex;
 ///     uint32_t maxQIndex;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags;
+///     (uint32_t) VkBool32 prefersGopRemainingFrames;
+///     (uint32_t) VkBool32 requiresGopRemainingFrames;
+///     ((uint32_t) VkFlags) VkVideoEncodeAV1StdFlagsKHR stdSyntaxFlags;
 /// };
 /// ```
 public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {

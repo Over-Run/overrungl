@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1ReferenceInfo {
-///     StdVideoEncodeAV1ReferenceInfoFlags flags;
+///     (struct StdVideoEncodeAV1ReferenceInfoFlags) StdVideoEncodeAV1ReferenceInfoFlags flags;
 ///     uint32_t RefFrameId;
-///     StdVideoAV1FrameType frame_type;
+///     (int) StdVideoAV1FrameType frame_type;
 ///     uint8_t OrderHint;
 ///     uint8_t reserved1[3];
 ///     const StdVideoEncodeAV1ExtensionHeader* pExtensionHeader;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayModeParametersKHR {
-///     VkExtent2D visibleRegion;
+///     (struct VkExtent2D) VkExtent2D visibleRegion;
 ///     uint32_t refreshRate;
 /// };
 /// ```

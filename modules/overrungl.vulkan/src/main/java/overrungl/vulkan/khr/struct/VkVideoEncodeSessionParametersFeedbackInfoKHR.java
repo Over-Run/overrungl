@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeSessionParametersFeedbackInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hasOverrides;
+///     (uint32_t) VkBool32 hasOverrides;
 /// };
 /// ```
 public sealed class VkVideoEncodeSessionParametersFeedbackInfoKHR extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderEarlyAndLateFragmentTests;
+///     (uint32_t) VkBool32 shaderEarlyAndLateFragmentTests;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD extends GroupType {

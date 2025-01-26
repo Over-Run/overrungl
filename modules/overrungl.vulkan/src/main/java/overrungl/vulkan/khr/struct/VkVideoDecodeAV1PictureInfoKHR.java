@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeAV1PictureInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const StdVideoDecodeAV1PictureInfo* pStdPictureInfo;
 ///     int32_t referenceNameSlotIndices[7];

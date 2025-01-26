@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTToolingInfo {
+public final class VKEXTToolingInfo {
     public static final int VK_EXT_TOOLING_INFO_SPEC_VERSION = 1;
     public static final String VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TOOL_PROPERTIES_EXT = 1000245000;
@@ -32,26 +32,20 @@ public class VKEXTToolingInfo {
     public static final int VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT = 0x00000010;
     public static final int VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT = 0x00000020;
     public static final int VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT = 0x00000040;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceToolPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceToolPropertiesEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceToolPropertiesEXT = func.invoke(device, "vkGetPhysicalDeviceToolPropertiesEXT", "vkGetPhysicalDeviceToolProperties");
-        }
+        private Handles() {}
     }
 
-    public VKEXTToolingInfo(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTToolingInfo() {}
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
+    /// (int) VkResult vkGetPhysicalDeviceToolPropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pToolCount, VkPhysicalDeviceToolProperties* pToolProperties);
     /// ```
-    public int GetPhysicalDeviceToolPropertiesEXT(MemorySegment physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(handles.PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice, pToolCount, pToolProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceToolPropertiesEXT", e); }
+    public static int vkGetPhysicalDeviceToolPropertiesEXT(VkPhysicalDevice physicalDevice, MemorySegment pToolCount, MemorySegment pToolProperties) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceToolPropertiesEXT");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceToolPropertiesEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceToolPropertiesEXT, physicalDevice.segment(), pToolCount, pToolProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceToolPropertiesEXT", e); }
     }
 
 }

@@ -40,7 +40,7 @@ public final class GLEXTIndexMaterial {
     }
 
     /// ```
-    /// void glIndexMaterialEXT(GLenum face, GLenum mode);
+    /// void glIndexMaterialEXT((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```
     public void IndexMaterialEXT(int face, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexMaterialEXT");

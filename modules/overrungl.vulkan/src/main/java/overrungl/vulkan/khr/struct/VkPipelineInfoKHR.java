@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipeline pipeline;
+///     (uint64_t) VkPipeline pipeline;
 /// };
 /// ```
 public sealed class VkPipelineInfoKHR extends GroupType {

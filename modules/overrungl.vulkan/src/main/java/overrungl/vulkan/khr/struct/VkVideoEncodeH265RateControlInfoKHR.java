@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265RateControlInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoEncodeH265RateControlFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265RateControlFlagsKHR flags;
 ///     uint32_t gopFrameCount;
 ///     uint32_t idrPeriod;
 ///     uint32_t consecutiveBFrameCount;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureMotionInstanceNV {
-///     VkAccelerationStructureMotionInstanceTypeNV type;
-///     VkAccelerationStructureMotionInstanceFlagsNV flags;
-///     VkAccelerationStructureMotionInstanceDataNV data;
+///     (int) VkAccelerationStructureMotionInstanceTypeNV type;
+///     ((uint32_t) VkFlags) VkAccelerationStructureMotionInstanceFlagsNV flags;
+///     (union VkAccelerationStructureMotionInstanceDataNV) VkAccelerationStructureMotionInstanceDataNV data;
 /// };
 /// ```
 public sealed class VkAccelerationStructureMotionInstanceNV extends GroupType {

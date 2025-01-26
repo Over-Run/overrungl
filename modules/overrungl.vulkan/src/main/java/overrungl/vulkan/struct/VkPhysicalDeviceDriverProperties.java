@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDriverProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDriverId driverID;
+///     (int) VkDriverId driverID;
 ///     char driverName[256];
 ///     char driverInfo[256];
-///     VkConformanceVersion conformanceVersion;
+///     (struct VkConformanceVersion) VkConformanceVersion conformanceVersion;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDriverProperties extends GroupType {

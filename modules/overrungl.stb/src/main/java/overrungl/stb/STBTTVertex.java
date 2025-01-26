@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct STBTTVertex {
-///     stbtt_vertex_type x;
-///     stbtt_vertex_type y;
-///     stbtt_vertex_type cx;
-///     stbtt_vertex_type cy;
-///     stbtt_vertex_type cx1;
-///     stbtt_vertex_type cy1;
+///     (short) stbtt_vertex_type x;
+///     (short) stbtt_vertex_type y;
+///     (short) stbtt_vertex_type cx;
+///     (short) stbtt_vertex_type cy;
+///     (short) stbtt_vertex_type cx1;
+///     (short) stbtt_vertex_type cy1;
 ///     unsigned char type;
 ///     unsigned char padding;
 /// };

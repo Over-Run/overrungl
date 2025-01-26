@@ -52,7 +52,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// void glColorMaskIndexedEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+    /// void glColorMaskIndexedEXT((unsigned int) GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
     /// ```
     public void ColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorMaskIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glColorMaskIndexedEXT");
@@ -61,7 +61,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// void glGetBooleanIndexedvEXT(GLenum target, GLuint index, GLboolean* data);
+    /// void glGetBooleanIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLboolean* data);
     /// ```
     public void GetBooleanIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT");
@@ -70,7 +70,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// void glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint* data);
+    /// void glGetIntegerIndexedvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, GLint* data);
     /// ```
     public void GetIntegerIndexedvEXT(int target, int index, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerIndexedvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT");
@@ -79,7 +79,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// void glEnableIndexedEXT(GLenum target, GLuint index);
+    /// void glEnableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
     public void EnableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableIndexedEXT");
@@ -88,7 +88,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// void glDisableIndexedEXT(GLenum target, GLuint index);
+    /// void glDisableIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
     public void DisableIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableIndexedEXT");
@@ -97,7 +97,7 @@ public final class GLEXTDrawBuffers2 {
     }
 
     /// ```
-    /// GLboolean glIsEnabledIndexedEXT(GLenum target, GLuint index);
+    /// GLboolean glIsEnabledIndexedEXT((unsigned int) GLenum target, (unsigned int) GLuint index);
     /// ```
     public boolean IsEnabledIndexedEXT(int target, int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabledIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT");

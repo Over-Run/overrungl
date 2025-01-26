@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineRasterizationStateCreateFlags flags;
-///     VkBool32 depthClampEnable;
-///     VkBool32 rasterizerDiscardEnable;
-///     VkPolygonMode polygonMode;
-///     VkCullModeFlags cullMode;
-///     VkFrontFace frontFace;
-///     VkBool32 depthBiasEnable;
+///     ((uint32_t) VkFlags) VkPipelineRasterizationStateCreateFlags flags;
+///     (uint32_t) VkBool32 depthClampEnable;
+///     (uint32_t) VkBool32 rasterizerDiscardEnable;
+///     (int) VkPolygonMode polygonMode;
+///     ((uint32_t) VkFlags) VkCullModeFlags cullMode;
+///     (int) VkFrontFace frontFace;
+///     (uint32_t) VkBool32 depthBiasEnable;
 ///     float depthBiasConstantFactor;
 ///     float depthBiasClamp;
 ///     float depthBiasSlopeFactor;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkValidationFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t enabledValidationFeatureCount;
 ///     const VkValidationFeatureEnableEXT* pEnabledValidationFeatures;

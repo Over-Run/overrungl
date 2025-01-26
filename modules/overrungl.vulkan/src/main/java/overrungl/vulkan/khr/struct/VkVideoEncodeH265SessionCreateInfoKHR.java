@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265SessionCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 useMaxLevelIdc;
-///     StdVideoH265LevelIdc maxLevelIdc;
+///     (uint32_t) VkBool32 useMaxLevelIdc;
+///     (int) StdVideoH265LevelIdc maxLevelIdc;
 /// };
 /// ```
 public sealed class VkVideoEncodeH265SessionCreateInfoKHR extends GroupType {

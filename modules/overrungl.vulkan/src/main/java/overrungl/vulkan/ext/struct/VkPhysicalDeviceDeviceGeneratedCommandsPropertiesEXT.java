@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxIndirectPipelineCount;
 ///     uint32_t maxIndirectShaderObjectCount;
@@ -35,12 +35,12 @@ import overrungl.util.*;
 ///     uint32_t maxIndirectCommandsTokenCount;
 ///     uint32_t maxIndirectCommandsTokenOffset;
 ///     uint32_t maxIndirectCommandsIndirectStride;
-///     VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStages;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
-///     VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
-///     VkBool32 deviceGeneratedCommandsTransformFeedback;
-///     VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
+///     ((uint32_t) VkFlags) VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
+///     ((uint32_t) VkFlags) VkShaderStageFlags supportedIndirectCommandsShaderStages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
+///     ((uint32_t) VkFlags) VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
+///     (uint32_t) VkBool32 deviceGeneratedCommandsTransformFeedback;
+///     (uint32_t) VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends GroupType {

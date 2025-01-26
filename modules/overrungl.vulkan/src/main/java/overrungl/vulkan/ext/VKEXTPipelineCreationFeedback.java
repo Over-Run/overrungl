@@ -25,6 +25,6 @@ public final class VKEXTPipelineCreationFeedback {
     public static final int VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT = 0x00000002;
     public static final int VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT = 0x00000004;
 
-    private VKEXTPipelineCreationFeedback() { }
+    private VKEXTPipelineCreationFeedback() {}
 
 }

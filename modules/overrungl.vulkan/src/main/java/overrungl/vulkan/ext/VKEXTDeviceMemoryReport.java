@@ -29,6 +29,6 @@ public final class VKEXTDeviceMemoryReport {
     public static final int VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT = 1000284001;
     public static final int VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT = 1000284002;
 
-    private VKEXTDeviceMemoryReport() { }
+    private VKEXTDeviceMemoryReport() {}
 
 }

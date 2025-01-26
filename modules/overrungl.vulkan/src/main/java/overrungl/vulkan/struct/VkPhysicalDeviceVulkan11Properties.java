@@ -27,23 +27,23 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkan11Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint8_t deviceUUID[16];
 ///     uint8_t driverUUID[16];
 ///     uint8_t deviceLUID[8];
 ///     uint32_t deviceNodeMask;
-///     VkBool32 deviceLUIDValid;
+///     (uint32_t) VkBool32 deviceLUIDValid;
 ///     uint32_t subgroupSize;
-///     VkShaderStageFlags subgroupSupportedStages;
-///     VkSubgroupFeatureFlags subgroupSupportedOperations;
-///     VkBool32 subgroupQuadOperationsInAllStages;
-///     VkPointClippingBehavior pointClippingBehavior;
+///     ((uint32_t) VkFlags) VkShaderStageFlags subgroupSupportedStages;
+///     ((uint32_t) VkFlags) VkSubgroupFeatureFlags subgroupSupportedOperations;
+///     (uint32_t) VkBool32 subgroupQuadOperationsInAllStages;
+///     (int) VkPointClippingBehavior pointClippingBehavior;
 ///     uint32_t maxMultiviewViewCount;
 ///     uint32_t maxMultiviewInstanceIndex;
-///     VkBool32 protectedNoFault;
+///     (uint32_t) VkBool32 protectedNoFault;
 ///     uint32_t maxPerSetDescriptors;
-///     VkDeviceSize maxMemoryAllocationSize;
+///     (uint64_t) VkDeviceSize maxMemoryAllocationSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkan11Properties extends GroupType {

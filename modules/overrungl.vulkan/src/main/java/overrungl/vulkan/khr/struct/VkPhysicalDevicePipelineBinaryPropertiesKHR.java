@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePipelineBinaryPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 pipelineBinaryInternalCache;
-///     VkBool32 pipelineBinaryInternalCacheControl;
-///     VkBool32 pipelineBinaryPrefersInternalCache;
-///     VkBool32 pipelineBinaryPrecompiledInternalCache;
-///     VkBool32 pipelineBinaryCompressedData;
+///     (uint32_t) VkBool32 pipelineBinaryInternalCache;
+///     (uint32_t) VkBool32 pipelineBinaryInternalCacheControl;
+///     (uint32_t) VkBool32 pipelineBinaryPrefersInternalCache;
+///     (uint32_t) VkBool32 pipelineBinaryPrecompiledInternalCache;
+///     (uint32_t) VkBool32 pipelineBinaryCompressedData;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupType {

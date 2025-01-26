@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 fragmentShaderSampleInterlock;
-///     VkBool32 fragmentShaderPixelInterlock;
-///     VkBool32 fragmentShaderShadingRateInterlock;
+///     (uint32_t) VkBool32 fragmentShaderSampleInterlock;
+///     (uint32_t) VkBool32 fragmentShaderPixelInterlock;
+///     (uint32_t) VkBool32 fragmentShaderShadingRateInterlock;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT extends GroupType {

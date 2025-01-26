@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOutOfBandQueueTypeInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkOutOfBandQueueTypeNV queueType;
+///     (int) VkOutOfBandQueueTypeNV queueType;
 /// };
 /// ```
 public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {

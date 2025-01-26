@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDebugMarkerObjectTagInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDebugReportObjectTypeEXT objectType;
+///     (int) VkDebugReportObjectTypeEXT objectType;
 ///     uint64_t object;
 ///     uint64_t tagName;
 ///     size_t tagSize;

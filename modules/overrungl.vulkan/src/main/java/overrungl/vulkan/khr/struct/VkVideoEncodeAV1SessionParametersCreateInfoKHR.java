@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1SessionParametersCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const StdVideoAV1SequenceHeader* pStdSequenceHeader;
 ///     const StdVideoEncodeAV1DecoderModelInfo* pStdDecoderModelInfo;

@@ -25,7 +25,7 @@ import overrungl.upcall.*;
 import overrungl.util.*;
 
 /// ```
-/// typedef void (*VkFaultCallbackFunction)(VkBool32 unrecordedFaults, uint32_t faultCount, const VkFaultData* pFaults);
+/// typedef void (*VkFaultCallbackFunction)((uint32_t) VkBool32 unrecordedFaults, uint32_t faultCount, const VkFaultData* pFaults);
 /// ```
 @FunctionalInterface
 public interface VkFaultCallbackFunction extends Upcall {

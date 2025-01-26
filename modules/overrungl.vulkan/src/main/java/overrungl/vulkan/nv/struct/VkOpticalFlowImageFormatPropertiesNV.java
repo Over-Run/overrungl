@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkOpticalFlowImageFormatPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFormat format;
+///     (int) VkFormat format;
 /// };
 /// ```
 public sealed class VkOpticalFlowImageFormatPropertiesNV extends GroupType {

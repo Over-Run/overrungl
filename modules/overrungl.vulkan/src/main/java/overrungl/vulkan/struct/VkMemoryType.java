@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryType {
-///     VkMemoryPropertyFlags propertyFlags;
+///     ((uint32_t) VkFlags) VkMemoryPropertyFlags propertyFlags;
 ///     uint32_t heapIndex;
 /// };
 /// ```

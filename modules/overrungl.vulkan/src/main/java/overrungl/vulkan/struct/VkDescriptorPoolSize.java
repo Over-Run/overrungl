@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorPoolSize {
-///     VkDescriptorType type;
+///     (int) VkDescriptorType type;
 ///     uint32_t descriptorCount;
 /// };
 /// ```

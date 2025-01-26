@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineBinaryHandlesInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t pipelineBinaryCount;
 ///     VkPipelineBinaryKHR* pPipelineBinaries;

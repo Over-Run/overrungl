@@ -30,7 +30,7 @@ import overrungl.util.*;
 ///     uint32_t dstBinding;
 ///     uint32_t dstArrayElement;
 ///     uint32_t descriptorCount;
-///     VkDescriptorType descriptorType;
+///     (int) VkDescriptorType descriptorType;
 ///     size_t offset;
 ///     size_t stride;
 /// };

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 representativeFragmentTestEnable;
+///     (uint32_t) VkBool32 representativeFragmentTestEnable;
 /// };
 /// ```
 public sealed class VkPipelineRepresentativeFragmentTestStateCreateInfoNV extends GroupType {

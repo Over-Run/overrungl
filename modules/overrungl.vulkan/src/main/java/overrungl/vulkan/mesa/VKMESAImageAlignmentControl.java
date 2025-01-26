@@ -24,6 +24,6 @@ public final class VKMESAImageAlignmentControl {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = 1000575001;
     public static final int VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = 1000575002;
 
-    private VKMESAImageAlignmentControl() { }
+    private VKMESAImageAlignmentControl() {}
 
 }

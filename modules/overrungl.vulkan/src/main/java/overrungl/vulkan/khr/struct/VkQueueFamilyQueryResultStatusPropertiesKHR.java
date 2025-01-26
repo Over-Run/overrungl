@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueueFamilyQueryResultStatusPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 queryResultStatusSupport;
+///     (uint32_t) VkBool32 queryResultStatusSupport;
 /// };
 /// ```
 public sealed class VkQueueFamilyQueryResultStatusPropertiesKHR extends GroupType {

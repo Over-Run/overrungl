@@ -247,7 +247,7 @@ public final class ALC {
     }
 
     /// ```
-    /// ALCenum alcGetError(ALCdevice* device);
+    /// (int) ALCenum alcGetError(ALCdevice* device);
     /// ```
     public static int alcGetError(MemorySegment device) {
         try { return (int) Handles.MH_alcGetError.invokeExact(Handles.get().PFN_alcGetError, device); }
@@ -271,7 +271,7 @@ public final class ALC {
     }
 
     /// ```
-    /// ALCenum alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
+    /// (int) ALCenum alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
     /// ```
     public static int alcGetEnumValue(MemorySegment device, MemorySegment enumname) {
         try { return (int) Handles.MH_alcGetEnumValue.invokeExact(Handles.get().PFN_alcGetEnumValue, device, enumname); }
@@ -279,7 +279,7 @@ public final class ALC {
     }
 
     /// ```
-    /// const ALCchar* alcGetString(ALCdevice* device, ALCenum param);
+    /// const ALCchar* alcGetString(ALCdevice* device, (int) ALCenum param);
     /// ```
     public static MemorySegment alcGetString(MemorySegment device, int param) {
         try { return (MemorySegment) Handles.MH_alcGetString.invokeExact(Handles.get().PFN_alcGetString, device, param); }
@@ -287,7 +287,7 @@ public final class ALC {
     }
 
     /// ```
-    /// void alcGetIntegerv(ALCdevice* device, ALCenum param, ALCsizei size, ALCint* values);
+    /// void alcGetIntegerv(ALCdevice* device, (int) ALCenum param, (int) ALCsizei size, ALCint* values);
     /// ```
     public static void alcGetIntegerv(MemorySegment device, int param, int size, MemorySegment values) {
         try { Handles.MH_alcGetIntegerv.invokeExact(Handles.get().PFN_alcGetIntegerv, device, param, size, values); }
@@ -295,7 +295,7 @@ public final class ALC {
     }
 
     /// ```
-    /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, ALCuint frequency, ALCenum format, ALCsizei buffersize);
+    /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, (unsigned int) ALCuint frequency, (int) ALCenum format, (int) ALCsizei buffersize);
     /// ```
     public static MemorySegment alcCaptureOpenDevice(MemorySegment devicename, int frequency, int format, int buffersize) {
         try { return (MemorySegment) Handles.MH_alcCaptureOpenDevice.invokeExact(Handles.get().PFN_alcCaptureOpenDevice, devicename, frequency, format, buffersize); }
@@ -327,7 +327,7 @@ public final class ALC {
     }
 
     /// ```
-    /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, ALCsizei samples);
+    /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, (int) ALCsizei samples);
     /// ```
     public static void alcCaptureSamples(MemorySegment device, MemorySegment buffer, int samples) {
         try { Handles.MH_alcCaptureSamples.invokeExact(Handles.get().PFN_alcCaptureSamples, device, buffer, samples); }

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassCreationFeedbackCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     VkRenderPassCreationFeedbackInfoEXT* pRenderPassFeedback;
 /// };

@@ -100,7 +100,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBeginTransformFeedbackNV(GLenum primitiveMode);
+    /// void glBeginTransformFeedbackNV((unsigned int) GLenum primitiveMode);
     /// ```
     public void BeginTransformFeedbackNV(int primitiveMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginTransformFeedbackNV)) throw new SymbolNotFoundError("Symbol not found: glBeginTransformFeedbackNV");
@@ -118,7 +118,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackAttribsNV(GLsizei count, const GLint* attribs, GLenum bufferMode);
+    /// void glTransformFeedbackAttribsNV((int) GLsizei count, const GLint* attribs, (unsigned int) GLenum bufferMode);
     /// ```
     public void TransformFeedbackAttribsNV(int count, MemorySegment attribs, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackAttribsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackAttribsNV");
@@ -127,7 +127,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+    /// void glBindBufferRangeNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void BindBufferRangeNV(int target, int index, int buffer, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferRangeNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferRangeNV");
@@ -136,7 +136,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+    /// void glBindBufferOffsetNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset);
     /// ```
     public void BindBufferOffsetNV(int target, int index, int buffer, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferOffsetNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferOffsetNV");
@@ -145,7 +145,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer);
+    /// void glBindBufferBaseNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLuint buffer);
     /// ```
     public void BindBufferBaseNV(int target, int index, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindBufferBaseNV)) throw new SymbolNotFoundError("Symbol not found: glBindBufferBaseNV");
@@ -154,7 +154,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint* locations, GLenum bufferMode);
+    /// void glTransformFeedbackVaryingsNV((unsigned int) GLuint program, (int) GLsizei count, const GLint* locations, (unsigned int) GLenum bufferMode);
     /// ```
     public void TransformFeedbackVaryingsNV(int program, int count, MemorySegment locations, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackVaryingsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackVaryingsNV");
@@ -163,7 +163,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glActiveVaryingNV(GLuint program, const GLchar* name);
+    /// void glActiveVaryingNV((unsigned int) GLuint program, const GLchar* name);
     /// ```
     public void ActiveVaryingNV(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glActiveVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glActiveVaryingNV");
@@ -172,7 +172,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// GLint glGetVaryingLocationNV(GLuint program, const GLchar* name);
+    /// (int) GLint glGetVaryingLocationNV((unsigned int) GLuint program, const GLchar* name);
     /// ```
     public int GetVaryingLocationNV(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVaryingLocationNV)) throw new SymbolNotFoundError("Symbol not found: glGetVaryingLocationNV");
@@ -181,7 +181,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
+    /// void glGetActiveVaryingNV((unsigned int) GLuint program, (unsigned int) GLuint index, (int) GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name);
     /// ```
     public void GetActiveVaryingNV(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glGetActiveVaryingNV");
@@ -190,7 +190,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint* location);
+    /// void glGetTransformFeedbackVaryingNV((unsigned int) GLuint program, (unsigned int) GLuint index, GLint* location);
     /// ```
     public void GetTransformFeedbackVaryingNV(int program, int index, MemorySegment location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTransformFeedbackVaryingNV)) throw new SymbolNotFoundError("Symbol not found: glGetTransformFeedbackVaryingNV");
@@ -199,7 +199,7 @@ public final class GLNVTransformFeedback {
     }
 
     /// ```
-    /// void glTransformFeedbackStreamAttribsNV(GLsizei count, const GLint* attribs, GLsizei nbuffers, const GLint* bufstreams, GLenum bufferMode);
+    /// void glTransformFeedbackStreamAttribsNV((int) GLsizei count, const GLint* attribs, (int) GLsizei nbuffers, const GLint* bufstreams, (unsigned int) GLenum bufferMode);
     /// ```
     public void TransformFeedbackStreamAttribsNV(int count, MemorySegment attribs, int nbuffers, MemorySegment bufstreams, int bufferMode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTransformFeedbackStreamAttribsNV)) throw new SymbolNotFoundError("Symbol not found: glTransformFeedbackStreamAttribsNV");

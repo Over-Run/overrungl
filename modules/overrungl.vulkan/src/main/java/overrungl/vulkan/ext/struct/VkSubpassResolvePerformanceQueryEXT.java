@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassResolvePerformanceQueryEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 optimal;
+///     (uint32_t) VkBool32 optimal;
 /// };
 /// ```
 public sealed class VkSubpassResolvePerformanceQueryEXT extends GroupType {

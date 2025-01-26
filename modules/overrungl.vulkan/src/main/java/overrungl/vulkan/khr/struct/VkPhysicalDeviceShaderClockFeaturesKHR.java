@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderClockFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderSubgroupClock;
-///     VkBool32 shaderDeviceClock;
+///     (uint32_t) VkBool32 shaderSubgroupClock;
+///     (uint32_t) VkBool32 shaderDeviceClock;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderClockFeaturesKHR extends GroupType {

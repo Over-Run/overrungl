@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTExtendedDynamicState2 {
+public final class VKEXTExtendedDynamicState2 {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
     public static final String VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME = "VK_EXT_extended_dynamic_state2";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT = 1000377000;
@@ -30,74 +30,60 @@ public class VKEXTExtendedDynamicState2 {
     public static final int VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT = 1000377002;
     public static final int VK_DYNAMIC_STATE_LOGIC_OP_EXT = 1000377003;
     public static final int VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT = 1000377004;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCmdSetPatchControlPointsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetRasterizerDiscardEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetDepthBiasEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetLogicOpEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public static final MethodHandle MH_vkCmdSetPrimitiveRestartEnableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public final MemorySegment PFN_vkCmdSetPatchControlPointsEXT;
-        public final MemorySegment PFN_vkCmdSetRasterizerDiscardEnableEXT;
-        public final MemorySegment PFN_vkCmdSetDepthBiasEnableEXT;
-        public final MemorySegment PFN_vkCmdSetLogicOpEXT;
-        public final MemorySegment PFN_vkCmdSetPrimitiveRestartEnableEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCmdSetPatchControlPointsEXT = func.invoke(device, "vkCmdSetPatchControlPointsEXT");
-            PFN_vkCmdSetRasterizerDiscardEnableEXT = func.invoke(device, "vkCmdSetRasterizerDiscardEnableEXT", "vkCmdSetRasterizerDiscardEnable");
-            PFN_vkCmdSetDepthBiasEnableEXT = func.invoke(device, "vkCmdSetDepthBiasEnableEXT", "vkCmdSetDepthBiasEnable");
-            PFN_vkCmdSetLogicOpEXT = func.invoke(device, "vkCmdSetLogicOpEXT");
-            PFN_vkCmdSetPrimitiveRestartEnableEXT = func.invoke(device, "vkCmdSetPrimitiveRestartEnableEXT", "vkCmdSetPrimitiveRestartEnable");
-        }
+        private Handles() {}
     }
 
-    public VKEXTExtendedDynamicState2(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKEXTExtendedDynamicState2() {}
+
+    /// ```
+    /// void vkCmdSetPatchControlPointsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t patchControlPoints);
+    /// ```
+    public static void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, int patchControlPoints) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPatchControlPointsEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPatchControlPointsEXT");
+        try { Handles.MH_vkCmdSetPatchControlPointsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPatchControlPointsEXT, commandBuffer.segment(), patchControlPoints); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPatchControlPointsEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetPatchControlPointsEXT(VkCommandBuffer commandBuffer, uint32_t patchControlPoints);
+    /// void vkCmdSetRasterizerDiscardEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 rasterizerDiscardEnable);
     /// ```
-    public void CmdSetPatchControlPointsEXT(MemorySegment commandBuffer, int patchControlPoints) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPatchControlPointsEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPatchControlPointsEXT");
-        try { Handles.MH_vkCmdSetPatchControlPointsEXT.invokeExact(handles.PFN_vkCmdSetPatchControlPointsEXT, commandBuffer, patchControlPoints); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetPatchControlPointsEXT", e); }
+    public static void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, int rasterizerDiscardEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRasterizerDiscardEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizerDiscardEnableEXT");
+        try { Handles.MH_vkCmdSetRasterizerDiscardEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRasterizerDiscardEnableEXT, commandBuffer.segment(), rasterizerDiscardEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRasterizerDiscardEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetRasterizerDiscardEnableEXT(VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable);
+    /// void vkCmdSetDepthBiasEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 depthBiasEnable);
     /// ```
-    public void CmdSetRasterizerDiscardEnableEXT(MemorySegment commandBuffer, int rasterizerDiscardEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetRasterizerDiscardEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRasterizerDiscardEnableEXT");
-        try { Handles.MH_vkCmdSetRasterizerDiscardEnableEXT.invokeExact(handles.PFN_vkCmdSetRasterizerDiscardEnableEXT, commandBuffer, rasterizerDiscardEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetRasterizerDiscardEnableEXT", e); }
+    public static void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, int depthBiasEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBiasEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBiasEnableEXT");
+        try { Handles.MH_vkCmdSetDepthBiasEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthBiasEnableEXT, commandBuffer.segment(), depthBiasEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthBiasEnableEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetDepthBiasEnableEXT(VkCommandBuffer commandBuffer, VkBool32 depthBiasEnable);
+    /// void vkCmdSetLogicOpEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkLogicOp logicOp);
     /// ```
-    public void CmdSetDepthBiasEnableEXT(MemorySegment commandBuffer, int depthBiasEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetDepthBiasEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBiasEnableEXT");
-        try { Handles.MH_vkCmdSetDepthBiasEnableEXT.invokeExact(handles.PFN_vkCmdSetDepthBiasEnableEXT, commandBuffer, depthBiasEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetDepthBiasEnableEXT", e); }
+    public static void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, int logicOp) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEXT");
+        try { Handles.MH_vkCmdSetLogicOpEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLogicOpEXT, commandBuffer.segment(), logicOp); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLogicOpEXT", e); }
     }
 
     /// ```
-    /// void vkCmdSetLogicOpEXT(VkCommandBuffer commandBuffer, VkLogicOp logicOp);
+    /// void vkCmdSetPrimitiveRestartEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 primitiveRestartEnable);
     /// ```
-    public void CmdSetLogicOpEXT(MemorySegment commandBuffer, int logicOp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetLogicOpEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLogicOpEXT");
-        try { Handles.MH_vkCmdSetLogicOpEXT.invokeExact(handles.PFN_vkCmdSetLogicOpEXT, commandBuffer, logicOp); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetLogicOpEXT", e); }
-    }
-
-    /// ```
-    /// void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, VkBool32 primitiveRestartEnable);
-    /// ```
-    public void CmdSetPrimitiveRestartEnableEXT(MemorySegment commandBuffer, int primitiveRestartEnable) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCmdSetPrimitiveRestartEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveRestartEnableEXT");
-        try { Handles.MH_vkCmdSetPrimitiveRestartEnableEXT.invokeExact(handles.PFN_vkCmdSetPrimitiveRestartEnableEXT, commandBuffer, primitiveRestartEnable); }
-        catch (Throwable e) { throw new RuntimeException("error in CmdSetPrimitiveRestartEnableEXT", e); }
+    public static void vkCmdSetPrimitiveRestartEnableEXT(VkCommandBuffer commandBuffer, int primitiveRestartEnable) {
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveRestartEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPrimitiveRestartEnableEXT");
+        try { Handles.MH_vkCmdSetPrimitiveRestartEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPrimitiveRestartEnableEXT, commandBuffer.segment(), primitiveRestartEnable); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPrimitiveRestartEnableEXT", e); }
     }
 
 }

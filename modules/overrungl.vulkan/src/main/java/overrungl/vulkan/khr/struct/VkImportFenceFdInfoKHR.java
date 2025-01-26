@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportFenceFdInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFence fence;
-///     VkFenceImportFlags flags;
-///     VkExternalFenceHandleTypeFlagBits handleType;
+///     (uint64_t) VkFence fence;
+///     ((uint32_t) VkFlags) VkFenceImportFlags flags;
+///     (int) VkExternalFenceHandleTypeFlagBits handleType;
 ///     int fd;
 /// };
 /// ```

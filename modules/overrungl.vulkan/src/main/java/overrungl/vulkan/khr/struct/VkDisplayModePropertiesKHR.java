@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayModePropertiesKHR {
-///     VkDisplayModeKHR displayMode;
-///     VkDisplayModeParametersKHR parameters;
+///     (uint64_t) VkDisplayModeKHR displayMode;
+///     (struct VkDisplayModeParametersKHR) VkDisplayModeParametersKHR parameters;
 /// };
 /// ```
 public sealed class VkDisplayModePropertiesKHR extends GroupType {

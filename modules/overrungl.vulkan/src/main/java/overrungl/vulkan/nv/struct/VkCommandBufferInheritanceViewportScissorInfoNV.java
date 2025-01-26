@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceViewportScissorInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 viewportScissor2D;
+///     (uint32_t) VkBool32 viewportScissor2D;
 ///     uint32_t viewportDepthCount;
 ///     const VkViewport* pViewportDepths;
 /// };

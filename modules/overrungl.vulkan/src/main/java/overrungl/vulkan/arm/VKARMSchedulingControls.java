@@ -25,6 +25,6 @@ public final class VKARMSchedulingControls {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM = 1000417001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM = 1000417002;
 
-    private VKARMSchedulingControls() { }
+    private VKARMSchedulingControls() {}
 
 }

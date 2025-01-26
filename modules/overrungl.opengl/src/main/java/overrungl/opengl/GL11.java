@@ -104,7 +104,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glDrawArrays(GLenum mode, GLint first, GLsizei count);
+    /// void glDrawArrays((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count);
     /// ```
     public void DrawArrays(int mode, int first, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glDrawArrays");
@@ -113,7 +113,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void* indices);
+    /// void glDrawElements((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices);
     /// ```
     public void DrawElements(int mode, int count, int type, MemorySegment indices) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElements)) throw new SymbolNotFoundError("Symbol not found: glDrawElements");
@@ -122,7 +122,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glPolygonOffset(GLfloat factor, GLfloat units);
+    /// void glPolygonOffset(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units);
     /// ```
     public void PolygonOffset(float factor, float units) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffset)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffset");
@@ -131,7 +131,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+    /// void glCopyTexImage1D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLint border);
     /// ```
     public void CopyTexImage1D(int target, int level, int internalformat, int x, int y, int width, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage1D");
@@ -140,7 +140,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+    /// void glCopyTexImage2D((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (int) GLint border);
     /// ```
     public void CopyTexImage2D(int target, int level, int internalformat, int x, int y, int width, int height, int border) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage2D");
@@ -149,7 +149,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+    /// void glCopyTexSubImage1D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
     public void CopyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage1D");
@@ -158,7 +158,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+    /// void glCopyTexSubImage2D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void CopyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage2D");
@@ -167,7 +167,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void* pixels);
+    /// void glTexSubImage1D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1D");
@@ -176,7 +176,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* pixels);
+    /// void glTexSubImage2D((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2D");
@@ -185,7 +185,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glBindTexture(GLenum target, GLuint texture);
+    /// void glBindTexture((unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
     public void BindTexture(int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTexture)) throw new SymbolNotFoundError("Symbol not found: glBindTexture");
@@ -194,7 +194,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glDeleteTextures(GLsizei n, const GLuint* textures);
+    /// void glDeleteTextures((int) GLsizei n, const GLuint* textures);
     /// ```
     public void DeleteTextures(int n, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTextures)) throw new SymbolNotFoundError("Symbol not found: glDeleteTextures");
@@ -203,7 +203,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// void glGenTextures(GLsizei n, GLuint* textures);
+    /// void glGenTextures((int) GLsizei n, GLuint* textures);
     /// ```
     public void GenTextures(int n, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTextures)) throw new SymbolNotFoundError("Symbol not found: glGenTextures");
@@ -212,7 +212,7 @@ public class GL11 extends GL10 {
     }
 
     /// ```
-    /// GLboolean glIsTexture(GLuint texture);
+    /// GLboolean glIsTexture((unsigned int) GLuint texture);
     /// ```
     public boolean IsTexture(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTexture)) throw new SymbolNotFoundError("Symbol not found: glIsTexture");

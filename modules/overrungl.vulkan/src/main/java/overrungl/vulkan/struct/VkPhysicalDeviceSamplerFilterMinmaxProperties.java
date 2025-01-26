@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSamplerFilterMinmaxProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 filterMinmaxSingleComponentFormats;
-///     VkBool32 filterMinmaxImageComponentMapping;
+///     (uint32_t) VkBool32 filterMinmaxSingleComponentFormats;
+///     (uint32_t) VkBool32 filterMinmaxImageComponentMapping;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSamplerFilterMinmaxProperties extends GroupType {

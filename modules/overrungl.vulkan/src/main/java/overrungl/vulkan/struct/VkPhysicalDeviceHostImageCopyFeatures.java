@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceHostImageCopyFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hostImageCopy;
+///     (uint32_t) VkBool32 hostImageCopy;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceHostImageCopyFeatures extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderEnqueue;
-///     VkBool32 shaderMeshEnqueue;
+///     (uint32_t) VkBool32 shaderEnqueue;
+///     (uint32_t) VkBool32 shaderMeshEnqueue;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType {

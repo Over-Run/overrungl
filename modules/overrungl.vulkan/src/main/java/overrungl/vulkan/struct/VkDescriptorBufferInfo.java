@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorBufferInfo {
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize range;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize range;
 /// };
 /// ```
 public sealed class VkDescriptorBufferInfo extends GroupType {

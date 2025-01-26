@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDecompressMemoryRegionNV {
-///     VkDeviceAddress srcAddress;
-///     VkDeviceAddress dstAddress;
-///     VkDeviceSize compressedSize;
-///     VkDeviceSize decompressedSize;
-///     VkMemoryDecompressionMethodFlagsNV decompressionMethod;
+///     (uint64_t) VkDeviceAddress srcAddress;
+///     (uint64_t) VkDeviceAddress dstAddress;
+///     (uint64_t) VkDeviceSize compressedSize;
+///     (uint64_t) VkDeviceSize decompressedSize;
+///     ((uint64_t) VkFlags64) VkMemoryDecompressionMethodFlagsNV decompressionMethod;
 /// };
 /// ```
 public sealed class VkDecompressMemoryRegionNV extends GroupType {

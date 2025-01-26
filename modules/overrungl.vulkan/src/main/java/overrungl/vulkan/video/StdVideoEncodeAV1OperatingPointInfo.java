@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1OperatingPointInfo {
-///     StdVideoEncodeAV1OperatingPointInfoFlags flags;
+///     (struct StdVideoEncodeAV1OperatingPointInfoFlags) StdVideoEncodeAV1OperatingPointInfoFlags flags;
 ///     uint16_t operating_point_idc;
 ///     uint8_t seq_level_idx;
 ///     uint8_t seq_tier;

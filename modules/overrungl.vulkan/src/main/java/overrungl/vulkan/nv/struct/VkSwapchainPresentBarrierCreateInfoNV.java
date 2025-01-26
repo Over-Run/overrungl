@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainPresentBarrierCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 presentBarrierEnable;
+///     (uint32_t) VkBool32 presentBarrierEnable;
 /// };
 /// ```
 public sealed class VkSwapchainPresentBarrierCreateInfoNV extends GroupType {

@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCacheHeaderVersionSafetyCriticalOne {
-///     VkPipelineCacheHeaderVersionOne headerVersionOne;
-///     VkPipelineCacheValidationVersion validationVersion;
+///     (struct VkPipelineCacheHeaderVersionOne) VkPipelineCacheHeaderVersionOne headerVersionOne;
+///     (int) VkPipelineCacheValidationVersion validationVersion;
 ///     uint32_t implementationData;
 ///     uint32_t pipelineIndexCount;
 ///     uint32_t pipelineIndexStride;

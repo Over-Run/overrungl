@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceQueueGlobalPriorityCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkQueueGlobalPriority globalPriority;
+///     (int) VkQueueGlobalPriority globalPriority;
 /// };
 /// ```
 public sealed class VkDeviceQueueGlobalPriorityCreateInfo extends GroupType {

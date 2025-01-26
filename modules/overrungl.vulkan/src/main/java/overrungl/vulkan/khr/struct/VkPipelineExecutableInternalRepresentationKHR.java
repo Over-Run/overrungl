@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineExecutableInternalRepresentationKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     char name[256];
 ///     char description[256];
-///     VkBool32 isText;
+///     (uint32_t) VkBool32 isText;
 ///     size_t dataSize;
 ///     void* pData;
 /// };

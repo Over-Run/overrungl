@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPrivateDataSlotCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPrivateDataSlotCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPrivateDataSlotCreateFlags flags;
 /// };
 /// ```
 public sealed class VkPrivateDataSlotCreateInfo extends GroupType {

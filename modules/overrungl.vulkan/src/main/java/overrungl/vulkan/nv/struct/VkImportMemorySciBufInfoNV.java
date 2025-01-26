@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMemorySciBufInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
-///     NvSciBufObj handle;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
+///     (struct NvSciBufObjRefRec *) NvSciBufObj handle;
 /// };
 /// ```
 public sealed class VkImportMemorySciBufInfoNV extends GroupType {

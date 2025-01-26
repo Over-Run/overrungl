@@ -38,7 +38,7 @@ public final class GLARBES31Compatibility {
     }
 
     /// ```
-    /// void glMemoryBarrierByRegion(GLbitfield barriers);
+    /// void glMemoryBarrierByRegion((unsigned int) GLbitfield barriers);
     /// ```
     public void MemoryBarrierByRegion(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");

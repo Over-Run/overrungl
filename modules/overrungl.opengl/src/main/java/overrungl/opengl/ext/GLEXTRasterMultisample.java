@@ -43,7 +43,7 @@ public final class GLEXTRasterMultisample {
     }
 
     /// ```
-    /// void glRasterSamplesEXT(GLuint samples, GLboolean fixedsamplelocations);
+    /// void glRasterSamplesEXT((unsigned int) GLuint samples, GLboolean fixedsamplelocations);
     /// ```
     public void RasterSamplesEXT(int samples, boolean fixedsamplelocations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRasterSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT");

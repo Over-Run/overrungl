@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkanMemoryModelFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 vulkanMemoryModel;
-///     VkBool32 vulkanMemoryModelDeviceScope;
-///     VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
+///     (uint32_t) VkBool32 vulkanMemoryModel;
+///     (uint32_t) VkBool32 vulkanMemoryModelDeviceScope;
+///     (uint32_t) VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkanMemoryModelFeatures extends GroupType {

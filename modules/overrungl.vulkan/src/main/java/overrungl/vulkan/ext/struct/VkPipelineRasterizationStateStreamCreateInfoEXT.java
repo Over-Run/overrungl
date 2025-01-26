@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationStateStreamCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkPipelineRasterizationStateStreamCreateFlagsEXT flags;
 ///     uint32_t rasterizationStream;
 /// };
 /// ```

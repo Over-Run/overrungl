@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 texelBufferAlignment;
+///     (uint32_t) VkBool32 texelBufferAlignment;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT extends GroupType {

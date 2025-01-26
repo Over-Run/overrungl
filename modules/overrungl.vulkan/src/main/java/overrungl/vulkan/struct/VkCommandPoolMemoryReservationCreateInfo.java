@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandPoolMemoryReservationCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceSize commandPoolReservedSize;
+///     (uint64_t) VkDeviceSize commandPoolReservedSize;
 ///     uint32_t commandPoolMaxCommandBuffers;
 /// };
 /// ```

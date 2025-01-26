@@ -22,6 +22,6 @@ public final class VKNVShaderImageFootprint {
     public static final String VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV = 1000204000;
 
-    private VKNVShaderImageFootprint() { }
+    private VKNVShaderImageFootprint() {}
 
 }

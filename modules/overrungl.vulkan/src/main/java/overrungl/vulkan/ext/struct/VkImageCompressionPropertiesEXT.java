@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCompressionPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkImageCompressionFlagsEXT imageCompressionFlags;
-///     VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
+///     ((uint32_t) VkFlags) VkImageCompressionFlagsEXT imageCompressionFlags;
+///     ((uint32_t) VkFlags) VkImageCompressionFixedRateFlagsEXT imageCompressionFixedRateFlags;
 /// };
 /// ```
 public sealed class VkImageCompressionPropertiesEXT extends GroupType {

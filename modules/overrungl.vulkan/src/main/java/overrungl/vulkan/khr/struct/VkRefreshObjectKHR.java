@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRefreshObjectKHR {
-///     VkObjectType objectType;
+///     (int) VkObjectType objectType;
 ///     uint64_t objectHandle;
-///     VkRefreshObjectFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkRefreshObjectFlagsKHR flags;
 /// };
 /// ```
 public sealed class VkRefreshObjectKHR extends GroupType {

@@ -75,7 +75,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glRenderGpuMaskNV(GLbitfield mask);
+    /// void glRenderGpuMaskNV((unsigned int) GLbitfield mask);
     /// ```
     public void RenderGpuMaskNV(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderGpuMaskNV)) throw new SymbolNotFoundError("Symbol not found: glRenderGpuMaskNV");
@@ -84,7 +84,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void* data);
+    /// void glMulticastBufferSubDataNV((unsigned int) GLbitfield gpuMask, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, const void* data);
     /// ```
     public void MulticastBufferSubDataNV(int gpuMask, int buffer, long offset, long size, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastBufferSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastBufferSubDataNV");
@@ -93,7 +93,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastCopyBufferSubDataNV(GLuint readGpu, GLbitfield writeGpuMask, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+    /// void glMulticastCopyBufferSubDataNV((unsigned int) GLuint readGpu, (unsigned int) GLbitfield writeGpuMask, (unsigned int) GLuint readBuffer, (unsigned int) GLuint writeBuffer, ((signed long long) khronos_intptr_t) GLintptr readOffset, ((signed long long) khronos_intptr_t) GLintptr writeOffset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void MulticastCopyBufferSubDataNV(int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastCopyBufferSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastCopyBufferSubDataNV");
@@ -102,7 +102,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastCopyImageSubDataNV(GLuint srcGpu, GLbitfield dstGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+    /// void glMulticastCopyImageSubDataNV((unsigned int) GLuint srcGpu, (unsigned int) GLbitfield dstGpuMask, (unsigned int) GLuint srcName, (unsigned int) GLenum srcTarget, (int) GLint srcLevel, (int) GLint srcX, (int) GLint srcY, (int) GLint srcZ, (unsigned int) GLuint dstName, (unsigned int) GLenum dstTarget, (int) GLint dstLevel, (int) GLint dstX, (int) GLint dstY, (int) GLint dstZ, (int) GLsizei srcWidth, (int) GLsizei srcHeight, (int) GLsizei srcDepth);
     /// ```
     public void MulticastCopyImageSubDataNV(int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastCopyImageSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastCopyImageSubDataNV");
@@ -111,7 +111,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+    /// void glMulticastBlitFramebufferNV((unsigned int) GLuint srcGpu, (unsigned int) GLuint dstGpu, (int) GLint srcX0, (int) GLint srcY0, (int) GLint srcX1, (int) GLint srcY1, (int) GLint dstX0, (int) GLint dstY0, (int) GLint dstX1, (int) GLint dstY1, (unsigned int) GLbitfield mask, (unsigned int) GLenum filter);
     /// ```
     public void MulticastBlitFramebufferNV(int srcGpu, int dstGpu, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastBlitFramebufferNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastBlitFramebufferNV");
@@ -120,7 +120,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastFramebufferSampleLocationsfvNV(GLuint gpu, GLuint framebuffer, GLuint start, GLsizei count, const GLfloat* v);
+    /// void glMulticastFramebufferSampleLocationsfvNV((unsigned int) GLuint gpu, (unsigned int) GLuint framebuffer, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void MulticastFramebufferSampleLocationsfvNV(int gpu, int framebuffer, int start, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastFramebufferSampleLocationsfvNV");
@@ -138,7 +138,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask);
+    /// void glMulticastWaitSyncNV((unsigned int) GLuint signalGpu, (unsigned int) GLbitfield waitGpuMask);
     /// ```
     public void MulticastWaitSyncNV(int signalGpu, int waitGpuMask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastWaitSyncNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastWaitSyncNV");
@@ -147,7 +147,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastGetQueryObjectivNV(GLuint gpu, GLuint id, GLenum pname, GLint* params);
+    /// void glMulticastGetQueryObjectivNV((unsigned int) GLuint gpu, (unsigned int) GLuint id, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void MulticastGetQueryObjectivNV(int gpu, int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastGetQueryObjectivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectivNV");
@@ -156,7 +156,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastGetQueryObjectuivNV(GLuint gpu, GLuint id, GLenum pname, GLuint* params);
+    /// void glMulticastGetQueryObjectuivNV((unsigned int) GLuint gpu, (unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint* params);
     /// ```
     public void MulticastGetQueryObjectuivNV(int gpu, int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastGetQueryObjectuivNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectuivNV");
@@ -165,7 +165,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastGetQueryObjecti64vNV(GLuint gpu, GLuint id, GLenum pname, GLint64* params);
+    /// void glMulticastGetQueryObjecti64vNV((unsigned int) GLuint gpu, (unsigned int) GLuint id, (unsigned int) GLenum pname, GLint64* params);
     /// ```
     public void MulticastGetQueryObjecti64vNV(int gpu, int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastGetQueryObjecti64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjecti64vNV");
@@ -174,7 +174,7 @@ public final class GLNVGpuMulticast {
     }
 
     /// ```
-    /// void glMulticastGetQueryObjectui64vNV(GLuint gpu, GLuint id, GLenum pname, GLuint64* params);
+    /// void glMulticastGetQueryObjectui64vNV((unsigned int) GLuint gpu, (unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint64* params);
     /// ```
     public void MulticastGetQueryObjectui64vNV(int gpu, int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastGetQueryObjectui64vNV)) throw new SymbolNotFoundError("Symbol not found: glMulticastGetQueryObjectui64vNV");

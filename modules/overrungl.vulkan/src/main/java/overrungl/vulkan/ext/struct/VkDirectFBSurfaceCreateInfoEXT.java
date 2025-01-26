@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDirectFBSurfaceCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDirectFBSurfaceCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkDirectFBSurfaceCreateFlagsEXT flags;
 ///     IDirectFB* dfb;
 ///     IDirectFBSurface* surface;
 /// };

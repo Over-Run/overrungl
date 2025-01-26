@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 subsampledLoads;
-///     VkBool32 subsampledCoarseReconstructionEarlyAccess;
+///     (uint32_t) VkBool32 subsampledLoads;
+///     (uint32_t) VkBool32 subsampledCoarseReconstructionEarlyAccess;
 ///     uint32_t maxSubsampledArrayLayers;
 ///     uint32_t maxDescriptorSetSubsampledSamplers;
 /// };

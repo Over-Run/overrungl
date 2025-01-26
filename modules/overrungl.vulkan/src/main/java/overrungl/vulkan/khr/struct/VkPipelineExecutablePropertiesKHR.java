@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineExecutablePropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkShaderStageFlags stages;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stages;
 ///     char name[256];
 ///     char description[256];
 ///     uint32_t subgroupSize;

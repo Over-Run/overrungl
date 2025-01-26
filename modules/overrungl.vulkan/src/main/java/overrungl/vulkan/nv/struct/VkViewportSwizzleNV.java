@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkViewportSwizzleNV {
-///     VkViewportCoordinateSwizzleNV x;
-///     VkViewportCoordinateSwizzleNV y;
-///     VkViewportCoordinateSwizzleNV z;
-///     VkViewportCoordinateSwizzleNV w;
+///     (int) VkViewportCoordinateSwizzleNV x;
+///     (int) VkViewportCoordinateSwizzleNV y;
+///     (int) VkViewportCoordinateSwizzleNV z;
+///     (int) VkViewportCoordinateSwizzleNV w;
 /// };
 /// ```
 public sealed class VkViewportSwizzleNV extends GroupType {

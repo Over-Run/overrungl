@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCooperativeMatrixPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t MSize;
 ///     uint32_t NSize;
 ///     uint32_t KSize;
-///     VkComponentTypeKHR AType;
-///     VkComponentTypeKHR BType;
-///     VkComponentTypeKHR CType;
-///     VkComponentTypeKHR ResultType;
-///     VkBool32 saturatingAccumulation;
-///     VkScopeKHR scope;
+///     (int) VkComponentTypeKHR AType;
+///     (int) VkComponentTypeKHR BType;
+///     (int) VkComponentTypeKHR CType;
+///     (int) VkComponentTypeKHR ResultType;
+///     (uint32_t) VkBool32 saturatingAccumulation;
+///     (int) VkScopeKHR scope;
 /// };
 /// ```
 public sealed class VkCooperativeMatrixPropertiesKHR extends GroupType {

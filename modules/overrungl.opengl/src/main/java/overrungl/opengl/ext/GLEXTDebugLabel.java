@@ -48,7 +48,7 @@ public final class GLEXTDebugLabel {
     }
 
     /// ```
-    /// void glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar* label);
+    /// void glLabelObjectEXT((unsigned int) GLenum type, (unsigned int) GLuint object, (int) GLsizei length, const GLchar* label);
     /// ```
     public void LabelObjectEXT(int type, int object, int length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLabelObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glLabelObjectEXT");
@@ -57,7 +57,7 @@ public final class GLEXTDebugLabel {
     }
 
     /// ```
-    /// void glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLsizei* length, GLchar* label);
+    /// void glGetObjectLabelEXT((unsigned int) GLenum type, (unsigned int) GLuint object, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
     public void GetObjectLabelEXT(int type, int object, int bufSize, MemorySegment length, MemorySegment label) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabelEXT)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelEXT");

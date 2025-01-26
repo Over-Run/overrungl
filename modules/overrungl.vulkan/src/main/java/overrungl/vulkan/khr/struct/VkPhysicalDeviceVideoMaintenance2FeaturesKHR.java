@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 videoMaintenance2;
+///     (uint32_t) VkBool32 videoMaintenance2;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVideoMaintenance2FeaturesKHR extends GroupType {

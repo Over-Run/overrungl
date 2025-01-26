@@ -22,6 +22,6 @@ public final class VKEXTScalarBlockLayout {
     public static final String VK_EXT_SCALAR_BLOCK_LAYOUT_EXTENSION_NAME = "VK_EXT_scalar_block_layout";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT = 1000221000;
 
-    private VKEXTScalarBlockLayout() { }
+    private VKEXTScalarBlockLayout() {}
 
 }

@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH264SequenceParameterSet {
-///     StdVideoH264SpsFlags flags;
-///     StdVideoH264ProfileIdc profile_idc;
-///     StdVideoH264LevelIdc level_idc;
-///     StdVideoH264ChromaFormatIdc chroma_format_idc;
+///     (struct StdVideoH264SpsFlags) StdVideoH264SpsFlags flags;
+///     (int) StdVideoH264ProfileIdc profile_idc;
+///     (int) StdVideoH264LevelIdc level_idc;
+///     (int) StdVideoH264ChromaFormatIdc chroma_format_idc;
 ///     uint8_t seq_parameter_set_id;
 ///     uint8_t bit_depth_luma_minus8;
 ///     uint8_t bit_depth_chroma_minus8;
 ///     uint8_t log2_max_frame_num_minus4;
-///     StdVideoH264PocType pic_order_cnt_type;
+///     (int) StdVideoH264PocType pic_order_cnt_type;
 ///     int32_t offset_for_non_ref_pic;
 ///     int32_t offset_for_top_to_bottom_field;
 ///     uint8_t log2_max_pic_order_cnt_lsb_minus4;

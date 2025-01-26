@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalSemaphoreProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
-///     VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
-///     VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
+///     ((uint32_t) VkFlags) VkExternalSemaphoreHandleTypeFlags exportFromImportedHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalSemaphoreHandleTypeFlags compatibleHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalSemaphoreFeatureFlags externalSemaphoreFeatures;
 /// };
 /// ```
 public sealed class VkExternalSemaphoreProperties extends GroupType {

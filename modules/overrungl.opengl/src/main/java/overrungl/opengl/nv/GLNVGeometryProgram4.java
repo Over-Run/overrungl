@@ -62,7 +62,7 @@ public final class GLNVGeometryProgram4 {
     }
 
     /// ```
-    /// void glProgramVertexLimitNV(GLenum target, GLint limit);
+    /// void glProgramVertexLimitNV((unsigned int) GLenum target, (int) GLint limit);
     /// ```
     public void ProgramVertexLimitNV(int target, int limit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new SymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
@@ -71,7 +71,7 @@ public final class GLNVGeometryProgram4 {
     }
 
     /// ```
-    /// void glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level);
+    /// void glFramebufferTextureEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTextureEXT(int target, int attachment, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
@@ -80,7 +80,7 @@ public final class GLNVGeometryProgram4 {
     }
 
     /// ```
-    /// void glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+    /// void glFramebufferTextureLayerEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
     public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
@@ -89,7 +89,7 @@ public final class GLNVGeometryProgram4 {
     }
 
     /// ```
-    /// void glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+    /// void glFramebufferTextureFaceEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```
     public void FramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");

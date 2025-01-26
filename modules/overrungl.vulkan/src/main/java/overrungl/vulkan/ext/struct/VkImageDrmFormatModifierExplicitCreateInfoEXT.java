@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageDrmFormatModifierExplicitCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint64_t drmFormatModifier;
 ///     uint32_t drmFormatModifierPlaneCount;

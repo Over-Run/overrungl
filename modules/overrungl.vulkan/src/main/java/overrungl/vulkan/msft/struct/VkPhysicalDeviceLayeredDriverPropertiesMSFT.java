@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLayeredDriverPropertiesMSFT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
+///     (int) VkLayeredDriverUnderlyingApiMSFT underlyingAPI;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceLayeredDriverPropertiesMSFT extends GroupType {

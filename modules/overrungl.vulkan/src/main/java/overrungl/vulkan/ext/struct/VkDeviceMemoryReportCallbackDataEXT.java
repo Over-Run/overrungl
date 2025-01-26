@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceMemoryReportCallbackDataEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceMemoryReportFlagsEXT flags;
-///     VkDeviceMemoryReportEventTypeEXT type;
+///     ((uint32_t) VkFlags) VkDeviceMemoryReportFlagsEXT flags;
+///     (int) VkDeviceMemoryReportEventTypeEXT type;
 ///     uint64_t memoryObjectId;
-///     VkDeviceSize size;
-///     VkObjectType objectType;
+///     (uint64_t) VkDeviceSize size;
+///     (int) VkObjectType objectType;
 ///     uint64_t objectHandle;
 ///     uint32_t heapIndex;
 /// };

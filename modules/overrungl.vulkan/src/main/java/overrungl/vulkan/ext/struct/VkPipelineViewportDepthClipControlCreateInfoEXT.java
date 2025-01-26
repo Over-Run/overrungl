@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportDepthClipControlCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 negativeOneToOne;
+///     (uint32_t) VkBool32 negativeOneToOne;
 /// };
 /// ```
 public sealed class VkPipelineViewportDepthClipControlCreateInfoEXT extends GroupType {

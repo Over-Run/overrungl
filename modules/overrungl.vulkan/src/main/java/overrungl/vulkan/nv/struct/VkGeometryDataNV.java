@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeometryDataNV {
-///     VkGeometryTrianglesNV triangles;
-///     VkGeometryAABBNV aabbs;
+///     (struct VkGeometryTrianglesNV) VkGeometryTrianglesNV triangles;
+///     (struct VkGeometryAABBNV) VkGeometryAABBNV aabbs;
 /// };
 /// ```
 public sealed class VkGeometryDataNV extends GroupType {

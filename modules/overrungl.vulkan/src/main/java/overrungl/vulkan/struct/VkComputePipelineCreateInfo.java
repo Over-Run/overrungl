@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkComputePipelineCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCreateFlags flags;
-///     VkPipelineShaderStageCreateInfo stage;
-///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     ((uint32_t) VkFlags) VkPipelineCreateFlags flags;
+///     (struct VkPipelineShaderStageCreateInfo) VkPipelineShaderStageCreateInfo stage;
+///     (uint64_t) VkPipelineLayout layout;
+///     (uint64_t) VkPipeline basePipelineHandle;
 ///     int32_t basePipelineIndex;
 /// };
 /// ```

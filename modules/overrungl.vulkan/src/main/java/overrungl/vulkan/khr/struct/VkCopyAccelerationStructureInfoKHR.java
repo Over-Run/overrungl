@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyAccelerationStructureInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureKHR src;
-///     VkAccelerationStructureKHR dst;
-///     VkCopyAccelerationStructureModeKHR mode;
+///     (uint64_t) VkAccelerationStructureKHR src;
+///     (uint64_t) VkAccelerationStructureKHR dst;
+///     (int) VkCopyAccelerationStructureModeKHR mode;
 /// };
 /// ```
 public sealed class VkCopyAccelerationStructureInfoKHR extends GroupType {

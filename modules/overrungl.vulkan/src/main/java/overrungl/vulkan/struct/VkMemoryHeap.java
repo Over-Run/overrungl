@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryHeap {
-///     VkDeviceSize size;
-///     VkMemoryHeapFlags flags;
+///     (uint64_t) VkDeviceSize size;
+///     ((uint32_t) VkFlags) VkMemoryHeapFlags flags;
 /// };
 /// ```
 public sealed class VkMemoryHeap extends GroupType {

@@ -24,6 +24,6 @@ public final class VKQCOMRenderPassTransform {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM = 1000282001;
     public static final int VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = 0x00000002;
 
-    private VKQCOMRenderPassTransform() { }
+    private VKQCOMRenderPassTransform() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCudaFunctionCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCudaModuleNV module;
+///     (uint64_t) VkCudaModuleNV module;
 ///     const char* pName;
 /// };
 /// ```

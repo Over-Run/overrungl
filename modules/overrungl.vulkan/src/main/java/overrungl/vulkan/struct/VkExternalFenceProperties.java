@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalFenceProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
-///     VkExternalFenceHandleTypeFlags compatibleHandleTypes;
-///     VkExternalFenceFeatureFlags externalFenceFeatures;
+///     ((uint32_t) VkFlags) VkExternalFenceHandleTypeFlags exportFromImportedHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalFenceHandleTypeFlags compatibleHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalFenceFeatureFlags externalFenceFeatures;
 /// };
 /// ```
 public sealed class VkExternalFenceProperties extends GroupType {

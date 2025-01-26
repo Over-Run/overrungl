@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeneratedCommandsMemoryRequirementsInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkIndirectExecutionSetEXT indirectExecutionSet;
-///     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+///     (uint64_t) VkIndirectExecutionSetEXT indirectExecutionSet;
+///     (uint64_t) VkIndirectCommandsLayoutEXT indirectCommandsLayout;
 ///     uint32_t maxSequenceCount;
 ///     uint32_t maxDrawCount;
 /// };

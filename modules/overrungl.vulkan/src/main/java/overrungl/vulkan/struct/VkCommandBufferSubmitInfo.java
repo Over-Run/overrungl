@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferSubmitInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCommandBuffer commandBuffer;
+///     (struct VkCommandBuffer*) VkCommandBuffer commandBuffer;
 ///     uint32_t deviceMask;
 /// };
 /// ```

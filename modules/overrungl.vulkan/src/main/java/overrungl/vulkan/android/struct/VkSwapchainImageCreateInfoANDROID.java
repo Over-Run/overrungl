@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainImageCreateInfoANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSwapchainImageUsageFlagsANDROID usage;
+///     ((uint32_t) VkFlags) VkSwapchainImageUsageFlagsANDROID usage;
 /// };
 /// ```
 public sealed class VkSwapchainImageCreateInfoANDROID extends GroupType {

@@ -48,7 +48,7 @@ public final class GLNVParameterBufferObject {
     }
 
     /// ```
-    /// void glProgramBufferParametersfvNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLfloat* params);
+    /// void glProgramBufferParametersfvNV((unsigned int) GLenum target, (unsigned int) GLuint bindingIndex, (unsigned int) GLuint wordIndex, (int) GLsizei count, const GLfloat* params);
     /// ```
     public void ProgramBufferParametersfvNV(int target, int bindingIndex, int wordIndex, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramBufferParametersfvNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersfvNV");
@@ -57,7 +57,7 @@ public final class GLNVParameterBufferObject {
     }
 
     /// ```
-    /// void glProgramBufferParametersIivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLint* params);
+    /// void glProgramBufferParametersIivNV((unsigned int) GLenum target, (unsigned int) GLuint bindingIndex, (unsigned int) GLuint wordIndex, (int) GLsizei count, const GLint* params);
     /// ```
     public void ProgramBufferParametersIivNV(int target, int bindingIndex, int wordIndex, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramBufferParametersIivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIivNV");
@@ -66,7 +66,7 @@ public final class GLNVParameterBufferObject {
     }
 
     /// ```
-    /// void glProgramBufferParametersIuivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLuint* params);
+    /// void glProgramBufferParametersIuivNV((unsigned int) GLenum target, (unsigned int) GLuint bindingIndex, (unsigned int) GLuint wordIndex, (int) GLsizei count, const GLuint* params);
     /// ```
     public void ProgramBufferParametersIuivNV(int target, int bindingIndex, int wordIndex, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramBufferParametersIuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIuivNV");

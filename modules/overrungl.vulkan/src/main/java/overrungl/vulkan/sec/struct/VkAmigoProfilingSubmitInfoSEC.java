@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAmigoProfilingSubmitInfoSEC {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint64_t firstDrawTimestamp;
 ///     uint64_t swapBufferTimestamp;

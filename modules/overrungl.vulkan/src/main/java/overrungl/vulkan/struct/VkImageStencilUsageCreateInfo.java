@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageStencilUsageCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageUsageFlags stencilUsage;
+///     ((uint32_t) VkFlags) VkImageUsageFlags stencilUsage;
 /// };
 /// ```
 public sealed class VkImageStencilUsageCreateInfo extends GroupType {

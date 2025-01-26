@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceRenderingInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRenderingFlags flags;
+///     ((uint32_t) VkFlags) VkRenderingFlags flags;
 ///     uint32_t viewMask;
 ///     uint32_t colorAttachmentCount;
 ///     const VkFormat* pColorAttachmentFormats;
-///     VkFormat depthAttachmentFormat;
-///     VkFormat stencilAttachmentFormat;
-///     VkSampleCountFlagBits rasterizationSamples;
+///     (int) VkFormat depthAttachmentFormat;
+///     (int) VkFormat stencilAttachmentFormat;
+///     (int) VkSampleCountFlagBits rasterizationSamples;
 /// };
 /// ```
 public sealed class VkCommandBufferInheritanceRenderingInfo extends GroupType {

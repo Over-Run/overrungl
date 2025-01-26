@@ -21,32 +21,26 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVCooperativeMatrix2 {
+public final class VKNVCooperativeMatrix2 {
     public static final int VK_NV_COOPERATIVE_MATRIX_2_SPEC_VERSION = 1;
     public static final String VK_NV_COOPERATIVE_MATRIX_2_EXTENSION_NAME = "VK_NV_cooperative_matrix2";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV = 1000593000;
     public static final int VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV = 1000593001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV = 1000593002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = func.invoke(device, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
-        }
+        private Handles() {}
     }
 
-    public VKNVCooperativeMatrix2(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKNVCooperativeMatrix2() {}
 
     /// ```
-    /// VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
+    /// (int) VkResult vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkCooperativeMatrixFlexibleDimensionsPropertiesNV* pProperties);
     /// ```
-    public int GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(MemorySegment physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.invokeExact(handles.PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV, physicalDevice, pPropertyCount, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV", e); }
+    public static int vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV(VkPhysicalDevice physicalDevice, MemorySegment pPropertyCount, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV, physicalDevice.segment(), pPropertyCount, pProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV", e); }
     }
 
 }

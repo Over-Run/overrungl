@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkGeneratedCommandsInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipeline pipeline;
-///     VkIndirectCommandsLayoutNV indirectCommandsLayout;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
+///     (uint64_t) VkPipeline pipeline;
+///     (uint64_t) VkIndirectCommandsLayoutNV indirectCommandsLayout;
 ///     uint32_t streamCount;
 ///     const VkIndirectCommandsStreamNV* pStreams;
 ///     uint32_t sequencesCount;
-///     VkBuffer preprocessBuffer;
-///     VkDeviceSize preprocessOffset;
-///     VkDeviceSize preprocessSize;
-///     VkBuffer sequencesCountBuffer;
-///     VkDeviceSize sequencesCountOffset;
-///     VkBuffer sequencesIndexBuffer;
-///     VkDeviceSize sequencesIndexOffset;
+///     (uint64_t) VkBuffer preprocessBuffer;
+///     (uint64_t) VkDeviceSize preprocessOffset;
+///     (uint64_t) VkDeviceSize preprocessSize;
+///     (uint64_t) VkBuffer sequencesCountBuffer;
+///     (uint64_t) VkDeviceSize sequencesCountOffset;
+///     (uint64_t) VkBuffer sequencesIndexBuffer;
+///     (uint64_t) VkDeviceSize sequencesIndexOffset;
 /// };
 /// ```
 public sealed class VkGeneratedCommandsInfoNV extends GroupType {

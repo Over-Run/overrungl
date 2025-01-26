@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingInputAttachmentIndexInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t colorAttachmentCount;
 ///     const uint32_t* pColorAttachmentInputIndices;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPushConstantRange {
-///     VkShaderStageFlags stageFlags;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stageFlags;
 ///     uint32_t offset;
 ///     uint32_t size;
 /// };

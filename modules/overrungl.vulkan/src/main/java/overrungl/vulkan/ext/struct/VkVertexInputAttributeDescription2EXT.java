@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVertexInputAttributeDescription2EXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t location;
 ///     uint32_t binding;
-///     VkFormat format;
+///     (int) VkFormat format;
 ///     uint32_t offset;
 /// };
 /// ```

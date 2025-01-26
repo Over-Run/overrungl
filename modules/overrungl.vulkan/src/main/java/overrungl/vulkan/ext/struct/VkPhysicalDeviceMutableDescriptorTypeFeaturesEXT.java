@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 mutableDescriptorType;
+///     (uint32_t) VkBool32 mutableDescriptorType;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends GroupType {

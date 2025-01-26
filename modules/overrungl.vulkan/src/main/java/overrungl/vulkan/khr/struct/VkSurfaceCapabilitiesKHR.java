@@ -29,14 +29,14 @@ import overrungl.util.*;
 /// struct VkSurfaceCapabilitiesKHR {
 ///     uint32_t minImageCount;
 ///     uint32_t maxImageCount;
-///     VkExtent2D currentExtent;
-///     VkExtent2D minImageExtent;
-///     VkExtent2D maxImageExtent;
+///     (struct VkExtent2D) VkExtent2D currentExtent;
+///     (struct VkExtent2D) VkExtent2D minImageExtent;
+///     (struct VkExtent2D) VkExtent2D maxImageExtent;
 ///     uint32_t maxImageArrayLayers;
-///     VkSurfaceTransformFlagsKHR supportedTransforms;
-///     VkSurfaceTransformFlagBitsKHR currentTransform;
-///     VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
-///     VkImageUsageFlags supportedUsageFlags;
+///     ((uint32_t) VkFlags) VkSurfaceTransformFlagsKHR supportedTransforms;
+///     (int) VkSurfaceTransformFlagBitsKHR currentTransform;
+///     ((uint32_t) VkFlags) VkCompositeAlphaFlagsKHR supportedCompositeAlpha;
+///     ((uint32_t) VkFlags) VkImageUsageFlags supportedUsageFlags;
 /// };
 /// ```
 public sealed class VkSurfaceCapabilitiesKHR extends GroupType {

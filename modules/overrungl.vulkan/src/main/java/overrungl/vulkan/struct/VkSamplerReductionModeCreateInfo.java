@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerReductionModeCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSamplerReductionMode reductionMode;
+///     (int) VkSamplerReductionMode reductionMode;
 /// };
 /// ```
 public sealed class VkSamplerReductionModeCreateInfo extends GroupType {

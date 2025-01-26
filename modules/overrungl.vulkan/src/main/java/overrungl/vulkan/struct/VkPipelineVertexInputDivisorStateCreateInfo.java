@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineVertexInputDivisorStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t vertexBindingDivisorCount;
 ///     const VkVertexInputBindingDivisorDescription* pVertexBindingDivisors;

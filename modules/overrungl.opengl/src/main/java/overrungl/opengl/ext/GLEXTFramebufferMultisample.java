@@ -40,7 +40,7 @@ public final class GLEXTFramebufferMultisample {
     }
 
     /// ```
-    /// void glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+    /// void glRenderbufferStorageMultisampleEXT((unsigned int) GLenum target, (int) GLsizei samples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void RenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleEXT)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleEXT");

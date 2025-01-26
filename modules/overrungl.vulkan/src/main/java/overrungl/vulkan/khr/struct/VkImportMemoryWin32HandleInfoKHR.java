@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMemoryWin32HandleInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
-///     HANDLE handle;
-///     LPCWSTR name;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
+///     (void*) HANDLE handle;
+///     (const wchar_t*) LPCWSTR name;
 /// };
 /// ```
 public sealed class VkImportMemoryWin32HandleInfoKHR extends GroupType {

@@ -22,6 +22,6 @@ public final class VKKHR8bitStorage {
     public static final String VK_KHR_8BIT_STORAGE_EXTENSION_NAME = "VK_KHR_8bit_storage";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR = 1000177000;
 
-    private VKKHR8bitStorage() { }
+    private VKKHR8bitStorage() {}
 
 }

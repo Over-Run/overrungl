@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandPoolMemoryConsumption {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize commandPoolAllocated;
-///     VkDeviceSize commandPoolReservedSize;
-///     VkDeviceSize commandBufferAllocated;
+///     (uint64_t) VkDeviceSize commandPoolAllocated;
+///     (uint64_t) VkDeviceSize commandPoolReservedSize;
+///     (uint64_t) VkDeviceSize commandBufferAllocated;
 /// };
 /// ```
 public sealed class VkCommandPoolMemoryConsumption extends GroupType {

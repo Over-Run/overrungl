@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBufferCreateFlags flags;
-///     VkDeviceSize size;
-///     VkBufferUsageFlags usage;
-///     VkSharingMode sharingMode;
+///     ((uint32_t) VkFlags) VkBufferCreateFlags flags;
+///     (uint64_t) VkDeviceSize size;
+///     ((uint32_t) VkFlags) VkBufferUsageFlags usage;
+///     (int) VkSharingMode sharingMode;
 ///     uint32_t queueFamilyIndexCount;
 ///     const uint32_t* pQueueFamilyIndices;
 /// };

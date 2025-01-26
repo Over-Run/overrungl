@@ -21,32 +21,26 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTPipelineProperties {
+public final class VKEXTPipelineProperties {
     public static final int VK_EXT_PIPELINE_PROPERTIES_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_PROPERTIES_EXTENSION_NAME = "VK_EXT_pipeline_properties";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT = 1000372000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_INFO_EXT = 1000269001;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPipelinePropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPipelinePropertiesEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetPipelinePropertiesEXT = func.invoke(device, "vkGetPipelinePropertiesEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTPipelineProperties(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTPipelineProperties() {}
 
     /// ```
-    /// VkResult vkGetPipelinePropertiesEXT(VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
+    /// (int) VkResult vkGetPipelinePropertiesEXT((struct VkDevice*) VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
     /// ```
-    public int GetPipelinePropertiesEXT(MemorySegment device, MemorySegment pPipelineInfo, MemorySegment pPipelineProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPipelinePropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
-        try { return (int) Handles.MH_vkGetPipelinePropertiesEXT.invokeExact(handles.PFN_vkGetPipelinePropertiesEXT, device, pPipelineInfo, pPipelineProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPipelinePropertiesEXT", e); }
+    public static int vkGetPipelinePropertiesEXT(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pPipelineProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
+        try { return (int) Handles.MH_vkGetPipelinePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetPipelinePropertiesEXT, device.segment(), pPipelineInfo, pPipelineProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPipelinePropertiesEXT", e); }
     }
 
 }

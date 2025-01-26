@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMeshShaderFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 taskShader;
-///     VkBool32 meshShader;
-///     VkBool32 multiviewMeshShader;
-///     VkBool32 primitiveFragmentShadingRateMeshShader;
-///     VkBool32 meshShaderQueries;
+///     (uint32_t) VkBool32 taskShader;
+///     (uint32_t) VkBool32 meshShader;
+///     (uint32_t) VkBool32 multiviewMeshShader;
+///     (uint32_t) VkBool32 primitiveFragmentShadingRateMeshShader;
+///     (uint32_t) VkBool32 meshShaderQueries;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMeshShaderFeaturesEXT extends GroupType {

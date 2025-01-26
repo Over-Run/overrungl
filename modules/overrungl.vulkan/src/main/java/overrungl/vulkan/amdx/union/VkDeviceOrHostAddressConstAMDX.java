@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// union VkDeviceOrHostAddressConstAMDX {
-///     VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceAddress deviceAddress;
 ///     const void* hostAddress;
 /// };
 /// ```

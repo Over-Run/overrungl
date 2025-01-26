@@ -60,7 +60,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactorbSUN(GLbyte factor);
+    /// void glGlobalAlphaFactorbSUN(((signed char) khronos_int8_t) GLbyte factor);
     /// ```
     public void GlobalAlphaFactorbSUN(byte factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactorbSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorbSUN");
@@ -69,7 +69,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactorsSUN(GLshort factor);
+    /// void glGlobalAlphaFactorsSUN(((signed short) khronos_int16_t) GLshort factor);
     /// ```
     public void GlobalAlphaFactorsSUN(short factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactorsSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorsSUN");
@@ -78,7 +78,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactoriSUN(GLint factor);
+    /// void glGlobalAlphaFactoriSUN((int) GLint factor);
     /// ```
     public void GlobalAlphaFactoriSUN(int factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactoriSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoriSUN");
@@ -87,7 +87,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactorfSUN(GLfloat factor);
+    /// void glGlobalAlphaFactorfSUN(((float) khronos_float_t) GLfloat factor);
     /// ```
     public void GlobalAlphaFactorfSUN(float factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactorfSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorfSUN");
@@ -96,7 +96,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactordSUN(GLdouble factor);
+    /// void glGlobalAlphaFactordSUN((double) GLdouble factor);
     /// ```
     public void GlobalAlphaFactordSUN(double factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactordSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactordSUN");
@@ -105,7 +105,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactorubSUN(GLubyte factor);
+    /// void glGlobalAlphaFactorubSUN(((unsigned char) khronos_uint8_t) GLubyte factor);
     /// ```
     public void GlobalAlphaFactorubSUN(byte factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactorubSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorubSUN");
@@ -114,7 +114,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactorusSUN(GLushort factor);
+    /// void glGlobalAlphaFactorusSUN(((unsigned short) khronos_uint16_t) GLushort factor);
     /// ```
     public void GlobalAlphaFactorusSUN(short factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactorusSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactorusSUN");
@@ -123,7 +123,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     /// ```
-    /// void glGlobalAlphaFactoruiSUN(GLuint factor);
+    /// void glGlobalAlphaFactoruiSUN((unsigned int) GLuint factor);
     /// ```
     public void GlobalAlphaFactoruiSUN(int factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGlobalAlphaFactoruiSUN)) throw new SymbolNotFoundError("Symbol not found: glGlobalAlphaFactoruiSUN");

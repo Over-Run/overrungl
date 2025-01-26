@@ -41,7 +41,7 @@ public final class GLEXTTimerQuery {
     }
 
     /// ```
-    /// void glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GLint64* params);
+    /// void glGetQueryObjecti64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint64* params);
     /// ```
     public void GetQueryObjecti64vEXT(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
@@ -50,7 +50,7 @@ public final class GLEXTTimerQuery {
     }
 
     /// ```
-    /// void glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLuint64* params);
+    /// void glGetQueryObjectui64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint64* params);
     /// ```
     public void GetQueryObjectui64vEXT(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");

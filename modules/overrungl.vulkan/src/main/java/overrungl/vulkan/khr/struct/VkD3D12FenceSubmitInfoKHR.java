@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkD3D12FenceSubmitInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t waitSemaphoreValuesCount;
 ///     const uint64_t* pWaitSemaphoreValues;

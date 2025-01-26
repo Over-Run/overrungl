@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSparseProperties {
-///     VkBool32 residencyStandard2DBlockShape;
-///     VkBool32 residencyStandard2DMultisampleBlockShape;
-///     VkBool32 residencyStandard3DBlockShape;
-///     VkBool32 residencyAlignedMipSize;
-///     VkBool32 residencyNonResidentStrict;
+///     (uint32_t) VkBool32 residencyStandard2DBlockShape;
+///     (uint32_t) VkBool32 residencyStandard2DMultisampleBlockShape;
+///     (uint32_t) VkBool32 residencyStandard3DBlockShape;
+///     (uint32_t) VkBool32 residencyAlignedMipSize;
+///     (uint32_t) VkBool32 residencyNonResidentStrict;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSparseProperties extends GroupType {

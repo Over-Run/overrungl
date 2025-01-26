@@ -39,7 +39,7 @@ public final class GLSGIXPixelTexture {
     }
 
     /// ```
-    /// void glPixelTexGenSGIX(GLenum mode);
+    /// void glPixelTexGenSGIX((unsigned int) GLenum mode);
     /// ```
     public void PixelTexGenSGIX(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenSGIX)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenSGIX");

@@ -185,7 +185,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glDeleteObjectARB(GLhandleARB obj);
+    /// void glDeleteObjectARB((unsigned int) GLhandleARB obj);
     /// ```
     public void DeleteObjectARB(int obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteObjectARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteObjectARB");
@@ -194,7 +194,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// GLhandleARB glGetHandleARB(GLenum pname);
+    /// (unsigned int) GLhandleARB glGetHandleARB((unsigned int) GLenum pname);
     /// ```
     public int GetHandleARB(int pname) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetHandleARB");
@@ -203,7 +203,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
+    /// void glDetachObjectARB((unsigned int) GLhandleARB containerObj, (unsigned int) GLhandleARB attachedObj);
     /// ```
     public void DetachObjectARB(int containerObj, int attachedObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDetachObjectARB)) throw new SymbolNotFoundError("Symbol not found: glDetachObjectARB");
@@ -212,7 +212,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// GLhandleARB glCreateShaderObjectARB(GLenum shaderType);
+    /// (unsigned int) GLhandleARB glCreateShaderObjectARB((unsigned int) GLenum shaderType);
     /// ```
     public int CreateShaderObjectARB(int shaderType) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateShaderObjectARB)) throw new SymbolNotFoundError("Symbol not found: glCreateShaderObjectARB");
@@ -221,7 +221,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB** string, const GLint* length);
+    /// void glShaderSourceARB((unsigned int) GLhandleARB shaderObj, (int) GLsizei count, const GLcharARB** string, const GLint* length);
     /// ```
     public void ShaderSourceARB(int shaderObj, int count, MemorySegment string, MemorySegment length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderSourceARB)) throw new SymbolNotFoundError("Symbol not found: glShaderSourceARB");
@@ -230,7 +230,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glCompileShaderARB(GLhandleARB shaderObj);
+    /// void glCompileShaderARB((unsigned int) GLhandleARB shaderObj);
     /// ```
     public void CompileShaderARB(int shaderObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompileShaderARB)) throw new SymbolNotFoundError("Symbol not found: glCompileShaderARB");
@@ -239,7 +239,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// GLhandleARB glCreateProgramObjectARB();
+    /// (unsigned int) GLhandleARB glCreateProgramObjectARB();
     /// ```
     public int CreateProgramObjectARB() {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgramObjectARB)) throw new SymbolNotFoundError("Symbol not found: glCreateProgramObjectARB");
@@ -248,7 +248,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
+    /// void glAttachObjectARB((unsigned int) GLhandleARB containerObj, (unsigned int) GLhandleARB obj);
     /// ```
     public void AttachObjectARB(int containerObj, int obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAttachObjectARB)) throw new SymbolNotFoundError("Symbol not found: glAttachObjectARB");
@@ -257,7 +257,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glLinkProgramARB(GLhandleARB programObj);
+    /// void glLinkProgramARB((unsigned int) GLhandleARB programObj);
     /// ```
     public void LinkProgramARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLinkProgramARB)) throw new SymbolNotFoundError("Symbol not found: glLinkProgramARB");
@@ -266,7 +266,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUseProgramObjectARB(GLhandleARB programObj);
+    /// void glUseProgramObjectARB((unsigned int) GLhandleARB programObj);
     /// ```
     public void UseProgramObjectARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUseProgramObjectARB)) throw new SymbolNotFoundError("Symbol not found: glUseProgramObjectARB");
@@ -275,7 +275,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glValidateProgramARB(GLhandleARB programObj);
+    /// void glValidateProgramARB((unsigned int) GLhandleARB programObj);
     /// ```
     public void ValidateProgramARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glValidateProgramARB)) throw new SymbolNotFoundError("Symbol not found: glValidateProgramARB");
@@ -284,7 +284,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform1fARB(GLint location, GLfloat v0);
+    /// void glUniform1fARB((int) GLint location, ((float) khronos_float_t) GLfloat v0);
     /// ```
     public void Uniform1fARB(int location, float v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1fARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1fARB");
@@ -293,7 +293,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
+    /// void glUniform2fARB((int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1);
     /// ```
     public void Uniform2fARB(int location, float v0, float v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2fARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2fARB");
@@ -302,7 +302,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+    /// void glUniform3fARB((int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2);
     /// ```
     public void Uniform3fARB(int location, float v0, float v1, float v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3fARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3fARB");
@@ -311,7 +311,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+    /// void glUniform4fARB((int) GLint location, ((float) khronos_float_t) GLfloat v0, ((float) khronos_float_t) GLfloat v1, ((float) khronos_float_t) GLfloat v2, ((float) khronos_float_t) GLfloat v3);
     /// ```
     public void Uniform4fARB(int location, float v0, float v1, float v2, float v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4fARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4fARB");
@@ -320,7 +320,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform1iARB(GLint location, GLint v0);
+    /// void glUniform1iARB((int) GLint location, (int) GLint v0);
     /// ```
     public void Uniform1iARB(int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1iARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1iARB");
@@ -329,7 +329,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform2iARB(GLint location, GLint v0, GLint v1);
+    /// void glUniform2iARB((int) GLint location, (int) GLint v0, (int) GLint v1);
     /// ```
     public void Uniform2iARB(int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2iARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2iARB");
@@ -338,7 +338,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
+    /// void glUniform3iARB((int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2);
     /// ```
     public void Uniform3iARB(int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3iARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3iARB");
@@ -347,7 +347,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+    /// void glUniform4iARB((int) GLint location, (int) GLint v0, (int) GLint v1, (int) GLint v2, (int) GLint v3);
     /// ```
     public void Uniform4iARB(int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4iARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4iARB");
@@ -356,7 +356,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform1fvARB(GLint location, GLsizei count, const GLfloat* value);
+    /// void glUniform1fvARB((int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
     public void Uniform1fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1fvARB");
@@ -365,7 +365,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform2fvARB(GLint location, GLsizei count, const GLfloat* value);
+    /// void glUniform2fvARB((int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
     public void Uniform2fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2fvARB");
@@ -374,7 +374,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform3fvARB(GLint location, GLsizei count, const GLfloat* value);
+    /// void glUniform3fvARB((int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
     public void Uniform3fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3fvARB");
@@ -383,7 +383,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform4fvARB(GLint location, GLsizei count, const GLfloat* value);
+    /// void glUniform4fvARB((int) GLint location, (int) GLsizei count, const GLfloat* value);
     /// ```
     public void Uniform4fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4fvARB");
@@ -392,7 +392,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform1ivARB(GLint location, GLsizei count, const GLint* value);
+    /// void glUniform1ivARB((int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
     public void Uniform1ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform1ivARB");
@@ -401,7 +401,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform2ivARB(GLint location, GLsizei count, const GLint* value);
+    /// void glUniform2ivARB((int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
     public void Uniform2ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform2ivARB");
@@ -410,7 +410,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform3ivARB(GLint location, GLsizei count, const GLint* value);
+    /// void glUniform3ivARB((int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
     public void Uniform3ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform3ivARB");
@@ -419,7 +419,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniform4ivARB(GLint location, GLsizei count, const GLint* value);
+    /// void glUniform4ivARB((int) GLint location, (int) GLsizei count, const GLint* value);
     /// ```
     public void Uniform4ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ivARB)) throw new SymbolNotFoundError("Symbol not found: glUniform4ivARB");
@@ -428,7 +428,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
+    /// void glUniformMatrix2fvARB((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void UniformMatrix2fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2fvARB");
@@ -437,7 +437,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
+    /// void glUniformMatrix3fvARB((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void UniformMatrix3fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3fvARB");
@@ -446,7 +446,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value);
+    /// void glUniformMatrix4fvARB((int) GLint location, (int) GLsizei count, GLboolean transpose, const GLfloat* value);
     /// ```
     public void UniformMatrix4fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4fvARB)) throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4fvARB");
@@ -455,7 +455,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat* params);
+    /// void glGetObjectParameterfvARB((unsigned int) GLhandleARB obj, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetObjectParameterfvARB(int obj, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterfvARB");
@@ -464,7 +464,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint* params);
+    /// void glGetObjectParameterivARB((unsigned int) GLhandleARB obj, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetObjectParameterivARB(int obj, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterivARB)) throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivARB");
@@ -473,7 +473,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei* length, GLcharARB* infoLog);
+    /// void glGetInfoLogARB((unsigned int) GLhandleARB obj, (int) GLsizei maxLength, GLsizei* length, GLcharARB* infoLog);
     /// ```
     public void GetInfoLogARB(int obj, int maxLength, MemorySegment length, MemorySegment infoLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInfoLogARB)) throw new SymbolNotFoundError("Symbol not found: glGetInfoLogARB");
@@ -482,7 +482,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei* count, GLhandleARB* obj);
+    /// void glGetAttachedObjectsARB((unsigned int) GLhandleARB containerObj, (int) GLsizei maxCount, GLsizei* count, GLhandleARB* obj);
     /// ```
     public void GetAttachedObjectsARB(int containerObj, int maxCount, MemorySegment count, MemorySegment obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetAttachedObjectsARB)) throw new SymbolNotFoundError("Symbol not found: glGetAttachedObjectsARB");
@@ -491,7 +491,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// GLint glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB* name);
+    /// (int) GLint glGetUniformLocationARB((unsigned int) GLhandleARB programObj, const GLcharARB* name);
     /// ```
     public int GetUniformLocationARB(int programObj, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformLocationARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformLocationARB");
@@ -500,7 +500,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei* length, GLint* size, GLenum* type, GLcharARB* name);
+    /// void glGetActiveUniformARB((unsigned int) GLhandleARB programObj, (unsigned int) GLuint index, (int) GLsizei maxLength, GLsizei* length, GLint* size, GLenum* type, GLcharARB* name);
     /// ```
     public void GetActiveUniformARB(int programObj, int index, int maxLength, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformARB)) throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformARB");
@@ -509,7 +509,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat* params);
+    /// void glGetUniformfvARB((unsigned int) GLhandleARB programObj, (int) GLint location, GLfloat* params);
     /// ```
     public void GetUniformfvARB(int programObj, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformfvARB");
@@ -518,7 +518,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetUniformivARB(GLhandleARB programObj, GLint location, GLint* params);
+    /// void glGetUniformivARB((unsigned int) GLhandleARB programObj, (int) GLint location, GLint* params);
     /// ```
     public void GetUniformivARB(int programObj, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformivARB)) throw new SymbolNotFoundError("Symbol not found: glGetUniformivARB");
@@ -527,7 +527,7 @@ public final class GLARBShaderObjects {
     }
 
     /// ```
-    /// void glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei* length, GLcharARB* source);
+    /// void glGetShaderSourceARB((unsigned int) GLhandleARB obj, (int) GLsizei maxLength, GLsizei* length, GLcharARB* source);
     /// ```
     public void GetShaderSourceARB(int obj, int maxLength, MemorySegment length, MemorySegment source) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderSourceARB)) throw new SymbolNotFoundError("Symbol not found: glGetShaderSourceARB");

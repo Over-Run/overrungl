@@ -21,30 +21,24 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNNViSurface {
+public final class VKNNViSurface {
     public static final int VK_NN_VI_SURFACE_SPEC_VERSION = 1;
     public static final String VK_NN_VI_SURFACE_EXTENSION_NAME = "VK_NN_vi_surface";
     public static final int VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN = 1000062000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateViSurfaceNN = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCreateViSurfaceNN;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCreateViSurfaceNN = func.invoke(instance, "vkCreateViSurfaceNN");
-        }
+        private Handles() {}
     }
 
-    public VKNNViSurface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKNNViSurface() {}
 
     /// ```
-    /// VkResult vkCreateViSurfaceNN(VkInstance instance, const VkViSurfaceCreateInfoNN* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// (int) VkResult vkCreateViSurfaceNN((struct VkInstance*) VkInstance instance, const VkViSurfaceCreateInfoNN* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public int CreateViSurfaceNN(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateViSurfaceNN)) throw new SymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
-        try { return (int) Handles.MH_vkCreateViSurfaceNN.invokeExact(handles.PFN_vkCreateViSurfaceNN, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateViSurfaceNN", e); }
+    public static int vkCreateViSurfaceNN(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateViSurfaceNN)) throw new SymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
+        try { return (int) Handles.MH_vkCreateViSurfaceNN.invokeExact(instance.capabilities().PFN_vkCreateViSurfaceNN, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateViSurfaceNN", e); }
     }
 
 }

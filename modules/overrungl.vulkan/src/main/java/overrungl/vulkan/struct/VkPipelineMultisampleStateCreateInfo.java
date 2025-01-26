@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineMultisampleStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineMultisampleStateCreateFlags flags;
-///     VkSampleCountFlagBits rasterizationSamples;
-///     VkBool32 sampleShadingEnable;
+///     ((uint32_t) VkFlags) VkPipelineMultisampleStateCreateFlags flags;
+///     (int) VkSampleCountFlagBits rasterizationSamples;
+///     (uint32_t) VkBool32 sampleShadingEnable;
 ///     float minSampleShading;
 ///     const VkSampleMask* pSampleMask;
-///     VkBool32 alphaToCoverageEnable;
-///     VkBool32 alphaToOneEnable;
+///     (uint32_t) VkBool32 alphaToCoverageEnable;
+///     (uint32_t) VkBool32 alphaToOneEnable;
 /// };
 /// ```
 public sealed class VkPipelineMultisampleStateCreateInfo extends GroupType {

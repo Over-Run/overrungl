@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationStateRasterizationOrderAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRasterizationOrderAMD rasterizationOrder;
+///     (int) VkRasterizationOrderAMD rasterizationOrder;
 /// };
 /// ```
 public sealed class VkPipelineRasterizationStateRasterizationOrderAMD extends GroupType {

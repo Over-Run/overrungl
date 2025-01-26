@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMultisamplePropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D maxSampleLocationGridSize;
+///     (struct VkExtent2D) VkExtent2D maxSampleLocationGridSize;
 /// };
 /// ```
 public sealed class VkMultisamplePropertiesEXT extends GroupType {

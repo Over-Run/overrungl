@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 rayTracingMaintenance1;
-///     VkBool32 rayTracingPipelineTraceRaysIndirect2;
+///     (uint32_t) VkBool32 rayTracingMaintenance1;
+///     (uint32_t) VkBool32 rayTracingPipelineTraceRaysIndirect2;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR extends GroupType {

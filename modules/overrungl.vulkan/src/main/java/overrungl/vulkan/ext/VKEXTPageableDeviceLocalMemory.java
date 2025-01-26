@@ -21,30 +21,24 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTPageableDeviceLocalMemory {
+public final class VKEXTPageableDeviceLocalMemory {
     public static final int VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_EXT_PAGEABLE_DEVICE_LOCAL_MEMORY_EXTENSION_NAME = "VK_EXT_pageable_device_local_memory";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkSetDeviceMemoryPriorityEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
-        public final MemorySegment PFN_vkSetDeviceMemoryPriorityEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkSetDeviceMemoryPriorityEXT = func.invoke(device, "vkSetDeviceMemoryPriorityEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTPageableDeviceLocalMemory(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTPageableDeviceLocalMemory() {}
 
     /// ```
-    /// void vkSetDeviceMemoryPriorityEXT(VkDevice device, VkDeviceMemory memory, float priority);
+    /// void vkSetDeviceMemoryPriorityEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDeviceMemory memory, float priority);
     /// ```
-    public void SetDeviceMemoryPriorityEXT(MemorySegment device, long memory, float priority) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkSetDeviceMemoryPriorityEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
-        try { Handles.MH_vkSetDeviceMemoryPriorityEXT.invokeExact(handles.PFN_vkSetDeviceMemoryPriorityEXT, device, memory, priority); }
-        catch (Throwable e) { throw new RuntimeException("error in SetDeviceMemoryPriorityEXT", e); }
+    public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, long memory, float priority) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
+        try { Handles.MH_vkSetDeviceMemoryPriorityEXT.invokeExact(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT, device.segment(), memory, priority); }
+        catch (Throwable e) { throw new RuntimeException("error in vkSetDeviceMemoryPriorityEXT", e); }
     }
 
 }

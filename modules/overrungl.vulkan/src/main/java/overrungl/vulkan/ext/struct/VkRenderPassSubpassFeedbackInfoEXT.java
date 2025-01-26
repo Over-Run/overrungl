@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassSubpassFeedbackInfoEXT {
-///     VkSubpassMergeStatusEXT subpassMergeStatus;
+///     (int) VkSubpassMergeStatusEXT subpassMergeStatus;
 ///     char description[256];
 ///     uint32_t postMergeIndex;
 /// };

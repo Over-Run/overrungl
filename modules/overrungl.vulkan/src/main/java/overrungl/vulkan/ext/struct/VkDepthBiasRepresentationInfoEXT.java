@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDepthBiasRepresentationInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDepthBiasRepresentationEXT depthBiasRepresentation;
-///     VkBool32 depthBiasExact;
+///     (int) VkDepthBiasRepresentationEXT depthBiasRepresentation;
+///     (uint32_t) VkBool32 depthBiasExact;
 /// };
 /// ```
 public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {

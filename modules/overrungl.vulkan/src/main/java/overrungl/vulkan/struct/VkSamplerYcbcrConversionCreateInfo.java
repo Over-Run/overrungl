@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerYcbcrConversionCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFormat format;
-///     VkSamplerYcbcrModelConversion ycbcrModel;
-///     VkSamplerYcbcrRange ycbcrRange;
-///     VkComponentMapping components;
-///     VkChromaLocation xChromaOffset;
-///     VkChromaLocation yChromaOffset;
-///     VkFilter chromaFilter;
-///     VkBool32 forceExplicitReconstruction;
+///     (int) VkFormat format;
+///     (int) VkSamplerYcbcrModelConversion ycbcrModel;
+///     (int) VkSamplerYcbcrRange ycbcrRange;
+///     (struct VkComponentMapping) VkComponentMapping components;
+///     (int) VkChromaLocation xChromaOffset;
+///     (int) VkChromaLocation yChromaOffset;
+///     (int) VkFilter chromaFilter;
+///     (uint32_t) VkBool32 forceExplicitReconstruction;
 /// };
 /// ```
 public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {

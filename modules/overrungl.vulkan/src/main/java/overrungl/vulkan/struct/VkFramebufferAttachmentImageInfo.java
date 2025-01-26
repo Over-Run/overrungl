@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFramebufferAttachmentImageInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageCreateFlags flags;
-///     VkImageUsageFlags usage;
+///     ((uint32_t) VkFlags) VkImageCreateFlags flags;
+///     ((uint32_t) VkFlags) VkImageUsageFlags usage;
 ///     uint32_t width;
 ///     uint32_t height;
 ///     uint32_t layerCount;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSchedulingControlsFeaturesARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 schedulingControls;
+///     (uint32_t) VkBool32 schedulingControls;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSchedulingControlsFeaturesARM extends GroupType {

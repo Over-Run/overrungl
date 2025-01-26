@@ -58,7 +58,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// void glDeleteFencesNV(GLsizei n, const GLuint* fences);
+    /// void glDeleteFencesNV((int) GLsizei n, const GLuint* fences);
     /// ```
     public void DeleteFencesNV(int n, MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFencesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesNV");
@@ -67,7 +67,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// void glGenFencesNV(GLsizei n, GLuint* fences);
+    /// void glGenFencesNV((int) GLsizei n, GLuint* fences);
     /// ```
     public void GenFencesNV(int n, MemorySegment fences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFencesNV)) throw new SymbolNotFoundError("Symbol not found: glGenFencesNV");
@@ -76,7 +76,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// GLboolean glIsFenceNV(GLuint fence);
+    /// GLboolean glIsFenceNV((unsigned int) GLuint fence);
     /// ```
     public boolean IsFenceNV(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsFenceNV)) throw new SymbolNotFoundError("Symbol not found: glIsFenceNV");
@@ -85,7 +85,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// GLboolean glTestFenceNV(GLuint fence);
+    /// GLboolean glTestFenceNV((unsigned int) GLuint fence);
     /// ```
     public boolean TestFenceNV(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTestFenceNV)) throw new SymbolNotFoundError("Symbol not found: glTestFenceNV");
@@ -94,7 +94,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// void glGetFenceivNV(GLuint fence, GLenum pname, GLint* params);
+    /// void glGetFenceivNV((unsigned int) GLuint fence, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFenceivNV(int fence, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFenceivNV)) throw new SymbolNotFoundError("Symbol not found: glGetFenceivNV");
@@ -103,7 +103,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// void glFinishFenceNV(GLuint fence);
+    /// void glFinishFenceNV((unsigned int) GLuint fence);
     /// ```
     public void FinishFenceNV(int fence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinishFenceNV)) throw new SymbolNotFoundError("Symbol not found: glFinishFenceNV");
@@ -112,7 +112,7 @@ public final class GLNVFence {
     }
 
     /// ```
-    /// void glSetFenceNV(GLuint fence, GLenum condition);
+    /// void glSetFenceNV((unsigned int) GLuint fence, (unsigned int) GLenum condition);
     /// ```
     public void SetFenceNV(int fence, int condition) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSetFenceNV");

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkColorBlendAdvancedEXT {
-///     VkBlendOp advancedBlendOp;
-///     VkBool32 srcPremultiplied;
-///     VkBool32 dstPremultiplied;
-///     VkBlendOverlapEXT blendOverlap;
-///     VkBool32 clampResults;
+///     (int) VkBlendOp advancedBlendOp;
+///     (uint32_t) VkBool32 srcPremultiplied;
+///     (uint32_t) VkBool32 dstPremultiplied;
+///     (int) VkBlendOverlapEXT blendOverlap;
+///     (uint32_t) VkBool32 clampResults;
 /// };
 /// ```
 public sealed class VkColorBlendAdvancedEXT extends GroupType {

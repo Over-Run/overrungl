@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalSciSync2FeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 sciSyncFence;
-///     VkBool32 sciSyncSemaphore2;
-///     VkBool32 sciSyncImport;
-///     VkBool32 sciSyncExport;
+///     (uint32_t) VkBool32 sciSyncFence;
+///     (uint32_t) VkBool32 sciSyncSemaphore2;
+///     (uint32_t) VkBool32 sciSyncImport;
+///     (uint32_t) VkBool32 sciSyncExport;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalSciSync2FeaturesNV extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryAllocateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceSize allocationSize;
+///     (uint64_t) VkDeviceSize allocationSize;
 ///     uint32_t memoryTypeIndex;
 /// };
 /// ```

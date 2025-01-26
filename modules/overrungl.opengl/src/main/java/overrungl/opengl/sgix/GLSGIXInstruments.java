@@ -54,7 +54,7 @@ public final class GLSGIXInstruments {
     }
 
     /// ```
-    /// GLint glGetInstrumentsSGIX();
+    /// (int) GLint glGetInstrumentsSGIX();
     /// ```
     public int GetInstrumentsSGIX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetInstrumentsSGIX");
@@ -63,7 +63,7 @@ public final class GLSGIXInstruments {
     }
 
     /// ```
-    /// void glInstrumentsBufferSGIX(GLsizei size, GLint* buffer);
+    /// void glInstrumentsBufferSGIX((int) GLsizei size, GLint* buffer);
     /// ```
     public void InstrumentsBufferSGIX(int size, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
@@ -72,7 +72,7 @@ public final class GLSGIXInstruments {
     }
 
     /// ```
-    /// GLint glPollInstrumentsSGIX(GLint* marker_p);
+    /// (int) GLint glPollInstrumentsSGIX(GLint* marker_p);
     /// ```
     public int PollInstrumentsSGIX(MemorySegment marker_p) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
@@ -81,7 +81,7 @@ public final class GLSGIXInstruments {
     }
 
     /// ```
-    /// void glReadInstrumentsSGIX(GLint marker);
+    /// void glReadInstrumentsSGIX((int) GLint marker);
     /// ```
     public void ReadInstrumentsSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReadInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glReadInstrumentsSGIX");
@@ -99,7 +99,7 @@ public final class GLSGIXInstruments {
     }
 
     /// ```
-    /// void glStopInstrumentsSGIX(GLint marker);
+    /// void glStopInstrumentsSGIX((int) GLint marker);
     /// ```
     public void StopInstrumentsSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStopInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glStopInstrumentsSGIX");

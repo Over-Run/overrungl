@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubpassShadingFeaturesHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 subpassShading;
+///     (uint32_t) VkBool32 subpassShading;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSubpassShadingFeaturesHUAWEI extends GroupType {

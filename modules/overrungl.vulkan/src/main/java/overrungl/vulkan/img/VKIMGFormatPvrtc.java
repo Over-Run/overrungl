@@ -29,6 +29,6 @@ public final class VKIMGFormatPvrtc {
     public static final int VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006;
     public static final int VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007;
 
-    private VKIMGFormatPvrtc() { }
+    private VKIMGFormatPvrtc() {}
 
 }

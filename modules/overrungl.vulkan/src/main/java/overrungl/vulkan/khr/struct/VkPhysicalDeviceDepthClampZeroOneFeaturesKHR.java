@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 depthClampZeroOne;
+///     (uint32_t) VkBool32 depthClampZeroOne;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDepthClampZeroOneFeaturesKHR extends GroupType {

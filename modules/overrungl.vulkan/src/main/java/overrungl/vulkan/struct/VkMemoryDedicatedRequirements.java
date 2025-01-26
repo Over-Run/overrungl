@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryDedicatedRequirements {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 prefersDedicatedAllocation;
-///     VkBool32 requiresDedicatedAllocation;
+///     (uint32_t) VkBool32 prefersDedicatedAllocation;
+///     (uint32_t) VkBool32 requiresDedicatedAllocation;
 /// };
 /// ```
 public sealed class VkMemoryDedicatedRequirements extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyMemoryToImageIndirectCommandNV {
-///     VkDeviceAddress srcAddress;
+///     (uint64_t) VkDeviceAddress srcAddress;
 ///     uint32_t bufferRowLength;
 ///     uint32_t bufferImageHeight;
-///     VkImageSubresourceLayers imageSubresource;
-///     VkOffset3D imageOffset;
-///     VkExtent3D imageExtent;
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers imageSubresource;
+///     (struct VkOffset3D) VkOffset3D imageOffset;
+///     (struct VkExtent3D) VkExtent3D imageExtent;
 /// };
 /// ```
 public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {

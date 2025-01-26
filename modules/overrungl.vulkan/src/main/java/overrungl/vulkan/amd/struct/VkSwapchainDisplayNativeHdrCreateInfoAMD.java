@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainDisplayNativeHdrCreateInfoAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 localDimmingEnable;
+///     (uint32_t) VkBool32 localDimmingEnable;
 /// };
 /// ```
 public sealed class VkSwapchainDisplayNativeHdrCreateInfoAMD extends GroupType {

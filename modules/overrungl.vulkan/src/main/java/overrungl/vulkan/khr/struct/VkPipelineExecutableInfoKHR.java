@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineExecutableInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipeline pipeline;
+///     (uint64_t) VkPipeline pipeline;
 ///     uint32_t executableIndex;
 /// };
 /// ```

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBlitImageCubicWeightsInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCubicFilterWeightsQCOM cubicWeights;
+///     (int) VkCubicFilterWeightsQCOM cubicWeights;
 /// };
 /// ```
 public sealed class VkBlitImageCubicWeightsInfoQCOM extends GroupType {

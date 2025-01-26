@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSetLatencyMarkerInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint64_t presentID;
-///     VkLatencyMarkerNV marker;
+///     (int) VkLatencyMarkerNV marker;
 /// };
 /// ```
 public sealed class VkSetLatencyMarkerInfoNV extends GroupType {

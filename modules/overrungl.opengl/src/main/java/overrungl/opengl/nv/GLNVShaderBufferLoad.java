@@ -79,7 +79,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glMakeBufferResidentNV(GLenum target, GLenum access);
+    /// void glMakeBufferResidentNV((unsigned int) GLenum target, (unsigned int) GLenum access);
     /// ```
     public void MakeBufferResidentNV(int target, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeBufferResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeBufferResidentNV");
@@ -88,7 +88,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glMakeBufferNonResidentNV(GLenum target);
+    /// void glMakeBufferNonResidentNV((unsigned int) GLenum target);
     /// ```
     public void MakeBufferNonResidentNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeBufferNonResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeBufferNonResidentNV");
@@ -97,7 +97,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// GLboolean glIsBufferResidentNV(GLenum target);
+    /// GLboolean glIsBufferResidentNV((unsigned int) GLenum target);
     /// ```
     public boolean IsBufferResidentNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsBufferResidentNV)) throw new SymbolNotFoundError("Symbol not found: glIsBufferResidentNV");
@@ -106,7 +106,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glMakeNamedBufferResidentNV(GLuint buffer, GLenum access);
+    /// void glMakeNamedBufferResidentNV((unsigned int) GLuint buffer, (unsigned int) GLenum access);
     /// ```
     public void MakeNamedBufferResidentNV(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeNamedBufferResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeNamedBufferResidentNV");
@@ -115,7 +115,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glMakeNamedBufferNonResidentNV(GLuint buffer);
+    /// void glMakeNamedBufferNonResidentNV((unsigned int) GLuint buffer);
     /// ```
     public void MakeNamedBufferNonResidentNV(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeNamedBufferNonResidentNV)) throw new SymbolNotFoundError("Symbol not found: glMakeNamedBufferNonResidentNV");
@@ -124,7 +124,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// GLboolean glIsNamedBufferResidentNV(GLuint buffer);
+    /// GLboolean glIsNamedBufferResidentNV((unsigned int) GLuint buffer);
     /// ```
     public boolean IsNamedBufferResidentNV(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsNamedBufferResidentNV)) throw new SymbolNotFoundError("Symbol not found: glIsNamedBufferResidentNV");
@@ -133,7 +133,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glGetBufferParameterui64vNV(GLenum target, GLenum pname, GLuint64EXT* params);
+    /// void glGetBufferParameterui64vNV((unsigned int) GLenum target, (unsigned int) GLenum pname, GLuint64EXT* params);
     /// ```
     public void GetBufferParameterui64vNV(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameterui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetBufferParameterui64vNV");
@@ -142,7 +142,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint64EXT* params);
+    /// void glGetNamedBufferParameterui64vNV((unsigned int) GLuint buffer, (unsigned int) GLenum pname, GLuint64EXT* params);
     /// ```
     public void GetNamedBufferParameterui64vNV(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameterui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameterui64vNV");
@@ -151,7 +151,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glGetIntegerui64vNV(GLenum value, GLuint64EXT* result);
+    /// void glGetIntegerui64vNV((unsigned int) GLenum value, GLuint64EXT* result);
     /// ```
     public void GetIntegerui64vNV(int value, MemorySegment result) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64vNV");
@@ -160,7 +160,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glUniformui64NV(GLint location, GLuint64EXT value);
+    /// void glUniformui64NV((int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64EXT value);
     /// ```
     public void Uniformui64NV(int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformui64NV)) throw new SymbolNotFoundError("Symbol not found: glUniformui64NV");
@@ -169,7 +169,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glUniformui64vNV(GLint location, GLsizei count, const GLuint64EXT* value);
+    /// void glUniformui64vNV((int) GLint location, (int) GLsizei count, const GLuint64EXT* value);
     /// ```
     public void Uniformui64vNV(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformui64vNV)) throw new SymbolNotFoundError("Symbol not found: glUniformui64vNV");
@@ -178,7 +178,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT* params);
+    /// void glGetUniformui64vNV((unsigned int) GLuint program, (int) GLint location, GLuint64EXT* params);
     /// ```
     public void GetUniformui64vNV(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetUniformui64vNV");
@@ -187,7 +187,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glProgramUniformui64NV(GLuint program, GLint location, GLuint64EXT value);
+    /// void glProgramUniformui64NV((unsigned int) GLuint program, (int) GLint location, ((uint64_t) khronos_uint64_t) GLuint64EXT value);
     /// ```
     public void ProgramUniformui64NV(int program, int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformui64NV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformui64NV");
@@ -196,7 +196,7 @@ public final class GLNVShaderBufferLoad {
     }
 
     /// ```
-    /// void glProgramUniformui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT* value);
+    /// void glProgramUniformui64vNV((unsigned int) GLuint program, (int) GLint location, (int) GLsizei count, const GLuint64EXT* value);
     /// ```
     public void ProgramUniformui64vNV(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformui64vNV)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformui64vNV");

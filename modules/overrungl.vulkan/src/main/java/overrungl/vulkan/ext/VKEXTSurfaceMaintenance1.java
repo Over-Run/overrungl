@@ -30,6 +30,6 @@ public final class VKEXTSurfaceMaintenance1 {
     public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_EXT = 1000274001;
     public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_EXT = 1000274002;
 
-    private VKEXTSurfaceMaintenance1() { }
+    private VKEXTSurfaceMaintenance1() {}
 
 }

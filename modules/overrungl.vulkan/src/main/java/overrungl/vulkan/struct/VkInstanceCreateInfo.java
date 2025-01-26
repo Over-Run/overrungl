@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkInstanceCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkInstanceCreateFlags flags;
+///     ((uint32_t) VkFlags) VkInstanceCreateFlags flags;
 ///     const VkApplicationInfo* pApplicationInfo;
 ///     uint32_t enabledLayerCount;
 ///     const char* const * ppEnabledLayerNames;

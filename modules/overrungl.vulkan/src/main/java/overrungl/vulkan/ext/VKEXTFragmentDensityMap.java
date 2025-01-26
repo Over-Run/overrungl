@@ -37,6 +37,6 @@ public final class VKEXTFragmentDensityMap {
     public static final int VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT = 0x00400000;
     public static final int VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT = 1000218007;
 
-    private VKEXTFragmentDensityMap() { }
+    private VKEXTFragmentDensityMap() {}
 
 }

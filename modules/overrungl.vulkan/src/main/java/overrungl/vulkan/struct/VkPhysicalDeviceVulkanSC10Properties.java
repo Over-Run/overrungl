@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkanSC10Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 deviceNoDynamicHostAllocations;
-///     VkBool32 deviceDestroyFreesMemory;
-///     VkBool32 commandPoolMultipleCommandBuffersRecording;
-///     VkBool32 commandPoolResetCommandBuffer;
-///     VkBool32 commandBufferSimultaneousUse;
-///     VkBool32 secondaryCommandBufferNullOrImagelessFramebuffer;
-///     VkBool32 recycleDescriptorSetMemory;
-///     VkBool32 recyclePipelineMemory;
+///     (uint32_t) VkBool32 deviceNoDynamicHostAllocations;
+///     (uint32_t) VkBool32 deviceDestroyFreesMemory;
+///     (uint32_t) VkBool32 commandPoolMultipleCommandBuffersRecording;
+///     (uint32_t) VkBool32 commandPoolResetCommandBuffer;
+///     (uint32_t) VkBool32 commandBufferSimultaneousUse;
+///     (uint32_t) VkBool32 secondaryCommandBufferNullOrImagelessFramebuffer;
+///     (uint32_t) VkBool32 recycleDescriptorSetMemory;
+///     (uint32_t) VkBool32 recyclePipelineMemory;
 ///     uint32_t maxRenderPassSubpasses;
 ///     uint32_t maxRenderPassDependencies;
 ///     uint32_t maxSubpassInputAttachments;
@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     uint32_t maxQueryFaultCount;
 ///     uint32_t maxCallbackFaultCount;
 ///     uint32_t maxCommandPoolCommandBuffers;
-///     VkDeviceSize maxCommandBufferSize;
+///     (uint64_t) VkDeviceSize maxCommandBufferSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkanSC10Properties extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 inheritedViewportScissor2D;
+///     (uint32_t) VkBool32 inheritedViewportScissor2D;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceInheritedViewportScissorFeaturesNV extends GroupType {

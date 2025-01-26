@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceConditionalRenderingFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 conditionalRendering;
-///     VkBool32 inheritedConditionalRendering;
+///     (uint32_t) VkBool32 conditionalRendering;
+///     (uint32_t) VkBool32 inheritedConditionalRendering;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceConditionalRenderingFeaturesEXT extends GroupType {

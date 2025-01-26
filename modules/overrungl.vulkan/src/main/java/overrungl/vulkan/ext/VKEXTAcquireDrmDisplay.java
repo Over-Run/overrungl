@@ -21,41 +21,33 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTAcquireDrmDisplay {
+public final class VKEXTAcquireDrmDisplay {
     public static final int VK_EXT_ACQUIRE_DRM_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_DRM_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_drm_display";
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkAcquireDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetDrmDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkAcquireDrmDisplayEXT;
-        public final MemorySegment PFN_vkGetDrmDisplayEXT;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkAcquireDrmDisplayEXT = func.invoke(instance, "vkAcquireDrmDisplayEXT");
-            PFN_vkGetDrmDisplayEXT = func.invoke(instance, "vkGetDrmDisplayEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTAcquireDrmDisplay(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKEXTAcquireDrmDisplay() {}
 
     /// ```
-    /// VkResult vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int32_t drmFd, VkDisplayKHR display);
+    /// (int) VkResult vkAcquireDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, (uint64_t) VkDisplayKHR display);
     /// ```
-    public int AcquireDrmDisplayEXT(MemorySegment physicalDevice, int drmFd, long display) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkAcquireDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
-        try { return (int) Handles.MH_vkAcquireDrmDisplayEXT.invokeExact(handles.PFN_vkAcquireDrmDisplayEXT, physicalDevice, drmFd, display); }
-        catch (Throwable e) { throw new RuntimeException("error in AcquireDrmDisplayEXT", e); }
+    public static int vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, long display) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
+        try { return (int) Handles.MH_vkAcquireDrmDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT, physicalDevice.segment(), drmFd, display); }
+        catch (Throwable e) { throw new RuntimeException("error in vkAcquireDrmDisplayEXT", e); }
     }
 
     /// ```
-    /// VkResult vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int32_t drmFd, uint32_t connectorId, VkDisplayKHR* display);
+    /// (int) VkResult vkGetDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, uint32_t connectorId, VkDisplayKHR* display);
     /// ```
-    public int GetDrmDisplayEXT(MemorySegment physicalDevice, int drmFd, int connectorId, MemorySegment display) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
-        try { return (int) Handles.MH_vkGetDrmDisplayEXT.invokeExact(handles.PFN_vkGetDrmDisplayEXT, physicalDevice, drmFd, connectorId, display); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDrmDisplayEXT", e); }
+    public static int vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, int connectorId, MemorySegment display) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
+        try { return (int) Handles.MH_vkGetDrmDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT, physicalDevice.segment(), drmFd, connectorId, display); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDrmDisplayEXT", e); }
     }
 
 }

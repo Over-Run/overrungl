@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePointClippingProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPointClippingBehavior pointClippingBehavior;
+///     (int) VkPointClippingBehavior pointClippingBehavior;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePointClippingProperties extends GroupType {

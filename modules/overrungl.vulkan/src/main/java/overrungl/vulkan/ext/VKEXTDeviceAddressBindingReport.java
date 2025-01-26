@@ -27,6 +27,6 @@ public final class VKEXTDeviceAddressBindingReport {
     public static final int VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT = 1000354001;
     public static final int VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT = 0x00000008;
 
-    private VKEXTDeviceAddressBindingReport() { }
+    private VKEXTDeviceAddressBindingReport() {}
 
 }

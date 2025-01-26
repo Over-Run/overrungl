@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint64_t drmFormatModifier;
-///     VkSharingMode sharingMode;
+///     (int) VkSharingMode sharingMode;
 ///     uint32_t queueFamilyIndexCount;
 ///     const uint32_t* pQueueFamilyIndices;
 /// };

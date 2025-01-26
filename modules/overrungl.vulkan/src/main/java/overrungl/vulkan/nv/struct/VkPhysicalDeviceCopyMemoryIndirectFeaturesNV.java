@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 indirectCopy;
+///     (uint32_t) VkBool32 indirectCopy;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCopyMemoryIndirectFeaturesNV extends GroupType {

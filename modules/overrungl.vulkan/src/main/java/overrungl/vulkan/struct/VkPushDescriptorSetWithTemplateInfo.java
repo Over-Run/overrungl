@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPushDescriptorSetWithTemplateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorUpdateTemplate descriptorUpdateTemplate;
-///     VkPipelineLayout layout;
+///     (uint64_t) VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+///     (uint64_t) VkPipelineLayout layout;
 ///     uint32_t set;
 ///     const void* pData;
 /// };

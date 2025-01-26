@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCooperativeMatrixPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t MSize;
 ///     uint32_t NSize;
 ///     uint32_t KSize;
-///     VkComponentTypeNV AType;
-///     VkComponentTypeNV BType;
-///     VkComponentTypeNV CType;
-///     VkComponentTypeNV DType;
-///     VkScopeNV scope;
+///     ((int) VkComponentTypeKHR) VkComponentTypeNV AType;
+///     ((int) VkComponentTypeKHR) VkComponentTypeNV BType;
+///     ((int) VkComponentTypeKHR) VkComponentTypeNV CType;
+///     ((int) VkComponentTypeKHR) VkComponentTypeNV DType;
+///     ((int) VkScopeKHR) VkScopeNV scope;
 /// };
 /// ```
 public sealed class VkCooperativeMatrixPropertiesNV extends GroupType {

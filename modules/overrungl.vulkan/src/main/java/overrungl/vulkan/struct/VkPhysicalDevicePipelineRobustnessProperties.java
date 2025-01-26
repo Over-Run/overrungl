@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePipelineRobustnessProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
-///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+///     (int) VkPipelineRobustnessImageBehavior defaultRobustnessImages;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePipelineRobustnessProperties extends GroupType {

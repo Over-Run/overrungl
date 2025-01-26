@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCommandBufferInheritanceConditionalRenderingInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 conditionalRenderingEnable;
+///     (uint32_t) VkBool32 conditionalRenderingEnable;
 /// };
 /// ```
 public sealed class VkCommandBufferInheritanceConditionalRenderingInfoEXT extends GroupType {

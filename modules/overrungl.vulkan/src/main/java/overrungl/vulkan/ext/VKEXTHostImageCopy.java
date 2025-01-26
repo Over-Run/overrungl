@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTHostImageCopy {
+public final class VKEXTHostImageCopy {
     public static final int VK_EXT_HOST_IMAGE_COPY_SPEC_VERSION = 1;
     public static final String VK_EXT_HOST_IMAGE_COPY_EXTENSION_NAME = "VK_EXT_host_image_copy";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES_EXT = 1000270000;
@@ -37,74 +37,60 @@ public class VKEXTHostImageCopy {
     public static final int VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT = 0x00400000;
     public static final long VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT = 0x400000000000L;
     public static final int VK_HOST_IMAGE_COPY_MEMCPY_EXT = 0x00000001;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCopyMemoryToImageEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCopyImageToMemoryEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkCopyImageToImageEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkTransitionImageLayoutEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetImageSubresourceLayout2EXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkCopyMemoryToImageEXT;
-        public final MemorySegment PFN_vkCopyImageToMemoryEXT;
-        public final MemorySegment PFN_vkCopyImageToImageEXT;
-        public final MemorySegment PFN_vkTransitionImageLayoutEXT;
-        public final MemorySegment PFN_vkGetImageSubresourceLayout2EXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkCopyMemoryToImageEXT = func.invoke(device, "vkCopyMemoryToImageEXT", "vkCopyMemoryToImage");
-            PFN_vkCopyImageToMemoryEXT = func.invoke(device, "vkCopyImageToMemoryEXT", "vkCopyImageToMemory");
-            PFN_vkCopyImageToImageEXT = func.invoke(device, "vkCopyImageToImageEXT", "vkCopyImageToImage");
-            PFN_vkTransitionImageLayoutEXT = func.invoke(device, "vkTransitionImageLayoutEXT", "vkTransitionImageLayout");
-            PFN_vkGetImageSubresourceLayout2EXT = func.invoke(device, "vkGetImageSubresourceLayout2EXT", "vkGetImageSubresourceLayout2");
-        }
+        private Handles() {}
     }
 
-    public VKEXTHostImageCopy(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
+    private VKEXTHostImageCopy() {}
+
+    /// ```
+    /// (int) VkResult vkCopyMemoryToImageEXT((struct VkDevice*) VkDevice device, const VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
+    /// ```
+    public static int vkCopyMemoryToImageEXT(VkDevice device, MemorySegment pCopyMemoryToImageInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMemoryToImageEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyMemoryToImageEXT");
+        try { return (int) Handles.MH_vkCopyMemoryToImageEXT.invokeExact(device.capabilities().PFN_vkCopyMemoryToImageEXT, device.segment(), pCopyMemoryToImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCopyMemoryToImageEXT", e); }
     }
 
     /// ```
-    /// VkResult vkCopyMemoryToImageEXT(VkDevice device, const VkCopyMemoryToImageInfo* pCopyMemoryToImageInfo);
+    /// (int) VkResult vkCopyImageToMemoryEXT((struct VkDevice*) VkDevice device, const VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
     /// ```
-    public int CopyMemoryToImageEXT(MemorySegment device, MemorySegment pCopyMemoryToImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCopyMemoryToImageEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyMemoryToImageEXT");
-        try { return (int) Handles.MH_vkCopyMemoryToImageEXT.invokeExact(handles.PFN_vkCopyMemoryToImageEXT, device, pCopyMemoryToImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CopyMemoryToImageEXT", e); }
+    public static int vkCopyImageToMemoryEXT(VkDevice device, MemorySegment pCopyImageToMemoryInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToMemoryEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToMemoryEXT");
+        try { return (int) Handles.MH_vkCopyImageToMemoryEXT.invokeExact(device.capabilities().PFN_vkCopyImageToMemoryEXT, device.segment(), pCopyImageToMemoryInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCopyImageToMemoryEXT", e); }
     }
 
     /// ```
-    /// VkResult vkCopyImageToMemoryEXT(VkDevice device, const VkCopyImageToMemoryInfo* pCopyImageToMemoryInfo);
+    /// (int) VkResult vkCopyImageToImageEXT((struct VkDevice*) VkDevice device, const VkCopyImageToImageInfo* pCopyImageToImageInfo);
     /// ```
-    public int CopyImageToMemoryEXT(MemorySegment device, MemorySegment pCopyImageToMemoryInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCopyImageToMemoryEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToMemoryEXT");
-        try { return (int) Handles.MH_vkCopyImageToMemoryEXT.invokeExact(handles.PFN_vkCopyImageToMemoryEXT, device, pCopyImageToMemoryInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CopyImageToMemoryEXT", e); }
+    public static int vkCopyImageToImageEXT(VkDevice device, MemorySegment pCopyImageToImageInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyImageToImageEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToImageEXT");
+        try { return (int) Handles.MH_vkCopyImageToImageEXT.invokeExact(device.capabilities().PFN_vkCopyImageToImageEXT, device.segment(), pCopyImageToImageInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCopyImageToImageEXT", e); }
     }
 
     /// ```
-    /// VkResult vkCopyImageToImageEXT(VkDevice device, const VkCopyImageToImageInfo* pCopyImageToImageInfo);
+    /// (int) VkResult vkTransitionImageLayoutEXT((struct VkDevice*) VkDevice device, uint32_t transitionCount, const VkHostImageLayoutTransitionInfo* pTransitions);
     /// ```
-    public int CopyImageToImageEXT(MemorySegment device, MemorySegment pCopyImageToImageInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCopyImageToImageEXT)) throw new SymbolNotFoundError("Symbol not found: vkCopyImageToImageEXT");
-        try { return (int) Handles.MH_vkCopyImageToImageEXT.invokeExact(handles.PFN_vkCopyImageToImageEXT, device, pCopyImageToImageInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in CopyImageToImageEXT", e); }
+    public static int vkTransitionImageLayoutEXT(VkDevice device, int transitionCount, MemorySegment pTransitions) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTransitionImageLayoutEXT)) throw new SymbolNotFoundError("Symbol not found: vkTransitionImageLayoutEXT");
+        try { return (int) Handles.MH_vkTransitionImageLayoutEXT.invokeExact(device.capabilities().PFN_vkTransitionImageLayoutEXT, device.segment(), transitionCount, pTransitions); }
+        catch (Throwable e) { throw new RuntimeException("error in vkTransitionImageLayoutEXT", e); }
     }
 
     /// ```
-    /// VkResult vkTransitionImageLayoutEXT(VkDevice device, uint32_t transitionCount, const VkHostImageLayoutTransitionInfo* pTransitions);
+    /// void vkGetImageSubresourceLayout2EXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
     /// ```
-    public int TransitionImageLayoutEXT(MemorySegment device, int transitionCount, MemorySegment pTransitions) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkTransitionImageLayoutEXT)) throw new SymbolNotFoundError("Symbol not found: vkTransitionImageLayoutEXT");
-        try { return (int) Handles.MH_vkTransitionImageLayoutEXT.invokeExact(handles.PFN_vkTransitionImageLayoutEXT, device, transitionCount, pTransitions); }
-        catch (Throwable e) { throw new RuntimeException("error in TransitionImageLayoutEXT", e); }
-    }
-
-    /// ```
-    /// void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
-    /// ```
-    public void GetImageSubresourceLayout2EXT(MemorySegment device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetImageSubresourceLayout2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
-        try { Handles.MH_vkGetImageSubresourceLayout2EXT.invokeExact(handles.PFN_vkGetImageSubresourceLayout2EXT, device, image, pSubresource, pLayout); }
-        catch (Throwable e) { throw new RuntimeException("error in GetImageSubresourceLayout2EXT", e); }
+    public static void vkGetImageSubresourceLayout2EXT(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
+        try { Handles.MH_vkGetImageSubresourceLayout2EXT.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT, device.segment(), image, pSubresource, pLayout); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2EXT", e); }
     }
 
 }

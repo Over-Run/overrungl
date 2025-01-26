@@ -46,7 +46,7 @@ public final class GLNVXProgressFence {
     }
 
     /// ```
-    /// GLuint glCreateProgressFenceNVX();
+    /// (unsigned int) GLuint glCreateProgressFenceNVX();
     /// ```
     public int CreateProgressFenceNVX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgressFenceNVX)) throw new SymbolNotFoundError("Symbol not found: glCreateProgressFenceNVX");
@@ -55,7 +55,7 @@ public final class GLNVXProgressFence {
     }
 
     /// ```
-    /// void glSignalSemaphoreui64NVX(GLuint signalGpu, GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
+    /// void glSignalSemaphoreui64NVX((unsigned int) GLuint signalGpu, (int) GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
     /// ```
     public void SignalSemaphoreui64NVX(int signalGpu, int fenceObjectCount, MemorySegment semaphoreArray, MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSignalSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glSignalSemaphoreui64NVX");
@@ -64,7 +64,7 @@ public final class GLNVXProgressFence {
     }
 
     /// ```
-    /// void glWaitSemaphoreui64NVX(GLuint waitGpu, GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
+    /// void glWaitSemaphoreui64NVX((unsigned int) GLuint waitGpu, (int) GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
     /// ```
     public void WaitSemaphoreui64NVX(int waitGpu, int fenceObjectCount, MemorySegment semaphoreArray, MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glWaitSemaphoreui64NVX");
@@ -73,7 +73,7 @@ public final class GLNVXProgressFence {
     }
 
     /// ```
-    /// void glClientWaitSemaphoreui64NVX(GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
+    /// void glClientWaitSemaphoreui64NVX((int) GLsizei fenceObjectCount, const GLuint* semaphoreArray, const GLuint64* fenceValueArray);
     /// ```
     public void ClientWaitSemaphoreui64NVX(int fenceObjectCount, MemorySegment semaphoreArray, MemorySegment fenceValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientWaitSemaphoreui64NVX)) throw new SymbolNotFoundError("Symbol not found: glClientWaitSemaphoreui64NVX");

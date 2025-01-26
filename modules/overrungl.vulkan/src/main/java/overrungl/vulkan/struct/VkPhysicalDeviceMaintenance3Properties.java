@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance3Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxPerSetDescriptors;
-///     VkDeviceSize maxMemoryAllocationSize;
+///     (uint64_t) VkDeviceSize maxMemoryAllocationSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMaintenance3Properties extends GroupType {

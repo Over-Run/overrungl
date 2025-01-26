@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureInstanceKHR {
-///     VkTransformMatrixKHR transform;
+///     (struct VkTransformMatrixKHR) VkTransformMatrixKHR transform;
 ///     uint32_t instanceCustomIndex;
 ///     uint32_t mask;
 ///     uint32_t instanceShaderBindingTableRecordOffset;
-///     VkGeometryInstanceFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags;
 ///     uint64_t accelerationStructureReference;
 /// };
 /// ```

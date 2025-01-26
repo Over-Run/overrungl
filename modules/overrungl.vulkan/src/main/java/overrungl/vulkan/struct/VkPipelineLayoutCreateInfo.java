@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineLayoutCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineLayoutCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineLayoutCreateFlags flags;
 ///     uint32_t setLayoutCount;
 ///     const VkDescriptorSetLayout* pSetLayouts;
 ///     uint32_t pushConstantRangeCount;

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetLayoutBindingFlagsCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t bindingCount;
 ///     const VkDescriptorBindingFlags* pBindingFlags;

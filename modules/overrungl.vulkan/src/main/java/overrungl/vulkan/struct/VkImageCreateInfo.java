@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageCreateFlags flags;
-///     VkImageType imageType;
-///     VkFormat format;
-///     VkExtent3D extent;
+///     ((uint32_t) VkFlags) VkImageCreateFlags flags;
+///     (int) VkImageType imageType;
+///     (int) VkFormat format;
+///     (struct VkExtent3D) VkExtent3D extent;
 ///     uint32_t mipLevels;
 ///     uint32_t arrayLayers;
-///     VkSampleCountFlagBits samples;
-///     VkImageTiling tiling;
-///     VkImageUsageFlags usage;
-///     VkSharingMode sharingMode;
+///     (int) VkSampleCountFlagBits samples;
+///     (int) VkImageTiling tiling;
+///     ((uint32_t) VkFlags) VkImageUsageFlags usage;
+///     (int) VkSharingMode sharingMode;
 ///     uint32_t queueFamilyIndexCount;
 ///     const uint32_t* pQueueFamilyIndices;
-///     VkImageLayout initialLayout;
+///     (int) VkImageLayout initialLayout;
 /// };
 /// ```
 public sealed class VkImageCreateInfo extends GroupType {

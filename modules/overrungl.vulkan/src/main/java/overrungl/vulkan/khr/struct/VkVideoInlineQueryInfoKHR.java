@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoInlineQueryInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkQueryPool queryPool;
+///     (uint64_t) VkQueryPool queryPool;
 ///     uint32_t firstQuery;
 ///     uint32_t queryCount;
 /// };

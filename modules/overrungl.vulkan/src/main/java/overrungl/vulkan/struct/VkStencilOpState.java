@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkStencilOpState {
-///     VkStencilOp failOp;
-///     VkStencilOp passOp;
-///     VkStencilOp depthFailOp;
-///     VkCompareOp compareOp;
+///     (int) VkStencilOp failOp;
+///     (int) VkStencilOp passOp;
+///     (int) VkStencilOp depthFailOp;
+///     (int) VkCompareOp compareOp;
 ///     uint32_t compareMask;
 ///     uint32_t writeMask;
 ///     uint32_t reference;

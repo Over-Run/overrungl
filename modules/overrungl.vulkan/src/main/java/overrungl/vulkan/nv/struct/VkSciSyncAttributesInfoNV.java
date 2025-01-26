@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSciSyncAttributesInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSciSyncClientTypeNV clientType;
-///     VkSciSyncPrimitiveTypeNV primitiveType;
+///     (int) VkSciSyncClientTypeNV clientType;
+///     (int) VkSciSyncPrimitiveTypeNV primitiveType;
 /// };
 /// ```
 public sealed class VkSciSyncAttributesInfoNV extends GroupType {

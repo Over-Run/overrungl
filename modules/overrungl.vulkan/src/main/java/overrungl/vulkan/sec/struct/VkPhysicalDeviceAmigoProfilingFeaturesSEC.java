@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAmigoProfilingFeaturesSEC {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 amigoProfiling;
+///     (uint32_t) VkBool32 amigoProfiling;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceAmigoProfilingFeaturesSEC extends GroupType {

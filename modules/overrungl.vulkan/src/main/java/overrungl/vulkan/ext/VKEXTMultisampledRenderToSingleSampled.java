@@ -25,6 +25,6 @@ public final class VKEXTMultisampledRenderToSingleSampled {
     public static final int VK_STRUCTURE_TYPE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_INFO_EXT = 1000376002;
     public static final int VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT = 0x00040000;
 
-    private VKEXTMultisampledRenderToSingleSampled() { }
+    private VKEXTMultisampledRenderToSingleSampled() {}
 
 }

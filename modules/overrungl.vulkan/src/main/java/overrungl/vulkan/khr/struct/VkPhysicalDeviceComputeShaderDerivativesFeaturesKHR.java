@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 computeDerivativeGroupQuads;
-///     VkBool32 computeDerivativeGroupLinear;
+///     (uint32_t) VkBool32 computeDerivativeGroupQuads;
+///     (uint32_t) VkBool32 computeDerivativeGroupLinear;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR extends GroupType {

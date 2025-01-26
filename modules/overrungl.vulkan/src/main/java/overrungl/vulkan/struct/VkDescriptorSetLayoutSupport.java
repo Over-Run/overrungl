@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetLayoutSupport {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 supported;
+///     (uint32_t) VkBool32 supported;
 /// };
 /// ```
 public sealed class VkDescriptorSetLayoutSupport extends GroupType {

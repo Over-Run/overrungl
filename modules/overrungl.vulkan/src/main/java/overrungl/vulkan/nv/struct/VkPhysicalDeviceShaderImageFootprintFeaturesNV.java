@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderImageFootprintFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 imageFootprint;
+///     (uint32_t) VkBool32 imageFootprint;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderImageFootprintFeaturesNV extends GroupType {

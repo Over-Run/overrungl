@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineViewportStateCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineViewportStateCreateFlags flags;
 ///     uint32_t viewportCount;
 ///     const VkViewport* pViewports;
 ///     uint32_t scissorCount;

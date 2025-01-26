@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalMemoryAcquireUnmodifiedEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 acquireUnmodifiedMemory;
+///     (uint32_t) VkBool32 acquireUnmodifiedMemory;
 /// };
 /// ```
 public sealed class VkExternalMemoryAcquireUnmodifiedEXT extends GroupType {

@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTMetalObjects {
+public final class VKEXTMetalObjects {
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = 0x00000001;
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = 0x00000002;
     public static final int VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = 0x00000004;
@@ -42,26 +42,20 @@ public class VKEXTMetalObjects {
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT = 1000311009;
     public static final int VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311010;
     public static final int VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT = 1000311011;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkExportMetalObjectsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkExportMetalObjectsEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTMetalObjects(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTMetalObjects() {}
 
     /// ```
-    /// void vkExportMetalObjectsEXT(VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
+    /// void vkExportMetalObjectsEXT((struct VkDevice*) VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
     /// ```
-    public void ExportMetalObjectsEXT(MemorySegment device, MemorySegment pMetalObjectsInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
-        try { Handles.MH_vkExportMetalObjectsEXT.invokeExact(handles.PFN_vkExportMetalObjectsEXT, device, pMetalObjectsInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in ExportMetalObjectsEXT", e); }
+    public static void vkExportMetalObjectsEXT(VkDevice device, MemorySegment pMetalObjectsInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
+        try { Handles.MH_vkExportMetalObjectsEXT.invokeExact(device.capabilities().PFN_vkExportMetalObjectsEXT, device.segment(), pMetalObjectsInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkExportMetalObjectsEXT", e); }
     }
 
 }

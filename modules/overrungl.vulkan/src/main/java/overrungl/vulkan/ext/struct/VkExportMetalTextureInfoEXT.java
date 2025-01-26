@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportMetalTextureInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
-///     VkImageView imageView;
-///     VkBufferView bufferView;
-///     VkImageAspectFlagBits plane;
-///     MTLTexture_id mtlTexture;
+///     (uint64_t) VkImage image;
+///     (uint64_t) VkImageView imageView;
+///     (uint64_t) VkBufferView bufferView;
+///     (int) VkImageAspectFlagBits plane;
+///     (void*) MTLTexture_id mtlTexture;
 /// };
 /// ```
 public sealed class VkExportMetalTextureInfoEXT extends GroupType {

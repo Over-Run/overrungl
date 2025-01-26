@@ -22,6 +22,6 @@ public final class VKNVCommandBufferInheritance {
     public static final String VK_NV_COMMAND_BUFFER_INHERITANCE_EXTENSION_NAME = "VK_NV_command_buffer_inheritance";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV = 1000559000;
 
-    private VKNVCommandBufferInheritance() { }
+    private VKNVCommandBufferInheritance() {}
 
 }

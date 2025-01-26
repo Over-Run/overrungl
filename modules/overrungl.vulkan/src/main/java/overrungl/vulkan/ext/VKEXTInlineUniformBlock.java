@@ -26,6 +26,6 @@ public final class VKEXTInlineUniformBlock {
     public static final int VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT = 1000138002;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT = 1000138003;
 
-    private VKEXTInlineUniformBlock() { }
+    private VKEXTInlineUniformBlock() {}
 
 }

@@ -45,6 +45,6 @@ public final class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR = 1000553007;
     public static final int VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR = 1000553008;
 
-    private VKKHRVideoEncodeQuantizationMap() { }
+    private VKKHRVideoEncodeQuantizationMap() {}
 
 }

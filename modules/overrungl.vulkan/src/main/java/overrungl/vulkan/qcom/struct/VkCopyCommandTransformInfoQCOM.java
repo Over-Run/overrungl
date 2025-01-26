@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyCommandTransformInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSurfaceTransformFlagBitsKHR transform;
+///     (int) VkSurfaceTransformFlagBitsKHR transform;
 /// };
 /// ```
 public sealed class VkCopyCommandTransformInfoQCOM extends GroupType {

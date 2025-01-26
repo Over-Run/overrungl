@@ -21,41 +21,33 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTAcquireXlibDisplay {
+public final class VKEXTAcquireXlibDisplay {
     public static final int VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_xlib_display";
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkAcquireXlibDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         public static final MethodHandle MH_vkGetRandROutputDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.C_LONG, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkAcquireXlibDisplayEXT;
-        public final MemorySegment PFN_vkGetRandROutputDisplayEXT;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkAcquireXlibDisplayEXT = func.invoke(instance, "vkAcquireXlibDisplayEXT");
-            PFN_vkGetRandROutputDisplayEXT = func.invoke(instance, "vkGetRandROutputDisplayEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTAcquireXlibDisplay(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKEXTAcquireXlibDisplay() {}
 
     /// ```
-    /// VkResult vkAcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, Display* dpy, VkDisplayKHR display);
+    /// (int) VkResult vkAcquireXlibDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, Display* dpy, (uint64_t) VkDisplayKHR display);
     /// ```
-    public int AcquireXlibDisplayEXT(MemorySegment physicalDevice, MemorySegment dpy, long display) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkAcquireXlibDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireXlibDisplayEXT");
-        try { return (int) Handles.MH_vkAcquireXlibDisplayEXT.invokeExact(handles.PFN_vkAcquireXlibDisplayEXT, physicalDevice, dpy, display); }
-        catch (Throwable e) { throw new RuntimeException("error in AcquireXlibDisplayEXT", e); }
+    public static int vkAcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long display) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireXlibDisplayEXT");
+        try { return (int) Handles.MH_vkAcquireXlibDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT, physicalDevice.segment(), dpy, display); }
+        catch (Throwable e) { throw new RuntimeException("error in vkAcquireXlibDisplayEXT", e); }
     }
 
     /// ```
-    /// VkResult vkGetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, Display* dpy, RROutput rrOutput, VkDisplayKHR* pDisplay);
+    /// (int) VkResult vkGetRandROutputDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, Display* dpy, ((unsigned long) XID) RROutput rrOutput, VkDisplayKHR* pDisplay);
     /// ```
-    public int GetRandROutputDisplayEXT(MemorySegment physicalDevice, MemorySegment dpy, long rrOutput, MemorySegment pDisplay) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetRandROutputDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetRandROutputDisplayEXT");
-        try { return (int) Handles.MH_vkGetRandROutputDisplayEXT.invoke(handles.PFN_vkGetRandROutputDisplayEXT, physicalDevice, dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, rrOutput), pDisplay); }
-        catch (Throwable e) { throw new RuntimeException("error in GetRandROutputDisplayEXT", e); }
+    public static int vkGetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long rrOutput, MemorySegment pDisplay) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetRandROutputDisplayEXT");
+        try { return (int) Handles.MH_vkGetRandROutputDisplayEXT.invoke(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT, physicalDevice.segment(), dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, rrOutput), pDisplay); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetRandROutputDisplayEXT", e); }
     }
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassShadingPipelineCreateInfoHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkRenderPass renderPass;
+///     (uint64_t) VkRenderPass renderPass;
 ///     uint32_t subpass;
 /// };
 /// ```

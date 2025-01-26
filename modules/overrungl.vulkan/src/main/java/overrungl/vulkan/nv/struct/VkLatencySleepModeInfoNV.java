@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkLatencySleepModeInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 lowLatencyMode;
-///     VkBool32 lowLatencyBoost;
+///     (uint32_t) VkBool32 lowLatencyMode;
+///     (uint32_t) VkBool32 lowLatencyBoost;
 ///     uint32_t minimumIntervalUs;
 /// };
 /// ```

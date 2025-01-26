@@ -23,6 +23,6 @@ public final class VKEXTShaderTileImage {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_FEATURES_EXT = 1000395000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT = 1000395001;
 
-    private VKEXTShaderTileImage() { }
+    private VKEXTShaderTileImage() {}
 
 }

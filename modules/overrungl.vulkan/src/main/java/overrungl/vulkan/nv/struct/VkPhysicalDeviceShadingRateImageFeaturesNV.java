@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShadingRateImageFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shadingRateImage;
-///     VkBool32 shadingRateCoarseSampleOrder;
+///     (uint32_t) VkBool32 shadingRateImage;
+///     (uint32_t) VkBool32 shadingRateCoarseSampleOrder;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShadingRateImageFeaturesNV extends GroupType {

@@ -26,6 +26,6 @@ public final class VKQCOMImageProcessing2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM = 1000518001;
     public static final int VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM = 1000518002;
 
-    private VKQCOMImageProcessing2() { }
+    private VKQCOMImageProcessing2() {}
 
 }

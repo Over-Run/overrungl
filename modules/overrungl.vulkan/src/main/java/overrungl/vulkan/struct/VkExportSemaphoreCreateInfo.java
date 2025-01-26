@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExportSemaphoreCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalSemaphoreHandleTypeFlags handleTypes;
+///     ((uint32_t) VkFlags) VkExternalSemaphoreHandleTypeFlags handleTypes;
 /// };
 /// ```
 public sealed class VkExportSemaphoreCreateInfo extends GroupType {

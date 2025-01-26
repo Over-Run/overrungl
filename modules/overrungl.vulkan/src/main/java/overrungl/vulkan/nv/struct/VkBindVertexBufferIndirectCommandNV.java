@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindVertexBufferIndirectCommandNV {
-///     VkDeviceAddress bufferAddress;
+///     (uint64_t) VkDeviceAddress bufferAddress;
 ///     uint32_t size;
 ///     uint32_t stride;
 /// };

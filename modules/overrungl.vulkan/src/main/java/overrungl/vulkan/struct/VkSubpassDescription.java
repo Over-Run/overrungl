@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubpassDescription {
-///     VkSubpassDescriptionFlags flags;
-///     VkPipelineBindPoint pipelineBindPoint;
+///     ((uint32_t) VkFlags) VkSubpassDescriptionFlags flags;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
 ///     uint32_t inputAttachmentCount;
 ///     const VkAttachmentReference* pInputAttachments;
 ///     uint32_t colorAttachmentCount;

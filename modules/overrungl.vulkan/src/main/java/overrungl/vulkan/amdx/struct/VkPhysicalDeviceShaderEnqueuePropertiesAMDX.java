@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxExecutionGraphDepth;
 ///     uint32_t maxExecutionGraphShaderOutputNodes;

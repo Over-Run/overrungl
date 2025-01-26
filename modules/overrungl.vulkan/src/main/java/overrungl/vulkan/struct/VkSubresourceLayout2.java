@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubresourceLayout2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkSubresourceLayout subresourceLayout;
+///     (struct VkSubresourceLayout) VkSubresourceLayout subresourceLayout;
 /// };
 /// ```
 public sealed class VkSubresourceLayout2 extends GroupType {

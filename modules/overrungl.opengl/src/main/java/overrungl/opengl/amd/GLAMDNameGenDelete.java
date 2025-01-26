@@ -48,7 +48,7 @@ public final class GLAMDNameGenDelete {
     }
 
     /// ```
-    /// void glGenNamesAMD(GLenum identifier, GLuint num, GLuint* names);
+    /// void glGenNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, GLuint* names);
     /// ```
     public void GenNamesAMD(int identifier, int num, MemorySegment names) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD");
@@ -57,7 +57,7 @@ public final class GLAMDNameGenDelete {
     }
 
     /// ```
-    /// void glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint* names);
+    /// void glDeleteNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, const GLuint* names);
     /// ```
     public void DeleteNamesAMD(int identifier, int num, MemorySegment names) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
@@ -66,7 +66,7 @@ public final class GLAMDNameGenDelete {
     }
 
     /// ```
-    /// GLboolean glIsNameAMD(GLenum identifier, GLuint name);
+    /// GLboolean glIsNameAMD((unsigned int) GLenum identifier, (unsigned int) GLuint name);
     /// ```
     public boolean IsNameAMD(int identifier, int name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsNameAMD)) throw new SymbolNotFoundError("Symbol not found: glIsNameAMD");

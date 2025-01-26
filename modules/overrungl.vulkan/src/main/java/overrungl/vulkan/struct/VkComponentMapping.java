@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkComponentMapping {
-///     VkComponentSwizzle r;
-///     VkComponentSwizzle g;
-///     VkComponentSwizzle b;
-///     VkComponentSwizzle a;
+///     (int) VkComponentSwizzle r;
+///     (int) VkComponentSwizzle g;
+///     (int) VkComponentSwizzle b;
+///     (int) VkComponentSwizzle a;
 /// };
 /// ```
 public sealed class VkComponentMapping extends GroupType {

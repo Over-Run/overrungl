@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayModeCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplayModeCreateFlagsKHR flags;
-///     VkDisplayModeParametersKHR parameters;
+///     ((uint32_t) VkFlags) VkDisplayModeCreateFlagsKHR flags;
+///     (struct VkDisplayModeParametersKHR) VkDisplayModeParametersKHR parameters;
 /// };
 /// ```
 public sealed class VkDisplayModeCreateInfoKHR extends GroupType {

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMultisampledRenderToSingleSampledInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 multisampledRenderToSingleSampledEnable;
-///     VkSampleCountFlagBits rasterizationSamples;
+///     (uint32_t) VkBool32 multisampledRenderToSingleSampledEnable;
+///     (int) VkSampleCountFlagBits rasterizationSamples;
 /// };
 /// ```
 public sealed class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType {

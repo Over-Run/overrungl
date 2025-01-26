@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const VkVideoProfileInfoKHR* pVideoProfile;
 ///     uint32_t qualityLevel;

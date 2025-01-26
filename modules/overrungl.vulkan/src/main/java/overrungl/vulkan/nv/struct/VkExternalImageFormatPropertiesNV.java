@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalImageFormatPropertiesNV {
-///     VkImageFormatProperties imageFormatProperties;
-///     VkExternalMemoryFeatureFlagsNV externalMemoryFeatures;
-///     VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes;
-///     VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
+///     (struct VkImageFormatProperties) VkImageFormatProperties imageFormatProperties;
+///     ((uint32_t) VkFlags) VkExternalMemoryFeatureFlagsNV externalMemoryFeatures;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV exportFromImportedHandleTypes;
+///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
 /// };
 /// ```
 public sealed class VkExternalImageFormatPropertiesNV extends GroupType {

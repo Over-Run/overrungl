@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePipelineOpacityMicromapFeaturesARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 pipelineOpacityMicromap;
+///     (uint32_t) VkBool32 pipelineOpacityMicromap;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePipelineOpacityMicromapFeaturesARM extends GroupType {

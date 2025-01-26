@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineColorBlendStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineColorBlendStateCreateFlags flags;
-///     VkBool32 logicOpEnable;
-///     VkLogicOp logicOp;
+///     ((uint32_t) VkFlags) VkPipelineColorBlendStateCreateFlags flags;
+///     (uint32_t) VkBool32 logicOpEnable;
+///     (int) VkLogicOp logicOp;
 ///     uint32_t attachmentCount;
 ///     const VkPipelineColorBlendAttachmentState* pAttachments;
 ///     float blendConstants[4];

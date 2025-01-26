@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferMemoryBarrier2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineStageFlags2 srcStageMask;
-///     VkAccessFlags2 srcAccessMask;
-///     VkPipelineStageFlags2 dstStageMask;
-///     VkAccessFlags2 dstAccessMask;
+///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 srcStageMask;
+///     ((uint64_t) VkFlags64) VkAccessFlags2 srcAccessMask;
+///     ((uint64_t) VkFlags64) VkPipelineStageFlags2 dstStageMask;
+///     ((uint64_t) VkFlags64) VkAccessFlags2 dstAccessMask;
 ///     uint32_t srcQueueFamilyIndex;
 ///     uint32_t dstQueueFamilyIndex;
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkBufferMemoryBarrier2 extends GroupType {

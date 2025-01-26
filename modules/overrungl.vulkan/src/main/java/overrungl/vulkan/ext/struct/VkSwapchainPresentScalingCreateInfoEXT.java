@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainPresentScalingCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPresentScalingFlagsEXT scalingBehavior;
-///     VkPresentGravityFlagsEXT presentGravityX;
-///     VkPresentGravityFlagsEXT presentGravityY;
+///     ((uint32_t) VkFlags) VkPresentScalingFlagsEXT scalingBehavior;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT presentGravityX;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT presentGravityY;
 /// };
 /// ```
 public sealed class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {

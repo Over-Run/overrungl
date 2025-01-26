@@ -22,6 +22,6 @@ public final class VKKHRImageFormatList {
     public static final String VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
     public static final int VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR = 1000147000;
 
-    private VKKHRImageFormatList() { }
+    private VKKHRImageFormatList() {}
 
 }

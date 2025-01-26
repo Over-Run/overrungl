@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceBorderColorSwizzleFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 borderColorSwizzle;
-///     VkBool32 borderColorSwizzleFromImage;
+///     (uint32_t) VkBool32 borderColorSwizzle;
+///     (uint32_t) VkBool32 borderColorSwizzleFromImage;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupType {

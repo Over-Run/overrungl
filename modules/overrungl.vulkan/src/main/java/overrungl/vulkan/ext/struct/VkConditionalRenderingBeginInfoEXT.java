@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkConditionalRenderingBeginInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkConditionalRenderingFlagsEXT flags;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
+///     ((uint32_t) VkFlags) VkConditionalRenderingFlagsEXT flags;
 /// };
 /// ```
 public sealed class VkConditionalRenderingBeginInfoEXT extends GroupType {

@@ -24,6 +24,6 @@ public final class VKAMDDeviceCoherentMemory {
     public static final int VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD = 0x00000080;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD = 1000229000;
 
-    private VKAMDDeviceCoherentMemory() { }
+    private VKAMDDeviceCoherentMemory() {}
 
 }

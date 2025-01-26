@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfaceCapabilitiesPresentBarrierNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 presentBarrierSupported;
+///     (uint32_t) VkBool32 presentBarrierSupported;
 /// };
 /// ```
 public sealed class VkSurfaceCapabilitiesPresentBarrierNV extends GroupType {

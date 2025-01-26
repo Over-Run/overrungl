@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyBufferInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBuffer srcBuffer;
-///     VkBuffer dstBuffer;
+///     (uint64_t) VkBuffer srcBuffer;
+///     (uint64_t) VkBuffer dstBuffer;
 ///     uint32_t regionCount;
 ///     const VkBufferCopy2* pRegions;
 /// };

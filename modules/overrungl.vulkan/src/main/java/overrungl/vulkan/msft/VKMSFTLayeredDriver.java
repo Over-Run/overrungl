@@ -24,6 +24,6 @@ public final class VKMSFTLayeredDriver {
     public static final String VK_MSFT_LAYERED_DRIVER_EXTENSION_NAME = "VK_MSFT_layered_driver";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT = 1000530000;
 
-    private VKMSFTLayeredDriver() { }
+    private VKMSFTLayeredDriver() {}
 
 }

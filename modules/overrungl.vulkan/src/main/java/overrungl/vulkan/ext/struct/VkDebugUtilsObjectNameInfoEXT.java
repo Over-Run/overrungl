@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDebugUtilsObjectNameInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkObjectType objectType;
+///     (int) VkObjectType objectType;
 ///     uint64_t objectHandle;
 ///     const char* pObjectName;
 /// };

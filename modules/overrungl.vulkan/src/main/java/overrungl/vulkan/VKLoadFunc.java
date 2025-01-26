@@ -25,14 +25,13 @@ import java.lang.foreign.MemorySegment;
 ///
 /// ## Example
 /// ```java
-/// VKLoadFunc func = GLFW::glfwGetInstanceProcAddress;
-/// pInstance = stack.allocate(ADDRESS);                           // VkInstance instance;
-/// vkCreateInstance(func, createInfo.segment(), NULL, pInstance); // vkCreateInstance(createInfo, NULL,
-/// instance = pInstance.get(ADDRESS, 0L);                         //     &instance);
-/// vk = new VK(instance, func);
+/// VK.create(GLFW::glfwGetInstanceProcAddress);
+/// pInstance = stack.allocate(ADDRESS);                     // VkInstance instance;
+/// vkCreateInstance(createInfo.segment(), NULL, pInstance); // vkCreateInstance(createInfo, NULL,
+/// instance = new VkInstance(pInstance.get(ADDRESS, 0L));   //     &instance);
+/// // disposing
+/// VK.destroy();
 ///```
-///
-/// ## Extensions
 ///
 ///
 /// @author squid233

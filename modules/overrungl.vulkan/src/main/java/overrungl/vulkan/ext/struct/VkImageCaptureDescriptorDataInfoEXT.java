@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageCaptureDescriptorDataInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
+///     (uint64_t) VkImage image;
 /// };
 /// ```
 public sealed class VkImageCaptureDescriptorDataInfoEXT extends GroupType {

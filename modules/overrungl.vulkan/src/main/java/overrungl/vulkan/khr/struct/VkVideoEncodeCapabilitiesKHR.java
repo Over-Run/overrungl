@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeCapabilityFlagsKHR flags;
-///     VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
+///     ((uint32_t) VkFlags) VkVideoEncodeCapabilityFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
 ///     uint32_t maxRateControlLayers;
 ///     uint64_t maxBitrate;
 ///     uint32_t maxQualityLevels;
-///     VkExtent2D encodeInputPictureGranularity;
-///     VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
+///     (struct VkExtent2D) VkExtent2D encodeInputPictureGranularity;
+///     ((uint32_t) VkFlags) VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
 /// };
 /// ```
 public sealed class VkVideoEncodeCapabilitiesKHR extends GroupType {

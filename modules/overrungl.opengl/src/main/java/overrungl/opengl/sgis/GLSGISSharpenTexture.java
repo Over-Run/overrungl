@@ -44,7 +44,7 @@ public final class GLSGISSharpenTexture {
     }
 
     /// ```
-    /// void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat* points);
+    /// void glSharpenTexFuncSGIS((unsigned int) GLenum target, (int) GLsizei n, const GLfloat* points);
     /// ```
     public void SharpenTexFuncSGIS(int target, int n, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
@@ -53,7 +53,7 @@ public final class GLSGISSharpenTexture {
     }
 
     /// ```
-    /// void glGetSharpenTexFuncSGIS(GLenum target, GLfloat* points);
+    /// void glGetSharpenTexFuncSGIS((unsigned int) GLenum target, GLfloat* points);
     /// ```
     public void GetSharpenTexFuncSGIS(int target, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageBlit {
-///     VkImageSubresourceLayers srcSubresource;
-///     VkOffset3D srcOffsets[2];
-///     VkImageSubresourceLayers dstSubresource;
-///     VkOffset3D dstOffsets[2];
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers srcSubresource;
+///     (struct VkOffset3D) VkOffset3D srcOffsets[2];
+///     (struct VkImageSubresourceLayers) VkImageSubresourceLayers dstSubresource;
+///     (struct VkOffset3D) VkOffset3D dstOffsets[2];
 /// };
 /// ```
 public sealed class VkImageBlit extends GroupType {

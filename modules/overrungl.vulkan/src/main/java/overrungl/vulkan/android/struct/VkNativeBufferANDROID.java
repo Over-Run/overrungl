@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkNativeBufferANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const void* handle;
 ///     int stride;
 ///     int format;
 ///     int usage;
-///     VkNativeBufferUsage2ANDROID usage2;
+///     (struct VkNativeBufferUsage2ANDROID) VkNativeBufferUsage2ANDROID usage2;
 /// };
 /// ```
 public sealed class VkNativeBufferANDROID extends GroupType {

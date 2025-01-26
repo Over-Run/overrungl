@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceHostImageCopyProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t copySrcLayoutCount;
 ///     VkImageLayout* pCopySrcLayouts;
 ///     uint32_t copyDstLayoutCount;
 ///     VkImageLayout* pCopyDstLayouts;
 ///     uint8_t optimalTilingLayoutUUID[16];
-///     VkBool32 identicalMemoryTypeRequirements;
+///     (uint32_t) VkBool32 identicalMemoryTypeRequirements;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {

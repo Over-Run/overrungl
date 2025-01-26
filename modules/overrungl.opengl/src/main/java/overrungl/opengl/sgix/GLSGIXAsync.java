@@ -53,7 +53,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// void glAsyncMarkerSGIX(GLuint marker);
+    /// void glAsyncMarkerSGIX((unsigned int) GLuint marker);
     /// ```
     public void AsyncMarkerSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glAsyncMarkerSGIX");
@@ -62,7 +62,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// GLint glFinishAsyncSGIX(GLuint* markerp);
+    /// (int) GLint glFinishAsyncSGIX(GLuint* markerp);
     /// ```
     public int FinishAsyncSGIX(MemorySegment markerp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinishAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glFinishAsyncSGIX");
@@ -71,7 +71,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// GLint glPollAsyncSGIX(GLuint* markerp);
+    /// (int) GLint glPollAsyncSGIX(GLuint* markerp);
     /// ```
     public int PollAsyncSGIX(MemorySegment markerp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPollAsyncSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollAsyncSGIX");
@@ -80,7 +80,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// GLuint glGenAsyncMarkersSGIX(GLsizei range);
+    /// (unsigned int) GLuint glGenAsyncMarkersSGIX((int) GLsizei range);
     /// ```
     public int GenAsyncMarkersSGIX(int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glGenAsyncMarkersSGIX");
@@ -89,7 +89,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// void glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range);
+    /// void glDeleteAsyncMarkersSGIX((unsigned int) GLuint marker, (int) GLsizei range);
     /// ```
     public void DeleteAsyncMarkersSGIX(int marker, int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteAsyncMarkersSGIX)) throw new SymbolNotFoundError("Symbol not found: glDeleteAsyncMarkersSGIX");
@@ -98,7 +98,7 @@ public final class GLSGIXAsync {
     }
 
     /// ```
-    /// GLboolean glIsAsyncMarkerSGIX(GLuint marker);
+    /// GLboolean glIsAsyncMarkerSGIX((unsigned int) GLuint marker);
     /// ```
     public boolean IsAsyncMarkerSGIX(int marker) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsAsyncMarkerSGIX)) throw new SymbolNotFoundError("Symbol not found: glIsAsyncMarkerSGIX");

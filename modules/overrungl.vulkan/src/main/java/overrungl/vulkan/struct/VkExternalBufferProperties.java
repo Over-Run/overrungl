@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExternalBufferProperties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExternalMemoryProperties externalMemoryProperties;
+///     (struct VkExternalMemoryProperties) VkExternalMemoryProperties externalMemoryProperties;
 /// };
 /// ```
 public sealed class VkExternalBufferProperties extends GroupType {

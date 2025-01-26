@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDisplacementMicromapFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 displacementMicromap;
+///     (uint32_t) VkBool32 displacementMicromap;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDisplacementMicromapFeaturesNV extends GroupType {

@@ -37,7 +37,7 @@ public final class GLNVVdpauInterop2 {
     }
 
     /// ```
-    /// GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void* vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint* textureNames, GLboolean isFrameStructure);
+    /// (((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void* vdpSurface, (unsigned int) GLenum target, (int) GLsizei numTextureNames, const GLuint* textureNames, GLboolean isFrameStructure);
     /// ```
     public long VDPAURegisterVideoSurfaceWithPictureStructureNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames, boolean isFrameStructure) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceWithPictureStructureNV");

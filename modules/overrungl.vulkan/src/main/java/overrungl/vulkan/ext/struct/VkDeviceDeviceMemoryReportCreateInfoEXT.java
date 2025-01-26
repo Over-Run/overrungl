@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceDeviceMemoryReportCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceMemoryReportFlagsEXT flags;
-///     PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback;
+///     ((uint32_t) VkFlags) VkDeviceMemoryReportFlagsEXT flags;
+///     (void (*VkDeviceMemoryReportCallbackEXT)(const VkDeviceMemoryReportCallbackDataEXT* pCallbackData, void* pUserData)) PFN_vkDeviceMemoryReportCallbackEXT pfnUserCallback;
 ///     void* pUserData;
 /// };
 /// ```

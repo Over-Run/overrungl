@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkXlibSurfaceCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkXlibSurfaceCreateFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkXlibSurfaceCreateFlagsKHR flags;
 ///     Display* dpy;
-///     Window window;
+///     ((unsigned long) XID) Window window;
 /// };
 /// ```
 public sealed class VkXlibSurfaceCreateInfoKHR extends GroupType {

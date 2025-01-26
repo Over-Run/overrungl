@@ -42,7 +42,7 @@ public final class GLARBTextureBufferObject {
     }
 
     /// ```
-    /// void glTexBufferARB(GLenum target, GLenum internalformat, GLuint buffer);
+    /// void glTexBufferARB((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
     public void TexBufferARB(int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferARB)) throw new SymbolNotFoundError("Symbol not found: glTexBufferARB");

@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerBlockMatchWindowCreateInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExtent2D windowExtent;
-///     VkBlockMatchWindowCompareModeQCOM windowCompareMode;
+///     (struct VkExtent2D) VkExtent2D windowExtent;
+///     (int) VkBlockMatchWindowCompareModeQCOM windowCompareMode;
 /// };
 /// ```
 public sealed class VkSamplerBlockMatchWindowCreateInfoQCOM extends GroupType {

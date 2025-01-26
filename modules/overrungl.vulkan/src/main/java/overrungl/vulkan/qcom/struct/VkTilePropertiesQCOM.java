@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkTilePropertiesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent3D tileSize;
-///     VkExtent2D apronSize;
-///     VkOffset2D origin;
+///     (struct VkExtent3D) VkExtent3D tileSize;
+///     (struct VkExtent2D) VkExtent2D apronSize;
+///     (struct VkOffset2D) VkOffset2D origin;
 /// };
 /// ```
 public sealed class VkTilePropertiesQCOM extends GroupType {

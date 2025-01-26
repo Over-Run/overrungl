@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoDecodeAV1ProfileInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     StdVideoAV1Profile stdProfile;
-///     VkBool32 filmGrainSupport;
+///     (int) StdVideoAV1Profile stdProfile;
+///     (uint32_t) VkBool32 filmGrainSupport;
 /// };
 /// ```
 public sealed class VkVideoDecodeAV1ProfileInfoKHR extends GroupType {

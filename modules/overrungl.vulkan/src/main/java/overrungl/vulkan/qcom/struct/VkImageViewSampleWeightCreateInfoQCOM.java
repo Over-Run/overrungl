@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewSampleWeightCreateInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkOffset2D filterCenter;
-///     VkExtent2D filterSize;
+///     (struct VkOffset2D) VkOffset2D filterCenter;
+///     (struct VkExtent2D) VkExtent2D filterSize;
 ///     uint32_t numPhases;
 /// };
 /// ```

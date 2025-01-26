@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265SessionParametersFeedbackInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hasStdVPSOverrides;
-///     VkBool32 hasStdSPSOverrides;
-///     VkBool32 hasStdPPSOverrides;
+///     (uint32_t) VkBool32 hasStdVPSOverrides;
+///     (uint32_t) VkBool32 hasStdSPSOverrides;
+///     (uint32_t) VkBool32 hasStdPPSOverrides;
 /// };
 /// ```
 public sealed class VkVideoEncodeH265SessionParametersFeedbackInfoKHR extends GroupType {

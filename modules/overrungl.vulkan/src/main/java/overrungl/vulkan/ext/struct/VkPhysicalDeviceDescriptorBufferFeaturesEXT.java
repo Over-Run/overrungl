@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorBufferFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 descriptorBuffer;
-///     VkBool32 descriptorBufferCaptureReplay;
-///     VkBool32 descriptorBufferImageLayoutIgnored;
-///     VkBool32 descriptorBufferPushDescriptors;
+///     (uint32_t) VkBool32 descriptorBuffer;
+///     (uint32_t) VkBool32 descriptorBufferCaptureReplay;
+///     (uint32_t) VkBool32 descriptorBufferImageLayoutIgnored;
+///     (uint32_t) VkBool32 descriptorBufferPushDescriptors;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType {

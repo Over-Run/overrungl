@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceImageSubresourceInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     const VkImageCreateInfo* pCreateInfo;
 ///     const VkImageSubresource2* pSubresource;

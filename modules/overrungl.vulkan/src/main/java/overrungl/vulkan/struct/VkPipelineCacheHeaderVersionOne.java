@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkPipelineCacheHeaderVersionOne {
 ///     uint32_t headerSize;
-///     VkPipelineCacheHeaderVersion headerVersion;
+///     (int) VkPipelineCacheHeaderVersion headerVersion;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
 ///     uint8_t pipelineCacheUUID[16];

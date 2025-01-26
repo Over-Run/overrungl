@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorUpdateTemplateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorUpdateTemplateCreateFlags flags;
+///     ((uint32_t) VkFlags) VkDescriptorUpdateTemplateCreateFlags flags;
 ///     uint32_t descriptorUpdateEntryCount;
 ///     const VkDescriptorUpdateTemplateEntry* pDescriptorUpdateEntries;
-///     VkDescriptorUpdateTemplateType templateType;
-///     VkDescriptorSetLayout descriptorSetLayout;
-///     VkPipelineBindPoint pipelineBindPoint;
-///     VkPipelineLayout pipelineLayout;
+///     (int) VkDescriptorUpdateTemplateType templateType;
+///     (uint64_t) VkDescriptorSetLayout descriptorSetLayout;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
+///     (uint64_t) VkPipelineLayout pipelineLayout;
 ///     uint32_t set;
 /// };
 /// ```

@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMappedMemoryRange {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceMemory memory;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkMappedMemoryRange extends GroupType {

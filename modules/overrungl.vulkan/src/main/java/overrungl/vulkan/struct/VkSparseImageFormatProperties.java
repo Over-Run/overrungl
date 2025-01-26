@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSparseImageFormatProperties {
-///     VkImageAspectFlags aspectMask;
-///     VkExtent3D imageGranularity;
-///     VkSparseImageFormatFlags flags;
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
+///     (struct VkExtent3D) VkExtent3D imageGranularity;
+///     ((uint32_t) VkFlags) VkSparseImageFormatFlags flags;
 /// };
 /// ```
 public sealed class VkSparseImageFormatProperties extends GroupType {

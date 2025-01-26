@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationConservativeStateCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
-///     VkConservativeRasterizationModeEXT conservativeRasterizationMode;
+///     ((uint32_t) VkFlags) VkPipelineRasterizationConservativeStateCreateFlagsEXT flags;
+///     (int) VkConservativeRasterizationModeEXT conservativeRasterizationMode;
 ///     float extraPrimitiveOverestimationSize;
 /// };
 /// ```

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceHdrVividFeaturesHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 hdrVivid;
+///     (uint32_t) VkBool32 hdrVivid;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceHdrVividFeaturesHUAWEI extends GroupType {

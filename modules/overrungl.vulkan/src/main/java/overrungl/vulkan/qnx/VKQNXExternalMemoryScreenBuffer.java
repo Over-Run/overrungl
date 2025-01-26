@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQNXExternalMemoryScreenBuffer {
+public final class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
     public static final String VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_EXTENSION_NAME = "VK_QNX_external_memory_screen_buffer";
     public static final int VK_EXTERNAL_MEMORY_HANDLE_TYPE_SCREEN_BUFFER_BIT_QNX = 0x00004000;
@@ -30,26 +30,20 @@ public class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX = 1000529002;
     public static final int VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX = 1000529003;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = 1000529004;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetScreenBufferPropertiesQNX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetScreenBufferPropertiesQNX;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetScreenBufferPropertiesQNX = func.invoke(device, "vkGetScreenBufferPropertiesQNX");
-        }
+        private Handles() {}
     }
 
-    public VKQNXExternalMemoryScreenBuffer(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKQNXExternalMemoryScreenBuffer() {}
 
     /// ```
-    /// VkResult vkGetScreenBufferPropertiesQNX(VkDevice device, const _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
+    /// (int) VkResult vkGetScreenBufferPropertiesQNX((struct VkDevice*) VkDevice device, const struct _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
     /// ```
-    public int GetScreenBufferPropertiesQNX(MemorySegment device, MemorySegment buffer, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetScreenBufferPropertiesQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
-        try { return (int) Handles.MH_vkGetScreenBufferPropertiesQNX.invokeExact(handles.PFN_vkGetScreenBufferPropertiesQNX, device, buffer, pProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetScreenBufferPropertiesQNX", e); }
+    public static int vkGetScreenBufferPropertiesQNX(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
+        try { return (int) Handles.MH_vkGetScreenBufferPropertiesQNX.invokeExact(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX, device.segment(), buffer, pProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetScreenBufferPropertiesQNX", e); }
     }
 
 }

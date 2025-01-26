@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayNativeHdrSurfaceCapabilitiesAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 localDimmingSupport;
+///     (uint32_t) VkBool32 localDimmingSupport;
 /// };
 /// ```
 public sealed class VkDisplayNativeHdrSurfaceCapabilitiesAMD extends GroupType {

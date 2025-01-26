@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265SliceSegmentHeader {
-///     StdVideoEncodeH265SliceSegmentHeaderFlags flags;
-///     StdVideoH265SliceType slice_type;
+///     (struct StdVideoEncodeH265SliceSegmentHeaderFlags) StdVideoEncodeH265SliceSegmentHeaderFlags flags;
+///     (int) StdVideoH265SliceType slice_type;
 ///     uint32_t slice_segment_address;
 ///     uint8_t collocated_ref_idx;
 ///     uint8_t MaxNumMergeCand;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewASTCDecodeModeEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFormat decodeMode;
+///     (int) VkFormat decodeMode;
 /// };
 /// ```
 public sealed class VkImageViewASTCDecodeModeEXT extends GroupType {

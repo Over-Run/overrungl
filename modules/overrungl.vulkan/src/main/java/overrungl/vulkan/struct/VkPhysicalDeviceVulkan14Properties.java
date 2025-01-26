@@ -27,33 +27,33 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceVulkan14Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t lineSubPixelPrecisionBits;
 ///     uint32_t maxVertexAttribDivisor;
-///     VkBool32 supportsNonZeroFirstInstance;
+///     (uint32_t) VkBool32 supportsNonZeroFirstInstance;
 ///     uint32_t maxPushDescriptors;
-///     VkBool32 dynamicRenderingLocalReadDepthStencilAttachments;
-///     VkBool32 dynamicRenderingLocalReadMultisampledAttachments;
-///     VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
-///     VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
-///     VkBool32 depthStencilSwizzleOneSupport;
-///     VkBool32 polygonModePointSize;
-///     VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
-///     VkBool32 nonStrictWideLinesUseParallelogram;
-///     VkBool32 blockTexelViewCompatibleMultipleLayers;
+///     (uint32_t) VkBool32 dynamicRenderingLocalReadDepthStencilAttachments;
+///     (uint32_t) VkBool32 dynamicRenderingLocalReadMultisampledAttachments;
+///     (uint32_t) VkBool32 earlyFragmentMultisampleCoverageAfterSampleCounting;
+///     (uint32_t) VkBool32 earlyFragmentSampleMaskTestBeforeSampleCounting;
+///     (uint32_t) VkBool32 depthStencilSwizzleOneSupport;
+///     (uint32_t) VkBool32 polygonModePointSize;
+///     (uint32_t) VkBool32 nonStrictSinglePixelWideLinesUseParallelogram;
+///     (uint32_t) VkBool32 nonStrictWideLinesUseParallelogram;
+///     (uint32_t) VkBool32 blockTexelViewCompatibleMultipleLayers;
 ///     uint32_t maxCombinedImageSamplerDescriptorCount;
-///     VkBool32 fragmentShadingRateClampCombinerInputs;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
-///     VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
-///     VkPipelineRobustnessImageBehavior defaultRobustnessImages;
+///     (uint32_t) VkBool32 fragmentShadingRateClampCombinerInputs;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessStorageBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessUniformBuffers;
+///     (int) VkPipelineRobustnessBufferBehavior defaultRobustnessVertexInputs;
+///     (int) VkPipelineRobustnessImageBehavior defaultRobustnessImages;
 ///     uint32_t copySrcLayoutCount;
 ///     VkImageLayout* pCopySrcLayouts;
 ///     uint32_t copyDstLayoutCount;
 ///     VkImageLayout* pCopyDstLayouts;
 ///     uint8_t optimalTilingLayoutUUID[16];
-///     VkBool32 identicalMemoryTypeRequirements;
+///     (uint32_t) VkBool32 identicalMemoryTypeRequirements;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceVulkan14Properties extends GroupType {

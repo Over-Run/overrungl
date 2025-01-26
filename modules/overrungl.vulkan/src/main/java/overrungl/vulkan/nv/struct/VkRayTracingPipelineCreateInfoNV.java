@@ -27,16 +27,16 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRayTracingPipelineCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineCreateFlags flags;
 ///     uint32_t stageCount;
 ///     const VkPipelineShaderStageCreateInfo* pStages;
 ///     uint32_t groupCount;
 ///     const VkRayTracingShaderGroupCreateInfoNV* pGroups;
 ///     uint32_t maxRecursionDepth;
-///     VkPipelineLayout layout;
-///     VkPipeline basePipelineHandle;
+///     (uint64_t) VkPipelineLayout layout;
+///     (uint64_t) VkPipeline basePipelineHandle;
 ///     int32_t basePipelineIndex;
 /// };
 /// ```

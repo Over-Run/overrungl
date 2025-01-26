@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMultiviewPerViewAttributesInfoNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 perViewAttributes;
-///     VkBool32 perViewAttributesPositionXOnly;
+///     (uint32_t) VkBool32 perViewAttributes;
+///     (uint32_t) VkBool32 perViewAttributesPositionXOnly;
 /// };
 /// ```
 public sealed class VkMultiviewPerViewAttributesInfoNVX extends GroupType {

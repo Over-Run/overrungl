@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayModeStereoPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 hdmi3DSupported;
+///     (uint32_t) VkBool32 hdmi3DSupported;
 /// };
 /// ```
 public sealed class VkDisplayModeStereoPropertiesNV extends GroupType {

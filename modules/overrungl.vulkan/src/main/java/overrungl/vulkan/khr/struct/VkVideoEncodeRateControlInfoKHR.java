@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeRateControlInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoEncodeRateControlFlagsKHR flags;
-///     VkVideoEncodeRateControlModeFlagBitsKHR rateControlMode;
+///     ((uint32_t) VkFlags) VkVideoEncodeRateControlFlagsKHR flags;
+///     (int) VkVideoEncodeRateControlModeFlagBitsKHR rateControlMode;
 ///     uint32_t layerCount;
 ///     const VkVideoEncodeRateControlLayerInfoKHR* pLayers;
 ///     uint32_t virtualBufferSizeInMs;

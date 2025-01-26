@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkDispatchGraphInfoAMDX {
 ///     uint32_t nodeIndex;
 ///     uint32_t payloadCount;
-///     VkDeviceOrHostAddressConstAMDX payloads;
+///     (union VkDeviceOrHostAddressConstAMDX) VkDeviceOrHostAddressConstAMDX payloads;
 ///     uint64_t payloadStride;
 /// };
 /// ```

@@ -21,42 +21,34 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRWin32Surface {
+public final class VKKHRWin32Surface {
     public static final int VK_KHR_WIN32_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_WIN32_SURFACE_EXTENSION_NAME = "VK_KHR_win32_surface";
     public static final int VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = 1000009000;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateWin32SurfaceKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetPhysicalDeviceWin32PresentationSupportKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public final MemorySegment PFN_vkCreateWin32SurfaceKHR;
-        public final MemorySegment PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkCreateWin32SurfaceKHR = func.invoke(instance, "vkCreateWin32SurfaceKHR");
-            PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR = func.invoke(instance, "vkGetPhysicalDeviceWin32PresentationSupportKHR");
-        }
+        private Handles() {}
     }
 
-    public VKKHRWin32Surface(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKKHRWin32Surface() {}
 
     /// ```
-    /// VkResult vkCreateWin32SurfaceKHR(VkInstance instance, const VkWin32SurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
+    /// (int) VkResult vkCreateWin32SurfaceKHR((struct VkInstance*) VkInstance instance, const VkWin32SurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
-    public int CreateWin32SurfaceKHR(MemorySegment instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkCreateWin32SurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWin32SurfaceKHR");
-        try { return (int) Handles.MH_vkCreateWin32SurfaceKHR.invokeExact(handles.PFN_vkCreateWin32SurfaceKHR, instance, pCreateInfo, pAllocator, pSurface); }
-        catch (Throwable e) { throw new RuntimeException("error in CreateWin32SurfaceKHR", e); }
+    public static int vkCreateWin32SurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateWin32SurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWin32SurfaceKHR");
+        try { return (int) Handles.MH_vkCreateWin32SurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateWin32SurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        catch (Throwable e) { throw new RuntimeException("error in vkCreateWin32SurfaceKHR", e); }
     }
 
     /// ```
-    /// VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex);
+    /// (uint32_t) VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex);
     /// ```
-    public int GetPhysicalDeviceWin32PresentationSupportKHR(MemorySegment physicalDevice, int queueFamilyIndex) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWin32PresentationSupportKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceWin32PresentationSupportKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR, physicalDevice, queueFamilyIndex); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceWin32PresentationSupportKHR", e); }
+    public static int vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWin32PresentationSupportKHR");
+        try { return (int) Handles.MH_vkGetPhysicalDeviceWin32PresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceWin32PresentationSupportKHR", e); }
     }
 
 }

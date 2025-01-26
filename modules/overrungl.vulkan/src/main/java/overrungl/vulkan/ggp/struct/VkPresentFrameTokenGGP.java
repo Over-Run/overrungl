@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPresentFrameTokenGGP {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     GgpFrameToken frameToken;
+///     (uint64_t) GgpFrameToken frameToken;
 /// };
 /// ```
 public sealed class VkPresentFrameTokenGGP extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineViewportWScalingStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 viewportWScalingEnable;
+///     (uint32_t) VkBool32 viewportWScalingEnable;
 ///     uint32_t viewportCount;
 ///     const VkViewportWScalingNV* pViewportWScalings;
 /// };

@@ -47,7 +47,7 @@ public final class GLAMDVertexShaderTessellator {
     }
 
     /// ```
-    /// void glTessellationFactorAMD(GLfloat factor);
+    /// void glTessellationFactorAMD(((float) khronos_float_t) GLfloat factor);
     /// ```
     public void TessellationFactorAMD(float factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTessellationFactorAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationFactorAMD");
@@ -56,7 +56,7 @@ public final class GLAMDVertexShaderTessellator {
     }
 
     /// ```
-    /// void glTessellationModeAMD(GLenum mode);
+    /// void glTessellationModeAMD((unsigned int) GLenum mode);
     /// ```
     public void TessellationModeAMD(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTessellationModeAMD)) throw new SymbolNotFoundError("Symbol not found: glTessellationModeAMD");

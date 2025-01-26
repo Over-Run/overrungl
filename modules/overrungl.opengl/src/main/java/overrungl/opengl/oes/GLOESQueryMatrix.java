@@ -37,7 +37,7 @@ public final class GLOESQueryMatrix {
     }
 
     /// ```
-    /// GLbitfield glQueryMatrixxOES(GLfixed* mantissa, GLint* exponent);
+    /// (unsigned int) GLbitfield glQueryMatrixxOES(GLfixed* mantissa, GLint* exponent);
     /// ```
     public int QueryMatrixxOES(MemorySegment mantissa, MemorySegment exponent) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES");

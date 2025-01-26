@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
+///     (int) VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV extends GroupType {

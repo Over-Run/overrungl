@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 representativeFragmentTest;
+///     (uint32_t) VkBool32 representativeFragmentTest;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends GroupType {

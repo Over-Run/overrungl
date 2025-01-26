@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 rasterizationOrderColorAttachmentAccess;
-///     VkBool32 rasterizationOrderDepthAttachmentAccess;
-///     VkBool32 rasterizationOrderStencilAttachmentAccess;
+///     (uint32_t) VkBool32 rasterizationOrderColorAttachmentAccess;
+///     (uint32_t) VkBool32 rasterizationOrderDepthAttachmentAccess;
+///     (uint32_t) VkBool32 rasterizationOrderStencilAttachmentAccess;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT extends GroupType {

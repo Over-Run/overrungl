@@ -288,7 +288,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glBindVertexShaderEXT(GLuint id);
+    /// void glBindVertexShaderEXT((unsigned int) GLuint id);
     /// ```
     public void BindVertexShaderEXT(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glBindVertexShaderEXT");
@@ -297,7 +297,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glGenVertexShadersEXT(GLuint range);
+    /// (unsigned int) GLuint glGenVertexShadersEXT((unsigned int) GLuint range);
     /// ```
     public int GenVertexShadersEXT(int range) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexShadersEXT)) throw new SymbolNotFoundError("Symbol not found: glGenVertexShadersEXT");
@@ -306,7 +306,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glDeleteVertexShaderEXT(GLuint id);
+    /// void glDeleteVertexShaderEXT((unsigned int) GLuint id);
     /// ```
     public void DeleteVertexShaderEXT(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexShaderEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexShaderEXT");
@@ -315,7 +315,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1);
+    /// void glShaderOp1EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1);
     /// ```
     public void ShaderOp1EXT(int op, int res, int arg1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderOp1EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp1EXT");
@@ -324,7 +324,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2);
+    /// void glShaderOp2EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1, (unsigned int) GLuint arg2);
     /// ```
     public void ShaderOp2EXT(int op, int res, int arg1, int arg2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderOp2EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp2EXT");
@@ -333,7 +333,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
+    /// void glShaderOp3EXT((unsigned int) GLenum op, (unsigned int) GLuint res, (unsigned int) GLuint arg1, (unsigned int) GLuint arg2, (unsigned int) GLuint arg3);
     /// ```
     public void ShaderOp3EXT(int op, int res, int arg1, int arg2, int arg3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderOp3EXT)) throw new SymbolNotFoundError("Symbol not found: glShaderOp3EXT");
@@ -342,7 +342,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+    /// void glSwizzleEXT((unsigned int) GLuint res, (unsigned int) GLuint in, (unsigned int) GLenum outX, (unsigned int) GLenum outY, (unsigned int) GLenum outZ, (unsigned int) GLenum outW);
     /// ```
     public void SwizzleEXT(int res, int in, int outX, int outY, int outZ, int outW) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSwizzleEXT)) throw new SymbolNotFoundError("Symbol not found: glSwizzleEXT");
@@ -351,7 +351,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+    /// void glWriteMaskEXT((unsigned int) GLuint res, (unsigned int) GLuint in, (unsigned int) GLenum outX, (unsigned int) GLenum outY, (unsigned int) GLenum outZ, (unsigned int) GLenum outW);
     /// ```
     public void WriteMaskEXT(int res, int in, int outX, int outY, int outZ, int outW) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWriteMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glWriteMaskEXT");
@@ -360,7 +360,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glInsertComponentEXT(GLuint res, GLuint src, GLuint num);
+    /// void glInsertComponentEXT((unsigned int) GLuint res, (unsigned int) GLuint src, (unsigned int) GLuint num);
     /// ```
     public void InsertComponentEXT(int res, int src, int num) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInsertComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertComponentEXT");
@@ -369,7 +369,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glExtractComponentEXT(GLuint res, GLuint src, GLuint num);
+    /// void glExtractComponentEXT((unsigned int) GLuint res, (unsigned int) GLuint src, (unsigned int) GLuint num);
     /// ```
     public void ExtractComponentEXT(int res, int src, int num) {
         if (MemoryUtil.isNullPointer(handles.PFN_glExtractComponentEXT)) throw new SymbolNotFoundError("Symbol not found: glExtractComponentEXT");
@@ -378,7 +378,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
+    /// (unsigned int) GLuint glGenSymbolsEXT((unsigned int) GLenum datatype, (unsigned int) GLenum storagetype, (unsigned int) GLenum range, (unsigned int) GLuint components);
     /// ```
     public int GenSymbolsEXT(int datatype, int storagetype, int range, int components) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenSymbolsEXT)) throw new SymbolNotFoundError("Symbol not found: glGenSymbolsEXT");
@@ -387,7 +387,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glSetInvariantEXT(GLuint id, GLenum type, const void* addr);
+    /// void glSetInvariantEXT((unsigned int) GLuint id, (unsigned int) GLenum type, const void* addr);
     /// ```
     public void SetInvariantEXT(int id, int type, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetInvariantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetInvariantEXT");
@@ -396,7 +396,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glSetLocalConstantEXT(GLuint id, GLenum type, const void* addr);
+    /// void glSetLocalConstantEXT((unsigned int) GLuint id, (unsigned int) GLenum type, const void* addr);
     /// ```
     public void SetLocalConstantEXT(int id, int type, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetLocalConstantEXT)) throw new SymbolNotFoundError("Symbol not found: glSetLocalConstantEXT");
@@ -405,7 +405,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantbvEXT(GLuint id, const GLbyte* addr);
+    /// void glVariantbvEXT((unsigned int) GLuint id, const GLbyte* addr);
     /// ```
     public void VariantbvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantbvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantbvEXT");
@@ -414,7 +414,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantsvEXT(GLuint id, const GLshort* addr);
+    /// void glVariantsvEXT((unsigned int) GLuint id, const GLshort* addr);
     /// ```
     public void VariantsvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantsvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantsvEXT");
@@ -423,7 +423,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantivEXT(GLuint id, const GLint* addr);
+    /// void glVariantivEXT((unsigned int) GLuint id, const GLint* addr);
     /// ```
     public void VariantivEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantivEXT");
@@ -432,7 +432,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantfvEXT(GLuint id, const GLfloat* addr);
+    /// void glVariantfvEXT((unsigned int) GLuint id, const GLfloat* addr);
     /// ```
     public void VariantfvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantfvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantfvEXT");
@@ -441,7 +441,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantdvEXT(GLuint id, const GLdouble* addr);
+    /// void glVariantdvEXT((unsigned int) GLuint id, const GLdouble* addr);
     /// ```
     public void VariantdvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantdvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantdvEXT");
@@ -450,7 +450,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantubvEXT(GLuint id, const GLubyte* addr);
+    /// void glVariantubvEXT((unsigned int) GLuint id, const GLubyte* addr);
     /// ```
     public void VariantubvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantubvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantubvEXT");
@@ -459,7 +459,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantusvEXT(GLuint id, const GLushort* addr);
+    /// void glVariantusvEXT((unsigned int) GLuint id, const GLushort* addr);
     /// ```
     public void VariantusvEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantusvEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantusvEXT");
@@ -468,7 +468,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantuivEXT(GLuint id, const GLuint* addr);
+    /// void glVariantuivEXT((unsigned int) GLuint id, const GLuint* addr);
     /// ```
     public void VariantuivEXT(int id, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantuivEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantuivEXT");
@@ -477,7 +477,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const void* addr);
+    /// void glVariantPointerEXT((unsigned int) GLuint id, (unsigned int) GLenum type, (unsigned int) GLuint stride, const void* addr);
     /// ```
     public void VariantPointerEXT(int id, int type, int stride, MemorySegment addr) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVariantPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVariantPointerEXT");
@@ -486,7 +486,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glEnableVariantClientStateEXT(GLuint id);
+    /// void glEnableVariantClientStateEXT((unsigned int) GLuint id);
     /// ```
     public void EnableVariantClientStateEXT(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glEnableVariantClientStateEXT");
@@ -495,7 +495,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glDisableVariantClientStateEXT(GLuint id);
+    /// void glDisableVariantClientStateEXT((unsigned int) GLuint id);
     /// ```
     public void DisableVariantClientStateEXT(int id) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVariantClientStateEXT)) throw new SymbolNotFoundError("Symbol not found: glDisableVariantClientStateEXT");
@@ -504,7 +504,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glBindLightParameterEXT(GLenum light, GLenum value);
+    /// (unsigned int) GLuint glBindLightParameterEXT((unsigned int) GLenum light, (unsigned int) GLenum value);
     /// ```
     public int BindLightParameterEXT(int light, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindLightParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindLightParameterEXT");
@@ -513,7 +513,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glBindMaterialParameterEXT(GLenum face, GLenum value);
+    /// (unsigned int) GLuint glBindMaterialParameterEXT((unsigned int) GLenum face, (unsigned int) GLenum value);
     /// ```
     public int BindMaterialParameterEXT(int face, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindMaterialParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindMaterialParameterEXT");
@@ -522,7 +522,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value);
+    /// (unsigned int) GLuint glBindTexGenParameterEXT((unsigned int) GLenum unit, (unsigned int) GLenum coord, (unsigned int) GLenum value);
     /// ```
     public int BindTexGenParameterEXT(int unit, int coord, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTexGenParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTexGenParameterEXT");
@@ -531,7 +531,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glBindTextureUnitParameterEXT(GLenum unit, GLenum value);
+    /// (unsigned int) GLuint glBindTextureUnitParameterEXT((unsigned int) GLenum unit, (unsigned int) GLenum value);
     /// ```
     public int BindTextureUnitParameterEXT(int unit, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureUnitParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTextureUnitParameterEXT");
@@ -540,7 +540,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLuint glBindParameterEXT(GLenum value);
+    /// (unsigned int) GLuint glBindParameterEXT((unsigned int) GLenum value);
     /// ```
     public int BindParameterEXT(int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindParameterEXT)) throw new SymbolNotFoundError("Symbol not found: glBindParameterEXT");
@@ -549,7 +549,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// GLboolean glIsVariantEnabledEXT(GLuint id, GLenum cap);
+    /// GLboolean glIsVariantEnabledEXT((unsigned int) GLuint id, (unsigned int) GLenum cap);
     /// ```
     public boolean IsVariantEnabledEXT(int id, int cap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsVariantEnabledEXT)) throw new SymbolNotFoundError("Symbol not found: glIsVariantEnabledEXT");
@@ -558,7 +558,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean* data);
+    /// void glGetVariantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
     public void GetVariantBooleanvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantBooleanvEXT");
@@ -567,7 +567,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetVariantIntegervEXT(GLuint id, GLenum value, GLint* data);
+    /// void glGetVariantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
     public void GetVariantIntegervEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantIntegervEXT");
@@ -576,7 +576,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetVariantFloatvEXT(GLuint id, GLenum value, GLfloat* data);
+    /// void glGetVariantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
     public void GetVariantFloatvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantFloatvEXT");
@@ -585,7 +585,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetVariantPointervEXT(GLuint id, GLenum value, void** data);
+    /// void glGetVariantPointervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, void** data);
     /// ```
     public void GetVariantPointervEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVariantPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVariantPointervEXT");
@@ -594,7 +594,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean* data);
+    /// void glGetInvariantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
     public void GetInvariantBooleanvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantBooleanvEXT");
@@ -603,7 +603,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetInvariantIntegervEXT(GLuint id, GLenum value, GLint* data);
+    /// void glGetInvariantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
     public void GetInvariantIntegervEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantIntegervEXT");
@@ -612,7 +612,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetInvariantFloatvEXT(GLuint id, GLenum value, GLfloat* data);
+    /// void glGetInvariantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
     public void GetInvariantFloatvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInvariantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetInvariantFloatvEXT");
@@ -621,7 +621,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetLocalConstantBooleanvEXT(GLuint id, GLenum value, GLboolean* data);
+    /// void glGetLocalConstantBooleanvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLboolean* data);
     /// ```
     public void GetLocalConstantBooleanvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantBooleanvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantBooleanvEXT");
@@ -630,7 +630,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetLocalConstantIntegervEXT(GLuint id, GLenum value, GLint* data);
+    /// void glGetLocalConstantIntegervEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLint* data);
     /// ```
     public void GetLocalConstantIntegervEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantIntegervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantIntegervEXT");
@@ -639,7 +639,7 @@ public final class GLEXTVertexShader {
     }
 
     /// ```
-    /// void glGetLocalConstantFloatvEXT(GLuint id, GLenum value, GLfloat* data);
+    /// void glGetLocalConstantFloatvEXT((unsigned int) GLuint id, (unsigned int) GLenum value, GLfloat* data);
     /// ```
     public void GetLocalConstantFloatvEXT(int id, int value, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetLocalConstantFloatvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetLocalConstantFloatvEXT");

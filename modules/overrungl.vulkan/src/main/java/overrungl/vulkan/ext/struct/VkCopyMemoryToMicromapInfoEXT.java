@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyMemoryToMicromapInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceOrHostAddressConstKHR src;
-///     VkMicromapEXT dst;
-///     VkCopyMicromapModeEXT mode;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR src;
+///     (uint64_t) VkMicromapEXT dst;
+///     (int) VkCopyMicromapModeEXT mode;
 /// };
 /// ```
 public sealed class VkCopyMemoryToMicromapInfoEXT extends GroupType {

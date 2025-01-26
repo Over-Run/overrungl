@@ -24,6 +24,6 @@ public final class VKEXTPipelineProtectedAccess {
     public static final int VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT_EXT = 0x08000000;
     public static final int VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT_EXT = 0x40000000;
 
-    private VKEXTPipelineProtectedAccess() { }
+    private VKEXTPipelineProtectedAccess() {}
 
 }

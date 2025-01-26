@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSharedPresentSurfaceCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkImageUsageFlags sharedPresentSupportedUsageFlags;
+///     ((uint32_t) VkFlags) VkImageUsageFlags sharedPresentSupportedUsageFlags;
 /// };
 /// ```
 public sealed class VkSharedPresentSurfaceCapabilitiesKHR extends GroupType {

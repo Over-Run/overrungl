@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ```
 /// struct VkAllocationCallbacks {
 ///     void* pUserData;
-///     PFN_vkAllocationFunction pfnAllocation;
-///     PFN_vkReallocationFunction pfnReallocation;
-///     PFN_vkFreeFunction pfnFree;
-///     PFN_vkInternalAllocationNotification pfnInternalAllocation;
-///     PFN_vkInternalFreeNotification pfnInternalFree;
+///     (void* (*VkAllocationFunction)(void* pUserData, size_t size, size_t alignment, (int) VkSystemAllocationScope allocationScope)) PFN_vkAllocationFunction pfnAllocation;
+///     (void* (*VkReallocationFunction)(void* pUserData, void* pOriginal, size_t size, size_t alignment, (int) VkSystemAllocationScope allocationScope)) PFN_vkReallocationFunction pfnReallocation;
+///     (void (*VkFreeFunction)(void* pUserData, void* pMemory)) PFN_vkFreeFunction pfnFree;
+///     (void (*VkInternalAllocationNotification)(void* pUserData, size_t size, (int) VkInternalAllocationType allocationType, (int) VkSystemAllocationScope allocationScope)) PFN_vkInternalAllocationNotification pfnInternalAllocation;
+///     (void (*VkInternalFreeNotification)(void* pUserData, size_t size, (int) VkInternalAllocationType allocationType, (int) VkSystemAllocationScope allocationScope)) PFN_vkInternalFreeNotification pfnInternalFree;
 /// };
 /// ```
 public sealed class VkAllocationCallbacks extends GroupType {

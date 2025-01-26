@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkWriteDescriptorSet {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorSet dstSet;
+///     (uint64_t) VkDescriptorSet dstSet;
 ///     uint32_t dstBinding;
 ///     uint32_t dstArrayElement;
 ///     uint32_t descriptorCount;
-///     VkDescriptorType descriptorType;
+///     (int) VkDescriptorType descriptorType;
 ///     const VkDescriptorImageInfo* pImageInfo;
 ///     const VkDescriptorBufferInfo* pBufferInfo;
 ///     const VkBufferView* pTexelBufferView;

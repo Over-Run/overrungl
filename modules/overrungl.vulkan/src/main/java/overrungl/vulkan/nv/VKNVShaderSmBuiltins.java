@@ -23,6 +23,6 @@ public final class VKNVShaderSmBuiltins {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV = 1000154000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV = 1000154001;
 
-    private VKNVShaderSmBuiltins() { }
+    private VKNVShaderSmBuiltins() {}
 
 }

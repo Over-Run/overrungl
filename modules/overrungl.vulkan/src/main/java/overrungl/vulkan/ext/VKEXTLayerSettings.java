@@ -30,6 +30,6 @@ public final class VKEXTLayerSettings {
     public static final String VK_EXT_LAYER_SETTINGS_EXTENSION_NAME = "VK_EXT_layer_settings";
     public static final int VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT = 1000496000;
 
-    private VKEXTLayerSettings() { }
+    private VKEXTLayerSettings() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerCubicWeightsCreateInfoQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCubicFilterWeightsQCOM cubicWeights;
+///     (int) VkCubicFilterWeightsQCOM cubicWeights;
 /// };
 /// ```
 public sealed class VkSamplerCubicWeightsCreateInfoQCOM extends GroupType {

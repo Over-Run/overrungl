@@ -46,7 +46,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     }
 
     /// ```
-    /// void glRenderbufferStorageMultisampleAdvancedAMD(GLenum target, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height);
+    /// void glRenderbufferStorageMultisampleAdvancedAMD((unsigned int) GLenum target, (int) GLsizei samples, (int) GLsizei storageSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void RenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleAdvancedAMD");
@@ -55,7 +55,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     }
 
     /// ```
-    /// void glNamedRenderbufferStorageMultisampleAdvancedAMD(GLuint renderbuffer, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height);
+    /// void glNamedRenderbufferStorageMultisampleAdvancedAMD((unsigned int) GLuint renderbuffer, (int) GLsizei samples, (int) GLsizei storageSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void NamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD)) throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleAdvancedAMD");

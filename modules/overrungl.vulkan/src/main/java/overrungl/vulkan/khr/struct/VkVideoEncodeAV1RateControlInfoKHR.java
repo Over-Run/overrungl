@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1RateControlInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoEncodeAV1RateControlFlagsKHR flags;
+///     ((uint32_t) VkFlags) VkVideoEncodeAV1RateControlFlagsKHR flags;
 ///     uint32_t gopFrameCount;
 ///     uint32_t keyFramePeriod;
 ///     uint32_t consecutiveBipredictiveFrameCount;

@@ -23,6 +23,6 @@ public final class VKQCOMMultiviewPerViewRenderAreas {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = 1000510000;
     public static final int VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = 1000510001;
 
-    private VKQCOMMultiviewPerViewRenderAreas() { }
+    private VKQCOMMultiviewPerViewRenderAreas() {}
 
 }

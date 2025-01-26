@@ -54,7 +54,7 @@ public final class GLNVVertexArrayRange {
     }
 
     /// ```
-    /// void glVertexArrayRangeNV(GLsizei length, const void* pointer);
+    /// void glVertexArrayRangeNV((int) GLsizei length, const void* pointer);
     /// ```
     public void VertexArrayRangeNV(int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV");

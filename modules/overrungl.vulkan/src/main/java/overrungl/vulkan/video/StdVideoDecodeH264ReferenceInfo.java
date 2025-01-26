@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH264ReferenceInfo {
-///     StdVideoDecodeH264ReferenceInfoFlags flags;
+///     (struct StdVideoDecodeH264ReferenceInfoFlags) StdVideoDecodeH264ReferenceInfoFlags flags;
 ///     uint16_t FrameNum;
 ///     uint16_t reserved;
 ///     int32_t PicOrderCnt[2];

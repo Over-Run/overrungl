@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMeshShaderFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 taskShader;
-///     VkBool32 meshShader;
+///     (uint32_t) VkBool32 taskShader;
+///     (uint32_t) VkBool32 meshShader;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {

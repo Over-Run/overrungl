@@ -43,7 +43,7 @@ public final class GLNVQueryResourceTag {
     }
 
     /// ```
-    /// void glGenQueryResourceTagNV(GLsizei n, GLint* tagIds);
+    /// void glGenQueryResourceTagNV((int) GLsizei n, GLint* tagIds);
     /// ```
     public void GenQueryResourceTagNV(int n, MemorySegment tagIds) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glGenQueryResourceTagNV");
@@ -52,7 +52,7 @@ public final class GLNVQueryResourceTag {
     }
 
     /// ```
-    /// void glDeleteQueryResourceTagNV(GLsizei n, const GLint* tagIds);
+    /// void glDeleteQueryResourceTagNV((int) GLsizei n, const GLint* tagIds);
     /// ```
     public void DeleteQueryResourceTagNV(int n, MemorySegment tagIds) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteQueryResourceTagNV");
@@ -61,7 +61,7 @@ public final class GLNVQueryResourceTag {
     }
 
     /// ```
-    /// void glQueryResourceTagNV(GLint tagId, const GLchar* tagString);
+    /// void glQueryResourceTagNV((int) GLint tagId, const GLchar* tagString);
     /// ```
     public void QueryResourceTagNV(int tagId, MemorySegment tagString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceTagNV");

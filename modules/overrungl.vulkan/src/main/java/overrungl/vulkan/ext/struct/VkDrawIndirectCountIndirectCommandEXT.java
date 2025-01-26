@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDrawIndirectCountIndirectCommandEXT {
-///     VkDeviceAddress bufferAddress;
+///     (uint64_t) VkDeviceAddress bufferAddress;
 ///     uint32_t stride;
 ///     uint32_t commandCount;
 /// };

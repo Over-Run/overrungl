@@ -23,6 +23,6 @@ public final class VKKHRLoadStoreOpNone {
     public static final int VK_ATTACHMENT_LOAD_OP_NONE_KHR = 1000400000;
     public static final int VK_ATTACHMENT_STORE_OP_NONE_KHR = 1000301000;
 
-    private VKKHRLoadStoreOpNone() { }
+    private VKKHRLoadStoreOpNone() {}
 
 }

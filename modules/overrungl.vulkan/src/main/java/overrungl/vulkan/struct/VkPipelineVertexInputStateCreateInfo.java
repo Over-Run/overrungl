@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineVertexInputStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineVertexInputStateCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineVertexInputStateCreateFlags flags;
 ///     uint32_t vertexBindingDescriptionCount;
 ///     const VkVertexInputBindingDescription* pVertexBindingDescriptions;
 ///     uint32_t vertexAttributeDescriptionCount;

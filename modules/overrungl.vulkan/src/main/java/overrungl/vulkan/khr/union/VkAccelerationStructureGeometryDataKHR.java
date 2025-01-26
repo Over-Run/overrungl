@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// union VkAccelerationStructureGeometryDataKHR {
-///     VkAccelerationStructureGeometryTrianglesDataKHR triangles;
-///     VkAccelerationStructureGeometryAabbsDataKHR aabbs;
-///     VkAccelerationStructureGeometryInstancesDataKHR instances;
+///     (struct VkAccelerationStructureGeometryTrianglesDataKHR) VkAccelerationStructureGeometryTrianglesDataKHR triangles;
+///     (struct VkAccelerationStructureGeometryAabbsDataKHR) VkAccelerationStructureGeometryAabbsDataKHR aabbs;
+///     (struct VkAccelerationStructureGeometryInstancesDataKHR) VkAccelerationStructureGeometryInstancesDataKHR instances;
 /// };
 /// ```
 public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {

@@ -21,32 +21,26 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderInfo {
+public final class VKAMDShaderInfo {
     public static final int VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0;
     public static final int VK_SHADER_INFO_TYPE_BINARY_AMD = 1;
     public static final int VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD = 2;
     public static final int VK_AMD_SHADER_INFO_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_INFO_EXTENSION_NAME = "VK_AMD_shader_info";
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetShaderInfoAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetShaderInfoAMD;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetShaderInfoAMD = func.invoke(device, "vkGetShaderInfoAMD");
-        }
+        private Handles() {}
     }
 
-    public VKAMDShaderInfo(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKAMDShaderInfo() {}
 
     /// ```
-    /// VkResult vkGetShaderInfoAMD(VkDevice device, VkPipeline pipeline, VkShaderStageFlagBits shaderStage, VkShaderInfoTypeAMD infoType, size_t* pInfoSize, void* pInfo);
+    /// (int) VkResult vkGetShaderInfoAMD((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline pipeline, (int) VkShaderStageFlagBits shaderStage, (int) VkShaderInfoTypeAMD infoType, size_t* pInfoSize, void* pInfo);
     /// ```
-    public int GetShaderInfoAMD(MemorySegment device, long pipeline, int shaderStage, int infoType, MemorySegment pInfoSize, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetShaderInfoAMD)) throw new SymbolNotFoundError("Symbol not found: vkGetShaderInfoAMD");
-        try { return (int) Handles.MH_vkGetShaderInfoAMD.invokeExact(handles.PFN_vkGetShaderInfoAMD, device, pipeline, shaderStage, infoType, pInfoSize, pInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in GetShaderInfoAMD", e); }
+    public static int vkGetShaderInfoAMD(VkDevice device, long pipeline, int shaderStage, int infoType, MemorySegment pInfoSize, MemorySegment pInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderInfoAMD)) throw new SymbolNotFoundError("Symbol not found: vkGetShaderInfoAMD");
+        try { return (int) Handles.MH_vkGetShaderInfoAMD.invokeExact(device.capabilities().PFN_vkGetShaderInfoAMD, device.segment(), pipeline, shaderStage, infoType, pInfoSize, pInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetShaderInfoAMD", e); }
     }
 
 }

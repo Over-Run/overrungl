@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImagePipeSurfaceCreateInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
-///     zx_handle_t imagePipeHandle;
+///     ((uint32_t) VkFlags) VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
+///     (int32_t) zx_handle_t imagePipeHandle;
 /// };
 /// ```
 public sealed class VkImagePipeSurfaceCreateInfoFUCHSIA extends GroupType {

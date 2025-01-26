@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCoverageReductionStateCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCoverageReductionStateCreateFlagsNV flags;
-///     VkCoverageReductionModeNV coverageReductionMode;
+///     ((uint32_t) VkFlags) VkPipelineCoverageReductionStateCreateFlagsNV flags;
+///     (int) VkCoverageReductionModeNV coverageReductionMode;
 /// };
 /// ```
 public sealed class VkPipelineCoverageReductionStateCreateInfoNV extends GroupType {

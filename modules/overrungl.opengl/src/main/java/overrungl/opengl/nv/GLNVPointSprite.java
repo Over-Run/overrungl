@@ -43,7 +43,7 @@ public final class GLNVPointSprite {
     }
 
     /// ```
-    /// void glPointParameteriNV(GLenum pname, GLint param);
+    /// void glPointParameteriNV((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void PointParameteriNV(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameteriNV");
@@ -52,7 +52,7 @@ public final class GLNVPointSprite {
     }
 
     /// ```
-    /// void glPointParameterivNV(GLenum pname, const GLint* params);
+    /// void glPointParameterivNV((unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void PointParameterivNV(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glPointParameterivNV");

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkHeadlessSurfaceCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkHeadlessSurfaceCreateFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkHeadlessSurfaceCreateFlagsEXT flags;
 /// };
 /// ```
 public sealed class VkHeadlessSurfaceCreateInfoEXT extends GroupType {

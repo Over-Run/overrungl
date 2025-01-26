@@ -40,7 +40,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     }
 
     /// ```
-    /// void glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void* indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
+    /// void glMultiDrawArraysIndirectBindlessCountNV((unsigned int) GLenum mode, const void* indirect, (int) GLsizei drawCount, (int) GLsizei maxDrawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
     public void MultiDrawArraysIndirectBindlessCountNV(int mode, MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV");
@@ -49,7 +49,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     }
 
     /// ```
-    /// void glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void* indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
+    /// void glMultiDrawElementsIndirectBindlessCountNV((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei drawCount, (int) GLsizei maxDrawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
     public void MultiDrawElementsIndirectBindlessCountNV(int mode, int type, MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV");

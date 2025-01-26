@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceDiagnosticsConfigCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceDiagnosticsConfigFlagsNV flags;
+///     ((uint32_t) VkFlags) VkDeviceDiagnosticsConfigFlagsNV flags;
 /// };
 /// ```
 public sealed class VkDeviceDiagnosticsConfigCreateInfoNV extends GroupType {

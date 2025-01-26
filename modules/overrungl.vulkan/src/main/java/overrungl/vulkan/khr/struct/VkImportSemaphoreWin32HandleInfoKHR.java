@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportSemaphoreWin32HandleInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore semaphore;
-///     VkSemaphoreImportFlags flags;
-///     VkExternalSemaphoreHandleTypeFlagBits handleType;
-///     HANDLE handle;
-///     LPCWSTR name;
+///     (uint64_t) VkSemaphore semaphore;
+///     ((uint32_t) VkFlags) VkSemaphoreImportFlags flags;
+///     (int) VkExternalSemaphoreHandleTypeFlagBits handleType;
+///     (void*) HANDLE handle;
+///     (const wchar_t*) LPCWSTR name;
 /// };
 /// ```
 public sealed class VkImportSemaphoreWin32HandleInfoKHR extends GroupType {

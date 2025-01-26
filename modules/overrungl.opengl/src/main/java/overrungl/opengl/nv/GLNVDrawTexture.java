@@ -37,7 +37,7 @@ public final class GLNVDrawTexture {
     }
 
     /// ```
-    /// void glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+    /// void glDrawTextureNV((unsigned int) GLuint texture, (unsigned int) GLuint sampler, ((float) khronos_float_t) GLfloat x0, ((float) khronos_float_t) GLfloat y0, ((float) khronos_float_t) GLfloat x1, ((float) khronos_float_t) GLfloat y1, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat s0, ((float) khronos_float_t) GLfloat t0, ((float) khronos_float_t) GLfloat s1, ((float) khronos_float_t) GLfloat t1);
     /// ```
     public void DrawTextureNV(int texture, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTextureNV)) throw new SymbolNotFoundError("Symbol not found: glDrawTextureNV");

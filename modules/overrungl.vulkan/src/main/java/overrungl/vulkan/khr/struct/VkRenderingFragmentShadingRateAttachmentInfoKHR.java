@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingFragmentShadingRateAttachmentInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageView imageView;
-///     VkImageLayout imageLayout;
-///     VkExtent2D shadingRateAttachmentTexelSize;
+///     (uint64_t) VkImageView imageView;
+///     (int) VkImageLayout imageLayout;
+///     (struct VkExtent2D) VkExtent2D shadingRateAttachmentTexelSize;
 /// };
 /// ```
 public sealed class VkRenderingFragmentShadingRateAttachmentInfoKHR extends GroupType {

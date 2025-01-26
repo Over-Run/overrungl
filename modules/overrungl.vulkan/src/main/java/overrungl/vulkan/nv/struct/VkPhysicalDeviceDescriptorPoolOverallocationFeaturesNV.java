@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 descriptorPoolOverallocation;
+///     (uint32_t) VkBool32 descriptorPoolOverallocation;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV extends GroupType {

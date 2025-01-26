@@ -23,6 +23,6 @@ public final class VKEXTDepthClipControl {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT = 1000355000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT = 1000355001;
 
-    private VKEXTDepthClipControl() { }
+    private VKEXTDepthClipControl() {}
 
 }

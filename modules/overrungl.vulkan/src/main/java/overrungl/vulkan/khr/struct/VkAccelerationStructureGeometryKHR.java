@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureGeometryKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkGeometryTypeKHR geometryType;
-///     VkAccelerationStructureGeometryDataKHR geometry;
-///     VkGeometryFlagsKHR flags;
+///     (int) VkGeometryTypeKHR geometryType;
+///     (union VkAccelerationStructureGeometryDataKHR) VkAccelerationStructureGeometryDataKHR geometry;
+///     ((uint32_t) VkFlags) VkGeometryFlagsKHR flags;
 /// };
 /// ```
 public sealed class VkAccelerationStructureGeometryKHR extends GroupType {

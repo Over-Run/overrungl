@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceObjectReservationCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t pipelineCacheCreateInfoCount;
 ///     const VkPipelineCacheCreateInfo* pPipelineCacheCreateInfos;

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMetalBufferInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     MTLBuffer_id mtlBuffer;
+///     (void*) MTLBuffer_id mtlBuffer;
 /// };
 /// ```
 public sealed class VkImportMetalBufferInfoEXT extends GroupType {

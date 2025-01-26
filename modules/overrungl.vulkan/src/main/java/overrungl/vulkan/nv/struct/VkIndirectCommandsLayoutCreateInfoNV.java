@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsLayoutCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkIndirectCommandsLayoutUsageFlagsNV flags;
-///     VkPipelineBindPoint pipelineBindPoint;
+///     ((uint32_t) VkFlags) VkIndirectCommandsLayoutUsageFlagsNV flags;
+///     (int) VkPipelineBindPoint pipelineBindPoint;
 ///     uint32_t tokenCount;
 ///     const VkIndirectCommandsLayoutTokenNV* pTokens;
 ///     uint32_t streamCount;

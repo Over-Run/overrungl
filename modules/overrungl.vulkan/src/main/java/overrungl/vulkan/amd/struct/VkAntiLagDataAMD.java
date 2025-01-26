@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAntiLagDataAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAntiLagModeAMD mode;
+///     (int) VkAntiLagModeAMD mode;
 ///     uint32_t maxFPS;
 ///     const VkAntiLagPresentationInfoAMD* pPresentationInfo;
 /// };

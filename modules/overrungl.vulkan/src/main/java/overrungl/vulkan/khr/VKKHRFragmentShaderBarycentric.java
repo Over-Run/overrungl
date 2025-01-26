@@ -23,6 +23,6 @@ public final class VKKHRFragmentShaderBarycentric {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR = 1000322000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR = 1000322000;
 
-    private VKKHRFragmentShaderBarycentric() { }
+    private VKKHRFragmentShaderBarycentric() {}
 
 }

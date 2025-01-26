@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 separateDepthStencilLayouts;
+///     (uint32_t) VkBool32 separateDepthStencilLayouts;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures extends GroupType {

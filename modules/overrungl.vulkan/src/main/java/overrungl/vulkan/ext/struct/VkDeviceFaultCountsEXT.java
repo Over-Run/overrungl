@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceFaultCountsEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t addressInfoCount;
 ///     uint32_t vendorInfoCount;
-///     VkDeviceSize vendorBinarySize;
+///     (uint64_t) VkDeviceSize vendorBinarySize;
 /// };
 /// ```
 public sealed class VkDeviceFaultCountsEXT extends GroupType {

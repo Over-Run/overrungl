@@ -38,7 +38,7 @@ public final class GLEXTSemaphoreFd {
     }
 
     /// ```
-    /// void glImportSemaphoreFdEXT(GLuint semaphore, GLenum handleType, GLint fd);
+    /// void glImportSemaphoreFdEXT((unsigned int) GLuint semaphore, (unsigned int) GLenum handleType, (int) GLint fd);
     /// ```
     public void ImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");

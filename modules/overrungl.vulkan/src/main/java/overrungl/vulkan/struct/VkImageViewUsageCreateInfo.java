@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewUsageCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageUsageFlags usage;
+///     ((uint32_t) VkFlags) VkImageUsageFlags usage;
 /// };
 /// ```
 public sealed class VkImageViewUsageCreateInfo extends GroupType {

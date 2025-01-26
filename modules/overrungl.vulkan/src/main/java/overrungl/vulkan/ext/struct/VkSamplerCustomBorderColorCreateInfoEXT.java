@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerCustomBorderColorCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkClearColorValue customBorderColor;
-///     VkFormat format;
+///     (union VkClearColorValue) VkClearColorValue customBorderColor;
+///     (int) VkFormat format;
 /// };
 /// ```
 public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends GroupType {

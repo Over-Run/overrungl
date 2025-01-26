@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceOpacityMicromapFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 micromap;
-///     VkBool32 micromapCaptureReplay;
-///     VkBool32 micromapHostCommands;
+///     (uint32_t) VkBool32 micromap;
+///     (uint32_t) VkBool32 micromapCaptureReplay;
+///     (uint32_t) VkBool32 micromapHostCommands;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceOpacityMicromapFeaturesEXT extends GroupType {

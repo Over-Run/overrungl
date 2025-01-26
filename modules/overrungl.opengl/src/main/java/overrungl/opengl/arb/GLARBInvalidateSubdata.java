@@ -52,7 +52,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+    /// void glInvalidateTexSubImage((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
     public void InvalidateTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glInvalidateTexSubImage");
@@ -61,7 +61,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateTexImage(GLuint texture, GLint level);
+    /// void glInvalidateTexImage((unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void InvalidateTexImage(int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateTexImage)) throw new SymbolNotFoundError("Symbol not found: glInvalidateTexImage");
@@ -70,7 +70,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
+    /// void glInvalidateBufferSubData((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr length);
     /// ```
     public void InvalidateBufferSubData(int buffer, long offset, long length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferSubData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferSubData");
@@ -79,7 +79,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateBufferData(GLuint buffer);
+    /// void glInvalidateBufferData((unsigned int) GLuint buffer);
     /// ```
     public void InvalidateBufferData(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateBufferData)) throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferData");
@@ -88,7 +88,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum* attachments);
+    /// void glInvalidateFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments);
     /// ```
     public void InvalidateFramebuffer(int target, int numAttachments, MemorySegment attachments) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateFramebuffer");
@@ -97,7 +97,7 @@ public final class GLARBInvalidateSubdata {
     }
 
     /// ```
-    /// void glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum* attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+    /// void glInvalidateSubFramebuffer((unsigned int) GLenum target, (int) GLsizei numAttachments, const GLenum* attachments, (int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void InvalidateSubFramebuffer(int target, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glInvalidateSubFramebuffer)) throw new SymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer");

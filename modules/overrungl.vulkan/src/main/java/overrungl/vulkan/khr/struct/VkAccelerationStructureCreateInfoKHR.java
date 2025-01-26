@@ -27,14 +27,14 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkAccelerationStructureCreateFlagsKHR createFlags;
-///     VkBuffer buffer;
-///     VkDeviceSize offset;
-///     VkDeviceSize size;
-///     VkAccelerationStructureTypeKHR type;
-///     VkDeviceAddress deviceAddress;
+///     ((uint32_t) VkFlags) VkAccelerationStructureCreateFlagsKHR createFlags;
+///     (uint64_t) VkBuffer buffer;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize size;
+///     (int) VkAccelerationStructureTypeKHR type;
+///     (uint64_t) VkDeviceAddress deviceAddress;
 /// };
 /// ```
 public sealed class VkAccelerationStructureCreateInfoKHR extends GroupType {

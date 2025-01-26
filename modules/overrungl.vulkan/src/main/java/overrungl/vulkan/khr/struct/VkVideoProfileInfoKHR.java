@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoProfileInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoCodecOperationFlagBitsKHR videoCodecOperation;
-///     VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
-///     VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
-///     VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
+///     (int) VkVideoCodecOperationFlagBitsKHR videoCodecOperation;
+///     ((uint32_t) VkFlags) VkVideoChromaSubsamplingFlagsKHR chromaSubsampling;
+///     ((uint32_t) VkFlags) VkVideoComponentBitDepthFlagsKHR lumaBitDepth;
+///     ((uint32_t) VkFlags) VkVideoComponentBitDepthFlagsKHR chromaBitDepth;
 /// };
 /// ```
 public sealed class VkVideoProfileInfoKHR extends GroupType {

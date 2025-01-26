@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkHdrMetadataEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkXYColorEXT displayPrimaryRed;
-///     VkXYColorEXT displayPrimaryGreen;
-///     VkXYColorEXT displayPrimaryBlue;
-///     VkXYColorEXT whitePoint;
+///     (struct VkXYColorEXT) VkXYColorEXT displayPrimaryRed;
+///     (struct VkXYColorEXT) VkXYColorEXT displayPrimaryGreen;
+///     (struct VkXYColorEXT) VkXYColorEXT displayPrimaryBlue;
+///     (struct VkXYColorEXT) VkXYColorEXT whitePoint;
 ///     float maxLuminance;
 ///     float minLuminance;
 ///     float maxContentLightLevel;

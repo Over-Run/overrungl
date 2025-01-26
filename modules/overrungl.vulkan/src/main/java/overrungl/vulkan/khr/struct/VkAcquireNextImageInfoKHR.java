@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAcquireNextImageInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSwapchainKHR swapchain;
+///     (uint64_t) VkSwapchainKHR swapchain;
 ///     uint64_t timeout;
-///     VkSemaphore semaphore;
-///     VkFence fence;
+///     (uint64_t) VkSemaphore semaphore;
+///     (uint64_t) VkFence fence;
 ///     uint32_t deviceMask;
 /// };
 /// ```

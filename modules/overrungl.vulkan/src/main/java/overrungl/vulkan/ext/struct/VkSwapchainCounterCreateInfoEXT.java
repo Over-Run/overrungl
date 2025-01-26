@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSwapchainCounterCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSurfaceCounterFlagsEXT surfaceCounters;
+///     ((uint32_t) VkFlags) VkSurfaceCounterFlagsEXT surfaceCounters;
 /// };
 /// ```
 public sealed class VkSwapchainCounterCreateInfoEXT extends GroupType {

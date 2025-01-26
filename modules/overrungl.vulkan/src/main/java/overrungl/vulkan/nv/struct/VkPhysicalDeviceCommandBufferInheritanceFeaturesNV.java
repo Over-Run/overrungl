@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 commandBufferInheritance;
+///     (uint32_t) VkBool32 commandBufferInheritance;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCommandBufferInheritanceFeaturesNV extends GroupType {

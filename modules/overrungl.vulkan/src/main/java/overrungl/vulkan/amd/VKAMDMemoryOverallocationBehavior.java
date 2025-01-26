@@ -25,6 +25,6 @@ public final class VKAMDMemoryOverallocationBehavior {
     public static final String VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
     public static final int VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD = 1000189000;
 
-    private VKAMDMemoryOverallocationBehavior() { }
+    private VKAMDMemoryOverallocationBehavior() {}
 
 }

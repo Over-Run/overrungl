@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImportMemoryZirconHandleInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
-///     zx_handle_t handle;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
+///     (int32_t) zx_handle_t handle;
 /// };
 /// ```
 public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {

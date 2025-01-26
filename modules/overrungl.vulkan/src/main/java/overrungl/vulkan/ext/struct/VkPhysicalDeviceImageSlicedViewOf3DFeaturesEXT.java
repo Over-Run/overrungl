@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 imageSlicedViewOf3D;
+///     (uint32_t) VkBool32 imageSlicedViewOf3D;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT extends GroupType {

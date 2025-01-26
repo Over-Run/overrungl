@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalMemorySciBufFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 sciBufImport;
-///     VkBool32 sciBufExport;
+///     (uint32_t) VkBool32 sciBufImport;
+///     (uint32_t) VkBool32 sciBufExport;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalMemorySciBufFeaturesNV extends GroupType {

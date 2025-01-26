@@ -40,7 +40,7 @@ public final class GLSGIXFramezoom {
     }
 
     /// ```
-    /// void glFrameZoomSGIX(GLint factor);
+    /// void glFrameZoomSGIX((int) GLint factor);
     /// ```
     public void FrameZoomSGIX(int factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX");

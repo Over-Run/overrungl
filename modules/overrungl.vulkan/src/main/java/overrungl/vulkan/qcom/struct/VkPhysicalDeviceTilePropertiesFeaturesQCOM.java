@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceTilePropertiesFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 tileProperties;
+///     (uint32_t) VkBool32 tileProperties;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType {

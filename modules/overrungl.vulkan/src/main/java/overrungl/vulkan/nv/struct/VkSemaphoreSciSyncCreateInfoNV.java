@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSemaphoreSciSyncCreateInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphoreSciSyncPoolNV semaphorePool;
+///     (uint64_t) VkSemaphoreSciSyncPoolNV semaphorePool;
 ///     const NvSciSyncFence* pFence;
 /// };
 /// ```

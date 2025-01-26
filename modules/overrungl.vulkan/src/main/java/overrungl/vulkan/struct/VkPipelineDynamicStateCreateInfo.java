@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineDynamicStateCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineDynamicStateCreateFlags flags;
+///     ((uint32_t) VkFlags) VkPipelineDynamicStateCreateFlags flags;
 ///     uint32_t dynamicStateCount;
 ///     const VkDynamicState* pDynamicStates;
 /// };

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFramebufferMixedSamplesCombinationNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkCoverageReductionModeNV coverageReductionMode;
-///     VkSampleCountFlagBits rasterizationSamples;
-///     VkSampleCountFlags depthStencilSamples;
-///     VkSampleCountFlags colorSamples;
+///     (int) VkCoverageReductionModeNV coverageReductionMode;
+///     (int) VkSampleCountFlagBits rasterizationSamples;
+///     ((uint32_t) VkFlags) VkSampleCountFlags depthStencilSamples;
+///     ((uint32_t) VkFlags) VkSampleCountFlags colorSamples;
 /// };
 /// ```
 public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {

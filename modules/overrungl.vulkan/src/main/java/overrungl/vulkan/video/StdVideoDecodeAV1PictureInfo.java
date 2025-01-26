@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeAV1PictureInfo {
-///     StdVideoDecodeAV1PictureInfoFlags flags;
-///     StdVideoAV1FrameType frame_type;
+///     (struct StdVideoDecodeAV1PictureInfoFlags) StdVideoDecodeAV1PictureInfoFlags flags;
+///     (int) StdVideoAV1FrameType frame_type;
 ///     uint32_t current_frame_id;
 ///     uint8_t OrderHint;
 ///     uint8_t primary_ref_frame;
 ///     uint8_t refresh_frame_flags;
 ///     uint8_t reserved1;
-///     StdVideoAV1InterpolationFilter interpolation_filter;
-///     StdVideoAV1TxMode TxMode;
+///     (int) StdVideoAV1InterpolationFilter interpolation_filter;
+///     (int) StdVideoAV1TxMode TxMode;
 ///     uint8_t delta_q_res;
 ///     uint8_t delta_lf_res;
 ///     uint8_t SkipModeFrame[2];

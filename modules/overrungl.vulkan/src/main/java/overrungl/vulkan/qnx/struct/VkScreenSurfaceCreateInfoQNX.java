@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkScreenSurfaceCreateInfoQNX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkScreenSurfaceCreateFlagsQNX flags;
-///     _screen_context * context;
-///     _screen_window * window;
+///     ((uint32_t) VkFlags) VkScreenSurfaceCreateFlagsQNX flags;
+///     struct _screen_context * context;
+///     struct _screen_window * window;
 /// };
 /// ```
 public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {

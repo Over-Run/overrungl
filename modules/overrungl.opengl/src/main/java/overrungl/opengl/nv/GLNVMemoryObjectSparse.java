@@ -45,7 +45,7 @@ public final class GLNVMemoryObjectSparse {
     }
 
     /// ```
-    /// void glBufferPageCommitmentMemNV(GLenum target, GLintptr offset, GLsizeiptr size, GLuint memory, GLuint64 memOffset, GLboolean commit);
+    /// void glBufferPageCommitmentMemNV((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 memOffset, GLboolean commit);
     /// ```
     public void BufferPageCommitmentMemNV(int target, long offset, long size, int memory, long memOffset, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentMemNV");
@@ -54,7 +54,7 @@ public final class GLNVMemoryObjectSparse {
     }
 
     /// ```
-    /// void glTexPageCommitmentMemNV(GLenum target, GLint layer, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset, GLboolean commit);
+    /// void glTexPageCommitmentMemNV((unsigned int) GLenum target, (int) GLint layer, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset, GLboolean commit);
     /// ```
     public void TexPageCommitmentMemNV(int target, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentMemNV");
@@ -63,7 +63,7 @@ public final class GLNVMemoryObjectSparse {
     }
 
     /// ```
-    /// void glNamedBufferPageCommitmentMemNV(GLuint buffer, GLintptr offset, GLsizeiptr size, GLuint memory, GLuint64 memOffset, GLboolean commit);
+    /// void glNamedBufferPageCommitmentMemNV((unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 memOffset, GLboolean commit);
     /// ```
     public void NamedBufferPageCommitmentMemNV(int buffer, long offset, long size, int memory, long memOffset, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferPageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentMemNV");
@@ -72,7 +72,7 @@ public final class GLNVMemoryObjectSparse {
     }
 
     /// ```
-    /// void glTexturePageCommitmentMemNV(GLuint texture, GLint layer, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset, GLboolean commit);
+    /// void glTexturePageCommitmentMemNV((unsigned int) GLuint texture, (int) GLint layer, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 offset, GLboolean commit);
     /// ```
     public void TexturePageCommitmentMemNV(int texture, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexturePageCommitmentMemNV)) throw new SymbolNotFoundError("Symbol not found: glTexturePageCommitmentMemNV");

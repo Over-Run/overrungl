@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkImageViewHandleInfoNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageView imageView;
-///     VkDescriptorType descriptorType;
-///     VkSampler sampler;
+///     (uint64_t) VkImageView imageView;
+///     (int) VkDescriptorType descriptorType;
+///     (uint64_t) VkSampler sampler;
 /// };
 /// ```
 public sealed class VkImageViewHandleInfoNVX extends GroupType {

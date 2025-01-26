@@ -27,24 +27,24 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH265CapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeH265CapabilityFlagsKHR flags;
-///     StdVideoH265LevelIdc maxLevelIdc;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265CapabilityFlagsKHR flags;
+///     (int) StdVideoH265LevelIdc maxLevelIdc;
 ///     uint32_t maxSliceSegmentCount;
-///     VkExtent2D maxTiles;
-///     VkVideoEncodeH265CtbSizeFlagsKHR ctbSizes;
-///     VkVideoEncodeH265TransformBlockSizeFlagsKHR transformBlockSizes;
+///     (struct VkExtent2D) VkExtent2D maxTiles;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265CtbSizeFlagsKHR ctbSizes;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265TransformBlockSizeFlagsKHR transformBlockSizes;
 ///     uint32_t maxPPictureL0ReferenceCount;
 ///     uint32_t maxBPictureL0ReferenceCount;
 ///     uint32_t maxL1ReferenceCount;
 ///     uint32_t maxSubLayerCount;
-///     VkBool32 expectDyadicTemporalSubLayerPattern;
+///     (uint32_t) VkBool32 expectDyadicTemporalSubLayerPattern;
 ///     int32_t minQp;
 ///     int32_t maxQp;
-///     VkBool32 prefersGopRemainingFrames;
-///     VkBool32 requiresGopRemainingFrames;
-///     VkVideoEncodeH265StdFlagsKHR stdSyntaxFlags;
+///     (uint32_t) VkBool32 prefersGopRemainingFrames;
+///     (uint32_t) VkBool32 requiresGopRemainingFrames;
+///     ((uint32_t) VkFlags) VkVideoEncodeH265StdFlagsKHR stdSyntaxFlags;
 /// };
 /// ```
 public sealed class VkVideoEncodeH265CapabilitiesKHR extends GroupType {

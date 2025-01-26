@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDisplayPlaneInfo2KHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDisplayModeKHR mode;
+///     (uint64_t) VkDisplayModeKHR mode;
 ///     uint32_t planeIndex;
 /// };
 /// ```

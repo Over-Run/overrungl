@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDescriptorSetLayoutCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDescriptorSetLayoutCreateFlags flags;
+///     ((uint32_t) VkFlags) VkDescriptorSetLayoutCreateFlags flags;
 ///     uint32_t bindingCount;
 ///     const VkDescriptorSetLayoutBinding* pBindings;
 /// };

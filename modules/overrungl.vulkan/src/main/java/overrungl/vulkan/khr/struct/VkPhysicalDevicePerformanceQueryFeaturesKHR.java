@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePerformanceQueryFeaturesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 performanceCounterQueryPools;
-///     VkBool32 performanceCounterMultipleQueryPools;
+///     (uint32_t) VkBool32 performanceCounterQueryPools;
+///     (uint32_t) VkBool32 performanceCounterMultipleQueryPools;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType {

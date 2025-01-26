@@ -163,7 +163,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glGetUniformuivEXT(GLuint program, GLint location, GLuint* params);
+    /// void glGetUniformuivEXT((unsigned int) GLuint program, (int) GLint location, GLuint* params);
     /// ```
     public void GetUniformuivEXT(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformuivEXT");
@@ -172,7 +172,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar* name);
+    /// void glBindFragDataLocationEXT((unsigned int) GLuint program, (unsigned int) GLuint color, const GLchar* name);
     /// ```
     public void BindFragDataLocationEXT(int program, int color, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationEXT)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationEXT");
@@ -181,7 +181,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// GLint glGetFragDataLocationEXT(GLuint program, const GLchar* name);
+    /// (int) GLint glGetFragDataLocationEXT((unsigned int) GLuint program, const GLchar* name);
     /// ```
     public int GetFragDataLocationEXT(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataLocationEXT)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataLocationEXT");
@@ -190,7 +190,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform1uiEXT(GLint location, GLuint v0);
+    /// void glUniform1uiEXT((int) GLint location, (unsigned int) GLuint v0);
     /// ```
     public void Uniform1uiEXT(int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1uiEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform1uiEXT");
@@ -199,7 +199,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform2uiEXT(GLint location, GLuint v0, GLuint v1);
+    /// void glUniform2uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1);
     /// ```
     public void Uniform2uiEXT(int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2uiEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform2uiEXT");
@@ -208,7 +208,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform3uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2);
+    /// void glUniform3uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2);
     /// ```
     public void Uniform3uiEXT(int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform3uiEXT");
@@ -217,7 +217,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform4uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+    /// void glUniform4uiEXT((int) GLint location, (unsigned int) GLuint v0, (unsigned int) GLuint v1, (unsigned int) GLuint v2, (unsigned int) GLuint v3);
     /// ```
     public void Uniform4uiEXT(int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4uiEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform4uiEXT");
@@ -226,7 +226,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform1uivEXT(GLint location, GLsizei count, const GLuint* value);
+    /// void glUniform1uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
     public void Uniform1uivEXT(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1uivEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform1uivEXT");
@@ -235,7 +235,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform2uivEXT(GLint location, GLsizei count, const GLuint* value);
+    /// void glUniform2uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
     public void Uniform2uivEXT(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2uivEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform2uivEXT");
@@ -244,7 +244,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform3uivEXT(GLint location, GLsizei count, const GLuint* value);
+    /// void glUniform3uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
     public void Uniform3uivEXT(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform3uivEXT");
@@ -253,7 +253,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glUniform4uivEXT(GLint location, GLsizei count, const GLuint* value);
+    /// void glUniform4uivEXT((int) GLint location, (int) GLsizei count, const GLuint* value);
     /// ```
     public void Uniform4uivEXT(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glUniform4uivEXT");
@@ -262,7 +262,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI1iEXT(GLuint index, GLint x);
+    /// void glVertexAttribI1iEXT((unsigned int) GLuint index, (int) GLint x);
     /// ```
     public void VertexAttribI1iEXT(int index, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1iEXT");
@@ -271,7 +271,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI2iEXT(GLuint index, GLint x, GLint y);
+    /// void glVertexAttribI2iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y);
     /// ```
     public void VertexAttribI2iEXT(int index, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2iEXT");
@@ -280,7 +280,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z);
+    /// void glVertexAttribI3iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z);
     /// ```
     public void VertexAttribI3iEXT(int index, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3iEXT");
@@ -289,7 +289,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w);
+    /// void glVertexAttribI4iEXT((unsigned int) GLuint index, (int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
     public void VertexAttribI4iEXT(int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4iEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4iEXT");
@@ -298,7 +298,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI1uiEXT(GLuint index, GLuint x);
+    /// void glVertexAttribI1uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x);
     /// ```
     public void VertexAttribI1uiEXT(int index, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1uiEXT");
@@ -307,7 +307,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y);
+    /// void glVertexAttribI2uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y);
     /// ```
     public void VertexAttribI2uiEXT(int index, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2uiEXT");
@@ -316,7 +316,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z);
+    /// void glVertexAttribI3uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z);
     /// ```
     public void VertexAttribI3uiEXT(int index, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3uiEXT");
@@ -325,7 +325,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+    /// void glVertexAttribI4uiEXT((unsigned int) GLuint index, (unsigned int) GLuint x, (unsigned int) GLuint y, (unsigned int) GLuint z, (unsigned int) GLuint w);
     /// ```
     public void VertexAttribI4uiEXT(int index, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4uiEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4uiEXT");
@@ -334,7 +334,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI1ivEXT(GLuint index, const GLint* v);
+    /// void glVertexAttribI1ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI1ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1ivEXT");
@@ -343,7 +343,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI2ivEXT(GLuint index, const GLint* v);
+    /// void glVertexAttribI2ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI2ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2ivEXT");
@@ -352,7 +352,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI3ivEXT(GLuint index, const GLint* v);
+    /// void glVertexAttribI3ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI3ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3ivEXT");
@@ -361,7 +361,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4ivEXT(GLuint index, const GLint* v);
+    /// void glVertexAttribI4ivEXT((unsigned int) GLuint index, const GLint* v);
     /// ```
     public void VertexAttribI4ivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4ivEXT");
@@ -370,7 +370,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI1uivEXT(GLuint index, const GLuint* v);
+    /// void glVertexAttribI1uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI1uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI1uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI1uivEXT");
@@ -379,7 +379,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI2uivEXT(GLuint index, const GLuint* v);
+    /// void glVertexAttribI2uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI2uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI2uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI2uivEXT");
@@ -388,7 +388,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI3uivEXT(GLuint index, const GLuint* v);
+    /// void glVertexAttribI3uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI3uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI3uivEXT");
@@ -397,7 +397,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4uivEXT(GLuint index, const GLuint* v);
+    /// void glVertexAttribI4uivEXT((unsigned int) GLuint index, const GLuint* v);
     /// ```
     public void VertexAttribI4uivEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4uivEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4uivEXT");
@@ -406,7 +406,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4bvEXT(GLuint index, const GLbyte* v);
+    /// void glVertexAttribI4bvEXT((unsigned int) GLuint index, const GLbyte* v);
     /// ```
     public void VertexAttribI4bvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4bvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4bvEXT");
@@ -415,7 +415,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4svEXT(GLuint index, const GLshort* v);
+    /// void glVertexAttribI4svEXT((unsigned int) GLuint index, const GLshort* v);
     /// ```
     public void VertexAttribI4svEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4svEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4svEXT");
@@ -424,7 +424,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4ubvEXT(GLuint index, const GLubyte* v);
+    /// void glVertexAttribI4ubvEXT((unsigned int) GLuint index, const GLubyte* v);
     /// ```
     public void VertexAttribI4ubvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4ubvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4ubvEXT");
@@ -433,7 +433,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribI4usvEXT(GLuint index, const GLushort* v);
+    /// void glVertexAttribI4usvEXT((unsigned int) GLuint index, const GLushort* v);
     /// ```
     public void VertexAttribI4usvEXT(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribI4usvEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribI4usvEXT");
@@ -442,7 +442,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const void* pointer);
+    /// void glVertexAttribIPointerEXT((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
     public void VertexAttribIPointerEXT(int index, int size, int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIPointerEXT");
@@ -451,7 +451,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint* params);
+    /// void glGetVertexAttribIivEXT((unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetVertexAttribIivEXT(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribIivEXT");
@@ -460,7 +460,7 @@ public final class GLEXTGpuShader4 {
     }
 
     /// ```
-    /// void glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint* params);
+    /// void glGetVertexAttribIuivEXT((unsigned int) GLuint index, (unsigned int) GLenum pname, GLuint* params);
     /// ```
     public void GetVertexAttribIuivEXT(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribIuivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribIuivEXT");

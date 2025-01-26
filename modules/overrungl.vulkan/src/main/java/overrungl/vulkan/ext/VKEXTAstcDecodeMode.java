@@ -23,6 +23,6 @@ public final class VKEXTAstcDecodeMode {
     public static final int VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT = 1000067000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT = 1000067001;
 
-    private VKEXTAstcDecodeMode() { }
+    private VKEXTAstcDecodeMode() {}
 
 }

@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectCommandsPushConstantTokenEXT {
-///     VkPushConstantRange updateRange;
+///     (struct VkPushConstantRange) VkPushConstantRange updateRange;
 /// };
 /// ```
 public sealed class VkIndirectCommandsPushConstantTokenEXT extends GroupType {

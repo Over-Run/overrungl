@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePipelineCreationCacheControlFeatures {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 pipelineCreationCacheControl;
+///     (uint32_t) VkBool32 pipelineCreationCacheControl;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePipelineCreationCacheControlFeatures extends GroupType {

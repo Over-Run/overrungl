@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance7PropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 robustFragmentShadingRateAttachmentAccess;
-///     VkBool32 separateDepthStencilAttachmentAccess;
+///     (uint32_t) VkBool32 robustFragmentShadingRateAttachmentAccess;
+///     (uint32_t) VkBool32 separateDepthStencilAttachmentAccess;
 ///     uint32_t maxDescriptorSetTotalUniformBuffersDynamic;
 ///     uint32_t maxDescriptorSetTotalStorageBuffersDynamic;
 ///     uint32_t maxDescriptorSetTotalBuffersDynamic;

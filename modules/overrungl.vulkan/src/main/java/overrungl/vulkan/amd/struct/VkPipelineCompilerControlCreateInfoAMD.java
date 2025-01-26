@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCompilerControlCreateInfoAMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineCompilerControlFlagsAMD compilerControlFlags;
+///     ((uint32_t) VkFlags) VkPipelineCompilerControlFlagsAMD compilerControlFlags;
 /// };
 /// ```
 public sealed class VkPipelineCompilerControlCreateInfoAMD extends GroupType {

@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeAV1PictureInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkVideoEncodeAV1PredictionModeKHR predictionMode;
-///     VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
+///     (int) VkVideoEncodeAV1PredictionModeKHR predictionMode;
+///     (int) VkVideoEncodeAV1RateControlGroupKHR rateControlGroup;
 ///     uint32_t constantQIndex;
 ///     const StdVideoEncodeAV1PictureInfo* pStdPictureInfo;
 ///     int32_t referenceNameSlotIndices[7];
-///     VkBool32 primaryReferenceCdfOnly;
-///     VkBool32 generateObuExtensionHeader;
+///     (uint32_t) VkBool32 primaryReferenceCdfOnly;
+///     (uint32_t) VkBool32 generateObuExtensionHeader;
 /// };
 /// ```
 public sealed class VkVideoEncodeAV1PictureInfoKHR extends GroupType {

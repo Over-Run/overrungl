@@ -23,6 +23,6 @@ public final class VKNVLinearColorAttachment {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV = 1000430000;
     public static final long VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV = 0x4000000000L;
 
-    private VKNVLinearColorAttachment() { }
+    private VKNVLinearColorAttachment() {}
 
 }

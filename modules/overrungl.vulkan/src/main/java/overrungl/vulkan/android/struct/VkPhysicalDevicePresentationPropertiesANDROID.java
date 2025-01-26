@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDevicePresentationPropertiesANDROID {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 sharedImage;
+///     (uint32_t) VkBool32 sharedImage;
 /// };
 /// ```
 public sealed class VkPhysicalDevicePresentationPropertiesANDROID extends GroupType {

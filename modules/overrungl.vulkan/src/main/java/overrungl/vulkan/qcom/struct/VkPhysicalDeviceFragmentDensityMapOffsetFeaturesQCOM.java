@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 fragmentDensityMapOffset;
+///     (uint32_t) VkBool32 fragmentDensityMapOffset;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends GroupType {

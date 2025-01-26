@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCopyMemoryIndirectCommandNV {
-///     VkDeviceAddress srcAddress;
-///     VkDeviceAddress dstAddress;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceAddress srcAddress;
+///     (uint64_t) VkDeviceAddress dstAddress;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkCopyMemoryIndirectCommandNV extends GroupType {

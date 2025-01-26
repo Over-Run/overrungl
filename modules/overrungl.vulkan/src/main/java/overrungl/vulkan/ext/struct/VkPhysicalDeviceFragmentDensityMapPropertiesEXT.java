@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkExtent2D minFragmentDensityTexelSize;
-///     VkExtent2D maxFragmentDensityTexelSize;
-///     VkBool32 fragmentDensityInvocations;
+///     (struct VkExtent2D) VkExtent2D minFragmentDensityTexelSize;
+///     (struct VkExtent2D) VkExtent2D maxFragmentDensityTexelSize;
+///     (uint32_t) VkBool32 fragmentDensityInvocations;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends GroupType {

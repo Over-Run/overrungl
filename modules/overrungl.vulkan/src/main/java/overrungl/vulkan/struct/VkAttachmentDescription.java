@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAttachmentDescription {
-///     VkAttachmentDescriptionFlags flags;
-///     VkFormat format;
-///     VkSampleCountFlagBits samples;
-///     VkAttachmentLoadOp loadOp;
-///     VkAttachmentStoreOp storeOp;
-///     VkAttachmentLoadOp stencilLoadOp;
-///     VkAttachmentStoreOp stencilStoreOp;
-///     VkImageLayout initialLayout;
-///     VkImageLayout finalLayout;
+///     ((uint32_t) VkFlags) VkAttachmentDescriptionFlags flags;
+///     (int) VkFormat format;
+///     (int) VkSampleCountFlagBits samples;
+///     (int) VkAttachmentLoadOp loadOp;
+///     (int) VkAttachmentStoreOp storeOp;
+///     (int) VkAttachmentLoadOp stencilLoadOp;
+///     (int) VkAttachmentStoreOp stencilStoreOp;
+///     (int) VkImageLayout initialLayout;
+///     (int) VkImageLayout finalLayout;
 /// };
 /// ```
 public sealed class VkAttachmentDescription extends GroupType {

@@ -22,6 +22,6 @@ public final class VKKHRRayQuery {
     public static final String VK_KHR_RAY_QUERY_EXTENSION_NAME = "VK_KHR_ray_query";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR = 1000348013;
 
-    private VKKHRRayQuery() { }
+    private VKKHRRayQuery() {}
 
 }

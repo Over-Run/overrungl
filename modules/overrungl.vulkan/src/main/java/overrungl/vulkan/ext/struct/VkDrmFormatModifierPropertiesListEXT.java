@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDrmFormatModifierPropertiesListEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t drmFormatModifierCount;
 ///     VkDrmFormatModifierPropertiesEXT* pDrmFormatModifierProperties;

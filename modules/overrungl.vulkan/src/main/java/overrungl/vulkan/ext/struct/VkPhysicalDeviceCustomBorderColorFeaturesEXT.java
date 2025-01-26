@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceCustomBorderColorFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 customBorderColors;
-///     VkBool32 customBorderColorWithoutFormat;
+///     (uint32_t) VkBool32 customBorderColors;
+///     (uint32_t) VkBool32 customBorderColorWithoutFormat;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupType {

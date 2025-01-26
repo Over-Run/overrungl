@@ -49,7 +49,7 @@ public final class GLNVDrawVulkanImage {
     }
 
     /// ```
-    /// void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+    /// void glDrawVkImageNV(((uint64_t) khronos_uint64_t) GLuint64 vkImage, (unsigned int) GLuint sampler, ((float) khronos_float_t) GLfloat x0, ((float) khronos_float_t) GLfloat y0, ((float) khronos_float_t) GLfloat x1, ((float) khronos_float_t) GLfloat y1, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat s0, ((float) khronos_float_t) GLfloat t0, ((float) khronos_float_t) GLfloat s1, ((float) khronos_float_t) GLfloat t1);
     /// ```
     public void DrawVkImageNV(long vkImage, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawVkImageNV)) throw new SymbolNotFoundError("Symbol not found: glDrawVkImageNV");
@@ -58,7 +58,7 @@ public final class GLNVDrawVulkanImage {
     }
 
     /// ```
-    /// GLVULKANPROCNV glGetVkProcAddrNV(const GLchar* name);
+    /// (void*) GLVULKANPROCNV glGetVkProcAddrNV(const GLchar* name);
     /// ```
     public MemorySegment GetVkProcAddrNV(MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new SymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
@@ -67,7 +67,7 @@ public final class GLNVDrawVulkanImage {
     }
 
     /// ```
-    /// void glWaitVkSemaphoreNV(GLuint64 vkSemaphore);
+    /// void glWaitVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
     /// ```
     public void WaitVkSemaphoreNV(long vkSemaphore) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWaitVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glWaitVkSemaphoreNV");
@@ -76,7 +76,7 @@ public final class GLNVDrawVulkanImage {
     }
 
     /// ```
-    /// void glSignalVkSemaphoreNV(GLuint64 vkSemaphore);
+    /// void glSignalVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
     /// ```
     public void SignalVkSemaphoreNV(long vkSemaphore) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkSemaphoreNV");
@@ -85,7 +85,7 @@ public final class GLNVDrawVulkanImage {
     }
 
     /// ```
-    /// void glSignalVkFenceNV(GLuint64 vkFence);
+    /// void glSignalVkFenceNV(((uint64_t) khronos_uint64_t) GLuint64 vkFence);
     /// ```
     public void SignalVkFenceNV(long vkFence) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkFenceNV");

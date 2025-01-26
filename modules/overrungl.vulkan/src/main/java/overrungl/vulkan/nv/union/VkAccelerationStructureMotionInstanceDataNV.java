@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// union VkAccelerationStructureMotionInstanceDataNV {
-///     VkAccelerationStructureInstanceKHR staticInstance;
-///     VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
-///     VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
+///     (struct VkAccelerationStructureInstanceKHR) VkAccelerationStructureInstanceKHR staticInstance;
+///     (struct VkAccelerationStructureMatrixMotionInstanceNV) VkAccelerationStructureMatrixMotionInstanceNV matrixMotionInstance;
+///     (struct VkAccelerationStructureSRTMotionInstanceNV) VkAccelerationStructureSRTMotionInstanceNV srtMotionInstance;
 /// };
 /// ```
 public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupType {

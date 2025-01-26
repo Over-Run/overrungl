@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceGroupSwapchainCreateInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceGroupPresentModeFlagsKHR modes;
+///     ((uint32_t) VkFlags) VkDeviceGroupPresentModeFlagsKHR modes;
 /// };
 /// ```
 public sealed class VkDeviceGroupSwapchainCreateInfoKHR extends GroupType {

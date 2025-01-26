@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 extendedSparseAddressSpace;
+///     (uint32_t) VkBool32 extendedSparseAddressSpace;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV extends GroupType {

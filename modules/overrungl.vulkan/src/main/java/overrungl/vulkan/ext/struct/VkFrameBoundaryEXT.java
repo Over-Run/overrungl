@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFrameBoundaryEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFrameBoundaryFlagsEXT flags;
+///     ((uint32_t) VkFlags) VkFrameBoundaryFlagsEXT flags;
 ///     uint64_t frameID;
 ///     uint32_t imageCount;
 ///     const VkImage* pImages;

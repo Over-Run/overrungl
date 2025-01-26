@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMeshShaderPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t maxTaskWorkGroupTotalCount;
 ///     uint32_t maxTaskWorkGroupCount[3];
@@ -53,10 +53,10 @@ import overrungl.util.*;
 ///     uint32_t meshOutputPerPrimitiveGranularity;
 ///     uint32_t maxPreferredTaskWorkGroupInvocations;
 ///     uint32_t maxPreferredMeshWorkGroupInvocations;
-///     VkBool32 prefersLocalInvocationVertexOutput;
-///     VkBool32 prefersLocalInvocationPrimitiveOutput;
-///     VkBool32 prefersCompactVertexOutput;
-///     VkBool32 prefersCompactPrimitiveOutput;
+///     (uint32_t) VkBool32 prefersLocalInvocationVertexOutput;
+///     (uint32_t) VkBool32 prefersLocalInvocationPrimitiveOutput;
+///     (uint32_t) VkBool32 prefersCompactVertexOutput;
+///     (uint32_t) VkBool32 prefersCompactPrimitiveOutput;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMeshShaderPropertiesEXT extends GroupType {

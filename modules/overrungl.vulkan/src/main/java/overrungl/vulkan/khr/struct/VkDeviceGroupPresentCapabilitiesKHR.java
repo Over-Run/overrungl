@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDeviceGroupPresentCapabilitiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t presentMask[32];
-///     VkDeviceGroupPresentModeFlagsKHR modes;
+///     ((uint32_t) VkFlags) VkDeviceGroupPresentModeFlagsKHR modes;
 /// };
 /// ```
 public sealed class VkDeviceGroupPresentCapabilitiesKHR extends GroupType {

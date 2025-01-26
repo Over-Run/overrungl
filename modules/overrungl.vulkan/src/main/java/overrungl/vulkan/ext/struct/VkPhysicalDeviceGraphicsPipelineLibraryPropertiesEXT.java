@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 graphicsPipelineLibraryFastLinking;
-///     VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
+///     (uint32_t) VkBool32 graphicsPipelineLibraryFastLinking;
+///     (uint32_t) VkBool32 graphicsPipelineLibraryIndependentInterpolationDecoration;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends GroupType {

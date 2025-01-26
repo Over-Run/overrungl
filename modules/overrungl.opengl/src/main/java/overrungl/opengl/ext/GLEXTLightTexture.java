@@ -53,7 +53,7 @@ public final class GLEXTLightTexture {
     }
 
     /// ```
-    /// void glApplyTextureEXT(GLenum mode);
+    /// void glApplyTextureEXT((unsigned int) GLenum mode);
     /// ```
     public void ApplyTextureEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glApplyTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glApplyTextureEXT");
@@ -62,7 +62,7 @@ public final class GLEXTLightTexture {
     }
 
     /// ```
-    /// void glTextureLightEXT(GLenum pname);
+    /// void glTextureLightEXT((unsigned int) GLenum pname);
     /// ```
     public void TextureLightEXT(int pname) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureLightEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureLightEXT");
@@ -71,7 +71,7 @@ public final class GLEXTLightTexture {
     }
 
     /// ```
-    /// void glTextureMaterialEXT(GLenum face, GLenum mode);
+    /// void glTextureMaterialEXT((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```
     public void TextureMaterialEXT(int face, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureMaterialEXT");

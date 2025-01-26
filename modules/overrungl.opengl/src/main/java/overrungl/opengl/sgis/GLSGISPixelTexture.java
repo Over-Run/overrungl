@@ -56,7 +56,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glPixelTexGenParameteriSGIS(GLenum pname, GLint param);
+    /// void glPixelTexGenParameteriSGIS((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void PixelTexGenParameteriSGIS(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameteriSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameteriSGIS");
@@ -65,7 +65,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glPixelTexGenParameterivSGIS(GLenum pname, const GLint* params);
+    /// void glPixelTexGenParameterivSGIS((unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void PixelTexGenParameterivSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterivSGIS");
@@ -74,7 +74,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glPixelTexGenParameterfSGIS(GLenum pname, GLfloat param);
+    /// void glPixelTexGenParameterfSGIS((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PixelTexGenParameterfSGIS(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfSGIS");
@@ -83,7 +83,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glPixelTexGenParameterfvSGIS(GLenum pname, const GLfloat* params);
+    /// void glPixelTexGenParameterfvSGIS((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void PixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfvSGIS");
@@ -92,7 +92,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glGetPixelTexGenParameterivSGIS(GLenum pname, GLint* params);
+    /// void glGetPixelTexGenParameterivSGIS((unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetPixelTexGenParameterivSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterivSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterivSGIS");
@@ -101,7 +101,7 @@ public final class GLSGISPixelTexture {
     }
 
     /// ```
-    /// void glGetPixelTexGenParameterfvSGIS(GLenum pname, GLfloat* params);
+    /// void glGetPixelTexGenParameterfvSGIS((unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetPixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterfvSGIS");

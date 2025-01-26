@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceAddressBindingReportFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 reportAddressBinding;
+///     (uint32_t) VkBool32 reportAddressBinding;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceAddressBindingReportFeaturesEXT extends GroupType {

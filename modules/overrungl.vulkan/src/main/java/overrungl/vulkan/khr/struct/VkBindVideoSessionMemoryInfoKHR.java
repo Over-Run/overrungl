@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBindVideoSessionMemoryInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t memoryBindIndex;
-///     VkDeviceMemory memory;
-///     VkDeviceSize memoryOffset;
-///     VkDeviceSize memorySize;
+///     (uint64_t) VkDeviceMemory memory;
+///     (uint64_t) VkDeviceSize memoryOffset;
+///     (uint64_t) VkDeviceSize memorySize;
 /// };
 /// ```
 public sealed class VkBindVideoSessionMemoryInfoKHR extends GroupType {

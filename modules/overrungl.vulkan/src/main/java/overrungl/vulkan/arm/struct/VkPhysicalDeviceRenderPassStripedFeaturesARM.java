@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceRenderPassStripedFeaturesARM {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 renderPassStriped;
+///     (uint32_t) VkBool32 renderPassStriped;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceRenderPassStripedFeaturesARM extends GroupType {

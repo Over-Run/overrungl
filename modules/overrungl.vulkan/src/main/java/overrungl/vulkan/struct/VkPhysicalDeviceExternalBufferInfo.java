@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceExternalBufferInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBufferCreateFlags flags;
-///     VkBufferUsageFlags usage;
-///     VkExternalMemoryHandleTypeFlagBits handleType;
+///     ((uint32_t) VkFlags) VkBufferCreateFlags flags;
+///     ((uint32_t) VkFlags) VkBufferUsageFlags usage;
+///     (int) VkExternalMemoryHandleTypeFlagBits handleType;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceExternalBufferInfo extends GroupType {

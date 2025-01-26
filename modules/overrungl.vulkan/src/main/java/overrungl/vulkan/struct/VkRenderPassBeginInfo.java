@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderPassBeginInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRenderPass renderPass;
-///     VkFramebuffer framebuffer;
-///     VkRect2D renderArea;
+///     (uint64_t) VkRenderPass renderPass;
+///     (uint64_t) VkFramebuffer framebuffer;
+///     (struct VkRect2D) VkRect2D renderArea;
 ///     uint32_t clearValueCount;
 ///     const VkClearValue* pClearValues;
 /// };

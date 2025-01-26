@@ -27,6 +27,6 @@ public final class VKEXTGlobalPriority {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT = 512;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT = 1024;
 
-    private VKEXTGlobalPriority() { }
+    private VKEXTGlobalPriority() {}
 
 }

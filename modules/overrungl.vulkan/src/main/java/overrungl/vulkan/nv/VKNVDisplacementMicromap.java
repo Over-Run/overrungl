@@ -30,6 +30,6 @@ public final class VKNVDisplacementMicromap {
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_NV = 0x00000200;
     public static final int VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV = 1000397000;
 
-    private VKNVDisplacementMicromap() { }
+    private VKNVDisplacementMicromap() {}
 
 }

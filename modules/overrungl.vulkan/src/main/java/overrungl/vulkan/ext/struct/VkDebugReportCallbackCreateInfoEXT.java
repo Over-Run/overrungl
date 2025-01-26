@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkDebugReportCallbackCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDebugReportFlagsEXT flags;
-///     PFN_vkDebugReportCallbackEXT pfnCallback;
+///     ((uint32_t) VkFlags) VkDebugReportFlagsEXT flags;
+///     ((uint32_t) VkBool32 (*VkDebugReportCallbackEXT)(((uint32_t) VkFlags) VkDebugReportFlagsEXT flags, (int) VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, const char* pLayerPrefix, const char* pMessage, void* pUserData)) PFN_vkDebugReportCallbackEXT pfnCallback;
 ///     void* pUserData;
 /// };
 /// ```

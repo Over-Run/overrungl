@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkProvokingVertexModeEXT provokingVertexMode;
+///     (int) VkProvokingVertexModeEXT provokingVertexMode;
 /// };
 /// ```
 public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT extends GroupType {

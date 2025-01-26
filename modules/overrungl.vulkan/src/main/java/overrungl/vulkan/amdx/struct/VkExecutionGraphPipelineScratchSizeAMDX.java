@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkExecutionGraphPipelineScratchSizeAMDX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize minSize;
-///     VkDeviceSize maxSize;
-///     VkDeviceSize sizeGranularity;
+///     (uint64_t) VkDeviceSize minSize;
+///     (uint64_t) VkDeviceSize maxSize;
+///     (uint64_t) VkDeviceSize sizeGranularity;
 /// };
 /// ```
 public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {

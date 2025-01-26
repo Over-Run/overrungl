@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceImageViewMinLodFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 minLod;
+///     (uint32_t) VkBool32 minLod;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceImageViewMinLodFeaturesEXT extends GroupType {

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferCollectionBufferCreateInfoFUCHSIA {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBufferCollectionFUCHSIA collection;
+///     (uint64_t) VkBufferCollectionFUCHSIA collection;
 ///     uint32_t index;
 /// };
 /// ```

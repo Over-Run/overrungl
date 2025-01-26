@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkCuLaunchInfoNVX {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkCuFunctionNVX function;
+///     (uint64_t) VkCuFunctionNVX function;
 ///     uint32_t gridDimX;
 ///     uint32_t gridDimY;
 ///     uint32_t gridDimZ;

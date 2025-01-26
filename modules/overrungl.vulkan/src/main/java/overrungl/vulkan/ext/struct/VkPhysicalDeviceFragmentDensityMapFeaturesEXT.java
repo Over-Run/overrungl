@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 fragmentDensityMap;
-///     VkBool32 fragmentDensityMapDynamic;
-///     VkBool32 fragmentDensityMapNonSubsampledImages;
+///     (uint32_t) VkBool32 fragmentDensityMap;
+///     (uint32_t) VkBool32 fragmentDensityMapDynamic;
+///     (uint32_t) VkBool32 fragmentDensityMapNonSubsampledImages;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends GroupType {

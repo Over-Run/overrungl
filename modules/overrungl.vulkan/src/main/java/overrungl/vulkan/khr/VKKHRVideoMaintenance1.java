@@ -26,6 +26,6 @@ public final class VKKHRVideoMaintenance1 {
     public static final int VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR = 0x00000040;
     public static final int VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR = 0x00000004;
 
-    private VKKHRVideoMaintenance1() { }
+    private VKKHRVideoMaintenance1() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMaintenance4Properties {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize maxBufferSize;
+///     (uint64_t) VkDeviceSize maxBufferSize;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMaintenance4Properties extends GroupType {

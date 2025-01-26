@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkIndirectExecutionSetShaderLayoutInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     uint32_t setLayoutCount;
 ///     const VkDescriptorSetLayout* pSetLayouts;

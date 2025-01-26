@@ -24,6 +24,6 @@ public final class VKEXTValidationFlags {
     public static final String VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags";
     public static final int VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT = 1000061000;
 
-    private VKEXTValidationFlags() { }
+    private VKEXTValidationFlags() {}
 
 }

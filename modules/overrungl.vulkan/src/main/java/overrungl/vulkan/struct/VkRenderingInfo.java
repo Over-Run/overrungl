@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRenderingInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkRenderingFlags flags;
-///     VkRect2D renderArea;
+///     ((uint32_t) VkFlags) VkRenderingFlags flags;
+///     (struct VkRect2D) VkRect2D renderArea;
 ///     uint32_t layerCount;
 ///     uint32_t viewMask;
 ///     uint32_t colorAttachmentCount;

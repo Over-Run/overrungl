@@ -23,6 +23,6 @@ public final class VKKHRComputeShaderDerivatives {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR = 1000511000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR = 1000511000;
 
-    private VKKHRComputeShaderDerivatives() { }
+    private VKKHRComputeShaderDerivatives() {}
 
 }

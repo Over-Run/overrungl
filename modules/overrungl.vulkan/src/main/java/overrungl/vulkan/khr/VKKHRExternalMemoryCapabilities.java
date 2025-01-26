@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRExternalMemoryCapabilities {
+public final class VKKHRExternalMemoryCapabilities {
     public static final int VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_EXTENSION_NAME = "VK_KHR_external_memory_capabilities";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO_KHR = 1000071000;
@@ -40,26 +40,20 @@ public class VKKHRExternalMemoryCapabilities {
     public static final int VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_KHR = 0x00000001;
     public static final int VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_KHR = 0x00000002;
     public static final int VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR = 0x00000004;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceExternalBufferPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR;
-        private Handles(MemorySegment instance, VKLoadFunc func) {
-            PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceExternalBufferPropertiesKHR", "vkGetPhysicalDeviceExternalBufferProperties");
-        }
+        private Handles() {}
     }
 
-    public VKKHRExternalMemoryCapabilities(MemorySegment instance, VKLoadFunc func) {
-        this.handles = new Handles(instance, func);
-    }
+    private VKKHRExternalMemoryCapabilities() {}
 
     /// ```
-    /// void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
+    /// void vkGetPhysicalDeviceExternalBufferPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
     /// ```
-    public void GetPhysicalDeviceExternalBufferPropertiesKHR(MemorySegment physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferPropertiesKHR");
-        try { Handles.MH_vkGetPhysicalDeviceExternalBufferPropertiesKHR.invokeExact(handles.PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR, physicalDevice, pExternalBufferInfo, pExternalBufferProperties); }
-        catch (Throwable e) { throw new RuntimeException("error in GetPhysicalDeviceExternalBufferPropertiesKHR", e); }
+    public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferPropertiesKHR");
+        try { Handles.MH_vkGetPhysicalDeviceExternalBufferPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR, physicalDevice.segment(), pExternalBufferInfo, pExternalBufferProperties); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalBufferPropertiesKHR", e); }
     }
 
 }

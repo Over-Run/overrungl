@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPipelineCreationFeedbackCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
 ///     VkPipelineCreationFeedback* pPipelineCreationFeedback;
 ///     uint32_t pipelineStageCreationFeedbackCount;

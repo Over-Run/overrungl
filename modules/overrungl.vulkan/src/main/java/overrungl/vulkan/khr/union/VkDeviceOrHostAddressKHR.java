@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// union VkDeviceOrHostAddressKHR {
-///     VkDeviceAddress deviceAddress;
+///     (uint64_t) VkDeviceAddress deviceAddress;
 ///     void* hostAddress;
 /// };
 /// ```

@@ -57,7 +57,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// GLboolean glAreTexturesResidentEXT(GLsizei n, const GLuint* textures, GLboolean* residences);
+    /// GLboolean glAreTexturesResidentEXT((int) GLsizei n, const GLuint* textures, GLboolean* residences);
     /// ```
     public boolean AreTexturesResidentEXT(int n, MemorySegment textures, MemorySegment residences) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAreTexturesResidentEXT)) throw new SymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT");
@@ -66,7 +66,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// void glBindTextureEXT(GLenum target, GLuint texture);
+    /// void glBindTextureEXT((unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
     public void BindTextureEXT(int target, int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTextureEXT");
@@ -75,7 +75,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// void glDeleteTexturesEXT(GLsizei n, const GLuint* textures);
+    /// void glDeleteTexturesEXT((int) GLsizei n, const GLuint* textures);
     /// ```
     public void DeleteTexturesEXT(int n, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteTexturesEXT");
@@ -84,7 +84,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// void glGenTexturesEXT(GLsizei n, GLuint* textures);
+    /// void glGenTexturesEXT((int) GLsizei n, GLuint* textures);
     /// ```
     public void GenTexturesEXT(int n, MemorySegment textures) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glGenTexturesEXT");
@@ -93,7 +93,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// GLboolean glIsTextureEXT(GLuint texture);
+    /// GLboolean glIsTextureEXT((unsigned int) GLuint texture);
     /// ```
     public boolean IsTextureEXT(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glIsTextureEXT");
@@ -102,7 +102,7 @@ public final class GLEXTTextureObject {
     }
 
     /// ```
-    /// void glPrioritizeTexturesEXT(GLsizei n, const GLuint* textures, const GLclampf* priorities);
+    /// void glPrioritizeTexturesEXT((int) GLsizei n, const GLuint* textures, const GLclampf* priorities);
     /// ```
     public void PrioritizeTexturesEXT(int n, MemorySegment textures, MemorySegment priorities) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT");

@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// struct VkInputAttachmentAspectReference {
 ///     uint32_t subpass;
 ///     uint32_t inputAttachmentIndex;
-///     VkImageAspectFlags aspectMask;
+///     ((uint32_t) VkFlags) VkImageAspectFlags aspectMask;
 /// };
 /// ```
 public sealed class VkInputAttachmentAspectReference extends GroupType {

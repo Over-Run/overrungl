@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubmitInfo2 {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSubmitFlags flags;
+///     ((uint32_t) VkFlags) VkSubmitFlags flags;
 ///     uint32_t waitSemaphoreInfoCount;
 ///     const VkSemaphoreSubmitInfo* pWaitSemaphoreInfos;
 ///     uint32_t commandBufferInfoCount;

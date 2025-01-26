@@ -27,20 +27,20 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 shaderBufferFloat16Atomics;
-///     VkBool32 shaderBufferFloat16AtomicAdd;
-///     VkBool32 shaderBufferFloat16AtomicMinMax;
-///     VkBool32 shaderBufferFloat32AtomicMinMax;
-///     VkBool32 shaderBufferFloat64AtomicMinMax;
-///     VkBool32 shaderSharedFloat16Atomics;
-///     VkBool32 shaderSharedFloat16AtomicAdd;
-///     VkBool32 shaderSharedFloat16AtomicMinMax;
-///     VkBool32 shaderSharedFloat32AtomicMinMax;
-///     VkBool32 shaderSharedFloat64AtomicMinMax;
-///     VkBool32 shaderImageFloat32AtomicMinMax;
-///     VkBool32 sparseImageFloat32AtomicMinMax;
+///     (uint32_t) VkBool32 shaderBufferFloat16Atomics;
+///     (uint32_t) VkBool32 shaderBufferFloat16AtomicAdd;
+///     (uint32_t) VkBool32 shaderBufferFloat16AtomicMinMax;
+///     (uint32_t) VkBool32 shaderBufferFloat32AtomicMinMax;
+///     (uint32_t) VkBool32 shaderBufferFloat64AtomicMinMax;
+///     (uint32_t) VkBool32 shaderSharedFloat16Atomics;
+///     (uint32_t) VkBool32 shaderSharedFloat16AtomicAdd;
+///     (uint32_t) VkBool32 shaderSharedFloat16AtomicMinMax;
+///     (uint32_t) VkBool32 shaderSharedFloat32AtomicMinMax;
+///     (uint32_t) VkBool32 shaderSharedFloat64AtomicMinMax;
+///     (uint32_t) VkBool32 shaderImageFloat32AtomicMinMax;
+///     (uint32_t) VkBool32 sparseImageFloat32AtomicMinMax;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupType {

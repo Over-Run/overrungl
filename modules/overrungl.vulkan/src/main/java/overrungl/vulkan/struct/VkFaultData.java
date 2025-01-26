@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFaultData {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkFaultLevel faultLevel;
-///     VkFaultType faultType;
+///     (int) VkFaultLevel faultLevel;
+///     (int) VkFaultType faultType;
 /// };
 /// ```
 public sealed class VkFaultData extends GroupType {

@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkQueryPoolCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkQueryPoolCreateFlags flags;
-///     VkQueryType queryType;
+///     ((uint32_t) VkFlags) VkQueryPoolCreateFlags flags;
+///     (int) VkQueryType queryType;
 ///     uint32_t queryCount;
-///     VkQueryPipelineStatisticFlags pipelineStatistics;
+///     ((uint32_t) VkFlags) VkQueryPipelineStatisticFlags pipelineStatistics;
 /// };
 /// ```
 public sealed class VkQueryPoolCreateInfo extends GroupType {

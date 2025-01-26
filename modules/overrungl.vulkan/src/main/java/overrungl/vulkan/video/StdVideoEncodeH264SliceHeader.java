@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264SliceHeader {
-///     StdVideoEncodeH264SliceHeaderFlags flags;
+///     (struct StdVideoEncodeH264SliceHeaderFlags) StdVideoEncodeH264SliceHeaderFlags flags;
 ///     uint32_t first_mb_in_slice;
-///     StdVideoH264SliceType slice_type;
+///     (int) StdVideoH264SliceType slice_type;
 ///     int8_t slice_alpha_c0_offset_div2;
 ///     int8_t slice_beta_offset_div2;
 ///     int8_t slice_qp_delta;
 ///     uint8_t reserved1;
-///     StdVideoH264CabacInitIdc cabac_init_idc;
-///     StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc;
+///     (int) StdVideoH264CabacInitIdc cabac_init_idc;
+///     (int) StdVideoH264DisableDeblockingFilterIdc disable_deblocking_filter_idc;
 ///     const StdVideoEncodeH264WeightTable* pWeightTable;
 /// };
 /// ```

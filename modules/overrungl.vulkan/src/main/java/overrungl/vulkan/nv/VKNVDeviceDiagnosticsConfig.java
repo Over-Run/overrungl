@@ -27,6 +27,6 @@ public final class VKNVDeviceDiagnosticsConfig {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV = 1000300000;
     public static final int VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV = 1000300001;
 
-    private VKNVDeviceDiagnosticsConfig() { }
+    private VKNVDeviceDiagnosticsConfig() {}
 
 }

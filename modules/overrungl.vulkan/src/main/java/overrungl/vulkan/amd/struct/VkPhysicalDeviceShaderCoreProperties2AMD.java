@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceShaderCoreProperties2AMD {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
+///     ((uint32_t) VkFlags) VkShaderCorePropertiesFlagsAMD shaderCoreFeatures;
 ///     uint32_t activeComputeUnitCount;
 /// };
 /// ```

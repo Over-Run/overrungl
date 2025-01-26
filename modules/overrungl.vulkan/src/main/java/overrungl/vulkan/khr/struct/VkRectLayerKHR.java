@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkRectLayerKHR {
-///     VkOffset2D offset;
-///     VkExtent2D extent;
+///     (struct VkOffset2D) VkOffset2D offset;
+///     (struct VkExtent2D) VkExtent2D extent;
 ///     uint32_t layer;
 /// };
 /// ```

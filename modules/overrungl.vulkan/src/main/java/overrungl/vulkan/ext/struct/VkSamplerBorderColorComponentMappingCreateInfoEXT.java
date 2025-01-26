@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSamplerBorderColorComponentMappingCreateInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkComponentMapping components;
-///     VkBool32 srgb;
+///     (struct VkComponentMapping) VkComponentMapping components;
+///     (uint32_t) VkBool32 srgb;
 /// };
 /// ```
 public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends GroupType {

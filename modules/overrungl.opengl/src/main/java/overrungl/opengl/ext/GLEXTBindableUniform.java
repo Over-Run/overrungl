@@ -49,7 +49,7 @@ public final class GLEXTBindableUniform {
     }
 
     /// ```
-    /// void glUniformBufferEXT(GLuint program, GLint location, GLuint buffer);
+    /// void glUniformBufferEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint buffer);
     /// ```
     public void UniformBufferEXT(int program, int location, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glUniformBufferEXT");
@@ -58,7 +58,7 @@ public final class GLEXTBindableUniform {
     }
 
     /// ```
-    /// GLint glGetUniformBufferSizeEXT(GLuint program, GLint location);
+    /// (int) GLint glGetUniformBufferSizeEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```
     public int GetUniformBufferSizeEXT(int program, int location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformBufferSizeEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT");
@@ -67,7 +67,7 @@ public final class GLEXTBindableUniform {
     }
 
     /// ```
-    /// GLintptr glGetUniformOffsetEXT(GLuint program, GLint location);
+    /// ((signed long long) khronos_intptr_t) GLintptr glGetUniformOffsetEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```
     public long GetUniformOffsetEXT(int program, int location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT");

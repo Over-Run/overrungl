@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPushConstantsInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkPipelineLayout layout;
-///     VkShaderStageFlags stageFlags;
+///     (uint64_t) VkPipelineLayout layout;
+///     ((uint32_t) VkFlags) VkShaderStageFlags stageFlags;
 ///     uint32_t offset;
 ///     uint32_t size;
 ///     const void* pValues;

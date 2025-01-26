@@ -49,6 +49,6 @@ public final class VKKHRFormatFeatureFlags2 {
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR = 0x00010000L;
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT = 0x00002000L;
 
-    private VKKHRFormatFeatureFlags2() { }
+    private VKKHRFormatFeatureFlags2() {}
 
 }

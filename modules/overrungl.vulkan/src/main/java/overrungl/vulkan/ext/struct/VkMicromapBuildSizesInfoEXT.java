@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMicromapBuildSizesInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkDeviceSize micromapSize;
-///     VkDeviceSize buildScratchSize;
-///     VkBool32 discardable;
+///     (uint64_t) VkDeviceSize micromapSize;
+///     (uint64_t) VkDeviceSize buildScratchSize;
+///     (uint32_t) VkBool32 discardable;
 /// };
 /// ```
 public sealed class VkMicromapBuildSizesInfoEXT extends GroupType {

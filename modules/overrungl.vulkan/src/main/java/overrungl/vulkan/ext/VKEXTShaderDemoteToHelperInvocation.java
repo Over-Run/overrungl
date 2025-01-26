@@ -22,6 +22,6 @@ public final class VKEXTShaderDemoteToHelperInvocation {
     public static final String VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = 1000276000;
 
-    private VKEXTShaderDemoteToHelperInvocation() { }
+    private VKEXTShaderDemoteToHelperInvocation() {}
 
 }

@@ -25,6 +25,6 @@ public final class VKQCOMFragmentDensityMapOffset {
     public static final int VK_STRUCTURE_TYPE_SUBPASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_QCOM = 1000425002;
     public static final int VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = 0x00008000;
 
-    private VKQCOMFragmentDensityMapOffset() { }
+    private VKQCOMFragmentDensityMapOffset() {}
 
 }

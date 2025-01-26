@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264QualityLevelPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags;
+///     ((uint32_t) VkFlags) VkVideoEncodeH264RateControlFlagsKHR preferredRateControlFlags;
 ///     uint32_t preferredGopFrameCount;
 ///     uint32_t preferredIdrPeriod;
 ///     uint32_t preferredConsecutiveBFrameCount;
 ///     uint32_t preferredTemporalLayerCount;
-///     VkVideoEncodeH264QpKHR preferredConstantQp;
+///     (struct VkVideoEncodeH264QpKHR) VkVideoEncodeH264QpKHR preferredConstantQp;
 ///     uint32_t preferredMaxL0ReferenceCount;
 ///     uint32_t preferredMaxL1ReferenceCount;
-///     VkBool32 preferredStdEntropyCodingModeFlag;
+///     (uint32_t) VkBool32 preferredStdEntropyCodingModeFlag;
 /// };
 /// ```
 public sealed class VkVideoEncodeH264QualityLevelPropertiesKHR extends GroupType {

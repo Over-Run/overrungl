@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkFilterCubicImageViewImageFormatPropertiesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 filterCubic;
-///     VkBool32 filterCubicMinmax;
+///     (uint32_t) VkBool32 filterCubic;
+///     (uint32_t) VkBool32 filterCubicMinmax;
 /// };
 /// ```
 public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupType {

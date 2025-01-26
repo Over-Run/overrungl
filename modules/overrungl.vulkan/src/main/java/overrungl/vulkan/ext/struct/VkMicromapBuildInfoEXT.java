@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMicromapBuildInfoEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkMicromapTypeEXT type;
-///     VkBuildMicromapFlagsEXT flags;
-///     VkBuildMicromapModeEXT mode;
-///     VkMicromapEXT dstMicromap;
+///     (int) VkMicromapTypeEXT type;
+///     ((uint32_t) VkFlags) VkBuildMicromapFlagsEXT flags;
+///     (int) VkBuildMicromapModeEXT mode;
+///     (uint64_t) VkMicromapEXT dstMicromap;
 ///     uint32_t usageCountsCount;
 ///     const VkMicromapUsageEXT* pUsageCounts;
 ///     const VkMicromapUsageEXT* const * ppUsageCounts;
-///     VkDeviceOrHostAddressConstKHR data;
-///     VkDeviceOrHostAddressKHR scratchData;
-///     VkDeviceOrHostAddressConstKHR triangleArray;
-///     VkDeviceSize triangleArrayStride;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR data;
+///     (union VkDeviceOrHostAddressKHR) VkDeviceOrHostAddressKHR scratchData;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR triangleArray;
+///     (uint64_t) VkDeviceSize triangleArrayStride;
 /// };
 /// ```
 public sealed class VkMicromapBuildInfoEXT extends GroupType {

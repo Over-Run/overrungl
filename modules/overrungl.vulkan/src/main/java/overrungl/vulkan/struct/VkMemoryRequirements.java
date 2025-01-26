@@ -27,8 +27,8 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkMemoryRequirements {
-///     VkDeviceSize size;
-///     VkDeviceSize alignment;
+///     (uint64_t) VkDeviceSize size;
+///     (uint64_t) VkDeviceSize alignment;
 ///     uint32_t memoryTypeBits;
 /// };
 /// ```

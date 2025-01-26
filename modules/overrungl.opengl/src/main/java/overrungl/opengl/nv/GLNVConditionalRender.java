@@ -44,7 +44,7 @@ public final class GLNVConditionalRender {
     }
 
     /// ```
-    /// void glBeginConditionalRenderNV(GLuint id, GLenum mode);
+    /// void glBeginConditionalRenderNV((unsigned int) GLuint id, (unsigned int) GLenum mode);
     /// ```
     public void BeginConditionalRenderNV(int id, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNV)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNV");

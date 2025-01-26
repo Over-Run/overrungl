@@ -21,44 +21,36 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKFUCHSIAExternalSemaphore {
+public final class VKFUCHSIAExternalSemaphore {
     public static final int VK_FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;
     public static final String VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_FUCHSIA_external_semaphore";
     public static final int VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA = 1000365000;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000365001;
     public static final int VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_ZIRCON_EVENT_BIT_FUCHSIA = 0x00000080;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkImportSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkGetSemaphoreZirconHandleFUCHSIA = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkImportSemaphoreZirconHandleFUCHSIA;
-        public final MemorySegment PFN_vkGetSemaphoreZirconHandleFUCHSIA;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkImportSemaphoreZirconHandleFUCHSIA = func.invoke(device, "vkImportSemaphoreZirconHandleFUCHSIA");
-            PFN_vkGetSemaphoreZirconHandleFUCHSIA = func.invoke(device, "vkGetSemaphoreZirconHandleFUCHSIA");
-        }
+        private Handles() {}
     }
 
-    public VKFUCHSIAExternalSemaphore(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKFUCHSIAExternalSemaphore() {}
 
     /// ```
-    /// VkResult vkImportSemaphoreZirconHandleFUCHSIA(VkDevice device, const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
+    /// (int) VkResult vkImportSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
     /// ```
-    public int ImportSemaphoreZirconHandleFUCHSIA(MemorySegment device, MemorySegment pImportSemaphoreZirconHandleInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkImportSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkImportSemaphoreZirconHandleFUCHSIA");
-        try { return (int) Handles.MH_vkImportSemaphoreZirconHandleFUCHSIA.invokeExact(handles.PFN_vkImportSemaphoreZirconHandleFUCHSIA, device, pImportSemaphoreZirconHandleInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreZirconHandleFUCHSIA", e); }
+    public static int vkImportSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pImportSemaphoreZirconHandleInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkImportSemaphoreZirconHandleFUCHSIA");
+        try { return (int) Handles.MH_vkImportSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA, device.segment(), pImportSemaphoreZirconHandleInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreZirconHandleFUCHSIA", e); }
     }
 
     /// ```
-    /// VkResult vkGetSemaphoreZirconHandleFUCHSIA(VkDevice device, const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
+    /// (int) VkResult vkGetSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
     /// ```
-    public int GetSemaphoreZirconHandleFUCHSIA(MemorySegment device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreZirconHandleFUCHSIA");
-        try { return (int) Handles.MH_vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(handles.PFN_vkGetSemaphoreZirconHandleFUCHSIA, device, pGetZirconHandleInfo, pZirconHandle); }
-        catch (Throwable e) { throw new RuntimeException("error in GetSemaphoreZirconHandleFUCHSIA", e); }
+    public static int vkGetSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreZirconHandleFUCHSIA");
+        try { return (int) Handles.MH_vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreZirconHandleFUCHSIA", e); }
     }
 
 }

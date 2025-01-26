@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSubresourceHostMemcpySize {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkDeviceSize size;
+///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
 public sealed class VkSubresourceHostMemcpySize extends GroupType {

@@ -38,7 +38,7 @@ public final class GLARBInstancedArrays {
     }
 
     /// ```
-    /// void glVertexAttribDivisorARB(GLuint index, GLuint divisor);
+    /// void glVertexAttribDivisorARB((unsigned int) GLuint index, (unsigned int) GLuint divisor);
     /// ```
     public void VertexAttribDivisorARB(int index, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");

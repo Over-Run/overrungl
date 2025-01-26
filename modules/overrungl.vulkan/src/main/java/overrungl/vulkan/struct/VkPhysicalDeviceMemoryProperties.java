@@ -28,9 +28,9 @@ import overrungl.util.*;
 /// ```
 /// struct VkPhysicalDeviceMemoryProperties {
 ///     uint32_t memoryTypeCount;
-///     VkMemoryType memoryTypes[32];
+///     (struct VkMemoryType) VkMemoryType memoryTypes[32];
 ///     uint32_t memoryHeapCount;
-///     VkMemoryHeap memoryHeaps[16];
+///     (struct VkMemoryHeap) VkMemoryHeap memoryHeaps[16];
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {

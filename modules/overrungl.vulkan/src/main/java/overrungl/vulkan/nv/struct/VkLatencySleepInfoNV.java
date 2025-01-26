@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkLatencySleepInfoNV {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkSemaphore signalSemaphore;
+///     (uint64_t) VkSemaphore signalSemaphore;
 ///     uint64_t value;
 /// };
 /// ```

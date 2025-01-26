@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeQuantizationMapInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImageView quantizationMap;
-///     VkExtent2D quantizationMapExtent;
+///     (uint64_t) VkImageView quantizationMap;
+///     (struct VkExtent2D) VkExtent2D quantizationMapExtent;
 /// };
 /// ```
 public sealed class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {

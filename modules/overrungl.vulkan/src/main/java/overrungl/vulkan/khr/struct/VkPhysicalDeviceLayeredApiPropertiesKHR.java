@@ -27,11 +27,11 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceLayeredApiPropertiesKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t vendorID;
 ///     uint32_t deviceID;
-///     VkPhysicalDeviceLayeredApiKHR layeredAPI;
+///     (int) VkPhysicalDeviceLayeredApiKHR layeredAPI;
 ///     char deviceName[256];
 /// };
 /// ```

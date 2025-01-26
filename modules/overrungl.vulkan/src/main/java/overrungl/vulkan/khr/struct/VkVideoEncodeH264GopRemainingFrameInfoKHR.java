@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkVideoEncodeH264GopRemainingFrameInfoKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBool32 useGopRemainingFrames;
+///     (uint32_t) VkBool32 useGopRemainingFrames;
 ///     uint32_t gopRemainingI;
 ///     uint32_t gopRemainingP;
 ///     uint32_t gopRemainingB;

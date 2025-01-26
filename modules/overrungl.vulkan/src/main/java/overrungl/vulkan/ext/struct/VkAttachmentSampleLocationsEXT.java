@@ -28,7 +28,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkAttachmentSampleLocationsEXT {
 ///     uint32_t attachmentIndex;
-///     VkSampleLocationsInfoEXT sampleLocationsInfo;
+///     (struct VkSampleLocationsInfoEXT) VkSampleLocationsInfoEXT sampleLocationsInfo;
 /// };
 /// ```
 public sealed class VkAttachmentSampleLocationsEXT extends GroupType {

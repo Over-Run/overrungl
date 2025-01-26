@@ -26,6 +26,6 @@ public final class VKKHRMaintenance8 {
     public static final int VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR = 1000574002;
     public static final int VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR = 0x00000020;
 
-    private VKKHRMaintenance8() { }
+    private VKKHRMaintenance8() {}
 
 }

@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 subpassMergeFeedback;
+///     (uint32_t) VkBool32 subpassMergeFeedback;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends GroupType {

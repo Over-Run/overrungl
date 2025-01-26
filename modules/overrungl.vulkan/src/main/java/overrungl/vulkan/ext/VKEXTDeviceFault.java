@@ -21,7 +21,7 @@ import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDeviceFault {
+public final class VKEXTDeviceFault {
     public static final int VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT = 0;
     public static final int VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT = 1;
     public static final int VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT = 2;
@@ -35,26 +35,20 @@ public class VKEXTDeviceFault {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT = 1000341000;
     public static final int VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT = 1000341001;
     public static final int VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT = 1000341002;
-    private final Handles handles;
     public static final class Handles {
         public static final MethodHandle MH_vkGetDeviceFaultInfoEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public final MemorySegment PFN_vkGetDeviceFaultInfoEXT;
-        private Handles(MemorySegment device, VKLoadFunc func) {
-            PFN_vkGetDeviceFaultInfoEXT = func.invoke(device, "vkGetDeviceFaultInfoEXT");
-        }
+        private Handles() {}
     }
 
-    public VKEXTDeviceFault(MemorySegment device, VKLoadFunc func) {
-        this.handles = new Handles(device, func);
-    }
+    private VKEXTDeviceFault() {}
 
     /// ```
-    /// VkResult vkGetDeviceFaultInfoEXT(VkDevice device, VkDeviceFaultCountsEXT* pFaultCounts, VkDeviceFaultInfoEXT* pFaultInfo);
+    /// (int) VkResult vkGetDeviceFaultInfoEXT((struct VkDevice*) VkDevice device, VkDeviceFaultCountsEXT* pFaultCounts, VkDeviceFaultInfoEXT* pFaultInfo);
     /// ```
-    public int GetDeviceFaultInfoEXT(MemorySegment device, MemorySegment pFaultCounts, MemorySegment pFaultInfo) {
-        if (MemoryUtil.isNullPointer(handles.PFN_vkGetDeviceFaultInfoEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
-        try { return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(handles.PFN_vkGetDeviceFaultInfoEXT, device, pFaultCounts, pFaultInfo); }
-        catch (Throwable e) { throw new RuntimeException("error in GetDeviceFaultInfoEXT", e); }
+    public static int vkGetDeviceFaultInfoEXT(VkDevice device, MemorySegment pFaultCounts, MemorySegment pFaultInfo) {
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceFaultInfoEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
+        try { return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(device.capabilities().PFN_vkGetDeviceFaultInfoEXT, device.segment(), pFaultCounts, pFaultInfo); }
+        catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceFaultInfoEXT", e); }
     }
 
 }

@@ -27,13 +27,13 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkBufferViewCreateInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkBufferViewCreateFlags flags;
-///     VkBuffer buffer;
-///     VkFormat format;
-///     VkDeviceSize offset;
-///     VkDeviceSize range;
+///     ((uint32_t) VkFlags) VkBufferViewCreateFlags flags;
+///     (uint64_t) VkBuffer buffer;
+///     (int) VkFormat format;
+///     (uint64_t) VkDeviceSize offset;
+///     (uint64_t) VkDeviceSize range;
 /// };
 /// ```
 public sealed class VkBufferViewCreateInfo extends GroupType {

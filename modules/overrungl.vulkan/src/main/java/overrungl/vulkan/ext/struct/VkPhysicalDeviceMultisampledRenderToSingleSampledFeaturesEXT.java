@@ -27,9 +27,9 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 multisampledRenderToSingleSampled;
+///     (uint32_t) VkBool32 multisampledRenderToSingleSampled;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT extends GroupType {

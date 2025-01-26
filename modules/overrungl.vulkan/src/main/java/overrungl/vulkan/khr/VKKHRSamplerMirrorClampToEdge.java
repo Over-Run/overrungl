@@ -23,6 +23,6 @@ public final class VKKHRSamplerMirrorClampToEdge {
     public static final int VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE = 4;
     public static final int VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR = 4;
 
-    private VKKHRSamplerMirrorClampToEdge() { }
+    private VKKHRSamplerMirrorClampToEdge() {}
 
 }

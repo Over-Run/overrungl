@@ -27,10 +27,10 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 clustercullingShader;
-///     VkBool32 multiviewClusterCullingShader;
+///     (uint32_t) VkBool32 clustercullingShader;
+///     (uint32_t) VkBool32 multiviewClusterCullingShader;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends GroupType {

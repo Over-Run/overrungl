@@ -23,6 +23,6 @@ public final class VKEXTDepthClipEnable {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT = 1000102000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT = 1000102001;
 
-    private VKEXTDepthClipEnable() { }
+    private VKEXTDepthClipEnable() {}
 
 }

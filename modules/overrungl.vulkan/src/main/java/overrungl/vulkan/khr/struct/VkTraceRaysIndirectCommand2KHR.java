@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkTraceRaysIndirectCommand2KHR {
-///     VkDeviceAddress raygenShaderRecordAddress;
-///     VkDeviceSize raygenShaderRecordSize;
-///     VkDeviceAddress missShaderBindingTableAddress;
-///     VkDeviceSize missShaderBindingTableSize;
-///     VkDeviceSize missShaderBindingTableStride;
-///     VkDeviceAddress hitShaderBindingTableAddress;
-///     VkDeviceSize hitShaderBindingTableSize;
-///     VkDeviceSize hitShaderBindingTableStride;
-///     VkDeviceAddress callableShaderBindingTableAddress;
-///     VkDeviceSize callableShaderBindingTableSize;
-///     VkDeviceSize callableShaderBindingTableStride;
+///     (uint64_t) VkDeviceAddress raygenShaderRecordAddress;
+///     (uint64_t) VkDeviceSize raygenShaderRecordSize;
+///     (uint64_t) VkDeviceAddress missShaderBindingTableAddress;
+///     (uint64_t) VkDeviceSize missShaderBindingTableSize;
+///     (uint64_t) VkDeviceSize missShaderBindingTableStride;
+///     (uint64_t) VkDeviceAddress hitShaderBindingTableAddress;
+///     (uint64_t) VkDeviceSize hitShaderBindingTableSize;
+///     (uint64_t) VkDeviceSize hitShaderBindingTableStride;
+///     (uint64_t) VkDeviceAddress callableShaderBindingTableAddress;
+///     (uint64_t) VkDeviceSize callableShaderBindingTableSize;
+///     (uint64_t) VkDeviceSize callableShaderBindingTableStride;
 ///     uint32_t width;
 ///     uint32_t height;
 ///     uint32_t depth;

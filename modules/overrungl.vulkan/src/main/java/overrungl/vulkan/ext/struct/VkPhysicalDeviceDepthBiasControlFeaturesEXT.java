@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkPhysicalDeviceDepthBiasControlFeaturesEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
-///     VkBool32 depthBiasControl;
-///     VkBool32 leastRepresentableValueForceUnormRepresentation;
-///     VkBool32 floatRepresentation;
-///     VkBool32 depthBiasExact;
+///     (uint32_t) VkBool32 depthBiasControl;
+///     (uint32_t) VkBool32 leastRepresentableValueForceUnormRepresentation;
+///     (uint32_t) VkBool32 floatRepresentation;
+///     (uint32_t) VkBool32 depthBiasExact;
 /// };
 /// ```
 public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupType {

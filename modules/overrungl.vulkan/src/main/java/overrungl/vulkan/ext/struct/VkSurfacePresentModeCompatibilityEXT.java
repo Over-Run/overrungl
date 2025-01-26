@@ -27,7 +27,7 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkSurfacePresentModeCompatibilityEXT {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     void* pNext;
 ///     uint32_t presentModeCount;
 ///     VkPresentModeKHR* pPresentModes;

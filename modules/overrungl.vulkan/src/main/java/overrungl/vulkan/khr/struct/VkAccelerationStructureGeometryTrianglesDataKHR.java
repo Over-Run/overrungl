@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkAccelerationStructureGeometryTrianglesDataKHR {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkFormat vertexFormat;
-///     VkDeviceOrHostAddressConstKHR vertexData;
-///     VkDeviceSize vertexStride;
+///     (int) VkFormat vertexFormat;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR vertexData;
+///     (uint64_t) VkDeviceSize vertexStride;
 ///     uint32_t maxVertex;
-///     VkIndexType indexType;
-///     VkDeviceOrHostAddressConstKHR indexData;
-///     VkDeviceOrHostAddressConstKHR transformData;
+///     (int) VkIndexType indexType;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR indexData;
+///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR transformData;
 /// };
 /// ```
 public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends GroupType {

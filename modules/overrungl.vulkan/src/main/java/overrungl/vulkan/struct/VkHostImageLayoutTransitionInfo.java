@@ -27,12 +27,12 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct VkHostImageLayoutTransitionInfo {
-///     VkStructureType sType;
+///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     VkImage image;
-///     VkImageLayout oldLayout;
-///     VkImageLayout newLayout;
-///     VkImageSubresourceRange subresourceRange;
+///     (uint64_t) VkImage image;
+///     (int) VkImageLayout oldLayout;
+///     (int) VkImageLayout newLayout;
+///     (struct VkImageSubresourceRange) VkImageSubresourceRange subresourceRange;
 /// };
 /// ```
 public sealed class VkHostImageLayoutTransitionInfo extends GroupType {

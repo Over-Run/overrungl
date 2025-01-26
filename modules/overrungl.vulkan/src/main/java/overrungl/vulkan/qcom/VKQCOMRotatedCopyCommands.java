@@ -22,6 +22,6 @@ public final class VKQCOMRotatedCopyCommands {
     public static final String VK_QCOM_ROTATED_COPY_COMMANDS_EXTENSION_NAME = "VK_QCOM_rotated_copy_commands";
     public static final int VK_STRUCTURE_TYPE_COPY_COMMAND_TRANSFORM_INFO_QCOM = 1000333000;
 
-    private VKQCOMRotatedCopyCommands() { }
+    private VKQCOMRotatedCopyCommands() {}
 
 }
