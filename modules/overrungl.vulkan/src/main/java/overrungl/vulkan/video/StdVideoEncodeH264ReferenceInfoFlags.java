@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264ReferenceInfoFlags {
-///     uint32_t used_for_long_term_reference;
-///     uint32_t reserved;
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t reserved : 31;
 /// };
 /// ```
 public sealed class StdVideoEncodeH264ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH264ReferenceInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(31)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("used_for_long_term_reference"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 31
     );
 
     /// Creates `StdVideoEncodeH264ReferenceInfoFlags` with the given segment.

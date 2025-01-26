@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1ColorConfigFlags {
-///     uint32_t mono_chrome;
-///     uint32_t color_range;
-///     uint32_t separate_uv_delta_q;
-///     uint32_t color_description_present_flag;
-///     uint32_t reserved;
+///     uint32_t mono_chrome : 1;
+///     uint32_t color_range : 1;
+///     uint32_t separate_uv_delta_q : 1;
+///     uint32_t color_description_present_flag : 1;
+///     uint32_t reserved : 28;
 /// };
 /// ```
 public sealed class StdVideoAV1ColorConfigFlags extends GroupType {
     /// The struct layout of `StdVideoAV1ColorConfigFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(28)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("mono_chrome"), 1,
+        ValueLayout.JAVA_INT.withName("color_range"), 1,
+        ValueLayout.JAVA_INT.withName("separate_uv_delta_q"), 1,
+        ValueLayout.JAVA_INT.withName("color_description_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 28
     );
 
     /// Creates `StdVideoAV1ColorConfigFlags` with the given segment.

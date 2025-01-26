@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264ReferenceListsInfoFlags {
-///     uint32_t ref_pic_list_modification_flag_l0;
-///     uint32_t ref_pic_list_modification_flag_l1;
-///     uint32_t reserved;
+///     uint32_t ref_pic_list_modification_flag_l0 : 1;
+///     uint32_t ref_pic_list_modification_flag_l1 : 1;
+///     uint32_t reserved : 30;
 /// };
 /// ```
 public sealed class StdVideoEncodeH264ReferenceListsInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH264ReferenceListsInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(30)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("ref_pic_list_modification_flag_l0"), 1,
+        ValueLayout.JAVA_INT.withName("ref_pic_list_modification_flag_l1"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
 
     /// Creates `StdVideoEncodeH264ReferenceListsInfoFlags` with the given segment.

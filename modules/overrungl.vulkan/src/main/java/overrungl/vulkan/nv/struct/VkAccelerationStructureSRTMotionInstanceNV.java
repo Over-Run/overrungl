@@ -29,23 +29,23 @@ import overrungl.util.*;
 /// struct VkAccelerationStructureSRTMotionInstanceNV {
 ///     (struct VkSRTDataNV) VkSRTDataNV transformT0;
 ///     (struct VkSRTDataNV) VkSRTDataNV transformT1;
-///     uint32_t instanceCustomIndex;
-///     uint32_t mask;
-///     uint32_t instanceShaderBindingTableRecordOffset;
-///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags;
+///     uint32_t instanceCustomIndex : 24;
+///     uint32_t mask : 8;
+///     uint32_t instanceShaderBindingTableRecordOffset : 24;
+///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags : 8;
 ///     uint64_t accelerationStructureReference;
 /// };
 /// ```
 public sealed class VkAccelerationStructureSRTMotionInstanceNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureSRTMotionInstanceNV`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        overrungl.vulkan.nv.struct.VkSRTDataNV.LAYOUT.withName("transformT0"),
-        overrungl.vulkan.nv.struct.VkSRTDataNV.LAYOUT.withName("transformT1"),
-        MemoryLayout.paddingLayout(24),
-        MemoryLayout.paddingLayout(8),
-        MemoryLayout.paddingLayout(24),
-        MemoryLayout.paddingLayout(8),
-        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        overrungl.vulkan.nv.struct.VkSRTDataNV.LAYOUT.withName("transformT0"), -1,
+        overrungl.vulkan.nv.struct.VkSRTDataNV.LAYOUT.withName("transformT1"), -1,
+        ValueLayout.JAVA_INT.withName("instanceCustomIndex"), 24,
+        ValueLayout.JAVA_INT.withName("mask"), 8,
+        ValueLayout.JAVA_INT.withName("instanceShaderBindingTableRecordOffset"), 24,
+        ValueLayout.JAVA_INT.withName("flags"), 8,
+        ValueLayout.JAVA_LONG.withName("accelerationStructureReference"), -1
     );
     /// The byte offset of `transformT0`.
     public static final long OFFSET_transformT0 = LAYOUT.byteOffset(PathElement.groupElement("transformT0"));

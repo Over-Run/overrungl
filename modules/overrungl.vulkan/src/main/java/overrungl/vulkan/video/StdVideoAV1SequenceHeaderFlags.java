@@ -27,51 +27,51 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1SequenceHeaderFlags {
-///     uint32_t still_picture;
-///     uint32_t reduced_still_picture_header;
-///     uint32_t use_128x128_superblock;
-///     uint32_t enable_filter_intra;
-///     uint32_t enable_intra_edge_filter;
-///     uint32_t enable_interintra_compound;
-///     uint32_t enable_masked_compound;
-///     uint32_t enable_warped_motion;
-///     uint32_t enable_dual_filter;
-///     uint32_t enable_order_hint;
-///     uint32_t enable_jnt_comp;
-///     uint32_t enable_ref_frame_mvs;
-///     uint32_t frame_id_numbers_present_flag;
-///     uint32_t enable_superres;
-///     uint32_t enable_cdef;
-///     uint32_t enable_restoration;
-///     uint32_t film_grain_params_present;
-///     uint32_t timing_info_present_flag;
-///     uint32_t initial_display_delay_present_flag;
-///     uint32_t reserved;
+///     uint32_t still_picture : 1;
+///     uint32_t reduced_still_picture_header : 1;
+///     uint32_t use_128x128_superblock : 1;
+///     uint32_t enable_filter_intra : 1;
+///     uint32_t enable_intra_edge_filter : 1;
+///     uint32_t enable_interintra_compound : 1;
+///     uint32_t enable_masked_compound : 1;
+///     uint32_t enable_warped_motion : 1;
+///     uint32_t enable_dual_filter : 1;
+///     uint32_t enable_order_hint : 1;
+///     uint32_t enable_jnt_comp : 1;
+///     uint32_t enable_ref_frame_mvs : 1;
+///     uint32_t frame_id_numbers_present_flag : 1;
+///     uint32_t enable_superres : 1;
+///     uint32_t enable_cdef : 1;
+///     uint32_t enable_restoration : 1;
+///     uint32_t film_grain_params_present : 1;
+///     uint32_t timing_info_present_flag : 1;
+///     uint32_t initial_display_delay_present_flag : 1;
+///     uint32_t reserved : 13;
 /// };
 /// ```
 public sealed class StdVideoAV1SequenceHeaderFlags extends GroupType {
     /// The struct layout of `StdVideoAV1SequenceHeaderFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(13)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("still_picture"), 1,
+        ValueLayout.JAVA_INT.withName("reduced_still_picture_header"), 1,
+        ValueLayout.JAVA_INT.withName("use_128x128_superblock"), 1,
+        ValueLayout.JAVA_INT.withName("enable_filter_intra"), 1,
+        ValueLayout.JAVA_INT.withName("enable_intra_edge_filter"), 1,
+        ValueLayout.JAVA_INT.withName("enable_interintra_compound"), 1,
+        ValueLayout.JAVA_INT.withName("enable_masked_compound"), 1,
+        ValueLayout.JAVA_INT.withName("enable_warped_motion"), 1,
+        ValueLayout.JAVA_INT.withName("enable_dual_filter"), 1,
+        ValueLayout.JAVA_INT.withName("enable_order_hint"), 1,
+        ValueLayout.JAVA_INT.withName("enable_jnt_comp"), 1,
+        ValueLayout.JAVA_INT.withName("enable_ref_frame_mvs"), 1,
+        ValueLayout.JAVA_INT.withName("frame_id_numbers_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("enable_superres"), 1,
+        ValueLayout.JAVA_INT.withName("enable_cdef"), 1,
+        ValueLayout.JAVA_INT.withName("enable_restoration"), 1,
+        ValueLayout.JAVA_INT.withName("film_grain_params_present"), 1,
+        ValueLayout.JAVA_INT.withName("timing_info_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("initial_display_delay_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 13
     );
 
     /// Creates `StdVideoAV1SequenceHeaderFlags` with the given segment.

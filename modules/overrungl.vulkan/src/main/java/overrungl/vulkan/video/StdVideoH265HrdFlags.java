@@ -27,25 +27,25 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265HrdFlags {
-///     uint32_t nal_hrd_parameters_present_flag;
-///     uint32_t vcl_hrd_parameters_present_flag;
-///     uint32_t sub_pic_hrd_params_present_flag;
-///     uint32_t sub_pic_cpb_params_in_pic_timing_sei_flag;
-///     uint32_t fixed_pic_rate_general_flag;
-///     uint32_t fixed_pic_rate_within_cvs_flag;
-///     uint32_t low_delay_hrd_flag;
+///     uint32_t nal_hrd_parameters_present_flag : 1;
+///     uint32_t vcl_hrd_parameters_present_flag : 1;
+///     uint32_t sub_pic_hrd_params_present_flag : 1;
+///     uint32_t sub_pic_cpb_params_in_pic_timing_sei_flag : 1;
+///     uint32_t fixed_pic_rate_general_flag : 8;
+///     uint32_t fixed_pic_rate_within_cvs_flag : 8;
+///     uint32_t low_delay_hrd_flag : 8;
 /// };
 /// ```
 public sealed class StdVideoH265HrdFlags extends GroupType {
     /// The struct layout of `StdVideoH265HrdFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(8),
-        MemoryLayout.paddingLayout(8),
-        MemoryLayout.paddingLayout(8)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("nal_hrd_parameters_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("vcl_hrd_parameters_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("sub_pic_hrd_params_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("sub_pic_cpb_params_in_pic_timing_sei_flag"), 1,
+        ValueLayout.JAVA_INT.withName("fixed_pic_rate_general_flag"), 8,
+        ValueLayout.JAVA_INT.withName("fixed_pic_rate_within_cvs_flag"), 8,
+        ValueLayout.JAVA_INT.withName("low_delay_hrd_flag"), 8
     );
 
     /// Creates `StdVideoH265HrdFlags` with the given segment.

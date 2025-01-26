@@ -27,27 +27,27 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH264PpsFlags {
-///     uint32_t transform_8x8_mode_flag;
-///     uint32_t redundant_pic_cnt_present_flag;
-///     uint32_t constrained_intra_pred_flag;
-///     uint32_t deblocking_filter_control_present_flag;
-///     uint32_t weighted_pred_flag;
-///     uint32_t bottom_field_pic_order_in_frame_present_flag;
-///     uint32_t entropy_coding_mode_flag;
-///     uint32_t pic_scaling_matrix_present_flag;
+///     uint32_t transform_8x8_mode_flag : 1;
+///     uint32_t redundant_pic_cnt_present_flag : 1;
+///     uint32_t constrained_intra_pred_flag : 1;
+///     uint32_t deblocking_filter_control_present_flag : 1;
+///     uint32_t weighted_pred_flag : 1;
+///     uint32_t bottom_field_pic_order_in_frame_present_flag : 1;
+///     uint32_t entropy_coding_mode_flag : 1;
+///     uint32_t pic_scaling_matrix_present_flag : 1;
 /// };
 /// ```
 public sealed class StdVideoH264PpsFlags extends GroupType {
     /// The struct layout of `StdVideoH264PpsFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("transform_8x8_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("redundant_pic_cnt_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constrained_intra_pred_flag"), 1,
+        ValueLayout.JAVA_INT.withName("deblocking_filter_control_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("weighted_pred_flag"), 1,
+        ValueLayout.JAVA_INT.withName("bottom_field_pic_order_in_frame_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("entropy_coding_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("pic_scaling_matrix_present_flag"), 1
     );
 
     /// Creates `StdVideoH264PpsFlags` with the given segment.

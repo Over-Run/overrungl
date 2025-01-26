@@ -222,6 +222,7 @@ internal class Parser(private val tokens: List<Token>) {
         var opaque = true
         val members = mutableListOf<ParserGroupTypeMember>()
         var packageName: Token? = null
+        var hasBitfield = false
         if (match(LEFT_BRACE)) {
             opaque = false
             if (match(PACKAGE)) {
@@ -254,6 +255,7 @@ internal class Parser(private val tokens: List<Token>) {
                         }
                     } else if (match(COLON)) {
                         bits = consume("expect integer", INTEGER).literal as Int
+                        hasBitfield = true
                     }
                     members.add(ParserGroupTypeMember(TypeNamePair(memberType, memberName, dims), bits))
                 } while (match(COMMA))
@@ -261,7 +263,14 @@ internal class Parser(private val tokens: List<Token>) {
             }
             consume("expect '}'", RIGHT_BRACE)
         }
-        return GroupTypeExpression(name, opaque, members, packageName, kind)
+        return GroupTypeExpression(
+            name,
+            opaque,
+            members,
+            packageName,
+            if (hasBitfield && kind == GroupTypeKind.STRUCT) GroupTypeKind.BITFIELD
+            else kind
+        )
     }
 
     private fun upcallExpression(): Expression {

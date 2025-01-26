@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1QuantizationFlags {
-///     uint32_t using_qmatrix;
-///     uint32_t diff_uv_delta;
-///     uint32_t reserved;
+///     uint32_t using_qmatrix : 1;
+///     uint32_t diff_uv_delta : 1;
+///     uint32_t reserved : 30;
 /// };
 /// ```
 public sealed class StdVideoAV1QuantizationFlags extends GroupType {
     /// The struct layout of `StdVideoAV1QuantizationFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(30)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("using_qmatrix"), 1,
+        ValueLayout.JAVA_INT.withName("diff_uv_delta"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
 
     /// Creates `StdVideoAV1QuantizationFlags` with the given segment.

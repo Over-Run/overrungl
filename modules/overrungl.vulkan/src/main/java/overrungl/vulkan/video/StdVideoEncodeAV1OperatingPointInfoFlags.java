@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1OperatingPointInfoFlags {
-///     uint32_t decoder_model_present_for_this_op;
-///     uint32_t low_delay_mode_flag;
-///     uint32_t initial_display_delay_present_for_this_op;
-///     uint32_t reserved;
+///     uint32_t decoder_model_present_for_this_op : 1;
+///     uint32_t low_delay_mode_flag : 1;
+///     uint32_t initial_display_delay_present_for_this_op : 1;
+///     uint32_t reserved : 29;
 /// };
 /// ```
 public sealed class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1OperatingPointInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(29)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("decoder_model_present_for_this_op"), 1,
+        ValueLayout.JAVA_INT.withName("low_delay_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("initial_display_delay_present_for_this_op"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 29
     );
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment.

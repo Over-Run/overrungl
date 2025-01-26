@@ -134,7 +134,8 @@ data class PointerType(
 
 enum class GroupTypeKind(val typedef: String, val layoutBuilder: String) {
     STRUCT("struct", "LayoutBuilder.struct"),
-    UNION("union", "MemoryLayout.unionLayout")
+    UNION("union", "MemoryLayout.unionLayout"),
+    BITFIELD("struct", "LayoutBuilder.bitfields")
 }
 
 data class GroupLayoutType(

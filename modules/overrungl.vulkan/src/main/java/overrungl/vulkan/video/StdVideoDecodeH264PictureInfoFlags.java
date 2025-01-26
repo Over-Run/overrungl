@@ -27,23 +27,23 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH264PictureInfoFlags {
-///     uint32_t field_pic_flag;
-///     uint32_t is_intra;
-///     uint32_t IdrPicFlag;
-///     uint32_t bottom_field_flag;
-///     uint32_t is_reference;
-///     uint32_t complementary_field_pair;
+///     uint32_t field_pic_flag : 1;
+///     uint32_t is_intra : 1;
+///     uint32_t IdrPicFlag : 1;
+///     uint32_t bottom_field_flag : 1;
+///     uint32_t is_reference : 1;
+///     uint32_t complementary_field_pair : 1;
 /// };
 /// ```
 public sealed class StdVideoDecodeH264PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoDecodeH264PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("field_pic_flag"), 1,
+        ValueLayout.JAVA_INT.withName("is_intra"), 1,
+        ValueLayout.JAVA_INT.withName("IdrPicFlag"), 1,
+        ValueLayout.JAVA_INT.withName("bottom_field_flag"), 1,
+        ValueLayout.JAVA_INT.withName("is_reference"), 1,
+        ValueLayout.JAVA_INT.withName("complementary_field_pair"), 1
     );
 
     /// Creates `StdVideoDecodeH264PictureInfoFlags` with the given segment.

@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TileInfoFlags {
-///     uint32_t uniform_tile_spacing_flag;
-///     uint32_t reserved;
+///     uint32_t uniform_tile_spacing_flag : 1;
+///     uint32_t reserved : 31;
 /// };
 /// ```
 public sealed class StdVideoAV1TileInfoFlags extends GroupType {
     /// The struct layout of `StdVideoAV1TileInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(31)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("uniform_tile_spacing_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 31
     );
 
     /// Creates `StdVideoAV1TileInfoFlags` with the given segment.

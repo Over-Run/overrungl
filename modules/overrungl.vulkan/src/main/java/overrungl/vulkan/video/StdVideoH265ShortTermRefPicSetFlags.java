@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265ShortTermRefPicSetFlags {
-///     uint32_t inter_ref_pic_set_prediction_flag;
-///     uint32_t delta_rps_sign;
+///     uint32_t inter_ref_pic_set_prediction_flag : 1;
+///     uint32_t delta_rps_sign : 1;
 /// };
 /// ```
 public sealed class StdVideoH265ShortTermRefPicSetFlags extends GroupType {
     /// The struct layout of `StdVideoH265ShortTermRefPicSetFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("inter_ref_pic_set_prediction_flag"), 1,
+        ValueLayout.JAVA_INT.withName("delta_rps_sign"), 1
     );
 
     /// Creates `StdVideoH265ShortTermRefPicSetFlags` with the given segment.

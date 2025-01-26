@@ -27,31 +27,31 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265PictureInfoFlags {
-///     uint32_t is_reference;
-///     uint32_t IrapPicFlag;
-///     uint32_t used_for_long_term_reference;
-///     uint32_t discardable_flag;
-///     uint32_t cross_layer_bla_flag;
-///     uint32_t pic_output_flag;
-///     uint32_t no_output_of_prior_pics_flag;
-///     uint32_t short_term_ref_pic_set_sps_flag;
-///     uint32_t slice_temporal_mvp_enabled_flag;
-///     uint32_t reserved;
+///     uint32_t is_reference : 1;
+///     uint32_t IrapPicFlag : 1;
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t discardable_flag : 1;
+///     uint32_t cross_layer_bla_flag : 1;
+///     uint32_t pic_output_flag : 1;
+///     uint32_t no_output_of_prior_pics_flag : 1;
+///     uint32_t short_term_ref_pic_set_sps_flag : 1;
+///     uint32_t slice_temporal_mvp_enabled_flag : 1;
+///     uint32_t reserved : 23;
 /// };
 /// ```
 public sealed class StdVideoEncodeH265PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH265PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(23)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("is_reference"), 1,
+        ValueLayout.JAVA_INT.withName("IrapPicFlag"), 1,
+        ValueLayout.JAVA_INT.withName("used_for_long_term_reference"), 1,
+        ValueLayout.JAVA_INT.withName("discardable_flag"), 1,
+        ValueLayout.JAVA_INT.withName("cross_layer_bla_flag"), 1,
+        ValueLayout.JAVA_INT.withName("pic_output_flag"), 1,
+        ValueLayout.JAVA_INT.withName("no_output_of_prior_pics_flag"), 1,
+        ValueLayout.JAVA_INT.withName("short_term_ref_pic_set_sps_flag"), 1,
+        ValueLayout.JAVA_INT.withName("slice_temporal_mvp_enabled_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 23
     );
 
     /// Creates `StdVideoEncodeH265PictureInfoFlags` with the given segment.

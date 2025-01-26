@@ -28,22 +28,22 @@ import overrungl.util.*;
 /// ```
 /// struct VkAccelerationStructureInstanceKHR {
 ///     (struct VkTransformMatrixKHR) VkTransformMatrixKHR transform;
-///     uint32_t instanceCustomIndex;
-///     uint32_t mask;
-///     uint32_t instanceShaderBindingTableRecordOffset;
-///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags;
+///     uint32_t instanceCustomIndex : 24;
+///     uint32_t mask : 8;
+///     uint32_t instanceShaderBindingTableRecordOffset : 24;
+///     ((uint32_t) VkFlags) VkGeometryInstanceFlagsKHR flags : 8;
 ///     uint64_t accelerationStructureReference;
 /// };
 /// ```
 public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureInstanceKHR`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transform"),
-        MemoryLayout.paddingLayout(24),
-        MemoryLayout.paddingLayout(8),
-        MemoryLayout.paddingLayout(24),
-        MemoryLayout.paddingLayout(8),
-        ValueLayout.JAVA_LONG.withName("accelerationStructureReference")
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transform"), -1,
+        ValueLayout.JAVA_INT.withName("instanceCustomIndex"), 24,
+        ValueLayout.JAVA_INT.withName("mask"), 8,
+        ValueLayout.JAVA_INT.withName("instanceShaderBindingTableRecordOffset"), 24,
+        ValueLayout.JAVA_INT.withName("flags"), 8,
+        ValueLayout.JAVA_LONG.withName("accelerationStructureReference"), -1
     );
     /// The byte offset of `transform`.
     public static final long OFFSET_transform = LAYOUT.byteOffset(PathElement.groupElement("transform"));

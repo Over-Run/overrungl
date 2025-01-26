@@ -27,43 +27,43 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH264SpsFlags {
-///     uint32_t constraint_set0_flag;
-///     uint32_t constraint_set1_flag;
-///     uint32_t constraint_set2_flag;
-///     uint32_t constraint_set3_flag;
-///     uint32_t constraint_set4_flag;
-///     uint32_t constraint_set5_flag;
-///     uint32_t direct_8x8_inference_flag;
-///     uint32_t mb_adaptive_frame_field_flag;
-///     uint32_t frame_mbs_only_flag;
-///     uint32_t delta_pic_order_always_zero_flag;
-///     uint32_t separate_colour_plane_flag;
-///     uint32_t gaps_in_frame_num_value_allowed_flag;
-///     uint32_t qpprime_y_zero_transform_bypass_flag;
-///     uint32_t frame_cropping_flag;
-///     uint32_t seq_scaling_matrix_present_flag;
-///     uint32_t vui_parameters_present_flag;
+///     uint32_t constraint_set0_flag : 1;
+///     uint32_t constraint_set1_flag : 1;
+///     uint32_t constraint_set2_flag : 1;
+///     uint32_t constraint_set3_flag : 1;
+///     uint32_t constraint_set4_flag : 1;
+///     uint32_t constraint_set5_flag : 1;
+///     uint32_t direct_8x8_inference_flag : 1;
+///     uint32_t mb_adaptive_frame_field_flag : 1;
+///     uint32_t frame_mbs_only_flag : 1;
+///     uint32_t delta_pic_order_always_zero_flag : 1;
+///     uint32_t separate_colour_plane_flag : 1;
+///     uint32_t gaps_in_frame_num_value_allowed_flag : 1;
+///     uint32_t qpprime_y_zero_transform_bypass_flag : 1;
+///     uint32_t frame_cropping_flag : 1;
+///     uint32_t seq_scaling_matrix_present_flag : 1;
+///     uint32_t vui_parameters_present_flag : 1;
 /// };
 /// ```
 public sealed class StdVideoH264SpsFlags extends GroupType {
     /// The struct layout of `StdVideoH264SpsFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("constraint_set0_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constraint_set1_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constraint_set2_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constraint_set3_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constraint_set4_flag"), 1,
+        ValueLayout.JAVA_INT.withName("constraint_set5_flag"), 1,
+        ValueLayout.JAVA_INT.withName("direct_8x8_inference_flag"), 1,
+        ValueLayout.JAVA_INT.withName("mb_adaptive_frame_field_flag"), 1,
+        ValueLayout.JAVA_INT.withName("frame_mbs_only_flag"), 1,
+        ValueLayout.JAVA_INT.withName("delta_pic_order_always_zero_flag"), 1,
+        ValueLayout.JAVA_INT.withName("separate_colour_plane_flag"), 1,
+        ValueLayout.JAVA_INT.withName("gaps_in_frame_num_value_allowed_flag"), 1,
+        ValueLayout.JAVA_INT.withName("qpprime_y_zero_transform_bypass_flag"), 1,
+        ValueLayout.JAVA_INT.withName("frame_cropping_flag"), 1,
+        ValueLayout.JAVA_INT.withName("seq_scaling_matrix_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("vui_parameters_present_flag"), 1
     );
 
     /// Creates `StdVideoH264SpsFlags` with the given segment.

@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1LoopFilterFlags {
-///     uint32_t loop_filter_delta_enabled;
-///     uint32_t loop_filter_delta_update;
-///     uint32_t reserved;
+///     uint32_t loop_filter_delta_enabled : 1;
+///     uint32_t loop_filter_delta_update : 1;
+///     uint32_t reserved : 30;
 /// };
 /// ```
 public sealed class StdVideoAV1LoopFilterFlags extends GroupType {
     /// The struct layout of `StdVideoAV1LoopFilterFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(30)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("loop_filter_delta_enabled"), 1,
+        ValueLayout.JAVA_INT.withName("loop_filter_delta_update"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
 
     /// Creates `StdVideoAV1LoopFilterFlags` with the given segment.

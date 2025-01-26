@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeAV1ReferenceInfoFlags {
-///     uint32_t disable_frame_end_update_cdf;
-///     uint32_t segmentation_enabled;
-///     uint32_t reserved;
+///     uint32_t disable_frame_end_update_cdf : 1;
+///     uint32_t segmentation_enabled : 1;
+///     uint32_t reserved : 30;
 /// };
 /// ```
 public sealed class StdVideoEncodeAV1ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1ReferenceInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(30)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("disable_frame_end_update_cdf"), 1,
+        ValueLayout.JAVA_INT.withName("segmentation_enabled"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
 
     /// Creates `StdVideoEncodeAV1ReferenceInfoFlags` with the given segment.

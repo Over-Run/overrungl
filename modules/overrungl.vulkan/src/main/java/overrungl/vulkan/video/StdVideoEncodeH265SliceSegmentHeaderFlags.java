@@ -27,37 +27,37 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH265SliceSegmentHeaderFlags {
-///     uint32_t first_slice_segment_in_pic_flag;
-///     uint32_t dependent_slice_segment_flag;
-///     uint32_t slice_sao_luma_flag;
-///     uint32_t slice_sao_chroma_flag;
-///     uint32_t num_ref_idx_active_override_flag;
-///     uint32_t mvd_l1_zero_flag;
-///     uint32_t cabac_init_flag;
-///     uint32_t cu_chroma_qp_offset_enabled_flag;
-///     uint32_t deblocking_filter_override_flag;
-///     uint32_t slice_deblocking_filter_disabled_flag;
-///     uint32_t collocated_from_l0_flag;
-///     uint32_t slice_loop_filter_across_slices_enabled_flag;
-///     uint32_t reserved;
+///     uint32_t first_slice_segment_in_pic_flag : 1;
+///     uint32_t dependent_slice_segment_flag : 1;
+///     uint32_t slice_sao_luma_flag : 1;
+///     uint32_t slice_sao_chroma_flag : 1;
+///     uint32_t num_ref_idx_active_override_flag : 1;
+///     uint32_t mvd_l1_zero_flag : 1;
+///     uint32_t cabac_init_flag : 1;
+///     uint32_t cu_chroma_qp_offset_enabled_flag : 1;
+///     uint32_t deblocking_filter_override_flag : 1;
+///     uint32_t slice_deblocking_filter_disabled_flag : 1;
+///     uint32_t collocated_from_l0_flag : 1;
+///     uint32_t slice_loop_filter_across_slices_enabled_flag : 1;
+///     uint32_t reserved : 20;
 /// };
 /// ```
 public sealed class StdVideoEncodeH265SliceSegmentHeaderFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH265SliceSegmentHeaderFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(20)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("first_slice_segment_in_pic_flag"), 1,
+        ValueLayout.JAVA_INT.withName("dependent_slice_segment_flag"), 1,
+        ValueLayout.JAVA_INT.withName("slice_sao_luma_flag"), 1,
+        ValueLayout.JAVA_INT.withName("slice_sao_chroma_flag"), 1,
+        ValueLayout.JAVA_INT.withName("num_ref_idx_active_override_flag"), 1,
+        ValueLayout.JAVA_INT.withName("mvd_l1_zero_flag"), 1,
+        ValueLayout.JAVA_INT.withName("cabac_init_flag"), 1,
+        ValueLayout.JAVA_INT.withName("cu_chroma_qp_offset_enabled_flag"), 1,
+        ValueLayout.JAVA_INT.withName("deblocking_filter_override_flag"), 1,
+        ValueLayout.JAVA_INT.withName("slice_deblocking_filter_disabled_flag"), 1,
+        ValueLayout.JAVA_INT.withName("collocated_from_l0_flag"), 1,
+        ValueLayout.JAVA_INT.withName("slice_loop_filter_across_slices_enabled_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 20
     );
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeaderFlags` with the given segment.

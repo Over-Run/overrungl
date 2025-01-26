@@ -27,15 +27,15 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1TimingInfoFlags {
-///     uint32_t equal_picture_interval;
-///     uint32_t reserved;
+///     uint32_t equal_picture_interval : 1;
+///     uint32_t reserved : 31;
 /// };
 /// ```
 public sealed class StdVideoAV1TimingInfoFlags extends GroupType {
     /// The struct layout of `StdVideoAV1TimingInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(31)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("equal_picture_interval"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 31
     );
 
     /// Creates `StdVideoAV1TimingInfoFlags` with the given segment.

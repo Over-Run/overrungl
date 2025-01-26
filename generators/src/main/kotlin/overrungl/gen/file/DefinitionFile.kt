@@ -262,12 +262,16 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine("/// ```")
         sb.appendLine("/// ${groupClass.kind.typedef} ${groupClass.name} {")
         groupClass.members.forEach {
-            sb.appendLine(
+            sb.append(
                 "///     ${it.pair.type.originalName} ${it.pair.name}${
                     if (it.pair.dimensions.isNotEmpty()) it.pair.dimensions.joinToString("") { d -> "[$d]" }
                     else ""
-                };"
+                }"
             )
+            if (it.bits != null) {
+                sb.append(" : ${it.bits}")
+            }
+            sb.appendLine(";")
         }
         sb.appendLine("/// };")
         sb.appendLine("/// ```")
@@ -277,11 +281,14 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine("    /// The ${groupClass.kind.typedef} layout of `$className`.")
         sb.appendLine("    public static final GroupLayout LAYOUT = ${groupClass.kind.layoutBuilder}(")
         groupClass.members.forEachIndexed { index, it ->
-            if (it.bits != null) {
-                // TODO
-                sb.append("        MemoryLayout.paddingLayout(${it.bits})")
-            } else {
-                sb.append("""        ${groupMemberLayout(it.pair).memoryLayout}.withName("${it.pair.name}")""")
+            sb.append("""        ${groupMemberLayout(it.pair).memoryLayout}.withName("${it.pair.name}")""")
+            if (groupClass.kind == GroupTypeKind.BITFIELD) {
+                sb.append(", ")
+                if (it.bits != null) {
+                    sb.append(it.bits)
+                } else {
+                    sb.append("-1")
+                }
             }
             if (index + 1 == groupClass.members.size) {
                 sb.appendLine()
@@ -382,7 +389,6 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         groupClass.members.forEach { member ->
             if (member.bits != null) {
                 //TODO
-                println("warning: skipping $className::${member.pair.name}")
                 return@forEach
             }
 
@@ -571,7 +577,6 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         groupClass.members.forEach { member ->
             if (member.bits != null) {
                 // TODO
-                println("warning: skipping $className::Buffer::${member.pair.name}")
                 return@forEach
             }
 

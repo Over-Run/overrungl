@@ -27,35 +27,35 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH264SpsVuiFlags {
-///     uint32_t aspect_ratio_info_present_flag;
-///     uint32_t overscan_info_present_flag;
-///     uint32_t overscan_appropriate_flag;
-///     uint32_t video_signal_type_present_flag;
-///     uint32_t video_full_range_flag;
-///     uint32_t color_description_present_flag;
-///     uint32_t chroma_loc_info_present_flag;
-///     uint32_t timing_info_present_flag;
-///     uint32_t fixed_frame_rate_flag;
-///     uint32_t bitstream_restriction_flag;
-///     uint32_t nal_hrd_parameters_present_flag;
-///     uint32_t vcl_hrd_parameters_present_flag;
+///     uint32_t aspect_ratio_info_present_flag : 1;
+///     uint32_t overscan_info_present_flag : 1;
+///     uint32_t overscan_appropriate_flag : 1;
+///     uint32_t video_signal_type_present_flag : 1;
+///     uint32_t video_full_range_flag : 1;
+///     uint32_t color_description_present_flag : 1;
+///     uint32_t chroma_loc_info_present_flag : 1;
+///     uint32_t timing_info_present_flag : 1;
+///     uint32_t fixed_frame_rate_flag : 1;
+///     uint32_t bitstream_restriction_flag : 1;
+///     uint32_t nal_hrd_parameters_present_flag : 1;
+///     uint32_t vcl_hrd_parameters_present_flag : 1;
 /// };
 /// ```
 public sealed class StdVideoH264SpsVuiFlags extends GroupType {
     /// The struct layout of `StdVideoH264SpsVuiFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("aspect_ratio_info_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("overscan_info_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("overscan_appropriate_flag"), 1,
+        ValueLayout.JAVA_INT.withName("video_signal_type_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("video_full_range_flag"), 1,
+        ValueLayout.JAVA_INT.withName("color_description_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("chroma_loc_info_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("timing_info_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("fixed_frame_rate_flag"), 1,
+        ValueLayout.JAVA_INT.withName("bitstream_restriction_flag"), 1,
+        ValueLayout.JAVA_INT.withName("nal_hrd_parameters_present_flag"), 1,
+        ValueLayout.JAVA_INT.withName("vcl_hrd_parameters_present_flag"), 1
     );
 
     /// Creates `StdVideoH264SpsVuiFlags` with the given segment.

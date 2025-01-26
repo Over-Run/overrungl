@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH265PictureInfoFlags {
-///     uint32_t IrapPicFlag;
-///     uint32_t IdrPicFlag;
-///     uint32_t IsReference;
-///     uint32_t short_term_ref_pic_set_sps_flag;
+///     uint32_t IrapPicFlag : 1;
+///     uint32_t IdrPicFlag : 1;
+///     uint32_t IsReference : 1;
+///     uint32_t short_term_ref_pic_set_sps_flag : 1;
 /// };
 /// ```
 public sealed class StdVideoDecodeH265PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoDecodeH265PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("IrapPicFlag"), 1,
+        ValueLayout.JAVA_INT.withName("IdrPicFlag"), 1,
+        ValueLayout.JAVA_INT.withName("IsReference"), 1,
+        ValueLayout.JAVA_INT.withName("short_term_ref_pic_set_sps_flag"), 1
     );
 
     /// Creates `StdVideoDecodeH265PictureInfoFlags` with the given segment.

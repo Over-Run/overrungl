@@ -27,17 +27,17 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264SliceHeaderFlags {
-///     uint32_t direct_spatial_mv_pred_flag;
-///     uint32_t num_ref_idx_active_override_flag;
-///     uint32_t reserved;
+///     uint32_t direct_spatial_mv_pred_flag : 1;
+///     uint32_t num_ref_idx_active_override_flag : 1;
+///     uint32_t reserved : 30;
 /// };
 /// ```
 public sealed class StdVideoEncodeH264SliceHeaderFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH264SliceHeaderFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(30)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("direct_spatial_mv_pred_flag"), 1,
+        ValueLayout.JAVA_INT.withName("num_ref_idx_active_override_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 30
     );
 
     /// Creates `StdVideoEncodeH264SliceHeaderFlags` with the given segment.

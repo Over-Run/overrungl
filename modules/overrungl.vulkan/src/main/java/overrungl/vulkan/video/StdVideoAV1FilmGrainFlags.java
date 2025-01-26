@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoAV1FilmGrainFlags {
-///     uint32_t chroma_scaling_from_luma;
-///     uint32_t overlap_flag;
-///     uint32_t clip_to_restricted_range;
-///     uint32_t update_grain;
-///     uint32_t reserved;
+///     uint32_t chroma_scaling_from_luma : 1;
+///     uint32_t overlap_flag : 1;
+///     uint32_t clip_to_restricted_range : 1;
+///     uint32_t update_grain : 1;
+///     uint32_t reserved : 28;
 /// };
 /// ```
 public sealed class StdVideoAV1FilmGrainFlags extends GroupType {
     /// The struct layout of `StdVideoAV1FilmGrainFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(28)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("chroma_scaling_from_luma"), 1,
+        ValueLayout.JAVA_INT.withName("overlap_flag"), 1,
+        ValueLayout.JAVA_INT.withName("clip_to_restricted_range"), 1,
+        ValueLayout.JAVA_INT.withName("update_grain"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 28
     );
 
     /// Creates `StdVideoAV1FilmGrainFlags` with the given segment.

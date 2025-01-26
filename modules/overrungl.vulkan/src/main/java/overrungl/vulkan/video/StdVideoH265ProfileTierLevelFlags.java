@@ -27,21 +27,21 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoH265ProfileTierLevelFlags {
-///     uint32_t general_tier_flag;
-///     uint32_t general_progressive_source_flag;
-///     uint32_t general_interlaced_source_flag;
-///     uint32_t general_non_packed_constraint_flag;
-///     uint32_t general_frame_only_constraint_flag;
+///     uint32_t general_tier_flag : 1;
+///     uint32_t general_progressive_source_flag : 1;
+///     uint32_t general_interlaced_source_flag : 1;
+///     uint32_t general_non_packed_constraint_flag : 1;
+///     uint32_t general_frame_only_constraint_flag : 1;
 /// };
 /// ```
 public sealed class StdVideoH265ProfileTierLevelFlags extends GroupType {
     /// The struct layout of `StdVideoH265ProfileTierLevelFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("general_tier_flag"), 1,
+        ValueLayout.JAVA_INT.withName("general_progressive_source_flag"), 1,
+        ValueLayout.JAVA_INT.withName("general_interlaced_source_flag"), 1,
+        ValueLayout.JAVA_INT.withName("general_non_packed_constraint_flag"), 1,
+        ValueLayout.JAVA_INT.withName("general_frame_only_constraint_flag"), 1
     );
 
     /// Creates `StdVideoH265ProfileTierLevelFlags` with the given segment.

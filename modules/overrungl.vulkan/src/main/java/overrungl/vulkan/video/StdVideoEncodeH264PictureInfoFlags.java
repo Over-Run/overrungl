@@ -27,23 +27,23 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoEncodeH264PictureInfoFlags {
-///     uint32_t IdrPicFlag;
-///     uint32_t is_reference;
-///     uint32_t no_output_of_prior_pics_flag;
-///     uint32_t long_term_reference_flag;
-///     uint32_t adaptive_ref_pic_marking_mode_flag;
-///     uint32_t reserved;
+///     uint32_t IdrPicFlag : 1;
+///     uint32_t is_reference : 1;
+///     uint32_t no_output_of_prior_pics_flag : 1;
+///     uint32_t long_term_reference_flag : 1;
+///     uint32_t adaptive_ref_pic_marking_mode_flag : 1;
+///     uint32_t reserved : 27;
 /// };
 /// ```
 public sealed class StdVideoEncodeH264PictureInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH264PictureInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(27)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("IdrPicFlag"), 1,
+        ValueLayout.JAVA_INT.withName("is_reference"), 1,
+        ValueLayout.JAVA_INT.withName("no_output_of_prior_pics_flag"), 1,
+        ValueLayout.JAVA_INT.withName("long_term_reference_flag"), 1,
+        ValueLayout.JAVA_INT.withName("adaptive_ref_pic_marking_mode_flag"), 1,
+        ValueLayout.JAVA_INT.withName("reserved"), 27
     );
 
     /// Creates `StdVideoEncodeH264PictureInfoFlags` with the given segment.

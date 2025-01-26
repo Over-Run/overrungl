@@ -16,6 +16,8 @@
 
 package overrungl.struct;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.StructLayout;
 import java.util.ArrayList;
@@ -53,5 +55,43 @@ public final class LayoutBuilder {
             list.add(MemoryLayout.paddingLayout(align - padding));
         }
         return MemoryLayout.structLayout(list.toArray(new MemoryLayout[0]));
+    }
+
+    /// Computes a bitfield layout.
+    ///
+    /// @param elements the element arranged with order: `MemoryLayout`, `int`...
+    /// @return the struct layout
+    public static StructLayout bitfields(Object @NotNull ... elements) {
+        if (elements.length % 2 != 0)
+            throw new IllegalArgumentException("Not multiple of 2: " + elements.length);
+        List<MemoryLayout> list = new ArrayList<>();
+        MemoryLayout previousLayout = null;
+        int accumBits = 0;
+        int prevBits = 0;
+        for (int i = 0; i < elements.length; i += 2) {
+            MemoryLayout layout = (MemoryLayout) elements[i];
+            int bits = (Integer) elements[i + 1];
+            if (bits > layout.byteSize() * 8) {
+                throw new IllegalArgumentException("bit width " + bits + " is greater than layout itself: " + layout);
+            }
+            if (bits <= 0) {
+                list.add(layout);
+                accumBits = 0;
+            } else if (previousLayout == null || previousLayout.byteSize() != layout.byteSize() || prevBits <= 0) {
+                list.add(MemoryLayout.paddingLayout(layout.byteSize()));
+                accumBits = bits;
+            } else {
+                long layoutBitSize = layout.byteSize() * 8;
+                if (accumBits + bits > layoutBitSize) {
+                    list.add(MemoryLayout.paddingLayout(layout.byteSize()));
+                    accumBits = (int) (accumBits + bits - layoutBitSize);
+                } else {
+                    accumBits += bits;
+                }
+            }
+            previousLayout = layout;
+            prevBits = bits;
+        }
+        return struct(list.toArray(new MemoryLayout[0]));
     }
 }

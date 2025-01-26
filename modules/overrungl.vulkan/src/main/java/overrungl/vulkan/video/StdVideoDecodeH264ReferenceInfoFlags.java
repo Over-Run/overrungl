@@ -27,19 +27,19 @@ import overrungl.util.*;
 /// ## Layout
 /// ```
 /// struct StdVideoDecodeH264ReferenceInfoFlags {
-///     uint32_t top_field_flag;
-///     uint32_t bottom_field_flag;
-///     uint32_t used_for_long_term_reference;
-///     uint32_t is_non_existing;
+///     uint32_t top_field_flag : 1;
+///     uint32_t bottom_field_flag : 1;
+///     uint32_t used_for_long_term_reference : 1;
+///     uint32_t is_non_existing : 1;
 /// };
 /// ```
 public sealed class StdVideoDecodeH264ReferenceInfoFlags extends GroupType {
     /// The struct layout of `StdVideoDecodeH264ReferenceInfoFlags`.
-    public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1),
-        MemoryLayout.paddingLayout(1)
+    public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
+        ValueLayout.JAVA_INT.withName("top_field_flag"), 1,
+        ValueLayout.JAVA_INT.withName("bottom_field_flag"), 1,
+        ValueLayout.JAVA_INT.withName("used_for_long_term_reference"), 1,
+        ValueLayout.JAVA_INT.withName("is_non_existing"), 1
     );
 
     /// Creates `StdVideoDecodeH264ReferenceInfoFlags` with the given segment.
