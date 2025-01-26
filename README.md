@@ -15,7 +15,13 @@ void main() {
     // invoke native functions via static methods
     glfwInit();
     // use MemorySegment to represent memory addresses
-    MemorySegment window = glfwCreateWindow(...);
+    MemorySegment window = glfwCreateWindow(
+        800, 600,
+        // use MemoryUtil::allocString to allocate string and manage by GC
+        MemoryUtil.allocString("Title"),
+        MemorySegment.NULL,
+        MemorySegment.NULL
+    );
     
     int width, height;
     // use MemoryStack for one-time and quick allocation
@@ -31,9 +37,9 @@ void main() {
         height = pHeight.get(ValueLayout.JAVA_INT, 0L);
     }
     
-    // for OpenGL and Vulkan, create instances of wrappers
+    // for OpenGL, create instance of wrappers
     var gl = new GL(GLFW::glfwGetProcAddress);
-    // invoke OpenGL/Vulkan functions via instance methods
+    // invoke OpenGL functions via instance methods
     gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 ```
@@ -63,7 +69,6 @@ Feel free to ask questions as long as you have searched in discussions and found
 ## Import as a Dependency
 
 We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
-A documentation of the customizer is [here](doc/customizer/doc_on_customizer.md).
 
 - Platform Maven coordinate: `io.github.over-run:overrungl-bom`
 - Core module Maven coordinate: `io.github.over-run:overrungl`
@@ -151,8 +156,6 @@ See [doc/notes](doc/notes/README.md).
 ## Additional
 
 The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
-
-The documentation of OpenGL can be found from [Khronos' references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
 ### Credits
 
