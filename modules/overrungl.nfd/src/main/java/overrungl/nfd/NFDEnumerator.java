@@ -18,7 +18,6 @@ package overrungl.nfd;
 
 import org.jetbrains.annotations.NotNull;
 import overrungl.util.MemoryStack;
-import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -81,7 +80,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
                 MemorySegment outPath = stack.allocate(ADDRESS);
                 int result = NFD_PathSet_EnumNext(segment, outPath);
                 if (result == NFD_ERROR) throw errorIterating();
-                nextPath = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                nextPath = NFD_NativeString(outPath.get(ADDRESS, 0));
                 if (nextPath != null) {
                     NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                 }
@@ -132,7 +131,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
             int result = NFD_PathSet_EnumNext(segment, outPath);
             return switch (result) {
                 case NFD_OKAY -> {
-                    String path = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                    String path = NFD_NativeString(outPath.get(ADDRESS, 0));
                     if (path != null) {
                         NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                     }

@@ -580,6 +580,113 @@ public final class MemoryUtil {
         return nativeString(segment, StandardCharsets.UTF_8);
     }
 
+    /// Gets chars from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the char array; or `null` if _`segment`_ is `NULL`
+    public static char[] asCharArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_CHAR);
+    }
+
+    /// Gets bytes from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the byte array; or `null` if _`segment`_ is `NULL`
+    public static byte[] asByteArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_BYTE);
+    }
+
+    /// Gets shorts from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the short array; or `null` if _`segment`_ is `NULL`
+    public static short[] asShortArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_SHORT);
+    }
+
+    /// Gets integers from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the int array; or `null` if _`segment`_ is `NULL`
+    public static int[] asIntArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_INT);
+    }
+
+    /// Gets longs from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the long array; or `null` if _`segment`_ is `NULL`
+    public static long[] asLongArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_LONG);
+    }
+
+    /// Gets floats from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the float array; or `null` if _`segment`_ is `NULL`
+    public static float[] asFloatArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_FLOAT);
+    }
+
+    /// Gets doubles from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the double array; or `null` if _`segment`_ is `NULL`
+    public static double[] asDoubleArray(MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.toArray(JAVA_DOUBLE);
+    }
+
+    private static int checkArraySize(MemorySegment segment, String typeName, int elemSize) {
+        long length = segment.byteSize();
+        if ((length & (elemSize - 1)) != 0) {
+            throw new IllegalStateException(String.format("Segment size is not a multiple of %d. Size: %d", elemSize, length));
+        }
+        long arraySize = length / elemSize;
+        if (arraySize > (Integer.MAX_VALUE - 8)) {
+            throw new IllegalStateException(String.format("Segment is too large to wrap as %s. Size: %d", typeName, length));
+        }
+        return (int) arraySize;
+    }
+
+    /// Gets addresses from the given segment.
+    ///
+    /// The returned segments are zero-length segments.
+    ///
+    /// @param segment the segment
+    /// @return the address array; or `null` if _`segment`_ is `NULL`
+    public static MemorySegment[] asAddressArray(MemorySegment segment) {
+        if (isNullPointer(segment)) return null;
+        int size = checkArraySize(segment, MemorySegment[].class.getSimpleName(), (int) ADDRESS.byteSize());
+        var arr = new MemorySegment[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = segment.getAtIndex(ADDRESS, i);
+        }
+        return arr;
+    }
+
+    /// Gets strings from the given segment.
+    ///
+    /// @param segment the segment
+    /// @param charset the charset of the string; defaults to UTF-8
+    /// @return the string array; or `null` if _`segment`_ is `NULL`
+    public static String[] asStringArray(MemorySegment segment, Charset charset) {
+        if (isNullPointer(segment)) return null;
+        int size = checkArraySize(segment, String[].class.getSimpleName(), (int) ADDRESS.byteSize());
+        var arr = new String[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = segment.getAtIndex(STR_LAYOUT, i).getString(0L, charset);
+        }
+        return arr;
+    }
+
+    /// Gets strings encoded with UTF-8 from the given segment.
+    ///
+    /// @param segment the segment
+    /// @return the string array; or `null` if _`segment`_ is `NULL`
+    public static String[] asStringArray(MemorySegment segment) {
+        return asStringArray(segment, StandardCharsets.UTF_8);
+    }
+
     /// Converts an integer to `long`. This is usually used by `long` and `size_t`.
     ///
     /// @param layout the actual value layout of _`o`_
@@ -621,6 +728,120 @@ public final class MemoryUtil {
     //endregion
 
     // other
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, char @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_CHAR, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, byte @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_BYTE, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, short @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_SHORT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, int @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_INT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, long @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_LONG, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, float @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_FLOAT, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, double @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        MemorySegment.copy(src, JAVA_DOUBLE, 0L, dst, 0, dst.length);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, String @Nullable [] dst) {
+        copy(src, dst, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src     the source segment
+     * @param dst     the destination
+     * @param charset the charset
+     */
+    public static void copy(MemorySegment src, String @Nullable [] dst, Charset charset) {
+        if (isNullPointer(src) || dst == null) return;
+        for (int i = 0; i < dst.length; i++) {
+            dst[i] = nativeString(src.getAtIndex(STR_LAYOUT, i), charset);
+        }
+    }
+
+    /**
+     * Copies from the given segment to the destination.
+     *
+     * @param src the source segment
+     * @param dst the destination
+     */
+    public static void copy(MemorySegment src, MemorySegment @Nullable [] dst) {
+        if (isNullPointer(src) || dst == null) return;
+        for (int i = 0; i < dst.length; i++) {
+            dst[i] = src.getAtIndex(ADDRESS, i);
+        }
+    }
 
     private static IllegalArgumentException notValueLayout(MemoryLayout layout) {
         return new IllegalArgumentException("Not a value layout: " + layout);
