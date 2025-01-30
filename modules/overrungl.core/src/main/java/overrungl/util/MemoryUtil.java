@@ -659,18 +659,6 @@ public final class MemoryUtil {
         return isNullPointer(segment) ? null : segment.toArray(JAVA_DOUBLE);
     }
 
-    private static int checkArraySize(MemorySegment segment, String typeName, int elemSize) {
-        long length = segment.byteSize();
-        if ((length & (elemSize - 1)) != 0) {
-            throw new IllegalStateException(String.format("Segment size is not a multiple of %d. Size: %d", elemSize, length));
-        }
-        long arraySize = length / elemSize;
-        if (arraySize > (Integer.MAX_VALUE - 8)) {
-            throw new IllegalStateException(String.format("Segment is too large to wrap as %s. Size: %d", typeName, length));
-        }
-        return (int) arraySize;
-    }
-
     /// Gets addresses from the given segment.
     ///
     /// The returned segments are zero-length segments.
@@ -679,12 +667,9 @@ public final class MemoryUtil {
     /// @return the address array; or `null` if _`segment`_ is `NULL`
     public static MemorySegment[] asAddressArray(MemorySegment segment) {
         if (isNullPointer(segment)) return null;
-        int size = checkArraySize(segment, MemorySegment[].class.getSimpleName(), (int) ADDRESS.byteSize());
-        var arr = new MemorySegment[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = segment.getAtIndex(ADDRESS, i);
-        }
-        return arr;
+        return segment.elements(ADDRESS)
+            .map(s -> s.get(ADDRESS, 0))
+            .toArray(MemorySegment[]::new);
     }
 
     /// Gets strings from the given segment.
@@ -694,12 +679,9 @@ public final class MemoryUtil {
     /// @return the string array; or `null` if _`segment`_ is `NULL`
     public static String[] asStringArray(MemorySegment segment, Charset charset) {
         if (isNullPointer(segment)) return null;
-        int size = checkArraySize(segment, String[].class.getSimpleName(), (int) ADDRESS.byteSize());
-        var arr = new String[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = segment.getAtIndex(STR_LAYOUT, i).getString(0L, charset);
-        }
-        return arr;
+        return segment.elements(ADDRESS)
+            .map(s -> s.get(STR_LAYOUT, 0).getString(0L, charset))
+            .toArray(String[]::new);
     }
 
     /// Gets strings encoded with UTF-8 from the given segment.
