@@ -105,7 +105,7 @@ public final class RuntimeHelper {
             var libFile = tmpdir.resolve(basename + "-" + version + suffix);
             if (!Files.exists(libFile)) {
                 // Extract
-                final String fromPath = module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
+                final String fromPath = "overrungl." + module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
                 try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
