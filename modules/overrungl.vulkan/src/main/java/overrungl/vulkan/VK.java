@@ -73,7 +73,7 @@ public final class VK {
             PFN_vkCreateInstance = getFunctionAddress("vkCreateInstance");
             PFN_vkEnumerateInstanceExtensionProperties = getFunctionAddress("vkEnumerateInstanceExtensionProperties");
             PFN_vkEnumerateInstanceLayerProperties = getFunctionAddress("vkEnumerateInstanceLayerProperties");
-            PFN_vkEnumerateInstanceVersion = getFunctionAddress("PFN_vkEnumerateInstanceVersion", false);
+            PFN_vkEnumerateInstanceVersion = getFunctionAddress("vkEnumerateInstanceVersion", false);
         }
 
         private static IllegalArgumentException exception() {
