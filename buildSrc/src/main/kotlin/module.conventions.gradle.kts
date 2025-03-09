@@ -131,7 +131,7 @@ afterEvaluate {
                                 artifact(tasks.register<Jar>("${nativeBinding.bindingName}${platform.classifier}Jar") {
                                     archiveBaseName.set(overrunglModule.artifactName)
                                     archiveClassifier.set(platform.classifier)
-                                    from(file) { into(File(nativeFileName).parent) }
+                                    from(file) { into("overrungl.${File(nativeFileName).parent}") }
                                 })
 
                                 getByName<MavenPublication>("overrunglBOM") {
