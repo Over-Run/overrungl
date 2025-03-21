@@ -88,7 +88,7 @@ public sealed class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Group
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment.
     ///
@@ -96,7 +96,7 @@ public sealed class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator

@@ -72,7 +72,7 @@ public sealed class VkSurfaceFullScreenExclusiveWin32InfoEXT extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceFullScreenExclusiveWin32InfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkSurfaceFullScreenExclusiveWin32InfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceFullScreenExclusiveWin32InfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkSurfaceFullScreenExclusiveWin32InfoEXT` with the given segment.
     ///
@@ -80,7 +80,7 @@ public sealed class VkSurfaceFullScreenExclusiveWin32InfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSurfaceFullScreenExclusiveWin32InfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator

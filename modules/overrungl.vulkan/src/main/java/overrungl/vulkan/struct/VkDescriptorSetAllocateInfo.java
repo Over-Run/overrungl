@@ -88,7 +88,7 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkDescriptorSetAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkDescriptorSetAllocateInfo` with the given segment.
     ///
@@ -96,7 +96,7 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator.
     /// @param allocator the segment allocator

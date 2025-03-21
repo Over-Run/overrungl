@@ -80,7 +80,7 @@ public sealed class STBTT__bitmap extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTT__bitmap ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static STBTT__bitmap ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `STBTT__bitmap` with the given segment.
     ///
@@ -88,7 +88,7 @@ public sealed class STBTT__bitmap extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTT__bitmap` with the given segment allocator.
     /// @param allocator the segment allocator

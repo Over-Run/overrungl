@@ -72,7 +72,7 @@ public sealed class VkBindMemoryStatus extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindMemoryStatus ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindMemoryStatus(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkBindMemoryStatus ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindMemoryStatus(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkBindMemoryStatus` with the given segment.
     ///
@@ -80,7 +80,7 @@ public sealed class VkBindMemoryStatus extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBindMemoryStatus` with the given segment allocator.
     /// @param allocator the segment allocator

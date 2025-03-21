@@ -72,7 +72,7 @@ public sealed class VkPhysicalDeviceSubpassShadingFeaturesHUAWEI extends GroupTy
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubpassShadingFeaturesHUAWEI ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceSubpassShadingFeaturesHUAWEI ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSubpassShadingFeaturesHUAWEI(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkPhysicalDeviceSubpassShadingFeaturesHUAWEI` with the given segment.
     ///
@@ -80,7 +80,7 @@ public sealed class VkPhysicalDeviceSubpassShadingFeaturesHUAWEI extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceSubpassShadingFeaturesHUAWEI` with the given segment allocator.
     /// @param allocator the segment allocator

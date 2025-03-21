@@ -72,7 +72,7 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT extends 
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` with the given segment.
     ///
@@ -80,7 +80,7 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator

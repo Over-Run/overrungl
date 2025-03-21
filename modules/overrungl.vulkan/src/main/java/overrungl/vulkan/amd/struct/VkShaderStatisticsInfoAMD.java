@@ -102,7 +102,7 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkShaderStatisticsInfoAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderStatisticsInfoAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkShaderStatisticsInfoAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkShaderStatisticsInfoAMD(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkShaderStatisticsInfoAMD` with the given segment.
     ///
@@ -110,7 +110,7 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator.
     /// @param allocator the segment allocator
