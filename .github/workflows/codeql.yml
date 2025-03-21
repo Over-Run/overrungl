@@ -13,9 +13,9 @@ name: "CodeQL Advanced"
 
 on:
   push:
-    branches: [ "main", "feature" ]
+    branches: [ "main", "bugfix", "feature" ]
   pull_request:
-    branches: [ "main", "feature" ]
+    branches: [ "main", "bugfix", "feature" ]
   schedule:
     - cron: '24 3 * * 2'
 
@@ -79,7 +79,9 @@ jobs:
     - name: Setup JDK
       uses: actions/setup-java@v4
       with:
-        java-version: 23
+        java-version: |
+          24
+          23
         distribution: 'temurin'
     - name: Grant execute permission for gradlew
       if: ${{ runner.os != 'Windows' }}
