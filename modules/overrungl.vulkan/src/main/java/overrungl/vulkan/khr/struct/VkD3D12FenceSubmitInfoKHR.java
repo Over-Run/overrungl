@@ -96,7 +96,7 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkD3D12FenceSubmitInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkD3D12FenceSubmitInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+    public static VkD3D12FenceSubmitInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkD3D12FenceSubmitInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
 
     /// Creates `VkD3D12FenceSubmitInfoKHR` with the given segment.
     ///
@@ -104,7 +104,7 @@ public sealed class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
