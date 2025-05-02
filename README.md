@@ -46,7 +46,7 @@ void main() {
 
 ## Introduction
 
-Overrun Game Library is a high-performance library implemented with Java 23,
+Overrun Game Library is a high-performance library implemented with Java 24,
 which enables cross-platform access to a set of C/C++ library bindings, providing various useful utilities.
 
 ### Comparing with LWJGL 3
