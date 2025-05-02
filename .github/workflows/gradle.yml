@@ -30,7 +30,6 @@ jobs:
         with:
           java-version: |
             ${{ matrix.java }}
-            23
           distribution: 'graalvm'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
