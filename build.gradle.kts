@@ -19,7 +19,7 @@ import org.jreleaser.model.Active
 plugins {
     `java-platform`
     `maven-publish`
-    id("org.jreleaser") version "1.16.0"
+    id("org.jreleaser") version "1.18.0"
 }
 
 val projGroupId: String by rootProject
@@ -92,10 +92,18 @@ jreleaser {
         active = Active.ALWAYS
         armored = true
     }
-    deploy {
-        release {
-            github.enabled = false
+    release {
+        github {
+            skipTag = true
+            skipRelease = true
+            files = false
+            artifacts = false
+            checksums = false
+            signatures = false
+            catalogs = false
         }
+    }
+    deploy {
         maven {
             mavenCentral {
                 create("sonatype") {
