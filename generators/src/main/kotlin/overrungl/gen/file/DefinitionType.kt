@@ -48,8 +48,8 @@ data class DefTypeDynamicValueLayout(
     override fun asChar(actualType: String?): Char = asCharMap[actualType!!]!!
 }
 
-data class DefTypeSequenceLayout(val size: Long, val layout: DefTypeMemoryLayout) : DefTypeMemoryLayout {
-    override val memoryLayout: String = "MemoryLayout.sequenceLayout(${size}L, ${layout.memoryLayout})"
+data class DefTypeSequenceLayout(val size: String, val layout: DefTypeMemoryLayout) : DefTypeMemoryLayout {
+    override val memoryLayout: String = "MemoryLayout.sequenceLayout(${size}, ${layout.memoryLayout})"
     override val possibleActualTypes: List<String>? = null
     override fun carrier(actualType: String?): String = throw UnsupportedOperationException()
     override fun asChar(actualType: String?): Char = throw UnsupportedOperationException()
@@ -84,7 +84,7 @@ interface DefinitionType {
     fun withName(originalName: String): DefinitionType
 }
 
-data class DefTypeNamePair(val type: DefinitionType, val name: String, val dimensions: List<Long>) {
+data class DefTypeNamePair(val type: DefinitionType, val name: String, val dimensions: List<String>) {
     val memoryLayoutWithDimensions: DefTypeMemoryLayout by lazy {
         if (dimensions.isEmpty()) {
             type.memoryLayout
@@ -144,7 +144,8 @@ data class GroupLayoutType(
     val opaque: Boolean,
     val members: List<GroupTypeMember>,
     val kind: GroupTypeKind,
-    val packageName: String?
+    val packageName: String?,
+    val imports: List<String>
 ) : DefinitionType {
     override val javaType: String = "MemorySegment"
     override val memoryLayout: DefTypeMemoryLayout

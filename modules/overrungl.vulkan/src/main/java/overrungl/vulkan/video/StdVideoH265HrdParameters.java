@@ -57,9 +57,9 @@ public sealed class StdVideoH265HrdParameters extends GroupType {
         ValueLayout.JAVA_BYTE.withName("initial_cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_BYTE.withName("au_cpb_removal_delay_length_minus1"),
         ValueLayout.JAVA_BYTE.withName("dpb_output_delay_length_minus1"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_BYTE).withName("cpb_cnt_minus1"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_SHORT).withName("elemental_duration_in_tc_minus1"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_SHORT).withName("reserved"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("cpb_cnt_minus1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_SHORT).withName("elemental_duration_in_tc_minus1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT).withName("reserved"),
         ValueLayout.ADDRESS.withName("pSubLayerHrdParametersNal"),
         ValueLayout.ADDRESS.withName("pSubLayerHrdParametersVcl")
     );

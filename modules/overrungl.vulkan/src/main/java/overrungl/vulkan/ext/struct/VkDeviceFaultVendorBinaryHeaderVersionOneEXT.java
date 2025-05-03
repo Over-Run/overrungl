@@ -48,7 +48,7 @@ public sealed class VkDeviceFaultVendorBinaryHeaderVersionOneEXT extends GroupTy
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("driverVersion"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
         ValueLayout.JAVA_INT.withName("applicationNameOffset"),
         ValueLayout.JAVA_INT.withName("applicationVersion"),
         ValueLayout.JAVA_INT.withName("engineNameOffset"),

@@ -38,8 +38,8 @@ public sealed class StdVideoH264ScalingLists extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("scaling_list_present_mask"),
         ValueLayout.JAVA_SHORT.withName("use_default_scaling_matrix_mask"),
-        MemoryLayout.sequenceLayout(16L, MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
-        MemoryLayout.sequenceLayout(64L, MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8")
+        MemoryLayout.sequenceLayout(16, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
+        MemoryLayout.sequenceLayout(64, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8")
     );
     /// The byte offset of `scaling_list_present_mask`.
     public static final long OFFSET_scaling_list_present_mask = LAYOUT.byteOffset(PathElement.groupElement("scaling_list_present_mask"));

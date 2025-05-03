@@ -40,12 +40,12 @@ public sealed class StdVideoAV1LoopFilter extends GroupType {
     /// The struct layout of `StdVideoAV1LoopFilter`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1LoopFilterFlags.LAYOUT.withName("flags"),
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_BYTE).withName("loop_filter_level"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_BYTE).withName("loop_filter_level"),
         ValueLayout.JAVA_BYTE.withName("loop_filter_sharpness"),
         ValueLayout.JAVA_BYTE.withName("update_ref_delta"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("loop_filter_ref_deltas"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("loop_filter_ref_deltas"),
         ValueLayout.JAVA_BYTE.withName("update_mode_delta"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_BYTE).withName("loop_filter_mode_deltas")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_BYTE).withName("loop_filter_mode_deltas")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

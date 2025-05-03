@@ -43,7 +43,7 @@ public sealed class VkVideoDecodeAV1PictureInfoKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pStdPictureInfo"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("frameHeaderOffset"),
         ValueLayout.JAVA_INT.withName("tileCount"),
         ValueLayout.ADDRESS.withName("pTileOffsets"),

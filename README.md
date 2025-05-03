@@ -130,6 +130,13 @@ The customizer has already included this.
 | [OpenAL](https://www.openal.org/)       | A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications. |
 | [OpenAL Soft](https://openal-soft.org/) | An LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.                                  |
 
+### Graphics
+
+| Library                                                                                      | Description                                        |
+|----------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator) | Easy to integrate Vulkan memory allocation library |
+
+
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 
 | Library           | Description                                                                     |

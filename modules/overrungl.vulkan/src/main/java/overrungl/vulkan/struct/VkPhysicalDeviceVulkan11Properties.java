@@ -51,9 +51,9 @@ public sealed class VkPhysicalDeviceVulkan11Properties extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("deviceUUID"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("driverUUID"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("deviceLUID"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("deviceUUID"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("driverUUID"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("deviceLUID"),
         ValueLayout.JAVA_INT.withName("deviceNodeMask"),
         ValueLayout.JAVA_INT.withName("deviceLUIDValid"),
         ValueLayout.JAVA_INT.withName("subgroupSize"),

@@ -39,7 +39,7 @@ public sealed class VkDebugMarkerMarkerInfoEXT extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pMarkerName"),
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_FLOAT).withName("color")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("color")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

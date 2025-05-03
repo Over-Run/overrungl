@@ -51,9 +51,9 @@ public sealed class StdVideoDecodeH265PictureInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
         ValueLayout.JAVA_SHORT.withName("NumBitsForSTRefPicSetInSlice"),
         ValueLayout.JAVA_SHORT.withName("reserved"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrBefore"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrAfter"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("RefPicSetLtCurr")
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrBefore"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("RefPicSetStCurrAfter"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("RefPicSetLtCurr")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

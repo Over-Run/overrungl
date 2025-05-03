@@ -57,7 +57,7 @@ public sealed class StdVideoAV1SequenceHeader extends GroupType {
         ValueLayout.JAVA_BYTE.withName("order_hint_bits_minus_1"),
         ValueLayout.JAVA_BYTE.withName("seq_force_integer_mv"),
         ValueLayout.JAVA_BYTE.withName("seq_force_screen_content_tools"),
-        MemoryLayout.sequenceLayout(5L, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(5, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withName("pColorConfig"),
         ValueLayout.ADDRESS.withName("pTimingInfo")
     );

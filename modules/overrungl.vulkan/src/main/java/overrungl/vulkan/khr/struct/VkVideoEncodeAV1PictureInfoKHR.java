@@ -47,7 +47,7 @@ public sealed class VkVideoEncodeAV1PictureInfoKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("rateControlGroup"),
         ValueLayout.JAVA_INT.withName("constantQIndex"),
         ValueLayout.ADDRESS.withName("pStdPictureInfo"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_INT).withName("referenceNameSlotIndices"),
         ValueLayout.JAVA_INT.withName("primaryReferenceCdfOnly"),
         ValueLayout.JAVA_INT.withName("generateObuExtensionHeader")
     );

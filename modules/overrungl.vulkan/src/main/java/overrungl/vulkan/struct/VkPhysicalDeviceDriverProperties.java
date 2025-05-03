@@ -41,8 +41,8 @@ public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("driverID"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("driverName"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("driverInfo"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("driverName"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("driverInfo"),
         overrungl.vulkan.struct.VkConformanceVersion.LAYOUT.withName("conformanceVersion")
     );
     /// The byte offset of `sType`.

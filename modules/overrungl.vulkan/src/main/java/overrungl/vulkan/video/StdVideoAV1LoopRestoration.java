@@ -34,8 +34,8 @@ import overrungl.util.*;
 public sealed class StdVideoAV1LoopRestoration extends GroupType {
     /// The struct layout of `StdVideoAV1LoopRestoration`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_INT).withName("FrameRestorationType"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_SHORT).withName("LoopRestorationSize")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("FrameRestorationType"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT).withName("LoopRestorationSize")
     );
     /// The byte offset of `FrameRestorationType`.
     public static final long OFFSET_FrameRestorationType = LAYOUT.byteOffset(PathElement.groupElement("FrameRestorationType"));

@@ -35,7 +35,7 @@ public sealed class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// The struct layout of `StdVideoH265LongTermRefPicsSps`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("used_by_curr_pic_lt_sps_flag"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("lt_ref_pic_poc_lsb_sps")
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("lt_ref_pic_poc_lsb_sps")
     );
     /// The byte offset of `used_by_curr_pic_lt_sps_flag`.
     public static final long OFFSET_used_by_curr_pic_lt_sps_flag = LAYOUT.byteOffset(PathElement.groupElement("used_by_curr_pic_lt_sps_flag"));

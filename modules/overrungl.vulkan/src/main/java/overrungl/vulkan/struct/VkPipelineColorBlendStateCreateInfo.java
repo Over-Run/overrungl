@@ -47,7 +47,7 @@ public sealed class VkPipelineColorBlendStateCreateInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("logicOp"),
         ValueLayout.JAVA_INT.withName("attachmentCount"),
         ValueLayout.ADDRESS.withName("pAttachments"),
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_FLOAT).withName("blendConstants")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("blendConstants")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

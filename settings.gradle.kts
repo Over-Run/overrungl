@@ -40,5 +40,6 @@ include(
     "generators:openal",
     "generators:opengl",
     "generators:stb",
+    "generators:vma",
     "generators:vulkan"
 )

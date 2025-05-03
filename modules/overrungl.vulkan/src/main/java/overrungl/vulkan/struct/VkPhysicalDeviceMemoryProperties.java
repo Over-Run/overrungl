@@ -37,9 +37,9 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMemoryProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memoryTypeCount"),
-        MemoryLayout.sequenceLayout(32L, overrungl.vulkan.struct.VkMemoryType.LAYOUT).withName("memoryTypes"),
+        MemoryLayout.sequenceLayout(32, overrungl.vulkan.struct.VkMemoryType.LAYOUT).withName("memoryTypes"),
         ValueLayout.JAVA_INT.withName("memoryHeapCount"),
-        MemoryLayout.sequenceLayout(16L, overrungl.vulkan.struct.VkMemoryHeap.LAYOUT).withName("memoryHeaps")
+        MemoryLayout.sequenceLayout(16, overrungl.vulkan.struct.VkMemoryHeap.LAYOUT).withName("memoryHeaps")
     );
     /// The byte offset of `memoryTypeCount`.
     public static final long OFFSET_memoryTypeCount = LAYOUT.byteOffset(PathElement.groupElement("memoryTypeCount"));

@@ -41,7 +41,7 @@ public sealed class VkPipelineCacheHeaderVersionOne extends GroupType {
         ValueLayout.JAVA_INT.withName("headerVersion"),
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID")
     );
     /// The byte offset of `headerSize`.
     public static final long OFFSET_headerSize = LAYOUT.byteOffset(PathElement.groupElement("headerSize"));

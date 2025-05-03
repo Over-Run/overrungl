@@ -49,7 +49,7 @@ public sealed class STBRPContext extends GroupType {
         ValueLayout.JAVA_INT.withName("num_nodes"),
         ValueLayout.ADDRESS.withName("active_head"),
         ValueLayout.ADDRESS.withName("free_head"),
-        MemoryLayout.sequenceLayout(2L, STBRPNode.LAYOUT).withName("extra")
+        MemoryLayout.sequenceLayout(2, STBRPNode.LAYOUT).withName("extra")
     );
     /// The byte offset of `width`.
     public static final long OFFSET_width = LAYOUT.byteOffset(PathElement.groupElement("width"));

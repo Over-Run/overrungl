@@ -36,10 +36,10 @@ import overrungl.util.*;
 public sealed class VkLayerProperties extends GroupType {
     /// The struct layout of `VkLayerProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("layerName"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("layerName"),
         ValueLayout.JAVA_INT.withName("specVersion"),
         ValueLayout.JAVA_INT.withName("implementationVersion"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description")
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description")
     );
     /// The byte offset of `layerName`.
     public static final long OFFSET_layerName = LAYOUT.byteOffset(PathElement.groupElement("layerName"));

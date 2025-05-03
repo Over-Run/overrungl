@@ -26,9 +26,13 @@ val nativeImageUpcallDescriptors = mutableListOf<String>()
 fun writeNativeImageRegistration(
     packageName: String,
     downcall: List<String> = nativeImageDowncallDescriptors,
-    upcall: List<String> = nativeImageUpcallDescriptors
+    upcall: List<String> = nativeImageUpcallDescriptors,
+    newPath: Boolean = false // TODO
 ) {
-    writeString(Path(packageName.replace('.', '/'), "$className.java"), buildString {
+    val basePath = Path(packageName.replace('.', '/'), "$className.java")
+    val path = if (newPath) Path("src/main/generated/").resolve(basePath)
+    else basePath
+    writeString(path, buildString {
         appendLine(commentedFileHeader)
         appendLine(
             """

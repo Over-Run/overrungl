@@ -41,11 +41,11 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("num_long_term_sps"),
         ValueLayout.JAVA_BYTE.withName("num_long_term_pics"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_BYTE).withName("lt_idx_sps"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("poc_lsb_lt"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_BYTE).withName("lt_idx_sps"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("poc_lsb_lt"),
         ValueLayout.JAVA_SHORT.withName("used_by_curr_pic_lt_flag"),
-        MemoryLayout.sequenceLayout(48L, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_present_flag"),
-        MemoryLayout.sequenceLayout(48L, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_cycle_lt")
+        MemoryLayout.sequenceLayout(48, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_present_flag"),
+        MemoryLayout.sequenceLayout(48, ValueLayout.JAVA_BYTE).withName("delta_poc_msb_cycle_lt")
     );
     /// The byte offset of `num_long_term_sps`.
     public static final long OFFSET_num_long_term_sps = LAYOUT.byteOffset(PathElement.groupElement("num_long_term_sps"));

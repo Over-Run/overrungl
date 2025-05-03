@@ -42,10 +42,10 @@ public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
         overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l0_active_minus1"),
         ValueLayout.JAVA_BYTE.withName("num_ref_idx_l1_active_minus1"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("RefPicList0"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("RefPicList1"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("list_entry_l0"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("list_entry_l1")
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("RefPicList0"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("RefPicList1"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("list_entry_l0"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("list_entry_l1")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

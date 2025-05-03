@@ -34,8 +34,8 @@ import overrungl.util.*;
 public sealed class StdVideoAV1GlobalMotion extends GroupType {
     /// The struct layout of `StdVideoAV1GlobalMotion`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("GmType"),
-        MemoryLayout.sequenceLayout(6L, MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_INT)).withName("gm_params")
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("GmType"),
+        MemoryLayout.sequenceLayout(6, MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_INT)).withName("gm_params")
     );
     /// The byte offset of `GmType`.
     public static final long OFFSET_GmType = LAYOUT.byteOffset(PathElement.groupElement("GmType"));

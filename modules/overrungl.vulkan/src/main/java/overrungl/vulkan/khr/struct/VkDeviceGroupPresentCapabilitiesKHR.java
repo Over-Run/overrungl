@@ -38,7 +38,7 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("presentMask"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("presentMask"),
         ValueLayout.JAVA_INT.withName("modes")
     );
     /// The byte offset of `sType`.

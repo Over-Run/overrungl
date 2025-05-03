@@ -58,8 +58,8 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
         ValueLayout.JAVA_BYTE.withName("reserved3"),
         ValueLayout.JAVA_BYTE.withName("num_negative_pics"),
         ValueLayout.JAVA_BYTE.withName("num_positive_pics"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_SHORT).withName("delta_poc_s0_minus1"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_SHORT).withName("delta_poc_s1_minus1")
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_SHORT).withName("delta_poc_s0_minus1"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_SHORT).withName("delta_poc_s1_minus1")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

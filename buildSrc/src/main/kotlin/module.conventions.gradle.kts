@@ -69,6 +69,13 @@ extensions.configure<JavaPluginExtension>("java") {
     toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
     withJavadocJar()
     withSourcesJar()
+    sourceSets {
+        main {
+            java {
+                srcDirs("src/main/generated")
+            }
+        }
+    }
 }
 
 tasks.named<Jar>("jar") {
@@ -107,7 +114,10 @@ artifacts {
     add("archives", tasks["javadocJar"])
 }
 
-the<IdeaModel>().module.inheritOutputDirs = true
+the<IdeaModel>().module {
+    inheritOutputDirs = true
+    generatedSourceDirs.add(projectDir.resolve("src/main/generated"))
+}
 
 afterEvaluate {
     overrunglModule.publishInfo.orNull?.also {

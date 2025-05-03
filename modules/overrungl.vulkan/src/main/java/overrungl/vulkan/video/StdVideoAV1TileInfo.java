@@ -47,7 +47,7 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
         ValueLayout.JAVA_BYTE.withName("TileRows"),
         ValueLayout.JAVA_SHORT.withName("context_update_tile_id"),
         ValueLayout.JAVA_BYTE.withName("tile_size_bytes_minus_1"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withName("pMiColStarts"),
         ValueLayout.ADDRESS.withName("pMiRowStarts"),
         ValueLayout.ADDRESS.withName("pWidthInSbsMinus1"),

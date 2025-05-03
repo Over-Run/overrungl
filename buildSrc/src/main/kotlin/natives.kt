@@ -47,6 +47,7 @@ enum class NativeBinding(
     NFD("nfd", "nfd", NativePlatform.enumEntries),
     OPENAL("openal", "openal", NativePlatform.enumEntries),
     STB("stb", "stb", NativePlatform.enumEntries),
+    VMA("vma", "vma", NativePlatform.enumEntries),
 }
 
 enum class Artifact(
@@ -88,6 +89,11 @@ enum class Artifact(
         "OverrunGL - stb bindings",
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
         ":stb"
+    ),
+    VMA(
+        "OverrunGL - Vulkan Memory Allocator bindings",
+        "Easy to integrate Vulkan memory allocation library.",
+        ":vma"
     ),
     VULKAN(
         "OverrunGL - Vulkan bindings",

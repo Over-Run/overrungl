@@ -72,6 +72,12 @@ internal class Parser(private val tokens: List<Token>) {
                     reportError("expect type, name and value")
                 }
                 return DefineAsPreprocessor(split[1], split[2], split[3])
+            } else if (previous.lexeme.startsWith("#extern ")) {
+                val split = previous.lexeme.split(whitespaceRegex, 3)
+                if (split.size < 3) {
+                    reportError("expect name and value")
+                }
+                return ExternPreprocessor(split[1], split[2])
             }
         }
         if (match(USING)) return using()
@@ -223,10 +229,15 @@ internal class Parser(private val tokens: List<Token>) {
         val members = mutableListOf<ParserGroupTypeMember>()
         var packageName: Token? = null
         var hasBitfield = false
+        val imports = mutableListOf<String>()
         if (match(LEFT_BRACE)) {
             opaque = false
             if (match(PACKAGE)) {
                 packageName = consume("expect string", STRING)
+                consume("expect ';'", SEMICOLON)
+            }
+            while (match(IMPORT)) {
+                imports.add(consume("expect string", STRING).literal.toString())
                 consume("expect ';'", SEMICOLON)
             }
             while (!isAtEnd() && !check(RIGHT_BRACE)) {
@@ -269,7 +280,8 @@ internal class Parser(private val tokens: List<Token>) {
             members,
             packageName,
             if (hasBitfield && kind == GroupTypeKind.STRUCT) GroupTypeKind.BITFIELD
-            else kind
+            else kind,
+            imports
         )
     }
 
@@ -353,6 +365,7 @@ internal class Parser(private val tokens: List<Token>) {
 internal sealed interface Statement
 internal data class DefinePreprocessor(val name: String, val value: String) : Statement // regard #define as statement
 internal data class DefineAsPreprocessor(val type: String, val name: String, val value: String) : Statement
+internal data class ExternPreprocessor(val name: String, val value: String) : Statement
 internal data class UsingStatement(val name: Token, val oldType: Expression) : Statement
 internal data class FunctionDeclaration(
     val returnType: Expression,
@@ -388,7 +401,8 @@ internal data class GroupTypeExpression(
     val opaque: Boolean,
     val members: List<ParserGroupTypeMember>,
     val packageName: Token?,
-    val kind: GroupTypeKind
+    val kind: GroupTypeKind,
+    val imports: List<String>
 ) : Expression
 
 internal data class UpcallExpression(

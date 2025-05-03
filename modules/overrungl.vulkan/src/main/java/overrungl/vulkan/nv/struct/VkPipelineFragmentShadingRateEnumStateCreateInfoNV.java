@@ -41,7 +41,7 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shadingRateType"),
         ValueLayout.JAVA_INT.withName("shadingRate"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_INT).withName("combinerOps")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

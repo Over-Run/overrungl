@@ -34,8 +34,8 @@ import overrungl.util.*;
 public sealed class StdVideoAV1Segmentation extends GroupType {
     /// The struct layout of `StdVideoAV1Segmentation`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("FeatureEnabled"),
-        MemoryLayout.sequenceLayout(8L, MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_SHORT)).withName("FeatureData")
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("FeatureEnabled"),
+        MemoryLayout.sequenceLayout(8, MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_SHORT)).withName("FeatureData")
     );
     /// The byte offset of `FeatureEnabled`.
     public static final long OFFSET_FeatureEnabled = LAYOUT.byteOffset(PathElement.groupElement("FeatureEnabled"));

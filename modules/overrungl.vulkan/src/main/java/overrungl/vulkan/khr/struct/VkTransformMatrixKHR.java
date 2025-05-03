@@ -33,7 +33,7 @@ import overrungl.util.*;
 public sealed class VkTransformMatrixKHR extends GroupType {
     /// The struct layout of `VkTransformMatrixKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(4L, MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_FLOAT)).withName("matrix")
+        MemoryLayout.sequenceLayout(4, MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_FLOAT)).withName("matrix")
     );
     /// The byte offset of `matrix`.
     public static final long OFFSET_matrix = LAYOUT.byteOffset(PathElement.groupElement("matrix"));

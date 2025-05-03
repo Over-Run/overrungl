@@ -39,7 +39,7 @@ public sealed class VkPipelineFragmentShadingRateStateCreateInfoKHR extends Grou
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("fragmentSize"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_INT).withName("combinerOps")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

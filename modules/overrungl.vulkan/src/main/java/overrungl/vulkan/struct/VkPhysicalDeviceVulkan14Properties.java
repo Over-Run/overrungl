@@ -84,7 +84,7 @@ public sealed class VkPhysicalDeviceVulkan14Properties extends GroupType {
         ValueLayout.ADDRESS.withName("pCopySrcLayouts"),
         ValueLayout.JAVA_INT.withName("copyDstLayoutCount"),
         ValueLayout.ADDRESS.withName("pCopyDstLayouts"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("optimalTilingLayoutUUID"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("optimalTilingLayoutUUID"),
         ValueLayout.JAVA_INT.withName("identicalMemoryTypeRequirements")
     );
     /// The byte offset of `sType`.

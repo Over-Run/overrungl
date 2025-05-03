@@ -39,7 +39,7 @@ public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
         ValueLayout.JAVA_INT.withName("matchControl"),
         ValueLayout.JAVA_LONG.withName("poolEntrySize")
     );

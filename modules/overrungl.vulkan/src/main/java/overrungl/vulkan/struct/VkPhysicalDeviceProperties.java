@@ -46,8 +46,8 @@ public sealed class VkPhysicalDeviceProperties extends GroupType {
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("deviceType"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("deviceName"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("deviceName"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineCacheUUID"),
         overrungl.vulkan.struct.VkPhysicalDeviceLimits.LAYOUT.withName("limits"),
         overrungl.vulkan.struct.VkPhysicalDeviceSparseProperties.LAYOUT.withName("sparseProperties")
     );
