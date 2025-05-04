@@ -19,6 +19,8 @@ plugins {
     id("submodule.conventions")
 }
 
+val projVersion: String by rootProject
+
 overrunglModule {
     artifactName = "overrungl-vma"
     publishInfo = Artifact.VMA
@@ -26,5 +28,6 @@ overrunglModule {
 }
 
 dependencies {
-    implementation(project(":vulkan"))
+    compileOnly(project(":vulkan"))
+    constraints { implementation("io.github.over-run:overrungl-vulkan:$projVersion") }
 }

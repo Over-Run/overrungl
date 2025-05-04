@@ -51,7 +51,7 @@ public final class OverrunGL {
      */
     public static final String STB_VERSION = "0.1.0.5";
     /// The version of Vulkan Memory Allocator native libraries.
-    public static final String VMA_VERSION = "0.1.0.0";
+    public static final String VMA_VERSION = "3.2.1.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 

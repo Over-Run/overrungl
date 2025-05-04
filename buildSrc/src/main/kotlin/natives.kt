@@ -47,7 +47,7 @@ enum class NativeBinding(
     NFD("nfd", "nfd", NativePlatform.enumEntries),
     OPENAL("openal", "openal", NativePlatform.enumEntries),
     STB("stb", "stb", NativePlatform.enumEntries),
-    VMA("vma", "vma", NativePlatform.enumEntries),
+    VMA("vma", "VulkanMemoryAllocator", NativePlatform.enumEntries),
 }
 
 enum class Artifact(

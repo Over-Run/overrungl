@@ -16,13 +16,11 @@
 
 package overrungl.vma;
 
-import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
+import overrungl.OverrunGLConfigurations;
 import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
-import java.lang.foreign.ValueLayout;
 import java.util.function.Supplier;
 
 /**
@@ -42,8 +40,8 @@ final class VMAInternal {
         if (lookup == null) {
             synchronized (VMAInternal.class) {
                 if (lookup == null) {
-                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
-                    final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
+                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("vma", "VulkanMemoryAllocator", OverrunGL.VMA_VERSION);
+                    final var function = OverrunGLConfigurations.VMA_SYMBOL_LOOKUP.get();
                     lookup = function != null ? function.apply(lib) : lib.get();
                 }
             }
