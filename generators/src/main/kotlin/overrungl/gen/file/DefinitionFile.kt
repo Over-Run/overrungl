@@ -49,9 +49,15 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         }
     }
 
-    private fun compileUpcall(fallbackPackageName: String, className: String, upcallType: UpcallType) {
+    private fun compileUpcall(
+        fallbackPackageName: String,
+        className: String,
+        upcallType: UpcallType,
+        newPath: Boolean
+    ) {
         val packageName = upcallType.packageName ?: fallbackPackageName
-        val path = Path(packageName.replace('.', '/'), "$className.java")
+        val basePath = Path(packageName.replace('.', '/'), "$className.java")
+        val path = if (newPath) Path("src/main/generated/").resolve(basePath) else basePath
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -239,9 +245,15 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         writeString(path, sb.toString())
     }
 
-    private fun compileGroupClass(fallbackPackageName: String, className: String, groupClass: GroupLayoutType) {
+    private fun compileGroupClass(
+        fallbackPackageName: String,
+        className: String,
+        groupClass: GroupLayoutType,
+        newPath: Boolean
+    ) {
         val packageName = groupClass.packageName ?: fallbackPackageName
-        val path = Path(packageName.replace('.', '/'), "$className.java")
+        val basePath = Path(packageName.replace('.', '/'), "$className.java")
+        val path = if (newPath) Path("src/main/generated/").resolve(basePath) else basePath
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -258,6 +270,12 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             |
         """.trimMargin()
         )
+        groupClass.imports.forEach {
+            sb.appendLine("import $it;")
+        }
+        if (groupClass.imports.isNotEmpty()) {
+            sb.appendLine()
+        }
         sb.appendLine("/// ## Layout")
         sb.appendLine("/// ```")
         sb.appendLine("/// ${groupClass.kind.typedef} ${groupClass.name} {")
@@ -670,8 +688,18 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         return layout
     }
 
-    private fun compileDowncall(packageName: String, className: String, symbolLookup: String, writeWholeFile: Boolean) {
-        val path = Path(packageName.replace('.', '/'), "$className.java")
+    private fun compileDowncall(
+        packageName: String,
+        className: String,
+        symbolLookup: String,
+        writeWholeFile: Boolean,
+        newPath: Boolean = false
+    ) {
+        val basePath = Path(packageName.replace('.', '/'), "$className.java")
+        val path = if (newPath) {
+            (if (writeWholeFile) Path("src/main/generated/")
+            else Path("src/main/java/")).resolve(basePath)
+        } else basePath
         path.createParentDirectories()
         val sb = StringBuilder()
 
@@ -758,18 +786,18 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         writeString(path, finalString)
     }
 
-    fun compileUpcalls(upcallPackageName: String) {
+    fun compileUpcalls(upcallPackageName: String, newPath: Boolean = false) {
         interpreter.upcalls.forEach {
             val value = it.value
-            compileUpcall(upcallPackageName, value.name, value)
+            compileUpcall(upcallPackageName, value.name, value, newPath)
         }
     }
 
-    fun compileStructs(structPackageName: String) {
+    fun compileStructs(structPackageName: String, newPath: Boolean = false) {
         interpreter.structs.forEach {
             val value = it.value
             if (!value.opaque) {
-                compileGroupClass(structPackageName, value.name, value)
+                compileGroupClass(structPackageName, value.name, value, newPath)
             }
         }
     }
@@ -780,11 +808,12 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         symbolLookup: String,
         writeWholeFile: Boolean = false,
         structPackageName: String = packageName,
-        upcallPackageName: String = packageName
+        upcallPackageName: String = packageName,
+        newPath: Boolean = false // whether use generated source set. TODO: transition
     ) {
-        compileUpcalls(upcallPackageName)
-        compileStructs(structPackageName)
-        compileDowncall(packageName, className, symbolLookup, writeWholeFile)
+        compileUpcalls(upcallPackageName, newPath)
+        compileStructs(structPackageName, newPath)
+        compileDowncall(packageName, className, symbolLookup, writeWholeFile, newPath)
     }
 }
 

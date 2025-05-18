@@ -37,10 +37,10 @@ import overrungl.util.*;
 public sealed class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// The struct layout of `StdVideoH265SubLayerHrdParameters`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("bit_rate_value_minus1"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("cpb_size_value_minus1"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("cpb_size_du_value_minus1"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_INT).withName("bit_rate_du_value_minus1"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("bit_rate_value_minus1"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("cpb_size_value_minus1"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("cpb_size_du_value_minus1"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_INT).withName("bit_rate_du_value_minus1"),
         ValueLayout.JAVA_INT.withName("cbr_flag")
     );
     /// The byte offset of `bit_rate_value_minus1`.

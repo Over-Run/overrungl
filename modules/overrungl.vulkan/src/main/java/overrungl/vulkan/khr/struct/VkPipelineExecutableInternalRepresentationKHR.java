@@ -41,8 +41,8 @@ public sealed class VkPipelineExecutableInternalRepresentationKHR extends GroupT
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("isText"),
         CanonicalTypes.SIZE_T.withName("dataSize"),
         ValueLayout.ADDRESS.withName("pData")

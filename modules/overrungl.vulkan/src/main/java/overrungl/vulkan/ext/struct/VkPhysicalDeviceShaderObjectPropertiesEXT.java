@@ -38,7 +38,7 @@ public sealed class VkPhysicalDeviceShaderObjectPropertiesEXT extends GroupType 
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("shaderBinaryUUID"),
         ValueLayout.JAVA_INT.withName("shaderBinaryVersion")
     );
     /// The byte offset of `sType`.

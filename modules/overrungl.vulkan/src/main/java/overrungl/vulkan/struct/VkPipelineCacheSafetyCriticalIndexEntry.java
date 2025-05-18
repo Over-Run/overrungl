@@ -39,7 +39,7 @@ import overrungl.util.*;
 public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// The struct layout of `VkPipelineCacheSafetyCriticalIndexEntry`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
         ValueLayout.JAVA_LONG.withName("pipelineMemorySize"),
         ValueLayout.JAVA_LONG.withName("jsonSize"),
         ValueLayout.JAVA_LONG.withName("jsonOffset"),

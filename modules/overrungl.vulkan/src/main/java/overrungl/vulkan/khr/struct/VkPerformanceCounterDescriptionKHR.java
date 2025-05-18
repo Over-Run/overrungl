@@ -41,9 +41,9 @@ public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("flags"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("category"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description")
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("category"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

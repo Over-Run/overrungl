@@ -40,7 +40,7 @@ public sealed class VkDeviceFaultInfoEXT extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.ADDRESS.withName("pAddressInfos"),
         ValueLayout.ADDRESS.withName("pVendorInfos"),
         ValueLayout.ADDRESS.withName("pVendorBinaryData")

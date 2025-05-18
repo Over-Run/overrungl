@@ -39,7 +39,7 @@ public sealed class VkQueueFamilyGlobalPriorityProperties extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("priorityCount"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_INT).withName("priorities")
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_INT).withName("priorities")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

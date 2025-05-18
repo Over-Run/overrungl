@@ -41,11 +41,11 @@ public sealed class VkPhysicalDeviceToolProperties extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("version"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("version"),
         ValueLayout.JAVA_INT.withName("purposes"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("layer")
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("layer")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

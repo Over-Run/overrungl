@@ -40,10 +40,10 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
         ValueLayout.JAVA_BYTE.withName("cdef_bits"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("cdef_y_pri_strength"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("cdef_y_sec_strength"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("cdef_uv_pri_strength"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("cdef_uv_sec_strength")
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("cdef_y_pri_strength"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("cdef_y_sec_strength"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("cdef_uv_pri_strength"),
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("cdef_uv_sec_strength")
     );
     /// The byte offset of `cdef_damping_minus_3`.
     public static final long OFFSET_cdef_damping_minus_3 = LAYOUT.byteOffset(PathElement.groupElement("cdef_damping_minus_3"));

@@ -41,7 +41,7 @@ public sealed class StdVideoDecodeAV1ReferenceInfo extends GroupType {
         ValueLayout.JAVA_BYTE.withName("frame_type"),
         ValueLayout.JAVA_BYTE.withName("RefFrameSignBias"),
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
-        MemoryLayout.sequenceLayout(8L, ValueLayout.JAVA_BYTE).withName("SavedOrderHints")
+        MemoryLayout.sequenceLayout(8, ValueLayout.JAVA_BYTE).withName("SavedOrderHints")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

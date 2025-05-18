@@ -46,14 +46,14 @@ public sealed class StdVideoEncodeH265WeightTable extends GroupType {
         overrungl.vulkan.video.StdVideoEncodeH265WeightTableFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_BYTE.withName("luma_log2_weight_denom"),
         ValueLayout.JAVA_BYTE.withName("delta_chroma_log2_weight_denom"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("delta_luma_weight_l0"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("luma_offset_l0"),
-        MemoryLayout.sequenceLayout(2L, MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE)).withName("delta_chroma_weight_l0"),
-        MemoryLayout.sequenceLayout(2L, MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE)).withName("delta_chroma_offset_l0"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("delta_luma_weight_l1"),
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("luma_offset_l1"),
-        MemoryLayout.sequenceLayout(2L, MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE)).withName("delta_chroma_weight_l1"),
-        MemoryLayout.sequenceLayout(2L, MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE)).withName("delta_chroma_offset_l1")
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("delta_luma_weight_l0"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("luma_offset_l0"),
+        MemoryLayout.sequenceLayout(2, MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE)).withName("delta_chroma_weight_l0"),
+        MemoryLayout.sequenceLayout(2, MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE)).withName("delta_chroma_offset_l0"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("delta_luma_weight_l1"),
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("luma_offset_l1"),
+        MemoryLayout.sequenceLayout(2, MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE)).withName("delta_chroma_weight_l1"),
+        MemoryLayout.sequenceLayout(2, MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE)).withName("delta_chroma_offset_l1")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

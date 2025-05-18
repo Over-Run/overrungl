@@ -40,7 +40,7 @@ public sealed class VkPhysicalDeviceGroupProperties extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("physicalDeviceCount"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.ADDRESS).withName("physicalDevices"),
+        MemoryLayout.sequenceLayout(32, ValueLayout.ADDRESS).withName("physicalDevices"),
         ValueLayout.JAVA_INT.withName("subsetAllocation")
     );
     /// The byte offset of `sType`.

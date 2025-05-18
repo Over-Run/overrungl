@@ -33,7 +33,7 @@ import overrungl.util.*;
 public sealed class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// The struct layout of `StdVideoH265PredictorPaletteEntries`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(128L, MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_SHORT)).withName("PredictorPaletteEntries")
+        MemoryLayout.sequenceLayout(128, MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_SHORT)).withName("PredictorPaletteEntries")
     );
     /// The byte offset of `PredictorPaletteEntries`.
     public static final long OFFSET_PredictorPaletteEntries = LAYOUT.byteOffset(PathElement.groupElement("PredictorPaletteEntries"));

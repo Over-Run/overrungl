@@ -38,12 +38,12 @@ import overrungl.util.*;
 public sealed class StdVideoH265ScalingLists extends GroupType {
     /// The struct layout of `StdVideoH265ScalingLists`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(16L, MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
-        MemoryLayout.sequenceLayout(64L, MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8"),
-        MemoryLayout.sequenceLayout(64L, MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE)).withName("ScalingList16x16"),
-        MemoryLayout.sequenceLayout(64L, MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_BYTE)).withName("ScalingList32x32"),
-        MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef16x16"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef32x32")
+        MemoryLayout.sequenceLayout(16, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList4x4"),
+        MemoryLayout.sequenceLayout(64, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList8x8"),
+        MemoryLayout.sequenceLayout(64, MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE)).withName("ScalingList16x16"),
+        MemoryLayout.sequenceLayout(64, MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_BYTE)).withName("ScalingList32x32"),
+        MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef16x16"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_BYTE).withName("ScalingListDCCoef32x32")
     );
     /// The byte offset of `ScalingList4x4`.
     public static final long OFFSET_ScalingList4x4 = LAYOUT.byteOffset(PathElement.groupElement("ScalingList4x4"));

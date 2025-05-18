@@ -42,7 +42,7 @@ public sealed class StdVideoEncodeAV1ReferenceInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("RefFrameId"),
         ValueLayout.JAVA_INT.withName("frame_type"),
         ValueLayout.JAVA_BYTE.withName("OrderHint"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withName("pExtensionHeader")
     );
     /// The byte offset of `flags`.

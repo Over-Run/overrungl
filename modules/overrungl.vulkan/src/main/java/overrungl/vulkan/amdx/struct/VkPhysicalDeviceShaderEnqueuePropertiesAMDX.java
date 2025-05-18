@@ -48,7 +48,7 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
         ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_INT).withName("maxExecutionGraphWorkgroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxExecutionGraphWorkgroupCount"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
     );
     /// The byte offset of `sType`.

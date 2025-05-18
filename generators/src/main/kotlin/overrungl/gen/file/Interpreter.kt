@@ -18,6 +18,7 @@ package overrungl.gen.file
 
 data class DefineMacro(val type: String, val name: String, val value: String)
 data class UndeterminedType(val type: DefinitionType, val complete: Boolean)
+data class External(val name: String, val value: String)
 
 class Interpreter {
     internal val macros = mutableMapOf<String, DefineMacro>()
@@ -26,6 +27,7 @@ class Interpreter {
     internal val upcalls = mutableMapOf<String, UpcallType>()
     internal val enums = LinkedHashMap<String, Int>()
     internal val functions = mutableMapOf<String, DefinitionFunction>()
+    internal val externals = mutableMapOf<String, External>()
 
     fun macros(): Map<String, DefineMacro> = macros
     fun enums(): Map<String, Int> = enums
@@ -51,6 +53,8 @@ class Interpreter {
 
             is DefineAsPreprocessor -> macros[statement.name] =
                 DefineMacro(statement.type, statement.name, statement.value)
+
+            is ExternPreprocessor -> externals[statement.name] = External(statement.name, statement.value)
 
             is UsingStatement -> using[statement.name.lexeme] =
                 evaluate(statement.oldType, typeSkipUnknownType = typeSkipUnknownType) as UndeterminedType
@@ -112,6 +116,9 @@ class Interpreter {
                 }
                 if (enums.containsKey(expression.name)) {
                     return enums[expression.name]!!
+                }
+                if (externals.containsKey(expression.name)) {
+                    return externals[expression.name]!!
                 }
                 error("symbol not found: ${expression.name}")
             }
@@ -218,7 +225,8 @@ class Interpreter {
                             GroupTypeMember(pair.first, it.bits)
                         },
                         expression.kind,
-                        expression.packageName?.literal as String?
+                        expression.packageName?.literal as String?,
+                        expression.imports
                     )
                     type = UndeterminedType(t, complete)
                     structs[name] = t
@@ -283,13 +291,14 @@ class Interpreter {
             pair.name.lexeme,
             pair.dimensions.map {
                 var value: Any? = it
-                while (value !is Long) {
+                while (value !is String) {
                     value = evaluate(value as Expression)
                     when (value) {
-                        is Int -> value = value.toLong()
-                        is Long -> {}
+                        is Int -> value = value.toString()
+                        is Long -> value = value.toString()
                         is ReferenceExpression -> {}
-                        is DefineMacro -> value = value.value.toLong()
+                        is DefineMacro -> value = value.value
+                        is External -> value = value.value
                         else -> error(value)
                     }
                 }

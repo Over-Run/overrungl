@@ -45,7 +45,7 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
         ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
     /// The byte offset of `shaderStageMask`.
     public static final long OFFSET_shaderStageMask = LAYOUT.byteOffset(PathElement.groupElement("shaderStageMask"));

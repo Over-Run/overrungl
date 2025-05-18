@@ -35,9 +35,9 @@ import overrungl.util.*;
 public sealed class VkClearColorValue extends GroupType {
     /// The union layout of `VkClearColorValue`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_FLOAT).withName("float32"),
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_INT).withName("int32"),
-        MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_INT).withName("uint32")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("int32"),
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_INT).withName("uint32")
     );
     /// The byte offset of `float32`.
     public static final long OFFSET_float32 = LAYOUT.byteOffset(PathElement.groupElement("float32"));

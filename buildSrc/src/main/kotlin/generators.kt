@@ -1,10 +1,11 @@
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.register
 
-fun Project.registerGenerateTask(main: String, targetProject: String) {
+// TODO: move generated sources
+fun Project.registerGenerateTask(main: String, targetProject: String, targetDir: String = "src/main/java/") {
     tasks.register<GenerateTask>("generate") {
         mainClass.set(main)
-        workingDir = project(targetProject).projectDir.resolve("src/main/java/")
+        workingDir = project(targetProject).projectDir.resolve(targetDir)
         args(projectDir)
     }
 }

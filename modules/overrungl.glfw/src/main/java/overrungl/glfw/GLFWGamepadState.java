@@ -34,8 +34,8 @@ import overrungl.util.*;
 public sealed class GLFWGamepadState extends GroupType {
     /// The struct layout of `GLFWGamepadState`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("buttons"),
-        MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_FLOAT).withName("axes")
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
+        MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("axes")
     );
     /// The byte offset of `buttons`.
     public static final long OFFSET_buttons = LAYOUT.byteOffset(PathElement.groupElement("buttons"));

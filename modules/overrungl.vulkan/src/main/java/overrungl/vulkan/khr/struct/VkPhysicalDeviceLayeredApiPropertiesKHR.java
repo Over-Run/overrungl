@@ -43,7 +43,7 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("vendorID"),
         ValueLayout.JAVA_INT.withName("deviceID"),
         ValueLayout.JAVA_INT.withName("layeredAPI"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("deviceName")
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("deviceName")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

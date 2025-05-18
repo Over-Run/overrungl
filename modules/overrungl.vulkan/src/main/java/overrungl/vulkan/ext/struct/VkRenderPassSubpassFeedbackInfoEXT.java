@@ -36,7 +36,7 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// The struct layout of `VkRenderPassSubpassFeedbackInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpassMergeStatus"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("postMergeIndex")
     );
     /// The byte offset of `subpassMergeStatus`.

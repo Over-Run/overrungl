@@ -38,8 +38,8 @@ public sealed class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends GroupType 
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_LONG).withName("heapBudget"),
-        MemoryLayout.sequenceLayout(16L, ValueLayout.JAVA_LONG).withName("heapUsage")
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_LONG).withName("heapBudget"),
+        MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_LONG).withName("heapUsage")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

@@ -50,7 +50,7 @@ public sealed class StdVideoEncodeH264PictureInfo extends GroupType {
         ValueLayout.JAVA_INT.withName("frame_num"),
         ValueLayout.JAVA_INT.withName("PicOrderCnt"),
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withName("pRefLists")
     );
     /// The byte offset of `flags`.

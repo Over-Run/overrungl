@@ -35,7 +35,7 @@ import overrungl.util.*;
 public sealed class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// The struct layout of `VkDeviceFaultVendorInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_LONG.withName("vendorFaultCode"),
         ValueLayout.JAVA_LONG.withName("vendorFaultData")
     );

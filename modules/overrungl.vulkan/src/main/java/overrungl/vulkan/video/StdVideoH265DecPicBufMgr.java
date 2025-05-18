@@ -35,9 +35,9 @@ import overrungl.util.*;
 public sealed class StdVideoH265DecPicBufMgr extends GroupType {
     /// The struct layout of `StdVideoH265DecPicBufMgr`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_INT).withName("max_latency_increase_plus1"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_BYTE).withName("max_dec_pic_buffering_minus1"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_BYTE).withName("max_num_reorder_pics")
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_INT).withName("max_latency_increase_plus1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("max_dec_pic_buffering_minus1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("max_num_reorder_pics")
     );
     /// The byte offset of `max_latency_increase_plus1`.
     public static final long OFFSET_max_latency_increase_plus1 = LAYOUT.byteOffset(PathElement.groupElement("max_latency_increase_plus1"));

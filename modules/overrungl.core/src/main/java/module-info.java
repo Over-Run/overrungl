@@ -29,6 +29,7 @@ module overrungl.core {
         overrungl.openal,
         overrungl.opengl,
         overrungl.stb,
+        overrungl.vma,
         overrungl.vulkan;
 
     requires transitive io.github.overrun.platform;

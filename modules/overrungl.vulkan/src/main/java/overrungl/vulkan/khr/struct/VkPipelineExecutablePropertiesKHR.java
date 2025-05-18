@@ -41,8 +41,8 @@ public sealed class VkPipelineExecutablePropertiesKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("stages"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("name"),
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("description"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("name"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("description"),
         ValueLayout.JAVA_INT.withName("subgroupSize")
     );
     /// The byte offset of `sType`.

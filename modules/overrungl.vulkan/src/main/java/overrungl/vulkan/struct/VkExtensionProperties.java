@@ -34,7 +34,7 @@ import overrungl.util.*;
 public sealed class VkExtensionProperties extends GroupType {
     /// The struct layout of `VkExtensionProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
-        MemoryLayout.sequenceLayout(256L, ValueLayout.JAVA_BYTE).withName("extensionName"),
+        MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
     );
     /// The byte offset of `extensionName`.

@@ -62,12 +62,16 @@ public final class OverrunGLConfigurations {
     /// The default value is `null`.
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> OPENAL_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
-     * The symbol lookup of STB.
+     * The symbol lookup of stb.
      * The returned value must not be null.
      * <p>
      * The default value is {@code null}.
      */
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    /// The symbol lookup of Vulkan Memory Allocator. The returned value must not be null.
+    ///
+    /// The default value is `null`.
+    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> VMA_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
     private OverrunGLConfigurations() {
         //no instance

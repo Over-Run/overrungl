@@ -39,7 +39,7 @@ public sealed class VkPipelineBinaryKeyKHR extends GroupType {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("keySize"),
-        MemoryLayout.sequenceLayout(32L, ValueLayout.JAVA_BYTE).withName("key")
+        MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_BYTE).withName("key")
     );
     /// The byte offset of `sType`.
     public static final long OFFSET_sType = LAYOUT.byteOffset(PathElement.groupElement("sType"));

@@ -40,8 +40,8 @@ public sealed class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_INT).withName("maxWorkGroupCount"),
-        MemoryLayout.sequenceLayout(3L, ValueLayout.JAVA_INT).withName("maxWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxOutputClusterCount"),
         ValueLayout.JAVA_LONG.withName("indirectBufferOffsetAlignment")
     );

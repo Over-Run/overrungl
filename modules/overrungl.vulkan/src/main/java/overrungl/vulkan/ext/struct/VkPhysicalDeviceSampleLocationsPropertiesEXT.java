@@ -43,7 +43,7 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTy
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("sampleLocationSampleCounts"),
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("maxSampleLocationGridSize"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_FLOAT).withName("sampleLocationCoordinateRange"),
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_FLOAT).withName("sampleLocationCoordinateRange"),
         ValueLayout.JAVA_INT.withName("sampleLocationSubPixelBits"),
         ValueLayout.JAVA_INT.withName("variableSampleLocations")
     );

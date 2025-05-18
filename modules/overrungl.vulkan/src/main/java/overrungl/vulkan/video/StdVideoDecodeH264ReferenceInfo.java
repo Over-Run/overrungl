@@ -39,7 +39,7 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
         overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
         ValueLayout.JAVA_SHORT.withName("FrameNum"),
         ValueLayout.JAVA_SHORT.withName("reserved"),
-        MemoryLayout.sequenceLayout(2L, ValueLayout.JAVA_INT).withName("PicOrderCnt")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("PicOrderCnt")
     );
     /// The byte offset of `flags`.
     public static final long OFFSET_flags = LAYOUT.byteOffset(PathElement.groupElement("flags"));

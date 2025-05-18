@@ -52,7 +52,7 @@ public sealed class StdVideoEncodeH265PictureInfo extends GroupType {
         ValueLayout.JAVA_BYTE.withName("short_term_ref_pic_set_idx"),
         ValueLayout.JAVA_INT.withName("PicOrderCntVal"),
         ValueLayout.JAVA_BYTE.withName("TemporalId"),
-        MemoryLayout.sequenceLayout(7L, ValueLayout.JAVA_BYTE).withName("reserved1"),
+        MemoryLayout.sequenceLayout(7, ValueLayout.JAVA_BYTE).withName("reserved1"),
         ValueLayout.ADDRESS.withName("pRefLists"),
         ValueLayout.ADDRESS.withName("pShortTermRefPicSet"),
         ValueLayout.ADDRESS.withName("pLongTermRefPics")
