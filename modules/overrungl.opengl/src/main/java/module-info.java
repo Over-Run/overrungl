@@ -49,5 +49,5 @@ module overrungl.opengl {
 
     requires transitive overrungl.core;
     requires static org.jetbrains.annotations;
-    requires org.graalvm.nativeimage;
+    requires static org.graalvm.nativeimage;
 }

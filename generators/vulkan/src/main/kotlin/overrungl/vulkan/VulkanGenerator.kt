@@ -782,7 +782,7 @@ fun main(args: Array<String>) {
         appendLine("    exports $vulkanPackage.video;")
         appendLine()
         appendLine("    requires transitive overrungl.core;")
-        appendLine("    requires org.graalvm.nativeimage;")
+        appendLine("    requires static org.graalvm.nativeimage;")
         appendLine("}")
         appendLine()
     })

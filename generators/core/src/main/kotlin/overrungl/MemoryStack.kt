@@ -24,7 +24,7 @@ import java.nio.file.Files
 import kotlin.io.path.Path
 
 fun memoryStack() {
-    val path = Path("overrungl/util/MemoryStack.java")
+    val path = Path("src/main/java/overrungl/util/MemoryStack.java")
     val src = Files.readString(path)
     val sb = StringBuilder()
 

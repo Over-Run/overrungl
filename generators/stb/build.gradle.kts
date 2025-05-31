@@ -6,4 +6,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.stb.STBGeneratorKt", ":stb")
+registerGenerateTask("overrungl.stb.STBGeneratorKt", ":stb", targetDir = "")

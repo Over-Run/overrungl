@@ -26,14 +26,14 @@ const val stbLookup = "STBInternal.lookup()"
 
 fun main() {
     registerDefType("STBbool", int_boolean)
-    DefinitionFile("stb_easy_font.gen").compile(stbPackage, "STBEasyFont", stbLookup)
-    DefinitionFile("stb_image.gen").compile(stbPackage, "STBImage", stbLookup)
-    DefinitionFile("stb_image_resize2.gen").compile(stbPackage, "STBImageResize2", stbLookup)
-    DefinitionFile("stb_image_write.gen").compile(stbPackage, "STBImageWrite", stbLookup)
-    DefinitionFile("stb_perlin.gen").compile(stbPackage, "STBPerlin", stbLookup)
-    DefinitionFile("stb_rect_pack.gen").compile(stbPackage, "STBRectPack", stbLookup)
-    DefinitionFile("stb_truetype.gen").compile(stbPackage, "STBTruetype", stbLookup)
-    DefinitionFile("stb_vorbis.gen").compile(stbPackage, "STBVorbis", stbLookup)
+    DefinitionFile("stb_easy_font.gen").compile(stbPackage, "STBEasyFont", stbLookup, newPath = true)
+    DefinitionFile("stb_image.gen").compile(stbPackage, "STBImage", stbLookup, newPath = true)
+    DefinitionFile("stb_image_resize2.gen").compile(stbPackage, "STBImageResize2", stbLookup, newPath = true)
+    DefinitionFile("stb_image_write.gen").compile(stbPackage, "STBImageWrite", stbLookup, newPath = true)
+    DefinitionFile("stb_perlin.gen").compile(stbPackage, "STBPerlin", stbLookup, newPath = true)
+    DefinitionFile("stb_rect_pack.gen").compile(stbPackage, "STBRectPack", stbLookup, newPath = true)
+    DefinitionFile("stb_truetype.gen").compile(stbPackage, "STBTruetype", stbLookup, newPath = true)
+    DefinitionFile("stb_vorbis.gen").compile(stbPackage, "STBVorbis", stbLookup, newPath = true)
 
-    writeNativeImageRegistration(stbPackage)
+    writeNativeImageRegistration(stbPackage, newPath = true)
 }

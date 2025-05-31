@@ -31,9 +31,9 @@ fun main() {
     val al = DefinitionFile("al.gen")
     val alc = DefinitionFile("alc.gen")
     val alext = DefinitionFile("alext.gen")
-    al.compile(alPackage, "AL", alLookup)
-    alc.compile(alPackage, "ALC", alLookup)
-    alext.compile(alPackage, "ALExt", alLookup)
+    al.compile(alPackage, "AL", alLookup, newPath = true)
+    alc.compile(alPackage, "ALC", alLookup, newPath = true)
+    alext.compile(alPackage, "ALExt", alLookup, newPath = true)
 
-    writeNativeImageRegistration(alPackage)
+    writeNativeImageRegistration(alPackage, newPath = true)
 }

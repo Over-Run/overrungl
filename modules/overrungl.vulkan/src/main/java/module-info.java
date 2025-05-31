@@ -76,6 +76,6 @@ module overrungl.vulkan {
     exports overrungl.vulkan.video;
 
     requires transitive overrungl.core;
-    requires org.graalvm.nativeimage;
+    requires static org.graalvm.nativeimage;
 }
 

@@ -22,4 +22,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.openal.OpenALGeneratorKt", ":openal")
+registerGenerateTask("overrungl.openal.OpenALGeneratorKt", ":openal", targetDir = "")

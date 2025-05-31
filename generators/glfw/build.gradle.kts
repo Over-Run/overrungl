@@ -6,4 +6,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.glfw.GLFWGeneratorKt", ":glfw")
+registerGenerateTask("overrungl.glfw.GLFWGeneratorKt", ":glfw", targetDir = "")

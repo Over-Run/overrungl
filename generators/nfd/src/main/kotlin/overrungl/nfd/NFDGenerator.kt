@@ -46,7 +46,7 @@ fun main() {
             processor = SizingProcessor(nfdpathsetsize_t_LAYOUT, "Long")
         )
     )
-    DefinitionFile("nfd.gen").compile(nfdPackage, "NFD", nfdLookup)
+    DefinitionFile("nfd.gen").compile(nfdPackage, "NFD", nfdLookup, newPath = true)
 
-    writeNativeImageRegistration(nfdPackage)
+    writeNativeImageRegistration(nfdPackage, newPath = true)
 }

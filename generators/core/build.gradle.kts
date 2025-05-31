@@ -6,4 +6,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.CoreGeneratorKt", ":core")
+registerGenerateTask("overrungl.CoreGeneratorKt", ":core", targetDir = "")

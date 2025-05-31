@@ -22,5 +22,5 @@ module overrungl.openal {
     exports overrungl.openal;
 
     requires transitive overrungl.core;
-    requires org.graalvm.nativeimage;
+    requires static org.graalvm.nativeimage;
 }
