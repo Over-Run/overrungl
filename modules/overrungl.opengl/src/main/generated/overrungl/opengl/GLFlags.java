@@ -430,6 +430,7 @@ public final class GLFlags {
     public final boolean GL_MESA_program_binary_formats;
     public final boolean GL_MESA_resize_buffers;
     public final boolean GL_MESA_shader_integer_functions;
+    public final boolean GL_MESA_texture_const_bandwidth;
     public final boolean GL_MESA_tile_raster_order;
     public final boolean GL_MESA_window_pos;
     public final boolean GL_MESA_ycbcr_texture;
@@ -1074,6 +1075,7 @@ public final class GLFlags {
         GL_MESA_program_binary_formats = loader.hasExtension(version, exts, "GL_MESA_program_binary_formats");
         GL_MESA_resize_buffers = loader.hasExtension(version, exts, "GL_MESA_resize_buffers");
         GL_MESA_shader_integer_functions = loader.hasExtension(version, exts, "GL_MESA_shader_integer_functions");
+        GL_MESA_texture_const_bandwidth = loader.hasExtension(version, exts, "GL_MESA_texture_const_bandwidth");
         GL_MESA_tile_raster_order = loader.hasExtension(version, exts, "GL_MESA_tile_raster_order");
         GL_MESA_window_pos = loader.hasExtension(version, exts, "GL_MESA_window_pos");
         GL_MESA_ycbcr_texture = loader.hasExtension(version, exts, "GL_MESA_ycbcr_texture");
