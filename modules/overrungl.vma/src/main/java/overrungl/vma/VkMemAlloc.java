@@ -19,13 +19,19 @@ package overrungl.vma;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.CanonicalTypes;
 import overrungl.util.MemoryUtil;
+import overrungl.vulkan.VkDevice;
+import overrungl.vulkan.VkInstance;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 /// [vk_mem_alloc.h](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/blob/master/include/vk_mem_alloc.h)
+///
+/// To conveniently fill in a [VmaAllocatorCreateInfo],
+/// use [<code>VmaUtil::fillAllocatorCreateInfo</code>][VmaUtil#fillAllocatorCreateInfo(SegmentAllocator, VmaAllocatorCreateInfo, VkInstance, VkDevice)].
 ///
 /// @author squid233
 /// @since 0.1.0
