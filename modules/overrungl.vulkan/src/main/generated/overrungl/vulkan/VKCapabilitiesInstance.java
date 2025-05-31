@@ -121,6 +121,7 @@ public final class VKCapabilitiesInstance {
     public final MemorySegment PFN_vkCreateScreenSurfaceQNX;
     public final MemorySegment PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX;
     public final MemorySegment PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
+    public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV;
     public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
     public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
     public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
@@ -228,6 +229,7 @@ public final class VKCapabilitiesInstance {
         PFN_vkCreateScreenSurfaceQNX = func.invoke(instance, "vkCreateScreenSurfaceQNX");
         PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX = func.invoke(instance, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
         PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = func.invoke(instance, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
+        PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV = func.invoke(instance, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
         PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
         PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = func.invoke(instance, "vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
         PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = func.invoke(instance, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");

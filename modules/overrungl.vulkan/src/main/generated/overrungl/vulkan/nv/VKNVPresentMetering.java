@@ -15,14 +15,14 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
-package overrungl.vulkan.ext;
+package overrungl.vulkan.nv;
 import overrungl.vulkan.*;
-public final class VKEXTRobustness2 {
-    public static final int VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1;
-    public static final String VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT = 1000612000;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT = 1000612001;
+public final class VKNVPresentMetering {
+    public static final int VK_NV_PRESENT_METERING_SPEC_VERSION = 1;
+    public static final String VK_NV_PRESENT_METERING_EXTENSION_NAME = "VK_NV_present_metering";
+    public static final int VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV = 1000613000;
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV = 1000613001;
 
-    private VKEXTRobustness2() {}
+    private VKNVPresentMetering() {}
 
 }

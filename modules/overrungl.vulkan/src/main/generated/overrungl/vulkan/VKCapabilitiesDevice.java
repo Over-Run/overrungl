@@ -465,6 +465,9 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkDestroyCudaModuleNV;
     public final MemorySegment PFN_vkDestroyCudaFunctionNV;
     public final MemorySegment PFN_vkCmdCudaLaunchKernelNV;
+    public final MemorySegment PFN_vkCmdDispatchTileQCOM;
+    public final MemorySegment PFN_vkCmdBeginPerTileExecutionQCOM;
+    public final MemorySegment PFN_vkCmdEndPerTileExecutionQCOM;
     public final MemorySegment PFN_vkExportMetalObjectsEXT;
     public final MemorySegment PFN_vkCmdSetEvent2KHR;
     public final MemorySegment PFN_vkCmdResetEvent2KHR;
@@ -601,6 +604,8 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkReleaseCapturedPipelineDataKHR;
     public final MemorySegment PFN_vkGetFramebufferTilePropertiesQCOM;
     public final MemorySegment PFN_vkGetDynamicRenderingTilePropertiesQCOM;
+    public final MemorySegment PFN_vkConvertCooperativeVectorMatrixNV;
+    public final MemorySegment PFN_vkCmdConvertCooperativeVectorMatrixNV;
     public final MemorySegment PFN_vkSetLatencySleepModeNV;
     public final MemorySegment PFN_vkLatencySleepNV;
     public final MemorySegment PFN_vkSetLatencyMarkerNV;
@@ -616,6 +621,14 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkCmdPushDescriptorSetWithTemplate2KHR;
     public final MemorySegment PFN_vkCmdSetDescriptorBufferOffsets2EXT;
     public final MemorySegment PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT;
+    public final MemorySegment PFN_vkCmdBindTileMemoryQCOM;
+    public final MemorySegment PFN_vkCreateExternalComputeQueueNV;
+    public final MemorySegment PFN_vkDestroyExternalComputeQueueNV;
+    public final MemorySegment PFN_vkGetExternalComputeQueueDataNV;
+    public final MemorySegment PFN_vkGetClusterAccelerationStructureBuildSizesNV;
+    public final MemorySegment PFN_vkCmdBuildClusterAccelerationStructureIndirectNV;
+    public final MemorySegment PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV;
+    public final MemorySegment PFN_vkCmdBuildPartitionedAccelerationStructuresNV;
     public final MemorySegment PFN_vkGetGeneratedCommandsMemoryRequirementsEXT;
     public final MemorySegment PFN_vkCmdPreprocessGeneratedCommandsEXT;
     public final MemorySegment PFN_vkCmdExecuteGeneratedCommandsEXT;
@@ -627,6 +640,7 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkUpdateIndirectExecutionSetShaderEXT;
     public final MemorySegment PFN_vkGetMemoryMetalHandleEXT;
     public final MemorySegment PFN_vkGetMemoryMetalHandlePropertiesEXT;
+    public final MemorySegment PFN_vkCmdEndRendering2EXT;
     public VKCapabilitiesDevice(MemorySegment device, VKLoadFunc func) {
         PFN_vkGetDeviceProcAddr = func.invoke(device, "vkGetDeviceProcAddr");
         PFN_vkDestroyDevice = func.invoke(device, "vkDestroyDevice");
@@ -1075,6 +1089,9 @@ public final class VKCapabilitiesDevice {
         PFN_vkDestroyCudaModuleNV = func.invoke(device, "vkDestroyCudaModuleNV");
         PFN_vkDestroyCudaFunctionNV = func.invoke(device, "vkDestroyCudaFunctionNV");
         PFN_vkCmdCudaLaunchKernelNV = func.invoke(device, "vkCmdCudaLaunchKernelNV");
+        PFN_vkCmdDispatchTileQCOM = func.invoke(device, "vkCmdDispatchTileQCOM");
+        PFN_vkCmdBeginPerTileExecutionQCOM = func.invoke(device, "vkCmdBeginPerTileExecutionQCOM");
+        PFN_vkCmdEndPerTileExecutionQCOM = func.invoke(device, "vkCmdEndPerTileExecutionQCOM");
         PFN_vkExportMetalObjectsEXT = func.invoke(device, "vkExportMetalObjectsEXT");
         PFN_vkCmdSetEvent2KHR = func.invoke(device, "vkCmdSetEvent2KHR", "vkCmdSetEvent2");
         PFN_vkCmdResetEvent2KHR = func.invoke(device, "vkCmdResetEvent2KHR", "vkCmdResetEvent2");
@@ -1211,6 +1228,8 @@ public final class VKCapabilitiesDevice {
         PFN_vkReleaseCapturedPipelineDataKHR = func.invoke(device, "vkReleaseCapturedPipelineDataKHR");
         PFN_vkGetFramebufferTilePropertiesQCOM = func.invoke(device, "vkGetFramebufferTilePropertiesQCOM");
         PFN_vkGetDynamicRenderingTilePropertiesQCOM = func.invoke(device, "vkGetDynamicRenderingTilePropertiesQCOM");
+        PFN_vkConvertCooperativeVectorMatrixNV = func.invoke(device, "vkConvertCooperativeVectorMatrixNV");
+        PFN_vkCmdConvertCooperativeVectorMatrixNV = func.invoke(device, "vkCmdConvertCooperativeVectorMatrixNV");
         PFN_vkSetLatencySleepModeNV = func.invoke(device, "vkSetLatencySleepModeNV");
         PFN_vkLatencySleepNV = func.invoke(device, "vkLatencySleepNV");
         PFN_vkSetLatencyMarkerNV = func.invoke(device, "vkSetLatencyMarkerNV");
@@ -1226,6 +1245,14 @@ public final class VKCapabilitiesDevice {
         PFN_vkCmdPushDescriptorSetWithTemplate2KHR = func.invoke(device, "vkCmdPushDescriptorSetWithTemplate2KHR", "vkCmdPushDescriptorSetWithTemplate2");
         PFN_vkCmdSetDescriptorBufferOffsets2EXT = func.invoke(device, "vkCmdSetDescriptorBufferOffsets2EXT");
         PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = func.invoke(device, "vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
+        PFN_vkCmdBindTileMemoryQCOM = func.invoke(device, "vkCmdBindTileMemoryQCOM");
+        PFN_vkCreateExternalComputeQueueNV = func.invoke(device, "vkCreateExternalComputeQueueNV");
+        PFN_vkDestroyExternalComputeQueueNV = func.invoke(device, "vkDestroyExternalComputeQueueNV");
+        PFN_vkGetExternalComputeQueueDataNV = func.invoke(device, "vkGetExternalComputeQueueDataNV");
+        PFN_vkGetClusterAccelerationStructureBuildSizesNV = func.invoke(device, "vkGetClusterAccelerationStructureBuildSizesNV");
+        PFN_vkCmdBuildClusterAccelerationStructureIndirectNV = func.invoke(device, "vkCmdBuildClusterAccelerationStructureIndirectNV");
+        PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV = func.invoke(device, "vkGetPartitionedAccelerationStructuresBuildSizesNV");
+        PFN_vkCmdBuildPartitionedAccelerationStructuresNV = func.invoke(device, "vkCmdBuildPartitionedAccelerationStructuresNV");
         PFN_vkGetGeneratedCommandsMemoryRequirementsEXT = func.invoke(device, "vkGetGeneratedCommandsMemoryRequirementsEXT");
         PFN_vkCmdPreprocessGeneratedCommandsEXT = func.invoke(device, "vkCmdPreprocessGeneratedCommandsEXT");
         PFN_vkCmdExecuteGeneratedCommandsEXT = func.invoke(device, "vkCmdExecuteGeneratedCommandsEXT");
@@ -1237,5 +1264,6 @@ public final class VKCapabilitiesDevice {
         PFN_vkUpdateIndirectExecutionSetShaderEXT = func.invoke(device, "vkUpdateIndirectExecutionSetShaderEXT");
         PFN_vkGetMemoryMetalHandleEXT = func.invoke(device, "vkGetMemoryMetalHandleEXT");
         PFN_vkGetMemoryMetalHandlePropertiesEXT = func.invoke(device, "vkGetMemoryMetalHandlePropertiesEXT");
+        PFN_vkCmdEndRendering2EXT = func.invoke(device, "vkCmdEndRendering2EXT");
     }
 }

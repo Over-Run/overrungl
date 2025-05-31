@@ -26,8 +26,8 @@ const val glfwLookup = "GLFWInternal.lookup()"
 
 fun main() {
     registerDefType("GLFWboolean", int_boolean)
-    DefinitionFile("glfw3.gen").compile(glfwPackage, "GLFW", glfwLookup, newPath = true)
-    DefinitionFile("glfw3native.gen").compile(glfwPackage, "GLFWNative", glfwLookup, newPath = true)
+    DefinitionFile("glfw3.gen").compile(glfwPackage, "GLFW", glfwLookup)
+    DefinitionFile("glfw3native.gen").compile(glfwPackage, "GLFWNative", glfwLookup)
 
-    writeNativeImageRegistration(glfwPackage, newPath = true)
+    writeNativeImageRegistration(glfwPackage)
 }

@@ -23,7 +23,7 @@ const val vmaPackage = "overrungl.vma"
 const val vmaLookup = "VMAInternal.lookup()"
 
 fun main() {
-    DefinitionFile("vk_mem_alloc.gen").compile(vmaPackage, "VkMemAlloc", vmaLookup, newPath = true)
+    DefinitionFile("vk_mem_alloc.gen").compile(vmaPackage, "VkMemAlloc", vmaLookup)
 
-    writeNativeImageRegistration(vmaPackage, newPath = true)
+    writeNativeImageRegistration(vmaPackage)
 }

@@ -52,12 +52,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
     private fun compileUpcall(
         fallbackPackageName: String,
         className: String,
-        upcallType: UpcallType,
-        newPath: Boolean
+        upcallType: UpcallType
     ) {
         val packageName = upcallType.packageName ?: fallbackPackageName
         val basePath = Path(packageName.replace('.', '/'), "$className.java")
-        val path = if (newPath) Path("src/main/generated/").resolve(basePath) else basePath
+        val path = Path("src/main/generated/").resolve(basePath)
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -248,12 +247,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
     private fun compileGroupClass(
         fallbackPackageName: String,
         className: String,
-        groupClass: GroupLayoutType,
-        newPath: Boolean
+        groupClass: GroupLayoutType
     ) {
         val packageName = groupClass.packageName ?: fallbackPackageName
         val basePath = Path(packageName.replace('.', '/'), "$className.java")
-        val path = if (newPath) Path("src/main/generated/").resolve(basePath) else basePath
+        val path = Path("src/main/generated/").resolve(basePath)
         path.createParentDirectories()
         val sb = StringBuilder()
         sb.appendLine(commentedFileHeader)
@@ -692,14 +690,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         packageName: String,
         className: String,
         symbolLookup: String,
-        writeWholeFile: Boolean,
-        newPath: Boolean = false
+        writeWholeFile: Boolean
     ) {
         val basePath = Path(packageName.replace('.', '/'), "$className.java")
-        val path = if (newPath) {
-            (if (writeWholeFile) Path("src/main/generated/")
-            else Path("src/main/java/")).resolve(basePath)
-        } else basePath
+        val path = (if (writeWholeFile) Path("src/main/generated/")
+        else Path("src/main/java/")).resolve(basePath)
         path.createParentDirectories()
         val sb = StringBuilder()
 
@@ -786,18 +781,18 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         writeString(path, finalString)
     }
 
-    fun compileUpcalls(upcallPackageName: String, newPath: Boolean = false) {
+    fun compileUpcalls(upcallPackageName: String) {
         interpreter.upcalls.forEach {
             val value = it.value
-            compileUpcall(upcallPackageName, value.name, value, newPath)
+            compileUpcall(upcallPackageName, value.name, value)
         }
     }
 
-    fun compileStructs(structPackageName: String, newPath: Boolean = false) {
+    fun compileStructs(structPackageName: String) {
         interpreter.structs.forEach {
             val value = it.value
             if (!value.opaque) {
-                compileGroupClass(structPackageName, value.name, value, newPath)
+                compileGroupClass(structPackageName, value.name, value)
             }
         }
     }
@@ -808,12 +803,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         symbolLookup: String,
         writeWholeFile: Boolean = false,
         structPackageName: String = packageName,
-        upcallPackageName: String = packageName,
-        newPath: Boolean = false // whether use generated source set. TODO: transition
+        upcallPackageName: String = packageName
     ) {
-        compileUpcalls(upcallPackageName, newPath)
-        compileStructs(structPackageName, newPath)
-        compileDowncall(packageName, className, symbolLookup, writeWholeFile, newPath)
+        compileUpcalls(upcallPackageName)
+        compileStructs(structPackageName)
+        compileDowncall(packageName, className, symbolLookup, writeWholeFile)
     }
 }
 

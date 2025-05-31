@@ -15,14 +15,14 @@
  */
 
 // This file is auto-generated. DO NOT EDIT!
-package overrungl.vulkan.ext;
+package overrungl.vulkan.khr;
 import overrungl.vulkan.*;
-public final class VKEXTRobustness2 {
-    public static final int VK_EXT_ROBUSTNESS_2_SPEC_VERSION = 1;
-    public static final String VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT = 1000612000;
-    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT = 1000612001;
+public final class VKKHRShaderBfloat16 {
+    public static final int VK_KHR_SHADER_BFLOAT16_SPEC_VERSION = 1;
+    public static final String VK_KHR_SHADER_BFLOAT16_EXTENSION_NAME = "VK_KHR_shader_bfloat16";
+    public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_BFLOAT16_FEATURES_KHR = 1000141000;
+    public static final int VK_COMPONENT_TYPE_BFLOAT16_KHR = 1000141000;
 
-    private VKEXTRobustness2() {}
+    private VKKHRShaderBfloat16() {}
 
 }

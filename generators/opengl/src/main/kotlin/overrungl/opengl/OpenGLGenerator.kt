@@ -453,10 +453,10 @@ fun main() {
         appendLine("}")
     })
 
-    DefinitionFile("struct.gen").compileStructs(openglPackage, newPath = true)
-    DefinitionFile("upcall.gen").compileUpcalls(openglPackage, newPath = true)
+    DefinitionFile("struct.gen").compileStructs(openglPackage)
+    DefinitionFile("upcall.gen").compileUpcalls(openglPackage)
 
-    writeNativeImageRegistration(openglPackage, newPath = true)
+    writeNativeImageRegistration(openglPackage)
 }
 
 data class GLEnum(val name: String, val value: String, val type: String?)

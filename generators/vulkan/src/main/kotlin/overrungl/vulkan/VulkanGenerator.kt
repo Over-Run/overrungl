@@ -635,8 +635,8 @@ fun main(args: Array<String>) {
     val definitionFile: DefinitionFile
     try {
         definitionFile = DefinitionFile(rawSourceString = typesFile)
-        definitionFile.compileUpcalls("overrungl.vulkan.upcall", newPath = true)
-        definitionFile.compileStructs("overrungl.vulkan.struct", newPath = true)
+        definitionFile.compileUpcalls("overrungl.vulkan.upcall")
+        definitionFile.compileStructs("overrungl.vulkan.struct")
     } catch (e: Exception) {
         writeString(Path("run/types.gen").createParentDirectories(), typesFile)
         throw e
@@ -793,5 +793,5 @@ fun main(args: Array<String>) {
         appendLine()
     })
 
-    writeNativeImageRegistration(vulkanPackage, newPath = true)
+    writeNativeImageRegistration(vulkanPackage)
 }
