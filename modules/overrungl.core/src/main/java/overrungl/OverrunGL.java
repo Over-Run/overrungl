@@ -41,7 +41,7 @@ public final class OverrunGL {
     /**
      * The version of NFD native libraries.
      */
-    public static final String NFD_VERSION = "1.2.1.0";
+    public static final String NFD_VERSION = "1.2.1.1";
     /**
      * The version of OpenAL native libraries.
      */
@@ -49,7 +49,7 @@ public final class OverrunGL {
     /**
      * The version of stb native libraries.
      */
-    public static final String STB_VERSION = "0.1.0.5";
+    public static final String STB_VERSION = "0.1.0.6";
     /// The version of Vulkan Memory Allocator native libraries.
     public static final String VMA_VERSION = "3.2.1.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
