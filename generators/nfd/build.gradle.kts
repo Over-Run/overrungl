@@ -6,4 +6,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.nfd.NFDGeneratorKt", ":nfd", targetDir = "")
+registerGenerateTask("overrungl.nfd.NFDGeneratorKt", ":nfd")

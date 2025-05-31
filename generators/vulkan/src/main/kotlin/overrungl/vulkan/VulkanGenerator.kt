@@ -166,47 +166,53 @@ fun videoXML(xmlBuilder: DocumentBuilder): String {
         val className = extensionNode.getAttribute("name")
             .split('_')
             .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
-        writeString(Path("overrungl/vulkan/video/$className.java").createParentDirectories(), buildString {
-            appendLine(commentedFileHeader)
-            appendLine("package overrungl.vulkan.video;")
-            if (className != "VulkanVideoCodecsCommon") {
-                appendLine("import static overrungl.vulkan.video.VulkanVideoCodecsCommon.*;")
-            }
-            appendLine("public final class $className {")
-            val requireNodeList = extensionNode.getElementsByTagName("require")
-            for (i1 in 0 until requireNodeList.length) {
-                val requireNode = requireNodeList.item(i1) as Element
-                val childNodes = requireNode.childNodes
-                for (i2 in 0 until childNodes.length) {
-                    val childNode = childNodes.item(i2)
-                    if (childNode is Element) {
-                        when (childNode.tagName) {
-                            "type" -> {
-                                val typeName = childNode.getAttribute("name")
-                                if (defineMap.containsKey(typeName)) appendLine(defineMap[typeName]!!.prependIndent("    "))
-                                else if (enumMap.containsKey(typeName)) {
-                                    enumMap[typeName]!!.forEach { (name, value) ->
-                                        appendLine("    public static final int $name = $value;")
+        writeString(
+            Path("src/main/generated/overrungl/vulkan/video/$className.java").createParentDirectories(),
+            buildString {
+                appendLine(commentedFileHeader)
+                appendLine("package overrungl.vulkan.video;")
+                if (className != "VulkanVideoCodecsCommon") {
+                    appendLine("import static overrungl.vulkan.video.VulkanVideoCodecsCommon.*;")
+                }
+                appendLine("public final class $className {")
+                val requireNodeList = extensionNode.getElementsByTagName("require")
+                for (i1 in 0 until requireNodeList.length) {
+                    val requireNode = requireNodeList.item(i1) as Element
+                    val childNodes = requireNode.childNodes
+                    for (i2 in 0 until childNodes.length) {
+                        val childNode = childNodes.item(i2)
+                        if (childNode is Element) {
+                            when (childNode.tagName) {
+                                "type" -> {
+                                    val typeName = childNode.getAttribute("name")
+                                    if (defineMap.containsKey(typeName)) appendLine(
+                                        defineMap[typeName]!!.prependIndent(
+                                            "    "
+                                        )
+                                    )
+                                    else if (enumMap.containsKey(typeName)) {
+                                        enumMap[typeName]!!.forEach { (name, value) ->
+                                            appendLine("    public static final int $name = $value;")
+                                        }
                                     }
                                 }
-                            }
 
-                            "enum" -> {
-                                val value = childNode.getAttribute("value")
-                                val type = if (value.contains('"')) "String" else "int"
-                                val name = childNode.getAttribute("name")
-                                appendLine(
-                                    "    public static final $type $name = $value;"
-                                )
-                                enumBuilder.appendLine("#define $name $value")
+                                "enum" -> {
+                                    val value = childNode.getAttribute("value")
+                                    val type = if (value.contains('"')) "String" else "int"
+                                    val name = childNode.getAttribute("name")
+                                    appendLine(
+                                        "    public static final $type $name = $value;"
+                                    )
+                                    enumBuilder.appendLine("#define $name $value")
+                                }
                             }
                         }
                     }
                 }
-            }
-            appendLine("    private $className() { }")
-            appendLine("}")
-        })
+                appendLine("    private $className() { }")
+                appendLine("}")
+            })
     }
 
     videoBuilder.appendLine(enumBuilder)
@@ -629,10 +635,10 @@ fun main(args: Array<String>) {
     val definitionFile: DefinitionFile
     try {
         definitionFile = DefinitionFile(rawSourceString = typesFile)
-        definitionFile.compileUpcalls("overrungl.vulkan.upcall")
-        definitionFile.compileStructs("overrungl.vulkan.struct")
+        definitionFile.compileUpcalls("overrungl.vulkan.upcall", newPath = true)
+        definitionFile.compileStructs("overrungl.vulkan.struct", newPath = true)
     } catch (e: Exception) {
-        writeString(Path(args[0], "run/types.gen").createParentDirectories(), typesFile)
+        writeString(Path("run/types.gen").createParentDirectories(), typesFile)
         throw e
     }
 
@@ -743,7 +749,7 @@ fun main(args: Array<String>) {
     extensionDowncalls.values.forEach { it.write() }
 
     fun writeCapabilities(type: String, param: String, commandList: List<String>) {
-        writeString(Path("overrungl/vulkan/VKCapabilities$type.java"), buildString {
+        writeString(Path("src/main/generated/overrungl/vulkan/VKCapabilities$type.java"), buildString {
             val commands = commandList.distinct()
             appendLine(commentedFileHeader)
             appendLine(
@@ -770,7 +776,7 @@ fun main(args: Array<String>) {
     writeCapabilities("Device", "device", deviceCommands)
 
     // module-info.java
-    writeString(Path("module-info.java"), buildString {
+    writeString(Path("src/main/generated/module-info.java"), buildString {
         appendLine(commentedFileHeader)
         appendLine()
         appendLine("/// The Vulkan binding.")
@@ -787,5 +793,5 @@ fun main(args: Array<String>) {
         appendLine()
     })
 
-    writeNativeImageRegistration(vulkanPackage)
+    writeNativeImageRegistration(vulkanPackage, newPath = true)
 }

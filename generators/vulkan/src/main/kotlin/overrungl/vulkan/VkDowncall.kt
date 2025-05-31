@@ -181,7 +181,13 @@ class VkDowncall(
 
         sb.appendLine("}")
 
-        writeString(Path(packageName.replace('.', '/'), "$className.java").createParentDirectories(), sb.toString())
+        writeString(
+            Path(
+                "src/main/generated",
+                packageName.replace('.', '/'),
+                "$className.java"
+            ).createParentDirectories(), sb.toString()
+        )
     }
 }
 
