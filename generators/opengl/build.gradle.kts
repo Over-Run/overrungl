@@ -22,4 +22,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.opengl.OpenGLGeneratorKt", ":opengl")
+registerGenerateTask("overrungl.opengl.OpenGLGeneratorKt", ":opengl", targetDir = "")

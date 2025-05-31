@@ -21,6 +21,7 @@ import overrungl.gen.file.DefinitionFunction
 import overrungl.gen.file.writeFunction
 import overrungl.gen.writeString
 import kotlin.io.path.Path
+import kotlin.io.path.createParentDirectories
 
 class InstanceDowncall(
     packageName: String,
@@ -57,7 +58,8 @@ class InstanceDowncall(
     }
 
     fun write(packageName: String, name: String) {
-        val path = Path("${packageName.replace('.', '/')}/$name.java")
+        val path = Path("src/main/generated/${packageName.replace('.', '/')}/$name.java")
+            .createParentDirectories()
         val sb = StringBuilder()
 
         sb.appendLine(commentedFileHeader)
