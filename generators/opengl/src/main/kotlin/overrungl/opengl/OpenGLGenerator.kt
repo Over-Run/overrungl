@@ -24,9 +24,8 @@ import overrungl.gen.file.registerDefType
 import overrungl.gen.file.unsigned_char_boolean
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
-import kotlin.io.path.createDirectories
 
-// gl.xml updated: 2025/01/26
+// gl.xml updated: 2025/05/31
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -239,8 +238,10 @@ fun main() {
             )
         )
 
-        method((commandsFile.interpreter.functions()[command.name] ?: error(command.name))
-            .copy(name = command.name.substring(2), entrypoint = command.name))
+        method(
+            (commandsFile.interpreter.functions()[command.name] ?: error(command.name))
+                .copy(name = command.name.substring(2), entrypoint = command.name)
+        )
     }
 
     // core
@@ -336,8 +337,6 @@ fun main() {
             if (extension.requires.isNotEmpty()) {
                 val vendor = extension.name.substring(3).substringBefore('_')
                 vendors.add(vendor)
-
-                Path(extPackage(vendor).replace('.', '/')).createDirectories()
             }
         }
         extensions.forEach { extension ->
@@ -379,7 +378,7 @@ fun main() {
 
 
         // generate module-info.java
-        writeString(Path("module-info.java"), buildString {
+        writeString(Path("src/main/generated/module-info.java"), buildString {
             appendLine(commentedFileHeader)
             appendLine(
                 """
@@ -394,7 +393,7 @@ fun main() {
                     |
                     |    requires transitive overrungl.core;
                     |    requires static org.jetbrains.annotations;
-                    |    requires org.graalvm.nativeimage;
+                    |    requires static org.graalvm.nativeimage;
                 """.trimMargin()
             )
             appendLine("}")
@@ -402,7 +401,7 @@ fun main() {
     }
 
     // flags
-    writeString(Path("overrungl/opengl/GLFlags.java"), buildString {
+    writeString(Path("src/main/generated/overrungl/opengl/GLFlags.java"), buildString {
         appendLine(commentedFileHeader)
         appendLine(
             """

@@ -34,5 +34,5 @@ module overrungl.core {
 
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;
-    requires org.graalvm.nativeimage;
+    requires static org.graalvm.nativeimage;
 }

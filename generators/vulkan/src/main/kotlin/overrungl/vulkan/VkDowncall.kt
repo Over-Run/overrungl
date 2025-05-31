@@ -119,7 +119,7 @@ class VkDowncall(
             if (first.type is VkDispatchableHandleIntermediate) {
                 when (val it = (first.type as VkDispatchableHandleIntermediate).name) {
                     "VkInstance", "VkPhysicalDevice" -> instanceCommands.add(function.name)
-                    "VkDevice", "VkQueue", "VkCommandBuffer" -> deviceCommands.add(function.name)
+                    "VkDevice", "VkQueue", "VkCommandBuffer", "VkExternalComputeQueueNV" -> deviceCommands.add(function.name)
                     else -> error(it)
                 }
             }
@@ -181,7 +181,13 @@ class VkDowncall(
 
         sb.appendLine("}")
 
-        writeString(Path(packageName.replace('.', '/'), "$className.java").createParentDirectories(), sb.toString())
+        writeString(
+            Path(
+                "src/main/generated",
+                packageName.replace('.', '/'),
+                "$className.java"
+            ).createParentDirectories(), sb.toString()
+        )
     }
 }
 

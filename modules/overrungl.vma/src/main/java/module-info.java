@@ -23,5 +23,5 @@ module overrungl.vma {
 
     requires transitive overrungl.core;
     requires overrungl.vulkan;
-    requires org.graalvm.nativeimage;
+    requires static org.graalvm.nativeimage;
 }

@@ -6,4 +6,4 @@ dependencies {
     implementation(project(":generators"))
 }
 
-registerGenerateTask("overrungl.vma.VMAGeneratorKt", ":vma", targetDir = "")
+registerGenerateTask("overrungl.vma.VMAGeneratorKt", ":vma")
