@@ -46,7 +46,7 @@ tasks.register("assembleJavadocArgs") {
         Files.writeString(
             mspFile, """
             --module-source-path
-            ${rootProject.projectDir.path}/modules/*/src/main/java
+            ${rootProject.projectDir.path}/modules/*/src/main/java${File.pathSeparator}${rootProject.projectDir.path}/modules/*/src/main/generated
         """.trimIndent()
         )
     }
@@ -61,7 +61,7 @@ tasks.register<Javadoc>("aggregateJavadoc") {
     outputs.upToDateWhen { false }
     val projectsToDoc = Artifact.values().map { rootProject.project(it.subprojectName) }
     dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
-    source(projectsToDoc.map { it.sourceSets["main"].java })
+    source(projectsToDoc.map { it.sourceSets["main"].allJava })
     setDestinationDir(File("${rootProject.layout.buildDirectory.get().asFile}/docs/javadoc"))
 
     classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
