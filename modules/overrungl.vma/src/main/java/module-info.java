@@ -14,10 +14,10 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * @author squid233
- * @since 0.1.0
- */
+/// The Vulkan Memory Allocator binding.
+///
+/// @author squid233
+/// @since 0.1.0
 module overrungl.vma {
     exports overrungl.vma;
 
