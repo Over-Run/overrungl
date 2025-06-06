@@ -109,6 +109,56 @@ public sealed class VkQueryPoolPerformanceCreateInfoKHR extends GroupType {
     /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param queueFamilyIndex `queueFamilyIndex`
+    /// @param counterIndexCount `counterIndexCount`
+    /// @param pCounterIndices `pCounterIndices`
+    /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueFamilyIndex, int counterIndexCount, MemorySegment pCounterIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).counterIndexCount(counterIndexCount).pCounterIndices(pCounterIndices);
+    }
+
+    /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param queueFamilyIndex `queueFamilyIndex`
+    /// @param counterIndexCount `counterIndexCount`
+    /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueFamilyIndex, int counterIndexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).counterIndexCount(counterIndexCount);
+    }
+
+    /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param queueFamilyIndex `queueFamilyIndex`
+    /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueFamilyIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex);
+    }
+
+    /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkQueryPoolPerformanceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkQueryPoolPerformanceCreateInfoKHR`
+    public static VkQueryPoolPerformanceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

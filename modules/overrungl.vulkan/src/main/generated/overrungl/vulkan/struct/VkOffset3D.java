@@ -93,6 +93,33 @@ public sealed class VkOffset3D extends GroupType {
     /// @return the allocated `VkOffset3D`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkOffset3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param z `z`
+    /// @return the allocated `VkOffset3D`
+    public static VkOffset3D allocInit(SegmentAllocator allocator, int x, int y, int z) {
+        return alloc(allocator).x(x).y(y).z(z);
+    }
+
+    /// Allocates a `VkOffset3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `VkOffset3D`
+    public static VkOffset3D allocInit(SegmentAllocator allocator, int x, int y) {
+        return alloc(allocator).x(x).y(y);
+    }
+
+    /// Allocates a `VkOffset3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @return the allocated `VkOffset3D`
+    public static VkOffset3D allocInit(SegmentAllocator allocator, int x) {
+        return alloc(allocator).x(x);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

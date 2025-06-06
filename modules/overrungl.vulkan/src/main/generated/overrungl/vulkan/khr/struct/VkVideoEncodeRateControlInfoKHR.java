@@ -133,6 +133,98 @@ public sealed class VkVideoEncodeRateControlInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param rateControlMode `rateControlMode`
+    /// @param layerCount `layerCount`
+    /// @param pLayers `pLayers`
+    /// @param virtualBufferSizeInMs `virtualBufferSizeInMs`
+    /// @param initialVirtualBufferSizeInMs `initialVirtualBufferSizeInMs`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int rateControlMode, int layerCount, MemorySegment pLayers, int virtualBufferSizeInMs, int initialVirtualBufferSizeInMs) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlMode(rateControlMode).layerCount(layerCount).pLayers(pLayers).virtualBufferSizeInMs(virtualBufferSizeInMs).initialVirtualBufferSizeInMs(initialVirtualBufferSizeInMs);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param rateControlMode `rateControlMode`
+    /// @param layerCount `layerCount`
+    /// @param pLayers `pLayers`
+    /// @param virtualBufferSizeInMs `virtualBufferSizeInMs`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int rateControlMode, int layerCount, MemorySegment pLayers, int virtualBufferSizeInMs) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlMode(rateControlMode).layerCount(layerCount).pLayers(pLayers).virtualBufferSizeInMs(virtualBufferSizeInMs);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param rateControlMode `rateControlMode`
+    /// @param layerCount `layerCount`
+    /// @param pLayers `pLayers`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int rateControlMode, int layerCount, MemorySegment pLayers) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlMode(rateControlMode).layerCount(layerCount).pLayers(pLayers);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param rateControlMode `rateControlMode`
+    /// @param layerCount `layerCount`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int rateControlMode, int layerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlMode(rateControlMode).layerCount(layerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param rateControlMode `rateControlMode`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int rateControlMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rateControlMode(rateControlMode);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeRateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
+    public static VkVideoEncodeRateControlInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

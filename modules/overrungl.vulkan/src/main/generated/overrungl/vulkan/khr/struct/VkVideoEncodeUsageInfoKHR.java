@@ -109,6 +109,56 @@ public sealed class VkVideoEncodeUsageInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeUsageInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param videoUsageHints `videoUsageHints`
+    /// @param videoContentHints `videoContentHints`
+    /// @param tuningMode `tuningMode`
+    /// @return the allocated `VkVideoEncodeUsageInfoKHR`
+    public static VkVideoEncodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoUsageHints, int videoContentHints, int tuningMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).videoUsageHints(videoUsageHints).videoContentHints(videoContentHints).tuningMode(tuningMode);
+    }
+
+    /// Allocates a `VkVideoEncodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param videoUsageHints `videoUsageHints`
+    /// @param videoContentHints `videoContentHints`
+    /// @return the allocated `VkVideoEncodeUsageInfoKHR`
+    public static VkVideoEncodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoUsageHints, int videoContentHints) {
+        return alloc(allocator).sType(sType).pNext(pNext).videoUsageHints(videoUsageHints).videoContentHints(videoContentHints);
+    }
+
+    /// Allocates a `VkVideoEncodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param videoUsageHints `videoUsageHints`
+    /// @return the allocated `VkVideoEncodeUsageInfoKHR`
+    public static VkVideoEncodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoUsageHints) {
+        return alloc(allocator).sType(sType).pNext(pNext).videoUsageHints(videoUsageHints);
+    }
+
+    /// Allocates a `VkVideoEncodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeUsageInfoKHR`
+    public static VkVideoEncodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeUsageInfoKHR`
+    public static VkVideoEncodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

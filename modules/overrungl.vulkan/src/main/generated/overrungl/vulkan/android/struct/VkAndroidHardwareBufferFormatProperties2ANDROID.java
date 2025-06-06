@@ -147,6 +147,131 @@ public sealed class VkAndroidHardwareBufferFormatProperties2ANDROID extends Grou
     /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @param suggestedXChromaOffset `suggestedXChromaOffset`
+    /// @param suggestedYChromaOffset `suggestedYChromaOffset`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange, int suggestedXChromaOffset, int suggestedYChromaOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @param suggestedXChromaOffset `suggestedXChromaOffset`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange, int suggestedXChromaOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures, MemorySegment samplerYcbcrConversionComponents) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat, long formatFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @param externalFormat `externalFormat`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format, long externalFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param format `format`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format) {
+        return alloc(allocator).sType(sType).pNext(pNext).format(format);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatProperties2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public static VkAndroidHardwareBufferFormatProperties2ANDROID allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

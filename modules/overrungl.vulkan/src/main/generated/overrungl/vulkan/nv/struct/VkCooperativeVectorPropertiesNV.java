@@ -133,6 +133,98 @@ public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
     /// @return the allocated `VkCooperativeVectorPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @param inputInterpretation `inputInterpretation`
+    /// @param matrixInterpretation `matrixInterpretation`
+    /// @param biasInterpretation `biasInterpretation`
+    /// @param resultType `resultType`
+    /// @param transpose `transpose`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType, int inputInterpretation, int matrixInterpretation, int biasInterpretation, int resultType, int transpose) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType).inputInterpretation(inputInterpretation).matrixInterpretation(matrixInterpretation).biasInterpretation(biasInterpretation).resultType(resultType).transpose(transpose);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @param inputInterpretation `inputInterpretation`
+    /// @param matrixInterpretation `matrixInterpretation`
+    /// @param biasInterpretation `biasInterpretation`
+    /// @param resultType `resultType`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType, int inputInterpretation, int matrixInterpretation, int biasInterpretation, int resultType) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType).inputInterpretation(inputInterpretation).matrixInterpretation(matrixInterpretation).biasInterpretation(biasInterpretation).resultType(resultType);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @param inputInterpretation `inputInterpretation`
+    /// @param matrixInterpretation `matrixInterpretation`
+    /// @param biasInterpretation `biasInterpretation`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType, int inputInterpretation, int matrixInterpretation, int biasInterpretation) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType).inputInterpretation(inputInterpretation).matrixInterpretation(matrixInterpretation).biasInterpretation(biasInterpretation);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @param inputInterpretation `inputInterpretation`
+    /// @param matrixInterpretation `matrixInterpretation`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType, int inputInterpretation, int matrixInterpretation) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType).inputInterpretation(inputInterpretation).matrixInterpretation(matrixInterpretation);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @param inputInterpretation `inputInterpretation`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType, int inputInterpretation) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType).inputInterpretation(inputInterpretation);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inputType `inputType`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inputType) {
+        return alloc(allocator).sType(sType).pNext(pNext).inputType(inputType);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCooperativeVectorPropertiesNV`
+    public static VkCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

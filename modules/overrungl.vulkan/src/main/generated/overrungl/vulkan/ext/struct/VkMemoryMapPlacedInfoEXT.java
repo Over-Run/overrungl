@@ -93,6 +93,33 @@ public sealed class VkMemoryMapPlacedInfoEXT extends GroupType {
     /// @return the allocated `VkMemoryMapPlacedInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMemoryMapPlacedInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pPlacedAddress `pPlacedAddress`
+    /// @return the allocated `VkMemoryMapPlacedInfoEXT`
+    public static VkMemoryMapPlacedInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pPlacedAddress) {
+        return alloc(allocator).sType(sType).pNext(pNext).pPlacedAddress(pPlacedAddress);
+    }
+
+    /// Allocates a `VkMemoryMapPlacedInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkMemoryMapPlacedInfoEXT`
+    public static VkMemoryMapPlacedInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkMemoryMapPlacedInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkMemoryMapPlacedInfoEXT`
+    public static VkMemoryMapPlacedInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkSemaphoreSignalInfo extends GroupType {
     /// @return the allocated `VkSemaphoreSignalInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param value `value`
+    /// @return the allocated `VkSemaphoreSignalInfo`
+    public static VkSemaphoreSignalInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long value) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value);
+    }
+
+    /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @return the allocated `VkSemaphoreSignalInfo`
+    public static VkSemaphoreSignalInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
+    }
+
+    /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSemaphoreSignalInfo`
+    public static VkSemaphoreSignalInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSemaphoreSignalInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSemaphoreSignalInfo`
+    public static VkSemaphoreSignalInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

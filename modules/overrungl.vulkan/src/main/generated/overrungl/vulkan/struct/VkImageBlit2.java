@@ -109,6 +109,69 @@ public sealed class VkImageBlit2 extends GroupType {
     /// @return the allocated `VkImageBlit2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffsets `srcOffsets`
+    /// @param dstSubresource `dstSubresource`
+    /// @param dstOffsets `dstOffsets`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffsets, MemorySegment dstSubresource, MemorySegment dstOffsets) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffsets(srcOffsets).dstSubresource(dstSubresource).dstOffsets(dstOffsets);
+    }
+
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffsets `srcOffsets`
+    /// @param dstSubresource `dstSubresource`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffsets, MemorySegment dstSubresource) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffsets(srcOffsets).dstSubresource(dstSubresource);
+    }
+
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffsets `srcOffsets`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffsets) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffsets(srcOffsets);
+    }
+
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource);
+    }
+
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageBlit2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageBlit2`
+    public static VkImageBlit2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

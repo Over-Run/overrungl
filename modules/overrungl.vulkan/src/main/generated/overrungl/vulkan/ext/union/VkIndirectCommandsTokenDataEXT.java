@@ -101,6 +101,38 @@ public sealed class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsTokenDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pPushConstant`.
+    /// @param allocator the segment allocator
+    /// @param pPushConstant `pPushConstant`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pPushConstant(SegmentAllocator allocator, MemorySegment pPushConstant) {
+        return alloc(allocator).pPushConstant(pPushConstant);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pVertexBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pVertexBuffer `pVertexBuffer`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pVertexBuffer(SegmentAllocator allocator, MemorySegment pVertexBuffer) {
+        return alloc(allocator).pVertexBuffer(pVertexBuffer);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pIndexBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pIndexBuffer `pIndexBuffer`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pIndexBuffer(SegmentAllocator allocator, MemorySegment pIndexBuffer) {
+        return alloc(allocator).pIndexBuffer(pIndexBuffer);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pExecutionSet`.
+    /// @param allocator the segment allocator
+    /// @param pExecutionSet `pExecutionSet`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pExecutionSet(SegmentAllocator allocator, MemorySegment pExecutionSet) {
+        return alloc(allocator).pExecutionSet(pExecutionSet);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

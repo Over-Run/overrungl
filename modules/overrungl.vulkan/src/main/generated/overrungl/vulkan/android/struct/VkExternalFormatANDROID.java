@@ -93,6 +93,33 @@ public sealed class VkExternalFormatANDROID extends GroupType {
     /// @return the allocated `VkExternalFormatANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExternalFormatANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param externalFormat `externalFormat`
+    /// @return the allocated `VkExternalFormatANDROID`
+    public static VkExternalFormatANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long externalFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).externalFormat(externalFormat);
+    }
+
+    /// Allocates a `VkExternalFormatANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExternalFormatANDROID`
+    public static VkExternalFormatANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExternalFormatANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExternalFormatANDROID`
+    public static VkExternalFormatANDROID allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPipelineViewportSwizzleStateCreateInfoNV extends GroupType
     /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineViewportSwizzleStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param viewportCount `viewportCount`
+    /// @param pViewportSwizzles `pViewportSwizzles`
+    /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int viewportCount, MemorySegment pViewportSwizzles) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).viewportCount(viewportCount).pViewportSwizzles(pViewportSwizzles);
+    }
+
+    /// Allocates a `VkPipelineViewportSwizzleStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param viewportCount `viewportCount`
+    /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int viewportCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).viewportCount(viewportCount);
+    }
+
+    /// Allocates a `VkPipelineViewportSwizzleStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPipelineViewportSwizzleStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineViewportSwizzleStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineViewportSwizzleStateCreateInfoNV`
+    public static VkPipelineViewportSwizzleStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

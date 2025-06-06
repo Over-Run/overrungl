@@ -109,6 +109,56 @@ public sealed class VkPipelineViewportWScalingStateCreateInfoNV extends GroupTyp
     /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportWScalingEnable `viewportWScalingEnable`
+    /// @param viewportCount `viewportCount`
+    /// @param pViewportWScalings `pViewportWScalings`
+    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
+    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportWScalingEnable, int viewportCount, MemorySegment pViewportWScalings) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportWScalingEnable(viewportWScalingEnable).viewportCount(viewportCount).pViewportWScalings(pViewportWScalings);
+    }
+
+    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportWScalingEnable `viewportWScalingEnable`
+    /// @param viewportCount `viewportCount`
+    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
+    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportWScalingEnable, int viewportCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportWScalingEnable(viewportWScalingEnable).viewportCount(viewportCount);
+    }
+
+    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportWScalingEnable `viewportWScalingEnable`
+    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
+    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportWScalingEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportWScalingEnable(viewportWScalingEnable);
+    }
+
+    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
+    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineViewportWScalingStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineViewportWScalingStateCreateInfoNV`
+    public static VkPipelineViewportWScalingStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param descriptorSetLayout `descriptorSetLayout`
+    /// @param binding `binding`
+    /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
+    public static VkDescriptorSetBindingReferenceVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorSetLayout, int binding) {
+        return alloc(allocator).sType(sType).pNext(pNext).descriptorSetLayout(descriptorSetLayout).binding(binding);
+    }
+
+    /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param descriptorSetLayout `descriptorSetLayout`
+    /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
+    public static VkDescriptorSetBindingReferenceVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorSetLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).descriptorSetLayout(descriptorSetLayout);
+    }
+
+    /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
+    public static VkDescriptorSetBindingReferenceVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
+    public static VkDescriptorSetBindingReferenceVALVE allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

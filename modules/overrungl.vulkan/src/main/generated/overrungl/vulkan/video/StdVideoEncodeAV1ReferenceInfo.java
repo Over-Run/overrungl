@@ -115,6 +115,69 @@ public sealed class StdVideoEncodeAV1ReferenceInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param RefFrameId `RefFrameId`
+    /// @param frame_type `frame_type`
+    /// @param OrderHint `OrderHint`
+    /// @param reserved1 `reserved1`
+    /// @param pExtensionHeader `pExtensionHeader`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int RefFrameId, int frame_type, byte OrderHint, MemorySegment reserved1, MemorySegment pExtensionHeader) {
+        return alloc(allocator).flags(flags).RefFrameId(RefFrameId).frame_type(frame_type).OrderHint(OrderHint).reserved1(reserved1).pExtensionHeader(pExtensionHeader);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param RefFrameId `RefFrameId`
+    /// @param frame_type `frame_type`
+    /// @param OrderHint `OrderHint`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int RefFrameId, int frame_type, byte OrderHint, MemorySegment reserved1) {
+        return alloc(allocator).flags(flags).RefFrameId(RefFrameId).frame_type(frame_type).OrderHint(OrderHint).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param RefFrameId `RefFrameId`
+    /// @param frame_type `frame_type`
+    /// @param OrderHint `OrderHint`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int RefFrameId, int frame_type, byte OrderHint) {
+        return alloc(allocator).flags(flags).RefFrameId(RefFrameId).frame_type(frame_type).OrderHint(OrderHint);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param RefFrameId `RefFrameId`
+    /// @param frame_type `frame_type`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int RefFrameId, int frame_type) {
+        return alloc(allocator).flags(flags).RefFrameId(RefFrameId).frame_type(frame_type);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param RefFrameId `RefFrameId`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int RefFrameId) {
+        return alloc(allocator).flags(flags).RefFrameId(RefFrameId);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeAV1ReferenceInfo`
+    public static StdVideoEncodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

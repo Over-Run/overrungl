@@ -109,6 +109,56 @@ public sealed class VkPipelineColorBlendAdvancedStateCreateInfoEXT extends Group
     /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @param dstPremultiplied `dstPremultiplied`
+    /// @param blendOverlap `blendOverlap`
+    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcPremultiplied, int dstPremultiplied, int blendOverlap) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied).blendOverlap(blendOverlap);
+    }
+
+    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @param dstPremultiplied `dstPremultiplied`
+    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcPremultiplied, int dstPremultiplied) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied);
+    }
+
+    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcPremultiplied) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcPremultiplied(srcPremultiplied);
+    }
+
+    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineColorBlendAdvancedStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineColorBlendAdvancedStateCreateInfoEXT`
+    public static VkPipelineColorBlendAdvancedStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

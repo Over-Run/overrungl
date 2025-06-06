@@ -167,6 +167,188 @@ public sealed class VkSurfaceCapabilities2EXT extends GroupType {
     /// @return the allocated `VkSurfaceCapabilities2EXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @param supportedTransforms `supportedTransforms`
+    /// @param currentTransform `currentTransform`
+    /// @param supportedCompositeAlpha `supportedCompositeAlpha`
+    /// @param supportedUsageFlags `supportedUsageFlags`
+    /// @param supportedSurfaceCounters `supportedSurfaceCounters`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers, int supportedTransforms, int currentTransform, int supportedCompositeAlpha, int supportedUsageFlags, int supportedSurfaceCounters) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms).currentTransform(currentTransform).supportedCompositeAlpha(supportedCompositeAlpha).supportedUsageFlags(supportedUsageFlags).supportedSurfaceCounters(supportedSurfaceCounters);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @param supportedTransforms `supportedTransforms`
+    /// @param currentTransform `currentTransform`
+    /// @param supportedCompositeAlpha `supportedCompositeAlpha`
+    /// @param supportedUsageFlags `supportedUsageFlags`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers, int supportedTransforms, int currentTransform, int supportedCompositeAlpha, int supportedUsageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms).currentTransform(currentTransform).supportedCompositeAlpha(supportedCompositeAlpha).supportedUsageFlags(supportedUsageFlags);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @param supportedTransforms `supportedTransforms`
+    /// @param currentTransform `currentTransform`
+    /// @param supportedCompositeAlpha `supportedCompositeAlpha`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers, int supportedTransforms, int currentTransform, int supportedCompositeAlpha) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms).currentTransform(currentTransform).supportedCompositeAlpha(supportedCompositeAlpha);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @param supportedTransforms `supportedTransforms`
+    /// @param currentTransform `currentTransform`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers, int supportedTransforms, int currentTransform) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms).currentTransform(currentTransform);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @param supportedTransforms `supportedTransforms`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers, int supportedTransforms) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @param maxImageArrayLayers `maxImageArrayLayers`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent, int maxImageArrayLayers) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @param maxImageExtent `maxImageExtent`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent, MemorySegment maxImageExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @param minImageExtent `minImageExtent`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent, MemorySegment minImageExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @param currentExtent `currentExtent`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount, MemorySegment currentExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @param maxImageCount `maxImageCount`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount, int maxImageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount).maxImageCount(maxImageCount);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minImageCount `minImageCount`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minImageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).minImageCount(minImageCount);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSurfaceCapabilities2EXT`
+    public static VkSurfaceCapabilities2EXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

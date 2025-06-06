@@ -99,6 +99,44 @@ public sealed class NFDOpenDialogArgs extends GroupType {
     /// @return the allocated `NFDOpenDialogArgs`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param filterList `filterList`
+    /// @param filterCount `filterCount`
+    /// @param defaultPath `defaultPath`
+    /// @param parentWindow `parentWindow`
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment parentWindow) {
+        return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).parentWindow(parentWindow);
+    }
+
+    /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param filterList `filterList`
+    /// @param filterCount `filterCount`
+    /// @param defaultPath `defaultPath`
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
+        return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath);
+    }
+
+    /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param filterList `filterList`
+    /// @param filterCount `filterCount`
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount) {
+        return alloc(allocator).filterList(filterList).filterCount(filterCount);
+    }
+
+    /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param filterList `filterList`
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList) {
+        return alloc(allocator).filterList(filterList);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkDecompressMemoryRegionNV extends GroupType {
     /// @return the allocated `VkDecompressMemoryRegionNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcAddress `srcAddress`
+    /// @param dstAddress `dstAddress`
+    /// @param compressedSize `compressedSize`
+    /// @param decompressedSize `decompressedSize`
+    /// @param decompressionMethod `decompressionMethod`
+    /// @return the allocated `VkDecompressMemoryRegionNV`
+    public static VkDecompressMemoryRegionNV allocInit(SegmentAllocator allocator, long srcAddress, long dstAddress, long compressedSize, long decompressedSize, long decompressionMethod) {
+        return alloc(allocator).srcAddress(srcAddress).dstAddress(dstAddress).compressedSize(compressedSize).decompressedSize(decompressedSize).decompressionMethod(decompressionMethod);
+    }
+
+    /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcAddress `srcAddress`
+    /// @param dstAddress `dstAddress`
+    /// @param compressedSize `compressedSize`
+    /// @param decompressedSize `decompressedSize`
+    /// @return the allocated `VkDecompressMemoryRegionNV`
+    public static VkDecompressMemoryRegionNV allocInit(SegmentAllocator allocator, long srcAddress, long dstAddress, long compressedSize, long decompressedSize) {
+        return alloc(allocator).srcAddress(srcAddress).dstAddress(dstAddress).compressedSize(compressedSize).decompressedSize(decompressedSize);
+    }
+
+    /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcAddress `srcAddress`
+    /// @param dstAddress `dstAddress`
+    /// @param compressedSize `compressedSize`
+    /// @return the allocated `VkDecompressMemoryRegionNV`
+    public static VkDecompressMemoryRegionNV allocInit(SegmentAllocator allocator, long srcAddress, long dstAddress, long compressedSize) {
+        return alloc(allocator).srcAddress(srcAddress).dstAddress(dstAddress).compressedSize(compressedSize);
+    }
+
+    /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcAddress `srcAddress`
+    /// @param dstAddress `dstAddress`
+    /// @return the allocated `VkDecompressMemoryRegionNV`
+    public static VkDecompressMemoryRegionNV allocInit(SegmentAllocator allocator, long srcAddress, long dstAddress) {
+        return alloc(allocator).srcAddress(srcAddress).dstAddress(dstAddress);
+    }
+
+    /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcAddress `srcAddress`
+    /// @return the allocated `VkDecompressMemoryRegionNV`
+    public static VkDecompressMemoryRegionNV allocInit(SegmentAllocator allocator, long srcAddress) {
+        return alloc(allocator).srcAddress(srcAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Group
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeMatrixWorkgroupScopeMaxWorkgroupSize `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`
+    /// @param cooperativeMatrixFlexibleDimensionsMaxDimension `cooperativeMatrixFlexibleDimensionsMaxDimension`
+    /// @param cooperativeMatrixWorkgroupScopeReservedSharedMemory `cooperativeMatrixWorkgroupScopeReservedSharedMemory`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, int cooperativeMatrixFlexibleDimensionsMaxDimension, int cooperativeMatrixWorkgroupScopeReservedSharedMemory) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(cooperativeMatrixWorkgroupScopeMaxWorkgroupSize).cooperativeMatrixFlexibleDimensionsMaxDimension(cooperativeMatrixFlexibleDimensionsMaxDimension).cooperativeMatrixWorkgroupScopeReservedSharedMemory(cooperativeMatrixWorkgroupScopeReservedSharedMemory);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeMatrixWorkgroupScopeMaxWorkgroupSize `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`
+    /// @param cooperativeMatrixFlexibleDimensionsMaxDimension `cooperativeMatrixFlexibleDimensionsMaxDimension`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize, int cooperativeMatrixFlexibleDimensionsMaxDimension) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(cooperativeMatrixWorkgroupScopeMaxWorkgroupSize).cooperativeMatrixFlexibleDimensionsMaxDimension(cooperativeMatrixFlexibleDimensionsMaxDimension);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeMatrixWorkgroupScopeMaxWorkgroupSize `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrixWorkgroupScopeMaxWorkgroupSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(cooperativeMatrixWorkgroupScopeMaxWorkgroupSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

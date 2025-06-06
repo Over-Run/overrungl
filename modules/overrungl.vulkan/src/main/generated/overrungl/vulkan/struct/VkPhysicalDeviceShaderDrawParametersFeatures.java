@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceShaderDrawParametersFeatures extends GroupTy
     /// @return the allocated `VkPhysicalDeviceShaderDrawParametersFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderDrawParametersFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderDrawParameters `shaderDrawParameters`
+    /// @return the allocated `VkPhysicalDeviceShaderDrawParametersFeatures`
+    public static VkPhysicalDeviceShaderDrawParametersFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderDrawParameters) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderDrawParameters(shaderDrawParameters);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderDrawParametersFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderDrawParametersFeatures`
+    public static VkPhysicalDeviceShaderDrawParametersFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderDrawParametersFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderDrawParametersFeatures`
+    public static VkPhysicalDeviceShaderDrawParametersFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -133,6 +133,98 @@ public sealed class VkCommandBufferInheritanceInfo extends GroupType {
     /// @return the allocated `VkCommandBufferInheritanceInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param framebuffer `framebuffer`
+    /// @param occlusionQueryEnable `occlusionQueryEnable`
+    /// @param queryFlags `queryFlags`
+    /// @param pipelineStatistics `pipelineStatistics`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, int subpass, long framebuffer, int occlusionQueryEnable, int queryFlags, int pipelineStatistics) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass).framebuffer(framebuffer).occlusionQueryEnable(occlusionQueryEnable).queryFlags(queryFlags).pipelineStatistics(pipelineStatistics);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param framebuffer `framebuffer`
+    /// @param occlusionQueryEnable `occlusionQueryEnable`
+    /// @param queryFlags `queryFlags`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, int subpass, long framebuffer, int occlusionQueryEnable, int queryFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass).framebuffer(framebuffer).occlusionQueryEnable(occlusionQueryEnable).queryFlags(queryFlags);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param framebuffer `framebuffer`
+    /// @param occlusionQueryEnable `occlusionQueryEnable`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, int subpass, long framebuffer, int occlusionQueryEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass).framebuffer(framebuffer).occlusionQueryEnable(occlusionQueryEnable);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param framebuffer `framebuffer`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, int subpass, long framebuffer) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass).framebuffer(framebuffer);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, int subpass) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -117,6 +117,69 @@ public sealed class VkQueryPoolCreateInfo extends GroupType {
     /// @return the allocated `VkQueryPoolCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queryType `queryType`
+    /// @param queryCount `queryCount`
+    /// @param pipelineStatistics `pipelineStatistics`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queryType, int queryCount, int pipelineStatistics) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queryType(queryType).queryCount(queryCount).pipelineStatistics(pipelineStatistics);
+    }
+
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queryType `queryType`
+    /// @param queryCount `queryCount`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queryType, int queryCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queryType(queryType).queryCount(queryCount);
+    }
+
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queryType `queryType`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queryType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queryType(queryType);
+    }
+
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkQueryPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkQueryPoolCreateInfo`
+    public static VkQueryPoolCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

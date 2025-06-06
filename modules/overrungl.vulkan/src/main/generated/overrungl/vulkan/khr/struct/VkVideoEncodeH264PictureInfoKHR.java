@@ -117,6 +117,69 @@ public sealed class VkVideoEncodeH264PictureInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param naluSliceEntryCount `naluSliceEntryCount`
+    /// @param pNaluSliceEntries `pNaluSliceEntries`
+    /// @param pStdPictureInfo `pStdPictureInfo`
+    /// @param generatePrefixNalu `generatePrefixNalu`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int naluSliceEntryCount, MemorySegment pNaluSliceEntries, MemorySegment pStdPictureInfo, int generatePrefixNalu) {
+        return alloc(allocator).sType(sType).pNext(pNext).naluSliceEntryCount(naluSliceEntryCount).pNaluSliceEntries(pNaluSliceEntries).pStdPictureInfo(pStdPictureInfo).generatePrefixNalu(generatePrefixNalu);
+    }
+
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param naluSliceEntryCount `naluSliceEntryCount`
+    /// @param pNaluSliceEntries `pNaluSliceEntries`
+    /// @param pStdPictureInfo `pStdPictureInfo`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int naluSliceEntryCount, MemorySegment pNaluSliceEntries, MemorySegment pStdPictureInfo) {
+        return alloc(allocator).sType(sType).pNext(pNext).naluSliceEntryCount(naluSliceEntryCount).pNaluSliceEntries(pNaluSliceEntries).pStdPictureInfo(pStdPictureInfo);
+    }
+
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param naluSliceEntryCount `naluSliceEntryCount`
+    /// @param pNaluSliceEntries `pNaluSliceEntries`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int naluSliceEntryCount, MemorySegment pNaluSliceEntries) {
+        return alloc(allocator).sType(sType).pNext(pNext).naluSliceEntryCount(naluSliceEntryCount).pNaluSliceEntries(pNaluSliceEntries);
+    }
+
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param naluSliceEntryCount `naluSliceEntryCount`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int naluSliceEntryCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).naluSliceEntryCount(naluSliceEntryCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH264PictureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH264PictureInfoKHR`
+    public static VkVideoEncodeH264PictureInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

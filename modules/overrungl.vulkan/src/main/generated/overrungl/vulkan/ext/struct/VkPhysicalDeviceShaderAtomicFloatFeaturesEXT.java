@@ -181,6 +181,209 @@ public sealed class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @param shaderSharedFloat64AtomicAdd `shaderSharedFloat64AtomicAdd`
+    /// @param shaderImageFloat32Atomics `shaderImageFloat32Atomics`
+    /// @param shaderImageFloat32AtomicAdd `shaderImageFloat32AtomicAdd`
+    /// @param sparseImageFloat32Atomics `sparseImageFloat32Atomics`
+    /// @param sparseImageFloat32AtomicAdd `sparseImageFloat32AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics, int shaderSharedFloat64AtomicAdd, int shaderImageFloat32Atomics, int shaderImageFloat32AtomicAdd, int sparseImageFloat32Atomics, int sparseImageFloat32AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics).shaderImageFloat32AtomicAdd(shaderImageFloat32AtomicAdd).sparseImageFloat32Atomics(sparseImageFloat32Atomics).sparseImageFloat32AtomicAdd(sparseImageFloat32AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @param shaderSharedFloat64AtomicAdd `shaderSharedFloat64AtomicAdd`
+    /// @param shaderImageFloat32Atomics `shaderImageFloat32Atomics`
+    /// @param shaderImageFloat32AtomicAdd `shaderImageFloat32AtomicAdd`
+    /// @param sparseImageFloat32Atomics `sparseImageFloat32Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics, int shaderSharedFloat64AtomicAdd, int shaderImageFloat32Atomics, int shaderImageFloat32AtomicAdd, int sparseImageFloat32Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics).shaderImageFloat32AtomicAdd(shaderImageFloat32AtomicAdd).sparseImageFloat32Atomics(sparseImageFloat32Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @param shaderSharedFloat64AtomicAdd `shaderSharedFloat64AtomicAdd`
+    /// @param shaderImageFloat32Atomics `shaderImageFloat32Atomics`
+    /// @param shaderImageFloat32AtomicAdd `shaderImageFloat32AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics, int shaderSharedFloat64AtomicAdd, int shaderImageFloat32Atomics, int shaderImageFloat32AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics).shaderImageFloat32AtomicAdd(shaderImageFloat32AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @param shaderSharedFloat64AtomicAdd `shaderSharedFloat64AtomicAdd`
+    /// @param shaderImageFloat32Atomics `shaderImageFloat32Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics, int shaderSharedFloat64AtomicAdd, int shaderImageFloat32Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd).shaderImageFloat32Atomics(shaderImageFloat32Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @param shaderSharedFloat64AtomicAdd `shaderSharedFloat64AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics, int shaderSharedFloat64AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics).shaderSharedFloat64AtomicAdd(shaderSharedFloat64AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @param shaderSharedFloat64Atomics `shaderSharedFloat64Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd, int shaderSharedFloat64Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd).shaderSharedFloat64Atomics(shaderSharedFloat64Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @param shaderSharedFloat32AtomicAdd `shaderSharedFloat32AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics, int shaderSharedFloat32AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics).shaderSharedFloat32AtomicAdd(shaderSharedFloat32AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @param shaderSharedFloat32Atomics `shaderSharedFloat32Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd, int shaderSharedFloat32Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd).shaderSharedFloat32Atomics(shaderSharedFloat32Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @param shaderBufferFloat64AtomicAdd `shaderBufferFloat64AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics, int shaderBufferFloat64AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics).shaderBufferFloat64AtomicAdd(shaderBufferFloat64AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @param shaderBufferFloat64Atomics `shaderBufferFloat64Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd, int shaderBufferFloat64Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd).shaderBufferFloat64Atomics(shaderBufferFloat64Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @param shaderBufferFloat32AtomicAdd `shaderBufferFloat32AtomicAdd`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics, int shaderBufferFloat32AtomicAdd) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics).shaderBufferFloat32AtomicAdd(shaderBufferFloat32AtomicAdd);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBufferFloat32Atomics `shaderBufferFloat32Atomics`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBufferFloat32Atomics) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat32Atomics(shaderBufferFloat32Atomics);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

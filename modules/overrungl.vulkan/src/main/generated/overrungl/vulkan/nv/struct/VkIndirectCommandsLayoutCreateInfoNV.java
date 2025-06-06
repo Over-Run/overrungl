@@ -133,6 +133,98 @@ public sealed class VkIndirectCommandsLayoutCreateInfoNV extends GroupType {
     /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param tokenCount `tokenCount`
+    /// @param pTokens `pTokens`
+    /// @param streamCount `streamCount`
+    /// @param pStreamStrides `pStreamStrides`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int pipelineBindPoint, int tokenCount, MemorySegment pTokens, int streamCount, MemorySegment pStreamStrides) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint).tokenCount(tokenCount).pTokens(pTokens).streamCount(streamCount).pStreamStrides(pStreamStrides);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param tokenCount `tokenCount`
+    /// @param pTokens `pTokens`
+    /// @param streamCount `streamCount`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int pipelineBindPoint, int tokenCount, MemorySegment pTokens, int streamCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint).tokenCount(tokenCount).pTokens(pTokens).streamCount(streamCount);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param tokenCount `tokenCount`
+    /// @param pTokens `pTokens`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int pipelineBindPoint, int tokenCount, MemorySegment pTokens) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint).tokenCount(tokenCount).pTokens(pTokens);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param tokenCount `tokenCount`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int pipelineBindPoint, int tokenCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint).tokenCount(tokenCount);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int pipelineBindPoint) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pipelineBindPoint(pipelineBindPoint);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkIndirectCommandsLayoutCreateInfoNV`
+    public static VkIndirectCommandsLayoutCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

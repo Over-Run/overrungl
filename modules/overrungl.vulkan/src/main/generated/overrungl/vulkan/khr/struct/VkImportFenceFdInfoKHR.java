@@ -117,6 +117,69 @@ public sealed class VkImportFenceFdInfoKHR extends GroupType {
     /// @return the allocated `VkImportFenceFdInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @param handleType `handleType`
+    /// @param fd `fd`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags, int handleType, int fd) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags).handleType(handleType).fd(fd);
+    }
+
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags).handleType(handleType);
+    }
+
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags);
+    }
+
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
+    }
+
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImportFenceFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImportFenceFdInfoKHR`
+    public static VkImportFenceFdInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

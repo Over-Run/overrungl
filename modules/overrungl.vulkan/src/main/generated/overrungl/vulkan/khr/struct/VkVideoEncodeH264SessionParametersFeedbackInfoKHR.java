@@ -101,6 +101,44 @@ public sealed class VkVideoEncodeH264SessionParametersFeedbackInfoKHR extends Gr
     /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param hasStdSPSOverrides `hasStdSPSOverrides`
+    /// @param hasStdPPSOverrides `hasStdPPSOverrides`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
+    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hasStdSPSOverrides, int hasStdPPSOverrides) {
+        return alloc(allocator).sType(sType).pNext(pNext).hasStdSPSOverrides(hasStdSPSOverrides).hasStdPPSOverrides(hasStdPPSOverrides);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param hasStdSPSOverrides `hasStdSPSOverrides`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
+    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hasStdSPSOverrides) {
+        return alloc(allocator).sType(sType).pNext(pNext).hasStdSPSOverrides(hasStdSPSOverrides);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
+    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersFeedbackInfoKHR`
+    public static VkVideoEncodeH264SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

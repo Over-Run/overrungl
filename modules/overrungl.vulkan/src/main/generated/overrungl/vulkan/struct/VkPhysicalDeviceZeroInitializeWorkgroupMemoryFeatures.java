@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures extend
     /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
+    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures`
+    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderZeroInitializeWorkgroupMemory) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory);
+    }
+
+    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures`
+    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures`
+    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

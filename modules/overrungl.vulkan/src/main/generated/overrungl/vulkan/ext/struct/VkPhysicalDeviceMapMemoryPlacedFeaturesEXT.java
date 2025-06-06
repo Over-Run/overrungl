@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceMapMemoryPlacedFeaturesEXT extends GroupType
     /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryMapPlaced `memoryMapPlaced`
+    /// @param memoryMapRangePlaced `memoryMapRangePlaced`
+    /// @param memoryUnmapReserve `memoryUnmapReserve`
+    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryMapPlaced, int memoryMapRangePlaced, int memoryUnmapReserve) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryMapPlaced(memoryMapPlaced).memoryMapRangePlaced(memoryMapRangePlaced).memoryUnmapReserve(memoryUnmapReserve);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryMapPlaced `memoryMapPlaced`
+    /// @param memoryMapRangePlaced `memoryMapRangePlaced`
+    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryMapPlaced, int memoryMapRangePlaced) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryMapPlaced(memoryMapPlaced).memoryMapRangePlaced(memoryMapRangePlaced);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryMapPlaced `memoryMapPlaced`
+    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryMapPlaced) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryMapPlaced(memoryMapPlaced);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedFeaturesEXT`
+    public static VkPhysicalDeviceMapMemoryPlacedFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

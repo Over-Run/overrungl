@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT
     /// @return the allocated `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param multisampledRenderToSingleSampled `multisampledRenderToSingleSampled`
+    /// @return the allocated `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
+    public static VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multisampledRenderToSingleSampled) {
+        return alloc(allocator).sType(sType).pNext(pNext).multisampledRenderToSingleSampled(multisampledRenderToSingleSampled);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
+    public static VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
+    public static VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

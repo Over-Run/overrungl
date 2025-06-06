@@ -93,6 +93,33 @@ public sealed class VkExternalMemoryImageCreateInfo extends GroupType {
     /// @return the allocated `VkExternalMemoryImageCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExternalMemoryImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleTypes `handleTypes`
+    /// @return the allocated `VkExternalMemoryImageCreateInfo`
+    public static VkExternalMemoryImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleTypes) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleTypes(handleTypes);
+    }
+
+    /// Allocates a `VkExternalMemoryImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExternalMemoryImageCreateInfo`
+    public static VkExternalMemoryImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExternalMemoryImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExternalMemoryImageCreateInfo`
+    public static VkExternalMemoryImageCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

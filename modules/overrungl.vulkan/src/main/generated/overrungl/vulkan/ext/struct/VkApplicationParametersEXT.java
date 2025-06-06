@@ -117,6 +117,69 @@ public sealed class VkApplicationParametersEXT extends GroupType {
     /// @return the allocated `VkApplicationParametersEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @param key `key`
+    /// @param value `value`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID, int key, long value) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).key(key).value(value);
+    }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @param key `key`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID, int key) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).key(key);
+    }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID);
+    }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID);
+    }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -99,6 +99,44 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Group
     /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPassStripeGranularity `renderPassStripeGranularity`
+    /// @param maxRenderPassStripes `maxRenderPassStripes`
+    /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment renderPassStripeGranularity, int maxRenderPassStripes) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPassStripeGranularity(renderPassStripeGranularity).maxRenderPassStripes(maxRenderPassStripes);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPassStripeGranularity `renderPassStripeGranularity`
+    /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment renderPassStripeGranularity) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPassStripeGranularity(renderPassStripeGranularity);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

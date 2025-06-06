@@ -169,6 +169,188 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @param suggestedXChromaOffset `suggestedXChromaOffset`
+    /// @param suggestedYChromaOffset `suggestedYChromaOffset`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange, int suggestedXChromaOffset, int suggestedYChromaOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @param suggestedXChromaOffset `suggestedXChromaOffset`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange, int suggestedXChromaOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @param suggestedYcbcrRange `suggestedYcbcrRange`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel, int suggestedYcbcrRange) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @param suggestedYcbcrModel `suggestedYcbcrModel`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex, MemorySegment samplerYcbcrConversionComponents, int suggestedYcbcrModel) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @param samplerYcbcrConversionComponents `samplerYcbcrConversionComponents`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex, MemorySegment samplerYcbcrConversionComponents) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @param sysmemColorSpaceIndex `sysmemColorSpaceIndex`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures, MemorySegment sysmemColorSpaceIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @param formatFeatures `formatFeatures`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat, int formatFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @param sysmemPixelFormat `sysmemPixelFormat`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex, long sysmemPixelFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @param createInfoIndex `createInfoIndex`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount, int createInfoIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param bufferCount `bufferCount`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits, int bufferCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

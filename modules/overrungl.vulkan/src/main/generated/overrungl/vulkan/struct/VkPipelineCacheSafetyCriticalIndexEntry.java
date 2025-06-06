@@ -125,6 +125,83 @@ public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @param jsonSize `jsonSize`
+    /// @param jsonOffset `jsonOffset`
+    /// @param stageIndexCount `stageIndexCount`
+    /// @param stageIndexStride `stageIndexStride`
+    /// @param stageIndexOffset `stageIndexOffset`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize, long jsonSize, long jsonOffset, int stageIndexCount, int stageIndexStride, long stageIndexOffset) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize).jsonSize(jsonSize).jsonOffset(jsonOffset).stageIndexCount(stageIndexCount).stageIndexStride(stageIndexStride).stageIndexOffset(stageIndexOffset);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @param jsonSize `jsonSize`
+    /// @param jsonOffset `jsonOffset`
+    /// @param stageIndexCount `stageIndexCount`
+    /// @param stageIndexStride `stageIndexStride`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize, long jsonSize, long jsonOffset, int stageIndexCount, int stageIndexStride) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize).jsonSize(jsonSize).jsonOffset(jsonOffset).stageIndexCount(stageIndexCount).stageIndexStride(stageIndexStride);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @param jsonSize `jsonSize`
+    /// @param jsonOffset `jsonOffset`
+    /// @param stageIndexCount `stageIndexCount`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize, long jsonSize, long jsonOffset, int stageIndexCount) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize).jsonSize(jsonSize).jsonOffset(jsonOffset).stageIndexCount(stageIndexCount);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @param jsonSize `jsonSize`
+    /// @param jsonOffset `jsonOffset`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize, long jsonSize, long jsonOffset) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize).jsonSize(jsonSize).jsonOffset(jsonOffset);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @param jsonSize `jsonSize`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize, long jsonSize) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize).jsonSize(jsonSize);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @param pipelineMemorySize `pipelineMemorySize`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier, long pipelineMemorySize) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier).pipelineMemorySize(pipelineMemorySize);
+    }
+
+    /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineIdentifier `pipelineIdentifier`
+    /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
+    public static VkPipelineCacheSafetyCriticalIndexEntry allocInit(SegmentAllocator allocator, MemorySegment pipelineIdentifier) {
+        return alloc(allocator).pipelineIdentifier(pipelineIdentifier);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

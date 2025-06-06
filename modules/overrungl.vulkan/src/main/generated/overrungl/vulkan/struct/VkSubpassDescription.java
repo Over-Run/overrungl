@@ -149,6 +149,131 @@ public sealed class VkSubpassDescription extends GroupType {
     /// @return the allocated `VkSubpassDescription`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachments `pColorAttachments`
+    /// @param pResolveAttachments `pResolveAttachments`
+    /// @param pDepthStencilAttachment `pDepthStencilAttachment`
+    /// @param preserveAttachmentCount `preserveAttachmentCount`
+    /// @param pPreserveAttachments `pPreserveAttachments`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount, MemorySegment pColorAttachments, MemorySegment pResolveAttachments, MemorySegment pDepthStencilAttachment, int preserveAttachmentCount, MemorySegment pPreserveAttachments) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pResolveAttachments(pResolveAttachments).pDepthStencilAttachment(pDepthStencilAttachment).preserveAttachmentCount(preserveAttachmentCount).pPreserveAttachments(pPreserveAttachments);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachments `pColorAttachments`
+    /// @param pResolveAttachments `pResolveAttachments`
+    /// @param pDepthStencilAttachment `pDepthStencilAttachment`
+    /// @param preserveAttachmentCount `preserveAttachmentCount`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount, MemorySegment pColorAttachments, MemorySegment pResolveAttachments, MemorySegment pDepthStencilAttachment, int preserveAttachmentCount) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pResolveAttachments(pResolveAttachments).pDepthStencilAttachment(pDepthStencilAttachment).preserveAttachmentCount(preserveAttachmentCount);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachments `pColorAttachments`
+    /// @param pResolveAttachments `pResolveAttachments`
+    /// @param pDepthStencilAttachment `pDepthStencilAttachment`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount, MemorySegment pColorAttachments, MemorySegment pResolveAttachments, MemorySegment pDepthStencilAttachment) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pResolveAttachments(pResolveAttachments).pDepthStencilAttachment(pDepthStencilAttachment);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachments `pColorAttachments`
+    /// @param pResolveAttachments `pResolveAttachments`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount, MemorySegment pColorAttachments, MemorySegment pResolveAttachments) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pResolveAttachments(pResolveAttachments);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachments `pColorAttachments`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount, MemorySegment pColorAttachments) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments, int colorAttachmentCount) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @param pInputAttachments `pInputAttachments`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount, MemorySegment pInputAttachments) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @param inputAttachmentCount `inputAttachmentCount`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint, int inputAttachmentCount) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pipelineBindPoint `pipelineBindPoint`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags, int pipelineBindPoint) {
+        return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint);
+    }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, int flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

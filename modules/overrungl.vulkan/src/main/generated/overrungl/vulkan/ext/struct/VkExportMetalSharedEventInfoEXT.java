@@ -109,6 +109,56 @@ public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// @return the allocated `VkExportMetalSharedEventInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param event `event`
+    /// @param mtlSharedEvent `mtlSharedEvent`
+    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
+    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long event, MemorySegment mtlSharedEvent) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).event(event).mtlSharedEvent(mtlSharedEvent);
+    }
+
+    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param event `event`
+    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
+    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long event) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).event(event);
+    }
+
+    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
+    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
+    }
+
+    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
+    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExportMetalSharedEventInfoEXT`
+    public static VkExportMetalSharedEventInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

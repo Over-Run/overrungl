@@ -123,6 +123,83 @@ public sealed class StdVideoAV1LoopFilter extends GroupType {
     /// @return the allocated `StdVideoAV1LoopFilter`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @param loop_filter_sharpness `loop_filter_sharpness`
+    /// @param update_ref_delta `update_ref_delta`
+    /// @param loop_filter_ref_deltas `loop_filter_ref_deltas`
+    /// @param update_mode_delta `update_mode_delta`
+    /// @param loop_filter_mode_deltas `loop_filter_mode_deltas`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level, byte loop_filter_sharpness, byte update_ref_delta, MemorySegment loop_filter_ref_deltas, byte update_mode_delta, MemorySegment loop_filter_mode_deltas) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta).loop_filter_ref_deltas(loop_filter_ref_deltas).update_mode_delta(update_mode_delta).loop_filter_mode_deltas(loop_filter_mode_deltas);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @param loop_filter_sharpness `loop_filter_sharpness`
+    /// @param update_ref_delta `update_ref_delta`
+    /// @param loop_filter_ref_deltas `loop_filter_ref_deltas`
+    /// @param update_mode_delta `update_mode_delta`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level, byte loop_filter_sharpness, byte update_ref_delta, MemorySegment loop_filter_ref_deltas, byte update_mode_delta) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta).loop_filter_ref_deltas(loop_filter_ref_deltas).update_mode_delta(update_mode_delta);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @param loop_filter_sharpness `loop_filter_sharpness`
+    /// @param update_ref_delta `update_ref_delta`
+    /// @param loop_filter_ref_deltas `loop_filter_ref_deltas`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level, byte loop_filter_sharpness, byte update_ref_delta, MemorySegment loop_filter_ref_deltas) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta).loop_filter_ref_deltas(loop_filter_ref_deltas);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @param loop_filter_sharpness `loop_filter_sharpness`
+    /// @param update_ref_delta `update_ref_delta`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level, byte loop_filter_sharpness, byte update_ref_delta) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness).update_ref_delta(update_ref_delta);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @param loop_filter_sharpness `loop_filter_sharpness`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level, byte loop_filter_sharpness) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level).loop_filter_sharpness(loop_filter_sharpness);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param loop_filter_level `loop_filter_level`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment loop_filter_level) {
+        return alloc(allocator).flags(flags).loop_filter_level(loop_filter_level);
+    }
+
+    /// Allocates a `StdVideoAV1LoopFilter` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoAV1LoopFilter`
+    public static StdVideoAV1LoopFilter allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

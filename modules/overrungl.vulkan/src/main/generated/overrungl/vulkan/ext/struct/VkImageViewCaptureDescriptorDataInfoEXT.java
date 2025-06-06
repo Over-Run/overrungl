@@ -93,6 +93,33 @@ public sealed class VkImageViewCaptureDescriptorDataInfoEXT extends GroupType {
     /// @return the allocated `VkImageViewCaptureDescriptorDataInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageViewCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param imageView `imageView`
+    /// @return the allocated `VkImageViewCaptureDescriptorDataInfoEXT`
+    public static VkImageViewCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView) {
+        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView);
+    }
+
+    /// Allocates a `VkImageViewCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageViewCaptureDescriptorDataInfoEXT`
+    public static VkImageViewCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageViewCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageViewCaptureDescriptorDataInfoEXT`
+    public static VkImageViewCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

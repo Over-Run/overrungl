@@ -93,6 +93,33 @@ public sealed class VkDescriptorSetLayoutSupport extends GroupType {
     /// @return the allocated `VkDescriptorSetLayoutSupport`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorSetLayoutSupport` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supported `supported`
+    /// @return the allocated `VkDescriptorSetLayoutSupport`
+    public static VkDescriptorSetLayoutSupport allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supported) {
+        return alloc(allocator).sType(sType).pNext(pNext).supported(supported);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutSupport` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorSetLayoutSupport`
+    public static VkDescriptorSetLayoutSupport allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutSupport` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorSetLayoutSupport`
+    public static VkDescriptorSetLayoutSupport allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

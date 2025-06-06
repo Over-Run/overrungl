@@ -93,6 +93,33 @@ public sealed class VkSwapchainDisplayNativeHdrCreateInfoAMD extends GroupType {
     /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param localDimmingEnable `localDimmingEnable`
+    /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+    public static VkSwapchainDisplayNativeHdrCreateInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int localDimmingEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).localDimmingEnable(localDimmingEnable);
+    }
+
+    /// Allocates a `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+    public static VkSwapchainDisplayNativeHdrCreateInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+    public static VkSwapchainDisplayNativeHdrCreateInfoAMD allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

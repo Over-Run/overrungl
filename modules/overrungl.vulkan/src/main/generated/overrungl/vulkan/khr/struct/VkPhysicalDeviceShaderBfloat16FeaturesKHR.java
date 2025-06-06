@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceShaderBfloat16FeaturesKHR extends GroupType 
     /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBFloat16Type `shaderBFloat16Type`
+    /// @param shaderBFloat16DotProduct `shaderBFloat16DotProduct`
+    /// @param shaderBFloat16CooperativeMatrix `shaderBFloat16CooperativeMatrix`
+    /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
+    public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBFloat16Type, int shaderBFloat16DotProduct, int shaderBFloat16CooperativeMatrix) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBFloat16Type(shaderBFloat16Type).shaderBFloat16DotProduct(shaderBFloat16DotProduct).shaderBFloat16CooperativeMatrix(shaderBFloat16CooperativeMatrix);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBFloat16Type `shaderBFloat16Type`
+    /// @param shaderBFloat16DotProduct `shaderBFloat16DotProduct`
+    /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
+    public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBFloat16Type, int shaderBFloat16DotProduct) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBFloat16Type(shaderBFloat16Type).shaderBFloat16DotProduct(shaderBFloat16DotProduct);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderBFloat16Type `shaderBFloat16Type`
+    /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
+    public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderBFloat16Type) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderBFloat16Type(shaderBFloat16Type);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
+    public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderBfloat16FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderBfloat16FeaturesKHR`
+    public static VkPhysicalDeviceShaderBfloat16FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

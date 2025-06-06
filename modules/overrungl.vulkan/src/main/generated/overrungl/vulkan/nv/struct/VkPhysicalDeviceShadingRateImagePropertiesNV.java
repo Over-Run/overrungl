@@ -107,6 +107,56 @@ public sealed class VkPhysicalDeviceShadingRateImagePropertiesNV extends GroupTy
     /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateTexelSize `shadingRateTexelSize`
+    /// @param shadingRatePaletteSize `shadingRatePaletteSize`
+    /// @param shadingRateMaxCoarseSamples `shadingRateMaxCoarseSamples`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
+    public static VkPhysicalDeviceShadingRateImagePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment shadingRateTexelSize, int shadingRatePaletteSize, int shadingRateMaxCoarseSamples) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateTexelSize(shadingRateTexelSize).shadingRatePaletteSize(shadingRatePaletteSize).shadingRateMaxCoarseSamples(shadingRateMaxCoarseSamples);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateTexelSize `shadingRateTexelSize`
+    /// @param shadingRatePaletteSize `shadingRatePaletteSize`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
+    public static VkPhysicalDeviceShadingRateImagePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment shadingRateTexelSize, int shadingRatePaletteSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateTexelSize(shadingRateTexelSize).shadingRatePaletteSize(shadingRatePaletteSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateTexelSize `shadingRateTexelSize`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
+    public static VkPhysicalDeviceShadingRateImagePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment shadingRateTexelSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateTexelSize(shadingRateTexelSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
+    public static VkPhysicalDeviceShadingRateImagePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImagePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImagePropertiesNV`
+    public static VkPhysicalDeviceShadingRateImagePropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

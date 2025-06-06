@@ -99,6 +99,44 @@ public sealed class VkVideoEncodeQuantizationMapInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeQuantizationMapInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param quantizationMap `quantizationMap`
+    /// @param quantizationMapExtent `quantizationMapExtent`
+    /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
+    public static VkVideoEncodeQuantizationMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long quantizationMap, MemorySegment quantizationMapExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).quantizationMap(quantizationMap).quantizationMapExtent(quantizationMapExtent);
+    }
+
+    /// Allocates a `VkVideoEncodeQuantizationMapInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param quantizationMap `quantizationMap`
+    /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
+    public static VkVideoEncodeQuantizationMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long quantizationMap) {
+        return alloc(allocator).sType(sType).pNext(pNext).quantizationMap(quantizationMap);
+    }
+
+    /// Allocates a `VkVideoEncodeQuantizationMapInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
+    public static VkVideoEncodeQuantizationMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeQuantizationMapInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
+    public static VkVideoEncodeQuantizationMapInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

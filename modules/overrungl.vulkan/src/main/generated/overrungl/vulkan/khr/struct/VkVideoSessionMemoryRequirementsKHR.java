@@ -99,6 +99,44 @@ public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryBindIndex `memoryBindIndex`
+    /// @param memoryRequirements `memoryRequirements`
+    /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
+    public static VkVideoSessionMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex, MemorySegment memoryRequirements) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memoryRequirements(memoryRequirements);
+    }
+
+    /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryBindIndex `memoryBindIndex`
+    /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
+    public static VkVideoSessionMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex);
+    }
+
+    /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
+    public static VkVideoSessionMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
+    public static VkVideoSessionMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkAttachmentDescriptionStencilLayout extends GroupType {
     /// @return the allocated `VkAttachmentDescriptionStencilLayout`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAttachmentDescriptionStencilLayout` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stencilInitialLayout `stencilInitialLayout`
+    /// @param stencilFinalLayout `stencilFinalLayout`
+    /// @return the allocated `VkAttachmentDescriptionStencilLayout`
+    public static VkAttachmentDescriptionStencilLayout allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stencilInitialLayout, int stencilFinalLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).stencilInitialLayout(stencilInitialLayout).stencilFinalLayout(stencilFinalLayout);
+    }
+
+    /// Allocates a `VkAttachmentDescriptionStencilLayout` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stencilInitialLayout `stencilInitialLayout`
+    /// @return the allocated `VkAttachmentDescriptionStencilLayout`
+    public static VkAttachmentDescriptionStencilLayout allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stencilInitialLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).stencilInitialLayout(stencilInitialLayout);
+    }
+
+    /// Allocates a `VkAttachmentDescriptionStencilLayout` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAttachmentDescriptionStencilLayout`
+    public static VkAttachmentDescriptionStencilLayout allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAttachmentDescriptionStencilLayout` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAttachmentDescriptionStencilLayout`
+    public static VkAttachmentDescriptionStencilLayout allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

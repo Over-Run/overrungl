@@ -99,6 +99,44 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param FrameNum `FrameNum`
+    /// @param reserved `reserved`
+    /// @param PicOrderCnt `PicOrderCnt`
+    /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
+    public static StdVideoDecodeH264ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short FrameNum, short reserved, MemorySegment PicOrderCnt) {
+        return alloc(allocator).flags(flags).FrameNum(FrameNum).reserved(reserved).PicOrderCnt(PicOrderCnt);
+    }
+
+    /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param FrameNum `FrameNum`
+    /// @param reserved `reserved`
+    /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
+    public static StdVideoDecodeH264ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short FrameNum, short reserved) {
+        return alloc(allocator).flags(flags).FrameNum(FrameNum).reserved(reserved);
+    }
+
+    /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param FrameNum `FrameNum`
+    /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
+    public static StdVideoDecodeH264ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short FrameNum) {
+        return alloc(allocator).flags(flags).FrameNum(FrameNum);
+    }
+
+    /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
+    public static StdVideoDecodeH264ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

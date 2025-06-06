@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceDynamicRenderingLocalReadFeatures extends Gr
     /// @return the allocated `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDynamicRenderingLocalReadFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @return the allocated `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
+    public static VkPhysicalDeviceDynamicRenderingLocalReadFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dynamicRenderingLocalRead) {
+        return alloc(allocator).sType(sType).pNext(pNext).dynamicRenderingLocalRead(dynamicRenderingLocalRead);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDynamicRenderingLocalReadFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
+    public static VkPhysicalDeviceDynamicRenderingLocalReadFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDynamicRenderingLocalReadFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
+    public static VkPhysicalDeviceDynamicRenderingLocalReadFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

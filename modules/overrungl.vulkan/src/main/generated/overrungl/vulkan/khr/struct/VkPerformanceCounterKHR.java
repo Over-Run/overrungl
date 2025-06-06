@@ -117,6 +117,69 @@ public sealed class VkPerformanceCounterKHR extends GroupType {
     /// @return the allocated `VkPerformanceCounterKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param unit `unit`
+    /// @param scope `scope`
+    /// @param storage `storage`
+    /// @param uuid `uuid`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unit, int scope, int storage, MemorySegment uuid) {
+        return alloc(allocator).sType(sType).pNext(pNext).unit(unit).scope(scope).storage(storage).uuid(uuid);
+    }
+
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param unit `unit`
+    /// @param scope `scope`
+    /// @param storage `storage`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unit, int scope, int storage) {
+        return alloc(allocator).sType(sType).pNext(pNext).unit(unit).scope(scope).storage(storage);
+    }
+
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param unit `unit`
+    /// @param scope `scope`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unit, int scope) {
+        return alloc(allocator).sType(sType).pNext(pNext).unit(unit).scope(scope);
+    }
+
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param unit `unit`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unit) {
+        return alloc(allocator).sType(sType).pNext(pNext).unit(unit);
+    }
+
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPerformanceCounterKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPerformanceCounterKHR`
+    public static VkPerformanceCounterKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -139,6 +139,114 @@ public sealed class STBRPContext extends GroupType {
     /// @return the allocated `STBRPContext`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @param heuristic `heuristic`
+    /// @param num_nodes `num_nodes`
+    /// @param active_head `active_head`
+    /// @param free_head `free_head`
+    /// @param extra `extra`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode, int heuristic, int num_nodes, MemorySegment active_head, MemorySegment free_head, MemorySegment extra) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode).heuristic(heuristic).num_nodes(num_nodes).active_head(active_head).free_head(free_head).extra(extra);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @param heuristic `heuristic`
+    /// @param num_nodes `num_nodes`
+    /// @param active_head `active_head`
+    /// @param free_head `free_head`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode, int heuristic, int num_nodes, MemorySegment active_head, MemorySegment free_head) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode).heuristic(heuristic).num_nodes(num_nodes).active_head(active_head).free_head(free_head);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @param heuristic `heuristic`
+    /// @param num_nodes `num_nodes`
+    /// @param active_head `active_head`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode, int heuristic, int num_nodes, MemorySegment active_head) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode).heuristic(heuristic).num_nodes(num_nodes).active_head(active_head);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @param heuristic `heuristic`
+    /// @param num_nodes `num_nodes`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode, int heuristic, int num_nodes) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode).heuristic(heuristic).num_nodes(num_nodes);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @param heuristic `heuristic`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode, int heuristic) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode).heuristic(heuristic);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @param init_mode `init_mode`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align, int init_mode) {
+        return alloc(allocator).width(width).height(height).align(align).init_mode(init_mode);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param align `align`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height, int align) {
+        return alloc(allocator).width(width).height(height).align(align);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width, int height) {
+        return alloc(allocator).width(width).height(height);
+    }
+
+    /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @return the allocated `STBRPContext`
+    public static STBRPContext allocInit(SegmentAllocator allocator, int width) {
+        return alloc(allocator).width(width);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

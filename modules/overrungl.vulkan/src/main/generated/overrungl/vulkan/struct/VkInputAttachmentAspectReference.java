@@ -93,6 +93,33 @@ public sealed class VkInputAttachmentAspectReference extends GroupType {
     /// @return the allocated `VkInputAttachmentAspectReference`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkInputAttachmentAspectReference` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpass `subpass`
+    /// @param inputAttachmentIndex `inputAttachmentIndex`
+    /// @param aspectMask `aspectMask`
+    /// @return the allocated `VkInputAttachmentAspectReference`
+    public static VkInputAttachmentAspectReference allocInit(SegmentAllocator allocator, int subpass, int inputAttachmentIndex, int aspectMask) {
+        return alloc(allocator).subpass(subpass).inputAttachmentIndex(inputAttachmentIndex).aspectMask(aspectMask);
+    }
+
+    /// Allocates a `VkInputAttachmentAspectReference` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpass `subpass`
+    /// @param inputAttachmentIndex `inputAttachmentIndex`
+    /// @return the allocated `VkInputAttachmentAspectReference`
+    public static VkInputAttachmentAspectReference allocInit(SegmentAllocator allocator, int subpass, int inputAttachmentIndex) {
+        return alloc(allocator).subpass(subpass).inputAttachmentIndex(inputAttachmentIndex);
+    }
+
+    /// Allocates a `VkInputAttachmentAspectReference` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpass `subpass`
+    /// @return the allocated `VkInputAttachmentAspectReference`
+    public static VkInputAttachmentAspectReference allocInit(SegmentAllocator allocator, int subpass) {
+        return alloc(allocator).subpass(subpass);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

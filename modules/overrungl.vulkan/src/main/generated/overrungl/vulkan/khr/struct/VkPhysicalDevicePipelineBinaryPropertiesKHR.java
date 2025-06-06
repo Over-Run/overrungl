@@ -125,6 +125,83 @@ public sealed class VkPhysicalDevicePipelineBinaryPropertiesKHR extends GroupTyp
     /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipelineBinaryInternalCache `pipelineBinaryInternalCache`
+    /// @param pipelineBinaryInternalCacheControl `pipelineBinaryInternalCacheControl`
+    /// @param pipelineBinaryPrefersInternalCache `pipelineBinaryPrefersInternalCache`
+    /// @param pipelineBinaryPrecompiledInternalCache `pipelineBinaryPrecompiledInternalCache`
+    /// @param pipelineBinaryCompressedData `pipelineBinaryCompressedData`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaryInternalCache, int pipelineBinaryInternalCacheControl, int pipelineBinaryPrefersInternalCache, int pipelineBinaryPrecompiledInternalCache, int pipelineBinaryCompressedData) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache).pipelineBinaryInternalCacheControl(pipelineBinaryInternalCacheControl).pipelineBinaryPrefersInternalCache(pipelineBinaryPrefersInternalCache).pipelineBinaryPrecompiledInternalCache(pipelineBinaryPrecompiledInternalCache).pipelineBinaryCompressedData(pipelineBinaryCompressedData);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipelineBinaryInternalCache `pipelineBinaryInternalCache`
+    /// @param pipelineBinaryInternalCacheControl `pipelineBinaryInternalCacheControl`
+    /// @param pipelineBinaryPrefersInternalCache `pipelineBinaryPrefersInternalCache`
+    /// @param pipelineBinaryPrecompiledInternalCache `pipelineBinaryPrecompiledInternalCache`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaryInternalCache, int pipelineBinaryInternalCacheControl, int pipelineBinaryPrefersInternalCache, int pipelineBinaryPrecompiledInternalCache) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache).pipelineBinaryInternalCacheControl(pipelineBinaryInternalCacheControl).pipelineBinaryPrefersInternalCache(pipelineBinaryPrefersInternalCache).pipelineBinaryPrecompiledInternalCache(pipelineBinaryPrecompiledInternalCache);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipelineBinaryInternalCache `pipelineBinaryInternalCache`
+    /// @param pipelineBinaryInternalCacheControl `pipelineBinaryInternalCacheControl`
+    /// @param pipelineBinaryPrefersInternalCache `pipelineBinaryPrefersInternalCache`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaryInternalCache, int pipelineBinaryInternalCacheControl, int pipelineBinaryPrefersInternalCache) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache).pipelineBinaryInternalCacheControl(pipelineBinaryInternalCacheControl).pipelineBinaryPrefersInternalCache(pipelineBinaryPrefersInternalCache);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipelineBinaryInternalCache `pipelineBinaryInternalCache`
+    /// @param pipelineBinaryInternalCacheControl `pipelineBinaryInternalCacheControl`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaryInternalCache, int pipelineBinaryInternalCacheControl) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache).pipelineBinaryInternalCacheControl(pipelineBinaryInternalCacheControl);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipelineBinaryInternalCache `pipelineBinaryInternalCache`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaryInternalCache) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

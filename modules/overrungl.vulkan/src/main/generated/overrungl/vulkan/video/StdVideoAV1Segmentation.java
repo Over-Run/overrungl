@@ -85,6 +85,23 @@ public sealed class StdVideoAV1Segmentation extends GroupType {
     /// @return the allocated `StdVideoAV1Segmentation`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoAV1Segmentation` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param FeatureEnabled `FeatureEnabled`
+    /// @param FeatureData `FeatureData`
+    /// @return the allocated `StdVideoAV1Segmentation`
+    public static StdVideoAV1Segmentation allocInit(SegmentAllocator allocator, MemorySegment FeatureEnabled, MemorySegment FeatureData) {
+        return alloc(allocator).FeatureEnabled(FeatureEnabled).FeatureData(FeatureData);
+    }
+
+    /// Allocates a `StdVideoAV1Segmentation` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param FeatureEnabled `FeatureEnabled`
+    /// @return the allocated `StdVideoAV1Segmentation`
+    public static StdVideoAV1Segmentation allocInit(SegmentAllocator allocator, MemorySegment FeatureEnabled) {
+        return alloc(allocator).FeatureEnabled(FeatureEnabled);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

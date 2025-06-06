@@ -125,6 +125,83 @@ public sealed class VmaAllocationInfo extends GroupType {
     /// @return the allocated `VmaAllocationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param pMappedData `pMappedData`
+    /// @param pUserData `pUserData`
+    /// @param pName `pName`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory, long offset, long size, MemorySegment pMappedData, MemorySegment pUserData, MemorySegment pName) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory).offset(offset).size(size).pMappedData(pMappedData).pUserData(pUserData).pName(pName);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param pMappedData `pMappedData`
+    /// @param pUserData `pUserData`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory, long offset, long size, MemorySegment pMappedData, MemorySegment pUserData) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory).offset(offset).size(size).pMappedData(pMappedData).pUserData(pUserData);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param pMappedData `pMappedData`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory, long offset, long size, MemorySegment pMappedData) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory).offset(offset).size(size).pMappedData(pMappedData);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory, long offset, long size) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory).offset(offset).size(size);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @param offset `offset`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory, long offset) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory).offset(offset);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param deviceMemory `deviceMemory`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType, long deviceMemory) {
+        return alloc(allocator).memoryType(memoryType).deviceMemory(deviceMemory);
+    }
+
+    /// Allocates a `VmaAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @return the allocated `VmaAllocationInfo`
+    public static VmaAllocationInfo allocInit(SegmentAllocator allocator, int memoryType) {
+        return alloc(allocator).memoryType(memoryType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

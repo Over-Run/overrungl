@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceFrameBoundaryFeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFrameBoundaryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param frameBoundary `frameBoundary`
+    /// @return the allocated `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
+    public static VkPhysicalDeviceFrameBoundaryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int frameBoundary) {
+        return alloc(allocator).sType(sType).pNext(pNext).frameBoundary(frameBoundary);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFrameBoundaryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
+    public static VkPhysicalDeviceFrameBoundaryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFrameBoundaryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
+    public static VkPhysicalDeviceFrameBoundaryFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

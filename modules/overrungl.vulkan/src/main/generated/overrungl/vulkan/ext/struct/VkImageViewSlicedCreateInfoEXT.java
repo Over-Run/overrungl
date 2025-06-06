@@ -101,6 +101,44 @@ public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sliceOffset `sliceOffset`
+    /// @param sliceCount `sliceCount`
+    /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
+    public static VkImageViewSlicedCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sliceOffset, int sliceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).sliceOffset(sliceOffset).sliceCount(sliceCount);
+    }
+
+    /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sliceOffset `sliceOffset`
+    /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
+    public static VkImageViewSlicedCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sliceOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).sliceOffset(sliceOffset);
+    }
+
+    /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
+    public static VkImageViewSlicedCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
+    public static VkImageViewSlicedCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

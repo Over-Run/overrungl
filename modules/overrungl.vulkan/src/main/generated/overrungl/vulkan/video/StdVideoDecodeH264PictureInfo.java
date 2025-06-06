@@ -131,6 +131,98 @@ public sealed class StdVideoDecodeH264PictureInfo extends GroupType {
     /// @return the allocated `StdVideoDecodeH264PictureInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param frame_num `frame_num`
+    /// @param idr_pic_id `idr_pic_id`
+    /// @param PicOrderCnt `PicOrderCnt`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id, byte reserved1, byte reserved2, short frame_num, short idr_pic_id, MemorySegment PicOrderCnt) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).reserved1(reserved1).reserved2(reserved2).frame_num(frame_num).idr_pic_id(idr_pic_id).PicOrderCnt(PicOrderCnt);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param frame_num `frame_num`
+    /// @param idr_pic_id `idr_pic_id`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id, byte reserved1, byte reserved2, short frame_num, short idr_pic_id) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).reserved1(reserved1).reserved2(reserved2).frame_num(frame_num).idr_pic_id(idr_pic_id);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param frame_num `frame_num`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id, byte reserved1, byte reserved2, short frame_num) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).reserved1(reserved1).reserved2(reserved2).frame_num(frame_num);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id, byte reserved1, byte reserved2) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).reserved1(reserved1).reserved2(reserved2);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id, byte reserved1) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param pic_parameter_set_id `pic_parameter_set_id`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id, byte pic_parameter_set_id) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte seq_parameter_set_id) {
+        return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoDecodeH264PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoDecodeH264PictureInfo`
+    public static StdVideoDecodeH264PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

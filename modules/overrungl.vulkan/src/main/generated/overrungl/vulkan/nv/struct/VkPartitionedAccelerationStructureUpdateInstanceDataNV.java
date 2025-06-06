@@ -93,6 +93,33 @@ public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV exten
     /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param instanceIndex `instanceIndex`
+    /// @param instanceContributionToHitGroupIndex `instanceContributionToHitGroupIndex`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV allocInit(SegmentAllocator allocator, int instanceIndex, int instanceContributionToHitGroupIndex, long accelerationStructure) {
+        return alloc(allocator).instanceIndex(instanceIndex).instanceContributionToHitGroupIndex(instanceContributionToHitGroupIndex).accelerationStructure(accelerationStructure);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param instanceIndex `instanceIndex`
+    /// @param instanceContributionToHitGroupIndex `instanceContributionToHitGroupIndex`
+    /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV allocInit(SegmentAllocator allocator, int instanceIndex, int instanceContributionToHitGroupIndex) {
+        return alloc(allocator).instanceIndex(instanceIndex).instanceContributionToHitGroupIndex(instanceContributionToHitGroupIndex);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param instanceIndex `instanceIndex`
+    /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV allocInit(SegmentAllocator allocator, int instanceIndex) {
+        return alloc(allocator).instanceIndex(instanceIndex);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

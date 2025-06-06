@@ -109,6 +109,56 @@ public sealed class VkImageDrmFormatModifierExplicitCreateInfoEXT extends GroupT
     /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @param drmFormatModifierPlaneCount `drmFormatModifierPlaneCount`
+    /// @param pPlaneLayouts `pPlaneLayouts`
+    /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
+    public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier, int drmFormatModifierPlaneCount, MemorySegment pPlaneLayouts) {
+        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).drmFormatModifierPlaneCount(drmFormatModifierPlaneCount).pPlaneLayouts(pPlaneLayouts);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @param drmFormatModifierPlaneCount `drmFormatModifierPlaneCount`
+    /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
+    public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier, int drmFormatModifierPlaneCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).drmFormatModifierPlaneCount(drmFormatModifierPlaneCount);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
+    public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier) {
+        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
+    public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierExplicitCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageDrmFormatModifierExplicitCreateInfoEXT`
+    public static VkImageDrmFormatModifierExplicitCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

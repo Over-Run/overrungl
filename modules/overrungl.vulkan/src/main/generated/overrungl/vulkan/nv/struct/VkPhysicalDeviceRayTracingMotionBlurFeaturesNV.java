@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Group
     /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingMotionBlur `rayTracingMotionBlur`
+    /// @param rayTracingMotionBlurPipelineTraceRaysIndirect `rayTracingMotionBlurPipelineTraceRaysIndirect`
+    /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingMotionBlur, int rayTracingMotionBlurPipelineTraceRaysIndirect) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingMotionBlur(rayTracingMotionBlur).rayTracingMotionBlurPipelineTraceRaysIndirect(rayTracingMotionBlurPipelineTraceRaysIndirect);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingMotionBlur `rayTracingMotionBlur`
+    /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingMotionBlur) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingMotionBlur(rayTracingMotionBlur);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

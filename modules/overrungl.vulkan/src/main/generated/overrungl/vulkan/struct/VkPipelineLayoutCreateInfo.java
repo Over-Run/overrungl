@@ -125,6 +125,83 @@ public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineLayoutCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @param pPushConstantRanges `pPushConstantRanges`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int setLayoutCount, MemorySegment pSetLayouts, int pushConstantRangeCount, MemorySegment pPushConstantRanges) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int setLayoutCount, MemorySegment pSetLayouts, int pushConstantRangeCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int setLayoutCount, MemorySegment pSetLayouts) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int setLayoutCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).setLayoutCount(setLayoutCount);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineLayoutCreateInfo`
+    public static VkPipelineLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

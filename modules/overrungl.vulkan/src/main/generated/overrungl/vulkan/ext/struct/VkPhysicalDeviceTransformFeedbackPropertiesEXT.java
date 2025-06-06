@@ -165,6 +165,168 @@ public sealed class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Group
     /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @param maxTransformFeedbackBufferDataStride `maxTransformFeedbackBufferDataStride`
+    /// @param transformFeedbackQueries `transformFeedbackQueries`
+    /// @param transformFeedbackStreamsLinesTriangles `transformFeedbackStreamsLinesTriangles`
+    /// @param transformFeedbackRasterizationStreamSelect `transformFeedbackRasterizationStreamSelect`
+    /// @param transformFeedbackDraw `transformFeedbackDraw`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize, int maxTransformFeedbackBufferDataStride, int transformFeedbackQueries, int transformFeedbackStreamsLinesTriangles, int transformFeedbackRasterizationStreamSelect, int transformFeedbackDraw) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride).transformFeedbackQueries(transformFeedbackQueries).transformFeedbackStreamsLinesTriangles(transformFeedbackStreamsLinesTriangles).transformFeedbackRasterizationStreamSelect(transformFeedbackRasterizationStreamSelect).transformFeedbackDraw(transformFeedbackDraw);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @param maxTransformFeedbackBufferDataStride `maxTransformFeedbackBufferDataStride`
+    /// @param transformFeedbackQueries `transformFeedbackQueries`
+    /// @param transformFeedbackStreamsLinesTriangles `transformFeedbackStreamsLinesTriangles`
+    /// @param transformFeedbackRasterizationStreamSelect `transformFeedbackRasterizationStreamSelect`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize, int maxTransformFeedbackBufferDataStride, int transformFeedbackQueries, int transformFeedbackStreamsLinesTriangles, int transformFeedbackRasterizationStreamSelect) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride).transformFeedbackQueries(transformFeedbackQueries).transformFeedbackStreamsLinesTriangles(transformFeedbackStreamsLinesTriangles).transformFeedbackRasterizationStreamSelect(transformFeedbackRasterizationStreamSelect);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @param maxTransformFeedbackBufferDataStride `maxTransformFeedbackBufferDataStride`
+    /// @param transformFeedbackQueries `transformFeedbackQueries`
+    /// @param transformFeedbackStreamsLinesTriangles `transformFeedbackStreamsLinesTriangles`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize, int maxTransformFeedbackBufferDataStride, int transformFeedbackQueries, int transformFeedbackStreamsLinesTriangles) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride).transformFeedbackQueries(transformFeedbackQueries).transformFeedbackStreamsLinesTriangles(transformFeedbackStreamsLinesTriangles);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @param maxTransformFeedbackBufferDataStride `maxTransformFeedbackBufferDataStride`
+    /// @param transformFeedbackQueries `transformFeedbackQueries`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize, int maxTransformFeedbackBufferDataStride, int transformFeedbackQueries) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride).transformFeedbackQueries(transformFeedbackQueries);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @param maxTransformFeedbackBufferDataStride `maxTransformFeedbackBufferDataStride`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize, int maxTransformFeedbackBufferDataStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @param maxTransformFeedbackBufferDataSize `maxTransformFeedbackBufferDataSize`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize, int maxTransformFeedbackBufferDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @param maxTransformFeedbackStreamDataSize `maxTransformFeedbackStreamDataSize`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize, int maxTransformFeedbackStreamDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @param maxTransformFeedbackBufferSize `maxTransformFeedbackBufferSize`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers, long maxTransformFeedbackBufferSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @param maxTransformFeedbackBuffers `maxTransformFeedbackBuffers`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams, int maxTransformFeedbackBuffers) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxTransformFeedbackStreams `maxTransformFeedbackStreams`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxTransformFeedbackStreams) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkRenderingAttachmentLocationInfo extends GroupType {
     /// @return the allocated `VkRenderingAttachmentLocationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachmentLocations `pColorAttachmentLocations`
+    /// @return the allocated `VkRenderingAttachmentLocationInfo`
+    public static VkRenderingAttachmentLocationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentLocations) {
+        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentLocations(pColorAttachmentLocations);
+    }
+
+    /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @return the allocated `VkRenderingAttachmentLocationInfo`
+    public static VkRenderingAttachmentLocationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount);
+    }
+
+    /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderingAttachmentLocationInfo`
+    public static VkRenderingAttachmentLocationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderingAttachmentLocationInfo`
+    public static VkRenderingAttachmentLocationInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

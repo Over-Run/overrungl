@@ -93,6 +93,33 @@ public sealed class VkBufferUsageFlags2CreateInfo extends GroupType {
     /// @return the allocated `VkBufferUsageFlags2CreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferUsageFlags2CreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param usage `usage`
+    /// @return the allocated `VkBufferUsageFlags2CreateInfo`
+    public static VkBufferUsageFlags2CreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).usage(usage);
+    }
+
+    /// Allocates a `VkBufferUsageFlags2CreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBufferUsageFlags2CreateInfo`
+    public static VkBufferUsageFlags2CreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBufferUsageFlags2CreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBufferUsageFlags2CreateInfo`
+    public static VkBufferUsageFlags2CreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

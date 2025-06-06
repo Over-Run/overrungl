@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceTileMemoryHeapFeaturesQCOM extends GroupType
     /// @return the allocated `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tileMemoryHeap `tileMemoryHeap`
+    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM`
+    public static VkPhysicalDeviceTileMemoryHeapFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tileMemoryHeap) {
+        return alloc(allocator).sType(sType).pNext(pNext).tileMemoryHeap(tileMemoryHeap);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM`
+    public static VkPhysicalDeviceTileMemoryHeapFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapFeaturesQCOM`
+    public static VkPhysicalDeviceTileMemoryHeapFeaturesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

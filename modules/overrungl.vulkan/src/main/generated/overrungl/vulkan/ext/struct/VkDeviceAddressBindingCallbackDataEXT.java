@@ -117,6 +117,69 @@ public sealed class VkDeviceAddressBindingCallbackDataEXT extends GroupType {
     /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param baseAddress `baseAddress`
+    /// @param size `size`
+    /// @param bindingType `bindingType`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long baseAddress, long size, int bindingType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).baseAddress(baseAddress).size(size).bindingType(bindingType);
+    }
+
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param baseAddress `baseAddress`
+    /// @param size `size`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long baseAddress, long size) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).baseAddress(baseAddress).size(size);
+    }
+
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param baseAddress `baseAddress`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long baseAddress) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).baseAddress(baseAddress);
+    }
+
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

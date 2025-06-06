@@ -133,6 +133,98 @@ public sealed class VkBufferCreateInfo extends GroupType {
     /// @return the allocated `VkBufferCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param size `size`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long size, int usage, int sharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param size `size`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long size, int usage, int sharingMode, int queueFamilyIndexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param size `size`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long size, int usage, int sharingMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size).usage(usage).sharingMode(sharingMode);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param size `size`
+    /// @param usage `usage`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long size, int usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size).usage(usage);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param size `size`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long size) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -85,6 +85,23 @@ public sealed class VkDescriptorPoolSize extends GroupType {
     /// @return the allocated `VkDescriptorPoolSize`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorPoolSize` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @param descriptorCount `descriptorCount`
+    /// @return the allocated `VkDescriptorPoolSize`
+    public static VkDescriptorPoolSize allocInit(SegmentAllocator allocator, int type, int descriptorCount) {
+        return alloc(allocator).type(type).descriptorCount(descriptorCount);
+    }
+
+    /// Allocates a `VkDescriptorPoolSize` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @return the allocated `VkDescriptorPoolSize`
+    public static VkDescriptorPoolSize allocInit(SegmentAllocator allocator, int type) {
+        return alloc(allocator).type(type);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPipelineViewportShadingRateImageStateCreateInfoNV extends 
     /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateImageEnable `shadingRateImageEnable`
+    /// @param viewportCount `viewportCount`
+    /// @param pShadingRatePalettes `pShadingRatePalettes`
+    /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
+    public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateImageEnable, int viewportCount, MemorySegment pShadingRatePalettes) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateImageEnable(shadingRateImageEnable).viewportCount(viewportCount).pShadingRatePalettes(pShadingRatePalettes);
+    }
+
+    /// Allocates a `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateImageEnable `shadingRateImageEnable`
+    /// @param viewportCount `viewportCount`
+    /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
+    public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateImageEnable, int viewportCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateImageEnable(shadingRateImageEnable).viewportCount(viewportCount);
+    }
+
+    /// Allocates a `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateImageEnable `shadingRateImageEnable`
+    /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
+    public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateImageEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateImageEnable(shadingRateImageEnable);
+    }
+
+    /// Allocates a `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
+    public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineViewportShadingRateImageStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineViewportShadingRateImageStateCreateInfoNV`
+    public static VkPipelineViewportShadingRateImageStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -133,6 +133,98 @@ public sealed class VkPhysicalDeviceLineRasterizationFeatures extends GroupType 
     /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines, int bresenhamLines, int smoothLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines, int bresenhamLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rectangularLines `rectangularLines`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rectangularLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).rectangularLines(rectangularLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationFeatures`
+    public static VkPhysicalDeviceLineRasterizationFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

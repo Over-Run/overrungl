@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV ext
     /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceGeneratedCompute `deviceGeneratedCompute`
+    /// @param deviceGeneratedComputePipelines `deviceGeneratedComputePipelines`
+    /// @param deviceGeneratedComputeCaptureReplay `deviceGeneratedComputeCaptureReplay`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceGeneratedCompute, int deviceGeneratedComputePipelines, int deviceGeneratedComputeCaptureReplay) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceGeneratedCompute(deviceGeneratedCompute).deviceGeneratedComputePipelines(deviceGeneratedComputePipelines).deviceGeneratedComputeCaptureReplay(deviceGeneratedComputeCaptureReplay);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceGeneratedCompute `deviceGeneratedCompute`
+    /// @param deviceGeneratedComputePipelines `deviceGeneratedComputePipelines`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceGeneratedCompute, int deviceGeneratedComputePipelines) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceGeneratedCompute(deviceGeneratedCompute).deviceGeneratedComputePipelines(deviceGeneratedComputePipelines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceGeneratedCompute `deviceGeneratedCompute`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceGeneratedCompute) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceGeneratedCompute(deviceGeneratedCompute);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

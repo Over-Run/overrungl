@@ -123,6 +123,83 @@ public sealed class VkComputePipelineCreateInfo extends GroupType {
     /// @return the allocated `VkComputePipelineCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param layout `layout`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @param basePipelineIndex `basePipelineIndex`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment stage, long layout, long basePipelineHandle, int basePipelineIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param layout `layout`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment stage, long layout, long basePipelineHandle) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).layout(layout).basePipelineHandle(basePipelineHandle);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param layout `layout`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment stage, long layout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).layout(layout);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment stage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkComputePipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkComputePipelineCreateInfo`
+    public static VkComputePipelineCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

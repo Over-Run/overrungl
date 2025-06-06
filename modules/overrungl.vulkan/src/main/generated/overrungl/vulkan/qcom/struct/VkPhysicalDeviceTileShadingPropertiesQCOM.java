@@ -113,6 +113,69 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxApronSize `maxApronSize`
+    /// @param preferNonCoherent `preferNonCoherent`
+    /// @param tileGranularity `tileGranularity`
+    /// @param maxTileShadingRate `maxTileShadingRate`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxApronSize, int preferNonCoherent, MemorySegment tileGranularity, MemorySegment maxTileShadingRate) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxApronSize(maxApronSize).preferNonCoherent(preferNonCoherent).tileGranularity(tileGranularity).maxTileShadingRate(maxTileShadingRate);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxApronSize `maxApronSize`
+    /// @param preferNonCoherent `preferNonCoherent`
+    /// @param tileGranularity `tileGranularity`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxApronSize, int preferNonCoherent, MemorySegment tileGranularity) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxApronSize(maxApronSize).preferNonCoherent(preferNonCoherent).tileGranularity(tileGranularity);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxApronSize `maxApronSize`
+    /// @param preferNonCoherent `preferNonCoherent`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxApronSize, int preferNonCoherent) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxApronSize(maxApronSize).preferNonCoherent(preferNonCoherent);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxApronSize `maxApronSize`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxApronSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxApronSize(maxApronSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

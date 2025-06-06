@@ -101,6 +101,44 @@ public sealed class VkImportMemorySciBufInfoNV extends GroupType {
     /// @return the allocated `VkImportMemorySciBufInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImportMemorySciBufInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleType `handleType`
+    /// @param handle `handle`
+    /// @return the allocated `VkImportMemorySciBufInfoNV`
+    public static VkImportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType, MemorySegment handle) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).handle(handle);
+    }
+
+    /// Allocates a `VkImportMemorySciBufInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkImportMemorySciBufInfoNV`
+    public static VkImportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType);
+    }
+
+    /// Allocates a `VkImportMemorySciBufInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImportMemorySciBufInfoNV`
+    public static VkImportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImportMemorySciBufInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImportMemorySciBufInfoNV`
+    public static VkImportMemorySciBufInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

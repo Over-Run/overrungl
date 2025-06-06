@@ -155,6 +155,149 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     /// @return the allocated `StdVideoEncodeH264WeightTable`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @param chroma_offset_l0 `chroma_offset_l0`
+    /// @param luma_weight_l1 `luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @param chroma_weight_l1 `chroma_weight_l1`
+    /// @param chroma_offset_l1 `chroma_offset_l1`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0, MemorySegment chroma_offset_l0, MemorySegment luma_weight_l1, MemorySegment luma_offset_l1, MemorySegment chroma_weight_l1, MemorySegment chroma_offset_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0).chroma_offset_l0(chroma_offset_l0).luma_weight_l1(luma_weight_l1).luma_offset_l1(luma_offset_l1).chroma_weight_l1(chroma_weight_l1).chroma_offset_l1(chroma_offset_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @param chroma_offset_l0 `chroma_offset_l0`
+    /// @param luma_weight_l1 `luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @param chroma_weight_l1 `chroma_weight_l1`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0, MemorySegment chroma_offset_l0, MemorySegment luma_weight_l1, MemorySegment luma_offset_l1, MemorySegment chroma_weight_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0).chroma_offset_l0(chroma_offset_l0).luma_weight_l1(luma_weight_l1).luma_offset_l1(luma_offset_l1).chroma_weight_l1(chroma_weight_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @param chroma_offset_l0 `chroma_offset_l0`
+    /// @param luma_weight_l1 `luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0, MemorySegment chroma_offset_l0, MemorySegment luma_weight_l1, MemorySegment luma_offset_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0).chroma_offset_l0(chroma_offset_l0).luma_weight_l1(luma_weight_l1).luma_offset_l1(luma_offset_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @param chroma_offset_l0 `chroma_offset_l0`
+    /// @param luma_weight_l1 `luma_weight_l1`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0, MemorySegment chroma_offset_l0, MemorySegment luma_weight_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0).chroma_offset_l0(chroma_offset_l0).luma_weight_l1(luma_weight_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @param chroma_offset_l0 `chroma_offset_l0`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0, MemorySegment chroma_offset_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0).chroma_offset_l0(chroma_offset_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param chroma_weight_l0 `chroma_weight_l0`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment chroma_weight_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0).chroma_weight_l0(chroma_weight_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0, MemorySegment luma_offset_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0).luma_offset_l0(luma_offset_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @param luma_weight_l0 `luma_weight_l0`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom, MemorySegment luma_weight_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom).luma_weight_l0(luma_weight_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param chroma_log2_weight_denom `chroma_log2_weight_denom`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte chroma_log2_weight_denom) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).chroma_log2_weight_denom(chroma_log2_weight_denom);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom);
+    }
+
+    /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeH264WeightTable`
+    public static StdVideoEncodeH264WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -141,6 +141,114 @@ public sealed class VkDeviceMemoryReportCallbackDataEXT extends GroupType {
     /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @param memoryObjectId `memoryObjectId`
+    /// @param size `size`
+    /// @param objectType `objectType`
+    /// @param objectHandle `objectHandle`
+    /// @param heapIndex `heapIndex`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type, long memoryObjectId, long size, int objectType, long objectHandle, int heapIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId).size(size).objectType(objectType).objectHandle(objectHandle).heapIndex(heapIndex);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @param memoryObjectId `memoryObjectId`
+    /// @param size `size`
+    /// @param objectType `objectType`
+    /// @param objectHandle `objectHandle`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type, long memoryObjectId, long size, int objectType, long objectHandle) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId).size(size).objectType(objectType).objectHandle(objectHandle);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @param memoryObjectId `memoryObjectId`
+    /// @param size `size`
+    /// @param objectType `objectType`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type, long memoryObjectId, long size, int objectType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId).size(size).objectType(objectType);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @param memoryObjectId `memoryObjectId`
+    /// @param size `size`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type, long memoryObjectId, long size) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId).size(size);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @param memoryObjectId `memoryObjectId`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type, long memoryObjectId) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param type `type`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int type) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

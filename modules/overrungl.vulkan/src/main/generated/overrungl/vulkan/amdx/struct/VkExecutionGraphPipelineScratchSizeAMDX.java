@@ -109,6 +109,56 @@ public sealed class VkExecutionGraphPipelineScratchSizeAMDX extends GroupType {
     /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSize `minSize`
+    /// @param maxSize `maxSize`
+    /// @param sizeGranularity `sizeGranularity`
+    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
+    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long minSize, long maxSize, long sizeGranularity) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSize(minSize).maxSize(maxSize).sizeGranularity(sizeGranularity);
+    }
+
+    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSize `minSize`
+    /// @param maxSize `maxSize`
+    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
+    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long minSize, long maxSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSize(minSize).maxSize(maxSize);
+    }
+
+    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSize `minSize`
+    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
+    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long minSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSize(minSize);
+    }
+
+    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
+    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExecutionGraphPipelineScratchSizeAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
+    public static VkExecutionGraphPipelineScratchSizeAMDX allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

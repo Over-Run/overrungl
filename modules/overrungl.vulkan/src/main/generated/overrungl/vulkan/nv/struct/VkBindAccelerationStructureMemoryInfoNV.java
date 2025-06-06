@@ -125,6 +125,83 @@ public sealed class VkBindAccelerationStructureMemoryInfoNV extends GroupType {
     /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param memory `memory`
+    /// @param memoryOffset `memoryOffset`
+    /// @param deviceIndexCount `deviceIndexCount`
+    /// @param pDeviceIndices `pDeviceIndices`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructure, long memory, long memoryOffset, int deviceIndexCount, MemorySegment pDeviceIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory).memoryOffset(memoryOffset).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param memory `memory`
+    /// @param memoryOffset `memoryOffset`
+    /// @param deviceIndexCount `deviceIndexCount`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructure, long memory, long memoryOffset, int deviceIndexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory).memoryOffset(memoryOffset).deviceIndexCount(deviceIndexCount);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param memory `memory`
+    /// @param memoryOffset `memoryOffset`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructure, long memory, long memoryOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory).memoryOffset(memoryOffset);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param memory `memory`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructure, long memory) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).memory(memory);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructure) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBindAccelerationStructureMemoryInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
+    public static VkBindAccelerationStructureMemoryInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

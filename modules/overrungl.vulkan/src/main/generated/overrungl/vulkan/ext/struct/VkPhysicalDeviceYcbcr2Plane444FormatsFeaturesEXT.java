@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT extends Gro
     /// @return the allocated `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param ycbcr2plane444Formats `ycbcr2plane444Formats`
+    /// @return the allocated `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
+    public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int ycbcr2plane444Formats) {
+        return alloc(allocator).sType(sType).pNext(pNext).ycbcr2plane444Formats(ycbcr2plane444Formats);
+    }
+
+    /// Allocates a `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
+    public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
+    public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

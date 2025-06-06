@@ -101,6 +101,44 @@ public sealed class VkPipelineShaderStageNodeCreateInfoAMDX extends GroupType {
     /// @return the allocated `VkPipelineShaderStageNodeCreateInfoAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineShaderStageNodeCreateInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pName `pName`
+    /// @param index `index`
+    /// @return the allocated `VkPipelineShaderStageNodeCreateInfoAMDX`
+    public static VkPipelineShaderStageNodeCreateInfoAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pName, int index) {
+        return alloc(allocator).sType(sType).pNext(pNext).pName(pName).index(index);
+    }
+
+    /// Allocates a `VkPipelineShaderStageNodeCreateInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pName `pName`
+    /// @return the allocated `VkPipelineShaderStageNodeCreateInfoAMDX`
+    public static VkPipelineShaderStageNodeCreateInfoAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pName) {
+        return alloc(allocator).sType(sType).pNext(pNext).pName(pName);
+    }
+
+    /// Allocates a `VkPipelineShaderStageNodeCreateInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineShaderStageNodeCreateInfoAMDX`
+    public static VkPipelineShaderStageNodeCreateInfoAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineShaderStageNodeCreateInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineShaderStageNodeCreateInfoAMDX`
+    public static VkPipelineShaderStageNodeCreateInfoAMDX allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

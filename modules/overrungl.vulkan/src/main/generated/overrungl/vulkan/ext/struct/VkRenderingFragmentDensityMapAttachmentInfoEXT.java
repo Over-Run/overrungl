@@ -101,6 +101,44 @@ public sealed class VkRenderingFragmentDensityMapAttachmentInfoEXT extends Group
     /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderingFragmentDensityMapAttachmentInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param imageView `imageView`
+    /// @param imageLayout `imageLayout`
+    /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public static VkRenderingFragmentDensityMapAttachmentInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView, int imageLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).imageLayout(imageLayout);
+    }
+
+    /// Allocates a `VkRenderingFragmentDensityMapAttachmentInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param imageView `imageView`
+    /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public static VkRenderingFragmentDensityMapAttachmentInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView) {
+        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView);
+    }
+
+    /// Allocates a `VkRenderingFragmentDensityMapAttachmentInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public static VkRenderingFragmentDensityMapAttachmentInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderingFragmentDensityMapAttachmentInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public static VkRenderingFragmentDensityMapAttachmentInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

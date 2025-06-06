@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV extends Gr
     /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceGeneratedCommands `deviceGeneratedCommands`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceGeneratedCommands) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceGeneratedCommands(deviceGeneratedCommands);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

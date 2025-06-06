@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT extends Gr
     /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderModuleIdentifier `shaderModuleIdentifier`
+    /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
+    public static VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderModuleIdentifier) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderModuleIdentifier(shaderModuleIdentifier);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
+    public static VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
+    public static VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

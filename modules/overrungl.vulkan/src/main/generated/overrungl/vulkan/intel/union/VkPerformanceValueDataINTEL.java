@@ -109,6 +109,46 @@ public sealed class VkPerformanceValueDataINTEL extends GroupType {
     /// @return the allocated `VkPerformanceValueDataINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and `value32`.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocWith_value32(SegmentAllocator allocator, int value32) {
+        return alloc(allocator).value32(value32);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and `value64`.
+    /// @param allocator the segment allocator
+    /// @param value64 `value64`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocWith_value64(SegmentAllocator allocator, long value64) {
+        return alloc(allocator).value64(value64);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and `valueFloat`.
+    /// @param allocator the segment allocator
+    /// @param valueFloat `valueFloat`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocWith_valueFloat(SegmentAllocator allocator, float valueFloat) {
+        return alloc(allocator).valueFloat(valueFloat);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and `valueBool`.
+    /// @param allocator the segment allocator
+    /// @param valueBool `valueBool`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocWith_valueBool(SegmentAllocator allocator, int valueBool) {
+        return alloc(allocator).valueBool(valueBool);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and `valueString`.
+    /// @param allocator the segment allocator
+    /// @param valueString `valueString`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocWith_valueString(SegmentAllocator allocator, MemorySegment valueString) {
+        return alloc(allocator).valueString(valueString);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

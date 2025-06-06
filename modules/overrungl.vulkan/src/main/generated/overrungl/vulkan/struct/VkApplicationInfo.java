@@ -125,6 +125,83 @@ public sealed class VkApplicationInfo extends GroupType {
     /// @return the allocated `VkApplicationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pApplicationName `pApplicationName`
+    /// @param applicationVersion `applicationVersion`
+    /// @param pEngineName `pEngineName`
+    /// @param engineVersion `engineVersion`
+    /// @param apiVersion `apiVersion`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pApplicationName, int applicationVersion, MemorySegment pEngineName, int engineVersion, int apiVersion) {
+        return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion).pEngineName(pEngineName).engineVersion(engineVersion).apiVersion(apiVersion);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pApplicationName `pApplicationName`
+    /// @param applicationVersion `applicationVersion`
+    /// @param pEngineName `pEngineName`
+    /// @param engineVersion `engineVersion`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pApplicationName, int applicationVersion, MemorySegment pEngineName, int engineVersion) {
+        return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion).pEngineName(pEngineName).engineVersion(engineVersion);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pApplicationName `pApplicationName`
+    /// @param applicationVersion `applicationVersion`
+    /// @param pEngineName `pEngineName`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pApplicationName, int applicationVersion, MemorySegment pEngineName) {
+        return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion).pEngineName(pEngineName);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pApplicationName `pApplicationName`
+    /// @param applicationVersion `applicationVersion`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pApplicationName, int applicationVersion) {
+        return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName).applicationVersion(applicationVersion);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pApplicationName `pApplicationName`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pApplicationName) {
+        return alloc(allocator).sType(sType).pNext(pNext).pApplicationName(pApplicationName);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkApplicationInfo`
+    public static VkApplicationInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

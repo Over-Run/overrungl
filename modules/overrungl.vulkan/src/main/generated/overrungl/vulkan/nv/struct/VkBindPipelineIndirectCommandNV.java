@@ -77,6 +77,14 @@ public sealed class VkBindPipelineIndirectCommandNV extends GroupType {
     /// @return the allocated `VkBindPipelineIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindPipelineIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pipelineAddress `pipelineAddress`
+    /// @return the allocated `VkBindPipelineIndirectCommandNV`
+    public static VkBindPipelineIndirectCommandNV allocInit(SegmentAllocator allocator, long pipelineAddress) {
+        return alloc(allocator).pipelineAddress(pipelineAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceSparseProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceSparseProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param residencyStandard2DBlockShape `residencyStandard2DBlockShape`
+    /// @param residencyStandard2DMultisampleBlockShape `residencyStandard2DMultisampleBlockShape`
+    /// @param residencyStandard3DBlockShape `residencyStandard3DBlockShape`
+    /// @param residencyAlignedMipSize `residencyAlignedMipSize`
+    /// @param residencyNonResidentStrict `residencyNonResidentStrict`
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, int residencyStandard2DBlockShape, int residencyStandard2DMultisampleBlockShape, int residencyStandard3DBlockShape, int residencyAlignedMipSize, int residencyNonResidentStrict) {
+        return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape).residencyStandard2DMultisampleBlockShape(residencyStandard2DMultisampleBlockShape).residencyStandard3DBlockShape(residencyStandard3DBlockShape).residencyAlignedMipSize(residencyAlignedMipSize).residencyNonResidentStrict(residencyNonResidentStrict);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param residencyStandard2DBlockShape `residencyStandard2DBlockShape`
+    /// @param residencyStandard2DMultisampleBlockShape `residencyStandard2DMultisampleBlockShape`
+    /// @param residencyStandard3DBlockShape `residencyStandard3DBlockShape`
+    /// @param residencyAlignedMipSize `residencyAlignedMipSize`
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, int residencyStandard2DBlockShape, int residencyStandard2DMultisampleBlockShape, int residencyStandard3DBlockShape, int residencyAlignedMipSize) {
+        return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape).residencyStandard2DMultisampleBlockShape(residencyStandard2DMultisampleBlockShape).residencyStandard3DBlockShape(residencyStandard3DBlockShape).residencyAlignedMipSize(residencyAlignedMipSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param residencyStandard2DBlockShape `residencyStandard2DBlockShape`
+    /// @param residencyStandard2DMultisampleBlockShape `residencyStandard2DMultisampleBlockShape`
+    /// @param residencyStandard3DBlockShape `residencyStandard3DBlockShape`
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, int residencyStandard2DBlockShape, int residencyStandard2DMultisampleBlockShape, int residencyStandard3DBlockShape) {
+        return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape).residencyStandard2DMultisampleBlockShape(residencyStandard2DMultisampleBlockShape).residencyStandard3DBlockShape(residencyStandard3DBlockShape);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param residencyStandard2DBlockShape `residencyStandard2DBlockShape`
+    /// @param residencyStandard2DMultisampleBlockShape `residencyStandard2DMultisampleBlockShape`
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, int residencyStandard2DBlockShape, int residencyStandard2DMultisampleBlockShape) {
+        return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape).residencyStandard2DMultisampleBlockShape(residencyStandard2DMultisampleBlockShape);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param residencyStandard2DBlockShape `residencyStandard2DBlockShape`
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, int residencyStandard2DBlockShape) {
+        return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

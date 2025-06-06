@@ -211,6 +211,303 @@ public sealed class VkSwapchainCreateInfoKHR extends GroupType {
     /// @return the allocated `VkSwapchainCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param preTransform `preTransform`
+    /// @param compositeAlpha `compositeAlpha`
+    /// @param presentMode `presentMode`
+    /// @param clipped `clipped`
+    /// @param oldSwapchain `oldSwapchain`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int preTransform, int compositeAlpha, int presentMode, int clipped, long oldSwapchain) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform).compositeAlpha(compositeAlpha).presentMode(presentMode).clipped(clipped).oldSwapchain(oldSwapchain);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param preTransform `preTransform`
+    /// @param compositeAlpha `compositeAlpha`
+    /// @param presentMode `presentMode`
+    /// @param clipped `clipped`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int preTransform, int compositeAlpha, int presentMode, int clipped) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform).compositeAlpha(compositeAlpha).presentMode(presentMode).clipped(clipped);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param preTransform `preTransform`
+    /// @param compositeAlpha `compositeAlpha`
+    /// @param presentMode `presentMode`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int preTransform, int compositeAlpha, int presentMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform).compositeAlpha(compositeAlpha).presentMode(presentMode);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param preTransform `preTransform`
+    /// @param compositeAlpha `compositeAlpha`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int preTransform, int compositeAlpha) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform).compositeAlpha(compositeAlpha);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param preTransform `preTransform`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int preTransform) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode, int queueFamilyIndexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @param imageSharingMode `imageSharingMode`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage, int imageSharingMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @param imageUsage `imageUsage`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers, int imageUsage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @param imageArrayLayers `imageArrayLayers`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent, int imageArrayLayers) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @param imageExtent `imageExtent`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace, MemorySegment imageExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @param imageColorSpace `imageColorSpace`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat, int imageColorSpace) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @param imageFormat `imageFormat`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount, int imageFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @param minImageCount `minImageCount`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface, int minImageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param surface `surface`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long surface) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

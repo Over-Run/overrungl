@@ -426,12 +426,12 @@ public class VulkanDemo {
                     .viewType(VK_IMAGE_VIEW_TYPE_2D)
                     .format(swapChainImageFormat)
                     .components(VkComponentMapping.alloc(stack).segment())
-                    .subresourceRange(VkImageSubresourceRange.alloc(stack)
-                        .aspectMask(VK_IMAGE_ASPECT_COLOR_BIT)
-                        .baseMipLevel(0)
-                        .levelCount(1)
-                        .baseArrayLayer(0)
-                        .layerCount(1)
+                    .subresourceRange(VkImageSubresourceRange.allocInit(stack,
+                            VK_IMAGE_ASPECT_COLOR_BIT,
+                            0,
+                            1,
+                            0,
+                            1)
                         .segment());
                 MemorySegment pView = stack.allocate(ValueLayout.JAVA_LONG);
                 vkCreateImageView(device, createInfo.segment(), MemorySegment.NULL, pView);
@@ -676,15 +676,15 @@ public class VulkanDemo {
                 .renderPass(renderPass)
                 .framebuffer(framebuffers.get(imageIndex))
                 .renderArea(VkRect2D.alloc(stack)
-                    .offset(VkOffset2D.alloc(stack).segment())
-                    .extent(VkExtent2D.alloc(stack).width(swapChainWidth).height(swapChainHeight).segment())
+                    .offset(VkOffset2D.allocInit(stack, 0, 0).segment())
+                    .extent(VkExtent2D.allocInit(stack, swapChainWidth, swapChainHeight).segment())
                     .segment())
                 .clearValueCount(1)
-                .pClearValues(VkClearValue.alloc(stack)
-                    .color(VkClearColorValue.alloc(stack)
-                        .float32(stack.floats(0.0f, 0.0f, 0.0f, 1.0f))
-                        .segment())
-                    .segment());
+                .pClearValues(VkClearValue.allocWith_color(stack,
+                        VkClearColorValue.allocWith_float32(stack,
+                            stack.floats(0.0f, 0.0f, 0.0f, 1.0f)
+                        ).segment()
+                    ).segment());
             vkCmdBeginRenderPass(commandBuffer, beginInfo.segment(), VK_SUBPASS_CONTENTS_INLINE);
         }
         vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
@@ -697,8 +697,8 @@ public class VulkanDemo {
                 .minDepth(0.0f)
                 .maxDepth(1.0f);
             var scissor = VkRect2D.alloc(stack)
-                .offset(VkOffset2D.alloc(stack).segment())
-                .extent(VkExtent2D.alloc(stack).width(swapChainWidth).height(swapChainHeight).segment());
+                .offset(VkOffset2D.allocInit(stack, 0, 0).segment())
+                .extent(VkExtent2D.allocInit(stack, swapChainWidth, swapChainHeight).segment());
             vkCmdSetViewport(commandBuffer, 0, 1, viewport.segment());
             vkCmdSetScissor(commandBuffer, 0, 1, scissor.segment());
         }

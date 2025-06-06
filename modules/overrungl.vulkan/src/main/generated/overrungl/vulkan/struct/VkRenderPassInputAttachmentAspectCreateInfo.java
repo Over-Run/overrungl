@@ -101,6 +101,44 @@ public sealed class VkRenderPassInputAttachmentAspectCreateInfo extends GroupTyp
     /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param aspectReferenceCount `aspectReferenceCount`
+    /// @param pAspectReferences `pAspectReferences`
+    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int aspectReferenceCount, MemorySegment pAspectReferences) {
+        return alloc(allocator).sType(sType).pNext(pNext).aspectReferenceCount(aspectReferenceCount).pAspectReferences(pAspectReferences);
+    }
+
+    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param aspectReferenceCount `aspectReferenceCount`
+    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int aspectReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).aspectReferenceCount(aspectReferenceCount);
+    }
+
+    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassInputAttachmentAspectCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
+    public static VkRenderPassInputAttachmentAspectCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

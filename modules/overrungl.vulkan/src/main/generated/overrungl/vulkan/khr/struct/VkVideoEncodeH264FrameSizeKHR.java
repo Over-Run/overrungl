@@ -93,6 +93,33 @@ public sealed class VkVideoEncodeH264FrameSizeKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH264FrameSizeKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH264FrameSizeKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param frameISize `frameISize`
+    /// @param framePSize `framePSize`
+    /// @param frameBSize `frameBSize`
+    /// @return the allocated `VkVideoEncodeH264FrameSizeKHR`
+    public static VkVideoEncodeH264FrameSizeKHR allocInit(SegmentAllocator allocator, int frameISize, int framePSize, int frameBSize) {
+        return alloc(allocator).frameISize(frameISize).framePSize(framePSize).frameBSize(frameBSize);
+    }
+
+    /// Allocates a `VkVideoEncodeH264FrameSizeKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param frameISize `frameISize`
+    /// @param framePSize `framePSize`
+    /// @return the allocated `VkVideoEncodeH264FrameSizeKHR`
+    public static VkVideoEncodeH264FrameSizeKHR allocInit(SegmentAllocator allocator, int frameISize, int framePSize) {
+        return alloc(allocator).frameISize(frameISize).framePSize(framePSize);
+    }
+
+    /// Allocates a `VkVideoEncodeH264FrameSizeKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param frameISize `frameISize`
+    /// @return the allocated `VkVideoEncodeH264FrameSizeKHR`
+    public static VkVideoEncodeH264FrameSizeKHR allocInit(SegmentAllocator allocator, int frameISize) {
+        return alloc(allocator).frameISize(frameISize);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

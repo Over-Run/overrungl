@@ -181,6 +181,209 @@ public sealed class VkRayTracingPipelineCreateInfoKHR extends GroupType {
     /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @param pLibraryInterface `pLibraryInterface`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @param basePipelineIndex `basePipelineIndex`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo, MemorySegment pLibraryInterface, MemorySegment pDynamicState, long layout, long basePipelineHandle, int basePipelineIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo).pLibraryInterface(pLibraryInterface).pDynamicState(pDynamicState).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @param pLibraryInterface `pLibraryInterface`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo, MemorySegment pLibraryInterface, MemorySegment pDynamicState, long layout, long basePipelineHandle) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo).pLibraryInterface(pLibraryInterface).pDynamicState(pDynamicState).layout(layout).basePipelineHandle(basePipelineHandle);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @param pLibraryInterface `pLibraryInterface`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo, MemorySegment pLibraryInterface, MemorySegment pDynamicState, long layout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo).pLibraryInterface(pLibraryInterface).pDynamicState(pDynamicState).layout(layout);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @param pLibraryInterface `pLibraryInterface`
+    /// @param pDynamicState `pDynamicState`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo, MemorySegment pLibraryInterface, MemorySegment pDynamicState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo).pLibraryInterface(pLibraryInterface).pDynamicState(pDynamicState);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @param pLibraryInterface `pLibraryInterface`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo, MemorySegment pLibraryInterface) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo).pLibraryInterface(pLibraryInterface);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @param pLibraryInfo `pLibraryInfo`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth, MemorySegment pLibraryInfo) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth).pLibraryInfo(pLibraryInfo);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @param maxPipelineRayRecursionDepth `maxPipelineRayRecursionDepth`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups, int maxPipelineRayRecursionDepth) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxPipelineRayRecursionDepth(maxPipelineRayRecursionDepth);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @param pGroups `pGroups`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount, MemorySegment pGroups) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param groupCount `groupCount`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, int groupCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRayTracingPipelineCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRayTracingPipelineCreateInfoKHR`
+    public static VkRayTracingPipelineCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

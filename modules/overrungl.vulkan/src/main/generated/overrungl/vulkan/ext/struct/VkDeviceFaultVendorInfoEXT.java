@@ -93,6 +93,33 @@ public sealed class VkDeviceFaultVendorInfoEXT extends GroupType {
     /// @return the allocated `VkDeviceFaultVendorInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceFaultVendorInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param description `description`
+    /// @param vendorFaultCode `vendorFaultCode`
+    /// @param vendorFaultData `vendorFaultData`
+    /// @return the allocated `VkDeviceFaultVendorInfoEXT`
+    public static VkDeviceFaultVendorInfoEXT allocInit(SegmentAllocator allocator, MemorySegment description, long vendorFaultCode, long vendorFaultData) {
+        return alloc(allocator).description(description).vendorFaultCode(vendorFaultCode).vendorFaultData(vendorFaultData);
+    }
+
+    /// Allocates a `VkDeviceFaultVendorInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param description `description`
+    /// @param vendorFaultCode `vendorFaultCode`
+    /// @return the allocated `VkDeviceFaultVendorInfoEXT`
+    public static VkDeviceFaultVendorInfoEXT allocInit(SegmentAllocator allocator, MemorySegment description, long vendorFaultCode) {
+        return alloc(allocator).description(description).vendorFaultCode(vendorFaultCode);
+    }
+
+    /// Allocates a `VkDeviceFaultVendorInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param description `description`
+    /// @return the allocated `VkDeviceFaultVendorInfoEXT`
+    public static VkDeviceFaultVendorInfoEXT allocInit(SegmentAllocator allocator, MemorySegment description) {
+        return alloc(allocator).description(description);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

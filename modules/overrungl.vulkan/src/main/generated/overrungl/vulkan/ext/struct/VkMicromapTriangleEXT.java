@@ -93,6 +93,33 @@ public sealed class VkMicromapTriangleEXT extends GroupType {
     /// @return the allocated `VkMicromapTriangleEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param dataOffset `dataOffset`
+    /// @param subdivisionLevel `subdivisionLevel`
+    /// @param format `format`
+    /// @return the allocated `VkMicromapTriangleEXT`
+    public static VkMicromapTriangleEXT allocInit(SegmentAllocator allocator, int dataOffset, short subdivisionLevel, short format) {
+        return alloc(allocator).dataOffset(dataOffset).subdivisionLevel(subdivisionLevel).format(format);
+    }
+
+    /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param dataOffset `dataOffset`
+    /// @param subdivisionLevel `subdivisionLevel`
+    /// @return the allocated `VkMicromapTriangleEXT`
+    public static VkMicromapTriangleEXT allocInit(SegmentAllocator allocator, int dataOffset, short subdivisionLevel) {
+        return alloc(allocator).dataOffset(dataOffset).subdivisionLevel(subdivisionLevel);
+    }
+
+    /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param dataOffset `dataOffset`
+    /// @return the allocated `VkMicromapTriangleEXT`
+    public static VkMicromapTriangleEXT allocInit(SegmentAllocator allocator, int dataOffset) {
+        return alloc(allocator).dataOffset(dataOffset);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

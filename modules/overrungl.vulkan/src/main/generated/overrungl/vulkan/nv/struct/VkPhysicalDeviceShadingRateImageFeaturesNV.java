@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceShadingRateImageFeaturesNV extends GroupType
     /// @return the allocated `VkPhysicalDeviceShadingRateImageFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShadingRateImageFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateImage `shadingRateImage`
+    /// @param shadingRateCoarseSampleOrder `shadingRateCoarseSampleOrder`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImageFeaturesNV`
+    public static VkPhysicalDeviceShadingRateImageFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateImage, int shadingRateCoarseSampleOrder) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateImage(shadingRateImage).shadingRateCoarseSampleOrder(shadingRateCoarseSampleOrder);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImageFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateImage `shadingRateImage`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImageFeaturesNV`
+    public static VkPhysicalDeviceShadingRateImageFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateImage) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateImage(shadingRateImage);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImageFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImageFeaturesNV`
+    public static VkPhysicalDeviceShadingRateImageFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShadingRateImageFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShadingRateImageFeaturesNV`
+    public static VkPhysicalDeviceShadingRateImageFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkDebugMarkerMarkerInfoEXT extends GroupType {
     /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDebugMarkerMarkerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pMarkerName `pMarkerName`
+    /// @param color `color`
+    /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
+    public static VkDebugMarkerMarkerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pMarkerName, MemorySegment color) {
+        return alloc(allocator).sType(sType).pNext(pNext).pMarkerName(pMarkerName).color(color);
+    }
+
+    /// Allocates a `VkDebugMarkerMarkerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pMarkerName `pMarkerName`
+    /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
+    public static VkDebugMarkerMarkerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pMarkerName) {
+        return alloc(allocator).sType(sType).pNext(pNext).pMarkerName(pMarkerName);
+    }
+
+    /// Allocates a `VkDebugMarkerMarkerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
+    public static VkDebugMarkerMarkerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDebugMarkerMarkerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
+    public static VkDebugMarkerMarkerInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

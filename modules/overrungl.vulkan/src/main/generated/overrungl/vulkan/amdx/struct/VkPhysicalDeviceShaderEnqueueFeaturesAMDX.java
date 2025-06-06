@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceShaderEnqueueFeaturesAMDX extends GroupType 
     /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderEnqueue `shaderEnqueue`
+    /// @param shaderMeshEnqueue `shaderMeshEnqueue`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderEnqueue, int shaderMeshEnqueue) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderEnqueue(shaderEnqueue).shaderMeshEnqueue(shaderMeshEnqueue);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderEnqueue `shaderEnqueue`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderEnqueue) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderEnqueue(shaderEnqueue);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueueFeaturesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueueFeaturesAMDX`
+    public static VkPhysicalDeviceShaderEnqueueFeaturesAMDX allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

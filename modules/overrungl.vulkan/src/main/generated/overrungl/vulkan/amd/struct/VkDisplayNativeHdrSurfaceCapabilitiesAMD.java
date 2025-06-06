@@ -93,6 +93,33 @@ public sealed class VkDisplayNativeHdrSurfaceCapabilitiesAMD extends GroupType {
     /// @return the allocated `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDisplayNativeHdrSurfaceCapabilitiesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param localDimmingSupport `localDimmingSupport`
+    /// @return the allocated `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
+    public static VkDisplayNativeHdrSurfaceCapabilitiesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int localDimmingSupport) {
+        return alloc(allocator).sType(sType).pNext(pNext).localDimmingSupport(localDimmingSupport);
+    }
+
+    /// Allocates a `VkDisplayNativeHdrSurfaceCapabilitiesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
+    public static VkDisplayNativeHdrSurfaceCapabilitiesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDisplayNativeHdrSurfaceCapabilitiesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
+    public static VkDisplayNativeHdrSurfaceCapabilitiesAMD allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

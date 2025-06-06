@@ -99,6 +99,44 @@ public sealed class VkQueueFamilyProperties extends GroupType {
     /// @return the allocated `VkQueueFamilyProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param queueFlags `queueFlags`
+    /// @param queueCount `queueCount`
+    /// @param timestampValidBits `timestampValidBits`
+    /// @param minImageTransferGranularity `minImageTransferGranularity`
+    /// @return the allocated `VkQueueFamilyProperties`
+    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, int queueFlags, int queueCount, int timestampValidBits, MemorySegment minImageTransferGranularity) {
+        return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount).timestampValidBits(timestampValidBits).minImageTransferGranularity(minImageTransferGranularity);
+    }
+
+    /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param queueFlags `queueFlags`
+    /// @param queueCount `queueCount`
+    /// @param timestampValidBits `timestampValidBits`
+    /// @return the allocated `VkQueueFamilyProperties`
+    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, int queueFlags, int queueCount, int timestampValidBits) {
+        return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount).timestampValidBits(timestampValidBits);
+    }
+
+    /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param queueFlags `queueFlags`
+    /// @param queueCount `queueCount`
+    /// @return the allocated `VkQueueFamilyProperties`
+    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, int queueFlags, int queueCount) {
+        return alloc(allocator).queueFlags(queueFlags).queueCount(queueCount);
+    }
+
+    /// Allocates a `VkQueueFamilyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param queueFlags `queueFlags`
+    /// @return the allocated `VkQueueFamilyProperties`
+    public static VkQueueFamilyProperties allocInit(SegmentAllocator allocator, int queueFlags) {
+        return alloc(allocator).queueFlags(queueFlags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

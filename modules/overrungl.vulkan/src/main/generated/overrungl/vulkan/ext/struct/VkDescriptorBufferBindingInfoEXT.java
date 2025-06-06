@@ -101,6 +101,44 @@ public sealed class VkDescriptorBufferBindingInfoEXT extends GroupType {
     /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param address `address`
+    /// @param usage `usage`
+    /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
+    public static VkDescriptorBufferBindingInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long address, int usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).address(address).usage(usage);
+    }
+
+    /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param address `address`
+    /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
+    public static VkDescriptorBufferBindingInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long address) {
+        return alloc(allocator).sType(sType).pNext(pNext).address(address);
+    }
+
+    /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
+    public static VkDescriptorBufferBindingInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorBufferBindingInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorBufferBindingInfoEXT`
+    public static VkDescriptorBufferBindingInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -99,6 +99,44 @@ public sealed class VkRenderPassTileShadingCreateInfoQCOM extends GroupType {
     /// @return the allocated `VkRenderPassTileShadingCreateInfoQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassTileShadingCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param tileApronSize `tileApronSize`
+    /// @return the allocated `VkRenderPassTileShadingCreateInfoQCOM`
+    public static VkRenderPassTileShadingCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment tileApronSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).tileApronSize(tileApronSize);
+    }
+
+    /// Allocates a `VkRenderPassTileShadingCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkRenderPassTileShadingCreateInfoQCOM`
+    public static VkRenderPassTileShadingCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkRenderPassTileShadingCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassTileShadingCreateInfoQCOM`
+    public static VkRenderPassTileShadingCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassTileShadingCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassTileShadingCreateInfoQCOM`
+    public static VkRenderPassTileShadingCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

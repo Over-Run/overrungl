@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param antiLag `antiLag`
+    /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
+    public static VkPhysicalDeviceAntiLagFeaturesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int antiLag) {
+        return alloc(allocator).sType(sType).pNext(pNext).antiLag(antiLag);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
+    public static VkPhysicalDeviceAntiLagFeaturesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
+    public static VkPhysicalDeviceAntiLagFeaturesAMD allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

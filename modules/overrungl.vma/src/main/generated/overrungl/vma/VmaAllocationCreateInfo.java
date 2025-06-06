@@ -133,6 +133,98 @@ public sealed class VmaAllocationCreateInfo extends GroupType {
     /// @return the allocated `VmaAllocationCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @param preferredFlags `preferredFlags`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param pool `pool`
+    /// @param pUserData `pUserData`
+    /// @param priority `priority`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags, int preferredFlags, int memoryTypeBits, MemorySegment pool, MemorySegment pUserData, float priority) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags).preferredFlags(preferredFlags).memoryTypeBits(memoryTypeBits).pool(pool).pUserData(pUserData).priority(priority);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @param preferredFlags `preferredFlags`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param pool `pool`
+    /// @param pUserData `pUserData`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags, int preferredFlags, int memoryTypeBits, MemorySegment pool, MemorySegment pUserData) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags).preferredFlags(preferredFlags).memoryTypeBits(memoryTypeBits).pool(pool).pUserData(pUserData);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @param preferredFlags `preferredFlags`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @param pool `pool`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags, int preferredFlags, int memoryTypeBits, MemorySegment pool) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags).preferredFlags(preferredFlags).memoryTypeBits(memoryTypeBits).pool(pool);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @param preferredFlags `preferredFlags`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags, int preferredFlags, int memoryTypeBits) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags).preferredFlags(preferredFlags).memoryTypeBits(memoryTypeBits);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @param preferredFlags `preferredFlags`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags, int preferredFlags) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags).preferredFlags(preferredFlags);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param requiredFlags `requiredFlags`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage, int requiredFlags) {
+        return alloc(allocator).flags(flags).usage(usage).requiredFlags(requiredFlags);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags, int usage) {
+        return alloc(allocator).flags(flags).usage(usage);
+    }
+
+    /// Allocates a `VmaAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `VmaAllocationCreateInfo`
+    public static VmaAllocationCreateInfo allocInit(SegmentAllocator allocator, int flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

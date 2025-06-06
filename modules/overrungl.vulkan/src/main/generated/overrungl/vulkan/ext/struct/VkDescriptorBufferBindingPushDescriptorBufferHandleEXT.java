@@ -93,6 +93,33 @@ public sealed class VkDescriptorBufferBindingPushDescriptorBufferHandleEXT exten
     /// @return the allocated `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param buffer `buffer`
+    /// @return the allocated `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT`
+    public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer) {
+        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer);
+    }
+
+    /// Allocates a `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT`
+    public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorBufferBindingPushDescriptorBufferHandleEXT`
+    public static VkDescriptorBufferBindingPushDescriptorBufferHandleEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

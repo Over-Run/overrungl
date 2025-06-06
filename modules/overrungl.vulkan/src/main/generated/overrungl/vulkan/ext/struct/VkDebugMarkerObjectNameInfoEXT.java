@@ -109,6 +109,56 @@ public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param objectType `objectType`
+    /// @param object `object`
+    /// @param pObjectName `pObjectName`
+    /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
+    public static VkDebugMarkerObjectNameInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int objectType, long object, MemorySegment pObjectName) {
+        return alloc(allocator).sType(sType).pNext(pNext).objectType(objectType).object(object).pObjectName(pObjectName);
+    }
+
+    /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param objectType `objectType`
+    /// @param object `object`
+    /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
+    public static VkDebugMarkerObjectNameInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int objectType, long object) {
+        return alloc(allocator).sType(sType).pNext(pNext).objectType(objectType).object(object);
+    }
+
+    /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param objectType `objectType`
+    /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
+    public static VkDebugMarkerObjectNameInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int objectType) {
+        return alloc(allocator).sType(sType).pNext(pNext).objectType(objectType);
+    }
+
+    /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
+    public static VkDebugMarkerObjectNameInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
+    public static VkDebugMarkerObjectNameInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

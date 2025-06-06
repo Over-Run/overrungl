@@ -149,6 +149,86 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     /// @return the allocated `VkDescriptorDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pSampler`.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pSampler(SegmentAllocator allocator, MemorySegment pSampler) {
+        return alloc(allocator).pSampler(pSampler);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pCombinedImageSampler`.
+    /// @param allocator the segment allocator
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pCombinedImageSampler(SegmentAllocator allocator, MemorySegment pCombinedImageSampler) {
+        return alloc(allocator).pCombinedImageSampler(pCombinedImageSampler);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pInputAttachmentImage`.
+    /// @param allocator the segment allocator
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pInputAttachmentImage(SegmentAllocator allocator, MemorySegment pInputAttachmentImage) {
+        return alloc(allocator).pInputAttachmentImage(pInputAttachmentImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pSampledImage`.
+    /// @param allocator the segment allocator
+    /// @param pSampledImage `pSampledImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pSampledImage(SegmentAllocator allocator, MemorySegment pSampledImage) {
+        return alloc(allocator).pSampledImage(pSampledImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pStorageImage`.
+    /// @param allocator the segment allocator
+    /// @param pStorageImage `pStorageImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pStorageImage(SegmentAllocator allocator, MemorySegment pStorageImage) {
+        return alloc(allocator).pStorageImage(pStorageImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pUniformTexelBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pUniformTexelBuffer(SegmentAllocator allocator, MemorySegment pUniformTexelBuffer) {
+        return alloc(allocator).pUniformTexelBuffer(pUniformTexelBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pStorageTexelBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pStorageTexelBuffer `pStorageTexelBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pStorageTexelBuffer(SegmentAllocator allocator, MemorySegment pStorageTexelBuffer) {
+        return alloc(allocator).pStorageTexelBuffer(pStorageTexelBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pUniformBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pUniformBuffer `pUniformBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pUniformBuffer(SegmentAllocator allocator, MemorySegment pUniformBuffer) {
+        return alloc(allocator).pUniformBuffer(pUniformBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pStorageBuffer`.
+    /// @param allocator the segment allocator
+    /// @param pStorageBuffer `pStorageBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_pStorageBuffer(SegmentAllocator allocator, MemorySegment pStorageBuffer) {
+        return alloc(allocator).pStorageBuffer(pStorageBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `accelerationStructure`.
+    /// @param allocator the segment allocator
+    /// @param accelerationStructure `accelerationStructure`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocWith_accelerationStructure(SegmentAllocator allocator, long accelerationStructure) {
+        return alloc(allocator).accelerationStructure(accelerationStructure);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

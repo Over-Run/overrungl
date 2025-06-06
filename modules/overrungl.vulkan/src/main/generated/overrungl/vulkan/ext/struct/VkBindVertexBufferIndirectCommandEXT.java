@@ -93,6 +93,33 @@ public sealed class VkBindVertexBufferIndirectCommandEXT extends GroupType {
     /// @return the allocated `VkBindVertexBufferIndirectCommandEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindVertexBufferIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @param size `size`
+    /// @param stride `stride`
+    /// @return the allocated `VkBindVertexBufferIndirectCommandEXT`
+    public static VkBindVertexBufferIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress, int size, int stride) {
+        return alloc(allocator).bufferAddress(bufferAddress).size(size).stride(stride);
+    }
+
+    /// Allocates a `VkBindVertexBufferIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @param size `size`
+    /// @return the allocated `VkBindVertexBufferIndirectCommandEXT`
+    public static VkBindVertexBufferIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress, int size) {
+        return alloc(allocator).bufferAddress(bufferAddress).size(size);
+    }
+
+    /// Allocates a `VkBindVertexBufferIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @return the allocated `VkBindVertexBufferIndirectCommandEXT`
+    public static VkBindVertexBufferIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress) {
+        return alloc(allocator).bufferAddress(bufferAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

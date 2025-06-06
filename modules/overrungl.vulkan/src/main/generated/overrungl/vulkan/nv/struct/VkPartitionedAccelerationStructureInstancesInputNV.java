@@ -125,6 +125,83 @@ public sealed class VkPartitionedAccelerationStructureInstancesInputNV extends G
     /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param instanceCount `instanceCount`
+    /// @param maxInstancePerPartitionCount `maxInstancePerPartitionCount`
+    /// @param partitionCount `partitionCount`
+    /// @param maxInstanceInGlobalPartitionCount `maxInstanceInGlobalPartitionCount`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int instanceCount, int maxInstancePerPartitionCount, int partitionCount, int maxInstanceInGlobalPartitionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).instanceCount(instanceCount).maxInstancePerPartitionCount(maxInstancePerPartitionCount).partitionCount(partitionCount).maxInstanceInGlobalPartitionCount(maxInstanceInGlobalPartitionCount);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param instanceCount `instanceCount`
+    /// @param maxInstancePerPartitionCount `maxInstancePerPartitionCount`
+    /// @param partitionCount `partitionCount`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int instanceCount, int maxInstancePerPartitionCount, int partitionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).instanceCount(instanceCount).maxInstancePerPartitionCount(maxInstancePerPartitionCount).partitionCount(partitionCount);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param instanceCount `instanceCount`
+    /// @param maxInstancePerPartitionCount `maxInstancePerPartitionCount`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int instanceCount, int maxInstancePerPartitionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).instanceCount(instanceCount).maxInstancePerPartitionCount(maxInstancePerPartitionCount);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param instanceCount `instanceCount`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int instanceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).instanceCount(instanceCount);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureInstancesInputNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPartitionedAccelerationStructureInstancesInputNV`
+    public static VkPartitionedAccelerationStructureInstancesInputNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

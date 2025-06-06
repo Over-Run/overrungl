@@ -85,6 +85,23 @@ public sealed class VkMutableDescriptorTypeListEXT extends GroupType {
     /// @return the allocated `VkMutableDescriptorTypeListEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMutableDescriptorTypeListEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param descriptorTypeCount `descriptorTypeCount`
+    /// @param pDescriptorTypes `pDescriptorTypes`
+    /// @return the allocated `VkMutableDescriptorTypeListEXT`
+    public static VkMutableDescriptorTypeListEXT allocInit(SegmentAllocator allocator, int descriptorTypeCount, MemorySegment pDescriptorTypes) {
+        return alloc(allocator).descriptorTypeCount(descriptorTypeCount).pDescriptorTypes(pDescriptorTypes);
+    }
+
+    /// Allocates a `VkMutableDescriptorTypeListEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param descriptorTypeCount `descriptorTypeCount`
+    /// @return the allocated `VkMutableDescriptorTypeListEXT`
+    public static VkMutableDescriptorTypeListEXT allocInit(SegmentAllocator allocator, int descriptorTypeCount) {
+        return alloc(allocator).descriptorTypeCount(descriptorTypeCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

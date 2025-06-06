@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceCustomBorderColorFeaturesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceCustomBorderColorFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceCustomBorderColorFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param customBorderColors `customBorderColors`
+    /// @param customBorderColorWithoutFormat `customBorderColorWithoutFormat`
+    /// @return the allocated `VkPhysicalDeviceCustomBorderColorFeaturesEXT`
+    public static VkPhysicalDeviceCustomBorderColorFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int customBorderColors, int customBorderColorWithoutFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).customBorderColors(customBorderColors).customBorderColorWithoutFormat(customBorderColorWithoutFormat);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCustomBorderColorFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param customBorderColors `customBorderColors`
+    /// @return the allocated `VkPhysicalDeviceCustomBorderColorFeaturesEXT`
+    public static VkPhysicalDeviceCustomBorderColorFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int customBorderColors) {
+        return alloc(allocator).sType(sType).pNext(pNext).customBorderColors(customBorderColors);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCustomBorderColorFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceCustomBorderColorFeaturesEXT`
+    public static VkPhysicalDeviceCustomBorderColorFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCustomBorderColorFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceCustomBorderColorFeaturesEXT`
+    public static VkPhysicalDeviceCustomBorderColorFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

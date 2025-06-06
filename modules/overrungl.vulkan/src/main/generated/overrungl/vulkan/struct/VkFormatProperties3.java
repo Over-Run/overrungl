@@ -109,6 +109,56 @@ public sealed class VkFormatProperties3 extends GroupType {
     /// @return the allocated `VkFormatProperties3`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFormatProperties3` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @param optimalTilingFeatures `optimalTilingFeatures`
+    /// @param bufferFeatures `bufferFeatures`
+    /// @return the allocated `VkFormatProperties3`
+    public static VkFormatProperties3 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long linearTilingFeatures, long optimalTilingFeatures, long bufferFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).linearTilingFeatures(linearTilingFeatures).optimalTilingFeatures(optimalTilingFeatures).bufferFeatures(bufferFeatures);
+    }
+
+    /// Allocates a `VkFormatProperties3` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @param optimalTilingFeatures `optimalTilingFeatures`
+    /// @return the allocated `VkFormatProperties3`
+    public static VkFormatProperties3 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long linearTilingFeatures, long optimalTilingFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).linearTilingFeatures(linearTilingFeatures).optimalTilingFeatures(optimalTilingFeatures);
+    }
+
+    /// Allocates a `VkFormatProperties3` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @return the allocated `VkFormatProperties3`
+    public static VkFormatProperties3 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long linearTilingFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).linearTilingFeatures(linearTilingFeatures);
+    }
+
+    /// Allocates a `VkFormatProperties3` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkFormatProperties3`
+    public static VkFormatProperties3 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkFormatProperties3` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkFormatProperties3`
+    public static VkFormatProperties3 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

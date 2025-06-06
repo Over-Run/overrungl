@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceTextureCompressionASTCHDRFeatures extends Gr
     /// @return the allocated `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceTextureCompressionASTCHDRFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @return the allocated `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
+    public static VkPhysicalDeviceTextureCompressionASTCHDRFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int textureCompressionASTC_HDR) {
+        return alloc(allocator).sType(sType).pNext(pNext).textureCompressionASTC_HDR(textureCompressionASTC_HDR);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTextureCompressionASTCHDRFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
+    public static VkPhysicalDeviceTextureCompressionASTCHDRFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTextureCompressionASTCHDRFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
+    public static VkPhysicalDeviceTextureCompressionASTCHDRFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -115,6 +115,69 @@ public sealed class VkHostImageLayoutTransitionInfo extends GroupType {
     /// @return the allocated `VkHostImageLayoutTransitionInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @param oldLayout `oldLayout`
+    /// @param newLayout `newLayout`
+    /// @param subresourceRange `subresourceRange`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, int oldLayout, int newLayout, MemorySegment subresourceRange) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image).oldLayout(oldLayout).newLayout(newLayout).subresourceRange(subresourceRange);
+    }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @param oldLayout `oldLayout`
+    /// @param newLayout `newLayout`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, int oldLayout, int newLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image).oldLayout(oldLayout).newLayout(newLayout);
+    }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @param oldLayout `oldLayout`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, int oldLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image).oldLayout(oldLayout);
+    }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image);
+    }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

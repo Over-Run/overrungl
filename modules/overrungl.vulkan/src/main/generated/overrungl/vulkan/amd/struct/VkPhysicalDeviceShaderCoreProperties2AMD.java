@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceShaderCoreProperties2AMD extends GroupType {
     /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderCoreProperties2AMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCoreFeatures `shaderCoreFeatures`
+    /// @param activeComputeUnitCount `activeComputeUnitCount`
+    /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public static VkPhysicalDeviceShaderCoreProperties2AMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCoreFeatures, int activeComputeUnitCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCoreFeatures(shaderCoreFeatures).activeComputeUnitCount(activeComputeUnitCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCoreProperties2AMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCoreFeatures `shaderCoreFeatures`
+    /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public static VkPhysicalDeviceShaderCoreProperties2AMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCoreFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCoreFeatures(shaderCoreFeatures);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCoreProperties2AMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public static VkPhysicalDeviceShaderCoreProperties2AMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCoreProperties2AMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public static VkPhysicalDeviceShaderCoreProperties2AMD allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

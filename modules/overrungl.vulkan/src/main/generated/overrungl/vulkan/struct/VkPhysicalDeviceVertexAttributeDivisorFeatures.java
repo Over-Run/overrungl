@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Group
     /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexAttributeInstanceRateDivisor) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public static VkPhysicalDeviceVertexAttributeDivisorFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -157,6 +157,149 @@ public sealed class StdVideoH264HrdParameters extends GroupType {
     /// @return the allocated `StdVideoH264HrdParameters`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @param cbr_flag `cbr_flag`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param cpb_removal_delay_length_minus1 `cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param time_offset_length `time_offset_length`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cbr_flag, int initial_cpb_removal_delay_length_minus1, int cpb_removal_delay_length_minus1, int dpb_output_delay_length_minus1, int time_offset_length) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).cpb_removal_delay_length_minus1(cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).time_offset_length(time_offset_length);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @param cbr_flag `cbr_flag`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param cpb_removal_delay_length_minus1 `cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cbr_flag, int initial_cpb_removal_delay_length_minus1, int cpb_removal_delay_length_minus1, int dpb_output_delay_length_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).cpb_removal_delay_length_minus1(cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @param cbr_flag `cbr_flag`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param cpb_removal_delay_length_minus1 `cpb_removal_delay_length_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cbr_flag, int initial_cpb_removal_delay_length_minus1, int cpb_removal_delay_length_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).cpb_removal_delay_length_minus1(cpb_removal_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @param cbr_flag `cbr_flag`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cbr_flag, int initial_cpb_removal_delay_length_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @param cbr_flag `cbr_flag`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cbr_flag) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1, MemorySegment bit_rate_value_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale, byte reserved1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale, byte cpb_size_scale) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1, byte bit_rate_scale) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale);
+    }
+
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, byte cpb_cnt_minus1) {
+        return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

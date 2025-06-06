@@ -101,6 +101,38 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and `b32`.
+    /// @param allocator the segment allocator
+    /// @param b32 `b32`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocWith_b32(SegmentAllocator allocator, int b32) {
+        return alloc(allocator).b32(b32);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and `i64`.
+    /// @param allocator the segment allocator
+    /// @param i64 `i64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocWith_i64(SegmentAllocator allocator, long i64) {
+        return alloc(allocator).i64(i64);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and `u64`.
+    /// @param allocator the segment allocator
+    /// @param u64 `u64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocWith_u64(SegmentAllocator allocator, long u64) {
+        return alloc(allocator).u64(u64);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and `f64`.
+    /// @param allocator the segment allocator
+    /// @param f64 `f64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocWith_f64(SegmentAllocator allocator, double f64) {
+        return alloc(allocator).f64(f64);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

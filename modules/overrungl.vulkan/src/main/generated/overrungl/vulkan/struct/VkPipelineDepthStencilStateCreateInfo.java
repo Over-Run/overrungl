@@ -161,6 +161,168 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @param stencilTestEnable `stencilTestEnable`
+    /// @param front `front`
+    /// @param back `back`
+    /// @param minDepthBounds `minDepthBounds`
+    /// @param maxDepthBounds `maxDepthBounds`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable, int stencilTestEnable, MemorySegment front, MemorySegment back, float minDepthBounds, float maxDepthBounds) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable).front(front).back(back).minDepthBounds(minDepthBounds).maxDepthBounds(maxDepthBounds);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @param stencilTestEnable `stencilTestEnable`
+    /// @param front `front`
+    /// @param back `back`
+    /// @param minDepthBounds `minDepthBounds`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable, int stencilTestEnable, MemorySegment front, MemorySegment back, float minDepthBounds) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable).front(front).back(back).minDepthBounds(minDepthBounds);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @param stencilTestEnable `stencilTestEnable`
+    /// @param front `front`
+    /// @param back `back`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable, int stencilTestEnable, MemorySegment front, MemorySegment back) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable).front(front).back(back);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @param stencilTestEnable `stencilTestEnable`
+    /// @param front `front`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable, int stencilTestEnable, MemorySegment front) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable).front(front);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @param stencilTestEnable `stencilTestEnable`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable, int stencilTestEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable).stencilTestEnable(stencilTestEnable);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @param depthBoundsTestEnable `depthBoundsTestEnable`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp, int depthBoundsTestEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp).depthBoundsTestEnable(depthBoundsTestEnable);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @param depthCompareOp `depthCompareOp`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable, int depthCompareOp) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable).depthCompareOp(depthCompareOp);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @param depthWriteEnable `depthWriteEnable`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable, int depthWriteEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable).depthWriteEnable(depthWriteEnable);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthTestEnable `depthTestEnable`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthTestEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthTestEnable(depthTestEnable);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
+    public static VkPipelineDepthStencilStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

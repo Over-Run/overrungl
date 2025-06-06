@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceTransformFeedbackFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param transformFeedback `transformFeedback`
+    /// @param geometryStreams `geometryStreams`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackFeaturesEXT`
+    public static VkPhysicalDeviceTransformFeedbackFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int transformFeedback, int geometryStreams) {
+        return alloc(allocator).sType(sType).pNext(pNext).transformFeedback(transformFeedback).geometryStreams(geometryStreams);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param transformFeedback `transformFeedback`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackFeaturesEXT`
+    public static VkPhysicalDeviceTransformFeedbackFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int transformFeedback) {
+        return alloc(allocator).sType(sType).pNext(pNext).transformFeedback(transformFeedback);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackFeaturesEXT`
+    public static VkPhysicalDeviceTransformFeedbackFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackFeaturesEXT`
+    public static VkPhysicalDeviceTransformFeedbackFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

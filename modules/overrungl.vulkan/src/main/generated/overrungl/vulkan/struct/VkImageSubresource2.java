@@ -91,6 +91,33 @@ public sealed class VkImageSubresource2 extends GroupType {
     /// @return the allocated `VkImageSubresource2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageSubresource2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param imageSubresource `imageSubresource`
+    /// @return the allocated `VkImageSubresource2`
+    public static VkImageSubresource2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment imageSubresource) {
+        return alloc(allocator).sType(sType).pNext(pNext).imageSubresource(imageSubresource);
+    }
+
+    /// Allocates a `VkImageSubresource2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageSubresource2`
+    public static VkImageSubresource2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageSubresource2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageSubresource2`
+    public static VkImageSubresource2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

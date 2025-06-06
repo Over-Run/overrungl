@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM extend
     /// @return the allocated `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param multiviewPerViewViewports `multiviewPerViewViewports`
+    /// @return the allocated `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM`
+    public static VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multiviewPerViewViewports) {
+        return alloc(allocator).sType(sType).pNext(pNext).multiviewPerViewViewports(multiviewPerViewViewports);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM`
+    public static VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM`
+    public static VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

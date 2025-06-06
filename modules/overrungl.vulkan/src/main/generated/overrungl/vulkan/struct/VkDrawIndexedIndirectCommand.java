@@ -109,6 +109,56 @@ public sealed class VkDrawIndexedIndirectCommand extends GroupType {
     /// @return the allocated `VkDrawIndexedIndirectCommand`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param indexCount `indexCount`
+    /// @param instanceCount `instanceCount`
+    /// @param firstIndex `firstIndex`
+    /// @param vertexOffset `vertexOffset`
+    /// @param firstInstance `firstInstance`
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, int indexCount, int instanceCount, int firstIndex, int vertexOffset, int firstInstance) {
+        return alloc(allocator).indexCount(indexCount).instanceCount(instanceCount).firstIndex(firstIndex).vertexOffset(vertexOffset).firstInstance(firstInstance);
+    }
+
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param indexCount `indexCount`
+    /// @param instanceCount `instanceCount`
+    /// @param firstIndex `firstIndex`
+    /// @param vertexOffset `vertexOffset`
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, int indexCount, int instanceCount, int firstIndex, int vertexOffset) {
+        return alloc(allocator).indexCount(indexCount).instanceCount(instanceCount).firstIndex(firstIndex).vertexOffset(vertexOffset);
+    }
+
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param indexCount `indexCount`
+    /// @param instanceCount `instanceCount`
+    /// @param firstIndex `firstIndex`
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, int indexCount, int instanceCount, int firstIndex) {
+        return alloc(allocator).indexCount(indexCount).instanceCount(instanceCount).firstIndex(firstIndex);
+    }
+
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param indexCount `indexCount`
+    /// @param instanceCount `instanceCount`
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, int indexCount, int instanceCount) {
+        return alloc(allocator).indexCount(indexCount).instanceCount(instanceCount);
+    }
+
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param indexCount `indexCount`
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, int indexCount) {
+        return alloc(allocator).indexCount(indexCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

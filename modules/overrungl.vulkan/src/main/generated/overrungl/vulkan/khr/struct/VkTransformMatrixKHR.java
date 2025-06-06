@@ -77,6 +77,14 @@ public sealed class VkTransformMatrixKHR extends GroupType {
     /// @return the allocated `VkTransformMatrixKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkTransformMatrixKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param matrix `matrix`
+    /// @return the allocated `VkTransformMatrixKHR`
+    public static VkTransformMatrixKHR allocInit(SegmentAllocator allocator, MemorySegment matrix) {
+        return alloc(allocator).matrix(matrix);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -123,6 +123,83 @@ public sealed class VkRenderPassBeginInfo extends GroupType {
     /// @return the allocated `VkRenderPassBeginInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param framebuffer `framebuffer`
+    /// @param renderArea `renderArea`
+    /// @param clearValueCount `clearValueCount`
+    /// @param pClearValues `pClearValues`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, long framebuffer, MemorySegment renderArea, int clearValueCount, MemorySegment pClearValues) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).framebuffer(framebuffer).renderArea(renderArea).clearValueCount(clearValueCount).pClearValues(pClearValues);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param framebuffer `framebuffer`
+    /// @param renderArea `renderArea`
+    /// @param clearValueCount `clearValueCount`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, long framebuffer, MemorySegment renderArea, int clearValueCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).framebuffer(framebuffer).renderArea(renderArea).clearValueCount(clearValueCount);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param framebuffer `framebuffer`
+    /// @param renderArea `renderArea`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, long framebuffer, MemorySegment renderArea) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).framebuffer(framebuffer).renderArea(renderArea);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @param framebuffer `framebuffer`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass, long framebuffer) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).framebuffer(framebuffer);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param renderPass `renderPass`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long renderPass) {
+        return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

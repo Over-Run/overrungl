@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT extends
     /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param graphicsPipelineLibraryFastLinking `graphicsPipelineLibraryFastLinking`
+    /// @param graphicsPipelineLibraryIndependentInterpolationDecoration `graphicsPipelineLibraryIndependentInterpolationDecoration`
+    /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT`
+    public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int graphicsPipelineLibraryFastLinking, int graphicsPipelineLibraryIndependentInterpolationDecoration) {
+        return alloc(allocator).sType(sType).pNext(pNext).graphicsPipelineLibraryFastLinking(graphicsPipelineLibraryFastLinking).graphicsPipelineLibraryIndependentInterpolationDecoration(graphicsPipelineLibraryIndependentInterpolationDecoration);
+    }
+
+    /// Allocates a `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param graphicsPipelineLibraryFastLinking `graphicsPipelineLibraryFastLinking`
+    /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT`
+    public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int graphicsPipelineLibraryFastLinking) {
+        return alloc(allocator).sType(sType).pNext(pNext).graphicsPipelineLibraryFastLinking(graphicsPipelineLibraryFastLinking);
+    }
+
+    /// Allocates a `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT`
+    public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT`
+    public static VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

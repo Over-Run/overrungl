@@ -101,6 +101,44 @@ public sealed class VkPipelineBinaryKeyKHR extends GroupType {
     /// @return the allocated `VkPipelineBinaryKeyKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineBinaryKeyKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param keySize `keySize`
+    /// @param key `key`
+    /// @return the allocated `VkPipelineBinaryKeyKHR`
+    public static VkPipelineBinaryKeyKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int keySize, MemorySegment key) {
+        return alloc(allocator).sType(sType).pNext(pNext).keySize(keySize).key(key);
+    }
+
+    /// Allocates a `VkPipelineBinaryKeyKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param keySize `keySize`
+    /// @return the allocated `VkPipelineBinaryKeyKHR`
+    public static VkPipelineBinaryKeyKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int keySize) {
+        return alloc(allocator).sType(sType).pNext(pNext).keySize(keySize);
+    }
+
+    /// Allocates a `VkPipelineBinaryKeyKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineBinaryKeyKHR`
+    public static VkPipelineBinaryKeyKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineBinaryKeyKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineBinaryKeyKHR`
+    public static VkPipelineBinaryKeyKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -123,6 +123,83 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
     /// @return the allocated `VkShaderStatisticsInfoAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @param numPhysicalVgprs `numPhysicalVgprs`
+    /// @param numPhysicalSgprs `numPhysicalSgprs`
+    /// @param numAvailableVgprs `numAvailableVgprs`
+    /// @param numAvailableSgprs `numAvailableSgprs`
+    /// @param computeWorkGroupSize `computeWorkGroupSize`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage, int numPhysicalVgprs, int numPhysicalSgprs, int numAvailableVgprs, int numAvailableSgprs, MemorySegment computeWorkGroupSize) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs).numAvailableSgprs(numAvailableSgprs).computeWorkGroupSize(computeWorkGroupSize);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @param numPhysicalVgprs `numPhysicalVgprs`
+    /// @param numPhysicalSgprs `numPhysicalSgprs`
+    /// @param numAvailableVgprs `numAvailableVgprs`
+    /// @param numAvailableSgprs `numAvailableSgprs`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage, int numPhysicalVgprs, int numPhysicalSgprs, int numAvailableVgprs, int numAvailableSgprs) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs).numAvailableSgprs(numAvailableSgprs);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @param numPhysicalVgprs `numPhysicalVgprs`
+    /// @param numPhysicalSgprs `numPhysicalSgprs`
+    /// @param numAvailableVgprs `numAvailableVgprs`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage, int numPhysicalVgprs, int numPhysicalSgprs, int numAvailableVgprs) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @param numPhysicalVgprs `numPhysicalVgprs`
+    /// @param numPhysicalSgprs `numPhysicalSgprs`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage, int numPhysicalVgprs, int numPhysicalSgprs) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @param numPhysicalVgprs `numPhysicalVgprs`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage, int numPhysicalVgprs) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @param resourceUsage `resourceUsage`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask, MemorySegment resourceUsage) {
+        return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage);
+    }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param shaderStageMask `shaderStageMask`
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, int shaderStageMask) {
+        return alloc(allocator).shaderStageMask(shaderStageMask);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

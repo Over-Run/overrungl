@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceSubpassShadingPropertiesHUAWEI extends Group
     /// @return the allocated `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxSubpassShadingWorkgroupSizeAspectRatio `maxSubpassShadingWorkgroupSizeAspectRatio`
+    /// @return the allocated `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
+    public static VkPhysicalDeviceSubpassShadingPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxSubpassShadingWorkgroupSizeAspectRatio) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxSubpassShadingWorkgroupSizeAspectRatio(maxSubpassShadingWorkgroupSizeAspectRatio);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
+    public static VkPhysicalDeviceSubpassShadingPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
+    public static VkPhysicalDeviceSubpassShadingPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

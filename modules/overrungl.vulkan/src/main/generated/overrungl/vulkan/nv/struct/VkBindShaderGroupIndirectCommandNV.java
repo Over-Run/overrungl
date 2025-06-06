@@ -77,6 +77,14 @@ public sealed class VkBindShaderGroupIndirectCommandNV extends GroupType {
     /// @return the allocated `VkBindShaderGroupIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindShaderGroupIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param groupIndex `groupIndex`
+    /// @return the allocated `VkBindShaderGroupIndirectCommandNV`
+    public static VkBindShaderGroupIndirectCommandNV allocInit(SegmentAllocator allocator, int groupIndex) {
+        return alloc(allocator).groupIndex(groupIndex);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceImageProcessingFeaturesQCOM extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param textureSampleWeighted `textureSampleWeighted`
+    /// @param textureBoxFilter `textureBoxFilter`
+    /// @param textureBlockMatch `textureBlockMatch`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int textureSampleWeighted, int textureBoxFilter, int textureBlockMatch) {
+        return alloc(allocator).sType(sType).pNext(pNext).textureSampleWeighted(textureSampleWeighted).textureBoxFilter(textureBoxFilter).textureBlockMatch(textureBlockMatch);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param textureSampleWeighted `textureSampleWeighted`
+    /// @param textureBoxFilter `textureBoxFilter`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int textureSampleWeighted, int textureBoxFilter) {
+        return alloc(allocator).sType(sType).pNext(pNext).textureSampleWeighted(textureSampleWeighted).textureBoxFilter(textureBoxFilter);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param textureSampleWeighted `textureSampleWeighted`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int textureSampleWeighted) {
+        return alloc(allocator).sType(sType).pNext(pNext).textureSampleWeighted(textureSampleWeighted);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -149,6 +149,131 @@ public sealed class VkSubpassDependency2 extends GroupType {
     /// @return the allocated `VkSubpassDependency2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @param dstAccessMask `dstAccessMask`
+    /// @param dependencyFlags `dependencyFlags`
+    /// @param viewOffset `viewOffset`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask, int dstAccessMask, int dependencyFlags, int viewOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask).dependencyFlags(dependencyFlags).viewOffset(viewOffset);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @param dstAccessMask `dstAccessMask`
+    /// @param dependencyFlags `dependencyFlags`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask, int dstAccessMask, int dependencyFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask).dependencyFlags(dependencyFlags);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @param dstAccessMask `dstAccessMask`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask, int dstAccessMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass, int srcStageMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass, int dstSubpass) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass).dstSubpass(dstSubpass);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubpass `srcSubpass`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcSubpass) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubpass(srcSubpass);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSubpassDependency2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSubpassDependency2`
+    public static VkSubpassDependency2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

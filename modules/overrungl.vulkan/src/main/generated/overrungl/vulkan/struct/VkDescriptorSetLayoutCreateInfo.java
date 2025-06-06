@@ -109,6 +109,56 @@ public sealed class VkDescriptorSetLayoutCreateInfo extends GroupType {
     /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorSetLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param bindingCount `bindingCount`
+    /// @param pBindings `pBindings`
+    /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
+    public static VkDescriptorSetLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int bindingCount, MemorySegment pBindings) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).bindingCount(bindingCount).pBindings(pBindings);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param bindingCount `bindingCount`
+    /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
+    public static VkDescriptorSetLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int bindingCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).bindingCount(bindingCount);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
+    public static VkDescriptorSetLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
+    public static VkDescriptorSetLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorSetLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
+    public static VkDescriptorSetLayoutCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -125,6 +125,83 @@ public sealed class VkPhysicalDeviceRayTracingPipelineFeaturesKHR extends GroupT
     /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingPipeline `rayTracingPipeline`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplay `rayTracingPipelineShaderGroupHandleCaptureReplay`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplayMixed `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`
+    /// @param rayTracingPipelineTraceRaysIndirect `rayTracingPipelineTraceRaysIndirect`
+    /// @param rayTraversalPrimitiveCulling `rayTraversalPrimitiveCulling`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPipeline, int rayTracingPipelineShaderGroupHandleCaptureReplay, int rayTracingPipelineShaderGroupHandleCaptureReplayMixed, int rayTracingPipelineTraceRaysIndirect, int rayTraversalPrimitiveCulling) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPipeline(rayTracingPipeline).rayTracingPipelineShaderGroupHandleCaptureReplay(rayTracingPipelineShaderGroupHandleCaptureReplay).rayTracingPipelineShaderGroupHandleCaptureReplayMixed(rayTracingPipelineShaderGroupHandleCaptureReplayMixed).rayTracingPipelineTraceRaysIndirect(rayTracingPipelineTraceRaysIndirect).rayTraversalPrimitiveCulling(rayTraversalPrimitiveCulling);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingPipeline `rayTracingPipeline`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplay `rayTracingPipelineShaderGroupHandleCaptureReplay`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplayMixed `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`
+    /// @param rayTracingPipelineTraceRaysIndirect `rayTracingPipelineTraceRaysIndirect`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPipeline, int rayTracingPipelineShaderGroupHandleCaptureReplay, int rayTracingPipelineShaderGroupHandleCaptureReplayMixed, int rayTracingPipelineTraceRaysIndirect) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPipeline(rayTracingPipeline).rayTracingPipelineShaderGroupHandleCaptureReplay(rayTracingPipelineShaderGroupHandleCaptureReplay).rayTracingPipelineShaderGroupHandleCaptureReplayMixed(rayTracingPipelineShaderGroupHandleCaptureReplayMixed).rayTracingPipelineTraceRaysIndirect(rayTracingPipelineTraceRaysIndirect);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingPipeline `rayTracingPipeline`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplay `rayTracingPipelineShaderGroupHandleCaptureReplay`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplayMixed `rayTracingPipelineShaderGroupHandleCaptureReplayMixed`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPipeline, int rayTracingPipelineShaderGroupHandleCaptureReplay, int rayTracingPipelineShaderGroupHandleCaptureReplayMixed) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPipeline(rayTracingPipeline).rayTracingPipelineShaderGroupHandleCaptureReplay(rayTracingPipelineShaderGroupHandleCaptureReplay).rayTracingPipelineShaderGroupHandleCaptureReplayMixed(rayTracingPipelineShaderGroupHandleCaptureReplayMixed);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingPipeline `rayTracingPipeline`
+    /// @param rayTracingPipelineShaderGroupHandleCaptureReplay `rayTracingPipelineShaderGroupHandleCaptureReplay`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPipeline, int rayTracingPipelineShaderGroupHandleCaptureReplay) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPipeline(rayTracingPipeline).rayTracingPipelineShaderGroupHandleCaptureReplay(rayTracingPipelineShaderGroupHandleCaptureReplay);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingPipeline `rayTracingPipeline`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPipeline) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPipeline(rayTracingPipeline);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPipelineFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPipelineFeaturesKHR`
+    public static VkPhysicalDeviceRayTracingPipelineFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

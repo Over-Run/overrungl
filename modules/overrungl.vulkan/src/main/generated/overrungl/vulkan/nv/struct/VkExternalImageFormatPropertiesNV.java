@@ -99,6 +99,44 @@ public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
     /// @return the allocated `VkExternalImageFormatPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param imageFormatProperties `imageFormatProperties`
+    /// @param externalMemoryFeatures `externalMemoryFeatures`
+    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
+    /// @param compatibleHandleTypes `compatibleHandleTypes`
+    /// @return the allocated `VkExternalImageFormatPropertiesNV`
+    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, MemorySegment imageFormatProperties, int externalMemoryFeatures, int exportFromImportedHandleTypes, int compatibleHandleTypes) {
+        return alloc(allocator).imageFormatProperties(imageFormatProperties).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes);
+    }
+
+    /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param imageFormatProperties `imageFormatProperties`
+    /// @param externalMemoryFeatures `externalMemoryFeatures`
+    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
+    /// @return the allocated `VkExternalImageFormatPropertiesNV`
+    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, MemorySegment imageFormatProperties, int externalMemoryFeatures, int exportFromImportedHandleTypes) {
+        return alloc(allocator).imageFormatProperties(imageFormatProperties).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes);
+    }
+
+    /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param imageFormatProperties `imageFormatProperties`
+    /// @param externalMemoryFeatures `externalMemoryFeatures`
+    /// @return the allocated `VkExternalImageFormatPropertiesNV`
+    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, MemorySegment imageFormatProperties, int externalMemoryFeatures) {
+        return alloc(allocator).imageFormatProperties(imageFormatProperties).externalMemoryFeatures(externalMemoryFeatures);
+    }
+
+    /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param imageFormatProperties `imageFormatProperties`
+    /// @return the allocated `VkExternalImageFormatPropertiesNV`
+    public static VkExternalImageFormatPropertiesNV allocInit(SegmentAllocator allocator, MemorySegment imageFormatProperties) {
+        return alloc(allocator).imageFormatProperties(imageFormatProperties);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

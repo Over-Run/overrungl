@@ -85,6 +85,23 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param codeSize `codeSize`
+    /// @param codeOffset `codeOffset`
+    /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
+    public static VkPipelineCacheStageValidationIndexEntry allocInit(SegmentAllocator allocator, long codeSize, long codeOffset) {
+        return alloc(allocator).codeSize(codeSize).codeOffset(codeOffset);
+    }
+
+    /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param codeSize `codeSize`
+    /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
+    public static VkPipelineCacheStageValidationIndexEntry allocInit(SegmentAllocator allocator, long codeSize) {
+        return alloc(allocator).codeSize(codeSize);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

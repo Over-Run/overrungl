@@ -93,6 +93,33 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpassMergeStatus `subpassMergeStatus`
+    /// @param description `description`
+    /// @param postMergeIndex `postMergeIndex`
+    /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
+    public static VkRenderPassSubpassFeedbackInfoEXT allocInit(SegmentAllocator allocator, int subpassMergeStatus, MemorySegment description, int postMergeIndex) {
+        return alloc(allocator).subpassMergeStatus(subpassMergeStatus).description(description).postMergeIndex(postMergeIndex);
+    }
+
+    /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpassMergeStatus `subpassMergeStatus`
+    /// @param description `description`
+    /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
+    public static VkRenderPassSubpassFeedbackInfoEXT allocInit(SegmentAllocator allocator, int subpassMergeStatus, MemorySegment description) {
+        return alloc(allocator).subpassMergeStatus(subpassMergeStatus).description(description);
+    }
+
+    /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param subpassMergeStatus `subpassMergeStatus`
+    /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
+    public static VkRenderPassSubpassFeedbackInfoEXT allocInit(SegmentAllocator allocator, int subpassMergeStatus) {
+        return alloc(allocator).subpassMergeStatus(subpassMergeStatus);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

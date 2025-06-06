@@ -101,6 +101,44 @@ public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends Group
     /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param filterCubic `filterCubic`
+    /// @param filterCubicMinmax `filterCubicMinmax`
+    /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int filterCubic, int filterCubicMinmax) {
+        return alloc(allocator).sType(sType).pNext(pNext).filterCubic(filterCubic).filterCubicMinmax(filterCubicMinmax);
+    }
+
+    /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param filterCubic `filterCubic`
+    /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int filterCubic) {
+        return alloc(allocator).sType(sType).pNext(pNext).filterCubic(filterCubic);
+    }
+
+    /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

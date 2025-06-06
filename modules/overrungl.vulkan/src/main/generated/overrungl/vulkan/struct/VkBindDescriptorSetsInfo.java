@@ -141,6 +141,114 @@ public sealed class VkBindDescriptorSetsInfo extends GroupType {
     /// @return the allocated `VkBindDescriptorSetsInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @param firstSet `firstSet`
+    /// @param descriptorSetCount `descriptorSetCount`
+    /// @param pDescriptorSets `pDescriptorSets`
+    /// @param dynamicOffsetCount `dynamicOffsetCount`
+    /// @param pDynamicOffsets `pDynamicOffsets`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout, int firstSet, int descriptorSetCount, MemorySegment pDescriptorSets, int dynamicOffsetCount, MemorySegment pDynamicOffsets) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount).pDescriptorSets(pDescriptorSets).dynamicOffsetCount(dynamicOffsetCount).pDynamicOffsets(pDynamicOffsets);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @param firstSet `firstSet`
+    /// @param descriptorSetCount `descriptorSetCount`
+    /// @param pDescriptorSets `pDescriptorSets`
+    /// @param dynamicOffsetCount `dynamicOffsetCount`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout, int firstSet, int descriptorSetCount, MemorySegment pDescriptorSets, int dynamicOffsetCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount).pDescriptorSets(pDescriptorSets).dynamicOffsetCount(dynamicOffsetCount);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @param firstSet `firstSet`
+    /// @param descriptorSetCount `descriptorSetCount`
+    /// @param pDescriptorSets `pDescriptorSets`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout, int firstSet, int descriptorSetCount, MemorySegment pDescriptorSets) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount).pDescriptorSets(pDescriptorSets);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @param firstSet `firstSet`
+    /// @param descriptorSetCount `descriptorSetCount`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout, int firstSet, int descriptorSetCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet).descriptorSetCount(descriptorSetCount);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @param firstSet `firstSet`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout, int firstSet) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout).firstSet(firstSet);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @param layout `layout`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags, long layout) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags).layout(layout);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageFlags `stageFlags`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageFlags(stageFlags);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBindDescriptorSetsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBindDescriptorSetsInfo`
+    public static VkBindDescriptorSetsInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

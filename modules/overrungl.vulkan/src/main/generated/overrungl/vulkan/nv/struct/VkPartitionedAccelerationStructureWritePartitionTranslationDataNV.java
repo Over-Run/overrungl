@@ -85,6 +85,23 @@ public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationD
     /// @return the allocated `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param partitionIndex `partitionIndex`
+    /// @param partitionTranslation `partitionTranslation`
+    /// @return the allocated `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV allocInit(SegmentAllocator allocator, int partitionIndex, MemorySegment partitionTranslation) {
+        return alloc(allocator).partitionIndex(partitionIndex).partitionTranslation(partitionTranslation);
+    }
+
+    /// Allocates a `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param partitionIndex `partitionIndex`
+    /// @return the allocated `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV allocInit(SegmentAllocator allocator, int partitionIndex) {
+        return alloc(allocator).partitionIndex(partitionIndex);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

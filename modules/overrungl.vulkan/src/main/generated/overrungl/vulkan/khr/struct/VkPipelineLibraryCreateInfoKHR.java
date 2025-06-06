@@ -101,6 +101,44 @@ public sealed class VkPipelineLibraryCreateInfoKHR extends GroupType {
     /// @return the allocated `VkPipelineLibraryCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineLibraryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param libraryCount `libraryCount`
+    /// @param pLibraries `pLibraries`
+    /// @return the allocated `VkPipelineLibraryCreateInfoKHR`
+    public static VkPipelineLibraryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int libraryCount, MemorySegment pLibraries) {
+        return alloc(allocator).sType(sType).pNext(pNext).libraryCount(libraryCount).pLibraries(pLibraries);
+    }
+
+    /// Allocates a `VkPipelineLibraryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param libraryCount `libraryCount`
+    /// @return the allocated `VkPipelineLibraryCreateInfoKHR`
+    public static VkPipelineLibraryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int libraryCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).libraryCount(libraryCount);
+    }
+
+    /// Allocates a `VkPipelineLibraryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineLibraryCreateInfoKHR`
+    public static VkPipelineLibraryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineLibraryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineLibraryCreateInfoKHR`
+    public static VkPipelineLibraryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

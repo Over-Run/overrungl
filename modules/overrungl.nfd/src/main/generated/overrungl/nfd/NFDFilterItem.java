@@ -85,6 +85,23 @@ public sealed class NFDFilterItem extends GroupType {
     /// @return the allocated `NFDFilterItem`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `NFDFilterItem` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param name `name`
+    /// @param spec `spec`
+    /// @return the allocated `NFDFilterItem`
+    public static NFDFilterItem allocInit(SegmentAllocator allocator, MemorySegment name, MemorySegment spec) {
+        return alloc(allocator).name(name).spec(spec);
+    }
+
+    /// Allocates a `NFDFilterItem` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param name `name`
+    /// @return the allocated `NFDFilterItem`
+    public static NFDFilterItem allocInit(SegmentAllocator allocator, MemorySegment name) {
+        return alloc(allocator).name(name);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

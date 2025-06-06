@@ -141,6 +141,114 @@ public sealed class VkCopyImageToImageInfo extends GroupType {
     /// @return the allocated `VkCopyImageToImageInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @param srcImageLayout `srcImageLayout`
+    /// @param dstImage `dstImage`
+    /// @param dstImageLayout `dstImageLayout`
+    /// @param regionCount `regionCount`
+    /// @param pRegions `pRegions`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage, int srcImageLayout, long dstImage, int dstImageLayout, int regionCount, MemorySegment pRegions) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage).srcImageLayout(srcImageLayout).dstImage(dstImage).dstImageLayout(dstImageLayout).regionCount(regionCount).pRegions(pRegions);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @param srcImageLayout `srcImageLayout`
+    /// @param dstImage `dstImage`
+    /// @param dstImageLayout `dstImageLayout`
+    /// @param regionCount `regionCount`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage, int srcImageLayout, long dstImage, int dstImageLayout, int regionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage).srcImageLayout(srcImageLayout).dstImage(dstImage).dstImageLayout(dstImageLayout).regionCount(regionCount);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @param srcImageLayout `srcImageLayout`
+    /// @param dstImage `dstImage`
+    /// @param dstImageLayout `dstImageLayout`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage, int srcImageLayout, long dstImage, int dstImageLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage).srcImageLayout(srcImageLayout).dstImage(dstImage).dstImageLayout(dstImageLayout);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @param srcImageLayout `srcImageLayout`
+    /// @param dstImage `dstImage`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage, int srcImageLayout, long dstImage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage).srcImageLayout(srcImageLayout).dstImage(dstImage);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @param srcImageLayout `srcImageLayout`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage, int srcImageLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage).srcImageLayout(srcImageLayout);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param srcImage `srcImage`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long srcImage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).srcImage(srcImage);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCopyImageToImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCopyImageToImageInfo`
+    public static VkCopyImageToImageInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

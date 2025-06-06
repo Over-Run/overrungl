@@ -117,6 +117,69 @@ public sealed class VkDescriptorPoolCreateInfo extends GroupType {
     /// @return the allocated `VkDescriptorPoolCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxSets `maxSets`
+    /// @param poolSizeCount `poolSizeCount`
+    /// @param pPoolSizes `pPoolSizes`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxSets, int poolSizeCount, MemorySegment pPoolSizes) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxSets(maxSets).poolSizeCount(poolSizeCount).pPoolSizes(pPoolSizes);
+    }
+
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxSets `maxSets`
+    /// @param poolSizeCount `poolSizeCount`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxSets, int poolSizeCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxSets(maxSets).poolSizeCount(poolSizeCount);
+    }
+
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxSets `maxSets`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxSets) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxSets(maxSets);
+    }
+
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

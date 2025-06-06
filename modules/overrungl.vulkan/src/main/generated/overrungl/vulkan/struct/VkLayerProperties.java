@@ -101,6 +101,44 @@ public sealed class VkLayerProperties extends GroupType {
     /// @return the allocated `VkLayerProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkLayerProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param layerName `layerName`
+    /// @param specVersion `specVersion`
+    /// @param implementationVersion `implementationVersion`
+    /// @param description `description`
+    /// @return the allocated `VkLayerProperties`
+    public static VkLayerProperties allocInit(SegmentAllocator allocator, MemorySegment layerName, int specVersion, int implementationVersion, MemorySegment description) {
+        return alloc(allocator).layerName(layerName).specVersion(specVersion).implementationVersion(implementationVersion).description(description);
+    }
+
+    /// Allocates a `VkLayerProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param layerName `layerName`
+    /// @param specVersion `specVersion`
+    /// @param implementationVersion `implementationVersion`
+    /// @return the allocated `VkLayerProperties`
+    public static VkLayerProperties allocInit(SegmentAllocator allocator, MemorySegment layerName, int specVersion, int implementationVersion) {
+        return alloc(allocator).layerName(layerName).specVersion(specVersion).implementationVersion(implementationVersion);
+    }
+
+    /// Allocates a `VkLayerProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param layerName `layerName`
+    /// @param specVersion `specVersion`
+    /// @return the allocated `VkLayerProperties`
+    public static VkLayerProperties allocInit(SegmentAllocator allocator, MemorySegment layerName, int specVersion) {
+        return alloc(allocator).layerName(layerName).specVersion(specVersion);
+    }
+
+    /// Allocates a `VkLayerProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param layerName `layerName`
+    /// @return the allocated `VkLayerProperties`
+    public static VkLayerProperties allocInit(SegmentAllocator allocator, MemorySegment layerName) {
+        return alloc(allocator).layerName(layerName);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -125,6 +125,83 @@ public sealed class VkPushConstantsInfo extends GroupType {
     /// @return the allocated `VkPushConstantsInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param layout `layout`
+    /// @param stageFlags `stageFlags`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param pValues `pValues`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long layout, int stageFlags, int offset, int size, MemorySegment pValues) {
+        return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags).offset(offset).size(size).pValues(pValues);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param layout `layout`
+    /// @param stageFlags `stageFlags`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long layout, int stageFlags, int offset, int size) {
+        return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags).offset(offset).size(size);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param layout `layout`
+    /// @param stageFlags `stageFlags`
+    /// @param offset `offset`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long layout, int stageFlags, int offset) {
+        return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags).offset(offset);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param layout `layout`
+    /// @param stageFlags `stageFlags`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long layout, int stageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).layout(layout).stageFlags(stageFlags);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param layout `layout`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long layout) {
+        return alloc(allocator).sType(sType).pNext(pNext).layout(layout);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPushConstantsInfo`
+    public static VkPushConstantsInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

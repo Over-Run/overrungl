@@ -133,6 +133,98 @@ public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @param pInitialShaders `pInitialShaders`
+    /// @param pSetLayoutInfos `pSetLayoutInfos`
+    /// @param maxShaderCount `maxShaderCount`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @param pPushConstantRanges `pPushConstantRanges`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount, MemorySegment pInitialShaders, MemorySegment pSetLayoutInfos, int maxShaderCount, int pushConstantRangeCount, MemorySegment pPushConstantRanges) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount).pInitialShaders(pInitialShaders).pSetLayoutInfos(pSetLayoutInfos).maxShaderCount(maxShaderCount).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @param pInitialShaders `pInitialShaders`
+    /// @param pSetLayoutInfos `pSetLayoutInfos`
+    /// @param maxShaderCount `maxShaderCount`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount, MemorySegment pInitialShaders, MemorySegment pSetLayoutInfos, int maxShaderCount, int pushConstantRangeCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount).pInitialShaders(pInitialShaders).pSetLayoutInfos(pSetLayoutInfos).maxShaderCount(maxShaderCount).pushConstantRangeCount(pushConstantRangeCount);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @param pInitialShaders `pInitialShaders`
+    /// @param pSetLayoutInfos `pSetLayoutInfos`
+    /// @param maxShaderCount `maxShaderCount`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount, MemorySegment pInitialShaders, MemorySegment pSetLayoutInfos, int maxShaderCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount).pInitialShaders(pInitialShaders).pSetLayoutInfos(pSetLayoutInfos).maxShaderCount(maxShaderCount);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @param pInitialShaders `pInitialShaders`
+    /// @param pSetLayoutInfos `pSetLayoutInfos`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount, MemorySegment pInitialShaders, MemorySegment pSetLayoutInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount).pInitialShaders(pInitialShaders).pSetLayoutInfos(pSetLayoutInfos);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @param pInitialShaders `pInitialShaders`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount, MemorySegment pInitialShaders) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount).pInitialShaders(pInitialShaders);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderCount `shaderCount`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderCount(shaderCount);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
+    public static VkIndirectExecutionSetShaderInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

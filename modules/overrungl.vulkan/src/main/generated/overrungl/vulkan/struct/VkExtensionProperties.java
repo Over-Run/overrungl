@@ -85,6 +85,23 @@ public sealed class VkExtensionProperties extends GroupType {
     /// @return the allocated `VkExtensionProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExtensionProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param extensionName `extensionName`
+    /// @param specVersion `specVersion`
+    /// @return the allocated `VkExtensionProperties`
+    public static VkExtensionProperties allocInit(SegmentAllocator allocator, MemorySegment extensionName, int specVersion) {
+        return alloc(allocator).extensionName(extensionName).specVersion(specVersion);
+    }
+
+    /// Allocates a `VkExtensionProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param extensionName `extensionName`
+    /// @return the allocated `VkExtensionProperties`
+    public static VkExtensionProperties allocInit(SegmentAllocator allocator, MemorySegment extensionName) {
+        return alloc(allocator).extensionName(extensionName);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

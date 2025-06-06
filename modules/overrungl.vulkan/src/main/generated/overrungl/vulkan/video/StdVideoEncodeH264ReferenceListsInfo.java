@@ -163,6 +163,168 @@ public sealed class StdVideoEncodeH264ReferenceListsInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @param refPicMarkingOpCount `refPicMarkingOpCount`
+    /// @param reserved1 `reserved1`
+    /// @param pRefList0ModOperations `pRefList0ModOperations`
+    /// @param pRefList1ModOperations `pRefList1ModOperations`
+    /// @param pRefPicMarkingOperations `pRefPicMarkingOperations`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount, byte refPicMarkingOpCount, MemorySegment reserved1, MemorySegment pRefList0ModOperations, MemorySegment pRefList1ModOperations, MemorySegment pRefPicMarkingOperations) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1).pRefList0ModOperations(pRefList0ModOperations).pRefList1ModOperations(pRefList1ModOperations).pRefPicMarkingOperations(pRefPicMarkingOperations);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @param refPicMarkingOpCount `refPicMarkingOpCount`
+    /// @param reserved1 `reserved1`
+    /// @param pRefList0ModOperations `pRefList0ModOperations`
+    /// @param pRefList1ModOperations `pRefList1ModOperations`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount, byte refPicMarkingOpCount, MemorySegment reserved1, MemorySegment pRefList0ModOperations, MemorySegment pRefList1ModOperations) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1).pRefList0ModOperations(pRefList0ModOperations).pRefList1ModOperations(pRefList1ModOperations);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @param refPicMarkingOpCount `refPicMarkingOpCount`
+    /// @param reserved1 `reserved1`
+    /// @param pRefList0ModOperations `pRefList0ModOperations`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount, byte refPicMarkingOpCount, MemorySegment reserved1, MemorySegment pRefList0ModOperations) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1).pRefList0ModOperations(pRefList0ModOperations);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @param refPicMarkingOpCount `refPicMarkingOpCount`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount, byte refPicMarkingOpCount, MemorySegment reserved1) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @param refPicMarkingOpCount `refPicMarkingOpCount`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount, byte refPicMarkingOpCount) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount).refPicMarkingOpCount(refPicMarkingOpCount);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @param refList1ModOpCount `refList1ModOpCount`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount, byte refList1ModOpCount) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount).refList1ModOpCount(refList1ModOpCount);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @param refList0ModOpCount `refList0ModOpCount`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1, byte refList0ModOpCount) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1).refList0ModOpCount(refList0ModOpCount);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @param RefPicList1 `RefPicList1`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0, MemorySegment RefPicList1) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0).RefPicList1(RefPicList1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @param RefPicList0 `RefPicList0`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1, MemorySegment RefPicList0) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1).RefPicList0(RefPicList0);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @param num_ref_idx_l1_active_minus1 `num_ref_idx_l1_active_minus1`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1, byte num_ref_idx_l1_active_minus1) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1).num_ref_idx_l1_active_minus1(num_ref_idx_l1_active_minus1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param num_ref_idx_l0_active_minus1 `num_ref_idx_l0_active_minus1`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte num_ref_idx_l0_active_minus1) {
+        return alloc(allocator).flags(flags).num_ref_idx_l0_active_minus1(num_ref_idx_l0_active_minus1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
+    public static StdVideoEncodeH264ReferenceListsInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

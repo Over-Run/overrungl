@@ -105,6 +105,56 @@ public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Grou
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentDensityTexelSize `minFragmentDensityTexelSize`
+    /// @param maxFragmentDensityTexelSize `maxFragmentDensityTexelSize`
+    /// @param fragmentDensityInvocations `fragmentDensityInvocations`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentDensityTexelSize, MemorySegment maxFragmentDensityTexelSize, int fragmentDensityInvocations) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentDensityTexelSize(minFragmentDensityTexelSize).maxFragmentDensityTexelSize(maxFragmentDensityTexelSize).fragmentDensityInvocations(fragmentDensityInvocations);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentDensityTexelSize `minFragmentDensityTexelSize`
+    /// @param maxFragmentDensityTexelSize `maxFragmentDensityTexelSize`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentDensityTexelSize, MemorySegment maxFragmentDensityTexelSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentDensityTexelSize(minFragmentDensityTexelSize).maxFragmentDensityTexelSize(maxFragmentDensityTexelSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentDensityTexelSize `minFragmentDensityTexelSize`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentDensityTexelSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentDensityTexelSize(minFragmentDensityTexelSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

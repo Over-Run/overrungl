@@ -181,6 +181,209 @@ public sealed class VkShaderCreateInfoEXT extends GroupType {
     /// @return the allocated `VkShaderCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @param pPushConstantRanges `pPushConstantRanges`
+    /// @param pSpecializationInfo `pSpecializationInfo`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName, int setLayoutCount, MemorySegment pSetLayouts, int pushConstantRangeCount, MemorySegment pPushConstantRanges, MemorySegment pSpecializationInfo) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges).pSpecializationInfo(pSpecializationInfo);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @param pPushConstantRanges `pPushConstantRanges`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName, int setLayoutCount, MemorySegment pSetLayouts, int pushConstantRangeCount, MemorySegment pPushConstantRanges) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @param pushConstantRangeCount `pushConstantRangeCount`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName, int setLayoutCount, MemorySegment pSetLayouts, int pushConstantRangeCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @param pSetLayouts `pSetLayouts`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName, int setLayoutCount, MemorySegment pSetLayouts) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @param setLayoutCount `setLayoutCount`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName, int setLayoutCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @param pName `pName`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode, MemorySegment pName) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @param pCode `pCode`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize, MemorySegment pCode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @param codeSize `codeSize`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType, long codeSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @param codeType `codeType`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage, int codeType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @param nextStage `nextStage`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage, int nextStage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stage `stage`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

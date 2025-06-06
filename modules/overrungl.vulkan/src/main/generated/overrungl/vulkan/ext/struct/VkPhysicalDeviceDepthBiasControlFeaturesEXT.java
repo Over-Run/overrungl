@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasControl `depthBiasControl`
+    /// @param leastRepresentableValueForceUnormRepresentation `leastRepresentableValueForceUnormRepresentation`
+    /// @param floatRepresentation `floatRepresentation`
+    /// @param depthBiasExact `depthBiasExact`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasControl, int leastRepresentableValueForceUnormRepresentation, int floatRepresentation, int depthBiasExact) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasControl(depthBiasControl).leastRepresentableValueForceUnormRepresentation(leastRepresentableValueForceUnormRepresentation).floatRepresentation(floatRepresentation).depthBiasExact(depthBiasExact);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasControl `depthBiasControl`
+    /// @param leastRepresentableValueForceUnormRepresentation `leastRepresentableValueForceUnormRepresentation`
+    /// @param floatRepresentation `floatRepresentation`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasControl, int leastRepresentableValueForceUnormRepresentation, int floatRepresentation) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasControl(depthBiasControl).leastRepresentableValueForceUnormRepresentation(leastRepresentableValueForceUnormRepresentation).floatRepresentation(floatRepresentation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasControl `depthBiasControl`
+    /// @param leastRepresentableValueForceUnormRepresentation `leastRepresentableValueForceUnormRepresentation`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasControl, int leastRepresentableValueForceUnormRepresentation) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasControl(depthBiasControl).leastRepresentableValueForceUnormRepresentation(leastRepresentableValueForceUnormRepresentation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasControl `depthBiasControl`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasControl) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasControl(depthBiasControl);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthBiasControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public static VkPhysicalDeviceDepthBiasControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

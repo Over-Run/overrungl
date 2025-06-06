@@ -111,6 +111,69 @@ public sealed class VkBufferImageCopy extends GroupType {
     /// @return the allocated `VkBufferImageCopy`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @param bufferRowLength `bufferRowLength`
+    /// @param bufferImageHeight `bufferImageHeight`
+    /// @param imageSubresource `imageSubresource`
+    /// @param imageOffset `imageOffset`
+    /// @param imageExtent `imageExtent`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource, MemorySegment imageOffset, MemorySegment imageExtent) {
+        return alloc(allocator).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset).imageExtent(imageExtent);
+    }
+
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @param bufferRowLength `bufferRowLength`
+    /// @param bufferImageHeight `bufferImageHeight`
+    /// @param imageSubresource `imageSubresource`
+    /// @param imageOffset `imageOffset`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource, MemorySegment imageOffset) {
+        return alloc(allocator).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset);
+    }
+
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @param bufferRowLength `bufferRowLength`
+    /// @param bufferImageHeight `bufferImageHeight`
+    /// @param imageSubresource `imageSubresource`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource) {
+        return alloc(allocator).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource);
+    }
+
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @param bufferRowLength `bufferRowLength`
+    /// @param bufferImageHeight `bufferImageHeight`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset, int bufferRowLength, int bufferImageHeight) {
+        return alloc(allocator).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight);
+    }
+
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @param bufferRowLength `bufferRowLength`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset, int bufferRowLength) {
+        return alloc(allocator).bufferOffset(bufferOffset).bufferRowLength(bufferRowLength);
+    }
+
+    /// Allocates a `VkBufferImageCopy` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferOffset `bufferOffset`
+    /// @return the allocated `VkBufferImageCopy`
+    public static VkBufferImageCopy allocInit(SegmentAllocator allocator, long bufferOffset) {
+        return alloc(allocator).bufferOffset(bufferOffset);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

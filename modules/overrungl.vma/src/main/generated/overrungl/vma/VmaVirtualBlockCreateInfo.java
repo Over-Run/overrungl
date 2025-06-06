@@ -93,6 +93,33 @@ public sealed class VmaVirtualBlockCreateInfo extends GroupType {
     /// @return the allocated `VmaVirtualBlockCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaVirtualBlockCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param size `size`
+    /// @param flags `flags`
+    /// @param pAllocationCallbacks `pAllocationCallbacks`
+    /// @return the allocated `VmaVirtualBlockCreateInfo`
+    public static VmaVirtualBlockCreateInfo allocInit(SegmentAllocator allocator, long size, int flags, MemorySegment pAllocationCallbacks) {
+        return alloc(allocator).size(size).flags(flags).pAllocationCallbacks(pAllocationCallbacks);
+    }
+
+    /// Allocates a `VmaVirtualBlockCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param size `size`
+    /// @param flags `flags`
+    /// @return the allocated `VmaVirtualBlockCreateInfo`
+    public static VmaVirtualBlockCreateInfo allocInit(SegmentAllocator allocator, long size, int flags) {
+        return alloc(allocator).size(size).flags(flags);
+    }
+
+    /// Allocates a `VmaVirtualBlockCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param size `size`
+    /// @return the allocated `VmaVirtualBlockCreateInfo`
+    public static VmaVirtualBlockCreateInfo allocInit(SegmentAllocator allocator, long size) {
+        return alloc(allocator).size(size);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

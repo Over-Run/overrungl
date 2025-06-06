@@ -133,6 +133,98 @@ public sealed class VkAccelerationStructureCreateInfoKHR extends GroupType {
     /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param type `type`
+    /// @param deviceAddress `deviceAddress`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags, long buffer, long offset, long size, int type, long deviceAddress) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags).buffer(buffer).offset(offset).size(size).type(type).deviceAddress(deviceAddress);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param type `type`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags, long buffer, long offset, long size, int type) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags).buffer(buffer).offset(offset).size(size).type(type);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags, long buffer, long offset, long size) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags).buffer(buffer).offset(offset).size(size);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags, long buffer, long offset) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags).buffer(buffer).offset(offset);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @param buffer `buffer`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags, long buffer) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags).buffer(buffer);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param createFlags `createFlags`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int createFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).createFlags(createFlags);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAccelerationStructureCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAccelerationStructureCreateInfoKHR`
+    public static VkAccelerationStructureCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

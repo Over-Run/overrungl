@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV exten
     /// @return the allocated `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param descriptorPoolOverallocation `descriptorPoolOverallocation`
+    /// @return the allocated `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV`
+    public static VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorPoolOverallocation) {
+        return alloc(allocator).sType(sType).pNext(pNext).descriptorPoolOverallocation(descriptorPoolOverallocation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV`
+    public static VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV`
+    public static VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkColorBlendAdvancedEXT extends GroupType {
     /// @return the allocated `VkColorBlendAdvancedEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param advancedBlendOp `advancedBlendOp`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @param dstPremultiplied `dstPremultiplied`
+    /// @param blendOverlap `blendOverlap`
+    /// @param clampResults `clampResults`
+    /// @return the allocated `VkColorBlendAdvancedEXT`
+    public static VkColorBlendAdvancedEXT allocInit(SegmentAllocator allocator, int advancedBlendOp, int srcPremultiplied, int dstPremultiplied, int blendOverlap, int clampResults) {
+        return alloc(allocator).advancedBlendOp(advancedBlendOp).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied).blendOverlap(blendOverlap).clampResults(clampResults);
+    }
+
+    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param advancedBlendOp `advancedBlendOp`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @param dstPremultiplied `dstPremultiplied`
+    /// @param blendOverlap `blendOverlap`
+    /// @return the allocated `VkColorBlendAdvancedEXT`
+    public static VkColorBlendAdvancedEXT allocInit(SegmentAllocator allocator, int advancedBlendOp, int srcPremultiplied, int dstPremultiplied, int blendOverlap) {
+        return alloc(allocator).advancedBlendOp(advancedBlendOp).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied).blendOverlap(blendOverlap);
+    }
+
+    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param advancedBlendOp `advancedBlendOp`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @param dstPremultiplied `dstPremultiplied`
+    /// @return the allocated `VkColorBlendAdvancedEXT`
+    public static VkColorBlendAdvancedEXT allocInit(SegmentAllocator allocator, int advancedBlendOp, int srcPremultiplied, int dstPremultiplied) {
+        return alloc(allocator).advancedBlendOp(advancedBlendOp).srcPremultiplied(srcPremultiplied).dstPremultiplied(dstPremultiplied);
+    }
+
+    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param advancedBlendOp `advancedBlendOp`
+    /// @param srcPremultiplied `srcPremultiplied`
+    /// @return the allocated `VkColorBlendAdvancedEXT`
+    public static VkColorBlendAdvancedEXT allocInit(SegmentAllocator allocator, int advancedBlendOp, int srcPremultiplied) {
+        return alloc(allocator).advancedBlendOp(advancedBlendOp).srcPremultiplied(srcPremultiplied);
+    }
+
+    /// Allocates a `VkColorBlendAdvancedEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param advancedBlendOp `advancedBlendOp`
+    /// @return the allocated `VkColorBlendAdvancedEXT`
+    public static VkColorBlendAdvancedEXT allocInit(SegmentAllocator allocator, int advancedBlendOp) {
+        return alloc(allocator).advancedBlendOp(advancedBlendOp);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

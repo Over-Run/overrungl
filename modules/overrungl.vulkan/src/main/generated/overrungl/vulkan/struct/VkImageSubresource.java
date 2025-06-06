@@ -93,6 +93,33 @@ public sealed class VkImageSubresource extends GroupType {
     /// @return the allocated `VkImageSubresource`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageSubresource` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param aspectMask `aspectMask`
+    /// @param mipLevel `mipLevel`
+    /// @param arrayLayer `arrayLayer`
+    /// @return the allocated `VkImageSubresource`
+    public static VkImageSubresource allocInit(SegmentAllocator allocator, int aspectMask, int mipLevel, int arrayLayer) {
+        return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel).arrayLayer(arrayLayer);
+    }
+
+    /// Allocates a `VkImageSubresource` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param aspectMask `aspectMask`
+    /// @param mipLevel `mipLevel`
+    /// @return the allocated `VkImageSubresource`
+    public static VkImageSubresource allocInit(SegmentAllocator allocator, int aspectMask, int mipLevel) {
+        return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel);
+    }
+
+    /// Allocates a `VkImageSubresource` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param aspectMask `aspectMask`
+    /// @return the allocated `VkImageSubresource`
+    public static VkImageSubresource allocInit(SegmentAllocator allocator, int aspectMask) {
+        return alloc(allocator).aspectMask(aspectMask);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

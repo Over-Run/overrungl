@@ -179,6 +179,209 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// @return the allocated `StdVideoH265ShortTermRefPicSet`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param reserved3 `reserved3`
+    /// @param num_negative_pics `num_negative_pics`
+    /// @param num_positive_pics `num_positive_pics`
+    /// @param delta_poc_s0_minus1 `delta_poc_s0_minus1`
+    /// @param delta_poc_s1_minus1 `delta_poc_s1_minus1`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2, byte reserved3, byte num_negative_pics, byte num_positive_pics, MemorySegment delta_poc_s0_minus1, MemorySegment delta_poc_s1_minus1) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3).num_negative_pics(num_negative_pics).num_positive_pics(num_positive_pics).delta_poc_s0_minus1(delta_poc_s0_minus1).delta_poc_s1_minus1(delta_poc_s1_minus1);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param reserved3 `reserved3`
+    /// @param num_negative_pics `num_negative_pics`
+    /// @param num_positive_pics `num_positive_pics`
+    /// @param delta_poc_s0_minus1 `delta_poc_s0_minus1`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2, byte reserved3, byte num_negative_pics, byte num_positive_pics, MemorySegment delta_poc_s0_minus1) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3).num_negative_pics(num_negative_pics).num_positive_pics(num_positive_pics).delta_poc_s0_minus1(delta_poc_s0_minus1);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param reserved3 `reserved3`
+    /// @param num_negative_pics `num_negative_pics`
+    /// @param num_positive_pics `num_positive_pics`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2, byte reserved3, byte num_negative_pics, byte num_positive_pics) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3).num_negative_pics(num_negative_pics).num_positive_pics(num_positive_pics);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param reserved3 `reserved3`
+    /// @param num_negative_pics `num_negative_pics`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2, byte reserved3, byte num_negative_pics) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3).num_negative_pics(num_negative_pics);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param reserved3 `reserved3`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2, byte reserved3) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1, byte reserved2) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag, short reserved1) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @param used_by_curr_pic_s1_flag `used_by_curr_pic_s1_flag`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag, short used_by_curr_pic_s1_flag) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @param used_by_curr_pic_s0_flag `used_by_curr_pic_s0_flag`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag, short used_by_curr_pic_s0_flag) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @param used_by_curr_pic_flag `used_by_curr_pic_flag`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1, short used_by_curr_pic_flag) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @param abs_delta_rps_minus1 `abs_delta_rps_minus1`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag, short abs_delta_rps_minus1) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @param use_delta_flag `use_delta_flag`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1, short use_delta_flag) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param delta_idx_minus1 `delta_idx_minus1`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags, int delta_idx_minus1) {
+        return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1);
+    }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

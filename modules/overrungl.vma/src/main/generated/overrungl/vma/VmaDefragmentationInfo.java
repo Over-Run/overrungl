@@ -117,6 +117,69 @@ public sealed class VmaDefragmentationInfo extends GroupType {
     /// @return the allocated `VmaDefragmentationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pool `pool`
+    /// @param maxBytesPerPass `maxBytesPerPass`
+    /// @param maxAllocationsPerPass `maxAllocationsPerPass`
+    /// @param pfnBreakCallback `pfnBreakCallback`
+    /// @param pBreakCallbackUserData `pBreakCallbackUserData`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags, MemorySegment pool, long maxBytesPerPass, int maxAllocationsPerPass, MemorySegment pfnBreakCallback, MemorySegment pBreakCallbackUserData) {
+        return alloc(allocator).flags(flags).pool(pool).maxBytesPerPass(maxBytesPerPass).maxAllocationsPerPass(maxAllocationsPerPass).pfnBreakCallback(pfnBreakCallback).pBreakCallbackUserData(pBreakCallbackUserData);
+    }
+
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pool `pool`
+    /// @param maxBytesPerPass `maxBytesPerPass`
+    /// @param maxAllocationsPerPass `maxAllocationsPerPass`
+    /// @param pfnBreakCallback `pfnBreakCallback`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags, MemorySegment pool, long maxBytesPerPass, int maxAllocationsPerPass, MemorySegment pfnBreakCallback) {
+        return alloc(allocator).flags(flags).pool(pool).maxBytesPerPass(maxBytesPerPass).maxAllocationsPerPass(maxAllocationsPerPass).pfnBreakCallback(pfnBreakCallback);
+    }
+
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pool `pool`
+    /// @param maxBytesPerPass `maxBytesPerPass`
+    /// @param maxAllocationsPerPass `maxAllocationsPerPass`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags, MemorySegment pool, long maxBytesPerPass, int maxAllocationsPerPass) {
+        return alloc(allocator).flags(flags).pool(pool).maxBytesPerPass(maxBytesPerPass).maxAllocationsPerPass(maxAllocationsPerPass);
+    }
+
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pool `pool`
+    /// @param maxBytesPerPass `maxBytesPerPass`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags, MemorySegment pool, long maxBytesPerPass) {
+        return alloc(allocator).flags(flags).pool(pool).maxBytesPerPass(maxBytesPerPass);
+    }
+
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pool `pool`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags, MemorySegment pool) {
+        return alloc(allocator).flags(flags).pool(pool);
+    }
+
+    /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `VmaDefragmentationInfo`
+    public static VmaDefragmentationInfo allocInit(SegmentAllocator allocator, int flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

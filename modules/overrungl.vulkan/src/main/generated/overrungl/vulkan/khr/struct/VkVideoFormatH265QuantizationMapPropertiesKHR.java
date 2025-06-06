@@ -93,6 +93,33 @@ public sealed class VkVideoFormatH265QuantizationMapPropertiesKHR extends GroupT
     /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param compatibleCtbSizes `compatibleCtbSizes`
+    /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
+    public static VkVideoFormatH265QuantizationMapPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int compatibleCtbSizes) {
+        return alloc(allocator).sType(sType).pNext(pNext).compatibleCtbSizes(compatibleCtbSizes);
+    }
+
+    /// Allocates a `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
+    public static VkVideoFormatH265QuantizationMapPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoFormatH265QuantizationMapPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
+    public static VkVideoFormatH265QuantizationMapPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

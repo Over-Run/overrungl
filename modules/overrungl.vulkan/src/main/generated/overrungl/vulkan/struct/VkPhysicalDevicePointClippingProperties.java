@@ -93,6 +93,33 @@ public sealed class VkPhysicalDevicePointClippingProperties extends GroupType {
     /// @return the allocated `VkPhysicalDevicePointClippingProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDevicePointClippingProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pointClippingBehavior `pointClippingBehavior`
+    /// @return the allocated `VkPhysicalDevicePointClippingProperties`
+    public static VkPhysicalDevicePointClippingProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pointClippingBehavior) {
+        return alloc(allocator).sType(sType).pNext(pNext).pointClippingBehavior(pointClippingBehavior);
+    }
+
+    /// Allocates a `VkPhysicalDevicePointClippingProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDevicePointClippingProperties`
+    public static VkPhysicalDevicePointClippingProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDevicePointClippingProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDevicePointClippingProperties`
+    public static VkPhysicalDevicePointClippingProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

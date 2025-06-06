@@ -149,6 +149,131 @@ public sealed class VkPhysicalDeviceRayTracingPropertiesNV extends GroupType {
     /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @param shaderGroupBaseAlignment `shaderGroupBaseAlignment`
+    /// @param maxGeometryCount `maxGeometryCount`
+    /// @param maxInstanceCount `maxInstanceCount`
+    /// @param maxTriangleCount `maxTriangleCount`
+    /// @param maxDescriptorSetAccelerationStructures `maxDescriptorSetAccelerationStructures`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride, int shaderGroupBaseAlignment, long maxGeometryCount, long maxInstanceCount, long maxTriangleCount, int maxDescriptorSetAccelerationStructures) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount).maxTriangleCount(maxTriangleCount).maxDescriptorSetAccelerationStructures(maxDescriptorSetAccelerationStructures);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @param shaderGroupBaseAlignment `shaderGroupBaseAlignment`
+    /// @param maxGeometryCount `maxGeometryCount`
+    /// @param maxInstanceCount `maxInstanceCount`
+    /// @param maxTriangleCount `maxTriangleCount`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride, int shaderGroupBaseAlignment, long maxGeometryCount, long maxInstanceCount, long maxTriangleCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount).maxTriangleCount(maxTriangleCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @param shaderGroupBaseAlignment `shaderGroupBaseAlignment`
+    /// @param maxGeometryCount `maxGeometryCount`
+    /// @param maxInstanceCount `maxInstanceCount`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride, int shaderGroupBaseAlignment, long maxGeometryCount, long maxInstanceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).maxGeometryCount(maxGeometryCount).maxInstanceCount(maxInstanceCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @param shaderGroupBaseAlignment `shaderGroupBaseAlignment`
+    /// @param maxGeometryCount `maxGeometryCount`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride, int shaderGroupBaseAlignment, long maxGeometryCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment).maxGeometryCount(maxGeometryCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @param shaderGroupBaseAlignment `shaderGroupBaseAlignment`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride, int shaderGroupBaseAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride).shaderGroupBaseAlignment(shaderGroupBaseAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @param maxShaderGroupStride `maxShaderGroupStride`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth, int maxShaderGroupStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth).maxShaderGroupStride(maxShaderGroupStride);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @param maxRecursionDepth `maxRecursionDepth`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize, int maxRecursionDepth) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize).maxRecursionDepth(maxRecursionDepth);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shaderGroupHandleSize `shaderGroupHandleSize`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderGroupHandleSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).shaderGroupHandleSize(shaderGroupHandleSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRayTracingPropertiesNV`
+    public static VkPhysicalDeviceRayTracingPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

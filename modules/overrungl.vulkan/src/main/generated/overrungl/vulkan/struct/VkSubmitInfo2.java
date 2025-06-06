@@ -141,6 +141,114 @@ public sealed class VkSubmitInfo2 extends GroupType {
     /// @return the allocated `VkSubmitInfo2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @param pWaitSemaphoreInfos `pWaitSemaphoreInfos`
+    /// @param commandBufferInfoCount `commandBufferInfoCount`
+    /// @param pCommandBufferInfos `pCommandBufferInfos`
+    /// @param signalSemaphoreInfoCount `signalSemaphoreInfoCount`
+    /// @param pSignalSemaphoreInfos `pSignalSemaphoreInfos`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount, MemorySegment pWaitSemaphoreInfos, int commandBufferInfoCount, MemorySegment pCommandBufferInfos, int signalSemaphoreInfoCount, MemorySegment pSignalSemaphoreInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount).pCommandBufferInfos(pCommandBufferInfos).signalSemaphoreInfoCount(signalSemaphoreInfoCount).pSignalSemaphoreInfos(pSignalSemaphoreInfos);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @param pWaitSemaphoreInfos `pWaitSemaphoreInfos`
+    /// @param commandBufferInfoCount `commandBufferInfoCount`
+    /// @param pCommandBufferInfos `pCommandBufferInfos`
+    /// @param signalSemaphoreInfoCount `signalSemaphoreInfoCount`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount, MemorySegment pWaitSemaphoreInfos, int commandBufferInfoCount, MemorySegment pCommandBufferInfos, int signalSemaphoreInfoCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount).pCommandBufferInfos(pCommandBufferInfos).signalSemaphoreInfoCount(signalSemaphoreInfoCount);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @param pWaitSemaphoreInfos `pWaitSemaphoreInfos`
+    /// @param commandBufferInfoCount `commandBufferInfoCount`
+    /// @param pCommandBufferInfos `pCommandBufferInfos`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount, MemorySegment pWaitSemaphoreInfos, int commandBufferInfoCount, MemorySegment pCommandBufferInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount).pCommandBufferInfos(pCommandBufferInfos);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @param pWaitSemaphoreInfos `pWaitSemaphoreInfos`
+    /// @param commandBufferInfoCount `commandBufferInfoCount`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount, MemorySegment pWaitSemaphoreInfos, int commandBufferInfoCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos).commandBufferInfoCount(commandBufferInfoCount);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @param pWaitSemaphoreInfos `pWaitSemaphoreInfos`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount, MemorySegment pWaitSemaphoreInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount).pWaitSemaphoreInfos(pWaitSemaphoreInfos);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param waitSemaphoreInfoCount `waitSemaphoreInfoCount`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int waitSemaphoreInfoCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).waitSemaphoreInfoCount(waitSemaphoreInfoCount);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSubmitInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSubmitInfo2`
+    public static VkSubmitInfo2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

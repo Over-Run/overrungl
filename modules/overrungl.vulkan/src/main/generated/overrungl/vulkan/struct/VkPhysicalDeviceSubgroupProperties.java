@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceSubgroupProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subgroupSize `subgroupSize`
+    /// @param supportedStages `supportedStages`
+    /// @param supportedOperations `supportedOperations`
+    /// @param quadOperationsInAllStages `quadOperationsInAllStages`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSize, int supportedStages, int supportedOperations, int quadOperationsInAllStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).subgroupSize(subgroupSize).supportedStages(supportedStages).supportedOperations(supportedOperations).quadOperationsInAllStages(quadOperationsInAllStages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subgroupSize `subgroupSize`
+    /// @param supportedStages `supportedStages`
+    /// @param supportedOperations `supportedOperations`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSize, int supportedStages, int supportedOperations) {
+        return alloc(allocator).sType(sType).pNext(pNext).subgroupSize(subgroupSize).supportedStages(supportedStages).supportedOperations(supportedOperations);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subgroupSize `subgroupSize`
+    /// @param supportedStages `supportedStages`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSize, int supportedStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).subgroupSize(subgroupSize).supportedStages(supportedStages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subgroupSize `subgroupSize`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).subgroupSize(subgroupSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceSubgroupProperties`
+    public static VkPhysicalDeviceSubgroupProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

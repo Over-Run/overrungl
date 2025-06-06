@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceDepthClampZeroOneFeaturesKHR extends GroupTy
     /// @return the allocated `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthClampZeroOne `depthClampZeroOne`
+    /// @return the allocated `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR`
+    public static VkPhysicalDeviceDepthClampZeroOneFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthClampZeroOne) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthClampZeroOne(depthClampZeroOne);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR`
+    public static VkPhysicalDeviceDepthClampZeroOneFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDepthClampZeroOneFeaturesKHR`
+    public static VkPhysicalDeviceDepthClampZeroOneFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

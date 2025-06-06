@@ -93,6 +93,33 @@ public sealed class VkPipelineRasterizationStateRasterizationOrderAMD extends Gr
     /// @return the allocated `VkPipelineRasterizationStateRasterizationOrderAMD`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineRasterizationStateRasterizationOrderAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rasterizationOrder `rasterizationOrder`
+    /// @return the allocated `VkPipelineRasterizationStateRasterizationOrderAMD`
+    public static VkPipelineRasterizationStateRasterizationOrderAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rasterizationOrder) {
+        return alloc(allocator).sType(sType).pNext(pNext).rasterizationOrder(rasterizationOrder);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateRasterizationOrderAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineRasterizationStateRasterizationOrderAMD`
+    public static VkPipelineRasterizationStateRasterizationOrderAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateRasterizationOrderAMD` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineRasterizationStateRasterizationOrderAMD`
+    public static VkPipelineRasterizationStateRasterizationOrderAMD allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param queue `queue`
+    /// @param mtlCommandQueue `mtlCommandQueue`
+    /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
+    public static VkExportMetalCommandQueueInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment queue, MemorySegment mtlCommandQueue) {
+        return alloc(allocator).sType(sType).pNext(pNext).queue(queue).mtlCommandQueue(mtlCommandQueue);
+    }
+
+    /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param queue `queue`
+    /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
+    public static VkExportMetalCommandQueueInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment queue) {
+        return alloc(allocator).sType(sType).pNext(pNext).queue(queue);
+    }
+
+    /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
+    public static VkExportMetalCommandQueueInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
+    public static VkExportMetalCommandQueueInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV exten
     /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param extendedSparseAddressSpaceSize `extendedSparseAddressSpaceSize`
+    /// @param extendedSparseImageUsageFlags `extendedSparseImageUsageFlags`
+    /// @param extendedSparseBufferUsageFlags `extendedSparseBufferUsageFlags`
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long extendedSparseAddressSpaceSize, int extendedSparseImageUsageFlags, int extendedSparseBufferUsageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).extendedSparseAddressSpaceSize(extendedSparseAddressSpaceSize).extendedSparseImageUsageFlags(extendedSparseImageUsageFlags).extendedSparseBufferUsageFlags(extendedSparseBufferUsageFlags);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param extendedSparseAddressSpaceSize `extendedSparseAddressSpaceSize`
+    /// @param extendedSparseImageUsageFlags `extendedSparseImageUsageFlags`
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long extendedSparseAddressSpaceSize, int extendedSparseImageUsageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).extendedSparseAddressSpaceSize(extendedSparseAddressSpaceSize).extendedSparseImageUsageFlags(extendedSparseImageUsageFlags);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param extendedSparseAddressSpaceSize `extendedSparseAddressSpaceSize`
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long extendedSparseAddressSpaceSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).extendedSparseAddressSpaceSize(extendedSparseAddressSpaceSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

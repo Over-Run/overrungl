@@ -133,6 +133,98 @@ public sealed class VkVideoEncodeH265SessionParametersAddInfoKHR extends GroupTy
     /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @param pStdVPSs `pStdVPSs`
+    /// @param stdSPSCount `stdSPSCount`
+    /// @param pStdSPSs `pStdSPSs`
+    /// @param stdPPSCount `stdPPSCount`
+    /// @param pStdPPSs `pStdPPSs`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount, MemorySegment pStdVPSs, int stdSPSCount, MemorySegment pStdSPSs, int stdPPSCount, MemorySegment pStdPPSs) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount).pStdVPSs(pStdVPSs).stdSPSCount(stdSPSCount).pStdSPSs(pStdSPSs).stdPPSCount(stdPPSCount).pStdPPSs(pStdPPSs);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @param pStdVPSs `pStdVPSs`
+    /// @param stdSPSCount `stdSPSCount`
+    /// @param pStdSPSs `pStdSPSs`
+    /// @param stdPPSCount `stdPPSCount`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount, MemorySegment pStdVPSs, int stdSPSCount, MemorySegment pStdSPSs, int stdPPSCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount).pStdVPSs(pStdVPSs).stdSPSCount(stdSPSCount).pStdSPSs(pStdSPSs).stdPPSCount(stdPPSCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @param pStdVPSs `pStdVPSs`
+    /// @param stdSPSCount `stdSPSCount`
+    /// @param pStdSPSs `pStdSPSs`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount, MemorySegment pStdVPSs, int stdSPSCount, MemorySegment pStdSPSs) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount).pStdVPSs(pStdVPSs).stdSPSCount(stdSPSCount).pStdSPSs(pStdSPSs);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @param pStdVPSs `pStdVPSs`
+    /// @param stdSPSCount `stdSPSCount`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount, MemorySegment pStdVPSs, int stdSPSCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount).pStdVPSs(pStdVPSs).stdSPSCount(stdSPSCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @param pStdVPSs `pStdVPSs`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount, MemorySegment pStdVPSs) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount).pStdVPSs(pStdVPSs);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stdVPSCount `stdVPSCount`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdVPSCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stdVPSCount(stdVPSCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH265SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH265SessionParametersAddInfoKHR`
+    public static VkVideoEncodeH265SessionParametersAddInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

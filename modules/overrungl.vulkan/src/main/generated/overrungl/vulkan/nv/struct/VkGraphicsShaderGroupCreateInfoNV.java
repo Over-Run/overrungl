@@ -117,6 +117,69 @@ public sealed class VkGraphicsShaderGroupCreateInfoNV extends GroupType {
     /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pTessellationState `pTessellationState`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pTessellationState) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pTessellationState(pTessellationState);
+    }
+
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState);
+    }
+
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageCount, MemorySegment pStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount).pStages(pStages);
+    }
+
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stageCount `stageCount`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stageCount(stageCount);
+    }
+
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkGraphicsShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
+    public static VkGraphicsShaderGroupCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

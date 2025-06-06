@@ -107,6 +107,56 @@ public sealed class VkCopyMemoryToAccelerationStructureInfoKHR extends GroupType
     /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCopyMemoryToAccelerationStructureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param src `src`
+    /// @param dst `dst`
+    /// @param mode `mode`
+    /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
+    public static VkCopyMemoryToAccelerationStructureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment src, long dst, int mode) {
+        return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst).mode(mode);
+    }
+
+    /// Allocates a `VkCopyMemoryToAccelerationStructureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param src `src`
+    /// @param dst `dst`
+    /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
+    public static VkCopyMemoryToAccelerationStructureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment src, long dst) {
+        return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst);
+    }
+
+    /// Allocates a `VkCopyMemoryToAccelerationStructureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param src `src`
+    /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
+    public static VkCopyMemoryToAccelerationStructureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment src) {
+        return alloc(allocator).sType(sType).pNext(pNext).src(src);
+    }
+
+    /// Allocates a `VkCopyMemoryToAccelerationStructureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
+    public static VkCopyMemoryToAccelerationStructureInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCopyMemoryToAccelerationStructureInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCopyMemoryToAccelerationStructureInfoKHR`
+    public static VkCopyMemoryToAccelerationStructureInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

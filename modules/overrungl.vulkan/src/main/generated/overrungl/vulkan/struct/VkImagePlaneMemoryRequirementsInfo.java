@@ -93,6 +93,33 @@ public sealed class VkImagePlaneMemoryRequirementsInfo extends GroupType {
     /// @return the allocated `VkImagePlaneMemoryRequirementsInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImagePlaneMemoryRequirementsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param planeAspect `planeAspect`
+    /// @return the allocated `VkImagePlaneMemoryRequirementsInfo`
+    public static VkImagePlaneMemoryRequirementsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int planeAspect) {
+        return alloc(allocator).sType(sType).pNext(pNext).planeAspect(planeAspect);
+    }
+
+    /// Allocates a `VkImagePlaneMemoryRequirementsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImagePlaneMemoryRequirementsInfo`
+    public static VkImagePlaneMemoryRequirementsInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImagePlaneMemoryRequirementsInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImagePlaneMemoryRequirementsInfo`
+    public static VkImagePlaneMemoryRequirementsInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

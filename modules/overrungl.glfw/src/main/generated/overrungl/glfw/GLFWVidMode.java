@@ -117,6 +117,69 @@ public sealed class GLFWVidMode extends GroupType {
     /// @return the allocated `GLFWVidMode`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param redBits `redBits`
+    /// @param greenBits `greenBits`
+    /// @param blueBits `blueBits`
+    /// @param refreshRate `refreshRate`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width, int height, int redBits, int greenBits, int blueBits, int refreshRate) {
+        return alloc(allocator).width(width).height(height).redBits(redBits).greenBits(greenBits).blueBits(blueBits).refreshRate(refreshRate);
+    }
+
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param redBits `redBits`
+    /// @param greenBits `greenBits`
+    /// @param blueBits `blueBits`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width, int height, int redBits, int greenBits, int blueBits) {
+        return alloc(allocator).width(width).height(height).redBits(redBits).greenBits(greenBits).blueBits(blueBits);
+    }
+
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param redBits `redBits`
+    /// @param greenBits `greenBits`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width, int height, int redBits, int greenBits) {
+        return alloc(allocator).width(width).height(height).redBits(redBits).greenBits(greenBits);
+    }
+
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param redBits `redBits`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width, int height, int redBits) {
+        return alloc(allocator).width(width).height(height).redBits(redBits);
+    }
+
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width, int height) {
+        return alloc(allocator).width(width).height(height);
+    }
+
+    /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @return the allocated `GLFWVidMode`
+    public static GLFWVidMode allocInit(SegmentAllocator allocator, int width) {
+        return alloc(allocator).width(width);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

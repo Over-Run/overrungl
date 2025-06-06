@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceMemoryPriorityFeaturesEXT extends GroupType 
     /// @return the allocated `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMemoryPriorityFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryPriority `memoryPriority`
+    /// @return the allocated `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
+    public static VkPhysicalDeviceMemoryPriorityFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryPriority) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryPriority(memoryPriority);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryPriorityFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
+    public static VkPhysicalDeviceMemoryPriorityFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryPriorityFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
+    public static VkPhysicalDeviceMemoryPriorityFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

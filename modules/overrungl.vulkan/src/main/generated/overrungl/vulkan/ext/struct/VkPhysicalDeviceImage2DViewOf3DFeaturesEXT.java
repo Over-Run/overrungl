@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends GroupType
     /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image2DViewOf3D `image2DViewOf3D`
+    /// @param sampler2DViewOf3D `sampler2DViewOf3D`
+    /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int image2DViewOf3D, int sampler2DViewOf3D) {
+        return alloc(allocator).sType(sType).pNext(pNext).image2DViewOf3D(image2DViewOf3D).sampler2DViewOf3D(sampler2DViewOf3D);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image2DViewOf3D `image2DViewOf3D`
+    /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int image2DViewOf3D) {
+        return alloc(allocator).sType(sType).pNext(pNext).image2DViewOf3D(image2DViewOf3D);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

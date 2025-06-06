@@ -101,6 +101,44 @@ public sealed class VkVideoDecodeH264InlineSessionParametersInfoKHR extends Grou
     /// @return the allocated `VkVideoDecodeH264InlineSessionParametersInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoDecodeH264InlineSessionParametersInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pStdSPS `pStdSPS`
+    /// @param pStdPPS `pStdPPS`
+    /// @return the allocated `VkVideoDecodeH264InlineSessionParametersInfoKHR`
+    public static VkVideoDecodeH264InlineSessionParametersInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSPS, MemorySegment pStdPPS) {
+        return alloc(allocator).sType(sType).pNext(pNext).pStdSPS(pStdSPS).pStdPPS(pStdPPS);
+    }
+
+    /// Allocates a `VkVideoDecodeH264InlineSessionParametersInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pStdSPS `pStdSPS`
+    /// @return the allocated `VkVideoDecodeH264InlineSessionParametersInfoKHR`
+    public static VkVideoDecodeH264InlineSessionParametersInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSPS) {
+        return alloc(allocator).sType(sType).pNext(pNext).pStdSPS(pStdSPS);
+    }
+
+    /// Allocates a `VkVideoDecodeH264InlineSessionParametersInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoDecodeH264InlineSessionParametersInfoKHR`
+    public static VkVideoDecodeH264InlineSessionParametersInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoDecodeH264InlineSessionParametersInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoDecodeH264InlineSessionParametersInfoKHR`
+    public static VkVideoDecodeH264InlineSessionParametersInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -85,6 +85,23 @@ public sealed class VkPipelineBinaryDataKHR extends GroupType {
     /// @return the allocated `VkPipelineBinaryDataKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineBinaryDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param dataSize `dataSize`
+    /// @param pData `pData`
+    /// @return the allocated `VkPipelineBinaryDataKHR`
+    public static VkPipelineBinaryDataKHR allocInit(SegmentAllocator allocator, long dataSize, MemorySegment pData) {
+        return alloc(allocator).dataSize(dataSize).pData(pData);
+    }
+
+    /// Allocates a `VkPipelineBinaryDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param dataSize `dataSize`
+    /// @return the allocated `VkPipelineBinaryDataKHR`
+    public static VkPipelineBinaryDataKHR allocInit(SegmentAllocator allocator, long dataSize) {
+        return alloc(allocator).dataSize(dataSize);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkDeviceImageMemoryRequirements extends GroupType {
     /// @return the allocated `VkDeviceImageMemoryRequirements`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pCreateInfo `pCreateInfo`
+    /// @param planeAspect `planeAspect`
+    /// @return the allocated `VkDeviceImageMemoryRequirements`
+    public static VkDeviceImageMemoryRequirements allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pCreateInfo, int planeAspect) {
+        return alloc(allocator).sType(sType).pNext(pNext).pCreateInfo(pCreateInfo).planeAspect(planeAspect);
+    }
+
+    /// Allocates a `VkDeviceImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pCreateInfo `pCreateInfo`
+    /// @return the allocated `VkDeviceImageMemoryRequirements`
+    public static VkDeviceImageMemoryRequirements allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pCreateInfo) {
+        return alloc(allocator).sType(sType).pNext(pNext).pCreateInfo(pCreateInfo);
+    }
+
+    /// Allocates a `VkDeviceImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceImageMemoryRequirements`
+    public static VkDeviceImageMemoryRequirements allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceImageMemoryRequirements`
+    public static VkDeviceImageMemoryRequirements allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

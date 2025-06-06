@@ -173,6 +173,188 @@ public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @param depthBiasEnable `depthBiasEnable`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @param depthBiasClamp `depthBiasClamp`
+    /// @param depthBiasSlopeFactor `depthBiasSlopeFactor`
+    /// @param lineWidth `lineWidth`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace, int depthBiasEnable, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor, float lineWidth) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace).depthBiasEnable(depthBiasEnable).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp).depthBiasSlopeFactor(depthBiasSlopeFactor).lineWidth(lineWidth);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @param depthBiasEnable `depthBiasEnable`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @param depthBiasClamp `depthBiasClamp`
+    /// @param depthBiasSlopeFactor `depthBiasSlopeFactor`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace, int depthBiasEnable, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace).depthBiasEnable(depthBiasEnable).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp).depthBiasSlopeFactor(depthBiasSlopeFactor);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @param depthBiasEnable `depthBiasEnable`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @param depthBiasClamp `depthBiasClamp`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace, int depthBiasEnable, float depthBiasConstantFactor, float depthBiasClamp) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace).depthBiasEnable(depthBiasEnable).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @param depthBiasEnable `depthBiasEnable`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace, int depthBiasEnable, float depthBiasConstantFactor) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace).depthBiasEnable(depthBiasEnable).depthBiasConstantFactor(depthBiasConstantFactor);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @param depthBiasEnable `depthBiasEnable`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace, int depthBiasEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace).depthBiasEnable(depthBiasEnable);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @param frontFace `frontFace`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode, int frontFace) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode).frontFace(frontFace);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @param cullMode `cullMode`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode, int cullMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode).cullMode(cullMode);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @param polygonMode `polygonMode`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable, int polygonMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable).polygonMode(polygonMode);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @param rasterizerDiscardEnable `rasterizerDiscardEnable`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable, int rasterizerDiscardEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable).rasterizerDiscardEnable(rasterizerDiscardEnable);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param depthClampEnable `depthClampEnable`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int depthClampEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).depthClampEnable(depthClampEnable);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
+    public static VkPipelineRasterizationStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

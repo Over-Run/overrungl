@@ -93,6 +93,33 @@ public sealed class VkExportMemoryAllocateInfoNV extends GroupType {
     /// @return the allocated `VkExportMemoryAllocateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExportMemoryAllocateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleTypes `handleTypes`
+    /// @return the allocated `VkExportMemoryAllocateInfoNV`
+    public static VkExportMemoryAllocateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleTypes) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleTypes(handleTypes);
+    }
+
+    /// Allocates a `VkExportMemoryAllocateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExportMemoryAllocateInfoNV`
+    public static VkExportMemoryAllocateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExportMemoryAllocateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExportMemoryAllocateInfoNV`
+    public static VkExportMemoryAllocateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

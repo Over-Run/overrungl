@@ -85,6 +85,23 @@ public sealed class VkPresentTimeGOOGLE extends GroupType {
     /// @return the allocated `VkPresentTimeGOOGLE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPresentTimeGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @param desiredPresentTime `desiredPresentTime`
+    /// @return the allocated `VkPresentTimeGOOGLE`
+    public static VkPresentTimeGOOGLE allocInit(SegmentAllocator allocator, int presentID, long desiredPresentTime) {
+        return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime);
+    }
+
+    /// Allocates a `VkPresentTimeGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @return the allocated `VkPresentTimeGOOGLE`
+    public static VkPresentTimeGOOGLE allocInit(SegmentAllocator allocator, int presentID) {
+        return alloc(allocator).presentID(presentID);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
