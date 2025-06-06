@@ -87,31 +87,28 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
     /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and arguments like initializer list.
+    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `staticInstance`.
     /// @param allocator the segment allocator
     /// @param staticInstance `staticInstance`
+    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
+    public static VkAccelerationStructureMotionInstanceDataNV allocWith_staticInstance(SegmentAllocator allocator, MemorySegment staticInstance) {
+        return alloc(allocator).staticInstance(staticInstance);
+    }
+
+    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `matrixMotionInstance`.
+    /// @param allocator the segment allocator
     /// @param matrixMotionInstance `matrixMotionInstance`
+    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
+    public static VkAccelerationStructureMotionInstanceDataNV allocWith_matrixMotionInstance(SegmentAllocator allocator, MemorySegment matrixMotionInstance) {
+        return alloc(allocator).matrixMotionInstance(matrixMotionInstance);
+    }
+
+    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `srtMotionInstance`.
+    /// @param allocator the segment allocator
     /// @param srtMotionInstance `srtMotionInstance`
     /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocInit(SegmentAllocator allocator, MemorySegment staticInstance, MemorySegment matrixMotionInstance, MemorySegment srtMotionInstance) {
-        return alloc(allocator).staticInstance(staticInstance).matrixMotionInstance(matrixMotionInstance).srtMotionInstance(srtMotionInstance);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param staticInstance `staticInstance`
-    /// @param matrixMotionInstance `matrixMotionInstance`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocInit(SegmentAllocator allocator, MemorySegment staticInstance, MemorySegment matrixMotionInstance) {
-        return alloc(allocator).staticInstance(staticInstance).matrixMotionInstance(matrixMotionInstance);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param staticInstance `staticInstance`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocInit(SegmentAllocator allocator, MemorySegment staticInstance) {
-        return alloc(allocator).staticInstance(staticInstance);
+    public static VkAccelerationStructureMotionInstanceDataNV allocWith_srtMotionInstance(SegmentAllocator allocator, MemorySegment srtMotionInstance) {
+        return alloc(allocator).srtMotionInstance(srtMotionInstance);
     }
 
     /// Copies from the given source.

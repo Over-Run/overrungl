@@ -117,67 +117,52 @@ public sealed class VkPerformanceCounterResultKHR extends GroupType {
     /// @return the allocated `VkPerformanceCounterResultKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `int32`.
     /// @param allocator the segment allocator
     /// @param int32 `int32`
+    /// @return the allocated `VkPerformanceCounterResultKHR`
+    public static VkPerformanceCounterResultKHR allocWith_int32(SegmentAllocator allocator, int int32) {
+        return alloc(allocator).int32(int32);
+    }
+
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `int64`.
+    /// @param allocator the segment allocator
     /// @param int64 `int64`
+    /// @return the allocated `VkPerformanceCounterResultKHR`
+    public static VkPerformanceCounterResultKHR allocWith_int64(SegmentAllocator allocator, long int64) {
+        return alloc(allocator).int64(int64);
+    }
+
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `uint32`.
+    /// @param allocator the segment allocator
     /// @param uint32 `uint32`
+    /// @return the allocated `VkPerformanceCounterResultKHR`
+    public static VkPerformanceCounterResultKHR allocWith_uint32(SegmentAllocator allocator, int uint32) {
+        return alloc(allocator).uint32(uint32);
+    }
+
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `uint64`.
+    /// @param allocator the segment allocator
     /// @param uint64 `uint64`
+    /// @return the allocated `VkPerformanceCounterResultKHR`
+    public static VkPerformanceCounterResultKHR allocWith_uint64(SegmentAllocator allocator, long uint64) {
+        return alloc(allocator).uint64(uint64);
+    }
+
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `float32`.
+    /// @param allocator the segment allocator
     /// @param float32 `float32`
+    /// @return the allocated `VkPerformanceCounterResultKHR`
+    public static VkPerformanceCounterResultKHR allocWith_float32(SegmentAllocator allocator, float float32) {
+        return alloc(allocator).float32(float32);
+    }
+
+    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `float64`.
+    /// @param allocator the segment allocator
     /// @param float64 `float64`
     /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32, long int64, int uint32, long uint64, float float32, double float64) {
-        return alloc(allocator).int32(int32).int64(int64).uint32(uint32).uint64(uint64).float32(float32).float64(float64);
-    }
-
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param int32 `int32`
-    /// @param int64 `int64`
-    /// @param uint32 `uint32`
-    /// @param uint64 `uint64`
-    /// @param float32 `float32`
-    /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32, long int64, int uint32, long uint64, float float32) {
-        return alloc(allocator).int32(int32).int64(int64).uint32(uint32).uint64(uint64).float32(float32);
-    }
-
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param int32 `int32`
-    /// @param int64 `int64`
-    /// @param uint32 `uint32`
-    /// @param uint64 `uint64`
-    /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32, long int64, int uint32, long uint64) {
-        return alloc(allocator).int32(int32).int64(int64).uint32(uint32).uint64(uint64);
-    }
-
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param int32 `int32`
-    /// @param int64 `int64`
-    /// @param uint32 `uint32`
-    /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32, long int64, int uint32) {
-        return alloc(allocator).int32(int32).int64(int64).uint32(uint32);
-    }
-
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param int32 `int32`
-    /// @param int64 `int64`
-    /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32, long int64) {
-        return alloc(allocator).int32(int32).int64(int64);
-    }
-
-    /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param int32 `int32`
-    /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR allocInit(SegmentAllocator allocator, int int32) {
-        return alloc(allocator).int32(int32);
+    public static VkPerformanceCounterResultKHR allocWith_float64(SegmentAllocator allocator, double float64) {
+        return alloc(allocator).float64(float64);
     }
 
     /// Copies from the given source.

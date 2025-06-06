@@ -388,34 +388,57 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         )
 
         // initializer list
-        if (groupClass.members.all { it.bits == null }) {
-            for (n in groupClass.members.size downTo 1) {
-                sb.appendLine("    /// Allocates a `$className` with the given segment allocator and arguments like initializer list.")
-                sb.appendLine("    /// @param allocator the segment allocator")
-                for (i in 0 until n) {
-                    val member = groupClass.members[i]
-                    sb.appendLine("    /// @param ${member.pair.name} `${member.pair.name}`")
+        when (groupClass.kind) {
+            GroupTypeKind.STRUCT -> {
+                for (n in groupClass.members.size downTo 1) {
+                    sb.appendLine("    /// Allocates a `$className` with the given segment allocator and arguments like initializer list.")
+                    sb.appendLine("    /// @param allocator the segment allocator")
+                    for (i in 0 until n) {
+                        val member = groupClass.members[i]
+                        sb.appendLine("    /// @param ${member.pair.name} `${member.pair.name}`")
+                    }
+                    sb.appendLine("    /// @return the allocated `$className`")
+                    sb.append("    public static $className allocInit(SegmentAllocator allocator")
+                    for (i in 0 until n) {
+                        val member = groupClass.members[i]
+                        if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                            sb.append(", MemorySegment ${member.pair.name}")
+                        } else {
+                            sb.append(", ${member.pair.type.javaType} ${member.pair.name}")
+                        }
+                    }
+                    sb.appendLine(") {")
+                    sb.append("        return alloc(allocator)")
+                    for (i in 0 until n) {
+                        val member = groupClass.members[i]
+                        sb.append(".${member.pair.name}(${member.pair.name})")
+                    }
+                    sb.appendLine(";")
+                    sb.appendLine("    }")
+                    sb.appendLine()
                 }
-                sb.appendLine("    /// @return the allocated `$className`")
-                sb.append("    public static $className allocInit(SegmentAllocator allocator")
-                for (i in 0 until n) {
-                    val member = groupClass.members[i]
+            }
+
+            GroupTypeKind.UNION -> {
+                groupClass.members.forEach { member ->
+                    sb.appendLine("    /// Allocates a `$className` with the given segment allocator and `${member.pair.name}`.")
+                    sb.appendLine("    /// @param allocator the segment allocator")
+                    sb.appendLine("    /// @param ${member.pair.name} `${member.pair.name}`")
+                    sb.appendLine("    /// @return the allocated `$className`")
+                    sb.append("    public static $className allocWith_${member.pair.name}(SegmentAllocator allocator")
                     if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
                         sb.append(", MemorySegment ${member.pair.name}")
                     } else {
                         sb.append(", ${member.pair.type.javaType} ${member.pair.name}")
                     }
+                    sb.appendLine(") {")
+                    sb.appendLine("        return alloc(allocator).${member.pair.name}(${member.pair.name});")
+                    sb.appendLine("    }")
+                    sb.appendLine()
                 }
-                sb.appendLine(") {")
-                sb.append("        return alloc(allocator)")
-                for (i in 0 until n) {
-                    val member = groupClass.members[i]
-                    sb.append(".${member.pair.name}(${member.pair.name})")
-                }
-                sb.appendLine(";")
-                sb.appendLine("    }")
-                sb.appendLine()
             }
+
+            GroupTypeKind.BITFIELD -> {}
         }
 
         sb.appendLine(

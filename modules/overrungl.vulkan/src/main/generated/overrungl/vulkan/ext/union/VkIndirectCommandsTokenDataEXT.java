@@ -101,42 +101,36 @@ public sealed class VkIndirectCommandsTokenDataEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsTokenDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and arguments like initializer list.
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pPushConstant`.
     /// @param allocator the segment allocator
     /// @param pPushConstant `pPushConstant`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pPushConstant(SegmentAllocator allocator, MemorySegment pPushConstant) {
+        return alloc(allocator).pPushConstant(pPushConstant);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pVertexBuffer`.
+    /// @param allocator the segment allocator
     /// @param pVertexBuffer `pVertexBuffer`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pVertexBuffer(SegmentAllocator allocator, MemorySegment pVertexBuffer) {
+        return alloc(allocator).pVertexBuffer(pVertexBuffer);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pIndexBuffer`.
+    /// @param allocator the segment allocator
     /// @param pIndexBuffer `pIndexBuffer`
+    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
+    public static VkIndirectCommandsTokenDataEXT allocWith_pIndexBuffer(SegmentAllocator allocator, MemorySegment pIndexBuffer) {
+        return alloc(allocator).pIndexBuffer(pIndexBuffer);
+    }
+
+    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and `pExecutionSet`.
+    /// @param allocator the segment allocator
     /// @param pExecutionSet `pExecutionSet`
     /// @return the allocated `VkIndirectCommandsTokenDataEXT`
-    public static VkIndirectCommandsTokenDataEXT allocInit(SegmentAllocator allocator, MemorySegment pPushConstant, MemorySegment pVertexBuffer, MemorySegment pIndexBuffer, MemorySegment pExecutionSet) {
-        return alloc(allocator).pPushConstant(pPushConstant).pVertexBuffer(pVertexBuffer).pIndexBuffer(pIndexBuffer).pExecutionSet(pExecutionSet);
-    }
-
-    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pPushConstant `pPushConstant`
-    /// @param pVertexBuffer `pVertexBuffer`
-    /// @param pIndexBuffer `pIndexBuffer`
-    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
-    public static VkIndirectCommandsTokenDataEXT allocInit(SegmentAllocator allocator, MemorySegment pPushConstant, MemorySegment pVertexBuffer, MemorySegment pIndexBuffer) {
-        return alloc(allocator).pPushConstant(pPushConstant).pVertexBuffer(pVertexBuffer).pIndexBuffer(pIndexBuffer);
-    }
-
-    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pPushConstant `pPushConstant`
-    /// @param pVertexBuffer `pVertexBuffer`
-    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
-    public static VkIndirectCommandsTokenDataEXT allocInit(SegmentAllocator allocator, MemorySegment pPushConstant, MemorySegment pVertexBuffer) {
-        return alloc(allocator).pPushConstant(pPushConstant).pVertexBuffer(pVertexBuffer);
-    }
-
-    /// Allocates a `VkIndirectCommandsTokenDataEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pPushConstant `pPushConstant`
-    /// @return the allocated `VkIndirectCommandsTokenDataEXT`
-    public static VkIndirectCommandsTokenDataEXT allocInit(SegmentAllocator allocator, MemorySegment pPushConstant) {
-        return alloc(allocator).pPushConstant(pPushConstant);
+    public static VkIndirectCommandsTokenDataEXT allocWith_pExecutionSet(SegmentAllocator allocator, MemorySegment pExecutionSet) {
+        return alloc(allocator).pExecutionSet(pExecutionSet);
     }
 
     /// Copies from the given source.

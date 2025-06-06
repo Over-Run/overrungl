@@ -81,21 +81,20 @@ public sealed class VkClearValue extends GroupType {
     /// @return the allocated `VkClearValue`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkClearValue` with the given segment allocator and arguments like initializer list.
+    /// Allocates a `VkClearValue` with the given segment allocator and `color`.
     /// @param allocator the segment allocator
     /// @param color `color`
-    /// @param depthStencil `depthStencil`
     /// @return the allocated `VkClearValue`
-    public static VkClearValue allocInit(SegmentAllocator allocator, MemorySegment color, MemorySegment depthStencil) {
-        return alloc(allocator).color(color).depthStencil(depthStencil);
+    public static VkClearValue allocWith_color(SegmentAllocator allocator, MemorySegment color) {
+        return alloc(allocator).color(color);
     }
 
-    /// Allocates a `VkClearValue` with the given segment allocator and arguments like initializer list.
+    /// Allocates a `VkClearValue` with the given segment allocator and `depthStencil`.
     /// @param allocator the segment allocator
-    /// @param color `color`
+    /// @param depthStencil `depthStencil`
     /// @return the allocated `VkClearValue`
-    public static VkClearValue allocInit(SegmentAllocator allocator, MemorySegment color) {
-        return alloc(allocator).color(color);
+    public static VkClearValue allocWith_depthStencil(SegmentAllocator allocator, MemorySegment depthStencil) {
+        return alloc(allocator).depthStencil(depthStencil);
     }
 
     /// Copies from the given source.
