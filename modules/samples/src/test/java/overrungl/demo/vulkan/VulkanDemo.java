@@ -115,7 +115,7 @@ public class VulkanDemo {
 
     private void createInstance() {
         int instanceVersion;
-        if (MemoryUtil.isNullPointer(VK.functionLookup().invoke(MemorySegment.NULL, "vkEnumerateInstanceVersion"))) {
+        if (MemoryUtil.isNullPointer(VK.globalCommands().PFN_vkEnumerateInstanceVersion)) {
             instanceVersion = VK_API_VERSION_1_0;
         } else {
             try (MemoryStack stack = MemoryStack.pushLocal()) {

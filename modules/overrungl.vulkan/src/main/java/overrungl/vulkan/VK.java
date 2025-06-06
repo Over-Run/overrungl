@@ -47,23 +47,27 @@ public final class VK {
     }
 
     /// Removes loaded functions.
+    ///
+    /// If you don't need to reload Vulkan functions with other [VKLoadFunc],
+    /// you can ignore this method since it doesn't release any resource.
     public static void destroy() {
         if (loadFunc == null) return;
         loadFunc = null;
         globalCommands = null;
     }
 
-    /// {@return the function for which Vulkan function is acquired}
+    /// {@return the function from which Vulkan function is acquired}
     public static VKLoadFunc functionLookup() {
         return loadFunc;
     }
 
-    static final class GlobalCommands {
-        final MemorySegment PFN_vkGetInstanceProcAddr;
-        final MemorySegment PFN_vkCreateInstance;
-        final MemorySegment PFN_vkEnumerateInstanceExtensionProperties;
-        final MemorySegment PFN_vkEnumerateInstanceLayerProperties;
-        final MemorySegment PFN_vkEnumerateInstanceVersion;
+    /// Global commands that do not require a dispatchable handle to be passed.
+    public static final class GlobalCommands {
+        public final MemorySegment PFN_vkGetInstanceProcAddr;
+        public final MemorySegment PFN_vkCreateInstance;
+        public final MemorySegment PFN_vkEnumerateInstanceExtensionProperties;
+        public final MemorySegment PFN_vkEnumerateInstanceLayerProperties;
+        public final MemorySegment PFN_vkEnumerateInstanceVersion;
 
         private GlobalCommands(VKLoadFunc func) {
             PFN_vkGetInstanceProcAddr = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
@@ -102,7 +106,8 @@ public final class VK {
         }
     }
 
-    static GlobalCommands globalCommands() {
+    /// {@return instance of [GlobalCommands]}
+    public static GlobalCommands globalCommands() {
         return globalCommands;
     }
 }
