@@ -884,8 +884,7 @@ fun writeFunction(
     sb: StringBuilder,
     func: DefinitionFunction,
     handlesInstance: String = "Handles.get()",
-    staticMethod: Boolean = true,
-    overload: Boolean = false
+    staticMethod: Boolean = true
 ) {
     val hasDynamicType = func.returnType is DynamicValueType ||
         func.parameters.any { it.memoryLayoutWithDimensions is DefTypeDynamicValueLayout }
@@ -904,29 +903,20 @@ fun writeFunction(
             |    /// ```
         """.trimMargin()
     )
-
     sb.append("    public ")
     if (staticMethod) {
         sb.append("static ")
     }
-    sb.append("${func.returnType.javaType} ${func.name}(")
-    if (func.requireAllocator) {
-        sb.append("SegmentAllocator __allocator")
-        if (func.parameters.isNotEmpty()) {
-            sb.append(", ")
-        }
-    }
-    sb.append(func.parameters.joinToString { p ->
-        "${
-            if (p.dimensions.isNotEmpty()) (if (overload) "Addressable" else "MemorySegment")
-            else (if (overload && p.type.javaType == "MemorySegment") "Addressable" else p.type.javaType)
-        } ${p.name}"
-    })
-    sb.appendLine(") {")
-
+    sb.appendLine(
+        "${func.returnType.javaType} ${func.name}(${
+            if (func.requireAllocator) "SegmentAllocator __allocator${if (func.parameters.isNotEmpty()) ", " else ""}"
+            else ""
+        }${
+            func.parameters.joinToString { p -> "${if (p.dimensions.isNotEmpty()) "MemorySegment" else p.type.javaType} ${p.name}" }
+        }) {")
     if (func.body != null) {
         sb.appendLine(func.body.prependIndent("        "))
-    } else if (!overload) {
+    } else {
         if (func.optional) {
             sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${func.entrypoint}");""")
         }
@@ -953,31 +943,7 @@ fun writeFunction(
         }))
         sb.appendLine("; }")
         sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${func.name}", e); }""")
-    } else {
-        // Addressable overload
-        sb.append("        ")
-        if (func.returnType !is VoidType) {
-            sb.append("return ")
-        }
-        sb.append("${func.name}(")
-        if (func.requireAllocator) {
-            sb.append("__allocator")
-            if (func.parameters.isNotEmpty()) {
-                sb.append(", ")
-            }
-        }
-        sb.append(func.parameters.joinToString { p ->
-            if (p.dimensions.isNotEmpty() || p.type.javaType == "MemorySegment")
-                "${p.name} != null ? ${p.name}.segment() : MemorySegment.NULL"
-            else p.name
-        })
-        sb.appendLine(");")
     }
-
     sb.appendLine("    }")
     sb.appendLine()
-
-    if (!overload && func.parameters.any { p -> p.type.javaType == "MemorySegment" }) {
-        writeFunction(sb, func, handlesInstance, staticMethod, true)
-    }
 }
