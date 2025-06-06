@@ -58,6 +58,7 @@ tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
     options.release.set(targetJavaVersion)
+    options.javaModuleVersion.set(projVersion)
 }
 
 tasks.withType<Test> {
